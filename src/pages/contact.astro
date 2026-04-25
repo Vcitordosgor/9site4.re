@@ -1,0 +1,129 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/ui/Icon.astro';
+import ContactForm from '../components/sections/ContactForm.tsx';
+import siteConfig from '../data/siteConfig.json';
+import categories from '../data/categories.json';
+
+const waUrl = `https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeURIComponent(
+  siteConfig.contact.whatsappMessage
+)}`;
+---
+
+<BaseLayout
+  title={`Contact — Demandez votre site vitrine | ${siteConfig.siteName}`}
+  description="Parlons de votre projet. Formulaire ou WhatsApp. Réponse rapide, sans cahier des charges compliqué."
+>
+  <!-- En-tête -->
+  <section class="relative overflow-hidden px-6 pt-24 pb-12 md:pt-32 md:pb-16">
+    <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
+      <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-[40rem] h-[40rem] halo-mix opacity-50"></div>
+    </div>
+    <div class="mx-auto max-w-3xl text-center">
+      <p class="text-sm font-semibold text-orange uppercase tracking-wide">Contact</p>
+      <h1 class="mt-4 text-4xl md:text-6xl font-sora font-bold text-bleu-nuit text-balance leading-tight">
+        Parlons de votre projet.
+      </h1>
+      <p class="mt-6 text-lg md:text-xl text-bleu-nuit/70 leading-relaxed">
+        Réponse rapide. Projet simple. Pas besoin de cahier des charges compliqué.
+      </p>
+    </div>
+  </section>
+
+  <!-- 2 colonnes : formulaire + colonne réassurance -->
+  <section class="relative px-6 pb-24 md:pb-32">
+    <div class="mx-auto max-w-content grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+      <!-- Colonne formulaire -->
+      <div class="lg:col-span-7">
+        <ContactForm client:load categories={categories} />
+      </div>
+
+      <!-- Colonne réassurance -->
+      <aside class="lg:col-span-5 space-y-5 lg:sticky lg:top-28">
+        <!-- Carte réassurance -->
+        <div class="bg-blanc-casse rounded-2xl ring-1 ring-bleu-nuit/10 shadow-card p-7">
+          <h2 class="font-sora font-semibold text-xl text-bleu-nuit">
+            Comment ça se passe
+          </h2>
+          <ul class="mt-5 space-y-4">
+            <li class="flex items-start gap-3">
+              <span class="flex w-9 h-9 shrink-0 rounded-full bg-orange/15 text-orange items-center justify-center font-sora font-bold text-sm">1</span>
+              <div>
+                <p class="font-semibold text-sm text-bleu-nuit">Vous nous écrivez</p>
+                <p class="mt-0.5 text-sm text-bleu-nuit/65 leading-relaxed">
+                  Quelques infos sur votre activité suffisent.
+                </p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="flex w-9 h-9 shrink-0 rounded-full bg-orange/15 text-orange items-center justify-center font-sora font-bold text-sm">2</span>
+              <div>
+                <p class="font-semibold text-sm text-bleu-nuit">On vous rappelle</p>
+                <p class="mt-0.5 text-sm text-bleu-nuit/65 leading-relaxed">
+                  Pour comprendre votre métier et vos besoins concrets.
+                </p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="flex w-9 h-9 shrink-0 rounded-full bg-orange/15 text-orange items-center justify-center font-sora font-bold text-sm">3</span>
+              <div>
+                <p class="font-semibold text-sm text-bleu-nuit">On lance votre site</p>
+                <p class="mt-0.5 text-sm text-bleu-nuit/65 leading-relaxed">
+                  Mise en ligne rapide, suivi par un seul interlocuteur.
+                </p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Bouton WhatsApp -->
+        <a
+          href={waUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Contacter 9site4 sur WhatsApp au ${siteConfig.contact.whatsappDisplay}`}
+          class="group flex items-center justify-between gap-4 w-full p-5 rounded-2xl bg-[#25D366] text-white shadow-card hover:bg-[#1FAA52] hover:shadow-card-hover hover:-translate-y-0.5 transition-all duration-200 ease-out"
+        >
+          <span class="flex items-center gap-3">
+            <span class="flex w-11 h-11 shrink-0 rounded-full bg-white/15 items-center justify-center">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.92 0-2.65-1.03-5.14-2.91-7.01zM12.05 20.15h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.21 8.21 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83 8.25 8.25 0 0 1-8.24 8.22zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06a6.79 6.79 0 0 1-2-1.23 7.5 7.5 0 0 1-1.38-1.72c-.14-.25 0-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42l-.48-.01a.93.93 0 0 0-.67.31 2.81 2.81 0 0 0-.87 2.08c0 1.23.89 2.41 1.02 2.58.12.17 1.76 2.7 4.27 3.78.6.26 1.06.41 1.42.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z" />
+              </svg>
+            </span>
+            <span>
+              <span class="block font-sora font-semibold text-base">Discuter sur WhatsApp</span>
+              <span class="block text-sm text-white/85">{siteConfig.contact.whatsappDisplay}</span>
+            </span>
+          </span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="shrink-0 transition-transform duration-300 ease-out group-hover:translate-x-1">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </a>
+
+        <!-- Email + localisation -->
+        <div class="bg-blanc-casse rounded-2xl ring-1 ring-bleu-nuit/10 p-6 space-y-4">
+          <div>
+            <p class="text-xs font-semibold text-bleu-nuit/55 uppercase tracking-wide">Email</p>
+            <a
+              href={`mailto:${siteConfig.contact.email}`}
+              class="mt-1.5 inline-flex items-center gap-2 font-sora font-semibold text-base text-bleu-nuit hover:text-orange transition-colors"
+            >
+              <Icon name="mail" size={18} class="text-orange shrink-0" strokeWidth={1.75} />
+              {siteConfig.contact.email}
+            </a>
+          </div>
+          <div class="border-t border-bleu-nuit/10 pt-4">
+            <p class="text-xs font-semibold text-bleu-nuit/55 uppercase tracking-wide">Disponibilité</p>
+            <p class="mt-1.5 flex items-center gap-2 text-sm text-bleu-nuit/85">
+              <Icon name="globe" size={18} class="text-bleu-nuit/50 shrink-0" strokeWidth={1.75} />
+              {siteConfig.location.region} · {siteConfig.location.areaCode}
+            </p>
+            <p class="mt-1.5 text-sm text-bleu-nuit/65 leading-relaxed">
+              Réponse en général sous 24h ouvrées.
+            </p>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
