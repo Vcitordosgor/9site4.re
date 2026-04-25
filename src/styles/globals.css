@@ -72,6 +72,50 @@
   }
 }
 
+/* Reveal au scroll — Intersection Observer (script global dans BaseLayout) */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animation séquentielle d'entrée (au-dessus de la ligne de flottaison, sans IO) */
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.hero-rise {
+  animation: hero-rise 700ms cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+.hero-rise-1 { animation-delay: 80ms; }
+.hero-rise-2 { animation-delay: 180ms; }
+.hero-rise-3 { animation-delay: 280ms; }
+.hero-rise-4 { animation-delay: 380ms; }
+.hero-rise-5 { animation-delay: 480ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .hero-rise {
+    animation: none;
+  }
+}
+
 /* Respect prefers-reduced-motion — règle skill §1 (reduced-motion) */
 @media (prefers-reduced-motion: reduce) {
   *,

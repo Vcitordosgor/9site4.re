@@ -1,0 +1,131 @@
+---
+import Button from '../ui/Button.astro';
+import Icon from '../ui/Icon.astro';
+import siteConfig from '../../data/siteConfig.json';
+
+/**
+ * Hero — section prioritaire (brief §4.6).
+ * - H1 grand impactant (text-hero clamp 40-80px)
+ * - 2 CTA + mention de réassurance
+ * - Composition de 3 cartes flottantes en perspective (modules)
+ * - 974 stylisé en filigrane derrière, halos lumineux
+ * - Animation séquentielle (.hero-rise-N, 80ms par étape)
+ */
+---
+
+<section
+  class="relative overflow-hidden px-6 pt-24 pb-16 md:pt-32 md:pb-28"
+  aria-label="Présentation de 9site4"
+>
+  <!-- Halos en arrière-plan -->
+  <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
+    <div class="absolute -top-32 -left-24 w-[36rem] h-[36rem] halo-bleu opacity-70"></div>
+    <div class="absolute top-32 -right-32 w-[40rem] h-[40rem] halo-orange opacity-60"></div>
+  </div>
+
+  <!-- 974 en filigrane -->
+  <div
+    class="pointer-events-none absolute inset-x-0 bottom-0 -z-10 flex justify-center select-none overflow-hidden"
+    aria-hidden="true"
+  >
+    <span class="font-sora font-bold text-[28vw] md:text-[20vw] leading-[0.85] tracking-tighter text-bleu-nuit/[0.04] translate-y-[15%]">
+      974
+    </span>
+  </div>
+
+  <div class="mx-auto max-w-content grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+    <!-- Colonne texte -->
+    <div class="lg:col-span-7 text-center lg:text-left">
+      <p class="hero-rise hero-rise-1 inline-flex items-center gap-2 text-sm font-medium text-bleu-nuit/70 tracking-wide">
+        <span class="inline-block w-2 h-2 rounded-full bg-orange"></span>
+        <span class="uppercase">{siteConfig.location.areaCode} · {siteConfig.location.region}</span>
+      </p>
+
+      <h1 class="hero-rise hero-rise-2 mt-5 text-hero font-sora font-bold text-bleu-nuit text-balance">
+        Votre site tout-en-un,
+        <span class="relative inline-block">
+          <span class="relative z-10">la gestion en moins.</span>
+          <span class="absolute inset-x-0 bottom-1 md:bottom-2 h-2 md:h-3 bg-orange/25 -z-0" aria-hidden="true"></span>
+        </span>
+      </h1>
+
+      <p class="hero-rise hero-rise-3 mt-6 text-lg md:text-xl text-bleu-nuit/70 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+        Un site pro adapté à votre métier, prêt à recevoir vos demandes clients.
+        Tout est inclus : nom de domaine, hébergement, maintenance, modifications.
+        Vous, vous gérez votre activité.
+      </p>
+
+      <div class="hero-rise hero-rise-4 mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+        <Button variant="primary" size="lg" href="/contact">
+          Demander mon site
+          <Icon name="arrow-right" size={20} strokeWidth={2.25} />
+        </Button>
+        <Button variant="secondary" size="lg" href="/realisations">
+          Voir les réalisations
+        </Button>
+      </div>
+
+      <p class="hero-rise hero-rise-5 mt-6 text-sm text-bleu-nuit/60 flex items-center gap-2 justify-center lg:justify-start">
+        <Icon name="shield-check" size={16} class="text-orange" strokeWidth={2} />
+        <span>{siteConfig.pricing.highlight}</span>
+      </p>
+    </div>
+
+    <!-- Colonne visuelle : 3 cartes flottantes -->
+    <div
+      class="hero-rise hero-rise-5 lg:col-span-5 relative h-[420px] hidden lg:block"
+      aria-hidden="true"
+    >
+      <!-- Card 1 : Réservation (haut gauche) -->
+      <div class="absolute top-0 left-2 w-64 bg-blanc-casse rounded-2xl ring-1 ring-bleu-nuit/10 shadow-card-hover p-5 -rotate-[4deg] transition-transform duration-500 ease-out-soft hover:rotate-0 hover:scale-105">
+        <div class="flex items-center gap-3">
+          <span class="flex w-10 h-10 rounded-xl bg-bleu/15 text-bleu-nuit items-center justify-center">
+            <Icon name="calendar-clock" size={20} strokeWidth={1.75} />
+          </span>
+          <div>
+            <p class="text-xs font-medium text-bleu-nuit/60 uppercase tracking-wide">Module</p>
+            <p class="text-sm font-sora font-semibold text-bleu-nuit">Réservation</p>
+          </div>
+        </div>
+        <div class="mt-4 space-y-2">
+          <div class="h-2 rounded-full bg-bleu-nuit/10 w-3/4"></div>
+          <div class="h-2 rounded-full bg-bleu-nuit/10 w-1/2"></div>
+        </div>
+      </div>
+
+      <!-- Card 2 : Devis (centre droit) -->
+      <div class="absolute top-32 right-0 w-64 bg-blanc-casse rounded-2xl ring-1 ring-bleu-nuit/10 shadow-card-hover p-5 rotate-[3deg] transition-transform duration-500 ease-out-soft hover:rotate-0 hover:scale-105">
+        <div class="flex items-center gap-3">
+          <span class="flex w-10 h-10 rounded-xl bg-orange/15 text-orange items-center justify-center">
+            <Icon name="file-text" size={20} strokeWidth={1.75} />
+          </span>
+          <div>
+            <p class="text-xs font-medium text-bleu-nuit/60 uppercase tracking-wide">Module</p>
+            <p class="text-sm font-sora font-semibold text-bleu-nuit">Devis</p>
+          </div>
+        </div>
+        <div class="mt-4 space-y-2">
+          <div class="h-2 rounded-full bg-bleu-nuit/10 w-full"></div>
+          <div class="h-2 rounded-full bg-bleu-nuit/10 w-2/3"></div>
+        </div>
+      </div>
+
+      <!-- Card 3 : Rendez-vous (bas centre) -->
+      <div class="absolute bottom-0 left-12 w-64 bg-blanc-casse rounded-2xl ring-1 ring-bleu-nuit/10 shadow-card-hover p-5 -rotate-[2deg] transition-transform duration-500 ease-out-soft hover:rotate-0 hover:scale-105">
+        <div class="flex items-center gap-3">
+          <span class="flex w-10 h-10 rounded-xl bg-bleu/15 text-bleu-nuit items-center justify-center">
+            <Icon name="calendar-check" size={20} strokeWidth={1.75} />
+          </span>
+          <div>
+            <p class="text-xs font-medium text-bleu-nuit/60 uppercase tracking-wide">Module</p>
+            <p class="text-sm font-sora font-semibold text-bleu-nuit">Rendez-vous</p>
+          </div>
+        </div>
+        <div class="mt-4 space-y-2">
+          <div class="h-2 rounded-full bg-bleu-nuit/10 w-2/3"></div>
+          <div class="h-2 rounded-full bg-bleu-nuit/10 w-3/4"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

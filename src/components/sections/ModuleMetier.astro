@@ -1,0 +1,85 @@
+---
+import Button from '../ui/Button.astro';
+import Icon from '../ui/Icon.astro';
+
+/**
+ * Module métier — brief §7.4.
+ * Titre + texte + 3 mini-cartes (Réservation / Devis / Rendez-vous) + CTA.
+ */
+const modules = [
+  {
+    icon: 'calendar-clock',
+    titre: 'Réservation',
+    texte: 'Pour les restaurants, gîtes, studios. Vos clients réservent en quelques clics.',
+    couleur: 'bleu',
+  },
+  {
+    icon: 'file-text',
+    titre: 'Demande de devis',
+    texte: 'Pour les artisans, BTP, architectes. Un formulaire structuré qui qualifie la demande.',
+    couleur: 'orange',
+  },
+  {
+    icon: 'calendar-check',
+    titre: 'Prise de rendez-vous',
+    texte: 'Pour la beauté, la santé, le coaching. Un planning clair et un rappel automatique.',
+    couleur: 'bleu',
+  },
+];
+---
+
+<section class="relative px-6 py-20 md:py-28">
+  <div class="mx-auto max-w-content">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+      <div class="lg:col-span-5">
+        <p class="scroll-reveal text-sm font-semibold text-orange uppercase tracking-wide">
+          Pensé pour votre métier
+        </p>
+        <h2 class="scroll-reveal mt-4 font-sora font-bold text-3xl md:text-5xl text-bleu-nuit text-balance leading-tight">
+          Un site pensé pour recevoir les bonnes demandes
+        </h2>
+        <p class="scroll-reveal mt-6 text-lg text-bleu-nuit/70 leading-relaxed">
+          Chaque activité a ses propres besoins. Un restaurant doit recevoir des
+          réservations, un artisan des demandes de devis, un salon des
+          rendez-vous. 9site4 adapte votre formulaire de contact à votre métier
+          pour transformer votre site en vrai point d'entrée client.
+        </p>
+        <div class="scroll-reveal mt-8">
+          <Button variant="secondary" size="md" href="/realisations">
+            Voir les exemples de sites
+            <Icon name="arrow-right" size={18} strokeWidth={2} />
+          </Button>
+        </div>
+      </div>
+
+      <ul class="lg:col-span-7 grid sm:grid-cols-3 gap-4">
+        {modules.map((mod, i) => (
+          <li
+            class:list={[
+              'scroll-reveal group relative bg-blanc-casse rounded-2xl ring-1 ring-bleu-nuit/10 p-6 transition-all duration-300 ease-out-soft hover:-translate-y-1 hover:shadow-card-hover',
+              i === 1 ? 'sm:translate-y-6' : '',
+            ]}
+            style={`transition-delay: ${i * 90}ms`}
+          >
+            <span
+              class:list={[
+                'flex w-12 h-12 rounded-xl items-center justify-center',
+                mod.couleur === 'orange'
+                  ? 'bg-orange/15 text-orange'
+                  : 'bg-bleu/20 text-bleu-nuit',
+              ]}
+            >
+              <Icon name={mod.icon} size={22} strokeWidth={1.75} />
+            </span>
+            <h3 class="mt-5 font-sora font-semibold text-lg text-bleu-nuit">
+              {mod.titre}
+            </h3>
+            <p class="mt-2 text-sm text-bleu-nuit/65 leading-relaxed">
+              {mod.texte}
+            </p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>

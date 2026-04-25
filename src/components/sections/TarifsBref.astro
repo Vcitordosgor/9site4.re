@@ -1,0 +1,65 @@
+---
+import Button from '../ui/Button.astro';
+import Icon from '../ui/Icon.astro';
+import Badge from '../ui/Badge.astro';
+import siteConfig from '../../data/siteConfig.json';
+
+/**
+ * Tarifs en bref — brief §7.6.
+ * Bloc compact : 2 formules + CTA vers la page Tarifs.
+ */
+---
+
+<section class="relative px-6 py-20 md:py-28">
+  <div class="mx-auto max-w-4xl">
+    <div class="text-center max-w-2xl mx-auto">
+      <p class="scroll-reveal text-sm font-semibold text-orange uppercase tracking-wide">
+        Tarifs
+      </p>
+      <h2 class="scroll-reveal mt-4 font-sora font-bold text-3xl md:text-5xl text-bleu-nuit text-balance leading-tight">
+        Une offre simple, à partir de {siteConfig.pricing.monthly}/mois
+      </h2>
+      <p class="scroll-reveal mt-5 text-lg text-bleu-nuit/70">
+        Tout est inclus dans votre abonnement. Aucune option cachée.
+      </p>
+    </div>
+
+    <div class="scroll-reveal mt-12 grid sm:grid-cols-2 gap-5">
+      <div class="bg-blanc-casse rounded-2xl ring-1 ring-bleu-nuit/10 shadow-card p-7 transition-all duration-300 ease-out-soft hover:-translate-y-0.5 hover:shadow-card-hover">
+        <p class="text-sm font-semibold text-bleu-nuit/60 uppercase tracking-wide">
+          Mensuel
+        </p>
+        <p class="mt-3 flex items-baseline gap-1">
+          <span class="font-sora font-bold text-4xl md:text-5xl text-bleu-nuit">{siteConfig.pricing.monthly}</span>
+          <span class="text-base text-bleu-nuit/60">/mois</span>
+        </p>
+        <p class="mt-3 text-sm text-bleu-nuit/65">
+          Sans engagement de durée.
+        </p>
+      </div>
+
+      <div class="relative bg-bleu-nuit text-blanc-casse rounded-2xl shadow-card-hover p-7 transition-all duration-300 ease-out-soft hover:-translate-y-0.5">
+        <div class="flex items-center justify-between">
+          <p class="text-sm font-semibold text-blanc-casse/70 uppercase tracking-wide">
+            Annuel
+          </p>
+          <Badge variant="primary" size="sm">≈ 2 mois offerts</Badge>
+        </div>
+        <p class="mt-3 flex items-baseline gap-1">
+          <span class="font-sora font-bold text-4xl md:text-5xl">{siteConfig.pricing.yearly}</span>
+          <span class="text-base text-blanc-casse/60">/an</span>
+        </p>
+        <p class="mt-3 text-sm text-blanc-casse/70">
+          Plus économique sur l'année.
+        </p>
+      </div>
+    </div>
+
+    <div class="scroll-reveal mt-10 flex justify-center">
+      <Button variant="secondary" size="lg" href="/tarifs">
+        Voir les détails
+        <Icon name="arrow-right" size={20} strokeWidth={2} />
+      </Button>
+    </div>
+  </div>
+</section>

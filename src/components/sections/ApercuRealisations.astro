@@ -1,0 +1,51 @@
+---
+import Button from '../ui/Button.astro';
+import Icon from '../ui/Icon.astro';
+import RealisationCard from '../realisations/RealisationCard.astro';
+import realisations from '../../data/realisations.json';
+
+/**
+ * Aperçu des réalisations — brief §7.5.
+ * Sélection de 3 réalisations dans des catégories différentes pour donner un aperçu varié.
+ */
+const selection = ['restaurant-creole', 'spa-massage', 'gite-de-montagne'];
+const cards = selection
+  .map((slug) => realisations.find((r) => r.slug === slug))
+  .filter((r): r is (typeof realisations)[number] => Boolean(r));
+---
+
+<section class="relative px-6 py-20 md:py-28 bg-bleu-nuit/[0.025]">
+  <div class="mx-auto max-w-content">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+      <div class="max-w-2xl">
+        <p class="scroll-reveal text-sm font-semibold text-orange uppercase tracking-wide">
+          Quelques exemples
+        </p>
+        <h2 class="scroll-reveal mt-4 font-sora font-bold text-3xl md:text-5xl text-bleu-nuit text-balance leading-tight">
+          Des sites adaptés à chaque métier
+        </h2>
+      </div>
+      <div class="scroll-reveal hidden md:block">
+        <Button variant="tertiary" size="md" href="/realisations">
+          Voir toutes les réalisations
+          <Icon name="arrow-right" size={18} strokeWidth={2} />
+        </Button>
+      </div>
+    </div>
+
+    <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {cards.map((r, i) => (
+        <div class="scroll-reveal" style={`transition-delay: ${i * 80}ms`}>
+          <RealisationCard realisation={r} />
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-10 md:hidden">
+      <Button variant="secondary" size="md" href="/realisations" fullWidth>
+        Voir toutes les réalisations
+        <Icon name="arrow-right" size={18} strokeWidth={2} />
+      </Button>
+    </div>
+  </div>
+</section>

@@ -1,24 +1,24 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/sections/Hero.astro';
+import Promesse from '../components/sections/Promesse.astro';
+import Offre from '../components/sections/Offre.astro';
+import ModuleMetier from '../components/sections/ModuleMetier.astro';
+import ApercuRealisations from '../components/sections/ApercuRealisations.astro';
+import TarifsBref from '../components/sections/TarifsBref.astro';
+import CTABand from '../components/sections/CTABand.astro';
 import siteConfig from '../data/siteConfig.json';
 ---
 
-<BaseLayout title={siteConfig.siteName} description={siteConfig.baseline}>
-  <section class="relative min-h-[80vh] flex items-center justify-center px-6 py-16">
-    <div class="absolute inset-0 -z-10 halo-mix opacity-60" aria-hidden="true"></div>
-    <div class="text-center max-w-2xl">
-      <p class="text-sm font-medium text-bleu-nuit/60 tracking-wide uppercase">
-        {siteConfig.location.areaCode} · {siteConfig.location.region}
-      </p>
-      <h1 class="mt-4 text-hero font-sora font-bold text-bleu-nuit">
-        {siteConfig.siteName}
-      </h1>
-      <p class="mt-6 text-lg md:text-xl text-bleu-nuit/70">
-        {siteConfig.baseline}
-      </p>
-      <p class="mt-10 text-sm text-bleu-nuit/50">
-        Setup en cours — étape 5/15. La vraie page d'accueil arrive bientôt.
-      </p>
-    </div>
-  </section>
+<BaseLayout
+  title={`${siteConfig.siteName} — Création de site vitrine à La Réunion (974)`}
+  description="Sites vitrines clé en main pour TPE/PME réunionnaises. Tout inclus : domaine, hébergement, maintenance. À partir de 97,4€/mois."
+>
+  <Hero />
+  <Promesse />
+  <Offre />
+  <ModuleMetier />
+  <ApercuRealisations />
+  <TarifsBref />
+  <CTABand />
 </BaseLayout>

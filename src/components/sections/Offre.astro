@@ -1,0 +1,51 @@
+---
+import Icon from '../ui/Icon.astro';
+
+/**
+ * Offre — grille de 8 items avec icônes (brief §7.3).
+ * 1 col mobile → 2 col tablette → 4 col desktop.
+ */
+const items = [
+  { icon: 'monitor',       titre: 'Site vitrine personnalisé',     texte: 'Une présence en ligne pro qui reflète votre activité.' },
+  { icon: 'palette',       titre: 'Design adapté à votre activité', texte: 'Couleurs, typographies et mise en page choisies pour vous.' },
+  { icon: 'smartphone',    titre: 'Responsive',                     texte: 'Lisible sur mobile, tablette et ordinateur, sans réglage de votre côté.' },
+  { icon: 'mail',          titre: 'Module de contact métier',       texte: 'Réservation, devis, rendez-vous ou intervention selon votre besoin.' },
+  { icon: 'globe',         titre: 'Domaine + hébergement',          texte: 'Votre nom de domaine et l\'hébergement inclus, gérés par nous.' },
+  { icon: 'shield-check',  titre: 'Sécurité + maintenance',         texte: 'Mises à jour, sauvegardes et certificat HTTPS pris en charge.' },
+  { icon: 'wand',          titre: 'Modifications simples incluses', texte: 'Horaires, photos, textes courts : on s\'en occupe pour vous.' },
+  { icon: 'headphones',    titre: 'Un seul interlocuteur',          texte: 'Une seule personne à qui parler pour tout ce qui touche à votre site.' },
+];
+---
+
+<section class="relative px-6 py-20 md:py-28 bg-bleu-nuit/[0.025]">
+  <div class="mx-auto max-w-content">
+    <div class="text-center max-w-2xl mx-auto">
+      <p class="scroll-reveal text-sm font-semibold text-orange uppercase tracking-wide">
+        Ce qui est inclus
+      </p>
+      <h2 class="scroll-reveal mt-4 font-sora font-bold text-3xl md:text-5xl text-bleu-nuit text-balance leading-tight">
+        Tout est inclus dans votre abonnement
+      </h2>
+      <p class="scroll-reveal mt-5 text-lg text-bleu-nuit/70 leading-relaxed">
+        Pas de surprise, pas d'option cachée. Une seule offre, claire et complète.
+      </p>
+    </div>
+
+    <ul class="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      {items.map((item, i) => (
+        <li
+          class="scroll-reveal group relative bg-blanc-casse rounded-2xl ring-1 ring-bleu-nuit/10 p-6 transition-all duration-300 ease-out-soft hover:-translate-y-0.5 hover:shadow-card-hover hover:ring-bleu-nuit/15"
+          style={`transition-delay: ${(i % 4) * 60}ms`}
+        >
+          <span class="flex w-12 h-12 rounded-xl bg-orange/10 text-orange items-center justify-center transition-colors duration-300 group-hover:bg-orange group-hover:text-blanc-casse">
+            <Icon name={item.icon} size={22} strokeWidth={1.75} />
+          </span>
+          <h3 class="mt-5 font-sora font-semibold text-lg text-bleu-nuit leading-snug">
+            {item.titre}
+          </h3>
+          <p class="mt-2 text-sm text-bleu-nuit/65 leading-relaxed">{item.texte}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

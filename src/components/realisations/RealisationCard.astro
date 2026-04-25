@@ -1,0 +1,85 @@
+---
+import Badge from '../ui/Badge.astro';
+import Icon from '../ui/Icon.astro';
+import categories from '../../data/categories.json';
+
+/**
+ * RealisationCard — placeholder propre (pas de mockup) avec gradient signature
+ * adapté à la catégorie. Réutilisé en home (aperçu) et page Réalisations.
+ */
+interface Realisation {
+  id: number;
+  nom: string;
+  categorie: string;
+  sousTitre: string;
+  moduleInclus: string;
+  slug: string;
+}
+
+interface Props {
+  realisation: Realisation;
+  ctaHref?: string;
+}
+
+const { realisation, ctaHref = '/contact' } = Astro.props;
+
+const categoryName =
+  categories.find((c) => c.id === realisation.categorie)?.nom ??
+  realisation.categorie;
+
+// Gradient placeholder par catégorie + icône représentative
+const visuals: Record<string, { gradient: string; icon: string }> = {
+  restaurants:   { gradient: 'from-orange/30 via-orange/15 to-bleu/15',     icon: 'sparkle' },
+  beaute:        { gradient: 'from-bleu/25 via-bleu/10 to-orange/15',       icon: 'palette' },
+  artisans:      { gradient: 'from-bleu-nuit/25 via-bleu/15 to-orange/10',  icon: 'wrench' },
+  sante:         { gradient: 'from-bleu/25 via-bleu/10 to-bleu-nuit/10',    icon: 'shield-check' },
+  sport:         { gradient: 'from-orange/25 via-orange/10 to-bleu/15',     icon: 'sparkle' },
+  tourisme:      { gradient: 'from-bleu/30 via-orange/15 to-blanc-casse',   icon: 'globe' },
+  pro:           { gradient: 'from-bleu-nuit/30 via-bleu/15 to-blanc-casse',icon: 'file-text' },
+  particuliers: { gradient: 'from-bleu/20 via-orange/15 to-bleu/10',        icon: 'headphones' },
+};
+
+const moduleIcons: Record<string, string> = {
+  'Réservation': 'calendar-clock',
+  'Rendez-vous': 'calendar-check',
+  'Devis': 'file-text',
+  'Intervention': 'wrench',
+};
+
+const visual = visuals[realisation.categorie] ?? visuals.pro;
+const moduleIcon = moduleIcons[realisation.moduleInclus] ?? 'sparkle';
+---
+
+<article class="group relative bg-blanc-casse rounded-2xl ring-1 ring-bleu-nuit/10 shadow-card overflow-hidden flex flex-col transition-all duration-300 ease-out-soft hover:-translate-y-1 hover:shadow-card-hover hover:ring-bleu-nuit/15">
+  <!-- Zone visuelle (placeholder — pas de mockup) -->
+  <div class:list={['relative aspect-[5/3] overflow-hidden bg-gradient-to-br', visual.gradient]}>
+    <div class="absolute inset-0 halo-mix opacity-40" aria-hidden="true"></div>
+    <div class="absolute top-4 left-4">
+      <Badge variant="neutral" size="sm">{categoryName}</Badge>
+    </div>
+    <div class="absolute inset-0 flex items-center justify-center">
+      <span class="flex items-center justify-center w-20 h-20 rounded-2xl bg-blanc-casse/60 ring-1 ring-bleu-nuit/10 backdrop-blur-sm text-bleu-nuit transition-transform duration-500 ease-out-soft group-hover:scale-110 group-hover:rotate-[-2deg]">
+        <Icon name={visual.icon} size={36} strokeWidth={1.5} />
+      </span>
+    </div>
+  </div>
+
+  <!-- Contenu -->
+  <div class="flex-1 flex flex-col p-6">
+    <h3 class="text-xl font-sora font-semibold text-bleu-nuit">{realisation.nom}</h3>
+    <p class="mt-2 text-sm text-bleu-nuit/70 leading-relaxed">{realisation.sousTitre}</p>
+
+    <div class="mt-4 flex items-center gap-2 text-sm text-bleu-nuit/80">
+      <Icon name={moduleIcon} size={18} class="text-orange shrink-0" strokeWidth={1.75} />
+      <span>Module inclus : <strong class="font-semibold text-bleu-nuit">{realisation.moduleInclus}</strong></span>
+    </div>
+
+    <a
+      href={ctaHref}
+      class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-bleu-nuit group-hover:text-orange transition-colors"
+    >
+      Je veux un site comme celui-ci
+      <Icon name="arrow-right" size={16} class="transition-transform duration-300 ease-out-soft group-hover:translate-x-1" strokeWidth={2} />
+    </a>
+  </div>
+</article>
