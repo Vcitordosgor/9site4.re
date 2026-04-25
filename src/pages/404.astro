@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/ui/Button.astro';
+import Icon from '../components/ui/Icon.astro';
+---
+
+<BaseLayout
+  title="Page non trouvée | 9site4"
+  description="La page que vous cherchez n'existe pas."
+  noindex
+>
+  <section class="relative overflow-hidden px-6 pt-24 pb-24 md:pt-32 md:pb-32 min-h-[70dvh] flex items-center">
+    <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
+      <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[40rem] h-[40rem] halo-mix opacity-50"></div>
+    </div>
+
+    <div class="mx-auto max-w-2xl text-center">
+      <p class="font-sora font-bold text-[8rem] md:text-[12rem] leading-none text-bleu-nuit/15 select-none" aria-hidden="true">
+        404
+      </p>
+      <h1 class="mt-2 font-sora font-bold text-3xl md:text-5xl text-bleu-nuit text-balance leading-tight">
+        Cette page n'existe pas
+      </h1>
+      <p class="mt-5 text-lg text-bleu-nuit/70 leading-relaxed">
+        Le lien est peut-être périmé, ou l'adresse mal orthographiée.
+      </p>
+
+      <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+        <Button variant="primary" size="lg" href="/">
+          Retour à l'accueil
+          <Icon name="arrow-right" size={20} strokeWidth={2.25} />
+        </Button>
+        <Button variant="secondary" size="lg" href="/contact">
+          Nous contacter
+        </Button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
