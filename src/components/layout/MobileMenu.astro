@@ -21,6 +21,7 @@ const isActive = (href: string) => {
   id="mobile-menu"
   data-open="false"
   aria-hidden="true"
+  inert
   class="md:hidden fixed inset-x-0 top-16 bottom-0 z-40 bg-blanc-casse transition-opacity duration-300 ease-out data-[open=false]:opacity-0 data-[open=false]:pointer-events-none data-[open=true]:opacity-100"
 >
   <div class="absolute inset-0 -z-10 halo-mix opacity-50" aria-hidden="true"></div>
@@ -51,7 +52,7 @@ const isActive = (href: string) => {
       <a
         href="/contact"
         data-mobile-link
-        class="inline-flex items-center justify-center w-full h-14 px-8 text-lg font-inter font-semibold rounded-full bg-orange text-blanc-casse shadow-card transition-all duration-200 ease-out hover:bg-[#E07F00] hover:shadow-card-hover active:translate-y-px"
+        class="inline-flex items-center justify-center w-full h-14 px-8 text-lg font-inter font-semibold rounded-full bg-orange text-bleu-nuit shadow-card transition-all duration-200 ease-out hover:bg-[#E07F00] hover:shadow-card-hover active:translate-y-px"
       >
         Demander mon site
       </a>
@@ -73,6 +74,12 @@ const isActive = (href: string) => {
       );
       menu.dataset.open = String(open);
       menu.setAttribute('aria-hidden', String(!open));
+      // inert : empêche le focus tabbing et masque aux AT quand fermé
+      if (open) {
+        menu.removeAttribute('inert');
+      } else {
+        menu.setAttribute('inert', '');
+      }
       document.body.style.overflow = open ? 'hidden' : '';
     };
 

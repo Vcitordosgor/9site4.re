@@ -207,7 +207,7 @@ export default function ContactForm({ categories }: Props) {
         </div>
         <div>
           <label for="cf-entreprise" class={labelBase}>
-            Entreprise <span class="text-bleu-nuit/40 font-normal">(optionnel)</span>
+            Entreprise <span class="text-bleu-nuit/65 font-normal">(optionnel)</span>
           </label>
           <input
             id="cf-entreprise"
@@ -275,7 +275,7 @@ export default function ContactForm({ categories }: Props) {
               {errors.telephone}
             </p>
           ) : (
-            <p id="cf-tel-help" class="mt-1.5 text-xs text-bleu-nuit/55">
+            <p id="cf-tel-help" class="mt-1.5 text-xs text-bleu-nuit/70">
               Format libre. Exemple : 0692 00 00 00.
             </p>
           )}
@@ -336,8 +336,6 @@ export default function ContactForm({ categories }: Props) {
 
       {/* Préférence de contact (radio) */}
       <fieldset
-        aria-required="true"
-        aria-invalid={errors.preference ? 'true' : 'false'}
         aria-describedby={errors.preference ? 'cf-pref-err' : undefined}
       >
         <legend class={labelBase}>
@@ -370,7 +368,7 @@ export default function ContactForm({ categories }: Props) {
       {/* Message libre */}
       <div>
         <label for="cf-message" class={labelBase}>
-          Message <span class="text-bleu-nuit/40 font-normal">(optionnel)</span>
+          Message <span class="text-bleu-nuit/65 font-normal">(optionnel)</span>
         </label>
         <textarea
           id="cf-message"
@@ -385,7 +383,7 @@ export default function ContactForm({ categories }: Props) {
       <div class="pt-2">
         <button
           type="submit"
-          class="group relative inline-flex w-full items-center justify-center gap-2 h-14 px-8 text-lg font-semibold rounded-full bg-orange text-blanc-casse shadow-card hover:bg-[#E07F00] hover:shadow-card-hover active:translate-y-px transition-all duration-200 ease-out cursor-pointer"
+          class="group relative inline-flex w-full items-center justify-center gap-2 h-14 px-8 text-lg font-semibold rounded-full bg-orange text-bleu-nuit shadow-card hover:bg-[#E07F00] hover:shadow-card-hover active:translate-y-px transition-all duration-200 ease-out cursor-pointer"
         >
           Envoyer ma demande
           <svg
@@ -403,7 +401,7 @@ export default function ContactForm({ categories }: Props) {
             <path d="M5 12h14M12 5l7 7-7 7" />
           </svg>
         </button>
-        <p class="mt-3 text-xs text-bleu-nuit/55 text-center">
+        <p class="mt-3 text-xs text-bleu-nuit/70 text-center">
           En soumettant ce formulaire, vous acceptez d'être recontacté(e) au sujet de votre projet.
         </p>
       </div>

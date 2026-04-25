@@ -73,7 +73,7 @@ export default function FiltersBar({ categories, totalCount }: Props) {
             <span>{cat.nom}</span>
             <span
               class={`text-xs font-medium tabular-nums ${
-                isActive ? 'text-blanc-casse/70' : 'text-bleu-nuit/50'
+                isActive ? 'text-blanc-casse/70' : 'text-bleu-nuit/65'
               }`}
             >
               {cat.count}
