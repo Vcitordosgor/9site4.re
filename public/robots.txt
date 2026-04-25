@@ -2,5 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /404
 Disallow: /mentions-legales
+Disallow: /styleguide
 
 Sitemap: https://9site4.re/sitemap-index.xml

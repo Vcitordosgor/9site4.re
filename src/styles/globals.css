@@ -44,12 +44,16 @@
   /* Focus visible élégant — règle skill §1 (focus-states 2-4px) */
   *:focus-visible {
     @apply outline-none ring-2 ring-bleu ring-offset-2 ring-offset-blanc-casse;
-    border-radius: 4px;
   }
 
   /* Empêche le zoom auto iOS sur les inputs (font-size >= 16px) */
   input, select, textarea {
     @apply text-base;
+  }
+
+  /* Réduit le délai 300ms sur tap mobile (skill §2 tap-delay) */
+  button, a, [role="button"] {
+    touch-action: manipulation;
   }
 }
 

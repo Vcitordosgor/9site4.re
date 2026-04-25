@@ -1,0 +1,80 @@
+---
+/**
+ * Button — variants primary / secondary / tertiary, tailles sm / md / lg.
+ * Rend un <a> si `href` est fourni, sinon un <button>.
+ * Conforme skill §2 : touch target ≥44px, cursor-pointer, focus visible.
+ */
+interface Props {
+  variant?: 'primary' | 'secondary' | 'tertiary';
+  size?: 'sm' | 'md' | 'lg';
+  href?: string;
+  type?: 'button' | 'submit' | 'reset';
+  disabled?: boolean;
+  fullWidth?: boolean;
+  class?: string;
+  [key: string]: unknown;
+}
+
+const {
+  variant = 'primary',
+  size = 'md',
+  href,
+  type = 'button',
+  disabled = false,
+  fullWidth = false,
+  class: className = '',
+  ...rest
+} = Astro.props;
+
+const base =
+  'group relative inline-flex items-center justify-center gap-2 font-inter font-semibold whitespace-nowrap select-none transition-all duration-200 ease-out cursor-pointer disabled:cursor-not-allowed disabled:opacity-50';
+
+const sizes = {
+  sm: 'h-11 px-5 text-sm rounded-full',
+  md: 'h-12 px-6 text-base rounded-full',
+  lg: 'h-14 px-8 text-lg rounded-full',
+};
+
+const tertiarySizes = {
+  sm: 'h-11 px-2 text-sm',
+  md: 'h-12 px-2 text-base',
+  lg: 'h-14 px-2 text-lg',
+};
+
+const variants = {
+  primary:
+    'bg-orange text-blanc-casse shadow-card hover:bg-[#E07F00] hover:shadow-card-hover active:translate-y-px',
+  secondary:
+    'bg-transparent border border-bleu-nuit text-bleu-nuit hover:bg-bleu-nuit hover:text-blanc-casse',
+  tertiary:
+    'bg-transparent text-bleu-nuit hover:text-orange',
+};
+
+const classes = [
+  base,
+  variant === 'tertiary' ? tertiarySizes[size] : sizes[size],
+  variants[variant],
+  fullWidth ? 'w-full' : '',
+  className,
+].join(' ');
+
+const Tag = href ? 'a' : 'button';
+---
+
+<Tag
+  class={classes}
+  {...(href ? { href } : { type, disabled })}
+  {...rest}
+>
+  {variant === 'tertiary' ? (
+    <span class="relative">
+      <slot />
+      <span
+        class="absolute left-0 -bottom-0.5 h-px w-full origin-left scale-x-0 bg-current transition-transform duration-300 ease-out group-hover:scale-x-100"
+        aria-hidden="true"
+      ></span>
+    </span>
+  ) : (
+    <slot />
+  )}
+</Tag>

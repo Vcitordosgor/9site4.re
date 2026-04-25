@@ -1,0 +1,74 @@
+---
+/**
+ * Input — champ texte avec label visible, helper et error.
+ * Conforme skill §1 (form-labels), §8 (input-labels, error-placement, touch-friendly-input).
+ */
+interface Props {
+  id: string;
+  name: string;
+  label: string;
+  type?: 'text' | 'email' | 'tel' | 'url' | 'number' | 'password' | 'search';
+  required?: boolean;
+  placeholder?: string;
+  helper?: string;
+  error?: string;
+  autocomplete?: string;
+  value?: string;
+  inputmode?: 'text' | 'email' | 'tel' | 'url' | 'numeric' | 'decimal' | 'search';
+  pattern?: string;
+  class?: string;
+}
+
+const {
+  id,
+  name,
+  label,
+  type = 'text',
+  required = false,
+  placeholder,
+  helper,
+  error,
+  autocomplete,
+  value,
+  inputmode,
+  pattern,
+  class: className = '',
+} = Astro.props;
+
+const helperId = helper ? `${id}-helper` : undefined;
+const errorId = error ? `${id}-error` : undefined;
+const describedBy = [helperId, errorId].filter(Boolean).join(' ') || undefined;
+
+const baseInput =
+  'w-full h-12 px-4 rounded-xl bg-blanc-casse text-bleu-nuit placeholder:text-bleu-nuit/40 transition-colors duration-200 ease-out';
+const stateClasses = error
+  ? 'ring-1 ring-red-500 focus:ring-2 focus:ring-red-500'
+  : 'ring-1 ring-bleu-nuit/15 focus:ring-2 focus:ring-bleu focus:ring-offset-0';
+---
+
+<div class:list={['flex flex-col gap-1.5', className]}>
+  <label for={id} class="text-sm font-medium text-bleu-nuit">
+    {label}
+    {required && <span class="text-orange ml-0.5" aria-hidden="true">*</span>}
+  </label>
+  <input
+    id={id}
+    name={name}
+    type={type}
+    required={required}
+    placeholder={placeholder}
+    autocomplete={autocomplete}
+    value={value}
+    inputmode={inputmode}
+    pattern={pattern}
+    aria-invalid={error ? 'true' : undefined}
+    aria-describedby={describedBy}
+    class:list={[baseInput, stateClasses, 'outline-none']}
+  />
+  {helper && !error && (
+    <p id={helperId} class="text-xs text-bleu-nuit/60">{helper}</p>
+  )}
+  {error && (
+    <p id={errorId} role="alert" class="text-xs font-medium text-red-600">{error}</p>
+  )}
+</div>

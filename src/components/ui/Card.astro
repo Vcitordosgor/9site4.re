@@ -1,0 +1,47 @@
+---
+/**
+ * Card — conteneur générique avec bordure fine, ombre douce et hover optionnel.
+ * Conforme brief §4.4 : rounded-2xl, ring-1 ring-bleu-nuit/5, shadow-sm → shadow-card-hover.
+ */
+interface Props {
+  as?: 'div' | 'article' | 'section' | 'a';
+  href?: string;
+  hover?: boolean;
+  padding?: 'none' | 'sm' | 'md' | 'lg';
+  class?: string;
+  [key: string]: unknown;
+}
+
+const {
+  as = 'div',
+  href,
+  hover = false,
+  padding = 'md',
+  class: className = '',
+  ...rest
+} = Astro.props;
+
+const paddings = {
+  none: '',
+  sm: 'p-4',
+  md: 'p-6',
+  lg: 'p-8',
+};
+
+const base =
+  'relative bg-blanc-casse rounded-2xl ring-1 ring-bleu-nuit/10 shadow-card transition-all duration-250 ease-out-soft';
+
+const hoverClasses = hover
+  ? 'hover:shadow-card-hover hover:-translate-y-0.5 hover:scale-[1.005] hover:ring-bleu-nuit/15 cursor-pointer'
+  : '';
+
+const Tag = href ? 'a' : as;
+---
+
+<Tag
+  class:list={[base, paddings[padding], hoverClasses, className]}
+  {...(href ? { href } : {})}
+  {...rest}
+>
+  <slot />
+</Tag>

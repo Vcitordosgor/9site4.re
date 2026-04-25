@@ -10,7 +10,9 @@ export default defineConfig({
     tailwind({ applyBaseStyles: false }),
     sitemap({
       filter: (page) =>
-        !page.includes('/mentions-legales') && !page.includes('/404'),
+        !page.includes('/mentions-legales') &&
+        !page.includes('/404') &&
+        !page.includes('/styleguide'),
     }),
   ],
 });
