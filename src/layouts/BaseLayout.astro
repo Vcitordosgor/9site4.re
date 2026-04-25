@@ -1,17 +1,21 @@
 ---
 import '../styles/globals.css';
 import siteConfig from '../data/siteConfig.json';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
 
 interface Props {
   title?: string;
   description?: string;
   noindex?: boolean;
+  bare?: boolean;
 }
 
 const {
   title = siteConfig.siteName,
   description = siteConfig.baseline,
   noindex = false,
+  bare = false,
 } = Astro.props;
 ---
 
@@ -26,7 +30,11 @@ const {
     <title>{title}</title>
     <meta name="description" content={description} />
   </head>
-  <body>
-    <slot />
+  <body class="flex flex-col min-h-dvh">
+    {!bare && <Header />}
+    <main class="flex-1">
+      <slot />
+    </main>
+    {!bare && <Footer />}
   </body>
 </html>

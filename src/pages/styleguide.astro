@@ -28,6 +28,7 @@ const swatches = [
 ];
 
 const sections = [
+  { id: 'layout', label: 'Layout' },
   { id: 'colors', label: 'Couleurs' },
   { id: 'typography', label: 'Typographie' },
   { id: 'wordmark', label: 'Wordmark' },
@@ -44,96 +45,128 @@ const sections = [
   description="Catalogue interne des composants UI et tokens du design system 9site4."
   noindex={true}
 >
-  <div class="min-h-dvh bg-blanc-casse">
-    <header class="sticky top-0 z-40 bg-blanc-casse/80 backdrop-blur-md border-b border-bleu-nuit/10">
-      <div class="max-w-content mx-auto px-6 py-4 flex items-center justify-between gap-6">
-        <div class="flex items-center gap-3">
-          <Wordmark href="/" size="md" />
-          <Badge variant="primary" size="sm">Styleguide</Badge>
-        </div>
-        <nav class="hidden md:flex items-center gap-1 text-sm">
-          {sections.map((s) => (
-            <a
-              href={`#${s.id}`}
-              class="px-3 py-2 rounded-full text-bleu-nuit/70 hover:text-bleu-nuit hover:bg-bleu-nuit/5 transition-colors"
-            >
-              {s.label}
-            </a>
-          ))}
-        </nav>
+  <div class="max-w-content mx-auto px-6 py-16 space-y-24">
+    <!-- Intro -->
+    <section>
+      <div class="flex items-center gap-3">
+        <Badge variant="primary" size="sm">Interne · noindex</Badge>
       </div>
-    </header>
+      <h1 class="mt-4 text-4xl md:text-5xl font-sora font-bold text-bleu-nuit">Styleguide</h1>
+      <p class="mt-4 max-w-2xl text-lg text-bleu-nuit/70">
+        Catalogue temporaire des composants UI, tokens visuels et éléments de mise en page du design system 9site4.
+        Cette page sert uniquement à la validation visuelle interne — elle ne sera pas indexée.
+      </p>
+      <nav class="mt-8 flex flex-wrap gap-2" aria-label="Sommaire">
+        {sections.map((s) => (
+          <a
+            href={`#${s.id}`}
+            class="px-3 py-1.5 rounded-full text-sm text-bleu-nuit/70 ring-1 ring-bleu-nuit/15 hover:text-bleu-nuit hover:bg-bleu-nuit/5 transition-colors"
+          >
+            {s.label}
+          </a>
+        ))}
+      </nav>
+    </section>
 
-    <main class="max-w-content mx-auto px-6 py-16 space-y-24">
-      <!-- Intro -->
-      <section>
-        <p class="text-sm font-medium uppercase tracking-wider text-bleu-nuit/50">Interne · noindex</p>
-        <h1 class="mt-2 text-4xl md:text-5xl font-sora font-bold text-bleu-nuit">Styleguide</h1>
-        <p class="mt-4 max-w-2xl text-lg text-bleu-nuit/70">
-          Catalogue temporaire des composants UI et tokens visuels du design system 9site4.
-          Cette page sert uniquement à la validation visuelle interne — elle ne sera pas indexée.
-        </p>
-      </section>
+    <!-- Layout & Navigation -->
+    <section id="layout" class="scroll-mt-24">
+      <h2 class="text-3xl font-sora font-bold text-bleu-nuit">Layout & Navigation</h2>
+      <p class="mt-2 text-bleu-nuit/70">Header sticky, MobileMenu et Footer — visibles directement en haut et en bas de cette page.</p>
+      <div class="mt-8 grid md:grid-cols-2 gap-6">
+        <Card padding="lg">
+          <h3 class="text-xl font-sora font-semibold text-bleu-nuit">Header sticky</h3>
+          <ul class="mt-4 space-y-3 text-sm text-bleu-nuit/80">
+            <li class="flex gap-2"><span aria-hidden="true">•</span><span>Wordmark à gauche, lien vers <code class="text-xs bg-bleu-nuit/5 px-1 rounded">/</code>.</span></li>
+            <li class="flex gap-2"><span aria-hidden="true">•</span><span>Nav centrale : Accueil · Réalisations · Tarifs · Contact (point orange sous la page active).</span></li>
+            <li class="flex gap-2"><span aria-hidden="true">•</span><span>CTA primaire <em>« Demander mon site »</em> à droite.</span></li>
+            <li class="flex gap-2"><span aria-hidden="true">•</span><span><strong>Au scroll</strong> : fond passe de transparent à <code class="text-xs bg-bleu-nuit/5 px-1 rounded">blanc-casse/82</code> avec backdrop-blur et ombre douce. Faites défiler pour voir l'effet.</span></li>
+            <li class="flex gap-2"><span aria-hidden="true">•</span><span>Hauteur 64px en mobile / 80px en desktop (≥44px par élément cliquable).</span></li>
+          </ul>
+        </Card>
+        <Card padding="lg">
+          <h3 class="text-xl font-sora font-semibold text-bleu-nuit">MobileMenu (drawer plein écran)</h3>
+          <ul class="mt-4 space-y-3 text-sm text-bleu-nuit/80">
+            <li class="flex gap-2"><span aria-hidden="true">•</span><span>Réduisez la fenêtre sous 768px pour faire apparaître le hamburger animé.</span></li>
+            <li class="flex gap-2"><span aria-hidden="true">•</span><span>Hamburger qui se transforme en croix (rotation + fade central) en 300 ms.</span></li>
+            <li class="flex gap-2"><span aria-hidden="true">•</span><span>Drawer plein écran sous le header, avec halo subtil et liens en grand format.</span></li>
+            <li class="flex gap-2"><span aria-hidden="true">•</span><span>Accessibilité : <code class="text-xs bg-bleu-nuit/5 px-1 rounded">aria-expanded</code>, <code class="text-xs bg-bleu-nuit/5 px-1 rounded">aria-controls</code>, fermeture par <kbd class="text-xs bg-bleu-nuit/5 px-1 rounded border border-bleu-nuit/10">Esc</kbd>, scroll du body bloqué pendant l'ouverture.</span></li>
+            <li class="flex gap-2"><span aria-hidden="true">•</span><span>Refermeture automatique au repassage en desktop.</span></li>
+          </ul>
+        </Card>
+        <Card padding="lg" class="md:col-span-2">
+          <h3 class="text-xl font-sora font-semibold text-bleu-nuit">Footer</h3>
+          <ul class="mt-4 space-y-3 text-sm text-bleu-nuit/80">
+            <li class="flex gap-2"><span aria-hidden="true">•</span><span>Fond <code class="text-xs bg-bleu-nuit/5 px-1 rounded">bleu-nuit</code>, texte <code class="text-xs bg-bleu-nuit/5 px-1 rounded">blanc-casse</code>.</span></li>
+            <li class="flex gap-2"><span aria-hidden="true">•</span><span>4 blocs : identité (wordmark + baseline + « Fait à La Réunion 🌴 »), navigation, offre, contact.</span></li>
+            <li class="flex gap-2"><span aria-hidden="true">•</span><span>Toutes les valeurs (email, WhatsApp, baseline, prix) viennent de <code class="text-xs bg-bleu-nuit/5 px-1 rounded">siteConfig.json</code>.</span></li>
+            <li class="flex gap-2"><span aria-hidden="true">•</span><span>Lien WhatsApp construit dynamiquement : <code class="text-xs bg-bleu-nuit/5 px-1 rounded">https://wa.me/{'{'}whatsapp{'}'}?text=…</code>.</span></li>
+            <li class="flex gap-2"><span aria-hidden="true">•</span><span>Copyright avec année dynamique, lien Mentions légales en bas, colonnes empilées en mobile.</span></li>
+          </ul>
+        </Card>
+      </div>
+    </section>
 
-      <!-- Couleurs -->
-      <section id="colors" class="scroll-mt-24">
-        <h2 class="text-3xl font-sora font-bold text-bleu-nuit">Couleurs</h2>
-        <p class="mt-2 text-bleu-nuit/70">4 tokens couleur — déclarés dans <code class="text-sm bg-bleu-nuit/5 px-1.5 py-0.5 rounded">tailwind.config.mjs</code> et <code class="text-sm bg-bleu-nuit/5 px-1.5 py-0.5 rounded">globals.css</code>.</p>
-        <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
-          {swatches.map((s) => (
-            <div class="flex flex-col gap-3">
-              <div class:list={['h-32 rounded-2xl', s.class]}></div>
-              <div>
-                <p class="font-sora font-semibold text-bleu-nuit">{s.name}</p>
-                <p class="text-sm font-mono text-bleu-nuit/60">{s.hex}</p>
-                <p class="mt-1 text-xs text-bleu-nuit/60">{s.usage}</p>
-              </div>
+    <!-- Couleurs -->
+    <section id="colors" class="scroll-mt-24">
+      <h2 class="text-3xl font-sora font-bold text-bleu-nuit">Couleurs</h2>
+      <p class="mt-2 text-bleu-nuit/70">4 tokens couleur — déclarés dans <code class="text-sm bg-bleu-nuit/5 px-1.5 py-0.5 rounded">tailwind.config.mjs</code> et <code class="text-sm bg-bleu-nuit/5 px-1.5 py-0.5 rounded">globals.css</code>.</p>
+      <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
+        {swatches.map((s) => (
+          <div class="flex flex-col gap-3">
+            <div class:list={['h-32 rounded-2xl', s.class]}></div>
+            <div>
+              <p class="font-sora font-semibold text-bleu-nuit">{s.name}</p>
+              <p class="text-sm font-mono text-bleu-nuit/60">{s.hex}</p>
+              <p class="mt-1 text-xs text-bleu-nuit/60">{s.usage}</p>
             </div>
-          ))}
-        </div>
-      </section>
+          </div>
+        ))}
+      </div>
+    </section>
 
-      <!-- Typographie -->
-      <section id="typography" class="scroll-mt-24">
-        <h2 class="text-3xl font-sora font-bold text-bleu-nuit">Typographie</h2>
-        <p class="mt-2 text-bleu-nuit/70">Sora pour les titres, Inter pour le corps. Auto-hébergées via @fontsource.</p>
-        <div class="mt-8 space-y-6">
-          <Card padding="lg">
-            <p class="text-xs uppercase tracking-wider text-bleu-nuit/50">H1 hero · text-hero · Sora 700</p>
-            <p class="mt-3 text-hero font-sora font-bold text-bleu-nuit">Votre site tout-en-un</p>
-          </Card>
-          <Card padding="lg">
-            <p class="text-xs uppercase tracking-wider text-bleu-nuit/50">H2 · text-3xl/4xl · Sora 700</p>
-            <h2 class="mt-3 text-3xl md:text-4xl font-sora font-bold text-bleu-nuit">L'abonnement tout compris.</h2>
-          </Card>
-          <Card padding="lg">
-            <p class="text-xs uppercase tracking-wider text-bleu-nuit/50">H3 · text-2xl · Sora 600</p>
-            <h3 class="mt-3 text-2xl font-sora font-semibold text-bleu-nuit">Un site adapté à votre métier</h3>
-          </Card>
-          <Card padding="lg">
-            <p class="text-xs uppercase tracking-wider text-bleu-nuit/50">H4 · text-xl · Sora 600</p>
-            <h4 class="mt-3 text-xl font-sora font-semibold text-bleu-nuit">Module métier inclus</h4>
-          </Card>
-          <Card padding="lg">
-            <p class="text-xs uppercase tracking-wider text-bleu-nuit/50">Body · text-base · Inter 400</p>
-            <p class="mt-3 text-base text-bleu-nuit/80 leading-relaxed max-w-2xl">
-              Chaque activité a ses propres besoins. Un restaurant doit recevoir des réservations,
-              un artisan des demandes de devis, un salon des rendez-vous. 9site4 adapte votre site
-              pour transformer votre activité en vrai point d'entrée client.
-            </p>
-          </Card>
-          <Card padding="lg">
-            <p class="text-xs uppercase tracking-wider text-bleu-nuit/50">Small · text-sm · Inter 400</p>
-            <p class="mt-3 text-sm text-bleu-nuit/70">À partir de 97,4€/mois — Tout inclus.</p>
-          </Card>
-        </div>
-      </section>
+    <!-- Typographie -->
+    <section id="typography" class="scroll-mt-24">
+      <h2 class="text-3xl font-sora font-bold text-bleu-nuit">Typographie</h2>
+      <p class="mt-2 text-bleu-nuit/70">Sora pour les titres, Inter pour le corps. Auto-hébergées via @fontsource.</p>
+      <div class="mt-8 space-y-6">
+        <Card padding="lg">
+          <p class="text-xs uppercase tracking-wider text-bleu-nuit/50">H1 hero · text-hero · Sora 700</p>
+          <p class="mt-3 text-hero font-sora font-bold text-bleu-nuit">Votre site tout-en-un</p>
+        </Card>
+        <Card padding="lg">
+          <p class="text-xs uppercase tracking-wider text-bleu-nuit/50">H2 · text-3xl/4xl · Sora 700</p>
+          <h2 class="mt-3 text-3xl md:text-4xl font-sora font-bold text-bleu-nuit">L'abonnement tout compris.</h2>
+        </Card>
+        <Card padding="lg">
+          <p class="text-xs uppercase tracking-wider text-bleu-nuit/50">H3 · text-2xl · Sora 600</p>
+          <h3 class="mt-3 text-2xl font-sora font-semibold text-bleu-nuit">Un site adapté à votre métier</h3>
+        </Card>
+        <Card padding="lg">
+          <p class="text-xs uppercase tracking-wider text-bleu-nuit/50">H4 · text-xl · Sora 600</p>
+          <h4 class="mt-3 text-xl font-sora font-semibold text-bleu-nuit">Module métier inclus</h4>
+        </Card>
+        <Card padding="lg">
+          <p class="text-xs uppercase tracking-wider text-bleu-nuit/50">Body · text-base · Inter 400</p>
+          <p class="mt-3 text-base text-bleu-nuit/80 leading-relaxed max-w-2xl">
+            Chaque activité a ses propres besoins. Un restaurant doit recevoir des réservations,
+            un artisan des demandes de devis, un salon des rendez-vous. 9site4 adapte votre site
+            pour transformer votre activité en vrai point d'entrée client.
+          </p>
+        </Card>
+        <Card padding="lg">
+          <p class="text-xs uppercase tracking-wider text-bleu-nuit/50">Small · text-sm · Inter 400</p>
+          <p class="mt-3 text-sm text-bleu-nuit/70">À partir de 97,4€/mois — Tout inclus.</p>
+        </Card>
+      </div>
+    </section>
 
-      <!-- Wordmark -->
-      <section id="wordmark" class="scroll-mt-24">
-        <h2 class="text-3xl font-sora font-bold text-bleu-nuit">Wordmark</h2>
-        <p class="mt-2 text-bleu-nuit/70">Version temporaire — sera remplacée par le logo définitif.</p>
-        <Card padding="lg" class="mt-8">
+    <!-- Wordmark -->
+    <section id="wordmark" class="scroll-mt-24">
+      <h2 class="text-3xl font-sora font-bold text-bleu-nuit">Wordmark</h2>
+      <p class="mt-2 text-bleu-nuit/70">Version temporaire — sera remplacée par le logo définitif. 2 tons disponibles : <code class="text-xs bg-bleu-nuit/5 px-1 rounded">dark</code> (par défaut) et <code class="text-xs bg-bleu-nuit/5 px-1 rounded">light</code> (footer).</p>
+      <div class="mt-8 grid md:grid-cols-2 gap-6">
+        <Card padding="lg">
+          <p class="text-xs uppercase tracking-wider text-bleu-nuit/50 mb-4">tone="dark" · 3 tailles</p>
           <div class="flex items-center gap-12">
             <div class="flex flex-col items-start gap-1">
               <span class="text-xs uppercase tracking-wider text-bleu-nuit/50">sm</span>
@@ -149,204 +182,217 @@ const sections = [
             </div>
           </div>
         </Card>
-      </section>
-
-      <!-- Boutons -->
-      <section id="buttons" class="scroll-mt-24">
-        <h2 class="text-3xl font-sora font-bold text-bleu-nuit">Boutons</h2>
-        <p class="mt-2 text-bleu-nuit/70">3 variants × 3 tailles. Tap target ≥ 44px (skill §2).</p>
-
-        <div class="mt-8 space-y-8">
-          <Card padding="lg">
-            <p class="text-sm font-semibold text-bleu-nuit/60 mb-4">Primary</p>
-            <div class="flex flex-wrap items-center gap-4">
-              <Button variant="primary" size="sm">Demander mon site</Button>
-              <Button variant="primary" size="md">Demander mon site</Button>
-              <Button variant="primary" size="lg">Demander mon site</Button>
-              <Button variant="primary" size="md" disabled>Désactivé</Button>
+        <Card padding="lg" class="bg-bleu-nuit ring-bleu-nuit/0">
+          <p class="text-xs uppercase tracking-wider text-blanc-casse/50 mb-4">tone="light" · sur fond bleu-nuit</p>
+          <div class="flex items-center gap-12">
+            <div class="flex flex-col items-start gap-1">
+              <span class="text-xs uppercase tracking-wider text-blanc-casse/50">sm</span>
+              <Wordmark size="sm" tone="light" />
             </div>
-          </Card>
-
-          <Card padding="lg">
-            <p class="text-sm font-semibold text-bleu-nuit/60 mb-4">Secondary</p>
-            <div class="flex flex-wrap items-center gap-4">
-              <Button variant="secondary" size="sm">Voir les réalisations</Button>
-              <Button variant="secondary" size="md">Voir les réalisations</Button>
-              <Button variant="secondary" size="lg">Voir les réalisations</Button>
-              <Button variant="secondary" size="md" disabled>Désactivé</Button>
+            <div class="flex flex-col items-start gap-1">
+              <span class="text-xs uppercase tracking-wider text-blanc-casse/50">md</span>
+              <Wordmark size="md" tone="light" />
             </div>
-          </Card>
-
-          <Card padding="lg">
-            <p class="text-sm font-semibold text-bleu-nuit/60 mb-4">Tertiary (lien avec underline animé)</p>
-            <div class="flex flex-wrap items-center gap-6">
-              <Button variant="tertiary" size="sm">En savoir plus</Button>
-              <Button variant="tertiary" size="md">En savoir plus</Button>
-              <Button variant="tertiary" size="lg">En savoir plus</Button>
+            <div class="flex flex-col items-start gap-1">
+              <span class="text-xs uppercase tracking-wider text-blanc-casse/50">lg</span>
+              <Wordmark size="lg" tone="light" />
             </div>
-          </Card>
-
-          <Card padding="lg">
-            <p class="text-sm font-semibold text-bleu-nuit/60 mb-4">En lien (href fourni → rendu en &lt;a&gt;)</p>
-            <div class="flex flex-wrap items-center gap-4">
-              <Button variant="primary" href="#" size="md">Vers /contact</Button>
-              <Button variant="secondary" href="#" size="md">Vers /realisations</Button>
-            </div>
-          </Card>
-
-          <Card padding="lg">
-            <p class="text-sm font-semibold text-bleu-nuit/60 mb-4">Pleine largeur</p>
-            <div class="max-w-sm space-y-3">
-              <Button variant="primary" size="md" fullWidth>Demander mon site</Button>
-              <Button variant="secondary" size="md" fullWidth>Voir les réalisations</Button>
-            </div>
-          </Card>
-        </div>
-      </section>
-
-      <!-- Badges -->
-      <section id="badges" class="scroll-mt-24">
-        <h2 class="text-3xl font-sora font-bold text-bleu-nuit">Badges</h2>
-        <Card padding="lg" class="mt-8">
-          <div class="flex flex-wrap items-center gap-3">
-            <Badge variant="neutral">Neutral</Badge>
-            <Badge variant="primary">Primary</Badge>
-            <Badge variant="secondary">Secondary</Badge>
-            <Badge variant="accent">Accent</Badge>
-            <Badge variant="outline">Outline</Badge>
-            <span class="w-px h-6 bg-bleu-nuit/10 mx-2"></span>
-            <Badge variant="neutral" size="md">Restaurant créole</Badge>
-            <Badge variant="primary" size="md">≈ 2 mois offerts</Badge>
-            <Badge variant="secondary" size="md">Module : Réservation</Badge>
           </div>
         </Card>
-      </section>
+      </div>
+    </section>
 
-      <!-- Cartes -->
-      <section id="cards" class="scroll-mt-24">
-        <h2 class="text-3xl font-sora font-bold text-bleu-nuit">Cartes</h2>
-        <p class="mt-2 text-bleu-nuit/70">Bordure fine, ombre douce, hover optionnel.</p>
-        <div class="mt-8 grid md:grid-cols-3 gap-6">
-          <Card padding="md">
-            <Badge variant="neutral">Default</Badge>
-            <h3 class="mt-3 text-xl font-sora font-semibold text-bleu-nuit">Carte simple</h3>
-            <p class="mt-2 text-sm text-bleu-nuit/70">Sans hover. Padding md.</p>
-          </Card>
-          <Card padding="md" hover>
-            <Badge variant="primary">Hover</Badge>
-            <h3 class="mt-3 text-xl font-sora font-semibold text-bleu-nuit">Carte interactive</h3>
-            <p class="mt-2 text-sm text-bleu-nuit/70">Survolez : élévation + scale subtil.</p>
-          </Card>
-          <Card padding="lg" hover href="#">
-            <Badge variant="secondary">Lien</Badge>
-            <h3 class="mt-3 text-xl font-sora font-semibold text-bleu-nuit">Carte cliquable</h3>
-            <p class="mt-2 text-sm text-bleu-nuit/70">Rendue en &lt;a&gt; avec href.</p>
-          </Card>
-        </div>
-      </section>
+    <!-- Boutons -->
+    <section id="buttons" class="scroll-mt-24">
+      <h2 class="text-3xl font-sora font-bold text-bleu-nuit">Boutons</h2>
+      <p class="mt-2 text-bleu-nuit/70">3 variants × 3 tailles. Tap target ≥ 44px (skill §2).</p>
 
-      <!-- Formulaires -->
-      <section id="forms" class="scroll-mt-24">
-        <h2 class="text-3xl font-sora font-bold text-bleu-nuit">Formulaires</h2>
-        <p class="mt-2 text-bleu-nuit/70">Inputs, Select, Textarea — labels visibles, helper, error, états required.</p>
-
-        <div class="mt-8 grid md:grid-cols-2 gap-6">
-          <Card padding="lg">
-            <h3 class="text-xl font-sora font-semibold text-bleu-nuit mb-6">Inputs</h3>
-            <div class="space-y-5">
-              <Input id="sg-nom" name="nom" label="Nom" placeholder="Jean Dupont" required />
-              <Input
-                id="sg-email"
-                name="email"
-                type="email"
-                label="Email"
-                placeholder="vous@exemple.re"
-                helper="Nous ne partageons jamais votre email."
-                autocomplete="email"
-                required
-              />
-              <Input
-                id="sg-tel"
-                name="tel"
-                type="tel"
-                label="Téléphone"
-                placeholder="+262 692 00 00 00"
-                inputmode="tel"
-                autocomplete="tel"
-              />
-              <Input
-                id="sg-error"
-                name="erreur"
-                type="email"
-                label="Email (état erreur)"
-                value="pas-un-email"
-                error="Format d'email invalide."
-              />
-            </div>
-          </Card>
-
-          <Card padding="lg">
-            <h3 class="text-xl font-sora font-semibold text-bleu-nuit mb-6">Select & Textarea</h3>
-            <div class="space-y-5">
-              <Select
-                id="sg-secteur"
-                name="secteur"
-                label="Secteur d'activité"
-                placeholder="Choisissez votre secteur"
-                options={sectorOptions}
-                required
-              />
-              <Select
-                id="sg-secteur-error"
-                name="secteur-err"
-                label="Secteur (état erreur)"
-                placeholder="Choisissez votre secteur"
-                options={sectorOptions}
-                error="Merci de sélectionner un secteur."
-              />
-              <Textarea
-                id="sg-message"
-                name="message"
-                label="Message"
-                placeholder="Parlez-nous de votre projet…"
-                helper="Optionnel — quelques lignes suffisent."
-                rows={4}
-                maxlength={500}
-              />
-            </div>
-          </Card>
-        </div>
-      </section>
-
-      <!-- Effets -->
-      <section id="effects" class="scroll-mt-24">
-        <h2 class="text-3xl font-sora font-bold text-bleu-nuit">Effets visuels signature</h2>
-        <p class="mt-2 text-bleu-nuit/70">Halos lumineux radiaux à utiliser avec parcimonie (brief §4.5).</p>
-        <div class="mt-8 grid md:grid-cols-3 gap-6">
-          <div class="relative h-48 rounded-2xl ring-1 ring-bleu-nuit/10 overflow-hidden bg-blanc-casse">
-            <div class="absolute inset-0 halo-bleu" aria-hidden="true"></div>
-            <div class="relative h-full flex items-end p-4">
-              <code class="text-xs bg-bleu-nuit/5 px-2 py-1 rounded">halo-bleu</code>
-            </div>
+      <div class="mt-8 space-y-8">
+        <Card padding="lg">
+          <p class="text-sm font-semibold text-bleu-nuit/60 mb-4">Primary</p>
+          <div class="flex flex-wrap items-center gap-4">
+            <Button variant="primary" size="sm">Demander mon site</Button>
+            <Button variant="primary" size="md">Demander mon site</Button>
+            <Button variant="primary" size="lg">Demander mon site</Button>
+            <Button variant="primary" size="md" disabled>Désactivé</Button>
           </div>
-          <div class="relative h-48 rounded-2xl ring-1 ring-bleu-nuit/10 overflow-hidden bg-blanc-casse">
-            <div class="absolute inset-0 halo-orange" aria-hidden="true"></div>
-            <div class="relative h-full flex items-end p-4">
-              <code class="text-xs bg-bleu-nuit/5 px-2 py-1 rounded">halo-orange</code>
-            </div>
+        </Card>
+
+        <Card padding="lg">
+          <p class="text-sm font-semibold text-bleu-nuit/60 mb-4">Secondary</p>
+          <div class="flex flex-wrap items-center gap-4">
+            <Button variant="secondary" size="sm">Voir les réalisations</Button>
+            <Button variant="secondary" size="md">Voir les réalisations</Button>
+            <Button variant="secondary" size="lg">Voir les réalisations</Button>
+            <Button variant="secondary" size="md" disabled>Désactivé</Button>
           </div>
-          <div class="relative h-48 rounded-2xl ring-1 ring-bleu-nuit/10 overflow-hidden bg-blanc-casse">
-            <div class="absolute inset-0 halo-mix" aria-hidden="true"></div>
-            <div class="relative h-full flex items-end p-4">
-              <code class="text-xs bg-bleu-nuit/5 px-2 py-1 rounded">halo-mix</code>
-            </div>
+        </Card>
+
+        <Card padding="lg">
+          <p class="text-sm font-semibold text-bleu-nuit/60 mb-4">Tertiary (lien avec underline animé)</p>
+          <div class="flex flex-wrap items-center gap-6">
+            <Button variant="tertiary" size="sm">En savoir plus</Button>
+            <Button variant="tertiary" size="md">En savoir plus</Button>
+            <Button variant="tertiary" size="lg">En savoir plus</Button>
+          </div>
+        </Card>
+
+        <Card padding="lg">
+          <p class="text-sm font-semibold text-bleu-nuit/60 mb-4">En lien (href fourni → rendu en &lt;a&gt;)</p>
+          <div class="flex flex-wrap items-center gap-4">
+            <Button variant="primary" href="#" size="md">Vers /contact</Button>
+            <Button variant="secondary" href="#" size="md">Vers /realisations</Button>
+          </div>
+        </Card>
+
+        <Card padding="lg">
+          <p class="text-sm font-semibold text-bleu-nuit/60 mb-4">Pleine largeur</p>
+          <div class="max-w-sm space-y-3">
+            <Button variant="primary" size="md" fullWidth>Demander mon site</Button>
+            <Button variant="secondary" size="md" fullWidth>Voir les réalisations</Button>
+          </div>
+        </Card>
+      </div>
+    </section>
+
+    <!-- Badges -->
+    <section id="badges" class="scroll-mt-24">
+      <h2 class="text-3xl font-sora font-bold text-bleu-nuit">Badges</h2>
+      <Card padding="lg" class="mt-8">
+        <div class="flex flex-wrap items-center gap-3">
+          <Badge variant="neutral">Neutral</Badge>
+          <Badge variant="primary">Primary</Badge>
+          <Badge variant="secondary">Secondary</Badge>
+          <Badge variant="accent">Accent</Badge>
+          <Badge variant="outline">Outline</Badge>
+          <span class="w-px h-6 bg-bleu-nuit/10 mx-2"></span>
+          <Badge variant="neutral" size="md">Restaurant créole</Badge>
+          <Badge variant="primary" size="md">≈ 2 mois offerts</Badge>
+          <Badge variant="secondary" size="md">Module : Réservation</Badge>
+        </div>
+      </Card>
+    </section>
+
+    <!-- Cartes -->
+    <section id="cards" class="scroll-mt-24">
+      <h2 class="text-3xl font-sora font-bold text-bleu-nuit">Cartes</h2>
+      <p class="mt-2 text-bleu-nuit/70">Bordure fine, ombre douce, hover optionnel.</p>
+      <div class="mt-8 grid md:grid-cols-3 gap-6">
+        <Card padding="md">
+          <Badge variant="neutral">Default</Badge>
+          <h3 class="mt-3 text-xl font-sora font-semibold text-bleu-nuit">Carte simple</h3>
+          <p class="mt-2 text-sm text-bleu-nuit/70">Sans hover. Padding md.</p>
+        </Card>
+        <Card padding="md" hover>
+          <Badge variant="primary">Hover</Badge>
+          <h3 class="mt-3 text-xl font-sora font-semibold text-bleu-nuit">Carte interactive</h3>
+          <p class="mt-2 text-sm text-bleu-nuit/70">Survolez : élévation + scale subtil.</p>
+        </Card>
+        <Card padding="lg" hover href="#">
+          <Badge variant="secondary">Lien</Badge>
+          <h3 class="mt-3 text-xl font-sora font-semibold text-bleu-nuit">Carte cliquable</h3>
+          <p class="mt-2 text-sm text-bleu-nuit/70">Rendue en &lt;a&gt; avec href.</p>
+        </Card>
+      </div>
+    </section>
+
+    <!-- Formulaires -->
+    <section id="forms" class="scroll-mt-24">
+      <h2 class="text-3xl font-sora font-bold text-bleu-nuit">Formulaires</h2>
+      <p class="mt-2 text-bleu-nuit/70">Inputs, Select, Textarea — labels visibles, helper, error, états required.</p>
+
+      <div class="mt-8 grid md:grid-cols-2 gap-6">
+        <Card padding="lg">
+          <h3 class="text-xl font-sora font-semibold text-bleu-nuit mb-6">Inputs</h3>
+          <div class="space-y-5">
+            <Input id="sg-nom" name="nom" label="Nom" placeholder="Jean Dupont" required />
+            <Input
+              id="sg-email"
+              name="email"
+              type="email"
+              label="Email"
+              placeholder="vous@exemple.re"
+              helper="Nous ne partageons jamais votre email."
+              autocomplete="email"
+              required
+            />
+            <Input
+              id="sg-tel"
+              name="tel"
+              type="tel"
+              label="Téléphone"
+              placeholder="+262 692 00 00 00"
+              inputmode="tel"
+              autocomplete="tel"
+            />
+            <Input
+              id="sg-error"
+              name="erreur"
+              type="email"
+              label="Email (état erreur)"
+              value="pas-un-email"
+              error="Format d'email invalide."
+            />
+          </div>
+        </Card>
+
+        <Card padding="lg">
+          <h3 class="text-xl font-sora font-semibold text-bleu-nuit mb-6">Select & Textarea</h3>
+          <div class="space-y-5">
+            <Select
+              id="sg-secteur"
+              name="secteur"
+              label="Secteur d'activité"
+              placeholder="Choisissez votre secteur"
+              options={sectorOptions}
+              required
+            />
+            <Select
+              id="sg-secteur-error"
+              name="secteur-err"
+              label="Secteur (état erreur)"
+              placeholder="Choisissez votre secteur"
+              options={sectorOptions}
+              error="Merci de sélectionner un secteur."
+            />
+            <Textarea
+              id="sg-message"
+              name="message"
+              label="Message"
+              placeholder="Parlez-nous de votre projet…"
+              helper="Optionnel — quelques lignes suffisent."
+              rows={4}
+              maxlength={500}
+            />
+          </div>
+        </Card>
+      </div>
+    </section>
+
+    <!-- Effets -->
+    <section id="effects" class="scroll-mt-24">
+      <h2 class="text-3xl font-sora font-bold text-bleu-nuit">Effets visuels signature</h2>
+      <p class="mt-2 text-bleu-nuit/70">Halos lumineux radiaux à utiliser avec parcimonie (brief §4.5).</p>
+      <div class="mt-8 grid md:grid-cols-3 gap-6">
+        <div class="relative h-48 rounded-2xl ring-1 ring-bleu-nuit/10 overflow-hidden bg-blanc-casse">
+          <div class="absolute inset-0 halo-bleu" aria-hidden="true"></div>
+          <div class="relative h-full flex items-end p-4">
+            <code class="text-xs bg-bleu-nuit/5 px-2 py-1 rounded">halo-bleu</code>
           </div>
         </div>
-      </section>
-
-      <footer class="pt-12 mt-16 border-t border-bleu-nuit/10 text-sm text-bleu-nuit/50">
-        Page interne · ne sera pas mise en ligne en production.
-      </footer>
-    </main>
+        <div class="relative h-48 rounded-2xl ring-1 ring-bleu-nuit/10 overflow-hidden bg-blanc-casse">
+          <div class="absolute inset-0 halo-orange" aria-hidden="true"></div>
+          <div class="relative h-full flex items-end p-4">
+            <code class="text-xs bg-bleu-nuit/5 px-2 py-1 rounded">halo-orange</code>
+          </div>
+        </div>
+        <div class="relative h-48 rounded-2xl ring-1 ring-bleu-nuit/10 overflow-hidden bg-blanc-casse">
+          <div class="absolute inset-0 halo-mix" aria-hidden="true"></div>
+          <div class="relative h-full flex items-end p-4">
+            <code class="text-xs bg-bleu-nuit/5 px-2 py-1 rounded">halo-mix</code>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 </BaseLayout>

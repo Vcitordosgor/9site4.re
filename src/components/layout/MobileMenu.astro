@@ -1,0 +1,102 @@
+---
+interface NavLink {
+  href: string;
+  label: string;
+}
+
+interface Props {
+  navLinks: NavLink[];
+}
+
+const { navLinks } = Astro.props;
+
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isActive = (href: string) => {
+  if (href === '/') return currentPath === '/';
+  return currentPath === href || currentPath.startsWith(href + '/');
+};
+---
+
+<div
+  id="mobile-menu"
+  data-open="false"
+  aria-hidden="true"
+  class="md:hidden fixed inset-x-0 top-16 bottom-0 z-40 bg-blanc-casse transition-opacity duration-300 ease-out data-[open=false]:opacity-0 data-[open=false]:pointer-events-none data-[open=true]:opacity-100"
+>
+  <div class="absolute inset-0 -z-10 halo-mix opacity-50" aria-hidden="true"></div>
+  <nav
+    class="h-full flex flex-col px-6 pt-8 pb-10 overflow-y-auto"
+    aria-label="Navigation mobile"
+  >
+    <ul class="flex-1 flex flex-col gap-1">
+      {navLinks.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            data-mobile-link
+            aria-current={isActive(link.href) ? 'page' : undefined}
+            class:list={[
+              'block py-4 text-3xl font-sora font-semibold transition-colors duration-200',
+              isActive(link.href)
+                ? 'text-orange'
+                : 'text-bleu-nuit hover:text-orange',
+            ]}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+    <div class="pt-6 border-t border-bleu-nuit/10">
+      <a
+        href="/contact"
+        data-mobile-link
+        class="inline-flex items-center justify-center w-full h-14 px-8 text-lg font-inter font-semibold rounded-full bg-orange text-blanc-casse shadow-card transition-all duration-200 ease-out hover:bg-[#E07F00] hover:shadow-card-hover active:translate-y-px"
+      >
+        Demander mon site
+      </a>
+    </div>
+  </nav>
+</div>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+
+  if (toggle && menu) {
+    const setOpen = (open: boolean) => {
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.dataset.open = String(open);
+      toggle.setAttribute(
+        'aria-label',
+        open ? 'Fermer le menu' : 'Ouvrir le menu'
+      );
+      menu.dataset.open = String(open);
+      menu.setAttribute('aria-hidden', String(!open));
+      document.body.style.overflow = open ? 'hidden' : '';
+    };
+
+    toggle.addEventListener('click', () => {
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      setOpen(!isOpen);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+
+    menu.querySelectorAll<HTMLElement>('[data-mobile-link]').forEach((el) => {
+      el.addEventListener('click', () => setOpen(false));
+    });
+
+    // Ferme automatiquement si l'on passe en desktop (md+) pendant que le menu est ouvert
+    const mq = window.matchMedia('(min-width: 768px)');
+    const onMq = (e: MediaQueryListEvent | MediaQueryList) => {
+      if (e.matches) setOpen(false);
+    };
+    mq.addEventListener('change', onMq);
+  }
+</script>

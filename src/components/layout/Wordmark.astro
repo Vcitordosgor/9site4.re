@@ -6,15 +6,26 @@
 interface Props {
   href?: string;
   size?: 'sm' | 'md' | 'lg';
+  tone?: 'dark' | 'light';
   class?: string;
 }
 
-const { href, size = 'md', class: className = '' } = Astro.props;
+const {
+  href,
+  size = 'md',
+  tone = 'dark',
+  class: className = '',
+} = Astro.props;
 
 const sizeClasses = {
   sm: 'text-xl',
   md: 'text-2xl',
   lg: 'text-3xl',
+};
+
+const toneClasses = {
+  dark: 'text-bleu-nuit',
+  light: 'text-blanc-casse',
 };
 
 const Element = href ? 'a' : 'span';
@@ -23,8 +34,9 @@ const Element = href ? 'a' : 'span';
 <Element
   {...(href ? { href } : {})}
   class:list={[
-    'inline-flex items-baseline font-sora font-bold leading-none tracking-tight text-bleu-nuit transition-opacity duration-200 ease-out hover:opacity-80',
+    'inline-flex items-baseline font-sora font-bold leading-none tracking-tight transition-opacity duration-200 ease-out hover:opacity-80',
     sizeClasses[size],
+    toneClasses[tone],
     className,
   ]}
   aria-label="9site4"
