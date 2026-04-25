@@ -1,20 +1,12 @@
 ---
 import Icon from '../ui/Icon.astro';
+import { inclusions as items } from '../../lib/inclusions';
 
 /**
  * Offre — grille de 8 items avec icônes (brief §7.3).
  * 1 col mobile → 2 col tablette → 4 col desktop.
+ * Données partagées avec la page Tarifs via src/lib/inclusions.ts
  */
-const items = [
-  { icon: 'monitor',       titre: 'Site vitrine personnalisé',     texte: 'Une présence en ligne pro qui reflète votre activité.' },
-  { icon: 'palette',       titre: 'Design adapté à votre activité', texte: 'Couleurs, typographies et mise en page choisies pour vous.' },
-  { icon: 'smartphone',    titre: 'Responsive',                     texte: 'Lisible sur mobile, tablette et ordinateur, sans réglage de votre côté.' },
-  { icon: 'mail',          titre: 'Module de contact métier',       texte: 'Réservation, devis, rendez-vous ou intervention selon votre besoin.' },
-  { icon: 'globe',         titre: 'Domaine + hébergement',          texte: 'Votre nom de domaine et l\'hébergement inclus, gérés par nous.' },
-  { icon: 'shield-check',  titre: 'Sécurité + maintenance',         texte: 'Mises à jour, sauvegardes et certificat HTTPS pris en charge.' },
-  { icon: 'wand',          titre: 'Modifications simples incluses', texte: 'Horaires, photos, textes courts : on s\'en occupe pour vous.' },
-  { icon: 'headphones',    titre: 'Un seul interlocuteur',          texte: 'Une seule personne à qui parler pour tout ce qui touche à votre site.' },
-];
 ---
 
 <section class="relative px-6 py-20 md:py-28 bg-bleu-nuit/[0.025]">
