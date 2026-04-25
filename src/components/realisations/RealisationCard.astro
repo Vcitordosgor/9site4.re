@@ -58,19 +58,29 @@ const moduleColors: Record<string, 'bleu' | 'orange'> = {
 const visual = visuals[realisation.categorie] ?? visuals.pro;
 const moduleIcon = moduleIcons[realisation.moduleInclus] ?? 'sparkle';
 const moduleColor = moduleColors[realisation.moduleInclus] ?? 'orange';
+
+// Photo par catégorie : 1 photo unique par métier (8 photos pour 24 cards).
+// Picsum.photos sert une image stable basée sur le seed → la même photo
+// apparaît à chaque rechargement pour un même métier.
+// Pour utiliser une photo personnalisée, déposer une image dans
+// /public/images/realisations/{categorie}.jpg et remplacer photoUrl par
+// `/images/realisations/${realisation.categorie}.jpg`.
+const photoUrl = `https://picsum.photos/seed/9site4-${realisation.categorie}/800/480`;
 ---
 
 <article class="group relative bg-blanc-casse rounded-2xl ring-1 ring-bleu-nuit/10 shadow-card overflow-hidden flex flex-col transition-all duration-300 ease-out-soft hover:-translate-y-1 hover:shadow-card-hover hover:ring-bleu-nuit/15">
-  <!-- Zone visuelle (placeholder — pas de mockup) -->
+  <!-- Zone visuelle : photo par catégorie + overlay assombrissant pour lisibilité du badge -->
   <div class:list={['relative aspect-[5/3] overflow-hidden bg-gradient-to-br', visual.gradient]}>
-    <div class="absolute inset-0 halo-mix opacity-40" aria-hidden="true"></div>
+    <img
+      src={photoUrl}
+      alt=""
+      loading="lazy"
+      decoding="async"
+      class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out-soft group-hover:scale-105"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-bleu-nuit/60 via-bleu-nuit/10 to-bleu-nuit/30" aria-hidden="true"></div>
     <div class="absolute top-4 left-4">
-      <Badge variant="secondary" size="sm">{categoryName}</Badge>
-    </div>
-    <div class="absolute inset-0 flex items-center justify-center">
-      <span class="flex items-center justify-center w-20 h-20 rounded-2xl bg-blanc-casse/70 ring-1 ring-bleu-nuit/10 backdrop-blur-sm text-bleu-nuit transition-transform duration-500 ease-out-soft group-hover:scale-110 group-hover:rotate-[-2deg]">
-        <Icon name={visual.icon} size={36} strokeWidth={1.5} />
-      </span>
+      <Badge variant="accent" size="sm">{categoryName}</Badge>
     </div>
   </div>
 
