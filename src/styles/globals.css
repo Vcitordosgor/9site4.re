@@ -111,21 +111,24 @@
 .hero-rise-4 { animation-delay: 380ms; }
 .hero-rise-5 { animation-delay: 480ms; }
 
-/* Word reveal — H1 hero mot par mot */
-@keyframes word-reveal {
+/* Typewriter reveal — H1 hero, chaque entité s'écrit de gauche à droite */
+@keyframes typewriter-reveal {
   from {
+    clip-path: inset(0 100% 0 0);
     opacity: 0;
-    transform: translateY(24px);
+  }
+  10% {
+    opacity: 1;
   }
   to {
+    clip-path: inset(0 0 0 0);
     opacity: 1;
-    transform: translateY(0);
   }
 }
 .word-reveal {
   display: inline-block;
-  animation: word-reveal 700ms cubic-bezier(0.22, 1, 0.36, 1) backwards;
-  animation-delay: calc(var(--word-i, 0) * 90ms + 200ms);
+  animation: typewriter-reveal 700ms cubic-bezier(0.55, 0, 0.45, 1) backwards;
+  animation-delay: calc(var(--word-i, 0) * 550ms + 250ms);
 }
 
 /* Halo pulse — signature subtile sur les halos hero/CTA */
