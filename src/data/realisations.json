@@ -1,0 +1,194 @@
+[
+  {
+    "id": 1,
+    "nom": "Restaurant créole",
+    "categorie": "restaurants",
+    "sousTitre": "Carte du jour, contact et réservation en ligne",
+    "moduleInclus": "Réservation",
+    "slug": "restaurant-creole"
+  },
+  {
+    "id": 2,
+    "nom": "Snack-pizzeria",
+    "categorie": "restaurants",
+    "sousTitre": "Menu, horaires et réservation rapide",
+    "moduleInclus": "Réservation",
+    "slug": "snack-pizzeria"
+  },
+  {
+    "id": 3,
+    "nom": "Bar à jus tropical",
+    "categorie": "restaurants",
+    "sousTitre": "Carte des jus, événements et réservation",
+    "moduleInclus": "Réservation",
+    "slug": "bar-a-jus-tropical"
+  },
+  {
+    "id": 4,
+    "nom": "Salon de coiffure",
+    "categorie": "beaute",
+    "sousTitre": "Prestations, équipe et prise de rendez-vous",
+    "moduleInclus": "Rendez-vous",
+    "slug": "salon-de-coiffure"
+  },
+  {
+    "id": 5,
+    "nom": "Institut de beauté",
+    "categorie": "beaute",
+    "sousTitre": "Soins, tarifs et réservation en ligne",
+    "moduleInclus": "Rendez-vous",
+    "slug": "institut-de-beaute"
+  },
+  {
+    "id": 6,
+    "nom": "Spa massage",
+    "categorie": "beaute",
+    "sousTitre": "Catalogue de soins et planning des rendez-vous",
+    "moduleInclus": "Rendez-vous",
+    "slug": "spa-massage"
+  },
+  {
+    "id": 7,
+    "nom": "Plomberie",
+    "categorie": "artisans",
+    "sousTitre": "Interventions urgentes et demande de dépannage",
+    "moduleInclus": "Intervention",
+    "slug": "plomberie"
+  },
+  {
+    "id": 8,
+    "nom": "Électricité générale",
+    "categorie": "artisans",
+    "sousTitre": "Présentation, références et demande de devis",
+    "moduleInclus": "Devis",
+    "slug": "electricite-generale"
+  },
+  {
+    "id": 9,
+    "nom": "Paysagiste",
+    "categorie": "artisans",
+    "sousTitre": "Réalisations, services et devis personnalisé",
+    "moduleInclus": "Devis",
+    "slug": "paysagiste"
+  },
+  {
+    "id": 10,
+    "nom": "Cabinet d'ostéopathie",
+    "categorie": "sante",
+    "sousTitre": "Présentation, horaires et prise de rendez-vous",
+    "moduleInclus": "Rendez-vous",
+    "slug": "cabinet-osteopathie"
+  },
+  {
+    "id": 11,
+    "nom": "Diététicienne",
+    "categorie": "sante",
+    "sousTitre": "Approche, consultations et rendez-vous en ligne",
+    "moduleInclus": "Rendez-vous",
+    "slug": "dieteticienne"
+  },
+  {
+    "id": 12,
+    "nom": "Psychologue",
+    "categorie": "sante",
+    "sousTitre": "Présentation, modalités et rendez-vous confidentiel",
+    "moduleInclus": "Rendez-vous",
+    "slug": "psychologue"
+  },
+  {
+    "id": 13,
+    "nom": "Coach sportif",
+    "categorie": "sport",
+    "sousTitre": "Programmes, tarifs et rendez-vous personnalisés",
+    "moduleInclus": "Rendez-vous",
+    "slug": "coach-sportif"
+  },
+  {
+    "id": 14,
+    "nom": "Studio de yoga",
+    "categorie": "sport",
+    "sousTitre": "Planning des cours et réservation en ligne",
+    "moduleInclus": "Réservation",
+    "slug": "studio-yoga"
+  },
+  {
+    "id": 15,
+    "nom": "École de danse",
+    "categorie": "sport",
+    "sousTitre": "Cours, professeurs et inscription aux séances",
+    "moduleInclus": "Réservation",
+    "slug": "ecole-de-danse"
+  },
+  {
+    "id": 16,
+    "nom": "Gîte de montagne",
+    "categorie": "tourisme",
+    "sousTitre": "Présentation, photos et réservation des séjours",
+    "moduleInclus": "Réservation",
+    "slug": "gite-de-montagne"
+  },
+  {
+    "id": 17,
+    "nom": "Excursions randonnée",
+    "categorie": "tourisme",
+    "sousTitre": "Itinéraires, tarifs et réservation des sorties",
+    "moduleInclus": "Réservation",
+    "slug": "excursions-randonnee"
+  },
+  {
+    "id": 18,
+    "nom": "Location saisonnière bord de mer",
+    "categorie": "tourisme",
+    "sousTitre": "Logement, équipements et réservation",
+    "moduleInclus": "Réservation",
+    "slug": "location-saisonniere-bord-de-mer"
+  },
+  {
+    "id": 19,
+    "nom": "Consultant",
+    "categorie": "pro",
+    "sousTitre": "Expertise, références et prise de rendez-vous",
+    "moduleInclus": "Rendez-vous",
+    "slug": "consultant"
+  },
+  {
+    "id": 20,
+    "nom": "Cabinet comptable",
+    "categorie": "pro",
+    "sousTitre": "Services, équipe et rendez-vous découverte",
+    "moduleInclus": "Rendez-vous",
+    "slug": "cabinet-comptable"
+  },
+  {
+    "id": 21,
+    "nom": "Architecte",
+    "categorie": "pro",
+    "sousTitre": "Projets, méthode et demande de devis",
+    "moduleInclus": "Devis",
+    "slug": "architecte"
+  },
+  {
+    "id": 22,
+    "nom": "Auto-école",
+    "categorie": "particuliers",
+    "sousTitre": "Formations, forfaits et inscription en ligne",
+    "moduleInclus": "Rendez-vous",
+    "slug": "auto-ecole"
+  },
+  {
+    "id": 23,
+    "nom": "Conciergerie",
+    "categorie": "particuliers",
+    "sousTitre": "Prestations, formules et demande de devis",
+    "moduleInclus": "Devis",
+    "slug": "conciergerie"
+  },
+  {
+    "id": 24,
+    "nom": "Aide à domicile",
+    "categorie": "particuliers",
+    "sousTitre": "Services, zone d'intervention et planning",
+    "moduleInclus": "Intervention",
+    "slug": "aide-a-domicile"
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "tarif",
+    "question": "Combien coûte un site avec 9site4 ?",
+    "reponse": "Deux formules sont proposées : 97,4€/mois ou 974€/an."
+  },
+  {
+    "id": "inclus",
+    "question": "Qu'est-ce qui est inclus ?",
+    "reponse": "Votre site vitrine, le nom de domaine, l'hébergement, la maintenance, la sécurité, les modifications simples et un module de contact adapté à votre activité."
+  },
+  {
+    "id": "technique",
+    "question": "Est-ce que je dois gérer la technique ?",
+    "reponse": "Non. 9site4 s'occupe du nom de domaine, de l'hébergement, de la mise en ligne, de la maintenance et des petits changements."
+  },
+  {
+    "id": "mobile",
+    "question": "Mon site sera-t-il adapté au mobile ?",
+    "reponse": "Oui. Votre site sera lisible et agréable sur ordinateur, tablette et mobile."
+  },
+  {
+    "id": "module",
+    "question": "Qu'est-ce qu'un module de contact adapté ?",
+    "reponse": "C'est un formulaire ou un chatbot pensé pour votre métier : réservation, demande de devis, prise de rendez-vous ou demande d'intervention."
+  },
+  {
+    "id": "ecommerce",
+    "question": "Est-ce que 9site4 fait des sites e-commerce ?",
+    "reponse": "Oui, 9site4 peut aussi créer des sites e-commerce. Pour en parler, remplissez le formulaire de contact afin que l'on puisse comprendre votre projet, vos produits et vos besoins."
+  },
+  {
+    "id": "modifications",
+    "question": "Est-ce que je peux modifier mon site après sa mise en ligne ?",
+    "reponse": "Oui. Les modifications simples sont incluses : horaires, photos, textes courts, numéro ou informations pratiques."
+  },
+  {
+    "id": "demarrer",
+    "question": "Comment démarrer ?",
+    "reponse": "Remplissez le formulaire de contact ou envoyez un message WhatsApp. On vous recontacte pour comprendre votre activité."
+  }
+]

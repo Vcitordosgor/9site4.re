@@ -1,0 +1,10 @@
+[
+  { "id": "restaurants", "nom": "Restaurants & snacks" },
+  { "id": "beaute", "nom": "Beauté & bien-être" },
+  { "id": "artisans", "nom": "Artisans & BTP" },
+  { "id": "sante", "nom": "Santé & paramédical" },
+  { "id": "sport", "nom": "Sport & coaching" },
+  { "id": "tourisme", "nom": "Tourisme & loisirs" },
+  { "id": "pro", "nom": "Services aux professionnels" },
+  { "id": "particuliers", "nom": "Services aux particuliers" }
+]
