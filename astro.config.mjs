@@ -3,10 +3,13 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 import preact from '@astrojs/preact';
 
+import cloudflare from "@astrojs/cloudflare";
+
 export default defineConfig({
   site: 'https://9site4.re',
   output: 'static',
   trailingSlash: 'never',
+
   integrations: [
     tailwind({ applyBaseStyles: false }),
     preact(),
@@ -17,4 +20,6 @@ export default defineConfig({
         !page.includes('/styleguide'),
     }),
   ],
+
+  adapter: cloudflare()
 });
