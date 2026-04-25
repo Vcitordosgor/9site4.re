@@ -80,15 +80,13 @@ const moduleColor = moduleColors[realisation.moduleInclus] ?? 'orange';
     <p class="mt-2 text-sm text-bleu-nuit/70 leading-relaxed">{realisation.sousTitre}</p>
 
     <div class:list={[
-      'mt-4 inline-flex items-center gap-2 self-start px-3 py-1.5 rounded-full text-sm',
-      moduleColor === 'bleu'
-        ? 'bg-bleu/20 text-bleu-nuit ring-1 ring-bleu/30'
-        : 'bg-orange/15 text-bleu-nuit ring-1 ring-orange/25',
+      'mt-4 inline-flex items-center gap-2 self-start px-3 py-1.5 rounded-full text-sm text-bleu-nuit',
+      moduleColor === 'bleu' ? 'bg-bleu' : 'bg-orange',
     ]}>
       <Icon
         name={moduleIcon}
         size={16}
-        class={moduleColor === 'bleu' ? 'text-bleu-nuit shrink-0' : 'text-orange shrink-0'}
+        class="text-bleu-nuit shrink-0"
         strokeWidth={2}
       />
       <span><strong class="font-semibold">{realisation.moduleInclus}</strong></span>

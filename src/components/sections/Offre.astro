@@ -16,8 +16,7 @@ import { inclusions as items } from '../../lib/inclusions';
   </div>
   <div class="relative mx-auto max-w-content">
     <div class="text-center max-w-2xl mx-auto">
-      <p class="scroll-reveal inline-flex items-center gap-2 text-sm font-semibold text-bleu-nuit uppercase tracking-wide">
-        <span class="inline-block w-2 h-2 rounded-full bg-orange" aria-hidden="true"></span>
+      <p class="scroll-reveal inline-flex items-center px-3 py-1.5 rounded-full bg-orange text-bleu-nuit text-xs font-semibold uppercase tracking-wide">
         Ce qui est inclus
       </p>
       <h2 class="scroll-reveal mt-4 font-sora font-bold text-3xl md:text-5xl text-bleu-nuit text-balance leading-tight">
@@ -39,8 +38,8 @@ import { inclusions as items } from '../../lib/inclusions';
             <span class:list={[
               'flex w-12 h-12 rounded-xl items-center justify-center transition-colors duration-300',
               isBleu
-                ? 'bg-bleu/25 text-bleu-nuit group-hover:bg-bleu-nuit group-hover:text-blanc-casse'
-                : 'bg-orange/15 text-orange group-hover:bg-orange group-hover:text-bleu-nuit',
+                ? 'bg-bleu text-bleu-nuit group-hover:bg-bleu-nuit group-hover:text-blanc-casse'
+                : 'bg-orange text-bleu-nuit group-hover:bg-bleu-nuit group-hover:text-blanc-casse',
             ]}>
               <Icon name={item.icon} size={22} strokeWidth={1.75} />
             </span>

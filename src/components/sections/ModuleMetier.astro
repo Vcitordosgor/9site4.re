@@ -32,8 +32,7 @@ const modules = [
   <div class="mx-auto max-w-content">
     <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
       <div class="lg:col-span-5">
-        <p class="scroll-reveal inline-flex items-center gap-2 text-sm font-semibold text-bleu-nuit uppercase tracking-wide">
-          <span class="inline-block w-2 h-2 rounded-full bg-bleu" aria-hidden="true"></span>
+        <p class="scroll-reveal inline-flex items-center px-3 py-1.5 rounded-full bg-bleu text-bleu-nuit text-xs font-semibold uppercase tracking-wide">
           Pensé pour votre métier
         </p>
         <h2 class="scroll-reveal mt-4 font-sora font-bold text-3xl md:text-5xl text-bleu-nuit text-balance leading-tight">
@@ -66,8 +65,8 @@ const modules = [
               class:list={[
                 'flex w-12 h-12 rounded-xl items-center justify-center',
                 mod.couleur === 'orange'
-                  ? 'bg-orange/15 text-orange'
-                  : 'bg-bleu/30 text-bleu-nuit',
+                  ? 'bg-orange text-bleu-nuit'
+                  : 'bg-bleu text-bleu-nuit',
               ]}
             >
               <Icon name={mod.icon} size={22} strokeWidth={1.75} />
