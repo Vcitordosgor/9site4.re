@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RealisationCard from '../components/realisations/RealisationCard.astro';
+import FiltersBar from '../components/realisations/FiltersBar.tsx';
+import CTABand from '../components/sections/CTABand.astro';
+import Icon from '../components/ui/Icon.astro';
+import realisations from '../data/realisations.json';
+import categories from '../data/categories.json';
+
+// Pré-calcul des counts par catégorie (rendu serveur, pas de flicker au mount)
+const counts = realisations.reduce<Record<string, number>>((acc, r) => {
+  acc[r.categorie] = (acc[r.categorie] || 0) + 1;
+  return acc;
+}, {});
+
+const categoriesWithCount = categories.map((c) => ({
+  ...c,
+  count: counts[c.id] ?? 0,
+}));
+---
+
+<BaseLayout
+  title="Réalisations — Exemples de sites par métier | 9site4"
+  description="Exemples de sites vitrines pour restaurants, artisans, beauté, santé, tourisme et services à La Réunion."
+>
+  <!-- En-tête : titre + sous-titre + avertissement visuels -->
+  <section class="relative overflow-hidden px-6 pt-24 pb-12 md:pt-32 md:pb-16">
+    <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
+      <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-[40rem] h-[40rem] halo-mix opacity-50"></div>
+    </div>
+    <div class="mx-auto max-w-3xl text-center">
+      <p class="text-sm font-semibold text-orange uppercase tracking-wide">
+        Réalisations
+      </p>
+      <h1 class="mt-4 text-4xl md:text-6xl font-sora font-bold text-bleu-nuit text-balance leading-tight">
+        Des sites adaptés à chaque métier
+      </h1>
+      <p class="mt-6 text-lg md:text-xl text-bleu-nuit/70 leading-relaxed">
+        Découvrez des exemples de sites que nous concevons pour les entreprises réunionnaises.
+      </p>
+      <div
+        role="note"
+        class="mt-8 inline-flex items-start gap-3 rounded-2xl bg-orange/10 ring-1 ring-orange/20 px-5 py-4 text-left max-w-2xl mx-auto"
+      >
+        <Icon name="info" size={20} class="text-orange shrink-0 mt-0.5" strokeWidth={1.75} />
+        <p class="text-sm text-bleu-nuit/85 leading-relaxed">
+          <strong class="font-semibold text-bleu-nuit">Les exemples ci-dessous illustrent nos formats de sites.</strong>
+          Les visuels détaillés seront ajoutés prochainement.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Barre de filtres (Astro Island, client:load) -->
+  <section class="relative px-6 pb-10" aria-label="Filtres">
+    <div class="mx-auto max-w-content">
+      <FiltersBar
+        client:load
+        categories={categoriesWithCount}
+        totalCount={realisations.length}
+      />
+      <p
+        id="realisations-live"
+        class="sr-only"
+        aria-live="polite"
+        aria-atomic="true"
+      >
+        {realisations.length} réalisations affichées.
+      </p>
+    </div>
+  </section>
+
+  <!-- Grille des 24 cartes (rendu serveur, filtré côté client par display) -->
+  <section class="relative px-6 pb-20 md:pb-28" aria-label="Liste des réalisations">
+    <div class="mx-auto max-w-content">
+      <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {realisations.map((r) => (
+          <li data-realisation-categorie={r.categorie}>
+            <RealisationCard realisation={r} />
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <CTABand />
+</BaseLayout>
