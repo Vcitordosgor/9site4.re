@@ -1,6 +1,19 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+  /**
+   * Safelist défensive pour les couleurs custom de la charte.
+   * Garantit que les variantes utilisées (couleur pleine + opacités courantes)
+   * restent dans le CSS de production quelle que soit l'analyse statique
+   * de l'environnement de build (Cloudflare, Vercel, OVH…).
+   * Limitée aux préfixes effectivement utilisés dans le code pour éviter de
+   * gonfler le CSS final.
+   */
+  safelist: [
+    {
+      pattern: /^(bg|text|ring|border|from|to|via|placeholder)-(bleu|bleu-nuit|orange|blanc-casse)(\/(5|10|15|20|25|30|40|50|55|60|65|70|75|80|85|90|95))?$/,
+    },
+  ],
   theme: {
     extend: {
       colors: {
