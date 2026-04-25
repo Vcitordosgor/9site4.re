@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getSeo } from '../lib/seo';
 import Wordmark from '../components/layout/Wordmark.astro';
 import Button from '../components/ui/Button.astro';
 import Card from '../components/ui/Card.astro';
@@ -40,11 +41,7 @@ const sections = [
 ];
 ---
 
-<BaseLayout
-  title="Styleguide — 9site4"
-  description="Catalogue interne des composants UI et tokens du design system 9site4."
-  noindex={true}
->
+<BaseLayout seo={getSeo('styleguide')}>
   <div class="max-w-content mx-auto px-6 py-16 space-y-24">
     <!-- Intro -->
     <section>

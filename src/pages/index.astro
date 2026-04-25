@@ -7,13 +7,10 @@ import ModuleMetier from '../components/sections/ModuleMetier.astro';
 import ApercuRealisations from '../components/sections/ApercuRealisations.astro';
 import TarifsBref from '../components/sections/TarifsBref.astro';
 import CTABand from '../components/sections/CTABand.astro';
-import siteConfig from '../data/siteConfig.json';
+import { getSeo } from '../lib/seo';
 ---
 
-<BaseLayout
-  title={`${siteConfig.siteName} — Création de site vitrine à La Réunion (974)`}
-  description="Sites vitrines clé en main pour TPE/PME réunionnaises. Tout inclus : domaine, hébergement, maintenance. À partir de 97,4€/mois."
->
+<BaseLayout seo={getSeo('home')}>
   <Hero />
   <Promesse />
   <Offre />

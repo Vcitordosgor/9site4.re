@@ -1,0 +1,93 @@
+import siteConfig from '../data/siteConfig.json';
+
+/**
+ * Helper SEO centralisé (brief §11).
+ * Source unique de vérité pour title/description/canonical/ogImage par page.
+ * Chaque page importe getSeo() avec sa clé et passe le résultat au BaseLayout.
+ */
+
+export interface PageSeo {
+  title: string;
+  description: string;
+  /** chemin relatif (ex: "/contact"), résolu en absolu pour canonical/og:url */
+  canonical: string;
+  /** chemin relatif vers l'OG image (1200×630) */
+  ogImage: string;
+  /** alt de l'OG image */
+  ogImageAlt: string;
+  noindex: boolean;
+}
+
+const DEFAULT_OG_IMAGE = '/og-image.png';
+const DEFAULT_OG_ALT = `${siteConfig.siteName} — ${siteConfig.baseline}`;
+
+type PageKey =
+  | 'home'
+  | 'realisations'
+  | 'tarifs'
+  | 'contact'
+  | 'legal'
+  | 'notFound'
+  | 'styleguide';
+
+const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'> & { noindex?: boolean; ogImage?: string; ogImageAlt?: string }> = {
+  home: {
+    title: `${siteConfig.siteName} — Création de site vitrine à La Réunion (974)`,
+    description:
+      'Sites vitrines clé en main pour TPE/PME réunionnaises. Tout inclus : domaine, hébergement, maintenance. À partir de 97,4€/mois.',
+    canonical: '/',
+  },
+  realisations: {
+    title: `Réalisations — Exemples de sites par métier | ${siteConfig.siteName}`,
+    description:
+      'Exemples de sites vitrines pour restaurants, artisans, beauté, santé, tourisme et services à La Réunion.',
+    canonical: '/realisations',
+  },
+  tarifs: {
+    title: `Tarifs — 97,4€/mois ou 974€/an, tout inclus | ${siteConfig.siteName}`,
+    description:
+      'Une offre simple et tout compris. Site, domaine, hébergement, maintenance et modifications inclus.',
+    canonical: '/tarifs',
+  },
+  contact: {
+    title: `Contact — Demandez votre site vitrine | ${siteConfig.siteName}`,
+    description:
+      'Parlons de votre projet. Formulaire ou WhatsApp. Réponse rapide, sans cahier des charges compliqué.',
+    canonical: '/contact',
+  },
+  legal: {
+    title: `Mentions légales | ${siteConfig.siteName}`,
+    description: `Mentions légales du site ${siteConfig.siteName}.`,
+    canonical: '/mentions-legales',
+    noindex: true,
+  },
+  notFound: {
+    title: `Page non trouvée | ${siteConfig.siteName}`,
+    description: "La page que vous cherchez n'existe pas.",
+    canonical: '/404',
+    noindex: true,
+  },
+  styleguide: {
+    title: `Styleguide | ${siteConfig.siteName}`,
+    description: 'Bibliothèque de composants UI.',
+    canonical: '/styleguide',
+    noindex: true,
+  },
+};
+
+export function getSeo(page: PageKey): PageSeo {
+  const p = PAGES[page];
+  return {
+    title: p.title,
+    description: p.description,
+    canonical: p.canonical,
+    ogImage: p.ogImage ?? DEFAULT_OG_IMAGE,
+    ogImageAlt: p.ogImageAlt ?? DEFAULT_OG_ALT,
+    noindex: p.noindex ?? false,
+  };
+}
+
+/** Convertit un chemin relatif en URL absolue basée sur siteConfig.siteUrl. */
+export function absoluteUrl(path: string): string {
+  return new URL(path, siteConfig.siteUrl).toString();
+}

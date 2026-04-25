@@ -6,6 +6,7 @@ import CTABand from '../components/sections/CTABand.astro';
 import Icon from '../components/ui/Icon.astro';
 import realisations from '../data/realisations.json';
 import categories from '../data/categories.json';
+import { getSeo } from '../lib/seo';
 
 // Pré-calcul des counts par catégorie (rendu serveur, pas de flicker au mount)
 const counts = realisations.reduce<Record<string, number>>((acc, r) => {
@@ -19,10 +20,7 @@ const categoriesWithCount = categories.map((c) => ({
 }));
 ---
 
-<BaseLayout
-  title="Réalisations — Exemples de sites par métier | 9site4"
-  description="Exemples de sites vitrines pour restaurants, artisans, beauté, santé, tourisme et services à La Réunion."
->
+<BaseLayout seo={getSeo('realisations')}>
   <!-- En-tête : titre + sous-titre + avertissement visuels -->
   <section class="relative overflow-hidden px-6 pt-24 pb-12 md:pt-32 md:pb-16">
     <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">

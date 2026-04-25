@@ -4,16 +4,14 @@ import Icon from '../components/ui/Icon.astro';
 import ContactForm from '../components/sections/ContactForm.tsx';
 import siteConfig from '../data/siteConfig.json';
 import categories from '../data/categories.json';
+import { getSeo } from '../lib/seo';
 
 const waUrl = `https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeURIComponent(
   siteConfig.contact.whatsappMessage
 )}`;
 ---
 
-<BaseLayout
-  title={`Contact — Demandez votre site vitrine | ${siteConfig.siteName}`}
-  description="Parlons de votre projet. Formulaire ou WhatsApp. Réponse rapide, sans cahier des charges compliqué."
->
+<BaseLayout seo={getSeo('contact')}>
   <!-- En-tête -->
   <section class="relative overflow-hidden px-6 pt-24 pb-12 md:pt-32 md:pb-16">
     <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">

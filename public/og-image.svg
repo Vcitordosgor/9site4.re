@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="haloBleu" cx="0.2" cy="0.25" r="0.5">
+      <stop offset="0" stop-color="#91A6FF" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#91A6FF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="haloOrange" cx="0.85" cy="0.85" r="0.55">
+      <stop offset="0" stop-color="#FF8F00" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#FF8F00" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Fond -->
+  <rect width="1200" height="630" fill="#FEFEFA"/>
+  <rect width="1200" height="630" fill="url(#haloBleu)"/>
+  <rect width="1200" height="630" fill="url(#haloOrange)"/>
+
+  <!-- 974 en filigrane -->
+  <text
+    x="600" y="540"
+    font-family="Sora, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="500"
+    font-weight="800"
+    text-anchor="middle"
+    fill="#0B1437"
+    fill-opacity="0.04"
+    letter-spacing="-20"
+  >974</text>
+
+  <!-- Eyebrow La Réunion 974 -->
+  <g transform="translate(600 180)">
+    <circle cx="-130" cy="0" r="6" fill="#FF8F00"/>
+    <text
+      x="-110" y="6"
+      font-family="Inter, system-ui, sans-serif"
+      font-size="22"
+      font-weight="600"
+      fill="#0B1437"
+      fill-opacity="0.7"
+      letter-spacing="2"
+    >974 · LA RÉUNION</text>
+  </g>
+
+  <!-- Wordmark "9site4" -->
+  <g transform="translate(600 320)">
+    <text
+      x="0" y="0"
+      font-family="Sora, system-ui, -apple-system, sans-serif"
+      font-size="180"
+      font-weight="700"
+      text-anchor="middle"
+      letter-spacing="-6"
+    >
+      <tspan fill="#0B1437">9site</tspan><tspan fill="#FF8F00">4</tspan>
+    </text>
+  </g>
+
+  <!-- Baseline -->
+  <text
+    x="600" y="420"
+    font-family="Inter, system-ui, sans-serif"
+    font-size="34"
+    font-weight="500"
+    text-anchor="middle"
+    fill="#0B1437"
+    fill-opacity="0.75"
+  >Votre site tout-en-un, la gestion en moins.</text>
+
+  <!-- Pillule prix -->
+  <g transform="translate(600 510)">
+    <rect x="-260" y="-28" width="520" height="56" rx="28"
+          fill="#0B1437" fill-opacity="0.04"
+          stroke="#0B1437" stroke-opacity="0.12" stroke-width="1.5"/>
+    <text
+      x="0" y="8"
+      font-family="Inter, system-ui, sans-serif"
+      font-size="22"
+      font-weight="600"
+      text-anchor="middle"
+      fill="#0B1437"
+    >À partir de 97,4€/mois — Tout inclus</text>
+  </g>
+</svg>

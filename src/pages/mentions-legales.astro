@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Icon from '../components/ui/Icon.astro';
 import siteConfig from '../data/siteConfig.json';
+import { getSeo } from '../lib/seo';
 
 /**
  * Mentions légales — page provisoire (brief §10bis).
@@ -50,11 +51,7 @@ const sections = [
 ];
 ---
 
-<BaseLayout
-  title={`Mentions légales | ${siteConfig.siteName}`}
-  description="Mentions légales du site 9site4."
-  noindex
->
+<BaseLayout seo={getSeo('legal')}>
   <article class="px-6 pt-24 pb-20 md:pt-32 md:pb-28">
     <div class="mx-auto max-w-3xl">
       <!-- En-tête -->
