@@ -103,6 +103,8 @@ export default function ContactForm({ categories }: Props) {
       return;
     }
 
+    // TODO front-only : on log au lieu d'envoyer. À remplacer par un POST
+    // vers un backend ou un service d'envoi (Formspree, EmailJS, etc.).
     // eslint-disable-next-line no-console
     console.log('[ContactForm] formData =', data);
     setSubmitted(true);
