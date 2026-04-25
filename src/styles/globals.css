@@ -1,0 +1,81 @@
+/* Polices auto-hébergées via @fontsource — pas de Google Fonts CDN (perf + RGPD) */
+@import '@fontsource/sora/400.css';
+@import '@fontsource/sora/600.css';
+@import '@fontsource/sora/700.css';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Tokens couleur — miroir du tailwind.config.mjs */
+    --color-bleu: #91a6ff;
+    --color-orange: #ff8f00;
+    --color-blanc-casse: #fefefa;
+    --color-bleu-nuit: #0b1437;
+
+    /* Tokens typographie */
+    --font-sora: 'Sora', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    --font-inter: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+
+    /* Easing global */
+    --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-blanc-casse text-bleu-nuit font-inter antialiased;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sora;
+  }
+
+  /* Focus visible élégant — règle skill §1 (focus-states 2-4px) */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-bleu ring-offset-2 ring-offset-blanc-casse;
+    border-radius: 4px;
+  }
+
+  /* Empêche le zoom auto iOS sur les inputs (font-size >= 16px) */
+  input, select, textarea {
+    @apply text-base;
+  }
+}
+
+/* Halo lumineux radial — utilitaire signature, opacité faible */
+@layer utilities {
+  .halo-bleu {
+    background: radial-gradient(60% 60% at 50% 50%, rgb(145 166 255 / 0.18) 0%, transparent 70%);
+  }
+  .halo-orange {
+    background: radial-gradient(60% 60% at 50% 50%, rgb(255 143 0 / 0.14) 0%, transparent 70%);
+  }
+  .halo-mix {
+    background:
+      radial-gradient(40% 50% at 30% 40%, rgb(145 166 255 / 0.18) 0%, transparent 70%),
+      radial-gradient(40% 50% at 70% 60%, rgb(255 143 0 / 0.12) 0%, transparent 70%);
+  }
+}
+
+/* Respect prefers-reduced-motion — règle skill §1 (reduced-motion) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

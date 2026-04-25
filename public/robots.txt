@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /404
+Disallow: /mentions-legales
+
+Sitemap: https://9site4.re/sitemap-index.xml

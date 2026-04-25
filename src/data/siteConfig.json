@@ -1,0 +1,31 @@
+{
+  "siteName": "9site4",
+  "baseline": "Votre site tout-en-un, la gestion en moins.",
+  "siteUrl": "https://9site4.re",
+  "contact": {
+    "email": "contact@9site4.re",
+    "whatsapp": "262692000000",
+    "whatsappDisplay": "+262 692 00 00 00",
+    "whatsappMessage": "Bonjour, je suis intéressé(e) par 9site4."
+  },
+  "location": {
+    "region": "La Réunion",
+    "country": "FR",
+    "areaCode": "974"
+  },
+  "pricing": {
+    "monthly": "97,4€",
+    "yearly": "974€",
+    "highlight": "À partir de 97,4€/mois — Tout inclus"
+  },
+  "social": {
+    "instagram": "",
+    "facebook": "",
+    "linkedin": ""
+  },
+  "legal": {
+    "editor": "[À compléter]",
+    "host": "OVH",
+    "publisher": "[À compléter]"
+  }
+}
