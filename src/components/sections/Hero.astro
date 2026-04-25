@@ -19,8 +19,9 @@ import siteConfig from '../../data/siteConfig.json';
 >
   <!-- Halos en arrière-plan -->
   <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
-    <div class="absolute -top-32 -left-24 w-[36rem] h-[36rem] halo-bleu opacity-70"></div>
-    <div class="absolute top-32 -right-32 w-[40rem] h-[40rem] halo-orange opacity-60"></div>
+    <div class="absolute -top-32 -left-24 w-[40rem] h-[40rem] halo-bleu"></div>
+    <div class="absolute top-32 -right-32 w-[40rem] h-[40rem] halo-orange opacity-90"></div>
+    <div class="absolute bottom-0 left-1/3 w-[30rem] h-[30rem] halo-bleu opacity-60"></div>
   </div>
 
   <!-- 974 en filigrane -->
@@ -42,10 +43,14 @@ import siteConfig from '../../data/siteConfig.json';
       </p>
 
       <h1 class="hero-rise hero-rise-2 mt-5 text-hero font-sora font-bold text-bleu-nuit text-balance">
-        Votre site tout-en-un,
+        Votre site
+        <span class="relative inline-block">
+          <span class="relative z-10">tout-en-un</span>
+          <span class="absolute inset-x-0 bottom-1 md:bottom-2 h-2 md:h-3 bg-bleu/40 -z-0" aria-hidden="true"></span>
+        </span>,
         <span class="relative inline-block">
           <span class="relative z-10">la gestion en moins.</span>
-          <span class="absolute inset-x-0 bottom-1 md:bottom-2 h-2 md:h-3 bg-orange/25 -z-0" aria-hidden="true"></span>
+          <span class="absolute inset-x-0 bottom-1 md:bottom-2 h-2 md:h-3 bg-orange/30 -z-0" aria-hidden="true"></span>
         </span>
       </h1>
 
@@ -65,8 +70,8 @@ import siteConfig from '../../data/siteConfig.json';
         </Button>
       </div>
 
-      <p class="hero-rise hero-rise-5 mt-6 text-sm text-bleu-nuit/60 flex items-center gap-2 justify-center lg:justify-start">
-        <Icon name="shield-check" size={16} class="text-orange" strokeWidth={2} />
+      <p class="hero-rise hero-rise-5 mt-6 text-sm text-bleu-nuit/65 flex items-center gap-2 justify-center lg:justify-start">
+        <Icon name="shield-check" size={16} class="text-bleu-nuit" strokeWidth={2} />
         <span>{siteConfig.pricing.highlight}</span>
       </p>
     </div>
@@ -77,9 +82,9 @@ import siteConfig from '../../data/siteConfig.json';
       aria-hidden="true"
     >
       <!-- Card 1 : Réservation (haut gauche) -->
-      <div class="absolute top-0 left-2 w-64 bg-blanc-casse rounded-2xl ring-1 ring-bleu-nuit/10 shadow-card-hover p-5 -rotate-[4deg] transition-transform duration-500 ease-out-soft hover:rotate-0 hover:scale-105">
+      <div class="absolute top-0 left-2 w-64 bg-blanc-casse rounded-2xl ring-1 ring-bleu/40 shadow-card-hover p-5 -rotate-[4deg] transition-transform duration-500 ease-out-soft hover:rotate-0 hover:scale-105">
         <div class="flex items-center gap-3">
-          <span class="flex w-10 h-10 rounded-xl bg-bleu/15 text-bleu-nuit items-center justify-center">
+          <span class="flex w-10 h-10 rounded-xl bg-bleu/30 text-bleu-nuit items-center justify-center">
             <Icon name="calendar-clock" size={20} strokeWidth={1.75} />
           </span>
           <div>
@@ -88,13 +93,13 @@ import siteConfig from '../../data/siteConfig.json';
           </div>
         </div>
         <div class="mt-4 space-y-2">
-          <div class="h-2 rounded-full bg-bleu-nuit/10 w-3/4"></div>
+          <div class="h-2 rounded-full bg-bleu/40 w-3/4"></div>
           <div class="h-2 rounded-full bg-bleu-nuit/10 w-1/2"></div>
         </div>
       </div>
 
       <!-- Card 2 : Devis (centre droit) -->
-      <div class="absolute top-32 right-0 w-64 bg-blanc-casse rounded-2xl ring-1 ring-bleu-nuit/10 shadow-card-hover p-5 rotate-[3deg] transition-transform duration-500 ease-out-soft hover:rotate-0 hover:scale-105">
+      <div class="absolute top-32 right-0 w-64 bg-blanc-casse rounded-2xl ring-1 ring-orange/40 shadow-card-hover p-5 rotate-[3deg] transition-transform duration-500 ease-out-soft hover:rotate-0 hover:scale-105">
         <div class="flex items-center gap-3">
           <span class="flex w-10 h-10 rounded-xl bg-orange/15 text-orange items-center justify-center">
             <Icon name="file-text" size={20} strokeWidth={1.75} />
@@ -105,15 +110,15 @@ import siteConfig from '../../data/siteConfig.json';
           </div>
         </div>
         <div class="mt-4 space-y-2">
-          <div class="h-2 rounded-full bg-bleu-nuit/10 w-full"></div>
+          <div class="h-2 rounded-full bg-orange/40 w-full"></div>
           <div class="h-2 rounded-full bg-bleu-nuit/10 w-2/3"></div>
         </div>
       </div>
 
       <!-- Card 3 : Rendez-vous (bas centre) -->
-      <div class="absolute bottom-0 left-12 w-64 bg-blanc-casse rounded-2xl ring-1 ring-bleu-nuit/10 shadow-card-hover p-5 -rotate-[2deg] transition-transform duration-500 ease-out-soft hover:rotate-0 hover:scale-105">
+      <div class="absolute bottom-0 left-12 w-64 bg-blanc-casse rounded-2xl ring-1 ring-bleu/40 shadow-card-hover p-5 -rotate-[2deg] transition-transform duration-500 ease-out-soft hover:rotate-0 hover:scale-105">
         <div class="flex items-center gap-3">
-          <span class="flex w-10 h-10 rounded-xl bg-bleu/15 text-bleu-nuit items-center justify-center">
+          <span class="flex w-10 h-10 rounded-xl bg-bleu/30 text-bleu-nuit items-center justify-center">
             <Icon name="calendar-check" size={20} strokeWidth={1.75} />
           </span>
           <div>
@@ -122,7 +127,7 @@ import siteConfig from '../../data/siteConfig.json';
           </div>
         </div>
         <div class="mt-4 space-y-2">
-          <div class="h-2 rounded-full bg-bleu-nuit/10 w-2/3"></div>
+          <div class="h-2 rounded-full bg-bleu/40 w-2/3"></div>
           <div class="h-2 rounded-full bg-bleu-nuit/10 w-3/4"></div>
         </div>
       </div>

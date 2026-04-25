@@ -18,7 +18,10 @@ const waUrl = `https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeURIComp
       <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-[40rem] h-[40rem] halo-mix opacity-50"></div>
     </div>
     <div class="mx-auto max-w-3xl text-center">
-      <p class="text-sm font-semibold text-orange uppercase tracking-wide">Contact</p>
+      <p class="inline-flex items-center gap-2 text-sm font-semibold text-bleu-nuit uppercase tracking-wide">
+        <span class="inline-block w-2 h-2 rounded-full bg-bleu" aria-hidden="true"></span>
+        Contact
+      </p>
       <h1 class="mt-4 text-4xl md:text-6xl font-sora font-bold text-bleu-nuit text-balance leading-tight">
         Parlons de votre projet.
       </h1>
@@ -45,7 +48,7 @@ const waUrl = `https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeURIComp
           </h2>
           <ul class="mt-5 space-y-4">
             <li class="flex items-start gap-3">
-              <span class="flex w-9 h-9 shrink-0 rounded-full bg-orange/15 text-orange items-center justify-center font-sora font-bold text-sm">1</span>
+              <span class="flex w-9 h-9 shrink-0 rounded-full bg-bleu/30 text-bleu-nuit items-center justify-center font-sora font-bold text-sm">1</span>
               <div>
                 <p class="font-semibold text-sm text-bleu-nuit">Vous nous écrivez</p>
                 <p class="mt-0.5 text-sm text-bleu-nuit/65 leading-relaxed">
@@ -63,7 +66,7 @@ const waUrl = `https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeURIComp
               </div>
             </li>
             <li class="flex items-start gap-3">
-              <span class="flex w-9 h-9 shrink-0 rounded-full bg-orange/15 text-orange items-center justify-center font-sora font-bold text-sm">3</span>
+              <span class="flex w-9 h-9 shrink-0 rounded-full bg-bleu/30 text-bleu-nuit items-center justify-center font-sora font-bold text-sm">3</span>
               <div>
                 <p class="font-semibold text-sm text-bleu-nuit">On lance votre site</p>
                 <p class="mt-0.5 text-sm text-bleu-nuit/65 leading-relaxed">
@@ -105,7 +108,7 @@ const waUrl = `https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeURIComp
               href={`mailto:${siteConfig.contact.email}`}
               class="mt-1.5 inline-flex items-center gap-2 font-sora font-semibold text-base text-bleu-nuit hover:text-orange transition-colors"
             >
-              <Icon name="mail" size={18} class="text-orange shrink-0" strokeWidth={1.75} />
+              <Icon name="mail" size={18} class="text-bleu-nuit shrink-0" strokeWidth={1.75} />
               {siteConfig.contact.email}
             </a>
           </div>

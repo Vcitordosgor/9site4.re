@@ -57,19 +57,25 @@
   }
 }
 
-/* Halo lumineux radial — utilitaire signature, opacité faible */
+/* Halo lumineux radial — utilitaire signature, opacité boostée pour visibilité */
 @layer utilities {
   .halo-bleu {
-    background: radial-gradient(60% 60% at 50% 50%, rgb(145 166 255 / 0.18) 0%, transparent 70%);
+    background: radial-gradient(60% 60% at 50% 50%, rgb(145 166 255 / 0.32) 0%, transparent 70%);
   }
   .halo-orange {
-    background: radial-gradient(60% 60% at 50% 50%, rgb(255 143 0 / 0.14) 0%, transparent 70%);
+    background: radial-gradient(60% 60% at 50% 50%, rgb(255 143 0 / 0.22) 0%, transparent 70%);
   }
   .halo-mix {
     background:
-      radial-gradient(40% 50% at 30% 40%, rgb(145 166 255 / 0.18) 0%, transparent 70%),
-      radial-gradient(40% 50% at 70% 60%, rgb(255 143 0 / 0.12) 0%, transparent 70%);
+      radial-gradient(40% 50% at 30% 40%, rgb(145 166 255 / 0.32) 0%, transparent 70%),
+      radial-gradient(40% 50% at 70% 60%, rgb(255 143 0 / 0.20) 0%, transparent 70%);
   }
+}
+
+/* Sélection texte — accent bleu pour cohérence visuelle */
+::selection {
+  background-color: rgb(145 166 255 / 0.45);
+  color: #0b1437;
 }
 
 /* Reveal au scroll — Intersection Observer (script global dans BaseLayout) */

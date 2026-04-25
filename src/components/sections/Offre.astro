@@ -9,10 +9,15 @@ import { inclusions as items } from '../../lib/inclusions';
  */
 ---
 
-<section class="relative px-6 py-20 md:py-28 bg-bleu-nuit/[0.025]">
-  <div class="mx-auto max-w-content">
+<section class="relative overflow-hidden px-6 py-20 md:py-28 bg-bleu/[0.06]">
+  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+    <div class="absolute top-1/4 -left-24 w-[28rem] h-[28rem] halo-bleu opacity-50"></div>
+    <div class="absolute bottom-0 -right-24 w-[24rem] h-[24rem] halo-orange opacity-40"></div>
+  </div>
+  <div class="relative mx-auto max-w-content">
     <div class="text-center max-w-2xl mx-auto">
-      <p class="scroll-reveal text-sm font-semibold text-orange uppercase tracking-wide">
+      <p class="scroll-reveal inline-flex items-center gap-2 text-sm font-semibold text-bleu-nuit uppercase tracking-wide">
+        <span class="inline-block w-2 h-2 rounded-full bg-orange" aria-hidden="true"></span>
         Ce qui est inclus
       </p>
       <h2 class="scroll-reveal mt-4 font-sora font-bold text-3xl md:text-5xl text-bleu-nuit text-balance leading-tight">
@@ -24,20 +29,28 @@ import { inclusions as items } from '../../lib/inclusions';
     </div>
 
     <ul class="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-      {items.map((item, i) => (
-        <li
-          class="scroll-reveal group relative bg-blanc-casse rounded-2xl ring-1 ring-bleu-nuit/10 p-6 transition-all duration-300 ease-out-soft hover:-translate-y-0.5 hover:shadow-card-hover hover:ring-bleu-nuit/15"
-          style={`transition-delay: ${(i % 4) * 60}ms`}
-        >
-          <span class="flex w-12 h-12 rounded-xl bg-orange/10 text-orange items-center justify-center transition-colors duration-300 group-hover:bg-orange group-hover:text-blanc-casse">
-            <Icon name={item.icon} size={22} strokeWidth={1.75} />
-          </span>
-          <h3 class="mt-5 font-sora font-semibold text-lg text-bleu-nuit leading-snug">
-            {item.titre}
-          </h3>
-          <p class="mt-2 text-sm text-bleu-nuit/65 leading-relaxed">{item.texte}</p>
-        </li>
-      ))}
+      {items.map((item, i) => {
+        const isBleu = i % 2 === 0;
+        return (
+          <li
+            class="scroll-reveal group relative bg-blanc-casse rounded-2xl ring-1 ring-bleu-nuit/10 p-6 transition-all duration-300 ease-out-soft hover:-translate-y-0.5 hover:shadow-card-hover hover:ring-bleu-nuit/15"
+            style={`transition-delay: ${(i % 4) * 60}ms`}
+          >
+            <span class:list={[
+              'flex w-12 h-12 rounded-xl items-center justify-center transition-colors duration-300',
+              isBleu
+                ? 'bg-bleu/25 text-bleu-nuit group-hover:bg-bleu-nuit group-hover:text-blanc-casse'
+                : 'bg-orange/15 text-orange group-hover:bg-orange group-hover:text-bleu-nuit',
+            ]}>
+              <Icon name={item.icon} size={22} strokeWidth={1.75} />
+            </span>
+            <h3 class="mt-5 font-sora font-semibold text-lg text-bleu-nuit leading-snug">
+              {item.titre}
+            </h3>
+            <p class="mt-2 text-sm text-bleu-nuit/65 leading-relaxed">{item.texte}</p>
+          </li>
+        );
+      })}
     </ul>
   </div>
 </section>

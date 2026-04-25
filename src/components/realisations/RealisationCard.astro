@@ -28,15 +28,16 @@ const categoryName =
   realisation.categorie;
 
 // Gradient placeholder par catégorie + icône représentative
+// Bleu et orange équilibrés pour la présence visuelle des deux couleurs
 const visuals: Record<string, { gradient: string; icon: string }> = {
-  restaurants:   { gradient: 'from-orange/30 via-orange/15 to-bleu/15',     icon: 'sparkle' },
-  beaute:        { gradient: 'from-bleu/25 via-bleu/10 to-orange/15',       icon: 'palette' },
-  artisans:      { gradient: 'from-bleu-nuit/25 via-bleu/15 to-orange/10',  icon: 'wrench' },
-  sante:         { gradient: 'from-bleu/25 via-bleu/10 to-bleu-nuit/10',    icon: 'shield-check' },
-  sport:         { gradient: 'from-orange/25 via-orange/10 to-bleu/15',     icon: 'sparkle' },
-  tourisme:      { gradient: 'from-bleu/30 via-orange/15 to-blanc-casse',   icon: 'globe' },
-  pro:           { gradient: 'from-bleu-nuit/30 via-bleu/15 to-blanc-casse',icon: 'file-text' },
-  particuliers: { gradient: 'from-bleu/20 via-orange/15 to-bleu/10',        icon: 'headphones' },
+  restaurants:   { gradient: 'from-orange/35 via-bleu/25 to-bleu/15',         icon: 'sparkle' },
+  beaute:        { gradient: 'from-bleu/40 via-bleu/25 to-orange/20',         icon: 'palette' },
+  artisans:      { gradient: 'from-bleu-nuit/30 via-bleu/30 to-orange/15',    icon: 'wrench' },
+  sante:         { gradient: 'from-bleu/40 via-bleu/20 to-bleu-nuit/15',      icon: 'shield-check' },
+  sport:         { gradient: 'from-orange/30 via-bleu/25 to-bleu/20',         icon: 'sparkle' },
+  tourisme:      { gradient: 'from-bleu/45 via-bleu/30 to-orange/20',         icon: 'globe' },
+  pro:           { gradient: 'from-bleu-nuit/30 via-bleu/30 to-bleu/15',      icon: 'file-text' },
+  particuliers: { gradient: 'from-bleu/35 via-orange/20 to-bleu/15',          icon: 'headphones' },
 };
 
 const moduleIcons: Record<string, string> = {
@@ -46,8 +47,17 @@ const moduleIcons: Record<string, string> = {
   'Intervention': 'wrench',
 };
 
+// Couleur d'accent du module — équilibrée bleu/orange (12 cards chacune sur 24)
+const moduleColors: Record<string, 'bleu' | 'orange'> = {
+  'Rendez-vous': 'bleu',     // 10 cards
+  'Intervention': 'bleu',    // 2 cards  → 12 bleu
+  'Réservation': 'orange',   // 8 cards
+  'Devis': 'orange',         // 4 cards  → 12 orange
+};
+
 const visual = visuals[realisation.categorie] ?? visuals.pro;
 const moduleIcon = moduleIcons[realisation.moduleInclus] ?? 'sparkle';
+const moduleColor = moduleColors[realisation.moduleInclus] ?? 'orange';
 ---
 
 <article class="group relative bg-blanc-casse rounded-2xl ring-1 ring-bleu-nuit/10 shadow-card overflow-hidden flex flex-col transition-all duration-300 ease-out-soft hover:-translate-y-1 hover:shadow-card-hover hover:ring-bleu-nuit/15">
@@ -55,10 +65,10 @@ const moduleIcon = moduleIcons[realisation.moduleInclus] ?? 'sparkle';
   <div class:list={['relative aspect-[5/3] overflow-hidden bg-gradient-to-br', visual.gradient]}>
     <div class="absolute inset-0 halo-mix opacity-40" aria-hidden="true"></div>
     <div class="absolute top-4 left-4">
-      <Badge variant="neutral" size="sm">{categoryName}</Badge>
+      <Badge variant="secondary" size="sm">{categoryName}</Badge>
     </div>
     <div class="absolute inset-0 flex items-center justify-center">
-      <span class="flex items-center justify-center w-20 h-20 rounded-2xl bg-blanc-casse/60 ring-1 ring-bleu-nuit/10 backdrop-blur-sm text-bleu-nuit transition-transform duration-500 ease-out-soft group-hover:scale-110 group-hover:rotate-[-2deg]">
+      <span class="flex items-center justify-center w-20 h-20 rounded-2xl bg-blanc-casse/70 ring-1 ring-bleu-nuit/10 backdrop-blur-sm text-bleu-nuit transition-transform duration-500 ease-out-soft group-hover:scale-110 group-hover:rotate-[-2deg]">
         <Icon name={visual.icon} size={36} strokeWidth={1.5} />
       </span>
     </div>
@@ -69,9 +79,19 @@ const moduleIcon = moduleIcons[realisation.moduleInclus] ?? 'sparkle';
     <h3 class="text-xl font-sora font-semibold text-bleu-nuit">{realisation.nom}</h3>
     <p class="mt-2 text-sm text-bleu-nuit/70 leading-relaxed">{realisation.sousTitre}</p>
 
-    <div class="mt-4 flex items-center gap-2 text-sm text-bleu-nuit/80">
-      <Icon name={moduleIcon} size={18} class="text-orange shrink-0" strokeWidth={1.75} />
-      <span>Module inclus : <strong class="font-semibold text-bleu-nuit">{realisation.moduleInclus}</strong></span>
+    <div class:list={[
+      'mt-4 inline-flex items-center gap-2 self-start px-3 py-1.5 rounded-full text-sm',
+      moduleColor === 'bleu'
+        ? 'bg-bleu/20 text-bleu-nuit ring-1 ring-bleu/30'
+        : 'bg-orange/15 text-bleu-nuit ring-1 ring-orange/25',
+    ]}>
+      <Icon
+        name={moduleIcon}
+        size={16}
+        class={moduleColor === 'bleu' ? 'text-bleu-nuit shrink-0' : 'text-orange shrink-0'}
+        strokeWidth={2}
+      />
+      <span><strong class="font-semibold">{realisation.moduleInclus}</strong></span>
     </div>
 
     <a
