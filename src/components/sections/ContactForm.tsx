@@ -385,7 +385,7 @@ export default function ContactForm({ categories }: Props) {
       <div class="pt-2">
         <button
           type="submit"
-          class="group relative inline-flex w-full items-center justify-center gap-2 h-14 px-8 text-lg font-semibold rounded-full bg-orange text-bleu-nuit shadow-card hover:bg-[#E07F00] hover:shadow-card-hover active:translate-y-px transition-all duration-200 ease-out cursor-pointer"
+          class="group relative inline-flex w-full items-center justify-center gap-2 h-14 px-8 text-lg font-semibold rounded-full bg-bleu text-blanc-casse shadow-card hover:bg-bleu-nuit hover:shadow-card-hover active:translate-y-px transition-all duration-200 ease-out cursor-pointer"
         >
           Envoyer ma demande
           <svg
