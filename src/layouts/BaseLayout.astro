@@ -1,5 +1,6 @@
 ---
 import '../styles/globals.css';
+import { ClientRouter } from 'astro:transitions';
 import siteConfig from '../data/siteConfig.json';
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
@@ -78,7 +79,10 @@ const schemaOrg = {
     <meta name="twitter:image" content={ogImageUrl} />
     <meta name="twitter:image:alt" content={seo.ogImageAlt} />
 
-    <!-- Schema.org LocalBusiness (skill §1 — pas indexé sur les pages noindex) -->
+    <!-- View Transitions API (fade entre pages) -->
+    <ClientRouter />
+
+    <!-- Schema.org LocalBusiness -->
     {!seo.noindex && (
       <script type="application/ld+json" set:html={JSON.stringify(schemaOrg)} />
     )}
@@ -89,22 +93,95 @@ const schemaOrg = {
       <slot />
     </main>
     {!bare && <Footer />}
+
     <script>
-      // Reveal au scroll via IntersectionObserver natif (skill §3 / §7)
-      const reveal = new IntersectionObserver(
-        (entries) => {
-          for (const entry of entries) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-visible');
-              reveal.unobserve(entry.target);
+      // Bootstrap des animations interactives (rejoué à chaque navigation View Transitions)
+      const bootstrap = () => {
+        const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        // 1. Reveal au scroll
+        const reveal = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                reveal.unobserve(entry.target);
+              }
             }
-          }
-        },
-        { rootMargin: '0px 0px -8% 0px', threshold: 0.05 }
-      );
-      document
-        .querySelectorAll('.scroll-reveal')
-        .forEach((el) => reveal.observe(el));
+          },
+          { rootMargin: '0px 0px -8% 0px', threshold: 0.05 }
+        );
+        document
+          .querySelectorAll('.scroll-reveal:not(.is-visible)')
+          .forEach((el) => reveal.observe(el));
+
+        if (reduced) return;
+
+        // 2. Count-up sur les chiffres marqués data-count
+        const countObserver = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (!entry.isIntersecting) continue;
+              const el = entry.target as HTMLElement;
+              const target = parseFloat(el.dataset.count || '0');
+              const decimals = parseInt(el.dataset.countDecimals || '0', 10);
+              const suffix = el.dataset.countSuffix || '';
+              const duration = 1100;
+              const start = performance.now();
+
+              const formatValue = (v: number) => {
+                const fixed = v.toFixed(decimals);
+                return decimals > 0 ? fixed.replace('.', ',') : fixed;
+              };
+
+              const tick = (now: number) => {
+                const t = Math.min((now - start) / duration, 1);
+                const eased = 1 - Math.pow(1 - t, 3);
+                el.textContent = formatValue(target * eased) + suffix;
+                if (t < 1) requestAnimationFrame(tick);
+              };
+              requestAnimationFrame(tick);
+              countObserver.unobserve(el);
+            }
+          },
+          { threshold: 0.5 }
+        );
+        document
+          .querySelectorAll<HTMLElement>('[data-count]:not([data-counted])')
+          .forEach((el) => {
+            el.dataset.counted = 'true';
+            countObserver.observe(el);
+          });
+
+        // 3. Tilt 3D sur les cards Réalisations
+        const tiltCards = document.querySelectorAll<HTMLElement>('.tilt-card');
+        const onMove = (e: MouseEvent, card: HTMLElement) => {
+          const rect = card.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width;
+          const y = (e.clientY - rect.top) / rect.height;
+          const rotY = (x - 0.5) * 8;
+          const rotX = (0.5 - y) * 8;
+          card.style.setProperty('--tilt-x', `${rotX}deg`);
+          card.style.setProperty('--tilt-y', `${rotY}deg`);
+          card.style.setProperty('--tilt-ty', '-4px');
+        };
+        const onLeave = (card: HTMLElement) => {
+          card.style.setProperty('--tilt-x', '0deg');
+          card.style.setProperty('--tilt-y', '0deg');
+          card.style.setProperty('--tilt-ty', '0px');
+        };
+        tiltCards.forEach((card) => {
+          if ((card as any)._tiltBound) return;
+          (card as any)._tiltBound = true;
+          card.addEventListener('mousemove', (e) => onMove(e as MouseEvent, card));
+          card.addEventListener('mouseleave', () => onLeave(card));
+        });
+      };
+
+      // Boot au chargement initial
+      bootstrap();
+      // Re-boot après chaque navigation View Transitions
+      document.addEventListener('astro:page-load', bootstrap);
     </script>
   </body>
 </html>

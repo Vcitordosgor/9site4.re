@@ -81,10 +81,10 @@
 /* Reveal au scroll — Intersection Observer (script global dans BaseLayout) */
 .scroll-reveal {
   opacity: 0;
-  transform: translateY(16px);
+  transform: translateY(40px);
   transition:
-    opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 600ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 .scroll-reveal.is-visible {
   opacity: 1;
@@ -111,18 +111,136 @@
 .hero-rise-4 { animation-delay: 380ms; }
 .hero-rise-5 { animation-delay: 480ms; }
 
+/* Word reveal — H1 hero mot par mot */
+@keyframes word-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.word-reveal {
+  display: inline-block;
+  animation: word-reveal 700ms cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  animation-delay: calc(var(--word-i, 0) * 90ms + 200ms);
+}
+
+/* Halo pulse — signature subtile sur les halos hero/CTA */
+@keyframes halo-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
+.halo-pulse {
+  animation: halo-pulse 5s ease-in-out infinite;
+  will-change: transform;
+}
+.halo-pulse-slow {
+  animation: halo-pulse 7s ease-in-out infinite;
+  animation-delay: 1s;
+  will-change: transform;
+}
+
+/* Float continu — cartes flottantes du hero (3 cards, décalées) */
+@keyframes hero-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+.hero-float-a {
+  animation: hero-float 4s ease-in-out infinite;
+  will-change: transform;
+}
+.hero-float-b {
+  animation: hero-float 5s ease-in-out infinite 0.6s;
+  will-change: transform;
+}
+.hero-float-c {
+  animation: hero-float 4.5s ease-in-out infinite 1.2s;
+  will-change: transform;
+}
+
+/* Tilt 3D des cards Réalisations (combiné avec hover translate via custom prop) */
+.tilt-card {
+  transform-style: preserve-3d;
+  transform:
+    perspective(900px)
+    rotateX(var(--tilt-x, 0deg))
+    rotateY(var(--tilt-y, 0deg))
+    translateY(var(--tilt-ty, 0));
+  transition: transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+/* Pill rebond au hover de la card (RealisationCard) */
+@keyframes pill-bounce {
+  0% { transform: translateY(0); }
+  35% { transform: translateY(-5px); }
+  60% { transform: translateY(0); }
+  80% { transform: translateY(-2px); }
+  100% { transform: translateY(0); }
+}
+.group:hover .pill-bounce {
+  animation: pill-bounce 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Shimmer sur bouton primary — reflet lumineux qui traverse en boucle */
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.btn-shimmer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    transparent 30%,
+    rgb(255 255 255 / 0.35) 50%,
+    transparent 70%
+  );
+  transform: translateX(-100%);
+  animation: btn-shimmer 3.2s ease-in-out infinite;
+  animation-delay: 1.5s;
+  pointer-events: none;
+  z-index: 0;
+}
+.btn-shimmer > * {
+  position: relative;
+  z-index: 1;
+}
+@keyframes btn-shimmer {
+  0% { transform: translateX(-100%); }
+  60%, 100% { transform: translateX(200%); }
+}
+
+/* prefers-reduced-motion : tout désactiver */
 @media (prefers-reduced-motion: reduce) {
   .scroll-reveal {
     opacity: 1;
     transform: none;
     transition: none;
   }
-  .hero-rise {
-    animation: none;
+  .hero-rise,
+  .word-reveal,
+  .halo-pulse,
+  .halo-pulse-slow,
+  .hero-float-a,
+  .hero-float-b,
+  .hero-float-c,
+  .tilt-card,
+  .btn-shimmer::before {
+    animation: none !important;
+    transform: none !important;
+  }
+  .group:hover .pill-bounce {
+    animation: none !important;
   }
 }
 
-/* Respect prefers-reduced-motion — règle skill §1 (reduced-motion) */
+/* Fallback global pour reduced-motion (skill §1) */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

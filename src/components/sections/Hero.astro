@@ -5,11 +5,10 @@ import siteConfig from '../../data/siteConfig.json';
 
 /**
  * Hero — section prioritaire (brief §4.6).
- * - H1 grand impactant (text-hero clamp 40-80px)
+ * - H1 grand impactant avec word-reveal mot par mot
  * - 2 CTA + mention de réassurance
- * - Composition de 3 cartes flottantes en perspective (modules)
- * - 974 stylisé en filigrane derrière, halos lumineux
- * - Animation séquentielle (.hero-rise-N, 80ms par étape)
+ * - 3 cartes flottantes en perspective (float continu décalé)
+ * - 974 stylisé en filigrane derrière, halos pulsants
  */
 ---
 
@@ -17,11 +16,11 @@ import siteConfig from '../../data/siteConfig.json';
   class="relative overflow-hidden px-6 pt-24 pb-16 md:pt-32 md:pb-28"
   aria-label="Présentation de 9site4"
 >
-  <!-- Halos en arrière-plan -->
+  <!-- Halos en arrière-plan (avec pulse continu) -->
   <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
-    <div class="absolute -top-32 -left-24 w-[40rem] h-[40rem] halo-bleu"></div>
-    <div class="absolute top-32 -right-32 w-[40rem] h-[40rem] halo-orange opacity-90"></div>
-    <div class="absolute bottom-0 left-1/3 w-[30rem] h-[30rem] halo-bleu opacity-60"></div>
+    <div class="absolute -top-32 -left-24 w-[40rem] h-[40rem] halo-bleu halo-pulse"></div>
+    <div class="absolute top-32 -right-32 w-[40rem] h-[40rem] halo-orange opacity-90 halo-pulse-slow"></div>
+    <div class="absolute bottom-0 left-1/3 w-[30rem] h-[30rem] halo-bleu opacity-60 halo-pulse"></div>
   </div>
 
   <!-- 974 en filigrane -->
@@ -42,13 +41,14 @@ import siteConfig from '../../data/siteConfig.json';
         <span class="uppercase">{siteConfig.location.areaCode} · {siteConfig.location.region}</span>
       </p>
 
-      <h1 class="hero-rise hero-rise-2 mt-5 text-hero font-sora font-bold text-bleu-nuit text-balance">
-        Votre site
-        <span class="relative inline-block">
+      <h1 class="mt-5 text-hero font-sora font-bold text-bleu-nuit text-balance">
+        <span class="word-reveal" style="--word-i: 0">Votre</span>{' '}
+        <span class="word-reveal" style="--word-i: 1">site</span>{' '}
+        <span class="word-reveal relative inline-block" style="--word-i: 2">
           <span class="relative z-10">tout-en-un</span>
           <span class="absolute inset-x-0 bottom-1 md:bottom-2 h-2 md:h-3 bg-bleu -z-0" aria-hidden="true"></span>
-        </span>,
-        <span class="relative inline-block">
+        </span>,{' '}
+        <span class="word-reveal relative inline-block" style="--word-i: 3">
           <span class="relative z-10">la gestion en moins.</span>
           <span class="absolute inset-x-0 bottom-1 md:bottom-2 h-2 md:h-3 bg-orange -z-0" aria-hidden="true"></span>
         </span>
@@ -76,59 +76,65 @@ import siteConfig from '../../data/siteConfig.json';
       </p>
     </div>
 
-    <!-- Colonne visuelle : 3 cartes flottantes -->
+    <!-- Colonne visuelle : 3 cartes flottantes (float continu, décalé) -->
     <div
       class="hero-rise hero-rise-5 lg:col-span-5 relative h-[420px] hidden lg:block"
       aria-hidden="true"
     >
       <!-- Card 1 : Réservation (haut gauche) -->
-      <div class="absolute top-0 left-2 w-64 bg-blanc-casse rounded-2xl ring-2 ring-bleu shadow-card-hover p-5 -rotate-[4deg] transition-transform duration-500 ease-out-soft hover:rotate-0 hover:scale-105">
-        <div class="flex items-center gap-3">
-          <span class="flex w-10 h-10 rounded-xl bg-bleu-nuit text-blanc-casse items-center justify-center">
-            <Icon name="calendar-clock" size={20} strokeWidth={2.25} />
-          </span>
-          <div>
-            <p class="text-xs font-medium text-bleu-nuit/60 uppercase tracking-wide">Module</p>
-            <p class="text-sm font-sora font-semibold text-bleu-nuit">Réservation</p>
+      <div class="absolute top-0 left-2 w-64 hero-float-a">
+        <div class="bg-blanc-casse rounded-2xl ring-2 ring-bleu shadow-card-hover p-5 -rotate-[4deg] transition-transform duration-500 ease-out-soft hover:rotate-0 hover:scale-105">
+          <div class="flex items-center gap-3">
+            <span class="flex w-10 h-10 rounded-xl bg-bleu-nuit text-blanc-casse items-center justify-center">
+              <Icon name="calendar-clock" size={20} strokeWidth={2.25} />
+            </span>
+            <div>
+              <p class="text-xs font-medium text-bleu-nuit/60 uppercase tracking-wide">Module</p>
+              <p class="text-sm font-sora font-semibold text-bleu-nuit">Réservation</p>
+            </div>
           </div>
-        </div>
-        <div class="mt-4 space-y-2">
-          <div class="h-2 rounded-full bg-bleu w-3/4"></div>
-          <div class="h-2 rounded-full bg-bleu-nuit/10 w-1/2"></div>
+          <div class="mt-4 space-y-2">
+            <div class="h-2 rounded-full bg-bleu w-3/4"></div>
+            <div class="h-2 rounded-full bg-bleu-nuit/10 w-1/2"></div>
+          </div>
         </div>
       </div>
 
       <!-- Card 2 : Devis (centre droit) -->
-      <div class="absolute top-32 right-0 w-64 bg-blanc-casse rounded-2xl ring-2 ring-orange shadow-card-hover p-5 rotate-[3deg] transition-transform duration-500 ease-out-soft hover:rotate-0 hover:scale-105">
-        <div class="flex items-center gap-3">
-          <span class="flex w-10 h-10 rounded-xl bg-bleu-nuit text-blanc-casse items-center justify-center">
-            <Icon name="file-text" size={20} strokeWidth={2.25} />
-          </span>
-          <div>
-            <p class="text-xs font-medium text-bleu-nuit/60 uppercase tracking-wide">Module</p>
-            <p class="text-sm font-sora font-semibold text-bleu-nuit">Devis</p>
+      <div class="absolute top-32 right-0 w-64 hero-float-b">
+        <div class="bg-blanc-casse rounded-2xl ring-2 ring-orange shadow-card-hover p-5 rotate-[3deg] transition-transform duration-500 ease-out-soft hover:rotate-0 hover:scale-105">
+          <div class="flex items-center gap-3">
+            <span class="flex w-10 h-10 rounded-xl bg-bleu-nuit text-blanc-casse items-center justify-center">
+              <Icon name="file-text" size={20} strokeWidth={2.25} />
+            </span>
+            <div>
+              <p class="text-xs font-medium text-bleu-nuit/60 uppercase tracking-wide">Module</p>
+              <p class="text-sm font-sora font-semibold text-bleu-nuit">Devis</p>
+            </div>
           </div>
-        </div>
-        <div class="mt-4 space-y-2">
-          <div class="h-2 rounded-full bg-orange w-full"></div>
-          <div class="h-2 rounded-full bg-bleu-nuit/10 w-2/3"></div>
+          <div class="mt-4 space-y-2">
+            <div class="h-2 rounded-full bg-orange w-full"></div>
+            <div class="h-2 rounded-full bg-bleu-nuit/10 w-2/3"></div>
+          </div>
         </div>
       </div>
 
       <!-- Card 3 : Rendez-vous (bas centre) -->
-      <div class="absolute bottom-0 left-12 w-64 bg-blanc-casse rounded-2xl ring-2 ring-bleu shadow-card-hover p-5 -rotate-[2deg] transition-transform duration-500 ease-out-soft hover:rotate-0 hover:scale-105">
-        <div class="flex items-center gap-3">
-          <span class="flex w-10 h-10 rounded-xl bg-bleu-nuit text-blanc-casse items-center justify-center">
-            <Icon name="calendar-check" size={20} strokeWidth={2.25} />
-          </span>
-          <div>
-            <p class="text-xs font-medium text-bleu-nuit/60 uppercase tracking-wide">Module</p>
-            <p class="text-sm font-sora font-semibold text-bleu-nuit">Rendez-vous</p>
+      <div class="absolute bottom-0 left-12 w-64 hero-float-c">
+        <div class="bg-blanc-casse rounded-2xl ring-2 ring-bleu shadow-card-hover p-5 -rotate-[2deg] transition-transform duration-500 ease-out-soft hover:rotate-0 hover:scale-105">
+          <div class="flex items-center gap-3">
+            <span class="flex w-10 h-10 rounded-xl bg-bleu-nuit text-blanc-casse items-center justify-center">
+              <Icon name="calendar-check" size={20} strokeWidth={2.25} />
+            </span>
+            <div>
+              <p class="text-xs font-medium text-bleu-nuit/60 uppercase tracking-wide">Module</p>
+              <p class="text-sm font-sora font-semibold text-bleu-nuit">Rendez-vous</p>
+            </div>
           </div>
-        </div>
-        <div class="mt-4 space-y-2">
-          <div class="h-2 rounded-full bg-bleu w-2/3"></div>
-          <div class="h-2 rounded-full bg-bleu-nuit/10 w-3/4"></div>
+          <div class="mt-4 space-y-2">
+            <div class="h-2 rounded-full bg-bleu w-2/3"></div>
+            <div class="h-2 rounded-full bg-bleu-nuit/10 w-3/4"></div>
+          </div>
         </div>
       </div>
     </div>
