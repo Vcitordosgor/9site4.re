@@ -1,0 +1,93 @@
+---
+/**
+ * Zone — communes d'intervention en chips bordées + horaires.
+ * Layout : 2 colonnes desktop (zone + horaires), 1 col mobile.
+ */
+import data from '../../../data/templates/bernard.json';
+---
+
+<section class="relative bg-bp-anthracite text-bp-blanc py-20 md:py-28 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="mb-14 md:mb-16 max-w-3xl">
+      <p class="scroll-reveal inline-flex items-center gap-3 text-[11px] sm:text-xs font-archivo font-bold uppercase tracking-[0.32em] text-bp-jaune">
+        <span class="block w-8 h-[3px] bg-bp-jaune" aria-hidden="true"></span>
+        <span>Zone d'intervention &amp; horaires</span>
+      </p>
+      <h2 class="scroll-reveal mt-5 font-bebas uppercase text-bp-blanc leading-[0.95] tracking-tight" style="font-size: clamp(40px, 6vw, 80px);">
+        Tout le sud,<br/>
+        <span class="text-bp-jaune">de Cilaos à Sainte-Rose.</span>
+      </h2>
+    </header>
+
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16">
+
+      <!-- Communes (chips bordées) -->
+      <div>
+        <p class="scroll-reveal text-[10px] font-archivo font-bold uppercase tracking-[0.32em] text-bp-blanc/55 mb-5">
+          {data.communes.length} communes desservies
+        </p>
+        <ul class="scroll-reveal flex flex-wrap gap-2">
+          {data.communes.map((c) => (
+            <li class="inline-flex items-center px-4 h-10 bg-transparent text-bp-blanc border-2 border-bp-blanc/20 hover:border-bp-jaune hover:text-bp-jaune transition-colors text-sm font-archivo font-medium">
+              {c}
+            </li>
+          ))}
+        </ul>
+        <p class="scroll-reveal mt-6 text-sm font-archivo text-bp-blanc/65 leading-relaxed">
+          Vous n'êtes pas dans la liste ? Appelez quand même — Bernard
+          se déplace sur tout le sud de l'île au cas par cas.
+        </p>
+      </div>
+
+      <!-- Horaires (table avec lignes épaisses) -->
+      <div>
+        <p class="scroll-reveal text-[10px] font-archivo font-bold uppercase tracking-[0.32em] text-bp-blanc/55 mb-5">
+          Horaires
+        </p>
+        <ul class="scroll-reveal divide-y-2 divide-bp-blanc/10">
+          {data.info.horaires.map((h) => (
+            <li class="flex items-baseline justify-between gap-4 py-3.5">
+              <span class="font-bebas uppercase tracking-wide flex items-center gap-2" style="font-size: 22px;" class:list={[h.urgence ? 'text-bp-jaune' : 'text-bp-blanc']}>
+                {h.urgence && (
+                  <span class="bp-pulse inline-block w-2 h-2 rounded-full bg-bp-rouge" aria-hidden="true"></span>
+                )}
+                {h.jour}
+              </span>
+              <span class="font-archivo text-sm tabular-nums text-right" class:list={[h.urgence ? 'text-bp-jaune font-bold' : h.ouvert ? 'text-bp-blanc/85' : 'italic text-bp-blanc/45']}>
+                {h.label}
+              </span>
+            </li>
+          ))}
+        </ul>
+
+        <!-- Bandeau astreinte rouge -->
+        <div class="scroll-reveal mt-6 p-5 bg-bp-rouge text-bp-blanc border-2 border-bp-rouge flex items-start gap-3">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="flex-shrink-0 mt-0.5">
+            <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+            <line x1="12" y1="9" x2="12" y2="13"/>
+            <line x1="12" y1="17" x2="12.01" y2="17"/>
+          </svg>
+          <div class="flex-1">
+            <p class="font-bebas uppercase tracking-wide" style="font-size: 22px;">Astreinte 24/7</p>
+            <p class="mt-1 font-archivo text-sm leading-snug text-bp-blanc/95">
+              Vraie urgence (inondation, fuite active, plus d'eau) ?
+              Appel direct, jour et nuit, dimanche compris.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes bp-pulse {
+    0%, 100% { opacity: 1;   transform: scale(1); }
+    50%      { opacity: 0.45; transform: scale(0.7); }
+  }
+  .bp-pulse { animation: bp-pulse 1800ms cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+  @media (prefers-reduced-motion: reduce) {
+    .bp-pulse { animation: none !important; opacity: 1; transform: none !important; }
+  }
+</style>

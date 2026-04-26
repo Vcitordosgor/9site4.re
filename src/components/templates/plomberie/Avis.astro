@@ -1,0 +1,56 @@
+---
+/**
+ * Avis — 3 témoignages clients sur fond ciment.
+ * Format ticket de caisse : 5 étoiles jaunes en haut, citation
+ * en Archivo, signature avec lieu en bas.
+ */
+import data from '../../../data/templates/bernard.json';
+---
+
+<section class="relative bg-bp-ciment py-20 md:py-28 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="text-center max-w-3xl mx-auto mb-14 md:mb-16">
+      <p class="scroll-reveal inline-flex items-center justify-center gap-3 text-[11px] sm:text-xs font-archivo font-bold uppercase tracking-[0.32em] text-bp-anthracite/70">
+        <span class="block w-8 h-[3px] bg-bp-jaune" aria-hidden="true"></span>
+        <span>Ce que disent nos clients</span>
+        <span class="block w-8 h-[3px] bg-bp-jaune" aria-hidden="true"></span>
+      </p>
+      <h2 class="scroll-reveal mt-5 font-bebas uppercase text-bp-anthracite leading-[0.95] tracking-tight" style="font-size: clamp(40px, 5.5vw, 72px);">
+        4,9/5 sur Google
+      </h2>
+      <p class="scroll-reveal mt-3 font-archivo text-bp-anthracite/65 text-sm">
+        124 avis vérifiés
+      </p>
+    </header>
+
+    <ul class="grid md:grid-cols-3 gap-5 md:gap-6">
+      {data.avis.map((a, i) => (
+        <li class="scroll-reveal flex flex-col p-7 md:p-8 bg-bp-blanc border-2 border-bp-anthracite" style={`transition-delay: ${i * 80}ms`}>
+          <!-- 5 étoiles jaunes -->
+          <div class="flex items-center gap-1 text-bp-jaune" aria-label={`Note : ${a.note} sur 5`}>
+            {Array.from({ length: 5 }).map((_, idx) => (
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+              </svg>
+            ))}
+          </div>
+
+          <p class="mt-5 font-archivo text-bp-anthracite/85 leading-[1.7] flex-1" style="font-size: 15px;">
+            « {a.texte} »
+          </p>
+
+          <!-- Signature avec filet jaune au-dessus -->
+          <footer class="mt-6 pt-5 border-t-2 border-bp-jaune flex items-baseline justify-between gap-3">
+            <p class="font-bebas uppercase tracking-wide text-bp-anthracite" style="font-size: 18px;">
+              {a.auteur}
+            </p>
+            <p class="text-xs font-archivo uppercase tracking-[0.18em] text-bp-anthracite/55">
+              {a.lieu}
+            </p>
+          </footer>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

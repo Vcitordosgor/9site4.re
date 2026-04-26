@@ -1,0 +1,159 @@
+---
+/**
+ * PlomberieHeader — header sticky qui suit la UrgenceBar.
+ * Ciment au top (fond du site), anthracite au scroll.
+ * Wordmark "Bernard Plomberie" en Bebas uppercase + bordure jaune.
+ * CTA "Devis gratuit" jaune avec bordure.
+ */
+import data from '../../../data/templates/bernard.json';
+
+const navLinks = [
+  { href: '#services',     label: 'Services' },
+  { href: '#tarifs',       label: 'Tarifs' },
+  { href: '#intervention', label: 'Intervention' },
+  { href: '#realisations', label: 'Réalisations' },
+];
+---
+
+<header
+  id="bp-header"
+  data-scrolled="false"
+  class="sticky top-0 z-40 transition-colors duration-300 ease-out bg-bp-ciment"
+>
+  <div class="max-w-content mx-auto px-4 sm:px-6 md:px-10 h-16 md:h-20 flex items-center justify-between gap-4 border-b-2 border-bp-anthracite/10">
+    <a href="#top" class="flex items-baseline gap-2 leading-none transition-colors group">
+      <!-- Marqueur jaune carré devant le wordmark (typo poster) -->
+      <span class="block w-2.5 h-2.5 sm:w-3 sm:h-3 bg-bp-jaune" aria-hidden="true"></span>
+      <span class="font-bebas tracking-wide text-bp-anthracite" style="font-size: 22px;">{data.info.wordmark1}</span>
+      <span class="font-bebas tracking-wide text-bp-anthracite/60" style="font-size: 22px;">{data.info.wordmark2}</span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-7 lg:gap-9" aria-label="Navigation">
+      {navLinks.map((l) => (
+        <a
+          href={l.href}
+          class="text-xs uppercase tracking-[0.18em] font-archivo font-semibold text-bp-anthracite/75 hover:text-bp-anthracite hover:underline underline-offset-8 decoration-2 decoration-bp-jaune transition-colors"
+        >
+          {l.label}
+        </a>
+      ))}
+    </nav>
+
+    <a
+      href="#intervention"
+      class="hidden md:inline-flex items-center justify-center h-10 px-5 text-xs font-archivo font-bold uppercase tracking-[0.16em] bg-bp-jaune text-bp-anthracite border-2 border-bp-anthracite hover:bg-bp-anthracite hover:text-bp-jaune transition-colors"
+    >
+      Devis gratuit
+    </a>
+
+    <button
+      id="bp-menu-toggle"
+      type="button"
+      data-open="false"
+      aria-expanded="false"
+      aria-controls="bp-mobile-menu"
+      aria-label="Ouvrir le menu"
+      class="group md:hidden relative w-10 h-10 -mr-2 flex items-center justify-center"
+    >
+      <span class="sr-only">Menu</span>
+      <span class="relative flex flex-col items-center justify-center gap-1.5 w-6 h-6">
+        <span class="block w-6 h-[3px] bg-bp-anthracite rounded-sm transition-transform duration-300 origin-center group-data-[open=true]:rotate-45 group-data-[open=true]:translate-y-2"></span>
+        <span class="block w-6 h-[3px] bg-bp-anthracite rounded-sm transition-opacity duration-200 group-data-[open=true]:opacity-0"></span>
+        <span class="block w-6 h-[3px] bg-bp-anthracite rounded-sm transition-transform duration-300 origin-center group-data-[open=true]:-rotate-45 group-data-[open=true]:-translate-y-2"></span>
+      </span>
+    </button>
+  </div>
+</header>
+
+<!-- Menu mobile plein écran -->
+<div
+  id="bp-mobile-menu"
+  data-open="false"
+  aria-hidden="true"
+  inert
+  class="md:hidden fixed inset-0 top-[5.25rem] z-30 bg-bp-anthracite text-bp-blanc transition-opacity duration-300 ease-out data-[open=false]:opacity-0 data-[open=false]:pointer-events-none data-[open=true]:opacity-100"
+>
+  <nav class="h-full flex flex-col px-6 pt-10 pb-10" aria-label="Navigation mobile">
+    <ul class="flex-1 flex flex-col gap-1">
+      {navLinks.map((l) => (
+        <li>
+          <a href={l.href} data-bp-link class="block py-4 font-bebas uppercase tracking-wide text-bp-blanc hover:text-bp-jaune transition-colors border-b border-bp-blanc/10" style="font-size: 36px;">
+            {l.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+    <div class="pt-6">
+      <a
+        href={`tel:${data.info.telephoneHref}`}
+        data-bp-link
+        class="inline-flex items-center justify-center w-full h-14 mb-3 text-sm font-archivo font-bold uppercase tracking-[0.2em] bg-bp-jaune text-bp-anthracite border-2 border-bp-jaune hover:bg-transparent hover:text-bp-jaune transition-colors"
+      >
+        Appeler · {data.info.telephoneCompact}
+      </a>
+      <a
+        href="#intervention"
+        data-bp-link
+        class="inline-flex items-center justify-center w-full h-14 text-sm font-archivo font-bold uppercase tracking-[0.2em] bg-transparent text-bp-blanc border-2 border-bp-blanc/30 hover:border-bp-jaune hover:text-bp-jaune transition-colors"
+      >
+        Demander un devis
+      </a>
+    </div>
+  </nav>
+</div>
+
+<style>
+  /* Header anthracite au scroll */
+  #bp-header[data-scrolled='true'] {
+    background-color: rgb(26 29 36 / 0.96);
+    -webkit-backdrop-filter: saturate(140%) blur(8px);
+    backdrop-filter: saturate(140%) blur(8px);
+  }
+  #bp-header[data-scrolled='true'] a span,
+  #bp-header[data-scrolled='true'] nav a,
+  #bp-header[data-scrolled='true'] button span {
+    color: rgb(232 230 225);
+  }
+  #bp-header[data-scrolled='true'] nav a:hover {
+    color: rgb(255 199 44);
+    text-decoration-color: rgb(255 199 44);
+  }
+</style>
+
+<script>
+  const header = document.getElementById('bp-header');
+  if (header) {
+    const update = () => {
+      header.dataset.scrolled = String(window.scrollY > 60);
+    };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+  }
+
+  const toggle = document.getElementById('bp-menu-toggle');
+  const menu = document.getElementById('bp-mobile-menu');
+  if (toggle && menu) {
+    const setOpen = (open: boolean) => {
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.dataset.open = String(open);
+      toggle.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+      menu.dataset.open = String(open);
+      menu.setAttribute('aria-hidden', String(!open));
+      if (open) menu.removeAttribute('inert');
+      else menu.setAttribute('inert', '');
+      document.body.style.overflow = open ? 'hidden' : '';
+    };
+    toggle.addEventListener('click', () => {
+      setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+    menu.querySelectorAll<HTMLElement>('[data-bp-link]').forEach((el) => {
+      el.addEventListener('click', () => setOpen(false));
+    });
+  }
+</script>

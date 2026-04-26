@@ -1,0 +1,72 @@
+---
+/**
+ * Tarifs — bandeau jaune avec 4 prix transparents en grille.
+ * Prix XXL en Bebas, label en Archivo, note en italique.
+ * Style "panneau d'affichage" très direct, lecture rapide.
+ *
+ * Section unique : aucun autre template n'affiche les prix
+ * directement comme ça (pizzeria a un menu, resto a des
+ * menus prix fixes mais pas en bandeau).
+ */
+import data from '../../../data/templates/bernard.json';
+---
+
+<section id="tarifs" class="relative bg-bp-jaune text-bp-anthracite py-20 md:py-28 px-6 md:px-10 overflow-hidden">
+
+  <!-- Bandes diagonales chantier en haut et en bas -->
+  <span class="absolute top-0 left-0 right-0 h-2 bg-bp-anthracite" aria-hidden="true"></span>
+  <span class="absolute top-2 left-0 right-0 h-2" aria-hidden="true"
+        style="background: repeating-linear-gradient(135deg, rgb(26 29 36) 0 12px, transparent 12px 24px);">
+  </span>
+  <span class="absolute bottom-0 left-0 right-0 h-2 bg-bp-anthracite" aria-hidden="true"></span>
+  <span class="absolute bottom-2 left-0 right-0 h-2" aria-hidden="true"
+        style="background: repeating-linear-gradient(45deg, rgb(26 29 36) 0 12px, transparent 12px 24px);">
+  </span>
+
+  <div class="relative max-w-content mx-auto">
+
+    <!-- Header de section -->
+    <header class="text-center max-w-3xl mx-auto mb-14 md:mb-16">
+      <p class="scroll-reveal inline-flex items-center justify-center gap-3 text-[11px] sm:text-xs font-archivo font-bold uppercase tracking-[0.32em] text-bp-anthracite">
+        <span class="block w-8 h-[3px] bg-bp-anthracite" aria-hidden="true"></span>
+        <span>Tarifs transparents</span>
+        <span class="block w-8 h-[3px] bg-bp-anthracite" aria-hidden="true"></span>
+      </p>
+      <h2 class="scroll-reveal mt-5 font-bebas uppercase text-bp-anthracite leading-[0.95] tracking-tight" style="font-size: clamp(40px, 6vw, 80px);">
+        Pas de surprise,<br/>jamais.
+      </h2>
+      <p class="scroll-reveal mt-6 font-archivo text-bp-anthracite/80 leading-[1.7]">
+        Les tarifs annoncés sont les tarifs facturés. Le devis détaillé
+        est remis avant toute intervention.
+      </p>
+    </header>
+
+    <!-- 4 prix en grille bordée -->
+    <ul class="grid sm:grid-cols-2 lg:grid-cols-4 gap-0 border-2 border-bp-anthracite bg-bp-jaune">
+      {data.tarifs.map((t, i) => (
+        <li class:list={[
+          'scroll-reveal flex flex-col p-6 md:p-8',
+          i > 0 ? 'border-t-2 sm:border-t-0 sm:border-l-2 lg:border-l-2 border-bp-anthracite' : '',
+          i === 2 ? 'lg:border-l-2 sm:border-t-2 lg:border-t-0' : '',
+          i === 3 ? 'lg:border-l-2 sm:border-t-2 sm:border-l-2 lg:border-t-0' : '',
+        ]} style={`transition-delay: ${i * 60}ms`}>
+          <p class="text-[10px] font-archivo font-bold uppercase tracking-[0.32em] text-bp-anthracite/65">
+            {t.label}
+          </p>
+          <p class="mt-3 font-bebas text-bp-anthracite leading-none tabular-nums">
+            <span style="font-size: clamp(48px, 7vw, 80px);">{t.valeur}</span>
+            <span class="ml-1 text-bp-anthracite/65" style="font-size: 22px;">{t.unite}</span>
+          </p>
+          <p class="mt-auto pt-5 text-xs font-archivo italic text-bp-anthracite/75 leading-snug">
+            {t.note}
+          </p>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Mention en bas -->
+    <p class="scroll-reveal mt-10 text-center text-sm font-archivo text-bp-anthracite/85">
+      <strong class="font-bold">Tous les prix sont TTC.</strong> Le devis détaillé est gratuit, sans engagement, et remis sous 24h ouvrées maximum.
+    </p>
+  </div>
+</section>

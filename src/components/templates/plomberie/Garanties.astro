@@ -1,0 +1,57 @@
+---
+/**
+ * Garanties — 4 piliers en grille bordée avec icônes "tampon".
+ * Style officiel/sceau, donne de la crédibilité.
+ */
+import data from '../../../data/templates/bernard.json';
+
+const icons: Record<string, string> = {
+  // shield - bouclier
+  shield: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/>',
+  // doc - document
+  doc:    '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>',
+  // wallet - portefeuille
+  wallet: '<path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4z"/>',
+  // alarm - cloche
+  alarm:  '<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>',
+};
+---
+
+<section class="relative bg-bp-ciment py-20 md:py-28 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="text-center max-w-3xl mx-auto mb-14 md:mb-16">
+      <p class="scroll-reveal inline-flex items-center justify-center gap-3 text-[11px] sm:text-xs font-archivo font-bold uppercase tracking-[0.32em] text-bp-anthracite/70">
+        <span class="block w-8 h-[3px] bg-bp-jaune" aria-hidden="true"></span>
+        <span>Garanties</span>
+        <span class="block w-8 h-[3px] bg-bp-jaune" aria-hidden="true"></span>
+      </p>
+      <h2 class="scroll-reveal mt-5 font-bebas uppercase text-bp-anthracite leading-[0.95] tracking-tight" style="font-size: clamp(40px, 5.5vw, 72px);">
+        Travail propre,<br/>
+        <span class="text-bp-anthracite/60">papiers en règle.</span>
+      </h2>
+    </header>
+
+    <ul class="grid sm:grid-cols-2 lg:grid-cols-4 gap-0 border-2 border-bp-anthracite bg-bp-blanc">
+      {data.garanties.map((g, i) => (
+        <li class:list={[
+          'scroll-reveal flex flex-col items-start p-7 md:p-8',
+          i > 0 ? 'border-t-2 sm:border-t-0 sm:border-l-2 lg:border-l-2 border-bp-anthracite' : '',
+          i === 2 ? 'lg:border-l-2 sm:border-t-2 lg:border-t-0' : '',
+          i === 3 ? 'lg:border-l-2 sm:border-t-2 sm:border-l-2 lg:border-t-0' : '',
+        ]} style={`transition-delay: ${i * 60}ms`}>
+          <span class="inline-flex items-center justify-center w-12 h-12 bg-bp-anthracite text-bp-jaune">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={icons[g.icon] || icons.shield} />
+          </span>
+
+          <h3 class="mt-5 font-bebas uppercase text-bp-anthracite leading-tight tracking-wide" style="font-size: 26px;">
+            {g.titre}
+          </h3>
+          <p class="mt-2 font-archivo text-bp-anthracite/75 leading-[1.65]" style="font-size: 14.5px;">
+            {g.description}
+          </p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

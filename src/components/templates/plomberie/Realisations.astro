@@ -1,0 +1,87 @@
+---
+/**
+ * Realisations — 2 chantiers en avant/après.
+ * Style "carnet de chantier" : photo avant + photo après côte à
+ * côte, séparateur jaune au milieu, métadonnées (lieu + type) en bas.
+ *
+ * Section unique : aucun autre template n'utilise des avant/après.
+ */
+import data from '../../../data/templates/bernard.json';
+
+const beforeAfter = [
+  { ...data.realisations[0], avant: data.info.photoAvant1, apres: data.info.photoApres1, avantAlt: 'Salle de bain avant rénovation, faïence ancienne abîmée', apresAlt: 'Même salle de bain après rénovation, douche italienne moderne' },
+  { ...data.realisations[1], avant: data.info.photoAvant2, apres: data.info.photoApres2, avantAlt: 'Chauffe-eau électrique vétuste avant remplacement', apresAlt: 'Chauffe-eau solaire installé sur la toiture' },
+];
+---
+
+<section id="realisations" class="relative bg-bp-ciment py-20 md:py-28 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="mb-14 md:mb-16 max-w-3xl">
+      <p class="scroll-reveal inline-flex items-center gap-3 text-[11px] sm:text-xs font-archivo font-bold uppercase tracking-[0.32em] text-bp-anthracite/70">
+        <span class="block w-8 h-[3px] bg-bp-jaune" aria-hidden="true"></span>
+        <span>Réalisations récentes</span>
+      </p>
+      <h2 class="scroll-reveal mt-5 font-bebas uppercase text-bp-anthracite leading-[0.95] tracking-tight" style="font-size: clamp(40px, 6vw, 80px);">
+        Avant,<br/>
+        <span class="text-bp-anthracite/60">après.</span>
+      </h2>
+    </header>
+
+    <div class="space-y-12 md:space-y-16">
+      {beforeAfter.map((r, i) => (
+        <article class="scroll-reveal border-2 border-bp-anthracite bg-bp-blanc" style={`transition-delay: ${i * 80}ms`}>
+
+          <!-- Header chantier en bandeau anthracite -->
+          <header class="flex flex-wrap items-baseline justify-between gap-3 px-6 md:px-8 py-4 bg-bp-anthracite text-bp-blanc">
+            <div class="flex items-baseline gap-4">
+              <span class="font-bebas text-bp-jaune tabular-nums" style="font-size: 24px;">#{String(i + 1).padStart(2, '0')}</span>
+              <h3 class="font-bebas uppercase tracking-wide text-bp-blanc" style="font-size: 24px;">
+                {r.type}
+              </h3>
+            </div>
+            <p class="font-archivo text-sm uppercase tracking-[0.2em] text-bp-blanc/65">{r.lieu}</p>
+          </header>
+
+          <!-- Photos avant/après côte à côte avec séparateur jaune -->
+          <div class="grid grid-cols-2">
+            <figure class="relative">
+              <span class="absolute top-3 left-3 z-10 inline-flex items-center px-3 h-8 bg-bp-anthracite text-bp-blanc font-archivo font-bold text-xs uppercase tracking-[0.22em]">
+                Avant
+              </span>
+              <div class="relative overflow-hidden bg-bp-acier" style="aspect-ratio: 4/3;">
+                <img
+                  src={r.avant}
+                  alt={r.avantAlt}
+                  loading="lazy"
+                  decoding="async"
+                  class="absolute inset-0 w-full h-full object-cover"
+                />
+              </div>
+            </figure>
+
+            <figure class="relative border-l-[3px] border-bp-jaune">
+              <span class="absolute top-3 left-3 z-10 inline-flex items-center px-3 h-8 bg-bp-jaune text-bp-anthracite font-archivo font-bold text-xs uppercase tracking-[0.22em]">
+                Après
+              </span>
+              <div class="relative overflow-hidden bg-bp-acier" style="aspect-ratio: 4/3;">
+                <img
+                  src={r.apres}
+                  alt={r.apresAlt}
+                  loading="lazy"
+                  decoding="async"
+                  class="absolute inset-0 w-full h-full object-cover"
+                />
+              </div>
+            </figure>
+          </div>
+
+          <!-- Description -->
+          <p class="px-6 md:px-8 py-5 font-archivo text-bp-anthracite/85 leading-[1.7]" style="font-size: 15px;">
+            {r.description}
+          </p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
