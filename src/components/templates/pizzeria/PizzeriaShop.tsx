@@ -421,7 +421,7 @@ Mon téléphone : ${data.telephone}${noteLine}`;
                 </div>
 
                 <div>
-                  <label for="po-note" class={labelBase}>Note <span class="text-pizza-charbon/50 font-normal">(allergies, demandes spéciales)</span></label>
+                  <label for="po-note" class={labelBase}>Note <span class="text-pizza-charbon/70 font-normal">(allergies, demandes spéciales)</span></label>
                   <textarea id="po-note" name="note" rows={3}
                     class={`${inputBase} ${inputOk} h-auto py-3 resize-y`}
                     placeholder="Sans olives, peu de piment…"
