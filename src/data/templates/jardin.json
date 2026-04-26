@@ -1,0 +1,109 @@
+{
+  "info": {
+    "nom": "Le jardin perdu",
+    "wordmark1": "Le jardin",
+    "wordmark2": "perdu",
+    "tagline": "Cuisine du marché,",
+    "taglineItalic": "tables sous les filaos.",
+    "intro": "Restaurant gastronomique au cœur de Saint-Denis. Carte du jour, produits locaux, cave à vins choisie. Une parenthèse végétale, une cuisine à la pointe.",
+    "adresse": "8 rue de Paris, 97400 Saint-Denis",
+    "telephone": "+262 692 00 00 00",
+    "telephoneHref": "+262692000000",
+    "email": "reservation@lejardinperdu.re",
+    "whatsapp": "262692000000",
+    "whatsappDisplay": "+262 692 00 00 00",
+    "annee": 2014,
+    "horaires": [
+      { "jour": "Lundi", "ouvert": false, "label": "Fermé" },
+      { "jour": "Mardi – Vendredi", "ouvert": true, "label": "Déjeuner 12h–14h · Dîner 19h–22h" },
+      { "jour": "Samedi", "ouvert": true, "label": "Dîner uniquement 19h–23h" },
+      { "jour": "Dimanche", "ouvert": true, "label": "Brunch 11h–15h" }
+    ],
+    "dressCode": "Tenue correcte exigée le soir · pas de short ni de tongs",
+    "voiturier": "Voiturier les vendredi et samedi soir",
+    "photoHero": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1100&q=85",
+    "photoHeroAlt": "Salle de restaurant gastronomique, lumière chaude du soir",
+    "photoSalle": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=85",
+    "photoSalleAlt": "Salle principale du restaurant, tables dressées",
+    "photoChef": "https://images.unsplash.com/photo-1583394293214-28ded15ee4cf?w=900&q=85",
+    "photoChefAlt": "Augustin Lambert, chef au travail dans sa cuisine",
+    "photoAmbiance1": "https://images.unsplash.com/photo-1592861956120-e524fc739696?w=900&q=85",
+    "photoAmbiance1Alt": "Détail d'un dressage gastronomique",
+    "photoAmbiance2": "https://images.unsplash.com/photo-1507914372368-b2b085b925a1?w=900&q=85",
+    "photoAmbiance2Alt": "Terrasse sous les filaos, en début de soirée",
+    "photoAmbiance3": "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=900&q=85",
+    "photoAmbiance3Alt": "Bar à vins du restaurant, bouteilles alignées"
+  },
+  "manifesto": "Une cuisine simple en apparence, exigeante dans le détail. On ne cherche pas à impressionner — on cherche à faire plaisir.",
+  "chiffres": [
+    { "valeur": "1",     "label": "étoile au guide Michelin",      "depuis": "depuis 2019" },
+    { "valeur": "2014",  "label": "année d'ouverture",              "depuis": "à Saint-Denis" },
+    { "valeur": "42",    "label": "couverts par service",            "depuis": "intimité préservée" }
+  ],
+  "carte": {
+    "entrees": {
+      "titre": "Entrées",
+      "items": [
+        { "id": "carpaccio",  "nom": "Carpaccio de bonite",            "description": "Mangue verte, gingembre frais, huile de sésame.",                            "prix": 22, "signature": true },
+        { "id": "velour",     "nom": "Velouté de cresson de Salazie",  "description": "Émulsion au lait de coco, chips de cabri.",                                  "prix": 18, "signature": false },
+        { "id": "tartare",    "nom": "Tartare de thon rouge",          "description": "Citron vert, avocat, échalote rose, huile de combava.",                       "prix": 24, "signature": false },
+        { "id": "burrata",    "nom": "Burrata des hauts",              "description": "Tomates anciennes du Tampon, basilic, vinaigre balsamique vieilli.",            "prix": 20, "signature": false }
+      ]
+    },
+    "plats": {
+      "titre": "Plats",
+      "items": [
+        { "id": "cabri",      "nom": "Filet de cabri du Tampon",       "description": "Jus à la vanille de Bourbon, pommes grenailles confites, jeunes pousses.",      "prix": 38, "signature": true },
+        { "id": "espadon",    "nom": "Pavé d'espadon mi-cuit",         "description": "Risotto carnaroli au safran, émulsion citronnée.",                            "prix": 34, "signature": false },
+        { "id": "poulet",     "nom": "Suprême de poulet fermier",      "description": "Embeurrée de chouchou, sauce au piment doux.",                                "prix": 28, "signature": false },
+        { "id": "ravioles",   "nom": "Ravioles ouvertes du potager",   "description": "Légumes du marché, pesto de brèdes, copeaux de tome locale.",                "prix": 26, "signature": false }
+      ]
+    },
+    "desserts": {
+      "titre": "Desserts",
+      "items": [
+        { "id": "souffle",    "nom": "Soufflé chaud aux fleurs d'hibiscus", "description": "Sorbet vanille, coulis de letchi.",                                       "prix": 14, "signature": true },
+        { "id": "ananas",     "nom": "Ananas Victoria rôti",           "description": "Caramel au rhum vieux, sablé breton, glace au gingembre.",                    "prix": 12, "signature": false },
+        { "id": "chocolat",   "nom": "Cœur coulant chocolat noir",      "description": "70% Madagascar, sorbet cacao, brisures de fève.",                            "prix": 13, "signature": false },
+        { "id": "fromages",   "nom": "Plateau de fromages affinés",    "description": "Sélection française et locale, pain aux noix.",                              "prix": 15, "signature": false }
+      ]
+    }
+  },
+  "menus": [
+    { "id": "marche",   "nom": "Menu du marché",   "sousTitre": "Entrée + plat + dessert", "prix": 58, "service": "déjeuner uniquement" },
+    { "id": "decouverte", "nom": "Menu découverte",  "sousTitre": "5 services + accords vins en option", "prix": 95, "service": "midi & soir" },
+    { "id": "carteblanche", "nom": "Carte blanche au chef", "sousTitre": "7 services surprise + accords sommelier", "prix": 145, "service": "soir uniquement, sur réservation 48h" }
+  ],
+  "chef": {
+    "nom": "Augustin Lambert",
+    "titre": "Chef · propriétaire",
+    "bio": "Formé chez Anne-Sophie Pic à Valence puis chez Manish Mehrotra à New Delhi, Augustin pose ses couteaux à Saint-Denis en 2014. Sa cuisine cherche le juste milieu entre la rigueur française et la générosité créole.",
+    "signature": "Mon plat signature, c'est le filet de cabri du Tampon, juste rosé, avec un jus monté à la vanille de Bourbon. Un seul plat dit qui je suis."
+  },
+  "vins": [
+    { "id": "v1", "nom": "Sancerre blanc · Domaine Vacheron",   "annee": "2021", "region": "Loire",      "accord": "Tartare de thon, ravioles" },
+    { "id": "v2", "nom": "Chablis 1er cru · Vaillons",          "annee": "2020", "region": "Bourgogne",  "accord": "Carpaccio de bonite" },
+    { "id": "v3", "nom": "Châteauneuf-du-Pape · Beaucastel",    "annee": "2018", "region": "Rhône",      "accord": "Filet de cabri, plats sauce" },
+    { "id": "v4", "nom": "Hermitage rouge · Chave",             "annee": "2017", "region": "Rhône",      "accord": "Service spécial, sur demande" },
+    { "id": "v5", "nom": "Champagne Selosse · Substance",       "annee": "NV",   "region": "Champagne",  "accord": "Apéritif, fromages" },
+    { "id": "v6", "nom": "Rhum vieux Savanna · Lontan",         "annee": "12 ans", "region": "Réunion",  "accord": "Ananas rôti, fin de repas" }
+  ],
+  "occasions": [
+    { "id": "decouverte",  "label": "Découverte" },
+    { "id": "couple",      "label": "Dîner en couple" },
+    { "id": "anniversaire","label": "Anniversaire" },
+    { "id": "affaires",    "label": "Repas d'affaires" },
+    { "id": "famille",     "label": "Famille" }
+  ],
+  "creneaux": [
+    { "id": "midi",   "label": "Déjeuner",     "horaire": "12h – 14h" },
+    { "id": "soir",   "label": "Dîner",        "horaire": "19h – 22h" },
+    { "id": "tardif", "label": "Dîner tardif", "horaire": "21h – 23h" }
+  ],
+  "services": [
+    { "titre": "Carte du marché", "description": "La carte change toutes les semaines selon les arrivages du marché et les saisons." },
+    { "titre": "Cave d'auteur",   "description": "Plus de 200 références. Notre sommelier vous guide vers le bon accord, du pichet au grand cru." },
+    { "titre": "Menu sur-mesure", "description": "Allergies, régime particulier, occasion spéciale ? Précisez à la réservation, on s'adapte." },
+    { "titre": "Privatisation",   "description": "Possibilité de privatiser la salle ou la terrasse pour vos événements (à partir de 30 personnes)." }
+  ]
+}

@@ -31,7 +31,8 @@ type PageKey =
   | 'styleguide'
   | 'templatePizzeria'
   | 'templateSalon'
-  | 'templateSpa';
+  | 'templateSpa'
+  | 'templateResto';
 
 const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'> & { noindex?: boolean; ogImage?: string; ogImageAlt?: string }> = {
   home: {
@@ -95,6 +96,13 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
     description:
       'Aperçu du template "Spa massage" proposé par 9site4 : rituels signature, soins du visage et du corps, réservation directe. Site fictif de démonstration.',
     canonical: '/templates/spa',
+    noindex: true,
+  },
+  templateResto: {
+    title: 'Le jardin perdu — Restaurant gastronomique à Saint-Denis (Réunion) | Template 9site4',
+    description:
+      'Aperçu du template "Restaurant" proposé par 9site4 : carte du chef, menus, cave à vins, réservation en ligne. Site fictif de démonstration.',
+    canonical: '/templates/resto',
     noindex: true,
   },
 };

@@ -22,6 +22,9 @@ export default {
     {
       pattern: /^(bg|text|ring|border|from|to|via)-(spa-blanc|spa-creme|spa-sable|spa-rose|spa-terracotta|spa-argile|spa-cacao)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
     },
+    {
+      pattern: /^(bg|text|ring|border|from|to|via)-(resto-blanc|resto-blanc-casse|resto-bleu-poudre|resto-bleu-roi|resto-bleu-encre|resto-or)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
+    },
   ],
   theme: {
     extend: {
@@ -65,6 +68,15 @@ export default {
         'spa-terracotta': '#C67B5C',  // terracotta — accents, titres italiques
         'spa-argile':     '#9C5B3D',  // argile foncé — CTA (AAA white-on-argile)
         'spa-cacao':      '#3A2F26',  // brun chocolat profond — texte / sections sombres
+        // Palette restaurant (template /templates/resto — Le jardin perdu)
+        // Style "Magazine éditorial gastronomique" : bleu roi + blanc cassé + or laiton.
+        // Distinct du bleu lavande #91A6FF de la charte 9site4 main.
+        'resto-blanc':       '#FFFFFF',
+        'resto-blanc-casse': '#F5EFE3',  // warm cream papier — fond principal
+        'resto-bleu-poudre': '#DDE3F0',  // papier bleuté très doux — micro-accents
+        'resto-bleu-roi':    '#1E3A8A',  // bleu royal profond saturé — accents, titres, CTA
+        'resto-bleu-encre':  '#131A36',  // bleu encre très sombre — fonds dark, texte
+        'resto-or':          '#C8A65E',  // or laiton vieilli — filets ornementaux uniquement
       },
       fontFamily: {
         sora: ['Sora', 'system-ui', 'sans-serif'],
@@ -74,6 +86,8 @@ export default {
         'dm-sans': ['"DM Sans"', 'system-ui', 'sans-serif'],
         lora: ['Lora', 'Georgia', 'serif'],
         raleway: ['Raleway', 'system-ui', 'sans-serif'],
+        bodoni: ['"Bodoni Moda"', 'Didot', 'Georgia', 'serif'],
+        manrope: ['Manrope', 'system-ui', 'sans-serif'],
       },
       fontSize: {
         'hero': ['clamp(2.5rem, 5vw + 1rem, 5rem)', { lineHeight: '1.05', letterSpacing: '-0.02em' }],
