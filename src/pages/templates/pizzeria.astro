@@ -10,11 +10,15 @@ import { getSeo } from '../../lib/seo';
 
 import PizzeriaHeader from '../../components/templates/pizzeria/PizzeriaHeader.astro';
 import PizzeriaFooter from '../../components/templates/pizzeria/PizzeriaFooter.astro';
+import PizzeriaHeader from '../../components/templates/pizzeria/PizzeriaHeader.astro';
+import PizzeriaFooter from '../../components/templates/pizzeria/PizzeriaFooter.astro';
 import HeroImmersive from '../../components/templates/pizzeria/HeroImmersive.astro';
 import StatBanner from '../../components/templates/pizzeria/StatBanner.astro';
 import Manifesto from '../../components/templates/pizzeria/Manifesto.astro';
 import Gallery from '../../components/templates/pizzeria/Gallery.astro';
 import Testimonials from '../../components/templates/pizzeria/Testimonials.astro';
+import PizzeriaShop from '../../components/templates/pizzeria/PizzeriaShop.tsx';
+import data from '../../data/templates/pizzeria.json';
 ---
 
 <BaseLayout seo={getSeo('templatePizzeria')} bare={true}>
@@ -25,13 +29,15 @@ import Testimonials from '../../components/templates/pizzeria/Testimonials.astro
     <StatBanner />
     <Manifesto />
 
-    <!-- Sections suivantes (Carte + Commander) : commit 4 -->
-    <section id="carte" class="py-32 px-6 text-center text-pizza-charbon/50 bg-white">
-      <p class="italic">— Section Carte à venir (commit 4) —</p>
-    </section>
-    <section id="commander" class="py-32 px-6 text-center text-pizza-charbon/50">
-      <p class="italic">— Section Commander à venir (commit 5) —</p>
-    </section>
+    <!-- Carte + Commander (1 island Preact qui partage le panier) -->
+    <PizzeriaShop
+      client:load
+      info={{ nom: data.info.nom, whatsapp: data.info.whatsapp }}
+      menu={data.menu}
+      items={data.items}
+      zones={data.zones}
+      horairesCommande={data.horairesCommande}
+    />
 
     <Gallery />
     <Testimonials />
