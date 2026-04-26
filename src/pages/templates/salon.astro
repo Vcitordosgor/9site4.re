@@ -1,0 +1,49 @@
+---
+import '@fontsource/playfair-display/400.css';
+import '@fontsource/playfair-display/600.css';
+import '@fontsource/playfair-display/700.css';
+import '@fontsource/playfair-display/400-italic.css';
+import '@fontsource/playfair-display/600-italic.css';
+import '@fontsource/playfair-display/700-italic.css';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getSeo } from '../../lib/seo';
+
+import SalonHeader from '../../components/templates/salon/SalonHeader.astro';
+import HeroSplit from '../../components/templates/salon/HeroSplit.astro';
+import Manifesto from '../../components/templates/salon/Manifesto.astro';
+---
+
+<BaseLayout seo={getSeo('templateSalon')} bare={true}>
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <link rel="dns-prefetch" href="https://images.unsplash.com" />
+    <link
+      rel="preload"
+      as="image"
+      href="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=900&q=85"
+      fetchpriority="high"
+    />
+  </Fragment>
+
+  <SalonHeader />
+
+  <main id="top" class="bg-salon-creme text-salon-encre font-inter">
+    <HeroSplit />
+    <Manifesto />
+
+    <!-- Sections suivantes : à venir -->
+    <section id="prestations" class="py-32 px-6 text-center text-salon-encre/40 bg-salon-creme">
+      <p class="italic">— Prestations à venir (commit 3) —</p>
+    </section>
+    <section id="pourquoi" class="py-32 px-6 text-center text-salon-encre/40 bg-salon-blanc">
+      <p class="italic">— Pourquoi nous choisir à venir (commit 3) —</p>
+    </section>
+    <section id="rendez-vous" class="py-32 px-6 text-center text-salon-encre/40 bg-salon-creme">
+      <p class="italic">— Formulaire RDV à venir (commit 4) —</p>
+    </section>
+    <section id="trouver" class="py-32 px-6 text-center text-salon-encre/40 bg-salon-encre text-salon-creme/40">
+      <p class="italic">— Trouver le salon à venir (commit 5) —</p>
+    </section>
+  </main>
+</BaseLayout>

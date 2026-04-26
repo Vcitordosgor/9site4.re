@@ -1,0 +1,140 @@
+---
+/**
+ * SalonHeader — fixed transparent au top, salon-encre/blur au scroll.
+ * Wordmark composé "Maison · Aurore", nav minimale, CTA cuivre.
+ */
+import data from '../../../data/templates/salon.json';
+
+const navLinks = [
+  { href: '#prestations', label: 'Prestations' },
+  { href: '#rendez-vous', label: 'Rendez-vous' },
+  { href: '#trouver',     label: 'Trouver' },
+];
+---
+
+<header
+  id="salon-header"
+  data-scrolled="false"
+  class="fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-out"
+>
+  <div class="max-w-content mx-auto px-6 md:px-10 h-20 flex items-center justify-between gap-6">
+    <a href="#top" class="flex items-baseline gap-2 leading-none transition-colors">
+      <span class="font-inter font-medium uppercase tracking-[0.25em] text-sm text-salon-encre/85" data-wordmark-1>{data.info.wordmark1}</span>
+      <span class="font-playfair italic font-bold text-2xl text-salon-cuivre" data-wordmark-2>{data.info.wordmark2}</span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-9" aria-label="Navigation">
+      {navLinks.map((l) => (
+        <a
+          href={l.href}
+          class="text-xs uppercase tracking-[0.25em] font-medium text-salon-encre/75 hover:text-salon-cuivre transition-colors"
+          data-nav-link
+        >
+          {l.label}
+        </a>
+      ))}
+    </nav>
+
+    <a
+      href="#rendez-vous"
+      class="hidden md:inline-flex items-center justify-center h-10 px-5 text-xs font-semibold uppercase tracking-[0.18em] rounded-full bg-salon-cuivre text-salon-blanc hover:bg-[#974D34] transition-all"
+    >
+      Prendre rendez-vous
+    </a>
+
+    <button
+      id="salon-menu-toggle"
+      type="button"
+      data-open="false"
+      aria-expanded="false"
+      aria-controls="salon-mobile-menu"
+      aria-label="Ouvrir le menu"
+      class="group md:hidden relative w-10 h-10 -mr-2 flex items-center justify-center"
+    >
+      <span class="sr-only">Menu</span>
+      <span class="relative flex flex-col items-center justify-center gap-1.5 w-6 h-6">
+        <span class="block w-6 h-0.5 bg-salon-encre rounded-full transition-transform duration-300 origin-center group-data-[open=true]:rotate-45 group-data-[open=true]:translate-y-2" data-bar></span>
+        <span class="block w-6 h-0.5 bg-salon-encre rounded-full transition-opacity duration-200 group-data-[open=true]:opacity-0" data-bar></span>
+        <span class="block w-6 h-0.5 bg-salon-encre rounded-full transition-transform duration-300 origin-center group-data-[open=true]:-rotate-45 group-data-[open=true]:-translate-y-2" data-bar></span>
+      </span>
+    </button>
+  </div>
+</header>
+
+<!-- Menu mobile plein écran -->
+<div
+  id="salon-mobile-menu"
+  data-open="false"
+  aria-hidden="true"
+  inert
+  class="md:hidden fixed inset-0 top-20 z-40 bg-salon-creme transition-opacity duration-300 ease-out data-[open=false]:opacity-0 data-[open=false]:pointer-events-none data-[open=true]:opacity-100"
+>
+  <nav class="h-full flex flex-col px-6 pt-10 pb-10" aria-label="Navigation mobile">
+    <ul class="flex-1 flex flex-col gap-2">
+      {navLinks.map((l) => (
+        <li>
+          <a href={l.href} data-salon-link class="block py-4 font-playfair font-semibold text-salon-encre hover:text-salon-cuivre transition-colors" style="font-size: 32px;">
+            {l.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+    <div class="pt-6 border-t border-salon-encre/10">
+      <a
+        href="#rendez-vous"
+        data-salon-link
+        class="inline-flex items-center justify-center w-full h-14 text-sm font-semibold uppercase tracking-[0.2em] rounded-full bg-salon-cuivre text-salon-blanc hover:bg-[#974D34] transition-all"
+      >
+        Prendre rendez-vous
+      </a>
+    </div>
+  </nav>
+</div>
+
+<style>
+  /* Header transparent au top, opaque au scroll */
+  #salon-header[data-scrolled='true'] {
+    background-color: rgb(245 240 232 / 0.92);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    backdrop-filter: saturate(180%) blur(12px);
+    box-shadow: 0 1px 0 rgb(201 165 106 / 0.20);
+  }
+</style>
+
+<script>
+  const header = document.getElementById('salon-header');
+  if (header) {
+    const update = () => {
+      header.dataset.scrolled = String(window.scrollY > 60);
+    };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+  }
+
+  const toggle = document.getElementById('salon-menu-toggle');
+  const menu = document.getElementById('salon-mobile-menu');
+  if (toggle && menu) {
+    const setOpen = (open: boolean) => {
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.dataset.open = String(open);
+      toggle.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+      menu.dataset.open = String(open);
+      menu.setAttribute('aria-hidden', String(!open));
+      if (open) menu.removeAttribute('inert');
+      else menu.setAttribute('inert', '');
+      document.body.style.overflow = open ? 'hidden' : '';
+    };
+    toggle.addEventListener('click', () => {
+      setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+    menu.querySelectorAll<HTMLElement>('[data-salon-link]').forEach((el) => {
+      el.addEventListener('click', () => setOpen(false));
+    });
+  }
+</script>
