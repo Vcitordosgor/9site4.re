@@ -3,51 +3,38 @@ import data from '../../../data/templates/pizzeria.json';
 const year = new Date().getFullYear();
 ---
 
-<footer class="bg-pizza-charbon text-pizza-creme">
+<footer class="bg-pizza-charbon text-white">
   <div class="max-w-content mx-auto px-6 pt-14 pb-8">
-    <div class="grid gap-10 md:grid-cols-3">
+    <div class="grid gap-8 md:grid-cols-2 items-end">
       <div>
-        <p class="font-playfair font-bold text-3xl text-pizza-bois">{data.info.nom}</p>
-        <p class="mt-3 text-sm text-pizza-creme/80 leading-relaxed max-w-xs">
-          {data.info.tagline} — pâte 48h, four à bois, produits péi.
+        <p class="font-playfair font-bold text-3xl md:text-[32px] text-pizza-rouge leading-none">{data.info.nom}</p>
+        <p class="mt-3 font-playfair italic text-white/60 text-base">
+          {data.info.tagline} — depuis {data.info.annee}
         </p>
       </div>
 
-      <div>
-        <p class="text-xs uppercase tracking-wider font-semibold text-pizza-bois">Contact</p>
-        <ul class="mt-4 space-y-2 text-sm">
+      <div class="md:text-right text-sm">
+        <ul class="space-y-1 text-white/70">
           <li>{data.info.adresse}</li>
           <li>
-            <a href={`tel:${data.info.telephoneHref}`} class="hover:text-pizza-tomate transition-colors">
+            <a href={`tel:${data.info.telephoneHref}`} class="hover:text-pizza-rouge transition-colors">
               {data.info.telephone}
             </a>
           </li>
-          <li>
-            <a href={`mailto:${data.info.email}`} class="hover:text-pizza-tomate transition-colors break-all">
-              {data.info.email}
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <div>
-        <p class="text-xs uppercase tracking-wider font-semibold text-pizza-bois">Horaires</p>
-        <ul class="mt-4 space-y-2 text-sm">
-          {data.info.horaires.map((h) => (
-            <li>
-              <span class="font-semibold">{h.jour}</span>
-              <span class="text-pizza-creme/70"> · {h.label}</span>
-            </li>
-          ))}
         </ul>
       </div>
     </div>
 
-    <div class="mt-12 pt-6 border-t border-pizza-creme/10 flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-xs text-pizza-creme/60">
-      <p>© {year} {data.info.nom} — Tous droits réservés.</p>
+    <!-- Séparateur doré -->
+    <div class="mt-10 h-px" aria-hidden="true"
+         style="background: linear-gradient(to right, transparent, #B8860B 30%, #B8860B 70%, transparent);">
+    </div>
+
+    <div class="mt-6 flex flex-col-reverse md:flex-row md:items-center md:justify-between gap-3 text-xs text-white/40">
+      <p>© {year} {data.info.nom}. Tous droits réservés.</p>
       <p>
         Site créé par
-        <a href="/" class="font-semibold text-pizza-bois hover:text-pizza-tomate transition-colors underline-offset-4 hover:underline">
+        <a href="/" class="font-semibold text-white/70 hover:text-pizza-rouge transition-colors underline-offset-4 hover:underline">
           9site4
         </a>
       </p>
