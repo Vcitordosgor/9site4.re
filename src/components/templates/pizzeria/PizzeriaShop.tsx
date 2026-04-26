@@ -44,6 +44,9 @@ export default function PizzeriaShop({ info, menu, items, zones, horairesCommand
   const [feedback, setFeedback] = useState<string | null>(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [type, setType] = useState<'emporter' | 'livraison'>('emporter');
+  const categoryKeys = Object.keys(menu);
+  const [activeTab, setActiveTab] = useState<string>(categoryKeys[0]);
+  const [pulseCart, setPulseCart] = useState(false);
 
   const lines = useMemo<CartLine[]>(
     () =>
@@ -68,6 +71,8 @@ export default function PizzeriaShop({ info, menu, items, zones, horairesCommand
 
   const addItem = (id: string, name?: string) => {
     setCart((c) => ({ ...c, [id]: (c[id] || 0) + 1 }));
+    setPulseCart(true);
+    setTimeout(() => setPulseCart(false), 600);
     if (name) {
       setFeedback(`+ ${name} ajouté`);
       setTimeout(() => setFeedback(null), 1800);
@@ -167,65 +172,83 @@ Mon téléphone : ${data.telephone}${noteLine}`;
 
   return (
     <div>
-      {/* ============== MENU ============== */}
-      <section id="menu" class="relative px-6 py-20 md:py-28 bg-pizza-creme">
+      {/* ============== MENU (fond charbon, onglets, items en lignes) ============== */}
+      <section id="menu" class="relative px-6 py-20 md:py-28 bg-pizza-charbon text-white">
         <div class="mx-auto max-w-content">
           <div class="text-center max-w-2xl mx-auto">
             <p class="inline-flex items-center px-3 py-1.5 rounded-full bg-pizza-tomate text-white text-xs font-semibold uppercase tracking-wide">
               Notre carte
             </p>
-            <h2 class="mt-4 font-playfair font-bold text-4xl md:text-6xl text-pizza-charbon leading-tight">
+            <h2 class="mt-4 font-playfair font-bold text-4xl md:text-6xl leading-tight">
               Préparées à la commande
             </h2>
-            <p class="mt-5 text-lg text-pizza-charbon/75 leading-relaxed">
+            <p class="mt-5 text-lg text-white/70 leading-relaxed">
               Cuites au feu de bois, prêtes en 25 minutes.
             </p>
           </div>
 
-          {Object.entries(menu).map(([catKey, cat]) => {
+          {/* Onglets pill — scroll horizontal en mobile */}
+          <div class="mt-12 -mx-6 overflow-x-auto scrollbar-none">
+            <div class="px-6 flex justify-start md:justify-center gap-2 min-w-max">
+              {categoryKeys.map((key) => {
+                const isActive = activeTab === key;
+                return (
+                  <button
+                    key={key}
+                    type="button"
+                    onClick={() => setActiveTab(key)}
+                    aria-pressed={isActive}
+                    class={`inline-flex items-center justify-center h-11 px-5 text-sm font-semibold rounded-full whitespace-nowrap transition-all duration-200 cursor-pointer ${
+                      isActive
+                        ? 'bg-pizza-tomate text-white shadow-card'
+                        : 'bg-white/5 text-white/70 ring-1 ring-white/10 hover:text-white hover:ring-white/30'
+                    }`}
+                  >
+                    {menu[key].titre}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Catégorie active */}
+          {categoryKeys.map((catKey) => {
+            if (catKey !== activeTab) return null;
             const catItems = items.filter((i) => i.categorie === catKey);
             return (
-              <div class="mt-16">
-                <div class="border-b-2 border-pizza-bois/30 pb-3 mb-6">
-                  <h3 class="font-playfair font-bold text-2xl md:text-3xl text-pizza-tomate">{cat.titre}</h3>
-                  <p class="mt-1 text-sm text-pizza-charbon/70 italic">{cat.description}</p>
-                </div>
-                <ul class="grid sm:grid-cols-2 gap-4">
+              <div key={catKey} class="mt-12 menu-tab-content">
+                <p class="text-center italic text-white/60 mb-8">{menu[catKey].description}</p>
+                <ul class="max-w-3xl mx-auto divide-y divide-white/10">
                   {catItems.map((item) => {
                     const inCart = cart[item.id] || 0;
                     return (
                       <li
                         key={item.id}
-                        class="group bg-white rounded-2xl ring-1 ring-pizza-charbon/10 p-5 transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-card-hover hover:ring-pizza-tomate/30"
+                        class="group flex items-center gap-4 py-5 px-3 -mx-3 rounded-xl transition-colors duration-150 md:hover:bg-white/[0.04]"
                       >
-                        <div class="flex items-start gap-4">
-                          <div class="flex-1 min-w-0">
-                            <div class="flex items-baseline gap-3">
-                              <h4 class="font-playfair font-semibold text-lg text-pizza-charbon">{item.nom}</h4>
-                              <span class="flex-1 border-b border-dotted border-pizza-charbon/25 mb-1.5"></span>
-                              <span class="font-playfair font-bold text-lg text-pizza-tomate whitespace-nowrap">{item.prix}€</span>
-                            </div>
-                            {item.description && (
-                              <p class="mt-1.5 text-sm text-pizza-charbon/70 leading-relaxed">{item.description}</p>
+                        <div class="flex-1 min-w-0">
+                          <div class="flex items-baseline gap-3 flex-wrap">
+                            <h4 class="font-playfair font-semibold text-lg md:text-xl text-white">{item.nom}</h4>
+                            {inCart > 0 && (
+                              <span class="inline-flex items-center justify-center min-w-5 h-5 px-1.5 rounded-full bg-pizza-tomate text-white text-xs font-bold">
+                                ×{inCart}
+                              </span>
                             )}
                           </div>
+                          {item.description && (
+                            <p class="mt-1 text-sm text-white/65 leading-relaxed">{item.description}</p>
+                          )}
                         </div>
+                        <span class="font-playfair font-bold text-lg md:text-xl text-pizza-bois whitespace-nowrap shrink-0">{item.prix}€</span>
                         <button
                           type="button"
                           onClick={() => addItem(item.id, item.nom)}
-                          class="mt-3 inline-flex items-center gap-2 h-9 px-4 text-sm font-semibold rounded-full bg-pizza-tomate text-white hover:bg-[#A50D26] transition-all cursor-pointer"
+                          class="shrink-0 w-11 h-11 flex items-center justify-center rounded-full bg-pizza-tomate text-white hover:bg-[#A50D26] active:scale-95 transition-all cursor-pointer shadow-card"
                           aria-label={`Ajouter ${item.nom} au panier`}
                         >
-                          {inCart > 0 ? (
-                            <span class="flex items-center gap-1.5">
-                              <span>+ Ajouter</span>
-                              <span class="inline-flex items-center justify-center min-w-5 h-5 px-1.5 rounded-full bg-white text-pizza-tomate text-xs font-bold">
-                                {inCart}
-                              </span>
-                            </span>
-                          ) : (
-                            <span>+ Ajouter</span>
-                          )}
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+                            <path d="M12 5v14M5 12h14" />
+                          </svg>
                         </button>
                       </li>
                     );
@@ -241,7 +264,7 @@ Mon téléphone : ${data.telephone}${noteLine}`;
           <div
             role="status"
             aria-live="polite"
-            class="fixed bottom-24 md:bottom-8 left-1/2 -translate-x-1/2 z-40 px-5 py-3 rounded-full bg-pizza-charbon text-pizza-creme text-sm font-semibold shadow-card-hover animate-feedback"
+            class="fixed bottom-24 md:bottom-8 left-1/2 -translate-x-1/2 z-40 px-5 py-3 rounded-full bg-pizza-tomate text-white text-sm font-semibold shadow-card-hover animate-feedback"
           >
             {feedback}
           </div>
