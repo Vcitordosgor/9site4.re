@@ -74,7 +74,8 @@
     "categorie": "artisans",
     "sousTitre": "Réalisations, services et devis personnalisé",
     "moduleInclus": "Devis",
-    "slug": "paysagiste"
+    "slug": "paysagiste",
+    "previewUrl": "/templates/paysagiste"
   },
   {
     "id": 10,
