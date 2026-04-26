@@ -21,53 +21,47 @@ const waUrl = `https://wa.me/${data.info.whatsapp}?text=${encodeURIComponent('Bo
   <main id="top" class="bg-pizza-creme text-pizza-charbon font-inter">
 
     <!-- ============== HERO ============== -->
-    <section class="relative overflow-hidden px-6 pt-12 pb-16 md:pt-20 md:pb-28">
-      <!-- Halo chaud -->
-      <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
-        <div class="absolute -top-32 -left-24 w-[42rem] h-[42rem] rounded-full"
-             style="background: radial-gradient(50% 50% at 50% 50%, rgb(200 16 46 / 0.15) 0%, transparent 70%);">
+    <section class="relative overflow-hidden bg-pizza-charbon text-white px-6 pt-12 pb-20 md:pt-20 md:pb-32">
+      <!-- Halo rouge gauche derrière le texte -->
+      <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div class="absolute -top-32 -left-32 w-[44rem] h-[44rem] rounded-full"
+             style="background: radial-gradient(50% 50% at 50% 50%, rgb(200 16 46 / 0.20) 0%, transparent 70%);">
         </div>
-        <div class="absolute top-32 -right-24 w-[36rem] h-[36rem] rounded-full"
-             style="background: radial-gradient(50% 50% at 50% 50%, rgb(184 134 11 / 0.20) 0%, transparent 70%);">
+        <div class="absolute -bottom-32 -right-32 w-[44rem] h-[44rem] rounded-full"
+             style="background: radial-gradient(50% 50% at 50% 50%, rgb(184 134 11 / 0.15) 0%, transparent 70%);">
         </div>
       </div>
 
-      <!-- Texture papier kraft très subtile -->
-      <div class="pointer-events-none absolute inset-0 -z-10 opacity-[0.04]" aria-hidden="true"
-           style="background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E&quot;);">
-      </div>
+      <div class="relative mx-auto max-w-content grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+        <!-- Pizza : en haut sur mobile, à droite sur desktop -->
+        <div class="hero-pizza order-1 lg:order-2 lg:col-span-5 w-[300px] md:w-[400px] lg:w-full mx-auto">
+          <PizzaAnimation />
+        </div>
 
-      <div class="mx-auto max-w-content grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-        <div class="lg:col-span-7">
+        <!-- Texte -->
+        <div class="hero-text order-2 lg:order-1 lg:col-span-7 text-center lg:text-left">
           <p class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-pizza-tomate text-white text-xs font-semibold uppercase tracking-wide">
-            <span class="inline-block w-1.5 h-1.5 rounded-full bg-white"></span>
+            <span class="inline-block w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
             Saint-Paul · La Réunion
           </p>
-          <h1 class="mt-5 font-playfair font-bold text-5xl md:text-7xl text-pizza-charbon leading-[1.05]">
-            {data.info.nom}
-            <span class="block text-pizza-tomate italic font-semibold text-3xl md:text-5xl mt-2">
+          <h1 class="mt-6 font-playfair font-bold leading-[1.05]" style="font-size: clamp(48px, 7vw, 88px);">
+            <span class="block text-white">{data.info.nom}</span>
+            <span class="block text-pizza-tomate italic font-semibold mt-1" style="font-size: clamp(28px, 4.5vw, 56px);">
               {data.info.tagline}
             </span>
           </h1>
-          <p class="mt-6 text-lg md:text-xl text-pizza-charbon/80 leading-relaxed max-w-xl">
+          <p class="mt-6 text-lg text-white/70 leading-relaxed max-w-xl mx-auto lg:mx-0">
             Pâte fermentée 48h, produits frais, four à bois.
-            <br class="hidden sm:inline" />
             Commande en ligne, prête en 25 min.
           </p>
-          <div class="mt-10 flex flex-col sm:flex-row gap-4">
+          <div class="mt-10 flex flex-col sm:flex-row gap-4 lg:justify-start justify-center">
             <a href="#menu" class="inline-flex items-center justify-center h-14 px-8 text-lg font-semibold rounded-full bg-pizza-tomate text-white shadow-card hover:bg-[#A50D26] hover:shadow-card-hover transition-all">
               Voir le menu
             </a>
-            <a href={waUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-3 h-14 px-8 text-lg font-semibold rounded-full bg-[#075E54] text-white shadow-card hover:bg-[#054039] hover:shadow-card-hover transition-all">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.92 0-2.65-1.03-5.14-2.91-7.01zm-7.01 15.24h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.21 8.21 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83 8.25 8.25 0 0 1-8.24 8.22zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06a6.79 6.79 0 0 1-2-1.23 7.5 7.5 0 0 1-1.38-1.72c-.14-.25 0-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42l-.48-.01a.93.93 0 0 0-.67.31 2.81 2.81 0 0 0-.87 2.08c0 1.23.89 2.41 1.02 2.58.12.17 1.76 2.7 4.27 3.78.6.26 1.06.41 1.42.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z" />
-              </svg>
-              Commander sur WhatsApp
+            <a href="#commander" class="inline-flex items-center justify-center h-14 px-8 text-lg font-semibold rounded-full bg-white text-pizza-charbon shadow-card hover:bg-pizza-creme hover:shadow-card-hover transition-all">
+              Commander
             </a>
           </div>
-        </div>
-        <div class="lg:col-span-5">
-          <PizzaAnimation />
         </div>
       </div>
     </section>
@@ -181,7 +175,26 @@ const waUrl = `https://wa.me/${data.info.whatsapp}?text=${encodeURIComponent('Bo
   .animate-feedback {
     animation: feedback 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   }
+
+  /* Animations d'entrée hero — texte de gauche, pizza de droite, décalées */
+  @keyframes hero-text-in {
+    from { opacity: 0; transform: translateX(-32px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes hero-pizza-in {
+    from { opacity: 0; transform: translateX(32px) scale(0.92); }
+    to { opacity: 1; transform: translateX(0) scale(1); }
+  }
+  .hero-text {
+    animation: hero-text-in 800ms cubic-bezier(0.22, 1, 0.36, 1) backwards;
+    animation-delay: 100ms;
+  }
+  .hero-pizza {
+    animation: hero-pizza-in 800ms cubic-bezier(0.22, 1, 0.36, 1) backwards;
+    animation-delay: 300ms;
+  }
+
   @media (prefers-reduced-motion: reduce) {
-    .animate-feedback { animation: none; opacity: 1; }
+    .animate-feedback, .hero-text, .hero-pizza { animation: none; opacity: 1; transform: none; }
   }
 </style>
