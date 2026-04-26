@@ -17,7 +17,7 @@ export default {
       pattern: /^(bg|text|ring|border|from|to|via)-(pizza-tomate|pizza-basilic|pizza-creme|pizza-charbon|pizza-bois|pizza-rouge|pizza-vert|pizza-dore|pizza-blanc|pizza-marron)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
     },
     {
-      pattern: /^(bg|text|ring|border|from|to|via)-(salon-creme|salon-encre|salon-cuivre|salon-laiton|salon-blanc)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
+      pattern: /^(bg|text|ring|border|from|to|via)-(salon-blanc|salon-noir|salon-vert|salon-vert-clair|salon-gris|salon-creme|salon-encre|salon-cuivre|salon-laiton)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
     },
   ],
   theme: {
@@ -41,16 +41,24 @@ export default {
         'pizza-bois':    '#B89766',
         'pizza-marron':  '#8B4513',
         // Palette salon de coiffure (template /templates/salon)
-        'salon-creme':   '#F5F0E8',  // beige chaud, fond principal
-        'salon-encre':   '#2A2520',  // charbon brun chaud, textes/fonds sombres
-        'salon-cuivre':  '#9A4F36',  // accent / CTA — cuivre profond (AA-safe sur creme et blanc)
-        'salon-laiton':  '#C9A56A',  // doré filets, micro-détails
-        'salon-blanc':   '#FFFFFF',
+        // Refonte : noir / blanc / vert forêt
+        'salon-blanc':      '#FFFFFF',
+        'salon-noir':       '#0A0A0A',
+        'salon-vert':       '#2D4A3A',  // vert forêt foncé — accent / CTA (AAA sur blanc)
+        'salon-vert-clair': '#5C7A66',  // vert clair — filets, micro-détails (AA sur blanc)
+        'salon-gris':       '#F5F5F5',  // gris très clair — sections alternées
+        // Anciens tokens conservés pour rétrocompat éventuelle
+        'salon-creme':      '#F5F0E8',
+        'salon-encre':      '#0A0A0A',  // alias désormais identique au noir
+        'salon-cuivre':     '#2D4A3A',  // alias désormais identique au vert
+        'salon-laiton':     '#5C7A66',  // alias désormais identique au vert clair
       },
       fontFamily: {
         sora: ['Sora', 'system-ui', 'sans-serif'],
         inter: ['Inter', 'system-ui', 'sans-serif'],
         playfair: ['"Playfair Display"', 'Georgia', 'serif'],
+        fraunces: ['Fraunces', 'Georgia', 'serif'],
+        'dm-sans': ['"DM Sans"', 'system-ui', 'sans-serif'],
       },
       fontSize: {
         'hero': ['clamp(2.5rem, 5vw + 1rem, 5rem)', { lineHeight: '1.05', letterSpacing: '-0.02em' }],

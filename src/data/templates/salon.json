@@ -1,15 +1,15 @@
 {
   "info": {
-    "nom": "Maison Aurore",
-    "wordmark1": "Maison",
-    "wordmark2": "Aurore",
+    "nom": "Meg & Dan",
+    "wordmark1": "Meg",
+    "wordmark2": "Dan",
     "tagline": "Le geste juste,",
     "taglineItalic": "la coupe qui révèle.",
-    "intro": "Maison Aurore. Coupe, coloration, soin profond — dans un atelier pensé pour vos cheveux.",
+    "intro": "Meg & Dan, duo de coiffeurs à Saint-Gilles. Coupe, coloration, soin profond — un atelier pensé pour vos cheveux.",
     "adresse": "8 rue des Filaos, 97434 Saint-Gilles-les-Bains",
     "telephone": "+262 692 00 00 00",
     "telephoneHref": "+262692000000",
-    "email": "contact@maison-aurore.re",
+    "email": "contact@megetdan.re",
     "whatsapp": "262692000000",
     "whatsappDisplay": "+262 692 00 00 00",
     "annee": 2019,
@@ -25,10 +25,10 @@
       "Salon mixte, tous types de cheveux",
       "Sans rendez-vous le mardi"
     ],
-    "photoHero": "https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=900&q=85",
-    "photoHeroAlt": "Portrait — coupe contemporaine soignée",
+    "photoHero": "https://images.unsplash.com/photo-1562322140-8baeececf3df?w=900&q=85",
+    "photoHeroAlt": "Coupe de cheveux soignée, vue de dos",
     "photoSalon": "https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=900&q=85",
-    "photoSalonAlt": "Intérieur du salon Maison Aurore"
+    "photoSalonAlt": "Intérieur du salon Meg & Dan"
   },
   "manifesto": "On prend le temps de comprendre vos cheveux avant de prendre les ciseaux.",
   "prestations": {
