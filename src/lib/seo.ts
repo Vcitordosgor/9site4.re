@@ -29,7 +29,8 @@ type PageKey =
   | 'legal'
   | 'notFound'
   | 'styleguide'
-  | 'templatePizzeria';
+  | 'templatePizzeria'
+  | 'templateSalon';
 
 const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'> & { noindex?: boolean; ogImage?: string; ogImageAlt?: string }> = {
   home: {
@@ -79,6 +80,13 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
     description:
       'Aperçu du template "Pizzeria" proposé par 9site4 : menu, panier, commande WhatsApp. Site fictif de démonstration.',
     canonical: '/templates/pizzeria',
+    noindex: true,
+  },
+  templateSalon: {
+    title: 'Maison Aurore — Salon de coiffure à Saint-Gilles (Réunion) | Template 9site4',
+    description:
+      'Aperçu du template "Salon de coiffure" proposé par 9site4 : prestations, prise de rendez-vous, infos pratiques. Site fictif de démonstration.',
+    canonical: '/templates/salon',
     noindex: true,
   },
 };

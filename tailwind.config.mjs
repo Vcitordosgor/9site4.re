@@ -16,6 +16,9 @@ export default {
     {
       pattern: /^(bg|text|ring|border|from|to|via)-(pizza-tomate|pizza-basilic|pizza-creme|pizza-charbon|pizza-bois|pizza-rouge|pizza-vert|pizza-dore|pizza-blanc|pizza-marron)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
     },
+    {
+      pattern: /^(bg|text|ring|border|from|to|via)-(salon-creme|salon-encre|salon-cuivre|salon-laiton|salon-blanc)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
+    },
   ],
   theme: {
     extend: {
@@ -37,6 +40,12 @@ export default {
         'pizza-basilic': '#2D6A4F',
         'pizza-bois':    '#B89766',
         'pizza-marron':  '#8B4513',
+        // Palette salon de coiffure (template /templates/salon)
+        'salon-creme':   '#F5F0E8',  // beige chaud, fond principal
+        'salon-encre':   '#2A2520',  // charbon brun chaud, textes/fonds sombres
+        'salon-cuivre':  '#B5694D',  // accent / CTA — ton coloration cuivrée
+        'salon-laiton':  '#C9A56A',  // doré filets, micro-détails
+        'salon-blanc':   '#FFFFFF',
       },
       fontFamily: {
         sora: ['Sora', 'system-ui', 'sans-serif'],
