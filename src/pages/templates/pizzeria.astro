@@ -67,27 +67,47 @@ const waUrl = `https://wa.me/${data.info.whatsapp}?text=${encodeURIComponent('Bo
     </section>
 
     <!-- ============== À PROPOS ============== -->
-    <section class="relative px-6 py-20 md:py-28 bg-white">
-      <div class="mx-auto max-w-content text-center">
-        <p class="inline-flex items-center px-3 py-1.5 rounded-full bg-pizza-basilic text-white text-xs font-semibold uppercase tracking-wide">
-          Notre histoire
-        </p>
-        <h2 class="scroll-reveal mt-4 font-playfair font-bold text-4xl md:text-6xl text-pizza-charbon leading-tight">
-          Une pizzeria familiale, depuis {data.info.annee}
-        </h2>
-        <p class="scroll-reveal mt-6 text-lg text-pizza-charbon/80 leading-relaxed max-w-2xl mx-auto">
-          Lé O, c'est l'histoire d'une famille passée par Naples, tombée amoureuse de l'île.
-          On y fait la pizza comme on l'a apprise là-bas — pâte fermentée 48 heures, four à
-          bois d'eucalyptus, et une touche péi qui change tout.
-        </p>
+    <section class="relative overflow-hidden px-6 py-20 md:py-28 bg-pizza-creme">
+      <!-- Texture de lin très subtile (lignes diagonales fines) -->
+      <div class="pointer-events-none absolute inset-0 opacity-[0.03]" aria-hidden="true"
+           style="background-image: repeating-linear-gradient(45deg, #1A1A1A 0, #1A1A1A 1px, transparent 1px, transparent 8px), repeating-linear-gradient(-45deg, #1A1A1A 0, #1A1A1A 1px, transparent 1px, transparent 12px);">
+      </div>
 
-        <ul class="mt-14 grid sm:grid-cols-3 gap-5 max-w-4xl mx-auto">
-          {data.engagements.map((e) => (
-            <li class="scroll-reveal bg-pizza-creme rounded-2xl ring-1 ring-pizza-bois/30 p-7 text-left">
-              <h3 class="font-playfair font-bold text-xl text-pizza-tomate">{e.titre}</h3>
-              <p class="mt-2 text-sm text-pizza-charbon/80 leading-relaxed">{e.texte}</p>
-            </li>
-          ))}
+      <div class="relative mx-auto max-w-content">
+        <div class="text-center max-w-2xl mx-auto">
+          <p class="inline-flex items-center px-3 py-1.5 rounded-full bg-pizza-basilic text-white text-xs font-semibold uppercase tracking-wide">
+            Notre histoire
+          </p>
+          <h2 class="scroll-reveal mt-4 font-playfair font-bold text-4xl md:text-6xl text-pizza-charbon leading-tight">
+            Une pizzeria familiale, depuis {data.info.annee}
+          </h2>
+          <p class="scroll-reveal mt-6 text-lg text-pizza-charbon/80 leading-relaxed max-w-2xl mx-auto">
+            Lé O, c'est l'histoire d'une famille passée par Naples, tombée amoureuse de l'île.
+            On y fait la pizza comme on l'a apprise là-bas — pâte fermentée 48 heures, four à
+            bois d'eucalyptus, et une touche péi qui change tout.
+          </p>
+        </div>
+
+        <ul class="mt-14 grid sm:grid-cols-3 gap-5 max-w-5xl mx-auto">
+          {data.engagements.map((e, i) => {
+            const icons = [
+              // Timer (Pâte 48h)
+              '<circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5"/><path d="M9 2h6"/><path d="M12 5v2"/>',
+              // Flame (Four à bois)
+              '<path d="M8.5 14.5A2.5 2.5 0 0 0 11 17a7 7 0 0 0 4-4c1-2 1.5-3 1.5-4.5A4.5 4.5 0 0 0 12 4a4 4 0 0 0-4 4c0 .67.27 1.51.5 2 .5 1 1 2 1 3a2 2 0 0 1-2 2c-.6 0-1.5-.5-1-1.5z"/>',
+              // Leaf (Produits locaux)
+              '<path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/>',
+            ];
+            return (
+              <li class="scroll-reveal relative bg-white rounded-2xl shadow-card p-7 pl-9 border-l-4 border-pizza-tomate transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover" style={`transition-delay: ${i * 80}ms`}>
+                <span class="flex w-12 h-12 rounded-xl bg-pizza-tomate/10 text-pizza-tomate items-center justify-center">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={icons[i]} />
+                </span>
+                <h3 class="mt-5 font-playfair font-bold text-xl text-pizza-tomate">{e.titre}</h3>
+                <p class="mt-2 text-sm text-pizza-charbon/85 leading-relaxed">{e.texte}</p>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </section>
