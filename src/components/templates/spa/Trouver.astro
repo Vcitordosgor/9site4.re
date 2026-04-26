@@ -1,0 +1,93 @@
+---
+/**
+ * Trouver — adresse, horaires et engagements en single column.
+ * Layout simple et centré, très différent du salon (split 5/7 cols
+ * avec photo + infos en blocks).
+ */
+import data from '../../../data/templates/spa.json';
+const waUrl = `https://wa.me/${data.info.whatsapp}?text=${encodeURIComponent(
+  'Bonjour, je voudrais des informations sur ' + data.info.nom + '.'
+)}`;
+---
+
+<section id="trouver" class="relative bg-spa-sable py-24 md:py-36 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <!-- Header de section -->
+    <header class="text-center max-w-2xl mx-auto mb-16 md:mb-20">
+      <p class="scroll-reveal text-xs sm:text-sm uppercase tracking-[0.4em] text-spa-terracotta font-raleway font-medium">
+        Nous trouver
+      </p>
+      <h2 class="scroll-reveal mt-5 font-lora text-spa-cacao leading-[1.1]" style="font-size: clamp(32px, 5vw, 52px);">
+        À Saint-Pierre,
+        <span class="italic font-medium text-spa-terracotta">au pied du boulevard.</span>
+      </h2>
+    </header>
+
+    <!-- 4 engagements en grille 2×2 sobre, sans cards -->
+    <ul class="grid sm:grid-cols-2 gap-x-12 gap-y-10 md:gap-y-12 max-w-3xl mx-auto mb-20 md:mb-24">
+      {data.engagements.map((eng, i) => (
+        <li class="scroll-reveal" style={`transition-delay: ${i * 60}ms`}>
+          <div class="flex items-baseline gap-3">
+            <span class="font-lora italic text-spa-terracotta tabular-nums" style="font-size: 18px;">{String(i + 1).padStart(2, '0')}</span>
+            <h3 class="font-lora text-spa-cacao" style="font-size: 22px;">{eng.titre}</h3>
+          </div>
+          <p class="mt-2 ml-9 text-spa-cacao/75 font-raleway text-sm leading-[1.8]">
+            {eng.description}
+          </p>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Adresse + contact + horaires en 3 colonnes desktop, empilées mobile -->
+    <div class="grid lg:grid-cols-3 gap-12 lg:gap-16 max-w-5xl mx-auto">
+
+      <div class="scroll-reveal text-center lg:text-left">
+        <p class="text-xs uppercase tracking-[0.3em] text-spa-terracotta font-raleway font-medium mb-3">Adresse</p>
+        <p class="font-lora text-spa-cacao leading-snug" style="font-size: 18px;">
+          {data.info.adresse}
+        </p>
+        <p class="mt-4 text-xs uppercase tracking-[0.22em] text-spa-cacao/55 font-raleway">Accès</p>
+        <p class="mt-1 text-sm text-spa-cacao/75 font-raleway">Parking gratuit · à 200m de la mer.</p>
+      </div>
+
+      <div class="scroll-reveal text-center lg:text-left">
+        <p class="text-xs uppercase tracking-[0.3em] text-spa-terracotta font-raleway font-medium mb-3">Contact direct</p>
+        <ul class="space-y-2.5">
+          <li>
+            <a href={`tel:${data.info.telephoneHref}`} class="font-lora text-spa-cacao hover:text-spa-terracotta transition-colors tabular-nums" style="font-size: 18px;">
+              {data.info.telephone}
+            </a>
+          </li>
+          <li>
+            <a href={waUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 font-lora text-spa-cacao hover:text-spa-terracotta transition-colors" style="font-size: 18px;">
+              WhatsApp
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.92 0-2.65-1.03-5.14-2.91-7.01zm-7.01 15.24h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.21 8.21 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83 8.25 8.25 0 0 1-8.24 8.22z"/>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href={`mailto:${data.info.email}`} class="font-lora text-spa-cacao hover:text-spa-terracotta transition-colors break-all" style="font-size: 16px;">
+              {data.info.email}
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="scroll-reveal text-center lg:text-left">
+        <p class="text-xs uppercase tracking-[0.3em] text-spa-terracotta font-raleway font-medium mb-3">Horaires</p>
+        <ul class="divide-y divide-spa-cacao/10">
+          {data.info.horaires.map((h) => (
+            <li class="flex items-baseline justify-between gap-4 py-2">
+              <span class="font-lora text-spa-cacao text-sm sm:text-base">{h.jour}</span>
+              <span class:list={['text-sm tabular-nums font-raleway', h.ouvert ? 'text-spa-cacao/75' : 'italic text-spa-cacao/45']}>
+                {h.label}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

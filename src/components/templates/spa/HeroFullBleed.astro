@@ -1,0 +1,100 @@
+---
+/**
+ * HeroFullBleed — photo full-bleed verticale (mains/huile),
+ * overlay gradient cacao bas, tagline en grand Lora italique au centre.
+ * Différent du salon (split) et de la pizzeria (cards).
+ */
+import data from '../../../data/templates/spa.json';
+---
+
+<section class="relative isolate overflow-hidden bg-spa-cacao text-spa-creme min-h-[100svh] flex items-center justify-center">
+  <!-- Photo full-bleed -->
+  <img
+    src={data.info.photoHero}
+    alt={data.info.photoHeroAlt}
+    width="1400"
+    height="1750"
+    loading="eager"
+    decoding="async"
+    fetchpriority="high"
+    class="absolute inset-0 w-full h-full object-cover"
+  />
+
+  <!-- Overlay double gradient pour lisibilité -->
+  <div class="absolute inset-0 bg-spa-cacao/40" aria-hidden="true"></div>
+  <div class="absolute inset-0" aria-hidden="true"
+       style="background: linear-gradient(180deg, rgb(58 47 38 / 0.55) 0%, rgb(58 47 38 / 0.20) 35%, rgb(58 47 38 / 0.20) 65%, rgb(58 47 38 / 0.85) 100%);">
+  </div>
+
+  <!-- Ornement vague terracotta supérieur -->
+  <svg class="hero-ornament absolute top-24 sm:top-28 lg:top-32 left-1/2 -translate-x-1/2 w-24 h-6 text-spa-terracotta/85" viewBox="0 0 100 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+    <path d="M2 12 Q 15 4, 28 12 T 54 12 T 80 12 T 98 12" />
+  </svg>
+
+  <!-- Contenu centré -->
+  <div class="relative z-10 max-w-3xl mx-auto px-6 md:px-10 text-center pt-28 pb-20">
+    <p class="hero-eyebrow text-xs sm:text-sm uppercase tracking-[0.4em] text-spa-rose font-raleway font-light">
+      Spa &amp; massages · Saint-Pierre
+    </p>
+
+    <h1 class="hero-title mt-8 sm:mt-10 font-lora text-spa-creme leading-[1.05]" style="font-size: clamp(40px, 7.5vw, 88px);">
+      <span class="block font-medium">{data.info.tagline}</span>
+      <span class="block italic font-normal text-spa-rose mt-1 sm:mt-2">{data.info.taglineItalic}</span>
+    </h1>
+
+    <p class="hero-intro mt-8 sm:mt-10 max-w-xl mx-auto text-spa-creme/85 font-raleway font-light leading-[1.8]" style="font-size: 17px;">
+      {data.info.intro}
+    </p>
+
+    <div class="hero-cta mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+      <a
+        href="#reservation"
+        class="inline-flex items-center justify-center h-14 px-8 text-sm font-semibold uppercase tracking-[0.22em] rounded-full bg-spa-terracotta text-spa-blanc hover:bg-spa-argile transition-colors"
+        style="box-shadow: 0 12px 32px rgb(58 47 38 / 0.45);"
+      >
+        Réserver un soin
+      </a>
+      <a
+        href="#soins"
+        class="inline-flex items-center justify-center h-14 px-8 text-sm font-semibold uppercase tracking-[0.22em] rounded-full bg-transparent text-spa-creme ring-1 ring-spa-creme/40 hover:ring-spa-creme hover:bg-spa-creme/5 transition-all"
+      >
+        Découvrir nos soins
+      </a>
+    </div>
+  </div>
+
+  <!-- Indicateur scroll bas -->
+  <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-spa-creme/55" aria-hidden="true">
+    <span class="text-[10px] uppercase tracking-[0.3em] font-raleway">Scroll</span>
+    <span class="block w-px h-10 bg-spa-creme/40 hero-scroll"></span>
+  </div>
+</section>
+
+<style>
+  /* Animations d'entrée — apparition contemplative très lente */
+  @keyframes spa-rise {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes spa-pulse {
+    0%   { transform: scaleY(0.4); transform-origin: top; opacity: 0.4; }
+    50%  { transform: scaleY(1);   opacity: 1; }
+    100% { transform: scaleY(0.4); transform-origin: bottom; opacity: 0.4; }
+  }
+
+  .hero-ornament { animation: spa-rise 1100ms cubic-bezier(0.16, 1, 0.3, 1) backwards; animation-delay: 200ms; }
+  .hero-eyebrow  { animation: spa-rise 900ms cubic-bezier(0.16, 1, 0.3, 1) backwards;  animation-delay: 350ms; }
+  .hero-title    { animation: spa-rise 1200ms cubic-bezier(0.16, 1, 0.3, 1) backwards; animation-delay: 500ms; }
+  .hero-intro    { animation: spa-rise 1000ms cubic-bezier(0.16, 1, 0.3, 1) backwards; animation-delay: 750ms; }
+  .hero-cta      { animation: spa-rise 900ms cubic-bezier(0.16, 1, 0.3, 1) backwards;  animation-delay: 950ms; }
+  .hero-scroll   { animation: spa-pulse 2400ms ease-in-out infinite; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-ornament, .hero-eyebrow, .hero-title, .hero-intro, .hero-cta {
+      animation: none !important;
+      opacity: 1;
+      transform: none !important;
+    }
+    .hero-scroll { animation: none !important; }
+  }
+</style>

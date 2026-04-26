@@ -1,0 +1,85 @@
+---
+import '@fontsource/lora/400.css';
+import '@fontsource/lora/500.css';
+import '@fontsource/lora/600.css';
+import '@fontsource/lora/700.css';
+import '@fontsource/lora/400-italic.css';
+import '@fontsource/lora/500-italic.css';
+import '@fontsource/lora/600-italic.css';
+import '@fontsource/raleway/300.css';
+import '@fontsource/raleway/400.css';
+import '@fontsource/raleway/500.css';
+import '@fontsource/raleway/600.css';
+import '@fontsource/raleway/700.css';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getSeo } from '../../lib/seo';
+import spaData from '../../data/templates/spa.json';
+
+import SpaHeader from '../../components/templates/spa/SpaHeader.astro';
+import HeroFullBleed from '../../components/templates/spa/HeroFullBleed.astro';
+import Manifesto from '../../components/templates/spa/Manifesto.astro';
+import Rituel from '../../components/templates/spa/Rituel.astro';
+import Soins from '../../components/templates/spa/Soins.astro';
+import Cabines from '../../components/templates/spa/Cabines.astro';
+import Reservation from '../../components/templates/spa/Reservation.astro';
+import Trouver from '../../components/templates/spa/Trouver.astro';
+import CTAFinal from '../../components/templates/spa/CTAFinal.astro';
+import SpaFooter from '../../components/templates/spa/SpaFooter.astro';
+---
+
+<BaseLayout seo={getSeo('templateSpa')} bare={true}>
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <link rel="dns-prefetch" href="https://images.unsplash.com" />
+    <link
+      rel="preload"
+      as="image"
+      href={spaData.info.photoHero}
+      fetchpriority="high"
+    />
+  </Fragment>
+
+  <SpaHeader />
+
+  <main id="top" class="bg-spa-creme text-spa-cacao font-raleway">
+    <HeroFullBleed />
+    <Manifesto />
+    <Rituel />
+    <Soins />
+    <Cabines />
+    <Reservation />
+    <Trouver />
+    <CTAFinal />
+  </main>
+
+  <SpaFooter />
+
+  <!-- Sticky bottom CTA mobile-only — caché quand on est dans la section réservation -->
+  <a
+    id="spa-sticky-cta"
+    href="#reservation"
+    data-visible="false"
+    class="md:hidden fixed bottom-4 inset-x-4 z-40 inline-flex items-center justify-center h-14 px-6 text-sm font-semibold uppercase tracking-[0.2em] rounded-full bg-spa-argile text-spa-blanc transition-all duration-300 ease-out data-[visible=false]:opacity-0 data-[visible=false]:translate-y-4 data-[visible=false]:pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0"
+    style="box-shadow: 0 12px 32px rgb(58 47 38 / 0.40);"
+  >
+    Réserver un soin
+  </a>
+
+  <script>
+    /* Sticky CTA mobile : visible après scroll du hero, caché en section Réservation */
+    const sticky = document.getElementById('spa-sticky-cta');
+    const reservation = document.getElementById('reservation');
+    if (sticky && reservation) {
+      const updateSticky = () => {
+        const rect = reservation.getBoundingClientRect();
+        const inReservation = rect.top < window.innerHeight && rect.bottom > 80;
+        const scrolledPastHero = window.scrollY > 480;
+        sticky.dataset.visible = String(scrolledPastHero && !inReservation);
+      };
+      updateSticky();
+      window.addEventListener('scroll', updateSticky, { passive: true });
+      window.addEventListener('resize', updateSticky, { passive: true });
+    }
+  </script>
+</BaseLayout>

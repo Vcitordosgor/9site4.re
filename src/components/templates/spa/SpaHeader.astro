@@ -1,0 +1,141 @@
+---
+/**
+ * SpaHeader — header transparent au top, opaque/blur cream au scroll.
+ * Wordmark "Elio spa" en Lora italique, couleur terracotta. CTA argile.
+ * Mobile : drawer plein écran fond crème, items en grand Lora.
+ */
+import data from '../../../data/templates/spa.json';
+
+const navLinks = [
+  { href: '#rituel',     label: 'Notre rituel' },
+  { href: '#soins',      label: 'Soins' },
+  { href: '#reservation', label: 'Réserver' },
+  { href: '#trouver',    label: 'Trouver' },
+];
+---
+
+<header
+  id="spa-header"
+  data-scrolled="false"
+  class="fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-out"
+>
+  <div class="max-w-content mx-auto px-6 md:px-10 h-16 md:h-20 flex items-center justify-between gap-6">
+    <a href="#top" class="flex items-baseline gap-2 leading-none transition-colors">
+      <span class="font-lora italic font-medium text-2xl md:text-[26px] text-spa-terracotta">{data.info.wordmark1}</span>
+      <span class="font-raleway font-light uppercase tracking-[0.3em] text-xs text-spa-cacao/80">{data.info.wordmark2}</span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-8 lg:gap-10" aria-label="Navigation">
+      {navLinks.map((l) => (
+        <a
+          href={l.href}
+          class="text-xs uppercase tracking-[0.25em] font-medium text-spa-cacao/75 hover:text-spa-terracotta transition-colors"
+        >
+          {l.label}
+        </a>
+      ))}
+    </nav>
+
+    <a
+      href="#reservation"
+      class="hidden md:inline-flex items-center justify-center h-10 px-5 text-xs font-semibold uppercase tracking-[0.18em] rounded-full bg-spa-argile text-spa-blanc hover:bg-spa-cacao transition-colors"
+    >
+      Réserver
+    </a>
+
+    <button
+      id="spa-menu-toggle"
+      type="button"
+      data-open="false"
+      aria-expanded="false"
+      aria-controls="spa-mobile-menu"
+      aria-label="Ouvrir le menu"
+      class="group md:hidden relative w-10 h-10 -mr-2 flex items-center justify-center"
+    >
+      <span class="sr-only">Menu</span>
+      <span class="relative flex flex-col items-center justify-center gap-1.5 w-6 h-6">
+        <span class="block w-6 h-0.5 bg-spa-cacao rounded-full transition-transform duration-300 origin-center group-data-[open=true]:rotate-45 group-data-[open=true]:translate-y-2"></span>
+        <span class="block w-6 h-0.5 bg-spa-cacao rounded-full transition-opacity duration-200 group-data-[open=true]:opacity-0"></span>
+        <span class="block w-6 h-0.5 bg-spa-cacao rounded-full transition-transform duration-300 origin-center group-data-[open=true]:-rotate-45 group-data-[open=true]:-translate-y-2"></span>
+      </span>
+    </button>
+  </div>
+</header>
+
+<!-- Menu mobile plein écran -->
+<div
+  id="spa-mobile-menu"
+  data-open="false"
+  aria-hidden="true"
+  inert
+  class="md:hidden fixed inset-0 top-16 z-40 bg-spa-creme transition-opacity duration-300 ease-out data-[open=false]:opacity-0 data-[open=false]:pointer-events-none data-[open=true]:opacity-100"
+>
+  <nav class="h-full flex flex-col px-6 pt-10 pb-10" aria-label="Navigation mobile">
+    <ul class="flex-1 flex flex-col gap-2">
+      {navLinks.map((l) => (
+        <li>
+          <a href={l.href} data-spa-link class="block py-4 font-lora italic text-spa-cacao hover:text-spa-terracotta transition-colors" style="font-size: 32px;">
+            {l.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+    <div class="pt-6 border-t border-spa-cacao/10">
+      <a
+        href="#reservation"
+        data-spa-link
+        class="inline-flex items-center justify-center w-full h-14 text-sm font-semibold uppercase tracking-[0.2em] rounded-full bg-spa-argile text-spa-blanc hover:bg-spa-cacao transition-colors"
+      >
+        Réserver un soin
+      </a>
+    </div>
+  </nav>
+</div>
+
+<style>
+  /* Header transparent au top, opaque au scroll */
+  #spa-header[data-scrolled='true'] {
+    background-color: rgb(245 240 225 / 0.92);
+    -webkit-backdrop-filter: saturate(160%) blur(12px);
+    backdrop-filter: saturate(160%) blur(12px);
+    box-shadow: 0 1px 0 rgb(58 47 38 / 0.08);
+  }
+</style>
+
+<script>
+  const header = document.getElementById('spa-header');
+  if (header) {
+    const update = () => {
+      header.dataset.scrolled = String(window.scrollY > 60);
+    };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+  }
+
+  const toggle = document.getElementById('spa-menu-toggle');
+  const menu = document.getElementById('spa-mobile-menu');
+  if (toggle && menu) {
+    const setOpen = (open: boolean) => {
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.dataset.open = String(open);
+      toggle.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+      menu.dataset.open = String(open);
+      menu.setAttribute('aria-hidden', String(!open));
+      if (open) menu.removeAttribute('inert');
+      else menu.setAttribute('inert', '');
+      document.body.style.overflow = open ? 'hidden' : '';
+    };
+    toggle.addEventListener('click', () => {
+      setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+    menu.querySelectorAll<HTMLElement>('[data-spa-link]').forEach((el) => {
+      el.addEventListener('click', () => setOpen(false));
+    });
+  }
+</script>

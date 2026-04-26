@@ -1,0 +1,30 @@
+---
+/**
+ * Manifesto — citation Lora italique grande sur fond crème,
+ * cadrée par deux ornements vague terracotta (différent du salon
+ * qui utilise des filets droits verts).
+ */
+import data from '../../../data/templates/spa.json';
+---
+
+<section class="relative bg-spa-creme py-24 md:py-36 px-6 md:px-10">
+  <div class="max-w-3xl mx-auto text-center">
+    <!-- Ornement vague supérieur -->
+    <svg class="scroll-reveal mx-auto w-20 h-5 text-spa-terracotta mb-12" viewBox="0 0 100 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+      <path d="M2 10 Q 17 2, 32 10 T 62 10 T 92 10" />
+      <circle cx="50" cy="10" r="1.5" fill="currentColor" stroke="none" />
+    </svg>
+
+    <blockquote class="scroll-reveal">
+      <p class="font-lora italic text-spa-cacao leading-[1.35]" style="font-size: clamp(26px, 4vw, 44px);">
+        « {data.manifesto} »
+      </p>
+    </blockquote>
+
+    <!-- Ornement vague inférieur miroir -->
+    <svg class="scroll-reveal mx-auto w-20 h-5 text-spa-terracotta mt-12 rotate-180" viewBox="0 0 100 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+      <path d="M2 10 Q 17 2, 32 10 T 62 10 T 92 10" />
+      <circle cx="50" cy="10" r="1.5" fill="currentColor" stroke="none" />
+    </svg>
+  </div>
+</section>

@@ -1,0 +1,50 @@
+---
+/**
+ * Rituel — 4 étapes verticales numérotées, reliées par un filet vertical
+ * pointillé terracotta. Très différent du Pourquoi du salon qui est en
+ * grille de 4 colonnes.
+ */
+import data from '../../../data/templates/spa.json';
+---
+
+<section id="rituel" class="relative bg-spa-sable py-24 md:py-36 px-6 md:px-10">
+  <div class="max-w-3xl mx-auto">
+
+    <!-- Header de section -->
+    <header class="text-center mb-16 md:mb-20">
+      <p class="scroll-reveal text-xs sm:text-sm uppercase tracking-[0.4em] text-spa-terracotta font-raleway font-medium">
+        Notre rituel
+      </p>
+      <h2 class="scroll-reveal mt-5 font-lora text-spa-cacao leading-[1.1]" style="font-size: clamp(32px, 5vw, 52px);">
+        Quatre temps,
+        <span class="italic font-medium text-spa-terracotta">un seul fil.</span>
+      </h2>
+      <p class="scroll-reveal mt-6 max-w-xl mx-auto text-spa-cacao/75 font-raleway leading-[1.8]">
+        Un parcours pensé pour décélérer en douceur. Chaque étape prend le
+        temps qu'il faut — c'est ça, le vrai luxe.
+      </p>
+    </header>
+
+    <!-- 4 étapes verticales avec filet pointillé reliant -->
+    <ol class="relative">
+      <!-- Filet vertical pointillé terracotta — caché sur la dernière étape -->
+      <span class="absolute left-7 md:left-9 top-12 bottom-12 border-l border-dashed border-spa-terracotta/45" aria-hidden="true"></span>
+
+      {data.rituel.map((etape, i) => (
+        <li class="scroll-reveal relative pl-20 md:pl-24 pb-12 md:pb-16 last:pb-0" style={`transition-delay: ${i * 80}ms`}>
+          <!-- Numéro étape dans cercle crème -->
+          <span class="absolute left-0 top-0 flex items-center justify-center w-14 h-14 md:w-[72px] md:h-[72px] rounded-full bg-spa-creme ring-1 ring-spa-terracotta/40 font-lora italic text-spa-terracotta" style="font-size: clamp(20px, 2.5vw, 26px);">
+            {etape.etape}
+          </span>
+
+          <h3 class="font-lora text-spa-cacao leading-tight" style="font-size: clamp(24px, 3vw, 32px);">
+            {etape.titre}
+          </h3>
+          <p class="mt-3 text-spa-cacao/75 font-raleway leading-[1.8]">
+            {etape.description}
+          </p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

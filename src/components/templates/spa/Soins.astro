@@ -1,0 +1,111 @@
+---
+/**
+ * Soins — 4 catégories en parcours linéaire vertical.
+ * Différent du salon (grille 2 cols) : ici chaque soin est sur sa
+ * propre ligne avec icône botanique, nom, description longue, durée
+ * et tarif. Soins signature mis en avant via badge terracotta.
+ */
+import data from '../../../data/templates/spa.json';
+const categories = Object.entries(data.soins);
+
+// Icônes botaniques fines pour chaque catégorie
+const categoryIcons: Record<string, string> = {
+  // massages : main / paume
+  massages: '<path d="M9 11V6a2 2 0 0 1 4 0v5"/><path d="M13 6V4a2 2 0 0 1 4 0v7"/><path d="M17 6a2 2 0 0 1 4 0v6a8 8 0 0 1-8 8H7a8 8 0 0 1-8-8 2 2 0 0 1 4 0"/><path d="M5 11V9a2 2 0 0 1 4 0v2"/>',
+  // visage : fleur d'hibiscus stylisée
+  visage:   '<circle cx="12" cy="12" r="3"/><path d="M12 9V5"/><path d="M15 12h4"/><path d="M12 15v4"/><path d="M9 12H5"/><path d="M14.1 9.9 17 7"/><path d="M14.1 14.1 17 17"/><path d="M9.9 14.1 7 17"/><path d="M9.9 9.9 7 7"/>',
+  // corps : feuille
+  corps:    '<path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/>',
+  // forfaits : sablier (temps)
+  forfaits: '<path d="M5 22h14"/><path d="M5 2h14"/><path d="M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22"/><path d="M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2"/>',
+};
+---
+
+<section id="soins" class="relative bg-spa-creme py-24 md:py-36 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <!-- Header de section -->
+    <header class="text-center max-w-2xl mx-auto mb-16 md:mb-20">
+      <p class="scroll-reveal text-xs sm:text-sm uppercase tracking-[0.4em] text-spa-terracotta font-raleway font-medium">
+        Nos soins
+      </p>
+      <h2 class="scroll-reveal mt-5 font-lora text-spa-cacao leading-[1.1]" style="font-size: clamp(32px, 5vw, 52px);">
+        Le geste juste,
+        <span class="italic font-medium text-spa-terracotta">la durée juste.</span>
+      </h2>
+      <p class="scroll-reveal mt-6 text-spa-cacao/75 font-raleway leading-[1.8]">
+        Tarifs clairs, durées réelles, pas de suppléments cachés. Les soins
+        signature sont marqués d'un repère terracotta.
+      </p>
+    </header>
+
+    <!-- Catégories en parcours vertical -->
+    <div class="max-w-3xl mx-auto space-y-20 md:space-y-28">
+      {categories.map(([key, cat]) => (
+        <article class="scroll-reveal">
+          <!-- En-tête catégorie : icône botanique + titre + sous-titre -->
+          <header class="text-center mb-10 md:mb-14">
+            <span class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-spa-terracotta/10 ring-1 ring-spa-terracotta/30 text-spa-terracotta">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={categoryIcons[key] || categoryIcons.massages} />
+            </span>
+            <h3 class="mt-5 font-lora italic text-spa-cacao" style="font-size: clamp(28px, 3.5vw, 38px);">
+              {cat.titre}
+            </h3>
+            <p class="mt-2 text-sm text-spa-cacao/65 font-raleway italic">
+              {cat.sousTitre}
+            </p>
+          </header>
+
+          <!-- Liste des soins en parcours vertical -->
+          <ul class="space-y-8">
+            {cat.items.map((item) => (
+              <li class="scroll-reveal group relative pb-8 border-b border-spa-cacao/10 last:border-b-0 last:pb-0">
+                <div class="flex items-start gap-4 sm:gap-6">
+                  <!-- Marqueur signature : pastille terracotta visible si signature -->
+                  <span class="flex-shrink-0 mt-2.5 w-2 h-2 rounded-full" class:list={[item.signature ? 'bg-spa-terracotta' : 'bg-spa-cacao/15']} aria-hidden="true"></span>
+
+                  <div class="flex-1 min-w-0">
+                    <div class="flex flex-col sm:flex-row sm:items-baseline sm:gap-4">
+                      <h4 class="font-lora text-spa-cacao leading-snug" style="font-size: clamp(20px, 2.4vw, 24px);">
+                        {item.nom}
+                      </h4>
+                      <span class="hidden sm:block flex-1 mb-1.5 border-b border-dotted border-spa-cacao/15" aria-hidden="true"></span>
+                      <span class="font-lora italic font-medium text-spa-terracotta tabular-nums whitespace-nowrap mt-1 sm:mt-0" style="font-size: clamp(20px, 2.4vw, 24px);">
+                        {item.prix}€
+                      </span>
+                    </div>
+
+                    <p class="mt-2 text-spa-cacao/70 font-raleway leading-[1.75]" style="font-size: 15px;">
+                      {item.description}
+                    </p>
+
+                    <p class="mt-3 text-xs uppercase tracking-[0.22em] text-spa-cacao/55 font-raleway font-medium">
+                      <span>Durée · {item.duree}</span>
+                      {item.signature && (
+                        <span class="ml-3 inline-flex items-center gap-1.5 text-spa-terracotta">
+                          <span aria-hidden="true">·</span>
+                          <span>Soin signature</span>
+                        </span>
+                      )}
+                    </p>
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+
+    <!-- CTA bas -->
+    <div class="scroll-reveal text-center mt-20 md:mt-24">
+      <a
+        href="#reservation"
+        class="inline-flex items-center justify-center h-14 px-9 text-sm font-semibold uppercase tracking-[0.22em] rounded-full bg-spa-argile text-spa-blanc hover:bg-spa-cacao transition-colors"
+        style="box-shadow: 0 8px 24px rgb(58 47 38 / 0.20);"
+      >
+        Réserver un soin
+      </a>
+    </div>
+  </div>
+</section>

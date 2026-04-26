@@ -1,0 +1,38 @@
+---
+/**
+ * Reservation — wrapper de la section "Réserver".
+ * Charge le formulaire en Astro Island Preact (interactivité).
+ * Le formulaire ouvre WhatsApp pré-rempli.
+ */
+import data from '../../../data/templates/spa.json';
+import RdvForm from './RdvForm.tsx';
+---
+
+<section id="reservation" class="relative bg-spa-creme py-24 md:py-36 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+    <header class="text-center max-w-2xl mx-auto mb-12 md:mb-16">
+      <p class="scroll-reveal text-xs sm:text-sm uppercase tracking-[0.4em] text-spa-terracotta font-raleway font-medium">
+        Réserver
+      </p>
+      <h2 class="scroll-reveal mt-5 font-lora text-spa-cacao leading-[1.1]" style="font-size: clamp(32px, 5vw, 52px);">
+        Choisissez votre soin,
+        <span class="italic font-medium text-spa-terracotta">on s'occupe du reste.</span>
+      </h2>
+      <p class="scroll-reveal mt-6 text-spa-cacao/75 font-raleway leading-[1.8]">
+        Réponse sous 24h. Tisanerie offerte avant et après le soin.
+        Annulation gratuite jusqu'à 12h avant.
+      </p>
+    </header>
+
+    <div class="scroll-reveal">
+      <RdvForm
+        client:load
+        soins={data.soins}
+        intentions={data.intentions}
+        creneaux={data.creneaux}
+        whatsapp={data.info.whatsapp}
+        spaNom={data.info.nom}
+      />
+    </div>
+  </div>
+</section>
