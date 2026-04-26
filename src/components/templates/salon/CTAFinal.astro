@@ -1,38 +1,39 @@
 ---
 /**
- * CTAFinal — bandeau full-width sombre, citation finale + bouton cuivre.
+ * CTAFinal — bandeau full-width sombre, citation finale + bouton vert.
  */
+import data from '../../../data/templates/salon.json';
 ---
 
-<section class="relative bg-salon-encre text-salon-creme py-24 md:py-32 px-6 md:px-10 text-center overflow-hidden">
-  <!-- Halo cuivre subtle en arrière-plan -->
+<section class="relative bg-salon-noir text-salon-blanc py-20 md:py-32 px-6 md:px-10 text-center overflow-hidden">
+  <!-- Halo vert subtle en arrière-plan -->
   <div class="pointer-events-none absolute inset-0" aria-hidden="true">
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] rounded-full"
-         style="background: radial-gradient(50% 50% at 50% 50%, rgb(181 105 77 / 0.18) 0%, transparent 70%);">
+         style="background: radial-gradient(50% 50% at 50% 50%, rgb(92 122 102 / 0.20) 0%, transparent 70%);">
     </div>
   </div>
 
   <div class="relative max-w-2xl mx-auto">
-    <p class="scroll-reveal flex items-center justify-center gap-3 text-xs font-semibold uppercase tracking-[0.3em] text-salon-laiton">
-      <span class="inline-block w-8 h-px bg-salon-laiton" aria-hidden="true"></span>
-      <span>Maison Aurore</span>
-      <span class="inline-block w-8 h-px bg-salon-laiton" aria-hidden="true"></span>
+    <p class="scroll-reveal flex items-center justify-center gap-3 text-xs font-semibold uppercase tracking-[0.3em] text-salon-vert-clair">
+      <span class="inline-block w-8 h-px bg-salon-vert-clair" aria-hidden="true"></span>
+      <span>{data.info.wordmark1} &amp; {data.info.wordmark2}</span>
+      <span class="inline-block w-8 h-px bg-salon-vert-clair" aria-hidden="true"></span>
     </p>
 
-    <h2 class="scroll-reveal mt-6 font-playfair font-bold text-salon-creme leading-[1.1]" style="font-size: clamp(40px, 5vw, 64px);">
+    <h2 class="scroll-reveal mt-6 font-fraunces font-bold text-salon-blanc leading-[1.1]" style="font-size: clamp(36px, 5vw, 64px);">
       Envie de
-      <span class="italic font-medium text-salon-cuivre">changer de coupe ?</span>
+      <span class="italic font-medium text-salon-vert-clair">changer de coupe ?</span>
     </h2>
 
-    <p class="scroll-reveal mt-6 text-salon-creme/75 leading-relaxed">
+    <p class="scroll-reveal mt-6 text-salon-blanc/75 leading-relaxed">
       Prenez rendez-vous, on s'occupe du reste. Diagnostic offert, conseils sans pression, résultat à votre image.
     </p>
 
     <div class="scroll-reveal mt-10">
       <a
         href="#rendez-vous"
-        class="inline-flex items-center justify-center h-14 px-9 text-sm font-semibold uppercase tracking-[0.2em] rounded-full bg-salon-cuivre text-salon-blanc hover:bg-[#7C3F2A] transition-all"
-        style="box-shadow: 0 8px 32px rgb(181 105 77 / 0.45);"
+        class="inline-flex items-center justify-center h-14 px-9 text-sm font-semibold uppercase tracking-[0.2em] rounded-full bg-salon-vert text-salon-blanc hover:bg-[#3D5C4A] transition-all"
+        style="box-shadow: 0 8px 32px rgb(92 122 102 / 0.45);"
       >
         Prendre rendez-vous
       </a>

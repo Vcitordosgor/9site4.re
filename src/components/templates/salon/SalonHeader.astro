@@ -1,7 +1,7 @@
 ---
 /**
- * SalonHeader — fixed transparent au top, salon-encre/blur au scroll.
- * Wordmark composé "Maison · Aurore", nav minimale, CTA cuivre.
+ * SalonHeader — fixed transparent au top, opaque/blur au scroll.
+ * Wordmark "Meg · Dan", nav minimale, CTA vert forêt.
  */
 import data from '../../../data/templates/salon.json';
 
@@ -17,18 +17,17 @@ const navLinks = [
   data-scrolled="false"
   class="fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-out"
 >
-  <div class="max-w-content mx-auto px-6 md:px-10 h-20 flex items-center justify-between gap-6">
+  <div class="max-w-content mx-auto px-6 md:px-10 h-16 md:h-20 flex items-center justify-between gap-6">
     <a href="#top" class="flex items-baseline gap-2 leading-none transition-colors">
-      <span class="font-inter font-medium uppercase tracking-[0.25em] text-sm text-salon-encre/85" data-wordmark-1>{data.info.wordmark1}</span>
-      <span class="font-playfair italic font-bold text-2xl text-salon-cuivre" data-wordmark-2>{data.info.wordmark2}</span>
+      <span class="font-dm-sans font-medium uppercase tracking-[0.25em] text-sm text-salon-noir">{data.info.wordmark1}</span>
+      <span class="font-fraunces italic font-bold text-2xl text-salon-vert">{data.info.wordmark2}</span>
     </a>
 
     <nav class="hidden md:flex items-center gap-9" aria-label="Navigation">
       {navLinks.map((l) => (
         <a
           href={l.href}
-          class="text-xs uppercase tracking-[0.25em] font-medium text-salon-encre/75 hover:text-salon-cuivre transition-colors"
-          data-nav-link
+          class="text-xs uppercase tracking-[0.25em] font-medium text-salon-noir/75 hover:text-salon-vert transition-colors"
         >
           {l.label}
         </a>
@@ -37,7 +36,7 @@ const navLinks = [
 
     <a
       href="#rendez-vous"
-      class="hidden md:inline-flex items-center justify-center h-10 px-5 text-xs font-semibold uppercase tracking-[0.18em] rounded-full bg-salon-cuivre text-salon-blanc hover:bg-[#7C3F2A] transition-all"
+      class="hidden md:inline-flex items-center justify-center h-10 px-5 text-xs font-semibold uppercase tracking-[0.18em] rounded-full bg-salon-vert text-salon-blanc hover:bg-[#1F3328] transition-all"
     >
       Prendre rendez-vous
     </a>
@@ -53,9 +52,9 @@ const navLinks = [
     >
       <span class="sr-only">Menu</span>
       <span class="relative flex flex-col items-center justify-center gap-1.5 w-6 h-6">
-        <span class="block w-6 h-0.5 bg-salon-encre rounded-full transition-transform duration-300 origin-center group-data-[open=true]:rotate-45 group-data-[open=true]:translate-y-2" data-bar></span>
-        <span class="block w-6 h-0.5 bg-salon-encre rounded-full transition-opacity duration-200 group-data-[open=true]:opacity-0" data-bar></span>
-        <span class="block w-6 h-0.5 bg-salon-encre rounded-full transition-transform duration-300 origin-center group-data-[open=true]:-rotate-45 group-data-[open=true]:-translate-y-2" data-bar></span>
+        <span class="block w-6 h-0.5 bg-salon-noir rounded-full transition-transform duration-300 origin-center group-data-[open=true]:rotate-45 group-data-[open=true]:translate-y-2"></span>
+        <span class="block w-6 h-0.5 bg-salon-noir rounded-full transition-opacity duration-200 group-data-[open=true]:opacity-0"></span>
+        <span class="block w-6 h-0.5 bg-salon-noir rounded-full transition-transform duration-300 origin-center group-data-[open=true]:-rotate-45 group-data-[open=true]:-translate-y-2"></span>
       </span>
     </button>
   </div>
@@ -67,23 +66,23 @@ const navLinks = [
   data-open="false"
   aria-hidden="true"
   inert
-  class="md:hidden fixed inset-0 top-20 z-40 bg-salon-creme transition-opacity duration-300 ease-out data-[open=false]:opacity-0 data-[open=false]:pointer-events-none data-[open=true]:opacity-100"
+  class="md:hidden fixed inset-0 top-16 z-40 bg-salon-blanc transition-opacity duration-300 ease-out data-[open=false]:opacity-0 data-[open=false]:pointer-events-none data-[open=true]:opacity-100"
 >
   <nav class="h-full flex flex-col px-6 pt-10 pb-10" aria-label="Navigation mobile">
     <ul class="flex-1 flex flex-col gap-2">
       {navLinks.map((l) => (
         <li>
-          <a href={l.href} data-salon-link class="block py-4 font-playfair font-semibold text-salon-encre hover:text-salon-cuivre transition-colors" style="font-size: 32px;">
+          <a href={l.href} data-salon-link class="block py-4 font-fraunces font-semibold text-salon-noir hover:text-salon-vert transition-colors" style="font-size: 32px;">
             {l.label}
           </a>
         </li>
       ))}
     </ul>
-    <div class="pt-6 border-t border-salon-encre/10">
+    <div class="pt-6 border-t border-salon-noir/10">
       <a
         href="#rendez-vous"
         data-salon-link
-        class="inline-flex items-center justify-center w-full h-14 text-sm font-semibold uppercase tracking-[0.2em] rounded-full bg-salon-cuivre text-salon-blanc hover:bg-[#7C3F2A] transition-all"
+        class="inline-flex items-center justify-center w-full h-14 text-sm font-semibold uppercase tracking-[0.2em] rounded-full bg-salon-vert text-salon-blanc hover:bg-[#1F3328] transition-all"
       >
         Prendre rendez-vous
       </a>
@@ -94,10 +93,10 @@ const navLinks = [
 <style>
   /* Header transparent au top, opaque au scroll */
   #salon-header[data-scrolled='true'] {
-    background-color: rgb(245 240 232 / 0.92);
+    background-color: rgb(255 255 255 / 0.92);
     -webkit-backdrop-filter: saturate(180%) blur(12px);
     backdrop-filter: saturate(180%) blur(12px);
-    box-shadow: 0 1px 0 rgb(201 165 106 / 0.20);
+    box-shadow: 0 1px 0 rgb(10 10 10 / 0.08);
   }
 </style>
 

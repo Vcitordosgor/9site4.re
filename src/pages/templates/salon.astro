@@ -1,13 +1,18 @@
 ---
-import '@fontsource/playfair-display/400.css';
-import '@fontsource/playfair-display/600.css';
-import '@fontsource/playfair-display/700.css';
-import '@fontsource/playfair-display/400-italic.css';
-import '@fontsource/playfair-display/600-italic.css';
-import '@fontsource/playfair-display/700-italic.css';
+import '@fontsource/fraunces/400.css';
+import '@fontsource/fraunces/500.css';
+import '@fontsource/fraunces/600.css';
+import '@fontsource/fraunces/700.css';
+import '@fontsource/fraunces/400-italic.css';
+import '@fontsource/fraunces/700-italic.css';
+import '@fontsource/dm-sans/400.css';
+import '@fontsource/dm-sans/500.css';
+import '@fontsource/dm-sans/600.css';
+import '@fontsource/dm-sans/700.css';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSeo } from '../../lib/seo';
+import salonData from '../../data/templates/salon.json';
 
 import SalonHeader from '../../components/templates/salon/SalonHeader.astro';
 import HeroSplit from '../../components/templates/salon/HeroSplit.astro';
@@ -27,14 +32,14 @@ import SalonFooter from '../../components/templates/salon/SalonFooter.astro';
     <link
       rel="preload"
       as="image"
-      href="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=900&q=85"
+      href={salonData.info.photoHero}
       fetchpriority="high"
     />
   </Fragment>
 
   <SalonHeader />
 
-  <main id="top" class="bg-salon-creme text-salon-encre font-inter">
+  <main id="top" class="bg-salon-blanc text-salon-noir font-dm-sans">
     <HeroSplit />
     <Manifesto />
     <Prestations />
@@ -45,4 +50,32 @@ import SalonFooter from '../../components/templates/salon/SalonFooter.astro';
   </main>
 
   <SalonFooter />
+
+  <!-- Sticky bottom CTA mobile-only — caché quand on est dans la section RDV -->
+  <a
+    id="salon-sticky-cta"
+    href="#rendez-vous"
+    data-visible="false"
+    class="md:hidden fixed bottom-4 inset-x-4 z-40 inline-flex items-center justify-center h-14 px-6 text-sm font-semibold uppercase tracking-[0.18em] rounded-full bg-salon-vert text-salon-blanc transition-all duration-300 ease-out data-[visible=false]:opacity-0 data-[visible=false]:translate-y-4 data-[visible=false]:pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0"
+    style="box-shadow: 0 12px 32px rgb(45 74 58 / 0.35);"
+  >
+    Prendre rendez-vous
+  </a>
+
+  <script>
+    /* Sticky CTA mobile : visible après scroll du hero, caché sur la section RDV */
+    const sticky = document.getElementById('salon-sticky-cta');
+    const rdv = document.getElementById('rendez-vous');
+    if (sticky && rdv) {
+      const updateSticky = () => {
+        const rect = rdv.getBoundingClientRect();
+        const inRdv = rect.top < window.innerHeight && rect.bottom > 80;
+        const scrolledPastHero = window.scrollY > 320;
+        sticky.dataset.visible = String(scrolledPastHero && !inRdv);
+      };
+      updateSticky();
+      window.addEventListener('scroll', updateSticky, { passive: true });
+      window.addEventListener('resize', updateSticky, { passive: true });
+    }
+  </script>
 </BaseLayout>

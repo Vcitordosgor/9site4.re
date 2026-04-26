@@ -29,6 +29,10 @@ interface Props {
   prestations: Record<string, Category>;
   longueurs: Longueur[];
   creneaux: Creneau[];
+  /** Numéro WhatsApp au format international sans + (ex: "262692000000") */
+  whatsapp: string;
+  /** Nom du salon, utilisé dans le message WA */
+  salonNom: string;
 }
 
 interface FormData {
@@ -47,11 +51,40 @@ const phoneRegex = /^[+]?[\d\s().-]{8,20}$/;
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 /**
+ * Construit le texte WhatsApp pré-rempli envoyé au salon
+ * (encodé URI-safe par le caller via encodeURIComponent).
+ */
+function buildWhatsAppMessage(data: FormData, salonNom: string, longueurLabel: string): string {
+  const lines = [
+    `Bonjour ${salonNom},`,
+    '',
+    'Je souhaite prendre rendez-vous :',
+    '',
+    `• Nom : ${data.nom}`,
+    `• Téléphone : ${data.telephone}`,
+    `• Email : ${data.email}`,
+    `• Première visite : ${data.premiereVisite === 'oui' ? 'oui' : 'non'}`,
+    '',
+    `• Prestation : ${data.prestation}`,
+    `• Longueur : ${longueurLabel}`,
+    `• Date souhaitée : ${data.date}`,
+    `• Créneau : ${data.creneau}`,
+  ];
+  if (data.message) {
+    lines.push('', `Message : ${data.message}`);
+  }
+  lines.push('', 'Merci !');
+  return lines.join('\n');
+}
+
+/**
  * RdvForm — formulaire de prise de rendez-vous central.
  * 3 groupes numérotés (Vous / Votre demande / Vos préférences),
- * validation front-end, message de succès professionnel.
+ * validation front-end. À l'envoi, ouvre WhatsApp pré-rempli avec
+ * le récapitulatif. Pas de backend nécessaire — le salon reçoit
+ * la demande directement sur WhatsApp.
  */
-export default function RdvForm({ prestations, longueurs, creneaux }: Props) {
+export default function RdvForm({ prestations, longueurs, creneaux, whatsapp, salonNom }: Props) {
   const [premiereVisite, setPremiereVisite] = useState<string>('');
   const [longueur, setLongueur] = useState<string>('');
   const [creneau, setCreneau] = useState<string>('');
@@ -67,7 +100,6 @@ export default function RdvForm({ prestations, longueurs, creneaux }: Props) {
 
     // Honeypot anti-spam
     if ((fd.get('website') as string)?.trim()) {
-      // simulate success silencieusement
       const fakeData: FormData = {
         nom: '', telephone: '', email: '', premiereVisite: '',
         prestation: '', longueur: '', date: '', creneau: '', message: '',
@@ -109,8 +141,12 @@ export default function RdvForm({ prestations, longueurs, creneaux }: Props) {
       return;
     }
 
-    // eslint-disable-next-line no-console
-    console.log('[RdvForm] formData =', data);
+    // Construit le message WhatsApp et ouvre l'app/onglet
+    const longueurLabel = longueurs.find((l) => l.id === data.longueur)?.label ?? data.longueur;
+    const text = buildWhatsAppMessage(data, salonNom, longueurLabel);
+    const waUrl = `https://wa.me/${whatsapp}?text=${encodeURIComponent(text)}`;
+    window.open(waUrl, '_blank', 'noopener,noreferrer');
+
     setSubmitted(data);
   };
 
@@ -120,43 +156,43 @@ export default function RdvForm({ prestations, longueurs, creneaux }: Props) {
       <div
         role="status"
         aria-live="polite"
-        class="bg-salon-blanc rounded-sm p-8 md:p-14 text-center max-w-2xl mx-auto"
-        style="box-shadow: 0 1px 3px rgb(42 37 32 / 0.05), 0 24px 48px -16px rgb(42 37 32 / 0.10);"
+        class="bg-salon-blanc rounded-sm p-8 md:p-14 text-center max-w-2xl mx-auto ring-1 ring-salon-noir/10"
+        style="box-shadow: 0 1px 3px rgb(10 10 10 / 0.05), 0 24px 48px -16px rgb(10 10 10 / 0.10);"
       >
-        <span class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-salon-cuivre/10 ring-1 ring-salon-cuivre/30">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-salon-cuivre" aria-hidden="true">
+        <span class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-salon-vert/10 ring-1 ring-salon-vert/30">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-salon-vert" aria-hidden="true">
             <path d="M20 6L9 17l-5-5" />
           </svg>
         </span>
-        <h3 class="mt-6 font-playfair font-bold text-salon-encre" style="font-size: clamp(28px, 3.5vw, 40px);">
-          Demande envoyée.
+        <h3 class="mt-6 font-fraunces font-bold text-salon-noir" style="font-size: clamp(28px, 3.5vw, 40px);">
+          Message envoyé sur WhatsApp.
         </h3>
         {submitted.nom && (
-          <p class="mt-4 text-salon-encre/75 leading-relaxed">
-            Merci <strong class="font-semibold text-salon-encre">{submitted.nom}</strong>. Le salon vous recontacte rapidement pour confirmer votre rendez-vous.
+          <p class="mt-4 text-salon-noir/75 leading-relaxed">
+            Merci <strong class="font-semibold text-salon-noir">{submitted.nom}</strong>. Validez l'envoi dans WhatsApp — le salon vous recontacte rapidement pour confirmer le rendez-vous.
           </p>
         )}
 
         {(submitted.prestation || submitted.date) && (
-          <div class="mt-8 pt-8 border-t border-salon-encre/10 max-w-md mx-auto text-left">
-            <p class="text-xs uppercase tracking-[0.25em] text-salon-cuivre mb-4">Récapitulatif</p>
+          <div class="mt-8 pt-8 border-t border-salon-noir/10 max-w-md mx-auto text-left">
+            <p class="text-xs uppercase tracking-[0.25em] text-salon-vert mb-4">Récapitulatif</p>
             <ul class="space-y-2 text-sm">
               {submitted.prestation && (
                 <li class="flex items-baseline gap-3">
-                  <span class="text-salon-encre/55 min-w-[6rem]">Prestation</span>
-                  <span class="font-playfair text-salon-encre">{submitted.prestation}</span>
+                  <span class="text-salon-noir/55 min-w-[6rem]">Prestation</span>
+                  <span class="font-fraunces text-salon-noir">{submitted.prestation}</span>
                 </li>
               )}
               {submitted.date && (
                 <li class="flex items-baseline gap-3">
-                  <span class="text-salon-encre/55 min-w-[6rem]">Date</span>
-                  <span class="font-playfair text-salon-encre">{submitted.date}</span>
+                  <span class="text-salon-noir/55 min-w-[6rem]">Date</span>
+                  <span class="font-fraunces text-salon-noir">{submitted.date}</span>
                 </li>
               )}
               {submitted.creneau && (
                 <li class="flex items-baseline gap-3">
-                  <span class="text-salon-encre/55 min-w-[6rem]">Créneau</span>
-                  <span class="font-playfair text-salon-encre capitalize">{submitted.creneau}</span>
+                  <span class="text-salon-noir/55 min-w-[6rem]">Créneau</span>
+                  <span class="font-fraunces text-salon-noir capitalize">{submitted.creneau}</span>
                 </li>
               )}
             </ul>
@@ -172,7 +208,7 @@ export default function RdvForm({ prestations, longueurs, creneaux }: Props) {
             setLongueur('');
             setCreneau('');
           }}
-          class="mt-8 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-salon-encre/65 hover:text-salon-cuivre transition-colors cursor-pointer"
+          class="mt-8 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-salon-noir/65 hover:text-salon-vert transition-colors cursor-pointer"
         >
           Faire une autre demande
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
@@ -184,20 +220,20 @@ export default function RdvForm({ prestations, longueurs, creneaux }: Props) {
   }
 
   // ============== FORMULAIRE ==============
-  const inputBase = 'w-full h-12 px-4 text-base font-inter text-salon-encre bg-salon-blanc rounded-sm ring-1 transition-all duration-200 placeholder:text-salon-encre/35';
-  const inputOk   = 'ring-salon-encre/15 focus:ring-2 focus:ring-salon-cuivre';
-  const inputErr  = 'ring-2 ring-salon-cuivre focus:ring-salon-cuivre';
-  const labelBase = 'block text-xs font-semibold uppercase tracking-[0.18em] text-salon-encre/75 mb-2';
-  const errClass  = 'mt-1.5 text-xs text-salon-cuivre font-semibold';
-  const groupTitle = 'flex items-baseline gap-3 font-playfair text-2xl text-salon-encre';
-  const groupNum   = 'font-playfair italic font-bold text-salon-cuivre tabular-nums';
+  const inputBase = 'w-full h-12 px-4 text-base font-dm-sans text-salon-noir bg-salon-blanc rounded-sm ring-1 transition-all duration-200 placeholder:text-salon-noir/35';
+  const inputOk   = 'ring-salon-noir/15 focus:ring-2 focus:ring-salon-vert';
+  const inputErr  = 'ring-2 ring-salon-vert focus:ring-salon-vert';
+  const labelBase = 'block text-xs font-semibold uppercase tracking-[0.18em] text-salon-noir/75 mb-2';
+  const errClass  = 'mt-1.5 text-xs text-salon-vert font-semibold';
+  const groupTitle = 'flex items-baseline gap-3 font-fraunces text-2xl text-salon-noir';
+  const groupNum   = 'font-fraunces italic font-bold text-salon-vert tabular-nums';
 
   return (
     <form
       onSubmit={onSubmit}
       noValidate
-      class="bg-salon-blanc rounded-sm p-6 md:p-12 space-y-12 max-w-2xl mx-auto"
-      style="box-shadow: 0 1px 3px rgb(42 37 32 / 0.05), 0 24px 48px -16px rgb(42 37 32 / 0.10);"
+      class="bg-salon-blanc rounded-sm p-6 md:p-12 space-y-12 max-w-2xl mx-auto ring-1 ring-salon-noir/10"
+      style="box-shadow: 0 1px 3px rgb(10 10 10 / 0.05), 0 24px 48px -16px rgb(10 10 10 / 0.10);"
       aria-label="Formulaire de prise de rendez-vous"
     >
       {/* Honeypot */}
@@ -211,7 +247,7 @@ export default function RdvForm({ prestations, longueurs, creneaux }: Props) {
           <span class={groupNum}>01</span>
           <span class="italic">Vous</span>
         </legend>
-        <div class="w-12 h-px bg-salon-laiton -mt-3" aria-hidden="true"></div>
+        <div class="w-12 h-px bg-salon-vert-clair -mt-3" aria-hidden="true"></div>
 
         <div class="grid sm:grid-cols-2 gap-5">
           <div>
@@ -254,8 +290,8 @@ export default function RdvForm({ prestations, longueurs, creneaux }: Props) {
                   key={opt.v}
                   class={`relative flex items-center justify-center h-14 px-4 rounded-sm text-sm font-medium cursor-pointer transition-all text-center ${
                     isSel
-                      ? 'bg-salon-cuivre/10 text-salon-cuivre ring-2 ring-salon-cuivre'
-                      : 'bg-salon-blanc text-salon-encre ring-1 ring-salon-encre/15 hover:ring-salon-encre/35'
+                      ? 'bg-salon-vert/10 text-salon-vert ring-2 ring-salon-vert'
+                      : 'bg-salon-blanc text-salon-noir ring-1 ring-salon-noir/15 hover:ring-salon-noir/35'
                   }`}
                 >
                   <input
@@ -282,14 +318,14 @@ export default function RdvForm({ prestations, longueurs, creneaux }: Props) {
           <span class={groupNum}>02</span>
           <span class="italic">Votre demande</span>
         </legend>
-        <div class="w-12 h-px bg-salon-laiton -mt-3" aria-hidden="true"></div>
+        <div class="w-12 h-px bg-salon-vert-clair -mt-3" aria-hidden="true"></div>
 
         <div>
           <label for="rdv-prestation" class={labelBase}>Prestation souhaitée</label>
           <select
             id="rdv-prestation" name="prestation" required defaultValue=""
             class={`${inputBase} ${errors.prestation ? inputErr : inputOk} appearance-none bg-no-repeat`}
-            style="background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232A2520' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E&quot;); background-position: right 1rem center; background-size: 14px; padding-right: 2.5rem;"
+            style="background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230A0A0A' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E&quot;); background-position: right 1rem center; background-size: 14px; padding-right: 2.5rem;"
             aria-invalid={errors.prestation ? 'true' : 'false'}
           >
             <option value="" disabled>Choisir une prestation…</option>
@@ -316,8 +352,8 @@ export default function RdvForm({ prestations, longueurs, creneaux }: Props) {
                   key={opt.id}
                   class={`relative flex flex-col items-center justify-center gap-2 h-24 rounded-sm text-sm font-medium cursor-pointer transition-all ${
                     isSel
-                      ? 'bg-salon-cuivre/10 text-salon-cuivre ring-2 ring-salon-cuivre'
-                      : 'bg-salon-blanc text-salon-encre ring-1 ring-salon-encre/15 hover:ring-salon-encre/35'
+                      ? 'bg-salon-vert/10 text-salon-vert ring-2 ring-salon-vert'
+                      : 'bg-salon-blanc text-salon-noir ring-1 ring-salon-noir/15 hover:ring-salon-noir/35'
                   }`}
                 >
                   <input type="radio" name="longueur" value={opt.id} checked={isSel}
@@ -344,7 +380,7 @@ export default function RdvForm({ prestations, longueurs, creneaux }: Props) {
           <span class={groupNum}>03</span>
           <span class="italic">Vos préférences</span>
         </legend>
-        <div class="w-12 h-px bg-salon-laiton -mt-3" aria-hidden="true"></div>
+        <div class="w-12 h-px bg-salon-vert-clair -mt-3" aria-hidden="true"></div>
 
         <div>
           <label for="rdv-date" class={labelBase}>Date souhaitée</label>
@@ -365,8 +401,8 @@ export default function RdvForm({ prestations, longueurs, creneaux }: Props) {
                   key={opt.id}
                   class={`relative flex flex-col items-start justify-center gap-1 h-16 px-4 rounded-sm cursor-pointer transition-all ${
                     isSel
-                      ? 'bg-salon-cuivre/10 text-salon-cuivre ring-2 ring-salon-cuivre'
-                      : 'bg-salon-blanc text-salon-encre ring-1 ring-salon-encre/15 hover:ring-salon-encre/35'
+                      ? 'bg-salon-vert/10 text-salon-vert ring-2 ring-salon-vert'
+                      : 'bg-salon-blanc text-salon-noir ring-1 ring-salon-noir/15 hover:ring-salon-noir/35'
                   }`}
                 >
                   <input type="radio" name="creneau" value={opt.label} checked={isSel}
@@ -382,7 +418,7 @@ export default function RdvForm({ prestations, longueurs, creneaux }: Props) {
 
         <div>
           <label for="rdv-message" class={labelBase}>
-            Message <span class="lowercase tracking-normal text-salon-encre/55 font-normal">(optionnel)</span>
+            Message <span class="lowercase tracking-normal text-salon-noir/55 font-normal">(optionnel)</span>
           </label>
           <textarea id="rdv-message" name="message" rows={3}
             class={`${inputBase} ${inputOk} h-auto py-3 resize-y`}
@@ -391,25 +427,22 @@ export default function RdvForm({ prestations, longueurs, creneaux }: Props) {
         </div>
       </fieldset>
 
-      {/* Submit */}
+      {/* Submit — envoie sur WhatsApp */}
       <div class="pt-4">
         <button
           type="submit"
-          class="w-full inline-flex items-center justify-center gap-3 h-14 px-8 text-sm font-semibold uppercase tracking-[0.2em] rounded-full bg-salon-cuivre text-salon-blanc hover:bg-[#7C3F2A] transition-all cursor-pointer"
-          style="box-shadow: 0 8px 24px rgb(181 105 77 / 0.3);"
+          class="w-full inline-flex items-center justify-center gap-3 h-14 px-8 text-sm font-semibold uppercase tracking-[0.2em] rounded-full bg-[#25D366] text-white hover:bg-[#1FBE5A] transition-all cursor-pointer"
+          style="box-shadow: 0 8px 24px rgb(37 211 102 / 0.35);"
         >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect x="3" y="4" width="18" height="18" rx="2" />
-            <line x1="16" x2="16" y1="2" y2="6" />
-            <line x1="8" x2="8" y1="2" y2="6" />
-            <line x1="3" x2="21" y1="10" y2="10" />
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.92 0-2.65-1.03-5.14-2.91-7.01zm-7.01 15.24h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.21 8.21 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83 8.25 8.25 0 0 1-8.24 8.22zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.24-.64.81-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.24.25-.4.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42-.14 0-.31-.02-.48-.02-.16 0-.43.06-.66.31-.23.24-.87.85-.87 2.07 0 1.22.89 2.4 1.02 2.57.12.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/>
           </svg>
-          Confirmer ma demande
+          Envoyer sur WhatsApp
         </button>
-        <p class="mt-4 text-xs text-salon-encre/55 text-center leading-relaxed">
-          Le salon vous recontacte sous 24h ouvrées pour confirmer la disponibilité.
+        <p class="mt-4 text-xs text-salon-noir/55 text-center leading-relaxed">
+          Votre demande est envoyée directement au salon sur WhatsApp.
           <br class="hidden sm:inline" />
-          Aucun engagement à ce stade.
+          Réponse sous 24h ouvrées. Aucun engagement à ce stade.
         </p>
       </div>
     </form>
