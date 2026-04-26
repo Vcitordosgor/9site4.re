@@ -57,7 +57,8 @@
     "categorie": "artisans",
     "sousTitre": "Interventions urgentes et demande de dépannage",
     "moduleInclus": "Intervention",
-    "slug": "plomberie"
+    "slug": "plomberie",
+    "previewUrl": "/templates/plomberie"
   },
   {
     "id": 8,
