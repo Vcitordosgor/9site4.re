@@ -306,7 +306,7 @@ Mon téléphone : ${data.telephone}${noteLine}`;
           <div class="mt-12 grid lg:grid-cols-12 gap-8">
             {/* === Colonne gauche : panier (40%) === */}
             <aside class="lg:col-span-5">
-              <div class="bg-white rounded-2xl ring-1 ring-pizza-charbon/10 shadow-card p-6 md:p-7 lg:sticky lg:top-24">
+              <div class="bg-white rounded-2xl ring-1 ring-pizza-charbon/10 shadow-card p-6 md:p-7 lg:sticky lg:top-24 border-t-[3px] border-pizza-rouge">
                 <h3 class="font-playfair font-bold text-2xl text-pizza-charbon flex items-center gap-2">
                   <span>Votre panier</span>
                   {totalCount > 0 && (
@@ -517,7 +517,7 @@ Mon téléphone : ${data.telephone}${noteLine}`;
                 <button
                   type="submit"
                   disabled={totalCount === 0}
-                  class="w-full inline-flex items-center justify-center gap-3 h-14 px-8 text-base md:text-lg font-semibold rounded-full bg-[#075E54] text-white shadow-card hover:bg-[#054039] hover:shadow-card-hover transition-all disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                  class="w-full inline-flex items-center justify-center gap-3 h-14 px-8 text-base md:text-lg font-playfair font-semibold rounded-full bg-[#075E54] text-white shadow-card hover:bg-[#054039] hover:shadow-card-hover transition-all disabled:bg-pizza-charbon/30 disabled:text-white/60 disabled:cursor-not-allowed cursor-pointer"
                 >
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                     <path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.92 0-2.65-1.03-5.14-2.91-7.01zm-7.01 15.24h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.21 8.21 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83 8.25 8.25 0 0 1-8.24 8.22zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06a6.79 6.79 0 0 1-2-1.23 7.5 7.5 0 0 1-1.38-1.72c-.14-.25 0-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42l-.48-.01a.93.93 0 0 0-.67.31 2.81 2.81 0 0 0-.87 2.08c0 1.23.89 2.41 1.02 2.58.12.17 1.76 2.7 4.27 3.78.6.26 1.06.41 1.42.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z" />
@@ -532,18 +532,21 @@ Mon téléphone : ${data.telephone}${noteLine}`;
         </div>
       </section>
 
-      {/* Sticky bottom bar mobile (panier non vide) */}
+      {/* Sticky bottom bar mobile : se cache dans #commander via IO global */}
       {totalCount > 0 && (
         <a
+          id="pizzeria-bottom-bar"
           href="#commander"
-          class="md:hidden fixed bottom-4 inset-x-4 z-40 flex items-center justify-between gap-3 h-14 px-5 rounded-full bg-pizza-tomate text-white shadow-card-hover hover:bg-[#A50D26] transition-all"
+          class="md:hidden fixed bottom-0 inset-x-0 z-40 flex items-center justify-between gap-3 h-16 px-5 bg-pizza-charbon text-white border-t border-pizza-rouge/30 transition-transform duration-300 ease-out"
         >
-          <span class="font-semibold">Voir mon panier</span>
           <span class="flex items-center gap-2">
-            <span class="font-bold">{total}€</span>
-            <span class="inline-flex items-center justify-center min-w-7 h-7 px-2 rounded-full bg-white text-pizza-tomate text-sm font-bold">
+            <span class="inline-flex items-center justify-center min-w-7 h-7 px-2 rounded-full bg-pizza-rouge text-white text-sm font-bold">
               {totalCount}
             </span>
+            <span class="text-sm font-semibold">{total}€</span>
+          </span>
+          <span class="inline-flex items-center justify-center h-11 px-5 rounded-full bg-pizza-rouge text-white font-semibold">
+            Commander
           </span>
         </a>
       )}

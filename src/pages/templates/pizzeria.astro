@@ -256,7 +256,7 @@ const waUrl = `https://wa.me/${data.info.whatsapp}?text=${encodeURIComponent('Bo
               {data.info.horaires.map((h) => (
                 <li class="flex items-baseline gap-2">
                   <span class="font-semibold text-white min-w-[7rem]">{h.jour}</span>
-                  <span class={h.ouvert ? 'text-white/80' : 'text-pizza-rouge italic'}>{h.label}</span>
+                  <span class={h.ouvert ? 'text-white/80' : 'text-white/85 italic'}>{h.label}</span>
                 </li>
               ))}
             </ul>

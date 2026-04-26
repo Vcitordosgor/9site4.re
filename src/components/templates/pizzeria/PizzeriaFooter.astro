@@ -7,8 +7,10 @@ const year = new Date().getFullYear();
   <div class="max-w-content mx-auto px-6 pt-14 pb-8">
     <div class="grid gap-8 md:grid-cols-2 items-end">
       <div>
-        <p class="font-playfair font-bold text-3xl md:text-[32px] text-pizza-rouge leading-none">{data.info.nom}</p>
-        <p class="mt-3 font-playfair italic text-white/60 text-base">
+        <p class="font-playfair font-bold text-3xl md:text-[32px] text-white leading-none">
+          Pizza <span class="text-pizza-dore italic">Lé O</span>
+        </p>
+        <p class="mt-3 font-playfair italic text-white/75 text-base">
           {data.info.tagline} — depuis {data.info.annee}
         </p>
       </div>
@@ -30,11 +32,11 @@ const year = new Date().getFullYear();
          style="background: linear-gradient(to right, transparent, #B8860B 30%, #B8860B 70%, transparent);">
     </div>
 
-    <div class="mt-6 flex flex-col-reverse md:flex-row md:items-center md:justify-between gap-3 text-xs text-white/40">
+    <div class="mt-6 flex flex-col-reverse md:flex-row md:items-center md:justify-between gap-3 text-xs text-white/65">
       <p>© {year} {data.info.nom}. Tous droits réservés.</p>
       <p>
         Site créé par
-        <a href="/" class="font-semibold text-white/70 hover:text-pizza-rouge transition-colors underline-offset-4 hover:underline">
+        <a href="/" class="font-semibold text-white hover:text-pizza-dore transition-colors underline-offset-4 hover:underline">
           9site4
         </a>
       </p>
