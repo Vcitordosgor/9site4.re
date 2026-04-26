@@ -24,17 +24,18 @@ export default {
         orange: '#FF8F00',
         'blanc-casse': '#FEFEFA',
         'bleu-nuit': '#0B1437',
-        // Palette pizzeria (template /templates/pizzeria — pas la charte 9site4)
-        'pizza-tomate':  '#C8102E',
-        'pizza-basilic': '#2D6A4F',
-        'pizza-creme':   '#FFF8E7',
-        'pizza-charbon': '#1A1A1A',
-        'pizza-bois':    '#B8860B',
-        // Alias sémantiques (brief refonte)
-        'pizza-rouge':   '#C8102E',
-        'pizza-vert':    '#2D6A4F',
-        'pizza-dore':    '#B8860B',
+        // Palette pizzeria — refonte trattoria éditoriale
+        // (template /templates/pizzeria — pas la charte 9site4)
+        'pizza-creme':   '#FAF7F0',  // warm cream (fond principal)
+        'pizza-charbon': '#1C1A17',  // charbon brun-noir (textes/fonds sombres)
+        'pizza-rouge':   '#A82532',  // rouge tomate mat (CTA, accents)
+        'pizza-dore':    '#B89766',  // doré ancien (filets, micro-détails)
+        'pizza-vert':    '#2D6A4F',  // vert basilic (badges info)
         'pizza-blanc':   '#FFFFFF',
+        // Alias rétrocompat (anciens noms)
+        'pizza-tomate':  '#A82532',
+        'pizza-basilic': '#2D6A4F',
+        'pizza-bois':    '#B89766',
         'pizza-marron':  '#8B4513',
       },
       fontFamily: {
