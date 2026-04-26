@@ -1,0 +1,54 @@
+---
+/**
+ * Manifesto — section "Notre cuisine" : 2 colonnes éditoriales.
+ * Photo verticale (4:5) à gauche, texte avec citation en exergue à droite.
+ */
+import data from '../../../data/templates/pizzeria.json';
+const m = data.manifesto;
+---
+
+<section id="manifeste" class="relative bg-pizza-creme py-24 md:py-40 px-6 md:px-10">
+  <div class="max-w-content mx-auto grid lg:grid-cols-12 gap-10 lg:gap-20 items-center">
+
+    <!-- Photo verticale 4:5 (gauche desktop) -->
+    <figure class="scroll-reveal lg:col-span-5">
+      <div class="relative overflow-hidden rounded-sm" style="aspect-ratio: 4/5;">
+        <img
+          src={m.photo}
+          alt={m.photoAlt}
+          loading="lazy"
+          decoding="async"
+          class="w-full h-full object-cover"
+        />
+      </div>
+    </figure>
+
+    <!-- Texte (droite desktop) -->
+    <div class="lg:col-span-7">
+      <p class="scroll-reveal flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.3em] text-pizza-rouge">
+        <span class="inline-block w-8 h-px bg-pizza-rouge" aria-hidden="true"></span>
+        <span>{m.eyebrow}</span>
+      </p>
+
+      <h2 class="scroll-reveal mt-6 font-playfair font-bold text-pizza-charbon leading-[1.05]" style="font-size: clamp(40px, 5vw, 64px);">
+        {m.titre}
+        <span class="block italic font-medium text-pizza-rouge">{m.titreItalique}</span>
+      </h2>
+
+      <!-- Citation en exergue, style éditorial -->
+      <blockquote class="scroll-reveal mt-10 pl-6 border-l-2 border-pizza-dore">
+        <p class="font-playfair italic text-pizza-charbon/85 leading-snug" style="font-size: clamp(20px, 2.2vw, 26px);">
+          « {m.citation} »
+        </p>
+        <footer class="mt-3 text-sm uppercase tracking-[0.2em] text-pizza-charbon/55">
+          — {m.attribution}
+        </footer>
+      </blockquote>
+
+      <!-- Corps de texte -->
+      <p class="scroll-reveal mt-10 text-pizza-charbon/80 leading-[1.8]" style="font-size: 17px;">
+        {m.corps}
+      </p>
+    </div>
+  </div>
+</section>

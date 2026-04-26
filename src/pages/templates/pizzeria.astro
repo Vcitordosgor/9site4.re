@@ -12,6 +12,9 @@ import PizzeriaHeader from '../../components/templates/pizzeria/PizzeriaHeader.a
 import PizzeriaFooter from '../../components/templates/pizzeria/PizzeriaFooter.astro';
 import HeroImmersive from '../../components/templates/pizzeria/HeroImmersive.astro';
 import StatBanner from '../../components/templates/pizzeria/StatBanner.astro';
+import Manifesto from '../../components/templates/pizzeria/Manifesto.astro';
+import Gallery from '../../components/templates/pizzeria/Gallery.astro';
+import Testimonials from '../../components/templates/pizzeria/Testimonials.astro';
 ---
 
 <BaseLayout seo={getSeo('templatePizzeria')} bare={true}>
@@ -20,25 +23,22 @@ import StatBanner from '../../components/templates/pizzeria/StatBanner.astro';
   <main id="top" class="bg-pizza-creme text-pizza-charbon font-inter">
     <HeroImmersive />
     <StatBanner />
+    <Manifesto />
 
-    <!-- Sections suivantes : à venir dans les commits 3-5 -->
-    <section id="manifeste" class="py-32 px-6 text-center text-pizza-charbon/50">
-      <p class="italic">— Section Manifeste à venir —</p>
-    </section>
-    <section id="carte" class="py-32 px-6 text-center text-pizza-charbon/50 bg-pizza-charbon/[0.03]">
-      <p class="italic">— Section Carte à venir —</p>
+    <!-- Sections suivantes (Carte + Commander) : commit 4 -->
+    <section id="carte" class="py-32 px-6 text-center text-pizza-charbon/50 bg-white">
+      <p class="italic">— Section Carte à venir (commit 4) —</p>
     </section>
     <section id="commander" class="py-32 px-6 text-center text-pizza-charbon/50">
-      <p class="italic">— Section Commander à venir —</p>
+      <p class="italic">— Section Commander à venir (commit 5) —</p>
     </section>
-    <section id="atelier" class="py-32 px-6 text-center text-pizza-charbon/50 bg-pizza-charbon/[0.03]">
-      <p class="italic">— Section Atelier à venir —</p>
-    </section>
-    <section id="avis" class="py-32 px-6 text-center text-pizza-charbon/50">
-      <p class="italic">— Section Avis à venir —</p>
-    </section>
+
+    <Gallery />
+    <Testimonials />
+
+    <!-- Trouver le restaurant : commit 5 -->
     <section id="contact" class="py-32 px-6 text-center text-pizza-charbon/50 bg-pizza-charbon/[0.03]">
-      <p class="italic">— Section Trouver le restaurant à venir —</p>
+      <p class="italic">— Section Trouver à venir (commit 5) —</p>
     </section>
   </main>
 

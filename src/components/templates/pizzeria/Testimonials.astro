@@ -1,0 +1,47 @@
+---
+/**
+ * Testimonials — 3 témoignages éditoriaux en cartes sobres.
+ * Citation Playfair italic, attribution en capitales espacées.
+ */
+import data from '../../../data/templates/pizzeria.json';
+---
+
+<section id="avis" class="relative bg-pizza-creme py-24 md:py-32 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+    <header class="text-center max-w-xl mx-auto mb-16">
+      <p class="scroll-reveal flex items-center justify-center gap-3 text-xs font-semibold uppercase tracking-[0.3em] text-pizza-rouge">
+        <span class="inline-block w-8 h-px bg-pizza-rouge" aria-hidden="true"></span>
+        <span>Ils en parlent</span>
+        <span class="inline-block w-8 h-px bg-pizza-rouge" aria-hidden="true"></span>
+      </p>
+      <h2 class="scroll-reveal mt-5 font-playfair font-bold text-pizza-charbon leading-tight" style="font-size: clamp(36px, 4.5vw, 56px);">
+        On laisse parler nos clients.
+      </h2>
+    </header>
+
+    <ul class="grid md:grid-cols-3 gap-6 lg:gap-8">
+      {data.testimonials.map((t, i) => (
+        <li class="scroll-reveal" style={`transition-delay: ${i * 100}ms`}>
+          <blockquote class="h-full bg-white rounded-sm p-8 md:p-10 ring-1 ring-pizza-charbon/10 transition-all duration-300 hover:ring-pizza-dore/40 hover:-translate-y-1"
+                      style="box-shadow: 0 1px 3px rgb(28 26 23 / 0.04);">
+            <!-- Guillemet Playfair en gros -->
+            <span class="block font-playfair text-pizza-rouge leading-none -mt-2" style="font-size: 64px;" aria-hidden="true">"</span>
+
+            <p class="mt-2 font-playfair italic text-pizza-charbon leading-snug" style="font-size: 18px;">
+              {t.citation}
+            </p>
+
+            <footer class="mt-6 pt-6 border-t border-pizza-charbon/10">
+              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-pizza-charbon">
+                {t.auteur}
+              </p>
+              <p class="mt-1 text-xs text-pizza-charbon/55">
+                {t.lieu}
+              </p>
+            </footer>
+          </blockquote>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
