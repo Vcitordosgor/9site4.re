@@ -172,17 +172,17 @@ Mon téléphone : ${data.telephone}${noteLine}`;
 
   return (
     <div>
-      {/* ============== MENU (fond charbon, onglets, items en lignes) ============== */}
-      <section id="menu" class="relative px-6 py-20 md:py-28 bg-pizza-charbon text-white">
+      {/* ============== MENU (fond blanc, lumineux, lisible) ============== */}
+      <section id="menu" class="relative px-6 py-20 md:py-28 bg-pizza-blanc text-pizza-charbon">
         <div class="mx-auto max-w-content">
           <div class="text-center max-w-2xl mx-auto">
-            <p class="inline-flex items-center px-3 py-1.5 rounded-full bg-pizza-tomate text-white text-xs font-semibold uppercase tracking-wide">
+            <p class="inline-flex items-center px-3 py-1.5 rounded-full bg-pizza-rouge text-white text-xs font-semibold uppercase tracking-wide">
               Notre carte
             </p>
-            <h2 class="mt-4 font-playfair font-bold text-4xl md:text-6xl leading-tight">
+            <h2 class="mt-4 font-playfair font-bold text-4xl md:text-6xl text-pizza-charbon leading-tight">
               Préparées à la commande
             </h2>
-            <p class="mt-5 text-lg text-white/70 leading-relaxed">
+            <p class="mt-5 text-lg text-pizza-charbon/70 leading-relaxed">
               Cuites au feu de bois, prêtes en 25 minutes.
             </p>
           </div>
@@ -200,8 +200,8 @@ Mon téléphone : ${data.telephone}${noteLine}`;
                     aria-pressed={isActive}
                     class={`inline-flex items-center justify-center h-11 px-5 text-sm font-semibold rounded-full whitespace-nowrap transition-all duration-200 cursor-pointer ${
                       isActive
-                        ? 'bg-pizza-tomate text-white shadow-card'
-                        : 'bg-white/5 text-white/70 ring-1 ring-white/10 hover:text-white hover:ring-white/30'
+                        ? 'bg-pizza-rouge text-white shadow-card'
+                        : 'bg-pizza-creme text-pizza-charbon ring-1 ring-pizza-charbon/10 hover:bg-pizza-rouge/10 hover:ring-pizza-rouge/30'
                     }`}
                   >
                     {menu[key].titre}
@@ -215,35 +215,52 @@ Mon téléphone : ${data.telephone}${noteLine}`;
           {categoryKeys.map((catKey) => {
             if (catKey !== activeTab) return null;
             const catItems = items.filter((i) => i.categorie === catKey);
+            // Illustrations SVG par catégorie
+            const catIcons: Record<string, string> = {
+              classiques: '<circle cx="32" cy="32" r="28" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="32" cy="32" r="22" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="2 3" opacity="0.5"/><circle cx="24" cy="26" r="3" fill="currentColor" opacity="0.7"/><circle cx="40" cy="30" r="3" fill="currentColor" opacity="0.7"/><circle cx="28" cy="40" r="3" fill="currentColor" opacity="0.7"/>',
+              speciales: '<path d="M32 8 L36 24 L52 24 L40 34 L44 50 L32 40 L20 50 L24 34 L12 24 L28 24 Z" fill="currentColor" opacity="0.85"/>',
+              desserts: '<path d="M14 38 Q14 28 32 28 Q50 28 50 38 L48 52 Q48 56 44 56 L20 56 Q16 56 16 52 Z" fill="currentColor" opacity="0.85"/><circle cx="22" cy="22" r="4" fill="currentColor" opacity="0.6"/><circle cx="32" cy="16" r="4" fill="currentColor" opacity="0.7"/><circle cx="42" cy="22" r="4" fill="currentColor" opacity="0.6"/>',
+              boissons: '<path d="M22 12 L42 12 L40 50 Q40 56 32 56 Q24 56 24 50 Z" fill="none" stroke="currentColor" stroke-width="1.75"/><path d="M22 22 L42 22" stroke="currentColor" stroke-width="1" opacity="0.5"/><ellipse cx="32" cy="22" rx="9" ry="3" fill="currentColor" opacity="0.4"/>',
+            };
+            const catIcon = catIcons[catKey] || catIcons.classiques;
             return (
-              <div key={catKey} class="mt-12 menu-tab-content">
-                <p class="text-center italic text-white/60 mb-8">{menu[catKey].description}</p>
-                <ul class="max-w-3xl mx-auto divide-y divide-white/10">
+              <div key={catKey} class="mt-12 menu-tab-content max-w-3xl mx-auto">
+                <div class="flex items-end justify-between mb-2 pb-3 border-b-2 border-pizza-dore/40">
+                  <h3 class="font-playfair font-bold text-3xl md:text-4xl text-pizza-rouge">{menu[catKey].titre}</h3>
+                  <svg width="48" height="48" viewBox="0 0 64 64" class="text-pizza-dore opacity-80" fill="none" aria-hidden="true" dangerouslySetInnerHTML={{ __html: catIcon }} />
+                </div>
+                <p class="italic text-pizza-charbon/60 text-sm mb-6">{menu[catKey].description}</p>
+
+                <ul class="divide-y divide-pizza-charbon/10">
                   {catItems.map((item) => {
                     const inCart = cart[item.id] || 0;
                     return (
                       <li
                         key={item.id}
-                        class="group flex items-center gap-4 py-5 px-3 -mx-3 rounded-xl transition-colors duration-150 md:hover:bg-white/[0.04]"
+                        class="group flex items-start gap-4 py-5 px-3 -mx-3 rounded-xl transition-colors duration-150 md:hover:bg-pizza-creme"
                       >
                         <div class="flex-1 min-w-0">
-                          <div class="flex items-baseline gap-3 flex-wrap">
-                            <h3 class="font-playfair font-semibold text-lg md:text-xl text-white">{item.nom}</h3>
+                          <div class="flex items-baseline gap-3">
+                            <h4 class="font-playfair font-semibold text-lg text-pizza-charbon">{item.nom}</h4>
                             {inCart > 0 && (
-                              <span class="inline-flex items-center justify-center min-w-5 h-5 px-1.5 rounded-full bg-pizza-tomate text-white text-xs font-bold">
+                              <span class="inline-flex items-center justify-center min-w-5 h-5 px-1.5 rounded-full bg-pizza-rouge text-white text-xs font-bold">
                                 ×{inCart}
                               </span>
                             )}
+                            {/* Pointillés dorés */}
+                            <span class="hidden sm:flex flex-1 mb-1.5 items-center" aria-hidden="true">
+                              <span class="w-full border-b border-dotted border-pizza-dore/60"></span>
+                            </span>
+                            <span class="font-playfair font-bold text-lg text-pizza-rouge whitespace-nowrap shrink-0">{item.prix}€</span>
                           </div>
                           {item.description && (
-                            <p class="mt-1 text-sm text-white/65 leading-relaxed">{item.description}</p>
+                            <p class="mt-1.5 text-sm text-pizza-charbon/65 italic leading-relaxed">{item.description}</p>
                           )}
                         </div>
-                        <span class="font-playfair font-bold text-lg md:text-xl text-pizza-bois whitespace-nowrap shrink-0">{item.prix}€</span>
                         <button
                           type="button"
                           onClick={() => addItem(item.id, item.nom)}
-                          class="shrink-0 w-11 h-11 flex items-center justify-center rounded-full bg-pizza-tomate text-white hover:bg-[#A50D26] active:scale-95 transition-all cursor-pointer shadow-card"
+                          class="shrink-0 w-11 h-11 flex items-center justify-center rounded-full bg-pizza-rouge text-white hover:bg-[#A50D26] hover:scale-110 active:scale-95 transition-all cursor-pointer shadow-card"
                           aria-label={`Ajouter ${item.nom} au panier`}
                         >
                           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
@@ -264,7 +281,7 @@ Mon téléphone : ${data.telephone}${noteLine}`;
           <div
             role="status"
             aria-live="polite"
-            class="fixed bottom-24 md:bottom-8 left-1/2 -translate-x-1/2 z-40 px-5 py-3 rounded-full bg-pizza-tomate text-white text-sm font-semibold shadow-card-hover animate-feedback"
+            class="fixed bottom-24 md:bottom-8 left-1/2 -translate-x-1/2 z-40 px-5 py-3 rounded-full bg-pizza-rouge text-white text-sm font-semibold shadow-card-hover animate-feedback"
           >
             {feedback}
           </div>
