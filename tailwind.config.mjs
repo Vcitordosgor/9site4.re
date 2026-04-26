@@ -13,6 +13,9 @@ export default {
     {
       pattern: /^(bg|text|ring|border|from|to|via|placeholder)-(bleu|bleu-nuit|orange|blanc-casse)(\/(5|10|15|20|25|30|40|50|55|60|65|70|75|80|85|90|95))?$/,
     },
+    {
+      pattern: /^(bg|text|ring|border|from|to|via)-(pizza-tomate|pizza-basilic|pizza-creme|pizza-charbon|pizza-bois)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
+    },
   ],
   theme: {
     extend: {
@@ -21,10 +24,17 @@ export default {
         orange: '#FF8F00',
         'blanc-casse': '#FEFEFA',
         'bleu-nuit': '#0B1437',
+        // Palette pizzeria (template /templates/pizzeria — pas la charte 9site4)
+        'pizza-tomate':  '#C8102E',
+        'pizza-basilic': '#2D6A4F',
+        'pizza-creme':   '#FFF8E7',
+        'pizza-charbon': '#1A1A1A',
+        'pizza-bois':    '#B8860B',
       },
       fontFamily: {
         sora: ['Sora', 'system-ui', 'sans-serif'],
         inter: ['Inter', 'system-ui', 'sans-serif'],
+        playfair: ['"Playfair Display"', 'Georgia', 'serif'],
       },
       fontSize: {
         'hero': ['clamp(2.5rem, 5vw + 1rem, 5rem)', { lineHeight: '1.05', letterSpacing: '-0.02em' }],
