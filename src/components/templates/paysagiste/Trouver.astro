@@ -1,0 +1,99 @@
+---
+/**
+ * Trouver — adresse, horaires, communes desservies.
+ * Layout : 3 colonnes desktop avec petite illustration feuille
+ * en arrière-plan. Communes en chips lin sur fond sauge léger.
+ */
+import data from '../../../data/templates/agapanthes.json';
+const waUrl = `https://wa.me/${data.info.whatsapp}?text=${encodeURIComponent(
+  'Bonjour, je voudrais des informations sur ' + data.info.nom + '.'
+)}`;
+---
+
+<section id="trouver" class="relative bg-agap-lin py-20 md:py-32 px-6 md:px-10 overflow-hidden">
+
+  <!-- Ornement feuille flottante -->
+  <svg class="absolute top-20 left-6 w-40 h-40 text-agap-sauge/10 hidden md:block" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/>
+  </svg>
+
+  <div class="relative max-w-content mx-auto">
+
+    <header class="text-center max-w-3xl mx-auto mb-14 md:mb-20">
+      <p class="scroll-reveal flex items-center justify-center gap-3 text-xs font-outfit font-medium uppercase tracking-[0.32em] text-agap-violet">
+        <span class="block w-8 h-px bg-agap-violet" aria-hidden="true"></span>
+        <span>Nous trouver</span>
+        <span class="block w-8 h-px bg-agap-violet" aria-hidden="true"></span>
+      </p>
+      <h2 class="scroll-reveal mt-5 font-cormorant text-agap-feuille leading-[1.05]" style="font-size: clamp(36px, 5.5vw, 60px);">
+        L'atelier à Saint-Leu,
+        <span class="block italic font-medium text-agap-violet">les jardins partout.</span>
+      </h2>
+    </header>
+
+    <!-- 3 colonnes : adresse / contact / horaires -->
+    <div class="grid lg:grid-cols-3 gap-10 lg:gap-14 max-w-5xl mx-auto mb-14 md:mb-20">
+
+      <div class="scroll-reveal text-center lg:text-left">
+        <p class="text-[10px] font-outfit font-semibold uppercase tracking-[0.32em] text-agap-violet mb-3">Atelier</p>
+        <p class="font-cormorant italic text-agap-feuille leading-snug" style="font-size: 19px;">
+          {data.info.adresse}
+        </p>
+        <p class="mt-4 text-[10px] uppercase tracking-[0.22em] text-agap-feuille/55 font-outfit">Visite</p>
+        <p class="mt-1 text-sm font-outfit text-agap-feuille/75">Sur RDV uniquement — l'équipe est sur les chantiers.</p>
+      </div>
+
+      <div class="scroll-reveal text-center lg:text-left">
+        <p class="text-[10px] font-outfit font-semibold uppercase tracking-[0.32em] text-agap-violet mb-3">Contact</p>
+        <ul class="space-y-2.5">
+          <li>
+            <a href={`tel:${data.info.telephoneHref}`} class="font-cormorant italic text-agap-feuille hover:text-agap-violet transition-colors tabular-nums" style="font-size: 19px;">
+              {data.info.telephone}
+            </a>
+          </li>
+          <li>
+            <a href={waUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 font-cormorant italic text-agap-feuille hover:text-agap-violet transition-colors" style="font-size: 19px;">
+              WhatsApp
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.92 0-2.65-1.03-5.14-2.91-7.01zm-7.01 15.24h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.21 8.21 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83 8.25 8.25 0 0 1-8.24 8.22z"/>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href={`mailto:${data.info.email}`} class="font-cormorant italic text-agap-feuille hover:text-agap-violet transition-colors break-all" style="font-size: 16px;">
+              {data.info.email}
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="scroll-reveal text-center lg:text-left">
+        <p class="text-[10px] font-outfit font-semibold uppercase tracking-[0.32em] text-agap-violet mb-3">Horaires</p>
+        <ul class="divide-y divide-agap-feuille/10">
+          {data.info.horaires.map((h) => (
+            <li class="flex items-baseline justify-between gap-4 py-2.5">
+              <span class="font-cormorant italic text-agap-feuille text-sm sm:text-base">{h.jour}</span>
+              <span class:list={['text-xs sm:text-sm tabular-nums font-outfit text-right', h.ouvert ? 'text-agap-feuille/75' : 'italic text-agap-feuille/45']}>
+                {h.label}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Communes desservies en chips lin sur fond sauge léger -->
+    <div class="bg-agap-sauge/15 p-8 md:p-10 max-w-5xl mx-auto rounded-sm">
+      <p class="scroll-reveal text-[10px] font-outfit font-semibold uppercase tracking-[0.32em] text-agap-violet mb-5 text-center">
+        {data.communes.length} communes desservies dans le sud-ouest
+      </p>
+      <ul class="scroll-reveal flex flex-wrap justify-center gap-2">
+        {data.communes.map((c) => (
+          <li class="inline-flex items-center px-4 h-9 bg-agap-lin border border-agap-violet/20 hover:border-agap-violet hover:text-agap-violet transition-colors text-sm font-outfit text-agap-feuille rounded-full">
+            {c}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>

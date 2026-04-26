@@ -1,0 +1,73 @@
+---
+/**
+ * Galerie — mosaïque libre 6 photos en formes mixtes (rectangles
+ * et CERCLES alternés). Très différent des galeries des autres
+ * templates (bento spa, mosaïque resto, avant/après plombier).
+ *
+ * Mobile : 2 cols simple. Desktop : grille 12 cols asymétrique
+ * avec photos circulaires intercalées.
+ */
+import data from '../../../data/templates/agapanthes.json';
+---
+
+<section id="realisations" class="relative bg-agap-lin py-20 md:py-32 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="mb-14 md:mb-20 max-w-3xl">
+      <p class="scroll-reveal flex items-center gap-3 text-xs font-outfit font-medium uppercase tracking-[0.32em] text-agap-violet">
+        <span class="block w-8 h-px bg-agap-violet" aria-hidden="true"></span>
+        <span>Réalisations</span>
+      </p>
+      <h2 class="scroll-reveal mt-5 font-cormorant text-agap-feuille leading-[1.05]" style="font-size: clamp(36px, 5.5vw, 64px);">
+        Quelques jardins
+        <span class="italic font-medium text-agap-violet">au passage du temps.</span>
+      </h2>
+    </header>
+
+    <!-- Mosaïque mixte rectangles/cercles -->
+    <div class="grid grid-cols-2 lg:grid-cols-12 gap-3 sm:gap-4 md:gap-5">
+
+      <!-- Photo 1 : grande rectangle (col 7) — allée bordée -->
+      <figure class="scroll-reveal col-span-2 lg:col-span-7 lg:row-span-2 relative overflow-hidden rounded-sm" style="aspect-ratio: 4/3;">
+        <img src={data.info.photoGalerie1} alt={data.info.photoGalerie1Alt}
+             loading="lazy" decoding="async"
+             class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out hover:scale-[1.02]" />
+      </figure>
+
+      <!-- Photo 2 : CERCLE (col 5) — composition florale -->
+      <figure class="scroll-reveal col-span-1 lg:col-span-5 relative overflow-hidden rounded-full mx-auto" style="aspect-ratio: 1/1; max-width: 380px;">
+        <img src={data.info.photoGalerie2} alt={data.info.photoGalerie2Alt}
+             loading="lazy" decoding="async"
+             class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out hover:scale-[1.04]" />
+      </figure>
+
+      <!-- Photo 3 : rectangle (col 5) — minéral succulentes -->
+      <figure class="scroll-reveal col-span-1 lg:col-span-5 relative overflow-hidden rounded-sm" style="aspect-ratio: 4/3;">
+        <img src={data.info.photoGalerie3} alt={data.info.photoGalerie3Alt}
+             loading="lazy" decoding="async"
+             class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out hover:scale-[1.02]" />
+      </figure>
+
+      <!-- Photo 4 : rectangle (col 4) — terrasse bois -->
+      <figure class="scroll-reveal col-span-1 lg:col-span-4 relative overflow-hidden rounded-sm" style="aspect-ratio: 1/1;">
+        <img src={data.info.photoGalerie4} alt={data.info.photoGalerie4Alt}
+             loading="lazy" decoding="async"
+             class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out hover:scale-[1.02]" />
+      </figure>
+
+      <!-- Photo 5 : CERCLE (col 4) — fleurs mauves -->
+      <figure class="scroll-reveal col-span-1 lg:col-span-4 relative overflow-hidden rounded-full mx-auto" style="aspect-ratio: 1/1; max-width: 320px;">
+        <img src={data.info.photoGalerie5} alt={data.info.photoGalerie5Alt}
+             loading="lazy" decoding="async"
+             class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out hover:scale-[1.04]" />
+      </figure>
+
+      <!-- Photo 6 : rectangle horizontal (col 4) — bord de mer -->
+      <figure class="scroll-reveal col-span-2 lg:col-span-4 relative overflow-hidden rounded-sm" style="aspect-ratio: 4/3;">
+        <img src={data.info.photoGalerie6} alt={data.info.photoGalerie6Alt}
+             loading="lazy" decoding="async"
+             class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out hover:scale-[1.02]" />
+      </figure>
+    </div>
+  </div>
+</section>

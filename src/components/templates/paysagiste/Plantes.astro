@@ -1,0 +1,83 @@
+---
+/**
+ * Plantes — herbier botanique : 6 plantes signature locales avec
+ * nom français, nom latin italique, usage.
+ *
+ * Section UNIQUE : aucun autre template n'a ce format herbier.
+ * Layout : grille 2 ou 3 cols, chaque plante = bloc compact avec
+ * petit cercle de couleur (selon famille) + typographie soignée
+ * comme une fiche botanique.
+ */
+import data from '../../../data/templates/agapanthes.json';
+
+const colorMap: Record<string, string> = {
+  violet: 'bg-agap-violet',
+  rose:   'bg-agap-rose',
+  sauge:  'bg-agap-sauge-fonce',
+};
+---
+
+<section id="plantes" class="relative bg-agap-violet-fonce text-agap-lin py-20 md:py-32 px-6 md:px-10 overflow-hidden">
+
+  <!-- Halo violet décoratif -->
+  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+    <div class="absolute -bottom-32 -right-32 w-[40rem] h-[40rem] rounded-full"
+         style="background: radial-gradient(50% 50% at 50% 50%, rgb(157 171 142 / 0.18) 0%, transparent 70%);">
+    </div>
+  </div>
+
+  <div class="relative max-w-content mx-auto">
+
+    <header class="text-center max-w-3xl mx-auto mb-14 md:mb-20">
+      <p class="scroll-reveal flex items-center justify-center gap-3 text-xs font-outfit font-medium uppercase tracking-[0.32em] text-agap-rose">
+        <span class="block w-8 h-px bg-agap-rose" aria-hidden="true"></span>
+        <span>Notre herbier</span>
+        <span class="block w-8 h-px bg-agap-rose" aria-hidden="true"></span>
+      </p>
+      <h2 class="scroll-reveal mt-5 font-cormorant text-agap-lin leading-[1.05]" style="font-size: clamp(36px, 5.5vw, 60px);">
+        Six plantes
+        <span class="italic font-medium text-agap-rose">qu'on adore.</span>
+      </h2>
+      <p class="scroll-reveal mt-6 font-outfit text-agap-lin/75 leading-[1.7]">
+        Une sélection de notre palette végétale réunionnaise. Toutes
+        adaptées au climat, peu gourmandes en eau, généreuses en
+        floraison.
+      </p>
+    </header>
+
+    <!-- Grille herbier -->
+    <ul class="grid md:grid-cols-2 lg:grid-cols-3 gap-x-10 lg:gap-x-14 gap-y-12 max-w-5xl mx-auto">
+      {data.plantes.map((p, i) => (
+        <li class="scroll-reveal flex items-start gap-5" style={`transition-delay: ${i * 60}ms`}>
+          <!-- Pastille couleur ronde + numéro romain Cormorant -->
+          <div class="flex-shrink-0 flex flex-col items-center gap-2">
+            <span class:list={['inline-block w-12 h-12 rounded-full ring-2 ring-agap-lin/10', colorMap[p.couleur] || colorMap.violet]} aria-hidden="true"></span>
+            <span class="font-cormorant italic font-bold text-agap-rose tabular-nums" style="font-size: 16px;">
+              {String.fromCharCode(8544 + i)}
+            </span>
+          </div>
+
+          <div class="flex-1 min-w-0 pt-1">
+            <h3 class="font-cormorant text-agap-lin leading-tight" style="font-size: 26px;">
+              {p.nom}
+            </h3>
+            <!-- Nom latin en italique fin -->
+            <p class="mt-1 font-cormorant italic text-agap-rose/85" style="font-size: 16px;">
+              {p.latin}
+            </p>
+            <!-- Filet décoratif fin -->
+            <div class="mt-3 mb-3 w-10 h-px bg-agap-lin/20" aria-hidden="true"></div>
+            <p class="font-outfit text-sm text-agap-lin/75 leading-[1.7]">
+              {p.usage}
+            </p>
+          </div>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Mention bas -->
+    <p class="scroll-reveal mt-14 text-center text-sm font-cormorant italic text-agap-lin/55 max-w-xl mx-auto leading-relaxed">
+      Notre catalogue complet de 200+ espèces vous est présenté lors du diagnostic du terrain.
+    </p>
+  </div>
+</section>

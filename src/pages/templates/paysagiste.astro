@@ -1,0 +1,92 @@
+---
+import '@fontsource/cormorant-garamond/300.css';
+import '@fontsource/cormorant-garamond/400.css';
+import '@fontsource/cormorant-garamond/500.css';
+import '@fontsource/cormorant-garamond/600.css';
+import '@fontsource/cormorant-garamond/700.css';
+import '@fontsource/cormorant-garamond/300-italic.css';
+import '@fontsource/cormorant-garamond/400-italic.css';
+import '@fontsource/cormorant-garamond/500-italic.css';
+import '@fontsource/cormorant-garamond/600-italic.css';
+import '@fontsource/cormorant-garamond/700-italic.css';
+import '@fontsource/outfit/300.css';
+import '@fontsource/outfit/400.css';
+import '@fontsource/outfit/500.css';
+import '@fontsource/outfit/600.css';
+import '@fontsource/outfit/700.css';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getSeo } from '../../lib/seo';
+import agapData from '../../data/templates/agapanthes.json';
+
+import PaysagisteHeader from '../../components/templates/paysagiste/PaysagisteHeader.astro';
+import HeroBotanique from '../../components/templates/paysagiste/HeroBotanique.astro';
+import Approche from '../../components/templates/paysagiste/Approche.astro';
+import Saisons from '../../components/templates/paysagiste/Saisons.astro';
+import Services from '../../components/templates/paysagiste/Services.astro';
+import Plantes from '../../components/templates/paysagiste/Plantes.astro';
+import Galerie from '../../components/templates/paysagiste/Galerie.astro';
+import Equipe from '../../components/templates/paysagiste/Equipe.astro';
+import Devis from '../../components/templates/paysagiste/Devis.astro';
+import Trouver from '../../components/templates/paysagiste/Trouver.astro';
+import CTAFinal from '../../components/templates/paysagiste/CTAFinal.astro';
+import PaysagisteFooter from '../../components/templates/paysagiste/PaysagisteFooter.astro';
+---
+
+<BaseLayout seo={getSeo('templatePaysagiste')} bare={true}>
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <link rel="dns-prefetch" href="https://images.unsplash.com" />
+    <link
+      rel="preload"
+      as="image"
+      href={agapData.info.photoHero}
+      fetchpriority="high"
+    />
+  </Fragment>
+
+  <PaysagisteHeader />
+
+  <main id="top" class="bg-agap-lin text-agap-feuille font-outfit">
+    <HeroBotanique />
+    <Approche />
+    <Saisons />
+    <Services />
+    <Plantes />
+    <Galerie />
+    <Equipe />
+    <Devis />
+    <Trouver />
+    <CTAFinal />
+  </main>
+
+  <PaysagisteFooter />
+
+  <!-- Sticky bottom CTA mobile : "Devis gratuit" violet -->
+  <a
+    id="agap-sticky-cta"
+    href="#devis"
+    data-visible="false"
+    class="md:hidden fixed bottom-4 inset-x-4 z-40 inline-flex items-center justify-center h-14 px-6 text-sm font-outfit font-semibold uppercase tracking-[0.2em] rounded-full bg-agap-violet text-agap-lin transition-all duration-300 ease-out data-[visible=false]:opacity-0 data-[visible=false]:translate-y-4 data-[visible=false]:pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0"
+    style="box-shadow: 0 12px 32px rgb(107 91 149 / 0.40);"
+  >
+    Demander un devis
+  </a>
+
+  <script>
+    /* Sticky CTA mobile : visible après scroll du hero, caché en section Devis */
+    const sticky = document.getElementById('agap-sticky-cta');
+    const devis = document.getElementById('devis');
+    if (sticky && devis) {
+      const updateSticky = () => {
+        const rect = devis.getBoundingClientRect();
+        const inDevis = rect.top < window.innerHeight && rect.bottom > 80;
+        const scrolledPastHero = window.scrollY > 480;
+        sticky.dataset.visible = String(scrolledPastHero && !inDevis);
+      };
+      updateSticky();
+      window.addEventListener('scroll', updateSticky, { passive: true });
+      window.addEventListener('resize', updateSticky, { passive: true });
+    }
+  </script>
+</BaseLayout>

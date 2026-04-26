@@ -1,0 +1,76 @@
+---
+/**
+ * Saisons — 4 cards saisonnières avec actions par saison.
+ * Layout : grille 2x2 mobile, 4 cols desktop.
+ * Chaque saison a sa couleur d'accent (violet, rose, sauge).
+ *
+ * Section UNIQUE : aucun autre template n'a de planning saisonnier.
+ */
+import data from '../../../data/templates/agapanthes.json';
+
+// Map couleur saison → classes Tailwind
+const colorMap: Record<string, { bg: string; text: string; ring: string; pill: string }> = {
+  violet: { bg: 'bg-agap-violet/10',    text: 'text-agap-violet',      ring: 'ring-agap-violet/30',      pill: 'bg-agap-violet text-agap-lin' },
+  rose:   { bg: 'bg-agap-rose/40',      text: 'text-agap-violet-fonce',ring: 'ring-agap-violet/20',      pill: 'bg-agap-violet-fonce text-agap-lin' },
+  sauge:  { bg: 'bg-agap-sauge/25',     text: 'text-agap-sauge-fonce', ring: 'ring-agap-sauge-fonce/30', pill: 'bg-agap-sauge-fonce text-agap-lin' },
+};
+---
+
+<section id="saisons" class="relative bg-agap-pierre/40 py-20 md:py-32 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="text-center max-w-3xl mx-auto mb-14 md:mb-20">
+      <p class="scroll-reveal flex items-center justify-center gap-3 text-xs font-outfit font-medium uppercase tracking-[0.32em] text-agap-violet">
+        <span class="block w-8 h-px bg-agap-violet" aria-hidden="true"></span>
+        <span>Au fil des saisons</span>
+        <span class="block w-8 h-px bg-agap-violet" aria-hidden="true"></span>
+      </p>
+      <h2 class="scroll-reveal mt-5 font-cormorant text-agap-feuille leading-[1.05]" style="font-size: clamp(36px, 5.5vw, 60px);">
+        Le jardin se pense
+        <span class="block italic font-medium text-agap-violet">en cycles.</span>
+      </h2>
+      <p class="scroll-reveal mt-6 font-outfit text-agap-feuille/70 leading-[1.7]">
+        À La Réunion, les saisons s'inversent. Voici notre calendrier
+        d'intervention au fil de l'année australe.
+      </p>
+    </header>
+
+    <!-- 4 saisons en grille -->
+    <ul class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
+      {data.saisons.map((s, i) => {
+        const c = colorMap[s.couleur] || colorMap.violet;
+        return (
+          <li class="scroll-reveal flex flex-col bg-agap-lin border border-agap-feuille/10 hover:border-agap-violet/40 transition-colors p-7 md:p-8" style={`transition-delay: ${i * 60}ms`}>
+            <!-- Pill saison numérotée -->
+            <div class="flex items-baseline justify-between gap-3">
+              <span class="font-cormorant italic font-bold text-agap-feuille/30 tabular-nums" style="font-size: 28px;">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <span class:list={['inline-flex items-center px-3 h-7 rounded-full text-[10px] font-outfit font-semibold uppercase tracking-[0.22em]', c.pill]}>
+                {s.mois}
+              </span>
+            </div>
+
+            <h3 class="mt-5 font-cormorant italic text-agap-feuille leading-tight" style="font-size: 28px;">
+              {s.nom}
+            </h3>
+
+            <p class="mt-3 font-outfit text-sm text-agap-feuille/70 leading-[1.7]">
+              {s.description}
+            </p>
+
+            <!-- Actions par saison en liste -->
+            <ul class="mt-6 pt-5 border-t border-agap-feuille/10 space-y-2 mt-auto">
+              {s.actions.map((a) => (
+                <li class:list={['flex items-baseline gap-2.5 font-outfit text-sm', c.text]}>
+                  <span class:list={['flex-shrink-0 w-1.5 h-1.5 rounded-full mt-1.5', c.text.replace('text-', 'bg-')]} aria-hidden="true"></span>
+                  <span>{a}</span>
+                </li>
+              ))}
+            </ul>
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+</section>
