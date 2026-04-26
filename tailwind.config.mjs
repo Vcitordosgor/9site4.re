@@ -19,6 +19,9 @@ export default {
     {
       pattern: /^(bg|text|ring|border|from|to|via)-(salon-blanc|salon-noir|salon-vert|salon-vert-clair|salon-gris|salon-creme|salon-encre|salon-cuivre|salon-laiton)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
     },
+    {
+      pattern: /^(bg|text|ring|border|from|to|via)-(spa-blanc|spa-creme|spa-sable|spa-rose|spa-terracotta|spa-argile|spa-cacao)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
+    },
   ],
   theme: {
     extend: {
@@ -52,6 +55,16 @@ export default {
         'salon-encre':      '#0A0A0A',  // alias désormais identique au noir
         'salon-cuivre':     '#2D4A3A',  // alias désormais identique au vert
         'salon-laiton':     '#5C7A66',  // alias désormais identique au vert clair
+        // Palette spa (template /templates/spa — Elio spa)
+        // Style "Nature Distilled" : argile, sable, terracotta, crème chaude.
+        // Aucun chevauchement avec les autres templates.
+        'spa-blanc':      '#FFFFFF',
+        'spa-creme':      '#F5F0E1',  // crème chaude, fond principal
+        'spa-sable':      '#D4C4A8',  // sable beige, sections alternées
+        'spa-rose':       '#E8C9B8',  // rose poudre, micro-accents
+        'spa-terracotta': '#C67B5C',  // terracotta — accents, titres italiques
+        'spa-argile':     '#9C5B3D',  // argile foncé — CTA (AAA white-on-argile)
+        'spa-cacao':      '#3A2F26',  // brun chocolat profond — texte / sections sombres
       },
       fontFamily: {
         sora: ['Sora', 'system-ui', 'sans-serif'],
@@ -59,6 +72,8 @@ export default {
         playfair: ['"Playfair Display"', 'Georgia', 'serif'],
         fraunces: ['Fraunces', 'Georgia', 'serif'],
         'dm-sans': ['"DM Sans"', 'system-ui', 'sans-serif'],
+        lora: ['Lora', 'Georgia', 'serif'],
+        raleway: ['Raleway', 'system-ui', 'sans-serif'],
       },
       fontSize: {
         'hero': ['clamp(2.5rem, 5vw + 1rem, 5rem)', { lineHeight: '1.05', letterSpacing: '-0.02em' }],

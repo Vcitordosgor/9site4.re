@@ -30,7 +30,8 @@ type PageKey =
   | 'notFound'
   | 'styleguide'
   | 'templatePizzeria'
-  | 'templateSalon';
+  | 'templateSalon'
+  | 'templateSpa';
 
 const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'> & { noindex?: boolean; ogImage?: string; ogImageAlt?: string }> = {
   home: {
@@ -87,6 +88,13 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
     description:
       'Aperçu du template "Salon de coiffure" proposé par 9site4 : prestations, prise de rendez-vous, infos pratiques. Site fictif de démonstration.',
     canonical: '/templates/salon',
+    noindex: true,
+  },
+  templateSpa: {
+    title: 'Elio spa — Spa & massages à Saint-Pierre (Réunion) | Template 9site4',
+    description:
+      'Aperçu du template "Spa massage" proposé par 9site4 : rituels signature, soins du visage et du corps, réservation directe. Site fictif de démonstration.',
+    canonical: '/templates/spa',
     noindex: true,
   },
 };
