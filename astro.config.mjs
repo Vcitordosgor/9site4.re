@@ -17,7 +17,8 @@ export default defineConfig({
       filter: (page) =>
         !page.includes('/mentions-legales') &&
         !page.includes('/404') &&
-        !page.includes('/styleguide'),
+        !page.includes('/styleguide') &&
+        !page.includes('/templates/'),
     }),
   ],
 

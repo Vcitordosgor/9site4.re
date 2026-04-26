@@ -28,7 +28,8 @@ type PageKey =
   | 'contact'
   | 'legal'
   | 'notFound'
-  | 'styleguide';
+  | 'styleguide'
+  | 'templatePizzeria';
 
 const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'> & { noindex?: boolean; ogImage?: string; ogImageAlt?: string }> = {
   home: {
@@ -71,6 +72,13 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
     title: `Styleguide | ${siteConfig.siteName}`,
     description: 'Bibliothèque de composants UI.',
     canonical: '/styleguide',
+    noindex: true,
+  },
+  templatePizzeria: {
+    title: 'Pizza Lé O — Pizzeria à Saint-Paul (Réunion) | Template 9site4',
+    description:
+      'Aperçu du template "Pizzeria" proposé par 9site4 : menu, panier, commande WhatsApp. Site fictif de démonstration.',
+    canonical: '/templates/pizzeria',
     noindex: true,
   },
 };
