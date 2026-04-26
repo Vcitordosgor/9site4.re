@@ -47,7 +47,8 @@
     "categorie": "beaute",
     "sousTitre": "Catalogue de soins et planning des rendez-vous",
     "moduleInclus": "Rendez-vous",
-    "slug": "spa-massage"
+    "slug": "spa-massage",
+    "previewUrl": "/templates/spa"
   },
   {
     "id": 7,
