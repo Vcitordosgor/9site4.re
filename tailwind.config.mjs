@@ -25,6 +25,9 @@ export default {
     {
       pattern: /^(bg|text|ring|border|from|to|via)-(resto-blanc|resto-blanc-casse|resto-bleu-poudre|resto-bleu-roi|resto-bleu-encre|resto-or)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
     },
+    {
+      pattern: /^(bg|text|ring|border|from|to|via)-(bp-blanc|bp-ciment|bp-acier|bp-anthracite|bp-jaune|bp-jaune-fonce|bp-rouge)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
+    },
   ],
   theme: {
     extend: {
@@ -77,6 +80,16 @@ export default {
         'resto-bleu-roi':    '#1E3A8A',  // bleu royal profond saturé — accents, titres, CTA
         'resto-bleu-encre':  '#131A36',  // bleu encre très sombre — fonds dark, texte
         'resto-or':          '#C8A65E',  // or laiton vieilli — filets ornementaux uniquement
+        // Palette plomberie (template /templates/plomberie — Bernard Plomberie)
+        // Style "Poster industriel utilitaire" : anthracite + jaune sécurité + ciment.
+        // Codes BTP/chantier iconiques (caution tape). Aucun chevauchement.
+        'bp-blanc':       '#FFFFFF',
+        'bp-ciment':      '#E8E6E1',  // gris ciment warm — fond principal
+        'bp-acier':       '#2E3340',  // gris acier — sections alternées, cards dark
+        'bp-anthracite':  '#1A1D24',  // anthracite presque noir — fonds dark dominants
+        'bp-jaune':       '#FFC72C',  // safety yellow — CTA, badges, accents
+        'bp-jaune-fonce': '#D9A607',  // jaune foncé — hover yellow
+        'bp-rouge':       '#E53935',  // rouge urgence — uniquement badge "URGENCE 24/7"
       },
       fontFamily: {
         sora: ['Sora', 'system-ui', 'sans-serif'],
@@ -88,6 +101,8 @@ export default {
         raleway: ['Raleway', 'system-ui', 'sans-serif'],
         bodoni: ['"Bodoni Moda"', 'Didot', 'Georgia', 'serif'],
         manrope: ['Manrope', 'system-ui', 'sans-serif'],
+        bebas: ['"Bebas Neue"', 'Impact', 'sans-serif'],
+        archivo: ['Archivo', 'system-ui', 'sans-serif'],
       },
       fontSize: {
         'hero': ['clamp(2.5rem, 5vw + 1rem, 5rem)', { lineHeight: '1.05', letterSpacing: '-0.02em' }],

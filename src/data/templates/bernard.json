@@ -1,0 +1,95 @@
+{
+  "info": {
+    "nom": "Bernard Plomberie",
+    "wordmark1": "Bernard",
+    "wordmark2": "Plomberie",
+    "tagline": "Plombier au Tampon",
+    "taglineSecondary": "Dépannage rapide, devis gratuit, prix fixes.",
+    "intro": "Artisan plombier indépendant depuis 18 ans. Intervention rapide dans tout le sud de l'île — fuite d'eau, débouchage, chauffe-eau, salle de bain. Devis gratuit en moins d'une heure.",
+    "adresse": "27 chemin Bras-Creux, 97430 Le Tampon",
+    "telephone": "+262 692 00 00 00",
+    "telephoneHref": "+262692000000",
+    "telephoneCompact": "0692 00 00 00",
+    "email": "contact@bernard-plomberie.re",
+    "whatsapp": "262692000000",
+    "whatsappDisplay": "+262 692 00 00 00",
+    "annee": 2007,
+    "siret": "498 217 583 00021",
+    "horaires": [
+      { "jour": "Lundi – Vendredi", "ouvert": true,  "label": "7h – 19h" },
+      { "jour": "Samedi",           "ouvert": true,  "label": "8h – 17h" },
+      { "jour": "Dimanche",         "ouvert": false, "label": "Urgences uniquement" },
+      { "jour": "Urgences 24/7",    "ouvert": true,  "label": "Toute l'année",      "urgence": true }
+    ],
+    "photoBernard": "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=900&q=85",
+    "photoBernardAlt": "Bernard, plombier, dans son atelier",
+    "photoVan": "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=900&q=85",
+    "photoVanAlt": "Camionnette d'intervention équipée",
+    "photoAvant1": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=900&q=85",
+    "photoApres1": "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=900&q=85",
+    "photoAvant2": "https://images.unsplash.com/photo-1620626011761-996317b8d101?w=900&q=85",
+    "photoApres2": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=85"
+  },
+  "tagline": "FUITE, BOUCHON OU PANNE ?",
+  "taglineLarge": "BERNARD ARRIVE.",
+  "services": [
+    { "id": "depannage",   "icon": "wrench",     "titre": "Dépannage urgent",      "description": "Fuite, rupture de canalisation, dégât des eaux. Intervention sous 1h.",                                "delai": "Sous 1h" },
+    { "id": "chauffe",     "icon": "flame",      "titre": "Chauffe-eau",           "description": "Pose, remplacement, réparation. Toutes marques. Solaire et électrique.",                              "delai": "Sous 24h" },
+    { "id": "debouchage",  "icon": "drain",      "titre": "Débouchage",            "description": "Lavabos, éviers, douches, WC, canalisations principales. Caméra d'inspection.",                       "delai": "Sous 2h" },
+    { "id": "fuite",       "icon": "drop",       "titre": "Recherche de fuite",    "description": "Détection sans destruction. Caméra thermique, gaz traceur. Devis remis sur place.",                  "delai": "Sous 4h" },
+    { "id": "installation","icon": "tool",       "titre": "Installation neuve",    "description": "Salle de bain complète, cuisine, alimentation, évacuation. Plan et chiffrage offerts.",              "delai": "Sur RDV" },
+    { "id": "renovation",  "icon": "home",       "titre": "Rénovation salle de bain", "description": "Rénovation totale ou partielle. Coordination carreleur, électricien si besoin.",                "delai": "Sur devis" }
+  ],
+  "tarifs": [
+    { "id": "deplacement", "label": "Déplacement",            "valeur": "0",   "unite": "€",        "note": "Devis gratuit, déplacement compris dans le sud de l'île" },
+    { "id": "horaire",     "label": "Taux horaire",           "valeur": "65",  "unite": "€/h",      "note": "Mêmes tarifs en semaine et en soirée jusqu'à 19h" },
+    { "id": "urgence",     "label": "Urgence nuit & dimanche", "valeur": "+50", "unite": "%",        "note": "Majoration uniquement après 22h et le dimanche" },
+    { "id": "forfait",     "label": "Débouchage standard",    "valeur": "85",  "unite": "€ TTC",    "note": "Forfait tout compris pour un appareil sanitaire" }
+  ],
+  "garanties": [
+    { "icon": "shield", "titre": "Décennale & RC pro",    "description": "Assurances à jour, attestations remises sur simple demande." },
+    { "icon": "doc",    "titre": "Devis gratuit",          "description": "Sous 24h ouvrées, par mail ou WhatsApp. Aucun engagement." },
+    { "icon": "wallet", "titre": "Paiement après",         "description": "Vous payez une fois l'intervention terminée et validée." },
+    { "icon": "alarm",  "titre": "Urgences 24/7",          "description": "Astreinte téléphone 7j/7. Réponse en moins de 15 minutes." }
+  ],
+  "communes": [
+    "Le Tampon", "Saint-Pierre", "Saint-Joseph", "L'Étang-Salé",
+    "Saint-Louis", "Petite-Île", "Plaine-des-Cafres", "Les Avirons",
+    "Saint-Leu", "La Plaine-des-Palmistes", "Cilaos"
+  ],
+  "realisations": [
+    { "id": "r1", "lieu": "Saint-Pierre", "type": "Rénovation salle de bain", "description": "Refonte complète après dégât des eaux : douche italienne, lavabo, faïence." },
+    { "id": "r2", "lieu": "Le Tampon",    "type": "Chauffe-eau solaire",      "description": "Remplacement chauffe-eau électrique par chauffe-eau solaire 200L sur toiture." }
+  ],
+  "bernard": {
+    "nom": "Bernard Hoarau",
+    "titre": "Plombier · gérant",
+    "experience": "18 ans",
+    "bio": "Formé en métropole, installé au Tampon depuis 2007. Bernard travaille seul ou avec un apprenti, sans sous-traitance. Spécialisé dans le dépannage et la rénovation de salles de bain.",
+    "certifications": [
+      "RGE QualiPAC (chauffe-eau solaire)",
+      "Assurance décennale MMA n°XX-XXXX",
+      "Membre CAPEB Réunion"
+    ]
+  },
+  "avis": [
+    { "id": "a1", "auteur": "Marie L.",    "lieu": "Saint-Pierre", "note": 5, "texte": "Fuite la veille de Noël, Bernard est venu en moins de 45 minutes. Réparation propre, prix annoncé respecté. Je recommande vivement." },
+    { "id": "a2", "auteur": "Jean-Paul M.","lieu": "Le Tampon",    "note": 5, "texte": "Pose d'un chauffe-eau solaire, du devis à la mise en service en 4 jours. Travail soigné, explications claires. Excellent rapport qualité/prix." },
+    { "id": "a3", "auteur": "Aïcha B.",    "lieu": "Saint-Louis",  "note": 5, "texte": "Refonte de notre salle de bain. Bernard a coordonné carreleur et électricien sans qu'on ait à intervenir. Résultat impeccable, livré dans les délais." }
+  ],
+  "typesProblemes": [
+    { "id": "fuite",        "label": "Fuite d'eau" },
+    { "id": "debouchage",   "label": "Débouchage" },
+    { "id": "chauffe-eau",  "label": "Chauffe-eau" },
+    { "id": "wc",           "label": "WC, sanitaires" },
+    { "id": "robinetterie", "label": "Robinetterie" },
+    { "id": "installation", "label": "Installation neuve" },
+    { "id": "renovation",   "label": "Rénovation" },
+    { "id": "autre",        "label": "Autre" }
+  ],
+  "urgences": [
+    { "id": "tres-urgent", "label": "Très urgent",  "description": "Inondation, fuite active, plus d'eau" },
+    { "id": "urgent",      "label": "Urgent",       "description": "Sous 24-48h" },
+    { "id": "non-urgent",  "label": "Non urgent",   "description": "Sous 1 semaine ou plus" }
+  ]
+}

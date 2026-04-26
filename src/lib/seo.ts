@@ -32,7 +32,8 @@ type PageKey =
   | 'templatePizzeria'
   | 'templateSalon'
   | 'templateSpa'
-  | 'templateResto';
+  | 'templateResto'
+  | 'templatePlomberie';
 
 const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'> & { noindex?: boolean; ogImage?: string; ogImageAlt?: string }> = {
   home: {
@@ -103,6 +104,13 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
     description:
       'Aperçu du template "Restaurant" proposé par 9site4 : carte du chef, menus, cave à vins, réservation en ligne. Site fictif de démonstration.',
     canonical: '/templates/resto',
+    noindex: true,
+  },
+  templatePlomberie: {
+    title: 'Bernard Plomberie — Plombier au Tampon (Réunion) | Template 9site4',
+    description:
+      'Aperçu du template "Plomberie" proposé par 9site4 : services, tarifs transparents, demande d\'intervention en ligne. Site fictif de démonstration.',
+    canonical: '/templates/plomberie',
     noindex: true,
   },
 };
