@@ -11,9 +11,10 @@
     "id": 2,
     "nom": "Snack-pizzeria",
     "categorie": "restaurants",
-    "sousTitre": "Menu, horaires et réservation rapide",
+    "sousTitre": "Menu, panier et commande WhatsApp",
     "moduleInclus": "Réservation",
-    "slug": "snack-pizzeria"
+    "slug": "snack-pizzeria",
+    "previewUrl": "/templates/pizzeria"
   },
   {
     "id": 3,

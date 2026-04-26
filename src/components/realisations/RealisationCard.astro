@@ -14,6 +14,7 @@ interface Realisation {
   sousTitre: string;
   moduleInclus: string;
   slug: string;
+  previewUrl?: string;
 }
 
 interface Props {
@@ -82,6 +83,14 @@ const photoUrl = `https://picsum.photos/seed/9site4-${realisation.categorie}/800
     <div class="absolute top-4 left-4">
       <Badge variant="accent" size="sm">{categoryName}</Badge>
     </div>
+    {realisation.previewUrl && (
+      <div class="absolute top-4 right-4">
+        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-orange text-bleu-nuit text-xs font-bold uppercase tracking-wide shadow-card">
+          <span class="w-1.5 h-1.5 rounded-full bg-bleu-nuit animate-pulse"></span>
+          Démo en ligne
+        </span>
+      </div>
+    )}
   </div>
 
   <!-- Contenu -->
@@ -102,9 +111,21 @@ const photoUrl = `https://picsum.photos/seed/9site4-${realisation.categorie}/800
       <span><strong class="font-semibold">{realisation.moduleInclus}</strong></span>
     </div>
 
+    {realisation.previewUrl && (
+      <a
+        href={realisation.previewUrl}
+        target="_blank"
+        rel="noopener"
+        class="mt-5 inline-flex items-center justify-center gap-2 h-10 px-4 text-sm font-semibold rounded-full bg-bleu-nuit text-blanc-casse hover:bg-orange hover:text-bleu-nuit transition-all"
+      >
+        Voir le template
+        <Icon name="arrow-right" size={14} strokeWidth={2.5} />
+      </a>
+    )}
+
     <a
       href={ctaHref}
-      class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-bleu-nuit group-hover:text-orange transition-colors"
+      class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-bleu-nuit group-hover:text-orange transition-colors"
     >
       Je veux un site comme celui-ci
       <Icon name="arrow-right" size={16} class="transition-transform duration-300 ease-out-soft group-hover:translate-x-1" strokeWidth={2} />
