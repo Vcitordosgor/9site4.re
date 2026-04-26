@@ -1,0 +1,74 @@
+{
+  "info": {
+    "nom": "Pizza Lé O",
+    "tagline": "La vraie pizza, à Saint-Paul",
+    "adresse": "12 rue de la Plage, 97460 Saint-Paul",
+    "telephone": "+262 692 00 00 00",
+    "telephoneHref": "+262692000000",
+    "email": "contact@pizzaleo.re",
+    "whatsapp": "262692000000",
+    "whatsappDisplay": "+262 692 00 00 00",
+    "annee": 2018,
+    "horaires": [
+      { "jour": "Lundi", "ouvert": false, "label": "Fermé" },
+      { "jour": "Mardi – Samedi", "ouvert": true, "label": "18h00 – 23h00" },
+      { "jour": "Dimanche", "ouvert": true, "label": "12h00 – 14h30  /  18h00 – 23h00" }
+    ]
+  },
+  "engagements": [
+    { "titre": "Pâte 48h", "texte": "Une fermentation longue qui rend la pizza plus digeste et plus parfumée." },
+    { "titre": "Four à bois", "texte": "Cuisson au feu d'eucalyptus, croûte légère et bord soufflé." },
+    { "titre": "Produits locaux", "texte": "Légumes, charcuterie, fromages : on travaille avec les producteurs péi." }
+  ],
+  "zones": ["Saint-Paul", "Saint-Gilles-les-Bains", "La Saline-les-Bains", "Le Port"],
+  "horairesCommande": [
+    "Dès que possible",
+    "19h00",
+    "19h30",
+    "20h00",
+    "20h30",
+    "21h00",
+    "21h30"
+  ],
+  "menu": {
+    "classiques": {
+      "titre": "Classiques",
+      "description": "Les indémodables, sublimés par notre pâte fermentée 48h."
+    },
+    "speciales": {
+      "titre": "Spéciales Lé O",
+      "description": "Nos créations maison, avec une touche péi assumée."
+    },
+    "desserts": {
+      "titre": "Desserts",
+      "description": "Faits maison, à partager (ou pas)."
+    },
+    "boissons": {
+      "titre": "Boissons",
+      "description": "Sur place ou à emporter."
+    }
+  },
+  "items": [
+    { "id": "margherita",      "categorie": "classiques", "nom": "Margherita",      "description": "Tomate, mozzarella fior di latte, basilic frais, huile d'olive vierge.", "prix": 11 },
+    { "id": "reine",           "categorie": "classiques", "nom": "Reine",           "description": "Tomate, mozzarella, jambon blanc supérieur, champignons frais.",        "prix": 13 },
+    { "id": "quatre-fromages", "categorie": "classiques", "nom": "4 Fromages",      "description": "Mozzarella, gorgonzola, parmesan affiné, chèvre fermier.",              "prix": 14 },
+    { "id": "calzone",         "categorie": "classiques", "nom": "Calzone",         "description": "Tomate, mozzarella, jambon, champignons, œuf — pliée et dorée au four.", "prix": 14 },
+    { "id": "diavola",         "categorie": "classiques", "nom": "Diavola",         "description": "Tomate, mozzarella, salami piquant, olives noires Taggiasche, piment.",  "prix": 14 },
+
+    { "id": "creole",          "categorie": "speciales",  "nom": "Créole",          "description": "Tomate, mozzarella, rougail saucisse maison, oignons confits, coriandre.", "prix": 16 },
+    { "id": "bourbon",         "categorie": "speciales",  "nom": "Bourbon",         "description": "Crème, mozzarella, poulet mariné aux épices Bourbon, ananas Victoria.",   "prix": 16 },
+    { "id": "volcanique",      "categorie": "speciales",  "nom": "Volcanique",      "description": "Tomate, mozzarella, chorizo, piment cabri, miel de letchi.",            "prix": 16 },
+    { "id": "saint-paul",      "categorie": "speciales",  "nom": "Saint-Paul",      "description": "Crème, mozzarella, thon, câpres, citron vert, roquette.",                "prix": 16 },
+
+    { "id": "tiramisu",        "categorie": "desserts",   "nom": "Tiramisu",                       "description": "Mascarpone, café arabica, cacao amer.",         "prix": 6 },
+    { "id": "panna-cotta",     "categorie": "desserts",   "nom": "Panna cotta vanille de Bourbon", "description": "Crème onctueuse, coulis de letchi.",            "prix": 6 },
+    { "id": "tartufo",         "categorie": "desserts",   "nom": "Tartufo",                        "description": "Glace chocolat noir, cœur fondant, amandes torréfiées.", "prix": 7 },
+
+    { "id": "eau-50",          "categorie": "boissons",   "nom": "Eau plate / pétillante 50 cl",   "description": "",                              "prix": 3 },
+    { "id": "coca-33",         "categorie": "boissons",   "nom": "Coca-Cola 33 cl",                "description": "",                              "prix": 3 },
+    { "id": "limo-bourbon",    "categorie": "boissons",   "nom": "Limonade Bourbon 33 cl",         "description": "Pétillante, locale.",           "prix": 4 },
+    { "id": "biere-bourbon",   "categorie": "boissons",   "nom": "Bière Bourbon 33 cl",            "description": "Blonde, brassée à La Réunion.", "prix": 5 },
+    { "id": "chianti",         "categorie": "boissons",   "nom": "Chianti DOCG — verre 15 cl",     "description": "Rouge italien, fruité.",        "prix": 6 },
+    { "id": "frascati",        "categorie": "boissons",   "nom": "Frascati — verre 15 cl",         "description": "Blanc sec, romain.",            "prix": 6 }
+  ]
+}
