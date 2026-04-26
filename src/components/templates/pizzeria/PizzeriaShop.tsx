@@ -372,7 +372,7 @@ Mon téléphone : ${data.telephone}${noteLine}`;
                     <p class="mt-5 font-playfair italic text-pizza-charbon/70" style="font-size: 17px;">
                       Votre panier est vide.
                     </p>
-                    <p class="mt-2 text-sm text-pizza-charbon/55">
+                    <p class="mt-2 text-sm text-pizza-charbon/70">
                       Ajoutez vos plats depuis la carte ci-dessus.
                     </p>
                   </div>
@@ -527,7 +527,7 @@ Mon téléphone : ${data.telephone}${noteLine}`;
                 </div>
 
                 <div>
-                  <label for="po-note" class={labelBase}>Note <span class="lowercase tracking-normal text-pizza-charbon/45 font-normal">(optionnel)</span></label>
+                  <label for="po-note" class={labelBase}>Note <span class="lowercase tracking-normal text-pizza-charbon/65 font-normal">(optionnel)</span></label>
                   <textarea id="po-note" name="note" rows={3}
                     class={`${inputBase} ${inputOk} h-auto py-3 resize-y`}
                     placeholder="Allergies, préférences, demandes spéciales…"

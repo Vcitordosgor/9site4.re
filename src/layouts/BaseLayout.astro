@@ -86,6 +86,9 @@ const schemaOrg = {
     {!seo.noindex && (
       <script type="application/ld+json" set:html={JSON.stringify(schemaOrg)} />
     )}
+
+    <!-- Slot pour préchargements / hints page-spécifiques (preconnect, preload, etc.) -->
+    <slot name="head" />
   </head>
   <body class="flex flex-col min-h-dvh">
     {!bare && <Header />}
