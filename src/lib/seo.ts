@@ -33,7 +33,8 @@ type PageKey =
   | 'templateSalon'
   | 'templateSpa'
   | 'templateResto'
-  | 'templatePlomberie';
+  | 'templatePlomberie'
+  | 'templatePaysagiste';
 
 const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'> & { noindex?: boolean; ogImage?: string; ogImageAlt?: string }> = {
   home: {
@@ -111,6 +112,13 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
     description:
       'Aperçu du template "Plomberie" proposé par 9site4 : services, tarifs transparents, demande d\'intervention en ligne. Site fictif de démonstration.',
     canonical: '/templates/plomberie',
+    noindex: true,
+  },
+  templatePaysagiste: {
+    title: 'Les agapanthes — Paysagiste à Saint-Leu (Réunion) | Template 9site4',
+    description:
+      'Aperçu du template "Paysagiste" proposé par 9site4 : création de jardins, entretien, plantes locales, devis en ligne. Site fictif de démonstration.',
+    canonical: '/templates/paysagiste',
     noindex: true,
   },
 };

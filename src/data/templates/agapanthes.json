@@ -1,0 +1,115 @@
+{
+  "info": {
+    "nom": "Les agapanthes",
+    "wordmark1": "Les",
+    "wordmark2": "agapanthes",
+    "tagline": "L'art du jardin",
+    "taglineItalic": "à la créole.",
+    "intro": "Atelier paysagiste à Saint-Leu. Création de jardins, entretien régulier, palette végétale 100% locale. Pour les particuliers, les copropriétés et les hôtels du sud-ouest de l'île.",
+    "adresse": "14 chemin des Avirons, 97436 Saint-Leu",
+    "telephone": "+262 692 00 00 00",
+    "telephoneHref": "+262692000000",
+    "telephoneCompact": "0692 00 00 00",
+    "email": "atelier@les-agapanthes.re",
+    "whatsapp": "262692000000",
+    "whatsappDisplay": "+262 692 00 00 00",
+    "annee": 2011,
+    "siret": "532 671 904 00018",
+    "horaires": [
+      { "jour": "Lundi – Vendredi", "ouvert": true,  "label": "7h30 – 17h" },
+      { "jour": "Samedi",           "ouvert": true,  "label": "8h – 12h · sur RDV" },
+      { "jour": "Dimanche",         "ouvert": false, "label": "Repos" }
+    ],
+    "photoHero": "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1400&q=85",
+    "photoHeroAlt": "Jardin paysagé luxuriant avec massifs floraux",
+    "photoFleur": "https://images.unsplash.com/photo-1502209524164-acea936639a2?w=600&q=85",
+    "photoFleurAlt": "Fleur d'agapanthe bleu-violet",
+    "photoFeuille": "https://images.unsplash.com/photo-1437002827914-ec03c8e7e3a5?w=600&q=85",
+    "photoFeuilleAlt": "Feuille tropicale en gros plan",
+    "photoGalerie1": "https://images.unsplash.com/photo-1558904541-efa843a96f01?w=900&q=85",
+    "photoGalerie1Alt": "Allée bordée de massifs végétaux",
+    "photoGalerie2": "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=900&q=85",
+    "photoGalerie2Alt": "Composition florale colorée",
+    "photoGalerie3": "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=900&q=85",
+    "photoGalerie3Alt": "Jardin minéral avec plantes succulentes",
+    "photoGalerie4": "https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=900&q=85",
+    "photoGalerie4Alt": "Terrasse en bois bordée de palmiers",
+    "photoGalerie5": "https://images.unsplash.com/photo-1444392061186-9fc38f84f726?w=900&q=85",
+    "photoGalerie5Alt": "Massif de fleurs mauves et rosées",
+    "photoGalerie6": "https://images.unsplash.com/photo-1564594985645-4427056e22e2?w=900&q=85",
+    "photoGalerie6Alt": "Palmiers et bougainvilliers en bord de mer"
+  },
+  "manifesto": "On dessine un jardin comme on écrit un poème. Avec des silences, des respirations, et des plantes qu'on connaît par cœur.",
+  "valeurs": [
+    { "icon": "leaf",   "titre": "100% local",      "description": "Plantes adaptées au climat tropical réunionnais. Moins d'arrosage, moins de pertes, plus de beauté." },
+    { "icon": "drop",   "titre": "Sobre en eau",   "description": "Conception pensée pour un arrosage raisonné. Goutte-à-goutte, paillage, espèces résistantes." },
+    { "icon": "scissor","titre": "Sur-mesure",     "description": "Aucun jardin standard. Chaque création part de votre lieu, vos envies, votre rythme de vie." }
+  ],
+  "saisons": [
+    { "id": "ete",      "nom": "Été austral",       "mois": "Décembre – Mars", "couleur": "violet",
+      "description": "Saison des pluies et des floraisons généreuses. Parfait pour planter agapanthes, héliconias, balisiers.",
+      "actions": ["Plantation des vivaces", "Tailles légères", "Surveillance arrosage"] },
+    { "id": "automne",  "nom": "Automne",            "mois": "Avril – Mai",     "couleur": "rose",
+      "description": "Transition douce. On installe les jeunes arbustes avant la fraîcheur, on prépare les sols pour l'hiver.",
+      "actions": ["Plantation arbustes", "Apport compost", "Taille de structuration"] },
+    { "id": "hiver",    "nom": "Hiver austral",      "mois": "Juin – Septembre","couleur": "sauge",
+      "description": "Saison sèche et fraîche. Idéale pour les gros chantiers, terrasses, allées et tailles d'hiver.",
+      "actions": ["Création de jardins", "Élagage", "Pose de paillage"] },
+    { "id": "printemps","nom": "Printemps",          "mois": "Octobre – Novembre","couleur": "violet",
+      "description": "Le réveil des plantes. On prépare l'explosion estivale : semis, divisions, plantations rapides.",
+      "actions": ["Semis de fleurs", "Division des touffes", "Reprise arrosage"] }
+  ],
+  "services": [
+    { "id": "creation",   "icon": "sketch",     "titre": "Création de jardin",        "description": "Du diagnostic du terrain à la livraison clé en main. Plan paysager, choix des essences, plantation.",                "delai": "Devis sous 7j" },
+    { "id": "entretien",  "icon": "scissor",    "titre": "Entretien régulier",        "description": "Contrats mensuels ou trimestriels. Tailles, désherbage, traitements bio, ramassage feuilles.",                          "delai": "Contrat annuel" },
+    { "id": "elagage",    "icon": "tree",       "titre": "Élagage & abattage",        "description": "Arbres fruitiers, palmiers, grands sujets. Toutes hauteurs, dans le respect des règles d'urbanisme.",                  "delai": "Sur RDV" },
+    { "id": "terrasse",   "icon": "deck",       "titre": "Terrasses & allées",        "description": "Bois, pierre, dalles. Conception et pose, drainage inclus. Coordination avec vos travaux extérieurs.",                "delai": "Sous 1 mois" },
+    { "id": "arrosage",   "icon": "drop",       "titre": "Arrosage automatique",      "description": "Étude, pose, programmation. Goutte-à-goutte ou aspersion. Récupération d'eau de pluie possible.",                      "delai": "Sous 2 sem." },
+    { "id": "conseil",    "icon": "book",       "titre": "Conseil & coaching",        "description": "Vous voulez jardiner vous-même ? On vient sur place pour vous guider, choisir, expliquer. Au tarif horaire.",         "delai": "Sur RDV" }
+  ],
+  "plantes": [
+    { "id": "agapanthe",   "nom": "Agapanthe",        "latin": "Agapanthus africanus",     "usage": "Massifs, bordures, pots. Floraison estivale violette. Symbole de l'atelier.",                            "couleur": "violet" },
+    { "id": "heliconia",   "nom": "Héliconia",        "latin": "Heliconia rostrata",        "usage": "Plante exotique au port architectural. Fleur en bec de perroquet rouge et jaune.",                       "couleur": "rose" },
+    { "id": "frangipanier","nom": "Frangipanier",     "latin": "Plumeria rubra",            "usage": "Petit arbre emblématique. Fleurs parfumées, feuillage caduc, port en parasol.",                          "couleur": "rose" },
+    { "id": "vetiver",     "nom": "Vétiver",          "latin": "Chrysopogon zizanioides",   "usage": "Graminée stabilisatrice de sols. Idéal pour talus, lutte anti-érosion, parfum réconfortant.",          "couleur": "sauge" },
+    { "id": "tibouchina",  "nom": "Tibouchina",       "latin": "Tibouchina urvilleana",     "usage": "Arbuste à fleurs violettes velours. Floraison quasi continue toute l'année à La Réunion.",            "couleur": "violet" },
+    { "id": "bougain",     "nom": "Bougainvillier",   "latin": "Bougainvillea spectabilis", "usage": "Liane vigoureuse, bractées colorées. Pour murs, pergolas, brises-vue. Très résistant.",              "couleur": "rose" }
+  ],
+  "equipe": [
+    { "id": "claire",  "nom": "Claire Hoarau",     "role": "Paysagiste · gérante",       "experience": "DPLG 2008",
+      "bio": "Diplômée de l'École nationale supérieure de paysage de Versailles. Spécialiste des palettes végétales tropicales.",
+      "photo": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=85", "photoAlt": "Claire Hoarau, paysagiste" },
+    { "id": "leo",     "nom": "Léo Picard",         "role": "Jardinier · chef d'équipe",  "experience": "8 ans à l'atelier",
+      "bio": "Spécialiste plantation et entretien. Connaît à La Réunion plus de 200 espèces locales et tropicales.",
+      "photo": "https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?w=600&q=85", "photoAlt": "Léo Picard, jardinier" },
+    { "id": "amelie",  "nom": "Amélie Bertrand",   "role": "Élagueuse grimpeuse",        "experience": "Certificat de spécialisation",
+      "bio": "Élagueuse grimpeuse certifiée. Intervient sur palmiers, grands arbres, arbres fruitiers.",
+      "photo": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&q=85", "photoAlt": "Amélie Bertrand, élagueuse" }
+  ],
+  "communes": [
+    "Saint-Leu", "Saint-Paul", "Le Port", "La Possession",
+    "Saint-Gilles", "L'Étang-Salé", "Les Avirons", "Saint-Pierre",
+    "Trois-Bassins", "Cilaos"
+  ],
+  "typesIntervention": [
+    { "id": "creation",     "label": "Création complète" },
+    { "id": "renovation",   "label": "Rénovation jardin" },
+    { "id": "entretien",    "label": "Entretien régulier" },
+    { "id": "elagage",      "label": "Élagage / abattage" },
+    { "id": "terrasse",     "label": "Terrasse / allée" },
+    { "id": "arrosage",     "label": "Arrosage auto" },
+    { "id": "conseil",      "label": "Conseil sur place" },
+    { "id": "autre",        "label": "Autre" }
+  ],
+  "surfaces": [
+    { "id": "petit",  "label": "Petit",   "valeur": "moins de 100 m²" },
+    { "id": "moyen",  "label": "Moyen",   "valeur": "100 à 500 m²" },
+    { "id": "grand",  "label": "Grand",   "valeur": "500 à 2000 m²" },
+    { "id": "tres-grand", "label": "Très grand", "valeur": "plus de 2000 m²" }
+  ],
+  "frequences": [
+    { "id": "ponctuel",   "label": "Ponctuel",     "description": "Une seule intervention" },
+    { "id": "mensuel",    "label": "Mensuel",      "description": "Une fois par mois" },
+    { "id": "trimestriel","label": "Trimestriel",  "description": "Quatre fois par an" }
+  ]
+}

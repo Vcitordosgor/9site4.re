@@ -28,6 +28,9 @@ export default {
     {
       pattern: /^(bg|text|ring|border|from|to|via)-(bp-blanc|bp-ciment|bp-acier|bp-anthracite|bp-jaune|bp-jaune-fonce|bp-rouge)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
     },
+    {
+      pattern: /^(bg|text|ring|border|from|to|via)-(agap-lin|agap-pierre|agap-rose|agap-sauge|agap-sauge-fonce|agap-violet|agap-violet-fonce|agap-feuille)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
+    },
   ],
   theme: {
     extend: {
@@ -90,6 +93,17 @@ export default {
         'bp-jaune':       '#FFC72C',  // safety yellow — CTA, badges, accents
         'bp-jaune-fonce': '#D9A607',  // jaune foncé — hover yellow
         'bp-rouge':       '#E53935',  // rouge urgence — uniquement badge "URGENCE 24/7"
+        // Palette paysagiste (template /templates/paysagiste — Les agapanthes)
+        // Style "Carnet du paysagiste" : violet agapanthe + sauge + lin.
+        // Distinct du vert forêt (salon), terracotta (spa), bleu (resto/main).
+        'agap-lin':         '#F4F2EC',  // blanc lin froid neutre — fond principal
+        'agap-pierre':      '#D8D8D2',  // gris pierre warm — sections alternatives
+        'agap-rose':        '#E8D4D9',  // rose poudre légèrement violet — micro-accents
+        'agap-sauge':       '#9DAB8E',  // sauge tendre — sections végétales
+        'agap-sauge-fonce': '#5C7058',  // sauge foncé — détails, secondaire
+        'agap-violet':      '#6B5B95',  // violet agapanthe — accent principal, CTA
+        'agap-violet-fonce':'#3D2E5E',  // violet profond — fonds dark, header au scroll
+        'agap-feuille':     '#1F2618',  // noir verdâtre — texte AAA
       },
       fontFamily: {
         sora: ['Sora', 'system-ui', 'sans-serif'],
@@ -103,6 +117,8 @@ export default {
         manrope: ['Manrope', 'system-ui', 'sans-serif'],
         bebas: ['"Bebas Neue"', 'Impact', 'sans-serif'],
         archivo: ['Archivo', 'system-ui', 'sans-serif'],
+        cormorant: ['"Cormorant Garamond"', 'Garamond', 'Georgia', 'serif'],
+        outfit: ['Outfit', 'system-ui', 'sans-serif'],
       },
       fontSize: {
         'hero': ['clamp(2.5rem, 5vw + 1rem, 5rem)', { lineHeight: '1.05', letterSpacing: '-0.02em' }],
