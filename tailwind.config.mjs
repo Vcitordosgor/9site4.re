@@ -14,7 +14,7 @@ export default {
       pattern: /^(bg|text|ring|border|from|to|via|placeholder)-(bleu|bleu-nuit|orange|blanc-casse)(\/(5|10|15|20|25|30|40|50|55|60|65|70|75|80|85|90|95))?$/,
     },
     {
-      pattern: /^(bg|text|ring|border|from|to|via)-(pizza-tomate|pizza-basilic|pizza-creme|pizza-charbon|pizza-bois)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
+      pattern: /^(bg|text|ring|border|from|to|via)-(pizza-tomate|pizza-basilic|pizza-creme|pizza-charbon|pizza-bois|pizza-rouge|pizza-vert|pizza-dore|pizza-blanc|pizza-marron)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
     },
   ],
   theme: {
@@ -30,6 +30,12 @@ export default {
         'pizza-creme':   '#FFF8E7',
         'pizza-charbon': '#1A1A1A',
         'pizza-bois':    '#B8860B',
+        // Alias sémantiques (brief refonte)
+        'pizza-rouge':   '#C8102E',
+        'pizza-vert':    '#2D6A4F',
+        'pizza-dore':    '#B8860B',
+        'pizza-blanc':   '#FFFFFF',
+        'pizza-marron':  '#8B4513',
       },
       fontFamily: {
         sora: ['Sora', 'system-ui', 'sans-serif'],
