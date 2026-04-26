@@ -10,6 +10,7 @@ import data from '../../data/templates/pizzeria.json';
 import PizzeriaHeader from '../../components/templates/pizzeria/PizzeriaHeader.astro';
 import PizzeriaFooter from '../../components/templates/pizzeria/PizzeriaFooter.astro';
 import PizzeriaShop from '../../components/templates/pizzeria/PizzeriaShop.tsx';
+import HeroPizzaScene from '../../components/templates/pizzeria/HeroPizzaScene.astro';
 
 const waUrl = `https://wa.me/${data.info.whatsapp}?text=${encodeURIComponent('Bonjour, je voudrais commander une pizza chez ' + data.info.nom + '.')}`;
 ---
@@ -38,56 +39,9 @@ const waUrl = `https://wa.me/${data.info.whatsapp}?text=${encodeURIComponent('Bo
       </div>
 
       <div class="relative mx-auto max-w-content grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-        <!-- Visuel : photo + ingrédients flottants -->
-        <div class="hero-visual order-1 lg:order-2 lg:col-span-5 relative w-[300px] md:w-[480px] lg:w-full mx-auto h-[300px] md:h-[480px] lg:h-[520px]">
-          <!-- Photo principale pizza -->
-          <div data-parallax="0.15" class="hero-pizza absolute inset-0 flex items-center justify-center">
-            <img
-              src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=800&q=80"
-              alt="Pizza Margherita au four à bois"
-              width="480"
-              height="480"
-              loading="eager"
-              decoding="async"
-              fetchpriority="high"
-              class="rounded-full object-cover w-[280px] h-[280px] md:w-[440px] md:h-[440px] -rotate-[5deg]"
-              style="box-shadow: 0 24px 80px rgba(0,0,0,0.5);"
-            />
-          </div>
-
-          <!-- Ingrédients flottants (médaillons circulaires) -->
-          <div data-parallax="0.25" class="hero-ing hero-ing-1 absolute" style="top: 8%; right: 4%;" aria-hidden="true">
-            <img src="https://images.unsplash.com/photo-1618375569909-3c8616cf7733?w=200&q=80"
-                 alt="" loading="lazy" decoding="async" width="80" height="80"
-                 class="ing-float ing-float-1 w-[50px] h-[50px] md:w-20 md:h-20 rounded-full object-cover -rotate-[20deg]"
-                 style="box-shadow: 0 8px 24px rgba(0,0,0,0.45);" />
-          </div>
-          <div data-parallax="0.35" class="hero-ing hero-ing-2 absolute" style="top: 60%; right: 2%;" aria-hidden="true">
-            <img src="https://images.unsplash.com/photo-1561136594-7f68413baa99?w=200&q=80"
-                 alt="" loading="lazy" decoding="async" width="70" height="70"
-                 class="ing-float ing-float-2 w-[50px] h-[50px] md:w-[70px] md:h-[70px] rounded-full object-cover rotate-[10deg]"
-                 style="box-shadow: 0 8px 24px rgba(0,0,0,0.45);" />
-          </div>
-          <div data-parallax="0.20" class="hero-ing hero-ing-3 absolute" style="top: 22%; left: 2%;" aria-hidden="true">
-            <img src="https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?w=200&q=80"
-                 alt="" loading="lazy" decoding="async" width="60" height="60"
-                 class="ing-float ing-float-3 w-[50px] h-[50px] md:w-[60px] md:h-[60px] rounded-full object-cover -rotate-[35deg]"
-                 style="box-shadow: 0 8px 24px rgba(0,0,0,0.45);" />
-          </div>
-          <!-- Champignon : caché en mobile -->
-          <div data-parallax="0.30" class="hero-ing hero-ing-4 absolute hidden md:block" style="bottom: 15%; right: 10%;" aria-hidden="true">
-            <img src="https://images.unsplash.com/photo-1504545102780-26774c1bb073?w=200&q=80"
-                 alt="" loading="lazy" decoding="async" width="75" height="75"
-                 class="ing-float ing-float-4 w-[75px] h-[75px] rounded-full object-cover rotate-[15deg]"
-                 style="box-shadow: 0 8px 24px rgba(0,0,0,0.45);" />
-          </div>
-          <!-- Mozzarella : caché en mobile -->
-          <div data-parallax="0.22" class="hero-ing hero-ing-5 absolute hidden md:block" style="bottom: 30%; left: 4%;" aria-hidden="true">
-            <img src="https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?w=200&q=80"
-                 alt="" loading="lazy" decoding="async" width="65" height="65"
-                 class="ing-float ing-float-5 w-[65px] h-[65px] rounded-full object-cover -rotate-[10deg]"
-                 style="box-shadow: 0 8px 24px rgba(0,0,0,0.45);" />
-          </div>
+        <!-- Visuel : composition pizza + ingrédients flottants premium -->
+        <div class="order-1 lg:order-2 lg:col-span-5">
+          <HeroPizzaScene />
         </div>
 
         <!-- Texte -->
@@ -303,31 +257,7 @@ const waUrl = `https://wa.me/${data.info.whatsapp}?text=${encodeURIComponent('Bo
 </BaseLayout>
 
 <script>
-  // Parallax scroll : seulement desktop, désactivé reduced-motion
-  (() => {
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const isMobile = window.innerWidth < 768;
-    if (reduced || isMobile) return;
-
-    const els = document.querySelectorAll<HTMLElement>('[data-parallax]');
-    if (!els.length) return;
-
-    let ticking = false;
-    const update = () => {
-      const y = window.scrollY;
-      els.forEach((el) => {
-        const speed = parseFloat(el.dataset.parallax || '0');
-        el.style.transform = `translateY(${y * speed}px)`;
-      });
-      ticking = false;
-    };
-    window.addEventListener('scroll', () => {
-      if (!ticking) {
-        requestAnimationFrame(update);
-        ticking = true;
-      }
-    }, { passive: true });
-  })();
+  // (Parallax mousemove est géré dans HeroPizzaScene.astro)
 
   // Bottom bar mobile : se cache (translateY 100%) dans la section Commander
   (() => {
@@ -369,49 +299,15 @@ const waUrl = `https://wa.me/${data.info.whatsapp}?text=${encodeURIComponent('Bo
     animation: cart-pulse 600ms cubic-bezier(0.22, 1, 0.36, 1);
   }
 
-  /* Animations d'entrée hero */
+  /* Animation d'entrée du texte hero (la scène pizza a sa propre logique d'entrée) */
   @keyframes hero-text-in {
     from { opacity: 0; transform: translateX(-30px); }
     to { opacity: 1; transform: translateX(0); }
-  }
-  @keyframes hero-pizza-in {
-    from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
-  }
-  @keyframes hero-ing-in {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
   }
   .hero-text {
     animation: hero-text-in 700ms cubic-bezier(0.22, 1, 0.36, 1) backwards;
     animation-delay: 100ms;
   }
-  .hero-pizza {
-    animation: hero-pizza-in 900ms cubic-bezier(0.22, 1, 0.36, 1) backwards;
-    animation-delay: 300ms;
-  }
-  .hero-ing {
-    animation: hero-ing-in 600ms cubic-bezier(0.22, 1, 0.36, 1) backwards;
-  }
-  .hero-ing-1 { animation-delay: 600ms; }
-  .hero-ing-2 { animation-delay: 700ms; }
-  .hero-ing-3 { animation-delay: 800ms; }
-  .hero-ing-4 { animation-delay: 900ms; }
-  .hero-ing-5 { animation-delay: 1000ms; }
-
-  /* Lévitation continue des ingrédients */
-  @keyframes ing-float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-12px); }
-  }
-  .ing-float {
-    animation: ing-float 3s ease-in-out infinite;
-  }
-  .ing-float-1 { animation-delay: 0s; }
-  .ing-float-2 { animation-delay: 0.5s; }
-  .ing-float-3 { animation-delay: 1.0s; }
-  .ing-float-4 { animation-delay: 1.5s; }
-  .ing-float-5 { animation-delay: 2.0s; }
 
   /* Onglets menu : fade in au switch */
   @keyframes tab-fade {
@@ -427,8 +323,7 @@ const waUrl = `https://wa.me/${data.info.whatsapp}?text=${encodeURIComponent('Bo
   .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
 
   @media (prefers-reduced-motion: reduce) {
-    .animate-feedback, .animate-cart-pulse, .hero-text, .hero-pizza,
-    .hero-ing, .ing-float, .menu-tab-content {
+    .animate-feedback, .animate-cart-pulse, .hero-text, .menu-tab-content {
       animation: none !important;
       opacity: 1;
       transform: none !important;
