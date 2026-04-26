@@ -1,0 +1,124 @@
+---
+/**
+ * Trouver — adresse, horaires, dress code, voiturier + 4 services.
+ * Layout magazine 2 colonnes : gauche = infos pratiques compactes,
+ * droite = 4 services en liste numérotée Bodoni italique.
+ */
+import data from '../../../data/templates/jardin.json';
+const waUrl = `https://wa.me/${data.info.whatsapp}?text=${encodeURIComponent(
+  'Bonjour, je voudrais des informations sur ' + data.info.nom + '.'
+)}`;
+---
+
+<section id="trouver" class="relative bg-resto-blanc py-24 md:py-36 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <!-- Header de section -->
+    <header class="text-center max-w-2xl mx-auto mb-14 md:mb-20">
+      <p class="scroll-reveal font-manrope font-medium text-[11px] uppercase tracking-[0.42em] text-resto-bleu-roi">
+        <span aria-hidden="true">·</span> Nous trouver <span aria-hidden="true">·</span>
+      </p>
+      <h2 class="scroll-reveal mt-6 font-bodoni text-resto-bleu-encre leading-[1.05]" style="font-size: clamp(36px, 5.5vw, 64px);">
+        Au cœur,
+        <span class="italic text-resto-bleu-roi">de Saint-Denis.</span>
+      </h2>
+    </header>
+
+    <!-- Layout magazine : infos pratiques (5) + services (7) -->
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-20 max-w-5xl mx-auto">
+
+      <!-- Colonne gauche : infos pratiques compactes -->
+      <div class="lg:col-span-5 space-y-10">
+
+        <div class="scroll-reveal">
+          <p class="text-[11px] font-manrope font-semibold uppercase tracking-[0.32em] text-resto-bleu-roi mb-3">Adresse</p>
+          <p class="font-bodoni italic text-resto-bleu-encre leading-snug" style="font-size: 19px;">
+            {data.info.adresse}
+          </p>
+        </div>
+
+        <div class="scroll-reveal">
+          <p class="text-[11px] font-manrope font-semibold uppercase tracking-[0.32em] text-resto-bleu-roi mb-3">Réservation</p>
+          <ul class="space-y-2.5">
+            <li>
+              <a href={`tel:${data.info.telephoneHref}`} class="font-bodoni italic text-resto-bleu-encre hover:text-resto-bleu-roi transition-colors tabular-nums" style="font-size: 19px;">
+                {data.info.telephone}
+              </a>
+            </li>
+            <li>
+              <a href={waUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 font-bodoni italic text-resto-bleu-encre hover:text-resto-bleu-roi transition-colors" style="font-size: 19px;">
+                WhatsApp
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.92 0-2.65-1.03-5.14-2.91-7.01zm-7.01 15.24h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.21 8.21 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83 8.25 8.25 0 0 1-8.24 8.22z"/>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a href={`mailto:${data.info.email}`} class="font-bodoni italic text-resto-bleu-encre hover:text-resto-bleu-roi transition-colors break-all" style="font-size: 16px;">
+                {data.info.email}
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="scroll-reveal">
+          <p class="text-[11px] font-manrope font-semibold uppercase tracking-[0.32em] text-resto-bleu-roi mb-3">Horaires</p>
+          <ul class="divide-y divide-resto-bleu-encre/10">
+            {data.info.horaires.map((h) => (
+              <li class="flex items-baseline justify-between gap-4 py-2.5">
+                <span class="font-bodoni italic text-resto-bleu-encre text-sm sm:text-base">{h.jour}</span>
+                <span class:list={['text-xs sm:text-sm tabular-nums font-manrope text-right', h.ouvert ? 'text-resto-bleu-encre/75' : 'italic text-resto-bleu-encre/40']}>
+                  {h.label}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="scroll-reveal grid grid-cols-2 gap-4 pt-2">
+          <div class="flex items-start gap-2.5">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-0.5 text-resto-or" aria-hidden="true">
+              <path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/>
+              <path d="M4 6v12c0 1.1.9 2 2 2h14v-4"/>
+              <path d="M18 12a2 2 0 0 0-2 2c0 1.1.9 2 2 2h4v-4z"/>
+            </svg>
+            <p class="text-xs font-manrope text-resto-bleu-encre/75 leading-relaxed">{data.info.dressCode}</p>
+          </div>
+          <div class="flex items-start gap-2.5">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-0.5 text-resto-or" aria-hidden="true">
+              <path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a1 1 0 0 0-.8-.4H5.24a2 2 0 0 0-1.8 1.1l-.8 1.63A6 6 0 0 0 2 12.42V16h2"/>
+              <circle cx="6.5" cy="16.5" r="2.5"/>
+              <circle cx="16.5" cy="16.5" r="2.5"/>
+            </svg>
+            <p class="text-xs font-manrope text-resto-bleu-encre/75 leading-relaxed">{data.info.voiturier}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Colonne droite : 4 services en liste éditoriale -->
+      <div class="lg:col-span-7 lg:pl-8 lg:border-l lg:border-resto-bleu-roi/15">
+        <p class="scroll-reveal text-[11px] font-manrope font-semibold uppercase tracking-[0.32em] text-resto-bleu-roi mb-8">Nos services</p>
+        <ul class="space-y-7">
+          {data.services.map((s, i) => (
+            <li class="scroll-reveal" style={`transition-delay: ${i * 60}ms`}>
+              <div class="flex items-baseline gap-4">
+                <span class="font-bodoni italic font-bold text-resto-or tabular-nums" style="font-size: 22px; min-width: 2.25rem;">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <div class="flex-1">
+                  <h3 class="font-bodoni italic text-resto-bleu-encre" style="font-size: 22px;">{s.titre}</h3>
+                  <p class="mt-1.5 font-manrope text-sm text-resto-bleu-encre/70 leading-[1.75]">
+                    {s.description}
+                  </p>
+                </div>
+              </div>
+              {i < data.services.length - 1 && (
+                <div class="mt-7 ml-12 w-12 h-px bg-resto-or/30" aria-hidden="true"></div>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,37 @@
+---
+/**
+ * Reservation — wrapper de la section "Réserver une table".
+ * Charge le formulaire en Astro Island Preact (interactivité).
+ * Le formulaire ouvre WhatsApp pré-rempli.
+ */
+import data from '../../../data/templates/jardin.json';
+import RdvForm from './RdvForm.tsx';
+---
+
+<section id="reservation" class="relative bg-resto-blanc-casse py-24 md:py-36 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+    <header class="text-center max-w-2xl mx-auto mb-12 md:mb-16">
+      <p class="scroll-reveal font-manrope font-medium text-[11px] uppercase tracking-[0.42em] text-resto-bleu-roi">
+        <span aria-hidden="true">·</span> Réserver une table <span aria-hidden="true">·</span>
+      </p>
+      <h2 class="scroll-reveal mt-6 font-bodoni text-resto-bleu-encre leading-[1.05]" style="font-size: clamp(36px, 5.5vw, 64px);">
+        Le plaisir des choses
+        <span class="block italic text-resto-bleu-roi">qui se préparent.</span>
+      </h2>
+      <p class="scroll-reveal mt-6 font-manrope text-resto-bleu-encre/70 leading-relaxed">
+        Réponse sous quelques heures. Annulation gratuite jusqu'à 24h
+        avant. Le service est limité à 42 couverts par session.
+      </p>
+    </header>
+
+    <div class="scroll-reveal">
+      <RdvForm
+        client:load
+        occasions={data.occasions}
+        creneaux={data.creneaux}
+        whatsapp={data.info.whatsapp}
+        restoNom={data.info.nom}
+      />
+    </div>
+  </div>
+</section>

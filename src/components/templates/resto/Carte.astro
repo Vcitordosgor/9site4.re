@@ -1,0 +1,131 @@
+---
+/**
+ * Carte — 3 colonnes éditoriales (Entrées / Plats / Desserts) sans
+ * cards, juste lignes typographiques. Style "menu de restaurant
+ * gastronomique imprimé". Sous la carte : 3 menus à prix fixe.
+ *
+ * Vraiment différent : ni grille de cartes (pizzeria), ni split
+ * deux colonnes par catégorie (salon), ni parcours vertical (spa).
+ */
+import data from '../../../data/templates/jardin.json';
+---
+
+<section id="carte" class="relative bg-resto-blanc py-24 md:py-36 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <!-- Eyebrow + titre de section -->
+    <header class="text-center max-w-2xl mx-auto mb-16 md:mb-24">
+      <p class="scroll-reveal font-manrope font-medium text-[11px] uppercase tracking-[0.42em] text-resto-bleu-roi">
+        <span aria-hidden="true">·</span> La carte du chef <span aria-hidden="true">·</span>
+      </p>
+      <h2 class="scroll-reveal mt-6 font-bodoni text-resto-bleu-encre leading-[1.05]" style="font-size: clamp(36px, 5.5vw, 64px);">
+        Au gré du marché,
+        <span class="italic text-resto-bleu-roi">au fil des saisons.</span>
+      </h2>
+      <p class="scroll-reveal mt-6 font-manrope text-resto-bleu-encre/70 leading-relaxed max-w-xl mx-auto">
+        La carte change toutes les semaines. Voici une sélection
+        représentative des plats du moment.
+      </p>
+    </header>
+
+    <!-- 3 colonnes éditoriales avec filets or de séparation -->
+    <div class="grid md:grid-cols-3 gap-x-10 lg:gap-x-16 gap-y-16">
+      {Object.entries(data.carte).map(([key, cat], colIndex) => (
+        <section class="scroll-reveal relative" style={`transition-delay: ${colIndex * 100}ms`}>
+          <!-- Filet vertical or à droite de chaque colonne sauf la dernière -->
+          {colIndex < 2 && (
+            <span class="hidden md:block absolute right-[-20px] lg:right-[-32px] top-12 bottom-12 w-px bg-resto-or/30" aria-hidden="true"></span>
+          )}
+
+          <!-- Titre catégorie centré avec ornement or -->
+          <header class="text-center mb-10">
+            <span class="inline-flex items-center justify-center gap-3 text-resto-or" aria-hidden="true">
+              <span class="block w-8 h-px bg-resto-or"></span>
+              <span class="block w-1 h-1 rotate-45 bg-resto-or"></span>
+              <span class="block w-8 h-px bg-resto-or"></span>
+            </span>
+            <h3 class="mt-4 font-bodoni italic text-resto-bleu-encre" style="font-size: clamp(28px, 3.5vw, 36px);">
+              {cat.titre}
+            </h3>
+          </header>
+
+          <!-- Liste des plats : nom small caps + description italique + prix -->
+          <ul class="space-y-7">
+            {cat.items.map((item) => (
+              <li class="group">
+                <div class="flex items-baseline gap-3">
+                  <h4 class="font-bodoni font-medium text-resto-bleu-encre uppercase tracking-[0.04em] leading-snug" style="font-size: 16px;">
+                    {item.nom}
+                    {item.signature && (
+                      <span class="ml-2 inline-block w-1.5 h-1.5 rounded-full bg-resto-or align-middle" aria-label="Plat signature"></span>
+                    )}
+                  </h4>
+                  <span class="flex-1 mb-1.5 border-b border-dotted border-resto-bleu-encre/20" aria-hidden="true"></span>
+                  <span class="font-manrope font-medium text-resto-bleu-encre tabular-nums whitespace-nowrap" style="font-size: 15px;">
+                    {item.prix}€
+                  </span>
+                </div>
+                <p class="mt-1.5 font-bodoni italic text-resto-bleu-encre/65 leading-[1.55]" style="font-size: 14.5px;">
+                  {item.description}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
+    </div>
+
+    <!-- Légende soin signature -->
+    <p class="scroll-reveal mt-14 text-center text-xs font-manrope uppercase tracking-[0.25em] text-resto-bleu-encre/50">
+      <span class="inline-block w-1.5 h-1.5 rounded-full bg-resto-or align-middle mr-2"></span>
+      Plats signature de la maison
+    </p>
+
+    <!-- ====== Menus à prix fixes ====== -->
+    <div class="mt-24 md:mt-32 max-w-5xl mx-auto">
+      <header class="text-center mb-12 md:mb-16">
+        <p class="scroll-reveal font-manrope font-medium text-[11px] uppercase tracking-[0.42em] text-resto-bleu-roi">
+          <span aria-hidden="true">·</span> Nos menus <span aria-hidden="true">·</span>
+        </p>
+        <h3 class="scroll-reveal mt-6 font-bodoni text-resto-bleu-encre leading-[1.05]" style="font-size: clamp(28px, 3.8vw, 44px);">
+          Trois manières
+          <span class="italic text-resto-bleu-roi">de nous découvrir.</span>
+        </h3>
+      </header>
+
+      <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+        {data.menus.map((m, i) => (
+          <article class="scroll-reveal relative bg-resto-blanc-casse rounded-sm p-8 md:p-10 ring-1 ring-resto-bleu-encre/10 hover:ring-resto-or/60 transition-all flex flex-col" style={`transition-delay: ${i * 80}ms`}>
+            <!-- Mise en avant Carte blanche au milieu -->
+            {m.id === 'decouverte' && (
+              <span class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 text-[10px] font-manrope font-semibold uppercase tracking-[0.2em] bg-resto-or text-resto-bleu-encre rounded-full whitespace-nowrap">
+                Le plus choisi
+              </span>
+            )}
+            <p class="text-[10px] font-manrope uppercase tracking-[0.32em] text-resto-or font-semibold">
+              Menu
+            </p>
+            <h4 class="mt-3 font-bodoni italic text-resto-bleu-encre leading-tight" style="font-size: clamp(24px, 2.8vw, 30px);">
+              {m.nom}
+            </h4>
+            <p class="mt-3 font-manrope text-sm text-resto-bleu-encre/65 leading-relaxed flex-1">
+              {m.sousTitre}
+            </p>
+            <div class="mt-6 pt-6 border-t border-resto-bleu-encre/10 flex items-baseline gap-2">
+              <span class="font-bodoni font-bold text-resto-bleu-roi tabular-nums" style="font-size: 38px; line-height: 1;">
+                {m.prix}
+              </span>
+              <span class="font-bodoni italic text-resto-bleu-encre/65 text-xl">€</span>
+              <span class="ml-auto text-[11px] font-manrope uppercase tracking-[0.18em] text-resto-bleu-encre/55">
+                / personne
+              </span>
+            </div>
+            <p class="mt-3 text-xs font-manrope italic text-resto-bleu-encre/55 leading-relaxed">
+              Servi {m.service}.
+            </p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,47 @@
+---
+import data from '../../../data/templates/jardin.json';
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-resto-bleu-encre text-resto-blanc-casse/85 py-12 px-6 md:px-10 border-t border-resto-or/20">
+  <div class="max-w-content mx-auto">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+      <div>
+        <p class="flex items-baseline gap-1.5 leading-none">
+          <span class="font-bodoni italic text-2xl text-resto-blanc-casse">{data.info.wordmark1}</span>
+          <span class="font-bodoni italic text-2xl text-resto-or">{data.info.wordmark2}</span>
+        </p>
+        <p class="mt-3 font-bodoni italic text-resto-blanc-casse/65 text-sm">
+          Saint-Denis · depuis {data.info.annee}
+        </p>
+      </div>
+
+      <ul class="flex flex-col md:flex-row md:items-center gap-2 md:gap-8 text-sm font-manrope">
+        <li>
+          <a href={`tel:${data.info.telephoneHref}`} class="hover:text-resto-or transition-colors tabular-nums">
+            {data.info.telephone}
+          </a>
+        </li>
+        <li class="hidden md:inline-flex w-1 h-1 rounded-full bg-resto-or/40" aria-hidden="true"></li>
+        <li>
+          <a href={`mailto:${data.info.email}`} class="hover:text-resto-or transition-colors">
+            {data.info.email}
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Filet or laiton séparateur -->
+    <div class="mt-10 mb-6 h-px" aria-hidden="true"
+         style="background: linear-gradient(to right, transparent, rgb(200 166 94 / 0.4) 30%, rgb(200 166 94 / 0.4) 70%, transparent);">
+    </div>
+
+    <div class="flex flex-col-reverse md:flex-row md:items-center md:justify-between gap-3 text-xs uppercase tracking-[0.25em] text-resto-blanc-casse/70 font-manrope">
+      <p>© {year} {data.info.nom}</p>
+      <p>
+        Site créé par
+        <a href="/" class="font-semibold text-resto-blanc-casse hover:text-resto-or transition-colors">9site4</a>
+      </p>
+    </div>
+  </div>
+</footer>

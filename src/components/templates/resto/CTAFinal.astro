@@ -1,0 +1,45 @@
+---
+/**
+ * CTAFinal — bandeau bleu encre avec citation et CTA or laiton.
+ * Halo bleu roi en arrière-plan.
+ */
+import data from '../../../data/templates/jardin.json';
+---
+
+<section class="relative bg-resto-bleu-encre text-resto-blanc-casse py-24 md:py-36 px-6 md:px-10 text-center overflow-hidden">
+
+  <!-- Halo bleu roi subtle -->
+  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[44rem] h-[44rem] rounded-full"
+         style="background: radial-gradient(50% 50% at 50% 50%, rgb(30 58 138 / 0.35) 0%, transparent 70%);">
+    </div>
+  </div>
+
+  <div class="relative max-w-2xl mx-auto">
+    <p class="scroll-reveal flex items-center justify-center gap-3 text-[11px] sm:text-xs uppercase tracking-[0.42em] text-resto-or font-manrope font-medium">
+      <span class="inline-block w-8 h-px bg-resto-or/55" aria-hidden="true"></span>
+      <span>{data.info.wordmark1} {data.info.wordmark2}</span>
+      <span class="inline-block w-8 h-px bg-resto-or/55" aria-hidden="true"></span>
+    </p>
+
+    <h2 class="scroll-reveal mt-6 font-bodoni text-resto-blanc-casse leading-[1.05]" style="font-size: clamp(40px, 6vw, 72px);">
+      Réservez,
+      <span class="italic text-resto-or">on vous reçoit.</span>
+    </h2>
+
+    <p class="scroll-reveal mt-6 font-manrope text-resto-blanc-casse/75 leading-[1.8]">
+      Une table est libre. Sur le marché ce matin, le chef a trouvé
+      ce qu'il fallait. Le reste, c'est à nous.
+    </p>
+
+    <div class="scroll-reveal mt-10">
+      <a
+        href="#reservation"
+        class="inline-flex items-center justify-center h-14 px-9 text-[11px] font-semibold uppercase tracking-[0.25em] font-manrope rounded-full bg-resto-or text-resto-bleu-encre hover:bg-resto-blanc-casse transition-colors"
+        style="box-shadow: 0 12px 32px rgb(200 166 94 / 0.40);"
+      >
+        Réserver une table
+      </a>
+    </div>
+  </div>
+</section>

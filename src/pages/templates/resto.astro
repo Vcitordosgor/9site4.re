@@ -1,0 +1,88 @@
+---
+import '@fontsource/bodoni-moda/400.css';
+import '@fontsource/bodoni-moda/500.css';
+import '@fontsource/bodoni-moda/600.css';
+import '@fontsource/bodoni-moda/700.css';
+import '@fontsource/bodoni-moda/400-italic.css';
+import '@fontsource/bodoni-moda/500-italic.css';
+import '@fontsource/bodoni-moda/600-italic.css';
+import '@fontsource/bodoni-moda/700-italic.css';
+import '@fontsource/manrope/300.css';
+import '@fontsource/manrope/400.css';
+import '@fontsource/manrope/500.css';
+import '@fontsource/manrope/600.css';
+import '@fontsource/manrope/700.css';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getSeo } from '../../lib/seo';
+import jardinData from '../../data/templates/jardin.json';
+
+import RestoHeader from '../../components/templates/resto/RestoHeader.astro';
+import HeroEditorial from '../../components/templates/resto/HeroEditorial.astro';
+import LeRestaurant from '../../components/templates/resto/LeRestaurant.astro';
+import Carte from '../../components/templates/resto/Carte.astro';
+import LeChef from '../../components/templates/resto/LeChef.astro';
+import Cave from '../../components/templates/resto/Cave.astro';
+import Ambiance from '../../components/templates/resto/Ambiance.astro';
+import Reservation from '../../components/templates/resto/Reservation.astro';
+import Trouver from '../../components/templates/resto/Trouver.astro';
+import CTAFinal from '../../components/templates/resto/CTAFinal.astro';
+import RestoFooter from '../../components/templates/resto/RestoFooter.astro';
+---
+
+<BaseLayout seo={getSeo('templateResto')} bare={true}>
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <link rel="dns-prefetch" href="https://images.unsplash.com" />
+    <link
+      rel="preload"
+      as="image"
+      href={jardinData.info.photoHero}
+      fetchpriority="high"
+    />
+  </Fragment>
+
+  <RestoHeader />
+
+  <main id="top" class="bg-resto-blanc-casse text-resto-bleu-encre font-manrope">
+    <HeroEditorial />
+    <LeRestaurant />
+    <Carte />
+    <LeChef />
+    <Cave />
+    <Ambiance />
+    <Reservation />
+    <Trouver />
+    <CTAFinal />
+  </main>
+
+  <RestoFooter />
+
+  <!-- Sticky bottom CTA mobile-only — caché en section Réservation -->
+  <a
+    id="resto-sticky-cta"
+    href="#reservation"
+    data-visible="false"
+    class="md:hidden fixed bottom-4 inset-x-4 z-40 inline-flex items-center justify-center h-14 px-6 text-sm font-semibold uppercase tracking-[0.22em] font-manrope rounded-full bg-resto-bleu-roi text-resto-blanc-casse transition-all duration-300 ease-out data-[visible=false]:opacity-0 data-[visible=false]:translate-y-4 data-[visible=false]:pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0"
+    style="box-shadow: 0 12px 32px rgb(30 58 138 / 0.40);"
+  >
+    Réserver une table
+  </a>
+
+  <script>
+    /* Sticky CTA mobile : visible après scroll du hero, caché en section Réservation */
+    const sticky = document.getElementById('resto-sticky-cta');
+    const reservation = document.getElementById('reservation');
+    if (sticky && reservation) {
+      const updateSticky = () => {
+        const rect = reservation.getBoundingClientRect();
+        const inReservation = rect.top < window.innerHeight && rect.bottom > 80;
+        const scrolledPastHero = window.scrollY > 480;
+        sticky.dataset.visible = String(scrolledPastHero && !inReservation);
+      };
+      updateSticky();
+      window.addEventListener('scroll', updateSticky, { passive: true });
+      window.addEventListener('resize', updateSticky, { passive: true });
+    }
+  </script>
+</BaseLayout>

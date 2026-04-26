@@ -1,0 +1,63 @@
+---
+/**
+ * Cave — sélection de vins en liste éditoriale.
+ * Mise en forme "carte des vins de restaurant" : nom domaine en
+ * Bodoni small caps, millésime + région en Manrope, accord
+ * mets-vins en italique Bodoni.
+ *
+ * Section unique aux templates : présentation cave + accords
+ * mets-vins (n'existe pas dans pizzeria/salon/spa).
+ */
+import data from '../../../data/templates/jardin.json';
+---
+
+<section id="cave" class="relative bg-resto-blanc py-24 md:py-36 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <!-- Eyebrow + titre -->
+    <header class="text-center max-w-2xl mx-auto mb-14 md:mb-20">
+      <p class="scroll-reveal font-manrope font-medium text-[11px] uppercase tracking-[0.42em] text-resto-bleu-roi">
+        <span aria-hidden="true">·</span> Notre cave <span aria-hidden="true">·</span>
+      </p>
+      <h2 class="scroll-reveal mt-6 font-bodoni text-resto-bleu-encre leading-[1.05]" style="font-size: clamp(36px, 5.5vw, 64px);">
+        Le bon flacon,
+        <span class="italic text-resto-bleu-roi">le bon moment.</span>
+      </h2>
+      <p class="scroll-reveal mt-6 font-manrope text-resto-bleu-encre/70 leading-relaxed">
+        Une cave d'auteur de plus de 200 références. Notre sommelier
+        compose chaque accord — voici quelques flacons emblématiques.
+      </p>
+    </header>
+
+    <!-- Liste vins en 2 colonnes desktop -->
+    <ul class="grid md:grid-cols-2 gap-x-12 lg:gap-x-20 gap-y-10 max-w-5xl mx-auto">
+      {data.vins.map((v, i) => (
+        <li class="scroll-reveal flex items-start gap-5" style={`transition-delay: ${i * 60}ms`}>
+          <!-- Numéro romain en or -->
+          <span class="flex-shrink-0 mt-1 w-10 text-right font-bodoni italic text-resto-or tabular-nums" style="font-size: 22px;">
+            {String.fromCharCode(8544 + i)}
+          </span>
+
+          <div class="flex-1 min-w-0">
+            <h4 class="font-bodoni font-medium text-resto-bleu-encre uppercase tracking-[0.04em] leading-snug" style="font-size: 16px;">
+              {v.nom}
+            </h4>
+            <p class="mt-1 text-xs font-manrope uppercase tracking-[0.22em] text-resto-bleu-encre/55">
+              {v.region} <span class="text-resto-or" aria-hidden="true">·</span> {v.annee}
+            </p>
+            <p class="mt-2 font-bodoni italic text-resto-bleu-encre/70 leading-[1.55]" style="font-size: 14.5px;">
+              <span class="text-resto-bleu-roi not-italic font-medium" style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.18em; margin-right: 6px;">Accord</span>
+              {v.accord}
+            </p>
+          </div>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Mention -->
+    <p class="scroll-reveal mt-16 text-center text-sm font-bodoni italic text-resto-bleu-encre/55 max-w-xl mx-auto leading-relaxed">
+      Notre carte des vins complète vous est présentée à table.
+      L'abus d'alcool est dangereux pour la santé, à consommer avec modération.
+    </p>
+  </div>
+</section>

@@ -1,0 +1,119 @@
+---
+/**
+ * HeroEditorial — mise en page magazine asymétrique.
+ * Mobile : empilé centré avec photo en haut.
+ * Desktop : grand wordmark Bodoni dominant à gauche (cols 8) + petit
+ * encart photo + tagline à droite (cols 4). Fond bleu encre profond
+ * avec ornements or laiton.
+ * Vraiment différent : ni full-bleed (spa), ni split 50/50 (salon).
+ */
+import data from '../../../data/templates/jardin.json';
+---
+
+<section class="relative isolate overflow-hidden bg-resto-bleu-encre text-resto-blanc-casse min-h-[100svh] flex items-center px-6 md:px-10 pt-24 md:pt-28">
+
+  <!-- Texture/grain bleu très subtle -->
+  <div class="pointer-events-none absolute inset-0 opacity-[0.04]" aria-hidden="true"
+       style="background-image: radial-gradient(circle at 20% 30%, rgb(255 255 255 / 0.6) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgb(200 166 94 / 0.6) 0%, transparent 60%);">
+  </div>
+
+  <!-- Filets or laiton décoratifs (desktop) — coin supérieur gauche & inférieur droit -->
+  <span class="hidden lg:block absolute top-28 left-10 w-16 h-px bg-resto-or/60" aria-hidden="true"></span>
+  <span class="hidden lg:block absolute top-28 left-10 w-px h-16 bg-resto-or/60" aria-hidden="true"></span>
+  <span class="hidden lg:block absolute bottom-10 right-10 w-16 h-px bg-resto-or/60" aria-hidden="true"></span>
+  <span class="hidden lg:block absolute bottom-10 right-10 w-px h-16 bg-resto-or/60 -translate-y-full translate-x-full" aria-hidden="true"></span>
+
+  <div class="relative max-w-content mx-auto w-full grid lg:grid-cols-12 gap-10 lg:gap-12 items-end pb-12 md:pb-20">
+
+    <!-- BLOC GAUCHE : grand wordmark + tagline -->
+    <div class="lg:col-span-8 relative">
+      <p class="hero-eyebrow font-manrope font-medium text-[11px] uppercase tracking-[0.42em] text-resto-or">
+        <span aria-hidden="true">·</span> Restaurant gastronomique · Saint-Denis <span aria-hidden="true">·</span>
+      </p>
+
+      <!-- Wordmark immense en deux lignes Bodoni -->
+      <h1 class="hero-title mt-8 sm:mt-10 font-bodoni text-resto-blanc-casse leading-[0.92]">
+        <span class="block font-medium" style="font-size: clamp(56px, 11vw, 156px);">Le jardin</span>
+        <span class="block italic font-normal text-resto-or pl-[5%]" style="font-size: clamp(56px, 11vw, 156px);">perdu.</span>
+      </h1>
+
+      <!-- Tagline éditoriale en deux lignes mix Bodoni + Manrope -->
+      <p class="hero-tagline mt-10 max-w-md font-bodoni italic text-resto-blanc-casse/85 leading-[1.4]" style="font-size: clamp(20px, 2.4vw, 26px);">
+        {data.info.tagline}
+        <span class="block">{data.info.taglineItalic}</span>
+      </p>
+    </div>
+
+    <!-- BLOC DROIT : encart photo + intro courte + CTA -->
+    <div class="hero-side lg:col-span-4 lg:pl-6 lg:border-l lg:border-resto-or/20">
+      <!-- Encart photo avec ratio 4/5 -->
+      <figure class="relative overflow-hidden rounded-sm" style="aspect-ratio: 4/5; max-height: 360px;">
+        <img
+          src={data.info.photoHero}
+          alt={data.info.photoHeroAlt}
+          width="900"
+          height="1125"
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+          class="absolute inset-0 w-full h-full object-cover"
+        />
+        <!-- Filet or fin par-dessus -->
+        <span class="absolute inset-0 ring-1 ring-resto-or/30 pointer-events-none" aria-hidden="true"></span>
+      </figure>
+
+      <p class="mt-6 font-manrope text-resto-blanc-casse/75 leading-[1.7]" style="font-size: 14.5px;">
+        {data.info.intro}
+      </p>
+
+      <div class="mt-7 flex flex-col sm:flex-row lg:flex-col gap-3 lg:gap-4">
+        <a
+          href="#reservation"
+          class="inline-flex items-center justify-center h-12 px-6 text-[11px] font-semibold uppercase tracking-[0.25em] font-manrope rounded-full bg-resto-bleu-roi text-resto-blanc-casse hover:bg-resto-or hover:text-resto-bleu-encre transition-colors"
+          style="box-shadow: 0 8px 24px rgb(30 58 138 / 0.45);"
+        >
+          Réserver une table
+        </a>
+        <a
+          href="#carte"
+          class="inline-flex items-center justify-center h-12 px-6 text-[11px] font-semibold uppercase tracking-[0.25em] font-manrope rounded-full bg-transparent text-resto-blanc-casse ring-1 ring-resto-blanc-casse/30 hover:ring-resto-or hover:text-resto-or transition-colors"
+        >
+          Voir la carte
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Indicateur scroll bas -->
+  <div class="absolute bottom-4 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 text-resto-blanc-casse/45" aria-hidden="true">
+    <span class="text-[10px] uppercase tracking-[0.35em] font-manrope">Carte</span>
+    <span class="block w-px h-8 bg-resto-or/60 hero-scroll"></span>
+  </div>
+</section>
+
+<style>
+  @keyframes resto-rise {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes resto-pulse {
+    0%   { transform: scaleY(0.4); transform-origin: top;    opacity: 0.4; }
+    50%  { transform: scaleY(1);                              opacity: 1; }
+    100% { transform: scaleY(0.4); transform-origin: bottom; opacity: 0.4; }
+  }
+
+  .hero-eyebrow { animation: resto-rise 800ms cubic-bezier(0.16, 1, 0.3, 1) backwards;  animation-delay: 200ms; }
+  .hero-title   { animation: resto-rise 1200ms cubic-bezier(0.16, 1, 0.3, 1) backwards; animation-delay: 350ms; }
+  .hero-tagline { animation: resto-rise 900ms cubic-bezier(0.16, 1, 0.3, 1) backwards;  animation-delay: 600ms; }
+  .hero-side    { animation: resto-rise 1000ms cubic-bezier(0.16, 1, 0.3, 1) backwards; animation-delay: 500ms; }
+  .hero-scroll  { animation: resto-pulse 2400ms ease-in-out infinite; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-eyebrow, .hero-title, .hero-tagline, .hero-side {
+      animation: none !important;
+      opacity: 1;
+      transform: none !important;
+    }
+    .hero-scroll { animation: none !important; }
+  }
+</style>

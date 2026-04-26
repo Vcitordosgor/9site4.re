@@ -1,0 +1,86 @@
+---
+/**
+ * LeRestaurant — section "Le restaurant" en deux colonnes éditoriales :
+ * gauche = manifesto en grand Bodoni avec drop cap (style magazine)
+ * droite = 3 chiffres clés alignés verticalement (étoile, année, couverts).
+ * Photo de la salle en pleine largeur sous les colonnes.
+ */
+import data from '../../../data/templates/jardin.json';
+---
+
+<section id="restaurant" class="relative bg-resto-blanc-casse py-24 md:py-36 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <!-- Eyebrow + titre de section -->
+    <header class="text-center max-w-2xl mx-auto mb-14 md:mb-20">
+      <p class="scroll-reveal font-manrope font-medium text-[11px] uppercase tracking-[0.42em] text-resto-bleu-roi">
+        <span aria-hidden="true">·</span> Le restaurant <span aria-hidden="true">·</span>
+      </p>
+      <h2 class="scroll-reveal mt-6 font-bodoni text-resto-bleu-encre leading-[1.05]" style="font-size: clamp(36px, 5.5vw, 64px);">
+        Une parenthèse,
+        <span class="italic text-resto-bleu-roi">au centre-ville.</span>
+      </h2>
+    </header>
+
+    <!-- Layout magazine 2 colonnes asymétriques -->
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+
+      <!-- Colonne gauche : manifesto avec drop cap -->
+      <div class="lg:col-span-7 scroll-reveal">
+        <p class="font-bodoni text-resto-bleu-encre leading-[1.55]" style="font-size: clamp(20px, 2vw, 22px);">
+          <span class="float-left font-bodoni font-bold text-resto-bleu-roi mr-3 mt-1" style="font-size: clamp(60px, 7vw, 84px); line-height: 0.85;">U</span>{data.manifesto.slice(2)}
+        </p>
+        <!-- Filet or -->
+        <div class="mt-10 w-16 h-px bg-resto-or" aria-hidden="true"></div>
+        <p class="mt-6 font-bodoni italic text-resto-bleu-encre/65" style="font-size: 16px;">
+          — {data.chef.nom}, chef &amp; propriétaire
+        </p>
+      </div>
+
+      <!-- Colonne droite : 3 chiffres clés -->
+      <div class="lg:col-span-5 lg:pl-8 lg:border-l lg:border-resto-bleu-roi/15">
+        <ul class="space-y-10">
+          {data.chiffres.map((c, i) => (
+            <li class="scroll-reveal" style={`transition-delay: ${i * 80}ms`}>
+              <div class="flex items-baseline gap-4">
+                <span class="font-bodoni font-bold text-resto-bleu-roi tabular-nums" style="font-size: clamp(48px, 6vw, 72px); line-height: 1;">
+                  {c.valeur}
+                </span>
+                <div class="flex-1">
+                  <p class="font-bodoni italic text-resto-bleu-encre leading-tight" style="font-size: 17px;">
+                    {c.label}
+                  </p>
+                  <p class="mt-1 text-xs font-manrope uppercase tracking-[0.22em] text-resto-bleu-encre/55">
+                    {c.depuis}
+                  </p>
+                </div>
+              </div>
+              {i < data.chiffres.length - 1 && (
+                <div class="mt-10 w-full h-px bg-resto-bleu-encre/10" aria-hidden="true"></div>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Photo de la salle pleine largeur -->
+    <figure class="scroll-reveal mt-20 md:mt-28 relative">
+      <div class="relative overflow-hidden rounded-sm" style="aspect-ratio: 21/9;">
+        <img
+          src={data.info.photoSalle}
+          alt={data.info.photoSalleAlt}
+          width="1200"
+          height="514"
+          loading="lazy"
+          decoding="async"
+          class="absolute inset-0 w-full h-full object-cover"
+        />
+        <span class="absolute inset-0 ring-1 ring-resto-or/15 pointer-events-none" aria-hidden="true"></span>
+      </div>
+      <figcaption class="mt-4 text-center font-bodoni italic text-sm text-resto-bleu-encre/55">
+        La salle principale, dressée pour le service du soir.
+      </figcaption>
+    </figure>
+  </div>
+</section>
