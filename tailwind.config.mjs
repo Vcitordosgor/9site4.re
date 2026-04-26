@@ -43,7 +43,7 @@ export default {
         // Palette salon de coiffure (template /templates/salon)
         'salon-creme':   '#F5F0E8',  // beige chaud, fond principal
         'salon-encre':   '#2A2520',  // charbon brun chaud, textes/fonds sombres
-        'salon-cuivre':  '#B5694D',  // accent / CTA — ton coloration cuivrée
+        'salon-cuivre':  '#9A4F36',  // accent / CTA — cuivre profond (AA-safe sur creme et blanc)
         'salon-laiton':  '#C9A56A',  // doré filets, micro-détails
         'salon-blanc':   '#FFFFFF',
       },

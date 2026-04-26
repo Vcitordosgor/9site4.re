@@ -395,7 +395,7 @@ export default function RdvForm({ prestations, longueurs, creneaux }: Props) {
       <div class="pt-4">
         <button
           type="submit"
-          class="w-full inline-flex items-center justify-center gap-3 h-14 px-8 text-sm font-semibold uppercase tracking-[0.2em] rounded-full bg-salon-cuivre text-salon-blanc hover:bg-[#974D34] transition-all cursor-pointer"
+          class="w-full inline-flex items-center justify-center gap-3 h-14 px-8 text-sm font-semibold uppercase tracking-[0.2em] rounded-full bg-salon-cuivre text-salon-blanc hover:bg-[#7C3F2A] transition-all cursor-pointer"
           style="box-shadow: 0 8px 24px rgb(181 105 77 / 0.3);"
         >
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
