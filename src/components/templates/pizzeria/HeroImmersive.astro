@@ -1,0 +1,97 @@
+---
+/**
+ * HeroImmersive — hero éditorial photographique plein écran.
+ * Photo dramatique cropped, overlay gradient pour lisibilité,
+ * titre Playfair calé en bas-gauche style magazine.
+ */
+import data from '../../../data/templates/pizzeria.json';
+---
+
+<section class="relative w-full h-screen min-h-[640px] max-h-[900px] overflow-hidden bg-pizza-charbon text-pizza-creme">
+  <!-- Photo plein écran (couverture) -->
+  <img
+    src="https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?w=1920&q=85"
+    alt="Pizza margherita au four à bois"
+    width="1920"
+    height="1280"
+    loading="eager"
+    decoding="async"
+    fetchpriority="high"
+    class="absolute inset-0 w-full h-full object-cover scale-[1.02]"
+  />
+
+  <!-- Overlay : gradient sombre bottom + vignette latérale -->
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true"
+       style="background:
+         linear-gradient(180deg, rgb(28 26 23 / 0.35) 0%, rgb(28 26 23 / 0) 30%, rgb(28 26 23 / 0) 50%, rgb(28 26 23 / 0.85) 100%),
+         linear-gradient(90deg, rgb(28 26 23 / 0.35) 0%, transparent 40%);">
+  </div>
+
+  <!-- Contenu : aligné en bas-gauche style éditorial -->
+  <div class="relative h-full max-w-content mx-auto px-6 md:px-10 flex flex-col justify-end pb-24 md:pb-32">
+    <p class="hero-eyebrow flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.25em] text-pizza-dore">
+      <span class="inline-block w-10 h-px bg-pizza-dore" aria-hidden="true"></span>
+      <span>Depuis {data.info.annee}</span>
+    </p>
+
+    <h1 class="hero-title mt-6 font-playfair font-bold text-pizza-creme leading-[0.95] tracking-tight" style="font-size: clamp(56px, 7vw, 96px);">
+      {data.info.nom}
+      <span class="block italic font-medium text-pizza-dore mt-1" style="font-size: clamp(28px, 3.5vw, 48px);">
+        {data.info.tagline}
+      </span>
+    </h1>
+
+    <div class="hero-cta mt-10 flex flex-col sm:flex-row gap-4">
+      <a
+        href="#carte"
+        class="inline-flex items-center justify-center h-14 px-8 text-base font-semibold rounded-full bg-pizza-rouge text-pizza-creme hover:bg-[#8B1F2A] transition-all"
+        style="box-shadow: 0 8px 24px rgb(168 37 50 / 0.45);"
+      >
+        Voir la carte
+      </a>
+      <a
+        href="#commander"
+        class="inline-flex items-center justify-center h-14 px-8 text-base font-semibold rounded-full border border-pizza-creme/40 text-pizza-creme bg-pizza-creme/5 backdrop-blur-sm hover:bg-pizza-creme hover:text-pizza-charbon transition-all"
+      >
+        Commander
+      </a>
+    </div>
+  </div>
+
+  <!-- Indicateur scroll discret -->
+  <a href="#manifeste" aria-label="Découvrir la carte"
+     class="hero-scroll absolute bottom-6 left-1/2 -translate-x-1/2 inline-flex flex-col items-center gap-2 text-pizza-creme/70 hover:text-pizza-creme transition-colors group">
+    <span class="text-xs uppercase tracking-[0.2em] hidden md:inline">Découvrir</span>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="animate-scroll-hint" aria-hidden="true">
+      <path d="M12 5v14M5 12l7 7 7-7"/>
+    </svg>
+  </a>
+</section>
+
+<style>
+  /* Animations d'entrée — apparition éditoriale en cascade */
+  @keyframes hero-rise {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-eyebrow { animation: hero-rise 800ms cubic-bezier(0.16, 1, 0.3, 1) backwards; animation-delay: 200ms; }
+  .hero-title   { animation: hero-rise 1000ms cubic-bezier(0.16, 1, 0.3, 1) backwards; animation-delay: 350ms; }
+  .hero-cta     { animation: hero-rise 800ms cubic-bezier(0.16, 1, 0.3, 1) backwards; animation-delay: 700ms; }
+  .hero-scroll  { animation: hero-rise 600ms cubic-bezier(0.16, 1, 0.3, 1) backwards; animation-delay: 1100ms; }
+
+  @keyframes scroll-hint {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(4px); }
+  }
+  .animate-scroll-hint {
+    animation: scroll-hint 2.4s ease-in-out infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-eyebrow, .hero-title, .hero-cta, .hero-scroll, .animate-scroll-hint {
+      animation: none !important;
+      opacity: 1;
+      transform: none !important;
+    }
+  }
+</style>

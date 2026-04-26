@@ -2,331 +2,45 @@
 import '@fontsource/playfair-display/400.css';
 import '@fontsource/playfair-display/600.css';
 import '@fontsource/playfair-display/700.css';
+import '@fontsource/playfair-display/400-italic.css';
+import '@fontsource/playfair-display/600-italic.css';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSeo } from '../../lib/seo';
-import data from '../../data/templates/pizzeria.json';
 
 import PizzeriaHeader from '../../components/templates/pizzeria/PizzeriaHeader.astro';
 import PizzeriaFooter from '../../components/templates/pizzeria/PizzeriaFooter.astro';
-import PizzeriaShop from '../../components/templates/pizzeria/PizzeriaShop.tsx';
-import HeroPizzaScene from '../../components/templates/pizzeria/HeroPizzaScene.astro';
-
-const waUrl = `https://wa.me/${data.info.whatsapp}?text=${encodeURIComponent('Bonjour, je voudrais commander une pizza chez ' + data.info.nom + '.')}`;
+import HeroImmersive from '../../components/templates/pizzeria/HeroImmersive.astro';
+import StatBanner from '../../components/templates/pizzeria/StatBanner.astro';
 ---
 
 <BaseLayout seo={getSeo('templatePizzeria')} bare={true}>
   <PizzeriaHeader />
 
   <main id="top" class="bg-pizza-creme text-pizza-charbon font-inter">
+    <HeroImmersive />
+    <StatBanner />
 
-    <!-- ============== HERO ============== -->
-    <section class="relative overflow-hidden bg-pizza-charbon text-white px-6 pt-12 pb-20 md:pt-20 md:pb-32">
-      <!-- Texture pierre/ardoise très subtile -->
-      <div class="pointer-events-none absolute inset-0 opacity-[0.04]" aria-hidden="true"
-           style="background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='3' seed='5'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E&quot;);">
-      </div>
-
-      <!-- Halo rouge derrière le texte (gauche) -->
-      <div class="pointer-events-none absolute inset-0" aria-hidden="true">
-        <div class="absolute -top-32 -left-32 w-[44rem] h-[44rem] rounded-full"
-             style="background: radial-gradient(50% 50% at 50% 50%, rgb(200 16 46 / 0.18) 0%, transparent 70%);">
-        </div>
-        <!-- Halo doré derrière la pizza (droite) -->
-        <div class="absolute top-10 -right-32 w-[42rem] h-[42rem] rounded-full"
-             style="background: radial-gradient(50% 50% at 50% 50%, rgb(184 134 11 / 0.12) 0%, transparent 70%);">
-        </div>
-      </div>
-
-      <div class="relative mx-auto max-w-content grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-        <!-- Visuel : composition pizza + ingrédients flottants premium -->
-        <div class="order-1 lg:order-2 lg:col-span-5">
-          <HeroPizzaScene />
-        </div>
-
-        <!-- Texte -->
-        <div class="hero-text order-2 lg:order-1 lg:col-span-7 text-center lg:text-left">
-          <p class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-pizza-rouge/20 ring-1 ring-pizza-rouge text-white text-xs font-semibold uppercase tracking-wide">
-            <span class="inline-block w-1.5 h-1.5 rounded-full bg-pizza-rouge animate-pulse"></span>
-            Saint-Paul · La Réunion
-          </p>
-          <h1 class="mt-6 font-playfair font-bold leading-[1.05]" style="font-size: clamp(56px, 8vw, 96px);">
-            <span class="block text-white">{data.info.nom}</span>
-            <span class="block font-playfair italic font-bold text-pizza-rouge mt-2" style="font-size: clamp(24px, 3vw, 40px);">
-              {data.info.tagline}
-            </span>
-          </h1>
-          <p class="mt-6 text-lg text-white/70 leading-relaxed max-w-xl mx-auto lg:mx-0">
-            Pâte fermentée 48h, produits frais, four à bois.
-            Commande en ligne, prête en 25 min.
-          </p>
-          <div class="mt-10 flex flex-col sm:flex-row gap-4 lg:justify-start justify-center">
-            <a href="#menu" class="inline-flex items-center justify-center h-14 px-8 text-lg font-semibold rounded-full bg-white text-pizza-charbon shadow-card hover:bg-pizza-creme hover:shadow-card-hover transition-all">
-              Voir le menu
-            </a>
-            <a href="#commander" class="inline-flex items-center justify-center h-14 px-8 text-lg font-semibold rounded-full bg-pizza-rouge text-white shadow-card hover:bg-[#A50D26] hover:shadow-card-hover transition-all">
-              Commander
-            </a>
-          </div>
-        </div>
-      </div>
+    <!-- Sections suivantes : à venir dans les commits 3-5 -->
+    <section id="manifeste" class="py-32 px-6 text-center text-pizza-charbon/50">
+      <p class="italic">— Section Manifeste à venir —</p>
     </section>
-
-    <!-- ============== Séparateur pointillés dorés ============== -->
-    <div class="bg-pizza-blanc h-8 flex items-center justify-center" aria-hidden="true">
-      <div class="w-32 h-px" style="background-image: linear-gradient(to right, transparent, #B8860B, transparent);"></div>
-    </div>
-
-    <!-- ============== À PROPOS — fond blanc, layout asymétrique 60/40 ============== -->
-    <section class="relative px-6 py-20 md:py-28 bg-pizza-blanc">
-      <div class="relative mx-auto max-w-content">
-        <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-          <!-- Texte (60%) -->
-          <div class="lg:col-span-7">
-            <p class="inline-flex items-center px-3 py-1.5 rounded-full bg-pizza-vert text-white text-xs font-semibold uppercase tracking-wide">
-              Notre histoire
-            </p>
-            <h2 class="scroll-reveal mt-4 font-playfair font-bold text-4xl md:text-6xl text-pizza-charbon leading-tight">
-              Une pizzeria familiale,
-              <span class="block text-pizza-rouge italic">depuis {data.info.annee}</span>
-            </h2>
-            <p class="scroll-reveal mt-6 text-lg text-pizza-charbon/80 leading-relaxed">
-              Lé O, c'est l'histoire d'une famille passée par Naples, tombée amoureuse de l'île.
-              On y fait la pizza comme on l'a apprise là-bas — pâte fermentée 48 heures, four à
-              bois d'eucalyptus, et une touche péi qui change tout.
-            </p>
-          </div>
-
-          <!-- Carte chiffres clés (40%) -->
-          <aside class="scroll-reveal lg:col-span-5">
-            <div class="relative bg-pizza-creme rounded-2xl p-7 md:p-8 ring-1 ring-pizza-dore/40 shadow-card">
-              <p class="text-xs font-semibold uppercase tracking-wide text-pizza-dore">Chiffres clés</p>
-              <ul class="mt-5 space-y-5">
-                <li class="flex items-start gap-4">
-                  <span class="flex w-12 h-12 shrink-0 rounded-xl bg-pizza-rouge/10 text-pizza-rouge items-center justify-center">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <path d="M8.5 14.5A2.5 2.5 0 0 0 11 17a7 7 0 0 0 4-4c1-2 1.5-3 1.5-4.5A4.5 4.5 0 0 0 12 4a4 4 0 0 0-4 4c0 .67.27 1.51.5 2 .5 1 1 2 1 3a2 2 0 0 1-2 2c-.6 0-1.5-.5-1-1.5z" />
-                    </svg>
-                  </span>
-                  <div>
-                    <p class="font-playfair font-bold text-2xl text-pizza-charbon">Depuis {data.info.annee}</p>
-                    <p class="text-sm text-pizza-charbon/70">Une famille, une recette, une île</p>
-                  </div>
-                </li>
-                <li class="flex items-start gap-4">
-                  <span class="flex w-12 h-12 shrink-0 rounded-xl bg-pizza-vert/10 text-pizza-vert items-center justify-center">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5"/><path d="M9 2h6"/><path d="M12 5v2"/>
-                    </svg>
-                  </span>
-                  <div>
-                    <p class="font-playfair font-bold text-2xl text-pizza-charbon">Pâte 48h</p>
-                    <p class="text-sm text-pizza-charbon/70">Fermentation lente, plus digeste</p>
-                  </div>
-                </li>
-                <li class="flex items-start gap-4">
-                  <span class="flex w-12 h-12 shrink-0 rounded-xl bg-pizza-dore/15 text-pizza-dore items-center justify-center">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/>
-                    </svg>
-                  </span>
-                  <div>
-                    <p class="font-playfair font-bold text-2xl text-pizza-charbon">Four à bois</p>
-                    <p class="text-sm text-pizza-charbon/70">Bois d'eucalyptus local</p>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </aside>
-        </div>
-
-        <!-- 3 mini-cards bordure gauche rouge (gardées) -->
-        <ul class="mt-14 grid sm:grid-cols-3 gap-5">
-          {data.engagements.map((e, i) => {
-            const icons = [
-              '<circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5"/><path d="M9 2h6"/><path d="M12 5v2"/>',
-              '<path d="M8.5 14.5A2.5 2.5 0 0 0 11 17a7 7 0 0 0 4-4c1-2 1.5-3 1.5-4.5A4.5 4.5 0 0 0 12 4a4 4 0 0 0-4 4c0 .67.27 1.51.5 2 .5 1 1 2 1 3a2 2 0 0 1-2 2c-.6 0-1.5-.5-1-1.5z"/>',
-              '<path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/>',
-            ];
-            return (
-              <li class="scroll-reveal relative bg-pizza-creme rounded-2xl p-7 pl-9 border-l-4 border-pizza-rouge shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover" style={`transition-delay: ${i * 80}ms`}>
-                <span class="flex w-12 h-12 rounded-xl bg-pizza-rouge/10 text-pizza-rouge items-center justify-center">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={icons[i]} />
-                </span>
-                <h3 class="mt-5 font-playfair font-bold text-xl text-pizza-rouge">{e.titre}</h3>
-                <p class="mt-2 text-sm text-pizza-charbon/85 leading-relaxed">{e.texte}</p>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+    <section id="carte" class="py-32 px-6 text-center text-pizza-charbon/50 bg-pizza-charbon/[0.03]">
+      <p class="italic">— Section Carte à venir —</p>
     </section>
-
-    <!-- ============== MENU + COMMANDER (1 island Preact) ============== -->
-    <PizzeriaShop
-      client:load
-      info={{ nom: data.info.nom, whatsapp: data.info.whatsapp }}
-      menu={data.menu}
-      items={data.items}
-      zones={data.zones}
-      horairesCommande={data.horairesCommande}
-    />
-
-    <!-- ============== INFOS PRATIQUES — fond charbon, 3 colonnes ============== -->
-    <section id="contact" class="relative px-6 py-20 md:py-28 bg-pizza-charbon text-white">
-      <div class="mx-auto max-w-content">
-        <div class="text-center max-w-2xl mx-auto">
-          <p class="inline-flex items-center px-3 py-1.5 rounded-full bg-pizza-rouge text-white text-xs font-semibold uppercase tracking-wide">
-            Nous trouver
-          </p>
-          <h2 class="mt-4 font-playfair font-bold text-4xl md:text-6xl leading-tight">
-            Infos pratiques
-          </h2>
-        </div>
-
-        <div class="mt-14 grid md:grid-cols-3 gap-8 md:gap-10">
-          <!-- Adresse -->
-          <div>
-            <span class="flex w-12 h-12 rounded-xl bg-pizza-rouge/15 text-pizza-rouge items-center justify-center">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                <circle cx="12" cy="10" r="3" />
-              </svg>
-            </span>
-            <h3 class="mt-5 font-playfair font-bold text-xl text-white">Adresse</h3>
-            <p class="mt-3 text-white/80 leading-relaxed">{data.info.adresse}</p>
-          </div>
-
-          <!-- Horaires -->
-          <div>
-            <span class="flex w-12 h-12 rounded-xl bg-pizza-rouge/15 text-pizza-rouge items-center justify-center">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <circle cx="12" cy="12" r="10" />
-                <path d="M12 6v6l4 2" />
-              </svg>
-            </span>
-            <h3 class="mt-5 font-playfair font-bold text-xl text-white">Horaires</h3>
-            <ul class="mt-3 space-y-2 text-sm">
-              {data.info.horaires.map((h) => (
-                <li class="flex items-baseline gap-2">
-                  <span class="font-semibold text-white min-w-[7rem]">{h.jour}</span>
-                  <span class={h.ouvert ? 'text-white/80' : 'text-white/85 italic'}>{h.label}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <!-- Contact -->
-          <div>
-            <span class="flex w-12 h-12 rounded-xl bg-pizza-rouge/15 text-pizza-rouge items-center justify-center">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-              </svg>
-            </span>
-            <h3 class="mt-5 font-playfair font-bold text-xl text-white">Contact</h3>
-            <ul class="mt-3 space-y-2 text-sm">
-              <li>
-                <a href={`tel:${data.info.telephoneHref}`} class="text-white/80 hover:text-pizza-rouge transition-colors">
-                  {data.info.telephone}
-                </a>
-              </li>
-              <li>
-                <a href={waUrl} target="_blank" rel="noopener noreferrer" class="text-white/80 hover:text-pizza-rouge transition-colors">
-                  WhatsApp · {data.info.whatsappDisplay}
-                </a>
-              </li>
-              <li>
-                <a href={`mailto:${data.info.email}`} class="text-white/80 hover:text-pizza-rouge transition-colors break-all">
-                  {data.info.email}
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
+    <section id="commander" class="py-32 px-6 text-center text-pizza-charbon/50">
+      <p class="italic">— Section Commander à venir —</p>
     </section>
-
-    <!-- Bandeau séparateur doré avant le footer -->
-    <div class="bg-pizza-charbon h-px" aria-hidden="true">
-      <div class="h-full" style="background: linear-gradient(to right, transparent, #B8860B 25%, #B8860B 75%, transparent);"></div>
-    </div>
-
+    <section id="atelier" class="py-32 px-6 text-center text-pizza-charbon/50 bg-pizza-charbon/[0.03]">
+      <p class="italic">— Section Atelier à venir —</p>
+    </section>
+    <section id="avis" class="py-32 px-6 text-center text-pizza-charbon/50">
+      <p class="italic">— Section Avis à venir —</p>
+    </section>
+    <section id="contact" class="py-32 px-6 text-center text-pizza-charbon/50 bg-pizza-charbon/[0.03]">
+      <p class="italic">— Section Trouver le restaurant à venir —</p>
+    </section>
   </main>
 
   <PizzeriaFooter />
 </BaseLayout>
-
-<script>
-  // (Parallax mousemove est géré dans HeroPizzaScene.astro)
-
-  // Bottom bar mobile : se cache (translateY 100%) dans la section Commander
-  (() => {
-    const commander = document.getElementById('commander');
-    if (!commander) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const inCommander = entries.some((e) => e.isIntersecting);
-        const bar = document.getElementById('pizzeria-bottom-bar');
-        if (bar) {
-          bar.style.transform = inCommander ? 'translateY(100%)' : 'translateY(0)';
-        }
-      },
-      { threshold: 0.1 }
-    );
-    observer.observe(commander);
-  })();
-</script>
-
-<style is:global>
-  /* Animation feedback "+1 ajouté" */
-  @keyframes feedback {
-    0% { opacity: 0; transform: translateX(-50%) translateY(10px) scale(0.9); }
-    15%, 85% { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
-    100% { opacity: 0; transform: translateX(-50%) translateY(-10px) scale(0.95); }
-  }
-  .animate-feedback {
-    animation: feedback 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  }
-
-  /* Pulse du compteur panier au clic "+" */
-  @keyframes cart-pulse {
-    0%, 100% { transform: scale(1); }
-    30% { transform: scale(1.3); }
-    60% { transform: scale(0.95); }
-  }
-  .animate-cart-pulse {
-    animation: cart-pulse 600ms cubic-bezier(0.22, 1, 0.36, 1);
-  }
-
-  /* Animation d'entrée du texte hero (la scène pizza a sa propre logique d'entrée) */
-  @keyframes hero-text-in {
-    from { opacity: 0; transform: translateX(-30px); }
-    to { opacity: 1; transform: translateX(0); }
-  }
-  .hero-text {
-    animation: hero-text-in 700ms cubic-bezier(0.22, 1, 0.36, 1) backwards;
-    animation-delay: 100ms;
-  }
-
-  /* Onglets menu : fade in au switch */
-  @keyframes tab-fade {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .menu-tab-content {
-    animation: tab-fade 250ms ease-out;
-  }
-
-  /* Masquer la scrollbar des onglets */
-  .scrollbar-none::-webkit-scrollbar { display: none; }
-  .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
-
-  @media (prefers-reduced-motion: reduce) {
-    .animate-feedback, .animate-cart-pulse, .hero-text, .menu-tab-content {
-      animation: none !important;
-      opacity: 1;
-      transform: none !important;
-    }
-  }
-</style>
