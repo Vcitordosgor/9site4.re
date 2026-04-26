@@ -30,7 +30,8 @@
     "categorie": "beaute",
     "sousTitre": "Prestations, équipe et prise de rendez-vous",
     "moduleInclus": "Rendez-vous",
-    "slug": "salon-de-coiffure"
+    "slug": "salon-de-coiffure",
+    "previewUrl": "/templates/salon"
   },
   {
     "id": 5,

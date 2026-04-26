@@ -15,6 +15,9 @@ import Manifesto from '../../components/templates/salon/Manifesto.astro';
 import Prestations from '../../components/templates/salon/Prestations.astro';
 import Pourquoi from '../../components/templates/salon/Pourquoi.astro';
 import RendezVous from '../../components/templates/salon/RendezVous.astro';
+import ReassuranceInfos from '../../components/templates/salon/ReassuranceInfos.astro';
+import CTAFinal from '../../components/templates/salon/CTAFinal.astro';
+import SalonFooter from '../../components/templates/salon/SalonFooter.astro';
 ---
 
 <BaseLayout seo={getSeo('templateSalon')} bare={true}>
@@ -37,10 +40,9 @@ import RendezVous from '../../components/templates/salon/RendezVous.astro';
     <Prestations />
     <Pourquoi />
     <RendezVous />
-
-    <!-- Sections suivantes : à venir -->
-    <section id="trouver" class="py-32 px-6 text-center text-salon-encre/40 bg-salon-encre text-salon-creme/40">
-      <p class="italic">— Trouver le salon à venir (commit 5) —</p>
-    </section>
+    <ReassuranceInfos />
+    <CTAFinal />
   </main>
+
+  <SalonFooter />
 </BaseLayout>
