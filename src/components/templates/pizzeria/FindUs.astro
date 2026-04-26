@@ -1,0 +1,112 @@
+---
+/**
+ * FindUs — section "Trouver le restaurant".
+ * Layout asymétrique : carte placeholder à gauche, infos pratiques à droite.
+ * Photo intérieur restaurant en arrière-plan flou pour ambiance.
+ */
+import data from '../../../data/templates/pizzeria.json';
+const waUrl = `https://wa.me/${data.info.whatsapp}?text=${encodeURIComponent('Bonjour, je voudrais réserver une table chez ' + data.info.nom + '.')}`;
+---
+
+<section id="contact" class="relative bg-pizza-charbon text-pizza-creme py-24 md:py-32 px-6 md:px-10 overflow-hidden">
+  <div class="max-w-content mx-auto">
+
+    <header class="text-center max-w-2xl mx-auto mb-16">
+      <p class="scroll-reveal flex items-center justify-center gap-3 text-xs font-semibold uppercase tracking-[0.3em] text-pizza-dore">
+        <span class="inline-block w-8 h-px bg-pizza-dore" aria-hidden="true"></span>
+        <span>Trouver le restaurant</span>
+        <span class="inline-block w-8 h-px bg-pizza-dore" aria-hidden="true"></span>
+      </p>
+      <h2 class="scroll-reveal mt-5 font-playfair font-bold text-pizza-creme leading-tight" style="font-size: clamp(36px, 4.5vw, 56px);">
+        On vous attend
+        <span class="italic font-medium text-pizza-dore">à Saint-Paul.</span>
+      </h2>
+    </header>
+
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16">
+
+      <!-- Carte / illustration géographique (5 cols) -->
+      <figure class="scroll-reveal lg:col-span-5">
+        <div class="relative aspect-[4/5] rounded-sm overflow-hidden bg-pizza-creme/5 ring-1 ring-pizza-dore/30">
+          <!-- Photo de couverture (intérieur ou extérieur) avec teinte chaude -->
+          <img
+            src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=900&q=80"
+            alt="Salle du restaurant Pizza Lé O à Saint-Paul"
+            loading="lazy"
+            decoding="async"
+            class="absolute inset-0 w-full h-full object-cover"
+            style="filter: brightness(0.7) contrast(1.1);"
+          />
+          <!-- Overlay dégradé -->
+          <div class="absolute inset-0" style="background: linear-gradient(180deg, rgb(28 26 23 / 0.2) 0%, rgb(28 26 23 / 0.6) 100%);" aria-hidden="true"></div>
+          <!-- Badge épingle adresse -->
+          <div class="absolute bottom-6 left-6 right-6">
+            <p class="text-xs uppercase tracking-[0.25em] text-pizza-dore mb-2">L'adresse</p>
+            <p class="font-playfair italic text-pizza-creme leading-snug" style="font-size: 22px;">
+              {data.info.adresse}
+            </p>
+          </div>
+        </div>
+      </figure>
+
+      <!-- Infos pratiques (7 cols) -->
+      <div class="lg:col-span-7 space-y-12">
+
+        <!-- Horaires -->
+        <div class="scroll-reveal">
+          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-pizza-dore">Horaires</p>
+          <ul class="mt-5 divide-y divide-pizza-creme/10">
+            {data.info.horaires.map((h) => (
+              <li class="flex items-baseline justify-between py-3 first:pt-0">
+                <span class="font-playfair text-lg text-pizza-creme">{h.jour}</span>
+                <span class:list={['font-inter text-sm tabular-nums', h.ouvert ? 'text-pizza-creme/80' : 'italic text-pizza-creme/45']}>
+                  {h.label}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Contact direct -->
+        <div class="scroll-reveal">
+          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-pizza-dore">Nous contacter</p>
+          <ul class="mt-5 space-y-3">
+            <li>
+              <a href={`tel:${data.info.telephoneHref}`} class="group inline-flex items-center gap-3 text-pizza-creme hover:text-pizza-dore transition-colors">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+                <span class="font-playfair tabular-nums">{data.info.telephone}</span>
+              </a>
+            </li>
+            <li>
+              <a href={`mailto:${data.info.email}`} class="group inline-flex items-center gap-3 text-pizza-creme hover:text-pizza-dore transition-colors">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="2" y="4" width="20" height="16" rx="2" />
+                  <path d="m22 7-10 5L2 7" />
+                </svg>
+                <span class="font-playfair break-all">{data.info.email}</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- CTA réservation WhatsApp -->
+        <div class="scroll-reveal pt-2">
+          <a
+            href={waUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-3 h-14 px-8 text-sm font-semibold uppercase tracking-[0.18em] rounded-sm bg-pizza-rouge text-pizza-creme hover:bg-[#8B1F2A] transition-all"
+            style="box-shadow: 0 8px 24px rgb(168 37 50 / 0.35);"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.92 0-2.65-1.03-5.14-2.91-7.01zm-7.01 15.24h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.21 8.21 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83 8.25 8.25 0 0 1-8.24 8.22zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06a6.79 6.79 0 0 1-2-1.23 7.5 7.5 0 0 1-1.38-1.72c-.14-.25 0-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42l-.48-.01a.93.93 0 0 0-.67.31 2.81 2.81 0 0 0-.87 2.08c0 1.23.89 2.41 1.02 2.58.12.17 1.76 2.7 4.27 3.78.6.26 1.06.41 1.42.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z" />
+            </svg>
+            Réserver une table
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

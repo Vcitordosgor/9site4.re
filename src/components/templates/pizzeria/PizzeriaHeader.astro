@@ -1,28 +1,31 @@
 ---
-import data from '../../../data/templates/pizzeria.json';
-
+/**
+ * PizzeriaHeader — éditorial : transparent au top, charbon au scroll.
+ * Wordmark Playfair, nav minimale, CTA Réserver.
+ */
 const navLinks = [
-  { href: '#menu', label: 'Menu' },
-  { href: '#commander', label: 'Commander' },
-  { href: '#contact', label: 'Contact' },
+  { href: '#manifeste', label: 'Histoire' },
+  { href: '#carte', label: 'Carte' },
+  { href: '#atelier', label: 'Atelier' },
+  { href: '#contact', label: 'Trouver' },
 ];
 ---
 
 <header
   id="pizzeria-header"
   data-scrolled="false"
-  class="sticky top-0 z-50 transition-[background-color,backdrop-filter,box-shadow,border-color] duration-300 ease-out border-b border-transparent"
+  class="fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-out"
 >
-  <div class="max-w-content mx-auto px-6 h-16 md:h-20 flex items-center justify-between gap-6">
-    <a href="#top" class="font-playfair font-bold text-2xl md:text-3xl text-pizza-tomate leading-none">
-      Pizza Lé O
+  <div class="max-w-content mx-auto px-6 md:px-10 h-20 flex items-center justify-between gap-6">
+    <a href="#top" class="font-playfair font-bold leading-none text-pizza-creme transition-colors" style="font-size: 22px;">
+      Pizza <span class="italic font-medium text-pizza-dore">Lé O</span>
     </a>
 
-    <nav class="hidden md:flex items-center gap-1" aria-label="Navigation">
+    <nav class="hidden md:flex items-center gap-8" aria-label="Navigation">
       {navLinks.map((l) => (
         <a
           href={l.href}
-          class="px-4 py-2 rounded-full text-sm font-medium text-pizza-charbon/80 hover:text-pizza-tomate transition-colors"
+          class="text-xs uppercase tracking-[0.25em] font-semibold text-pizza-creme/85 hover:text-pizza-dore transition-colors"
         >
           {l.label}
         </a>
@@ -31,7 +34,7 @@ const navLinks = [
 
     <a
       href="#commander"
-      class="hidden md:inline-flex items-center justify-center h-11 px-5 text-sm font-semibold rounded-full bg-pizza-tomate text-white shadow-card hover:bg-[#A50D26] hover:shadow-card-hover transition-all"
+      class="hidden md:inline-flex items-center justify-center h-10 px-5 text-xs font-semibold uppercase tracking-[0.18em] rounded-sm bg-pizza-rouge text-pizza-creme hover:bg-[#8B1F2A] transition-all"
     >
       Commander
     </a>
@@ -43,41 +46,41 @@ const navLinks = [
       aria-expanded="false"
       aria-controls="pizzeria-mobile-menu"
       aria-label="Ouvrir le menu"
-      class="group md:hidden relative w-11 h-11 -mr-2 flex items-center justify-center rounded-full hover:bg-pizza-charbon/5 transition-colors"
+      class="group md:hidden relative w-10 h-10 -mr-2 flex items-center justify-center"
     >
       <span class="sr-only">Menu</span>
       <span class="relative flex flex-col items-center justify-center gap-1.5 w-6 h-6">
-        <span class="block w-6 h-0.5 bg-pizza-charbon rounded-full transition-transform duration-300 origin-center group-data-[open=true]:rotate-45 group-data-[open=true]:translate-y-2"></span>
-        <span class="block w-6 h-0.5 bg-pizza-charbon rounded-full transition-opacity duration-200 group-data-[open=true]:opacity-0"></span>
-        <span class="block w-6 h-0.5 bg-pizza-charbon rounded-full transition-transform duration-300 origin-center group-data-[open=true]:-rotate-45 group-data-[open=true]:-translate-y-2"></span>
+        <span class="block w-6 h-0.5 bg-pizza-creme rounded-full transition-transform duration-300 origin-center group-data-[open=true]:rotate-45 group-data-[open=true]:translate-y-2"></span>
+        <span class="block w-6 h-0.5 bg-pizza-creme rounded-full transition-opacity duration-200 group-data-[open=true]:opacity-0"></span>
+        <span class="block w-6 h-0.5 bg-pizza-creme rounded-full transition-transform duration-300 origin-center group-data-[open=true]:-rotate-45 group-data-[open=true]:-translate-y-2"></span>
       </span>
     </button>
   </div>
 </header>
 
-<!-- Menu mobile -->
+<!-- Menu mobile plein écran -->
 <div
   id="pizzeria-mobile-menu"
   data-open="false"
   aria-hidden="true"
   inert
-  class="md:hidden fixed inset-x-0 top-16 bottom-0 z-40 bg-pizza-creme transition-opacity duration-300 ease-out data-[open=false]:opacity-0 data-[open=false]:pointer-events-none data-[open=true]:opacity-100"
+  class="md:hidden fixed inset-0 top-20 z-40 bg-pizza-charbon transition-opacity duration-300 ease-out data-[open=false]:opacity-0 data-[open=false]:pointer-events-none data-[open=true]:opacity-100"
 >
-  <nav class="h-full flex flex-col px-6 pt-8 pb-10" aria-label="Navigation mobile">
-    <ul class="flex-1 flex flex-col gap-1">
+  <nav class="h-full flex flex-col px-6 pt-10 pb-10" aria-label="Navigation mobile">
+    <ul class="flex-1 flex flex-col gap-2">
       {navLinks.map((l) => (
         <li>
-          <a href={l.href} data-pizzeria-link class="block py-4 text-3xl font-playfair font-semibold text-pizza-charbon hover:text-pizza-tomate transition-colors">
+          <a href={l.href} data-pizzeria-link class="block py-4 font-playfair font-semibold text-pizza-creme hover:text-pizza-dore transition-colors" style="font-size: 32px;">
             {l.label}
           </a>
         </li>
       ))}
     </ul>
-    <div class="pt-6 border-t border-pizza-charbon/10">
+    <div class="pt-6 border-t border-pizza-creme/10">
       <a
         href="#commander"
         data-pizzeria-link
-        class="inline-flex items-center justify-center w-full h-14 px-8 text-lg font-semibold rounded-full bg-pizza-tomate text-white shadow-card hover:bg-[#A50D26] transition-all"
+        class="inline-flex items-center justify-center w-full h-14 text-sm font-semibold uppercase tracking-[0.2em] rounded-sm bg-pizza-rouge text-pizza-creme hover:bg-[#8B1F2A] transition-all"
       >
         Commander
       </a>
@@ -86,12 +89,12 @@ const navLinks = [
 </div>
 
 <style>
+  /* Header transparent au top, opaque au scroll */
   #pizzeria-header[data-scrolled='true'] {
-    background-color: rgb(255 248 231 / 0.92);
+    background-color: rgb(28 26 23 / 0.92);
     -webkit-backdrop-filter: saturate(180%) blur(12px);
     backdrop-filter: saturate(180%) blur(12px);
-    box-shadow: 0 1px 3px rgb(26 26 26 / 0.08);
-    border-bottom-color: rgb(26 26 26 / 0.06);
+    box-shadow: 0 1px 0 rgb(184 151 102 / 0.2);
   }
 </style>
 
@@ -99,7 +102,7 @@ const navLinks = [
   const header = document.getElementById('pizzeria-header');
   if (header) {
     const update = () => {
-      header.dataset.scrolled = String(window.scrollY > 8);
+      header.dataset.scrolled = String(window.scrollY > 60);
     };
     update();
     window.addEventListener('scroll', update, { passive: true });

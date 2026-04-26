@@ -329,19 +329,236 @@ Mon téléphone : ${data.telephone}${noteLine}`;
       </section>
 
       {/* ============================================================
-           SECTION COMMANDER — refonte au commit 5
+           SECTION COMMANDER — utilitaire sobre, focus conversion
          ============================================================ */}
-      <section id="commander" class="relative bg-pizza-creme/50 py-24 md:py-32 px-6">
-        <div class="max-w-content mx-auto text-center">
-          <p class="text-xs font-semibold uppercase tracking-[0.3em] text-pizza-rouge mb-4">Commander</p>
-          <h2 class="font-playfair font-bold text-3xl md:text-5xl text-pizza-charbon">
-            <span class="italic font-medium text-pizza-charbon/40">— Refonte au commit suivant —</span>
-          </h2>
-          {totalCount > 0 && (
-            <p class="mt-6 text-pizza-charbon/70">
-              {totalCount} article{totalCount > 1 ? 's' : ''} dans votre panier · {total}€
+      <section id="commander" class="relative bg-pizza-creme/40 py-24 md:py-32 px-6 md:px-10 border-y border-pizza-dore/30">
+        <div class="max-w-content mx-auto">
+          <header class="text-center max-w-2xl mx-auto mb-14">
+            <p class="scroll-reveal flex items-center justify-center gap-3 text-xs font-semibold uppercase tracking-[0.3em] text-pizza-rouge">
+              <span class="inline-block w-8 h-px bg-pizza-rouge" aria-hidden="true"></span>
+              <span>Commander</span>
+              <span class="inline-block w-8 h-px bg-pizza-rouge" aria-hidden="true"></span>
             </p>
-          )}
+            <h2 class="scroll-reveal mt-5 font-playfair font-bold text-pizza-charbon leading-tight" style="font-size: clamp(36px, 4.5vw, 56px);">
+              On vous confirme par WhatsApp.
+            </h2>
+            <p class="scroll-reveal mt-4 text-pizza-charbon/70 leading-relaxed">
+              Composez votre commande, on confirme l'heure exacte de retrait ou de livraison en moins de 5 minutes.
+            </p>
+          </header>
+
+          <div class="grid lg:grid-cols-12 gap-8 lg:gap-10">
+            {/* === Panier (5 cols desktop) === */}
+            <aside class="lg:col-span-5">
+              <div class="bg-white rounded-sm p-7 md:p-8 ring-1 ring-pizza-charbon/10 lg:sticky lg:top-24"
+                   style="box-shadow: 0 1px 3px rgb(28 26 23 / 0.04);">
+                <h3 class="flex items-baseline justify-between gap-2">
+                  <span class="font-playfair font-semibold text-2xl text-pizza-charbon">Votre table</span>
+                  {totalCount > 0 && (
+                    <span class="text-sm uppercase tracking-[0.18em] text-pizza-charbon/50 tabular-nums">
+                      {totalCount} article{totalCount > 1 ? 's' : ''}
+                    </span>
+                  )}
+                </h3>
+
+                {totalCount === 0 ? (
+                  <div class="mt-8 text-center py-10">
+                    {/* Illustration assiette vide minimale */}
+                    <svg width="72" height="72" viewBox="0 0 80 80" fill="none" class="mx-auto" aria-hidden="true">
+                      <ellipse cx="40" cy="62" rx="30" ry="2.5" fill="#1C1A17" opacity="0.06" />
+                      <ellipse cx="40" cy="42" rx="32" ry="9" fill="none" stroke="#1C1A17" stroke-width="1.25" opacity="0.30" />
+                      <ellipse cx="40" cy="42" rx="22" ry="5.5" fill="none" stroke="#B89766" stroke-width="0.75" opacity="0.55" stroke-dasharray="2 3" />
+                    </svg>
+                    <p class="mt-5 font-playfair italic text-pizza-charbon/70" style="font-size: 17px;">
+                      Votre panier est vide.
+                    </p>
+                    <p class="mt-2 text-sm text-pizza-charbon/55">
+                      Ajoutez vos plats depuis la carte ci-dessus.
+                    </p>
+                  </div>
+                ) : (
+                  <>
+                    <ul class="mt-6 divide-y divide-pizza-charbon/10">
+                      {lines.map((line) => (
+                        <li key={line.item.id} class="py-4 first:pt-0 last:pb-0">
+                          <div class="flex items-start justify-between gap-3">
+                            <div class="flex-1 min-w-0">
+                              <p class="font-playfair font-semibold text-pizza-charbon leading-snug">{line.item.nom}</p>
+                              <p class="text-xs text-pizza-charbon/55 mt-0.5 tabular-nums">{line.item.prix}€ × {line.qty}</p>
+                            </div>
+                            <p class="font-playfair font-bold text-pizza-rouge tabular-nums whitespace-nowrap shrink-0">
+                              {line.item.prix * line.qty}€
+                            </p>
+                          </div>
+                          <div class="mt-2 flex items-center gap-2">
+                            <button
+                              type="button"
+                              onClick={() => setQty(line.item.id, line.qty - 1)}
+                              aria-label={`Retirer ${line.item.nom}`}
+                              class="w-8 h-8 flex items-center justify-center rounded-full bg-pizza-creme hover:bg-pizza-rouge hover:text-pizza-creme text-pizza-charbon transition-colors cursor-pointer ring-1 ring-pizza-charbon/10"
+                            >
+                              −
+                            </button>
+                            <span class="min-w-[2rem] text-center font-semibold tabular-nums text-sm">{line.qty}</span>
+                            <button
+                              type="button"
+                              onClick={() => setQty(line.item.id, line.qty + 1)}
+                              aria-label={`Ajouter ${line.item.nom}`}
+                              class="w-8 h-8 flex items-center justify-center rounded-full bg-pizza-creme hover:bg-pizza-rouge hover:text-pizza-creme text-pizza-charbon transition-colors cursor-pointer ring-1 ring-pizza-charbon/10"
+                            >
+                              +
+                            </button>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                    <div class="mt-6 pt-5 border-t-2 border-pizza-dore flex items-baseline justify-between">
+                      <span class="text-xs font-semibold uppercase tracking-[0.2em] text-pizza-charbon/65">Total estimé</span>
+                      <span class="font-playfair font-bold text-pizza-rouge tabular-nums" style="font-size: 36px;">{total}€</span>
+                    </div>
+                  </>
+                )}
+              </div>
+            </aside>
+
+            {/* === Formulaire (7 cols desktop) === */}
+            <div class="lg:col-span-7">
+              <form
+                onSubmit={onSubmit}
+                noValidate
+                class="bg-white rounded-sm p-6 md:p-8 ring-1 ring-pizza-charbon/10 space-y-6"
+                style="box-shadow: 0 1px 3px rgb(28 26 23 / 0.04);"
+                aria-label="Formulaire de commande"
+              >
+                {/* Honeypot */}
+                <div aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden;">
+                  <label>Ne pas remplir<input type="text" name="website" tabIndex={-1} autocomplete="off" /></label>
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-5">
+                  <div>
+                    <label for="po-nom" class={labelBase}>Nom</label>
+                    <input id="po-nom" name="nom" type="text" required autocomplete="name"
+                      class={`${inputBase} ${errors.nom ? inputErr : inputOk}`}
+                      placeholder="Marie Dupont"
+                    />
+                    {errors.nom && <p role="alert" class={errClass}>{errors.nom}</p>}
+                  </div>
+                  <div>
+                    <label for="po-tel" class={labelBase}>Téléphone</label>
+                    <input id="po-tel" name="telephone" type="tel" inputMode="tel" required autocomplete="tel"
+                      class={`${inputBase} ${errors.telephone ? inputErr : inputOk}`}
+                      placeholder="0692 00 00 00"
+                    />
+                    {errors.telephone && <p role="alert" class={errClass}>{errors.telephone}</p>}
+                  </div>
+                </div>
+
+                {/* Type : à emporter / livraison — radios sobres */}
+                <fieldset>
+                  <legend class={labelBase}>Type de commande</legend>
+                  <div class="grid grid-cols-2 gap-3">
+                    {[
+                      { v: 'emporter', l: 'À emporter' },
+                      { v: 'livraison', l: 'Livraison' },
+                    ].map((opt) => {
+                      const isSel = type === opt.v;
+                      return (
+                        <label
+                          key={opt.v}
+                          class={`relative flex items-center justify-center h-14 rounded-sm text-sm font-semibold cursor-pointer transition-all ${
+                            isSel
+                              ? 'bg-pizza-rouge/8 text-pizza-rouge ring-2 ring-pizza-rouge'
+                              : 'bg-white text-pizza-charbon ring-1 ring-pizza-charbon/15 hover:ring-pizza-charbon/30'
+                          }`}
+                        >
+                          <input
+                            type="radio"
+                            name="type"
+                            value={opt.v}
+                            checked={isSel}
+                            onChange={() => setType(opt.v as 'emporter' | 'livraison')}
+                            required
+                            class="sr-only"
+                          />
+                          <span class="uppercase tracking-[0.15em]">{opt.l}</span>
+                        </label>
+                      );
+                    })}
+                  </div>
+                </fieldset>
+
+                {type === 'livraison' && (
+                  <div class="grid sm:grid-cols-3 gap-5">
+                    <div class="sm:col-span-2">
+                      <label for="po-adr" class={labelBase}>Adresse</label>
+                      <input id="po-adr" name="adresse" type="text" autocomplete="street-address"
+                        class={`${inputBase} ${errors.adresse ? inputErr : inputOk}`}
+                        placeholder="N° et nom de rue"
+                      />
+                      {errors.adresse && <p role="alert" class={errClass}>{errors.adresse}</p>}
+                    </div>
+                    <div>
+                      <label for="po-zone" class={labelBase}>Zone</label>
+                      <select
+                        id="po-zone" name="zone" defaultValue=""
+                        class={`${inputBase} ${errors.zone ? inputErr : inputOk} appearance-none bg-no-repeat`}
+                        style="background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231C1A17' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E&quot;); background-position: right 0.75rem center; background-size: 14px; padding-right: 2.25rem;"
+                      >
+                        <option value="" disabled>Choisir…</option>
+                        {zones.map((z) => (<option value={z} key={z}>{z}</option>))}
+                      </select>
+                      {errors.zone && <p role="alert" class={errClass}>{errors.zone}</p>}
+                    </div>
+                  </div>
+                )}
+
+                <div>
+                  <label for="po-heure" class={labelBase}>Heure souhaitée</label>
+                  <select
+                    id="po-heure" name="heure" defaultValue=""
+                    class={`${inputBase} ${errors.heure ? inputErr : inputOk} appearance-none bg-no-repeat`}
+                    style="background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231C1A17' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E&quot;); background-position: right 1rem center; background-size: 14px; padding-right: 2.5rem;"
+                  >
+                    <option value="" disabled>Choisir une heure…</option>
+                    {horairesCommande.map((h) => (<option value={h} key={h}>{h}</option>))}
+                  </select>
+                  {errors.heure && <p role="alert" class={errClass}>{errors.heure}</p>}
+                </div>
+
+                <div>
+                  <label for="po-note" class={labelBase}>Note <span class="lowercase tracking-normal text-pizza-charbon/45 font-normal">(optionnel)</span></label>
+                  <textarea id="po-note" name="note" rows={3}
+                    class={`${inputBase} ${inputOk} h-auto py-3 resize-y`}
+                    placeholder="Allergies, préférences, demandes spéciales…"
+                  ></textarea>
+                </div>
+
+                {/* Mention info — sobre */}
+                <p class="flex items-start gap-3 text-sm text-pizza-charbon/65 leading-relaxed">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mt-0.5 text-pizza-dore" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M12 16v-4" />
+                    <path d="M12 8h.01" />
+                  </svg>
+                  <span>
+                    Cliquez sur <strong class="font-semibold text-pizza-charbon">« Envoyer sur WhatsApp »</strong> pour finaliser. Le pizzaiolo confirmera l'heure exacte par message.
+                  </span>
+                </p>
+
+                <button
+                  type="submit"
+                  disabled={totalCount === 0}
+                  class="w-full inline-flex items-center justify-center gap-3 h-14 px-8 text-base font-semibold uppercase tracking-[0.18em] rounded-sm bg-pizza-charbon text-pizza-creme hover:bg-pizza-rouge transition-all disabled:bg-pizza-charbon/25 disabled:text-pizza-creme/60 disabled:cursor-not-allowed cursor-pointer"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.92 0-2.65-1.03-5.14-2.91-7.01zm-7.01 15.24h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.21 8.21 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83 8.25 8.25 0 0 1-8.24 8.22zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06a6.79 6.79 0 0 1-2-1.23 7.5 7.5 0 0 1-1.38-1.72c-.14-.25 0-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42l-.48-.01a.93.93 0 0 0-.67.31 2.81 2.81 0 0 0-.87 2.08c0 1.23.89 2.41 1.02 2.58.12.17 1.76 2.7 4.27 3.78.6.26 1.06.41 1.42.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z" />
+                  </svg>
+                  {totalCount === 0 ? 'Ajoutez un plat pour commander' : `Envoyer · ${total}€`}
+                </button>
+              </form>
+            </div>
+          </div>
         </div>
       </section>
 
