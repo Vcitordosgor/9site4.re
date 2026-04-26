@@ -12,6 +12,8 @@ import { getSeo } from '../../lib/seo';
 import SalonHeader from '../../components/templates/salon/SalonHeader.astro';
 import HeroSplit from '../../components/templates/salon/HeroSplit.astro';
 import Manifesto from '../../components/templates/salon/Manifesto.astro';
+import Prestations from '../../components/templates/salon/Prestations.astro';
+import Pourquoi from '../../components/templates/salon/Pourquoi.astro';
 ---
 
 <BaseLayout seo={getSeo('templateSalon')} bare={true}>
@@ -31,14 +33,10 @@ import Manifesto from '../../components/templates/salon/Manifesto.astro';
   <main id="top" class="bg-salon-creme text-salon-encre font-inter">
     <HeroSplit />
     <Manifesto />
+    <Prestations />
+    <Pourquoi />
 
     <!-- Sections suivantes : à venir -->
-    <section id="prestations" class="py-32 px-6 text-center text-salon-encre/40 bg-salon-creme">
-      <p class="italic">— Prestations à venir (commit 3) —</p>
-    </section>
-    <section id="pourquoi" class="py-32 px-6 text-center text-salon-encre/40 bg-salon-blanc">
-      <p class="italic">— Pourquoi nous choisir à venir (commit 3) —</p>
-    </section>
     <section id="rendez-vous" class="py-32 px-6 text-center text-salon-encre/40 bg-salon-creme">
       <p class="italic">— Formulaire RDV à venir (commit 4) —</p>
     </section>

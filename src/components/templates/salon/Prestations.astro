@@ -1,0 +1,80 @@
+---
+/**
+ * Prestations — liste éditoriale par catégorie, format "carte de salon".
+ * Pas d'images, juste typographie soignée + filets dorés + pointillés.
+ */
+import data from '../../../data/templates/salon.json';
+const categories = Object.entries(data.prestations);
+---
+
+<section id="prestations" class="relative bg-salon-creme py-24 md:py-32 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <!-- Header de section -->
+    <header class="text-center max-w-2xl mx-auto mb-16">
+      <p class="scroll-reveal flex items-center justify-center gap-3 text-xs font-semibold uppercase tracking-[0.3em] text-salon-cuivre">
+        <span class="inline-block w-8 h-px bg-salon-cuivre" aria-hidden="true"></span>
+        <span>La carte des prestations</span>
+        <span class="inline-block w-8 h-px bg-salon-cuivre" aria-hidden="true"></span>
+      </p>
+      <h2 class="scroll-reveal mt-5 font-playfair font-bold text-salon-encre leading-tight" style="font-size: clamp(36px, 4.5vw, 56px);">
+        Soigner, couper,
+        <span class="italic font-medium text-salon-cuivre">colorer.</span>
+      </h2>
+      <p class="scroll-reveal mt-5 text-salon-encre/70 leading-relaxed">
+        Des tarifs clairs, des durées réalistes, et un diagnostic offert avant chaque rendez-vous.
+      </p>
+    </header>
+
+    <!-- Catégories empilées -->
+    <div class="max-w-5xl mx-auto space-y-16 md:space-y-20">
+      {categories.map(([key, cat]) => (
+        <section class="scroll-reveal">
+          <!-- Titre catégorie + filet doré -->
+          <header class="mb-8 text-center">
+            <h3 class="font-playfair italic font-bold text-salon-encre" style="font-size: clamp(28px, 3vw, 36px);">
+              {cat.titre}
+            </h3>
+            <div class="mt-4 mx-auto w-12 h-px bg-salon-laiton" aria-hidden="true"></div>
+          </header>
+
+          <!-- Items en 2 colonnes desktop, 1 col mobile -->
+          <ul class="grid md:grid-cols-2 gap-x-12 gap-y-0">
+            {cat.items.map((item) => (
+              <li class="group py-5 border-b border-salon-encre/10 last:border-b-0 md:[&:nth-last-child(-n+2)]:border-b-0">
+                <div class="flex items-baseline gap-3">
+                  <h4 class="font-playfair font-semibold text-lg text-salon-encre leading-snug">
+                    {item.nom}
+                  </h4>
+                  <span class="flex-1 mb-1.5 border-b border-dotted border-salon-laiton/55" aria-hidden="true"></span>
+                  <span class="font-playfair font-bold text-lg text-salon-cuivre tabular-nums whitespace-nowrap">
+                    {item.prix === null ? 'Sur devis' : `${item.prix}€`}
+                  </span>
+                </div>
+                {item.description && (
+                  <p class="mt-1.5 text-sm text-salon-encre/70 italic leading-relaxed pr-2">
+                    {item.description}
+                  </p>
+                )}
+                <p class="mt-2 text-xs uppercase tracking-[0.18em] text-salon-encre/50">
+                  Durée · {item.duree}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
+    </div>
+
+    <!-- CTA bas -->
+    <div class="scroll-reveal text-center mt-16">
+      <a
+        href="#rendez-vous"
+        class="inline-flex items-center justify-center h-14 px-8 text-sm font-semibold uppercase tracking-[0.2em] rounded-full bg-salon-cuivre text-salon-blanc hover:bg-[#974D34] transition-all"
+        style="box-shadow: 0 8px 24px rgb(181 105 77 / 0.25);"
+      >
+        Réserver un créneau
+      </a>
+    </div>
+  </div>
+</section>
