@@ -1,0 +1,115 @@
+---
+/**
+ * PizzaAnimation — pizza SVG construite en stop-motion (boucle 8s).
+ * Couches successives : pâte → sauce tomate → mozzarella → basilic
+ * → tomates cerises → olives → champignons.
+ * Chaque couche apparaît avec un léger rebond et reste visible
+ * jusqu'à la fin du cycle, puis tout repart.
+ * Désactivé sous prefers-reduced-motion (la pizza s'affiche complète).
+ */
+---
+
+<div class="pizza-anim relative aspect-square w-full max-w-[420px] mx-auto" aria-hidden="true">
+  <svg viewBox="0 0 200 200" class="w-full h-full drop-shadow-2xl">
+    <!-- Assiette -->
+    <circle cx="100" cy="100" r="98" fill="#1A1A1A" opacity="0.08" />
+
+    <!-- Pâte (couche 1) -->
+    <g class="layer layer-1">
+      <circle cx="100" cy="100" r="92" fill="#E8D5A8" />
+      <circle cx="100" cy="100" r="92" fill="none" stroke="#C9A876" stroke-width="2" />
+      <circle cx="100" cy="100" r="80" fill="#F0E0B8" />
+    </g>
+
+    <!-- Sauce tomate (couche 2) -->
+    <g class="layer layer-2">
+      <circle cx="100" cy="100" r="78" fill="#C8102E" opacity="0.92" />
+      <circle cx="92" cy="92" r="6" fill="#A50D26" opacity="0.4" />
+      <circle cx="115" cy="105" r="5" fill="#A50D26" opacity="0.4" />
+      <circle cx="98" cy="118" r="4" fill="#A50D26" opacity="0.4" />
+    </g>
+
+    <!-- Mozzarella (couche 3) -->
+    <g class="layer layer-3">
+      <ellipse cx="80" cy="85" rx="12" ry="10" fill="#FFF8E7" />
+      <ellipse cx="118" cy="92" rx="11" ry="9" fill="#FFF8E7" />
+      <ellipse cx="95" cy="115" rx="13" ry="11" fill="#FFF8E7" />
+      <ellipse cx="125" cy="125" rx="10" ry="9" fill="#FFF8E7" />
+      <ellipse cx="75" cy="120" rx="9" ry="8" fill="#FFF8E7" />
+      <ellipse cx="108" cy="75" rx="8" ry="7" fill="#FFF8E7" />
+    </g>
+
+    <!-- Basilic (couche 4) -->
+    <g class="layer layer-4" fill="#2D6A4F">
+      <path d="M70,75 q4,-8 12,-4 q-2,8 -10,8 q-3,-2 -2,-4z" />
+      <path d="M125,80 q5,-7 11,-2 q-2,8 -10,7 q-3,-3 -1,-5z" />
+      <path d="M85,130 q6,-6 11,-1 q-2,7 -10,6 q-3,-2 -1,-5z" />
+      <path d="M120,135 q5,-7 11,-2 q-2,8 -10,7 q-3,-3 -1,-5z" />
+    </g>
+
+    <!-- Tomates cerises (couche 5) -->
+    <g class="layer layer-5">
+      <circle cx="65" cy="100" r="6" fill="#E63946" />
+      <circle cx="63" cy="98" r="2" fill="#FFF" opacity="0.5" />
+      <circle cx="135" cy="105" r="6" fill="#E63946" />
+      <circle cx="133" cy="103" r="2" fill="#FFF" opacity="0.5" />
+      <circle cx="100" cy="60" r="6" fill="#E63946" />
+      <circle cx="98" cy="58" r="2" fill="#FFF" opacity="0.5" />
+    </g>
+
+    <!-- Olives (couche 6) -->
+    <g class="layer layer-6">
+      <ellipse cx="88" cy="105" rx="4" ry="3" fill="#1A1A1A" />
+      <ellipse cx="112" cy="108" rx="4" ry="3" fill="#1A1A1A" />
+      <ellipse cx="100" cy="135" rx="4" ry="3" fill="#1A1A1A" />
+      <ellipse cx="78" cy="135" rx="3.5" ry="3" fill="#1A1A1A" />
+    </g>
+
+    <!-- Champignons (couche 7) -->
+    <g class="layer layer-7" fill="#8B7355">
+      <ellipse cx="115" cy="78" rx="6" ry="4" />
+      <rect x="113" y="78" width="4" height="5" fill="#FFF8E7" />
+      <ellipse cx="78" cy="115" rx="6" ry="4" />
+      <rect x="76" y="115" width="4" height="5" fill="#FFF8E7" />
+      <ellipse cx="125" cy="135" rx="5" ry="3.5" />
+      <rect x="123" y="135" width="3.5" height="4" fill="#FFF8E7" />
+    </g>
+  </svg>
+</div>
+
+<style>
+  /* Stop-motion : 7 couches, animation 8s, chaque couche apparaît
+     successivement avec un léger rebond, reste visible jusqu'à la fin. */
+  .pizza-anim .layer {
+    opacity: 0;
+    transform-origin: 100px 100px;
+    transform-box: fill-box;
+    animation: pizza-layer 8s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+  }
+  .pizza-anim .layer-1 { animation-delay: 0.0s; }
+  .pizza-anim .layer-2 { animation-delay: 0.6s; }
+  .pizza-anim .layer-3 { animation-delay: 1.2s; }
+  .pizza-anim .layer-4 { animation-delay: 1.8s; }
+  .pizza-anim .layer-5 { animation-delay: 2.4s; }
+  .pizza-anim .layer-6 { animation-delay: 3.0s; }
+  .pizza-anim .layer-7 { animation-delay: 3.6s; }
+
+  @keyframes pizza-layer {
+    0%, 100%   { opacity: 0; transform: scale(0.3); }
+    /* Apparition + rebond */
+    6%         { opacity: 1; transform: scale(1.15); }
+    10%        { transform: scale(1); }
+    /* Reste visible jusqu'à la fin du cycle (les couches précédentes restent
+       affichées en se redéclenchant via la boucle infinie 8s) */
+    85%        { opacity: 1; transform: scale(1); }
+    95%        { opacity: 0; transform: scale(0.95); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pizza-anim .layer {
+      opacity: 1 !important;
+      transform: none !important;
+      animation: none !important;
+    }
+  }
+</style>

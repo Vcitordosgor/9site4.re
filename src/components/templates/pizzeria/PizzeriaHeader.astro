@@ -1,0 +1,134 @@
+---
+import data from '../../../data/templates/pizzeria.json';
+
+const navLinks = [
+  { href: '#menu', label: 'Menu' },
+  { href: '#commander', label: 'Commander' },
+  { href: '#contact', label: 'Contact' },
+];
+---
+
+<header
+  id="pizzeria-header"
+  data-scrolled="false"
+  class="sticky top-0 z-50 transition-[background-color,backdrop-filter,box-shadow,border-color] duration-300 ease-out border-b border-transparent"
+>
+  <div class="max-w-content mx-auto px-6 h-16 md:h-20 flex items-center justify-between gap-6">
+    <a href="#top" class="font-playfair font-bold text-2xl md:text-3xl text-pizza-tomate leading-none">
+      Pizza Lé O
+    </a>
+
+    <nav class="hidden md:flex items-center gap-1" aria-label="Navigation">
+      {navLinks.map((l) => (
+        <a
+          href={l.href}
+          class="px-4 py-2 rounded-full text-sm font-medium text-pizza-charbon/80 hover:text-pizza-tomate transition-colors"
+        >
+          {l.label}
+        </a>
+      ))}
+    </nav>
+
+    <a
+      href="#commander"
+      class="hidden md:inline-flex items-center justify-center h-11 px-5 text-sm font-semibold rounded-full bg-pizza-tomate text-white shadow-card hover:bg-[#A50D26] hover:shadow-card-hover transition-all"
+    >
+      Commander
+    </a>
+
+    <button
+      id="pizzeria-menu-toggle"
+      type="button"
+      data-open="false"
+      aria-expanded="false"
+      aria-controls="pizzeria-mobile-menu"
+      aria-label="Ouvrir le menu"
+      class="group md:hidden relative w-11 h-11 -mr-2 flex items-center justify-center rounded-full hover:bg-pizza-charbon/5 transition-colors"
+    >
+      <span class="sr-only">Menu</span>
+      <span class="relative flex flex-col items-center justify-center gap-1.5 w-6 h-6">
+        <span class="block w-6 h-0.5 bg-pizza-charbon rounded-full transition-transform duration-300 origin-center group-data-[open=true]:rotate-45 group-data-[open=true]:translate-y-2"></span>
+        <span class="block w-6 h-0.5 bg-pizza-charbon rounded-full transition-opacity duration-200 group-data-[open=true]:opacity-0"></span>
+        <span class="block w-6 h-0.5 bg-pizza-charbon rounded-full transition-transform duration-300 origin-center group-data-[open=true]:-rotate-45 group-data-[open=true]:-translate-y-2"></span>
+      </span>
+    </button>
+  </div>
+</header>
+
+<!-- Menu mobile -->
+<div
+  id="pizzeria-mobile-menu"
+  data-open="false"
+  aria-hidden="true"
+  inert
+  class="md:hidden fixed inset-x-0 top-16 bottom-0 z-40 bg-pizza-creme transition-opacity duration-300 ease-out data-[open=false]:opacity-0 data-[open=false]:pointer-events-none data-[open=true]:opacity-100"
+>
+  <nav class="h-full flex flex-col px-6 pt-8 pb-10" aria-label="Navigation mobile">
+    <ul class="flex-1 flex flex-col gap-1">
+      {navLinks.map((l) => (
+        <li>
+          <a href={l.href} data-pizzeria-link class="block py-4 text-3xl font-playfair font-semibold text-pizza-charbon hover:text-pizza-tomate transition-colors">
+            {l.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+    <div class="pt-6 border-t border-pizza-charbon/10">
+      <a
+        href="#commander"
+        data-pizzeria-link
+        class="inline-flex items-center justify-center w-full h-14 px-8 text-lg font-semibold rounded-full bg-pizza-tomate text-white shadow-card hover:bg-[#A50D26] transition-all"
+      >
+        Commander
+      </a>
+    </div>
+  </nav>
+</div>
+
+<style>
+  #pizzeria-header[data-scrolled='true'] {
+    background-color: rgb(255 248 231 / 0.92);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    backdrop-filter: saturate(180%) blur(12px);
+    box-shadow: 0 1px 3px rgb(26 26 26 / 0.08);
+    border-bottom-color: rgb(26 26 26 / 0.06);
+  }
+</style>
+
+<script>
+  const header = document.getElementById('pizzeria-header');
+  if (header) {
+    const update = () => {
+      header.dataset.scrolled = String(window.scrollY > 8);
+    };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+  }
+
+  const toggle = document.getElementById('pizzeria-menu-toggle');
+  const menu = document.getElementById('pizzeria-mobile-menu');
+  if (toggle && menu) {
+    const setOpen = (open: boolean) => {
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.dataset.open = String(open);
+      toggle.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+      menu.dataset.open = String(open);
+      menu.setAttribute('aria-hidden', String(!open));
+      if (open) menu.removeAttribute('inert');
+      else menu.setAttribute('inert', '');
+      document.body.style.overflow = open ? 'hidden' : '';
+    };
+    toggle.addEventListener('click', () => {
+      setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+    menu.querySelectorAll<HTMLElement>('[data-pizzeria-link]').forEach((el) => {
+      el.addEventListener('click', () => setOpen(false));
+    });
+  }
+</script>
