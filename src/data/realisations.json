@@ -1,11 +1,12 @@
 [
   {
     "id": 1,
-    "nom": "Restaurant créole",
+    "nom": "Restaurant gastronomique",
     "categorie": "restaurants",
-    "sousTitre": "Carte du jour, contact et réservation en ligne",
+    "sousTitre": "Carte du chef, menus et réservation de table",
     "moduleInclus": "Réservation",
-    "slug": "restaurant-creole"
+    "slug": "restaurant-gastronomique",
+    "previewUrl": "/templates/resto"
   },
   {
     "id": 2,
