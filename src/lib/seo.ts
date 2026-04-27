@@ -36,7 +36,8 @@ type PageKey =
   | 'templatePlomberie'
   | 'templatePaysagiste'
   | 'templateElectricien'
-  | 'templateCoach';
+  | 'templateCoach'
+  | 'templateYoga';
 
 const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'> & { noindex?: boolean; ogImage?: string; ogImageAlt?: string }> = {
   home: {
@@ -135,6 +136,13 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
     description:
       'Aperçu du template "Coach sportif" proposé par 9site4 : programmes, transformations, séance d\'essai, planning à domicile / plage / salle. Site fictif de démonstration.',
     canonical: '/templates/coach',
+    noindex: true,
+  },
+  templateYoga: {
+    title: 'Souffle Studio — Studio de yoga à Saint-Gilles (Réunion) | Template 9site4',
+    description:
+      'Aperçu du template "Studio de yoga" proposé par 9site4 : pratiques, planning, enseignants, tarifs et réservation en ligne. Site fictif de démonstration.',
+    canonical: '/templates/yoga',
     noindex: true,
   },
 };

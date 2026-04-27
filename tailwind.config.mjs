@@ -37,6 +37,9 @@ export default {
     {
       pattern: /^(bg|text|ring|border|from|to|via)-(coach-noir|coach-charbon|coach-graphite|coach-gris|coach-blanc|coach-lime|coach-lime-fonce)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
     },
+    {
+      pattern: /^(bg|text|ring|border|from|to|via)-(yoga-creme|yoga-papier|yoga-ocre|yoga-mousse|yoga-encre|yoga-pierre|yoga-blanc)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
+    },
   ],
   theme: {
     extend: {
@@ -130,6 +133,16 @@ export default {
         'coach-blanc':      '#F5F5F5',  // texte primaire
         'coach-lime':       '#C6FF3A',  // lime saturé — accent CTA, stats, badges
         'coach-lime-fonce': '#8FBA00',  // hover lime
+        // Palette yoga (template /templates/yoga — Souffle Studio)
+        // Style "Slow & contemplatif" : crème chaude + ocre poussiéreux + vert mousse.
+        // Volontairement opposée à coach (sport) : terreuse, douce, beaucoup d'air.
+        'yoga-creme':  '#F5EFE6',  // crème chaude — fond principal
+        'yoga-papier': '#EDE5D6',  // papier sablé doré — sections alternées
+        'yoga-ocre':   '#C9885E',  // ocre poussiéreux — accent CTA, pulses
+        'yoga-mousse': '#3F4A3A',  // vert mousse profond — secondaire
+        'yoga-encre':  '#2A201A',  // brun encre — texte AAA, fond sombre
+        'yoga-pierre': '#8A8378',  // gris-brun — texte secondaire
+        'yoga-blanc':  '#FFFFFF',
       },
       fontFamily: {
         sora: ['Sora', 'system-ui', 'sans-serif'],
@@ -150,6 +163,9 @@ export default {
         'big-shoulders': ['"Big Shoulders Display"', 'Impact', 'sans-serif'],
         barlow: ['Barlow', 'system-ui', 'sans-serif'],
         'jetbrains': ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+        'dm-serif': ['"DM Serif Display"', 'Georgia', 'serif'],
+        spectral: ['Spectral', 'Georgia', 'serif'],
+        lexend: ['Lexend', 'system-ui', 'sans-serif'],
       },
       fontSize: {
         'hero': ['clamp(2.5rem, 5vw + 1rem, 5rem)', { lineHeight: '1.05', letterSpacing: '-0.02em' }],

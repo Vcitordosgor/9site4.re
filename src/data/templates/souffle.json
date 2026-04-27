@@ -1,0 +1,161 @@
+{
+  "info": {
+    "nom": "Souffle Studio",
+    "wordmark": "Souffle",
+    "wordmark2": "Studio",
+    "tagline": "Le yoga, comme on respire.",
+    "sousTitre": "Un studio à taille humaine, pour pratiquer en confiance.",
+    "fondatrice": "Anjali Boyer",
+    "ville": "Saint-Gilles-les-Bains",
+    "adresseLigne1": "27 chemin de l'Hermitage",
+    "adresseLigne2": "97434 Saint-Gilles-les-Bains",
+    "telephone": "0692 73 45 89",
+    "telephoneHref": "+33692734589",
+    "whatsapp": "33692734589",
+    "email": "hello@souffle-studio.re",
+    "instagram": "@souffle.studio",
+    "siret": "89012345600017",
+    "annee": "2017",
+    "photoLieu": "https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=1600&q=85"
+  },
+  "manifeste": [
+    "Ici, on ne cherche pas la performance. On vient pour ralentir, pour habiter son corps autrement, pour retrouver une respiration qu'on a parfois oubliée.",
+    "Quatre tapis, beaucoup de bois, peu de bruit. Le studio accueille douze élèves maximum par séance, pour qu'on prenne vraiment le temps de regarder, d'ajuster, d'écouter.",
+    "Que vous soyez débutant·e curieux·se ou pratiquant·e régulier·e, vous trouverez ici un espace où poser, un peu, ce que vous portez."
+  ],
+  "pullQuote": "On ne pratique pas pour atteindre quelque chose. On pratique pour revenir à soi.",
+  "pratiques": [
+    {
+      "id": "hatha",
+      "numero": "I.",
+      "nom": "Hatha",
+      "duree": "1h30",
+      "niveau": "Tous niveaux",
+      "ressenti": "Stable · Ancré · Doux",
+      "description": "Le Hatha est la fondation. On y travaille les postures classiques, lentement, en synchronisant chaque mouvement avec le souffle. Les séances mêlent renforcement, étirement et relaxation. Idéal pour découvrir le yoga ou pour revenir à l'essentiel.",
+      "ideal": "Pour celles et ceux qui veulent comprendre l'alignement du corps et apprendre à respirer pleinement."
+    },
+    {
+      "id": "vinyasa",
+      "numero": "II.",
+      "nom": "Vinyasa",
+      "duree": "1h30",
+      "niveau": "Intermédiaire",
+      "ressenti": "Fluide · Dynamique · Chaleureux",
+      "description": "Le Vinyasa enchaîne les postures dans un flux continu, guidé par la respiration. C'est une pratique plus rythmée, presque méditative dans son tempo, qui développe force, fluidité et coordination. Chaque séance suit une thématique différente.",
+      "ideal": "Pour celles et ceux qui aiment bouger, transpirer un peu, et entrer dans la méditation par le mouvement."
+    },
+    {
+      "id": "yin",
+      "numero": "III.",
+      "nom": "Yin",
+      "duree": "1h",
+      "niveau": "Tous niveaux",
+      "ressenti": "Long · Profond · Silencieux",
+      "description": "En Yin, on tient les postures longtemps — entre 3 et 7 minutes — pour étirer en douceur les tissus profonds : fascias, ligaments, articulations. C'est une pratique passive, réparatrice, qui demande beaucoup de patience et apprend à habiter l'inconfort sans tension.",
+      "ideal": "Pour celles et ceux qui ont besoin de relâcher ce qui s'est accumulé dans le corps."
+    },
+    {
+      "id": "pranayama",
+      "numero": "IV.",
+      "nom": "Pranayama & méditation",
+      "duree": "1h",
+      "niveau": "Tous niveaux",
+      "ressenti": "Calme · Lumineux · Centré",
+      "description": "Pranayama signifie l'art du souffle. Les séances combinent techniques respiratoires (Nadi Shodhana, Ujjayi, Kapalabhati) et méditation guidée. Pas de postures complexes ici — juste l'attention au souffle, et ce qui s'ouvre quand on s'y attarde.",
+      "ideal": "Pour celles et ceux qui veulent apaiser le mental, mieux dormir, ou simplement faire silence."
+    }
+  ],
+  "planning": [
+    {
+      "jour": "Lundi",
+      "creneaux": [
+        { "heure": "07h00", "duree": "1h30", "cours": "Hatha", "type": "doux", "prof": "Anjali" },
+        { "heure": "18h00", "duree": "1h30", "cours": "Vinyasa", "type": "dynamique", "prof": "Léo" }
+      ]
+    },
+    {
+      "jour": "Mardi",
+      "creneaux": [
+        { "heure": "09h00", "duree": "1h", "cours": "Yin", "type": "doux", "prof": "Anjali" },
+        { "heure": "18h00", "duree": "1h", "cours": "Pranayama", "type": "doux", "prof": "Mira" }
+      ]
+    },
+    {
+      "jour": "Mercredi",
+      "creneaux": [
+        { "heure": "07h00", "duree": "1h30", "cours": "Hatha", "type": "doux", "prof": "Anjali" },
+        { "heure": "18h00", "duree": "1h30", "cours": "Vinyasa", "type": "dynamique", "prof": "Léo" }
+      ]
+    },
+    {
+      "jour": "Jeudi",
+      "creneaux": [
+        { "heure": "09h00", "duree": "1h", "cours": "Yin", "type": "doux", "prof": "Anjali" },
+        { "heure": "18h00", "duree": "1h", "cours": "Pranayama", "type": "doux", "prof": "Mira" }
+      ]
+    },
+    {
+      "jour": "Vendredi",
+      "creneaux": [
+        { "heure": "07h00", "duree": "1h30", "cours": "Hatha", "type": "doux", "prof": "Anjali" },
+        { "heure": "18h00", "duree": "1h30", "cours": "Vinyasa Flow", "type": "dynamique", "prof": "Léo" }
+      ]
+    },
+    {
+      "jour": "Samedi",
+      "creneaux": [
+        { "heure": "09h00", "duree": "1h30", "cours": "Vinyasa", "type": "dynamique", "prof": "Léo" },
+        { "heure": "11h00", "duree": "1h", "cours": "Yin", "type": "doux", "prof": "Anjali" }
+      ]
+    },
+    {
+      "jour": "Dimanche",
+      "creneaux": [
+        { "heure": "09h00", "duree": "1h", "cours": "Pranayama", "type": "doux", "prof": "Mira", "note": "Tarif libre" }
+      ]
+    }
+  ],
+  "enseignants": [
+    {
+      "id": "anjali",
+      "prenom": "Anjali",
+      "nom": "Boyer",
+      "role": "Hatha · Yin · Fondatrice",
+      "bio": "Formée à Mysore en 2014, enseigne depuis huit ans à La Réunion. A ouvert Souffle en 2017 pour proposer une pratique exigeante mais sans dogme.",
+      "photo": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80",
+      "rotation": "-2deg"
+    },
+    {
+      "id": "leo",
+      "prenom": "Léo",
+      "nom": "Hoarau",
+      "role": "Vinyasa Flow",
+      "bio": "Ancien danseur contemporain, Léo enseigne un Vinyasa fluide et créatif. Ses cours puisent autant dans le mouvement que dans la tradition.",
+      "photo": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&q=80",
+      "rotation": "1.5deg"
+    },
+    {
+      "id": "mira",
+      "prenom": "Mira",
+      "nom": "Sambou",
+      "role": "Pranayama · Méditation",
+      "bio": "Mira a vécu deux ans en ashram dans le Tamil Nadu. Elle guide aujourd'hui les séances de souffle et de méditation avec une simplicité rare.",
+      "photo": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=600&q=80",
+      "rotation": "-1deg"
+    }
+  ],
+  "tarifs": [
+    { "label": "Cours d'essai", "detail": "1ʳᵉ séance — bienvenue", "prix": "12 €" },
+    { "label": "Cours unique", "detail": "Sans engagement", "prix": "22 €" },
+    { "label": "Carnet 5 cours", "detail": "Validité 6 mois", "prix": "95 €" },
+    { "label": "Carnet 10 cours", "detail": "Validité 12 mois", "prix": "175 €" },
+    { "label": "Pass mensuel", "detail": "Cours illimités", "prix": "110 €" },
+    { "label": "Cours du dimanche", "detail": "Pranayama, tarif libre", "prix": "—" }
+  ],
+  "horairesStudio": [
+    { "jour": "Lundi – Vendredi", "label": "06h30 – 20h00", "ouvert": true },
+    { "jour": "Samedi", "label": "08h30 – 13h00", "ouvert": true },
+    { "jour": "Dimanche", "label": "08h30 – 11h00", "ouvert": true }
+  ]
+}
