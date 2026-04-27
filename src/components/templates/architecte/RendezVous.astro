@@ -1,0 +1,173 @@
+---
+import data from '../../../data/templates/mahatma.json';
+const waBase = `https://wa.me/${data.info.whatsapp}`;
+---
+
+<section id="rendez-vous" class="bg-mahatma-papier py-24 md:py-32 px-6 md:px-10 border-t border-mahatma-encre/15">
+  <div class="max-w-content mx-auto">
+
+    <header class="grid grid-cols-12 gap-4 mb-14">
+      <div class="col-span-12 md:col-span-3">
+        <p class="font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-cachet mb-4">
+          ▢ § VII
+        </p>
+        <p class="font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-beton">
+          Rendez-vous
+        </p>
+      </div>
+      <div class="col-span-12 md:col-span-9">
+        <h2 class="font-schibsted font-bold text-mahatma-encre leading-[0.95] tracking-tight uppercase" style="font-size: clamp(36px, 5vw, 56px);">
+          Premier contact,<br/>sans engagement.
+        </h2>
+        <p class="mt-5 font-atkinson italic text-mahatma-beton text-base md:text-lg leading-relaxed max-w-2xl">
+          Visite du site possible à La Réunion. Sur métropole, premier RDV en visio.
+        </p>
+      </div>
+    </header>
+
+    <form id="mahatma-form" class="grid grid-cols-12 gap-4" novalidate>
+
+      <!-- Type de projet -->
+      <div class="col-span-12">
+        <label for="mahatma-type" class="block font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-cachet mb-2">
+          ▢ Type de projet
+        </label>
+        <select
+          id="mahatma-type"
+          name="type"
+          required
+          class="w-full h-12 px-4 bg-mahatma-blanc border border-mahatma-encre/30 focus:border-mahatma-cachet font-atkinson text-mahatma-encre text-base outline-none transition-colors cursor-pointer"
+        >
+          <option value="">— Choisir —</option>
+          <option value="maison">Maison individuelle (neuve ou rénovation)</option>
+          <option value="logements">Logements collectifs</option>
+          <option value="tertiaire">Tertiaire / commerce / bureaux</option>
+          <option value="public">Équipement public</option>
+          <option value="patrimoine">Restauration patrimoine</option>
+          <option value="etude">Étude de faisabilité seule</option>
+          <option value="autre">Autre / À discuter</option>
+        </select>
+      </div>
+
+      <!-- Budget -->
+      <div class="col-span-12 md:col-span-6">
+        <label for="mahatma-budget" class="block font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-cachet mb-2">
+          ▢ Budget travaux estimé
+        </label>
+        <select
+          id="mahatma-budget"
+          name="budget"
+          class="w-full h-12 px-4 bg-mahatma-blanc border border-mahatma-encre/30 focus:border-mahatma-cachet font-atkinson text-mahatma-encre text-base outline-none transition-colors cursor-pointer"
+        >
+          <option value="">— Choisir —</option>
+          <option value="moins-100k">Moins de 100 000 €</option>
+          <option value="100-300k">100 000 – 300 000 €</option>
+          <option value="300-700k">300 000 – 700 000 €</option>
+          <option value="700-1500k">700 000 – 1 500 000 €</option>
+          <option value="plus-1500k">Plus de 1 500 000 €</option>
+          <option value="ne-sait-pas">Je ne sais pas encore</option>
+        </select>
+      </div>
+
+      <!-- Échéance -->
+      <div class="col-span-12 md:col-span-6">
+        <label for="mahatma-echeance" class="block font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-cachet mb-2">
+          ▢ Échéance souhaitée
+        </label>
+        <select
+          id="mahatma-echeance"
+          name="echeance"
+          class="w-full h-12 px-4 bg-mahatma-blanc border border-mahatma-encre/30 focus:border-mahatma-cachet font-atkinson text-mahatma-encre text-base outline-none transition-colors cursor-pointer"
+        >
+          <option value="">— Choisir —</option>
+          <option value="immediate">Immédiate</option>
+          <option value="6mois">Dans 6 mois</option>
+          <option value="1an">D'ici 1 an</option>
+          <option value="reflexion">En réflexion</option>
+        </select>
+      </div>
+
+      <!-- Coordonnées -->
+      <div class="col-span-12 md:col-span-6">
+        <label for="mahatma-nom" class="block font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-cachet mb-2">
+          ▢ Nom & prénom
+        </label>
+        <input
+          id="mahatma-nom"
+          name="nom"
+          type="text"
+          required
+          autocomplete="name"
+          class="w-full h-12 px-4 bg-mahatma-blanc border border-mahatma-encre/30 focus:border-mahatma-cachet font-atkinson text-mahatma-encre text-base outline-none transition-colors"
+        />
+      </div>
+
+      <div class="col-span-12 md:col-span-6">
+        <label for="mahatma-tel" class="block font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-cachet mb-2">
+          ▢ Téléphone
+        </label>
+        <input
+          id="mahatma-tel"
+          name="telephone"
+          type="tel"
+          required
+          autocomplete="tel"
+          class="w-full h-12 px-4 bg-mahatma-blanc border border-mahatma-encre/30 focus:border-mahatma-cachet font-atkinson text-mahatma-encre text-base outline-none transition-colors tabular-nums"
+        />
+      </div>
+
+      <div class="col-span-12">
+        <label for="mahatma-message" class="block font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-cachet mb-2">
+          ▢ Le projet en quelques mots <span class="lowercase italic font-atkinson text-mahatma-beton normal-case">(facultatif)</span>
+        </label>
+        <textarea
+          id="mahatma-message"
+          name="message"
+          rows="4"
+          placeholder="Lieu, surface estimée, contraintes particulières, échéances…"
+          class="w-full px-4 py-3 bg-mahatma-blanc border border-mahatma-encre/30 focus:border-mahatma-cachet font-atkinson text-mahatma-encre text-base placeholder:text-mahatma-beton/55 outline-none transition-colors resize-none"
+        ></textarea>
+      </div>
+
+      <!-- Submit -->
+      <div class="col-span-12 pt-4 border-t border-mahatma-encre/15 flex flex-wrap items-baseline justify-between gap-4">
+        <p class="font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-beton">
+          ▸ Réponse de l'agence sous 48h
+        </p>
+        <button
+          type="submit"
+          class="inline-flex items-center justify-center h-13 px-9 bg-mahatma-encre text-mahatma-papier font-atkinson font-bold text-sm hover:bg-mahatma-cachet transition-colors"
+          style="height: 52px;"
+        >
+          Envoyer la demande →
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<script define:vars={{ waBase }}>
+  const form = document.getElementById('mahatma-form');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fd = new FormData(form);
+      const type = fd.get('type') || '';
+      const budget = fd.get('budget') || '';
+      const echeance = fd.get('echeance') || '';
+      const nom = fd.get('nom') || '';
+      const tel = fd.get('telephone') || '';
+      const message = fd.get('message') || '';
+      const text = [
+        'Bonjour, je souhaite un rendez-vous avec l\'Atelier Mahatma.',
+        type ? `Type : ${type}` : '',
+        budget ? `Budget : ${budget}` : '',
+        echeance ? `Échéance : ${echeance}` : '',
+        nom ? `Nom : ${nom}` : '',
+        tel ? `Tél : ${tel}` : '',
+        message ? `Projet : ${message}` : '',
+      ].filter(Boolean).join('\n');
+      window.open(`${waBase}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
+    });
+  }
+</script>

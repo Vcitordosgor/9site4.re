@@ -1,0 +1,112 @@
+---
+/**
+ * HeroProjet — projet emblématique en grande photo + grille typographique
+ * stricte 12 cols. Photo B&W. Légendes en Fira Mono technique.
+ */
+import data from '../../../data/templates/mahatma.json';
+---
+
+<section id="top" class="relative bg-mahatma-papier overflow-hidden">
+
+  <!-- Pattern grille technique en arrière-plan ultra-subtil -->
+  <div class="absolute inset-0 pointer-events-none opacity-[0.04]" aria-hidden="true"
+       style="background-image: linear-gradient(to right, #0A0A0C 1px, transparent 1px), linear-gradient(to bottom, #0A0A0C 1px, transparent 1px); background-size: 40px 40px;">
+  </div>
+
+  <div class="relative max-w-content mx-auto px-6 md:px-10 pt-32 pb-20 md:pt-44 md:pb-28">
+
+    <!-- En-tête grille typo -->
+    <div class="grid grid-cols-12 gap-4 mb-12 md:mb-16 font-fira-mono text-[10px] uppercase tracking-[0.2em] text-mahatma-beton">
+      <span class="col-span-3">▢ Atelier Mahatma · Réunion 974</span>
+      <span class="col-span-6 text-center hidden sm:block">— Portfolio en cours —</span>
+      <span class="col-span-3 text-right">{new Date().getFullYear()}</span>
+    </div>
+
+    <!-- Grande photo projet emblématique -->
+    <figure class="relative aspect-[16/10] mb-8 overflow-hidden bg-mahatma-charbon">
+      <img
+        src={data.heroProjet.photo}
+        alt={`${data.heroProjet.nom}, ${data.heroProjet.lieu}`}
+        class="w-full h-full object-cover grayscale"
+        fetchpriority="high"
+        decoding="async"
+      />
+      <!-- Cachet rouge en surimpression -->
+      <div class="absolute top-4 right-4 md:top-8 md:right-8 border-2 border-mahatma-cachet text-mahatma-cachet px-3 py-1.5 font-fira-mono text-[10px] uppercase tracking-[0.22em] bg-mahatma-papier/90 transform rotate-[-3deg]">
+        ◯ Récent · {data.heroProjet.annee}
+      </div>
+    </figure>
+
+    <!-- Légende technique en grille -->
+    <div class="grid grid-cols-12 gap-4 md:gap-8 items-baseline">
+
+      <!-- Numéro projet -->
+      <div class="col-span-12 md:col-span-2">
+        <p class="font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-beton mb-2">
+          Projet n°
+        </p>
+        <p class="font-schibsted font-light text-mahatma-encre text-3xl tabular-nums leading-none">
+          0001
+        </p>
+      </div>
+
+      <!-- Nom du projet -->
+      <div class="col-span-12 md:col-span-7">
+        <p class="font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-beton mb-2">
+          Œuvre
+        </p>
+        <h1 class="font-schibsted font-bold text-mahatma-encre leading-[0.95] tracking-tight" style="font-size: clamp(40px, 6vw, 88px);">
+          {data.heroProjet.nom}
+        </h1>
+        <p class="mt-3 font-atkinson italic text-mahatma-beton text-base md:text-lg leading-relaxed max-w-xl">
+          {data.heroProjet.description}
+        </p>
+      </div>
+
+      <!-- Métadonnées techniques -->
+      <div class="col-span-12 md:col-span-3">
+        <ul class="space-y-2 font-fira-mono text-[11px] uppercase tracking-[0.18em]">
+          <li class="flex items-baseline justify-between gap-3 py-1.5 border-b border-mahatma-encre/15">
+            <span class="text-mahatma-beton">Année</span>
+            <span class="text-mahatma-encre tabular-nums">{data.heroProjet.annee}</span>
+          </li>
+          <li class="flex items-baseline justify-between gap-3 py-1.5 border-b border-mahatma-encre/15">
+            <span class="text-mahatma-beton">Lieu</span>
+            <span class="text-mahatma-encre">{data.heroProjet.lieu}</span>
+          </li>
+          <li class="flex items-baseline justify-between gap-3 py-1.5 border-b border-mahatma-encre/15">
+            <span class="text-mahatma-beton">Surface</span>
+            <span class="text-mahatma-encre tabular-nums">{data.heroProjet.surface}</span>
+          </li>
+          <li class="flex items-baseline justify-between gap-3 py-1.5">
+            <span class="text-mahatma-beton">Type</span>
+            <span class="text-mahatma-encre text-right">{data.heroProjet.typologie}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bandeau wordmark de l'agence + CTA discret en bas -->
+    <div class="mt-20 md:mt-28 grid grid-cols-12 gap-4 items-end pt-6 border-t border-mahatma-encre/15">
+      <div class="col-span-12 md:col-span-9">
+        <p class="font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-beton mb-3">
+          ▢ Maître d'œuvre
+        </p>
+        <p class="font-schibsted font-bold text-mahatma-encre leading-[0.95] tracking-tight uppercase" style="font-size: clamp(36px, 6vw, 96px);">
+          {data.info.wordmark}<span class="text-mahatma-cachet">.</span> {data.info.wordmark2}
+        </p>
+        <p class="mt-3 font-atkinson italic text-mahatma-beton text-base md:text-lg">
+          {data.info.soustitre}
+        </p>
+      </div>
+      <div class="col-span-12 md:col-span-3 md:text-right">
+        <a
+          href="#rendez-vous"
+          class="inline-flex items-center font-atkinson font-bold text-mahatma-encre text-sm border-b-2 border-mahatma-cachet pb-1 hover:text-mahatma-cachet transition-colors"
+        >
+          Prendre rendez-vous · {data.info.telephone}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

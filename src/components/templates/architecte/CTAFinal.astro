@@ -1,0 +1,37 @@
+---
+import data from '../../../data/templates/mahatma.json';
+---
+
+<section class="bg-mahatma-charbon text-mahatma-papier py-24 md:py-36 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <div class="grid grid-cols-12 gap-4 items-end">
+
+      <div class="col-span-12 md:col-span-9">
+        <p class="font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-cachet mb-6">
+          ▢ Closing
+        </p>
+        <h2 class="font-schibsted font-bold text-mahatma-papier leading-[0.9] tracking-tight uppercase" style="font-size: clamp(48px, 8vw, 144px);">
+          Construire,<br/>
+          <span class="font-light italic text-mahatma-cachet">c'est répondre à un lieu.</span>
+        </h2>
+      </div>
+
+      <div class="col-span-12 md:col-span-3 md:text-right">
+        <a
+          href="#rendez-vous"
+          class="inline-flex items-center justify-center h-14 px-8 bg-mahatma-cachet text-mahatma-papier font-atkinson font-bold text-sm hover:bg-mahatma-papier hover:text-mahatma-encre transition-colors"
+        >
+          Rendez-vous →
+        </a>
+        <p class="mt-4 font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-beton">
+          ◯ {data.info.telephone}
+        </p>
+      </div>
+    </div>
+
+    <p class="mt-16 pt-8 border-t border-mahatma-papier/15 font-atkinson italic text-mahatma-ciment text-base leading-relaxed max-w-2xl">
+      L'Atelier Mahatma est inscrit au Conseil régional de l'Ordre des architectes de La Réunion. Toutes nos missions sont contractuelles et assurées.
+    </p>
+  </div>
+</section>

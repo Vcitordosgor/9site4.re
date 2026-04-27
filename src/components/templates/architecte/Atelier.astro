@@ -1,0 +1,66 @@
+---
+import data from '../../../data/templates/mahatma.json';
+---
+
+<section id="atelier" class="bg-mahatma-charbon text-mahatma-papier py-24 md:py-32 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="grid grid-cols-12 gap-4 mb-14 md:mb-20">
+      <div class="col-span-12 md:col-span-3">
+        <p class="font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-cachet mb-4">
+          ▢ § II
+        </p>
+        <p class="font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-beton">
+          L'atelier
+        </p>
+      </div>
+      <div class="col-span-12 md:col-span-9">
+        <h2 class="font-schibsted font-bold text-mahatma-papier leading-[0.95] tracking-tight uppercase" style="font-size: clamp(36px, 5vw, 64px);">
+          Trois architectes,<br/>une même méthode.
+        </h2>
+        <p class="mt-6 font-atkinson italic text-mahatma-ciment text-lg md:text-xl leading-[1.7] max-w-2xl">
+          {data.atelier.intro}
+        </p>
+      </div>
+    </header>
+
+    <!-- 3 paragraphes en grille -->
+    <div class="grid md:grid-cols-3 gap-x-8 gap-y-10 mb-16">
+      {data.atelier.paragraphes.map((p, i) => (
+        <article>
+          <p class="font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-cachet mb-3">
+            ¶ {String(i + 1).padStart(2, '0')}
+          </p>
+          <p class="font-atkinson text-mahatma-papier/85 text-[15px] leading-[1.85]">
+            {p}
+          </p>
+        </article>
+      ))}
+    </div>
+
+    <!-- Équipe -->
+    <div class="border-t border-mahatma-papier/15 pt-12">
+      <p class="font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-beton mb-6">
+        ▢ Équipe permanente
+      </p>
+      <ul class="grid sm:grid-cols-3 gap-x-8 gap-y-8">
+        {data.atelier.equipe.map((m, i) => (
+          <li>
+            <p class="font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-cachet mb-3">
+              /0{i + 1}
+            </p>
+            <p class="font-schibsted font-bold text-mahatma-papier text-2xl leading-tight uppercase tracking-tight">
+              {m.prenom} {m.nom}
+            </p>
+            <p class="mt-2 font-atkinson italic text-mahatma-ciment text-sm">
+              {m.role}
+            </p>
+            <p class="mt-3 pt-3 border-t border-mahatma-papier/15 font-atkinson text-mahatma-papier/65 text-sm leading-relaxed">
+              {m.specialite}
+            </p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>

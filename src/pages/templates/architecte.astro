@@ -1,0 +1,80 @@
+---
+import '@fontsource/schibsted-grotesk/400.css';
+import '@fontsource/schibsted-grotesk/500.css';
+import '@fontsource/schibsted-grotesk/700.css';
+import '@fontsource/schibsted-grotesk/900.css';
+import '@fontsource/atkinson-hyperlegible/400.css';
+import '@fontsource/atkinson-hyperlegible/700.css';
+import '@fontsource/atkinson-hyperlegible/400-italic.css';
+import '@fontsource/fira-mono/400.css';
+import '@fontsource/fira-mono/500.css';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getSeo } from '../../lib/seo';
+import mahatmaData from '../../data/templates/mahatma.json';
+
+import MahatmaHeader from '../../components/templates/architecte/MahatmaHeader.astro';
+import HeroProjet from '../../components/templates/architecte/HeroProjet.astro';
+import Atelier from '../../components/templates/architecte/Atelier.astro';
+import Projets from '../../components/templates/architecte/Projets.astro';
+import Methode from '../../components/templates/architecte/Methode.astro';
+import Honoraires from '../../components/templates/architecte/Honoraires.astro';
+import Distinctions from '../../components/templates/architecte/Distinctions.astro';
+import RendezVous from '../../components/templates/architecte/RendezVous.astro';
+import CTAFinal from '../../components/templates/architecte/CTAFinal.astro';
+import MahatmaFooter from '../../components/templates/architecte/MahatmaFooter.astro';
+---
+
+<BaseLayout seo={getSeo('templateArchitecte')} bare={true}>
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <link rel="dns-prefetch" href="https://images.unsplash.com" />
+    <link
+      rel="preload"
+      as="image"
+      href={mahatmaData.heroProjet.photo}
+      fetchpriority="high"
+    />
+  </Fragment>
+
+  <MahatmaHeader />
+
+  <main id="top" class="bg-mahatma-papier text-mahatma-encre font-atkinson">
+    <HeroProjet />
+    <Atelier />
+    <Projets />
+    <Methode />
+    <Honoraires />
+    <Distinctions />
+    <RendezVous />
+    <CTAFinal />
+  </main>
+
+  <MahatmaFooter />
+
+  <a
+    id="mahatma-sticky-cta"
+    href="#rendez-vous"
+    data-visible="false"
+    class="md:hidden fixed bottom-5 inset-x-5 z-40 inline-flex items-center justify-center h-12 bg-mahatma-encre text-mahatma-papier font-atkinson font-bold text-sm transition-all duration-300 data-[visible=false]:opacity-0 data-[visible=false]:translate-y-4 data-[visible=false]:pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0"
+    style="box-shadow: 0 12px 28px rgba(10,10,12,0.30);"
+  >
+    Prendre rendez-vous →
+  </a>
+
+  <script>
+    const sticky = document.getElementById('mahatma-sticky-cta');
+    const rdv = document.getElementById('rendez-vous');
+    if (sticky && rdv) {
+      const update = () => {
+        const rect = rdv.getBoundingClientRect();
+        const inSection = rect.top < window.innerHeight && rect.bottom > 80;
+        const scrolledPastHero = window.scrollY > 600;
+        sticky.dataset.visible = String(scrolledPastHero && !inSection);
+      };
+      update();
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update, { passive: true });
+    }
+  </script>
+</BaseLayout>

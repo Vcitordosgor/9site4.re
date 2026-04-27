@@ -1,0 +1,55 @@
+---
+import data from '../../../data/templates/mahatma.json';
+---
+
+<section id="honoraires" class="bg-mahatma-charbon text-mahatma-papier py-24 md:py-32 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="grid grid-cols-12 gap-4 mb-14 md:mb-16">
+      <div class="col-span-12 md:col-span-3">
+        <p class="font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-cachet mb-4">
+          ▢ § V
+        </p>
+        <p class="font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-beton">
+          Honoraires
+        </p>
+      </div>
+      <div class="col-span-12 md:col-span-9">
+        <h2 class="font-schibsted font-bold text-mahatma-papier leading-[0.95] tracking-tight uppercase" style="font-size: clamp(36px, 5vw, 64px);">
+          Honoraires en %<br/>du coût des travaux.
+        </h2>
+        <p class="mt-5 font-atkinson italic text-mahatma-ciment text-base md:text-lg leading-relaxed max-w-2xl">
+          Conformément aux pratiques de l'Ordre des architectes, nos honoraires sont calculés en pourcentage du coût travaux HT, ou au forfait pour les études amont.
+        </p>
+      </div>
+    </header>
+
+    <!-- Tableau honoraires technique -->
+    <div class="border-t-2 border-mahatma-papier">
+      {data.honoraires.map((h) => (
+        <div class="grid grid-cols-12 gap-4 py-6 items-baseline border-b border-mahatma-papier/15">
+          <div class="col-span-12 md:col-span-7">
+            <p class="font-schibsted font-bold text-mahatma-papier text-lg md:text-xl uppercase tracking-tight">
+              {h.label}
+            </p>
+            <p class="mt-1 font-atkinson italic text-mahatma-ciment text-sm">
+              {h.detail}
+            </p>
+          </div>
+          <div class="col-span-12 md:col-span-5 md:text-right">
+            <p class="font-schibsted font-light text-mahatma-papier leading-none tabular-nums" style="font-size: clamp(28px, 3vw, 44px);">
+              {h.fourchette}
+            </p>
+            <p class="mt-1 font-fira-mono text-[10px] uppercase tracking-[0.18em] text-mahatma-cachet">
+              {h.unite}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <p class="mt-10 font-atkinson italic text-mahatma-ciment text-sm leading-relaxed max-w-3xl">
+      Tous nos contrats incluent une convention d'honoraires écrite, l'assurance responsabilité civile professionnelle et la garantie décennale obligatoire.
+    </p>
+  </div>
+</section>

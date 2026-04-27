@@ -1,0 +1,70 @@
+---
+/**
+ * Projets — grille portfolio architectural 8 projets.
+ * Photos B&W carrées, métadonnées en mono, statut.
+ */
+import data from '../../../data/templates/mahatma.json';
+---
+
+<section id="projets" class="bg-mahatma-papier py-24 md:py-32 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="grid grid-cols-12 gap-4 mb-12 md:mb-16">
+      <div class="col-span-12 md:col-span-3">
+        <p class="font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-cachet mb-4">
+          ▢ § III
+        </p>
+        <p class="font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-beton">
+          Portfolio · 2020 → 2024
+        </p>
+      </div>
+      <div class="col-span-12 md:col-span-9">
+        <h2 class="font-schibsted font-bold text-mahatma-encre leading-[0.95] tracking-tight uppercase" style="font-size: clamp(36px, 5vw, 64px);">
+          Huit projets<br/>livrés récemment.
+        </h2>
+      </div>
+    </header>
+
+    <ul class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {data.projets.map((p, i) => (
+        <li class="group">
+          <article>
+            <!-- Photo carrée B&W -->
+            <div class="relative aspect-square overflow-hidden bg-mahatma-charbon mb-4">
+              <img
+                src={p.photo}
+                alt={`${p.nom}, ${p.lieu} (${p.annee})`}
+                loading="lazy"
+                decoding="async"
+                class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+              />
+              <!-- Numéro projet -->
+              <span class="absolute top-3 left-3 inline-block bg-mahatma-papier text-mahatma-encre font-fira-mono text-[10px] uppercase tracking-[0.18em] px-2 py-1">
+                /{String(i + 1).padStart(2, '0')}
+              </span>
+              {p.statut.includes('primé') && (
+                <span class="absolute top-3 right-3 inline-block bg-mahatma-cachet text-mahatma-papier font-fira-mono text-[10px] uppercase tracking-[0.18em] px-2 py-1">
+                  ◯ Primé
+                </span>
+              )}
+            </div>
+
+            <!-- Métadonnées -->
+            <p class="font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-beton mb-1.5 tabular-nums">
+              {p.annee} · {p.lieu}
+            </p>
+            <h3 class="font-schibsted font-bold text-mahatma-encre text-lg uppercase tracking-tight leading-tight">
+              {p.nom}
+            </h3>
+            <p class="mt-2 font-atkinson italic text-mahatma-beton text-sm leading-snug">
+              {p.typologie}
+            </p>
+            <p class="mt-3 pt-2 border-t border-mahatma-encre/15 font-fira-mono text-[10px] uppercase tracking-[0.18em] text-mahatma-cachet">
+              ▸ {p.statut}
+            </p>
+          </article>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,71 @@
+---
+/**
+ * Methode — 4 phases avec icônes axonométriques SVG simplifiées.
+ */
+import data from '../../../data/templates/mahatma.json';
+
+// SVG axonométriques très simplifiés par phase
+const axos = [
+  // Phase 01 : table iso (rencontre)
+  '<path d="M8 30 L24 22 L40 30 L24 38 Z"/><path d="M16 26 L20 24 M28 24 L32 26"/>',
+  // Phase 02 : plan dépiché iso (esquisse)
+  '<rect x="8" y="14" width="32" height="22" stroke-dasharray="2 1.5"/><path d="M14 20 L34 20 M14 26 L28 26 M14 32 L24 32"/>',
+  // Phase 03 : bâtiment iso en construction (chantier)
+  '<path d="M8 38 L24 22 L40 38 L24 46 Z"/><path d="M14 32 L24 26 L34 32"/><path d="M24 26 L24 14"/>',
+  // Phase 04 : bâtiment iso fini avec porte (livraison)
+  '<path d="M10 38 L24 26 L38 38 L38 14 L10 14 Z"/><rect x="20" y="22" width="8" height="12"/><circle cx="26" cy="28" r="0.8" fill="currentColor"/>',
+];
+---
+
+<section id="methode" class="bg-mahatma-papier py-24 md:py-32 px-6 md:px-10 border-t border-b border-mahatma-encre/15">
+  <div class="max-w-content mx-auto">
+
+    <header class="grid grid-cols-12 gap-4 mb-14 md:mb-20">
+      <div class="col-span-12 md:col-span-3">
+        <p class="font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-cachet mb-4">
+          ▢ § IV
+        </p>
+        <p class="font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-beton">
+          Méthode
+        </p>
+      </div>
+      <div class="col-span-12 md:col-span-9">
+        <h2 class="font-schibsted font-bold text-mahatma-encre leading-[0.95] tracking-tight uppercase" style="font-size: clamp(36px, 5vw, 64px);">
+          Quatre phases,<br/>de la rencontre à la livraison.
+        </h2>
+      </div>
+    </header>
+
+    <ul class="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-mahatma-encre/15 border border-mahatma-encre/15">
+      {data.phases.map((p, i) => (
+        <li class="bg-mahatma-papier p-7 md:p-8 hover:bg-mahatma-blanc transition-colors">
+
+          <!-- Axonométrie SVG -->
+          <div class="h-14 mb-6 text-mahatma-encre">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={axos[i]} />
+          </div>
+
+          <!-- Numéro -->
+          <p class="font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-cachet mb-3">
+            Phase {p.num}
+          </p>
+
+          <!-- Titre -->
+          <h3 class="font-schibsted font-bold text-mahatma-encre text-xl uppercase tracking-tight mb-2 leading-tight">
+            {p.titre}
+          </h3>
+
+          <!-- Durée -->
+          <p class="font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-beton mb-5">
+            ◯ {p.duree}
+          </p>
+
+          <!-- Description -->
+          <p class="font-atkinson text-mahatma-encre/75 text-sm leading-[1.7]">
+            {p.description}
+          </p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
