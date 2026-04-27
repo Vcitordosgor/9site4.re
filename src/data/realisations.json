@@ -84,7 +84,8 @@
     "categorie": "sante",
     "sousTitre": "Présentation, horaires et prise de rendez-vous",
     "moduleInclus": "Rendez-vous",
-    "slug": "cabinet-osteopathie"
+    "slug": "cabinet-osteopathie",
+    "previewUrl": "/templates/osteo"
   },
   {
     "id": 11,
