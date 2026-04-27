@@ -1,0 +1,43 @@
+---
+import data from '../../../data/templates/volta.json';
+
+const icons: Record<string, string> = {
+  installation: 'M13 2L4.5 13.5H11L10 22L20.5 10H14L13 2Z',
+  normes: 'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5',
+  depannage: 'M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z',
+  eclairage: 'M9 18h6M10 22h4M12 2a7 7 0 0 1 7 7c0 2.4-1.2 4.5-3 5.7V17H8v-2.3A7 7 0 0 1 5 9a7 7 0 0 1 7-7z',
+  irve: 'M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3m-5 3h9a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-9a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2zM7 10h2M11 10h2',
+  clim: 'M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9z',
+};
+---
+
+<section id="services" class="bg-volta-acier py-20 md:py-32 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="mb-14 md:mb-20">
+      <p class="scroll-reveal flex items-center gap-3 text-xs font-space-grotesk font-semibold uppercase tracking-[0.32em] text-volta-cyan">
+        <span class="block w-8 h-px bg-volta-cyan/50" aria-hidden="true"></span>
+        Services
+      </p>
+      <h2 class="scroll-reveal mt-4 font-syne font-bold text-volta-blanc leading-[1.05]" style="font-size: clamp(32px, 5vw, 56px);">
+        Ce qu'on fait,<br/>
+        <span class="text-volta-fumee/60">et comment on le fait bien.</span>
+      </h2>
+    </header>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-volta-fumee/5">
+      {data.services.map((s) => (
+        <article class="scroll-reveal bg-volta-acier p-8 md:p-10 group hover:bg-volta-noir transition-colors">
+          <div class="w-10 h-10 flex items-center justify-center border border-volta-cyan/20 rounded-sm mb-6 group-hover:border-volta-cyan/50 transition-colors">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="text-volta-cyan" aria-hidden="true">
+              <path d={icons[s.id] ?? icons.installation}/>
+            </svg>
+          </div>
+          <h3 class="font-syne font-semibold text-volta-blanc text-lg mb-3">{s.titre}</h3>
+          <p class="font-space-grotesk text-sm text-volta-fumee/60 leading-relaxed">{s.description}</p>
+        </article>
+      ))}
+    </div>
+
+  </div>
+</section>

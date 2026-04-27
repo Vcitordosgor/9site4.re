@@ -1,0 +1,38 @@
+---
+import data from '../../../data/templates/volta.json';
+---
+
+<section id="galerie" class="bg-volta-acier py-20 md:py-32 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="mb-12 md:mb-16">
+      <p class="scroll-reveal flex items-center gap-3 text-xs font-space-grotesk font-semibold uppercase tracking-[0.32em] text-volta-cyan">
+        <span class="block w-8 h-px bg-volta-cyan/50" aria-hidden="true"></span>
+        Réalisations
+      </p>
+      <h2 class="scroll-reveal mt-4 font-syne font-bold text-volta-blanc leading-[1.05]" style="font-size: clamp(32px, 5vw, 56px);">
+        Du travail bien fait,<br/>
+        <span class="text-volta-fumee/60">visible sur le terrain.</span>
+      </h2>
+    </header>
+
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+      {data.galerie.map((img, i) => (
+        <div class={`scroll-reveal relative overflow-hidden rounded-sm${i === 0 ? ' col-span-2 row-span-2' : ''}`}>
+          <img
+            src={img.src}
+            alt={img.alt}
+            loading="lazy"
+            decoding="async"
+            class={`w-full object-cover object-center grayscale-[30%] hover:grayscale-0 transition-all duration-500 hover:scale-105${i === 0 ? ' h-80 md:h-full' : ' h-44 md:h-48'}`}
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-volta-noir/70 to-transparent"></div>
+          <p class="absolute bottom-3 left-3 right-3 font-space-grotesk text-xs text-volta-fumee/85 tracking-wide truncate">
+            {img.label}
+          </p>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

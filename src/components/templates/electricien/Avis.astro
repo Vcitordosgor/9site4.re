@@ -1,0 +1,43 @@
+---
+import data from '../../../data/templates/volta.json';
+---
+
+<section id="avis" class="bg-volta-noir py-20 md:py-32 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="mb-14 md:mb-20 text-center max-w-2xl mx-auto">
+      <p class="scroll-reveal flex items-center justify-center gap-3 text-xs font-space-grotesk font-semibold uppercase tracking-[0.32em] text-volta-cyan">
+        <span class="block w-8 h-px bg-volta-cyan/50" aria-hidden="true"></span>
+        Avis clients
+        <span class="block w-8 h-px bg-volta-cyan/50" aria-hidden="true"></span>
+      </p>
+      <h2 class="scroll-reveal mt-4 font-syne font-bold text-volta-blanc leading-[1.05]" style="font-size: clamp(30px, 4.5vw, 50px);">
+        Ils nous font confiance.
+      </h2>
+    </header>
+
+    <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+      {data.avis.map((a) => (
+        <article class="scroll-reveal bg-volta-acier p-7 md:p-8 rounded-sm border border-volta-fumee/5">
+          <div class="flex gap-1 mb-5" aria-label={`${a.note} étoiles sur 5`}>
+            {Array.from({ length: a.note }).map(() => (
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="text-volta-cyan" aria-hidden="true">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            ))}
+          </div>
+
+          <blockquote class="font-space-grotesk text-sm text-volta-fumee/75 leading-relaxed mb-6">
+            "{a.texte}"
+          </blockquote>
+
+          <footer class="flex items-center justify-between">
+            <p class="font-syne font-semibold text-volta-blanc text-sm">{a.nom}</p>
+            <time class="font-space-grotesk text-xs text-volta-fumee/40 tabular-nums">{a.date}</time>
+          </footer>
+        </article>
+      ))}
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,59 @@
+---
+import data from '../../../data/templates/volta.json';
+---
+
+<section class="relative bg-volta-noir py-24 md:py-36 px-6 md:px-10 text-center overflow-hidden">
+
+  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50rem] h-[30rem] rounded-full"
+         style="background: radial-gradient(50% 50% at 50% 50%, rgb(6 212 245 / 0.07) 0%, transparent 70%);">
+    </div>
+  </div>
+
+  <svg class="absolute left-1/2 top-0 -translate-x-1/2 w-full max-w-3xl opacity-[0.035]" viewBox="0 0 600 120" fill="none" stroke="#06D4F5" stroke-width="1" aria-hidden="true">
+    <path d="M0 60 H120 V20 H200 V60 H300 V20 H400 V60 H480 V20 H600"/>
+    <circle cx="120" cy="20" r="3" fill="#06D4F5"/>
+    <circle cx="200" cy="60" r="3" fill="#06D4F5"/>
+    <circle cx="300" cy="20" r="3" fill="#06D4F5"/>
+    <circle cx="400" cy="60" r="3" fill="#06D4F5"/>
+    <circle cx="480" cy="20" r="3" fill="#06D4F5"/>
+  </svg>
+
+  <svg class="relative mx-auto w-12 h-12 text-volta-cyan mb-8" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M13 2L4.5 13.5H11L10 22L20.5 10H14L13 2Z"/>
+  </svg>
+
+  <div class="relative max-w-2xl mx-auto">
+    <p class="scroll-reveal flex items-center justify-center gap-3 text-xs font-space-grotesk font-semibold uppercase tracking-[0.32em] text-volta-cyan">
+      <span class="block w-8 h-px bg-volta-cyan/50" aria-hidden="true"></span>
+      {data.info.wordmark} · depuis {data.info.annee}
+      <span class="block w-8 h-px bg-volta-cyan/50" aria-hidden="true"></span>
+    </p>
+
+    <h2 class="scroll-reveal mt-6 font-syne font-extrabold text-volta-blanc leading-[1.0]" style="font-size: clamp(38px, 6vw, 72px);">
+      Votre projet mérite
+      <span class="block text-volta-cyan">un électricien sérieux.</span>
+    </h2>
+
+    <p class="scroll-reveal mt-6 font-space-grotesk text-volta-fumee/65 leading-relaxed max-w-md mx-auto text-sm">
+      Diagnostic gratuit, devis sans engagement sous 48h. On se déplace chez vous, on écoute, on propose — pas l'inverse.
+    </p>
+
+    <div class="scroll-reveal mt-10 flex flex-wrap items-center justify-center gap-4">
+      <a
+        href="#devis"
+        class="inline-flex items-center justify-center h-14 px-10 text-sm font-space-grotesk font-semibold uppercase tracking-[0.18em] rounded-sm bg-volta-cyan text-volta-noir hover:bg-volta-blanc transition-colors"
+        style="box-shadow: 0 12px 36px rgb(6 212 245 / 0.22);"
+      >
+        Demander un devis
+      </a>
+      <a
+        href={`tel:${data.info.telephoneHref}`}
+        class="inline-flex items-center gap-2 h-14 px-8 text-sm font-space-grotesk font-medium text-volta-fumee border border-volta-fumee/20 hover:border-volta-cyan hover:text-volta-cyan transition-colors rounded-sm tabular-nums"
+      >
+        {data.info.telephone}
+      </a>
+    </div>
+  </div>
+
+</section>
