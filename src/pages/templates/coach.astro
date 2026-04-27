@@ -1,0 +1,117 @@
+---
+import '@fontsource/big-shoulders-display/700.css';
+import '@fontsource/big-shoulders-display/800.css';
+import '@fontsource/big-shoulders-display/900.css';
+import '@fontsource/barlow/400.css';
+import '@fontsource/barlow/500.css';
+import '@fontsource/barlow/600.css';
+import '@fontsource/barlow/700.css';
+import '@fontsource/barlow/400-italic.css';
+import '@fontsource/jetbrains-mono/400.css';
+import '@fontsource/jetbrains-mono/500.css';
+import '@fontsource/jetbrains-mono/700.css';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getSeo } from '../../lib/seo';
+import foudreData from '../../data/templates/foudre.json';
+
+import CoachHeader from '../../components/templates/coach/CoachHeader.astro';
+import HeroManifeste from '../../components/templates/coach/HeroManifeste.astro';
+import Objectifs from '../../components/templates/coach/Objectifs.astro';
+import Programmes from '../../components/templates/coach/Programmes.astro';
+import Transformations from '../../components/templates/coach/Transformations.astro';
+import Tarifs from '../../components/templates/coach/Tarifs.astro';
+import Essai from '../../components/templates/coach/Essai.astro';
+import Lieux from '../../components/templates/coach/Lieux.astro';
+import CTAFinal from '../../components/templates/coach/CTAFinal.astro';
+import CoachFooter from '../../components/templates/coach/CoachFooter.astro';
+---
+
+<BaseLayout seo={getSeo('templateCoach')} bare={true}>
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <link rel="dns-prefetch" href="https://images.unsplash.com" />
+    <link
+      rel="preload"
+      as="image"
+      href={foudreData.info.photoHero}
+      fetchpriority="high"
+    />
+  </Fragment>
+
+  <CoachHeader />
+
+  <main id="top" class="bg-coach-noir text-coach-blanc font-barlow">
+    <HeroManifeste />
+    <Objectifs />
+    <Programmes />
+    <Transformations />
+    <Tarifs />
+    <Essai />
+    <Lieux />
+    <CTAFinal />
+  </main>
+
+  <CoachFooter />
+
+  <!-- Sticky CTA mobile : barre noire/lime brutale, pas un pill -->
+  <a
+    id="coach-sticky-cta"
+    href="#essai"
+    data-visible="false"
+    class="md:hidden fixed bottom-0 inset-x-0 z-40 inline-flex items-center justify-center h-14 bg-coach-lime text-coach-noir font-big-shoulders font-bold text-base uppercase tracking-wider transition-transform duration-200 data-[visible=false]:translate-y-full data-[visible=true]:translate-y-0"
+  >
+    Réserver ma séance d'essai
+  </a>
+
+  <script>
+    /* Sticky CTA mobile : visible après scroll du hero, caché en section essai */
+    const sticky = document.getElementById('coach-sticky-cta');
+    const essai = document.getElementById('essai');
+    if (sticky && essai) {
+      const update = () => {
+        const rect = essai.getBoundingClientRect();
+        const inEssai = rect.top < window.innerHeight && rect.bottom > 80;
+        const scrolledPastHero = window.scrollY > 480;
+        sticky.dataset.visible = String(scrolledPastHero && !inEssai);
+      };
+      update();
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update, { passive: true });
+    }
+  </script>
+
+  <!-- Compteurs animés au mount du hero (entrée latérale, pas fade) -->
+  <script>
+    const counters = document.querySelectorAll<HTMLElement>('[data-counter]');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const el = entry.target as HTMLElement;
+            const target = el.dataset.counter || '';
+            const numericMatch = target.match(/^([\d.]+)([^\d]*)$/);
+            if (numericMatch) {
+              const finalNum = parseFloat(numericMatch[1]);
+              const suffix = numericMatch[2];
+              const isFloat = numericMatch[1].includes('.');
+              const duration = 900;
+              const start = performance.now();
+              const tick = (now: number) => {
+                const t = Math.min(1, (now - start) / duration);
+                const eased = 1 - Math.pow(1 - t, 3);
+                const v = finalNum * eased;
+                el.textContent = (isFloat ? v.toFixed(1) : Math.round(v).toString()) + suffix;
+                if (t < 1) requestAnimationFrame(tick);
+              };
+              requestAnimationFrame(tick);
+              observer.unobserve(el);
+            }
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+    counters.forEach((c) => observer.observe(c));
+  </script>
+</BaseLayout>

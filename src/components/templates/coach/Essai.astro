@@ -1,0 +1,133 @@
+---
+/**
+ * Essai — booking minimal en 1 question principale.
+ * Pas de long formulaire : objectif (select) + téléphone + nom = WhatsApp.
+ * Layout : split asymétrique (texte gauche large, form compact à droite).
+ */
+import data from '../../../data/templates/foudre.json';
+const waBase = `https://wa.me/${data.info.whatsapp}`;
+---
+
+<section id="essai" class="bg-coach-charbon py-20 md:py-28 px-5 md:px-8 border-t border-coach-blanc/5">
+  <div class="max-w-content mx-auto">
+
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+
+      <!-- Colonne gauche : pitch (7 cols) -->
+      <div class="lg:col-span-7">
+        <header class="flex items-baseline gap-4 mb-8">
+          <span class="font-jetbrains text-coach-lime text-sm">[04]</span>
+          <h2 class="font-big-shoulders font-black text-coach-blanc uppercase leading-[0.9]" style="font-size: clamp(44px, 7vw, 96px);">
+            La séance<br/>
+            d'essai est<br/>
+            <span class="text-coach-lime">offerte.</span>
+          </h2>
+        </header>
+
+        <p class="font-barlow text-coach-blanc/70 leading-relaxed text-base md:text-lg max-w-md">
+          Tu choisis ton objectif, je te rappelle dans la journée. On fixe un créneau, on se voit, et tu décides ensuite si tu veux continuer.
+        </p>
+
+        <!-- Promesses brutes en bullets jetbrains -->
+        <ul class="mt-8 space-y-3 font-jetbrains text-[12px] uppercase tracking-wider text-coach-blanc/85">
+          <li class="flex gap-3"><span class="text-coach-lime">→</span> Aucun engagement, aucune carte bancaire</li>
+          <li class="flex gap-3"><span class="text-coach-lime">→</span> Bilan posture + test cardio rapide</li>
+          <li class="flex gap-3"><span class="text-coach-lime">→</span> Réponse en moins de 4 heures</li>
+        </ul>
+      </div>
+
+      <!-- Colonne droite : form compact (5 cols) -->
+      <div class="lg:col-span-5">
+        <form id="essai-form" class="bg-coach-noir p-6 md:p-8 border-l-2 border-coach-lime" novalidate>
+
+          <p class="font-jetbrains text-[10px] uppercase tracking-widest text-coach-lime mb-1">Étape unique</p>
+          <p class="font-big-shoulders font-bold text-coach-blanc uppercase mb-6 leading-tight" style="font-size: clamp(20px, 2vw, 26px);">
+            Quel est ton objectif ?
+          </p>
+
+          <!-- Objectif (select) -->
+          <div class="mb-4">
+            <label for="essai-objectif" class="sr-only">Objectif</label>
+            <select
+              id="essai-objectif"
+              name="objectif"
+              required
+              class="w-full h-12 px-4 bg-coach-graphite text-coach-blanc border border-coach-blanc/15 focus:border-coach-lime font-barlow text-sm outline-none cursor-pointer"
+            >
+              <option value="">— Choisir un objectif —</option>
+              {data.objectifs.map((o) => (
+                <option value={o.id}>{o.label}</option>
+              ))}
+            </select>
+          </div>
+
+          <!-- Prénom -->
+          <div class="mb-4">
+            <label for="essai-prenom" class="sr-only">Prénom</label>
+            <input
+              id="essai-prenom"
+              name="prenom"
+              type="text"
+              autocomplete="given-name"
+              placeholder="Ton prénom"
+              required
+              class="w-full h-12 px-4 bg-coach-graphite text-coach-blanc placeholder:text-coach-gris border border-coach-blanc/15 focus:border-coach-lime font-barlow text-sm outline-none"
+            />
+          </div>
+
+          <!-- Téléphone -->
+          <div class="mb-6">
+            <label for="essai-tel" class="sr-only">Téléphone</label>
+            <input
+              id="essai-tel"
+              name="telephone"
+              type="tel"
+              autocomplete="tel"
+              placeholder="0692 xx xx xx"
+              required
+              class="w-full h-12 px-4 bg-coach-graphite text-coach-blanc placeholder:text-coach-gris border border-coach-blanc/15 focus:border-coach-lime font-barlow text-sm outline-none tabular-nums"
+            />
+          </div>
+
+          <!-- CTA submit -->
+          <button
+            type="submit"
+            class="w-full h-14 inline-flex items-center justify-center gap-2 bg-coach-lime text-coach-noir font-big-shoulders font-bold text-base uppercase tracking-wider hover:bg-coach-blanc transition-colors"
+          >
+            Envoyer via WhatsApp
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.92 0-2.65-1.03-5.14-2.91-7.01zm-7.01 15.24h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.21 8.21 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83 8.25 8.25 0 0 1-8.24 8.22z"/>
+            </svg>
+          </button>
+
+          <p class="mt-4 font-jetbrains text-[10px] tracking-wider text-coach-gris text-center">
+            Réponse en &lt; 4 h · Garantie satisfaction
+          </p>
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<script define:vars={{ waBase, objectifsLabels: Object.fromEntries(data.objectifs.map(o => [o.id, o.label])) }}>
+  const form = document.getElementById('essai-form');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fd = new FormData(form);
+      const obj = fd.get('objectif') || '';
+      const prenom = fd.get('prenom') || '';
+      const tel = fd.get('telephone') || '';
+      const objLabel = objectifsLabels[obj] || obj;
+      const text = [
+        'Salut Marius, je veux ma séance d\'essai.',
+        prenom ? `Prénom : ${prenom}` : '',
+        tel ? `Tél : ${tel}` : '',
+        objLabel ? `Objectif : ${objLabel}` : '',
+      ].filter(Boolean).join('\n');
+      window.open(`${waBase}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
+    });
+  }
+</script>

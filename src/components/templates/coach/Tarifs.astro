@@ -1,0 +1,95 @@
+---
+/**
+ * Tarifs — stack vertical "blocs de poids".
+ * 3 blocs empilés à hauteurs différentes (le pack 10 = le plus épais, populaire).
+ * Pas de cards à hauteur égale ni de "starter/pro/enterprise" classique.
+ * Visuel : rectangles pleins, pas de border radius, accent lime sur le populaire.
+ */
+import data from '../../../data/templates/foudre.json';
+---
+
+<section id="tarifs" class="bg-coach-noir py-20 md:py-28 px-5 md:px-8">
+  <div class="max-w-content mx-auto">
+
+    <header class="flex items-baseline gap-4 mb-12 md:mb-16">
+      <span class="font-jetbrains text-coach-lime text-sm">[03]</span>
+      <h2 class="font-big-shoulders font-black text-coach-blanc uppercase leading-none" style="font-size: clamp(40px, 6vw, 72px);">
+        Tarifs cash
+      </h2>
+    </header>
+
+    <p class="font-barlow text-coach-blanc/65 max-w-xl mb-10 md:mb-14 leading-relaxed">
+      Pas de frais cachés, pas d'abonnement piégé. Tu paies pour ce que tu prends.
+      <span class="text-coach-blanc">La séance d'essai est offerte</span> — tu décides après.
+    </p>
+
+    <!-- Stack vertical : 3 blocs empilés avec hauteurs différentes -->
+    <div class="grid lg:grid-cols-3 gap-1 max-w-5xl">
+      {data.tarifs.map((t, i) => (
+        <article class:list={[
+          'relative flex flex-col p-6 md:p-8',
+          t.populaire
+            ? 'bg-coach-lime text-coach-noir lg:py-12 lg:-mt-4'
+            : 'bg-coach-graphite text-coach-blanc',
+        ]}>
+
+          <!-- Badge populaire -->
+          {t.populaire && (
+            <span class="absolute -top-3 left-6 inline-block bg-coach-noir text-coach-lime font-jetbrains text-[10px] uppercase tracking-widest px-3 py-1.5">
+              ▲ Le + populaire
+            </span>
+          )}
+
+          <!-- Numéro plan -->
+          <p class:list={['font-jetbrains text-[10px] uppercase tracking-widest mb-3', t.populaire ? 'text-coach-noir/55' : 'text-coach-gris']}>
+            Plan {String(i + 1).padStart(2, '0')}
+          </p>
+
+          <!-- Label -->
+          <h3 class:list={['font-big-shoulders font-black uppercase leading-none', t.populaire ? 'text-coach-noir' : 'text-coach-blanc']} style="font-size: clamp(26px, 2.8vw, 36px);">
+            {t.label}
+          </h3>
+
+          <!-- Prix géant -->
+          <div class="mt-5 mb-2 flex items-baseline gap-1">
+            <span class:list={['font-big-shoulders font-black tabular-nums leading-none', t.populaire ? 'text-coach-noir' : 'text-coach-blanc']} style="font-size: clamp(48px, 6vw, 80px);">
+              {t.prix}
+            </span>
+            <span class:list={['font-jetbrains text-sm', t.populaire ? 'text-coach-noir/70' : 'text-coach-gris']}>
+              {t.frequence}
+            </span>
+          </div>
+
+          <!-- Description -->
+          <p class:list={['font-barlow text-sm mb-6 leading-relaxed', t.populaire ? 'text-coach-noir/75' : 'text-coach-blanc/65']}>
+            {t.description}
+          </p>
+
+          <!-- Avantages -->
+          <ul class="space-y-2.5 mb-8 flex-1">
+            {t.avantages.map((a) => (
+              <li class:list={['flex items-start gap-2.5 font-barlow text-sm', t.populaire ? 'text-coach-noir/85' : 'text-coach-blanc/80']}>
+                <span class:list={['shrink-0 mt-1.5 block w-2 h-2', t.populaire ? 'bg-coach-noir' : 'bg-coach-lime']}></span>
+                {a}
+              </li>
+            ))}
+          </ul>
+
+          <!-- CTA -->
+          <a
+            href="#essai"
+            class:list={[
+              'inline-flex items-center justify-center h-12 font-big-shoulders font-bold uppercase tracking-wider text-sm transition-colors',
+              t.populaire
+                ? 'bg-coach-noir text-coach-lime hover:bg-coach-charbon'
+                : 'bg-coach-lime text-coach-noir hover:bg-coach-blanc',
+            ]}
+          >
+            Choisir ce plan
+          </a>
+        </article>
+      ))}
+    </div>
+
+  </div>
+</section>

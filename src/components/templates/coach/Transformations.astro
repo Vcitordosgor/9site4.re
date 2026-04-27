@@ -1,0 +1,63 @@
+---
+/**
+ * Transformations — format Strava/feed condensé.
+ * 4 mini-cards en row scrollable horizontal sur mobile, grid 4 sur desktop.
+ * Chaque card = avatar initiales + chiffre clé géant + citation 2 lignes.
+ */
+import data from '../../../data/templates/foudre.json';
+
+// Couleurs pseudo-aléatoires pour les avatars (cycle sur la palette lime/graphite)
+const avatarBg = ['bg-coach-lime', 'bg-coach-graphite ring-1 ring-coach-blanc/20', 'bg-coach-lime', 'bg-coach-graphite ring-1 ring-coach-blanc/20'];
+const avatarText = ['text-coach-noir', 'text-coach-blanc', 'text-coach-noir', 'text-coach-blanc'];
+---
+
+<section id="transformations" class="bg-coach-charbon py-20 md:py-28 px-5 md:px-8 border-t border-coach-blanc/5">
+  <div class="max-w-content mx-auto">
+
+    <header class="flex items-baseline gap-4 mb-10 md:mb-14">
+      <span class="font-jetbrains text-coach-lime text-sm">[02]</span>
+      <h2 class="font-big-shoulders font-black text-coach-blanc uppercase leading-none" style="font-size: clamp(40px, 6vw, 72px);">
+        Ils l'ont fait
+      </h2>
+    </header>
+
+    <!-- Grid 2x2 mobile, 4 cols desktop -->
+    <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {data.transformations.map((t, i) => (
+        <li class="bg-coach-graphite p-6 flex flex-col h-full hover:bg-coach-noir transition-colors">
+
+          <!-- Header avatar + prénom + durée -->
+          <div class="flex items-center gap-3 mb-5">
+            <span class:list={['flex items-center justify-center w-11 h-11 font-big-shoulders font-black text-base', avatarBg[i % 4], avatarText[i % 4]]}>
+              {t.prenom[0]}
+            </span>
+            <div class="leading-tight">
+              <p class="font-big-shoulders font-bold text-coach-blanc text-lg uppercase">{t.prenom}, {t.age}</p>
+              <p class="font-jetbrains text-[10px] uppercase tracking-widest text-coach-gris">{t.duree} de coaching</p>
+            </div>
+          </div>
+
+          <!-- Chiffre clé géant -->
+          <p class="font-big-shoulders font-black text-coach-lime leading-none mb-4 tabular-nums" style="font-size: clamp(40px, 5vw, 56px);">
+            {t.chiffre}
+          </p>
+
+          <!-- Citation -->
+          <blockquote class="font-barlow text-coach-blanc/75 text-sm leading-relaxed italic flex-1">
+            "{t.citation}"
+          </blockquote>
+
+          <!-- Footer mini -->
+          <div class="mt-5 pt-4 border-t border-coach-blanc/10 flex items-center justify-between font-jetbrains text-[10px] uppercase tracking-widest text-coach-gris">
+            <span>Vérifié</span>
+            <span class="flex items-center gap-1 text-coach-lime">
+              <span class="block w-1 h-1 bg-coach-lime"></span>
+              {data.info.wordmark}
+            </span>
+          </div>
+        </li>
+      ))}
+    </ul>
+
+  </div>
+</section>

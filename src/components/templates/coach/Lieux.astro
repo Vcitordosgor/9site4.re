@@ -1,0 +1,69 @@
+---
+/**
+ * Lieux — bandeau horizontal des 3 endroits où Marius coache.
+ * Pas de section "Trouver" tabulaire classique. Plutôt 3 colonnes brutes
+ * avec icône SVG simple, label uppercase, description courte.
+ */
+import data from '../../../data/templates/foudre.json';
+
+const icons: Record<string, string> = {
+  domicile: 'M3 9l9-7 9 7v11a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-5h-2v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z',
+  exterieur: 'M12 2v2M12 20v2M5 5l1.5 1.5M17.5 17.5L19 19M2 12h2M20 12h2M5 19l1.5-1.5M17.5 6.5L19 5M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10z',
+  salle: 'M3 21V8l9-5 9 5v13M9 21v-8h6v8',
+};
+---
+
+<section id="lieux" class="bg-coach-noir py-20 md:py-28 px-5 md:px-8 border-t border-coach-blanc/5">
+  <div class="max-w-content mx-auto">
+
+    <header class="flex items-baseline gap-4 mb-12 md:mb-16">
+      <span class="font-jetbrains text-coach-lime text-sm">[05]</span>
+      <h2 class="font-big-shoulders font-black text-coach-blanc uppercase leading-none" style="font-size: clamp(40px, 6vw, 72px);">
+        Où on s'entraîne
+      </h2>
+    </header>
+
+    <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+      {data.lieux.map((l, i) => (
+        <article class="group relative">
+
+          <!-- Index plan -->
+          <p class="font-jetbrains text-[11px] tracking-widest text-coach-gris mb-4">
+            0{i + 1} / 03
+          </p>
+
+          <!-- Icône stroke lime -->
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-coach-lime mb-5" aria-hidden="true">
+            <path d={icons[l.id] ?? icons.domicile}/>
+          </svg>
+
+          <!-- Nom uppercase Big Shoulders -->
+          <h3 class="font-big-shoulders font-black text-coach-blanc uppercase leading-tight mb-3" style="font-size: clamp(26px, 3vw, 36px);">
+            {l.nom}
+          </h3>
+
+          <!-- Description -->
+          <p class="font-barlow text-coach-blanc/65 text-sm leading-relaxed">
+            {l.description}
+          </p>
+
+          <!-- Filet bas lime au hover -->
+          <span class="absolute bottom-0 left-0 h-px w-0 group-hover:w-full bg-coach-lime transition-all duration-300"></span>
+        </article>
+      ))}
+    </div>
+
+    <!-- Footer info : horaires en ligne -->
+    <div class="mt-16 md:mt-20 pt-8 border-t border-coach-blanc/10 flex flex-wrap items-center gap-x-10 gap-y-3 font-jetbrains text-[12px] uppercase tracking-wider">
+      <span class="text-coach-gris">Disponibilité</span>
+      {data.planning.map((h) => (
+        <span class="flex items-center gap-2">
+          <span class:list={['block w-1.5 h-1.5', h.ouvert ? 'bg-coach-lime' : 'bg-coach-gris']}></span>
+          <span class="text-coach-blanc/85">{h.jour}</span>
+          <span class:list={[h.ouvert ? 'text-coach-blanc' : 'text-coach-gris italic']}>{h.label}</span>
+        </span>
+      ))}
+    </div>
+
+  </div>
+</section>

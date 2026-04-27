@@ -1,0 +1,59 @@
+---
+/**
+ * Objectifs — bandeau de chips horizontaux scrollables.
+ * Tutoiement direct : "Tu veux..." + 6 objectifs.
+ * Pas de grille, pas de cards : juste un rail horizontal style "stories".
+ */
+import data from '../../../data/templates/foudre.json';
+---
+
+<section class="bg-coach-charbon py-14 md:py-20 border-t border-coach-blanc/5">
+  <div class="max-w-content mx-auto px-5 md:px-8">
+
+    <p class="font-big-shoulders font-bold text-coach-blanc uppercase leading-tight" style="font-size: clamp(28px, 4vw, 44px);">
+      Tu veux<span class="text-coach-lime">…</span>
+    </p>
+
+    <!-- Rail horizontal scrollable -->
+    <div class="mt-6 -mx-5 md:-mx-8 px-5 md:px-8 overflow-x-auto scrollbar-hide" style="scrollbar-width: none;">
+      <ul class="flex gap-3 pb-2 min-w-max">
+        {data.objectifs.map((o) => (
+          <li>
+            <button
+              type="button"
+              data-objectif={o.id}
+              class="objectif-chip inline-flex items-center gap-2 h-12 px-5 bg-coach-graphite border border-coach-blanc/10 hover:border-coach-lime hover:bg-coach-lime hover:text-coach-noir text-coach-blanc/85 font-barlow font-medium text-sm whitespace-nowrap transition-all duration-150"
+            >
+              <span class="w-1.5 h-1.5 bg-coach-lime"></span>
+              {o.label}
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <p class="mt-5 font-jetbrains text-[11px] tracking-wide text-coach-gris">
+      <span class="text-coach-lime">›</span> Choisis-en un. C'est ton point de départ.
+    </p>
+
+  </div>
+</section>
+
+<style>
+  /* Hide scrollbar Chrome/Safari */
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+</style>
+
+<script>
+  // Sync chip → champ #essai-objectif (si présent)
+  document.querySelectorAll<HTMLButtonElement>('.objectif-chip').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      const id = (e.currentTarget as HTMLElement).dataset.objectif;
+      const select = document.getElementById('essai-objectif') as HTMLSelectElement | null;
+      if (select && id) {
+        select.value = id;
+        document.getElementById('essai')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>

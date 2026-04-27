@@ -1,0 +1,44 @@
+---
+import data from '../../../data/templates/foudre.json';
+---
+
+<header
+  id="coach-header"
+  data-scrolled="false"
+  class="fixed top-0 inset-x-0 z-50 border-b border-coach-blanc/0 transition-all duration-200 data-[scrolled=true]:bg-coach-noir data-[scrolled=true]:border-coach-blanc/10"
+>
+  <div class="max-w-content mx-auto px-5 md:px-8 h-14 flex items-center justify-between">
+
+    <!-- Wordmark : FOUDRE en Big Shoulders + slash lime -->
+    <a href="#top" class="flex items-baseline gap-1 group" aria-label="Foudre — accueil">
+      <span class="font-big-shoulders font-black text-coach-blanc text-2xl tracking-tight leading-none">
+        {data.info.wordmark}
+      </span>
+      <span class="font-jetbrains text-coach-lime text-xs leading-none">/974</span>
+    </a>
+
+    <!-- Nav minimal desktop -->
+    <nav class="hidden md:flex items-center gap-7 font-barlow text-[13px] uppercase tracking-[0.14em] font-medium" aria-label="Navigation">
+      <a href="#programmes" class="text-coach-blanc/70 hover:text-coach-lime transition-colors">Programmes</a>
+      <a href="#transformations" class="text-coach-blanc/70 hover:text-coach-lime transition-colors">Résultats</a>
+      <a href="#tarifs" class="text-coach-blanc/70 hover:text-coach-lime transition-colors">Tarifs</a>
+    </nav>
+
+    <!-- CTA : pas de pill arrondi, rectangle plein lime -->
+    <a
+      href="#essai"
+      class="inline-flex items-center h-9 px-4 bg-coach-lime text-coach-noir font-big-shoulders font-bold text-sm uppercase tracking-wider hover:bg-coach-blanc transition-colors"
+    >
+      Séance d'essai
+    </a>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById('coach-header');
+  if (header) {
+    const update = () => { header.dataset.scrolled = String(window.scrollY > 30); };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+  }
+</script>
