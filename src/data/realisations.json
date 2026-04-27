@@ -203,7 +203,8 @@
     "categorie": "particuliers",
     "sousTitre": "Prestations, formules et demande de devis",
     "moduleInclus": "Devis",
-    "slug": "conciergerie"
+    "slug": "conciergerie",
+    "previewUrl": "/templates/conciergerie"
   },
   {
     "id": 24,
