@@ -70,6 +70,9 @@ export default {
     {
       pattern: /^(bg|text|ring|border|from|to|via)-(lucas-noir|lucas-anthracite|lucas-perle|lucas-blanc|lucas-encre|lucas-vert|lucas-vert-fonce)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
     },
+    {
+      pattern: /^(bg|text|ring|border|from|to|via)-(auberval-marine|auberval-encre|auberval-gris|auberval-feutre|auberval-blanc|auberval-or|auberval-vert)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
+    },
   ],
   theme: {
     extend: {
@@ -280,6 +283,17 @@ export default {
         'lucas-encre':       '#5A5C61',  // gris encre — labels
         'lucas-vert':        '#00D26A',  // vert électrique terminal — accent unique
         'lucas-vert-fonce':  '#00A055',  // vert sombre hover
+        // Palette cabinet comptable (template /templates/comptable — Auberval & Associés)
+        // Style "rapport annuel institutionnel, cabinet pro classique" : bleu
+        // marine corporate + filets dorés ornementaux + vert validation rare.
+        // Distinct du portfolio dense Notion/Substack du consultant.
+        'auberval-marine': '#1A2944',  // bleu marine corporate — accent dominant
+        'auberval-encre':  '#3A3A3F',  // gris encre — texte secondaire
+        'auberval-gris':   '#EFEFEC',  // gris clair institutionnel
+        'auberval-feutre': '#F8F7F3',  // blanc cassé feutré — fond
+        'auberval-blanc':  '#FFFFFF',
+        'auberval-or':     '#A78A4F',  // doré subtil — filets ornementaux
+        'auberval-vert':   '#4F7A5C',  // vert validation — chiffres certifiés
       },
       fontFamily: {
         sora: ['Sora', 'system-ui', 'sans-serif'],
@@ -332,6 +346,9 @@ export default {
         hanken: ['"Hanken Grotesk"', 'system-ui', 'sans-serif'],
         instrument: ['"Instrument Serif"', 'Georgia', 'serif'],
         'space-mono': ['"Space Mono"', 'ui-monospace', 'monospace'],
+        'source-serif': ['"Source Serif 4"', 'Source Serif Pro', 'Georgia', 'serif'],
+        'plex-sans': ['"IBM Plex Sans"', 'system-ui', 'sans-serif'],
+        'dm-mono': ['"DM Mono"', 'ui-monospace', 'monospace'],
       },
       fontSize: {
         'hero': ['clamp(2.5rem, 5vw + 1rem, 5rem)', { lineHeight: '1.05', letterSpacing: '-0.02em' }],

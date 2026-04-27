@@ -1,0 +1,173 @@
+{
+  "info": {
+    "nom": "Cabinet Auberval & Associés",
+    "wordmark": "Auberval",
+    "wordmark2": "& Associés",
+    "soustitre": "Expertise comptable · Audit · Conseil",
+    "tagline": "Votre comptabilité mérite un cabinet sérieux.",
+    "ville": "Saint-Denis",
+    "adresseLigne1": "24 rue de l'Église",
+    "adresseLigne2": "97400 Saint-Denis",
+    "telephone": "0262 21 47 89",
+    "telephoneHref": "+262262214789",
+    "whatsapp": "262692214789",
+    "email": "contact@auberval-associes.re",
+    "siret": "01234567800017",
+    "agrement": "OEC 974-2018",
+    "annee": "2009",
+    "photoCabinet": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=85"
+  },
+  "stats": [
+    { "valeur": "200+", "label": "clients accompagnés" },
+    { "valeur": "12", "label": "collaborateurs" },
+    { "valeur": "4", "label": "associés" },
+    { "valeur": "16", "label": "années d'existence" }
+  ],
+  "associes": [
+    {
+      "id": "auberval",
+      "prenom": "Patrick",
+      "nom": "Auberval",
+      "titre": "Expert-comptable",
+      "specialite": "TPE/PME · Conseil de gestion",
+      "memberOEC": "Membre OEC inscrit",
+      "photo": "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=85"
+    },
+    {
+      "id": "hoarau-lebon",
+      "prenom": "Marina",
+      "nom": "Hoarau-Lebon",
+      "titre": "Commissaire aux comptes",
+      "specialite": "Audit légal · Audit contractuel",
+      "memberOEC": "CNCC inscrite",
+      "photo": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=85"
+    },
+    {
+      "id": "pradel",
+      "prenom": "Étienne",
+      "nom": "Pradel",
+      "titre": "Expert-comptable",
+      "specialite": "Conseil fiscal · Patrimoine",
+      "memberOEC": "Membre OEC inscrit",
+      "photo": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&q=85"
+    },
+    {
+      "id": "sinima",
+      "prenom": "Aurélie",
+      "nom": "Sinima",
+      "titre": "Expert-comptable",
+      "specialite": "Création & startup · Levées de fonds",
+      "memberOEC": "Membre OEC inscrite",
+      "photo": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&q=85"
+    }
+  ],
+  "domaines": [
+    {
+      "num": "01",
+      "titre": "Tenue de comptabilité",
+      "description": "Saisie, lettrage, rapprochements bancaires, clôture mensuelle. Logiciels intégrés, transmission automatisée des pièces."
+    },
+    {
+      "num": "02",
+      "titre": "Bilan & liasse fiscale",
+      "description": "Bilan annuel, liasse fiscale, déclarations TVA et IS, attestations bancaires. Rendu garanti avant le 31 mars."
+    },
+    {
+      "num": "03",
+      "titre": "Audit légal & contractuel",
+      "description": "Mandat de commissariat aux comptes, audit ponctuel, due diligence acquisition, certifications spécifiques."
+    },
+    {
+      "num": "04",
+      "titre": "Paie & social",
+      "description": "Bulletins de paie, DSN, contrats de travail, ruptures conventionnelles, conseil URSSAF et prud'homal."
+    },
+    {
+      "num": "05",
+      "titre": "Conseil fiscal & patrimoine",
+      "description": "Optimisation fiscale, transmission, schémas de holding, patrimoine professionnel et privé du dirigeant."
+    },
+    {
+      "num": "06",
+      "titre": "Création & reprise d'entreprise",
+      "description": "Forme juridique, statuts, business plan, prévisionnel financier, accompagnement les 12 premiers mois."
+    }
+  ],
+  "engagements": [
+    {
+      "titre": "Proximité",
+      "texte": "Un interlocuteur dédié par dossier. Réponse aux mails sous 24h ouvrées."
+    },
+    {
+      "titre": "Transparence",
+      "texte": "Honoraires fixes au forfait pour les TPE. Pas de frais cachés en fin d'exercice."
+    },
+    {
+      "titre": "Formation continue",
+      "texte": "100h de formation par an et par expert-comptable. Veille fiscale hebdomadaire."
+    },
+    {
+      "titre": "Secret professionnel",
+      "texte": "Protocoles de confidentialité stricts. Aucune externalisation hors UE."
+    }
+  ],
+  "honoraires": [
+    {
+      "label": "Forfait TPE",
+      "detail": "Micro-entreprise, EURL, SASU sans salarié",
+      "prix": "à partir de 95 €",
+      "unite": "/ mois HT"
+    },
+    {
+      "label": "PME au temps passé",
+      "detail": "Société avec salariés, plus de 500 K€ de CA",
+      "prix": "Sur devis",
+      "unite": "—"
+    },
+    {
+      "label": "Création d'entreprise",
+      "detail": "Statuts + immatriculation + 1 mois d'accompagnement",
+      "prix": "350 €",
+      "unite": "forfait HT"
+    },
+    {
+      "label": "Audit légal annuel",
+      "detail": "Selon CA et complexité",
+      "prix": "Sur devis",
+      "unite": "—"
+    }
+  ],
+  "noteHonoraires": "Tous les forfaits incluent : tenue, bilan annuel, liasse fiscale, déclarations TVA, attestation bancaire, et un rendez-vous trimestriel de pilotage.",
+  "temoignages": [
+    {
+      "initiales": "J.D.",
+      "fonction": "Dirigeant TPE BTP",
+      "anciennete": "Client depuis 8 ans",
+      "texte": "Patrick Auberval suit notre dossier depuis 2017. Bilan toujours rendu en avance, conseil clair en période d'investissement, jamais une surprise sur les honoraires."
+    },
+    {
+      "initiales": "M.L.",
+      "fonction": "Fondateur startup tech",
+      "anciennete": "Client depuis 3 ans",
+      "texte": "Aurélie Sinima nous a accompagnés sur la levée de seed et le pacte d'associés. Nuance et rigueur. Sans elle, on aurait signé le mauvais cadre."
+    },
+    {
+      "initiales": "P.R.",
+      "fonction": "Gérant PME industrie",
+      "anciennete": "Client depuis 6 ans",
+      "texte": "Le bilan est rendu avant le 31 mars chaque année, sans relance de notre part. Marina a même anticipé un redressement URSSAF en 2023."
+    },
+    {
+      "initiales": "S.G.",
+      "fonction": "Directrice association",
+      "anciennete": "Cliente depuis 2 ans",
+      "texte": "Marina Hoarau-Lebon a rendu l'audit annuel en 4 semaines au lieu de 8. Précision exemplaire. Notre commissaire aux comptes recommandé."
+    }
+  ],
+  "horaires": [
+    { "jour": "Lundi – Jeudi", "label": "08h30 – 18h00", "ouvert": true },
+    { "jour": "Vendredi", "label": "08h30 – 17h00", "ouvert": true },
+    { "jour": "Samedi", "label": "Sur RDV", "ouvert": false },
+    { "jour": "Dimanche", "label": "Fermé", "ouvert": false }
+  ]
+}

@@ -47,7 +47,8 @@ type PageKey =
   | 'templateGite'
   | 'templateExcursions'
   | 'templateLocation'
-  | 'templateConsultant';
+  | 'templateConsultant'
+  | 'templateComptable';
 
 const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'> & { noindex?: boolean; ogImage?: string; ogImageAlt?: string }> = {
   home: {
@@ -223,6 +224,13 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
     description:
       'Aperçu du template "Consultant" proposé par 9site4 : portfolio personnel, missions case studies, compétences, tarifs et prise de rendez-vous. Site fictif de démonstration.',
     canonical: '/templates/consultant',
+    noindex: true,
+  },
+  templateComptable: {
+    title: 'Cabinet Auberval & Associés — Expertise comptable à Saint-Denis (Réunion) | Template 9site4',
+    description:
+      'Aperçu du template "Cabinet comptable" proposé par 9site4 : associés, domaines d\'expertise, honoraires, témoignages clients et rendez-vous. Site fictif de démonstration.',
+    canonical: '/templates/comptable',
     noindex: true,
   },
 };
