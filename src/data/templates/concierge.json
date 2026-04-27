@@ -1,0 +1,163 @@
+{
+  "info": {
+    "nom": "Concierge & Co",
+    "wordmark1": "Concierge",
+    "wordmark2": "& Co",
+    "soustitre": "Conciergerie privée · Saint-Gilles",
+    "tagline": "À votre disposition.",
+    "fondatrice": "Charlotte Marchand",
+    "ville": "Saint-Gilles-les-Bains",
+    "adresseLigne1": "16 boulevard du Front de Mer",
+    "adresseLigne2": "97434 Saint-Gilles-les-Bains",
+    "telephone": "0692 56 12 84",
+    "telephoneHref": "+33692561284",
+    "whatsapp": "33692561284",
+    "email": "bonjour@concierge-and-co.re",
+    "instagram": "@concierge.and.co",
+    "siret": "33445566700017",
+    "annee": "2018",
+    "photoHero": "https://images.unsplash.com/photo-1455587734955-081b22074882?w=1200&q=85"
+  },
+  "promesse": [
+    "Une conciergerie, c'est avant tout des heures rendues à votre journée. Celles que vous passiez au pressing, à attendre un livreur, à organiser la garde du chien, à courir entre deux courses.",
+    "Charlotte Marchand a fondé Concierge & Co après dix ans à la réception du Royal Hôtel. La même rigueur, la même discrétion, mais à votre domicile cette fois — pas en chambre.",
+    "Nous travaillons en effectif réduit, par choix. Trois conciergères temps plein, une trentaine de clients fidèles. C'est volontaire : on ne veut pas devenir une plateforme."
+  ],
+  "services": [
+    {
+      "id": "intendance",
+      "titre": "Intendance domicile",
+      "description": "Réception artisans, supervision ménage, suivi des entretiens techniques."
+    },
+    {
+      "id": "pressing",
+      "titre": "Pressing & blanchisserie",
+      "description": "Collecte, pressing chez nos partenaires, retour repassé et plié."
+    },
+    {
+      "id": "bagages",
+      "titre": "Réception bagages",
+      "description": "Récupération à l'aéroport, livraison à votre domicile sans attente."
+    },
+    {
+      "id": "courrier",
+      "titre": "Réception courrier",
+      "description": "Récupération en boîte aux lettres, tri, scan numérique sécurisé."
+    },
+    {
+      "id": "chauffeur",
+      "titre": "Chauffeur privé",
+      "description": "Trajets ponctuels ou récurrents, en VTC partenaire ou voiture personnelle."
+    },
+    {
+      "id": "petsitting",
+      "titre": "Pet-sitting",
+      "description": "Promenades, garde à domicile, soins vétérinaires programmés."
+    },
+    {
+      "id": "chef",
+      "titre": "Chef à domicile",
+      "description": "Repas préparés sur place, dîners privés, traiteur événementiel."
+    },
+    {
+      "id": "linge",
+      "titre": "Linge de maison",
+      "description": "Changement, repassage et rangement hebdomadaire des draps et serviettes."
+    }
+  ],
+  "formules": [
+    {
+      "label": "Essentiel",
+      "prix": "250",
+      "frequence": "/ mois",
+      "description": "Trois services courants par mois. Idéal pour démarrer ou pour une utilisation ponctuelle.",
+      "inclus": [
+        "3 services courants / mois",
+        "Réponse WhatsApp en heures ouvrées",
+        "Aucun engagement de durée",
+        "Forfait reportable un mois"
+      ]
+    },
+    {
+      "label": "Premium",
+      "prix": "580",
+      "frequence": "/ mois",
+      "description": "Services courants illimités. La majorité de nos clientes & clients ont choisi cette formule.",
+      "inclus": [
+        "Services courants illimités",
+        "Réponse WhatsApp 7j/7 8h-20h",
+        "Une conciergère attitrée",
+        "Reporting mensuel détaillé",
+        "Accès à nos prestataires partenaires"
+      ],
+      "populaire": true
+    },
+    {
+      "label": "Excellence",
+      "prix": "1 200",
+      "frequence": "/ mois",
+      "description": "Sur-mesure. Pour les expatriations, secondes résidences, agendas chargés.",
+      "inclus": [
+        "Tout ce qui est dans Premium",
+        "Disponibilité 24h/24",
+        "Coordination équipes domicile",
+        "Gestion biens immobiliers",
+        "Achats personnalisés",
+        "Convention écrite confidentielle"
+      ]
+    }
+  ],
+  "journee": [
+    {
+      "heure": "J-1 · 18h",
+      "titre": "Brief WhatsApp",
+      "description": "Vous nous transmettez vos demandes du lendemain. Pressing à récupérer, chauffeur 15h, courses bio…"
+    },
+    {
+      "heure": "J · 08h",
+      "titre": "Prise en charge",
+      "description": "On démarre la journée. Vous recevez un message de confirmation des actions en cours."
+    },
+    {
+      "heure": "J · midi",
+      "titre": "Point d'étape",
+      "description": "Photo des actions accomplies, ajustement si nécessaire, validation pour la suite."
+    },
+    {
+      "heure": "J · 19h",
+      "titre": "Récapitulatif",
+      "description": "Synthèse écrite de la journée, factures partenaires consolidées, programme de demain validé."
+    }
+  ],
+  "temoignages": [
+    {
+      "initiales": "C. B.",
+      "anciennete": "Cliente Premium · 2 ans",
+      "lieu": "Saint-Gilles",
+      "texte": "Charlotte gère ma vie quotidienne avec une discrétion exemplaire. Je ne sais plus comment je faisais avant. Sincèrement."
+    },
+    {
+      "initiales": "A. D.",
+      "anciennete": "Cliente Essentiel · 1 an",
+      "lieu": "Saint-Pierre",
+      "texte": "Trois services par mois suffisent largement. La récupération de mes colis et le pressing me libèrent un temps fou."
+    },
+    {
+      "initiales": "M. P.",
+      "anciennete": "Cliente Excellence · 6 mois",
+      "lieu": "Saint-Leu",
+      "texte": "Je vis entre Paris et la Réunion. Concierge & Co s'occupe de tout en mon absence : artisans, courrier, plantes. Précieux."
+    },
+    {
+      "initiales": "F. G.",
+      "anciennete": "Client Premium · 3 ans",
+      "lieu": "Saint-Denis",
+      "texte": "L'essentiel pour moi : la confidentialité. Aucune info ne fuite. Charlotte et son équipe sont d'une rigueur absolue."
+    }
+  ],
+  "horaires": [
+    { "jour": "Lundi – Vendredi", "label": "08h – 20h", "ouvert": true },
+    { "jour": "Samedi", "label": "09h – 18h", "ouvert": true },
+    { "jour": "Dimanche", "label": "Sur demande Excellence", "ouvert": true }
+  ]
+}

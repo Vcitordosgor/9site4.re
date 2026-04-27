@@ -50,7 +50,8 @@ type PageKey =
   | 'templateConsultant'
   | 'templateComptable'
   | 'templateArchitecte'
-  | 'templateAutoEcole';
+  | 'templateAutoEcole'
+  | 'templateConciergerie';
 
 const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'> & { noindex?: boolean; ogImage?: string; ogImageAlt?: string }> = {
   home: {
@@ -247,6 +248,13 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
     description:
       'Aperçu du template "Auto-école" proposé par 9site4 : forfaits permis, code en ligne, équipe pédagogique, témoignages et inscription. Site fictif de démonstration.',
     canonical: '/templates/auto-ecole',
+    noindex: true,
+  },
+  templateConciergerie: {
+    title: 'Concierge & Co — Conciergerie privée à Saint-Gilles (Réunion) | Template 9site4',
+    description:
+      'Aperçu du template "Conciergerie" proposé par 9site4 : services à la personne, formules d\'abonnement, témoignages clients et demande de service. Site fictif de démonstration.',
+    canonical: '/templates/conciergerie',
     noindex: true,
   },
 };

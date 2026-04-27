@@ -79,6 +79,9 @@ export default {
     {
       pattern: /^(bg|text|ring|border|from|to|via)-(boost-acier|boost-jaune|boost-asphalte|boost-noir|boost-route|boost-feu|boost-stop)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
     },
+    {
+      pattern: /^(bg|text|ring|border|from|to|via)-(concierge-nuit|concierge-encre|concierge-graphite|concierge-champagne|concierge-blanc|concierge-laiton|concierge-bordeaux)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
+    },
   ],
   theme: {
     extend: {
@@ -321,6 +324,16 @@ export default {
         'boost-route':    '#FAFAF7',  // blanc route — fond clair
         'boost-feu':      '#3FBE6B',  // vert feu — validations / succès
         'boost-stop':     '#E53E3E',  // rouge stop — alertes critiques
+        // Palette conciergerie (template /templates/conciergerie — Concierge & Co)
+        // Style "service haut de gamme discret, réception d'hôtel cinq étoiles"
+        // — bleu nuit profond + champagne + laiton vieilli + bordeaux feutré.
+        'concierge-nuit':      '#0F2742',  // bleu nuit profond — accent dominant
+        'concierge-encre':     '#0A0B0F',  // noir encre — texte AAA
+        'concierge-graphite':  '#3D3D3F',  // gris graphite — texte secondaire
+        'concierge-champagne': '#F5EFDF',  // crème champagne — fond
+        'concierge-blanc':     '#FAFAF7',
+        'concierge-laiton':    '#B89758',  // doré laiton vieilli — filets ornementaux
+        'concierge-bordeaux':  '#5A1F2A',  // bordeaux feutré — accent rare
       },
       fontFamily: {
         sora: ['Sora', 'system-ui', 'sans-serif'],
@@ -382,6 +395,9 @@ export default {
         'funnel-display': ['"Funnel Display"', 'system-ui', 'sans-serif'],
         'funnel-sans': ['"Funnel Sans"', 'system-ui', 'sans-serif'],
         'geist-mono': ['"Geist Mono"', 'ui-monospace', 'monospace'],
+        volkhov: ['Volkhov', 'Georgia', 'serif'],
+        hubot: ['"Hubot Sans"', 'system-ui', 'sans-serif'],
+        pinyon: ['"Pinyon Script"', 'cursive'],
       },
       fontSize: {
         'hero': ['clamp(2.5rem, 5vw + 1rem, 5rem)', { lineHeight: '1.05', letterSpacing: '-0.02em' }],
