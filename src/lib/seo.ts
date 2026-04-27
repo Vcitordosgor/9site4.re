@@ -46,7 +46,8 @@ type PageKey =
   | 'templateInstitut'
   | 'templateGite'
   | 'templateExcursions'
-  | 'templateLocation';
+  | 'templateLocation'
+  | 'templateConsultant';
 
 const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'> & { noindex?: boolean; ogImage?: string; ogImageAlt?: string }> = {
   home: {
@@ -215,6 +216,13 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
     description:
       'Aperçu du template "Location saisonnière bord de mer" proposé par 9site4 : visite virtuelle, équipements, tarifs par saison, disponibilités et réservation. Site fictif de démonstration.',
     canonical: '/templates/location',
+    noindex: true,
+  },
+  templateConsultant: {
+    title: 'Lucas Ferrier — Consultant stratégie digitale à Saint-Denis (Réunion) | Template 9site4',
+    description:
+      'Aperçu du template "Consultant" proposé par 9site4 : portfolio personnel, missions case studies, compétences, tarifs et prise de rendez-vous. Site fictif de démonstration.',
+    canonical: '/templates/consultant',
     noindex: true,
   },
 };

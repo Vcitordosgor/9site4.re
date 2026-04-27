@@ -67,6 +67,9 @@ export default {
     {
       pattern: /^(bg|text|ring|border|from|to|via)-(lazuli-lagon|lazuli-marine|lazuli-sable|lazuli-terracotta|lazuli-casse|lazuli-bois|lazuli-coco)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
     },
+    {
+      pattern: /^(bg|text|ring|border|from|to|via)-(lucas-noir|lucas-anthracite|lucas-perle|lucas-blanc|lucas-encre|lucas-vert|lucas-vert-fonce)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
+    },
   ],
   theme: {
     extend: {
@@ -266,6 +269,17 @@ export default {
         'lazuli-casse':      '#FAF6ED',  // blanc cassé tropical — fond
         'lazuli-bois':       '#8C7159',  // bois flotté — secondaire
         'lazuli-coco':       '#CDDDB1',  // vert tendre coco — micro-accent
+        // Palette consultant (template /templates/consultant — Lucas Ferrier)
+        // Style "portfolio personnel modeste & sérieux" : noir profond + gris
+        // perle + un seul accent vert électrique terminal. Format Notion/
+        // Substack dense en texte, faible en visuel.
+        'lucas-noir':        '#0F1115',  // noir profond — fond dominant dark
+        'lucas-anthracite':  '#2A2D33',  // sections élevées dark
+        'lucas-perle':       '#E8E6E2',  // gris perle — texte secondaire
+        'lucas-blanc':       '#FAFAF7',  // blanc cassé — texte primaire
+        'lucas-encre':       '#5A5C61',  // gris encre — labels
+        'lucas-vert':        '#00D26A',  // vert électrique terminal — accent unique
+        'lucas-vert-fonce':  '#00A055',  // vert sombre hover
       },
       fontFamily: {
         sora: ['Sora', 'system-ui', 'sans-serif'],
@@ -315,6 +329,9 @@ export default {
         yeseva: ['"Yeseva One"', 'Georgia', 'serif'],
         geist: ['"Geist Sans"', 'system-ui', 'sans-serif'],
         italianno: ['Italianno', 'cursive'],
+        hanken: ['"Hanken Grotesk"', 'system-ui', 'sans-serif'],
+        instrument: ['"Instrument Serif"', 'Georgia', 'serif'],
+        'space-mono': ['"Space Mono"', 'ui-monospace', 'monospace'],
       },
       fontSize: {
         'hero': ['clamp(2.5rem, 5vw + 1rem, 5rem)', { lineHeight: '1.05', letterSpacing: '-0.02em' }],

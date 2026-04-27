@@ -1,0 +1,185 @@
+{
+  "info": {
+    "nom": "Lucas Ferrier",
+    "wordmark": "Lucas Ferrier",
+    "soustitre": "Consultant indépendant · Stratégie digitale",
+    "tagline": "J'aide les entreprises à vraiment utiliser le digital.",
+    "ville": "Saint-Denis",
+    "telephone": "0692 47 39 14",
+    "telephoneHref": "+33692473914",
+    "whatsapp": "33692473914",
+    "email": "lucas@ferrier.work",
+    "linkedin": "lucas-ferrier-974",
+    "siret": "98765432100017",
+    "annee": "2017",
+    "experience": 8,
+    "disponibilite": "Disponible début 2026",
+    "photoAvatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&q=85"
+  },
+  "pitch": {
+    "intro": "J'accompagne les entreprises réunionnaises et métropolitaines à clarifier leur stratégie digitale. Pas de buzzwords, pas de roadmap figée — du diagnostic, de l'écriture, de l'exécution mesurable.",
+    "bullets": [
+      {
+        "titre": "Stratégie d'acquisition B2B",
+        "detail": "Positionnement, ICP, content + outbound, mesure de l'impact."
+      },
+      {
+        "titre": "Refonte de site & SEO technique",
+        "detail": "Analyse, choix techno, écriture, déploiement, suivi indexation."
+      },
+      {
+        "titre": "Setup analytics & data décisionnelle",
+        "detail": "GA4, Looker, dashboards opérationnels, formations équipes internes."
+      }
+    ]
+  },
+  "missions": [
+    {
+      "id": "industrie",
+      "client": "PME industrie · 50p",
+      "duree": "9 mois",
+      "annee": "2024",
+      "contexte": "Site corporate obsolète depuis 7 ans, aucun trafic SEO, équipe commerciale en démarchage à froid à 100%.",
+      "livrable": "Refonte complète Webflow, restructuration éditoriale, formation rédactionnelle interne (4 sessions).",
+      "resultat": "× 12 sur le trafic organique en 9 mois. 22 leads qualifiés / mois entrants au lieu de 0.",
+      "metrique": "× 12 trafic"
+    },
+    {
+      "id": "cabinet",
+      "client": "Cabinet de conseil · 12p",
+      "duree": "6 mois",
+      "annee": "2024",
+      "contexte": "Aucun pipeline commercial inbound. Croissance dépendante des recommandations.",
+      "livrable": "Stack acquisition complet (HubSpot + Notion + n8n), 12 contenus piliers, séquences email outbound.",
+      "resultat": "38 MQL / mois en moyenne après 6 mois. Time-to-deal raccourci de 4 mois à 6 semaines.",
+      "metrique": "38 MQL/mois"
+    },
+    {
+      "id": "esn",
+      "client": "ESN · 200p",
+      "duree": "4 mois",
+      "annee": "2023",
+      "contexte": "Data dispersée dans 8 outils (Salesforce, Zendesk, GA, Mixpanel, etc.). Décisions basées sur l'intuition.",
+      "livrable": "Audit data, consolidation GA4 + Looker, 6 dashboards opérationnels (commercial, support, prod, RH).",
+      "resultat": "Décisions hebdomadaires basées sur la donnée. Réduction de 40% du temps passé en reporting manuel.",
+      "metrique": "− 40 % reporting"
+    },
+    {
+      "id": "retail",
+      "client": "Marque retail péi · 8p",
+      "duree": "4 mois",
+      "annee": "2023",
+      "contexte": "Site WooCommerce ancien, taux de conversion 0,8 %, panier moyen en chute libre.",
+      "livrable": "Migration vers Shopify, refonte UX du tunnel d'achat, A/B test continu sur 12 hypothèses.",
+      "resultat": "+ 47 % sur le taux de conversion en 4 mois. Panier moyen + 18 €.",
+      "metrique": "+ 47 % conversion"
+    }
+  ],
+  "competences": {
+    "strategie": {
+      "titre": "Stratégie",
+      "items": [
+        "Positionnement & message",
+        "Segmentation ICP",
+        "Value proposition canvas",
+        "Business model exploration",
+        "Go-to-market plan",
+        "Pricing stratégique"
+      ]
+    },
+    "execution": {
+      "titre": "Exécution",
+      "items": [
+        "SEO technique & on-page",
+        "SEA Google / LinkedIn",
+        "Content production",
+        "Email marketing",
+        "Paid social",
+        "Marketing automation"
+      ]
+    },
+    "outils": {
+      "titre": "Outils",
+      "items": [
+        "GA4 + Looker Studio",
+        "Webflow / Shopify",
+        "Notion / Linear",
+        "HubSpot / Pipedrive",
+        "n8n / Make",
+        "Hotjar / SQL"
+      ]
+    }
+  },
+  "tarifs": [
+    {
+      "titre": "Audit flash",
+      "duree": "1 semaine",
+      "prix": "1 900 €",
+      "format": "Forfait",
+      "description": "Audit ciblé sur un sujet précis (SEO, acquisition, refonte) avec restitution écrite + 1 RDV de débrief.",
+      "inclus": [
+        "Audit chiffré 15-25 pages",
+        "Recommandations priorisées",
+        "Réunion de restitution 90 min"
+      ]
+    },
+    {
+      "titre": "Accompagnement mensuel",
+      "duree": "3 mois minimum",
+      "prix": "4 500 €",
+      "format": "/ mois",
+      "description": "Co-pilotage stratégique en continu. Présence Slack, 1 RDV de cadrage hebdomadaire, livrables actionnables.",
+      "inclus": [
+        "1 RDV cadrage / semaine",
+        "Slack disponible 8h-18h",
+        "Tous livrables en Notion",
+        "Mesure mensuelle KPI"
+      ],
+      "populaire": true
+    },
+    {
+      "titre": "Projet refonte",
+      "duree": "3 à 6 mois",
+      "prix": "À partir de 12 000 €",
+      "format": "Sur devis",
+      "description": "Refonte complète d'un site, mise en place d'un stack acquisition, ou lancement d'une nouvelle activité digitale.",
+      "inclus": [
+        "Audit initial 1 semaine",
+        "Plan de bataille détaillé",
+        "Exécution + équipes ad-hoc",
+        "Formation équipe interne"
+      ]
+    }
+  ],
+  "principes": [
+    {
+      "num": "01",
+      "titre": "One-shot ou récurrent",
+      "texte": "Vous choisissez le format qui colle à votre besoin. Pas de contrat de 12 mois imposé."
+    },
+    {
+      "num": "02",
+      "titre": "Tout est documenté",
+      "texte": "Vous gardez l'accès permanent à un Notion partagé. Chaque décision, chaque recommandation est écrite."
+    },
+    {
+      "num": "03",
+      "titre": "Pas de bullshit",
+      "texte": "Je dis ce que je vois. Y compris quand le diagnostic est gênant. Vous n'êtes pas client d'une agence qui flatte."
+    },
+    {
+      "num": "04",
+      "titre": "Mesure systématique",
+      "texte": "Aucune action lancée sans KPI défini en amont. Si on ne sait pas mesurer, on ne fait pas."
+    },
+    {
+      "num": "05",
+      "titre": "Joignable",
+      "texte": "Slack et WhatsApp répondus dans la journée en semaine. Le silence radio, ce n'est pas mon style."
+    }
+  ],
+  "creneaux": [
+    { "duree": "30 min", "label": "Découverte" },
+    { "duree": "60 min", "label": "Cadrage" }
+  ]
+}
