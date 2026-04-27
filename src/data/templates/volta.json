@@ -1,0 +1,130 @@
+{
+  "info": {
+    "nom": "Volta",
+    "sousTitre": "Électricité générale & mise aux normes",
+    "tagline": "Votre électricité, entre de bonnes mains.",
+    "description": "Depuis 2014, Volta intervient dans tout l'Est de l'île : installations neuves, dépannage 24h/24, mise aux normes NF C 15-100 et bornes IRVE.",
+    "adresse": "12 rue de Bourbon, Saint-André 97440",
+    "adresseLigne1": "12 rue de Bourbon",
+    "adresseLigne2": "97440 Saint-André",
+    "telephone": "0692 44 55 66",
+    "telephoneHref": "+33692445566",
+    "whatsapp": "33692445566",
+    "email": "contact@volta-electricien.re",
+    "siret": "45678901200017",
+    "annee": "2014",
+    "certification": "RGE Qualifelec N°QF-974-2218",
+    "wordmark": "Volta",
+    "photoHero": "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1600&q=80"
+  },
+  "horaires": [
+    { "jour": "Lundi – Vendredi", "label": "07h – 18h", "ouvert": true },
+    { "jour": "Samedi", "label": "08h – 12h", "ouvert": true },
+    { "jour": "Dimanche", "label": "Fermé", "ouvert": false }
+  ],
+  "urgence": {
+    "actif": true,
+    "label": "Urgence 24h/24",
+    "details": "Court-circuit, panne totale, disjoncteur qui saute en boucle — on décroche à toute heure, 7j/7."
+  },
+  "services": [
+    {
+      "id": "installation",
+      "titre": "Installation neuve",
+      "description": "Câblage complet pour villa, appartement ou local commercial. Du tableau général à la dernière prise."
+    },
+    {
+      "id": "normes",
+      "titre": "Mise aux normes",
+      "description": "Diagnostic NF C 15-100, remplacement du tableau électrique, différentiels et protection surtension."
+    },
+    {
+      "id": "depannage",
+      "titre": "Dépannage rapide",
+      "description": "Intervention sous 2h pour les urgences dans notre zone. Diagnostic précis, réparation durable."
+    },
+    {
+      "id": "eclairage",
+      "titre": "Éclairage & domotique",
+      "description": "Spots LED encastrés, variateurs, éclairage extérieur et interrupteurs connectés."
+    },
+    {
+      "id": "irve",
+      "titre": "Borne IRVE",
+      "description": "Installation certifiée IRVE pour véhicule électrique ou hybride rechargeable. Aide Prime Advenir."
+    },
+    {
+      "id": "clim",
+      "titre": "Raccordement clim",
+      "description": "Câblage et mise en service des unités intérieures et extérieures. Tous fabricants, toutes puissances."
+    }
+  ],
+  "etapes": [
+    {
+      "num": "01",
+      "titre": "Diagnostic gratuit",
+      "description": "On se déplace pour évaluer l'installation existante ou prendre les cotes du chantier. Sans engagement."
+    },
+    {
+      "num": "02",
+      "titre": "Devis sous 48h",
+      "description": "Vous recevez un devis clair et détaillé : main-d'œuvre, matériel et délai d'intervention garantis."
+    },
+    {
+      "num": "03",
+      "titre": "Intervention & contrôle",
+      "description": "Nos électriciens certifiés réalisent les travaux proprement, puis on valide ensemble la conformité."
+    }
+  ],
+  "galerie": [
+    {
+      "src": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=75",
+      "alt": "Tableau électrique neuf câblé proprement",
+      "label": "Villa neuve — Saint-André"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=75",
+      "alt": "Câblage industriel et gaines électriques",
+      "label": "Local commercial — Sainte-Marie"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1545259741-2ea3ebf61fa3?w=800&q=75",
+      "alt": "Installation éclairage LED encastré",
+      "label": "Appartement — Saint-Benoît"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=800&q=75",
+      "alt": "Borne de recharge IRVE installée",
+      "label": "Borne IRVE — Bras-Panon"
+    }
+  ],
+  "avis": [
+    {
+      "nom": "Nathalie R.",
+      "note": 5,
+      "texte": "Intervention ultra-rapide un dimanche soir pour une panne totale. Professionnel, efficace. Je recommande sans hésiter.",
+      "date": "Mars 2025"
+    },
+    {
+      "nom": "Christophe M.",
+      "note": 5,
+      "texte": "Devis reçu en 24h, travaux réalisés dans les délais. Tableau refait proprement, tout est aux normes. Rien à redire.",
+      "date": "Fév. 2025"
+    },
+    {
+      "nom": "Laura & Damien B.",
+      "note": 5,
+      "texte": "Installation complète de notre villa neuve + borne IRVE. Équipe sérieuse, travail soigné. Merci Volta !",
+      "date": "Jan. 2025"
+    }
+  ],
+  "zones": [
+    "Saint-André",
+    "Sainte-Marie",
+    "Saint-Benoît",
+    "Bras-Panon",
+    "Salazie",
+    "Sainte-Suzanne",
+    "Saint-Denis Est"
+  ]
+}

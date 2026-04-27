@@ -31,6 +31,9 @@ export default {
     {
       pattern: /^(bg|text|ring|border|from|to|via)-(agap-lin|agap-pierre|agap-rose|agap-sauge|agap-sauge-fonce|agap-violet|agap-violet-fonce|agap-feuille)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
     },
+    {
+      pattern: /^(bg|text|ring|border|from|to|via)-(volta-noir|volta-acier|volta-fumee|volta-blanc|volta-cyan|volta-cyan-fonce|volta-cuivre)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
+    },
   ],
   theme: {
     extend: {
@@ -104,6 +107,16 @@ export default {
         'agap-violet':      '#6B5B95',  // violet agapanthe — accent principal, CTA
         'agap-violet-fonce':'#3D2E5E',  // violet profond — fonds dark, header au scroll
         'agap-feuille':     '#1F2618',  // noir verdâtre — texte AAA
+        // Palette électricien (template /templates/electricien — Volta)
+        // Style "Tableau électrique digital" : noir technique + cyan électrique + cuivre.
+        // Distinct de toutes les autres palettes (bleu roi resto, jaune plomberie, violet agap…).
+        'volta-noir':       '#0F1115',  // noir technique — fond dominant
+        'volta-acier':      '#272A33',  // acier sombre — sections alternées
+        'volta-fumee':      '#E0E1E5',  // fumée claire — texte principal sur fond sombre
+        'volta-blanc':      '#FFFFFF',
+        'volta-cyan':       '#06D4F5',  // cyan électrique — accent CTA, icônes (AAA on dark)
+        'volta-cyan-fonce': '#06A8C2',  // cyan foncé — hover, filets
+        'volta-cuivre':     '#C26E2C',  // cuivre chaud — micro-accents décoratifs
       },
       fontFamily: {
         sora: ['Sora', 'system-ui', 'sans-serif'],
@@ -119,6 +132,8 @@ export default {
         archivo: ['Archivo', 'system-ui', 'sans-serif'],
         cormorant: ['"Cormorant Garamond"', 'Garamond', 'Georgia', 'serif'],
         outfit: ['Outfit', 'system-ui', 'sans-serif'],
+        syne: ['Syne', 'system-ui', 'sans-serif'],
+        'space-grotesk': ['"Space Grotesk"', 'system-ui', 'sans-serif'],
       },
       fontSize: {
         'hero': ['clamp(2.5rem, 5vw + 1rem, 5rem)', { lineHeight: '1.05', letterSpacing: '-0.02em' }],

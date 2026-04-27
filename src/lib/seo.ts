@@ -34,7 +34,8 @@ type PageKey =
   | 'templateSpa'
   | 'templateResto'
   | 'templatePlomberie'
-  | 'templatePaysagiste';
+  | 'templatePaysagiste'
+  | 'templateElectricien';
 
 const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'> & { noindex?: boolean; ogImage?: string; ogImageAlt?: string }> = {
   home: {
@@ -119,6 +120,13 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
     description:
       'Aperçu du template "Paysagiste" proposé par 9site4 : création de jardins, entretien, plantes locales, devis en ligne. Site fictif de démonstration.',
     canonical: '/templates/paysagiste',
+    noindex: true,
+  },
+  templateElectricien: {
+    title: 'Volta — Électricien à Saint-André (Réunion) | Template 9site4',
+    description:
+      'Aperçu du template "Électricité générale" proposé par 9site4 : services, dépannage 24h/24, borne IRVE, devis en ligne. Site fictif de démonstration.',
+    canonical: '/templates/electricien',
     noindex: true,
   },
 };
