@@ -43,6 +43,9 @@ export default {
     {
       pattern: /^(bg|text|ring|border|from|to|via)-(vermeille-velours|vermeille-charbon|vermeille-bordeaux|vermeille-rose|vermeille-ivoire|vermeille-or|vermeille-blanc)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
     },
+    {
+      pattern: /^(bg|text|ring|border|from|to|via)-(verveine-creme|verveine-papier|verveine-glacier|verveine-sauge|verveine-beton|verveine-encre|verveine-blanc)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
+    },
   ],
   theme: {
     extend: {
@@ -156,6 +159,17 @@ export default {
         'vermeille-ivoire':   '#F8F0E5',  // crème ivoire — fond light
         'vermeille-or':       '#B8956A',  // or vieilli — filets ornementaux
         'vermeille-blanc':    '#FFFFFF',
+        // Palette ostéopathe (template /templates/osteo — Cabinet Verveine)
+        // Style "Médical épuré, presque clinique mais chaleureux" :
+        // blanc cassé dominant + bleu glacier + sauge poudré + gris béton + encre.
+        // Palette quasi-monochrome, beaucoup d'air, ton calme.
+        'verveine-creme':   '#FAFAF7',  // blanc cassé chaud — fond principal
+        'verveine-papier':  '#F0EFE8',  // sections alternées
+        'verveine-glacier': '#D8E4E5',  // bleu glacier très pâle — accent doux
+        'verveine-sauge':   '#B5C2A8',  // vert sauge poudré — accent secondaire
+        'verveine-beton':   '#5C5C58',  // gris béton chaud — texte secondaire
+        'verveine-encre':   '#1C1C1A',  // noir encre — texte AAA
+        'verveine-blanc':   '#FFFFFF',
       },
       fontFamily: {
         sora: ['Sora', 'system-ui', 'sans-serif'],
@@ -182,6 +196,9 @@ export default {
         italiana: ['Italiana', 'Didot', 'Georgia', 'serif'],
         'inter-tight': ['"Inter Tight"', 'system-ui', 'sans-serif'],
         caveat: ['Caveat', 'cursive'],
+        cardo: ['Cardo', 'Georgia', 'serif'],
+        'public-sans': ['"Public Sans"', 'system-ui', 'sans-serif'],
+        karla: ['Karla', 'system-ui', 'sans-serif'],
       },
       fontSize: {
         'hero': ['clamp(2.5rem, 5vw + 1rem, 5rem)', { lineHeight: '1.05', letterSpacing: '-0.02em' }],

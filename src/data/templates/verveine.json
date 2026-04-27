@@ -1,0 +1,112 @@
+{
+  "info": {
+    "nom": "Cabinet Verveine",
+    "wordmark": "Verveine",
+    "soustitre": "Ostéopathie · D.O.",
+    "praticienne": "Hélène Saint-Pierre",
+    "titre": "Dr Hélène Saint-Pierre",
+    "tagline": "L'ostéopathie, dans le calme et le détail.",
+    "ville": "Saint-Pierre",
+    "adresseLigne1": "8 rue des Bons-Enfants",
+    "adresseLigne2": "97410 Saint-Pierre",
+    "telephone": "0692 56 78 23",
+    "telephoneHref": "+33692567823",
+    "whatsapp": "33692567823",
+    "email": "contact@cabinet-verveine.re",
+    "siret": "12345678900017",
+    "adeli": "974 1 0234 5",
+    "rof": "ROF n°4521",
+    "annee": "2014",
+    "photoPraticienne": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&q=85",
+    "photoCabinet": "https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?w=1200&q=85"
+  },
+  "diplomes": [
+    "Diplôme d'Ostéopathie — CEESO Paris, 2009",
+    "DU Ostéopathie pédiatrique — Faculté de médecine de Marseille, 2014",
+    "DU Ostéopathie périnatale — Université de Bordeaux, 2017",
+    "Membre du Registre des Ostéopathes de France"
+  ],
+  "approche": {
+    "intro": "Une consultation ostéopathique n'est pas un rendez-vous comme un autre. Elle suppose du temps, une écoute, et une remise en mouvement progressive du corps et de ce qui le contraint.",
+    "paragraphes": [
+      {
+        "titre": "Une approche globale",
+        "texte": "Le corps est un système d'équilibres : posture, respiration, viscères, articulations. Une douleur lombaire peut venir d'un blocage cervical, ou d'un trouble digestif. L'ostéopathie cherche la cause, pas seulement le symptôme."
+      },
+      {
+        "titre": "Des techniques douces, en priorité",
+        "texte": "J'utilise principalement des techniques fonctionnelles, douces et respectueuses du tissu. Aucune manipulation à haute vélocité n'est pratiquée sur les cervicales sans accord préalable. Chez le nourrisson et la femme enceinte, l'approche est strictement crânio-sacrée."
+      },
+      {
+        "titre": "Un suivi réfléchi",
+        "texte": "Une à trois séances suffisent souvent à régler une plainte. Je recontacte mes patients à trois semaines pour évaluer ce qui a évolué, et je décline avec honnêteté les cas qui relèvent d'un médecin ou d'un autre praticien."
+      }
+    ]
+  },
+  "motifs": [
+    { "id": "lombaire", "label": "Douleurs lombaires & sciatiques" },
+    { "id": "cervical", "label": "Cervicalgies & maux de tête" },
+    { "id": "digestif", "label": "Troubles digestifs fonctionnels" },
+    { "id": "postpartum", "label": "Suivi post-partum & périnée" },
+    { "id": "sportif", "label": "Pathologies du sportif" },
+    { "id": "pediatrie", "label": "Nourrissons & enfants" },
+    { "id": "stress", "label": "Stress, sommeil, troubles du sommeil" },
+    { "id": "epaule", "label": "Épaules, tendinites, articulations" }
+  ],
+  "seance": {
+    "duree": "45 min en moyenne",
+    "etapes": [
+      {
+        "num": "01",
+        "titre": "Anamnèse",
+        "duree": "10 min",
+        "description": "On échange sur vos antécédents, votre mode de vie, l'histoire de la plainte. Cette étape est essentielle — elle oriente toute la séance."
+      },
+      {
+        "num": "02",
+        "titre": "Examen palpatoire",
+        "duree": "10 min",
+        "description": "Tests posturaux, mobilité articulaire, palpation des tissus. On identifie les zones de restriction qui demandent un traitement."
+      },
+      {
+        "num": "03",
+        "titre": "Traitement",
+        "duree": "20 min",
+        "description": "Techniques fonctionnelles, viscérales ou crânio-sacrées selon ce qui est indiqué. Toujours dans le respect de votre confort."
+      },
+      {
+        "num": "04",
+        "titre": "Conseils & suivi",
+        "duree": "5 min",
+        "description": "Quelques exercices à faire à la maison, des recommandations posturales, et un point téléphonique sous trois semaines si besoin."
+      }
+    ]
+  },
+  "tarifs": [
+    { "label": "Consultation adulte", "prix": "60 €", "note": "45 min en moyenne" },
+    { "label": "Enfant (moins de 12 ans)", "prix": "50 €", "note": "30 min adapté" },
+    { "label": "Nourrisson (moins de 1 an)", "prix": "50 €", "note": "Approche crânio-sacrée" },
+    { "label": "Visite à domicile", "prix": "90 €", "note": "Sur l'agglomération de Saint-Pierre" }
+  ],
+  "remboursement": "Cabinet conventionné Almerys. La majorité des mutuelles remboursent entre 30 € et 60 € par séance. Une facture détaillée vous est remise à chaque consultation.",
+  "creneaux": [
+    { "heure": "09h00" },
+    { "heure": "11h00" },
+    { "heure": "14h00" },
+    { "heure": "16h00" }
+  ],
+  "horaires": [
+    { "jour": "Lundi", "label": "09h – 18h", "ouvert": true },
+    { "jour": "Mardi", "label": "09h – 18h", "ouvert": true },
+    { "jour": "Mercredi", "label": "09h – 12h", "ouvert": true },
+    { "jour": "Jeudi", "label": "09h – 18h", "ouvert": true },
+    { "jour": "Vendredi", "label": "09h – 16h", "ouvert": true },
+    { "jour": "Samedi", "label": "Sur RDV", "ouvert": false },
+    { "jour": "Dimanche", "label": "Fermé", "ouvert": false }
+  ],
+  "acces": [
+    { "label": "À pied", "detail": "5 min depuis le centre-ville" },
+    { "label": "Voiture", "detail": "Parking gratuit rue des Bons-Enfants" },
+    { "label": "Transport", "detail": "Arrêt « Mairie » à 200 m" }
+  ]
+}

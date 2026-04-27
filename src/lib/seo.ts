@@ -38,7 +38,8 @@ type PageKey =
   | 'templateElectricien'
   | 'templateCoach'
   | 'templateYoga'
-  | 'templateDanse';
+  | 'templateDanse'
+  | 'templateOsteo';
 
 const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'> & { noindex?: boolean; ogImage?: string; ogImageAlt?: string }> = {
   home: {
@@ -151,6 +152,13 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
     description:
       'Aperçu du template "École de danse" proposé par 9site4 : disciplines, professeurs, spectacles, planning et inscription en ligne. Site fictif de démonstration.',
     canonical: '/templates/danse',
+    noindex: true,
+  },
+  templateOsteo: {
+    title: 'Cabinet Verveine — Ostéopathe à Saint-Pierre (Réunion) | Template 9site4',
+    description:
+      'Aperçu du template "Cabinet d\'ostéopathie" proposé par 9site4 : approche, motifs de consultation, déroulé d\'une séance, tarifs et prise de rendez-vous. Site fictif de démonstration.',
+    canonical: '/templates/osteo',
     noindex: true,
   },
 };
