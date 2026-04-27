@@ -117,7 +117,8 @@
     "categorie": "sport",
     "sousTitre": "Planning des cours et réservation en ligne",
     "moduleInclus": "Réservation",
-    "slug": "studio-yoga"
+    "slug": "studio-yoga",
+    "previewUrl": "/templates/yoga"
   },
   {
     "id": 15,
