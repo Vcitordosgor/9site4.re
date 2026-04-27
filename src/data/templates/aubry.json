@@ -1,0 +1,157 @@
+{
+  "info": {
+    "nom": "Camille Aubry",
+    "wordmark": "Camille Aubry",
+    "soustitre": "Psychologue clinicienne",
+    "tagline": "Le travail thérapeutique demande du temps. Le premier pas suffit.",
+    "ville": "Saint-Denis",
+    "adresseLigne1": "6 rue de la Compagnie",
+    "adresseLigne2": "97400 Saint-Denis",
+    "telephone": "0692 47 82 13",
+    "telephoneHref": "+33692478213",
+    "whatsapp": "33692478213",
+    "email": "camille.aubry@cabinet-saint-denis.re",
+    "siret": "34567890100017",
+    "adeli": "974 31 5896",
+    "annee": "2016"
+  },
+  "diplomes": [
+    "Master 2 Psychologie clinique et psychopathologie — Université Paris VII (2014)",
+    "DU Psychotraumatologie — Université Paris V (2017)",
+    "Inscrite au Code de déontologie des psychologues",
+    "Membre du Registre national des psychologues"
+  ],
+  "incipit": {
+    "chiffre": "I.",
+    "titre": "Une consultation, ça commence par un appel.",
+    "paragraphe": "Vous tapez un numéro, vous laissez sonner, et quelque chose de votre histoire change déjà — sans que vous le sachiez encore. Vous avez peut-être hésité longtemps, ou pas du tout. Peu importe. Le cabinet est ouvert toute la semaine, et la première séance, qu'elle débouche ou non sur un suivi, est le début d'une rencontre. Rien d'irréversible, rien d'engagé : un temps pour poser les mots, et voir ce qui s'ouvre."
+  },
+  "publics": [
+    {
+      "id": "adultes",
+      "titre": "Adultes",
+      "description": "Pour les périodes de souffrance psychique, anxiété, états dépressifs, perte de sens, difficultés relationnelles. Suivi individuel sans cadre fixe."
+    },
+    {
+      "id": "ados",
+      "titre": "Adolescents (14 – 18 ans)",
+      "description": "Construction identitaire, scolarité, rapport au corps, conflits familiaux. Accueil sans présence parentale obligatoire — confidentialité garantie."
+    },
+    {
+      "id": "couples",
+      "titre": "Couples",
+      "description": "Crises, ruptures, désaccords éducatifs, infidélité. Espace de parole équilibré pour chacun·e des partenaires, avec et sans tour de parole."
+    },
+    {
+      "id": "parents",
+      "titre": "Parentalité",
+      "description": "Accompagnement des parents face aux difficultés d'un enfant, à la fatigue, aux choix éducatifs. Sans présence de l'enfant si demandé."
+    },
+    {
+      "id": "deuil",
+      "titre": "Deuil & traumatisme",
+      "description": "Perte d'un proche, événement traumatique, syndromes post-traumatiques. Approche spécifique formée à la psychotraumatologie."
+    },
+    {
+      "id": "burnout",
+      "titre": "Burn-out professionnel",
+      "description": "Effondrement, retour difficile au travail, reconversion. Travail sur les causes structurelles autant que sur les symptômes."
+    }
+  ],
+  "approche": {
+    "chapeau": "Mon orientation est intégrative — je m'appuie sur la psychanalyse, les thérapies humanistes (Carl Rogers) et les approches cognitivo-comportementales selon les besoins.",
+    "paragraphes": [
+      "L'écoute clinique n'est pas une simple présence silencieuse. C'est une attention soutenue, dirigée, qui cherche à entendre ce qui n'est pas dit, ce qui se répète, ce qui se cache derrière les mots choisis. C'est aussi un travail de patience : la parole prend le temps qu'elle prend.",
+      "Je ne fais ni diagnostic médical, ni prescription. Mon rôle n'est pas de vous coller une étiquette mais de vous accompagner dans la compréhension de ce qui vous arrive. Lorsqu'un avis médical est nécessaire, je le dis et j'oriente.",
+      "Le suivi peut durer quelques séances ou plusieurs années — c'est vous qui décidez quand on s'arrête. Je n'impose aucun rythme ni aucune méthode. Si quelque chose ne fonctionne pas, on en parle, on ajuste.",
+      "La confiance ne se prête pas, elle se construit. Une première séance permet de voir si on peut travailler ensemble. Si ce n'est pas le cas, je vous oriente vers un·e collègue mieux adapté·e à votre demande — sans aucun mal."
+    ]
+  },
+  "engagements": [
+    {
+      "titre": "Secret professionnel",
+      "texte": "Tout ce qui se dit en consultation est protégé par le secret professionnel, sauf en cas de mise en danger immédiate (article 226-13 du Code pénal)."
+    },
+    {
+      "titre": "Code de déontologie",
+      "texte": "Je suis tenue par le Code de déontologie des psychologues (1996, révisé 2012) — accessible publiquement, et opposable."
+    },
+    {
+      "titre": "Pas de diagnostic médical",
+      "texte": "Je ne pose pas de diagnostic au sens médical. En cas de besoin, j'oriente vers un·e médecin psychiatre ou un·e médecin traitant."
+    },
+    {
+      "titre": "Suivi à durée libre",
+      "texte": "Vous décidez du nombre de séances. Aucun engagement minimum, aucune prescription d'avance. La fin du suivi se construit ensemble."
+    }
+  ],
+  "tarifs": [
+    { "label": "Consultation adulte", "duree": "55 min", "prix": "60 €" },
+    { "label": "Consultation adolescent", "duree": "45 min", "prix": "55 €" },
+    { "label": "Consultation couple", "duree": "1h15", "prix": "80 €" },
+    { "label": "Téléconsultation", "duree": "55 min", "prix": "55 €" },
+    { "label": "Première séance (réduite)", "duree": "55 min", "prix": "30 €" }
+  ],
+  "noteTarif": "Les psychologues libéraux ne sont pas conventionnés Sécurité sociale, mais la majorité des mutuelles complémentaires remboursent partiellement les consultations. Une attestation vous est remise sur demande.",
+  "premiere": [
+    {
+      "num": "I.",
+      "titre": "Premier contact",
+      "description": "Par téléphone ou WhatsApp. On échange brièvement sur la nature de votre demande pour vérifier que je suis la bonne personne. Pas de récit détaillé à ce stade."
+    },
+    {
+      "num": "II.",
+      "titre": "Anamnèse",
+      "description": "Lors de la première séance (55 min), on prend le temps de revenir sur votre histoire, vos antécédents, et la situation actuelle. Aucune obligation de tout dire d'un coup."
+    },
+    {
+      "num": "III.",
+      "titre": "Cadre",
+      "description": "On pose ensemble le rythme (hebdo, bimensuel…), la modalité (présentiel ou télé), et l'orientation possible. Pas d'engagement signé."
+    },
+    {
+      "num": "IV.",
+      "titre": "Suivi ou non",
+      "description": "Vous prenez le temps de réfléchir entre la première et la deuxième séance. Si on continue, on continue. Sinon, je vous propose des références."
+    }
+  ],
+  "lectures": [
+    {
+      "auteur": "Boris Cyrulnik",
+      "titre": "Un merveilleux malheur",
+      "editeur": "Odile Jacob",
+      "annee": "1999",
+      "note": "Sur la résilience, lecture introductive accessible."
+    },
+    {
+      "auteur": "Carl Rogers",
+      "titre": "Le développement de la personne",
+      "editeur": "InterÉditions",
+      "annee": "2005",
+      "note": "Le texte fondateur de l'approche centrée sur la personne."
+    },
+    {
+      "auteur": "Tara Brach",
+      "titre": "L'acceptation radicale",
+      "editeur": "Belfond",
+      "annee": "2018",
+      "note": "Pratique méditative & psychologie, pour les périodes d'auto-jugement."
+    },
+    {
+      "auteur": "Edith Eger",
+      "titre": "La danseuse d'Auschwitz",
+      "editeur": "JC Lattès",
+      "annee": "2018",
+      "note": "Parcours d'une psychologue rescapée — sur la liberté intérieure."
+    }
+  ],
+  "horaires": [
+    { "jour": "Lundi", "label": "09h – 19h", "ouvert": true },
+    { "jour": "Mardi", "label": "09h – 19h", "ouvert": true },
+    { "jour": "Mercredi", "label": "Formation continue", "ouvert": false },
+    { "jour": "Jeudi", "label": "09h – 19h", "ouvert": true },
+    { "jour": "Vendredi", "label": "09h – 17h", "ouvert": true },
+    { "jour": "Samedi", "label": "09h – 13h sur RDV", "ouvert": true },
+    { "jour": "Dimanche", "label": "Fermé", "ouvert": false }
+  ]
+}

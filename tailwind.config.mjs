@@ -49,6 +49,9 @@ export default {
     {
       pattern: /^(bg|text|ring|border|from|to|via)-(mona-creme|mona-papier|mona-vert|mona-vert-fonce|mona-terracotta|mona-framboise|mona-cacao)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
     },
+    {
+      pattern: /^(bg|text|ring|border|from|to|via)-(aubry-perle|aubry-papier|aubry-nuit|aubry-prune|aubry-rose|aubry-encre|aubry-blanc)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
+    },
   ],
   theme: {
     extend: {
@@ -183,6 +186,16 @@ export default {
         'mona-terracotta':  '#D27D54',  // terracotta doux — accents chauds
         'mona-framboise':   '#C84A5C',  // rose framboise — accent rare (fruits)
         'mona-cacao':       '#3E2A1E',  // brun cacao — texte AAA
+        // Palette psychologue (template /templates/psychologue — Camille Aubry)
+        // Style "carnet de bord intime, page de livre" : gris perle + bleu nuit
+        // + prune + terre rose. Aucune saturation. Registre littéraire/philo.
+        'aubry-perle':  '#E8EAF0',  // gris perle bleuté — fond principal
+        'aubry-papier': '#F0F1F4',  // sections alternées légèrement clair
+        'aubry-nuit':   '#2A3147',  // bleu nuit profond — accent texte/CTA
+        'aubry-prune':  '#5D4257',  // prune assourdie — accent secondaire
+        'aubry-rose':   '#C9A28A',  // terre rose — micro-accent ornemental
+        'aubry-encre':  '#0F0F12',  // encre noire — texte AAA
+        'aubry-blanc':  '#FFFFFF',
       },
       fontFamily: {
         sora: ['Sora', 'system-ui', 'sans-serif'],
@@ -215,6 +228,9 @@ export default {
         newsreader: ['Newsreader', 'Georgia', 'serif'],
         jakarta: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
         reenie: ['"Reenie Beanie"', 'cursive'],
+        caslon: ['"Libre Caslon Text"', 'Georgia', 'serif'],
+        albert: ['"Albert Sans"', 'system-ui', 'sans-serif'],
+        'plex-mono': ['"IBM Plex Mono"', 'ui-monospace', 'monospace'],
       },
       fontSize: {
         'hero': ['clamp(2.5rem, 5vw + 1rem, 5rem)', { lineHeight: '1.05', letterSpacing: '-0.02em' }],

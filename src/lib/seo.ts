@@ -40,7 +40,8 @@ type PageKey =
   | 'templateYoga'
   | 'templateDanse'
   | 'templateOsteo'
-  | 'templateDieteticienne';
+  | 'templateDieteticienne'
+  | 'templatePsy';
 
 const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'> & { noindex?: boolean; ogImage?: string; ogImageAlt?: string }> = {
   home: {
@@ -167,6 +168,13 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
     description:
       'Aperçu du template "Diététicienne" proposé par 9site4 : approche, programmes, recettes, témoignages et rendez-vous en ligne. Site fictif de démonstration.',
     canonical: '/templates/dieteticienne',
+    noindex: true,
+  },
+  templatePsy: {
+    title: 'Camille Aubry — Psychologue clinicienne à Saint-Denis (Réunion) | Template 9site4',
+    description:
+      'Aperçu du template "Psychologue" proposé par 9site4 : approche, cadre déontologique, modalités et prise de rendez-vous confidentielle. Site fictif de démonstration.',
+    canonical: '/templates/psychologue',
     noindex: true,
   },
 };
