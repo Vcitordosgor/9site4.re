@@ -1,0 +1,93 @@
+---
+/**
+ * Bowls — section dédiée smoothie bowls. Layout horizontal alternant photo/texte.
+ * Format magazine food zine.
+ */
+import data from '../../../data/templates/lagon.json';
+---
+
+<section id="bowls" class="bg-lagon-turquoise text-lagon-charbon py-20 md:py-32 px-5 md:px-8 relative overflow-hidden">
+
+  <!-- Pulvérisation visuelle d'icônes en arrière-plan très subtile -->
+  <div class="absolute inset-0 pointer-events-none opacity-10" aria-hidden="true">
+    <svg class="absolute top-20 left-[15%] w-32 text-lagon-charbon" viewBox="0 0 64 64" fill="currentColor">
+      <ellipse cx="32" cy="36" rx="24" ry="20"/>
+      <ellipse cx="32" cy="36" rx="20" ry="16" fill="#1FB8C8"/>
+    </svg>
+    <svg class="absolute bottom-20 right-[12%] w-40 text-lagon-charbon" viewBox="0 0 64 64" fill="currentColor">
+      <ellipse cx="32" cy="36" rx="24" ry="20"/>
+      <ellipse cx="32" cy="36" rx="20" ry="16" fill="#1FB8C8"/>
+    </svg>
+  </div>
+
+  <div class="relative max-w-content mx-auto">
+
+    <header class="mb-16 md:mb-20 max-w-2xl">
+      <p class="font-architects text-lagon-pitaya text-2xl md:text-3xl rotate-[-2deg] mb-2">
+        et aussi…
+      </p>
+      <h2 class="font-bagel text-lagon-charbon leading-[0.9]" style="font-size: clamp(48px, 8vw, 120px);">
+        SMOOTHIE<br/>
+        <span class="text-lagon-mangue">BOWLS.</span>
+      </h2>
+      <p class="mt-6 font-onest text-lagon-charbon/85 text-lg max-w-md font-medium">
+        Bols colorés, granola maison, fruits frais. Idéal en petit-déj, brunch, ou goûter post-plage.
+      </p>
+    </header>
+
+    <ul class="space-y-12 md:space-y-16">
+      {data.bowls.map((b, i) => (
+        <li class:list={['grid lg:grid-cols-12 gap-8 lg:gap-12 items-center', i % 2 === 1 ? 'lg:flex-row-reverse' : '']}>
+
+          <!-- Photo -->
+          <div class:list={[
+            'lg:col-span-5 relative',
+            i % 2 === 1 ? 'lg:order-2' : '',
+          ]}>
+            <div class="relative aspect-square max-w-md mx-auto rounded-full overflow-hidden ring-8 ring-lagon-charbon" style={`transform: rotate(${i % 2 === 0 ? -3 : 3}deg);`}>
+              <img
+                src={b.photo}
+                alt={b.nom}
+                loading="lazy"
+                decoding="async"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <!-- Sticker numéro -->
+            <div class:list={[
+              'absolute w-20 h-20 bg-lagon-mangue text-lagon-charbon rounded-full flex items-center justify-center font-bagel text-3xl ring-4 ring-lagon-charbon',
+              i % 2 === 0 ? '-bottom-3 -right-3 lg:right-6 rotate-12' : '-bottom-3 -left-3 lg:left-6 -rotate-12',
+            ]}>
+              0{i + 1}
+            </div>
+          </div>
+
+          <!-- Texte -->
+          <div class:list={['lg:col-span-7', i % 2 === 1 ? 'lg:order-1' : '']}>
+            <h3 class="font-bagel text-lagon-charbon leading-[0.95]" style="font-size: clamp(36px, 5vw, 64px);">
+              {b.nom.toUpperCase()}<span class="text-lagon-pitaya">.</span>
+            </h3>
+            <p class="mt-4 font-onest text-lagon-charbon/85 text-lg leading-relaxed font-medium max-w-md">
+              {b.ingredients}
+            </p>
+            <div class="mt-6 flex flex-wrap items-center gap-5">
+              <span class="font-bagel text-lagon-charbon tabular-nums" style="font-size: clamp(32px, 4vw, 48px);">
+                {b.prix.toFixed(2).replace('.', ',')} €
+              </span>
+              <button
+                type="button"
+                data-bowl
+                data-id={b.id}
+                data-nom={b.nom}
+                data-prix={b.prix.toFixed(2)}
+                class="add-btn inline-flex items-center gap-2 h-12 px-6 bg-lagon-charbon text-lagon-mangue font-bagel rounded-full hover:bg-lagon-pitaya hover:text-lagon-blanc transition-colors"
+              >
+                + AJOUTER
+              </button>
+            </div>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,227 @@
+---
+/**
+ * Commander — formulaire panier-style avec total live.
+ * Items ajoutés depuis CarteJus/Bowls via boutons + qty +/- inline.
+ * Submit → WhatsApp avec récap items + plage horaire + nom + tél.
+ */
+import data from '../../../data/templates/lagon.json';
+const waBase = `https://wa.me/${data.info.whatsapp}`;
+---
+
+<section id="commander" class="bg-lagon-pitaya text-lagon-blanc py-20 md:py-32 px-5 md:px-8 relative overflow-hidden">
+
+  <!-- Stickers décoratifs -->
+  <p class="absolute top-12 left-6 md:left-12 font-architects text-lagon-mangue text-3xl md:text-4xl rotate-[-3deg]" aria-hidden="true">
+    on prend ta commande !
+  </p>
+
+  <div class="max-w-4xl mx-auto relative">
+
+    <header class="mb-12 md:mb-16 text-center">
+      <h2 class="font-bagel text-lagon-blanc leading-[0.9]" style="font-size: clamp(48px, 8vw, 120px);">
+        TA <span class="text-lagon-mangue">COMMANDE</span>.
+      </h2>
+      <p class="mt-5 font-onest text-lagon-blanc/85 text-lg max-w-md mx-auto font-medium">
+        Choisis tes jus, ton créneau, on prépare. Tu passes prendre — on emballe pour la route.
+      </p>
+    </header>
+
+    <form id="commander-form" class="bg-lagon-coco text-lagon-charbon ring-4 ring-lagon-charbon p-6 md:p-10" novalidate>
+
+      <!-- Section 1 : Choisis tes produits -->
+      <div class="mb-8">
+        <p class="font-bagel text-2xl md:text-3xl mb-4">
+          1. <span class="text-lagon-pitaya">CE QUE TU VEUX</span> ↓
+        </p>
+
+        <!-- Liste des items dans le panier (vide au départ) -->
+        <ul id="cart-list" class="space-y-2 mb-4 min-h-[60px]">
+          <li id="cart-empty" class="font-architects text-lagon-charbon/55 text-xl text-center py-4">
+            ↑ ajoute des jus depuis la carte plus haut
+          </li>
+        </ul>
+
+        <!-- Lien retour à la carte -->
+        <a href="#carte" class="inline-flex items-center gap-2 font-onest text-sm font-bold text-lagon-pitaya hover:text-lagon-charbon transition-colors">
+          ← Voir la carte des jus
+        </a>
+      </div>
+
+      <!-- Total -->
+      <div class="mb-8 flex items-baseline justify-between gap-4 py-4 border-y-4 border-lagon-charbon">
+        <span class="font-bagel text-2xl md:text-3xl text-lagon-charbon">TOTAL</span>
+        <span id="cart-total" class="font-bagel text-4xl md:text-5xl text-lagon-pitaya tabular-nums">
+          0,00 €
+        </span>
+      </div>
+
+      <!-- Section 2 : Créneau de retrait -->
+      <div class="mb-8">
+        <p class="font-bagel text-2xl md:text-3xl mb-4">
+          2. <span class="text-lagon-pitaya">QUAND TU PASSES</span> ↓
+        </p>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+          {['Dans 30 min', 'Dans 1h', 'Cet après-midi', 'Demain matin'].map((c, i) => (
+            <label class="cursor-pointer">
+              <input type="radio" name="creneau" value={c} class="peer sr-only" checked={i === 0} />
+              <span class="block text-center px-3 py-3 bg-lagon-blanc ring-2 ring-lagon-charbon font-bagel text-sm text-lagon-charbon peer-checked:bg-lagon-charbon peer-checked:text-lagon-mangue transition-colors">
+                {c.toUpperCase()}
+              </span>
+            </label>
+          ))}
+        </div>
+      </div>
+
+      <!-- Section 3 : Coordonnées -->
+      <div class="mb-8 grid sm:grid-cols-2 gap-4">
+        <div>
+          <p class="font-bagel text-lg mb-2">3. TON PRÉNOM</p>
+          <input
+            id="cart-prenom"
+            name="prenom"
+            type="text"
+            required
+            placeholder="Ex. Karine"
+            class="w-full h-12 px-4 bg-lagon-blanc ring-2 ring-lagon-charbon focus:ring-lagon-pitaya font-onest text-lagon-charbon text-base font-medium placeholder:text-lagon-charbon/40 outline-none transition-all"
+          />
+        </div>
+        <div>
+          <p class="font-bagel text-lg mb-2">4. TON TEL</p>
+          <input
+            id="cart-tel"
+            name="telephone"
+            type="tel"
+            required
+            placeholder="0692 xx xx xx"
+            class="w-full h-12 px-4 bg-lagon-blanc ring-2 ring-lagon-charbon focus:ring-lagon-pitaya font-onest text-lagon-charbon text-base font-medium placeholder:text-lagon-charbon/40 outline-none transition-all tabular-nums"
+          />
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <button
+        type="submit"
+        class="w-full inline-flex items-center justify-center gap-3 h-16 bg-lagon-charbon text-lagon-mangue font-bagel text-xl tracking-wide hover:bg-lagon-pitaya hover:text-lagon-blanc transition-all hover:scale-[1.01]"
+      >
+        ✿ ENVOYER VIA WHATSAPP
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.92 0-2.65-1.03-5.14-2.91-7.01zm-7.01 15.24h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.21 8.21 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83 8.25 8.25 0 0 1-8.24 8.22z"/>
+        </svg>
+      </button>
+
+      <p class="mt-4 font-architects text-lagon-charbon/65 text-base text-center rotate-[-1deg]">
+        ↳ ouvre WhatsApp avec ta commande pré-remplie
+      </p>
+    </form>
+  </div>
+</section>
+
+<script define:vars={{ waBase }}>
+  /* Cart minimal en JS — gestion +/- et total live */
+  const cart = new Map(); // id → { nom, prix, qty }
+  const list = document.getElementById('cart-list');
+  const empty = document.getElementById('cart-empty');
+  const totalEl = document.getElementById('cart-total');
+
+  function format(n) { return n.toFixed(2).replace('.', ',') + ' €'; }
+
+  function render() {
+    if (!list) return;
+    if (cart.size === 0) {
+      list.innerHTML = '<li id="cart-empty" class="font-architects text-lagon-charbon/55 text-xl text-center py-4">↑ ajoute des jus depuis la carte plus haut</li>';
+    } else {
+      list.innerHTML = '';
+      let total = 0;
+      cart.forEach((item, id) => {
+        total += item.prix * item.qty;
+        const li = document.createElement('li');
+        li.className = 'flex items-center gap-3 bg-lagon-blanc ring-2 ring-lagon-charbon p-3';
+        li.innerHTML = `
+          <span class="flex-1 font-bagel text-base text-lagon-charbon">${item.nom}</span>
+          <span class="font-onest text-sm text-lagon-charbon/60 tabular-nums">${format(item.prix)} ×</span>
+          <div class="flex items-center gap-2">
+            <button type="button" data-dec="${id}" class="w-8 h-8 bg-lagon-charbon text-lagon-mangue font-bagel rounded-full hover:bg-lagon-pitaya">−</button>
+            <span class="font-bagel text-lg w-6 text-center text-lagon-charbon tabular-nums">${item.qty}</span>
+            <button type="button" data-inc="${id}" class="w-8 h-8 bg-lagon-charbon text-lagon-mangue font-bagel rounded-full hover:bg-lagon-pitaya">+</button>
+          </div>
+          <span class="font-bagel text-lg text-lagon-pitaya tabular-nums w-20 text-right">${format(item.prix * item.qty)}</span>
+        `;
+        list.appendChild(li);
+      });
+      if (totalEl) totalEl.textContent = format(total);
+    }
+    if (cart.size === 0 && totalEl) totalEl.textContent = '0,00 €';
+  }
+
+  function addItem(id, nom, prix) {
+    if (cart.has(id)) {
+      cart.get(id).qty += 1;
+    } else {
+      cart.set(id, { nom, prix: parseFloat(prix), qty: 1 });
+    }
+    render();
+  }
+
+  document.querySelectorAll('[data-add-jus]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const li = btn.closest('[data-jus]');
+      if (!li) return;
+      addItem(li.dataset.id, li.dataset.nom, li.dataset.prix);
+      // Feedback visuel
+      btn.textContent = '✓';
+      setTimeout(() => { btn.textContent = '+'; }, 600);
+    });
+  });
+
+  document.querySelectorAll('[data-bowl]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      addItem(btn.dataset.id, btn.dataset.nom, btn.dataset.prix);
+      const original = btn.innerHTML;
+      btn.innerHTML = '✓ AJOUTÉ';
+      setTimeout(() => { btn.innerHTML = original; }, 800);
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    const t = e.target;
+    if (t.dataset && t.dataset.inc) {
+      const item = cart.get(t.dataset.inc);
+      if (item) { item.qty += 1; render(); }
+    }
+    if (t.dataset && t.dataset.dec) {
+      const item = cart.get(t.dataset.dec);
+      if (item) {
+        item.qty -= 1;
+        if (item.qty <= 0) cart.delete(t.dataset.dec);
+        render();
+      }
+    }
+  });
+
+  const form = document.getElementById('commander-form');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fd = new FormData(form);
+      const prenom = fd.get('prenom') || '';
+      const tel = fd.get('telephone') || '';
+      const creneau = fd.get('creneau') || '';
+      let total = 0;
+      const items = [];
+      cart.forEach((item) => {
+        total += item.prix * item.qty;
+        items.push(`• ${item.qty}× ${item.nom} (${format(item.prix * item.qty)})`);
+      });
+      const text = [
+        'Salut Lagon, je commande :',
+        items.length ? items.join('\n') : '(aucun produit ajouté)',
+        '',
+        `TOTAL : ${format(total)}`,
+        creneau ? `Pour : ${creneau}` : '',
+        prenom ? `Prénom : ${prenom}` : '',
+        tel ? `Tél : ${tel}` : '',
+      ].filter(Boolean).join('\n');
+      window.open(`${waBase}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
+    });
+  }
+</script>

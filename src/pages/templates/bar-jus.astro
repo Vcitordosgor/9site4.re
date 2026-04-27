@@ -1,0 +1,77 @@
+---
+import '@fontsource/bagel-fat-one/400.css';
+import '@fontsource/onest/400.css';
+import '@fontsource/onest/500.css';
+import '@fontsource/onest/600.css';
+import '@fontsource/onest/700.css';
+import '@fontsource/architects-daughter/400.css';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getSeo } from '../../lib/seo';
+import lagonData from '../../data/templates/lagon.json';
+
+import LagonHeader from '../../components/templates/bar-jus/LagonHeader.astro';
+import HeroCartePostale from '../../components/templates/bar-jus/HeroCartePostale.astro';
+import Concept from '../../components/templates/bar-jus/Concept.astro';
+import CarteJus from '../../components/templates/bar-jus/CarteJus.astro';
+import Bowls from '../../components/templates/bar-jus/Bowls.astro';
+import Evenements from '../../components/templates/bar-jus/Evenements.astro';
+import Commander from '../../components/templates/bar-jus/Commander.astro';
+import Trouver from '../../components/templates/bar-jus/Trouver.astro';
+import CTAFinal from '../../components/templates/bar-jus/CTAFinal.astro';
+import LagonFooter from '../../components/templates/bar-jus/LagonFooter.astro';
+---
+
+<BaseLayout seo={getSeo('templateBarJus')} bare={true}>
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <link rel="dns-prefetch" href="https://images.unsplash.com" />
+    <link
+      rel="preload"
+      as="image"
+      href={lagonData.info.photoHero}
+      fetchpriority="high"
+    />
+  </Fragment>
+
+  <LagonHeader />
+
+  <main id="top" class="bg-lagon-mangue text-lagon-charbon font-onest">
+    <HeroCartePostale />
+    <Concept />
+    <CarteJus />
+    <Bowls />
+    <Evenements />
+    <Commander />
+    <Trouver />
+    <CTAFinal />
+  </main>
+
+  <LagonFooter />
+
+  <!-- Sticky CTA mobile : pill pitaya énorme avec rotation au tap -->
+  <a
+    id="lagon-sticky-cta"
+    href="#commander"
+    data-visible="false"
+    class="md:hidden fixed bottom-5 inset-x-5 z-40 inline-flex items-center justify-center h-14 bg-lagon-pitaya text-lagon-blanc font-bagel text-base tracking-wide rounded-full ring-4 ring-lagon-charbon transition-all duration-300 data-[visible=false]:opacity-0 data-[visible=false]:translate-y-4 data-[visible=false]:pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0 active:rotate-[-2deg]"
+  >
+    JE COMMANDE → WHATSAPP
+  </a>
+
+  <script>
+    const sticky = document.getElementById('lagon-sticky-cta');
+    const commander = document.getElementById('commander');
+    if (sticky && commander) {
+      const update = () => {
+        const rect = commander.getBoundingClientRect();
+        const inSection = rect.top < window.innerHeight && rect.bottom > 80;
+        const scrolledPastHero = window.scrollY > 600;
+        sticky.dataset.visible = String(scrolledPastHero && !inSection);
+      };
+      update();
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update, { passive: true });
+    }
+  </script>
+</BaseLayout>

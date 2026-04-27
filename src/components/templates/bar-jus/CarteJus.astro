@@ -1,0 +1,94 @@
+---
+/**
+ * CarteJus — grid 4 cols de 8 jus avec photo, badge, prix.
+ * Chaque card a une rotation légère + ring couleur bordée. Click → ajoute panier.
+ */
+import data from '../../../data/templates/lagon.json';
+---
+
+<section id="carte" class="bg-lagon-mangue py-20 md:py-32 px-5 md:px-8 relative overflow-hidden">
+
+  <!-- Annotation arrière-plan -->
+  <p class="absolute top-12 right-6 md:right-12 font-architects text-lagon-charbon text-3xl md:text-4xl rotate-3 opacity-90" aria-hidden="true">
+    8 recettes = 8 humeurs ★
+  </p>
+
+  <div class="max-w-content mx-auto">
+
+    <header class="mb-14 md:mb-20 max-w-2xl">
+      <p class="font-onest text-[11px] uppercase tracking-[0.32em] font-bold text-lagon-charbon mb-4">
+        ★ LA CARTE DES JUS ★
+      </p>
+      <h2 class="font-bagel text-lagon-charbon leading-[0.9]" style="font-size: clamp(48px, 8vw, 120px);">
+        LES JUS<br/>
+        <span class="text-lagon-pitaya">PRESSÉS.</span>
+      </h2>
+      <p class="mt-6 font-onest text-lagon-charbon/85 text-lg max-w-md font-medium">
+        Pressés à la commande, jamais avant. Si on en manque, on en manque — c'est la règle.
+      </p>
+    </header>
+
+    <ul class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+      {data.jus.map((j, i) => (
+        <li
+          data-jus
+          data-id={j.id}
+          data-nom={j.nom}
+          data-prix={j.prix.toFixed(2)}
+          class:list={[
+            'group bg-lagon-coco ring-4 ring-lagon-charbon p-3 md:p-4 transition-transform duration-300',
+            i % 2 === 0 ? 'hover:rotate-1' : 'hover:-rotate-1',
+          ]}
+        >
+          <!-- Photo carrée + badge -->
+          <div class="relative aspect-square overflow-hidden bg-lagon-charbon mb-3">
+            <img
+              src={j.photo}
+              alt={j.nom}
+              loading="lazy"
+              decoding="async"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            />
+            {j.badge && (
+              <span class:list={[
+                'absolute top-2 left-2 inline-flex items-center px-2 py-1 font-bagel text-[10px] tracking-wide rounded-full',
+                j.badge === 'STAR' ? 'bg-lagon-mangue text-lagon-charbon' :
+                j.badge === 'NOUVEAU' ? 'bg-lagon-pitaya text-lagon-blanc' :
+                j.badge === 'DETOX' ? 'bg-lagon-lime text-lagon-charbon' :
+                j.badge === 'ÉNERGIE' ? 'bg-lagon-pitaya text-lagon-blanc' :
+                'bg-lagon-turquoise text-lagon-charbon'
+              ]}>
+                {j.badge === 'STAR' ? '★ ' + j.badge : j.badge}
+              </span>
+            )}
+          </div>
+
+          <!-- Nom -->
+          <h3 class="font-bagel text-lagon-charbon text-lg md:text-xl leading-tight mb-1">
+            {j.nom}
+          </h3>
+
+          <!-- Ingrédients -->
+          <p class="font-onest text-lagon-charbon/70 text-xs md:text-sm leading-snug mb-3">
+            {j.ingredients}
+          </p>
+
+          <!-- Prix + bouton ajouter -->
+          <div class="flex items-center justify-between gap-2 pt-2 border-t-2 border-lagon-charbon/20">
+            <span class="font-bagel text-2xl text-lagon-charbon tabular-nums">
+              {j.prix.toFixed(2).replace('.', ',')} €
+            </span>
+            <button
+              type="button"
+              data-add-jus={j.id}
+              class="add-btn inline-flex items-center justify-center w-9 h-9 bg-lagon-pitaya text-lagon-blanc font-bagel text-xl rounded-full hover:bg-lagon-charbon transition-colors"
+              aria-label={`Ajouter ${j.nom} au panier`}
+            >
+              +
+            </button>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

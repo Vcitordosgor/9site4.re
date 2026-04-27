@@ -1,0 +1,77 @@
+---
+/**
+ * Trouver — adresse + photo bar + horaires + lien Instagram.
+ * Fond turquoise, plein de POP.
+ */
+import data from '../../../data/templates/lagon.json';
+---
+
+<section id="trouver" class="bg-lagon-turquoise text-lagon-charbon py-20 md:py-28 px-5 md:px-8">
+  <div class="max-w-content mx-auto">
+
+    <div class="grid lg:grid-cols-12 gap-10 items-start">
+
+      <!-- Photo bar -->
+      <div class="lg:col-span-6">
+        <div class="relative aspect-[5/4] rounded-3xl overflow-hidden ring-4 ring-lagon-charbon" style="transform: rotate(-2deg);">
+          <img
+            src={data.info.photoBar}
+            alt="Le bar Lagon Pressé à Saint-Pierre"
+            loading="lazy"
+            decoding="async"
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <p class="mt-5 font-architects text-lagon-charbon text-2xl text-center rotate-1">
+          ↓ ici on t'attend ↓
+        </p>
+      </div>
+
+      <!-- Infos -->
+      <div class="lg:col-span-6">
+        <p class="font-bagel text-lagon-charbon text-xl mb-3">
+          📍 OÙ NOUS TROUVER
+        </p>
+        <h2 class="font-bagel text-lagon-charbon leading-[0.95]" style="font-size: clamp(36px, 6vw, 80px);">
+          {data.info.adresseLigne1.toUpperCase()}<br/>
+          <span class="text-lagon-pitaya">SAINT-PIERRE.</span>
+        </h2>
+
+        <p class="mt-6 font-onest text-lagon-charbon/85 text-lg font-medium leading-relaxed max-w-md">
+          Sur le bord de mer, juste après le rond-point. Petit local jaune et rose — impossible à louper.
+        </p>
+
+        <!-- Contact -->
+        <div class="mt-8 flex flex-wrap items-center gap-4">
+          <a
+            href={`tel:${data.info.telephoneHref}`}
+            class="inline-flex items-center h-12 px-6 bg-lagon-charbon text-lagon-mangue font-bagel rounded-full hover:bg-lagon-pitaya hover:text-lagon-blanc transition-colors tabular-nums"
+          >
+            {data.info.telephone}
+          </a>
+          <a
+            href={`https://instagram.com/${data.info.instagram.replace('@', '')}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 font-bagel text-lagon-charbon text-lg hover:text-lagon-pitaya transition-colors"
+          >
+            ✿ {data.info.instagram}
+          </a>
+        </div>
+
+        <!-- Horaires -->
+        <div class="mt-10 bg-lagon-coco ring-4 ring-lagon-charbon p-6">
+          <p class="font-bagel text-lagon-charbon text-xl mb-4">⏰ HORAIRES</p>
+          <ul class="space-y-2">
+            {data.horaires.map((h) => (
+              <li class="flex items-baseline justify-between gap-3 font-onest text-base font-medium">
+                <span class="text-lagon-charbon">{h.jour}</span>
+                <span class="font-bagel text-lagon-pitaya tabular-nums">{h.label}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

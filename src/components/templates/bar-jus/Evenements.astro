@@ -1,0 +1,47 @@
+---
+/**
+ * Evenements — 4 événements hebdomadaires en cards rétro-pop colorées.
+ * Chaque card a un fond couleur différent + transformation rotation.
+ */
+import data from '../../../data/templates/lagon.json';
+---
+
+<section id="evenements" class="bg-lagon-coco py-20 md:py-28 px-5 md:px-8">
+  <div class="max-w-content mx-auto">
+
+    <header class="mb-14 md:mb-16 text-center max-w-2xl mx-auto">
+      <p class="font-architects text-lagon-pitaya text-2xl md:text-3xl rotate-1 mb-2">
+        ★ chaque semaine ★
+      </p>
+      <h2 class="font-bagel text-lagon-charbon leading-[0.9]" style="font-size: clamp(40px, 7vw, 96px);">
+        LES <span class="text-lagon-pitaya">RDV</span><br/>
+        DE LA SEMAINE.
+      </h2>
+    </header>
+
+    <ul class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+      {data.evenements.map((e, i) => {
+        const rotations = ['rotate-[-2deg]', 'rotate-[1deg]', 'rotate-[-1deg]', 'rotate-[2deg]'];
+        const isLight = e.couleur === 'lagon-mangue' || e.couleur === 'lagon-lime' || e.couleur === 'lagon-turquoise';
+        const txt = isLight ? 'text-lagon-charbon' : 'text-lagon-blanc';
+        const dotTxt = isLight ? 'text-lagon-pitaya' : 'text-lagon-mangue';
+        return (
+          <li class:list={[`bg-${e.couleur}`, txt, 'p-6 md:p-7 ring-4 ring-lagon-charbon transition-transform duration-300 hover:rotate-0', rotations[i]]}>
+            <p class="font-bagel text-base md:text-lg uppercase tracking-wide opacity-80 mb-2">
+              {e.jour.toUpperCase()}
+            </p>
+            <h3 class="font-bagel text-2xl md:text-3xl leading-tight mb-3">
+              {e.titre}<span class={dotTxt}>.</span>
+            </h3>
+            <p class="font-onest text-sm leading-relaxed font-medium mb-4">
+              {e.description}
+            </p>
+            <p class="font-architects text-base">
+              ↳ {e.horaire}
+            </p>
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+</section>

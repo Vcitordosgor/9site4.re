@@ -1,0 +1,144 @@
+---
+/**
+ * HeroCartePostale — photo top-shot jus colorés + titre Bagel Fat One
+ * + stickers SVG flottants animés + marquee prix défilant en bas.
+ */
+import data from '../../../data/templates/lagon.json';
+---
+
+<section id="top" class="relative bg-lagon-mangue text-lagon-charbon overflow-hidden">
+
+  <!-- Stickers SVG flottants animés en arrière-plan -->
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+    <!-- Ananas top-left -->
+    <svg class="absolute top-32 left-[5%] w-12 md:w-20 sticker-float-1 text-lagon-charbon" viewBox="0 0 64 64" fill="currentColor">
+      <path d="M32 12c-4 0-7 4-7 4s-3-2-5 0c-1 2 2 4 2 4s-3-1-5 1c-1 2 2 4 2 4s-1 2 1 3c-3 4-3 11-3 14 0 11 6 18 15 18s15-7 15-18c0-3 0-10-3-14 2-1 1-3 1-3s3-2 2-4c-2-2-5-1-5-1s3-2 2-4c-2-2-5 0-5 0s-3-4-7-4z" opacity="0.85"/>
+      <path d="M22 32 L42 32 M22 38 L42 38 M22 44 L42 44 M22 50 L42 50" stroke="#FFF8EC" stroke-width="1.5" fill="none"/>
+    </svg>
+
+    <!-- Mangue top-right -->
+    <svg class="absolute top-40 right-[8%] w-14 md:w-24 sticker-float-2 text-lagon-pitaya" viewBox="0 0 64 64" fill="currentColor">
+      <ellipse cx="32" cy="36" rx="20" ry="22" opacity="0.9"/>
+      <path d="M32 14c-4 0-6 2-6 4 0 1 3 2 6 2s6-1 6-2c0-2-2-4-6-4z" fill="#A8DC2A"/>
+    </svg>
+
+    <!-- Hibiscus bottom-left -->
+    <svg class="absolute bottom-32 left-[10%] w-16 md:w-28 sticker-float-3 text-lagon-pitaya" viewBox="0 0 64 64" fill="currentColor">
+      <circle cx="32" cy="32" r="6" fill="#F4C430"/>
+      <ellipse cx="32" cy="14" rx="10" ry="14"/>
+      <ellipse cx="48" cy="24" rx="10" ry="14" transform="rotate(60 48 24)"/>
+      <ellipse cx="48" cy="40" rx="10" ry="14" transform="rotate(120 48 40)"/>
+      <ellipse cx="32" cy="50" rx="10" ry="14" transform="rotate(180 32 50)"/>
+      <ellipse cx="16" cy="40" rx="10" ry="14" transform="rotate(240 16 40)"/>
+      <ellipse cx="16" cy="24" rx="10" ry="14" transform="rotate(300 16 24)"/>
+      <circle cx="32" cy="32" r="4" fill="#1A1410"/>
+    </svg>
+
+    <!-- Goutte turquoise bottom-right -->
+    <svg class="absolute bottom-40 right-[10%] w-10 md:w-16 sticker-float-1 text-lagon-turquoise" viewBox="0 0 32 48" fill="currentColor">
+      <path d="M16 0C16 0 32 16 32 32C32 41 25 48 16 48C7 48 0 41 0 32C0 16 16 0 16 0Z" opacity="0.85"/>
+    </svg>
+  </div>
+
+  <!-- Contenu hero -->
+  <div class="relative max-w-content mx-auto px-5 md:px-8 pt-32 pb-32 md:pt-40 md:pb-44 grid lg:grid-cols-12 gap-10 items-center">
+
+    <!-- Texte gauche -->
+    <div class="lg:col-span-7 relative z-10">
+      <p class="font-architects text-lagon-charbon text-2xl md:text-3xl rotate-[-3deg] mb-2" aria-hidden="true">
+        Saint-Pierre · 974 ✿
+      </p>
+
+      <h1 class="font-bagel text-lagon-charbon leading-[0.85] tracking-tight" style="font-size: clamp(60px, 11vw, 168px);">
+        JUS FRAIS<br/>
+        <span class="text-lagon-pitaya">DU LAGON</span>
+      </h1>
+
+      <p class="mt-6 font-onest text-lagon-charbon/85 text-lg md:text-xl font-medium max-w-md leading-relaxed">
+        <span class="bg-lagon-charbon text-lagon-coco px-2 py-0.5 rounded-md">Tout ce qui pousse</span>, on le presse devant toi. Smoothies bowls, mojitos sans alcool et fruits péi à toute heure.
+      </p>
+
+      <!-- CTAs -->
+      <div class="mt-10 flex flex-wrap gap-3 items-center">
+        <a
+          href="#commander"
+          class="inline-flex items-center justify-center h-14 px-8 bg-lagon-charbon text-lagon-mangue font-bagel text-base tracking-wide rounded-full hover:bg-lagon-pitaya hover:text-lagon-blanc transition-all hover:scale-105"
+        >
+          COMMANDER → WHATSAPP
+        </a>
+        <a
+          href="#carte"
+          class="font-architects text-lagon-charbon text-2xl underline underline-offset-4 decoration-wavy decoration-lagon-pitaya hover:decoration-lagon-charbon"
+        >
+          ou voir la carte
+        </a>
+      </div>
+    </div>
+
+    <!-- Photo jus à droite -->
+    <div class="lg:col-span-5 relative">
+      <div class="relative aspect-square max-w-md mx-auto rounded-full overflow-hidden ring-8 ring-lagon-charbon" style="transform: rotate(3deg);">
+        <img
+          src={data.info.photoHero}
+          alt="Verres de jus colorés sur fond tropical"
+          class="w-full h-full object-cover"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </div>
+      <!-- Sticker prix -->
+      <div class="absolute -top-4 -right-4 md:-top-6 md:-right-6 w-24 h-24 md:w-32 md:h-32 bg-lagon-lime text-lagon-charbon rounded-full flex flex-col items-center justify-center font-bagel rotate-12 ring-4 ring-lagon-charbon">
+        <span class="text-3xl md:text-4xl leading-none">5€</span>
+        <span class="text-[10px] md:text-xs uppercase tracking-wider mt-1">le jus</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Marquee prix défilant en bas -->
+  <div class="relative bg-lagon-charbon text-lagon-coco py-4 overflow-hidden border-y-4 border-lagon-charbon">
+    <div class="marquee flex whitespace-nowrap">
+      <div class="marquee-content flex shrink-0 items-center">
+        {[...data.marquee, ...data.marquee, ...data.marquee].map((m) => (
+          <span class="font-bagel text-2xl md:text-3xl px-8 flex items-center gap-8">
+            {m}
+            <span class="text-lagon-mangue text-3xl">★</span>
+          </span>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <style>
+    /* Stickers floating animations */
+    .sticker-float-1 { animation: float-1 6s ease-in-out infinite; }
+    .sticker-float-2 { animation: float-2 7s ease-in-out infinite; }
+    .sticker-float-3 { animation: float-3 8s ease-in-out infinite; }
+    @keyframes float-1 {
+      0%, 100% { transform: translateY(0) rotate(-5deg); }
+      50%      { transform: translateY(-20px) rotate(5deg); }
+    }
+    @keyframes float-2 {
+      0%, 100% { transform: translateY(0) rotate(8deg); }
+      50%      { transform: translateY(-15px) rotate(-3deg); }
+    }
+    @keyframes float-3 {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50%      { transform: translateY(-25px) rotate(10deg); }
+    }
+
+    /* Marquee animation */
+    .marquee-content {
+      animation: marquee 35s linear infinite;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-33.333%); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .sticker-float-1, .sticker-float-2, .sticker-float-3, .marquee-content {
+        animation: none;
+      }
+    }
+  </style>
+</section>

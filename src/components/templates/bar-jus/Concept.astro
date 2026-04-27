@@ -1,0 +1,42 @@
+---
+/**
+ * Concept — 3 piliers en bandeau horizontal très coloré.
+ * Chaque pilier a un fond couleur saturée différent (lime/turquoise/pitaya).
+ */
+import data from '../../../data/templates/lagon.json';
+---
+
+<section class="bg-lagon-coco py-20 md:py-28 px-5 md:px-8">
+  <div class="max-w-content mx-auto">
+
+    <!-- Annotation manuscrite -->
+    <p class="font-architects text-lagon-pitaya text-2xl md:text-3xl text-center mb-3 rotate-[-2deg]" aria-hidden="true">
+      pourquoi nous ?
+    </p>
+
+    <h2 class="font-bagel text-lagon-charbon text-center mb-14 md:mb-16 leading-tight" style="font-size: clamp(36px, 6vw, 72px);">
+      LE CONCEPT EN <span class="text-lagon-pitaya">3 BOUTS</span>.
+    </h2>
+
+    <ul class="grid md:grid-cols-3 gap-4 md:gap-6">
+      {data.piliers.map((p, i) => {
+        const bgs = ['bg-lagon-lime', 'bg-lagon-turquoise', 'bg-lagon-pitaya'];
+        const txts = ['text-lagon-charbon', 'text-lagon-charbon', 'text-lagon-blanc'];
+        const rotations = ['rotate-[-1deg]', 'rotate-[1deg]', 'rotate-[-1deg]'];
+        return (
+          <li class:list={[bgs[i], txts[i], 'p-7 md:p-10 ring-4 ring-lagon-charbon transform transition-transform duration-300 hover:rotate-0', rotations[i]]}>
+            <p class="font-bagel text-7xl md:text-8xl leading-none opacity-30">
+              0{i + 1}
+            </p>
+            <h3 class="font-bagel text-3xl md:text-4xl leading-tight mt-3 mb-4">
+              {p.titre.toUpperCase()}<span class={i < 2 ? 'text-lagon-pitaya' : 'text-lagon-mangue'}>.</span>
+            </h3>
+            <p class="font-onest text-base md:text-lg font-medium leading-relaxed">
+              {p.description}
+            </p>
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,48 @@
+---
+/**
+ * CTAFinal — méga typo POP. Une question, un bouton géant.
+ */
+import data from '../../../data/templates/lagon.json';
+---
+
+<section class="bg-lagon-pitaya py-24 md:py-36 px-5 md:px-8 text-center text-lagon-blanc relative overflow-hidden">
+
+  <!-- Gros stickers décoratifs -->
+  <svg class="absolute top-12 left-8 w-20 md:w-32 text-lagon-mangue rotate-[-15deg]" viewBox="0 0 64 64" fill="currentColor" aria-hidden="true">
+    <circle cx="32" cy="32" r="20" opacity="0.9"/>
+    <circle cx="32" cy="32" r="12" fill="#1A1410"/>
+  </svg>
+  <svg class="absolute bottom-12 right-8 w-24 md:w-40 text-lagon-lime rotate-12" viewBox="0 0 64 64" fill="currentColor" aria-hidden="true">
+    <ellipse cx="32" cy="32" rx="22" ry="18" opacity="0.9"/>
+  </svg>
+
+  <div class="relative max-w-3xl mx-auto">
+    <p class="font-architects text-lagon-mangue text-3xl md:text-4xl rotate-[-3deg] mb-4">
+      alors ?
+    </p>
+
+    <h2 class="font-bagel text-lagon-blanc leading-[0.85]" style="font-size: clamp(72px, 14vw, 240px);">
+      TU VIENS<br/>
+      <span class="text-lagon-mangue">QUAND ?</span>
+    </h2>
+
+    <p class="mt-10 font-onest text-lagon-blanc/90 text-lg md:text-xl font-medium max-w-md mx-auto">
+      Le bar est ouvert 7j/7. Bord de mer, terrasse ombragée, musique douce. T'as plus d'excuse.
+    </p>
+
+    <div class="mt-14 flex flex-wrap items-center justify-center gap-5">
+      <a
+        href="#commander"
+        class="inline-flex items-center justify-center h-16 px-12 bg-lagon-charbon text-lagon-mangue font-bagel text-xl tracking-wide rounded-full hover:bg-lagon-blanc hover:text-lagon-charbon transition-all hover:scale-105"
+      >
+        JE COMMANDE →
+      </a>
+      <a
+        href={`tel:${data.info.telephoneHref}`}
+        class="font-architects text-lagon-mangue text-2xl underline underline-offset-4 decoration-wavy decoration-lagon-mangue hover:text-lagon-blanc tabular-nums"
+      >
+        ou j'appelle : {data.info.telephone}
+      </a>
+    </div>
+  </div>
+</section>

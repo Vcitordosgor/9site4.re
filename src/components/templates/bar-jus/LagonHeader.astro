@@ -1,0 +1,47 @@
+---
+import data from '../../../data/templates/lagon.json';
+---
+
+<header
+  id="lagon-header"
+  data-scrolled="false"
+  class="fixed top-0 inset-x-0 z-50 transition-all duration-200 data-[scrolled=false]:bg-transparent data-[scrolled=true]:bg-lagon-coco data-[scrolled=true]:border-b-4 data-[scrolled=true]:border-lagon-charbon"
+>
+  <div class="max-w-content mx-auto px-5 md:px-8 h-16 flex items-center justify-between">
+
+    <!-- Wordmark : Bagel Fat One ultra-épais -->
+    <a href="#top" class="flex items-baseline gap-1 group" aria-label="Lagon Pressé — accueil">
+      <span class="font-bagel text-lagon-charbon text-2xl leading-none tracking-tight group-hover:text-lagon-pitaya transition-colors">
+        {data.info.wordmark}
+      </span>
+      <span class="font-bagel text-lagon-pitaya text-2xl leading-none">
+        {data.info.wordmark2}
+      </span>
+      <span class="text-lagon-mangue text-xs leading-none ml-1" aria-hidden="true">★</span>
+    </a>
+
+    <!-- Nav -->
+    <nav class="hidden md:flex items-center gap-7 font-onest text-[13px] font-semibold uppercase tracking-wider text-lagon-charbon" aria-label="Navigation">
+      <a href="#carte" class="hover:text-lagon-pitaya transition-colors">Les jus</a>
+      <a href="#bowls" class="hover:text-lagon-pitaya transition-colors">Les bowls</a>
+      <a href="#evenements" class="hover:text-lagon-pitaya transition-colors">Événements</a>
+    </nav>
+
+    <!-- CTA STICKER style -->
+    <a
+      href="#commander"
+      class="inline-flex items-center h-10 px-5 bg-lagon-pitaya text-lagon-blanc font-bagel text-sm tracking-wide rounded-full hover:bg-lagon-charbon transition-all hover:rotate-[-2deg]"
+    >
+      JE COMMANDE →
+    </a>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById('lagon-header');
+  if (header) {
+    const update = () => { header.dataset.scrolled = String(window.scrollY > 30); };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+  }
+</script>
