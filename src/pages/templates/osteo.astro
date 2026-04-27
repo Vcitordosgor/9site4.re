@@ -1,0 +1,82 @@
+---
+import '@fontsource/cardo/400.css';
+import '@fontsource/cardo/400-italic.css';
+import '@fontsource/cardo/700.css';
+import '@fontsource/public-sans/300.css';
+import '@fontsource/public-sans/400.css';
+import '@fontsource/public-sans/500.css';
+import '@fontsource/public-sans/600.css';
+import '@fontsource/karla/400.css';
+import '@fontsource/karla/500.css';
+import '@fontsource/karla/600.css';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getSeo } from '../../lib/seo';
+import verveineData from '../../data/templates/verveine.json';
+
+import VerveineHeader from '../../components/templates/osteo/VerveineHeader.astro';
+import HeroFiche from '../../components/templates/osteo/HeroFiche.astro';
+import Approche from '../../components/templates/osteo/Approche.astro';
+import Motifs from '../../components/templates/osteo/Motifs.astro';
+import Seance from '../../components/templates/osteo/Seance.astro';
+import Tarifs from '../../components/templates/osteo/Tarifs.astro';
+import RendezVous from '../../components/templates/osteo/RendezVous.astro';
+import Trouver from '../../components/templates/osteo/Trouver.astro';
+import CTAFinal from '../../components/templates/osteo/CTAFinal.astro';
+import VerveineFooter from '../../components/templates/osteo/VerveineFooter.astro';
+---
+
+<BaseLayout seo={getSeo('templateOsteo')} bare={true}>
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <link rel="dns-prefetch" href="https://images.unsplash.com" />
+    <link
+      rel="preload"
+      as="image"
+      href={verveineData.info.photoPraticienne}
+      fetchpriority="high"
+    />
+  </Fragment>
+
+  <VerveineHeader />
+
+  <main id="top" class="bg-verveine-creme text-verveine-encre font-public-sans">
+    <HeroFiche />
+    <Approche />
+    <Motifs />
+    <Seance />
+    <Tarifs />
+    <RendezVous />
+    <Trouver />
+    <CTAFinal />
+  </main>
+
+  <VerveineFooter />
+
+  <!-- Sticky CTA mobile : rectangle bordé encre (vs pill bordeaux danse, ocre yoga, lime brut coach) -->
+  <a
+    id="verveine-sticky-cta"
+    href="#rendez-vous"
+    data-visible="false"
+    class="md:hidden fixed bottom-5 inset-x-5 z-40 inline-flex items-center justify-center h-12 bg-verveine-encre text-verveine-creme font-public-sans text-sm font-medium transition-all duration-300 data-[visible=false]:opacity-0 data-[visible=false]:translate-y-4 data-[visible=false]:pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0"
+    style="box-shadow: 0 8px 24px rgba(28,28,26,0.20);"
+  >
+    Prendre rendez-vous
+  </a>
+
+  <script>
+    const sticky = document.getElementById('verveine-sticky-cta');
+    const rdv = document.getElementById('rendez-vous');
+    if (sticky && rdv) {
+      const update = () => {
+        const rect = rdv.getBoundingClientRect();
+        const inRdv = rect.top < window.innerHeight && rect.bottom > 80;
+        const scrolledPastHero = window.scrollY > 500;
+        sticky.dataset.visible = String(scrolledPastHero && !inRdv);
+      };
+      update();
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update, { passive: true });
+    }
+  </script>
+</BaseLayout>

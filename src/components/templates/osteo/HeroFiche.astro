@@ -1,0 +1,113 @@
+---
+/**
+ * HeroFiche — mise en page "carte de visite professionnelle agrandie".
+ * À gauche : photo carrée 1:1 portrait B&W praticienne.
+ * À droite : nom + titre + diplômes en liste + CTA RDV + numéro tél.
+ * Schéma anatomique SVG très fin en arrière-plan décoratif.
+ */
+import data from '../../../data/templates/verveine.json';
+---
+
+<section id="top" class="relative bg-verveine-creme overflow-hidden">
+
+  <!-- Schéma anatomique décoratif en arrière-plan, ligne très fine -->
+  <svg class="absolute right-0 top-0 h-full pointer-events-none hidden lg:block opacity-[0.06]"
+       viewBox="0 0 200 600" fill="none" stroke="#1C1C1A" stroke-width="0.5"
+       preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+    <!-- Silhouette humaine de profil, simplifié -->
+    <ellipse cx="100" cy="60" rx="22" ry="26"/>
+    <path d="M100 86 L98 100 L92 130 L88 165 Q86 200 90 240 Q92 270 95 290 Q97 320 100 350 L100 380"/>
+    <path d="M100 100 Q80 105 70 130 Q65 160 70 200"/>
+    <path d="M100 100 Q120 105 130 130 Q135 160 130 200"/>
+    <path d="M88 165 Q75 175 70 210 Q66 250 70 290"/>
+    <path d="M115 165 Q128 175 133 210 Q137 250 133 290"/>
+    <path d="M95 290 L88 380 L85 470 L83 540"/>
+    <path d="M105 290 L112 380 L115 470 L117 540"/>
+    <!-- Vertèbres marquées -->
+    <circle cx="98" cy="120" r="1.2" fill="#1C1C1A"/>
+    <circle cx="98" cy="145" r="1.2" fill="#1C1C1A"/>
+    <circle cx="98" cy="170" r="1.2" fill="#1C1C1A"/>
+    <circle cx="98" cy="195" r="1.2" fill="#1C1C1A"/>
+    <circle cx="100" cy="220" r="1.2" fill="#1C1C1A"/>
+    <circle cx="100" cy="245" r="1.2" fill="#1C1C1A"/>
+    <circle cx="100" cy="270" r="1.2" fill="#1C1C1A"/>
+  </svg>
+
+  <div class="relative max-w-content mx-auto px-6 md:px-10 pt-32 pb-20 md:pt-40 md:pb-28">
+
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+
+      <!-- Photo carrée 1:1 -->
+      <div class="lg:col-span-5">
+        <div class="relative aspect-square max-w-md lg:max-w-none mx-auto bg-verveine-papier overflow-hidden">
+          <img
+            src={data.info.photoPraticienne}
+            alt={`Portrait de ${data.info.titre}`}
+            class="w-full h-full object-cover grayscale"
+            fetchpriority="high"
+            decoding="async"
+          />
+          <!-- Cadre fin -->
+          <div class="absolute inset-3 border border-verveine-creme/40" aria-hidden="true"></div>
+          <!-- Filet sauge en bas -->
+          <div class="absolute bottom-0 left-0 right-0 h-1 bg-verveine-sauge"></div>
+        </div>
+      </div>
+
+      <!-- Carte d'identité pro -->
+      <div class="lg:col-span-7">
+
+        <!-- Eyebrow -->
+        <p class="font-karla text-[10px] uppercase tracking-[0.32em] text-verveine-beton mb-5">
+          Cabinet Verveine — {data.info.ville}
+        </p>
+
+        <!-- Nom serif large -->
+        <h1 class="font-cardo text-verveine-encre leading-[1.05]" style="font-size: clamp(40px, 5.5vw, 72px);">
+          {data.info.titre}
+        </h1>
+
+        <!-- Sous-titre discipline -->
+        <p class="mt-3 font-cardo italic text-verveine-beton text-xl md:text-2xl">
+          Ostéopathe D.O. · Pédiatrie · Périnatalité
+        </p>
+
+        <!-- Filet ornemental sauge -->
+        <div class="mt-7 mb-7 flex items-center gap-3" aria-hidden="true">
+          <span class="block h-px w-10 bg-verveine-sauge"></span>
+          <span class="block w-1 h-1 rounded-full bg-verveine-sauge"></span>
+          <span class="block h-px flex-1 bg-verveine-sauge/40"></span>
+        </div>
+
+        <!-- Liste diplômes en bullets serif fin -->
+        <p class="font-karla text-[10px] uppercase tracking-[0.28em] text-verveine-beton mb-3">
+          Formation
+        </p>
+        <ul class="space-y-1.5 mb-9">
+          {data.diplomes.map((d) => (
+            <li class="font-cardo text-verveine-encre/85 text-base leading-relaxed pl-5 relative">
+              <span class="absolute left-0 top-3 block w-2 h-px bg-verveine-encre/40" aria-hidden="true"></span>
+              {d}
+            </li>
+          ))}
+        </ul>
+
+        <!-- CTA + tél en row -->
+        <div class="flex flex-wrap items-center gap-x-7 gap-y-4">
+          <a
+            href="#rendez-vous"
+            class="inline-flex items-center h-12 px-7 bg-verveine-encre text-verveine-creme font-public-sans text-sm font-medium hover:bg-verveine-beton transition-colors"
+          >
+            Prendre rendez-vous
+          </a>
+          <a
+            href={`tel:${data.info.telephoneHref}`}
+            class="font-cardo text-verveine-encre text-lg tabular-nums underline underline-offset-4 decoration-verveine-sauge hover:decoration-verveine-encre transition-colors"
+          >
+            {data.info.telephone}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

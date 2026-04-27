@@ -1,0 +1,89 @@
+---
+/**
+ * Trouver — adresse + photo cabinet + 3 modes d'accès + horaires.
+ * Layout : photo à gauche, infos à droite. Très calme.
+ */
+import data from '../../../data/templates/verveine.json';
+
+const accessIcons: Record<string, string> = {
+  'À pied': 'M14 4l-2 9 7 7M9 5a2 2 0 1 0 4 0 2 2 0 1 0-4 0M11 13l-4 7',
+  'Voiture': 'M3 13h18l-2-7H5L3 13zM3 13v6h2v-2h14v2h2v-6M7 16a1 1 0 1 0 0-2 1 1 0 1 0 0 2M17 16a1 1 0 1 0 0-2 1 1 0 1 0 0 2',
+  'Transport': 'M5 4h14v14H5V4zM5 18l-1 3M19 18l1 3M8 8h8M8 13h8M8 16a1 1 0 1 0 0-2 1 1 0 1 0 0 2M16 16a1 1 0 1 0 0-2 1 1 0 1 0 0 2',
+};
+---
+
+<section id="trouver" class="bg-verveine-creme">
+  <div class="grid lg:grid-cols-12">
+
+    <!-- Photo cabinet -->
+    <div class="lg:col-span-6 relative aspect-[4/3] lg:aspect-auto lg:min-h-[600px]">
+      <img
+        src={data.info.photoCabinet}
+        alt="Le Cabinet Verveine, vu de l'extérieur"
+        loading="lazy"
+        decoding="async"
+        class="absolute inset-0 w-full h-full object-cover grayscale"
+      />
+      <!-- Voile sauge léger -->
+      <div class="absolute inset-0 bg-verveine-sauge/10"></div>
+      <!-- Cadre fin intérieur -->
+      <div class="absolute inset-4 md:inset-6 border border-verveine-creme/40 pointer-events-none" aria-hidden="true"></div>
+    </div>
+
+    <!-- Infos -->
+    <div class="lg:col-span-6 px-6 md:px-12 lg:px-16 py-16 md:py-24 flex flex-col justify-center">
+
+      <p class="font-karla text-[10px] uppercase tracking-[0.32em] text-verveine-beton mb-6">
+        Trouver le cabinet
+      </p>
+
+      <h2 class="font-cardo text-verveine-encre leading-[1.1]" style="font-size: clamp(34px, 5vw, 56px);">
+        À deux pas du<br/>centre de Saint-Pierre.
+      </h2>
+
+      <!-- Adresse -->
+      <div class="mt-10 pb-8 border-b border-verveine-encre/15">
+        <p class="font-karla text-[10px] uppercase tracking-[0.28em] text-verveine-sauge mb-2">Adresse</p>
+        <p class="font-cardo text-verveine-encre text-xl md:text-2xl leading-snug">
+          {data.info.adresseLigne1}
+        </p>
+        <p class="font-cardo italic text-verveine-beton text-lg">
+          {data.info.adresseLigne2}
+        </p>
+      </div>
+
+      <!-- 3 modes d'accès -->
+      <div class="mt-8 space-y-5">
+        <p class="font-karla text-[10px] uppercase tracking-[0.28em] text-verveine-sauge">Pour venir</p>
+        {data.acces.map((a) => (
+          <div class="flex items-start gap-4">
+            <span class="shrink-0 mt-0.5 w-8 h-8 flex items-center justify-center text-verveine-sauge">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d={accessIcons[a.label] ?? accessIcons['À pied']}/>
+              </svg>
+            </span>
+            <div>
+              <p class="font-public-sans text-verveine-encre text-sm font-medium">{a.label}</p>
+              <p class="font-cardo italic text-verveine-beton text-sm">{a.detail}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Horaires -->
+      <div class="mt-10 pt-8 border-t border-verveine-encre/15">
+        <p class="font-karla text-[10px] uppercase tracking-[0.28em] text-verveine-sauge mb-3">Horaires d'ouverture</p>
+        <ul class="grid grid-cols-2 gap-x-8 gap-y-1.5">
+          {data.horaires.map((h) => (
+            <li class="flex items-baseline justify-between gap-3 font-cardo text-verveine-encre/85 text-base">
+              <span class:list={[h.ouvert ? '' : 'text-verveine-beton/60']}>{h.jour}</span>
+              <span class:list={['tabular-nums text-right', h.ouvert ? 'text-verveine-beton' : 'italic text-verveine-beton/50']}>
+                {h.label}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

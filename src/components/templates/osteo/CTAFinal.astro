@@ -1,0 +1,48 @@
+---
+/**
+ * CTAFinal — sobre, rassurant, professionnel.
+ * Une phrase courte, un CTA, une mention conventions.
+ */
+import data from '../../../data/templates/verveine.json';
+---
+
+<section class="bg-verveine-papier py-20 md:py-32 px-6 md:px-10">
+  <div class="max-w-2xl mx-auto text-center">
+
+    <!-- Filet ornemental sauge -->
+    <div class="flex items-center justify-center gap-3 mb-12" aria-hidden="true">
+      <span class="block h-px w-12 bg-verveine-sauge"></span>
+      <span class="block w-1 h-1 rounded-full bg-verveine-sauge"></span>
+      <span class="block h-px w-12 bg-verveine-sauge"></span>
+    </div>
+
+    <h2 class="font-cardo text-verveine-encre leading-[1.1]" style="font-size: clamp(34px, 5vw, 56px);">
+      Une douleur ? Une question ?<br/>
+      <span class="italic text-verveine-beton">Le cabinet est là.</span>
+    </h2>
+
+    <p class="mt-8 font-cardo italic text-verveine-beton text-lg leading-relaxed max-w-md mx-auto">
+      Pour un premier contact, le téléphone reste le plus simple. Sinon le formulaire en ligne ouvre WhatsApp directement.
+    </p>
+
+    <div class="mt-12 flex flex-wrap items-center justify-center gap-4">
+      <a
+        href="#rendez-vous"
+        class="inline-flex items-center justify-center h-13 px-9 bg-verveine-encre text-verveine-creme font-public-sans text-sm font-medium hover:bg-verveine-beton transition-colors"
+        style="height: 52px;"
+      >
+        Prendre rendez-vous
+      </a>
+      <a
+        href={`tel:${data.info.telephoneHref}`}
+        class="font-cardo text-verveine-encre text-lg tabular-nums underline underline-offset-4 decoration-verveine-sauge hover:decoration-verveine-encre transition-colors"
+      >
+        {data.info.telephone}
+      </a>
+    </div>
+
+    <p class="mt-12 font-karla text-[10px] uppercase tracking-[0.3em] text-verveine-beton/65">
+      Cabinet conventionné · {data.info.rof} · ADELI {data.info.adeli}
+    </p>
+  </div>
+</section>

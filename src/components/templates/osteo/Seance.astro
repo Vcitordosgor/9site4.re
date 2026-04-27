@@ -1,0 +1,72 @@
+---
+/**
+ * Seance — déroulé d'une consultation en 4 étapes type timeline médicale.
+ * Layout : 4 cards verticales avec schéma SVG anatomique en haut + numéro
+ * + nom étape + durée + description. Connectées par filet sauge.
+ */
+import data from '../../../data/templates/verveine.json';
+
+// Schémas anatomiques très simples par étape
+const schemas: Record<string, string> = {
+  '01': '<rect x="6" y="4" width="36" height="40" rx="2" stroke-dasharray="2 2"/><line x1="12" y1="14" x2="36" y2="14"/><line x1="12" y1="22" x2="36" y2="22"/><line x1="12" y1="30" x2="32" y2="30"/><line x1="12" y1="38" x2="28" y2="38"/>',
+  '02': '<circle cx="24" cy="14" r="6"/><path d="M24 20 L24 36"/><path d="M24 22 L14 30 M24 22 L34 30"/><path d="M24 36 L18 46 M24 36 L30 46"/><circle cx="14" cy="30" r="2" fill="currentColor"/><circle cx="34" cy="30" r="2" fill="currentColor"/>',
+  '03': '<circle cx="24" cy="24" r="18"/><path d="M14 22 Q24 16 34 22"/><path d="M14 30 Q24 36 34 30"/><circle cx="18" cy="24" r="1.5" fill="currentColor"/><circle cx="30" cy="24" r="1.5" fill="currentColor"/>',
+  '04': '<path d="M8 30 L18 30 L22 20 L28 40 L32 30 L40 30"/><circle cx="22" cy="20" r="2"/><circle cx="28" cy="40" r="2"/>',
+};
+---
+
+<section id="seance" class="bg-verveine-papier py-24 md:py-36 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <!-- Header -->
+    <header class="mb-16 md:mb-20 max-w-2xl">
+      <p class="font-karla text-[10px] uppercase tracking-[0.32em] text-verveine-beton mb-6">
+        Comment ça se passe
+      </p>
+      <h2 class="font-cardo text-verveine-encre leading-[1.1]" style="font-size: clamp(36px, 5vw, 56px);">
+        Le déroulé d'une séance
+      </h2>
+      <p class="mt-5 font-cardo italic text-verveine-beton text-lg">
+        {data.seance.duree} · de l'écoute, jamais de précipitation.
+      </p>
+    </header>
+
+    <!-- Grid 4 étapes avec schémas -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-verveine-encre/10 relative">
+
+      <!-- Filet sauge horizontal au milieu desktop -->
+      <span class="hidden lg:block absolute top-[7.5rem] left-0 right-0 h-px bg-verveine-sauge/50 z-10" aria-hidden="true"></span>
+
+      {data.seance.etapes.map((e) => (
+        <article class="bg-verveine-papier p-7 md:p-8 relative">
+
+          <!-- Schéma SVG anatomique -->
+          <div class="h-16 mb-6 text-verveine-sauge">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={schemas[e.num] ?? schemas['01']} />
+          </div>
+
+          <!-- Numéro grand serif -->
+          <p class="font-cardo text-verveine-sauge text-3xl tabular-nums leading-none mb-4">
+            {e.num}
+          </p>
+
+          <!-- Titre étape -->
+          <h3 class="font-public-sans text-verveine-encre text-lg md:text-xl font-medium mb-1">
+            {e.titre}
+          </h3>
+
+          <!-- Durée micro -->
+          <p class="font-karla text-[10px] uppercase tracking-[0.25em] text-verveine-beton mb-4">
+            {e.duree}
+          </p>
+
+          <!-- Description -->
+          <p class="font-cardo text-verveine-encre/80 text-[15px] leading-[1.75]">
+            {e.description}
+          </p>
+        </article>
+      ))}
+    </div>
+
+  </div>
+</section>
