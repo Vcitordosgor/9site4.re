@@ -52,6 +52,9 @@ export default {
     {
       pattern: /^(bg|text|ring|border|from|to|via)-(aubry-perle|aubry-papier|aubry-nuit|aubry-prune|aubry-rose|aubry-encre|aubry-blanc)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
     },
+    {
+      pattern: /^(bg|text|ring|border|from|to|via)-(lagon-mangue|lagon-pitaya|lagon-lime|lagon-turquoise|lagon-charbon|lagon-coco|lagon-blanc)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
+    },
   ],
   theme: {
     extend: {
@@ -196,6 +199,17 @@ export default {
         'aubry-rose':   '#C9A28A',  // terre rose — micro-accent ornemental
         'aubry-encre':  '#0F0F12',  // encre noire — texte AAA
         'aubry-blanc':  '#FFFFFF',
+        // Palette bar à jus (template /templates/bar-jus — Lagon Pressé)
+        // Style "POP tropical éclatant, énergie food-truck" : couleurs ultra
+        // saturées, mangue + pitaya + lime + turquoise lagon. À l'opposé total
+        // des templates restaurants déjà faits (gastro éditorial, trattoria).
+        'lagon-mangue':    '#F4C430',  // jaune mangue saturé — accent dominant
+        'lagon-pitaya':    '#E84B7C',  // rose pitaya — accent secondaire / CTA
+        'lagon-lime':      '#A8DC2A',  // vert lime acide — micro-accent
+        'lagon-turquoise': '#1FB8C8',  // turquoise lagon — accent froid
+        'lagon-charbon':   '#1A1410',  // noir warm — texte AAA, contraste
+        'lagon-coco':      '#FFF8EC',  // crème coco — fond doux
+        'lagon-blanc':     '#FFFFFF',
       },
       fontFamily: {
         sora: ['Sora', 'system-ui', 'sans-serif'],
@@ -231,6 +245,9 @@ export default {
         caslon: ['"Libre Caslon Text"', 'Georgia', 'serif'],
         albert: ['"Albert Sans"', 'system-ui', 'sans-serif'],
         'plex-mono': ['"IBM Plex Mono"', 'ui-monospace', 'monospace'],
+        bagel: ['"Bagel Fat One"', 'Impact', 'sans-serif'],
+        onest: ['Onest', 'system-ui', 'sans-serif'],
+        architects: ['"Architects Daughter"', 'cursive'],
       },
       fontSize: {
         'hero': ['clamp(2.5rem, 5vw + 1rem, 5rem)', { lineHeight: '1.05', letterSpacing: '-0.02em' }],

@@ -41,7 +41,8 @@ type PageKey =
   | 'templateDanse'
   | 'templateOsteo'
   | 'templateDieteticienne'
-  | 'templatePsy';
+  | 'templatePsy'
+  | 'templateBarJus';
 
 const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'> & { noindex?: boolean; ogImage?: string; ogImageAlt?: string }> = {
   home: {
@@ -175,6 +176,13 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
     description:
       'Aperçu du template "Psychologue" proposé par 9site4 : approche, cadre déontologique, modalités et prise de rendez-vous confidentielle. Site fictif de démonstration.',
     canonical: '/templates/psychologue',
+    noindex: true,
+  },
+  templateBarJus: {
+    title: 'Lagon Pressé — Bar à jus tropical à Saint-Pierre (Réunion) | Template 9site4',
+    description:
+      'Aperçu du template "Bar à jus tropical" proposé par 9site4 : carte des jus pressés, smoothie bowls, événements, commande WhatsApp. Site fictif de démonstration.',
+    canonical: '/templates/bar-jus',
     noindex: true,
   },
 };

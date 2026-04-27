@@ -1,0 +1,186 @@
+{
+  "info": {
+    "nom": "Lagon Pressé",
+    "wordmark": "Lagon",
+    "wordmark2": "Pressé",
+    "tagline": "Tout ce qui pousse, on le presse.",
+    "soustitre": "Bar à jus pressés & smoothie bowls",
+    "fondatrice": "Lola Hoarau",
+    "ville": "Saint-Pierre",
+    "adresseLigne1": "14 Boulevard Hubert-Delisle",
+    "adresseLigne2": "97410 Saint-Pierre",
+    "telephone": "0692 67 14 38",
+    "telephoneHref": "+33692671438",
+    "whatsapp": "33692671438",
+    "email": "salut@lagon-presse.re",
+    "instagram": "@lagonpresse.974",
+    "siret": "45678901100017",
+    "annee": "2021",
+    "photoHero": "https://images.unsplash.com/photo-1622597467836-f3285f2131b8?w=1600&q=85",
+    "photoBar": "https://images.unsplash.com/photo-1572916118970-fbd335ec03d5?w=1200&q=85"
+  },
+  "marquee": [
+    "Jus pressé · 5€",
+    "Bowl tropical · 9€",
+    "Mojito sans alcool · 6€",
+    "Eau de coco · 4€",
+    "Pack 5 jus · 22€",
+    "Smoothie · 6€"
+  ],
+  "piliers": [
+    {
+      "id": "frais",
+      "titre": "Frais du jour",
+      "description": "Pressés à la commande, jamais préparés à l'avance. Si on en manque, on en manque."
+    },
+    {
+      "id": "local",
+      "titre": "100 % péi",
+      "description": "Mangues de Saint-Joseph, ananas Victoria, fruits de la passion de l'Hermitage."
+    },
+    {
+      "id": "zero",
+      "titre": "Zéro déchet",
+      "description": "Verres en verre consigné · pulpes compostées · bagasses des cannes recyclées."
+    }
+  ],
+  "jus": [
+    {
+      "id": "mangue-passion",
+      "nom": "Mangue & Passion",
+      "ingredients": "Mangue · fruit de la passion · citron vert",
+      "prix": 5.5,
+      "badge": "STAR",
+      "couleur": "lagon-mangue",
+      "photo": "https://images.unsplash.com/photo-1546173159-315724a31696?w=600&q=80"
+    },
+    {
+      "id": "carotte-gingembre",
+      "nom": "Carotte & Gingembre",
+      "ingredients": "Carotte fraîche · gingembre · citron",
+      "prix": 5.0,
+      "badge": "ÉNERGIE",
+      "couleur": "lagon-pitaya",
+      "photo": "https://images.unsplash.com/photo-1624174503243-9a32c44ed5e0?w=600&q=80"
+    },
+    {
+      "id": "ananas-menthe",
+      "nom": "Ananas & Menthe",
+      "ingredients": "Ananas Victoria · menthe · citron",
+      "prix": 5.0,
+      "badge": null,
+      "couleur": "lagon-lime",
+      "photo": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&q=80"
+    },
+    {
+      "id": "vert-detox",
+      "nom": "Vert Détox",
+      "ingredients": "Épinard · concombre · pomme verte · gingembre",
+      "prix": 5.5,
+      "badge": "DETOX",
+      "couleur": "lagon-lime",
+      "photo": "https://images.unsplash.com/photo-1610970881699-44a5587cabec?w=600&q=80"
+    },
+    {
+      "id": "goyave-hibiscus",
+      "nom": "Goyave & Hibiscus",
+      "ingredients": "Goyave péi · fleur d'hibiscus · citron vert",
+      "prix": 5.5,
+      "badge": "NOUVEAU",
+      "couleur": "lagon-pitaya",
+      "photo": "https://images.unsplash.com/photo-1437418747212-8d9709afab22?w=600&q=80"
+    },
+    {
+      "id": "betterave-orange",
+      "nom": "Betterave & Orange",
+      "ingredients": "Betterave · orange · gingembre",
+      "prix": 5.0,
+      "badge": null,
+      "couleur": "lagon-pitaya",
+      "photo": "https://images.unsplash.com/photo-1622597467836-f3285f2131b8?w=600&q=80"
+    },
+    {
+      "id": "coco-vanille",
+      "nom": "Coco & Vanille",
+      "ingredients": "Eau de coco · vanille bourbon · miel local",
+      "prix": 5.5,
+      "badge": "DOUX",
+      "couleur": "lagon-coco",
+      "photo": "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=600&q=80"
+    },
+    {
+      "id": "pomme-fenouil",
+      "nom": "Pomme & Fenouil",
+      "ingredients": "Pomme · fenouil · citron",
+      "prix": 5.0,
+      "badge": null,
+      "couleur": "lagon-turquoise",
+      "photo": "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?w=600&q=80"
+    }
+  ],
+  "bowls": [
+    {
+      "id": "tropical",
+      "nom": "Bowl Tropical",
+      "ingredients": "Mangue, ananas, granola coco, copeaux noix de coco, fruit du dragon",
+      "prix": 9.0,
+      "photo": "https://images.unsplash.com/photo-1490323914169-4ef723768c8b?w=700&q=80"
+    },
+    {
+      "id": "acai",
+      "nom": "Bowl Açaí",
+      "ingredients": "Açaí, banane, fraise, miel, granola, banane fraîche",
+      "prix": 9.5,
+      "photo": "https://images.unsplash.com/photo-1494859802809-d069c3b71a8a?w=700&q=80"
+    },
+    {
+      "id": "vert",
+      "nom": "Bowl Vert Power",
+      "ingredients": "Épinard, banane, pomme, beurre cacahuète, granola",
+      "prix": 8.5,
+      "photo": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=700&q=80"
+    },
+    {
+      "id": "choco",
+      "nom": "Bowl Choco-Banane",
+      "ingredients": "Banane, cacao, lait amande, granola, chips chocolat",
+      "prix": 8.5,
+      "photo": "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=700&q=80"
+    }
+  ],
+  "evenements": [
+    {
+      "jour": "Lundi",
+      "titre": "Detox Monday",
+      "horaire": "10h – 18h",
+      "description": "Tous les jus verts à -20% pour bien démarrer la semaine.",
+      "couleur": "lagon-lime"
+    },
+    {
+      "jour": "Mardi",
+      "titre": "Mojito (sans alcool)",
+      "horaire": "17h – 19h",
+      "description": "Happy hour ! Tous les mojitos pétillants à 4€ au lieu de 6€.",
+      "couleur": "lagon-turquoise"
+    },
+    {
+      "jour": "Vendredi",
+      "titre": "Smoothie Friday",
+      "horaire": "Toute la journée",
+      "description": "Pack bowl + jus pressé à 12€ au lieu de 14€.",
+      "couleur": "lagon-mangue"
+    },
+    {
+      "jour": "Samedi",
+      "titre": "Apéro fruits",
+      "horaire": "16h – 21h",
+      "description": "Plateau fruits exotiques à partager + boisson au choix.",
+      "couleur": "lagon-pitaya"
+    }
+  ],
+  "horaires": [
+    { "jour": "Lundi – Vendredi", "label": "09h – 19h", "ouvert": true },
+    { "jour": "Samedi", "label": "09h – 21h", "ouvert": true },
+    { "jour": "Dimanche", "label": "09h – 15h", "ouvert": true }
+  ]
+}
