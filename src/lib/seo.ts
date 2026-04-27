@@ -37,7 +37,8 @@ type PageKey =
   | 'templatePaysagiste'
   | 'templateElectricien'
   | 'templateCoach'
-  | 'templateYoga';
+  | 'templateYoga'
+  | 'templateDanse';
 
 const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'> & { noindex?: boolean; ogImage?: string; ogImageAlt?: string }> = {
   home: {
@@ -143,6 +144,13 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
     description:
       'Aperçu du template "Studio de yoga" proposé par 9site4 : pratiques, planning, enseignants, tarifs et réservation en ligne. Site fictif de démonstration.',
     canonical: '/templates/yoga',
+    noindex: true,
+  },
+  templateDanse: {
+    title: 'Vermeille — École de danse à Saint-Denis (Réunion) | Template 9site4',
+    description:
+      'Aperçu du template "École de danse" proposé par 9site4 : disciplines, professeurs, spectacles, planning et inscription en ligne. Site fictif de démonstration.',
+    canonical: '/templates/danse',
     noindex: true,
   },
 };

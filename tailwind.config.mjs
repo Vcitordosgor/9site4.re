@@ -40,6 +40,9 @@ export default {
     {
       pattern: /^(bg|text|ring|border|from|to|via)-(yoga-creme|yoga-papier|yoga-ocre|yoga-mousse|yoga-encre|yoga-pierre|yoga-blanc)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
     },
+    {
+      pattern: /^(bg|text|ring|border|from|to|via)-(vermeille-velours|vermeille-charbon|vermeille-bordeaux|vermeille-rose|vermeille-ivoire|vermeille-or|vermeille-blanc)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
+    },
   ],
   theme: {
     extend: {
@@ -143,6 +146,16 @@ export default {
         'yoga-encre':  '#2A201A',  // brun encre — texte AAA, fond sombre
         'yoga-pierre': '#8A8378',  // gris-brun — texte secondaire
         'yoga-blanc':  '#FFFFFF',
+        // Palette danse (template /templates/danse — Vermeille École de danse)
+        // Style "Théâtre & ballet contemporain" : noir velours + bordeaux profond
+        // + rose poudre + crème ivoire + or vieilli. Inspiration affiche d'opéra.
+        'vermeille-velours':  '#1A0F12',  // noir velours bordeauté — fond dark dominant
+        'vermeille-charbon':  '#2A1F22',  // sections élevées dark
+        'vermeille-bordeaux': '#7A1A2A',  // bordeaux profond — accent CTA, signature
+        'vermeille-rose':     '#E8C4C0',  // rose poudre — micro-accents
+        'vermeille-ivoire':   '#F8F0E5',  // crème ivoire — fond light
+        'vermeille-or':       '#B8956A',  // or vieilli — filets ornementaux
+        'vermeille-blanc':    '#FFFFFF',
       },
       fontFamily: {
         sora: ['Sora', 'system-ui', 'sans-serif'],
@@ -166,6 +179,9 @@ export default {
         'dm-serif': ['"DM Serif Display"', 'Georgia', 'serif'],
         spectral: ['Spectral', 'Georgia', 'serif'],
         lexend: ['Lexend', 'system-ui', 'sans-serif'],
+        italiana: ['Italiana', 'Didot', 'Georgia', 'serif'],
+        'inter-tight': ['"Inter Tight"', 'system-ui', 'sans-serif'],
+        caveat: ['Caveat', 'cursive'],
       },
       fontSize: {
         'hero': ['clamp(2.5rem, 5vw + 1rem, 5rem)', { lineHeight: '1.05', letterSpacing: '-0.02em' }],

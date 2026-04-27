@@ -1,0 +1,135 @@
+{
+  "info": {
+    "nom": "Vermeille",
+    "wordmark": "Vermeille",
+    "soustitre": "École de danse",
+    "tagline": "Le rideau ne se lève qu'avec vous.",
+    "fondatrice": "Camille Vermeille",
+    "ville": "Saint-Denis",
+    "adresseLigne1": "14 rue de Paris",
+    "adresseLigne2": "97400 Saint-Denis",
+    "telephone": "0692 84 21 67",
+    "telephoneHref": "+33692842167",
+    "whatsapp": "33692842167",
+    "email": "contact@vermeille-danse.re",
+    "instagram": "@vermeille.danse",
+    "siret": "90123456700017",
+    "annee": "2008",
+    "saison": "2025—2026",
+    "photoHero": "https://images.unsplash.com/photo-1547153760-18fc86324498?w=1600&q=85",
+    "photoStudio": "https://images.unsplash.com/photo-1571844307880-3a99f72c0ada?w=1600&q=85"
+  },
+  "stats": [
+    { "valeur": "187", "label": "élèves cette saison" },
+    { "valeur": "36", "label": "spectacles donnés" },
+    { "valeur": "17", "label": "années d'existence" }
+  ],
+  "disciplines": [
+    {
+      "id": "classique",
+      "numero": "I.",
+      "nom": "Classique",
+      "niveaux": "Tous niveaux · dès 6 ans",
+      "description": "L'apprentissage du vocabulaire fondamental : barre, milieu, adage, allégro. Discipline du corps et mémoire du geste.",
+      "photo": "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=900&q=80",
+      "creneaux": "Mardi 17h · Mercredi 14h · Samedi 10h"
+    },
+    {
+      "id": "contemporain",
+      "numero": "II.",
+      "nom": "Contemporain",
+      "niveaux": "Initié·e·s · dès 12 ans",
+      "description": "Recherche du mouvement libre, travail au sol, improvisation guidée. Une danse qui interroge l'espace et le poids.",
+      "photo": "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=900&q=80",
+      "creneaux": "Lundi 18h30 · Jeudi 19h"
+    },
+    {
+      "id": "jazz",
+      "numero": "III.",
+      "nom": "Jazz",
+      "niveaux": "Tous niveaux · dès 8 ans",
+      "description": "Énergie, isolations, rythme. La technique exigeante au service du plaisir scénique. Musiques live ou enregistrées.",
+      "photo": "https://images.unsplash.com/photo-1535525153412-5a092d46af0a?w=900&q=80",
+      "creneaux": "Mercredi 16h · Vendredi 18h"
+    },
+    {
+      "id": "hip-hop",
+      "numero": "IV.",
+      "nom": "Hip-hop",
+      "niveaux": "Tous niveaux · dès 10 ans",
+      "description": "Old school, new style, freestyle. La culture des battles, l'écoute du beat, l'expression de soi sans filtre.",
+      "photo": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=900&q=80",
+      "creneaux": "Mardi 19h · Samedi 14h"
+    },
+    {
+      "id": "modern",
+      "numero": "V.",
+      "nom": "Modern jazz",
+      "niveaux": "Intermédiaires · dès 14 ans",
+      "description": "À la frontière du jazz et du contemporain. Travail technique, lyrisme, vocabulaire de scène et grandes traversées.",
+      "photo": "https://images.unsplash.com/photo-1546484959-f9a381d1330d?w=900&q=80",
+      "creneaux": "Lundi 17h30 · Jeudi 18h"
+    }
+  ],
+  "professeurs": [
+    {
+      "numero": "I.",
+      "prenom": "Camille",
+      "nom": "Vermeille",
+      "role": "Classique · direction artistique",
+      "bio": "Ancienne du Corps de Ballet de l'Opéra de Paris. Fonde Vermeille en 2008 après un retour à La Réunion."
+    },
+    {
+      "numero": "II.",
+      "prenom": "Élise",
+      "nom": "Marquant",
+      "role": "Contemporain",
+      "bio": "Diplômée du CNSMD de Lyon. A dansé six ans avec la Compagnie Käfig. Pédagogue rigoureuse et sensible."
+    },
+    {
+      "numero": "III.",
+      "prenom": "Yann",
+      "nom": "Latour",
+      "role": "Hip-hop · Modern jazz",
+      "bio": "Membre fondateur du collectif réunionnais Krew 974. Anime aussi des battles à l'échelle de l'océan Indien."
+    },
+    {
+      "numero": "IV.",
+      "prenom": "Sofia",
+      "nom": "Réval",
+      "role": "Jazz",
+      "bio": "Artiste interprète, formée à l'École de Marseille. Chorégraphe pour plusieurs galas de l'école depuis 2019."
+    }
+  ],
+  "spectacles": [
+    {
+      "mois": "Septembre",
+      "date": "13 sept. 2025",
+      "titre": "Auditions de rentrée",
+      "description": "Évaluation du niveau pour les nouveaux élèves. Sur rendez-vous."
+    },
+    {
+      "mois": "Décembre",
+      "date": "20 déc. 2025",
+      "titre": "Soirée des anciens",
+      "description": "Retrouvailles annuelles. Démonstrations libres et buffet partagé."
+    },
+    {
+      "mois": "Mars",
+      "date": "21 mars 2026",
+      "titre": "Démonstration de mi-année",
+      "description": "Présentation publique des chorégraphies en cours. Entrée libre."
+    },
+    {
+      "mois": "Juin",
+      "date": "13 juin 2026",
+      "titre": "Gala annuel",
+      "description": "Théâtre du Grand Marché. Tous niveaux confondus, deux représentations."
+    }
+  ],
+  "horairesAccueil": [
+    { "jour": "Lundi – Vendredi", "label": "16h00 – 21h00", "ouvert": true },
+    { "jour": "Samedi", "label": "09h00 – 17h00", "ouvert": true },
+    { "jour": "Dimanche", "label": "Fermé", "ouvert": false }
+  ]
+}
