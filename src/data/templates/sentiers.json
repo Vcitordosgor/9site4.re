@@ -1,0 +1,161 @@
+{
+  "info": {
+    "nom": "Sentiers Croisés",
+    "wordmark": "Sentiers Croisés",
+    "tagline": "Le Maïdo n'attend que vous.",
+    "soustitre": "Guide indépendant · Mafate, Cilaos, Volcan",
+    "guide": "Théo Grondin",
+    "ville": "La Possession",
+    "telephone": "0692 11 47 23",
+    "telephoneHref": "+33692114723",
+    "whatsapp": "33692114723",
+    "email": "theo@sentiers-croises.re",
+    "instagram": "@sentiers.croises",
+    "siret": "78901234400017",
+    "annee": "2013",
+    "photoGuide": "https://images.unsplash.com/photo-1552058544-f2b08422138a?w=900&q=85",
+    "sortieDuJour": {
+      "label": "Sortie du jour",
+      "titre": "Mafate Aurore",
+      "date": "Demain · 4h30 départ"
+    }
+  },
+  "carrousel": [
+    {
+      "src": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1800&q=85",
+      "alt": "Vue panoramique sur les montagnes au lever du soleil"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1800&q=85",
+      "alt": "Sommet brumeux de la Réunion"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1800&q=85",
+      "alt": "Cascade en forêt tropicale"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1570032295547-a40af6cb1e88?w=1800&q=85",
+      "alt": "Coucher de soleil sur les pitons"
+    }
+  ],
+  "diplomes": [
+    "BAPAAT randonnée pédestre (2011)",
+    "AMM — Accompagnateur en Moyenne Montagne (2014)",
+    "Certifié PSC1 + secourisme en milieu isolé",
+    "Membre du Syndicat National des Guides"
+  ],
+  "stats": [
+    { "valeur": "1 500", "label": "personnes accompagnées" },
+    { "valeur": "12", "label": "ans de guidage" },
+    { "valeur": "47", "label": "itinéraires connus" },
+    { "valeur": "5/5", "label": "234 avis Google" }
+  ],
+  "sorties": [
+    {
+      "id": "trois-salazes",
+      "nom": "Les Trois Salazes",
+      "lieu": "Mafate",
+      "duree": "7h",
+      "denivele": "+ 800 m",
+      "niveau": 3,
+      "prix": "75 €",
+      "description": "Boucle dans le cirque le plus reculé. Vue sur les hameaux d'Aurère et Marla. Pique-nique en altitude.",
+      "photo": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=900&q=80"
+    },
+    {
+      "id": "mafate-aurore",
+      "nom": "Mafate Aurore",
+      "lieu": "Maïdo",
+      "duree": "5h",
+      "denivele": "+ 500 m",
+      "niveau": 3,
+      "prix": "65 €",
+      "description": "Départ à 4h pour voir le lever du soleil sur Mafate. Le moment le plus magique de l'île.",
+      "photo": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=900&q=80"
+    },
+    {
+      "id": "benare-nuit",
+      "nom": "Bénare de nuit",
+      "lieu": "Cilaos",
+      "duree": "6h",
+      "denivele": "+ 1100 m",
+      "niveau": 4,
+      "prix": "95 €",
+      "description": "Ascension par clair de lune jusqu'au sommet à 2 896 m. Sortie nocturne, frontale obligatoire.",
+      "photo": "https://images.unsplash.com/photo-1532978879514-6cb4d0a83b8e?w=900&q=80"
+    },
+    {
+      "id": "bras-cabot",
+      "nom": "Bras de Cabot",
+      "lieu": "Plaine des Palmistes",
+      "duree": "4h",
+      "denivele": "+ 300 m",
+      "niveau": 2,
+      "prix": "50 €",
+      "description": "Boucle accessible familles. Cascades, bassins de baignade, forêt humide. Idéale enfants 8+.",
+      "photo": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=900&q=80"
+    },
+    {
+      "id": "volcan",
+      "nom": "Le Volcan",
+      "lieu": "Piton de la Fournaise",
+      "duree": "6h",
+      "denivele": "+ 600 m",
+      "niveau": 3,
+      "prix": "85 €",
+      "description": "Traversée Pas de Bellecombe → cratère Dolomieu. Transport depuis Saint-Denis inclus.",
+      "photo": "https://images.unsplash.com/photo-1554629947-334ff61d85dc?w=900&q=80"
+    },
+    {
+      "id": "trail-decouverte",
+      "nom": "Trail découverte",
+      "lieu": "Forêt de Bébour",
+      "duree": "3h",
+      "denivele": "+ 400 m",
+      "niveau": 2,
+      "prix": "60 €",
+      "description": "Initiation course en montagne. Technique, allure, gestion d'effort. Niveau intermédiaire requis.",
+      "photo": "https://images.unsplash.com/photo-1528228617535-e2569e63b6cf?w=900&q=80"
+    }
+  ],
+  "prochaines": [
+    { "date": "14 nov", "jour": "Vendredi", "sortie": "Mafate Aurore", "places": 3 },
+    { "date": "18 nov", "jour": "Mardi", "sortie": "Trois Salazes", "places": 5 },
+    { "date": "22 nov", "jour": "Samedi", "sortie": "Bras de Cabot", "places": 0 },
+    { "date": "25 nov", "jour": "Mardi", "sortie": "Volcan", "places": 4 },
+    { "date": "29 nov", "jour": "Samedi", "sortie": "Trail découverte", "places": 6 },
+    { "date": "02 déc", "jour": "Mardi", "sortie": "Mafate Aurore", "places": 5 },
+    { "date": "06 déc", "jour": "Samedi", "sortie": "Bénare nuit", "places": 2 },
+    { "date": "10 déc", "jour": "Mercredi", "sortie": "Trois Salazes", "places": 8 }
+  ],
+  "temoignages": [
+    {
+      "prenom": "Léa",
+      "sortie": "Mafate Aurore",
+      "date": "Octobre 2025",
+      "texte": "Sortie inoubliable. Lever de soleil au Maïdo, à 30 secondes près le moment parfait."
+    },
+    {
+      "prenom": "Marc",
+      "sortie": "Bénare de nuit",
+      "date": "Septembre 2025",
+      "texte": "On a tout : technique, sécurité, anecdotes. Théo connaît sa montagne par cœur."
+    },
+    {
+      "prenom": "Camille",
+      "sortie": "Bras de Cabot",
+      "date": "Août 2025",
+      "texte": "Mes ados ont tenu jusqu'au bout. Premiers vrais souvenirs en famille à La Réunion."
+    }
+  ],
+  "galerie": [
+    "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=75",
+    "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=75",
+    "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=600&q=75",
+    "https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=600&q=75",
+    "https://images.unsplash.com/photo-1570032295547-a40af6cb1e88?w=600&q=75",
+    "https://images.unsplash.com/photo-1554629947-334ff61d85dc?w=600&q=75",
+    "https://images.unsplash.com/photo-1487621167305-5d248087c724?w=600&q=75",
+    "https://images.unsplash.com/photo-1532978879514-6cb4d0a83b8e?w=600&q=75"
+  ]
+}

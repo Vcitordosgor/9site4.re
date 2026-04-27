@@ -44,7 +44,8 @@ type PageKey =
   | 'templatePsy'
   | 'templateBarJus'
   | 'templateInstitut'
-  | 'templateGite';
+  | 'templateGite'
+  | 'templateExcursions';
 
 const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'> & { noindex?: boolean; ogImage?: string; ogImageAlt?: string }> = {
   home: {
@@ -199,6 +200,13 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
     description:
       'Aperçu du template "Gîte de montagne" proposé par 9site4 : fiche gîte, chambres, calendrier de disponibilités, randonnées et réservation en ligne. Site fictif de démonstration.',
     canonical: '/templates/gite',
+    noindex: true,
+  },
+  templateExcursions: {
+    title: 'Sentiers Croisés — Guide de randonnée à Mafate (Réunion) | Template 9site4',
+    description:
+      'Aperçu du template "Excursions randonnée" proposé par 9site4 : sorties guidées, calendrier des prochaines dates, témoignages, galerie et réservation. Site fictif de démonstration.',
+    canonical: '/templates/excursions',
     noindex: true,
   },
 };

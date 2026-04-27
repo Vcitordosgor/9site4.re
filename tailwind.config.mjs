@@ -61,6 +61,9 @@ export default {
     {
       pattern: /^(bg|text|ring|border|from|to|via)-(cap-mousse|cap-terre|cap-pierre|cap-papier|cap-rouge|cap-glacier|cap-charbon)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
     },
+    {
+      pattern: /^(bg|text|ring|border|from|to|via)-(sentiers-foret|sentiers-lichen|sentiers-terre|sentiers-brume|sentiers-soleil|sentiers-ciel|sentiers-noir)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
+    },
   ],
   theme: {
     extend: {
@@ -238,6 +241,17 @@ export default {
         'cap-rouge':   '#C03A2C',  // rouge alerte balisage — accents rares
         'cap-glacier': '#5A8FA8',  // bleu glacier — accent froid
         'cap-charbon': '#1B1B17',  // noir charbon — texte AAA
+        // Palette excursions (template /templates/excursions — Sentiers Croisés)
+        // Style "aventure / récit photographique immersif" : vert tropical
+        // sombre + lichen vif + terre cuite + soleil pâle. Distinct du
+        // topo-guide papier (Cap Anglais) — même catégorie tourisme.
+        'sentiers-foret':  '#0E2820',  // vert tropical sombre — fond dominant
+        'sentiers-lichen': '#5C8A4A',  // vert lichen vif — accent principal
+        'sentiers-terre':  '#B85A3D',  // terre cuite réunionnaise — accent chaud
+        'sentiers-brume':  '#D9E0DA',  // brume claire — secondaire
+        'sentiers-soleil': '#F5E6B5',  // soleil pâle — micro-accent
+        'sentiers-ciel':   '#1E3A52',  // bleu profond ciel — accent froid
+        'sentiers-noir':   '#0A140F',  // noir-vert — texte AAA
       },
       fontFamily: {
         sora: ['Sora', 'system-ui', 'sans-serif'],
@@ -281,6 +295,9 @@ export default {
         'eb-garamond': ['"EB Garamond"', 'Garamond', 'Georgia', 'serif'],
         bricolage: ['"Bricolage Grotesque"', 'system-ui', 'sans-serif'],
         'crimson-pro': ['"Crimson Pro"', 'Georgia', 'serif'],
+        familjen: ['"Familjen Grotesk"', 'system-ui', 'sans-serif'],
+        tinos: ['Tinos', 'Georgia', 'serif'],
+        'roboto-mono': ['"Roboto Mono"', 'ui-monospace', 'monospace'],
       },
       fontSize: {
         'hero': ['clamp(2.5rem, 5vw + 1rem, 5rem)', { lineHeight: '1.05', letterSpacing: '-0.02em' }],
