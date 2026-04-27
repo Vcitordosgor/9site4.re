@@ -1,0 +1,57 @@
+---
+/**
+ * CommentCaMarche — 4 étapes en LIGNE DU TEMPS d'une journée.
+ * Format unique : J-1 18h, J 8h, J midi, J 19h.
+ */
+import data from '../../../data/templates/concierge.json';
+---
+
+<section id="journee" class="bg-concierge-blanc py-24 md:py-36 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="text-center mb-14 md:mb-20 max-w-2xl mx-auto">
+      <p class="font-hubot text-[10px] uppercase tracking-[0.4em] text-concierge-laiton mb-6 font-medium">
+        ✦ Comment ça marche ✦
+      </p>
+      <h2 class="font-volkhov text-concierge-nuit leading-[1.05]" style="font-size: clamp(36px, 5vw, 60px);">
+        Une journée
+        <span class="italic text-concierge-laiton">à vos côtés.</span>
+      </h2>
+    </header>
+
+    <!-- Timeline horizontale d'une journée -->
+    <div class="relative">
+
+      <!-- Filet horizontal doré -->
+      <span class="hidden md:block absolute top-12 left-[12%] right-[12%] h-px bg-gradient-to-r from-transparent via-concierge-laiton to-transparent" aria-hidden="true"></span>
+
+      <ul class="grid md:grid-cols-4 gap-10 md:gap-6 relative">
+        {data.journee.map((e, i) => (
+          <li class="relative text-center">
+
+            <!-- Heure dans cercle laiton -->
+            <span class="relative inline-flex items-center justify-center w-24 h-24 rounded-full bg-concierge-champagne border-2 border-concierge-laiton text-concierge-nuit font-volkhov font-bold text-base leading-tight mb-6 z-10">
+              {e.heure.split('·').map((part, j) => (
+                <span class="block text-center" style={`font-size: ${j === 0 ? '12px' : '13px'};`}>{part.trim()}</span>
+              ))}
+            </span>
+
+            <!-- Titre -->
+            <h3 class="font-volkhov italic text-concierge-nuit text-2xl md:text-3xl leading-tight mb-3">
+              {e.titre}
+            </h3>
+
+            <!-- Description -->
+            <p class="font-hubot text-concierge-graphite text-sm leading-relaxed max-w-xs mx-auto">
+              {e.description}
+            </p>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <p class="mt-14 text-center font-pinyon text-concierge-laiton text-3xl">
+      tout cela, sans dérangement
+    </p>
+  </div>
+</section>

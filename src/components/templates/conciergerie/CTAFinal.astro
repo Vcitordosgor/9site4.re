@@ -1,0 +1,52 @@
+---
+import data from '../../../data/templates/concierge.json';
+---
+
+<section class="bg-concierge-nuit text-concierge-champagne py-24 md:py-36 px-6 md:px-10 text-center relative overflow-hidden">
+
+  <!-- Filets dorés haut + bas -->
+  <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-concierge-laiton to-transparent" aria-hidden="true"></div>
+  <div class="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-concierge-laiton to-transparent" aria-hidden="true"></div>
+
+  <div class="relative max-w-2xl mx-auto">
+
+    <!-- Filet doré ornement -->
+    <div class="flex items-center justify-center gap-3 mb-12" aria-hidden="true">
+      <span class="block h-px w-16 bg-concierge-laiton"></span>
+      <span class="text-concierge-laiton text-base">✦</span>
+      <span class="block h-px w-16 bg-concierge-laiton"></span>
+    </div>
+
+    <p class="font-pinyon text-concierge-laiton text-5xl md:text-6xl mb-6 leading-none">
+      À votre disposition.
+    </p>
+
+    <h2 class="font-volkhov italic text-concierge-champagne leading-[1.1]" style="font-size: clamp(36px, 5.5vw, 72px);">
+      {data.info.wordmark1}
+      <span class="not-italic text-concierge-laiton">{data.info.wordmark2}</span>
+    </h2>
+
+    <p class="mt-10 font-volkhov italic text-concierge-champagne/75 text-lg leading-relaxed max-w-md mx-auto">
+      Premier rendez-vous offert, en visioconférence ou à votre domicile. Aucun engagement de durée.
+    </p>
+
+    <div class="mt-12 flex flex-wrap items-center justify-center gap-x-7 gap-y-4">
+      <a
+        href="#demande"
+        class="inline-flex items-center justify-center h-14 px-10 bg-concierge-laiton text-concierge-nuit font-hubot text-sm uppercase tracking-[0.18em] font-medium hover:bg-concierge-champagne transition-colors duration-500"
+      >
+        Prendre contact
+      </a>
+      <a
+        href={`tel:${data.info.telephoneHref}`}
+        class="font-volkhov italic text-concierge-champagne text-base tabular-nums underline underline-offset-4 decoration-concierge-laiton/60 hover:decoration-concierge-laiton"
+      >
+        {data.info.telephone}
+      </a>
+    </div>
+
+    <p class="mt-12 font-hubot text-[10px] uppercase tracking-[0.4em] text-concierge-laiton">
+      ✦ {data.info.ville} · depuis {data.info.annee} ✦
+    </p>
+  </div>
+</section>

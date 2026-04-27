@@ -1,0 +1,82 @@
+---
+/**
+ * HeroCarteBienvenue — mise en scène calme. Photo détail élégant à droite,
+ * annotation Pinyon Script + titre Volkhov à gauche. Beaucoup d'air.
+ */
+import data from '../../../data/templates/concierge.json';
+---
+
+<section id="top" class="relative bg-concierge-champagne overflow-hidden">
+
+  <!-- Filets dorés latéraux -->
+  <div class="absolute top-0 bottom-0 left-6 md:left-10 w-px bg-gradient-to-b from-transparent via-concierge-laiton/40 to-transparent pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute top-0 bottom-0 right-6 md:right-10 w-px bg-gradient-to-b from-transparent via-concierge-laiton/40 to-transparent pointer-events-none" aria-hidden="true"></div>
+
+  <div class="relative max-w-content mx-auto px-10 md:px-16 pt-32 pb-20 md:pt-44 md:pb-28 grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+
+    <!-- Texte gauche -->
+    <div class="lg:col-span-7">
+
+      <!-- Annotation manuscrite Pinyon -->
+      <p class="font-pinyon text-concierge-laiton text-5xl md:text-6xl mb-6 leading-none">
+        Bienvenue.
+      </p>
+
+      <!-- Wordmark double -->
+      <h1 class="font-volkhov text-concierge-nuit leading-[1.0]" style="font-size: clamp(48px, 8vw, 120px);">
+        <span class="italic">Concierge</span><br/>
+        <span class="text-concierge-laiton">{data.info.wordmark2}</span>
+      </h1>
+
+      <p class="mt-7 font-hubot text-concierge-graphite text-base md:text-xl leading-relaxed max-w-xl">
+        {data.info.soustitre}. Une équipe de trois conciergères, une trentaine de clients, une discrétion absolue.
+      </p>
+
+      <!-- Filet doré ornemental -->
+      <div class="mt-10 mb-10 flex items-center gap-3" aria-hidden="true">
+        <span class="block h-px w-16 bg-gradient-to-r from-concierge-laiton/60 to-concierge-laiton"></span>
+        <span class="text-concierge-laiton text-sm">✦</span>
+        <span class="block h-px w-16 bg-gradient-to-l from-concierge-laiton/60 to-concierge-laiton"></span>
+      </div>
+
+      <!-- CTAs -->
+      <div class="flex flex-wrap items-center gap-x-7 gap-y-4">
+        <a
+          href="#services"
+          class="inline-flex items-center justify-center h-13 px-9 bg-concierge-nuit text-concierge-champagne font-hubot text-sm uppercase tracking-[0.18em] font-medium hover:bg-concierge-encre transition-colors duration-500"
+          style="height: 52px;"
+        >
+          Découvrir nos services
+        </a>
+        <a
+          href={`tel:${data.info.telephoneHref}`}
+          class="font-volkhov italic text-concierge-nuit text-base tabular-nums underline underline-offset-4 decoration-concierge-laiton hover:decoration-concierge-nuit"
+        >
+          {data.info.telephone}
+        </a>
+      </div>
+    </div>
+
+    <!-- Photo détail vertical droite -->
+    <div class="lg:col-span-5">
+      <div class="relative aspect-[3/4] max-w-md mx-auto bg-concierge-blanc overflow-hidden">
+        <img
+          src={data.info.photoHero}
+          alt="Détail de bienvenue Concierge & Co"
+          class="w-full h-full object-cover"
+          fetchpriority="high"
+          decoding="async"
+        />
+        <!-- Cadre laiton intérieur -->
+        <div class="absolute inset-3 border border-concierge-laiton/40" aria-hidden="true"></div>
+        <!-- Étiquette manuscrite en bas -->
+        <div class="absolute bottom-6 left-6 right-6 bg-concierge-champagne/95 px-4 py-3">
+          <p class="font-pinyon text-concierge-laiton text-3xl leading-none">à votre service</p>
+          <p class="mt-1 font-hubot text-[10px] uppercase tracking-[0.28em] text-concierge-graphite">
+            depuis {data.info.annee}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

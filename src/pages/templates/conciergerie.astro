@@ -1,0 +1,80 @@
+---
+import '@fontsource/volkhov/400.css';
+import '@fontsource/volkhov/700.css';
+import '@fontsource/volkhov/400-italic.css';
+import '@fontsource/volkhov/700-italic.css';
+import '@fontsource/hubot-sans/400.css';
+import '@fontsource/hubot-sans/500.css';
+import '@fontsource/hubot-sans/600.css';
+import '@fontsource/hubot-sans/400-italic.css';
+import '@fontsource/pinyon-script/400.css';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getSeo } from '../../lib/seo';
+import conciergeData from '../../data/templates/concierge.json';
+
+import ConciergeHeader from '../../components/templates/conciergerie/ConciergeHeader.astro';
+import HeroCarteBienvenue from '../../components/templates/conciergerie/HeroCarteBienvenue.astro';
+import Promesse from '../../components/templates/conciergerie/Promesse.astro';
+import Services from '../../components/templates/conciergerie/Services.astro';
+import Formules from '../../components/templates/conciergerie/Formules.astro';
+import CommentCaMarche from '../../components/templates/conciergerie/CommentCaMarche.astro';
+import Temoignages from '../../components/templates/conciergerie/Temoignages.astro';
+import Demande from '../../components/templates/conciergerie/Demande.astro';
+import CTAFinal from '../../components/templates/conciergerie/CTAFinal.astro';
+import ConciergeFooter from '../../components/templates/conciergerie/ConciergeFooter.astro';
+---
+
+<BaseLayout seo={getSeo('templateConciergerie')} bare={true}>
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <link rel="dns-prefetch" href="https://images.unsplash.com" />
+    <link
+      rel="preload"
+      as="image"
+      href={conciergeData.info.photoHero}
+      fetchpriority="high"
+    />
+  </Fragment>
+
+  <ConciergeHeader />
+
+  <main id="top" class="bg-concierge-champagne text-concierge-nuit font-hubot">
+    <HeroCarteBienvenue />
+    <Promesse />
+    <Services />
+    <Formules />
+    <CommentCaMarche />
+    <Temoignages />
+    <Demande />
+    <CTAFinal />
+  </main>
+
+  <ConciergeFooter />
+
+  <a
+    id="concierge-sticky-cta"
+    href="#demande"
+    data-visible="false"
+    class="md:hidden fixed bottom-5 inset-x-5 z-40 inline-flex items-center justify-center h-13 bg-concierge-nuit text-concierge-champagne font-hubot text-sm uppercase tracking-[0.18em] font-medium transition-all duration-500 data-[visible=false]:opacity-0 data-[visible=false]:translate-y-4 data-[visible=false]:pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0"
+    style="height: 52px; box-shadow: 0 12px 28px rgba(15,39,66,0.30);"
+  >
+    Nous contacter
+  </a>
+
+  <script>
+    const sticky = document.getElementById('concierge-sticky-cta');
+    const demande = document.getElementById('demande');
+    if (sticky && demande) {
+      const update = () => {
+        const rect = demande.getBoundingClientRect();
+        const inSection = rect.top < window.innerHeight && rect.bottom > 80;
+        const scrolledPastHero = window.scrollY > 600;
+        sticky.dataset.visible = String(scrolledPastHero && !inSection);
+      };
+      update();
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update, { passive: true });
+    }
+  </script>
+</BaseLayout>

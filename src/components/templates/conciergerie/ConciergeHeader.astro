@@ -1,0 +1,40 @@
+---
+import data from '../../../data/templates/concierge.json';
+---
+
+<header
+  id="concierge-header"
+  data-scrolled="false"
+  class="fixed top-0 inset-x-0 z-50 transition-all duration-500 data-[scrolled=false]:bg-transparent data-[scrolled=true]:bg-concierge-champagne/95 data-[scrolled=true]:backdrop-blur-sm data-[scrolled=true]:border-b data-[scrolled=true]:border-concierge-laiton/30"
+>
+  <div class="max-w-content mx-auto px-6 md:px-10 h-16 flex items-center justify-between">
+
+    <a href="#top" class="flex items-baseline gap-2 group" aria-label="Concierge & Co — accueil">
+      <span class="font-volkhov italic text-concierge-nuit text-xl leading-none">{data.info.wordmark1}</span>
+      <span class="font-volkhov text-concierge-laiton text-xl leading-none tracking-wide">{data.info.wordmark2}</span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-7 font-hubot text-[12px] uppercase tracking-[0.22em] font-medium text-concierge-graphite/85" aria-label="Navigation">
+      <a href="#services" class="hover:text-concierge-nuit transition-colors duration-500">Services</a>
+      <a href="#formules" class="hover:text-concierge-nuit transition-colors duration-500">Formules</a>
+      <a href="#journee" class="hover:text-concierge-nuit transition-colors duration-500">Méthode</a>
+      <a href="#temoignages" class="hover:text-concierge-nuit transition-colors duration-500">Témoignages</a>
+    </nav>
+
+    <a
+      href="#demande"
+      class="inline-flex items-center h-9 px-5 bg-concierge-nuit text-concierge-champagne font-hubot text-[12px] uppercase tracking-[0.18em] font-medium hover:bg-concierge-encre transition-colors duration-500"
+    >
+      Nous contacter
+    </a>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById('concierge-header');
+  if (header) {
+    const update = () => { header.dataset.scrolled = String(window.scrollY > 60); };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+  }
+</script>
