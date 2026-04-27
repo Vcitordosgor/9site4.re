@@ -4,8 +4,10 @@ import Icon from '../ui/Icon.astro';
 import categories from '../../data/categories.json';
 
 /**
- * RealisationCard — placeholder propre (pas de mockup) avec gradient signature
- * adapté à la catégorie. Réutilisé en home (aperçu) et page Réalisations.
+ * RealisationCard — mini-preview de site web style "screenshot navigateur".
+ * Le visuel du haut imite une capture d'écran du template (browser chrome
+ * + URL + hero photo + nav + titre + CTA superposés). Le corps de la carte
+ * affiche les métadonnées catalogue.
  */
 interface Realisation {
   id: number;
@@ -29,8 +31,7 @@ const categoryName =
   categories.find((c) => c.id === realisation.categorie)?.nom ??
   realisation.categorie;
 
-// Gradient placeholder par catégorie + icône représentative
-// Bleu et orange équilibrés pour la présence visuelle des deux couleurs
+// Visuels par catégorie pour le fallback (pas de previewUrl) — gardé pour compat.
 const visuals: Record<string, { gradient: string; icon: string }> = {
   restaurants:   { gradient: 'from-orange/35 via-bleu/25 to-bleu/15',         icon: 'sparkle' },
   beaute:        { gradient: 'from-bleu/40 via-bleu/25 to-orange/20',         icon: 'palette' },
@@ -49,51 +50,130 @@ const moduleIcons: Record<string, string> = {
   'Intervention': 'wrench',
 };
 
-// Couleur d'accent du module — équilibrée bleu/orange (12 cards chacune sur 24)
+// Couleur d'accent du module — équilibrée bleu/orange
 const moduleColors: Record<string, 'bleu' | 'orange'> = {
-  'Rendez-vous': 'bleu',     // 10 cards
-  'Intervention': 'bleu',    // 2 cards  → 12 bleu
-  'Réservation': 'orange',   // 8 cards
-  'Devis': 'orange',         // 4 cards  → 12 orange
+  'Rendez-vous': 'bleu',
+  'Intervention': 'bleu',
+  'Réservation': 'orange',
+  'Devis': 'orange',
 };
 
 const visual = visuals[realisation.categorie] ?? visuals.pro;
 const moduleIcon = moduleIcons[realisation.moduleInclus] ?? 'sparkle';
 const moduleColor = moduleColors[realisation.moduleInclus] ?? 'orange';
 
-// Vignette : si l'entrée fournit un `thumbnail` (image hero du template
-// vers lequel pointe `previewUrl`), on l'utilise pour donner un vrai aperçu
-// du site. Sinon fallback sur Picsum (placeholder déterministe par catégorie).
+// Vignette = image hero du template (vraie identité visuelle du site)
 const photoUrl = realisation.thumbnail
   ?? `https://picsum.photos/seed/9site4-${realisation.categorie}/800/480`;
+
+// Liens de navigation factices génériques selon le module (pour donner
+// l'impression d'un vrai header de site)
+const fakeNavByModule: Record<string, string[]> = {
+  'Réservation': ['Carte', 'Réserver', 'Contact'],
+  'Rendez-vous': ['Services', 'Tarifs', 'RDV'],
+  'Devis':       ['Réalisations', 'Devis', 'Contact'],
+  'Intervention':['Services', 'Zones', 'Urgence'],
+};
+const fakeNav = fakeNavByModule[realisation.moduleInclus] ?? ['Accueil', 'Services', 'Contact'];
 ---
 
 <article class="tilt-card group relative bg-blanc-casse rounded-2xl ring-1 ring-bleu-nuit/10 shadow-card overflow-hidden flex flex-col hover:shadow-card-hover hover:ring-bleu-nuit/15">
-  <!-- Zone visuelle : photo par catégorie + overlay assombrissant pour lisibilité du badge -->
-  <div class:list={['relative aspect-[5/3] overflow-hidden bg-gradient-to-br', visual.gradient]}>
-    <img
-      src={photoUrl}
-      alt=""
-      loading="lazy"
-      decoding="async"
-      class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out-soft group-hover:scale-105"
-    />
-    <div class="absolute inset-0 bg-gradient-to-t from-bleu-nuit/60 via-bleu-nuit/10 to-bleu-nuit/30" aria-hidden="true"></div>
-    <div class="absolute top-4 left-4">
-      <Badge variant="accent" size="sm">{categoryName}</Badge>
+
+  {realisation.previewUrl ? (
+    <!-- 🖥️ MINI-PREVIEW NAVIGATEUR : looks like a website screenshot -->
+    <a
+      href={realisation.previewUrl}
+      target="_blank"
+      rel="noopener"
+      class="block group/preview overflow-hidden border-b border-bleu-nuit/10 bg-bleu-nuit"
+      aria-label={`Voir le template ${realisation.nom}`}
+    >
+      <!-- Browser chrome : 3 ronds + URL bar -->
+      <div class="flex items-center gap-2 px-3 py-2 bg-bleu-nuit/95">
+        <div class="flex gap-1.5 shrink-0" aria-hidden="true">
+          <span class="block w-2.5 h-2.5 rounded-full bg-[#FF5F57]"></span>
+          <span class="block w-2.5 h-2.5 rounded-full bg-[#FEBC2E]"></span>
+          <span class="block w-2.5 h-2.5 rounded-full bg-[#28C840]"></span>
+        </div>
+        <div class="flex-1 mx-2 flex items-center gap-1.5 px-3 py-1 rounded-md bg-blanc-casse/10 text-blanc-casse/85 text-[10px] font-mono truncate min-w-0">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" class="shrink-0 opacity-70" aria-hidden="true">
+            <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+          </svg>
+          <span class="truncate">9site4.re{realisation.previewUrl}</span>
+        </div>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="shrink-0 text-blanc-casse/40" aria-hidden="true">
+          <path d="M3 12h18M9 6l-6 6 6 6"/>
+        </svg>
+      </div>
+
+      <!-- Viewport : hero photo + overlay simulant un hero de site -->
+      <div class="relative aspect-[5/3] overflow-hidden">
+        <img
+          src={photoUrl}
+          alt={`Aperçu du site ${realisation.nom}`}
+          loading="lazy"
+          decoding="async"
+          class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out-soft group-hover/preview:scale-105"
+        />
+
+        <!-- Voile sombre pour lisibilité du texte overlay -->
+        <div class="absolute inset-0 bg-gradient-to-t from-bleu-nuit/85 via-bleu-nuit/20 to-bleu-nuit/55" aria-hidden="true"></div>
+
+        <!-- Top : faux header de site (logo + nav) -->
+        <div class="absolute top-2.5 left-3 right-3 flex items-center justify-between text-blanc-casse">
+          <p class="text-[10px] uppercase tracking-[0.2em] font-bold opacity-95">
+            {realisation.nom}
+          </p>
+          <ul class="hidden sm:flex items-center gap-2.5 text-[9px] uppercase tracking-widest opacity-75 font-medium">
+            {fakeNav.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+
+        <!-- Bottom-left : faux hero text (titre + sous-titre + CTA) -->
+        <div class="absolute bottom-3 left-3 right-3 text-blanc-casse">
+          <p class="text-[9px] uppercase tracking-[0.22em] text-blanc-casse/70 mb-1">
+            ✦ Demo template
+          </p>
+          <p class="text-base sm:text-lg font-sora font-bold leading-tight mb-1.5 line-clamp-1" style="text-shadow: 0 2px 8px rgba(11,20,55,0.5);">
+            {realisation.sousTitre}
+          </p>
+          <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-blanc-casse text-bleu-nuit text-[10px] font-bold uppercase tracking-wide">
+            {realisation.moduleInclus}
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </div>
+      </div>
+    </a>
+  ) : (
+    <!-- 🎨 FALLBACK (pas de previewUrl) : ancienne version avec gradient -->
+    <div class:list={['relative aspect-[5/3] overflow-hidden bg-gradient-to-br', visual.gradient]}>
+      <img
+        src={photoUrl}
+        alt=""
+        loading="lazy"
+        decoding="async"
+        class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out-soft group-hover:scale-105"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-bleu-nuit/60 via-bleu-nuit/10 to-bleu-nuit/30" aria-hidden="true"></div>
     </div>
-    {realisation.previewUrl && (
-      <div class="absolute top-4 right-4">
-        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-orange text-bleu-nuit text-xs font-bold uppercase tracking-wide shadow-card">
-          <span class="w-1.5 h-1.5 rounded-full bg-bleu-nuit animate-pulse"></span>
+  )}
+
+  <!-- 📋 Corps de carte : métadonnées catalogue -->
+  <div class="flex-1 flex flex-col p-6">
+
+    <!-- Top row : catégorie + badge "Démo en ligne" -->
+    <div class="flex items-center justify-between gap-3 mb-3 flex-wrap">
+      <Badge variant="secondary" size="sm">{categoryName}</Badge>
+      {realisation.previewUrl && (
+        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-orange text-bleu-nuit text-[10px] font-bold uppercase tracking-wide">
+          <span class="w-1.5 h-1.5 rounded-full bg-bleu-nuit animate-pulse" aria-hidden="true"></span>
           Démo en ligne
         </span>
-      </div>
-    )}
-  </div>
+      )}
+    </div>
 
-  <!-- Contenu -->
-  <div class="flex-1 flex flex-col p-6">
     <h3 class="text-xl font-sora font-semibold text-bleu-nuit">{realisation.nom}</h3>
     <p class="mt-2 text-sm text-bleu-nuit/70 leading-relaxed">{realisation.sousTitre}</p>
 
