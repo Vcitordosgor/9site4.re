@@ -1,0 +1,55 @@
+---
+/**
+ * Professeurs — liste éditoriale type programme de gala.
+ * Chiffres romains, noms en italiana énormes, rôle en italique, bio courte.
+ * Layout : liste verticale alternée (numéro à gauche, contenu à droite).
+ * PAS une grille de cards photos.
+ */
+import data from '../../../data/templates/vermeille.json';
+---
+
+<section id="professeurs" class="bg-vermeille-ivoire py-24 md:py-36 px-6 md:px-10">
+  <div class="max-w-3xl mx-auto">
+
+    <!-- Header -->
+    <header class="mb-16 md:mb-20 text-center">
+      <p class="font-inter-tight text-[10px] uppercase tracking-[0.4em] text-vermeille-bordeaux mb-6">
+        Programme
+      </p>
+      <h2 class="font-italiana text-vermeille-velours leading-[1.0]" style="font-size: clamp(40px, 5.5vw, 72px);">
+        Le corps
+        <span class="block italic text-vermeille-bordeaux">enseignant.</span>
+      </h2>
+    </header>
+
+    <!-- Liste éditoriale -->
+    <ul class="space-y-12 md:space-y-16">
+      {data.professeurs.map((p, i) => (
+        <li class="grid grid-cols-12 gap-3 md:gap-6 items-start group">
+
+          <!-- Numéro romain géant -->
+          <span class="col-span-2 md:col-span-1 font-italiana italic text-vermeille-or text-3xl md:text-5xl leading-none pt-2 select-none">
+            {p.numero}
+          </span>
+
+          <!-- Contenu -->
+          <div class="col-span-10 md:col-span-11">
+            <h3 class="font-italiana text-vermeille-velours leading-[1.0]" style="font-size: clamp(30px, 4.5vw, 56px);">
+              {p.prenom} <span class="italic text-vermeille-bordeaux">{p.nom}</span>
+            </h3>
+            <p class="mt-3 font-inter-tight text-[10px] uppercase tracking-[0.3em] text-vermeille-bordeaux">
+              {p.role}
+            </p>
+            <p class="mt-5 font-inter-tight text-vermeille-velours/70 text-[15px] leading-[1.75] max-w-xl">
+              {p.bio}
+            </p>
+
+            <!-- Filet bas qui s'étend au hover -->
+            <span class="mt-6 block h-px w-16 bg-vermeille-or/50 group-hover:w-32 transition-all duration-700"></span>
+          </div>
+        </li>
+      ))}
+    </ul>
+
+  </div>
+</section>

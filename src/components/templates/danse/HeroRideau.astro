@@ -1,0 +1,125 @@
+---
+/**
+ * HeroRideau — animation rideau de scène à l'ouverture (1.2s).
+ * Deux pans noir velours qui s'écartent au chargement, révélant le titre
+ * Italiana et la photo silhouette danseuse. Programme de la saison en bas.
+ * prefers-reduced-motion : rideaux déjà ouverts.
+ */
+import data from '../../../data/templates/vermeille.json';
+---
+
+<section id="top" class="relative bg-vermeille-velours text-vermeille-ivoire min-h-[100svh] overflow-hidden">
+
+  <!-- Photo silhouette en arrière-plan, floutée et désaturée -->
+  <div class="absolute inset-0" aria-hidden="true">
+    <img
+      src={data.info.photoHero}
+      alt=""
+      class="w-full h-full object-cover object-center grayscale opacity-40"
+      fetchpriority="high"
+      decoding="async"
+    />
+    <div class="absolute inset-0 bg-gradient-to-b from-vermeille-velours/85 via-vermeille-velours/55 to-vermeille-velours"></div>
+  </div>
+
+  <!-- Filets dorés latéraux (décor théâtre) -->
+  <div class="absolute top-0 bottom-0 left-6 md:left-10 w-px bg-gradient-to-b from-transparent via-vermeille-or/30 to-transparent" aria-hidden="true"></div>
+  <div class="absolute top-0 bottom-0 right-6 md:right-10 w-px bg-gradient-to-b from-transparent via-vermeille-or/30 to-transparent" aria-hidden="true"></div>
+
+  <!-- Contenu hero -->
+  <div class="relative max-w-content mx-auto px-10 md:px-16 pt-32 pb-20 md:pt-40 md:pb-24 min-h-[100svh] flex flex-col">
+
+    <!-- Saison en haut, micro -->
+    <p class="font-inter-tight text-[10px] uppercase tracking-[0.5em] text-vermeille-or text-center mb-12 md:mb-16">
+      Saison {data.info.saison}
+    </p>
+
+    <!-- Titre central très grand serif italienne -->
+    <div class="flex-1 flex flex-col items-center justify-center text-center">
+      <p class="font-caveat text-vermeille-rose/85 text-2xl md:text-3xl mb-6 transform -rotate-2" aria-hidden="true">
+        depuis 2008…
+      </p>
+      <h1 class="font-italiana text-vermeille-ivoire leading-[0.95] tracking-tight" style="font-size: clamp(72px, 13vw, 200px);">
+        Vermeille
+      </h1>
+      <p class="mt-4 font-italiana italic text-vermeille-or text-2xl md:text-4xl tracking-[0.3em] uppercase">
+        École de danse
+      </p>
+
+      <!-- Tagline en serif italique élégant -->
+      <p class="mt-12 max-w-md font-italiana italic text-vermeille-ivoire/85 text-xl md:text-2xl leading-relaxed">
+        « {data.info.tagline} »
+      </p>
+
+      <!-- Filet doré ornemental -->
+      <div class="mt-12 flex items-center justify-center gap-3" aria-hidden="true">
+        <span class="block h-px w-16 md:w-24 bg-gradient-to-r from-transparent via-vermeille-or/50 to-vermeille-or"></span>
+        <span class="text-vermeille-or text-sm">✦</span>
+        <span class="block h-px w-16 md:w-24 bg-gradient-to-l from-transparent via-vermeille-or/50 to-vermeille-or"></span>
+      </div>
+    </div>
+
+    <!-- Bas : programme en avant + CTA -->
+    <div class="mt-12 md:mt-0 grid md:grid-cols-2 gap-8 items-end">
+
+      <!-- Programme prochain événement -->
+      <div class="border-l border-vermeille-or/30 pl-6">
+        <p class="font-inter-tight text-[10px] uppercase tracking-[0.4em] text-vermeille-rose mb-2">
+          Prochaine date
+        </p>
+        <p class="font-italiana text-vermeille-ivoire text-2xl md:text-3xl">
+          {data.spectacles[0].titre}
+        </p>
+        <p class="mt-1 font-inter-tight text-vermeille-ivoire/65 text-sm">
+          {data.spectacles[0].date}
+        </p>
+      </div>
+
+      <!-- CTA -->
+      <div class="md:text-right">
+        <a
+          href="#inscription"
+          class="inline-flex items-center justify-center h-13 px-10 bg-vermeille-bordeaux text-vermeille-ivoire font-italiana text-base tracking-wide hover:bg-vermeille-bordeaux/85 transition-colors duration-500"
+          style="height: 52px;"
+        >
+          S'inscrire à la saison
+        </a>
+        <p class="mt-3 font-inter-tight text-[10px] uppercase tracking-[0.3em] text-vermeille-ivoire/45">
+          Auditions · Septembre
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rideaux de scène : deux pans qui s'écartent à l'ouverture -->
+  <div id="rideau-left" class="rideau pointer-events-none absolute top-0 bottom-0 left-0 w-1/2 bg-vermeille-velours z-30" style="background: linear-gradient(to right, #1A0F12 70%, #2A1F22 100%);" aria-hidden="true">
+    <div class="absolute inset-y-0 right-0 w-px bg-vermeille-or/40"></div>
+  </div>
+  <div id="rideau-right" class="rideau pointer-events-none absolute top-0 bottom-0 right-0 w-1/2 bg-vermeille-velours z-30" style="background: linear-gradient(to left, #1A0F12 70%, #2A1F22 100%);" aria-hidden="true">
+    <div class="absolute inset-y-0 left-0 w-px bg-vermeille-or/40"></div>
+  </div>
+
+  <style>
+    .rideau {
+      will-change: transform;
+    }
+    #rideau-left {
+      animation: rideauOuvreGauche 1.4s 0.3s ease-out forwards;
+    }
+    #rideau-right {
+      animation: rideauOuvreDroite 1.4s 0.3s ease-out forwards;
+    }
+    @keyframes rideauOuvreGauche {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-101%); }
+    }
+    @keyframes rideauOuvreDroite {
+      from { transform: translateX(0); }
+      to   { transform: translateX(101%); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #rideau-left  { transform: translateX(-101%); animation: none; }
+      #rideau-right { transform: translateX(101%);  animation: none; }
+    }
+  </style>
+</section>

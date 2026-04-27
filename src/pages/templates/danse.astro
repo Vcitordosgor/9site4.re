@@ -1,0 +1,80 @@
+---
+import '@fontsource/italiana/400.css';
+import '@fontsource/inter-tight/300.css';
+import '@fontsource/inter-tight/400.css';
+import '@fontsource/inter-tight/500.css';
+import '@fontsource/inter-tight/600.css';
+import '@fontsource/inter-tight/400-italic.css';
+import '@fontsource/caveat/400.css';
+import '@fontsource/caveat/500.css';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getSeo } from '../../lib/seo';
+import vermeilleData from '../../data/templates/vermeille.json';
+
+import VermeilleHeader from '../../components/templates/danse/VermeilleHeader.astro';
+import HeroRideau from '../../components/templates/danse/HeroRideau.astro';
+import Disciplines from '../../components/templates/danse/Disciplines.astro';
+import Stats from '../../components/templates/danse/Stats.astro';
+import Professeurs from '../../components/templates/danse/Professeurs.astro';
+import Spectacles from '../../components/templates/danse/Spectacles.astro';
+import Studio from '../../components/templates/danse/Studio.astro';
+import Inscription from '../../components/templates/danse/Inscription.astro';
+import CTAFinal from '../../components/templates/danse/CTAFinal.astro';
+import VermeilleFooter from '../../components/templates/danse/VermeilleFooter.astro';
+---
+
+<BaseLayout seo={getSeo('templateDanse')} bare={true}>
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <link rel="dns-prefetch" href="https://images.unsplash.com" />
+    <link
+      rel="preload"
+      as="image"
+      href={vermeilleData.info.photoHero}
+      fetchpriority="high"
+    />
+  </Fragment>
+
+  <VermeilleHeader />
+
+  <main id="top" class="bg-vermeille-ivoire text-vermeille-velours font-inter-tight">
+    <HeroRideau />
+    <Disciplines />
+    <Stats />
+    <Professeurs />
+    <Spectacles />
+    <Studio />
+    <Inscription />
+    <CTAFinal />
+  </main>
+
+  <VermeilleFooter />
+
+  <!-- Sticky CTA mobile : carré bordeaux pas pill (vs yoga rond) -->
+  <a
+    id="vermeille-sticky-cta"
+    href="#inscription"
+    data-visible="false"
+    class="md:hidden fixed bottom-5 inset-x-5 z-40 inline-flex items-center justify-center h-13 px-6 bg-vermeille-bordeaux text-vermeille-ivoire font-italiana text-base tracking-wide transition-all duration-500 data-[visible=false]:opacity-0 data-[visible=false]:translate-y-4 data-[visible=false]:pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0"
+    style="height: 52px; box-shadow: 0 12px 32px rgba(26,15,18,0.45);"
+  >
+    S'inscrire à la saison
+  </a>
+
+  <script>
+    const sticky = document.getElementById('vermeille-sticky-cta');
+    const inscription = document.getElementById('inscription');
+    if (sticky && inscription) {
+      const update = () => {
+        const rect = inscription.getBoundingClientRect();
+        const inInscription = rect.top < window.innerHeight && rect.bottom > 80;
+        const scrolledPastHero = window.scrollY > 600;
+        sticky.dataset.visible = String(scrolledPastHero && !inInscription);
+      };
+      update();
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update, { passive: true });
+    }
+  </script>
+</BaseLayout>

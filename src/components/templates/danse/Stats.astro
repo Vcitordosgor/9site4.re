@@ -1,0 +1,39 @@
+---
+/**
+ * Stats — bandeau-ruban horizontal noir velours.
+ * 3 chiffres XXL serif italienne avec filets dorés séparateurs.
+ * Format ruban inspiré des programmes de spectacle.
+ */
+import data from '../../../data/templates/vermeille.json';
+---
+
+<section class="bg-vermeille-velours text-vermeille-ivoire py-16 md:py-24 px-6 md:px-10 relative overflow-hidden">
+
+  <!-- Filet doré haut + bas -->
+  <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-vermeille-or/40 to-transparent" aria-hidden="true"></div>
+  <div class="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-vermeille-or/40 to-transparent" aria-hidden="true"></div>
+
+  <div class="max-w-content mx-auto">
+    <p class="text-center font-inter-tight text-[10px] uppercase tracking-[0.5em] text-vermeille-or mb-10 md:mb-14">
+      L'année en chiffres
+    </p>
+
+    <ul class="grid grid-cols-3 divide-x divide-vermeille-or/20">
+      {data.stats.map((s, i) => (
+        <li class="px-3 md:px-6 text-center">
+          <p class="font-italiana text-vermeille-rose tabular-nums leading-none" style="font-size: clamp(48px, 9vw, 120px);">
+            {s.valeur}
+          </p>
+          <p class="mt-3 md:mt-5 font-inter-tight text-[10px] md:text-[11px] uppercase tracking-[0.25em] text-vermeille-ivoire/65">
+            {s.label}
+          </p>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Annotation manuscrite -->
+    <p class="mt-12 text-center font-caveat text-vermeille-or text-xl md:text-2xl transform -rotate-1">
+      …et autant de sourires sur scène.
+    </p>
+  </div>
+</section>

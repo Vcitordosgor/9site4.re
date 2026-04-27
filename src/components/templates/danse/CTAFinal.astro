@@ -1,0 +1,60 @@
+---
+/**
+ * CTAFinal — invitation théâtrale.
+ * Fond velours, ornement doré, citation finale signée par la fondatrice.
+ */
+import data from '../../../data/templates/vermeille.json';
+---
+
+<section class="bg-vermeille-velours text-vermeille-ivoire py-24 md:py-36 px-6 md:px-10 text-center relative overflow-hidden">
+
+  <!-- Halo bordeaux radial -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60rem] h-[40rem] rounded-full pointer-events-none" aria-hidden="true"
+       style="background: radial-gradient(circle, rgba(232,196,192,0.10) 0%, transparent 65%);"></div>
+
+  <div class="relative max-w-3xl mx-auto">
+
+    <!-- Ornement haut -->
+    <div class="flex items-center justify-center gap-3 mb-12" aria-hidden="true">
+      <span class="block h-px w-16 bg-gradient-to-r from-transparent to-vermeille-or/60"></span>
+      <span class="text-vermeille-or text-lg">✦</span>
+      <span class="block h-px w-16 bg-gradient-to-l from-transparent to-vermeille-or/60"></span>
+    </div>
+
+    <!-- Citation finale -->
+    <h2 class="font-italiana italic text-vermeille-rose leading-[1.0]" style="font-size: clamp(40px, 6.5vw, 88px);">
+      « Le rideau ne se lève
+      <span class="block not-italic text-vermeille-ivoire">qu'avec vous. »</span>
+    </h2>
+
+    <!-- Signature manuscrite -->
+    <p class="mt-10 font-caveat text-vermeille-or text-2xl">
+      — {data.info.fondatrice}
+    </p>
+
+    <!-- CTAs -->
+    <div class="mt-14 flex flex-wrap items-center justify-center gap-5">
+      <a
+        href="#inscription"
+        class="inline-flex items-center justify-center h-14 px-10 bg-vermeille-bordeaux text-vermeille-ivoire font-italiana text-base tracking-wide hover:bg-vermeille-rose hover:text-vermeille-velours transition-colors duration-500"
+      >
+        S'inscrire à la saison
+      </a>
+      <a
+        href={`tel:${data.info.telephoneHref}`}
+        class="inline-flex items-center h-14 px-8 border border-vermeille-or/40 text-vermeille-ivoire/85 font-inter-tight text-sm tracking-wider hover:border-vermeille-or hover:text-vermeille-rose transition-colors duration-500 tabular-nums"
+      >
+        {data.info.telephone}
+      </a>
+    </div>
+
+    <!-- Ornement bas -->
+    <div class="mt-16 flex items-center justify-center gap-3" aria-hidden="true">
+      <span class="block h-px w-12 bg-vermeille-or/30"></span>
+      <span class="font-italiana italic text-vermeille-or/60 text-sm tracking-widest uppercase">
+        Vermeille · {data.info.ville} · depuis {data.info.annee}
+      </span>
+      <span class="block h-px w-12 bg-vermeille-or/30"></span>
+    </div>
+  </div>
+</section>

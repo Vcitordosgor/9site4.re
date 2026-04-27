@@ -1,0 +1,77 @@
+---
+/**
+ * Spectacles — timeline horizontale calendrier théâtre.
+ * 4 dates clés de la saison, connectées par une ligne dorée avec dots.
+ * Mobile : timeline verticale gauche-droite.
+ */
+import data from '../../../data/templates/vermeille.json';
+---
+
+<section id="spectacles" class="bg-vermeille-charbon text-vermeille-ivoire py-24 md:py-36 px-6 md:px-10 relative overflow-hidden">
+
+  <!-- Halo bordeaux subtil -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60rem] h-[40rem] rounded-full pointer-events-none" aria-hidden="true"
+       style="background: radial-gradient(circle, rgba(122,26,42,0.18) 0%, transparent 70%);"></div>
+
+  <div class="relative max-w-content mx-auto">
+
+    <!-- Header -->
+    <header class="mb-16 md:mb-24 text-center max-w-2xl mx-auto">
+      <p class="font-inter-tight text-[10px] uppercase tracking-[0.4em] text-vermeille-rose mb-6">
+        La saison {data.info.saison}
+      </p>
+      <h2 class="font-italiana text-vermeille-ivoire leading-[1.0]" style="font-size: clamp(40px, 5.5vw, 72px);">
+        Quatre rendez-vous
+        <span class="block italic text-vermeille-rose">à ne pas manquer.</span>
+      </h2>
+    </header>
+
+    <!-- Timeline desktop : horizontale -->
+    <div class="hidden md:block relative">
+      <!-- Ligne dorée centrale -->
+      <span class="absolute top-7 left-0 right-0 h-px bg-gradient-to-r from-transparent via-vermeille-or/50 to-transparent" aria-hidden="true"></span>
+
+      <ul class="relative grid grid-cols-4 gap-6">
+        {data.spectacles.map((s) => (
+          <li class="text-center">
+            <!-- Dot -->
+            <span class="block w-3.5 h-3.5 rounded-full bg-vermeille-bordeaux ring-2 ring-vermeille-or/60 mx-auto mb-8 relative z-10"></span>
+
+            <!-- Mois en serif -->
+            <p class="font-italiana italic text-vermeille-rose text-2xl mb-2">
+              {s.mois}
+            </p>
+            <p class="font-inter-tight text-[10px] uppercase tracking-[0.25em] text-vermeille-or mb-4">
+              {s.date}
+            </p>
+            <h3 class="font-italiana text-vermeille-ivoire text-2xl leading-tight mb-3">
+              {s.titre}
+            </h3>
+            <p class="font-inter-tight text-vermeille-ivoire/65 text-[13px] leading-[1.6] max-w-[210px] mx-auto">
+              {s.description}
+            </p>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Timeline mobile : verticale -->
+    <ul class="md:hidden space-y-10 relative">
+      <span class="absolute top-1.5 bottom-0 left-1.5 w-px bg-vermeille-or/40" aria-hidden="true"></span>
+      {data.spectacles.map((s) => (
+        <li class="pl-10 relative">
+          <span class="absolute left-0 top-1.5 w-3.5 h-3.5 rounded-full bg-vermeille-bordeaux ring-2 ring-vermeille-or/60"></span>
+          <p class="font-italiana italic text-vermeille-rose text-xl">{s.mois}</p>
+          <p class="font-inter-tight text-[10px] uppercase tracking-[0.25em] text-vermeille-or mt-1 mb-3">{s.date}</p>
+          <h3 class="font-italiana text-vermeille-ivoire text-2xl leading-tight mb-2">{s.titre}</h3>
+          <p class="font-inter-tight text-vermeille-ivoire/65 text-[13px] leading-relaxed">{s.description}</p>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Annotation manuscrite -->
+    <p class="mt-16 text-center font-caveat text-vermeille-or text-xl md:text-2xl transform rotate-1">
+      Réservez tôt — la salle se remplit toujours.
+    </p>
+  </div>
+</section>

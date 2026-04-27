@@ -1,0 +1,205 @@
+---
+/**
+ * Inscription — formulaire bulletin papier.
+ * Layout type "fiche d'inscription" sur fond ivoire avec encre bordeaux.
+ * Checkboxes visibles pour la discipline (cases carrées style papier).
+ * Inputs underline only (lignes d'écriture). Annotation manuscrite Caveat.
+ */
+import data from '../../../data/templates/vermeille.json';
+const waBase = `https://wa.me/${data.info.whatsapp}`;
+---
+
+<section id="inscription" class="bg-vermeille-ivoire py-24 md:py-36 px-6 md:px-10 relative">
+
+  <!-- Header -->
+  <header class="max-w-2xl mx-auto text-center mb-16 md:mb-20">
+    <p class="font-inter-tight text-[10px] uppercase tracking-[0.4em] text-vermeille-bordeaux mb-6">
+      Inscription · Saison {data.info.saison}
+    </p>
+    <h2 class="font-italiana text-vermeille-velours leading-[1.0]" style="font-size: clamp(40px, 5.5vw, 72px);">
+      Bulletin
+      <span class="italic text-vermeille-bordeaux">d'inscription.</span>
+    </h2>
+    <p class="mt-6 font-italiana italic text-vermeille-velours/65 text-lg leading-relaxed">
+      À remplir, à envoyer. On vous recontacte sous 48 heures pour fixer l'audition de niveau.
+    </p>
+  </header>
+
+  <!-- Formulaire bulletin -->
+  <form id="inscription-form" class="max-w-2xl mx-auto bg-vermeille-blanc/60 border border-vermeille-velours/15 p-8 md:p-12 relative" novalidate>
+
+    <!-- Annotation manuscrite en haut -->
+    <p class="absolute -top-3 right-6 md:right-10 font-caveat text-vermeille-bordeaux text-xl rotate-3 bg-vermeille-ivoire px-3" aria-hidden="true">
+      à remplir en lettres capitales ✦
+    </p>
+
+    <!-- Section : Identité -->
+    <fieldset class="mb-10">
+      <legend class="font-inter-tight text-[10px] uppercase tracking-[0.3em] text-vermeille-bordeaux pb-3 border-b border-vermeille-velours/15 w-full mb-6">
+        Identité de l'élève
+      </legend>
+
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div>
+          <label for="ins-prenom" class="block font-italiana italic text-vermeille-velours/65 text-sm mb-1">Prénom</label>
+          <input
+            id="ins-prenom"
+            name="prenom"
+            type="text"
+            required
+            autocomplete="given-name"
+            class="w-full bg-transparent border-0 border-b border-vermeille-velours/30 focus:border-vermeille-bordeaux py-2 font-italiana text-vermeille-velours text-xl outline-none transition-colors"
+          />
+        </div>
+        <div>
+          <label for="ins-nom" class="block font-italiana italic text-vermeille-velours/65 text-sm mb-1">Nom</label>
+          <input
+            id="ins-nom"
+            name="nom"
+            type="text"
+            required
+            autocomplete="family-name"
+            class="w-full bg-transparent border-0 border-b border-vermeille-velours/30 focus:border-vermeille-bordeaux py-2 font-italiana text-vermeille-velours text-xl outline-none transition-colors"
+          />
+        </div>
+        <div>
+          <label for="ins-age" class="block font-italiana italic text-vermeille-velours/65 text-sm mb-1">Âge de l'élève</label>
+          <input
+            id="ins-age"
+            name="age"
+            type="number"
+            min="3"
+            max="99"
+            required
+            class="w-full bg-transparent border-0 border-b border-vermeille-velours/30 focus:border-vermeille-bordeaux py-2 font-italiana text-vermeille-velours text-xl outline-none transition-colors tabular-nums"
+          />
+        </div>
+        <div>
+          <label for="ins-tel" class="block font-italiana italic text-vermeille-velours/65 text-sm mb-1">Téléphone</label>
+          <input
+            id="ins-tel"
+            name="telephone"
+            type="tel"
+            required
+            autocomplete="tel"
+            class="w-full bg-transparent border-0 border-b border-vermeille-velours/30 focus:border-vermeille-bordeaux py-2 font-italiana text-vermeille-velours text-xl outline-none transition-colors tabular-nums"
+          />
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- Section : Discipline avec checkboxes -->
+    <fieldset class="mb-10">
+      <legend class="font-inter-tight text-[10px] uppercase tracking-[0.3em] text-vermeille-bordeaux pb-3 border-b border-vermeille-velours/15 w-full mb-5">
+        Discipline souhaitée <span class="lowercase italic text-vermeille-velours/55 font-italiana tracking-normal text-sm">(une ou plusieurs)</span>
+      </legend>
+
+      <div class="grid sm:grid-cols-2 gap-3">
+        {data.disciplines.map((d) => (
+          <label class="flex items-center gap-3 cursor-pointer group">
+            <input
+              type="checkbox"
+              name="discipline"
+              value={d.nom}
+              class="discipline-cb peer sr-only"
+            />
+            <span class="shrink-0 w-5 h-5 border border-vermeille-velours/40 group-hover:border-vermeille-bordeaux peer-checked:bg-vermeille-bordeaux peer-checked:border-vermeille-bordeaux flex items-center justify-center transition-colors" aria-hidden="true">
+              <svg class="w-3 h-3 text-vermeille-ivoire opacity-0 peer-checked-show" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span class="font-italiana text-vermeille-velours text-lg group-hover:text-vermeille-bordeaux transition-colors">
+              {d.nom}
+            </span>
+          </label>
+        ))}
+      </div>
+    </fieldset>
+
+    <!-- Section : Niveau radio -->
+    <fieldset class="mb-10">
+      <legend class="font-inter-tight text-[10px] uppercase tracking-[0.3em] text-vermeille-bordeaux pb-3 border-b border-vermeille-velours/15 w-full mb-5">
+        Niveau
+      </legend>
+
+      <div class="flex flex-wrap gap-x-8 gap-y-3">
+        {['Débutant·e', 'Intermédiaire', 'Confirmé·e'].map((n, i) => (
+          <label class="flex items-center gap-3 cursor-pointer group">
+            <input
+              type="radio"
+              name="niveau"
+              value={n}
+              class="peer sr-only"
+              checked={i === 0}
+            />
+            <span class="shrink-0 w-5 h-5 rounded-full border border-vermeille-velours/40 group-hover:border-vermeille-bordeaux peer-checked:border-vermeille-bordeaux flex items-center justify-center transition-colors" aria-hidden="true">
+              <span class="w-2.5 h-2.5 rounded-full bg-vermeille-bordeaux opacity-0 peer-checked-show-radio"></span>
+            </span>
+            <span class="font-italiana text-vermeille-velours text-lg group-hover:text-vermeille-bordeaux transition-colors">{n}</span>
+          </label>
+        ))}
+      </div>
+    </fieldset>
+
+    <!-- Section : Mot libre -->
+    <fieldset class="mb-10">
+      <legend class="font-inter-tight text-[10px] uppercase tracking-[0.3em] text-vermeille-bordeaux pb-3 border-b border-vermeille-velours/15 w-full mb-5">
+        Un mot pour Camille <span class="lowercase italic text-vermeille-velours/55 font-italiana tracking-normal text-sm">(facultatif)</span>
+      </legend>
+      <textarea
+        id="ins-message"
+        name="message"
+        rows="3"
+        class="w-full bg-transparent border-0 border-b border-vermeille-velours/30 focus:border-vermeille-bordeaux py-2 font-italiana text-vermeille-velours text-lg outline-none transition-colors resize-none"
+        placeholder="Antécédents, motivations, contraintes…"
+      ></textarea>
+    </fieldset>
+
+    <!-- Submit -->
+    <div class="text-center pt-4 border-t-2 border-double border-vermeille-velours/20">
+      <button
+        type="submit"
+        class="inline-flex items-center justify-center gap-3 h-14 px-12 bg-vermeille-bordeaux text-vermeille-ivoire font-italiana text-lg tracking-wide hover:bg-vermeille-velours transition-colors duration-500"
+      >
+        Envoyer le bulletin
+        <span class="text-vermeille-rose">✦</span>
+      </button>
+      <p class="mt-5 font-caveat text-vermeille-bordeaux text-lg rotate-[-1deg]">
+        ouvre WhatsApp avec votre bulletin pré-rempli
+      </p>
+    </div>
+  </form>
+
+  <style>
+    /* Checkboxes / radios visibles via state */
+    .peer-checked-show { opacity: 0; transition: opacity 0.2s; }
+    input[type="checkbox"]:checked ~ span > .peer-checked-show { opacity: 1; }
+    .peer-checked-show-radio { opacity: 0; transition: opacity 0.2s; }
+    input[type="radio"]:checked ~ span > .peer-checked-show-radio { opacity: 1; }
+  </style>
+</section>
+
+<script define:vars={{ waBase }}>
+  const form = document.getElementById('inscription-form');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fd = new FormData(form);
+      const prenom = fd.get('prenom') || '';
+      const nom = fd.get('nom') || '';
+      const age = fd.get('age') || '';
+      const tel = fd.get('telephone') || '';
+      const niveau = fd.get('niveau') || '';
+      const disciplines = fd.getAll('discipline');
+      const message = fd.get('message') || '';
+      const text = [
+        'Bonjour Vermeille, je souhaite inscrire :',
+        prenom || nom ? `Élève : ${prenom} ${nom}` : '',
+        age ? `Âge : ${age} ans` : '',
+        tel ? `Tél : ${tel}` : '',
+        disciplines.length ? `Discipline : ${disciplines.join(', ')}` : '',
+        niveau ? `Niveau : ${niveau}` : '',
+        message ? `Mot : ${message}` : '',
+      ].filter(Boolean).join('\n');
+      window.open(`${waBase}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
+    });
+  }
+</script>
