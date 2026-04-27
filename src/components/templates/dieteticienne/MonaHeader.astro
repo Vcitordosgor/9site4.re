@@ -1,0 +1,43 @@
+---
+import data from '../../../data/templates/mona.json';
+---
+
+<header
+  id="mona-header"
+  data-scrolled="false"
+  class="fixed top-0 inset-x-0 z-50 transition-all duration-300 data-[scrolled=false]:bg-transparent data-[scrolled=true]:bg-mona-creme/95 data-[scrolled=true]:backdrop-blur-sm data-[scrolled=true]:border-b data-[scrolled=true]:border-mona-cacao/8"
+>
+  <div class="max-w-content mx-auto px-6 md:px-10 h-16 flex items-center justify-between">
+
+    <!-- Wordmark : Newsreader serif chaleureux + petit accent vert -->
+    <a href="#top" class="flex items-baseline gap-2 group" aria-label="Mona Levray — accueil">
+      <span class="font-newsreader text-mona-cacao text-xl leading-none">{data.info.wordmark}</span>
+      <span class="hidden sm:inline-block w-1.5 h-1.5 rounded-full bg-mona-vert" aria-hidden="true"></span>
+    </a>
+
+    <!-- Nav -->
+    <nav class="hidden md:flex items-center gap-7 font-jakarta text-[13px] text-mona-cacao/75" aria-label="Navigation">
+      <a href="#presentation" class="hover:text-mona-vert-fonce transition-colors">À propos</a>
+      <a href="#publics" class="hover:text-mona-vert-fonce transition-colors">Pour qui</a>
+      <a href="#programmes" class="hover:text-mona-vert-fonce transition-colors">Programmes</a>
+      <a href="#recettes" class="hover:text-mona-vert-fonce transition-colors">Recettes</a>
+    </nav>
+
+    <!-- CTA pill terracotta -->
+    <a
+      href="#rendez-vous"
+      class="inline-flex items-center h-9 px-4 bg-mona-terracotta text-mona-creme font-jakarta text-[13px] font-semibold rounded-full hover:bg-mona-cacao transition-colors"
+    >
+      Prendre rendez-vous
+    </a>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById('mona-header');
+  if (header) {
+    const update = () => { header.dataset.scrolled = String(window.scrollY > 60); };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+  }
+</script>

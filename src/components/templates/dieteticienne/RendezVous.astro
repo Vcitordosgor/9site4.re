@@ -1,0 +1,167 @@
+---
+/**
+ * RendezVous — formulaire compact 4 champs avec encart "à distance".
+ * Form simple, ton chaleureux. Différent du calendrier-picker de Verveine.
+ */
+import data from '../../../data/templates/mona.json';
+const waBase = `https://wa.me/${data.info.whatsapp}`;
+---
+
+<section id="rendez-vous" class="bg-mona-cacao text-mona-creme py-24 md:py-36 px-6 md:px-10 relative overflow-hidden">
+
+  <!-- Halo terracotta diffus -->
+  <div class="absolute top-1/2 left-1/4 -translate-y-1/2 w-[40rem] h-[40rem] rounded-full pointer-events-none" aria-hidden="true"
+       style="background: radial-gradient(circle, rgba(210,125,84,0.15) 0%, transparent 65%);"></div>
+
+  <div class="relative max-w-content mx-auto">
+
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+
+      <!-- Pitch gauche -->
+      <div class="lg:col-span-5">
+        <p class="font-jakarta text-[10px] uppercase tracking-[0.32em] text-mona-terracotta mb-6">
+          Rendez-vous
+        </p>
+        <h2 class="font-newsreader text-mona-creme leading-[1.05]" style="font-size: clamp(36px, 5vw, 64px);">
+          On en parle ?
+          <span class="block italic text-mona-vert">Sans engagement.</span>
+        </h2>
+
+        <p class="mt-8 font-newsreader text-mona-creme/75 text-lg leading-relaxed max-w-md">
+          Remplissez le formulaire — j'ouvre WhatsApp avec votre demande, on convient ensemble du créneau qui vous convient.
+        </p>
+
+        <!-- Encart télé-consultation -->
+        <div class="mt-10 p-5 bg-mona-creme/10 border-l-2 border-mona-vert">
+          <p class="font-jakarta text-[10px] uppercase tracking-[0.25em] text-mona-vert mb-2">
+            ✓ Téléconsultation possible
+          </p>
+          <p class="font-newsreader italic text-mona-creme/85 text-sm leading-relaxed">
+            Les samedis et certains soirs en semaine. Pour les patients hors agglomération du Tampon.
+          </p>
+        </div>
+
+        <!-- Tél fallback -->
+        <p class="mt-8 font-newsreader text-mona-creme/75 text-base">
+          Ou par téléphone :
+          <a href={`tel:${data.info.telephoneHref}`} class="text-mona-creme tabular-nums underline underline-offset-4 decoration-mona-vert/60 hover:decoration-mona-vert">
+            {data.info.telephone}
+          </a>
+        </p>
+      </div>
+
+      <!-- Form droite -->
+      <div class="lg:col-span-7">
+        <form id="rdv-mona-form" class="bg-mona-creme text-mona-cacao p-7 md:p-10 space-y-5" novalidate>
+
+          <p class="font-reenie text-mona-terracotta text-3xl rotate-[-1deg]">
+            Bonjour Mona !
+          </p>
+
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div>
+              <label for="rdv-prenom" class="block font-jakarta text-[10px] uppercase tracking-[0.25em] text-mona-cacao/65 mb-1.5">Prénom</label>
+              <input
+                id="rdv-prenom"
+                name="prenom"
+                type="text"
+                required
+                autocomplete="given-name"
+                class="w-full h-12 px-4 bg-mona-papier border-0 border-b-2 border-mona-cacao/15 focus:border-mona-vert-fonce font-newsreader text-mona-cacao text-lg outline-none transition-colors"
+              />
+            </div>
+            <div>
+              <label for="rdv-tel-mona" class="block font-jakarta text-[10px] uppercase tracking-[0.25em] text-mona-cacao/65 mb-1.5">Téléphone</label>
+              <input
+                id="rdv-tel-mona"
+                name="telephone"
+                type="tel"
+                required
+                autocomplete="tel"
+                class="w-full h-12 px-4 bg-mona-papier border-0 border-b-2 border-mona-cacao/15 focus:border-mona-vert-fonce font-newsreader text-mona-cacao text-lg outline-none transition-colors tabular-nums"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label for="rdv-besoin" class="block font-jakarta text-[10px] uppercase tracking-[0.25em] text-mona-cacao/65 mb-1.5">Mon besoin principal</label>
+            <select
+              id="rdv-besoin"
+              name="besoin"
+              class="w-full h-12 px-4 bg-mona-papier border-0 border-b-2 border-mona-cacao/15 focus:border-mona-vert-fonce font-newsreader text-mona-cacao text-lg outline-none cursor-pointer"
+            >
+              <option value="">— Choisir —</option>
+              {data.publics.map((p) => <option value={p.label}>{p.label}</option>)}
+              <option value="autre">Autre / À discuter</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="rdv-format" class="block font-jakarta text-[10px] uppercase tracking-[0.25em] text-mona-cacao/65 mb-2">Format souhaité</label>
+            <div class="flex gap-3">
+              {[
+                { val: 'cabinet', label: 'Au cabinet' },
+                { val: 'tele', label: 'Téléconsultation' },
+                { val: 'indecis', label: 'À voir' },
+              ].map((f, i) => (
+                <label class="flex-1 cursor-pointer">
+                  <input type="radio" name="format" value={f.val} class="peer sr-only" checked={i === 0} />
+                  <span class="block text-center px-3 py-2.5 bg-mona-papier border-2 border-transparent peer-checked:border-mona-vert-fonce peer-checked:bg-mona-vert/15 font-newsreader text-mona-cacao text-base transition-colors">
+                    {f.label}
+                  </span>
+                </label>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <label for="rdv-mot" class="block font-jakarta text-[10px] uppercase tracking-[0.25em] text-mona-cacao/65 mb-1.5">Un mot pour Mona <span class="lowercase italic text-mona-cacao/40 normal-case">(facultatif)</span></label>
+            <textarea
+              id="rdv-mot"
+              name="message"
+              rows="3"
+              placeholder="Ce qui vous amène, vos contraintes…"
+              class="w-full px-4 py-3 bg-mona-papier border-0 border-b-2 border-mona-cacao/15 focus:border-mona-vert-fonce font-newsreader text-mona-cacao text-base outline-none transition-colors resize-none"
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full h-13 inline-flex items-center justify-center gap-3 bg-mona-cacao text-mona-creme font-jakarta text-sm font-semibold rounded-full hover:bg-mona-terracotta transition-colors"
+            style="height: 52px;"
+          >
+            Envoyer ma demande
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.92 0-2.65-1.03-5.14-2.91-7.01zm-7.01 15.24h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.21 8.21 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83 8.25 8.25 0 0 1-8.24 8.22z"/>
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ waBase }}>
+  const form = document.getElementById('rdv-mona-form');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fd = new FormData(form);
+      const prenom = fd.get('prenom') || '';
+      const tel = fd.get('telephone') || '';
+      const besoin = fd.get('besoin') || '';
+      const format = fd.get('format') || '';
+      const message = fd.get('message') || '';
+      const formatLabels = { cabinet: 'Cabinet du Tampon', tele: 'Téléconsultation', indecis: 'À discuter' };
+      const text = [
+        'Bonjour Mona, je souhaite un rendez-vous.',
+        prenom ? `Prénom : ${prenom}` : '',
+        tel ? `Tél : ${tel}` : '',
+        besoin ? `Besoin : ${besoin}` : '',
+        format ? `Format : ${formatLabels[format] || format}` : '',
+        message ? `Note : ${message}` : '',
+      ].filter(Boolean).join('\n');
+      window.open(`${waBase}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
+    });
+  }
+</script>

@@ -1,0 +1,70 @@
+---
+/**
+ * HeroTable — photo top-shot table + titre serif Newsreader en superposition
+ * + annotation manuscrite Reenie. Layout magazine culinaire éditorial.
+ */
+import data from '../../../data/templates/mona.json';
+---
+
+<section id="top" class="relative bg-mona-creme overflow-hidden">
+
+  <!-- Photo top-shot pleine largeur -->
+  <div class="relative aspect-[16/10] md:aspect-[16/9] lg:aspect-[21/9] overflow-hidden">
+    <img
+      src={data.info.photoHero}
+      alt="Table garnie de légumes frais et de plats équilibrés"
+      class="w-full h-full object-cover"
+      fetchpriority="high"
+      decoding="async"
+    />
+    <!-- Voile crème léger pour lisibilité du titre -->
+    <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(250,247,241,0.15) 0%, rgba(250,247,241,0.05) 50%, rgba(62,42,30,0.4) 100%);"></div>
+
+    <!-- Annotation manuscrite en surimpression -->
+    <p class="absolute top-24 md:top-32 right-6 md:right-12 font-reenie text-mona-creme text-3xl md:text-5xl rotate-[-4deg] drop-shadow-lg" aria-hidden="true">
+      manger c'est aussi ressentir
+      <span class="text-mona-terracotta">✿</span>
+    </p>
+
+    <!-- Titre principal en bas à gauche -->
+    <div class="absolute bottom-6 md:bottom-12 left-6 md:left-12 right-6 md:right-12 max-w-3xl">
+      <p class="font-jakarta text-[10px] md:text-[11px] uppercase tracking-[0.32em] text-mona-creme/85 mb-3 md:mb-5">
+        Diététique · Nutrition · {data.info.ville}
+      </p>
+      <h1 class="font-newsreader text-mona-creme leading-[0.95]" style="font-size: clamp(40px, 7vw, 96px);">
+        Manger mieux,<br/>
+        <span class="italic">sans se priver.</span>
+      </h1>
+    </div>
+  </div>
+
+  <!-- Sous-bande : pitch + CTA -->
+  <div class="max-w-content mx-auto px-6 md:px-10 py-12 md:py-16 grid lg:grid-cols-12 gap-8 items-center">
+
+    <div class="lg:col-span-7">
+      <p class="font-jakarta text-[10px] uppercase tracking-[0.32em] text-mona-vert-fonce mb-4">
+        Bienvenue
+      </p>
+      <p class="font-newsreader text-mona-cacao text-xl md:text-2xl leading-[1.55]">
+        Je m'appelle <span class="italic text-mona-vert-fonce">Mona Levray</span>, je vous reçois au cabinet du Tampon ou en téléconsultation. <span class="text-mona-cacao/65">Aucun régime miracle, aucune privation absolue.</span> On part de votre quotidien, et on bouge un curseur à la fois.
+      </p>
+    </div>
+
+    <!-- CTA + tél compact -->
+    <div class="lg:col-span-5 flex flex-col sm:flex-row lg:flex-col items-start gap-4">
+      <a
+        href="#rendez-vous"
+        class="inline-flex items-center justify-center w-full sm:w-auto lg:w-full h-12 px-7 bg-mona-cacao text-mona-creme font-jakarta text-sm font-semibold rounded-full hover:bg-mona-vert-fonce transition-colors"
+        style="height: 52px;"
+      >
+        Prendre rendez-vous →
+      </a>
+      <a
+        href={`tel:${data.info.telephoneHref}`}
+        class="font-newsreader text-mona-cacao/85 text-base tabular-nums underline underline-offset-4 decoration-mona-vert/60 hover:decoration-mona-vert-fonce hover:text-mona-vert-fonce transition-colors"
+      >
+        ou par téléphone : {data.info.telephone}
+      </a>
+    </div>
+  </div>
+</section>

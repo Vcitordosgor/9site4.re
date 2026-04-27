@@ -1,0 +1,60 @@
+---
+/**
+ * Publics — 6 publics-cibles en cards verticales avec photo food associée.
+ * Format "fiches recettes" — différent du grid uniforme.
+ */
+import data from '../../../data/templates/mona.json';
+---
+
+<section id="publics" class="bg-mona-papier py-24 md:py-36 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="mb-14 md:mb-20 max-w-2xl">
+      <p class="font-jakarta text-[10px] uppercase tracking-[0.32em] text-mona-vert-fonce mb-5">
+        Pour qui
+      </p>
+      <h2 class="font-newsreader text-mona-cacao leading-[1.1]" style="font-size: clamp(36px, 5vw, 60px);">
+        À qui je m'adresse
+        <span class="block italic text-mona-terracotta">au cabinet.</span>
+      </h2>
+    </header>
+
+    <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+      {data.publics.map((p, i) => (
+        <li class="group">
+          <a href="#rendez-vous" class="block h-full">
+            <!-- Photo carrée -->
+            <div class="relative aspect-square overflow-hidden bg-mona-creme">
+              <img
+                src={p.photo}
+                alt=""
+                loading="lazy"
+                decoding="async"
+                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <!-- Numéro en surimpression -->
+              <span class="absolute top-3 left-3 inline-flex items-center justify-center w-8 h-8 bg-mona-creme/95 font-newsreader italic text-mona-cacao text-base">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+            </div>
+
+            <!-- Texte sous la photo -->
+            <div class="pt-5">
+              <h3 class="font-newsreader text-mona-cacao text-xl md:text-2xl leading-tight group-hover:text-mona-vert-fonce transition-colors">
+                {p.label}
+              </h3>
+              <p class="mt-2 font-jakarta text-mona-cacao/65 text-sm leading-relaxed">
+                {p.description}
+              </p>
+              <p class="mt-3 inline-flex items-center gap-1.5 font-jakarta text-[12px] font-semibold text-mona-terracotta">
+                En savoir plus
+                <span aria-hidden="true">→</span>
+              </p>
+            </div>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+  </div>
+</section>

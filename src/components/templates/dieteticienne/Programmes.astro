@@ -1,0 +1,98 @@
+---
+/**
+ * Programmes — 3 formules en cards verticales hautes "carnet de recettes".
+ * Photo en haut + titre + prix + durée + bullets + CTA.
+ * Le programme populaire a un badge terracotta et un fond crème + ring vert.
+ */
+import data from '../../../data/templates/mona.json';
+---
+
+<section id="programmes" class="bg-mona-papier py-24 md:py-36 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="mb-14 md:mb-20 text-center max-w-2xl mx-auto">
+      <p class="font-jakarta text-[10px] uppercase tracking-[0.32em] text-mona-vert-fonce mb-5">
+        Programmes & tarifs
+      </p>
+      <h2 class="font-newsreader text-mona-cacao leading-[1.1]" style="font-size: clamp(36px, 5vw, 60px);">
+        Trois formats,<br/>
+        <span class="italic text-mona-terracotta">à votre rythme.</span>
+      </h2>
+      <p class="mt-6 font-newsreader italic text-mona-cacao/65 text-lg">
+        Pas de surprise sur les honoraires. Une partie est remboursée par la mutuelle selon votre contrat.
+      </p>
+    </header>
+
+    <ul class="grid lg:grid-cols-3 gap-6 md:gap-8">
+      {data.programmes.map((p) => (
+        <li class:list={[
+          'flex flex-col bg-mona-creme overflow-hidden relative',
+          p.populaire ? 'ring-2 ring-mona-vert lg:-mt-4 lg:mb-4' : '',
+        ]}>
+          {p.populaire && (
+            <span class="absolute top-4 right-4 z-10 inline-flex items-center bg-mona-terracotta text-mona-creme font-jakarta text-[10px] uppercase tracking-[0.2em] font-bold px-3 py-1.5 rounded-full">
+              ★ le + demandé
+            </span>
+          )}
+
+          <!-- Photo food associée -->
+          <div class="relative aspect-[4/3] overflow-hidden">
+            <img
+              src={p.photo}
+              alt=""
+              loading="lazy"
+              decoding="async"
+              class="w-full h-full object-cover"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-mona-cacao/40 to-transparent"></div>
+          </div>
+
+          <!-- Contenu -->
+          <div class="p-7 md:p-8 flex-1 flex flex-col">
+            <h3 class="font-newsreader text-mona-cacao text-2xl md:text-3xl leading-tight">
+              {p.label}
+            </h3>
+            <p class="mt-2 font-reenie text-mona-vert-fonce text-xl">
+              {p.duree}
+            </p>
+
+            <!-- Prix géant -->
+            <p class="mt-5 font-newsreader text-mona-terracotta tabular-nums leading-none" style="font-size: clamp(40px, 4vw, 56px);">
+              {p.prix}
+            </p>
+
+            <!-- Description -->
+            <p class="mt-4 font-jakarta text-mona-cacao/70 text-[15px] leading-[1.7]">
+              {p.description}
+            </p>
+
+            <!-- Inclus -->
+            <ul class="mt-6 space-y-2.5 flex-1">
+              {p.inclus.map((item) => (
+                <li class="flex items-start gap-3 font-jakarta text-mona-cacao/80 text-sm leading-snug">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-mona-vert mt-0.5 shrink-0" aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+
+            <!-- CTA -->
+            <a
+              href="#rendez-vous"
+              class:list={[
+                'mt-7 inline-flex items-center justify-center h-12 px-6 font-jakarta text-sm font-semibold rounded-full transition-colors',
+                p.populaire
+                  ? 'bg-mona-terracotta text-mona-creme hover:bg-mona-cacao'
+                  : 'bg-mona-cacao text-mona-creme hover:bg-mona-terracotta',
+              ]}
+            >
+              Choisir cette formule
+            </a>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

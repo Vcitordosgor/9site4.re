@@ -1,0 +1,52 @@
+---
+/**
+ * Avis — 3 témoignages format carnet manuscrit.
+ * Citations en Reenie Beanie sur fond papier, encadrées comme une page
+ * de carnet avec une légère rotation.
+ */
+import data from '../../../data/templates/mona.json';
+
+const rotations = ['rotate-[-1.5deg]', 'rotate-[1deg]', 'rotate-[-0.8deg]'];
+---
+
+<section class="bg-mona-papier py-24 md:py-36 px-6 md:px-10 overflow-hidden">
+  <div class="max-w-content mx-auto">
+
+    <header class="text-center mb-14 md:mb-20 max-w-xl mx-auto">
+      <p class="font-jakarta text-[10px] uppercase tracking-[0.32em] text-mona-terracotta mb-5">
+        Témoignages
+      </p>
+      <h2 class="font-newsreader text-mona-cacao leading-[1.1]" style="font-size: clamp(34px, 5vw, 56px);">
+        Quelques mots
+        <span class="italic text-mona-vert-fonce">de mes patient·es.</span>
+      </h2>
+    </header>
+
+    <ul class="grid md:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
+      {data.avis.map((a, i) => (
+        <li class:list={['transform', rotations[i % 3]]}>
+          <article class="bg-mona-creme p-7 md:p-8 relative" style="box-shadow: 0 8px 24px -10px rgba(62,42,30,0.18); background-image: repeating-linear-gradient(0deg, transparent, transparent 28px, rgba(62,42,30,0.04) 28px, rgba(62,42,30,0.04) 29px);">
+
+            <!-- Trombone décoratif en haut -->
+            <span class="absolute -top-3 left-6 font-reenie text-mona-terracotta text-3xl rotate-12" aria-hidden="true">✿</span>
+
+            <!-- Citation manuscrite -->
+            <blockquote class="font-reenie text-mona-cacao text-2xl md:text-3xl leading-tight mb-6">
+              « {a.texte} »
+            </blockquote>
+
+            <!-- Signature -->
+            <footer class="flex items-baseline justify-between gap-3 pt-4 border-t border-mona-cacao/15">
+              <p class="font-newsreader italic text-mona-vert-fonce text-lg">
+                — {a.prenom}
+              </p>
+              <p class="font-jakarta text-[10px] uppercase tracking-[0.22em] text-mona-cacao/55">
+                {a.duree}
+              </p>
+            </footer>
+          </article>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

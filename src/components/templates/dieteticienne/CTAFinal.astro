@@ -1,0 +1,43 @@
+---
+/**
+ * CTAFinal — chaleureux, gourmand, ton "magazine cuisine".
+ */
+import data from '../../../data/templates/mona.json';
+---
+
+<section class="bg-mona-vert py-24 md:py-36 px-6 md:px-10 text-mona-cacao">
+  <div class="max-w-2xl mx-auto text-center">
+
+    <p class="font-reenie text-mona-terracotta text-3xl rotate-1 mb-6" aria-hidden="true">
+      ✿ ✿ ✿
+    </p>
+
+    <h2 class="font-newsreader text-mona-cacao leading-[1.0]" style="font-size: clamp(40px, 6.5vw, 84px);">
+      Manger mieux,
+      <span class="block italic text-mona-cacao/85">sans se priver.</span>
+    </h2>
+
+    <p class="mt-8 font-newsreader text-mona-cacao/75 text-lg md:text-xl leading-[1.75] max-w-md mx-auto">
+      C'est plus simple qu'on ne le pense — surtout quand on est bien accompagné·e. La première consultation est ouverte à toutes et à tous.
+    </p>
+
+    <div class="mt-12 flex flex-wrap items-center justify-center gap-4">
+      <a
+        href="#rendez-vous"
+        class="inline-flex items-center justify-center h-14 px-9 bg-mona-cacao text-mona-creme font-jakarta text-sm font-semibold rounded-full hover:bg-mona-terracotta transition-colors"
+      >
+        Prendre rendez-vous
+      </a>
+      <a
+        href={`tel:${data.info.telephoneHref}`}
+        class="font-newsreader text-mona-cacao text-base underline underline-offset-4 decoration-mona-cacao/40 hover:decoration-mona-cacao tabular-nums"
+      >
+        ou par téléphone : {data.info.telephone}
+      </a>
+    </div>
+
+    <p class="mt-12 font-jakarta text-[10px] uppercase tracking-[0.3em] text-mona-cacao/55">
+      Cabinet conventionné · ADELI {data.info.adeli} · {data.info.ville} depuis {data.info.annee}
+    </p>
+  </div>
+</section>
