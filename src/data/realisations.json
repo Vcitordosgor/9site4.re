@@ -23,7 +23,8 @@
     "categorie": "restaurants",
     "sousTitre": "Carte des jus, événements et réservation",
     "moduleInclus": "Réservation",
-    "slug": "bar-a-jus-tropical"
+    "slug": "bar-a-jus-tropical",
+    "previewUrl": "/templates/bar-jus"
   },
   {
     "id": 4,
