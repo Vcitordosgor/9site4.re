@@ -1,0 +1,45 @@
+---
+import data from '../../../data/templates/boost.json';
+---
+
+<header
+  id="boost-header"
+  data-scrolled="false"
+  class="fixed top-0 inset-x-0 z-50 transition-all duration-200 data-[scrolled=false]:bg-transparent data-[scrolled=true]:bg-boost-route data-[scrolled=true]:border-b-4 data-[scrolled=true]:border-boost-acier"
+>
+  <div class="max-w-content mx-auto px-5 md:px-8 h-16 flex items-center justify-between">
+
+    <a href="#top" class="flex items-baseline gap-1.5 group" aria-label="Boost Conduite — accueil">
+      <span class="inline-flex items-center justify-center w-7 h-7 bg-boost-acier text-boost-route rounded-full text-sm font-funnel-display font-bold">B</span>
+      <span class="font-funnel-display font-bold text-boost-noir text-xl tracking-tight leading-none group-hover:text-boost-acier transition-colors">
+        {data.info.wordmark}
+      </span>
+      <span class="font-funnel-display font-light text-boost-asphalte text-xl tracking-tight leading-none">
+        {data.info.wordmark2}
+      </span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-7 font-funnel-sans text-[13px] font-semibold text-boost-noir/75" aria-label="Navigation">
+      <a href="#forfaits" class="hover:text-boost-acier transition-colors">Forfaits</a>
+      <a href="#parcours" class="hover:text-boost-acier transition-colors">Parcours</a>
+      <a href="#moniteurs" class="hover:text-boost-acier transition-colors">Moniteurs</a>
+      <a href="#avis" class="hover:text-boost-acier transition-colors">Avis</a>
+    </nav>
+
+    <a
+      href="#inscription"
+      class="inline-flex items-center h-10 px-5 bg-boost-jaune text-boost-noir font-funnel-display font-bold text-sm rounded-full hover:bg-boost-acier hover:text-boost-route transition-all hover:scale-105"
+    >
+      Je m'inscris →
+    </a>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById('boost-header');
+  if (header) {
+    const update = () => { header.dataset.scrolled = String(window.scrollY > 30); };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+  }
+</script>

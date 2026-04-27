@@ -1,0 +1,40 @@
+---
+import data from '../../../data/templates/boost.json';
+---
+
+<section class="bg-boost-jaune py-20 md:py-32 px-5 md:px-8 text-center">
+  <div class="max-w-2xl mx-auto">
+
+    <p class="font-geist-mono text-[10px] uppercase tracking-[0.32em] text-boost-acier mb-6 font-medium">
+      ▸ ACHIEVEMENT UNLOCKED ▸
+    </p>
+
+    <h2 class="font-funnel-display font-bold text-boost-noir leading-[0.85] tracking-tight" style="font-size: clamp(56px, 12vw, 200px);">
+      À toi<br/>
+      <span class="text-boost-acier">de jouer.</span>
+    </h2>
+
+    <p class="mt-10 font-funnel-sans text-boost-noir/85 text-lg leading-relaxed max-w-md mx-auto">
+      Inscription en 5 min, premier cours dans la semaine. {data.stats[0].valeur} de réussite. Tu sais ce qu'il te reste à faire.
+    </p>
+
+    <div class="mt-12 flex flex-wrap items-center justify-center gap-4">
+      <a
+        href="#inscription"
+        class="inline-flex items-center justify-center h-16 px-12 bg-boost-noir text-boost-jaune font-funnel-display font-bold text-lg rounded-full hover:bg-boost-acier hover:text-boost-route transition-all hover:scale-105"
+      >
+        Je m'inscris maintenant →
+      </a>
+      <a
+        href={`tel:${data.info.telephoneHref}`}
+        class="font-funnel-sans font-semibold text-boost-noir text-base underline underline-offset-4 decoration-2 decoration-boost-acier hover:decoration-boost-noir tabular-nums"
+      >
+        ou j'appelle : {data.info.telephone}
+      </a>
+    </div>
+
+    <p class="mt-12 font-geist-mono text-[10px] uppercase tracking-[0.28em] text-boost-noir/55">
+      ✓ {data.info.agrement}
+    </p>
+  </div>
+</section>

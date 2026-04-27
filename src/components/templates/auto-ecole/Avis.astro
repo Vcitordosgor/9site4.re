@@ -1,0 +1,53 @@
+---
+/**
+ * Avis — 6 témoignages format Reels Instagram avec ★ et âge.
+ */
+import data from '../../../data/templates/boost.json';
+---
+
+<section id="avis" class="bg-boost-noir text-boost-route py-20 md:py-28 px-5 md:px-8">
+  <div class="max-w-content mx-auto">
+
+    <header class="text-center mb-12 md:mb-16 max-w-xl mx-auto">
+      <p class="font-geist-mono text-[10px] uppercase tracking-[0.28em] text-boost-jaune mb-4 font-medium">
+        ▸ {data.stats[3].valeur} sur 412 avis
+      </p>
+      <h2 class="font-funnel-display font-bold text-boost-route leading-[0.95] tracking-tight" style="font-size: clamp(40px, 7vw, 88px);">
+        Ils l'ont eu<br/>
+        <span class="text-boost-feu">avec nous.</span>
+      </h2>
+    </header>
+
+    <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {data.avis.map((a) => (
+        <li class="bg-boost-asphalte/40 backdrop-blur-sm border border-boost-route/15 p-6 rounded-3xl flex flex-col">
+
+          <!-- Header avis -->
+          <div class="flex items-baseline justify-between gap-3 mb-4">
+            <div>
+              <p class="font-funnel-display font-bold text-boost-route text-lg leading-tight">
+                {a.prenom}, {a.age} ans
+              </p>
+              <p class="mt-0.5 font-geist-mono text-[10px] uppercase tracking-wider text-boost-feu">
+                ✓ Permis en {a.duree}
+              </p>
+            </div>
+            <div class="flex gap-0.5 shrink-0" aria-label={`${a.etoiles} étoiles sur 5`}>
+              {Array.from({ length: a.etoiles }).map(() => (
+                <span class="text-boost-jaune text-sm" aria-hidden="true">★</span>
+              ))}
+              {Array.from({ length: 5 - a.etoiles }).map(() => (
+                <span class="text-boost-route/25 text-sm" aria-hidden="true">★</span>
+              ))}
+            </div>
+          </div>
+
+          <!-- Citation -->
+          <blockquote class="font-funnel-sans text-boost-route/85 text-[15px] leading-relaxed flex-1">
+            « {a.texte} »
+          </blockquote>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

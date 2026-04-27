@@ -1,0 +1,60 @@
+---
+import data from '../../../data/templates/boost.json';
+---
+
+<section class="bg-boost-jaune py-20 md:py-28 px-5 md:px-8">
+  <div class="max-w-content mx-auto">
+
+    <div class="grid lg:grid-cols-12 gap-10 items-center">
+
+      <!-- Texte gauche -->
+      <div class="lg:col-span-7">
+        <p class="font-geist-mono text-[10px] uppercase tracking-[0.28em] text-boost-acier mb-4 font-medium">
+          ▸ Code en ligne
+        </p>
+        <h2 class="font-funnel-display font-bold text-boost-noir leading-[0.95] tracking-tight" style="font-size: clamp(40px, 7vw, 96px);">
+          {data.code.titre}
+        </h2>
+        <p class="mt-6 font-funnel-sans text-boost-noir/85 text-lg md:text-xl leading-relaxed max-w-xl">
+          {data.code.description}
+        </p>
+      </div>
+
+      <!-- Stats droite : tableau de bord style game -->
+      <div class="lg:col-span-5">
+        <div class="bg-boost-noir text-boost-route p-7 md:p-8 rounded-3xl">
+
+          <div class="flex items-baseline justify-between gap-3 mb-6 pb-4 border-b border-boost-route/15">
+            <p class="font-geist-mono text-[10px] uppercase tracking-[0.22em] text-boost-jaune">
+              ▸ Stats plateforme
+            </p>
+            <span class="flex items-center gap-1.5 font-geist-mono text-[10px] text-boost-feu">
+              <span class="w-1.5 h-1.5 rounded-full bg-boost-feu animate-pulse"></span>
+              Live
+            </span>
+          </div>
+
+          <ul class="grid grid-cols-2 gap-5">
+            {data.code.stats.map((s) => (
+              <li>
+                <p class="font-funnel-display font-bold text-boost-jaune leading-none tabular-nums" style="font-size: clamp(32px, 4vw, 48px);">
+                  {s.valeur}
+                </p>
+                <p class="mt-2 font-geist-mono text-[10px] uppercase tracking-wider text-boost-route/65">
+                  {s.label}
+                </p>
+              </li>
+            ))}
+          </ul>
+
+          <a
+            href="#inscription"
+            class="mt-7 w-full inline-flex items-center justify-center h-12 bg-boost-jaune text-boost-noir font-funnel-display font-bold text-sm rounded-full hover:bg-boost-route transition-colors"
+          >
+            Tester gratuitement →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

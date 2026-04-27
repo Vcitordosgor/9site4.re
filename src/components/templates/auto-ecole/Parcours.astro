@@ -1,0 +1,59 @@
+---
+/**
+ * Parcours — 6 étapes avec icônes panneaux routiers SVG.
+ */
+import data from '../../../data/templates/boost.json';
+
+const panneauPaths: Record<string, string> = {
+  // Stop : octogone rouge
+  stop: '<polygon points="14,4 30,4 40,14 40,30 30,40 14,40 4,30 4,14"/>',
+  // Rond-point : 3 flèches circulaires
+  'rond-point': '<circle cx="22" cy="22" r="14"/><path d="M22 14 L26 18 L18 18 Z M30 22 L26 26 L26 18 Z M22 30 L18 26 L26 26 Z" fill="currentColor"/>',
+  // Code : panneau triangulaire
+  code: '<polygon points="22,4 40,38 4,38" stroke-width="2.5" fill="none"/><text x="22" y="32" text-anchor="middle" font-family="monospace" font-size="12" font-weight="bold" fill="currentColor">!</text>',
+  // Céder : triangle inversé
+  ceder: '<polygon points="22,40 40,4 4,4" stroke-width="2.5" fill="none"/>',
+  // Vitesse : cercle avec chiffre
+  vitesse: '<circle cx="22" cy="22" r="16" stroke-width="3" fill="none"/><text x="22" y="28" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="currentColor">90</text>',
+  // Fin route : drapeau damier
+  'fin-route': '<rect x="6" y="14" width="32" height="20"/><path d="M6 14 L14 14 L14 22 L22 22 L22 14 L30 14 L30 22 L22 22 L22 30 L14 30 L14 22 L6 22 Z" fill="white"/>',
+};
+---
+
+<section id="parcours" class="bg-boost-route py-20 md:py-28 px-5 md:px-8">
+  <div class="max-w-content mx-auto">
+
+    <header class="mb-12 md:mb-16 max-w-2xl">
+      <p class="font-geist-mono text-[10px] uppercase tracking-[0.28em] text-boost-acier mb-4 font-medium">
+        ▸ Parcours en 6 étapes
+      </p>
+      <h2 class="font-funnel-display font-bold text-boost-noir leading-[0.95] tracking-tight" style="font-size: clamp(40px, 7vw, 88px);">
+        De zéro au permis,<br/>
+        <span class="text-boost-acier">en 6 étapes claires.</span>
+      </h2>
+    </header>
+
+    <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {data.parcours.map((e) => (
+        <li class="bg-boost-noir text-boost-route p-7 rounded-3xl group hover:bg-boost-acier transition-colors">
+
+          <!-- Panneau SVG -->
+          <div class="mb-5 flex items-center justify-between">
+            <svg width="44" height="44" viewBox="0 0 44 44" fill="#FFD93D" stroke="#FFD93D" class="text-boost-jaune" aria-hidden="true" set:html={panneauPaths[e.panneau] ?? panneauPaths.stop} />
+            <span class="font-geist-mono text-[11px] uppercase tracking-[0.22em] text-boost-route/55 tabular-nums">
+              ▸ {e.num}
+            </span>
+          </div>
+
+          <h3 class="font-funnel-display font-bold text-boost-route text-xl leading-tight mb-3">
+            {e.titre}
+          </h3>
+
+          <p class="font-funnel-sans text-boost-route/75 text-sm leading-relaxed">
+            {e.description}
+          </p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,71 @@
+---
+import '@fontsource/funnel-display/400.css';
+import '@fontsource/funnel-display/500.css';
+import '@fontsource/funnel-display/700.css';
+import '@fontsource/funnel-display/800.css';
+import '@fontsource/funnel-sans/400.css';
+import '@fontsource/funnel-sans/500.css';
+import '@fontsource/funnel-sans/600.css';
+import '@fontsource/funnel-sans/700.css';
+import '@fontsource/funnel-sans/400-italic.css';
+import '@fontsource/geist-mono/400.css';
+import '@fontsource/geist-mono/500.css';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getSeo } from '../../lib/seo';
+
+import BoostHeader from '../../components/templates/auto-ecole/BoostHeader.astro';
+import HeroChecklist from '../../components/templates/auto-ecole/HeroChecklist.astro';
+import Forfaits from '../../components/templates/auto-ecole/Forfaits.astro';
+import CodeEnLigne from '../../components/templates/auto-ecole/CodeEnLigne.astro';
+import Parcours from '../../components/templates/auto-ecole/Parcours.astro';
+import Moniteurs from '../../components/templates/auto-ecole/Moniteurs.astro';
+import Avis from '../../components/templates/auto-ecole/Avis.astro';
+import Inscription from '../../components/templates/auto-ecole/Inscription.astro';
+import CTAFinal from '../../components/templates/auto-ecole/CTAFinal.astro';
+import BoostFooter from '../../components/templates/auto-ecole/BoostFooter.astro';
+---
+
+<BaseLayout seo={getSeo('templateAutoEcole')} bare={true}>
+
+  <BoostHeader />
+
+  <main id="top" class="bg-boost-route text-boost-noir font-funnel-sans">
+    <HeroChecklist />
+    <Forfaits />
+    <CodeEnLigne />
+    <Parcours />
+    <Moniteurs />
+    <Avis />
+    <Inscription />
+    <CTAFinal />
+  </main>
+
+  <BoostFooter />
+
+  <a
+    id="boost-sticky-cta"
+    href="#inscription"
+    data-visible="false"
+    class="md:hidden fixed bottom-5 inset-x-5 z-40 inline-flex items-center justify-center h-13 bg-boost-jaune text-boost-noir font-funnel-display font-bold text-base rounded-full ring-4 ring-boost-noir transition-all duration-300 data-[visible=false]:opacity-0 data-[visible=false]:translate-y-4 data-[visible=false]:pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0 active:scale-95"
+    style="height: 52px;"
+  >
+    Je m'inscris →
+  </a>
+
+  <script>
+    const sticky = document.getElementById('boost-sticky-cta');
+    const inscription = document.getElementById('inscription');
+    if (sticky && inscription) {
+      const update = () => {
+        const rect = inscription.getBoundingClientRect();
+        const inSection = rect.top < window.innerHeight && rect.bottom > 80;
+        const scrolledPastHero = window.scrollY > 600;
+        sticky.dataset.visible = String(scrolledPastHero && !inSection);
+      };
+      update();
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update, { passive: true });
+    }
+  </script>
+</BaseLayout>

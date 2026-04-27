@@ -1,0 +1,122 @@
+---
+/**
+ * HeroChecklist — split asymétrique. Titre + stats à gauche, checklist
+ * gamifiée des étapes à droite avec progress bar.
+ */
+import data from '../../../data/templates/boost.json';
+---
+
+<section id="top" class="relative bg-boost-route overflow-hidden pt-24 pb-16 md:pt-32 md:pb-24 px-5 md:px-8">
+
+  <!-- Pattern panneaux routiers en arrière-plan -->
+  <svg class="absolute -top-32 -right-32 w-[400px] h-[400px] opacity-10 pointer-events-none" viewBox="0 0 200 200" fill="#2456E8" aria-hidden="true">
+    <polygon points="100,20 180,180 20,180" stroke="#2456E8" stroke-width="4" fill="none"/>
+    <text x="100" y="140" text-anchor="middle" font-family="Funnel Display" font-weight="700" font-size="60">!</text>
+  </svg>
+
+  <div class="relative max-w-content mx-auto grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+
+    <!-- Gauche : titre + stats -->
+    <div class="lg:col-span-7">
+      <p class="inline-flex items-center gap-2 font-geist-mono text-[11px] uppercase tracking-[0.18em] text-boost-acier font-medium mb-6 bg-boost-acier/10 px-3 py-1.5 rounded-full">
+        <span class="w-1.5 h-1.5 rounded-full bg-boost-feu animate-pulse"></span>
+        ✓ {data.info.agrement}
+      </p>
+
+      <h1 class="font-funnel-display font-bold text-boost-noir leading-[0.95] tracking-tight" style="font-size: clamp(48px, 9vw, 144px);">
+        Ton permis.<br/>
+        <span class="text-boost-acier">Sans stress.</span>
+      </h1>
+
+      <p class="mt-6 font-funnel-sans text-boost-asphalte text-lg md:text-xl leading-relaxed max-w-xl">
+        Auto-école à Saint-Denis depuis {data.info.annee}. {data.stats[0].valeur} de réussite dès la première tentative. {data.stats[1].valeur} permis délivrés.
+      </p>
+
+      <!-- 3 stats clés -->
+      <ul class="mt-10 grid grid-cols-3 gap-3 max-w-lg">
+        {data.stats.slice(0, 3).map((s) => (
+          <li class="bg-boost-jaune/15 border-2 border-boost-jaune p-4">
+            <p class="font-funnel-display font-bold text-boost-noir leading-none tabular-nums" style="font-size: clamp(22px, 3vw, 36px);">
+              {s.valeur}
+            </p>
+            <p class="mt-2 font-funnel-sans text-[10px] uppercase tracking-wider font-semibold text-boost-asphalte">
+              {s.label}
+            </p>
+          </li>
+        ))}
+      </ul>
+
+      <!-- CTAs -->
+      <div class="mt-10 flex flex-wrap items-center gap-4">
+        <a
+          href="#inscription"
+          class="inline-flex items-center justify-center h-14 px-8 bg-boost-acier text-boost-route font-funnel-display font-bold text-base rounded-full hover:bg-boost-noir transition-all hover:scale-105"
+        >
+          Réserver mon évaluation gratuite →
+        </a>
+        <a
+          href="#forfaits"
+          class="font-funnel-sans font-semibold text-boost-acier text-base underline underline-offset-4 decoration-2 decoration-boost-jaune hover:decoration-boost-acier transition-colors"
+        >
+          Voir les forfaits
+        </a>
+      </div>
+    </div>
+
+    <!-- Droite : checklist gamifiée -->
+    <div class="lg:col-span-5">
+      <div class="bg-boost-noir text-boost-route p-7 md:p-8 rounded-3xl">
+
+        <!-- Header checklist -->
+        <div class="flex items-baseline justify-between gap-3 mb-2">
+          <p class="font-geist-mono text-[10px] uppercase tracking-[0.22em] text-boost-jaune">
+            ▸ Achievement progress
+          </p>
+          <p class="font-geist-mono text-xs text-boost-feu tabular-nums">2/4</p>
+        </div>
+
+        <h2 class="font-funnel-display font-bold text-boost-route text-xl md:text-2xl mb-5 leading-tight">
+          Ton parcours, étape par étape.
+        </h2>
+
+        <!-- Progress bar -->
+        <div class="mb-6 h-2 bg-boost-route/15 rounded-full overflow-hidden">
+          <div class="h-full bg-gradient-to-r from-boost-feu to-boost-acier rounded-full" style="width: 50%;"></div>
+        </div>
+
+        <!-- Checklist items -->
+        <ul class="space-y-3">
+          {data.etapes.map((e) => (
+            <li class:list={[
+              'flex items-start gap-3 p-3 rounded-xl transition-all',
+              e.valide ? 'bg-boost-feu/10 border border-boost-feu/30' : 'bg-boost-route/5 border border-boost-route/15',
+            ]}>
+              <!-- Check icon -->
+              <span class:list={[
+                'shrink-0 w-7 h-7 rounded-full flex items-center justify-center font-funnel-display font-bold text-xs',
+                e.valide ? 'bg-boost-feu text-boost-noir' : 'bg-boost-route/15 text-boost-route/55',
+              ]}>
+                {e.valide ? '✓' : e.num}
+              </span>
+              <div class="flex-1">
+                <p class:list={[
+                  'font-funnel-display font-bold text-base leading-tight',
+                  e.valide ? 'text-boost-feu' : 'text-boost-route',
+                ]}>
+                  {e.label}
+                </p>
+                <p class="mt-0.5 font-geist-mono text-[10px] uppercase tracking-wider text-boost-route/55">
+                  {e.duree}
+                </p>
+              </div>
+            </li>
+          ))}
+        </ul>
+
+        <p class="mt-6 pt-5 border-t border-boost-route/15 font-funnel-sans text-sm text-boost-route/75 text-center">
+          Tu débutes ? L'évaluation est <strong class="text-boost-jaune">gratuite</strong>.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

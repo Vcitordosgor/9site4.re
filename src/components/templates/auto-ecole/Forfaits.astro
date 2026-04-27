@@ -1,0 +1,83 @@
+---
+/**
+ * Forfaits — 3 forfaits format menu McDo accessible.
+ */
+import data from '../../../data/templates/boost.json';
+---
+
+<section id="forfaits" class="bg-boost-noir text-boost-route py-20 md:py-28 px-5 md:px-8">
+  <div class="max-w-content mx-auto">
+
+    <header class="text-center mb-12 md:mb-16 max-w-2xl mx-auto">
+      <p class="font-geist-mono text-[10px] uppercase tracking-[0.28em] text-boost-jaune mb-4 font-medium">
+        ▸ Forfaits
+      </p>
+      <h2 class="font-funnel-display font-bold text-boost-route leading-[0.95] tracking-tight" style="font-size: clamp(40px, 7vw, 96px);">
+        Tu paies que ce<br/>
+        <span class="text-boost-jaune">dont tu as besoin.</span>
+      </h2>
+    </header>
+
+    <ul class="grid md:grid-cols-3 gap-5">
+      {data.forfaits.map((f) => (
+        <li class:list={[
+          'relative rounded-3xl p-7 md:p-8 flex flex-col transition-transform duration-300 hover:-translate-y-1',
+          f.populaire ? 'bg-boost-jaune text-boost-noir lg:scale-105 lg:-mt-2' : `bg-${f.couleur} text-boost-noir`,
+        ]}>
+          {f.populaire && (
+            <span class="absolute -top-3 left-7 inline-block bg-boost-noir text-boost-jaune font-funnel-display font-bold text-[10px] uppercase tracking-[0.18em] px-3 py-1.5 rounded-full">
+              ★ Le + choisi
+            </span>
+          )}
+
+          <p class="font-geist-mono text-[10px] uppercase tracking-[0.22em] text-boost-noir/65 mb-3">
+            ▸ Forfait #{f.id.padStart(2, '0')}
+          </p>
+
+          <h3 class="font-funnel-display font-bold text-boost-noir text-2xl md:text-3xl leading-tight mb-3">
+            {f.label}
+          </h3>
+
+          <p class="font-funnel-sans text-boost-noir/75 text-sm leading-relaxed mb-6">
+            {f.tagline}
+          </p>
+
+          <!-- Prix énorme -->
+          <div class="flex items-baseline gap-2 mb-2">
+            <span class="font-funnel-display font-bold text-boost-noir tabular-nums leading-none" style="font-size: clamp(48px, 6vw, 80px);">
+              {f.prix}
+            </span>
+            <span class="font-funnel-display font-bold text-boost-noir text-2xl">€</span>
+          </div>
+          <p class="font-geist-mono text-[11px] uppercase tracking-wider text-boost-noir/65 mb-6">
+            {f.duree}
+          </p>
+
+          <!-- Inclus -->
+          <ul class="space-y-2.5 mb-7 flex-1">
+            {f.inclus.map((i) => (
+              <li class="flex items-start gap-2.5 font-funnel-sans text-[14px] text-boost-noir/85">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mt-1" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                {i}
+              </li>
+            ))}
+          </ul>
+
+          <!-- CTA -->
+          <a
+            href="#inscription"
+            class="inline-flex items-center justify-center h-13 bg-boost-noir text-boost-route font-funnel-display font-bold text-sm rounded-full hover:bg-boost-route hover:text-boost-noir transition-colors"
+          >
+            Je choisis →
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <p class="mt-10 text-center font-funnel-sans text-sm text-boost-route/65 max-w-2xl mx-auto">
+      Paiement en 3 ou 4 fois sans frais possible. Bourse au permis acceptée. CPF également (sous conditions).
+    </p>
+  </div>
+</section>

@@ -1,0 +1,127 @@
+---
+import data from '../../../data/templates/boost.json';
+const waBase = `https://wa.me/${data.info.whatsapp}`;
+---
+
+<section id="inscription" class="bg-boost-acier text-boost-route py-20 md:py-28 px-5 md:px-8">
+  <div class="max-w-3xl mx-auto">
+
+    <header class="text-center mb-10">
+      <p class="font-geist-mono text-[10px] uppercase tracking-[0.28em] text-boost-jaune mb-4 font-medium">
+        ▸ Inscription
+      </p>
+      <h2 class="font-funnel-display font-bold text-boost-route leading-[0.95] tracking-tight" style="font-size: clamp(40px, 7vw, 88px);">
+        On commence<br/>
+        <span class="text-boost-jaune">quand tu veux.</span>
+      </h2>
+      <p class="mt-5 font-funnel-sans text-boost-route/85 text-base md:text-lg max-w-xl mx-auto">
+        L'évaluation est gratuite et sans engagement. On t'appelle dans la journée pour fixer un créneau.
+      </p>
+    </header>
+
+    <form id="boost-form" class="bg-boost-route text-boost-noir p-6 md:p-8 rounded-3xl space-y-5" novalidate>
+
+      <p class="font-funnel-display font-bold text-boost-noir text-2xl mb-2">
+        Salut ! Quelques infos rapides.
+      </p>
+
+      <!-- Forfait choisi -->
+      <div>
+        <label for="boost-forfait" class="block font-funnel-display font-bold text-boost-noir text-sm mb-2">
+          ▸ Quel forfait t'intéresse ?
+        </label>
+        <select
+          id="boost-forfait"
+          name="forfait"
+          class="w-full h-12 px-4 bg-boost-jaune/10 border-2 border-boost-noir/15 focus:border-boost-acier rounded-2xl font-funnel-sans text-boost-noir text-base outline-none transition-colors cursor-pointer"
+        >
+          <option value="">— Je ne sais pas encore —</option>
+          {data.forfaits.map((f) => <option value={f.label}>{f.label} · {f.prix} €</option>)}
+        </select>
+      </div>
+
+      <!-- Âge & coordonnées -->
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div>
+          <label for="boost-prenom" class="block font-funnel-display font-bold text-boost-noir text-sm mb-2">
+            ▸ Ton prénom
+          </label>
+          <input
+            id="boost-prenom"
+            name="prenom"
+            type="text"
+            required
+            autocomplete="given-name"
+            placeholder="Léa, Karim…"
+            class="w-full h-12 px-4 bg-boost-jaune/10 border-2 border-boost-noir/15 focus:border-boost-acier rounded-2xl font-funnel-sans text-boost-noir text-base outline-none transition-colors"
+          />
+        </div>
+        <div>
+          <label for="boost-tel" class="block font-funnel-display font-bold text-boost-noir text-sm mb-2">
+            ▸ Ton tel
+          </label>
+          <input
+            id="boost-tel"
+            name="telephone"
+            type="tel"
+            required
+            autocomplete="tel"
+            placeholder="0692 xx xx xx"
+            class="w-full h-12 px-4 bg-boost-jaune/10 border-2 border-boost-noir/15 focus:border-boost-acier rounded-2xl font-funnel-sans text-boost-noir text-base outline-none transition-colors tabular-nums"
+          />
+        </div>
+      </div>
+
+      <!-- Âge -->
+      <div>
+        <label for="boost-age" class="block font-funnel-display font-bold text-boost-noir text-sm mb-2">
+          ▸ Ton âge
+        </label>
+        <div class="flex flex-wrap gap-2">
+          {['15-17', '18-21', '22-30', '30+'].map((a, i) => (
+            <label class="cursor-pointer">
+              <input type="radio" name="age" value={a} class="peer sr-only" checked={i === 0} />
+              <span class="block px-5 py-3 bg-boost-jaune/10 border-2 border-boost-noir/15 peer-checked:border-boost-acier peer-checked:bg-boost-acier peer-checked:text-boost-route font-funnel-display font-bold text-sm rounded-full transition-colors">
+                {a} ans
+              </span>
+            </label>
+          ))}
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <button
+        type="submit"
+        class="w-full h-14 inline-flex items-center justify-center gap-2 bg-boost-noir text-boost-jaune font-funnel-display font-bold text-base rounded-full hover:bg-boost-acier hover:text-boost-route transition-all hover:scale-[1.01]"
+      >
+        ✓ Envoyer · WhatsApp
+      </button>
+
+      <p class="font-funnel-sans text-boost-asphalte/70 text-sm text-center">
+        Réponse de Boost en moins d'une heure ouvrée.
+      </p>
+    </form>
+  </div>
+</section>
+
+<script define:vars={{ waBase }}>
+  const form = document.getElementById('boost-form');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fd = new FormData(form);
+      const forfait = fd.get('forfait') || '';
+      const prenom = fd.get('prenom') || '';
+      const tel = fd.get('telephone') || '';
+      const age = fd.get('age') || '';
+      const text = [
+        'Salut Boost ! Je veux m\'inscrire :',
+        prenom ? `Prénom : ${prenom}` : '',
+        tel ? `Tél : ${tel}` : '',
+        age ? `Âge : ${age} ans` : '',
+        forfait ? `Forfait : ${forfait}` : '',
+      ].filter(Boolean).join('\n');
+      window.open(`${waBase}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
+    });
+  }
+</script>

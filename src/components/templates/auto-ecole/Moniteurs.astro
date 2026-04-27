@@ -1,0 +1,56 @@
+---
+import data from '../../../data/templates/boost.json';
+---
+
+<section id="moniteurs" class="bg-boost-route py-20 md:py-28 px-5 md:px-8 border-t-4 border-boost-jaune">
+  <div class="max-w-content mx-auto">
+
+    <header class="mb-12 md:mb-16 max-w-2xl">
+      <p class="font-geist-mono text-[10px] uppercase tracking-[0.28em] text-boost-feu mb-4 font-medium">
+        ▸ L'équipe
+      </p>
+      <h2 class="font-funnel-display font-bold text-boost-noir leading-[0.95] tracking-tight" style="font-size: clamp(40px, 7vw, 88px);">
+        Quatre moniteurs.<br/>
+        <span class="text-boost-feu">Quatre styles.</span>
+      </h2>
+    </header>
+
+    <ul class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      {data.moniteurs.map((m) => (
+        <li class="group">
+          <article class="bg-boost-jaune/15 hover:bg-boost-jaune p-5 rounded-3xl transition-colors h-full flex flex-col">
+
+            <!-- Photo ronde -->
+            <div class="relative w-24 h-24 mx-auto mb-5 rounded-full overflow-hidden ring-4 ring-boost-noir">
+              <img
+                src={m.photo}
+                alt={`Portrait de ${m.prenom}`}
+                loading="lazy"
+                decoding="async"
+                class="w-full h-full object-cover"
+              />
+            </div>
+
+            <!-- Identité -->
+            <p class="text-center font-funnel-display font-bold text-boost-noir text-2xl leading-tight">
+              {m.prenom}
+            </p>
+            <p class="mt-1 text-center font-geist-mono text-[10px] uppercase tracking-wider text-boost-asphalte">
+              ▸ {m.experience} d'expérience
+            </p>
+
+            <!-- Spécialité badge -->
+            <p class="mt-4 inline-block bg-boost-noir text-boost-jaune font-funnel-display font-bold text-xs uppercase tracking-wider px-3 py-1.5 rounded-full self-center">
+              {m.specialite}
+            </p>
+
+            <!-- Trait -->
+            <p class="mt-4 pt-4 border-t border-boost-noir/15 font-funnel-sans italic text-boost-asphalte text-sm leading-relaxed text-center flex-1">
+              {m.trait}
+            </p>
+          </article>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
