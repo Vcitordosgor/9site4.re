@@ -55,6 +55,9 @@ export default {
     {
       pattern: /^(bg|text|ring|border|from|to|via)-(lagon-mangue|lagon-pitaya|lagon-lime|lagon-turquoise|lagon-charbon|lagon-coco|lagon-blanc)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
     },
+    {
+      pattern: /^(bg|text|ring|border|from|to|via)-(marlene-nacre|marlene-sable|marlene-rose|marlene-champagne|marlene-bordeaux|marlene-moka|marlene-noir)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
+    },
   ],
   theme: {
     extend: {
@@ -210,6 +213,17 @@ export default {
         'lagon-charbon':   '#1A1410',  // noir warm — texte AAA, contraste
         'lagon-coco':      '#FFF8EC',  // crème coco — fond doux
         'lagon-blanc':     '#FFFFFF',
+        // Palette institut de beauté (template /templates/institut — Maison Marléne)
+        // Style "boutique-hôtel parisien, raffiné mais charnel" : nacre + rose
+        // poudré nu + champagne doré + bordeaux satiné + moka. Distinct du
+        // vert forêt salon et du terracotta nature spa (même catégorie beauté).
+        'marlene-nacre':     '#F8F4F0',  // blanc nacre — fond principal
+        'marlene-sable':     '#EAD8C9',  // sable rose — sections alternées
+        'marlene-rose':      '#E5BFB5',  // rose poudré nu — accent doux
+        'marlene-champagne': '#C9A56C',  // doré champagne — filets ornementaux
+        'marlene-bordeaux':  '#7E2A3C',  // bordeaux satiné — accent CTA
+        'marlene-moka':      '#5C3B30',  // brun moka — texte secondaire
+        'marlene-noir':      '#1A1213',  // noir warm — texte AAA
       },
       fontFamily: {
         sora: ['Sora', 'system-ui', 'sans-serif'],
@@ -248,6 +262,9 @@ export default {
         bagel: ['"Bagel Fat One"', 'Impact', 'sans-serif'],
         onest: ['Onest', 'system-ui', 'sans-serif'],
         architects: ['"Architects Daughter"', 'cursive'],
+        marcellus: ['Marcellus', 'Trajan', 'Georgia', 'serif'],
+        mulish: ['Mulish', 'system-ui', 'sans-serif'],
+        'eb-garamond': ['"EB Garamond"', 'Garamond', 'Georgia', 'serif'],
       },
       fontSize: {
         'hero': ['clamp(2.5rem, 5vw + 1rem, 5rem)', { lineHeight: '1.05', letterSpacing: '-0.02em' }],

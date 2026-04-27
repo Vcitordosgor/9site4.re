@@ -42,7 +42,8 @@ type PageKey =
   | 'templateOsteo'
   | 'templateDieteticienne'
   | 'templatePsy'
-  | 'templateBarJus';
+  | 'templateBarJus'
+  | 'templateInstitut';
 
 const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'> & { noindex?: boolean; ogImage?: string; ogImageAlt?: string }> = {
   home: {
@@ -183,6 +184,13 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
     description:
       'Aperçu du template "Bar à jus tropical" proposé par 9site4 : carte des jus pressés, smoothie bowls, événements, commande WhatsApp. Site fictif de démonstration.',
     canonical: '/templates/bar-jus',
+    noindex: true,
+  },
+  templateInstitut: {
+    title: 'Maison Marléne — Institut de beauté à Saint-Gilles (Réunion) | Template 9site4',
+    description:
+      'Aperçu du template "Institut de beauté" proposé par 9site4 : carte des soins, rituel signature, marques partenaires, cartes cadeaux et réservation. Site fictif de démonstration.',
+    canonical: '/templates/institut',
     noindex: true,
   },
 };

@@ -1,0 +1,168 @@
+{
+  "info": {
+    "nom": "Maison Marléne",
+    "wordmark1": "Maison",
+    "wordmark2": "Marléne",
+    "tagline": "L'art de prendre soin.",
+    "fondatrice": "Marléne Hoarau-Dupré",
+    "soustitre": "Institut de beauté & soins du visage",
+    "ville": "Saint-Gilles-les-Bains",
+    "adresseLigne1": "4 boulevard Bonnier",
+    "adresseLigne2": "97434 Saint-Gilles-les-Bains",
+    "telephone": "0692 91 26 47",
+    "telephoneHref": "+33692912647",
+    "whatsapp": "33692912647",
+    "email": "bonjour@maison-marlene.re",
+    "instagram": "@maison.marlene",
+    "siret": "56789012200017",
+    "annee": "2012",
+    "photoHero": "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=900&q=85",
+    "photoRituel": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=1200&q=85",
+    "photoInstitut": "https://images.unsplash.com/photo-1633113217457-5be8f2bdf90f?w=1200&q=85"
+  },
+  "pitch": {
+    "intro": "Depuis douze ans, l'institut accueille femmes et hommes qui souhaitent prendre du temps pour eux. Petits gestes, grands soins — sans précipitation, sans bavardage inutile.",
+    "essence": "Une maison à taille humaine, deux esthéticiennes formées en Europe, et des produits choisis un par un.",
+    "promesse": "Notre engagement : aucun forfait poussé, aucun produit revendu sans nécessité. Vous repartez avec ce dont vous avez besoin — rien d'autre."
+  },
+  "rituel": {
+    "nom": "Le Rituel Marléne",
+    "soustitre": "Soin signature du visage",
+    "duree": "90 minutes",
+    "prix": "130 €",
+    "description": "Notre soin emblématique. Cinq actes, soixante-dix gestes, une heure et demie hors du temps. Conçu pour redonner éclat et lumière à la peau, mais aussi pour ralentir.",
+    "actes": [
+      {
+        "num": "Acte I",
+        "titre": "L'accueil",
+        "duree": "10 min",
+        "didascalie": "Tisane parfumée à la verveine et au miel local. Déshabillage en peignoir de coton. La lumière baisse d'un cran."
+      },
+      {
+        "num": "Acte II",
+        "titre": "Le démaquillage rituel",
+        "duree": "15 min",
+        "didascalie": "Huile précieuse aux trois fleurs, vapeur tiède sur le visage. Les pores s'ouvrent. Vous fermez les yeux."
+      },
+      {
+        "num": "Acte III",
+        "titre": "Le soin profond",
+        "duree": "35 min",
+        "didascalie": "Gommage enzymatique, masque sur-mesure selon le type de peau, application des sérums actifs."
+      },
+      {
+        "num": "Acte IV",
+        "titre": "Le massage facial",
+        "duree": "20 min",
+        "didascalie": "Drainage lymphatique manuel, technique Kobido. Les traits se détendent. Le silence est complet."
+      },
+      {
+        "num": "Acte V",
+        "titre": "Le retour",
+        "duree": "10 min",
+        "didascalie": "Application crème de jour, conseils personnalisés. On vous laisse cinq minutes seul·e avant de partir."
+      }
+    ]
+  },
+  "categories": [
+    {
+      "id": "visage",
+      "label": "Visage",
+      "soustitre": "Soins éclat, hydratation, anti-âge",
+      "soins": [
+        { "nom": "Soin éclat express", "duree": "45 min", "prix": "65 €" },
+        { "nom": "Soin hydratant intense", "duree": "60 min", "prix": "80 €" },
+        { "nom": "Soin anti-âge premium", "duree": "75 min", "prix": "110 €" },
+        { "nom": "Le Rituel Marléne", "duree": "90 min", "prix": "130 €" },
+        { "nom": "Microdermabrasion", "duree": "60 min", "prix": "95 €" }
+      ]
+    },
+    {
+      "id": "corps",
+      "label": "Corps",
+      "soustitre": "Massages, gommages, enveloppements",
+      "soins": [
+        { "nom": "Massage relaxant", "duree": "60 min", "prix": "75 €" },
+        { "nom": "Massage signature lomi-lomi", "duree": "90 min", "prix": "110 €" },
+        { "nom": "Gommage corps complet", "duree": "45 min", "prix": "60 €" },
+        { "nom": "Enveloppement chocolat-vanille", "duree": "75 min", "prix": "95 €" }
+      ]
+    },
+    {
+      "id": "epilation",
+      "label": "Épilation",
+      "soustitre": "Cire tiède, chaude, ou laser sucre",
+      "soins": [
+        { "nom": "Sourcils dessinés", "duree": "20 min", "prix": "15 €" },
+        { "nom": "Lèvre supérieure", "duree": "10 min", "prix": "12 €" },
+        { "nom": "Aisselles", "duree": "15 min", "prix": "18 €" },
+        { "nom": "Maillot classique", "duree": "20 min", "prix": "20 €" },
+        { "nom": "Maillot brésilien / intégral", "duree": "30 min", "prix": "30 €" },
+        { "nom": "Demi-jambes", "duree": "25 min", "prix": "30 €" },
+        { "nom": "Jambes complètes", "duree": "45 min", "prix": "45 €" },
+        { "nom": "Forfait jambes + maillot brésilien", "duree": "1h", "prix": "60 €" }
+      ]
+    },
+    {
+      "id": "mains-pieds",
+      "label": "Mains & Pieds",
+      "soustitre": "Manucure, pédicure, vernis semi-permanent",
+      "soins": [
+        { "nom": "Manucure express", "duree": "30 min", "prix": "25 €" },
+        { "nom": "Manucure spa", "duree": "45 min", "prix": "45 €" },
+        { "nom": "Pose vernis semi-permanent", "duree": "45 min", "prix": "35 €" },
+        { "nom": "Pédicure spa complète", "duree": "60 min", "prix": "55 €" }
+      ]
+    },
+    {
+      "id": "forfaits",
+      "label": "Forfaits",
+      "soustitre": "Demi-journée, journée complète, mariée",
+      "soins": [
+        { "nom": "Demi-journée détente (3h)", "duree": "3h", "prix": "180 €" },
+        { "nom": "Journée bien-être (5h)", "duree": "5h", "prix": "290 €" },
+        { "nom": "Forfait future maman", "duree": "2h", "prix": "130 €" },
+        { "nom": "Forfait mariée — soins préparation", "duree": "3h", "prix": "220 €" }
+      ]
+    }
+  ],
+  "marques": [
+    "Sothys Paris",
+    "Cinq Mondes",
+    "Maria Galland",
+    "SkinCeuticals",
+    "OPI",
+    "Caudalie"
+  ],
+  "cartes": [
+    {
+      "montant": "50",
+      "label": "La Pause",
+      "suggestion": "Pour un soin express ou un massage 30 min."
+    },
+    {
+      "montant": "100",
+      "label": "L'Évasion",
+      "suggestion": "Soin du visage + manucure, ou massage relaxant 60 min."
+    },
+    {
+      "montant": "150",
+      "label": "Le Rituel",
+      "suggestion": "Notre soin signature 90 min, expérience complète."
+    },
+    {
+      "montant": "Sur-mesure",
+      "label": "À Composer",
+      "suggestion": "Le montant que vous souhaitez, à utiliser librement."
+    }
+  ],
+  "horaires": [
+    { "jour": "Lundi", "label": "Fermé", "ouvert": false },
+    { "jour": "Mardi", "label": "10h – 19h", "ouvert": true },
+    { "jour": "Mercredi", "label": "10h – 19h", "ouvert": true },
+    { "jour": "Jeudi", "label": "10h – 21h", "ouvert": true },
+    { "jour": "Vendredi", "label": "10h – 19h", "ouvert": true },
+    { "jour": "Samedi", "label": "09h – 17h", "ouvert": true },
+    { "jour": "Dimanche", "label": "Fermé", "ouvert": false }
+  ]
+}
