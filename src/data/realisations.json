@@ -194,7 +194,8 @@
     "categorie": "particuliers",
     "sousTitre": "Formations, forfaits et inscription en ligne",
     "moduleInclus": "Rendez-vous",
-    "slug": "auto-ecole"
+    "slug": "auto-ecole",
+    "previewUrl": "/templates/auto-ecole"
   },
   {
     "id": 23,
