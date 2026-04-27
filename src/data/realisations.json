@@ -108,7 +108,8 @@
     "categorie": "sport",
     "sousTitre": "Programmes, tarifs et rendez-vous personnalisés",
     "moduleInclus": "Rendez-vous",
-    "slug": "coach-sportif"
+    "slug": "coach-sportif",
+    "previewUrl": "/templates/coach"
   },
   {
     "id": 14,
