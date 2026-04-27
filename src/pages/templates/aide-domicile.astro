@@ -1,0 +1,84 @@
+---
+import '@fontsource/nunito/400.css';
+import '@fontsource/nunito/500.css';
+import '@fontsource/nunito/600.css';
+import '@fontsource/nunito/700.css';
+import '@fontsource/nunito/800.css';
+import '@fontsource/be-vietnam-pro/400.css';
+import '@fontsource/be-vietnam-pro/500.css';
+import '@fontsource/be-vietnam-pro/600.css';
+import '@fontsource/be-vietnam-pro/700.css';
+import '@fontsource/be-vietnam-pro/400-italic.css';
+import '@fontsource/homemade-apple/400.css';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getSeo } from '../../lib/seo';
+import doudouData from '../../data/templates/doudou.json';
+
+import DoudouHeader from '../../components/templates/aide-domicile/DoudouHeader.astro';
+import HeroFamiliale from '../../components/templates/aide-domicile/HeroFamiliale.astro';
+import Engagements from '../../components/templates/aide-domicile/Engagements.astro';
+import Services from '../../components/templates/aide-domicile/Services.astro';
+import PourQui from '../../components/templates/aide-domicile/PourQui.astro';
+import TarifsFinancement from '../../components/templates/aide-domicile/TarifsFinancement.astro';
+import Aidants from '../../components/templates/aide-domicile/Aidants.astro';
+import Temoignages from '../../components/templates/aide-domicile/Temoignages.astro';
+import Demande from '../../components/templates/aide-domicile/Demande.astro';
+import CTAFinal from '../../components/templates/aide-domicile/CTAFinal.astro';
+import DoudouFooter from '../../components/templates/aide-domicile/DoudouFooter.astro';
+---
+
+<BaseLayout seo={getSeo('templateAideDomicile')} bare={true}>
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <link rel="dns-prefetch" href="https://images.unsplash.com" />
+    <link
+      rel="preload"
+      as="image"
+      href={doudouData.info.photoHero}
+      fetchpriority="high"
+    />
+  </Fragment>
+
+  <DoudouHeader />
+
+  <main id="top" class="bg-doudou-creme text-doudou-encre font-be-vietnam">
+    <HeroFamiliale />
+    <Engagements />
+    <Services />
+    <PourQui />
+    <TarifsFinancement />
+    <Aidants />
+    <Temoignages />
+    <Demande />
+    <CTAFinal />
+  </main>
+
+  <DoudouFooter />
+
+  <a
+    id="doudou-sticky-cta"
+    href="#demande"
+    data-visible="false"
+    class="md:hidden fixed bottom-5 inset-x-5 z-40 inline-flex items-center justify-center gap-2 h-13 bg-doudou-bleu text-doudou-creme font-nunito font-bold text-sm rounded-full transition-all duration-300 data-[visible=false]:opacity-0 data-[visible=false]:translate-y-4 data-[visible=false]:pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0"
+    style="height: 52px; box-shadow: 0 12px 28px rgba(59,110,143,0.30);"
+  >
+    ♡ Visite gratuite à domicile
+  </a>
+
+  <script>
+    const sticky = document.getElementById('doudou-sticky-cta');
+    const demande = document.getElementById('demande');
+    if (sticky && demande) {
+      const update = () => {
+        const rect = demande.getBoundingClientRect();
+        const inSection = rect.top < window.innerHeight && rect.bottom > 80;
+        const scrolledPastHero = window.scrollY > 600;
+        sticky.dataset.visible = String(scrolledPastHero && !inSection);
+      };
+      update();
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update, { passive: true });
+    }
+  </script>
+</BaseLayout>

@@ -1,0 +1,150 @@
+---
+import data from '../../../data/templates/doudou.json';
+const waBase = `https://wa.me/${data.info.whatsapp}`;
+---
+
+<section id="demande" class="bg-doudou-bleu text-doudou-creme py-20 md:py-28 px-6 md:px-10 relative overflow-hidden">
+
+  <!-- Formes décoratives douces -->
+  <div class="absolute -top-40 -right-40 w-[400px] h-[400px] rounded-full bg-doudou-rose/30 pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full bg-doudou-soleil/20 pointer-events-none" aria-hidden="true"></div>
+
+  <div class="relative max-w-3xl mx-auto">
+
+    <header class="text-center mb-12">
+      <p class="font-homemade text-doudou-soleil text-4xl mb-4 leading-none rotate-[-1deg]">
+        on prend rendez-vous ?
+      </p>
+      <h2 class="font-nunito font-bold text-doudou-creme leading-[1.05]" style="font-size: clamp(34px, 5vw, 60px);">
+        Visite à domicile,<br/>
+        <span class="text-doudou-soleil">complètement gratuite.</span>
+      </h2>
+      <p class="mt-5 font-be-vietnam text-doudou-creme/85 text-base md:text-lg max-w-xl mx-auto leading-relaxed">
+        Marie-Claire ou un de nos aidants se déplace chez vous, à votre rythme. Bilan complet, conseil sur les aides, devis. Sans engagement.
+      </p>
+    </header>
+
+    <form id="doudou-form" class="bg-doudou-creme text-doudou-encre p-6 md:p-8 rounded-3xl space-y-5" novalidate>
+
+      <p class="font-homemade text-doudou-rose text-3xl rotate-[-1deg] leading-none">
+        Bonjour ! On vous écoute :
+      </p>
+
+      <!-- Pour qui -->
+      <div>
+        <label for="dd-pour" class="block font-nunito font-bold text-doudou-encre text-sm mb-2">
+          ♡ Cette aide est pour…
+        </label>
+        <select
+          id="dd-pour"
+          name="pour"
+          required
+          class="w-full h-12 px-4 bg-doudou-soleil/20 border-2 border-doudou-encre/15 focus:border-doudou-bleu rounded-2xl font-be-vietnam text-doudou-encre text-base outline-none transition-colors cursor-pointer"
+        >
+          <option value="">— Sélectionner —</option>
+          <option value="parent-age">Mon parent âgé(e)</option>
+          <option value="conjoint">Mon conjoint(e)</option>
+          <option value="moi">Moi-même</option>
+          <option value="proche">Un proche dépendant</option>
+          <option value="post-hospi">Sortie d'hospitalisation</option>
+          <option value="autre">Autre situation</option>
+        </select>
+      </div>
+
+      <!-- Coordonnées -->
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div>
+          <label for="dd-prenom" class="block font-nunito font-bold text-doudou-encre text-sm mb-2">
+            ♡ Votre prénom
+          </label>
+          <input
+            id="dd-prenom"
+            name="prenom"
+            type="text"
+            required
+            autocomplete="given-name"
+            class="w-full h-12 px-4 bg-doudou-soleil/20 border-2 border-doudou-encre/15 focus:border-doudou-bleu rounded-2xl font-be-vietnam text-doudou-encre text-base outline-none transition-colors"
+          />
+        </div>
+        <div>
+          <label for="dd-tel" class="block font-nunito font-bold text-doudou-encre text-sm mb-2">
+            ♡ Votre téléphone
+          </label>
+          <input
+            id="dd-tel"
+            name="telephone"
+            type="tel"
+            required
+            autocomplete="tel"
+            placeholder="0692 xx xx xx"
+            class="w-full h-12 px-4 bg-doudou-soleil/20 border-2 border-doudou-encre/15 focus:border-doudou-bleu rounded-2xl font-be-vietnam text-doudou-encre text-base outline-none transition-colors tabular-nums"
+          />
+        </div>
+      </div>
+
+      <!-- Commune -->
+      <div>
+        <label for="dd-commune" class="block font-nunito font-bold text-doudou-encre text-sm mb-2">
+          ♡ Votre commune
+        </label>
+        <input
+          id="dd-commune"
+          name="commune"
+          type="text"
+          placeholder="Ex. Saint-André, Sainte-Suzanne, Bras-Panon…"
+          class="w-full h-12 px-4 bg-doudou-soleil/20 border-2 border-doudou-encre/15 focus:border-doudou-bleu rounded-2xl font-be-vietnam text-doudou-encre text-base outline-none transition-colors"
+        />
+      </div>
+
+      <!-- Message -->
+      <div>
+        <label for="dd-message" class="block font-nunito font-bold text-doudou-encre text-sm mb-2">
+          ♡ Quelques mots <span class="font-normal text-doudou-encre/60">(facultatif)</span>
+        </label>
+        <textarea
+          id="dd-message"
+          name="message"
+          rows="3"
+          placeholder="L'âge de la personne, son état de santé, ce qui pourrait nous aider à comprendre…"
+          class="w-full px-4 py-3 bg-doudou-soleil/20 border-2 border-doudou-encre/15 focus:border-doudou-bleu rounded-2xl font-be-vietnam text-doudou-encre text-base placeholder:text-doudou-encre/45 outline-none transition-colors resize-none"
+        ></textarea>
+      </div>
+
+      <!-- Submit -->
+      <button
+        type="submit"
+        class="w-full inline-flex items-center justify-center gap-2 h-14 bg-doudou-rose text-doudou-creme font-nunito font-bold text-base rounded-full hover:bg-doudou-encre transition-colors"
+      >
+        ♡ Demander la visite gratuite
+      </button>
+
+      <p class="font-be-vietnam italic text-doudou-encre/60 text-sm text-center">
+        On vous rappelle dans la journée pour fixer un créneau qui vous arrange.
+      </p>
+    </form>
+  </div>
+</section>
+
+<script define:vars={{ waBase }}>
+  const form = document.getElementById('doudou-form');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fd = new FormData(form);
+      const pour = fd.get('pour') || '';
+      const prenom = fd.get('prenom') || '';
+      const tel = fd.get('telephone') || '';
+      const commune = fd.get('commune') || '';
+      const message = fd.get('message') || '';
+      const text = [
+        'Bonjour Doudou Service, je souhaite une visite à domicile gratuite.',
+        prenom ? `Prénom : ${prenom}` : '',
+        tel ? `Tél : ${tel}` : '',
+        pour ? `Pour : ${pour}` : '',
+        commune ? `Commune : ${commune}` : '',
+        message ? `Précisions : ${message}` : '',
+      ].filter(Boolean).join('\n');
+      window.open(`${waBase}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
+    });
+  }
+</script>

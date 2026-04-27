@@ -1,0 +1,48 @@
+---
+import data from '../../../data/templates/doudou.json';
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-doudou-encre text-doudou-creme/75 py-12 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+
+      <div>
+        <p class="flex items-baseline gap-2">
+          <span class="inline-flex items-center justify-center w-8 h-8 bg-doudou-rose text-doudou-creme rounded-full text-base font-nunito font-bold">♡</span>
+          <span class="font-nunito font-bold text-doudou-creme text-lg leading-none">{data.info.wordmark1}</span>
+          <span class="font-nunito text-doudou-creme/85 text-lg leading-none">{data.info.wordmark2}</span>
+        </p>
+        <p class="mt-3 font-homemade text-doudou-soleil text-2xl rotate-[-1deg] leading-none">
+          on prend soin
+        </p>
+        <p class="mt-2 font-be-vietnam text-[11px] uppercase tracking-wider text-doudou-creme/55">
+          {data.info.adresseLigne1} · {data.info.ville} · depuis {data.info.annee}
+        </p>
+      </div>
+
+      <ul class="flex flex-col md:flex-row md:items-center gap-2 md:gap-7 font-be-vietnam text-sm">
+        <li><a href={`tel:${data.info.telephoneHref}`} class="hover:text-doudou-rose transition-colors tabular-nums">{data.info.telephone}</a></li>
+        <li class="hidden md:inline-block w-1 h-1 rounded-full bg-doudou-rose" aria-hidden="true"></li>
+        <li><a href={`mailto:${data.info.email}`} class="hover:text-doudou-rose transition-colors break-all">{data.info.email}</a></li>
+      </ul>
+    </div>
+
+    <!-- Filet rose -->
+    <div class="h-px mb-6 bg-gradient-to-r from-transparent via-doudou-rose/50 to-transparent" aria-hidden="true"></div>
+
+    <!-- Mention agrément -->
+    <p class="mb-6 font-be-vietnam text-[10px] uppercase tracking-wider text-doudou-creme/55 leading-relaxed">
+      ✓ {data.info.agrement} · Crédit d'impôt 50 % · APA / PCH acceptées
+    </p>
+
+    <div class="flex flex-col-reverse md:flex-row md:items-center md:justify-between gap-3 font-be-vietnam text-[11px] uppercase tracking-wider text-doudou-creme/45">
+      <p>© {year} {data.info.nom} · SIRET {data.info.siret}</p>
+      <p>
+        ♡ Site
+        <a href="/" class="text-doudou-rose hover:text-doudou-creme transition-colors">9site4</a>
+      </p>
+    </div>
+  </div>
+</footer>

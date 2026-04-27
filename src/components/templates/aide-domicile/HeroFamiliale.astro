@@ -1,0 +1,83 @@
+---
+/**
+ * HeroFamiliale — grande photo chaleureuse aide + personne âgée.
+ * Sticker agrément en haut. Annotation Homemade Apple.
+ */
+import data from '../../../data/templates/doudou.json';
+---
+
+<section id="top" class="relative bg-doudou-creme overflow-hidden">
+
+  <!-- Forme arrondie en arrière-plan ciel -->
+  <div class="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full bg-doudou-ciel/30 pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute -bottom-40 -left-32 w-[600px] h-[600px] rounded-full bg-doudou-soleil/30 pointer-events-none" aria-hidden="true"></div>
+
+  <div class="relative max-w-content mx-auto px-6 md:px-10 pt-32 pb-20 md:pt-40 md:pb-28 grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+
+    <!-- Texte gauche -->
+    <div class="lg:col-span-6">
+
+      <!-- Sticker agrément -->
+      <p class="inline-flex items-center gap-2 font-be-vietnam text-[11px] uppercase tracking-wider font-semibold text-doudou-bourgeon mb-6 bg-doudou-bourgeon/10 px-3 py-1.5 rounded-full">
+        <span class="w-1.5 h-1.5 rounded-full bg-doudou-bourgeon"></span>
+        ✓ {data.info.agrement}
+      </p>
+
+      <h1 class="font-nunito font-bold text-doudou-encre leading-[1.05] tracking-tight" style="font-size: clamp(40px, 7vw, 96px);">
+        Une présence quotidienne,<br/>
+        <span class="text-doudou-bleu">à La Réunion.</span>
+      </h1>
+
+      <!-- Annotation manuscrite Homemade Apple -->
+      <p class="mt-6 font-homemade text-doudou-rose text-2xl md:text-3xl rotate-[-1deg] leading-none">
+        depuis {data.info.annee}, on prend soin
+      </p>
+
+      <p class="mt-6 font-be-vietnam text-doudou-encre/85 text-base md:text-lg leading-relaxed max-w-xl">
+        Aide à domicile pour personnes âgées, handicapées et en sortie d'hospitalisation. Aidants diplômés et formés, pris en charge APA / PCH / crédit d'impôt 50 %.
+      </p>
+
+      <!-- CTAs -->
+      <div class="mt-10 flex flex-wrap items-center gap-4">
+        <a
+          href="#demande"
+          class="inline-flex items-center justify-center h-13 px-8 bg-doudou-bleu text-doudou-creme font-be-vietnam font-semibold text-base rounded-full hover:bg-doudou-rose transition-colors"
+          style="height: 52px;"
+        >
+          Visite à domicile gratuite ♡
+        </a>
+        <a
+          href={`tel:${data.info.telephoneHref}`}
+          class="font-be-vietnam font-semibold text-doudou-bleu text-base underline underline-offset-4 decoration-2 decoration-doudou-rose tabular-nums"
+        >
+          {data.info.telephone}
+        </a>
+      </div>
+    </div>
+
+    <!-- Photo chaleureuse droite -->
+    <div class="lg:col-span-6">
+      <div class="relative aspect-[4/5] max-w-md mx-auto rounded-3xl overflow-hidden bg-doudou-ciel">
+        <img
+          src={data.info.photoHero}
+          alt="Aide-soignante avec une personne âgée à domicile"
+          class="w-full h-full object-cover"
+          fetchpriority="high"
+          decoding="async"
+        />
+        <!-- Sticker prénom -->
+        <div class="absolute top-4 left-4 bg-doudou-creme/95 px-4 py-2.5 rounded-full">
+          <p class="font-homemade text-doudou-rose text-2xl leading-none">Maguy &</p>
+          <p class="font-be-vietnam text-doudou-encre text-sm font-medium leading-tight mt-0.5">
+            Mme R., 87 ans
+          </p>
+        </div>
+        <!-- Sticker rose pâle bas -->
+        <div class="absolute bottom-6 right-6 bg-doudou-rose text-doudou-creme px-4 py-3 rounded-2xl rotate-[3deg]">
+          <p class="font-homemade text-2xl leading-none">7 jours / 7</p>
+          <p class="font-be-vietnam text-[10px] uppercase tracking-wider mt-1 opacity-90">07h – 22h</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

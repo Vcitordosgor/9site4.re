@@ -1,0 +1,41 @@
+---
+import data from '../../../data/templates/doudou.json';
+---
+
+<header
+  id="doudou-header"
+  data-scrolled="false"
+  class="fixed top-0 inset-x-0 z-50 transition-all duration-300 data-[scrolled=false]:bg-transparent data-[scrolled=true]:bg-doudou-creme/95 data-[scrolled=true]:backdrop-blur-sm data-[scrolled=true]:border-b data-[scrolled=true]:border-doudou-bleu/12"
+>
+  <div class="max-w-content mx-auto px-6 md:px-10 h-16 flex items-center justify-between">
+
+    <a href="#top" class="flex items-baseline gap-2 group" aria-label="Doudou Service — accueil">
+      <span class="inline-flex items-center justify-center w-8 h-8 bg-doudou-rose text-doudou-creme rounded-full text-base font-nunito font-bold">♡</span>
+      <span class="font-nunito font-bold text-doudou-bleu text-lg leading-none group-hover:text-doudou-rose transition-colors">{data.info.wordmark1}</span>
+      <span class="font-nunito text-doudou-encre text-lg leading-none">{data.info.wordmark2}</span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-7 font-be-vietnam text-[13px] text-doudou-encre/75 font-medium" aria-label="Navigation">
+      <a href="#engagements" class="hover:text-doudou-bleu transition-colors">Engagements</a>
+      <a href="#services" class="hover:text-doudou-bleu transition-colors">Services</a>
+      <a href="#aidants" class="hover:text-doudou-bleu transition-colors">Notre équipe</a>
+      <a href="#tarifs" class="hover:text-doudou-bleu transition-colors">Tarifs & aides</a>
+    </nav>
+
+    <a
+      href="#demande"
+      class="inline-flex items-center h-10 px-5 bg-doudou-bleu text-doudou-creme font-be-vietnam text-sm font-semibold rounded-full hover:bg-doudou-rose transition-colors"
+    >
+      Visite gratuite
+    </a>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById('doudou-header');
+  if (header) {
+    const update = () => { header.dataset.scrolled = String(window.scrollY > 60); };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+  }
+</script>

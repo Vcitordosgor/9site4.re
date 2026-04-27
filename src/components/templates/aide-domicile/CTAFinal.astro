@@ -1,0 +1,40 @@
+---
+import data from '../../../data/templates/doudou.json';
+---
+
+<section class="bg-doudou-creme py-24 md:py-36 px-6 md:px-10 text-center">
+  <div class="max-w-2xl mx-auto">
+
+    <p class="font-homemade text-doudou-rose text-5xl md:text-6xl mb-8 leading-none rotate-[-2deg]">
+      ♡
+    </p>
+
+    <h2 class="font-nunito font-bold text-doudou-encre leading-[1.05]" style="font-size: clamp(40px, 6.5vw, 88px);">
+      Un sourire fait<br/>
+      <span class="text-doudou-rose">beaucoup.</span>
+    </h2>
+
+    <p class="mt-10 font-be-vietnam text-doudou-encre/85 text-lg leading-relaxed max-w-md mx-auto">
+      C'est ce qu'on essaie de donner, chaque jour, dans chaque maison où on entre. {data.info.fondatrice} et toute son équipe sont là pour vous écouter.
+    </p>
+
+    <div class="mt-12 flex flex-wrap items-center justify-center gap-x-7 gap-y-4">
+      <a
+        href="#demande"
+        class="inline-flex items-center justify-center h-14 px-10 bg-doudou-bleu text-doudou-creme font-nunito font-bold text-base rounded-full hover:bg-doudou-rose transition-colors"
+      >
+        Demander la visite gratuite ♡
+      </a>
+      <a
+        href={`tel:${data.info.telephoneHref}`}
+        class="font-be-vietnam font-semibold text-doudou-bleu text-base underline underline-offset-4 decoration-2 decoration-doudou-rose tabular-nums"
+      >
+        {data.info.telephone}
+      </a>
+    </div>
+
+    <p class="mt-12 font-be-vietnam text-[11px] uppercase tracking-wider text-doudou-encre/55 font-medium">
+      ✓ {data.info.agrement}
+    </p>
+  </div>
+</section>

@@ -1,0 +1,72 @@
+---
+import data from '../../../data/templates/doudou.json';
+---
+
+<section id="tarifs" class="bg-doudou-creme py-20 md:py-28 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="mb-14 md:mb-16 max-w-2xl">
+      <p class="font-homemade text-doudou-rose text-3xl mb-3 leading-none">
+        tarifs honnêtes
+      </p>
+      <h2 class="font-nunito font-bold text-doudou-encre leading-[1.1]" style="font-size: clamp(32px, 5vw, 56px);">
+        Tarifs &<br/>
+        <span class="text-doudou-bleu">aides financières.</span>
+      </h2>
+    </header>
+
+    <div class="grid lg:grid-cols-12 gap-8">
+
+      <!-- Tarifs gauche -->
+      <div class="lg:col-span-5">
+        <div class="bg-doudou-soleil/30 rounded-3xl p-7 md:p-8">
+          <p class="font-be-vietnam text-[10px] uppercase tracking-[0.28em] font-semibold text-doudou-bourgeon mb-4">
+            ✓ Tarifs avant aides
+          </p>
+          <ul class="space-y-3">
+            {data.tarifs.lignes.map((t) => (
+              <li class="flex items-baseline justify-between gap-3 py-2 border-b border-doudou-encre/10 last:border-b-0">
+                <div>
+                  <p class="font-nunito font-semibold text-doudou-encre text-sm">{t.label}</p>
+                  <p class="font-be-vietnam italic text-doudou-encre/55 text-xs">{t.unite}</p>
+                </div>
+                <p class="font-nunito font-bold text-doudou-bleu text-xl tabular-nums shrink-0">
+                  {t.prix}
+                </p>
+              </li>
+            ))}
+          </ul>
+          <p class="mt-5 pt-5 border-t border-doudou-encre/10 font-homemade text-doudou-rose text-xl leading-none rotate-[-1deg]">
+            ↓ après aides, beaucoup moins ↓
+          </p>
+        </div>
+      </div>
+
+      <!-- Aides droite -->
+      <div class="lg:col-span-7">
+        <div class="bg-doudou-bleu text-doudou-creme rounded-3xl p-7 md:p-8 h-full">
+          <p class="font-be-vietnam text-[10px] uppercase tracking-[0.28em] font-semibold text-doudou-soleil mb-5">
+            ♡ Aides au financement
+          </p>
+          <h3 class="font-nunito font-bold text-doudou-creme text-2xl md:text-3xl leading-tight mb-6">
+            Beaucoup d'aides existent.
+            <span class="block font-homemade text-doudou-soleil text-3xl mt-2 rotate-[-1deg]">on s'occupe des dossiers.</span>
+          </h3>
+          <ul class="space-y-4">
+            {data.tarifs.aides.map((aide) => (
+              <li class="flex items-start gap-3 font-be-vietnam text-doudou-creme/85 text-base leading-relaxed">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-doudou-soleil shrink-0 mt-1" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                {aide}
+              </li>
+            ))}
+          </ul>
+          <p class="mt-7 pt-6 border-t border-doudou-creme/15 font-be-vietnam italic text-doudou-creme/75 text-sm leading-relaxed">
+            Marie-Claire vous accompagne sur toutes les démarches APA et PCH. Bilan personnalisé lors de la visite gratuite.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
