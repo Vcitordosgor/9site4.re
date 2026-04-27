@@ -1,0 +1,41 @@
+---
+/**
+ * Manifeste — page éditoriale flottante. Trois paragraphes serif Spectral
+ * centrés, max-w-2xl, beaucoup d'air. Pull-quote au milieu en DM Serif italique.
+ * Aucune card, aucun bullet : juste du texte qui respire.
+ */
+import data from '../../../data/templates/souffle.json';
+---
+
+<section class="bg-yoga-papier py-24 md:py-40 px-6 md:px-10">
+  <div class="max-w-2xl mx-auto">
+
+    <!-- Eyebrow centré -->
+    <p class="font-lexend text-[10px] uppercase tracking-[0.4em] text-yoga-pierre text-center mb-10">
+      Notre approche
+    </p>
+
+    <!-- Trois paragraphes éditoriaux -->
+    <div class="space-y-8 md:space-y-10 text-center">
+      {data.manifeste.map((paragraphe, i) => (
+        <p class="font-spectral text-yoga-encre/85 leading-[1.85] text-lg md:text-[21px]" class:list={i === 0 ? ['first-letter:font-dm-serif first-letter:text-5xl md:first-letter:text-6xl first-letter:float-left first-letter:mr-3 first-letter:mt-1.5 first-letter:text-yoga-ocre first-letter:leading-[0.9]'] : []}>
+          {paragraphe}
+        </p>
+      ))}
+    </div>
+
+    <!-- Pull-quote -->
+    <figure class="mt-20 md:mt-28 text-center">
+      <div class="inline-block relative">
+        <span class="absolute -top-8 -left-4 md:-top-10 md:-left-6 font-dm-serif text-yoga-ocre/30 select-none" style="font-size: 6rem; line-height: 1;" aria-hidden="true">"</span>
+        <blockquote class="relative font-dm-serif italic text-yoga-encre leading-tight" style="font-size: clamp(26px, 4vw, 38px);">
+          {data.pullQuote}
+        </blockquote>
+      </div>
+      <figcaption class="mt-8 font-lexend text-[10px] uppercase tracking-[0.3em] text-yoga-pierre">
+        — {data.info.fondatrice}, fondatrice
+      </figcaption>
+    </figure>
+
+  </div>
+</section>

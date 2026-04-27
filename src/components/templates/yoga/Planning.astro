@@ -1,0 +1,89 @@
+---
+/**
+ * Planning — tableau hebdomadaire visuel.
+ * 7 colonnes (jours) avec créneaux empilés verticalement.
+ * Sur mobile : scroll horizontal avec snap. Pas de cards listées : un vrai tableau.
+ * Couleur des créneaux : ocre clair (dynamique) vs mousse claire (doux).
+ */
+import data from '../../../data/templates/souffle.json';
+---
+
+<section id="planning" class="bg-yoga-creme py-24 md:py-36 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <!-- Header -->
+    <header class="text-center mb-16 md:mb-20 max-w-xl mx-auto">
+      <p class="font-lexend text-[10px] uppercase tracking-[0.4em] text-yoga-pierre mb-6">
+        La semaine
+      </p>
+      <h2 class="font-dm-serif text-yoga-encre leading-[1.1]" style="font-size: clamp(36px, 5.5vw, 60px);">
+        Le planning,
+        <span class="block italic font-spectral font-light text-yoga-ocre">cours par cours.</span>
+      </h2>
+      <p class="mt-6 font-spectral italic text-yoga-encre/65 text-base md:text-lg leading-relaxed">
+        Douze tapis maximum par séance — pour qu'on ait le temps de regarder chacun·e.
+      </p>
+    </header>
+
+    <!-- Tableau hebdomadaire -->
+    <div class="overflow-x-auto -mx-6 md:-mx-10 px-6 md:px-10 pb-2" style="scrollbar-width: thin; scrollbar-color: #C9885E transparent;">
+      <div class="grid gap-3 min-w-[940px]" style="grid-template-columns: repeat(7, minmax(120px, 1fr));">
+        {data.planning.map((jour) => (
+          <div class="bg-yoga-blanc/40 p-3 md:p-4 border-t-2 border-yoga-encre/15">
+
+            <!-- Jour en haut -->
+            <p class="font-dm-serif text-yoga-encre text-base md:text-lg mb-1">
+              {jour.jour}
+            </p>
+            <p class="font-lexend text-[9px] uppercase tracking-[0.25em] text-yoga-pierre mb-4">
+              {jour.creneaux.length} {jour.creneaux.length === 1 ? 'cours' : 'cours'}
+            </p>
+
+            <!-- Créneaux empilés -->
+            <div class="space-y-2">
+              {jour.creneaux.map((c) => (
+                <a
+                  href="#reservation"
+                  class:list={[
+                    'block p-3 transition-colors duration-300',
+                    c.type === 'dynamique'
+                      ? 'bg-yoga-ocre/20 hover:bg-yoga-ocre hover:text-yoga-creme border-l-2 border-yoga-ocre'
+                      : 'bg-yoga-mousse/15 hover:bg-yoga-mousse hover:text-yoga-creme border-l-2 border-yoga-mousse'
+                  ]}
+                >
+                  <p class="font-lexend text-[11px] tabular-nums text-yoga-encre/65 mb-1.5 group-hover:text-current">
+                    {c.heure} · {c.duree}
+                  </p>
+                  <p class="font-dm-serif text-yoga-encre text-base leading-tight group-hover:text-current">
+                    {c.cours}
+                  </p>
+                  <p class="mt-1.5 font-spectral italic text-yoga-encre/55 text-xs group-hover:text-current">
+                    {c.prof}
+                  </p>
+                  {c.note && (
+                    <p class="mt-1.5 font-lexend text-[9px] uppercase tracking-wider text-yoga-ocre group-hover:text-current">
+                      {c.note}
+                    </p>
+                  )}
+                </a>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Légende -->
+    <div class="mt-8 flex flex-wrap items-center justify-center gap-6 font-lexend text-[10px] uppercase tracking-[0.25em] text-yoga-pierre">
+      <span class="flex items-center gap-2">
+        <span class="block w-3 h-3 bg-yoga-ocre/30 border-l-2 border-yoga-ocre"></span>
+        Pratiques dynamiques
+      </span>
+      <span class="flex items-center gap-2">
+        <span class="block w-3 h-3 bg-yoga-mousse/20 border-l-2 border-yoga-mousse"></span>
+        Pratiques douces
+      </span>
+    </div>
+
+  </div>
+</section>

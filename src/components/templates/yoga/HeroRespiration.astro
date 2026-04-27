@@ -1,0 +1,103 @@
+---
+/**
+ * HeroRespiration — pas de photo, pas de stats. Juste typo serif éditoriale
+ * centrée + cercle de respiration animé en CSS pure (12s ease-in-out infinite).
+ * Maximum d'air vertical (py-32 → py-48).
+ */
+import data from '../../../data/templates/souffle.json';
+---
+
+<section id="top" class="relative bg-yoga-creme overflow-hidden">
+
+  <!-- Grain subtil en fond (radial doux ocre très léger) -->
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+    <div class="absolute top-1/3 left-1/2 -translate-x-1/2 w-[42rem] h-[42rem] rounded-full"
+         style="background: radial-gradient(circle, rgba(201,136,94,0.08) 0%, transparent 60%);"></div>
+  </div>
+
+  <div class="relative max-w-content mx-auto px-6 md:px-10 pt-32 pb-24 md:pt-44 md:pb-36 flex flex-col items-center text-center">
+
+    <!-- Mini-eyebrow Lexend très espacé -->
+    <p class="font-lexend text-[10px] uppercase tracking-[0.4em] text-yoga-pierre mb-12 md:mb-16">
+      Souffle · Studio · {data.info.ville}
+    </p>
+
+    <!-- Titre principal en DM Serif Display centré, gros mais pas brutal -->
+    <h1 class="font-dm-serif text-yoga-encre leading-[1.05]" style="font-size: clamp(44px, 7vw, 96px);">
+      Le yoga,
+      <span class="block italic font-spectral font-light text-yoga-ocre" style="font-size: clamp(40px, 6.5vw, 88px);">
+        comme on respire.
+      </span>
+    </h1>
+
+    <!-- Sous-titre serif italique -->
+    <p class="mt-8 max-w-md font-spectral italic text-yoga-encre/65 leading-relaxed text-lg md:text-xl">
+      {data.info.sousTitre}
+    </p>
+
+    <!-- Cercle de respiration animé (CSS pure, accessible : prefers-reduced-motion désactive) -->
+    <div class="mt-20 md:mt-24 flex flex-col items-center gap-6" aria-hidden="true">
+      <div class="breath-orbit relative w-32 h-32 md:w-40 md:h-40 flex items-center justify-center">
+        <span class="absolute inset-0 rounded-full border border-yoga-ocre/30 breath-ring-1"></span>
+        <span class="absolute inset-0 rounded-full breath-orb"></span>
+        <span class="relative font-spectral italic text-yoga-encre/50 text-sm" id="breath-label">inspirer</span>
+      </div>
+      <p class="font-lexend text-[10px] uppercase tracking-[0.3em] text-yoga-pierre">
+        6 secondes · 6 secondes
+      </p>
+    </div>
+
+    <!-- CTAs très discrets : pas de bouton plein, juste deux liens soulignés serif -->
+    <div class="mt-20 md:mt-24 flex flex-col sm:flex-row items-center gap-6 sm:gap-12">
+      <a
+        href="#planning"
+        class="font-dm-serif text-yoga-encre text-lg hover:text-yoga-ocre transition-colors duration-500 underline underline-offset-[6px] decoration-yoga-ocre/40 hover:decoration-yoga-ocre"
+      >
+        Voir le planning
+      </a>
+      <a
+        href="#reservation"
+        class="inline-flex items-center justify-center h-12 px-7 bg-yoga-encre text-yoga-creme font-lexend text-[12px] uppercase tracking-[0.18em] font-light hover:bg-yoga-ocre transition-colors duration-500"
+      >
+        Réserver un cours d'essai
+      </a>
+    </div>
+  </div>
+
+  <!-- Animation de respiration -->
+  <style>
+    .breath-orb {
+      background: radial-gradient(circle, rgba(201,136,94,0.45) 0%, rgba(201,136,94,0.08) 70%, transparent 100%);
+      animation: breathe 12s ease-in-out infinite;
+      transform-origin: center;
+    }
+    .breath-ring-1 {
+      animation: breathe-ring 12s ease-in-out infinite;
+    }
+    @keyframes breathe {
+      0%   { transform: scale(0.55); opacity: 0.5; }
+      50%  { transform: scale(1);    opacity: 1;   }
+      100% { transform: scale(0.55); opacity: 0.5; }
+    }
+    @keyframes breathe-ring {
+      0%   { transform: scale(0.65); opacity: 0.3; }
+      50%  { transform: scale(1.08); opacity: 0.7; }
+      100% { transform: scale(0.65); opacity: 0.3; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .breath-orb, .breath-ring-1 { animation: none; transform: scale(0.85); }
+    }
+  </style>
+</section>
+
+<script>
+  // Synchronisation du label "inspirer / expirer" sur le cycle 12s
+  const label = document.getElementById('breath-label');
+  if (label && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    let phase = 0;
+    setInterval(() => {
+      phase = (phase + 1) % 2;
+      label.textContent = phase === 0 ? 'inspirer' : 'expirer';
+    }, 6000);
+  }
+</script>

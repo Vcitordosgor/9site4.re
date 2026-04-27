@@ -1,0 +1,78 @@
+---
+/**
+ * Lieu — section sombre avec photo grande du shala + adresse + horaires.
+ * Layout 5/7 split : photo qui prend la moitié + colonne texte sur fond encre.
+ * Pas de "Trouver" tabulaire à 3 colonnes : juste une mise en scène du lieu.
+ */
+import data from '../../../data/templates/souffle.json';
+---
+
+<section id="lieu" class="bg-yoga-encre text-yoga-creme overflow-hidden">
+  <div class="grid lg:grid-cols-12">
+
+    <!-- Photo grand format (5 cols) -->
+    <div class="lg:col-span-5 relative aspect-[4/5] lg:aspect-auto lg:min-h-[680px]">
+      <img
+        src={data.info.photoLieu}
+        alt="L'intérieur du Souffle Studio"
+        loading="lazy"
+        decoding="async"
+        class="absolute inset-0 w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-yoga-encre/60 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-yoga-encre/30"></div>
+    </div>
+
+    <!-- Texte (7 cols) -->
+    <div class="lg:col-span-7 px-8 md:px-16 lg:px-20 py-16 md:py-24 lg:py-32 flex flex-col justify-center">
+
+      <p class="font-lexend text-[10px] uppercase tracking-[0.4em] text-yoga-ocre mb-6">
+        Le lieu
+      </p>
+
+      <h2 class="font-dm-serif text-yoga-creme leading-[1.1]" style="font-size: clamp(36px, 5vw, 60px);">
+        Un shala de douze tapis,
+        <span class="block italic font-spectral font-light text-yoga-ocre">à deux pas de l'océan.</span>
+      </h2>
+
+      <p class="mt-8 font-spectral text-yoga-creme/75 leading-[1.85] max-w-md text-base md:text-lg">
+        Parquet en bois clair, plantes, encens léger. Le studio est ouvert 30 minutes avant chaque cours pour s'installer tranquillement.
+        Tapis et briques fournis — vous n'avez besoin de rien apporter pour commencer.
+      </p>
+
+      <!-- Adresse + horaires en deux colonnes -->
+      <div class="mt-12 grid sm:grid-cols-2 gap-10 max-w-md">
+
+        <div>
+          <p class="font-lexend text-[10px] uppercase tracking-[0.3em] text-yoga-ocre mb-3">Adresse</p>
+          <p class="font-dm-serif text-yoga-creme text-lg leading-snug">
+            {data.info.adresseLigne1}<br/>
+            {data.info.adresseLigne2}
+          </p>
+        </div>
+
+        <div>
+          <p class="font-lexend text-[10px] uppercase tracking-[0.3em] text-yoga-ocre mb-3">Ouverture</p>
+          <ul class="space-y-2">
+            {data.horairesStudio.map((h) => (
+              <li class="font-spectral text-yoga-creme/85 text-base flex justify-between gap-3">
+                <span class="italic">{h.jour}</span>
+                <span class="tabular-nums text-yoga-creme/65">{h.label}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <!-- Contact -->
+      <div class="mt-10 pt-8 border-t border-yoga-creme/10 flex flex-wrap gap-x-10 gap-y-3 font-spectral text-yoga-creme/75">
+        <a href={`tel:${data.info.telephoneHref}`} class="hover:text-yoga-ocre transition-colors tabular-nums underline underline-offset-4 decoration-yoga-creme/20 hover:decoration-yoga-ocre">
+          {data.info.telephone}
+        </a>
+        <a href={`mailto:${data.info.email}`} class="hover:text-yoga-ocre transition-colors underline underline-offset-4 decoration-yoga-creme/20 hover:decoration-yoga-ocre">
+          {data.info.email}
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>

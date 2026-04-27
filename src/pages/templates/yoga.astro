@@ -1,0 +1,84 @@
+---
+import '@fontsource/dm-serif-display/400.css';
+import '@fontsource/dm-serif-display/400-italic.css';
+import '@fontsource/spectral/300.css';
+import '@fontsource/spectral/400.css';
+import '@fontsource/spectral/500.css';
+import '@fontsource/spectral/300-italic.css';
+import '@fontsource/spectral/400-italic.css';
+import '@fontsource/lexend/300.css';
+import '@fontsource/lexend/400.css';
+import '@fontsource/lexend/500.css';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getSeo } from '../../lib/seo';
+import souffleData from '../../data/templates/souffle.json';
+
+import YogaHeader from '../../components/templates/yoga/YogaHeader.astro';
+import HeroRespiration from '../../components/templates/yoga/HeroRespiration.astro';
+import Manifeste from '../../components/templates/yoga/Manifeste.astro';
+import Planning from '../../components/templates/yoga/Planning.astro';
+import Pratiques from '../../components/templates/yoga/Pratiques.astro';
+import Enseignants from '../../components/templates/yoga/Enseignants.astro';
+import Tarifs from '../../components/templates/yoga/Tarifs.astro';
+import Reservation from '../../components/templates/yoga/Reservation.astro';
+import Lieu from '../../components/templates/yoga/Lieu.astro';
+import CTAFinal from '../../components/templates/yoga/CTAFinal.astro';
+import YogaFooter from '../../components/templates/yoga/YogaFooter.astro';
+---
+
+<BaseLayout seo={getSeo('templateYoga')} bare={true}>
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <link rel="dns-prefetch" href="https://images.unsplash.com" />
+    <link
+      rel="preload"
+      as="image"
+      href={souffleData.info.photoLieu}
+      fetchpriority="low"
+    />
+  </Fragment>
+
+  <YogaHeader />
+
+  <main id="top" class="bg-yoga-creme text-yoga-encre font-spectral">
+    <HeroRespiration />
+    <Manifeste />
+    <Planning />
+    <Pratiques />
+    <Enseignants />
+    <Tarifs />
+    <Reservation />
+    <Lieu />
+    <CTAFinal />
+  </main>
+
+  <YogaFooter />
+
+  <!-- Sticky CTA mobile : pill ocre arrondi (vs barre brutale du coach) -->
+  <a
+    id="yoga-sticky-cta"
+    href="#reservation"
+    data-visible="false"
+    class="md:hidden fixed bottom-5 inset-x-5 z-40 inline-flex items-center justify-center h-13 px-6 bg-yoga-encre text-yoga-creme font-lexend text-[12px] uppercase tracking-[0.18em] font-light rounded-full shadow-lg transition-all duration-500 data-[visible=false]:opacity-0 data-[visible=false]:translate-y-4 data-[visible=false]:pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0"
+    style="height: 52px; box-shadow: 0 12px 32px rgba(42,32,26,0.25);"
+  >
+    Réserver un cours d'essai
+  </a>
+
+  <script>
+    const sticky = document.getElementById('yoga-sticky-cta');
+    const reservation = document.getElementById('reservation');
+    if (sticky && reservation) {
+      const update = () => {
+        const rect = reservation.getBoundingClientRect();
+        const inReservation = rect.top < window.innerHeight && rect.bottom > 80;
+        const scrolledPastHero = window.scrollY > 600;
+        sticky.dataset.visible = String(scrolledPastHero && !inReservation);
+      };
+      update();
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update, { passive: true });
+    }
+  </script>
+</BaseLayout>

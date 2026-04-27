@@ -1,0 +1,82 @@
+---
+/**
+ * Pratiques — 4 accordéons natifs <details><summary> (accessibles, sans JS).
+ * Chacun ouvre une description longue + métadonnées (durée, niveau, ressenti).
+ * Différent du pattern grille de cards des autres templates.
+ */
+import data from '../../../data/templates/souffle.json';
+---
+
+<section id="pratiques" class="bg-yoga-papier py-24 md:py-36 px-6 md:px-10">
+  <div class="max-w-3xl mx-auto">
+
+    <!-- Header -->
+    <header class="mb-16 md:mb-20">
+      <p class="font-lexend text-[10px] uppercase tracking-[0.4em] text-yoga-pierre mb-6">
+        Les pratiques
+      </p>
+      <h2 class="font-dm-serif text-yoga-encre leading-[1.1]" style="font-size: clamp(36px, 5.5vw, 60px);">
+        Quatre pratiques.
+        <span class="block italic font-spectral font-light text-yoga-ocre">Une seule respiration.</span>
+      </h2>
+    </header>
+
+    <!-- Liste des accordéons -->
+    <ul class="border-t border-yoga-encre/15">
+      {data.pratiques.map((p) => (
+        <li class="border-b border-yoga-encre/15">
+          <details class="group">
+            <summary class="cursor-pointer list-none flex items-baseline gap-4 md:gap-6 py-7 md:py-9 transition-colors duration-300 hover:text-yoga-ocre">
+              <!-- Numéro romain serif -->
+              <span class="font-dm-serif text-yoga-ocre/70 group-hover:text-yoga-ocre transition-colors text-2xl md:text-3xl tabular-nums shrink-0 w-10">
+                {p.numero}
+              </span>
+
+              <!-- Nom + durée -->
+              <div class="flex-1">
+                <h3 class="font-dm-serif text-yoga-encre group-hover:text-yoga-ocre transition-colors leading-tight" style="font-size: clamp(24px, 3.5vw, 36px);">
+                  {p.nom}
+                </h3>
+                <p class="mt-1 font-lexend text-[10px] uppercase tracking-[0.3em] text-yoga-pierre">
+                  {p.duree} · {p.niveau}
+                </p>
+              </div>
+
+              <!-- Toggle "+" qui devient "—" -->
+              <span class="font-dm-serif text-yoga-encre/40 group-open:text-yoga-ocre group-hover:text-yoga-ocre transition-all duration-300 text-3xl shrink-0 w-6 text-center" aria-hidden="true">
+                <span class="block group-open:hidden">+</span>
+                <span class="hidden group-open:block">—</span>
+              </span>
+            </summary>
+
+            <!-- Contenu déplié -->
+            <div class="pb-9 md:pb-12 pl-14 md:pl-20 pr-2 md:pr-12 space-y-5">
+              <!-- Ressenti badge -->
+              <p class="font-spectral italic text-yoga-ocre text-base">
+                {p.ressenti}
+              </p>
+
+              <!-- Description -->
+              <p class="font-spectral text-yoga-encre/80 leading-[1.85] text-base md:text-lg">
+                {p.description}
+              </p>
+
+              <!-- Idéal pour -->
+              <p class="pt-3 border-t border-yoga-encre/10 font-spectral italic text-yoga-encre/60 text-base leading-relaxed">
+                <span class="font-lexend not-italic uppercase text-[10px] tracking-[0.3em] text-yoga-pierre block mb-2">Idéal pour</span>
+                {p.ideal}
+              </p>
+            </div>
+          </details>
+        </li>
+      ))}
+    </ul>
+
+  </div>
+</section>
+
+<style>
+  /* Désactive le triangle natif Safari */
+  details > summary::-webkit-details-marker { display: none; }
+  details[open] > summary { color: inherit; }
+</style>

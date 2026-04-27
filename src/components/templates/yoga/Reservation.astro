@@ -1,0 +1,132 @@
+---
+/**
+ * Reservation — formulaire centré minimal une seule colonne.
+ * Style éditorial : labels lexend uppercase petits, inputs underline only
+ * (pas de borders pleines). Submit → WhatsApp pre-filled.
+ */
+import data from '../../../data/templates/souffle.json';
+const waBase = `https://wa.me/${data.info.whatsapp}`;
+
+// Construction de la liste de cours dispo
+const coursDispo: { id: string; label: string }[] = [];
+data.planning.forEach((j) => {
+  j.creneaux.forEach((c) => {
+    coursDispo.push({
+      id: `${j.jour.toLowerCase()}-${c.heure}`,
+      label: `${j.jour} ${c.heure} — ${c.cours} (${c.prof})`,
+    });
+  });
+});
+---
+
+<section id="reservation" class="bg-yoga-creme py-24 md:py-36 px-6 md:px-10">
+  <div class="max-w-xl mx-auto">
+
+    <!-- Header centré -->
+    <header class="text-center mb-14 md:mb-16">
+      <p class="font-lexend text-[10px] uppercase tracking-[0.4em] text-yoga-pierre mb-6">
+        Réservation
+      </p>
+      <h2 class="font-dm-serif text-yoga-encre leading-[1.1]" style="font-size: clamp(34px, 5vw, 52px);">
+        Vous voulez essayer ?
+        <span class="block italic font-spectral font-light text-yoga-ocre mt-1">Écrivez-nous.</span>
+      </h2>
+      <p class="mt-6 font-spectral italic text-yoga-encre/65 leading-relaxed text-base md:text-lg">
+        Premier cours d'essai à 12 €. On vous répond personnellement, sous quelques heures.
+      </p>
+    </header>
+
+    <!-- Form minimal underline only -->
+    <form id="yoga-reservation-form" class="space-y-8" novalidate>
+
+      <div>
+        <label for="yr-prenom" class="block font-lexend text-[10px] uppercase tracking-[0.3em] text-yoga-pierre mb-2">Votre prénom</label>
+        <input
+          id="yr-prenom"
+          name="prenom"
+          type="text"
+          autocomplete="given-name"
+          required
+          class="w-full bg-transparent border-0 border-b border-yoga-encre/25 focus:border-yoga-ocre py-2 font-dm-serif text-xl text-yoga-encre placeholder:text-yoga-pierre/50 outline-none transition-colors"
+          placeholder="Ex. Margaux"
+        />
+      </div>
+
+      <div>
+        <label for="yr-tel" class="block font-lexend text-[10px] uppercase tracking-[0.3em] text-yoga-pierre mb-2">Téléphone</label>
+        <input
+          id="yr-tel"
+          name="telephone"
+          type="tel"
+          autocomplete="tel"
+          required
+          class="w-full bg-transparent border-0 border-b border-yoga-encre/25 focus:border-yoga-ocre py-2 font-dm-serif text-xl text-yoga-encre placeholder:text-yoga-pierre/50 outline-none transition-colors tabular-nums"
+          placeholder="0692 xx xx xx"
+        />
+      </div>
+
+      <div>
+        <label for="yr-cours" class="block font-lexend text-[10px] uppercase tracking-[0.3em] text-yoga-pierre mb-2">Cours souhaité (facultatif)</label>
+        <select
+          id="yr-cours"
+          name="cours"
+          class="w-full bg-transparent border-0 border-b border-yoga-encre/25 focus:border-yoga-ocre py-2 font-dm-serif text-xl text-yoga-encre outline-none transition-colors cursor-pointer appearance-none"
+        >
+          <option value="">— On choisira ensemble —</option>
+          {coursDispo.map((c) => <option value={c.label}>{c.label}</option>)}
+        </select>
+      </div>
+
+      <div>
+        <label for="yr-message" class="block font-lexend text-[10px] uppercase tracking-[0.3em] text-yoga-pierre mb-2">Un mot (facultatif)</label>
+        <textarea
+          id="yr-message"
+          name="message"
+          rows="3"
+          class="w-full bg-transparent border-0 border-b border-yoga-encre/25 focus:border-yoga-ocre py-2 font-dm-serif text-lg text-yoga-encre placeholder:text-yoga-pierre/50 outline-none transition-colors resize-none"
+          placeholder="Première fois ? Une douleur particulière ? Dites-nous tout."
+        ></textarea>
+      </div>
+
+      <!-- Submit centré -->
+      <div class="pt-6 text-center">
+        <button
+          type="submit"
+          class="inline-flex items-center justify-center gap-3 h-13 px-10 bg-yoga-encre text-yoga-creme font-lexend text-[12px] uppercase tracking-[0.18em] font-light hover:bg-yoga-ocre transition-colors duration-500"
+          style="height: 52px;"
+        >
+          Envoyer via WhatsApp
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.92 0-2.65-1.03-5.14-2.91-7.01zm-7.01 15.24h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.21 8.21 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83 8.25 8.25 0 0 1-8.24 8.22z"/>
+          </svg>
+        </button>
+        <p class="mt-5 font-spectral italic text-yoga-encre/55 text-sm">
+          Ou simplement par téléphone : <a href={`tel:${data.info.telephoneHref}`} class="underline underline-offset-4 decoration-yoga-ocre/40 hover:decoration-yoga-ocre tabular-nums">{data.info.telephone}</a>
+        </p>
+      </div>
+    </form>
+
+  </div>
+</section>
+
+<script define:vars={{ waBase }}>
+  const form = document.getElementById('yoga-reservation-form');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fd = new FormData(form);
+      const prenom = fd.get('prenom') || '';
+      const tel = fd.get('telephone') || '';
+      const cours = fd.get('cours') || '';
+      const msg = fd.get('message') || '';
+      const text = [
+        'Bonjour Souffle Studio, je souhaite réserver un cours.',
+        prenom ? `Prénom : ${prenom}` : '',
+        tel ? `Tél : ${tel}` : '',
+        cours ? `Cours : ${cours}` : '',
+        msg ? `Note : ${msg}` : '',
+      ].filter(Boolean).join('\n');
+      window.open(`${waBase}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
+    });
+  }
+</script>

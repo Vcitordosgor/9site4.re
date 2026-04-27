@@ -1,0 +1,53 @@
+---
+import data from '../../../data/templates/souffle.json';
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-yoga-papier text-yoga-encre/75 py-14 px-6 md:px-10 border-t border-yoga-encre/10">
+  <div class="max-w-content mx-auto">
+
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-10">
+
+      <!-- Wordmark -->
+      <div>
+        <p class="flex items-baseline gap-1.5">
+          <span class="font-dm-serif text-yoga-encre text-2xl">{data.info.wordmark}</span>
+          <span class="font-spectral italic text-yoga-ocre text-xl">{data.info.wordmark2}</span>
+        </p>
+        <p class="mt-3 font-spectral italic text-yoga-encre/55 text-sm">
+          {data.info.ville} · depuis {data.info.annee}
+        </p>
+      </div>
+
+      <!-- Contact -->
+      <ul class="flex flex-col md:flex-row md:items-center gap-2 md:gap-8 font-spectral text-base">
+        <li>
+          <a href={`tel:${data.info.telephoneHref}`} class="hover:text-yoga-ocre transition-colors tabular-nums">
+            {data.info.telephone}
+          </a>
+        </li>
+        <li class="hidden md:block w-1 h-1 rounded-full bg-yoga-ocre/40" aria-hidden="true"></li>
+        <li>
+          <a href={`mailto:${data.info.email}`} class="hover:text-yoga-ocre transition-colors">
+            {data.info.email}
+          </a>
+        </li>
+        <li class="hidden md:block w-1 h-1 rounded-full bg-yoga-ocre/40" aria-hidden="true"></li>
+        <li class="font-spectral italic text-yoga-encre/55">{data.info.instagram}</li>
+      </ul>
+    </div>
+
+    <!-- Filet ocre dégradé -->
+    <div class="h-px mb-6" aria-hidden="true"
+         style="background: linear-gradient(to right, transparent, rgba(201,136,94,0.4) 30%, rgba(201,136,94,0.4) 70%, transparent);">
+    </div>
+
+    <div class="flex flex-col-reverse md:flex-row md:items-center md:justify-between gap-3 font-lexend text-[10px] uppercase tracking-[0.25em] text-yoga-encre/45">
+      <p>© {year} {data.info.nom} · SIRET {data.info.siret}</p>
+      <p>
+        Site créé par
+        <a href="/" class="text-yoga-encre/70 hover:text-yoga-ocre transition-colors font-normal">9site4</a>
+      </p>
+    </div>
+  </div>
+</footer>

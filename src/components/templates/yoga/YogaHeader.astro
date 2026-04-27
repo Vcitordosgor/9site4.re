@@ -1,0 +1,51 @@
+---
+import data from '../../../data/templates/souffle.json';
+---
+
+<header
+  id="yoga-header"
+  data-scrolled="false"
+  class="fixed top-0 inset-x-0 z-50 transition-all duration-500 data-[scrolled=false]:bg-transparent data-[scrolled=true]:bg-yoga-creme/95 data-[scrolled=true]:backdrop-blur-sm"
+>
+  <div class="max-w-content mx-auto px-6 md:px-10 h-16 flex items-center justify-between">
+
+    <!-- Wordmark : serif italique très éditorial -->
+    <a href="#top" class="flex items-baseline gap-1.5 group" aria-label="Souffle Studio — accueil">
+      <span class="font-dm-serif text-yoga-encre text-xl">{data.info.wordmark}</span>
+      <span class="font-spectral italic text-yoga-ocre text-base">{data.info.wordmark2}</span>
+    </a>
+
+    <!-- Nav minimal en lexend uppercase espacé -->
+    <nav class="hidden md:flex items-center gap-8 font-lexend text-[11px] uppercase tracking-[0.2em] font-light" aria-label="Navigation">
+      <a href="#planning" class="text-yoga-encre/70 hover:text-yoga-ocre transition-colors duration-300">Planning</a>
+      <a href="#pratiques" class="text-yoga-encre/70 hover:text-yoga-ocre transition-colors duration-300">Pratiques</a>
+      <a href="#enseignants" class="text-yoga-encre/70 hover:text-yoga-ocre transition-colors duration-300">Enseignants</a>
+      <a href="#tarifs" class="text-yoga-encre/70 hover:text-yoga-ocre transition-colors duration-300">Tarifs</a>
+    </nav>
+
+    <!-- CTA discret en serif italique souligné -->
+    <a
+      href="#reservation"
+      class="hidden md:inline-block font-spectral italic text-yoga-encre hover:text-yoga-ocre transition-colors duration-300 text-[15px] underline underline-offset-4 decoration-yoga-ocre/40 hover:decoration-yoga-ocre"
+    >
+      Réserver un cours
+    </a>
+
+    <!-- Mobile : seulement un mini lien -->
+    <a
+      href="#reservation"
+      class="md:hidden font-spectral italic text-yoga-encre text-[14px] underline underline-offset-4 decoration-yoga-ocre/50"
+    >
+      Réserver
+    </a>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById('yoga-header');
+  if (header) {
+    const update = () => { header.dataset.scrolled = String(window.scrollY > 60); };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+  }
+</script>

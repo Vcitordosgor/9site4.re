@@ -1,0 +1,63 @@
+---
+/**
+ * Enseignants — polaroids légèrement décalés.
+ * 3 portraits photo carrée, chacun avec rotation différente (-2°, +1.5°, -1°).
+ * Pas une grille égalitaire : un mur de polaroids éditorial.
+ */
+import data from '../../../data/templates/souffle.json';
+---
+
+<section id="enseignants" class="bg-yoga-creme py-24 md:py-36 px-6 md:px-10 overflow-hidden">
+  <div class="max-w-content mx-auto">
+
+    <!-- Header centré minimal -->
+    <header class="text-center mb-20 md:mb-24 max-w-xl mx-auto">
+      <p class="font-lexend text-[10px] uppercase tracking-[0.4em] text-yoga-pierre mb-6">
+        Les enseignants
+      </p>
+      <h2 class="font-dm-serif text-yoga-encre leading-[1.1]" style="font-size: clamp(36px, 5.5vw, 60px);">
+        Trois voix.
+        <span class="block italic font-spectral font-light text-yoga-ocre">Une même attention.</span>
+      </h2>
+    </header>
+
+    <!-- Polaroids -->
+    <div class="grid md:grid-cols-3 gap-12 md:gap-8 max-w-5xl mx-auto">
+      {data.enseignants.map((e, i) => (
+        <article
+          class:list={[
+            'group flex flex-col bg-yoga-blanc p-3 md:p-4 transition-transform duration-700 ease-out hover:!rotate-0 hover:scale-[1.02]',
+            i === 1 ? 'md:mt-12' : '',
+            i === 2 ? 'md:mt-6' : '',
+          ]}
+          style={`transform: rotate(${e.rotation}); box-shadow: 0 12px 30px -10px rgba(42,32,26,0.18);`}
+        >
+          <!-- Photo carrée monochrome -->
+          <div class="relative aspect-square overflow-hidden bg-yoga-papier">
+            <img
+              src={e.photo}
+              alt={`Portrait de ${e.prenom} ${e.nom}`}
+              loading="lazy"
+              decoding="async"
+              class="w-full h-full object-cover sepia-[0.15] group-hover:sepia-0 transition-all duration-700"
+            />
+          </div>
+
+          <!-- Légende polaroid : nom + rôle + bio courte en serif italique -->
+          <div class="pt-5 pb-3 px-2">
+            <p class="font-dm-serif text-yoga-encre text-2xl leading-tight">
+              {e.prenom} <span class="text-yoga-ocre">{e.nom}</span>
+            </p>
+            <p class="mt-1.5 font-lexend text-[10px] uppercase tracking-[0.25em] text-yoga-pierre">
+              {e.role}
+            </p>
+            <p class="mt-4 font-spectral italic text-yoga-encre/70 text-[14px] leading-[1.7]">
+              {e.bio}
+            </p>
+          </div>
+        </article>
+      ))}
+    </div>
+
+  </div>
+</section>
