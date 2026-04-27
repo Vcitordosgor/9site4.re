@@ -126,7 +126,8 @@
     "categorie": "sport",
     "sousTitre": "Cours, professeurs et inscription aux séances",
     "moduleInclus": "Réservation",
-    "slug": "ecole-de-danse"
+    "slug": "ecole-de-danse",
+    "previewUrl": "/templates/danse"
   },
   {
     "id": 16,
