@@ -41,7 +41,8 @@
     "categorie": "beaute",
     "sousTitre": "Soins, tarifs et réservation en ligne",
     "moduleInclus": "Rendez-vous",
-    "slug": "institut-de-beaute"
+    "slug": "institut-de-beaute",
+    "previewUrl": "/templates/institut"
   },
   {
     "id": 6,
