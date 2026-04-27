@@ -1,0 +1,83 @@
+---
+/**
+ * Missions — 4 cases studies anonymisées en articles éditoriaux.
+ * Format dense en texte, contexte/livrable/résultat avec métrique mise en avant.
+ */
+import data from '../../../data/templates/lucas.json';
+---
+
+<section id="missions" class="bg-lucas-noir text-lucas-blanc py-24 md:py-36 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="mb-14 md:mb-20 max-w-2xl">
+      <p class="font-space-mono text-[11px] tracking-tight text-lucas-vert mb-5">
+        ▶ # missions · case studies anonymisées
+      </p>
+      <h2 class="font-instrument italic text-lucas-blanc leading-[1.05]" style="font-size: clamp(40px, 6vw, 80px);">
+        Quelques missions<br/>
+        <span class="not-italic font-hanken font-semibold text-lucas-perle">passées.</span>
+      </h2>
+    </header>
+
+    <ul class="space-y-px bg-lucas-encre/30">
+      {data.missions.map((m, i) => (
+        <li class="bg-lucas-noir p-7 md:p-10 hover:bg-lucas-anthracite/40 transition-colors">
+
+          <!-- Header mission : numéro + client + métrique highlight -->
+          <header class="grid lg:grid-cols-12 gap-4 lg:gap-6 mb-7 items-baseline">
+            <div class="lg:col-span-2">
+              <span class="font-space-mono text-lucas-vert text-sm">
+                /{String(i + 1).padStart(2, '0')}
+              </span>
+            </div>
+            <div class="lg:col-span-7">
+              <h3 class="font-hanken font-semibold text-lucas-blanc text-xl md:text-2xl leading-tight">
+                {m.client}
+              </h3>
+              <p class="mt-1 font-space-mono text-[11px] text-lucas-encre">
+                {m.duree} · {m.annee}
+              </p>
+            </div>
+            <div class="lg:col-span-3 lg:text-right">
+              <p class="font-instrument italic text-lucas-vert leading-none" style="font-size: clamp(28px, 3vw, 40px);">
+                {m.metrique}
+              </p>
+            </div>
+          </header>
+
+          <!-- Body : 3 colonnes contexte/livrable/résultat -->
+          <div class="grid md:grid-cols-3 gap-6 md:gap-10 lg:pl-[calc(2/12*100%)]">
+            <div>
+              <p class="font-space-mono text-[10px] uppercase tracking-[0.22em] text-lucas-encre mb-2">
+                Contexte
+              </p>
+              <p class="font-hanken text-lucas-perle/80 text-[15px] leading-[1.7]">
+                {m.contexte}
+              </p>
+            </div>
+            <div>
+              <p class="font-space-mono text-[10px] uppercase tracking-[0.22em] text-lucas-encre mb-2">
+                Livrable
+              </p>
+              <p class="font-hanken text-lucas-perle/80 text-[15px] leading-[1.7]">
+                {m.livrable}
+              </p>
+            </div>
+            <div>
+              <p class="font-space-mono text-[10px] uppercase tracking-[0.22em] text-lucas-vert mb-2">
+                Résultat
+              </p>
+              <p class="font-hanken text-lucas-blanc text-[15px] leading-[1.7]">
+                {m.resultat}
+              </p>
+            </div>
+          </div>
+        </li>
+      ))}
+    </ul>
+
+    <p class="mt-14 font-space-mono text-[11px] text-lucas-encre">
+      ▶ # all clients are anonymized · references on request
+    </p>
+  </div>
+</section>

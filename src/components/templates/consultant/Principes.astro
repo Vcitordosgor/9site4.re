@@ -1,0 +1,36 @@
+---
+import data from '../../../data/templates/lucas.json';
+---
+
+<section id="principes" class="bg-lucas-anthracite text-lucas-blanc py-24 md:py-32 px-6 md:px-10">
+  <div class="max-w-3xl mx-auto">
+
+    <header class="mb-14 md:mb-16">
+      <p class="font-space-mono text-[11px] tracking-tight text-lucas-vert mb-5">
+        ▶ # methode
+      </p>
+      <h2 class="font-instrument italic text-lucas-blanc leading-[1.05]" style="font-size: clamp(36px, 5vw, 64px);">
+        Comment je travaille,<br/>
+        <span class="not-italic font-hanken font-semibold text-lucas-perle">en cinq points.</span>
+      </h2>
+    </header>
+
+    <ol class="space-y-10 md:space-y-12">
+      {data.principes.map((p) => (
+        <li class="grid grid-cols-12 gap-4 md:gap-6 items-start">
+          <span class="col-span-2 md:col-span-1 font-space-mono text-lucas-vert text-base tabular-nums pt-2">
+            {p.num}
+          </span>
+          <div class="col-span-10 md:col-span-11">
+            <h3 class="font-hanken font-semibold text-lucas-blanc text-xl md:text-2xl leading-tight mb-3">
+              {p.titre}
+            </h3>
+            <p class="font-hanken text-lucas-perle/80 text-base md:text-lg leading-[1.7] max-w-xl">
+              {p.texte}
+            </p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

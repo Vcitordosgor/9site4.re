@@ -1,0 +1,125 @@
+---
+import data from '../../../data/templates/lucas.json';
+const waBase = `https://wa.me/${data.info.whatsapp}`;
+---
+
+<section id="rendez-vous" class="bg-lucas-noir text-lucas-blanc py-24 md:py-32 px-6 md:px-10">
+  <div class="max-w-3xl mx-auto">
+
+    <header class="mb-12 md:mb-14">
+      <p class="font-space-mono text-[11px] tracking-tight text-lucas-vert mb-5">
+        ▶ # rendez-vous
+      </p>
+      <h2 class="font-instrument italic text-lucas-blanc leading-[1.05]" style="font-size: clamp(36px, 5vw, 60px);">
+        On en parle.<br/>
+        <span class="not-italic font-hanken font-semibold text-lucas-perle">Sans engagement.</span>
+      </h2>
+    </header>
+
+    <form id="lucas-form" class="bg-lucas-anthracite p-7 md:p-10 space-y-6" novalidate>
+
+      <!-- Étape 1 : durée -->
+      <fieldset>
+        <legend class="font-space-mono text-[11px] tracking-tight text-lucas-vert mb-4">
+          # creneau
+        </legend>
+        <div class="grid sm:grid-cols-2 gap-3">
+          {data.creneaux.map((c, i) => (
+            <label class="cursor-pointer">
+              <input type="radio" name="creneau" value={c.duree + ' · ' + c.label} class="peer sr-only" checked={i === 0} />
+              <span class="block px-5 py-4 bg-lucas-noir border border-lucas-encre/40 peer-checked:border-lucas-vert peer-checked:bg-lucas-vert/10 transition-colors">
+                <p class="font-hanken font-semibold text-lucas-blanc text-base">
+                  {c.duree} · {c.label}
+                </p>
+                <p class="mt-1 font-space-mono text-[11px] text-lucas-encre">
+                  {c.label === 'Découverte' ? 'sans engagement' : 'avec brief écrit en amont'}
+                </p>
+              </span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+
+      <!-- Coordonnées -->
+      <fieldset>
+        <legend class="font-space-mono text-[11px] tracking-tight text-lucas-vert mb-4">
+          # contact
+        </legend>
+        <div class="grid sm:grid-cols-2 gap-4 mb-4">
+          <div>
+            <label for="lucas-nom" class="block font-space-mono text-[10px] tracking-tight text-lucas-encre mb-1.5">
+              nom
+            </label>
+            <input
+              id="lucas-nom"
+              name="nom"
+              type="text"
+              required
+              autocomplete="name"
+              class="w-full h-11 px-3 bg-lucas-noir border border-lucas-encre/40 focus:border-lucas-vert font-hanken text-lucas-blanc text-base outline-none transition-colors"
+            />
+          </div>
+          <div>
+            <label for="lucas-tel" class="block font-space-mono text-[10px] tracking-tight text-lucas-encre mb-1.5">
+              téléphone
+            </label>
+            <input
+              id="lucas-tel"
+              name="telephone"
+              type="tel"
+              required
+              autocomplete="tel"
+              class="w-full h-11 px-3 bg-lucas-noir border border-lucas-encre/40 focus:border-lucas-vert font-hanken text-lucas-blanc text-base outline-none transition-colors tabular-nums"
+            />
+          </div>
+        </div>
+        <div>
+          <label for="lucas-context" class="block font-space-mono text-[10px] tracking-tight text-lucas-encre mb-1.5">
+            contexte (1-2 phrases)
+          </label>
+          <textarea
+            id="lucas-context"
+            name="contexte"
+            rows="3"
+            placeholder="Le sujet, l'enjeu, où vous en êtes…"
+            class="w-full px-3 py-2 bg-lucas-noir border border-lucas-encre/40 focus:border-lucas-vert font-hanken text-lucas-blanc text-base placeholder:text-lucas-encre/55 outline-none transition-colors resize-none"
+          ></textarea>
+        </div>
+      </fieldset>
+
+      <button
+        type="submit"
+        class="w-full h-13 inline-flex items-center justify-center gap-2 bg-lucas-vert text-lucas-noir font-hanken font-semibold text-base hover:bg-lucas-blanc transition-colors"
+        style="height: 52px;"
+      >
+        <span class="font-space-mono">▶</span> Envoyer la demande
+      </button>
+
+      <p class="font-space-mono text-[11px] text-lucas-encre text-center">
+        ▶ ouvre WhatsApp · réponse dans la journée en semaine
+      </p>
+    </form>
+  </div>
+</section>
+
+<script define:vars={{ waBase }}>
+  const form = document.getElementById('lucas-form');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fd = new FormData(form);
+      const creneau = fd.get('creneau') || '';
+      const nom = fd.get('nom') || '';
+      const tel = fd.get('telephone') || '';
+      const contexte = fd.get('contexte') || '';
+      const text = [
+        'Bonjour Lucas, je souhaite un rendez-vous.',
+        creneau ? `Créneau : ${creneau}` : '',
+        nom ? `Nom : ${nom}` : '',
+        tel ? `Tél : ${tel}` : '',
+        contexte ? `Contexte : ${contexte}` : '',
+      ].filter(Boolean).join('\n');
+      window.open(`${waBase}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
+    });
+  }
+</script>
