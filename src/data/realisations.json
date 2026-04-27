@@ -176,7 +176,8 @@
     "categorie": "pro",
     "sousTitre": "Services, équipe et rendez-vous découverte",
     "moduleInclus": "Rendez-vous",
-    "slug": "cabinet-comptable"
+    "slug": "cabinet-comptable",
+    "previewUrl": "/templates/comptable"
   },
   {
     "id": 21,
