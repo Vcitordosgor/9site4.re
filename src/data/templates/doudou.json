@@ -1,0 +1,155 @@
+{
+  "info": {
+    "nom": "Doudou Service",
+    "wordmark1": "Doudou",
+    "wordmark2": "Service",
+    "soustitre": "Aide à domicile · Saint-André",
+    "tagline": "Une présence quotidienne, à La Réunion.",
+    "fondatrice": "Marie-Claire Robert",
+    "ville": "Saint-André",
+    "adresseLigne1": "8 rue Lacaussade",
+    "adresseLigne2": "97440 Saint-André",
+    "telephone": "0692 38 17 42",
+    "telephoneHref": "+33692381742",
+    "whatsapp": "33692381742",
+    "email": "bonjour@doudou-service.re",
+    "siret": "44556677800017",
+    "agrement": "Agréé Conseil Départemental 974 · SAP 2010 7461",
+    "annee": "2010",
+    "photoHero": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=1600&q=85"
+  },
+  "engagements": [
+    {
+      "icone": "maison",
+      "titre": "Proximité",
+      "texte": "On habite tous dans le même quartier. Vos aidants ne sont jamais à plus de 15 minutes en voiture."
+    },
+    {
+      "icone": "coeur",
+      "titre": "Écoute",
+      "texte": "Une seule règle : on prend le temps. Pas de minutage à la seconde, pas de pression chrono."
+    },
+    {
+      "icone": "diplome",
+      "titre": "Formation",
+      "texte": "Tous diplômés DEAES ou auxiliaire de vie. Formation continue annuelle obligatoire."
+    },
+    {
+      "icone": "main",
+      "titre": "Suivi familial",
+      "texte": "Un appel mensuel à la famille pour faire le point. Carnet de liaison partagé en continu."
+    }
+  ],
+  "services": [
+    {
+      "titre": "Toilette & habillage",
+      "texte": "Avec respect et patience, dans le cadre intime du domicile. Préservation absolue de la dignité."
+    },
+    {
+      "titre": "Préparation des repas",
+      "texte": "Cuisine adaptée aux régimes médicaux, repas créoles maison sur demande, aide à la prise."
+    },
+    {
+      "titre": "Courses & démarches",
+      "texte": "Liste avec vous, courses au plus près, retrait pharmacie, démarches administratives simples."
+    },
+    {
+      "titre": "Accompagnement médical",
+      "texte": "Trajets RDV médicaux, consultations, dialyse, kiné. Présence en salle si demandée."
+    },
+    {
+      "titre": "Ménage léger",
+      "texte": "Entretien courant du logement, linge, vaisselle. On garde le foyer propre sans tout chambouler."
+    },
+    {
+      "titre": "Présence & lien social",
+      "texte": "Lecture, jeux de société, conversation, sortie au jardin. Parce que la solitude pèse."
+    }
+  ],
+  "publics": [
+    {
+      "titre": "Personnes âgées dépendantes",
+      "texte": "Maintien à domicile en GIR 1 à 4. Coordination avec médecin traitant et SSIAD si besoin."
+    },
+    {
+      "titre": "Situation de handicap",
+      "texte": "PCH ou MTP. Adaptation totale au handicap moteur, sensoriel ou psychique."
+    },
+    {
+      "titre": "Sortie d'hospitalisation",
+      "texte": "Post-opératoire, post-AVC, retour de réa. Accompagnement temporaire ou prolongé."
+    },
+    {
+      "titre": "Aidants familiaux",
+      "texte": "Vous épuisez. On prend le relais quelques heures, quelques jours, le temps qu'il faut."
+    }
+  ],
+  "tarifs": {
+    "lignes": [
+      { "label": "Heure de jour (8h – 19h)", "prix": "23 €", "unite": "/ heure" },
+      { "label": "Heure de soir (19h – 22h)", "prix": "26 €", "unite": "/ heure" },
+      { "label": "Heure de nuit (22h – 8h)", "prix": "29 €", "unite": "/ heure" },
+      { "label": "Dimanche & jours fériés", "prix": "28 €", "unite": "/ heure" },
+      { "label": "Forfait 4 heures", "prix": "82 €", "unite": "remise volume" }
+    ],
+    "aides": [
+      "APA (Allocation Personnalisée d'Autonomie) — prise en charge totale ou partielle selon GIR",
+      "PCH (Prestation de Compensation du Handicap)",
+      "Crédit d'impôt 50 % pour les particuliers employeurs",
+      "Mutuelles santé qui remboursent partiellement (à vérifier avec votre contrat)",
+      "Caisses de retraite ARRCO/AGIRC (selon dossier)"
+    ]
+  },
+  "aidants": [
+    {
+      "prenom": "Maguy",
+      "diplome": "Auxiliaire de vie",
+      "experience": "12 ans",
+      "specialite": "Personnes âgées dépendantes",
+      "photo": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&q=85"
+    },
+    {
+      "prenom": "Linda",
+      "diplome": "DEAES",
+      "experience": "8 ans",
+      "specialite": "Anglais courant · Sortie d'hospi",
+      "photo": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=85"
+    },
+    {
+      "prenom": "Joseph",
+      "diplome": "DEAES",
+      "experience": "6 ans",
+      "specialite": "Maladie d'Alzheimer & démences",
+      "photo": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&q=85"
+    },
+    {
+      "prenom": "Sandrine",
+      "diplome": "DEAES",
+      "experience": "5 ans",
+      "specialite": "Post-opératoire & rééducation",
+      "photo": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=600&q=85"
+    }
+  ],
+  "temoignages": [
+    {
+      "auteur": "Jean-Pierre, fils de Mme R.",
+      "lieu": "Saint-André",
+      "texte": "Maman avait 87 ans, AVC en 2022. On voulait absolument la garder chez elle. Doudou Service a pris la relève quand on travaillait. Marie-Claire venait elle-même les premiers jours. Maman s'est éteinte chez elle, entourée. Merci pour tout, sincèrement."
+    },
+    {
+      "auteur": "Marlène, fille de M. P.",
+      "lieu": "Bras-Panon",
+      "texte": "Papa a Parkinson depuis 8 ans. Joseph s'occupe de lui depuis 3 ans. Il connaît tous ses tics, ses préférences, ses moments difficiles. Quand Joseph entre, papa sourit. C'est inestimable."
+    },
+    {
+      "auteur": "Patrice, mari de Mme G.",
+      "lieu": "Sainte-Suzanne",
+      "texte": "Cancer du sein, chimio puis chirurgie. Ma femme avait besoin de repos, moi de pouvoir continuer à travailler. Sandrine venait 4 heures le matin, 2 heures le soir. Six mois après, on est tous remis. Doudou a tenu la maison."
+    }
+  ],
+  "horaires": [
+    { "jour": "Lundi – Dimanche", "label": "07h – 22h", "ouvert": true },
+    { "jour": "Astreinte 24/24", "label": "Sur abonnement", "ouvert": true },
+    { "jour": "Bureau (RDV)", "label": "Lun–Ven · 09h–17h", "ouvert": true }
+  ]
+}

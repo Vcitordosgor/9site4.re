@@ -51,7 +51,8 @@ type PageKey =
   | 'templateComptable'
   | 'templateArchitecte'
   | 'templateAutoEcole'
-  | 'templateConciergerie';
+  | 'templateConciergerie'
+  | 'templateAideDomicile';
 
 const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'> & { noindex?: boolean; ogImage?: string; ogImageAlt?: string }> = {
   home: {
@@ -255,6 +256,13 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
     description:
       'Aperçu du template "Conciergerie" proposé par 9site4 : services à la personne, formules d\'abonnement, témoignages clients et demande de service. Site fictif de démonstration.',
     canonical: '/templates/conciergerie',
+    noindex: true,
+  },
+  templateAideDomicile: {
+    title: 'Doudou Service — Aide à domicile à Saint-André (Réunion) | Template 9site4',
+    description:
+      'Aperçu du template "Aide à domicile" proposé par 9site4 : services à la personne, équipe, tarifs APA/PCH, témoignages familles. Site fictif de démonstration.',
+    canonical: '/templates/aide-domicile',
     noindex: true,
   },
 };

@@ -82,6 +82,9 @@ export default {
     {
       pattern: /^(bg|text|ring|border|from|to|via)-(concierge-nuit|concierge-encre|concierge-graphite|concierge-champagne|concierge-blanc|concierge-laiton|concierge-bordeaux)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
     },
+    {
+      pattern: /^(bg|text|ring|border|from|to|via)-(doudou-ciel|doudou-bleu|doudou-rose|doudou-creme|doudou-soleil|doudou-encre|doudou-bourgeon)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
+    },
   ],
   theme: {
     extend: {
@@ -334,6 +337,16 @@ export default {
         'concierge-blanc':     '#FAFAF7',
         'concierge-laiton':    '#B89758',  // doré laiton vieilli — filets ornementaux
         'concierge-bordeaux':  '#5A1F2A',  // bordeaux feutré — accent rare
+        // Palette aide à domicile (template /templates/aide-domicile — Doudou Service)
+        // Style "doux & humain, ton local créole-friendly, proximité familiale"
+        // — bleu apaisant + rose chaleureux + jaune solaire + crème coton.
+        'doudou-ciel':     '#A5C8DD',  // bleu doux ciel — fond accents
+        'doudou-bleu':     '#3B6E8F',  // bleu apaisant — accent dominant
+        'doudou-rose':     '#E5A09A',  // rose chaleureux — accent secondaire
+        'doudou-creme':    '#FCF8F0',  // crème de coton — fond
+        'doudou-soleil':   '#FFE89F',  // jaune solaire pâle — micro-accent
+        'doudou-encre':    '#3D3D3F',  // gris encre — texte
+        'doudou-bourgeon': '#7FA66B',  // vert bourgeon — accent vif rare
       },
       fontFamily: {
         sora: ['Sora', 'system-ui', 'sans-serif'],
@@ -398,6 +411,9 @@ export default {
         volkhov: ['Volkhov', 'Georgia', 'serif'],
         hubot: ['"Hubot Sans"', 'system-ui', 'sans-serif'],
         pinyon: ['"Pinyon Script"', 'cursive'],
+        nunito: ['Nunito', 'system-ui', 'sans-serif'],
+        'be-vietnam': ['"Be Vietnam Pro"', 'system-ui', 'sans-serif'],
+        homemade: ['"Homemade Apple"', 'cursive'],
       },
       fontSize: {
         'hero': ['clamp(2.5rem, 5vw + 1rem, 5rem)', { lineHeight: '1.05', letterSpacing: '-0.02em' }],
