@@ -185,7 +185,8 @@
     "categorie": "pro",
     "sousTitre": "Projets, méthode et demande de devis",
     "moduleInclus": "Devis",
-    "slug": "architecte"
+    "slug": "architecte",
+    "previewUrl": "/templates/architecte"
   },
   {
     "id": 22,
