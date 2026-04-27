@@ -1,0 +1,61 @@
+---
+/**
+ * Mini-preview Cabinet Auberval — rapport annuel institutionnel.
+ * Bleu marine + crème feutré + filets dorés.
+ */
+---
+
+<div class="absolute inset-0 bg-auberval-feutre text-auberval-marine font-plex-sans overflow-hidden">
+
+  <!-- Pattern lignes verticales très subtil -->
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true"
+       style="background-image: repeating-linear-gradient(90deg, transparent 0, transparent 20px, rgba(167,138,79,0.06) 20px, rgba(167,138,79,0.06) 21px);">
+  </div>
+
+  <!-- Filet doré haut -->
+  <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-auberval-or to-transparent"></div>
+
+  <!-- Mini header -->
+  <div class="relative flex items-center justify-between px-3 pt-2 pb-1.5 border-b border-auberval-marine/15">
+    <div class="flex items-baseline gap-1">
+      <span class="font-source-serif text-auberval-marine text-[10px]">Auberval</span>
+      <span class="font-source-serif italic text-auberval-or text-[8px]">& Associés</span>
+    </div>
+    <div class="flex items-center gap-1.5 text-[6px] text-auberval-encre/65">
+      <span>Associés</span>
+      <span>Expertise</span>
+    </div>
+    <span class="inline-flex items-center h-3 px-2 bg-auberval-marine text-auberval-feutre font-plex-sans font-medium text-[6px]">
+      Nous rencontrer
+    </span>
+  </div>
+
+  <!-- Hero rapport annuel -->
+  <div class="relative px-3 pt-2 pb-2 h-[calc(100%-1.5rem)] flex flex-col">
+
+    <!-- En-tête type rapport -->
+    <div class="flex items-baseline justify-between font-dm-mono text-[5px] uppercase tracking-[0.32em] text-auberval-or mb-1.5">
+      <span>Cabinet n° 974-2018</span>
+      <span>Édition 2026</span>
+    </div>
+
+    <p class="font-plex-sans text-[5.5px] uppercase tracking-[0.28em] text-auberval-marine font-semibold mb-1">
+      ✦ depuis 2009
+    </p>
+
+    <p class="font-source-serif text-auberval-marine leading-[0.95]" style="font-size: clamp(13px, 2.6vw, 22px);">
+      Auberval<br/>
+      <span class="italic text-auberval-or">& Associés</span>
+    </p>
+
+    <!-- 4 stats en bandeau -->
+    <ul class="mt-auto grid grid-cols-4 gap-px border-t border-b border-auberval-marine/15">
+      {[['200+', 'clients'], ['12', 'collab.'], ['4', 'associés'], ['16', 'ans']].map(([v, l]) => (
+        <li class="bg-auberval-feutre py-1 px-0.5 text-center">
+          <p class="font-source-serif text-auberval-marine text-[8px] tabular-nums leading-none">{v}</p>
+          <p class="font-dm-mono text-[4.5px] uppercase tracking-wider text-auberval-encre/65 mt-0.5">{l}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</div>

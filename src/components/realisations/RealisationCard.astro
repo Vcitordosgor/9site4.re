@@ -3,11 +3,36 @@ import Badge from '../ui/Badge.astro';
 import Icon from '../ui/Icon.astro';
 import categories from '../../data/categories.json';
 
+// Imports des 24 mini-previews custom (un par template)
+import PreviewResto from './previews/PreviewResto.astro';
+import PreviewPizzeria from './previews/PreviewPizzeria.astro';
+import PreviewBarJus from './previews/PreviewBarJus.astro';
+import PreviewSalon from './previews/PreviewSalon.astro';
+import PreviewInstitut from './previews/PreviewInstitut.astro';
+import PreviewSpa from './previews/PreviewSpa.astro';
+import PreviewPlomberie from './previews/PreviewPlomberie.astro';
+import PreviewElectricien from './previews/PreviewElectricien.astro';
+import PreviewPaysagiste from './previews/PreviewPaysagiste.astro';
+import PreviewOsteo from './previews/PreviewOsteo.astro';
+import PreviewDieteticienne from './previews/PreviewDieteticienne.astro';
+import PreviewPsy from './previews/PreviewPsy.astro';
+import PreviewCoach from './previews/PreviewCoach.astro';
+import PreviewYoga from './previews/PreviewYoga.astro';
+import PreviewDanse from './previews/PreviewDanse.astro';
+import PreviewGite from './previews/PreviewGite.astro';
+import PreviewExcursions from './previews/PreviewExcursions.astro';
+import PreviewLocation from './previews/PreviewLocation.astro';
+import PreviewConsultant from './previews/PreviewConsultant.astro';
+import PreviewComptable from './previews/PreviewComptable.astro';
+import PreviewArchitecte from './previews/PreviewArchitecte.astro';
+import PreviewAutoEcole from './previews/PreviewAutoEcole.astro';
+import PreviewConciergerie from './previews/PreviewConciergerie.astro';
+import PreviewAideDomicile from './previews/PreviewAideDomicile.astro';
+
 /**
- * RealisationCard — mini-preview de site web style "screenshot navigateur".
- * Le visuel du haut imite une capture d'écran du template (browser chrome
- * + URL + hero photo + nav + titre + CTA superposés). Le corps de la carte
- * affiche les métadonnées catalogue.
+ * RealisationCard — chaque carte affiche un VRAI mini-preview du template
+ * (composant Astro custom reproduisant fidèlement le hero du template),
+ * encadré dans une frame navigateur (3 ronds + URL bar).
  */
 interface Realisation {
   id: number;
@@ -31,16 +56,46 @@ const categoryName =
   categories.find((c) => c.id === realisation.categorie)?.nom ??
   realisation.categorie;
 
-// Visuels par catégorie pour le fallback (pas de previewUrl) — gardé pour compat.
-const visuals: Record<string, { gradient: string; icon: string }> = {
-  restaurants:   { gradient: 'from-orange/35 via-bleu/25 to-bleu/15',         icon: 'sparkle' },
-  beaute:        { gradient: 'from-bleu/40 via-bleu/25 to-orange/20',         icon: 'palette' },
-  artisans:      { gradient: 'from-bleu-nuit/30 via-bleu/30 to-orange/15',    icon: 'wrench' },
-  sante:         { gradient: 'from-bleu/40 via-bleu/20 to-bleu-nuit/15',      icon: 'shield-check' },
-  sport:         { gradient: 'from-orange/30 via-bleu/25 to-bleu/20',         icon: 'sparkle' },
-  tourisme:      { gradient: 'from-bleu/45 via-bleu/30 to-orange/20',         icon: 'globe' },
-  pro:           { gradient: 'from-bleu-nuit/30 via-bleu/30 to-bleu/15',      icon: 'file-text' },
-  particuliers: { gradient: 'from-bleu/35 via-orange/20 to-bleu/15',          icon: 'headphones' },
+// Mapping slug → composant Preview correspondant
+const previewMap: Record<string, any> = {
+  'restaurant-gastronomique':         PreviewResto,
+  'snack-pizzeria':                   PreviewPizzeria,
+  'bar-a-jus-tropical':               PreviewBarJus,
+  'salon-de-coiffure':                PreviewSalon,
+  'institut-de-beaute':               PreviewInstitut,
+  'spa-massage':                      PreviewSpa,
+  'plomberie':                        PreviewPlomberie,
+  'electricite-generale':             PreviewElectricien,
+  'paysagiste':                       PreviewPaysagiste,
+  'cabinet-osteopathie':              PreviewOsteo,
+  'dieteticienne':                    PreviewDieteticienne,
+  'psychologue':                      PreviewPsy,
+  'coach-sportif':                    PreviewCoach,
+  'studio-yoga':                      PreviewYoga,
+  'ecole-de-danse':                   PreviewDanse,
+  'gite-de-montagne':                 PreviewGite,
+  'excursions-randonnee':             PreviewExcursions,
+  'location-saisonniere-bord-de-mer': PreviewLocation,
+  'consultant':                       PreviewConsultant,
+  'cabinet-comptable':                PreviewComptable,
+  'architecte':                       PreviewArchitecte,
+  'auto-ecole':                       PreviewAutoEcole,
+  'conciergerie':                     PreviewConciergerie,
+  'aide-a-domicile':                  PreviewAideDomicile,
+};
+
+const Preview = previewMap[realisation.slug] ?? null;
+
+// Fallback visuel pour entrées sans preview
+const visuals: Record<string, { icon: string }> = {
+  restaurants: { icon: 'sparkle' },
+  beaute: { icon: 'palette' },
+  artisans: { icon: 'wrench' },
+  sante: { icon: 'shield-check' },
+  sport: { icon: 'sparkle' },
+  tourisme: { icon: 'globe' },
+  pro: { icon: 'file-text' },
+  particuliers: { icon: 'headphones' },
 };
 
 const moduleIcons: Record<string, string> = {
@@ -49,8 +104,6 @@ const moduleIcons: Record<string, string> = {
   'Devis': 'file-text',
   'Intervention': 'wrench',
 };
-
-// Couleur d'accent du module — équilibrée bleu/orange
 const moduleColors: Record<string, 'bleu' | 'orange'> = {
   'Rendez-vous': 'bleu',
   'Intervention': 'bleu',
@@ -61,26 +114,12 @@ const moduleColors: Record<string, 'bleu' | 'orange'> = {
 const visual = visuals[realisation.categorie] ?? visuals.pro;
 const moduleIcon = moduleIcons[realisation.moduleInclus] ?? 'sparkle';
 const moduleColor = moduleColors[realisation.moduleInclus] ?? 'orange';
-
-// Vignette = image hero du template (vraie identité visuelle du site)
-const photoUrl = realisation.thumbnail
-  ?? `https://picsum.photos/seed/9site4-${realisation.categorie}/800/480`;
-
-// Liens de navigation factices génériques selon le module (pour donner
-// l'impression d'un vrai header de site)
-const fakeNavByModule: Record<string, string[]> = {
-  'Réservation': ['Carte', 'Réserver', 'Contact'],
-  'Rendez-vous': ['Services', 'Tarifs', 'RDV'],
-  'Devis':       ['Réalisations', 'Devis', 'Contact'],
-  'Intervention':['Services', 'Zones', 'Urgence'],
-};
-const fakeNav = fakeNavByModule[realisation.moduleInclus] ?? ['Accueil', 'Services', 'Contact'];
 ---
 
 <article class="tilt-card group relative bg-blanc-casse rounded-2xl ring-1 ring-bleu-nuit/10 shadow-card overflow-hidden flex flex-col hover:shadow-card-hover hover:ring-bleu-nuit/15">
 
-  {realisation.previewUrl ? (
-    <!-- 🖥️ MINI-PREVIEW NAVIGATEUR : looks like a website screenshot -->
+  {realisation.previewUrl && Preview ? (
+    <!-- 🖥️ MINI-PREVIEW NAVIGATEUR : vrai composant template miniaturisé -->
     <a
       href={realisation.previewUrl}
       target="_blank"
@@ -88,7 +127,7 @@ const fakeNav = fakeNavByModule[realisation.moduleInclus] ?? ['Accueil', 'Servic
       class="block group/preview overflow-hidden border-b border-bleu-nuit/10 bg-bleu-nuit"
       aria-label={`Voir le template ${realisation.nom}`}
     >
-      <!-- Browser chrome : 3 ronds + URL bar -->
+      <!-- Browser chrome -->
       <div class="flex items-center gap-2 px-3 py-2 bg-bleu-nuit/95">
         <div class="flex gap-1.5 shrink-0" aria-hidden="true">
           <span class="block w-2.5 h-2.5 rounded-full bg-[#FF5F57]"></span>
@@ -106,64 +145,23 @@ const fakeNav = fakeNavByModule[realisation.moduleInclus] ?? ['Accueil', 'Servic
         </svg>
       </div>
 
-      <!-- Viewport : hero photo + overlay simulant un hero de site -->
-      <div class="relative aspect-[5/3] overflow-hidden">
-        <img
-          src={photoUrl}
-          alt={`Aperçu du site ${realisation.nom}`}
-          loading="lazy"
-          decoding="async"
-          class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out-soft group-hover/preview:scale-105"
-        />
-
-        <!-- Voile sombre pour lisibilité du texte overlay -->
-        <div class="absolute inset-0 bg-gradient-to-t from-bleu-nuit/85 via-bleu-nuit/20 to-bleu-nuit/55" aria-hidden="true"></div>
-
-        <!-- Top : faux header de site (logo + nav) -->
-        <div class="absolute top-2.5 left-3 right-3 flex items-center justify-between text-blanc-casse">
-          <p class="text-[10px] uppercase tracking-[0.2em] font-bold opacity-95">
-            {realisation.nom}
-          </p>
-          <ul class="hidden sm:flex items-center gap-2.5 text-[9px] uppercase tracking-widest opacity-75 font-medium">
-            {fakeNav.map((item) => <li>{item}</li>)}
-          </ul>
-        </div>
-
-        <!-- Bottom-left : faux hero text (titre + sous-titre + CTA) -->
-        <div class="absolute bottom-3 left-3 right-3 text-blanc-casse">
-          <p class="text-[9px] uppercase tracking-[0.22em] text-blanc-casse/70 mb-1">
-            ✦ Demo template
-          </p>
-          <p class="text-base sm:text-lg font-sora font-bold leading-tight mb-1.5 line-clamp-1" style="text-shadow: 0 2px 8px rgba(11,20,55,0.5);">
-            {realisation.sousTitre}
-          </p>
-          <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-blanc-casse text-bleu-nuit text-[10px] font-bold uppercase tracking-wide">
-            {realisation.moduleInclus}
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </span>
-        </div>
+      <!-- Viewport : vrai mini-preview du template -->
+      <div class="relative aspect-[5/3] overflow-hidden bg-blanc-casse transition-transform duration-700 ease-out-soft group-hover/preview:scale-[1.015]">
+        <Preview />
       </div>
     </a>
   ) : (
-    <!-- 🎨 FALLBACK (pas de previewUrl) : ancienne version avec gradient -->
-    <div class:list={['relative aspect-[5/3] overflow-hidden bg-gradient-to-br', visual.gradient]}>
-      <img
-        src={photoUrl}
-        alt=""
-        loading="lazy"
-        decoding="async"
-        class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out-soft group-hover:scale-105"
-      />
-      <div class="absolute inset-0 bg-gradient-to-t from-bleu-nuit/60 via-bleu-nuit/10 to-bleu-nuit/30" aria-hidden="true"></div>
+    <!-- Fallback : gradient placeholder -->
+    <div class="relative aspect-[5/3] overflow-hidden bg-gradient-to-br from-bleu-nuit/30 via-bleu/30 to-orange/15">
+      <div class="absolute inset-0 flex items-center justify-center text-bleu-nuit/30">
+        <Icon name={visual.icon} size={48} strokeWidth={1.5} />
+      </div>
     </div>
   )}
 
-  <!-- 📋 Corps de carte : métadonnées catalogue -->
+  <!-- Corps de carte : métadonnées catalogue -->
   <div class="flex-1 flex flex-col p-6">
 
-    <!-- Top row : catégorie + badge "Démo en ligne" -->
     <div class="flex items-center justify-between gap-3 mb-3 flex-wrap">
       <Badge variant="secondary" size="sm">{categoryName}</Badge>
       {realisation.previewUrl && (

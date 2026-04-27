@@ -1,0 +1,56 @@
+---
+/**
+ * Mini-preview Sentiers Croisés — récit aventure photographique.
+ * Vert tropical + lichen + soleil pâle, hero photo cinématique full.
+ */
+---
+
+<div class="absolute inset-0 bg-sentiers-foret text-sentiers-brume font-familjen overflow-hidden">
+
+  <!-- Photo cinématique en fond -->
+  <img
+    src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=70"
+    alt=""
+    class="absolute inset-0 w-full h-full object-cover"
+    loading="lazy"
+    decoding="async"
+  />
+  <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(14,40,32,0.7) 0%, rgba(14,40,32,0.45) 50%, rgba(14,40,32,0.85) 100%);"></div>
+
+  <!-- Mini header transparent -->
+  <div class="relative flex items-center justify-between px-3 pt-2 pb-1.5">
+    <div class="flex items-baseline gap-0.5">
+      <span class="font-familjen font-medium text-sentiers-brume text-[10px]">Sentiers Croisés</span>
+      <span class="text-sentiers-lichen text-[6px] ml-0.5">▲</span>
+    </div>
+    <div class="flex items-center gap-1.5 text-[6px] text-sentiers-brume/75">
+      <span>Sorties</span>
+      <span>Galerie</span>
+    </div>
+    <span class="inline-flex items-center h-3 px-2 bg-sentiers-terre text-sentiers-brume font-familjen font-medium text-[6px]">
+      Réserver
+    </span>
+  </div>
+
+  <!-- Sticker "Sortie du jour" -->
+  <div class="absolute top-7 right-3 bg-sentiers-terre text-sentiers-brume p-1.5 -rotate-2" style="box-shadow: 0 4px 12px rgba(184,90,61,0.35);">
+    <p class="font-roboto-mono text-[5px] uppercase tracking-wider text-sentiers-soleil">▲ Sortie du jour</p>
+    <p class="font-tinos italic text-sentiers-brume text-[8px] leading-tight">Mafate Aurore</p>
+  </div>
+
+  <!-- Hero text en bas-gauche -->
+  <div class="absolute left-3 right-3 bottom-2 text-sentiers-brume">
+    <p class="font-roboto-mono text-[5px] uppercase tracking-[0.32em] text-sentiers-soleil mb-1 font-medium">
+      Guide rando · 974 · depuis 2013
+    </p>
+    <p class="font-tinos italic text-sentiers-brume leading-[0.95] max-w-[80%]" style="font-size: clamp(13px, 2.6vw, 22px);">
+      Le Maïdo<br/>
+      <span class="text-sentiers-soleil">n'attend que vous.</span>
+    </p>
+    <div class="mt-1 flex items-center gap-1">
+      <span class="inline-flex items-center h-3 px-2 bg-sentiers-soleil text-sentiers-foret font-familjen font-medium text-[6px]">
+        Voir les sorties →
+      </span>
+    </div>
+  </div>
+</div>

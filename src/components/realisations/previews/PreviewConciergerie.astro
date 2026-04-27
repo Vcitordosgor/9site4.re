@@ -1,0 +1,69 @@
+---
+/**
+ * Mini-preview Concierge & Co — réception hôtel cinq étoiles.
+ * Bleu nuit + crème champagne + doré laiton, Volkhov + Pinyon Script.
+ */
+---
+
+<div class="absolute inset-0 bg-concierge-champagne text-concierge-encre font-hubot overflow-hidden">
+
+  <!-- Filets dorés latéraux -->
+  <div class="absolute top-1 bottom-1 left-1.5 w-px bg-gradient-to-b from-transparent via-concierge-laiton/40 to-transparent"></div>
+  <div class="absolute top-1 bottom-1 right-1.5 w-px bg-gradient-to-b from-transparent via-concierge-laiton/40 to-transparent"></div>
+
+  <!-- Mini header -->
+  <div class="relative flex items-center justify-between px-3 pt-2 pb-1.5">
+    <div class="flex items-baseline gap-1">
+      <span class="font-volkhov italic text-concierge-nuit text-[10px]">Concierge</span>
+      <span class="font-volkhov text-concierge-laiton text-[9px] tracking-wide">& Co</span>
+    </div>
+    <div class="flex items-center gap-1.5 text-[6px] uppercase tracking-[0.18em] text-concierge-graphite/75 font-medium">
+      <span>Services</span>
+      <span>Formules</span>
+    </div>
+    <span class="inline-flex items-center h-3 px-2 bg-concierge-nuit text-concierge-champagne font-hubot text-[5.5px] uppercase tracking-[0.18em] font-medium">
+      Nous contacter
+    </span>
+  </div>
+
+  <!-- Hero carte de bienvenue -->
+  <div class="relative grid grid-cols-12 gap-2 px-4 pt-2 pb-2 h-[calc(100%-1.5rem)]">
+
+    <!-- LEFT (7) : titre + Pinyon -->
+    <div class="col-span-7 flex flex-col justify-center">
+      <p class="font-pinyon text-concierge-laiton text-[18px] mb-0.5 leading-none">
+        Bienvenue.
+      </p>
+      <p class="font-volkhov italic text-concierge-nuit leading-[1.05]" style="font-size: clamp(13px, 2.6vw, 22px);">
+        Concierge<br/>
+        <span class="not-italic text-concierge-laiton">& Co</span>
+      </p>
+      <p class="mt-1.5 font-hubot text-concierge-graphite text-[6.5px] leading-snug">
+        Conciergerie privée · Saint-Gilles
+      </p>
+      <!-- Filet doré ornement -->
+      <div class="mt-1 flex items-center gap-1">
+        <span class="block h-px w-4 bg-concierge-laiton"></span>
+        <span class="text-concierge-laiton text-[5px]">✦</span>
+        <span class="block h-px w-4 bg-concierge-laiton"></span>
+      </div>
+    </div>
+
+    <!-- RIGHT (5) : photo détail bienvenue -->
+    <div class="col-span-5">
+      <div class="relative aspect-[3/4] bg-concierge-blanc overflow-hidden">
+        <img
+          src="https://images.unsplash.com/photo-1455587734955-081b22074882?w=300&q=70"
+          alt=""
+          class="w-full h-full object-cover"
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="absolute inset-1 border border-concierge-laiton/40"></div>
+        <span class="absolute bottom-1 left-1 right-1 bg-concierge-champagne/95 px-1 font-pinyon text-concierge-laiton text-[10px] text-center leading-none">
+          à votre service
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

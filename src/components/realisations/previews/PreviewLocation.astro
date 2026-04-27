@@ -1,0 +1,61 @@
+---
+/**
+ * Mini-preview Villa Lazuli — brochure villa Airbnb haut de gamme.
+ * Bleu lagon + sable doré + terracotta, Yeseva One + Italianno cursive.
+ */
+---
+
+<div class="absolute inset-0 bg-lazuli-marine text-lazuli-casse overflow-hidden">
+
+  <!-- Photo villa en fond -->
+  <img
+    src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&q=70"
+    alt=""
+    class="absolute inset-0 w-full h-full object-cover"
+    loading="lazy"
+    decoding="async"
+  />
+  <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(27,45,58,0.45) 0%, rgba(27,45,58,0.15) 35%, rgba(27,45,58,0.9) 100%);"></div>
+
+  <!-- Mini header -->
+  <div class="relative flex items-center justify-between px-3 pt-2 pb-1.5">
+    <div class="flex items-baseline gap-1">
+      <span class="font-italianno text-lazuli-coco text-[14px] leading-none">Villa</span>
+      <span class="font-yeseva text-lazuli-casse text-[10px] tracking-wide leading-none">Lazuli</span>
+    </div>
+    <div class="flex items-center gap-1.5 text-[6px] text-lazuli-casse/75">
+      <span>Visite</span>
+      <span>Tarifs</span>
+    </div>
+    <span class="inline-flex items-center h-3 px-2 bg-lazuli-terracotta text-lazuli-casse font-geist font-medium text-[6px] rounded-full">
+      Réserver
+    </span>
+  </div>
+
+  <!-- Sticker dispo en haut droite -->
+  <div class="absolute top-7 right-3 bg-lazuli-casse text-lazuli-marine px-2 py-1 max-w-[40%]" style="box-shadow: 0 6px 18px rgba(27,45,58,0.30);">
+    <p class="font-geist text-[5px] uppercase tracking-wider text-lazuli-lagon font-semibold">✦ Disponible</p>
+    <p class="font-yeseva text-lazuli-marine text-[8px] leading-tight">À partir du 15 nov.</p>
+  </div>
+
+  <!-- Hero text bas-gauche -->
+  <div class="absolute left-3 right-3 bottom-2 text-lazuli-casse">
+    <p class="font-geist text-[5.5px] uppercase tracking-wider text-lazuli-coco font-semibold mb-0.5">
+      ★ 4,8/5 · 87 avis
+    </p>
+    <p class="font-italianno text-lazuli-coco text-[14px] leading-none">Villa</p>
+    <p class="font-yeseva text-lazuli-casse leading-[0.9] tracking-tight" style="font-size: clamp(20px, 4vw, 36px);">
+      Lazuli
+    </p>
+
+    <!-- 4 stats -->
+    <div class="mt-1 grid grid-cols-4 gap-0.5 max-w-[90%]">
+      {[['120m²', 'habitable'], ['4', 'chambres'], ['8', 'voyageurs'], ['✓', 'piscine']].map(([v, l]) => (
+        <div class="bg-lazuli-marine/60 backdrop-blur-sm px-1 py-0.5 border border-lazuli-casse/15">
+          <p class="font-yeseva text-lazuli-coco text-[7px] leading-none tabular-nums">{v}</p>
+          <p class="font-geist text-[4.5px] uppercase tracking-wider text-lazuli-casse/65">{l}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>

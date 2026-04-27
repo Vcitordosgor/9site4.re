@@ -1,0 +1,79 @@
+---
+/**
+ * Mini-preview Doudou Service — doux & humain, ton local familial.
+ * Bleu doux + rose chaleureux + jaune solaire, Nunito ronde + Homemade Apple.
+ */
+---
+
+<div class="absolute inset-0 bg-doudou-creme text-doudou-encre font-be-vietnam overflow-hidden">
+
+  <!-- Formes pastel arrondies en arrière-plan -->
+  <div class="absolute -top-8 -right-8 w-20 h-20 rounded-full bg-doudou-ciel/40 pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute -bottom-8 -left-8 w-24 h-24 rounded-full bg-doudou-soleil/40 pointer-events-none" aria-hidden="true"></div>
+
+  <!-- Mini header -->
+  <div class="relative flex items-center justify-between px-3 pt-2 pb-1.5">
+    <div class="flex items-baseline gap-1">
+      <span class="inline-flex items-center justify-center w-3.5 h-3.5 bg-doudou-rose text-doudou-creme rounded-full font-nunito font-bold text-[7px] leading-none">♡</span>
+      <span class="font-nunito font-bold text-doudou-bleu text-[9px] leading-none">Doudou</span>
+      <span class="font-nunito text-doudou-encre text-[9px] leading-none">Service</span>
+    </div>
+    <div class="flex items-center gap-1.5 text-[6px] text-doudou-encre/75 font-medium">
+      <span>Engagements</span>
+      <span>Tarifs</span>
+    </div>
+    <span class="inline-flex items-center h-3 px-2 bg-doudou-bleu text-doudou-creme font-be-vietnam font-semibold text-[6px] rounded-full">
+      Visite gratuite
+    </span>
+  </div>
+
+  <!-- Hero carte postale familiale -->
+  <div class="relative px-3 pt-1.5 pb-2 grid grid-cols-12 gap-2 h-[calc(100%-1.5rem)]">
+
+    <!-- LEFT (7) : titre + annotation manuscrite -->
+    <div class="col-span-7 flex flex-col justify-center">
+      <!-- Sticker agrément -->
+      <p class="inline-flex items-center self-start gap-1 px-1.5 py-[2px] bg-doudou-bourgeon/15 rounded-full text-[5.5px] font-bold text-doudou-bourgeon mb-1">
+        <span class="block w-1 h-1 rounded-full bg-doudou-bourgeon"></span>
+        Agréé Conseil Départemental
+      </p>
+
+      <p class="font-nunito font-bold text-doudou-encre leading-[1.0]" style="font-size: clamp(11px, 2.3vw, 19px);">
+        Une présence quotidienne,<br/>
+        <span class="text-doudou-bleu">à La Réunion.</span>
+      </p>
+
+      <p class="mt-1 font-homemade text-doudou-rose text-[10px] -rotate-1 leading-none">
+        depuis 2010, on prend soin
+      </p>
+
+      <div class="mt-1.5">
+        <span class="inline-flex items-center h-3 px-2 bg-doudou-bleu text-doudou-creme font-be-vietnam font-semibold text-[6px] rounded-full">
+          Visite gratuite ♡
+        </span>
+      </div>
+    </div>
+
+    <!-- RIGHT (5) : photo aidante avec sticker -->
+    <div class="col-span-5">
+      <div class="relative aspect-[4/5] bg-doudou-ciel overflow-hidden rounded-2xl">
+        <img
+          src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=300&q=70"
+          alt=""
+          class="w-full h-full object-cover"
+          loading="lazy"
+          decoding="async"
+        />
+        <!-- Sticker prénom -->
+        <div class="absolute top-1 left-1 bg-doudou-creme/95 px-1.5 py-0.5 rounded-full">
+          <p class="font-homemade text-doudou-rose text-[9px] leading-none">Maguy &</p>
+          <p class="font-be-vietnam text-doudou-encre text-[5px] font-medium leading-tight">Mme R., 87 ans</p>
+        </div>
+        <!-- Sticker bas -->
+        <div class="absolute bottom-1 right-1 bg-doudou-rose text-doudou-creme px-1.5 py-0.5 rounded-lg" style="transform: rotate(3deg);">
+          <p class="font-homemade text-[8px] leading-none">7j/7</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

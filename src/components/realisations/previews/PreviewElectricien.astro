@@ -1,0 +1,82 @@
+---
+/**
+ * Mini-preview Volta — tableau électrique digital.
+ * Noir technique + cyan électrique, ornements circuits SVG, urgence pulsante.
+ */
+---
+
+<div class="absolute inset-0 bg-volta-noir text-volta-fumee overflow-hidden">
+
+  <!-- Ornement circuit SVG très subtil -->
+  <svg class="absolute right-0 top-0 h-full w-1/2 opacity-[0.05]" viewBox="0 0 400 800" fill="none" stroke="#06D4F5" stroke-width="1" aria-hidden="true">
+    <path d="M400 100 H300 V200 H200 V350 H320 V450 H200 V600 H350 V700"/>
+    <circle cx="300" cy="200" r="4" fill="#06D4F5"/>
+    <circle cx="200" cy="350" r="4" fill="#06D4F5"/>
+  </svg>
+
+  <!-- Mini header -->
+  <div class="relative flex items-center justify-between px-3 pt-2 pb-1.5">
+    <div class="flex items-center gap-1">
+      <svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor" class="text-volta-cyan"><path d="M13 2L4.5 13.5H11L10 22L20.5 10H14L13 2Z"/></svg>
+      <span class="font-syne font-bold text-volta-blanc text-[10px]">Volta</span>
+    </div>
+    <div class="flex items-center gap-1.5 text-[6px] uppercase tracking-wider text-volta-fumee/70 font-medium">
+      <span>Services</span>
+      <span>Urgence</span>
+    </div>
+    <span class="inline-flex items-center h-3 px-2 bg-volta-cyan text-volta-noir font-space-grotesk font-semibold text-[6px] uppercase tracking-wider">
+      Devis gratuit
+    </span>
+  </div>
+
+  <!-- Hero -->
+  <div class="relative grid grid-cols-12 gap-2 px-3 pt-2 pb-2 h-[calc(100%-1.5rem)]">
+
+    <!-- LEFT (7) : titre + urgence -->
+    <div class="col-span-7 flex flex-col justify-center">
+      <!-- Badge urgence pulsant -->
+      <div class="flex items-center gap-1 mb-1">
+        <span class="relative flex h-1.5 w-1.5">
+          <span class="absolute inline-flex h-full w-full rounded-full bg-volta-cyan opacity-75 animate-ping"></span>
+          <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-volta-cyan"></span>
+        </span>
+        <span class="font-space-grotesk text-[5.5px] uppercase tracking-[0.22em] text-volta-cyan font-semibold">
+          URGENCE 24h/24
+        </span>
+      </div>
+
+      <p class="font-syne font-extrabold text-volta-blanc leading-[0.95]" style="font-size: clamp(13px, 2.8vw, 24px);">
+        L'électricité,<br/>
+        <span class="text-volta-cyan">c'est sérieux.</span>
+      </p>
+
+      <div class="mt-1.5 flex items-center gap-1">
+        <span class="inline-flex items-center h-3 px-2 bg-volta-cyan text-volta-noir font-space-grotesk font-bold text-[6px] uppercase tracking-wider">
+          Demander devis
+        </span>
+        <span class="font-space-grotesk text-volta-fumee text-[6px] tabular-nums">0692 00 00 00</span>
+      </div>
+    </div>
+
+    <!-- RIGHT (5) : photo grayscale + stats -->
+    <div class="col-span-5 flex flex-col gap-1">
+      <div class="relative aspect-[4/3] bg-volta-acier overflow-hidden flex-1">
+        <img
+          src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=300&q=70"
+          alt=""
+          class="w-full h-full object-cover grayscale"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+      <div class="grid grid-cols-3 gap-0.5 text-center">
+        {[['10+', 'ans'], ['7', 'communes'], ['2h', 'urg.']].map(([v, l]) => (
+          <div>
+            <p class="font-syne font-bold text-volta-cyan leading-none text-[8px]">{v}</p>
+            <p class="font-space-grotesk text-[5px] uppercase text-volta-fumee/55 leading-tight">{l}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,76 @@
+---
+/**
+ * Mini-preview Lucas Ferrier — portfolio Notion/Substack dense en texte.
+ * Noir profond + vert électrique terminal, curseur clignotant.
+ */
+---
+
+<div class="absolute inset-0 bg-lucas-noir text-lucas-blanc font-hanken overflow-hidden">
+
+  <!-- Mini header -->
+  <div class="flex items-center justify-between px-3 pt-2 pb-1.5 border-b border-lucas-encre/30">
+    <div class="flex items-baseline gap-1">
+      <span class="text-lucas-vert text-[8px]">▶</span>
+      <span class="font-hanken font-medium text-lucas-blanc text-[9px]">Lucas Ferrier</span>
+      <span class="font-space-mono text-lucas-encre text-[5.5px]">/ consultant</span>
+    </div>
+    <div class="flex items-center gap-1.5 text-[6px] text-lucas-perle/70">
+      <span>Missions</span>
+      <span>Tarifs</span>
+    </div>
+    <span class="inline-flex items-center h-3 px-2 bg-lucas-vert text-lucas-noir font-hanken font-semibold text-[6px]">
+      Prendre RDV
+    </span>
+  </div>
+
+  <!-- Hero text-first -->
+  <div class="px-3 pt-2 pb-2 h-[calc(100%-1.6rem)] flex flex-col">
+
+    <!-- Eyebrow terminal avec curseur clignotant -->
+    <div class="flex items-baseline gap-1 mb-2 font-space-mono text-[5.5px]">
+      <span class="text-lucas-vert">▶</span>
+      <span class="text-lucas-encre">$</span>
+      <span class="text-lucas-perle">whoami</span>
+      <span class="text-lucas-encre">→</span>
+      <span class="text-lucas-blanc">Lucas Ferrier · Disponible début 2026</span>
+      <span class="text-lucas-vert ml-0.5 cursor-blink">▮</span>
+    </div>
+
+    <!-- H1 Instrument italic -->
+    <p class="font-instrument italic text-lucas-blanc leading-[1.0] max-w-[90%]" style="font-size: clamp(13px, 2.5vw, 22px);">
+      J'aide les entreprises à <span class="text-lucas-vert">vraiment</span> utiliser le digital.
+    </p>
+
+    <!-- Avatar mini + nom -->
+    <div class="mt-2 flex items-center gap-1.5">
+      <img
+        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&q=70"
+        alt=""
+        class="w-5 h-5 rounded-full object-cover ring-1 ring-lucas-vert/40"
+        loading="lazy"
+      />
+      <div>
+        <p class="font-hanken font-semibold text-lucas-blanc text-[7px] leading-tight">Lucas Ferrier</p>
+        <p class="font-space-mono text-[5px] text-lucas-encre">Saint-Denis · La Réunion</p>
+      </div>
+    </div>
+
+    <!-- CTAs -->
+    <div class="mt-auto flex items-center gap-2">
+      <span class="inline-flex items-center gap-1 font-hanken font-semibold text-lucas-vert text-[6.5px]">
+        Voir mes missions →
+      </span>
+      <span class="inline-flex items-center h-3 px-1.5 bg-lucas-vert text-lucas-noir font-hanken font-semibold text-[6px]">
+        Prendre RDV
+      </span>
+    </div>
+  </div>
+
+  <style>
+    .cursor-blink { animation: blink 1s step-end infinite; }
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+  </style>
+</div>

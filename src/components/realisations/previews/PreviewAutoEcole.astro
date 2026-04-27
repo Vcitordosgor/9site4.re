@@ -1,0 +1,93 @@
+---
+/**
+ * Mini-preview du template Boost Conduite (auto-école).
+ * Reprend en miniature : header B + Boost Conduite, badge agrément,
+ * titre "Ton permis. Sans stress.", 3 stats jaunes, carte achievement
+ * sombre avec progress bar.
+ */
+---
+
+<div class="absolute inset-0 bg-boost-route font-funnel-sans overflow-hidden">
+
+  <!-- Mini header site (logo + nav + CTA) -->
+  <div class="flex items-center justify-between px-3 pt-2.5 pb-2 text-boost-noir">
+    <div class="flex items-baseline gap-1">
+      <span class="inline-flex items-center justify-center w-3.5 h-3.5 bg-boost-acier text-boost-route rounded-full font-funnel-display font-bold text-[8px] leading-none">B</span>
+      <span class="font-funnel-display font-bold text-[9px] tracking-tight">Boost</span>
+      <span class="font-funnel-display font-light text-[9px] tracking-tight text-boost-asphalte">Conduite</span>
+    </div>
+    <div class="flex items-center gap-1.5 text-[6.5px] uppercase tracking-wider font-semibold text-boost-noir/65">
+      <span>Forfaits</span>
+      <span>Code</span>
+      <span>Avis</span>
+    </div>
+    <span class="inline-flex items-center h-3.5 px-2 bg-boost-jaune text-boost-noir font-funnel-display font-bold text-[7px] rounded-full">
+      Je m'inscris
+    </span>
+  </div>
+
+  <!-- Hero split content -->
+  <div class="px-3 pt-1 pb-3 grid grid-cols-12 gap-2 h-[calc(100%-1.5rem)]">
+
+    <!-- LEFT : badge + titre + stats + CTAs -->
+    <div class="col-span-7 flex flex-col">
+
+      <!-- Badge agrément -->
+      <p class="inline-flex items-center gap-1 self-start px-1.5 py-[3px] bg-boost-feu/15 rounded-full text-[6.5px] font-bold text-boost-feu mb-1.5">
+        <span class="block w-1 h-1 rounded-full bg-boost-feu"></span>
+        Agréé Préfectoral
+      </p>
+
+      <!-- Titre Funnel Display -->
+      <p class="font-funnel-display font-bold text-boost-noir leading-[0.95] mb-1.5" style="font-size: clamp(13px, 2.5vw, 22px);">
+        Ton permis.<br/>
+        <span class="text-boost-acier">Sans stress.</span>
+      </p>
+
+      <!-- Stats yellow cards -->
+      <div class="grid grid-cols-3 gap-1 mt-auto">
+        {[
+          { val: '87%', lbl: 'réussite' },
+          { val: '3500', lbl: 'permis' },
+          { val: '12 ans', lbl: 'expé.' },
+        ].map((s) => (
+          <div class="bg-boost-jaune/15 border border-boost-jaune p-1">
+            <p class="font-funnel-display font-bold text-boost-noir leading-none text-[10px]">{s.val}</p>
+            <p class="font-funnel-sans text-[5.5px] uppercase tracking-wider text-boost-asphalte mt-0.5 leading-tight">{s.lbl}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- RIGHT : Achievement card (dark) -->
+    <div class="col-span-5 bg-boost-noir text-boost-route p-2 rounded-lg flex flex-col">
+      <div class="flex items-baseline justify-between mb-1">
+        <p class="font-geist-mono text-[6px] uppercase tracking-wider text-boost-jaune">▸ Progress</p>
+        <span class="font-geist-mono text-[6px] text-boost-feu">2/4</span>
+      </div>
+      <p class="font-funnel-display font-bold text-[8px] leading-tight mb-1.5">Ton parcours, étape par étape.</p>
+      <!-- Progress bar -->
+      <div class="h-[3px] bg-boost-route/15 rounded-full overflow-hidden mb-1.5">
+        <div class="h-full bg-gradient-to-r from-boost-feu to-boost-acier rounded-full" style="width: 50%;"></div>
+      </div>
+      <!-- Mini checklist -->
+      <ul class="space-y-1 flex-1">
+        {[
+          { lbl: 'Inscription', done: true },
+          { lbl: 'Code', done: true },
+          { lbl: 'Conduite', done: false },
+          { lbl: 'Permis', done: false },
+        ].map((e, i) => (
+          <li class="flex items-center gap-1.5">
+            <span class={`shrink-0 w-2.5 h-2.5 rounded-full flex items-center justify-center font-funnel-display font-bold text-[6px] ${e.done ? 'bg-boost-feu text-boost-noir' : 'bg-boost-route/15 text-boost-route/55'}`}>
+              {e.done ? '✓' : i + 1}
+            </span>
+            <span class={`font-funnel-display font-bold text-[7px] leading-tight ${e.done ? 'text-boost-feu' : 'text-boost-route/85'}`}>
+              {e.lbl}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,64 @@
+---
+/**
+ * Mini-preview Vermeille — théâtre & ballet contemporain.
+ * Hero noir velours avec rideau de scène, typo Italiana, photo silhouette.
+ */
+---
+
+<div class="absolute inset-0 bg-vermeille-velours text-vermeille-ivoire overflow-hidden">
+
+  <!-- Photo silhouette en fond, désaturée -->
+  <img
+    src="https://images.unsplash.com/photo-1547153760-18fc86324498?w=600&q=70"
+    alt=""
+    class="absolute inset-0 w-full h-full object-cover grayscale opacity-30"
+    loading="lazy"
+    decoding="async"
+  />
+  <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(26,15,18,0.7) 0%, rgba(26,15,18,0.4) 35%, rgba(26,15,18,0.95) 100%);"></div>
+
+  <!-- Filets dorés latéraux -->
+  <div class="absolute top-1 bottom-1 left-1.5 w-px bg-gradient-to-b from-transparent via-vermeille-or/40 to-transparent"></div>
+  <div class="absolute top-1 bottom-1 right-1.5 w-px bg-gradient-to-b from-transparent via-vermeille-or/40 to-transparent"></div>
+
+  <!-- Mini header -->
+  <div class="relative flex items-center justify-between px-3 pt-2 pb-1">
+    <div class="flex items-baseline gap-1">
+      <span class="font-italiana text-vermeille-ivoire text-[10px] tracking-wide">Vermeille</span>
+      <span class="text-vermeille-or text-[5px]">✦</span>
+    </div>
+    <div class="flex items-center gap-1.5 text-[6px] uppercase tracking-[0.18em] text-vermeille-ivoire/65 font-light">
+      <span>Disciplines</span>
+      <span>Saison</span>
+    </div>
+    <span class="inline-flex items-center h-3 px-2 bg-vermeille-bordeaux text-vermeille-ivoire font-italiana text-[6px] tracking-wide">
+      S'inscrire
+    </span>
+  </div>
+
+  <!-- Hero central -->
+  <div class="relative flex flex-col items-center justify-center text-center px-4 pt-1 pb-2 h-[calc(100%-1.5rem)]">
+
+    <p class="font-caveat text-vermeille-rose/85 text-[10px] mb-1 -rotate-2">
+      depuis 2008…
+    </p>
+
+    <p class="font-italiana text-vermeille-ivoire leading-[0.95] tracking-tight" style="font-size: clamp(20px, 4vw, 36px);">
+      Vermeille
+    </p>
+    <p class="mt-0.5 font-italiana italic text-vermeille-or text-[7px] tracking-[0.3em] uppercase">
+      École de danse
+    </p>
+
+    <p class="mt-2 max-w-[60%] font-italiana italic text-vermeille-ivoire/85 text-[7px] leading-snug">
+      « Le rideau ne se lève qu'avec vous. »
+    </p>
+
+    <!-- Filet doré ornement -->
+    <div class="mt-2 flex items-center gap-1.5">
+      <span class="block h-px w-6 bg-vermeille-or/50"></span>
+      <span class="text-vermeille-or text-[5px]">✦</span>
+      <span class="block h-px w-6 bg-vermeille-or/50"></span>
+    </div>
+  </div>
+</div>

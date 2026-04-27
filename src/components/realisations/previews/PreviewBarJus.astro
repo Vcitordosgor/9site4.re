@@ -1,0 +1,68 @@
+---
+/**
+ * Mini-preview Lagon Pressé — POP tropical éclatant.
+ * Jaune mangue + rose pitaya + lime + turquoise, Bagel Fat One ronde.
+ */
+---
+
+<div class="absolute inset-0 bg-lagon-mangue text-lagon-charbon overflow-hidden">
+
+  <!-- Mini header POP -->
+  <div class="flex items-center justify-between px-3 pt-2 pb-1.5 border-b-2 border-lagon-charbon">
+    <div class="flex items-baseline gap-0.5">
+      <span class="font-bagel text-lagon-charbon text-[10px] tracking-tight">Lagon</span>
+      <span class="font-bagel text-lagon-pitaya text-[10px] tracking-tight">Pressé</span>
+      <span class="text-lagon-mangue text-[5px] ml-0.5">★</span>
+    </div>
+    <div class="flex items-center gap-1.5 text-[6px] uppercase tracking-wider text-lagon-charbon font-bold">
+      <span>Carte</span>
+      <span>Bowls</span>
+    </div>
+    <span class="inline-flex items-center h-3 px-2 bg-lagon-pitaya text-lagon-blanc font-bagel text-[6px] tracking-wide rounded-full">
+      Commander →
+    </span>
+  </div>
+
+  <!-- Hero -->
+  <div class="grid grid-cols-12 gap-2 px-3 pt-2 pb-2 h-[calc(100%-1.6rem)] relative">
+
+    <!-- Annotation manuscrite -->
+    <p class="absolute -top-0.5 right-3 font-architects text-lagon-charbon text-[7px] -rotate-3">
+      Saint-Pierre · 974 ✿
+    </p>
+
+    <!-- LEFT (7) : titre POP -->
+    <div class="col-span-7 flex flex-col justify-center">
+      <p class="font-bagel text-lagon-charbon leading-[0.85] tracking-tight" style="font-size: clamp(14px, 3vw, 26px);">
+        JUS FRAIS<br/>
+        <span class="text-lagon-pitaya">DU LAGON</span>
+      </p>
+      <p class="mt-1 font-onest font-medium text-lagon-charbon/85 text-[6.5px] leading-snug max-w-[80%]">
+        Tout ce qui pousse, on le presse devant toi.
+      </p>
+      <div class="mt-1.5 flex items-center gap-1">
+        <span class="inline-flex items-center h-3.5 px-2 bg-lagon-charbon text-lagon-mangue font-bagel text-[6px] rounded-full tracking-wide">
+          COMMANDER →
+        </span>
+      </div>
+    </div>
+
+    <!-- RIGHT (5) : photo jus en cercle ringed -->
+    <div class="col-span-5 flex items-center justify-center">
+      <div class="relative w-16 h-16 rounded-full overflow-hidden ring-2 ring-lagon-charbon" style="transform: rotate(3deg);">
+        <img
+          src="https://images.unsplash.com/photo-1622597467836-f3285f2131b8?w=200&q=70"
+          alt=""
+          class="w-full h-full object-cover"
+          loading="lazy"
+          decoding="async"
+        />
+        <!-- Sticker prix -->
+        <div class="absolute -top-1 -right-1 w-7 h-7 bg-lagon-lime text-lagon-charbon rounded-full flex flex-col items-center justify-center font-bagel ring-2 ring-lagon-charbon" style="transform: rotate(12deg);">
+          <span class="text-[8px] leading-none">5€</span>
+          <span class="text-[4px] uppercase tracking-wider mt-0.5">le jus</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

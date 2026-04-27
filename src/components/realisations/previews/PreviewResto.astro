@@ -1,0 +1,65 @@
+---
+/**
+ * Mini-preview Le jardin perdu — magazine éditorial gastronomique.
+ * Bleu roi profond, blanc cassé, or laiton, typo Bodoni Moda + Manrope.
+ */
+---
+
+<div class="absolute inset-0 bg-resto-blanc-casse text-resto-bleu-encre overflow-hidden">
+
+  <!-- Mini header magazine -->
+  <div class="flex items-center justify-between px-3 pt-2 pb-1.5 border-b border-resto-bleu-encre/15">
+    <span class="font-bodoni text-resto-bleu-encre text-[10px] italic font-light tracking-wide">Le jardin perdu</span>
+    <div class="flex items-center gap-1.5 text-[6px] uppercase tracking-wider text-resto-bleu-encre/65 font-medium">
+      <span>La carte</span>
+      <span>Cave</span>
+      <span>Réserver</span>
+    </div>
+    <span class="inline-flex items-center h-3 px-2 bg-resto-bleu-roi text-resto-blanc font-manrope font-semibold text-[6px] uppercase tracking-wider">
+      Réserver
+    </span>
+  </div>
+
+  <!-- Hero magazine éditorial -->
+  <div class="grid grid-cols-12 gap-2 px-3 pt-2 pb-2 h-[calc(100%-1.6rem)]">
+
+    <!-- LEFT : titre serif italique magazine -->
+    <div class="col-span-7 flex flex-col justify-center">
+      <p class="font-manrope text-[6px] uppercase tracking-[0.32em] text-resto-or mb-1.5 font-semibold">
+        ✦ Restaurant gastronomique
+      </p>
+      <p class="font-bodoni italic font-light text-resto-bleu-encre leading-[0.9]" style="font-size: clamp(14px, 2.8vw, 24px);">
+        L'art<br/>
+        de recevoir<br/>
+        <span class="text-resto-bleu-roi">à La Réunion.</span>
+      </p>
+      <!-- Filet or -->
+      <div class="my-1.5 flex items-center gap-1">
+        <span class="block h-px w-6 bg-resto-or"></span>
+        <span class="text-resto-or text-[5px]">✦</span>
+        <span class="block h-px w-6 bg-resto-or/50"></span>
+      </div>
+      <p class="font-bodoni italic text-resto-bleu-encre/65 text-[6.5px]">
+        Carte du chef, menu dégustation, cave à vins.
+      </p>
+    </div>
+
+    <!-- RIGHT : photo plat recadrée -->
+    <div class="col-span-5">
+      <div class="relative aspect-[3/4] bg-resto-bleu-encre overflow-hidden">
+        <img
+          src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=300&q=70"
+          alt=""
+          class="w-full h-full object-cover"
+          loading="lazy"
+          decoding="async"
+        />
+        <!-- Cadre or intérieur -->
+        <div class="absolute inset-1 border border-resto-or/40"></div>
+        <span class="absolute bottom-1 left-1 right-1 font-bodoni italic text-resto-blanc text-[6px] text-center">
+          « le jardin perdu »
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
