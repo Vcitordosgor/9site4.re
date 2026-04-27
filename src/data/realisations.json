@@ -140,7 +140,8 @@
     "categorie": "tourisme",
     "sousTitre": "Présentation, photos et réservation des séjours",
     "moduleInclus": "Réservation",
-    "slug": "gite-de-montagne"
+    "slug": "gite-de-montagne",
+    "previewUrl": "/templates/gite"
   },
   {
     "id": 17,
