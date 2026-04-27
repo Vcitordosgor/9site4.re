@@ -6,7 +6,8 @@
     "sousTitre": "Carte du chef, menus et réservation de table",
     "moduleInclus": "Réservation",
     "slug": "restaurant-gastronomique",
-    "previewUrl": "/templates/resto"
+    "previewUrl": "/templates/resto",
+    "thumbnail": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=80"
   },
   {
     "id": 2,
@@ -15,7 +16,8 @@
     "sousTitre": "Menu, panier et commande WhatsApp",
     "moduleInclus": "Réservation",
     "slug": "snack-pizzeria",
-    "previewUrl": "/templates/pizzeria"
+    "previewUrl": "/templates/pizzeria",
+    "thumbnail": "https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?w=900&q=80"
   },
   {
     "id": 3,
@@ -24,7 +26,8 @@
     "sousTitre": "Carte des jus, événements et réservation",
     "moduleInclus": "Réservation",
     "slug": "bar-a-jus-tropical",
-    "previewUrl": "/templates/bar-jus"
+    "previewUrl": "/templates/bar-jus",
+    "thumbnail": "https://images.unsplash.com/photo-1622597467836-f3285f2131b8?w=900&q=80"
   },
   {
     "id": 4,
@@ -33,7 +36,8 @@
     "sousTitre": "Prestations, équipe et prise de rendez-vous",
     "moduleInclus": "Rendez-vous",
     "slug": "salon-de-coiffure",
-    "previewUrl": "/templates/salon"
+    "previewUrl": "/templates/salon",
+    "thumbnail": "https://images.unsplash.com/photo-1562322140-8baeececf3df?w=900&q=80"
   },
   {
     "id": 5,
@@ -42,7 +46,8 @@
     "sousTitre": "Soins, tarifs et réservation en ligne",
     "moduleInclus": "Rendez-vous",
     "slug": "institut-de-beaute",
-    "previewUrl": "/templates/institut"
+    "previewUrl": "/templates/institut",
+    "thumbnail": "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=900&q=80"
   },
   {
     "id": 6,
@@ -51,7 +56,8 @@
     "sousTitre": "Catalogue de soins et planning des rendez-vous",
     "moduleInclus": "Rendez-vous",
     "slug": "spa-massage",
-    "previewUrl": "/templates/spa"
+    "previewUrl": "/templates/spa",
+    "thumbnail": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=900&q=80"
   },
   {
     "id": 7,
@@ -60,7 +66,8 @@
     "sousTitre": "Interventions urgentes et demande de dépannage",
     "moduleInclus": "Intervention",
     "slug": "plomberie",
-    "previewUrl": "/templates/plomberie"
+    "previewUrl": "/templates/plomberie",
+    "thumbnail": "https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=900&q=80"
   },
   {
     "id": 8,
@@ -69,7 +76,8 @@
     "sousTitre": "Présentation, références et demande de devis",
     "moduleInclus": "Devis",
     "slug": "electricite-generale",
-    "previewUrl": "/templates/electricien"
+    "previewUrl": "/templates/electricien",
+    "thumbnail": "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=900&q=80"
   },
   {
     "id": 9,
@@ -78,7 +86,8 @@
     "sousTitre": "Réalisations, services et devis personnalisé",
     "moduleInclus": "Devis",
     "slug": "paysagiste",
-    "previewUrl": "/templates/paysagiste"
+    "previewUrl": "/templates/paysagiste",
+    "thumbnail": "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=900&q=80"
   },
   {
     "id": 10,
@@ -87,7 +96,8 @@
     "sousTitre": "Présentation, horaires et prise de rendez-vous",
     "moduleInclus": "Rendez-vous",
     "slug": "cabinet-osteopathie",
-    "previewUrl": "/templates/osteo"
+    "previewUrl": "/templates/osteo",
+    "thumbnail": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=900&q=80"
   },
   {
     "id": 11,
@@ -96,7 +106,8 @@
     "sousTitre": "Approche, consultations et rendez-vous en ligne",
     "moduleInclus": "Rendez-vous",
     "slug": "dieteticienne",
-    "previewUrl": "/templates/dieteticienne"
+    "previewUrl": "/templates/dieteticienne",
+    "thumbnail": "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=900&q=80"
   },
   {
     "id": 12,
@@ -105,7 +116,8 @@
     "sousTitre": "Présentation, modalités et rendez-vous confidentiel",
     "moduleInclus": "Rendez-vous",
     "slug": "psychologue",
-    "previewUrl": "/templates/psychologue"
+    "previewUrl": "/templates/psychologue",
+    "thumbnail": "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=900&q=80"
   },
   {
     "id": 13,
@@ -114,7 +126,8 @@
     "sousTitre": "Programmes, tarifs et rendez-vous personnalisés",
     "moduleInclus": "Rendez-vous",
     "slug": "coach-sportif",
-    "previewUrl": "/templates/coach"
+    "previewUrl": "/templates/coach",
+    "thumbnail": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=900&q=80"
   },
   {
     "id": 14,
@@ -123,7 +136,8 @@
     "sousTitre": "Planning des cours et réservation en ligne",
     "moduleInclus": "Réservation",
     "slug": "studio-yoga",
-    "previewUrl": "/templates/yoga"
+    "previewUrl": "/templates/yoga",
+    "thumbnail": "https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=900&q=80"
   },
   {
     "id": 15,
@@ -132,7 +146,8 @@
     "sousTitre": "Cours, professeurs et inscription aux séances",
     "moduleInclus": "Réservation",
     "slug": "ecole-de-danse",
-    "previewUrl": "/templates/danse"
+    "previewUrl": "/templates/danse",
+    "thumbnail": "https://images.unsplash.com/photo-1547153760-18fc86324498?w=900&q=80"
   },
   {
     "id": 16,
@@ -141,7 +156,8 @@
     "sousTitre": "Présentation, photos et réservation des séjours",
     "moduleInclus": "Réservation",
     "slug": "gite-de-montagne",
-    "previewUrl": "/templates/gite"
+    "previewUrl": "/templates/gite",
+    "thumbnail": "https://images.unsplash.com/photo-1488462237308-ecaa28b729d7?w=900&q=80"
   },
   {
     "id": 17,
@@ -150,7 +166,8 @@
     "sousTitre": "Itinéraires, tarifs et réservation des sorties",
     "moduleInclus": "Réservation",
     "slug": "excursions-randonnee",
-    "previewUrl": "/templates/excursions"
+    "previewUrl": "/templates/excursions",
+    "thumbnail": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=900&q=80"
   },
   {
     "id": 18,
@@ -159,7 +176,8 @@
     "sousTitre": "Logement, équipements et réservation",
     "moduleInclus": "Réservation",
     "slug": "location-saisonniere-bord-de-mer",
-    "previewUrl": "/templates/location"
+    "previewUrl": "/templates/location",
+    "thumbnail": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=900&q=80"
   },
   {
     "id": 19,
@@ -168,7 +186,8 @@
     "sousTitre": "Expertise, références et prise de rendez-vous",
     "moduleInclus": "Rendez-vous",
     "slug": "consultant",
-    "previewUrl": "/templates/consultant"
+    "previewUrl": "/templates/consultant",
+    "thumbnail": "https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?w=900&q=80"
   },
   {
     "id": 20,
@@ -177,7 +196,8 @@
     "sousTitre": "Services, équipe et rendez-vous découverte",
     "moduleInclus": "Rendez-vous",
     "slug": "cabinet-comptable",
-    "previewUrl": "/templates/comptable"
+    "previewUrl": "/templates/comptable",
+    "thumbnail": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=80"
   },
   {
     "id": 21,
@@ -186,7 +206,8 @@
     "sousTitre": "Projets, méthode et demande de devis",
     "moduleInclus": "Devis",
     "slug": "architecte",
-    "previewUrl": "/templates/architecte"
+    "previewUrl": "/templates/architecte",
+    "thumbnail": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=80"
   },
   {
     "id": 22,
@@ -195,7 +216,8 @@
     "sousTitre": "Formations, forfaits et inscription en ligne",
     "moduleInclus": "Rendez-vous",
     "slug": "auto-ecole",
-    "previewUrl": "/templates/auto-ecole"
+    "previewUrl": "/templates/auto-ecole",
+    "thumbnail": "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=900&q=80"
   },
   {
     "id": 23,
@@ -204,7 +226,8 @@
     "sousTitre": "Prestations, formules et demande de devis",
     "moduleInclus": "Devis",
     "slug": "conciergerie",
-    "previewUrl": "/templates/conciergerie"
+    "previewUrl": "/templates/conciergerie",
+    "thumbnail": "https://images.unsplash.com/photo-1455587734955-081b22074882?w=900&q=80"
   },
   {
     "id": 24,
@@ -213,6 +236,7 @@
     "sousTitre": "Services, zone d'intervention et planning",
     "moduleInclus": "Intervention",
     "slug": "aide-a-domicile",
-    "previewUrl": "/templates/aide-domicile"
+    "previewUrl": "/templates/aide-domicile",
+    "thumbnail": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=900&q=80"
   }
 ]
