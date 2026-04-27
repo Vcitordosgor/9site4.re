@@ -48,7 +48,8 @@ type PageKey =
   | 'templateExcursions'
   | 'templateLocation'
   | 'templateConsultant'
-  | 'templateComptable';
+  | 'templateComptable'
+  | 'templateArchitecte';
 
 const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'> & { noindex?: boolean; ogImage?: string; ogImageAlt?: string }> = {
   home: {
@@ -231,6 +232,13 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
     description:
       'Aperçu du template "Cabinet comptable" proposé par 9site4 : associés, domaines d\'expertise, honoraires, témoignages clients et rendez-vous. Site fictif de démonstration.',
     canonical: '/templates/comptable',
+    noindex: true,
+  },
+  templateArchitecte: {
+    title: 'Atelier Mahatma — Architecte à Saint-Pierre (Réunion) | Template 9site4',
+    description:
+      'Aperçu du template "Architecte" proposé par 9site4 : portfolio de projets, méthode, honoraires, distinctions et rendez-vous. Site fictif de démonstration.',
+    canonical: '/templates/architecte',
     noindex: true,
   },
 };

@@ -1,0 +1,210 @@
+{
+  "info": {
+    "nom": "Atelier Mahatma",
+    "wordmark": "Atelier",
+    "wordmark2": "Mahatma",
+    "soustitre": "Architecture · Patrimoine · Espace public",
+    "tagline": "Construire, c'est répondre à un lieu.",
+    "ville": "Saint-Pierre",
+    "adresseLigne1": "5 rue du Père Laval",
+    "adresseLigne2": "97410 Saint-Pierre",
+    "telephone": "0692 38 41 27",
+    "telephoneHref": "+33692384127",
+    "whatsapp": "33692384127",
+    "email": "agence@atelier-mahatma.re",
+    "instagram": "@atelier.mahatma",
+    "siret": "11223344500017",
+    "ordre": "Inscrit au Conseil régional de l'Ordre des architectes — La Réunion",
+    "annee": "2014"
+  },
+  "heroProjet": {
+    "nom": "Villa La Source",
+    "annee": "2024",
+    "lieu": "Saint-Leu",
+    "typologie": "Maison individuelle",
+    "surface": "280 m²",
+    "description": "Maison familiale en bois local, ventilation traversante naturelle, toiture papang inversée. Pas de climatisation.",
+    "photo": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1800&q=85"
+  },
+  "atelier": {
+    "intro": "L'Atelier Mahatma est une agence d'architecture installée à Saint-Pierre depuis 2014. Trois architectes, une vingtaine de projets actifs, des maîtrises d'ouvrage privées et publiques.",
+    "paragraphes": [
+      "Notre approche est simple : un projet d'architecture commence par l'écoute. Du site, du commanditaire, des contraintes climatiques tropicales propres à La Réunion. On ne reproduit pas, on adapte.",
+      "Nous travaillons systématiquement avec des matériaux disponibles localement — bois péi, basalte, tôle laquée — et nous concevons pour un usage de plusieurs décennies. La durabilité commence par le détail technique.",
+      "L'agence est inscrite au Conseil régional de l'Ordre des architectes. Tous nos projets sont assurés en responsabilité civile professionnelle et garantie décennale."
+    ],
+    "equipe": [
+      {
+        "prenom": "Sven",
+        "nom": "Mahatma",
+        "role": "HMONP · Fondateur",
+        "specialite": "Maisons individuelles · Patrimoine"
+      },
+      {
+        "prenom": "Lila",
+        "nom": "Maillot",
+        "role": "Architecte DPLG",
+        "specialite": "Logements collectifs · Espace public"
+      },
+      {
+        "prenom": "Roméo",
+        "nom": "Carpaye",
+        "role": "Architecte DE",
+        "specialite": "Tertiaire · Restauration"
+      }
+    ]
+  },
+  "projets": [
+    {
+      "nom": "Villa La Source",
+      "annee": "2024",
+      "lieu": "Saint-Leu",
+      "typologie": "Maison individuelle · 280 m²",
+      "statut": "Livré",
+      "photo": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=80"
+    },
+    {
+      "nom": "Bureaux Volcanic",
+      "annee": "2023",
+      "lieu": "Saint-Pierre",
+      "typologie": "Tertiaire · 600 m²",
+      "statut": "Livré",
+      "photo": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=80"
+    },
+    {
+      "nom": "Lotissement Les Îlets",
+      "annee": "2023",
+      "lieu": "Le Tampon",
+      "typologie": "12 logements collectifs",
+      "statut": "Livré",
+      "photo": "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=900&q=80"
+    },
+    {
+      "nom": "Maison Carrère",
+      "annee": "2022",
+      "lieu": "Saint-Denis",
+      "typologie": "Restauration patrimoine",
+      "statut": "Livré · primé",
+      "photo": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=900&q=80"
+    },
+    {
+      "nom": "École primaire",
+      "annee": "2022",
+      "lieu": "Bras-Panon",
+      "typologie": "Public · 1 200 m²",
+      "statut": "Livré",
+      "photo": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=900&q=80"
+    },
+    {
+      "nom": "Boutique Karli",
+      "annee": "2021",
+      "lieu": "Saint-Pierre",
+      "typologie": "Commerce · 80 m²",
+      "statut": "Livré",
+      "photo": "https://images.unsplash.com/photo-1542338347-4fff3276af78?w=900&q=80"
+    },
+    {
+      "nom": "Bibliothèque Aurore",
+      "annee": "2021",
+      "lieu": "Sainte-Marie",
+      "typologie": "Public · 950 m²",
+      "statut": "Livré",
+      "photo": "https://images.unsplash.com/photo-1568667256549-094345857637?w=900&q=80"
+    },
+    {
+      "nom": "Maison Tropic",
+      "annee": "2020",
+      "lieu": "L'Étang-Salé",
+      "typologie": "Maison individuelle · 195 m²",
+      "statut": "Livré",
+      "photo": "https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?w=900&q=80"
+    }
+  ],
+  "phases": [
+    {
+      "num": "01",
+      "titre": "Rencontre & écoute",
+      "duree": "1 à 2 RDV",
+      "description": "Visite du site, recueil des besoins, contraintes budgétaires et réglementaires. Aucun engagement à ce stade."
+    },
+    {
+      "num": "02",
+      "titre": "Esquisse & APS",
+      "duree": "1 à 3 mois",
+      "description": "Esquisse, avant-projet sommaire, avant-projet définitif. Plans, coupes, axonométries, choix matériaux."
+    },
+    {
+      "num": "03",
+      "titre": "PC & Chantier",
+      "duree": "12 à 18 mois",
+      "description": "Permis de construire, dossier de consultation des entreprises, suivi de chantier hebdomadaire en présence."
+    },
+    {
+      "num": "04",
+      "titre": "Livraison & SAV",
+      "duree": "À vie",
+      "description": "Réception, levée de réserves, garantie de parfait achèvement (1 an), garantie décennale (10 ans)."
+    }
+  ],
+  "honoraires": [
+    {
+      "label": "Mission complète",
+      "detail": "Esquisse → réception",
+      "fourchette": "10 – 12 %",
+      "unite": "du coût travaux HT"
+    },
+    {
+      "label": "Mission partielle",
+      "detail": "Esquisse seule, ou suivi de chantier seul",
+      "fourchette": "5 – 9 %",
+      "unite": "du coût travaux HT"
+    },
+    {
+      "label": "Restauration patrimoine",
+      "detail": "Bâtiment ancien, monuments inscrits",
+      "fourchette": "13 – 15 %",
+      "unite": "du coût travaux HT"
+    },
+    {
+      "label": "Étude de faisabilité",
+      "detail": "Analyse de site, réglementaire, financière",
+      "fourchette": "1 500 – 3 500 €",
+      "unite": "forfait HT"
+    }
+  ],
+  "distinctions": [
+    {
+      "annee": "2024",
+      "prix": "Équerre d'Argent",
+      "categorie": "Maisons individuelles",
+      "statut": "Finaliste",
+      "projet": "Villa La Source"
+    },
+    {
+      "annee": "2023",
+      "prix": "Réunion Architecture Award",
+      "categorie": "Tertiaire",
+      "statut": "Lauréat",
+      "projet": "Bureaux Volcanic"
+    },
+    {
+      "annee": "2022",
+      "prix": "Prix Patrimoine Océan Indien",
+      "categorie": "Restauration",
+      "statut": "Mention spéciale",
+      "projet": "Maison Carrère"
+    },
+    {
+      "annee": "2021",
+      "prix": "Initiative Bois Réunion",
+      "categorie": "Maison ossature bois",
+      "statut": "Lauréat",
+      "projet": "Maison Tropic"
+    }
+  ],
+  "horaires": [
+    { "jour": "Lundi – Jeudi", "label": "09h – 18h", "ouvert": true },
+    { "jour": "Vendredi", "label": "09h – 17h", "ouvert": true },
+    { "jour": "Samedi – Dimanche", "label": "Sur RDV chantier", "ouvert": false }
+  ]
+}

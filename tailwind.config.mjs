@@ -73,6 +73,9 @@ export default {
     {
       pattern: /^(bg|text|ring|border|from|to|via)-(auberval-marine|auberval-encre|auberval-gris|auberval-feutre|auberval-blanc|auberval-or|auberval-vert)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
     },
+    {
+      pattern: /^(bg|text|ring|border|from|to|via)-(mahatma-encre|mahatma-charbon|mahatma-beton|mahatma-ciment|mahatma-papier|mahatma-blanc|mahatma-cachet)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
+    },
   ],
   theme: {
     extend: {
@@ -294,6 +297,16 @@ export default {
         'auberval-blanc':  '#FFFFFF',
         'auberval-or':     '#A78A4F',  // doré subtil — filets ornementaux
         'auberval-vert':   '#4F7A5C',  // vert validation — chiffres certifiés
+        // Palette architecte (template /templates/architecte — Atelier Mahatma)
+        // Style "portfolio architectural minimaliste, monochrome, plans techniques"
+        // — distinct du portfolio Notion (Lucas) et du rapport annuel (Auberval).
+        'mahatma-encre':   '#0A0A0C',  // encre profonde — texte AAA
+        'mahatma-charbon': '#15161A',  // noir charbon — fond dark dominant
+        'mahatma-beton':   '#7E7C75',  // gris béton — texte secondaire
+        'mahatma-ciment':  '#D4D1C9',  // gris ciment — micro-accents
+        'mahatma-papier':  '#F2F0EB',  // blanc papier — fond clair
+        'mahatma-blanc':   '#FFFFFF',
+        'mahatma-cachet':  '#D02F32',  // rouge cachet d'architecte — accent rare
       },
       fontFamily: {
         sora: ['Sora', 'system-ui', 'sans-serif'],
@@ -349,6 +362,9 @@ export default {
         'source-serif': ['"Source Serif 4"', 'Source Serif Pro', 'Georgia', 'serif'],
         'plex-sans': ['"IBM Plex Sans"', 'system-ui', 'sans-serif'],
         'dm-mono': ['"DM Mono"', 'ui-monospace', 'monospace'],
+        schibsted: ['"Schibsted Grotesk"', 'system-ui', 'sans-serif'],
+        atkinson: ['"Atkinson Hyperlegible"', 'system-ui', 'sans-serif'],
+        'fira-mono': ['"Fira Mono"', 'ui-monospace', 'monospace'],
       },
       fontSize: {
         'hero': ['clamp(2.5rem, 5vw + 1rem, 5rem)', { lineHeight: '1.05', letterSpacing: '-0.02em' }],
