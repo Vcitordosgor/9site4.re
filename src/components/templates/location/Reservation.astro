@@ -1,0 +1,215 @@
+---
+/**
+ * Reservation — formulaire dates check-in/out + voyageurs + tél + nom.
+ * Mini-calendrier 1 mois en visuel "disponibilités" à gauche.
+ */
+import data from '../../../data/templates/lazuli.json';
+const waBase = `https://wa.me/${data.info.whatsapp}`;
+const occupiedJson = JSON.stringify(data.occupation);
+---
+
+<section id="reservation" class="bg-lazuli-casse py-24 md:py-32 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="text-center mb-14 max-w-2xl mx-auto">
+      <p class="font-geist text-[10px] uppercase tracking-[0.32em] text-lazuli-terracotta font-semibold mb-5">
+        ✦ Réserver la villa
+      </p>
+      <h2 class="font-yeseva text-lazuli-marine leading-[1.05]" style="font-size: clamp(36px, 5vw, 64px);">
+        Votre séjour à
+        <span class="font-italianno text-lazuli-lagon normal-case">Lazuli.</span>
+      </h2>
+    </header>
+
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+
+      <!-- Mini-calendrier disponibilités -->
+      <aside class="lg:col-span-5 bg-lazuli-sable/30 p-7 md:p-8">
+        <p class="font-geist text-[10px] uppercase tracking-[0.28em] text-lazuli-lagon font-semibold mb-3">
+          Disponibilités · prochaine 1 mois
+        </p>
+        <div id="lazuli-cal"></div>
+
+        <!-- Légende -->
+        <ul class="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 font-geist text-[11px] uppercase tracking-[0.18em] text-lazuli-marine/65">
+          <li class="flex items-center gap-2">
+            <span class="block w-3 h-3 bg-lazuli-coco rounded-sm"></span>
+            Disponible
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="block w-3 h-3 bg-lazuli-terracotta rounded-sm"></span>
+            Réservé
+          </li>
+        </ul>
+      </aside>
+
+      <!-- Form -->
+      <div class="lg:col-span-7">
+        <form id="lazuli-form" class="bg-lazuli-marine text-lazuli-casse p-7 md:p-10 space-y-5" novalidate>
+
+          <p class="font-italianno text-lazuli-coco text-3xl mb-2">
+            Demande de réservation
+          </p>
+
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div>
+              <label for="lazuli-arrivee" class="block font-geist text-[10px] uppercase tracking-[0.28em] text-lazuli-coco font-semibold mb-2">Arrivée</label>
+              <input
+                id="lazuli-arrivee"
+                name="arrivee"
+                type="date"
+                required
+                class="w-full h-12 px-4 bg-lazuli-marine border border-lazuli-casse/25 focus:border-lazuli-coco font-geist text-lazuli-casse text-base outline-none transition-colors tabular-nums"
+              />
+            </div>
+            <div>
+              <label for="lazuli-depart" class="block font-geist text-[10px] uppercase tracking-[0.28em] text-lazuli-coco font-semibold mb-2">Départ</label>
+              <input
+                id="lazuli-depart"
+                name="depart"
+                type="date"
+                required
+                class="w-full h-12 px-4 bg-lazuli-marine border border-lazuli-casse/25 focus:border-lazuli-coco font-geist text-lazuli-casse text-base outline-none transition-colors tabular-nums"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label for="lazuli-pers" class="block font-geist text-[10px] uppercase tracking-[0.28em] text-lazuli-coco font-semibold mb-2">Voyageurs</label>
+            <select
+              id="lazuli-pers"
+              name="personnes"
+              required
+              class="w-full h-12 px-4 bg-lazuli-marine border border-lazuli-casse/25 focus:border-lazuli-coco font-geist text-lazuli-casse text-base outline-none cursor-pointer"
+            >
+              <option value="">— Choisir —</option>
+              {[2, 3, 4, 5, 6, 7, 8].map((n) => <option value={n}>{n} {n === 1 ? 'voyageur' : 'voyageurs'}</option>)}
+            </select>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div>
+              <label for="lazuli-nom" class="block font-geist text-[10px] uppercase tracking-[0.28em] text-lazuli-coco font-semibold mb-2">Nom complet</label>
+              <input
+                id="lazuli-nom"
+                name="nom"
+                type="text"
+                required
+                autocomplete="name"
+                class="w-full h-12 px-4 bg-lazuli-marine border border-lazuli-casse/25 focus:border-lazuli-coco font-geist text-lazuli-casse text-base outline-none transition-colors"
+              />
+            </div>
+            <div>
+              <label for="lazuli-tel" class="block font-geist text-[10px] uppercase tracking-[0.28em] text-lazuli-coco font-semibold mb-2">Téléphone</label>
+              <input
+                id="lazuli-tel"
+                name="telephone"
+                type="tel"
+                required
+                autocomplete="tel"
+                class="w-full h-12 px-4 bg-lazuli-marine border border-lazuli-casse/25 focus:border-lazuli-coco font-geist text-lazuli-casse text-base outline-none transition-colors tabular-nums"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label for="lazuli-message" class="block font-geist text-[10px] uppercase tracking-[0.28em] text-lazuli-coco font-semibold mb-2">Précisions <span class="lowercase font-italianno text-lazuli-coco/65 normal-case text-base">(facultatif)</span></label>
+            <textarea
+              id="lazuli-message"
+              name="message"
+              rows="3"
+              placeholder="Bébé, animaux, demande spéciale…"
+              class="w-full px-4 py-3 bg-lazuli-marine border border-lazuli-casse/25 focus:border-lazuli-coco font-geist text-lazuli-casse text-base placeholder:text-lazuli-casse/40 outline-none transition-colors resize-none"
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full inline-flex items-center justify-center h-14 bg-lazuli-terracotta text-lazuli-casse font-geist font-medium text-base rounded-full hover:bg-lazuli-coco hover:text-lazuli-marine transition-colors"
+          >
+            Envoyer ma demande →
+          </button>
+
+          <p class="font-italianno text-lazuli-coco/80 text-base text-center">
+            Réponse de Stéphane ou Marina sous 4h.
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ waBase, occupiedJson }}>
+  const occupied = new Set(JSON.parse(occupiedJson));
+  const moisNoms = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
+  const joursAbbr = ['L','M','M','J','V','S','D'];
+
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
+
+  const cal = document.getElementById('lazuli-cal');
+  if (cal) {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = today.getMonth();
+    const first = new Date(year, month, 1);
+    const last = new Date(year, month + 1, 0);
+    const startDay = (first.getDay() + 6) % 7;
+    const daysInMonth = last.getDate();
+
+    let html = `
+      <p class="font-yeseva text-lazuli-marine text-xl mb-4">${moisNoms[month]} <span class="font-geist text-lazuli-bois text-sm tabular-nums">${year}</span></p>
+      <div class="grid grid-cols-7 gap-1 mb-2 font-geist text-[10px] uppercase tracking-wider text-lazuli-bois text-center font-semibold">
+        ${joursAbbr.map(j => `<span>${j}</span>`).join('')}
+      </div>
+      <div class="grid grid-cols-7 gap-1">
+    `;
+
+    for (let i = 0; i < startDay; i++) {
+      html += '<div class="aspect-square"></div>';
+    }
+    for (let d = 1; d <= daysInMonth; d++) {
+      const iso = `${year}-${pad(month + 1)}-${pad(d)}`;
+      const isOccupied = occupied.has(iso);
+      const dateObj = new Date(year, month, d);
+      const todayCheck = new Date();
+      todayCheck.setHours(0,0,0,0);
+      const isPast = dateObj < todayCheck;
+
+      let cls = 'aspect-square flex items-center justify-center font-geist text-xs tabular-nums rounded-sm';
+      if (isPast) {
+        cls += ' bg-lazuli-marine/8 text-lazuli-marine/30';
+      } else if (isOccupied) {
+        cls += ' bg-lazuli-terracotta text-lazuli-casse';
+      } else {
+        cls += ' bg-lazuli-coco text-lazuli-marine';
+      }
+      html += `<span class="${cls}">${d}</span>`;
+    }
+    html += '</div>';
+    cal.innerHTML = html;
+  }
+
+  const form = document.getElementById('lazuli-form');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fd = new FormData(form);
+      const arrivee = fd.get('arrivee') || '';
+      const depart = fd.get('depart') || '';
+      const pers = fd.get('personnes') || '';
+      const nom = fd.get('nom') || '';
+      const tel = fd.get('telephone') || '';
+      const message = fd.get('message') || '';
+      const text = [
+        'Bonjour, je souhaite réserver la Villa Lazuli.',
+        nom ? `Nom : ${nom}` : '',
+        tel ? `Tél : ${tel}` : '',
+        arrivee ? `Arrivée : ${arrivee}` : '',
+        depart ? `Départ : ${depart}` : '',
+        pers ? `Voyageurs : ${pers}` : '',
+        message ? `Précisions : ${message}` : '',
+      ].filter(Boolean).join('\n');
+      window.open(`${waBase}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
+    });
+  }
+</script>

@@ -1,0 +1,43 @@
+---
+/**
+ * BonnesAdresses — 4 lieux à proximité format magazine "Bonnes adresses".
+ */
+import data from '../../../data/templates/lazuli.json';
+---
+
+<section class="bg-lazuli-marine text-lazuli-casse py-24 md:py-32 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="text-center mb-14 md:mb-16 max-w-2xl mx-auto">
+      <p class="font-geist text-[10px] uppercase tracking-[0.32em] text-lazuli-coco font-semibold mb-5">
+        ✦ Aux alentours
+      </p>
+      <h2 class="font-yeseva text-lazuli-casse leading-[1.05]" style="font-size: clamp(36px, 5vw, 64px);">
+        Nos
+        <span class="font-italianno text-lazuli-coco normal-case">bonnes adresses.</span>
+      </h2>
+      <p class="mt-5 font-geist text-lazuli-casse/75 text-base leading-relaxed">
+        Tout ce qu'on conseille à nos voyageurs, à pied depuis la villa.
+      </p>
+    </header>
+
+    <ul class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {data.alentours.map((a, i) => (
+        <li class="bg-lazuli-marine/60 backdrop-blur-sm border border-lazuli-casse/15 p-6 hover:border-lazuli-coco transition-colors">
+          <p class="font-geist text-[10px] uppercase tracking-[0.28em] text-lazuli-coco font-semibold mb-2">
+            #{String(i + 1).padStart(2, '0')} — {a.distance}
+          </p>
+          <h3 class="font-yeseva text-lazuli-casse text-2xl leading-tight mb-2">
+            {a.nom}
+          </h3>
+          <p class="font-italianno text-lazuli-coco text-2xl leading-snug mb-4">
+            {a.type}
+          </p>
+          <p class="pt-3 border-t border-lazuli-casse/10 font-geist text-[11px] uppercase tracking-[0.22em] text-lazuli-casse/55">
+            ↳ {a.duree}
+          </p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

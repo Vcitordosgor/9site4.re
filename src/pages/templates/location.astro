@@ -1,0 +1,81 @@
+---
+import '@fontsource/yeseva-one/400.css';
+import '@fontsource/geist-sans/300.css';
+import '@fontsource/geist-sans/400.css';
+import '@fontsource/geist-sans/500.css';
+import '@fontsource/geist-sans/600.css';
+import '@fontsource/geist-sans/700.css';
+import '@fontsource/italianno/400.css';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getSeo } from '../../lib/seo';
+import lazuliData from '../../data/templates/lazuli.json';
+
+import LazuliHeader from '../../components/templates/location/LazuliHeader.astro';
+import HeroMagazine from '../../components/templates/location/HeroMagazine.astro';
+import Pitch from '../../components/templates/location/Pitch.astro';
+import VisiteGuidee from '../../components/templates/location/VisiteGuidee.astro';
+import Equipements from '../../components/templates/location/Equipements.astro';
+import TarifsSaisons from '../../components/templates/location/TarifsSaisons.astro';
+import Avis from '../../components/templates/location/Avis.astro';
+import BonnesAdresses from '../../components/templates/location/BonnesAdresses.astro';
+import Reservation from '../../components/templates/location/Reservation.astro';
+import CTAFinal from '../../components/templates/location/CTAFinal.astro';
+import LazuliFooter from '../../components/templates/location/LazuliFooter.astro';
+---
+
+<BaseLayout seo={getSeo('templateLocation')} bare={true}>
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <link rel="dns-prefetch" href="https://images.unsplash.com" />
+    <link
+      rel="preload"
+      as="image"
+      href={lazuliData.info.photoHero}
+      fetchpriority="high"
+    />
+  </Fragment>
+
+  <LazuliHeader />
+
+  <main id="top" class="bg-lazuli-casse text-lazuli-marine font-geist">
+    <HeroMagazine />
+    <Pitch />
+    <VisiteGuidee />
+    <Equipements />
+    <TarifsSaisons />
+    <Avis />
+    <BonnesAdresses />
+    <Reservation />
+    <CTAFinal />
+  </main>
+
+  <LazuliFooter />
+
+  <!-- Sticky CTA mobile : pill terracotta arrondi -->
+  <a
+    id="lazuli-sticky-cta"
+    href="#reservation"
+    data-visible="false"
+    class="md:hidden fixed bottom-5 inset-x-5 z-40 inline-flex items-center justify-center h-13 bg-lazuli-terracotta text-lazuli-casse font-geist font-medium text-sm rounded-full transition-all duration-300 data-[visible=false]:opacity-0 data-[visible=false]:translate-y-4 data-[visible=false]:pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0"
+    style="height: 52px; box-shadow: 0 12px 28px rgba(168,91,63,0.40);"
+  >
+    Réserver mon séjour →
+  </a>
+
+  <script>
+    const sticky = document.getElementById('lazuli-sticky-cta');
+    const reservation = document.getElementById('reservation');
+    if (sticky && reservation) {
+      const update = () => {
+        const rect = reservation.getBoundingClientRect();
+        const inSection = rect.top < window.innerHeight && rect.bottom > 80;
+        const scrolledPastHero = window.scrollY > 600;
+        sticky.dataset.visible = String(scrolledPastHero && !inSection);
+      };
+      update();
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update, { passive: true });
+    }
+  </script>
+</BaseLayout>

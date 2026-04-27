@@ -1,0 +1,114 @@
+---
+/**
+ * VisiteGuidee — 8 photos de la villa numérotées 1/8 → 8/8 avec navigation
+ * type "visite virtuelle". Photo grande à gauche, miniatures à droite +
+ * compteur de pièce.
+ */
+import data from '../../../data/templates/lazuli.json';
+---
+
+<section id="visite" class="bg-lazuli-marine text-lazuli-casse py-24 md:py-32 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="mb-12 md:mb-16 max-w-2xl">
+      <p class="font-geist text-[10px] uppercase tracking-[0.32em] text-lazuli-coco font-semibold mb-5">
+        ✦ Visite guidée
+      </p>
+      <h2 class="font-yeseva text-lazuli-casse leading-[1.05]" style="font-size: clamp(40px, 6vw, 80px);">
+        Faites le<br/>
+        <span class="font-italianno text-lazuli-coco normal-case">tour du propriétaire.</span>
+      </h2>
+    </header>
+
+    <!-- Layout : photo gauche grande + liste miniatures droite -->
+    <div class="grid lg:grid-cols-12 gap-6 lg:gap-10">
+
+      <!-- Photo active -->
+      <div class="lg:col-span-8">
+        <div class="relative aspect-[4/3] overflow-hidden bg-lazuli-marine/60">
+          <img id="visite-img" src={data.visite[0].photo} alt={data.visite[0].titre} class="w-full h-full object-cover transition-opacity duration-500" />
+        </div>
+        <!-- Caption sous photo -->
+        <div class="mt-5 flex items-baseline justify-between gap-4">
+          <div>
+            <p class="font-geist text-[10px] uppercase tracking-[0.28em] text-lazuli-coco mb-1">
+              Pièce <span id="visite-num" class="tabular-nums">1</span> / 08
+            </p>
+            <h3 id="visite-titre" class="font-yeseva text-lazuli-casse text-2xl md:text-3xl leading-tight">
+              {data.visite[0].titre}
+            </h3>
+          </div>
+          <p id="visite-desc" class="hidden md:block font-italianno text-lazuli-coco/80 text-2xl text-right max-w-md">
+            {data.visite[0].description}
+          </p>
+        </div>
+        <p id="visite-desc-mobile" class="md:hidden mt-3 font-italianno text-lazuli-coco text-2xl">
+          {data.visite[0].description}
+        </p>
+      </div>
+
+      <!-- Liste miniatures -->
+      <ul class="lg:col-span-4 grid grid-cols-4 lg:grid-cols-2 gap-2 lg:gap-3">
+        {data.visite.map((v, i) => (
+          <li>
+            <button
+              type="button"
+              data-visite-idx={i}
+              data-visite-photo={v.photo}
+              data-visite-titre={v.titre}
+              data-visite-desc={v.description}
+              data-visite-num={i + 1}
+              class:list={[
+                'visite-mini block w-full aspect-[4/3] overflow-hidden border-2 transition-all',
+                i === 0 ? 'border-lazuli-coco' : 'border-transparent hover:border-lazuli-coco/50',
+              ]}
+              aria-label={`Voir ${v.titre}`}
+            >
+              <img src={v.photo} alt={v.titre} loading="lazy" class="w-full h-full object-cover" />
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const minis = document.querySelectorAll<HTMLElement>('.visite-mini');
+  const img = document.getElementById('visite-img') as HTMLImageElement | null;
+  const titre = document.getElementById('visite-titre');
+  const desc = document.getElementById('visite-desc');
+  const descMobile = document.getElementById('visite-desc-mobile');
+  const num = document.getElementById('visite-num');
+
+  minis.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const photo = btn.dataset.visitePhoto || '';
+      const t = btn.dataset.visiteTitre || '';
+      const d = btn.dataset.visiteDesc || '';
+      const n = btn.dataset.visiteNum || '';
+
+      if (img) {
+        img.style.opacity = '0';
+        setTimeout(() => {
+          img.src = photo;
+          img.alt = t;
+          img.style.opacity = '1';
+        }, 200);
+      }
+      if (titre) titre.textContent = t;
+      if (desc) desc.textContent = d;
+      if (descMobile) descMobile.textContent = d;
+      if (num) num.textContent = n;
+
+      // Update active state
+      minis.forEach((m) => {
+        m.classList.remove('border-lazuli-coco');
+        m.classList.add('border-transparent');
+      });
+      btn.classList.add('border-lazuli-coco');
+      btn.classList.remove('border-transparent');
+    });
+  });
+</script>

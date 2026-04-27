@@ -1,0 +1,53 @@
+---
+/**
+ * Equipements — checklist 3 colonnes (intérieur / extérieur / services).
+ */
+import data from '../../../data/templates/lazuli.json';
+---
+
+<section id="equipements" class="bg-lazuli-casse py-24 md:py-32 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="mb-14 md:mb-16 max-w-2xl">
+      <p class="font-geist text-[10px] uppercase tracking-[0.32em] text-lazuli-lagon font-semibold mb-5">
+        ✦ Équipements & services
+      </p>
+      <h2 class="font-yeseva text-lazuli-marine leading-[1.05]" style="font-size: clamp(36px, 5vw, 64px);">
+        Tout est prévu.<br/>
+        <span class="font-italianno text-lazuli-terracotta normal-case">vous n'avez rien à apporter.</span>
+      </h2>
+    </header>
+
+    <div class="grid md:grid-cols-3 gap-x-10 gap-y-12">
+      {[
+        { titre: 'Intérieur', items: data.equipements.interieur, accent: 'text-lazuli-lagon' },
+        { titre: 'Extérieur', items: data.equipements.exterieur, accent: 'text-lazuli-terracotta' },
+        { titre: 'Services', items: data.equipements.services, accent: 'text-lazuli-bois' },
+      ].map((col) => (
+        <div>
+          <p class:list={['font-geist text-[10px] uppercase tracking-[0.32em] font-semibold mb-2', col.accent]}>
+            ▼ {col.titre}
+          </p>
+          <p class="font-italianno text-lazuli-marine text-3xl mb-6 leading-none">
+            {col.titre}.
+          </p>
+          <ul class="space-y-2.5">
+            {col.items.map((item) => (
+              <li class="flex items-baseline gap-3 font-geist text-lazuli-marine/85 text-[15px] leading-relaxed">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class:list={['shrink-0 mt-1', col.accent]} aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <!-- Note bas -->
+    <p class="mt-14 pt-8 border-t border-lazuli-marine/10 font-italianno italic text-lazuli-bois text-2xl text-center">
+      Un détail manque ? Demandez-nous — on s'arrange.
+    </p>
+  </div>
+</section>

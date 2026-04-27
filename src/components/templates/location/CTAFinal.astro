@@ -1,0 +1,41 @@
+---
+import data from '../../../data/templates/lazuli.json';
+---
+
+<section class="bg-lazuli-lagon py-24 md:py-36 px-6 md:px-10 text-center text-lazuli-casse relative overflow-hidden">
+
+  <!-- Halo coco doux -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60rem] h-[40rem] rounded-full pointer-events-none" aria-hidden="true"
+       style="background: radial-gradient(circle, rgba(205,221,177,0.18) 0%, transparent 65%);"></div>
+
+  <div class="relative max-w-2xl mx-auto">
+
+    <p class="font-italianno text-lazuli-coco text-4xl md:text-5xl mb-6 leading-none">
+      Une villa,
+    </p>
+
+    <h2 class="font-yeseva text-lazuli-casse leading-[0.9]" style="font-size: clamp(48px, 7vw, 100px);">
+      Une vue,<br/>
+      <span class="font-italianno text-lazuli-coco normal-case">un lagon.</span>
+    </h2>
+
+    <p class="mt-10 font-geist text-lazuli-casse/85 text-lg md:text-xl leading-relaxed max-w-md mx-auto">
+      La Villa Lazuli vous accueille toute l'année. Stéphane et Marina sont là pour répondre à vos questions, simplement.
+    </p>
+
+    <div class="mt-12 flex flex-wrap items-center justify-center gap-x-7 gap-y-4">
+      <a
+        href="#reservation"
+        class="inline-flex items-center justify-center h-14 px-10 bg-lazuli-terracotta text-lazuli-casse font-geist font-medium text-base rounded-full hover:bg-lazuli-casse hover:text-lazuli-marine transition-colors"
+      >
+        Réserver mon séjour →
+      </a>
+      <a
+        href={`tel:${data.info.telephoneHref}`}
+        class="font-italianno text-lazuli-coco text-2xl underline underline-offset-4 decoration-lazuli-coco/40 hover:decoration-lazuli-coco transition-colors tabular-nums"
+      >
+        {data.info.telephone}
+      </a>
+    </div>
+  </div>
+</section>

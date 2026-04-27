@@ -1,0 +1,100 @@
+---
+/**
+ * HeroMagazine — couverture de magazine de maison.
+ * Photo paysage villa + océan, titre Yeseva One ample en surimpression
+ * + sous-titre Italianno cursive. Sticker "Disponible à partir de" à droite.
+ */
+import data from '../../../data/templates/lazuli.json';
+---
+
+<section id="top" class="relative min-h-[100svh] bg-lazuli-marine text-lazuli-casse overflow-hidden">
+
+  <!-- Photo plein écran -->
+  <div class="absolute inset-0">
+    <img
+      src={data.info.photoHero}
+      alt="Villa Lazuli, vue extérieure avec piscine"
+      class="w-full h-full object-cover"
+      fetchpriority="high"
+      decoding="async"
+    />
+    <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(27,45,58,0.4) 0%, rgba(27,45,58,0.15) 35%, rgba(27,45,58,0.85) 100%);" aria-hidden="true"></div>
+  </div>
+
+  <!-- Sticker disponibilité en haut droite -->
+  <div class="absolute top-24 right-6 md:top-32 md:right-10 z-10 max-w-[260px]">
+    <div class="bg-lazuli-casse text-lazuli-marine p-5 rounded-sm" style="box-shadow: 0 16px 40px rgba(27,45,58,0.30);">
+      <div class="relative aspect-[4/3] mb-4 overflow-hidden">
+        <img
+          src={data.info.photoSticker}
+          alt=""
+          loading="lazy"
+          class="w-full h-full object-cover"
+        />
+      </div>
+      <p class="font-geist text-[10px] uppercase tracking-[0.28em] text-lazuli-lagon mb-2 font-semibold">
+        ✦ Disponible
+      </p>
+      <p class="font-yeseva text-lazuli-marine text-lg leading-tight mb-3">
+        À partir du<br/>15 novembre.
+      </p>
+      <a href="#reservation" class="inline-flex items-center gap-1.5 font-geist font-medium text-lazuli-terracotta text-xs uppercase tracking-wider hover:text-lazuli-marine transition-colors">
+        Voir les disponibilités →
+      </a>
+    </div>
+  </div>
+
+  <!-- Contenu principal -->
+  <div class="relative z-10 max-w-content mx-auto px-6 md:px-10 min-h-[100svh] flex flex-col justify-end pb-20 md:pb-28 pt-32">
+
+    <!-- Eyebrow + Italianno wordmark -->
+    <div class="mb-6 flex items-baseline gap-3">
+      <span class="font-geist text-[11px] uppercase tracking-[0.4em] text-lazuli-coco font-semibold">
+        ★ {data.info.note} · {data.info.nbAvis} avis vérifiés
+      </span>
+    </div>
+
+    <p class="font-italianno text-lazuli-coco text-5xl md:text-7xl leading-none mb-2">
+      Villa
+    </p>
+
+    <h1 class="font-yeseva text-lazuli-casse leading-[0.9]" style="font-size: clamp(72px, 14vw, 240px);">
+      {data.info.wordmark}
+    </h1>
+
+    <p class="mt-6 font-geist text-lazuli-casse/85 text-lg md:text-2xl max-w-xl leading-relaxed">
+      {data.info.tagline} Une location 4 chambres face au lagon de Saint-Leu, pour 8 personnes maximum.
+    </p>
+
+    <!-- Stats sticker en bas -->
+    <ul class="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl">
+      {data.stats.map((s) => (
+        <li class="bg-lazuli-marine/60 backdrop-blur-sm border border-lazuli-casse/15 px-5 py-4 rounded-sm">
+          <p class="font-yeseva text-lazuli-coco text-2xl md:text-3xl leading-none tabular-nums">
+            {s.valeur}
+          </p>
+          <p class="mt-2 font-geist text-[10px] uppercase tracking-[0.18em] text-lazuli-casse/70">
+            {s.label}
+          </p>
+        </li>
+      ))}
+    </ul>
+
+    <!-- CTAs -->
+    <div class="mt-10 flex flex-wrap items-center gap-4">
+      <a
+        href="#reservation"
+        class="inline-flex items-center justify-center h-13 px-8 bg-lazuli-terracotta text-lazuli-casse font-geist font-medium text-base rounded-full hover:bg-lazuli-casse hover:text-lazuli-marine transition-colors"
+        style="height: 52px;"
+      >
+        Réserver maintenant
+      </a>
+      <a
+        href="#visite"
+        class="inline-flex items-center font-geist text-lazuli-casse text-base underline underline-offset-4 decoration-lazuli-coco/60 hover:decoration-lazuli-coco transition-colors"
+      >
+        Visiter la villa
+      </a>
+    </div>
+  </div>
+</section>

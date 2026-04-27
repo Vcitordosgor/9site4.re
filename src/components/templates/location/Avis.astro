@@ -1,0 +1,65 @@
+---
+/**
+ * Avis — 4 avis vérifiés en cards numérotés + note moyenne.
+ */
+import data from '../../../data/templates/lazuli.json';
+---
+
+<section id="avis" class="bg-lazuli-casse py-24 md:py-32 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="grid lg:grid-cols-12 gap-8 mb-12 md:mb-16 items-end">
+      <div class="lg:col-span-7">
+        <p class="font-geist text-[10px] uppercase tracking-[0.32em] text-lazuli-lagon font-semibold mb-5">
+          ✦ Avis vérifiés
+        </p>
+        <h2 class="font-yeseva text-lazuli-marine leading-[1.05]" style="font-size: clamp(36px, 5vw, 64px);">
+          {data.info.note}
+          <span class="font-italianno text-lazuli-terracotta normal-case">sur 5.</span>
+        </h2>
+      </div>
+      <div class="lg:col-span-5 lg:text-right">
+        <p class="font-geist text-lazuli-marine/65 text-base leading-relaxed">
+          {data.info.nbAvis} avis vérifiés sur Booking, Airbnb et Abritel. Sélection des 4 plus représentatifs ci-dessous.
+        </p>
+      </div>
+    </header>
+
+    <ul class="grid sm:grid-cols-2 gap-4 md:gap-6">
+      {data.avis.map((a, i) => (
+        <li class="bg-lazuli-sable/40 p-7 md:p-8 border-l-2 border-lazuli-terracotta">
+
+          <!-- Header avis -->
+          <div class="flex items-start justify-between gap-3 mb-5">
+            <div>
+              <p class="font-geist text-[10px] uppercase tracking-[0.28em] text-lazuli-lagon font-semibold mb-1">
+                Avis #{String(i + 1).padStart(2, '0')}
+              </p>
+              <p class="font-yeseva text-lazuli-marine text-xl leading-tight">
+                {a.prenom}
+              </p>
+            </div>
+            <div class="flex gap-0.5">
+              {Array.from({ length: a.note }).map(() => (
+                <span class="text-lazuli-terracotta text-base" aria-hidden="true">★</span>
+              ))}
+              {Array.from({ length: 5 - a.note }).map(() => (
+                <span class="text-lazuli-marine/25 text-base" aria-hidden="true">★</span>
+              ))}
+            </div>
+          </div>
+
+          <!-- Citation -->
+          <blockquote class="font-italianno text-lazuli-marine text-2xl md:text-3xl leading-snug mb-4">
+            « {a.texte} »
+          </blockquote>
+
+          <!-- Date -->
+          <p class="font-geist text-[11px] uppercase tracking-[0.22em] text-lazuli-marine/55">
+            {a.date}
+          </p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
