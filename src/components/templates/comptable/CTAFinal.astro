@@ -1,0 +1,49 @@
+---
+import data from '../../../data/templates/auberval.json';
+---
+
+<section class="bg-auberval-marine text-auberval-feutre py-24 md:py-36 px-6 md:px-10 text-center relative">
+
+  <!-- Filet doré haut + bas -->
+  <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-auberval-or to-transparent" aria-hidden="true"></div>
+  <div class="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-auberval-or to-transparent" aria-hidden="true"></div>
+
+  <div class="relative max-w-2xl mx-auto">
+
+    <!-- Filet doré ornement -->
+    <div class="flex items-center justify-center gap-3 mb-12" aria-hidden="true">
+      <span class="block h-px w-16 bg-auberval-or"></span>
+      <span class="text-auberval-or text-base">✦</span>
+      <span class="block h-px w-16 bg-auberval-or"></span>
+    </div>
+
+    <h2 class="font-source-serif text-auberval-feutre leading-[1.05]" style="font-size: clamp(36px, 5.5vw, 72px);">
+      Votre comptabilité<br/>
+      mérite un cabinet<br/>
+      <span class="italic text-auberval-or">sérieux.</span>
+    </h2>
+
+    <p class="mt-12 font-source-serif italic text-auberval-feutre/75 text-lg leading-relaxed max-w-md mx-auto">
+      Premier rendez-vous offert. Devis personnalisé sous 48 h. Convention d'honoraires écrite avant tout engagement.
+    </p>
+
+    <div class="mt-12 flex flex-wrap items-center justify-center gap-x-7 gap-y-4">
+      <a
+        href="#rendez-vous"
+        class="inline-flex items-center justify-center h-14 px-10 bg-auberval-or text-auberval-marine font-plex-sans font-medium text-sm hover:bg-auberval-feutre transition-colors"
+      >
+        Demander un rendez-vous
+      </a>
+      <a
+        href={`tel:${data.info.telephoneHref}`}
+        class="font-source-serif text-auberval-feutre text-base tabular-nums underline underline-offset-4 decoration-auberval-or/50 hover:decoration-auberval-or transition-colors"
+      >
+        {data.info.telephone}
+      </a>
+    </div>
+
+    <p class="mt-12 font-dm-mono text-[10px] uppercase tracking-[0.4em] text-auberval-or">
+      ✦ Cabinet n° {data.info.agrement} ✦
+    </p>
+  </div>
+</section>

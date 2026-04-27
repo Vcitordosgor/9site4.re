@@ -1,0 +1,40 @@
+---
+import data from '../../../data/templates/auberval.json';
+---
+
+<header
+  id="auberval-header"
+  data-scrolled="false"
+  class="fixed top-0 inset-x-0 z-50 transition-all duration-300 data-[scrolled=false]:bg-transparent data-[scrolled=true]:bg-auberval-feutre/95 data-[scrolled=true]:backdrop-blur-sm data-[scrolled=true]:border-b data-[scrolled=true]:border-auberval-or/30"
+>
+  <div class="max-w-content mx-auto px-6 md:px-10 h-16 flex items-center justify-between">
+
+    <a href="#top" class="flex items-baseline gap-2 group" aria-label="Cabinet Auberval — accueil">
+      <span class="font-source-serif text-auberval-marine text-xl leading-none">{data.info.wordmark}</span>
+      <span class="font-source-serif italic text-auberval-or text-base leading-none">{data.info.wordmark2}</span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-7 font-plex-sans text-[13px] text-auberval-encre/75" aria-label="Navigation">
+      <a href="#associes" class="hover:text-auberval-marine transition-colors">Associés</a>
+      <a href="#expertise" class="hover:text-auberval-marine transition-colors">Expertise</a>
+      <a href="#honoraires" class="hover:text-auberval-marine transition-colors">Honoraires</a>
+      <a href="#temoignages" class="hover:text-auberval-marine transition-colors">Témoignages</a>
+    </nav>
+
+    <a
+      href="#rendez-vous"
+      class="inline-flex items-center h-9 px-5 bg-auberval-marine text-auberval-feutre font-plex-sans text-[13px] font-medium hover:bg-auberval-encre transition-colors"
+    >
+      Nous rencontrer
+    </a>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById('auberval-header');
+  if (header) {
+    const update = () => { header.dataset.scrolled = String(window.scrollY > 60); };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+  }
+</script>

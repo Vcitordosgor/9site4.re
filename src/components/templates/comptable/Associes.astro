@@ -1,0 +1,64 @@
+---
+/**
+ * Associes — trombinoscope institutionnel des 4 associés.
+ * Photos B&W carrées avec étiquette OEC, format formel.
+ */
+import data from '../../../data/templates/auberval.json';
+---
+
+<section id="associes" class="bg-auberval-blanc py-24 md:py-32 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="mb-14 md:mb-20 max-w-3xl">
+      <p class="font-plex-sans text-[10px] uppercase tracking-[0.32em] text-auberval-or font-semibold mb-5">
+        ✦ Les associés
+      </p>
+      <h2 class="font-source-serif text-auberval-marine leading-[1.05]" style="font-size: clamp(36px, 5vw, 64px);">
+        Quatre experts-comptables<br/>
+        <span class="italic text-auberval-or">à votre service.</span>
+      </h2>
+    </header>
+
+    <ul class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+      {data.associes.map((a, i) => (
+        <li>
+          <article class="h-full">
+            <!-- Photo carrée B&W -->
+            <div class="relative aspect-square overflow-hidden bg-auberval-gris mb-5">
+              <img
+                src={a.photo}
+                alt={`Portrait de ${a.prenom} ${a.nom}`}
+                loading="lazy"
+                decoding="async"
+                class="w-full h-full object-cover grayscale"
+              />
+              <!-- Étiquette OEC -->
+              <span class="absolute bottom-3 left-3 inline-block bg-auberval-marine text-auberval-feutre font-dm-mono text-[10px] uppercase tracking-[0.18em] px-2.5 py-1.5">
+                ✦ {a.memberOEC}
+              </span>
+            </div>
+
+            <!-- Identité -->
+            <p class="font-dm-mono text-[10px] uppercase tracking-[0.28em] text-auberval-or mb-2">
+              Associé n°{String(i + 1).padStart(2, '0')}
+            </p>
+            <h3 class="font-source-serif text-auberval-marine text-2xl leading-tight mb-1">
+              {a.prenom} {a.nom}
+            </h3>
+            <p class="font-plex-sans text-auberval-encre text-sm font-medium mb-3">
+              {a.titre}
+            </p>
+            <p class="pt-3 border-t border-auberval-marine/15 font-source-serif italic text-auberval-encre/75 text-sm leading-snug">
+              {a.specialite}
+            </p>
+          </article>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Note -->
+    <p class="mt-12 font-source-serif italic text-auberval-encre/65 text-base leading-relaxed max-w-2xl">
+      Tous nos associés sont régulièrement inscrits à l'Ordre des Experts-Comptables (OEC) et soumis à la déontologie de la profession. Code interne consultable sur demande.
+    </p>
+  </div>
+</section>

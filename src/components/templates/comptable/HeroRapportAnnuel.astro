@@ -1,0 +1,87 @@
+---
+/**
+ * HeroRapportAnnuel — page de couverture rapport annuel.
+ * Pattern lignes verticales fines en arrière-plan, format institutionnel sobre.
+ */
+import data from '../../../data/templates/auberval.json';
+---
+
+<section id="top" class="relative bg-auberval-feutre overflow-hidden">
+
+  <!-- Pattern papier ligné en arrière-plan -->
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true"
+       style="background-image: repeating-linear-gradient(90deg, transparent 0, transparent 35px, rgba(167,138,79,0.08) 35px, rgba(167,138,79,0.08) 36px);">
+  </div>
+
+  <!-- Filet doré en haut -->
+  <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-auberval-or to-transparent" aria-hidden="true"></div>
+
+  <div class="relative max-w-content mx-auto px-6 md:px-10 pt-32 pb-20 md:pt-44 md:pb-28">
+
+    <!-- En-tête type rapport annuel -->
+    <div class="flex items-baseline justify-between font-dm-mono text-[10px] uppercase tracking-[0.32em] text-auberval-or mb-12 md:mb-20 pb-3 border-b border-auberval-marine/15">
+      <span>Cabinet n° {data.info.agrement}</span>
+      <span class="hidden sm:inline">Saint-Denis · La Réunion</span>
+      <span>Édition {new Date().getFullYear()}</span>
+    </div>
+
+    <!-- Titre principal -->
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-end mb-16 md:mb-20">
+
+      <div class="lg:col-span-9">
+        <p class="font-plex-sans text-[10px] uppercase tracking-[0.32em] text-auberval-marine font-semibold mb-6">
+          ✦ Cabinet d'expertise comptable · depuis {data.info.annee}
+        </p>
+
+        <h1 class="font-source-serif text-auberval-marine leading-[0.95]" style="font-size: clamp(48px, 9vw, 144px);">
+          {data.info.wordmark}<br/>
+          <span class="italic text-auberval-or">{data.info.wordmark2}</span>
+        </h1>
+
+        <p class="mt-7 font-plex-sans text-auberval-encre text-lg md:text-2xl leading-snug max-w-2xl">
+          {data.info.soustitre}
+        </p>
+      </div>
+
+      <!-- CTA bloc droite -->
+      <div class="lg:col-span-3 lg:pl-6 lg:border-l lg:border-auberval-marine/15">
+        <p class="font-dm-mono text-[10px] uppercase tracking-[0.28em] text-auberval-or mb-3">
+          Prendre contact
+        </p>
+        <p class="font-source-serif text-auberval-marine text-lg tabular-nums mb-2">
+          {data.info.telephone}
+        </p>
+        <p class="font-plex-sans text-auberval-encre/75 text-sm break-all mb-6">
+          {data.info.email}
+        </p>
+        <a
+          href="#rendez-vous"
+          class="inline-flex items-center h-12 px-6 bg-auberval-marine text-auberval-feutre font-plex-sans font-medium text-sm hover:bg-auberval-encre transition-colors"
+        >
+          Nous rencontrer →
+        </a>
+      </div>
+    </div>
+
+    <!-- Bandeau 4 stats -->
+    <ul class="grid grid-cols-2 md:grid-cols-4 gap-px bg-auberval-marine/15 border-t border-b border-auberval-marine/15">
+      {data.stats.map((s) => (
+        <li class="bg-auberval-feutre py-6 md:py-8 px-4 text-center">
+          <p class="font-source-serif text-auberval-marine leading-none tabular-nums" style="font-size: clamp(28px, 4vw, 48px);">
+            {s.valeur}
+          </p>
+          <p class="mt-3 font-dm-mono text-[10px] uppercase tracking-[0.22em] text-auberval-encre/65">
+            {s.label}
+          </p>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Pied page rapport -->
+    <div class="mt-12 flex items-baseline justify-between font-dm-mono text-[10px] uppercase tracking-[0.28em] text-auberval-or/65">
+      <span>Document à caractère informatif</span>
+      <span class="hidden sm:inline">— Page 01 / 10 —</span>
+      <span>↓ Continuer</span>
+    </div>
+  </div>
+</section>

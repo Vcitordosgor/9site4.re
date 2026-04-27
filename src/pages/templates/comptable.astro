@@ -1,0 +1,78 @@
+---
+import '@fontsource/source-serif-4/300.css';
+import '@fontsource/source-serif-4/400.css';
+import '@fontsource/source-serif-4/500.css';
+import '@fontsource/source-serif-4/600.css';
+import '@fontsource/source-serif-4/400-italic.css';
+import '@fontsource/ibm-plex-sans/300.css';
+import '@fontsource/ibm-plex-sans/400.css';
+import '@fontsource/ibm-plex-sans/500.css';
+import '@fontsource/ibm-plex-sans/600.css';
+import '@fontsource/dm-mono/400.css';
+import '@fontsource/dm-mono/500.css';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getSeo } from '../../lib/seo';
+import aubervalData from '../../data/templates/auberval.json';
+
+import AubervalHeader from '../../components/templates/comptable/AubervalHeader.astro';
+import HeroRapportAnnuel from '../../components/templates/comptable/HeroRapportAnnuel.astro';
+import Associes from '../../components/templates/comptable/Associes.astro';
+import Domaines from '../../components/templates/comptable/Domaines.astro';
+import Approche from '../../components/templates/comptable/Approche.astro';
+import Honoraires from '../../components/templates/comptable/Honoraires.astro';
+import Temoignages from '../../components/templates/comptable/Temoignages.astro';
+import LeCabinet from '../../components/templates/comptable/LeCabinet.astro';
+import RendezVous from '../../components/templates/comptable/RendezVous.astro';
+import CTAFinal from '../../components/templates/comptable/CTAFinal.astro';
+import AubervalFooter from '../../components/templates/comptable/AubervalFooter.astro';
+---
+
+<BaseLayout seo={getSeo('templateComptable')} bare={true}>
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <link rel="dns-prefetch" href="https://images.unsplash.com" />
+  </Fragment>
+
+  <AubervalHeader />
+
+  <main id="top" class="bg-auberval-feutre text-auberval-marine font-plex-sans">
+    <HeroRapportAnnuel />
+    <Associes />
+    <Domaines />
+    <Approche />
+    <Honoraires />
+    <Temoignages />
+    <LeCabinet />
+    <RendezVous />
+    <CTAFinal />
+  </main>
+
+  <AubervalFooter />
+
+  <a
+    id="auberval-sticky-cta"
+    href="#rendez-vous"
+    data-visible="false"
+    class="md:hidden fixed bottom-5 inset-x-5 z-40 inline-flex items-center justify-center h-13 bg-auberval-marine text-auberval-feutre font-plex-sans font-medium text-sm transition-all duration-300 data-[visible=false]:opacity-0 data-[visible=false]:translate-y-4 data-[visible=false]:pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0"
+    style="height: 52px; box-shadow: 0 12px 28px rgba(26,41,68,0.30);"
+  >
+    Demander un rendez-vous
+  </a>
+
+  <script>
+    const sticky = document.getElementById('auberval-sticky-cta');
+    const rdv = document.getElementById('rendez-vous');
+    if (sticky && rdv) {
+      const update = () => {
+        const rect = rdv.getBoundingClientRect();
+        const inSection = rect.top < window.innerHeight && rect.bottom > 80;
+        const scrolledPastHero = window.scrollY > 600;
+        sticky.dataset.visible = String(scrolledPastHero && !inSection);
+      };
+      update();
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update, { passive: true });
+    }
+  </script>
+</BaseLayout>

@@ -1,0 +1,37 @@
+---
+/**
+ * Approche — 4 engagements en colonnes alignées institutionnelles.
+ */
+import data from '../../../data/templates/auberval.json';
+---
+
+<section class="bg-auberval-marine text-auberval-feutre py-24 md:py-32 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="mb-14 md:mb-16 max-w-3xl">
+      <p class="font-plex-sans text-[10px] uppercase tracking-[0.32em] text-auberval-or font-semibold mb-5">
+        ✦ Notre approche
+      </p>
+      <h2 class="font-source-serif text-auberval-feutre leading-[1.05]" style="font-size: clamp(36px, 5vw, 64px);">
+        Quatre engagements,<br/>
+        <span class="italic text-auberval-or">tenus dans la durée.</span>
+      </h2>
+    </header>
+
+    <ul class="grid md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
+      {data.engagements.map((e, i) => (
+        <li>
+          <p class="font-dm-mono text-[11px] tracking-tight text-auberval-or mb-3">
+            /{String(i + 1).padStart(2, '0')}
+          </p>
+          <h3 class="font-source-serif text-auberval-feutre text-2xl md:text-3xl mb-4 pb-4 border-b border-auberval-or/30">
+            {e.titre}
+          </h3>
+          <p class="font-plex-sans text-auberval-feutre/75 text-[15px] leading-[1.75]">
+            {e.texte}
+          </p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

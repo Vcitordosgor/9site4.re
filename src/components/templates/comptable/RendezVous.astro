@@ -1,0 +1,145 @@
+---
+/**
+ * RendezVous — formulaire institutionnel avec créneau + type de demande.
+ */
+import data from '../../../data/templates/auberval.json';
+const waBase = `https://wa.me/${data.info.whatsapp}`;
+---
+
+<section id="rendez-vous" class="bg-auberval-blanc py-24 md:py-32 px-6 md:px-10">
+  <div class="max-w-3xl mx-auto">
+
+    <header class="mb-12 md:mb-16">
+      <p class="font-plex-sans text-[10px] uppercase tracking-[0.32em] text-auberval-or font-semibold mb-5">
+        ✦ Demande de rendez-vous
+      </p>
+      <h2 class="font-source-serif text-auberval-marine leading-[1.05]" style="font-size: clamp(36px, 5vw, 56px);">
+        Premier contact,<br/>
+        <span class="italic text-auberval-or">sans engagement.</span>
+      </h2>
+      <p class="mt-5 font-source-serif italic text-auberval-encre/70 text-base leading-relaxed max-w-md">
+        Le premier rendez-vous est offert et dure environ 45 minutes. Aucun document à apporter, juste le contexte.
+      </p>
+    </header>
+
+    <form id="auberval-form" class="bg-auberval-feutre border border-auberval-marine/15 p-7 md:p-10 space-y-6" novalidate>
+
+      <!-- Type de demande -->
+      <fieldset>
+        <legend class="font-plex-sans text-[10px] uppercase tracking-[0.32em] text-auberval-or font-semibold pb-3 border-b border-auberval-marine/15 w-full mb-5">
+          I. Nature de votre demande
+        </legend>
+        <select
+          id="auberval-type"
+          name="type"
+          required
+          class="w-full h-11 px-3 bg-auberval-blanc border border-auberval-marine/25 focus:border-auberval-marine font-source-serif text-auberval-marine text-base outline-none transition-colors cursor-pointer"
+        >
+          <option value="">— Choisir un sujet —</option>
+          <option value="creation">Création d'entreprise</option>
+          <option value="changement">Changement d'expert-comptable</option>
+          <option value="audit">Mission d'audit</option>
+          <option value="conseil">Conseil fiscal & patrimoine</option>
+          <option value="paie">Paie & social</option>
+          <option value="autre">Autre / À discuter</option>
+        </select>
+      </fieldset>
+
+      <!-- Forme de structure -->
+      <fieldset>
+        <legend class="font-plex-sans text-[10px] uppercase tracking-[0.32em] text-auberval-or font-semibold pb-3 border-b border-auberval-marine/15 w-full mb-5">
+          II. Forme de votre structure
+        </legend>
+        <div class="flex flex-wrap gap-2">
+          {['Micro / EI', 'EURL / SASU', 'SARL / SAS', 'Association', 'En création', 'Autre'].map((f, i) => (
+            <label class="cursor-pointer">
+              <input type="radio" name="structure" value={f} class="peer sr-only" checked={i === 0} />
+              <span class="block px-4 py-2.5 bg-auberval-blanc border border-auberval-marine/25 peer-checked:border-auberval-marine peer-checked:bg-auberval-marine peer-checked:text-auberval-feutre font-plex-sans text-sm transition-colors">
+                {f}
+              </span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+
+      <!-- Coordonnées -->
+      <fieldset>
+        <legend class="font-plex-sans text-[10px] uppercase tracking-[0.32em] text-auberval-or font-semibold pb-3 border-b border-auberval-marine/15 w-full mb-5">
+          III. Vos coordonnées
+        </legend>
+        <div class="grid sm:grid-cols-2 gap-5 mb-5">
+          <div>
+            <label for="auberval-nom" class="block font-dm-mono text-[10px] uppercase tracking-[0.22em] text-auberval-encre/75 mb-1.5">Nom & prénom</label>
+            <input
+              id="auberval-nom"
+              name="nom"
+              type="text"
+              required
+              autocomplete="name"
+              class="w-full h-11 px-3 bg-auberval-blanc border border-auberval-marine/25 focus:border-auberval-marine font-source-serif text-auberval-marine text-base outline-none transition-colors"
+            />
+          </div>
+          <div>
+            <label for="auberval-tel" class="block font-dm-mono text-[10px] uppercase tracking-[0.22em] text-auberval-encre/75 mb-1.5">Téléphone</label>
+            <input
+              id="auberval-tel"
+              name="telephone"
+              type="tel"
+              required
+              autocomplete="tel"
+              class="w-full h-11 px-3 bg-auberval-blanc border border-auberval-marine/25 focus:border-auberval-marine font-source-serif text-auberval-marine text-base outline-none transition-colors tabular-nums"
+            />
+          </div>
+        </div>
+        <div>
+          <label for="auberval-message" class="block font-dm-mono text-[10px] uppercase tracking-[0.22em] text-auberval-encre/75 mb-1.5">Précisions <span class="lowercase italic font-source-serif text-auberval-encre/50 normal-case">(facultatif)</span></label>
+          <textarea
+            id="auberval-message"
+            name="message"
+            rows="3"
+            placeholder="Activité, secteur, échéances, contexte particulier…"
+            class="w-full px-3 py-2 bg-auberval-blanc border border-auberval-marine/25 focus:border-auberval-marine font-source-serif text-auberval-marine text-base placeholder:text-auberval-encre/45 outline-none transition-colors resize-none"
+          ></textarea>
+        </div>
+      </fieldset>
+
+      <!-- Submit -->
+      <div class="pt-4 text-center border-t border-auberval-marine/15">
+        <button
+          type="submit"
+          class="inline-flex items-center justify-center h-13 px-9 bg-auberval-marine text-auberval-feutre font-plex-sans font-medium text-sm hover:bg-auberval-encre transition-colors"
+          style="height: 52px;"
+        >
+          Envoyer la demande
+        </button>
+        <p class="mt-4 font-source-serif italic text-auberval-encre/65 text-sm">
+          Réponse de notre secrétariat sous 24 heures ouvrées.
+        </p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<script define:vars={{ waBase }}>
+  const form = document.getElementById('auberval-form');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fd = new FormData(form);
+      const type = fd.get('type') || '';
+      const structure = fd.get('structure') || '';
+      const nom = fd.get('nom') || '';
+      const tel = fd.get('telephone') || '';
+      const message = fd.get('message') || '';
+      const text = [
+        'Bonjour, je souhaite un rendez-vous avec le Cabinet Auberval & Associés.',
+        type ? `Sujet : ${type}` : '',
+        structure ? `Structure : ${structure}` : '',
+        nom ? `Nom : ${nom}` : '',
+        tel ? `Tél : ${tel}` : '',
+        message ? `Précisions : ${message}` : '',
+      ].filter(Boolean).join('\n');
+      window.open(`${waBase}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
+    });
+  }
+</script>

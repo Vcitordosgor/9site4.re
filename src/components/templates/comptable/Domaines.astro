@@ -1,0 +1,45 @@
+---
+/**
+ * Domaines — 6 domaines d'expertise format ordre du jour.
+ * Numéros 01-06, descriptions claires, pas de cards photographiques.
+ */
+import data from '../../../data/templates/auberval.json';
+---
+
+<section id="expertise" class="bg-auberval-feutre py-24 md:py-32 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="mb-14 md:mb-20 max-w-3xl">
+      <p class="font-plex-sans text-[10px] uppercase tracking-[0.32em] text-auberval-or font-semibold mb-5">
+        ✦ Domaines d'expertise
+      </p>
+      <h2 class="font-source-serif text-auberval-marine leading-[1.05]" style="font-size: clamp(36px, 5vw, 64px);">
+        Six domaines,<br/>
+        <span class="italic text-auberval-or">une seule équipe.</span>
+      </h2>
+    </header>
+
+    <!-- Grid 2x3 ordre du jour -->
+    <ul class="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-auberval-marine/15 border border-auberval-marine/15">
+      {data.domaines.map((d) => (
+        <li class="bg-auberval-feutre p-7 md:p-9 hover:bg-auberval-blanc transition-colors group">
+
+          <p class="font-dm-mono text-[11px] tracking-tight text-auberval-or mb-4">
+            ▸ § {d.num}
+          </p>
+
+          <h3 class="font-source-serif text-auberval-marine text-xl md:text-2xl leading-tight mb-4 group-hover:text-auberval-or transition-colors">
+            {d.titre}
+          </h3>
+
+          <p class="font-plex-sans text-auberval-encre/80 text-sm md:text-[15px] leading-[1.7]">
+            {d.description}
+          </p>
+
+          <!-- Filet doré qui s'étend au hover -->
+          <span class="mt-5 block h-px w-12 bg-auberval-or/40 group-hover:w-full transition-all duration-500"></span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
