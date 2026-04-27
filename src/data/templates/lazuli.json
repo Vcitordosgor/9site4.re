@@ -1,0 +1,207 @@
+{
+  "info": {
+    "nom": "Villa Lazuli",
+    "wordmark": "Lazuli",
+    "soustitre": "Location saisonnière · bord de mer",
+    "tagline": "Une villa, une vue, un lagon.",
+    "hotes": "Stéphane & Marina Hoarau",
+    "ville": "Saint-Leu",
+    "adresseLigne1": "12 chemin du Lagon",
+    "adresseLigne2": "97436 Saint-Leu",
+    "telephone": "0692 67 28 31",
+    "telephoneHref": "+33692672831",
+    "whatsapp": "33692672831",
+    "email": "hello@villa-lazuli.re",
+    "instagram": "@villa.lazuli",
+    "siret": "89012345500017",
+    "annee": "2019",
+    "photoHero": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1800&q=85",
+    "photoSticker": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600&q=85",
+    "note": "4,8/5",
+    "nbAvis": 87
+  },
+  "stats": [
+    { "valeur": "120 m²", "label": "habitables" },
+    { "valeur": "4", "label": "chambres" },
+    { "valeur": "8", "label": "voyageurs max" },
+    { "valeur": "✓", "label": "piscine privée" }
+  ],
+  "pitch": [
+    "Posée à flanc de coteau juste au-dessus du lagon de Saint-Leu, la villa offre une vue dégagée sur l'océan, accessible à pied à la plage en cinq minutes. Quatre chambres, une grande terrasse couverte, une cuisine entièrement équipée.",
+    "Pensée pour les familles ou les groupes d'amis qui cherchent un vrai cocon. Aucun voisin direct, jardin clos, parking pour trois voitures. Le calme, mais le centre-ville à dix minutes à pied.",
+    "Stéphane et Marina, les propriétaires, vivent à 200 m. Ils sont disponibles pour accueillir, recommander, dépanner — sans jamais s'imposer. Les retours parlent souvent d'eux."
+  ],
+  "visite": [
+    {
+      "id": "salon",
+      "titre": "Le salon",
+      "description": "Grand canapé d'angle, vue piscine, bibliothèque garnie. La pièce centrale.",
+      "photo": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=85"
+    },
+    {
+      "id": "cuisine",
+      "titre": "La cuisine",
+      "description": "Entièrement équipée, îlot central, lave-vaisselle, four et plaque induction.",
+      "photo": "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&q=85"
+    },
+    {
+      "id": "chambre",
+      "titre": "Chambre principale",
+      "description": "Lit king size 180×200, dressing, vue lagon au lever du soleil.",
+      "photo": "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=85"
+    },
+    {
+      "id": "terrasse",
+      "titre": "La terrasse",
+      "description": "Couverte, salon de jardin pour 8 personnes, barbecue à gaz, brumisateur.",
+      "photo": "https://images.unsplash.com/photo-1571508601891-ca5e7a713859?w=1200&q=85"
+    },
+    {
+      "id": "piscine",
+      "titre": "La piscine",
+      "description": "Privée, chauffée, 8 × 4 m. Profondeur progressive. Transats et parasol.",
+      "photo": "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=1200&q=85"
+    },
+    {
+      "id": "vue",
+      "titre": "La vue",
+      "description": "Le lagon de Saint-Leu, depuis la terrasse et les chambres côté mer.",
+      "photo": "https://images.unsplash.com/photo-1505881502353-a1986add3762?w=1200&q=85"
+    },
+    {
+      "id": "sdb",
+      "titre": "Salle de bain",
+      "description": "Douche italienne, double vasque, marbre, baignoire séparée dans la suite.",
+      "photo": "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1200&q=85"
+    },
+    {
+      "id": "exterieur",
+      "titre": "Vue extérieure",
+      "description": "Architecture créole revisitée, toits en bardeaux, palmiers et frangipaniers.",
+      "photo": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200&q=85"
+    }
+  ],
+  "equipements": {
+    "interieur": [
+      "WiFi fibre haut débit",
+      "Climatisation toutes pièces",
+      "TV 4K + Netflix",
+      "Lave-linge & sèche-linge",
+      "Lave-vaisselle",
+      "Four & plaque induction",
+      "Cafetière à grains + Nespresso",
+      "Linge de maison fourni",
+      "Coffre-fort"
+    ],
+    "exterieur": [
+      "Piscine privée chauffée",
+      "Terrasse couverte 40 m²",
+      "Barbecue gaz",
+      "Mobilier de jardin pour 8",
+      "Transats & parasols",
+      "Jardin clos arboré",
+      "Parking 3 voitures",
+      "Brumisateur",
+      "Pool house avec douche"
+    ],
+    "services": [
+      "Accueil personnalisé à l'arrivée",
+      "Ménage final inclus",
+      "Ménage hebdomadaire en option",
+      "Conciergerie sur demande",
+      "Location vélos & transats plage",
+      "Service traiteur sur demande",
+      "Babysitter recommandée",
+      "Lit bébé & chaise haute",
+      "Disponibilité 24h/24"
+    ]
+  },
+  "tarifs": [
+    {
+      "saison": "Basse saison",
+      "periode": "Mai – juin · sept – oct",
+      "prix": "180 €",
+      "minimum": "3 nuits"
+    },
+    {
+      "saison": "Moyenne saison",
+      "periode": "Mars – avril · novembre",
+      "prix": "220 €",
+      "minimum": "3 nuits"
+    },
+    {
+      "saison": "Haute saison",
+      "periode": "Juillet – août",
+      "prix": "320 €",
+      "minimum": "7 nuits",
+      "populaire": true
+    },
+    {
+      "saison": "Très haute saison",
+      "periode": "Décembre – janvier",
+      "prix": "450 €",
+      "minimum": "14 nuits"
+    }
+  ],
+  "caution": "1 500 € (chèque ou virement, restitué sous 7 jours après le départ).",
+  "tarifsExtras": "Ménage hebdomadaire 80 €. Petit-déjeuner livré 12 €/pers. Linge supplémentaire 8 €/pers.",
+  "occupation": [
+    "2025-11-01", "2025-11-02", "2025-11-03",
+    "2025-11-15", "2025-11-16",
+    "2025-11-22", "2025-11-23", "2025-11-24",
+    "2025-12-15", "2025-12-16", "2025-12-17", "2025-12-18", "2025-12-19", "2025-12-20",
+    "2025-12-26", "2025-12-27", "2025-12-28", "2025-12-29", "2025-12-30", "2025-12-31"
+  ],
+  "avis": [
+    {
+      "prenom": "Marie L.",
+      "date": "Septembre 2025",
+      "note": 5,
+      "texte": "Vue à couper le souffle, villa très bien équipée. On reviendra avec plus d'amis la prochaine fois."
+    },
+    {
+      "prenom": "Thomas D.",
+      "date": "Août 2025",
+      "note": 5,
+      "texte": "Famille de 5, chambres parfaites, Stéphane super réactif. Recommandé sans réserve."
+    },
+    {
+      "prenom": "Sabrina M.",
+      "date": "Juillet 2025",
+      "note": 5,
+      "texte": "Lever de soleil sur le lagon depuis la chambre principale. Inoubliable. Marina nous a aidés à trouver un super traiteur."
+    },
+    {
+      "prenom": "Karim B.",
+      "date": "Mai 2025",
+      "note": 4,
+      "texte": "Un vrai cocon. Petit bémol sur l'isolation phonique entre deux chambres, sinon parfait. On a déjà rebooké l'année prochaine."
+    }
+  ],
+  "alentours": [
+    {
+      "nom": "Plage du Lagon",
+      "type": "Plage protégée par la barrière",
+      "distance": "200 m",
+      "duree": "3 min à pied"
+    },
+    {
+      "nom": "Le Bocal Bleu",
+      "type": "Restaurant créole · poisson frais",
+      "distance": "350 m",
+      "duree": "5 min à pied"
+    },
+    {
+      "nom": "Pacific Surf Shop",
+      "type": "Location surf, paddle, palmes",
+      "distance": "500 m",
+      "duree": "7 min à pied"
+    },
+    {
+      "nom": "Pointe des Aigrettes",
+      "type": "Spot snorkeling · récif corallien",
+      "distance": "800 m",
+      "duree": "10 min à pied"
+    }
+  ]
+}

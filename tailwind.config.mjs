@@ -64,6 +64,9 @@ export default {
     {
       pattern: /^(bg|text|ring|border|from|to|via)-(sentiers-foret|sentiers-lichen|sentiers-terre|sentiers-brume|sentiers-soleil|sentiers-ciel|sentiers-noir)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
     },
+    {
+      pattern: /^(bg|text|ring|border|from|to|via)-(lazuli-lagon|lazuli-marine|lazuli-sable|lazuli-terracotta|lazuli-casse|lazuli-bois|lazuli-coco)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
+    },
   ],
   theme: {
     extend: {
@@ -252,6 +255,17 @@ export default {
         'sentiers-soleil': '#F5E6B5',  // soleil pâle — micro-accent
         'sentiers-ciel':   '#1E3A52',  // bleu profond ciel — accent froid
         'sentiers-noir':   '#0A140F',  // noir-vert — texte AAA
+        // Palette location bord de mer (template /templates/location — Villa Lazuli)
+        // Style "brochure de villa lifestyle, Airbnb haut de gamme" : bleu lagon
+        // profond + sable doré + terracotta cassé + bois flotté. Distinct du
+        // topo-guide (Cap Anglais) et du récit aventure (Sentiers Croisés).
+        'lazuli-lagon':      '#3A7188',  // bleu lagon profond — accent dominant
+        'lazuli-marine':     '#1B2D3A',  // encre marine — texte AAA, fond dark
+        'lazuli-sable':      '#E5D4A8',  // sable doré
+        'lazuli-terracotta': '#A85B3F',  // terracotta cassé — accent CTA
+        'lazuli-casse':      '#FAF6ED',  // blanc cassé tropical — fond
+        'lazuli-bois':       '#8C7159',  // bois flotté — secondaire
+        'lazuli-coco':       '#CDDDB1',  // vert tendre coco — micro-accent
       },
       fontFamily: {
         sora: ['Sora', 'system-ui', 'sans-serif'],
@@ -298,6 +312,9 @@ export default {
         familjen: ['"Familjen Grotesk"', 'system-ui', 'sans-serif'],
         tinos: ['Tinos', 'Georgia', 'serif'],
         'roboto-mono': ['"Roboto Mono"', 'ui-monospace', 'monospace'],
+        yeseva: ['"Yeseva One"', 'Georgia', 'serif'],
+        geist: ['"Geist Sans"', 'system-ui', 'sans-serif'],
+        italianno: ['Italianno', 'cursive'],
       },
       fontSize: {
         'hero': ['clamp(2.5rem, 5vw + 1rem, 5rem)', { lineHeight: '1.05', letterSpacing: '-0.02em' }],

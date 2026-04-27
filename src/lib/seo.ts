@@ -45,7 +45,8 @@ type PageKey =
   | 'templateBarJus'
   | 'templateInstitut'
   | 'templateGite'
-  | 'templateExcursions';
+  | 'templateExcursions'
+  | 'templateLocation';
 
 const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'> & { noindex?: boolean; ogImage?: string; ogImageAlt?: string }> = {
   home: {
@@ -207,6 +208,13 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
     description:
       'Aperçu du template "Excursions randonnée" proposé par 9site4 : sorties guidées, calendrier des prochaines dates, témoignages, galerie et réservation. Site fictif de démonstration.',
     canonical: '/templates/excursions',
+    noindex: true,
+  },
+  templateLocation: {
+    title: 'Villa Lazuli — Location bord de mer à Saint-Leu (Réunion) | Template 9site4',
+    description:
+      'Aperçu du template "Location saisonnière bord de mer" proposé par 9site4 : visite virtuelle, équipements, tarifs par saison, disponibilités et réservation. Site fictif de démonstration.',
+    canonical: '/templates/location',
     noindex: true,
   },
 };
