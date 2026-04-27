@@ -158,7 +158,8 @@
     "categorie": "tourisme",
     "sousTitre": "Logement, équipements et réservation",
     "moduleInclus": "Réservation",
-    "slug": "location-saisonniere-bord-de-mer"
+    "slug": "location-saisonniere-bord-de-mer",
+    "previewUrl": "/templates/location"
   },
   {
     "id": 19,
