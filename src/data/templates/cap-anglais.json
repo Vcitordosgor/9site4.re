@@ -1,0 +1,167 @@
+{
+  "info": {
+    "nom": "Le Cap Anglais",
+    "wordmark": "Le Cap Anglais",
+    "soustitre": "Gîte de cirque · Cilaos",
+    "tagline": "Le sommet vous attend.",
+    "hote": "Jean-Marie Hoarau",
+    "ville": "Cilaos",
+    "adresseLigne1": "47 chemin du Bras Sec",
+    "adresseLigne2": "97413 Cilaos · Cirque",
+    "altitude": "1 220 m",
+    "gpsLat": "−21.1373",
+    "gpsLon": "55.4711",
+    "telephone": "0692 73 56 18",
+    "telephoneHref": "+33692735618",
+    "whatsapp": "33692735618",
+    "email": "contact@le-cap-anglais.re",
+    "siret": "67890123300017",
+    "annee": "2008",
+    "classification": 4,
+    "photoHero": "https://images.unsplash.com/photo-1488462237308-ecaa28b729d7?w=1600&q=85",
+    "photoExterieur": "https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=1200&q=85"
+  },
+  "fiche": [
+    { "label": "Capacité", "valeur": "12 personnes" },
+    { "label": "Chambres", "valeur": "4 chambres" },
+    { "label": "Salle de bain", "valeur": "3 sdb · 2 wc séparés" },
+    { "label": "Cuisine", "valeur": "Équipée · semi-collective" },
+    { "label": "Animaux", "valeur": "Acceptés · sur demande" },
+    { "label": "Wi-Fi", "valeur": "Salon commun seulement" },
+    { "label": "Parking", "valeur": "5 places couvertes" },
+    { "label": "Chauffage", "valeur": "Cheminée + radiateurs" }
+  ],
+  "chambres": [
+    {
+      "id": "mafate",
+      "nom": "Mafate",
+      "lits": "2 lits simples",
+      "personnes": 2,
+      "details": "Vue sur le cirque · douche partagée",
+      "prix": "Comprise",
+      "photo": "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=800&q=85"
+    },
+    {
+      "id": "salazie",
+      "nom": "Salazie",
+      "lits": "1 lit double",
+      "personnes": 2,
+      "details": "Salle d'eau privée · vue jardin",
+      "prix": "+ 5€/nuit",
+      "photo": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=85"
+    },
+    {
+      "id": "belouve",
+      "nom": "Bélouve",
+      "lits": "4 lits superposés",
+      "personnes": 4,
+      "details": "Format dortoir · vestiaire avec casiers",
+      "prix": "Comprise",
+      "photo": "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=800&q=85"
+    },
+    {
+      "id": "bebour",
+      "nom": "Bébour",
+      "lits": "1 lit double + 2 lits simples",
+      "personnes": 4,
+      "details": "Petite terrasse privative · idéale famille",
+      "prix": "+ 8€/nuit",
+      "photo": "https://images.unsplash.com/photo-1615873968403-89e068629265?w=800&q=85"
+    }
+  ],
+  "alentours": [
+    {
+      "nom": "Pic du Maïdo",
+      "duree": "6h",
+      "denivele": "+ 600 m",
+      "niveau": 3,
+      "depart": "1h en voiture depuis le gîte",
+      "description": "Vue spectaculaire sur Mafate au lever du soleil. Départ recommandé à 4h."
+    },
+    {
+      "nom": "Cascade Bras Rouge",
+      "duree": "4h aller-retour",
+      "denivele": "+ 350 m",
+      "niveau": 2,
+      "depart": "Au départ du gîte",
+      "description": "Cascade emblématique de Cilaos. Baignade autorisée. Sentier ombragé."
+    },
+    {
+      "nom": "Le Bénare",
+      "duree": "8h",
+      "denivele": "+ 1 100 m",
+      "niveau": 4,
+      "depart": "30 min en voiture",
+      "description": "Sommet à 2 896 m. Pour marcheurs aguerris uniquement. Casse-croûte fourni sur demande."
+    },
+    {
+      "nom": "Tour de Cilaos pédagogique",
+      "duree": "3h boucle",
+      "denivele": "+ 200 m",
+      "niveau": 1,
+      "depart": "Au départ du gîte",
+      "description": "Idéal en famille. Découverte des plantes endémiques. Enfants dès 6 ans."
+    }
+  ],
+  "tarifs": [
+    {
+      "label": "Basse saison",
+      "periode": "Avril – juin · sept – oct",
+      "prix": "22 €",
+      "unite": "/ pers / nuit"
+    },
+    {
+      "label": "Haute saison",
+      "periode": "Juillet – août · déc – fév",
+      "prix": "32 €",
+      "unite": "/ pers / nuit"
+    },
+    {
+      "label": "Forfait week-end",
+      "periode": "2 nuits",
+      "prix": "−10 %",
+      "unite": "sur le séjour"
+    },
+    {
+      "label": "Forfait semaine",
+      "periode": "7 nuits",
+      "prix": "−20 %",
+      "unite": "sur le séjour"
+    },
+    {
+      "label": "Petit-déjeuner",
+      "periode": "Pain frais, confitures maison, café",
+      "prix": "8 €",
+      "unite": "/ pers"
+    },
+    {
+      "label": "Demi-pension",
+      "periode": "Plat unique du jour",
+      "prix": "18 €",
+      "unite": "/ pers / soir"
+    }
+  ],
+  "occupation": [
+    "2025-11-12", "2025-11-13", "2025-11-14",
+    "2025-11-22", "2025-11-23",
+    "2025-11-28", "2025-11-29", "2025-11-30",
+    "2025-12-05", "2025-12-06", "2025-12-07",
+    "2025-12-22", "2025-12-23", "2025-12-24", "2025-12-25", "2025-12-26", "2025-12-27", "2025-12-28", "2025-12-29", "2025-12-30", "2025-12-31",
+    "2026-01-15", "2026-01-16", "2026-01-17"
+  ],
+  "motHote": {
+    "intro": "On a ouvert ce gîte avec ma femme en 2008, juste après mes vingt ans de guide en Haute-Savoie.",
+    "paragraphes": [
+      "Ce qu'on cherchait : un endroit qui sente le bois et la pluie qui tombe sur le toit. Une cuisine qui marche en vrai. Une cheminée qui chauffe. Pas de minibar, pas de service à la chambre, pas de smart-tv. Vous montez ici pour le silence, pas pour le confort d'hôtel.",
+      "On accueille 12 personnes maximum, ce qui veut dire qu'on apprend les prénoms. On reçoit beaucoup de randonneurs, mais aussi des familles, des couples qui veulent décrocher, des artistes en résidence. Chacun trouve son rythme.",
+      "Le matin, je propose de vous accompagner sur les sentiers les moins évidents — gratuitement, juste pour le plaisir. Demandez-moi la veille si l'envie vous prend."
+    ],
+    "signature": "— Jean-Marie, Cilaos · 2008–aujourd'hui"
+  },
+  "acces": {
+    "voiture": "Saint-Pierre → Cilaos par la N5. Compter 1h30, route en lacets (400 virages). Dernier carrefour à droite après l'Office de Tourisme.",
+    "transport": "Bus Car Jaune ligne S1 depuis Saint-Pierre · arrêt « Cilaos centre-ville ». 15 min à pied jusqu'au gîte.",
+    "code": "Code d'accès portail communiqué la veille de l'arrivée par SMS.",
+    "parking": "5 places gratuites couvertes."
+  }
+}

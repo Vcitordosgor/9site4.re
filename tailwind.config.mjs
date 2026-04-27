@@ -58,6 +58,9 @@ export default {
     {
       pattern: /^(bg|text|ring|border|from|to|via)-(marlene-nacre|marlene-sable|marlene-rose|marlene-champagne|marlene-bordeaux|marlene-moka|marlene-noir)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
     },
+    {
+      pattern: /^(bg|text|ring|border|from|to|via)-(cap-mousse|cap-terre|cap-pierre|cap-papier|cap-rouge|cap-glacier|cap-charbon)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
+    },
   ],
   theme: {
     extend: {
@@ -224,6 +227,17 @@ export default {
         'marlene-bordeaux':  '#7E2A3C',  // bordeaux satiné — accent CTA
         'marlene-moka':      '#5C3B30',  // brun moka — texte secondaire
         'marlene-noir':      '#1A1213',  // noir warm — texte AAA
+        // Palette gîte de montagne (template /templates/gite — Le Cap Anglais)
+        // Style "carnet de voyage / topo-guide d'altitude" : vert mousse alpine
+        // + brun terre + crème papier + rouge alerte balisage. Distinct des
+        // palettes feutrées (boutique chic) ou saturées (POP food).
+        'cap-mousse':  '#3D5840',  // vert mousse alpine — accent dominant
+        'cap-terre':   '#6B4F3B',  // brun terre — texte secondaire
+        'cap-pierre':  '#8A8B85',  // gris pierre — neutre froid
+        'cap-papier':  '#F1EBDB',  // crème papier ancien — fond
+        'cap-rouge':   '#C03A2C',  // rouge alerte balisage — accents rares
+        'cap-glacier': '#5A8FA8',  // bleu glacier — accent froid
+        'cap-charbon': '#1B1B17',  // noir charbon — texte AAA
       },
       fontFamily: {
         sora: ['Sora', 'system-ui', 'sans-serif'],
@@ -265,6 +279,8 @@ export default {
         marcellus: ['Marcellus', 'Trajan', 'Georgia', 'serif'],
         mulish: ['Mulish', 'system-ui', 'sans-serif'],
         'eb-garamond': ['"EB Garamond"', 'Garamond', 'Georgia', 'serif'],
+        bricolage: ['"Bricolage Grotesque"', 'system-ui', 'sans-serif'],
+        'crimson-pro': ['"Crimson Pro"', 'Georgia', 'serif'],
       },
       fontSize: {
         'hero': ['clamp(2.5rem, 5vw + 1rem, 5rem)', { lineHeight: '1.05', letterSpacing: '-0.02em' }],

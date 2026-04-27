@@ -43,7 +43,8 @@ type PageKey =
   | 'templateDieteticienne'
   | 'templatePsy'
   | 'templateBarJus'
-  | 'templateInstitut';
+  | 'templateInstitut'
+  | 'templateGite';
 
 const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'> & { noindex?: boolean; ogImage?: string; ogImageAlt?: string }> = {
   home: {
@@ -191,6 +192,13 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
     description:
       'Aperçu du template "Institut de beauté" proposé par 9site4 : carte des soins, rituel signature, marques partenaires, cartes cadeaux et réservation. Site fictif de démonstration.',
     canonical: '/templates/institut',
+    noindex: true,
+  },
+  templateGite: {
+    title: 'Le Cap Anglais — Gîte de cirque à Cilaos (Réunion) | Template 9site4',
+    description:
+      'Aperçu du template "Gîte de montagne" proposé par 9site4 : fiche gîte, chambres, calendrier de disponibilités, randonnées et réservation en ligne. Site fictif de démonstration.',
+    canonical: '/templates/gite',
     noindex: true,
   },
 };
