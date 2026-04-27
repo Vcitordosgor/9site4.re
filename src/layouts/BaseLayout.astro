@@ -89,6 +89,9 @@ const schemaOrg = {
 
     <!-- Slot pour préchargements / hints page-spécifiques (preconnect, preload, etc.) -->
     <slot name="head" />
+
+    <!-- Build marker (debug) — permet d'identifier la version déployée -->
+    <meta name="build-id" content={`9site4-${new Date().toISOString().slice(0, 19)}-24templates-thumbnails`} />
   </head>
   <body class="flex flex-col min-h-dvh">
     {!bare && <Header />}
