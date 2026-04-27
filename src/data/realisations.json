@@ -93,7 +93,8 @@
     "categorie": "sante",
     "sousTitre": "Approche, consultations et rendez-vous en ligne",
     "moduleInclus": "Rendez-vous",
-    "slug": "dieteticienne"
+    "slug": "dieteticienne",
+    "previewUrl": "/templates/dieteticienne"
   },
   {
     "id": 12,
