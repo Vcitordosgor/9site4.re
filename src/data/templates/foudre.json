@@ -1,0 +1,166 @@
+{
+  "info": {
+    "nom": "Foudre Coaching",
+    "wordmark": "FOUDRE",
+    "coach": "Marius Tanis",
+    "tagline": "Ton corps mérite mieux que des excuses.",
+    "description": "Coach sportif certifié à Saint-Pierre. À domicile, sur la plage, ou en salle partenaire. On commence quand tu veux.",
+    "ville": "Saint-Pierre 974",
+    "telephone": "0692 12 34 56",
+    "telephoneHref": "+33692123456",
+    "whatsapp": "33692123456",
+    "email": "marius@foudre-coaching.re",
+    "instagram": "@foudre.coaching",
+    "siret": "78901234500017",
+    "annee": "2019",
+    "certification": "BPJEPS APT · CQP ALS",
+    "photoHero": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200&q=85"
+  },
+  "stats": [
+    { "valeur": "184", "label": "clients suivis" },
+    { "valeur": "1.2T", "label": "kg soulevés / an" },
+    { "valeur": "6", "label": "ans coach" }
+  ],
+  "objectifs": [
+    { "id": "perte", "label": "Perdre du poids" },
+    { "id": "muscle", "label": "Prendre du muscle" },
+    { "id": "endurance", "label": "Courir 10 km" },
+    { "id": "postnatal", "label": "Post-grossesse" },
+    { "id": "confiance", "label": "Retrouver confiance" },
+    { "id": "performance", "label": "Aller plus loin" }
+  ],
+  "programmes": [
+    {
+      "id": "discovery",
+      "nom": "DISCOVERY",
+      "duree": "60 min",
+      "intensite": 1,
+      "lieu": "À domicile",
+      "description": "Bilan, posture, premières bases. Pour démarrer sans se cramer.",
+      "prix": "45 €",
+      "frequence": "/ séance"
+    },
+    {
+      "id": "push",
+      "nom": "PUSH",
+      "duree": "75 min",
+      "intensite": 2,
+      "lieu": "Plage ou salle",
+      "description": "Cardio + renfo. Le programme le plus demandé. Tu transpires, tu progresses.",
+      "prix": "55 €",
+      "frequence": "/ séance"
+    },
+    {
+      "id": "forge",
+      "nom": "FORGE",
+      "duree": "90 min",
+      "intensite": 3,
+      "lieu": "Salle partenaire",
+      "description": "Charges lourdes, technique, prise de muscle. Pour ceux qui ont déjà des bases.",
+      "prix": "65 €",
+      "frequence": "/ séance"
+    },
+    {
+      "id": "sniper",
+      "nom": "SNIPER",
+      "duree": "45 min",
+      "intensite": 2,
+      "lieu": "N'importe où",
+      "description": "Express midi. Format court, intense, pour les agendas chargés.",
+      "prix": "35 €",
+      "frequence": "/ séance"
+    }
+  ],
+  "transformations": [
+    {
+      "prenom": "Sarah",
+      "age": 34,
+      "duree": "4 mois",
+      "chiffre": "−12 kg",
+      "citation": "J'avais essayé 10 régimes. Là enfin, ça tient. Marius pousse mais sans casser."
+    },
+    {
+      "prenom": "Kevin",
+      "age": 28,
+      "duree": "6 mois",
+      "chiffre": "+8 kg muscle",
+      "citation": "On bosse en salle, programme béton. Mes potes me reconnaissent plus."
+    },
+    {
+      "prenom": "Emilie",
+      "age": 41,
+      "duree": "3 mois",
+      "chiffre": "10 km couru",
+      "citation": "Mon objectif c'était finir un 10K. C'est fait. Bientôt le semi."
+    },
+    {
+      "prenom": "Yoann",
+      "age": 52,
+      "duree": "5 mois",
+      "chiffre": "−9 kg",
+      "citation": "À 50 ans on me disait c'est trop tard. Faux. J'ai jamais été aussi en forme."
+    }
+  ],
+  "tarifs": [
+    {
+      "label": "Séance unique",
+      "prix": "55",
+      "frequence": "€",
+      "description": "Pour tester ou venir ponctuellement.",
+      "avantages": [
+        "1 séance au choix",
+        "Programme adapté à ton niveau",
+        "Bilan post-séance"
+      ],
+      "populaire": false
+    },
+    {
+      "label": "Pack 10",
+      "prix": "490",
+      "frequence": "€",
+      "description": "Le sweet spot. La majorité de mes clients.",
+      "avantages": [
+        "10 séances PUSH ou FORGE",
+        "Économie de 60 €",
+        "Programme nutrition offert",
+        "Suivi WhatsApp entre séances"
+      ],
+      "populaire": true
+    },
+    {
+      "label": "Mensuel illimité",
+      "prix": "390",
+      "frequence": "€ / mois",
+      "description": "Pour les sérieux qui veulent du résultat rapide.",
+      "avantages": [
+        "Séances illimitées (4 / semaine max)",
+        "Plan nutrition + suivi",
+        "Accès groupe WhatsApp privé",
+        "Engagement 3 mois minimum"
+      ],
+      "populaire": false
+    }
+  ],
+  "lieux": [
+    {
+      "id": "domicile",
+      "nom": "À domicile",
+      "description": "Je viens chez toi avec mon matériel. Idéal pour démarrer ou si tu n'as pas le temps."
+    },
+    {
+      "id": "exterieur",
+      "nom": "Plage / extérieur",
+      "description": "Saint-Pierre, Ravine Blanche, Étang-Salé. Au lever du jour de préférence."
+    },
+    {
+      "id": "salle",
+      "nom": "Salle partenaire",
+      "description": "Pour le programme FORGE. Salle équipée à Saint-Pierre, accès libre les jours de séance."
+    }
+  ],
+  "planning": [
+    { "jour": "Lun – Ven", "label": "06h – 20h", "ouvert": true },
+    { "jour": "Samedi", "label": "07h – 13h", "ouvert": true },
+    { "jour": "Dimanche", "label": "Repos", "ouvert": false }
+  ]
+}

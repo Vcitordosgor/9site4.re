@@ -34,6 +34,9 @@ export default {
     {
       pattern: /^(bg|text|ring|border|from|to|via)-(volta-noir|volta-acier|volta-fumee|volta-blanc|volta-cyan|volta-cyan-fonce|volta-cuivre)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
     },
+    {
+      pattern: /^(bg|text|ring|border|from|to|via)-(coach-noir|coach-charbon|coach-graphite|coach-gris|coach-blanc|coach-lime|coach-lime-fonce)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
+    },
   ],
   theme: {
     extend: {
@@ -117,6 +120,16 @@ export default {
         'volta-cyan':       '#06D4F5',  // cyan électrique — accent CTA, icônes (AAA on dark)
         'volta-cyan-fonce': '#06A8C2',  // cyan foncé — hover, filets
         'volta-cuivre':     '#C26E2C',  // cuivre chaud — micro-accents décoratifs
+        // Palette coach sportif (template /templates/coach — Foudre Coaching)
+        // Style "Brutalist athletic" : noir profond + lime électrique saturé.
+        // Distinct des palettes feutrées (resto bleu roi, paysagiste violet, electricien cyan).
+        'coach-noir':       '#0A0A0A',  // noir profond — fond dominant
+        'coach-charbon':    '#141414',  // sections alternées
+        'coach-graphite':   '#1F1F1F',  // surfaces, cards, élévation
+        'coach-gris':       '#6E6E6E',  // texte secondaire AAA
+        'coach-blanc':      '#F5F5F5',  // texte primaire
+        'coach-lime':       '#C6FF3A',  // lime saturé — accent CTA, stats, badges
+        'coach-lime-fonce': '#8FBA00',  // hover lime
       },
       fontFamily: {
         sora: ['Sora', 'system-ui', 'sans-serif'],
@@ -134,6 +147,9 @@ export default {
         outfit: ['Outfit', 'system-ui', 'sans-serif'],
         syne: ['Syne', 'system-ui', 'sans-serif'],
         'space-grotesk': ['"Space Grotesk"', 'system-ui', 'sans-serif'],
+        'big-shoulders': ['"Big Shoulders Display"', 'Impact', 'sans-serif'],
+        barlow: ['Barlow', 'system-ui', 'sans-serif'],
+        'jetbrains': ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
       fontSize: {
         'hero': ['clamp(2.5rem, 5vw + 1rem, 5rem)', { lineHeight: '1.05', letterSpacing: '-0.02em' }],
