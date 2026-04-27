@@ -1,0 +1,45 @@
+---
+import data from '../../../data/templates/sentiers.json';
+---
+
+<header
+  id="sentiers-header"
+  data-scrolled="false"
+  class="fixed top-0 inset-x-0 z-50 transition-all duration-500 data-[scrolled=false]:bg-transparent data-[scrolled=true]:bg-sentiers-foret/95 data-[scrolled=true]:backdrop-blur-sm"
+>
+  <div class="max-w-content mx-auto px-6 md:px-10 h-16 flex items-center justify-between">
+
+    <!-- Wordmark : Familjen + sticker lichen -->
+    <a href="#top" class="flex items-baseline gap-2 group" aria-label="Sentiers Croisés — accueil">
+      <span class="font-familjen font-medium text-sentiers-brume text-lg leading-none tracking-tight group-hover:text-sentiers-soleil transition-colors">
+        {data.info.wordmark}
+      </span>
+      <span class="text-sentiers-lichen text-xs leading-none" aria-hidden="true">▲</span>
+    </a>
+
+    <!-- Nav -->
+    <nav class="hidden md:flex items-center gap-7 font-familjen text-[13px] text-sentiers-brume/75" aria-label="Navigation">
+      <a href="#guide" class="hover:text-sentiers-soleil transition-colors">Le guide</a>
+      <a href="#sorties" class="hover:text-sentiers-soleil transition-colors">Sorties</a>
+      <a href="#dates" class="hover:text-sentiers-soleil transition-colors">Prochaines dates</a>
+      <a href="#galerie" class="hover:text-sentiers-soleil transition-colors">Galerie</a>
+    </nav>
+
+    <!-- CTA terre cuite -->
+    <a
+      href="#reservation"
+      class="inline-flex items-center h-9 px-4 bg-sentiers-terre text-sentiers-brume font-familjen text-[13px] font-medium hover:bg-sentiers-soleil hover:text-sentiers-foret transition-colors"
+    >
+      Réserver
+    </a>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById('sentiers-header');
+  if (header) {
+    const update = () => { header.dataset.scrolled = String(window.scrollY > 60); };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+  }
+</script>

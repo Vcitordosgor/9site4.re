@@ -1,0 +1,82 @@
+---
+import '@fontsource/familjen-grotesk/400.css';
+import '@fontsource/familjen-grotesk/500.css';
+import '@fontsource/familjen-grotesk/600.css';
+import '@fontsource/familjen-grotesk/700.css';
+import '@fontsource/tinos/400.css';
+import '@fontsource/tinos/700.css';
+import '@fontsource/tinos/400-italic.css';
+import '@fontsource/tinos/700-italic.css';
+import '@fontsource/roboto-mono/400.css';
+import '@fontsource/roboto-mono/500.css';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getSeo } from '../../lib/seo';
+import sentiersData from '../../data/templates/sentiers.json';
+
+import SentiersHeader from '../../components/templates/excursions/SentiersHeader.astro';
+import HeroCarrousel from '../../components/templates/excursions/HeroCarrousel.astro';
+import LeGuide from '../../components/templates/excursions/LeGuide.astro';
+import Sorties from '../../components/templates/excursions/Sorties.astro';
+import CalendrierProchaines from '../../components/templates/excursions/CalendrierProchaines.astro';
+import Temoignages from '../../components/templates/excursions/Temoignages.astro';
+import Galerie from '../../components/templates/excursions/Galerie.astro';
+import Reservation from '../../components/templates/excursions/Reservation.astro';
+import CTAFinal from '../../components/templates/excursions/CTAFinal.astro';
+import SentiersFooter from '../../components/templates/excursions/SentiersFooter.astro';
+---
+
+<BaseLayout seo={getSeo('templateExcursions')} bare={true}>
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <link rel="dns-prefetch" href="https://images.unsplash.com" />
+    <link
+      rel="preload"
+      as="image"
+      href={sentiersData.carrousel[0].src}
+      fetchpriority="high"
+    />
+  </Fragment>
+
+  <SentiersHeader />
+
+  <main id="top" class="bg-sentiers-foret text-sentiers-brume font-familjen">
+    <HeroCarrousel />
+    <LeGuide />
+    <Sorties />
+    <CalendrierProchaines />
+    <Temoignages />
+    <Galerie />
+    <Reservation />
+    <CTAFinal />
+  </main>
+
+  <SentiersFooter />
+
+  <!-- Sticky CTA mobile : pill terre cuite -->
+  <a
+    id="sentiers-sticky-cta"
+    href="#reservation"
+    data-visible="false"
+    class="md:hidden fixed bottom-5 inset-x-5 z-40 inline-flex items-center justify-center h-13 bg-sentiers-terre text-sentiers-brume font-familjen font-medium text-sm transition-all duration-300 data-[visible=false]:opacity-0 data-[visible=false]:translate-y-4 data-[visible=false]:pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0"
+    style="height: 52px; box-shadow: 0 12px 28px rgba(184,90,61,0.40);"
+  >
+    Réserver une sortie →
+  </a>
+
+  <script>
+    const sticky = document.getElementById('sentiers-sticky-cta');
+    const reservation = document.getElementById('reservation');
+    if (sticky && reservation) {
+      const update = () => {
+        const rect = reservation.getBoundingClientRect();
+        const inSection = rect.top < window.innerHeight && rect.bottom > 80;
+        const scrolledPastHero = window.scrollY > 600;
+        sticky.dataset.visible = String(scrolledPastHero && !inSection);
+      };
+      update();
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update, { passive: true });
+    }
+  </script>
+</BaseLayout>

@@ -1,0 +1,146 @@
+---
+/**
+ * Sorties — 6 cards verticales avec photo paysage + nom + données rando + niveau.
+ * Filtrable par niveau (chips actifs en haut). Click sur une card → form pré-rempli.
+ */
+import data from '../../../data/templates/sentiers.json';
+---
+
+<section id="sorties" class="bg-sentiers-brume py-24 md:py-36 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="mb-12 md:mb-16 max-w-2xl">
+      <p class="font-roboto-mono text-[10px] uppercase tracking-[0.32em] text-sentiers-terre mb-4">
+        ▲ Les sorties
+      </p>
+      <h2 class="font-tinos italic text-sentiers-foret leading-[1.05]" style="font-size: clamp(36px, 5.5vw, 64px);">
+        Six itinéraires<br/>
+        <span class="not-italic font-familjen font-medium text-sentiers-terre">pour vous lancer.</span>
+      </h2>
+    </header>
+
+    <!-- Filtres niveau (chips) -->
+    <div class="flex flex-wrap items-center gap-2 mb-10">
+      <span class="font-roboto-mono text-[10px] uppercase tracking-[0.22em] text-sentiers-foret/65 mr-2">
+        Filtrer par niveau →
+      </span>
+      {[
+        { val: 'all', label: 'Tous' },
+        { val: '2', label: 'Facile (2)' },
+        { val: '3', label: 'Soutenu (3)' },
+        { val: '4', label: 'Sportif (4)' },
+      ].map((f, i) => (
+        <button
+          type="button"
+          data-filter={f.val}
+          class:list={[
+            'filter-chip inline-flex items-center h-9 px-4 font-familjen text-[13px] font-medium border transition-colors',
+            i === 0 ? 'bg-sentiers-foret text-sentiers-brume border-sentiers-foret active' : 'bg-transparent text-sentiers-foret border-sentiers-foret/25 hover:border-sentiers-foret',
+          ]}
+        >
+          {f.label}
+        </button>
+      ))}
+    </div>
+
+    <!-- Grid sorties -->
+    <ul id="sorties-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+      {data.sorties.map((s) => (
+        <li data-niveau={s.niveau} class="sortie-item">
+          <article class="group h-full bg-sentiers-foret text-sentiers-brume overflow-hidden transition-transform duration-500 hover:-translate-y-1">
+            <!-- Photo -->
+            <div class="relative aspect-[5/4] overflow-hidden bg-sentiers-noir">
+              <img
+                src={s.photo}
+                alt={`${s.nom} — randonnée`}
+                loading="lazy"
+                decoding="async"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-sentiers-foret/80 to-transparent"></div>
+
+              <!-- Lieu en haut -->
+              <span class="absolute top-3 left-3 inline-flex items-center bg-sentiers-foret/85 text-sentiers-soleil px-3 py-1.5 font-roboto-mono text-[10px] uppercase tracking-[0.22em]">
+                ▲ {s.lieu}
+              </span>
+              <!-- Prix en haut droite -->
+              <span class="absolute top-3 right-3 inline-flex items-center bg-sentiers-terre text-sentiers-brume px-3 py-1.5 font-familjen font-bold text-base tabular-nums">
+                {s.prix}
+              </span>
+            </div>
+
+            <!-- Contenu -->
+            <div class="p-6">
+              <h3 class="font-tinos italic text-sentiers-brume leading-tight" style="font-size: clamp(22px, 2.5vw, 30px);">
+                {s.nom}
+              </h3>
+
+              <p class="mt-3 font-familjen text-sentiers-brume/65 text-sm leading-relaxed mb-4">
+                {s.description}
+              </p>
+
+              <!-- Data viz inline -->
+              <div class="flex items-center gap-4 pt-4 border-t border-sentiers-brume/15 font-roboto-mono text-[11px] uppercase tracking-wider">
+                <span class="text-sentiers-soleil tabular-nums">{s.duree}</span>
+                <span class="text-sentiers-brume/40">·</span>
+                <span class="text-sentiers-brume/85 tabular-nums">{s.denivele}</span>
+                <span class="text-sentiers-brume/40">·</span>
+                <span class="flex gap-0.5" aria-label={`Niveau ${s.niveau} sur 4`}>
+                  {[1, 2, 3, 4].map((n) => (
+                    <span class:list={['block w-2 h-3', n <= s.niveau ? 'bg-sentiers-terre' : 'bg-sentiers-brume/15']}></span>
+                  ))}
+                </span>
+              </div>
+
+              <a href="#reservation" data-sortie-id={s.id} class="sortie-cta mt-5 inline-flex items-center gap-2 font-familjen font-medium text-sentiers-soleil text-sm uppercase tracking-wider hover:text-sentiers-terre transition-colors">
+                Réserver cette sortie →
+              </a>
+            </div>
+          </article>
+        </li>
+      ))}
+    </ul>
+
+    <p id="sorties-empty" class="hidden mt-10 text-center font-tinos italic text-sentiers-foret/60 text-base">
+      Aucune sortie à ce niveau pour le moment.
+    </p>
+  </div>
+</section>
+
+<script>
+  const chips = document.querySelectorAll<HTMLElement>('.filter-chip');
+  const items = document.querySelectorAll<HTMLElement>('.sortie-item');
+  const empty = document.getElementById('sorties-empty');
+
+  chips.forEach((chip) => {
+    chip.addEventListener('click', () => {
+      const val = chip.dataset.filter;
+      chips.forEach((c) => {
+        c.classList.remove('bg-sentiers-foret', 'text-sentiers-brume', 'border-sentiers-foret', 'active');
+        c.classList.add('bg-transparent', 'text-sentiers-foret', 'border-sentiers-foret/25');
+      });
+      chip.classList.add('bg-sentiers-foret', 'text-sentiers-brume', 'border-sentiers-foret', 'active');
+      chip.classList.remove('bg-transparent', 'text-sentiers-foret', 'border-sentiers-foret/25');
+
+      let visible = 0;
+      items.forEach((item) => {
+        const niveau = item.dataset.niveau;
+        const show = val === 'all' || niveau === val;
+        item.style.display = show ? '' : 'none';
+        if (show) visible++;
+      });
+      if (empty) empty.classList.toggle('hidden', visible > 0);
+    });
+  });
+
+  // Pré-remplir le form quand on clique sur "Réserver cette sortie"
+  document.querySelectorAll<HTMLElement>('.sortie-cta').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.sortieId;
+      const select = document.getElementById('resa-sortie') as HTMLSelectElement | null;
+      if (select && id) {
+        select.value = id;
+      }
+    });
+  });
+</script>

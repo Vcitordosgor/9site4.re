@@ -1,0 +1,49 @@
+---
+/**
+ * Temoignages — 3 témoignages format Instagram court.
+ */
+import data from '../../../data/templates/sentiers.json';
+---
+
+<section class="bg-sentiers-foret text-sentiers-brume py-24 md:py-32 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="text-center mb-14 md:mb-16 max-w-xl mx-auto">
+      <p class="font-roboto-mono text-[10px] uppercase tracking-[0.32em] text-sentiers-lichen mb-4">
+        ▲ Témoignages
+      </p>
+      <h2 class="font-tinos italic text-sentiers-brume leading-[1.05]" style="font-size: clamp(34px, 5vw, 52px);">
+        Quelques retours.
+      </h2>
+    </header>
+
+    <ul class="grid md:grid-cols-3 gap-5 max-w-5xl mx-auto">
+      {data.temoignages.map((t) => (
+        <li class="bg-sentiers-noir border border-sentiers-brume/10 p-7 md:p-8 flex flex-col">
+
+          <!-- Étoiles -->
+          <div class="flex gap-0.5 mb-5" aria-label="5 étoiles sur 5">
+            {Array.from({ length: 5 }).map(() => (
+              <span class="text-sentiers-soleil text-base" aria-hidden="true">★</span>
+            ))}
+          </div>
+
+          <!-- Citation -->
+          <blockquote class="font-tinos italic text-sentiers-brume text-lg md:text-xl leading-[1.65] mb-6 flex-1">
+            « {t.texte} »
+          </blockquote>
+
+          <!-- Footer -->
+          <footer class="pt-5 border-t border-sentiers-brume/10">
+            <p class="font-familjen font-medium text-sentiers-soleil text-base">
+              — {t.prenom}
+            </p>
+            <p class="mt-1 font-roboto-mono text-[10px] uppercase tracking-[0.22em] text-sentiers-brume/55">
+              Sortie · {t.sortie} · {t.date}
+            </p>
+          </footer>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

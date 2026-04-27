@@ -1,0 +1,78 @@
+---
+/**
+ * LeGuide — présentation Théo + diplômes + 4 stats en bandeau horizontal.
+ */
+import data from '../../../data/templates/sentiers.json';
+---
+
+<section id="guide" class="bg-sentiers-foret text-sentiers-brume py-24 md:py-32 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center mb-16 md:mb-20">
+
+      <!-- Photo guide -->
+      <div class="lg:col-span-5">
+        <div class="relative aspect-[3/4] max-w-md mx-auto overflow-hidden">
+          <img
+            src={data.info.photoGuide}
+            alt={`${data.info.guide}, guide de randonnée`}
+            loading="lazy"
+            decoding="async"
+            class="w-full h-full object-cover"
+          />
+          <!-- Voile lichen léger -->
+          <div class="absolute inset-0 bg-gradient-to-t from-sentiers-foret/70 to-transparent"></div>
+          <!-- Étiquette en bas -->
+          <div class="absolute bottom-4 left-4 right-4">
+            <p class="font-roboto-mono text-[10px] uppercase tracking-[0.28em] text-sentiers-soleil mb-1">
+              Guide ·
+            </p>
+            <p class="font-tinos italic text-sentiers-brume text-3xl leading-tight">
+              {data.info.guide}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Texte présentation + diplômes -->
+      <div class="lg:col-span-7">
+        <p class="font-roboto-mono text-[10px] uppercase tracking-[0.32em] text-sentiers-lichen mb-5">
+          ▲ Le guide
+        </p>
+
+        <h2 class="font-tinos italic text-sentiers-brume leading-[1.05]" style="font-size: clamp(34px, 5vw, 56px);">
+          Né à La Réunion,<br/>
+          <span class="not-italic font-familjen font-medium text-sentiers-soleil">tombé dedans à 14 ans.</span>
+        </h2>
+
+        <p class="mt-7 font-tinos text-sentiers-brume/80 text-lg leading-[1.85] max-w-2xl">
+          Première traversée de Mafate à pied à 14 ans avec mon père. Depuis, je n'ai plus arrêté de marcher. Devenu guide en 2013, j'accompagne aujourd'hui environ 150 personnes par an — des locaux, des familles métropolitaines, des sportifs en quête de défis.
+        </p>
+
+        <!-- Diplômes -->
+        <div class="mt-8 grid sm:grid-cols-2 gap-3">
+          {data.diplomes.map((d) => (
+            <div class="flex items-start gap-3 font-familjen text-sentiers-brume/70 text-sm leading-relaxed">
+              <span class="shrink-0 w-1.5 h-1.5 mt-2 bg-sentiers-lichen" aria-hidden="true"></span>
+              {d}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Bandeau stats -->
+    <ul class="grid grid-cols-2 lg:grid-cols-4 gap-px bg-sentiers-brume/15 border border-sentiers-brume/15">
+      {data.stats.map((s) => (
+        <li class="bg-sentiers-foret p-7 md:p-8">
+          <p class="font-tinos italic text-sentiers-soleil leading-none tabular-nums" style="font-size: clamp(36px, 5vw, 56px);">
+            {s.valeur}
+          </p>
+          <p class="mt-3 font-roboto-mono text-[11px] uppercase tracking-[0.22em] text-sentiers-brume/65 leading-snug">
+            {s.label}
+          </p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,52 @@
+---
+/**
+ * CalendrierProchaines — timeline horizontale des 8 prochaines sorties.
+ * Format défilement avec dates + sortie + places restantes (vert/orange/rouge).
+ */
+import data from '../../../data/templates/sentiers.json';
+---
+
+<section id="dates" class="bg-sentiers-ciel text-sentiers-brume py-24 md:py-32 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="mb-12 md:mb-16 max-w-2xl">
+      <p class="font-roboto-mono text-[10px] uppercase tracking-[0.32em] text-sentiers-soleil mb-4">
+        ▲ Calendrier
+      </p>
+      <h2 class="font-tinos italic text-sentiers-brume leading-[1.05]" style="font-size: clamp(34px, 5vw, 56px);">
+        Les 8 prochaines<br/>
+        <span class="not-italic font-familjen font-medium text-sentiers-soleil">sorties programmées.</span>
+      </h2>
+    </header>
+
+    <div class="overflow-x-auto -mx-6 md:-mx-10 px-6 md:px-10 pb-2" style="scrollbar-width: thin;">
+      <ul class="flex gap-4 min-w-max">
+        {data.prochaines.map((p) => (
+          <li class="w-56 shrink-0">
+            <a
+              href={p.places === 0 ? '#' : '#reservation'}
+              class:list={[
+                'block bg-sentiers-foret/40 backdrop-blur-sm border border-sentiers-brume/15 p-5 h-full transition-colors',
+                p.places === 0 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-sentiers-foret hover:border-sentiers-soleil',
+              ]}
+            >
+              <p class="font-tinos italic text-sentiers-brume text-2xl leading-tight">{p.date}</p>
+              <p class="font-roboto-mono text-[10px] uppercase tracking-[0.22em] text-sentiers-brume/55 mb-4">{p.jour}</p>
+              <p class="font-familjen text-sentiers-brume font-medium text-base leading-tight mb-3">{p.sortie}</p>
+              <div class="flex items-center gap-2 pt-3 border-t border-sentiers-brume/10">
+                <span class:list={['block w-2 h-2 rounded-full', p.places === 0 ? 'bg-sentiers-terre' : p.places <= 3 ? 'bg-sentiers-soleil' : 'bg-sentiers-lichen']}></span>
+                <p class:list={['font-roboto-mono text-[11px] uppercase tracking-[0.18em]', p.places === 0 ? 'text-sentiers-terre' : p.places <= 3 ? 'text-sentiers-soleil' : 'text-sentiers-lichen']}>
+                  {p.places === 0 ? 'Complet' : p.places === 1 ? '1 place' : `${p.places} places`}
+                </p>
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <p class="mt-8 font-roboto-mono text-[11px] uppercase tracking-[0.22em] text-sentiers-brume/65 text-center">
+      ↔ Faites glisser pour voir toutes les dates · de nouvelles sorties chaque semaine
+    </p>
+  </div>
+</section>
