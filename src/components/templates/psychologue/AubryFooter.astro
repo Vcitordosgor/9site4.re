@@ -1,0 +1,48 @@
+---
+import data from '../../../data/templates/aubry.json';
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-aubry-perle text-aubry-encre/65 py-12 px-6 md:px-10 border-t border-aubry-encre/10">
+  <div class="max-w-content mx-auto">
+
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+
+      <!-- Wordmark -->
+      <div>
+        <p class="font-caslon text-aubry-encre text-xl leading-none">
+          {data.info.wordmark}<span class="text-aubry-rose">.</span>
+        </p>
+        <p class="mt-2 font-caslon italic text-aubry-encre/60 text-sm">
+          {data.info.soustitre} · {data.info.ville} · cabinet ouvert depuis {data.info.annee}
+        </p>
+      </div>
+
+      <!-- Contact discret -->
+      <ul class="flex flex-col md:flex-row md:items-center gap-2 md:gap-7 font-caslon text-sm">
+        <li>
+          <a href={`tel:${data.info.telephoneHref}`} class="hover:text-aubry-encre transition-colors tabular-nums">
+            {data.info.telephone}
+          </a>
+        </li>
+        <li class="hidden md:inline-block w-1 h-1 rounded-full bg-aubry-rose" aria-hidden="true"></li>
+        <li>
+          <a href={`mailto:${data.info.email}`} class="hover:text-aubry-encre transition-colors break-all italic">
+            {data.info.email}
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Filet rose -->
+    <div class="h-px mb-6 bg-gradient-to-r from-transparent via-aubry-rose/40 to-transparent" aria-hidden="true"></div>
+
+    <div class="flex flex-col-reverse md:flex-row md:items-center md:justify-between gap-3 font-plex-mono text-[10px] uppercase tracking-[0.28em] text-aubry-encre/50">
+      <p>© {year} Cabinet {data.info.wordmark} · ADELI {data.info.adeli} · SIRET {data.info.siret}</p>
+      <p>
+        Site créé par
+        <a href="/" class="text-aubry-encre/70 hover:text-aubry-encre transition-colors">9site4</a>
+      </p>
+    </div>
+  </div>
+</footer>

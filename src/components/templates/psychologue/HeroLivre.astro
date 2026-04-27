@@ -1,0 +1,100 @@
+---
+/**
+ * HeroLivre — composition typographique inspirée d'une page d'ouvrage.
+ * Pas de photo. Chiffre romain géant + titre serif + paragraphe filé
+ * en justifié avec drop cap. Carte praticienne discrète à droite.
+ */
+import data from '../../../data/templates/aubry.json';
+---
+
+<section id="top" class="relative bg-aubry-perle min-h-[100svh] overflow-hidden">
+
+  <!-- Ornement typographique géant en arrière-plan : esperluette -->
+  <p class="absolute top-1/2 -right-12 md:-right-32 -translate-y-1/2 font-caslon italic text-aubry-rose/15 leading-none select-none pointer-events-none" style="font-size: clamp(280px, 50vw, 720px);" aria-hidden="true">
+    &amp;
+  </p>
+
+  <div class="relative max-w-content mx-auto px-6 md:px-10 pt-32 pb-20 md:pt-40 md:pb-28 min-h-[100svh] flex flex-col">
+
+    <!-- Eyebrow référence livre -->
+    <div class="flex items-baseline justify-between font-plex-mono text-[10px] uppercase tracking-[0.32em] text-aubry-prune mb-12 md:mb-16">
+      <span>Cabinet Aubry — Saint-Denis</span>
+      <span>p. 01</span>
+    </div>
+
+    <!-- Composition principale : grid 12 cols -->
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start flex-1">
+
+      <!-- Colonne gauche : page d'incipit -->
+      <div class="lg:col-span-8">
+        <!-- Chiffre romain géant -->
+        <p class="font-caslon italic text-aubry-prune leading-none mb-6 select-none" style="font-size: clamp(64px, 9vw, 120px);">
+          {data.incipit.chiffre}
+        </p>
+
+        <!-- Titre incipit -->
+        <h1 class="font-caslon text-aubry-encre leading-[1.05] max-w-2xl" style="font-size: clamp(36px, 5.5vw, 72px);">
+          {data.incipit.titre}
+        </h1>
+
+        <!-- Paragraphe filé style livre, justifié, drop cap -->
+        <p class="mt-10 font-caslon text-aubry-encre/85 leading-[1.85] max-w-xl text-justify hyphens-auto first-letter:font-caslon first-letter:text-6xl first-letter:font-bold first-letter:float-left first-letter:mr-3 first-letter:mt-1.5 first-letter:leading-[0.9] first-letter:text-aubry-prune" style="font-size: clamp(15px, 1.3vw, 18px);">
+          {data.incipit.paragraphe}
+        </p>
+
+        <!-- CTAs très discrets -->
+        <div class="mt-14 flex flex-wrap items-baseline gap-x-10 gap-y-4">
+          <a
+            href="#rendez-vous"
+            class="inline-flex items-center h-12 px-7 bg-aubry-encre text-aubry-perle font-albert text-sm font-medium hover:bg-aubry-prune transition-colors duration-500"
+          >
+            Prendre rendez-vous
+          </a>
+          <a
+            href={`tel:${data.info.telephoneHref}`}
+            class="font-caslon italic text-aubry-encre text-base tabular-nums underline underline-offset-[6px] decoration-aubry-rose hover:decoration-aubry-encre"
+          >
+            {data.info.telephone}
+          </a>
+        </div>
+      </div>
+
+      <!-- Colonne droite : carte praticienne style fiche d'éditeur -->
+      <aside class="lg:col-span-4 lg:pl-8 lg:border-l lg:border-aubry-encre/15 lg:pt-2">
+        <p class="font-plex-mono text-[10px] uppercase tracking-[0.32em] text-aubry-prune mb-3">
+          Note de l'auteur
+        </p>
+        <h2 class="font-caslon text-aubry-encre text-2xl md:text-3xl leading-tight mb-2">
+          {data.info.wordmark}<span class="text-aubry-rose">.</span>
+        </h2>
+        <p class="font-caslon italic text-aubry-prune text-base mb-6">
+          {data.info.soustitre}
+        </p>
+
+        <!-- Filet rose -->
+        <span class="block w-12 h-px bg-aubry-rose mb-6" aria-hidden="true"></span>
+
+        <!-- Diplômes -->
+        <ul class="space-y-2 mb-7">
+          {data.diplomes.map((d) => (
+            <li class="font-albert text-aubry-encre/75 text-[13px] leading-[1.6] pl-4 relative">
+              <span class="absolute left-0 top-2 block w-2 h-px bg-aubry-encre/40" aria-hidden="true"></span>
+              {d}
+            </li>
+          ))}
+        </ul>
+
+        <!-- ADELI -->
+        <p class="pt-5 border-t border-aubry-encre/10 font-plex-mono text-[10px] uppercase tracking-[0.28em] text-aubry-prune">
+          ADELI {data.info.adeli}
+        </p>
+      </aside>
+    </div>
+
+    <!-- Pied de page hero : pagination livre -->
+    <div class="mt-20 pt-6 border-t border-aubry-encre/15 flex items-baseline justify-between font-plex-mono text-[10px] uppercase tracking-[0.32em] text-aubry-encre/55">
+      <span>Cabinet ouvert depuis {data.info.annee}</span>
+      <span>↓ Continuer</span>
+    </div>
+  </div>
+</section>

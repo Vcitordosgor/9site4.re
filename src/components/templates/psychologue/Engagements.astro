@@ -1,0 +1,49 @@
+---
+/**
+ * Engagements — 4 citations encadrées verticales en format épigraphes.
+ * Chaque engagement = guillemet ouvrant + titre serif + texte court.
+ */
+import data from '../../../data/templates/aubry.json';
+---
+
+<section id="cadre" class="bg-aubry-perle py-24 md:py-36 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="mb-16 md:mb-20 max-w-3xl">
+      <p class="font-plex-mono text-[10px] uppercase tracking-[0.32em] text-aubry-prune mb-5">
+        Chapitre III — Cadre déontologique
+      </p>
+      <h2 class="font-caslon text-aubry-encre leading-[1.05]" style="font-size: clamp(36px, 5vw, 60px);">
+        Quatre engagements<span class="italic text-aubry-prune"> qui tiennent.</span>
+      </h2>
+    </header>
+
+    <!-- Grid 2x2 d'épigraphes -->
+    <ul class="grid md:grid-cols-2 gap-px bg-aubry-encre/10 border border-aubry-encre/10">
+      {data.engagements.map((e, i) => (
+        <li class="bg-aubry-perle p-8 md:p-10 relative">
+
+          <!-- Guillemet ouvrant géant en arrière-plan -->
+          <span class="absolute top-3 right-6 font-caslon italic text-aubry-rose/40 leading-none select-none" style="font-size: clamp(80px, 10vw, 140px);" aria-hidden="true">
+            "
+          </span>
+
+          <!-- Numéro -->
+          <p class="font-plex-mono text-[10px] uppercase tracking-[0.32em] text-aubry-prune mb-5 relative">
+            § {String(i + 1).padStart(2, '0')}
+          </p>
+
+          <!-- Titre engagement -->
+          <h3 class="font-caslon text-aubry-encre text-2xl md:text-3xl leading-tight mb-5 relative">
+            {e.titre}<span class="text-aubry-rose">.</span>
+          </h3>
+
+          <!-- Texte -->
+          <p class="font-albert text-aubry-encre/75 text-[15px] leading-[1.8] relative">
+            {e.texte}
+          </p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

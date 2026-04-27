@@ -1,0 +1,49 @@
+---
+/**
+ * Publics — liste verticale ouverte. Chaque ligne = titre serif + 2 phrases sans.
+ * PAS de cards. Hairlines de séparation. Format index/sommaire de livre.
+ */
+import data from '../../../data/templates/aubry.json';
+---
+
+<section id="publics" class="bg-aubry-perle py-24 md:py-36 px-6 md:px-10">
+  <div class="max-w-4xl mx-auto">
+
+    <!-- Header chapitre -->
+    <header class="mb-16 md:mb-20">
+      <p class="font-plex-mono text-[10px] uppercase tracking-[0.32em] text-aubry-prune mb-5">
+        Chapitre I — Pour qui je consulte
+      </p>
+      <h2 class="font-caslon text-aubry-encre leading-[1.05]" style="font-size: clamp(36px, 5vw, 60px);">
+        Six raisons<span class="italic text-aubry-prune"> de venir.</span>
+      </h2>
+    </header>
+
+    <!-- Liste verticale -->
+    <ul class="border-t border-aubry-encre/15">
+      {data.publics.map((p, i) => (
+        <li class="grid grid-cols-12 gap-4 md:gap-8 py-8 md:py-10 border-b border-aubry-encre/15 group">
+
+          <!-- Numérotation chiffre romain à gauche -->
+          <span class="col-span-2 md:col-span-1 font-caslon italic text-aubry-rose text-2xl md:text-3xl tabular-nums leading-none pt-1 select-none">
+            {String(i + 1).padStart(2, '0')}
+          </span>
+
+          <!-- Titre + description -->
+          <div class="col-span-10 md:col-span-11">
+            <h3 class="font-caslon text-aubry-encre leading-tight group-hover:text-aubry-prune transition-colors duration-500" style="font-size: clamp(24px, 3vw, 36px);">
+              {p.titre}
+            </h3>
+            <p class="mt-3 font-albert text-aubry-encre/75 text-base md:text-lg leading-[1.75] max-w-2xl">
+              {p.description}
+            </p>
+          </div>
+        </li>
+      ))}
+    </ul>
+
+    <p class="mt-10 font-caslon italic text-aubry-encre/60 text-base leading-relaxed">
+      Cette liste n'est pas exhaustive. Si votre situation n'y figure pas, appelez — on verra ensemble si je peux vous accompagner ou vous orienter.
+    </p>
+  </div>
+</section>

@@ -1,0 +1,39 @@
+---
+/**
+ * Approche — texte rédigé en colonnes journal multi-column CSS.
+ * Chapeau italique en intro, puis texte filé en justifié serif.
+ * Format article de revue scientifique vulgarisé.
+ */
+import data from '../../../data/templates/aubry.json';
+---
+
+<section id="approche" class="bg-aubry-papier py-24 md:py-36 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="mb-14 md:mb-20 max-w-3xl">
+      <p class="font-plex-mono text-[10px] uppercase tracking-[0.32em] text-aubry-prune mb-5">
+        Chapitre II — Approche
+      </p>
+      <h2 class="font-caslon text-aubry-encre leading-[1.05]" style="font-size: clamp(36px, 5vw, 60px);">
+        Une orientation<span class="italic text-aubry-prune"> intégrative.</span>
+      </h2>
+    </header>
+
+    <!-- Chapeau italique pleine largeur -->
+    <p class="font-caslon italic text-aubry-encre text-xl md:text-2xl leading-[1.65] mb-12 md:mb-16 max-w-4xl pl-6 border-l-2 border-aubry-rose">
+      {data.approche.chapeau}
+    </p>
+
+    <!-- Texte en colonnes journal -->
+    <div class="font-caslon text-aubry-encre/85 text-justify hyphens-auto leading-[1.85] md:columns-2 lg:columns-3 gap-10 md:gap-12 [&>p]:mb-6 [&>p:first-child]:first-letter:font-caslon [&>p:first-child]:first-letter:text-5xl [&>p:first-child]:first-letter:font-bold [&>p:first-child]:first-letter:float-left [&>p:first-child]:first-letter:mr-2 [&>p:first-child]:first-letter:mt-1 [&>p:first-child]:first-letter:leading-[0.9] [&>p:first-child]:first-letter:text-aubry-prune" style="font-size: 16px;">
+      {data.approche.paragraphes.map((p) => (
+        <p>{p}</p>
+      ))}
+    </div>
+
+    <!-- Signature en pied -->
+    <p class="mt-12 font-caslon italic text-aubry-prune text-base text-right">
+      — C. A.
+    </p>
+  </div>
+</section>

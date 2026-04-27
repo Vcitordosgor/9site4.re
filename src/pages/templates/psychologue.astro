@@ -1,0 +1,75 @@
+---
+import '@fontsource/libre-caslon-text/400.css';
+import '@fontsource/libre-caslon-text/400-italic.css';
+import '@fontsource/libre-caslon-text/700.css';
+import '@fontsource/albert-sans/300.css';
+import '@fontsource/albert-sans/400.css';
+import '@fontsource/albert-sans/500.css';
+import '@fontsource/albert-sans/600.css';
+import '@fontsource/albert-sans/400-italic.css';
+import '@fontsource/ibm-plex-mono/400.css';
+import '@fontsource/ibm-plex-mono/500.css';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getSeo } from '../../lib/seo';
+
+import AubryHeader from '../../components/templates/psychologue/AubryHeader.astro';
+import HeroLivre from '../../components/templates/psychologue/HeroLivre.astro';
+import Publics from '../../components/templates/psychologue/Publics.astro';
+import Approche from '../../components/templates/psychologue/Approche.astro';
+import Engagements from '../../components/templates/psychologue/Engagements.astro';
+import Tarifs from '../../components/templates/psychologue/Tarifs.astro';
+import PremiereSession from '../../components/templates/psychologue/PremiereSession.astro';
+import Lectures from '../../components/templates/psychologue/Lectures.astro';
+import RendezVous from '../../components/templates/psychologue/RendezVous.astro';
+import Adresse from '../../components/templates/psychologue/Adresse.astro';
+import CTAFinal from '../../components/templates/psychologue/CTAFinal.astro';
+import AubryFooter from '../../components/templates/psychologue/AubryFooter.astro';
+---
+
+<BaseLayout seo={getSeo('templatePsy')} bare={true}>
+
+  <AubryHeader />
+
+  <main id="top" class="bg-aubry-perle text-aubry-encre font-albert">
+    <HeroLivre />
+    <Publics />
+    <Approche />
+    <Engagements />
+    <Tarifs />
+    <PremiereSession />
+    <Lectures />
+    <RendezVous />
+    <Adresse />
+    <CTAFinal />
+  </main>
+
+  <AubryFooter />
+
+  <!-- Sticky CTA mobile : très discret, juste un lien souligné serif -->
+  <a
+    id="aubry-sticky-cta"
+    href="#rendez-vous"
+    data-visible="false"
+    class="md:hidden fixed bottom-5 inset-x-5 z-40 inline-flex items-center justify-center h-12 bg-aubry-encre text-aubry-perle font-albert text-[13px] font-medium transition-all duration-500 data-[visible=false]:opacity-0 data-[visible=false]:translate-y-4 data-[visible=false]:pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0"
+    style="box-shadow: 0 8px 24px rgba(15,15,18,0.18);"
+  >
+    Prendre rendez-vous
+  </a>
+
+  <script>
+    const sticky = document.getElementById('aubry-sticky-cta');
+    const rdv = document.getElementById('rendez-vous');
+    if (sticky && rdv) {
+      const update = () => {
+        const rect = rdv.getBoundingClientRect();
+        const inRdv = rect.top < window.innerHeight && rect.bottom > 80;
+        const scrolledPastHero = window.scrollY > 600;
+        sticky.dataset.visible = String(scrolledPastHero && !inRdv);
+      };
+      update();
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update, { passive: true });
+    }
+  </script>
+</BaseLayout>

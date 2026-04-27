@@ -1,0 +1,56 @@
+---
+/**
+ * Lectures — bibliographie 4 livres en format référence éditoriale.
+ * Auteur en small caps + titre italique + éditeur + année + note brève.
+ * Format unique inédit dans tous les templates.
+ */
+import data from '../../../data/templates/aubry.json';
+---
+
+<section class="bg-aubry-papier py-24 md:py-36 px-6 md:px-10">
+  <div class="max-w-3xl mx-auto">
+
+    <header class="mb-16">
+      <p class="font-plex-mono text-[10px] uppercase tracking-[0.32em] text-aubry-prune mb-5">
+        Annexe — Lectures conseillées
+      </p>
+      <h2 class="font-caslon text-aubry-encre leading-[1.05]" style="font-size: clamp(34px, 4.5vw, 52px);">
+        Quelques livres<span class="italic text-aubry-prune"> à emporter.</span>
+      </h2>
+      <p class="mt-5 font-caslon italic text-aubry-encre/65 text-base md:text-lg leading-relaxed">
+        Sans aucune obligation, ni prescription. Juste des textes qui m'ont aidée — et qui aident souvent celles et ceux que j'accompagne.
+      </p>
+    </header>
+
+    <!-- Bibliographie -->
+    <ul class="space-y-10 border-t border-aubry-encre/15 pt-10">
+      {data.lectures.map((l, i) => (
+        <li class="grid grid-cols-12 gap-4 md:gap-8 pb-10 border-b border-aubry-encre/15 last:border-b-0">
+
+          <!-- Numéro biblio -->
+          <span class="col-span-1 font-plex-mono text-[12px] tabular-nums text-aubry-prune pt-1">
+            [{String(i + 1).padStart(2, '0')}]
+          </span>
+
+          <!-- Référence -->
+          <div class="col-span-11">
+            <!-- Auteur en small caps -->
+            <p class="font-albert text-[11px] uppercase tracking-[0.22em] text-aubry-prune mb-2 font-medium">
+              {l.auteur}
+            </p>
+
+            <!-- Titre + éditeur -->
+            <p class="font-caslon text-aubry-encre text-xl md:text-2xl leading-tight mb-2">
+              <em class="italic">{l.titre}</em>, {l.editeur}, {l.annee}.
+            </p>
+
+            <!-- Note brève -->
+            <p class="font-caslon italic text-aubry-encre/65 text-base leading-relaxed max-w-xl">
+              {l.note}
+            </p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

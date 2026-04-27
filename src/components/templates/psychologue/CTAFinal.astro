@@ -1,0 +1,56 @@
+---
+/**
+ * CTAFinal — clôture apaisée, ton philosophique.
+ * Une phrase, une signature, un CTA très discret.
+ */
+import data from '../../../data/templates/aubry.json';
+---
+
+<section class="bg-aubry-papier py-32 md:py-44 px-6 md:px-10 text-center relative overflow-hidden">
+
+  <!-- Pilcrow décoratif -->
+  <p class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-caslon italic text-aubry-rose/15 leading-none select-none pointer-events-none" style="font-size: clamp(280px, 40vw, 600px);" aria-hidden="true">
+    ¶
+  </p>
+
+  <div class="relative max-w-2xl mx-auto">
+
+    <!-- Filet rose ornemental -->
+    <div class="flex items-center justify-center gap-3 mb-10" aria-hidden="true">
+      <span class="block h-px w-16 bg-aubry-rose"></span>
+      <span class="block w-1 h-1 rounded-full bg-aubry-rose"></span>
+      <span class="block h-px w-16 bg-aubry-rose"></span>
+    </div>
+
+    <!-- Citation finale -->
+    <h2 class="font-caslon text-aubry-encre leading-[1.1]" style="font-size: clamp(32px, 5vw, 56px);">
+      <span class="italic">Le travail thérapeutique demande du temps.</span>
+    </h2>
+
+    <p class="mt-4 font-caslon text-aubry-encre leading-[1.1]" style="font-size: clamp(32px, 5vw, 56px);">
+      Le premier pas suffit.
+    </p>
+
+    <!-- Signature -->
+    <p class="mt-12 font-plex-mono text-[10px] uppercase tracking-[0.32em] text-aubry-prune">
+      — {data.info.wordmark}, {data.info.soustitre.toLowerCase()}
+    </p>
+
+    <!-- CTAs -->
+    <div class="mt-14 flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
+      <a
+        href="#rendez-vous"
+        class="inline-flex items-center justify-center h-13 px-9 bg-aubry-encre text-aubry-perle font-albert text-sm font-medium hover:bg-aubry-prune transition-colors duration-500"
+        style="height: 52px;"
+      >
+        Prendre rendez-vous
+      </a>
+      <a
+        href={`tel:${data.info.telephoneHref}`}
+        class="font-caslon italic text-aubry-encre text-base tabular-nums underline underline-offset-[6px] decoration-aubry-rose hover:decoration-aubry-encre"
+      >
+        {data.info.telephone}
+      </a>
+    </div>
+  </div>
+</section>

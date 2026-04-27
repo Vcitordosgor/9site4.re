@@ -1,0 +1,110 @@
+---
+/**
+ * RendezVous — formulaire MINIMAL 3 champs (prénom, tél, motif court).
+ * Style très épuré, max-w-md centré, inputs underline, ton calme.
+ */
+import data from '../../../data/templates/aubry.json';
+const waBase = `https://wa.me/${data.info.whatsapp}`;
+---
+
+<section id="rendez-vous" class="bg-aubry-nuit text-aubry-perle py-24 md:py-36 px-6 md:px-10 relative overflow-hidden">
+
+  <!-- Esperluette en arrière-plan, plus légère -->
+  <p class="absolute -bottom-32 -left-12 font-caslon italic text-aubry-rose/8 leading-none select-none pointer-events-none" style="font-size: clamp(280px, 50vw, 600px);" aria-hidden="true">
+    &amp;
+  </p>
+
+  <div class="relative max-w-2xl mx-auto text-center">
+
+    <p class="font-plex-mono text-[10px] uppercase tracking-[0.32em] text-aubry-rose mb-6">
+      Prendre rendez-vous
+    </p>
+
+    <h2 class="font-caslon text-aubry-perle leading-[1.05]" style="font-size: clamp(36px, 5vw, 64px);">
+      Le premier pas<span class="italic text-aubry-rose"> est toujours possible.</span>
+    </h2>
+
+    <p class="mt-8 font-caslon italic text-aubry-perle/70 text-lg leading-relaxed max-w-md mx-auto">
+      Trois champs, et c'est tout. Le formulaire ouvre WhatsApp avec votre demande. Réponse personnelle dans la journée, sous 24 h maximum.
+    </p>
+
+    <form id="rdv-aubry-form" class="mt-12 space-y-7 text-left" novalidate>
+
+      <div>
+        <label for="rdv-prenom-aubry" class="block font-plex-mono text-[10px] uppercase tracking-[0.28em] text-aubry-rose mb-2">Prénom</label>
+        <input
+          id="rdv-prenom-aubry"
+          name="prenom"
+          type="text"
+          required
+          autocomplete="given-name"
+          class="w-full bg-transparent border-0 border-b border-aubry-perle/30 focus:border-aubry-rose py-3 font-caslon text-aubry-perle text-xl outline-none transition-colors"
+        />
+      </div>
+
+      <div>
+        <label for="rdv-tel-aubry" class="block font-plex-mono text-[10px] uppercase tracking-[0.28em] text-aubry-rose mb-2">Téléphone</label>
+        <input
+          id="rdv-tel-aubry"
+          name="telephone"
+          type="tel"
+          required
+          autocomplete="tel"
+          class="w-full bg-transparent border-0 border-b border-aubry-perle/30 focus:border-aubry-rose py-3 font-caslon text-aubry-perle text-xl outline-none transition-colors tabular-nums"
+        />
+      </div>
+
+      <div>
+        <label for="rdv-motif-aubry" class="block font-plex-mono text-[10px] uppercase tracking-[0.28em] text-aubry-rose mb-2">En une ligne — ce qui vous amène <span class="lowercase italic text-aubry-perle/45 normal-case">(facultatif)</span></label>
+        <input
+          id="rdv-motif-aubry"
+          name="motif"
+          type="text"
+          class="w-full bg-transparent border-0 border-b border-aubry-perle/30 focus:border-aubry-rose py-3 font-caslon text-aubry-perle text-xl outline-none transition-colors"
+        />
+      </div>
+
+      <!-- Submit -->
+      <div class="pt-6 text-center">
+        <button
+          type="submit"
+          class="inline-flex items-center justify-center h-13 px-9 bg-aubry-rose text-aubry-encre font-albert text-sm font-medium hover:bg-aubry-perle transition-colors duration-500"
+          style="height: 52px;"
+        >
+          Envoyer ma demande
+        </button>
+        <p class="mt-5 font-caslon italic text-aubry-perle/55 text-sm">
+          Ou par téléphone :
+          <a href={`tel:${data.info.telephoneHref}`} class="text-aubry-perle underline underline-offset-4 decoration-aubry-rose/60 hover:decoration-aubry-rose tabular-nums">
+            {data.info.telephone}
+          </a>
+        </p>
+      </div>
+    </form>
+
+    <!-- Note discrétion -->
+    <p class="mt-12 pt-8 border-t border-aubry-perle/15 font-plex-mono text-[10px] uppercase tracking-[0.3em] text-aubry-perle/55">
+      Vos coordonnées ne sont conservées que pour vous recontacter.
+    </p>
+  </div>
+</section>
+
+<script define:vars={{ waBase }}>
+  const form = document.getElementById('rdv-aubry-form');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fd = new FormData(form);
+      const prenom = fd.get('prenom') || '';
+      const tel = fd.get('telephone') || '';
+      const motif = fd.get('motif') || '';
+      const text = [
+        'Bonjour Camille, je souhaite prendre rendez-vous.',
+        prenom ? `Prénom : ${prenom}` : '',
+        tel ? `Tél : ${tel}` : '',
+        motif ? `Motif : ${motif}` : '',
+      ].filter(Boolean).join('\n');
+      window.open(`${waBase}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
+    });
+  }
+</script>
