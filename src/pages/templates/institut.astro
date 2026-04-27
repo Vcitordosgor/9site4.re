@@ -1,0 +1,80 @@
+---
+import '@fontsource/marcellus/400.css';
+import '@fontsource/mulish/300.css';
+import '@fontsource/mulish/400.css';
+import '@fontsource/mulish/500.css';
+import '@fontsource/mulish/600.css';
+import '@fontsource/eb-garamond/400.css';
+import '@fontsource/eb-garamond/500.css';
+import '@fontsource/eb-garamond/400-italic.css';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getSeo } from '../../lib/seo';
+import marleneData from '../../data/templates/marlene.json';
+
+import MarleneHeader from '../../components/templates/institut/MarleneHeader.astro';
+import HeroEditorial from '../../components/templates/institut/HeroEditorial.astro';
+import RituelSignature from '../../components/templates/institut/RituelSignature.astro';
+import CarteSoins from '../../components/templates/institut/CarteSoins.astro';
+import Marques from '../../components/templates/institut/Marques.astro';
+import CartesCadeaux from '../../components/templates/institut/CartesCadeaux.astro';
+import Reservation from '../../components/templates/institut/Reservation.astro';
+import Institut from '../../components/templates/institut/Institut.astro';
+import CTAFinal from '../../components/templates/institut/CTAFinal.astro';
+import MarleneFooter from '../../components/templates/institut/MarleneFooter.astro';
+---
+
+<BaseLayout seo={getSeo('templateInstitut')} bare={true}>
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <link rel="dns-prefetch" href="https://images.unsplash.com" />
+    <link
+      rel="preload"
+      as="image"
+      href={marleneData.info.photoHero}
+      fetchpriority="high"
+    />
+  </Fragment>
+
+  <MarleneHeader />
+
+  <main id="top" class="bg-marlene-nacre text-marlene-noir font-mulish">
+    <HeroEditorial />
+    <RituelSignature />
+    <CarteSoins />
+    <Marques />
+    <CartesCadeaux />
+    <Reservation />
+    <Institut />
+    <CTAFinal />
+  </main>
+
+  <MarleneFooter />
+
+  <!-- Sticky CTA mobile : rectangle plein bordeaux Marcellus uppercase tracking -->
+  <a
+    id="marlene-sticky-cta"
+    href="#reservation"
+    data-visible="false"
+    class="md:hidden fixed bottom-5 inset-x-5 z-40 inline-flex items-center justify-center h-13 bg-marlene-bordeaux text-marlene-nacre font-marcellus tracking-wider text-sm uppercase transition-all duration-500 data-[visible=false]:opacity-0 data-[visible=false]:translate-y-4 data-[visible=false]:pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0"
+    style="height: 52px; box-shadow: 0 12px 28px rgba(126,42,60,0.30);"
+  >
+    Réserver mon soin
+  </a>
+
+  <script>
+    const sticky = document.getElementById('marlene-sticky-cta');
+    const reservation = document.getElementById('reservation');
+    if (sticky && reservation) {
+      const update = () => {
+        const rect = reservation.getBoundingClientRect();
+        const inSection = rect.top < window.innerHeight && rect.bottom > 80;
+        const scrolledPastHero = window.scrollY > 600;
+        sticky.dataset.visible = String(scrolledPastHero && !inSection);
+      };
+      update();
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update, { passive: true });
+    }
+  </script>
+</BaseLayout>

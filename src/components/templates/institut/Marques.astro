@@ -1,0 +1,37 @@
+---
+/**
+ * Marques — bandeau horizontal des marques partenaires.
+ * Style "as featured in" magazine — typo Marcellus uppercase espacée
+ * sur fond moka, pas de logos vrais (juste les noms).
+ */
+import data from '../../../data/templates/marlene.json';
+---
+
+<section class="bg-marlene-moka text-marlene-nacre py-14 md:py-20 px-6 md:px-10 border-y border-marlene-champagne/30">
+  <div class="max-w-content mx-auto">
+
+    <!-- Petit eyebrow centré -->
+    <p class="font-mulish text-[10px] uppercase tracking-[0.4em] text-marlene-champagne text-center mb-10">
+      ✦ Nos marques partenaires ✦
+    </p>
+
+    <!-- Liste horizontale wrap -->
+    <ul class="flex flex-wrap items-center justify-center gap-x-10 md:gap-x-16 gap-y-6">
+      {data.marques.map((m, i) => (
+        <li class:list={[
+          'font-marcellus uppercase tracking-[0.18em] text-marlene-nacre/85 hover:text-marlene-rose transition-colors duration-500',
+          i % 2 === 0 ? 'text-base md:text-xl' : 'text-base md:text-lg italic font-eb-garamond tracking-wide',
+        ]}>
+          {m}
+        </li>
+      ))}
+    </ul>
+
+    <!-- Filet décoratif champagne -->
+    <div class="mt-10 flex items-center justify-center gap-3" aria-hidden="true">
+      <span class="block h-px w-16 bg-marlene-champagne/40"></span>
+      <span class="text-marlene-champagne text-xs">★</span>
+      <span class="block h-px w-16 bg-marlene-champagne/40"></span>
+    </div>
+  </div>
+</section>

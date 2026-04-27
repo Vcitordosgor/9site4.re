@@ -1,0 +1,80 @@
+---
+/**
+ * CartesCadeaux — section dédiée aux cartes cadeaux.
+ * 4 visuels graphiques en cards avec montant + nom + suggestion + CTA "offrir".
+ * Style enveloppe / boîte cadeau papier élégant.
+ */
+import data from '../../../data/templates/marlene.json';
+const waBase = `https://wa.me/${data.info.whatsapp}`;
+---
+
+<section id="cartes" class="bg-marlene-rose/40 py-24 md:py-36 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="text-center mb-16 md:mb-20 max-w-2xl mx-auto">
+      <p class="font-mulish text-[10px] uppercase tracking-[0.4em] text-marlene-bordeaux mb-5">
+        ✦ Cartes cadeaux ✦
+      </p>
+      <h2 class="font-marcellus text-marlene-noir uppercase tracking-[0.05em] leading-[1.05]" style="font-size: clamp(36px, 5.5vw, 64px);">
+        Offrir un instant
+      </h2>
+      <p class="mt-5 font-eb-garamond italic text-marlene-moka text-lg md:text-xl">
+        Pour un anniversaire, un remerciement, ou simplement parce que.
+      </p>
+    </header>
+
+    <ul class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6 max-w-5xl mx-auto">
+      {data.cartes.map((c, i) => {
+        const waText = encodeURIComponent(`Bonjour Maison Marléne, je souhaite offrir une carte cadeau "${c.label}" — ${c.montant === 'Sur-mesure' ? 'à composer' : c.montant + ' €'}.`);
+        return (
+          <li class:list={[
+            'relative group',
+            i === 1 ? 'sm:translate-y-4' : '',
+            i === 2 ? 'sm:-translate-y-2' : '',
+          ]}>
+            <a
+              href={`${waBase}?text=${waText}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block bg-marlene-nacre h-full p-6 md:p-7 border border-marlene-champagne/40 hover:border-marlene-bordeaux transition-colors duration-500 relative"
+            >
+              <!-- Ornement coin haut droit -->
+              <span class="absolute top-3 right-3 w-8 h-8 border-r border-t border-marlene-champagne/50 group-hover:border-marlene-bordeaux transition-colors" aria-hidden="true"></span>
+              <!-- Ornement coin bas gauche -->
+              <span class="absolute bottom-3 left-3 w-8 h-8 border-l border-b border-marlene-champagne/50 group-hover:border-marlene-bordeaux transition-colors" aria-hidden="true"></span>
+
+              <!-- Label -->
+              <p class="font-mulish text-[10px] uppercase tracking-[0.32em] text-marlene-champagne mb-4">
+                ★ Carte n° 0{i + 1}
+              </p>
+
+              <!-- Montant grand serif -->
+              <p class="font-marcellus text-marlene-bordeaux leading-none mb-2 tabular-nums" style="font-size: clamp(32px, 4vw, 56px);">
+                {c.montant === 'Sur-mesure' ? c.montant : `${c.montant} €`}
+              </p>
+
+              <!-- Nom carte italique -->
+              <p class="font-eb-garamond italic text-marlene-moka text-xl md:text-2xl mb-4">
+                {c.label}
+              </p>
+
+              <!-- Suggestion -->
+              <p class="font-mulish text-marlene-noir/70 text-sm leading-relaxed mb-5">
+                {c.suggestion}
+              </p>
+
+              <!-- CTA discret -->
+              <p class="inline-flex items-center gap-2 font-marcellus text-marlene-bordeaux text-sm uppercase tracking-wider group-hover:text-marlene-noir transition-colors">
+                Offrir →
+              </p>
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+
+    <p class="mt-12 text-center font-eb-garamond italic text-marlene-moka text-base">
+      Carte remise dans une enveloppe en papier nacre, sans date de péremption.
+    </p>
+  </div>
+</section>

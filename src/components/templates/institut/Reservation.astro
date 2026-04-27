@@ -1,0 +1,170 @@
+---
+/**
+ * Reservation — formulaire éditorial 2 colonnes (services + créneau).
+ * Inputs underline serif, ton boutique-hôtel chic.
+ */
+import data from '../../../data/templates/marlene.json';
+const waBase = `https://wa.me/${data.info.whatsapp}`;
+
+// Construction de la liste de tous les soins disponibles avec catégorie
+const tousLesSoins: { value: string; label: string }[] = [];
+data.categories.forEach((cat) => {
+  cat.soins.forEach((s) => {
+    tousLesSoins.push({
+      value: `${cat.label} — ${s.nom}`,
+      label: `${cat.label} · ${s.nom} (${s.duree} · ${s.prix})`,
+    });
+  });
+});
+---
+
+<section id="reservation" class="bg-marlene-noir text-marlene-nacre py-24 md:py-36 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="text-center mb-14 md:mb-16 max-w-2xl mx-auto">
+      <p class="font-mulish text-[10px] uppercase tracking-[0.4em] text-marlene-champagne mb-5">
+        ✦ Réservation ✦
+      </p>
+      <h2 class="font-marcellus text-marlene-nacre uppercase tracking-[0.05em] leading-[1.05]" style="font-size: clamp(36px, 5.5vw, 64px);">
+        Prendre rendez-vous
+      </h2>
+      <p class="mt-5 font-eb-garamond italic text-marlene-rose text-lg md:text-xl">
+        Un mot, un soin, un moment qui vous ressemble.
+      </p>
+    </header>
+
+    <form id="resa-form" class="max-w-3xl mx-auto" novalidate>
+
+      <!-- Section 1 : choix du soin -->
+      <fieldset class="mb-10">
+        <legend class="font-mulish text-[10px] uppercase tracking-[0.32em] text-marlene-champagne pb-3 border-b border-marlene-nacre/20 w-full mb-5">
+          I. Le soin choisi
+        </legend>
+        <select
+          id="resa-soin"
+          name="soin"
+          required
+          class="w-full h-12 bg-transparent border-0 border-b border-marlene-nacre/30 focus:border-marlene-champagne py-2 font-eb-garamond italic text-marlene-nacre text-lg outline-none transition-colors cursor-pointer appearance-none"
+        >
+          <option value="" class="text-marlene-noir">— Sélectionner une prestation —</option>
+          {tousLesSoins.map((s) => <option value={s.value} class="text-marlene-noir">{s.label}</option>)}
+          <option value="indecis" class="text-marlene-noir">Je ne sais pas encore — conseil souhaité</option>
+        </select>
+      </fieldset>
+
+      <!-- Section 2 : créneau souhaité (jour préféré + plage horaire) -->
+      <fieldset class="mb-10">
+        <legend class="font-mulish text-[10px] uppercase tracking-[0.32em] text-marlene-champagne pb-3 border-b border-marlene-nacre/20 w-full mb-5">
+          II. Quand souhaitez-vous venir ?
+        </legend>
+        <div class="grid sm:grid-cols-2 gap-6">
+          <div>
+            <label for="resa-jour" class="block font-mulish text-[10px] uppercase tracking-[0.22em] text-marlene-rose mb-2">Jour préféré</label>
+            <select
+              id="resa-jour"
+              name="jour"
+              class="w-full h-11 bg-transparent border-0 border-b border-marlene-nacre/30 focus:border-marlene-champagne font-eb-garamond italic text-marlene-nacre text-base outline-none cursor-pointer appearance-none"
+            >
+              <option value="" class="text-marlene-noir">— Indifférent —</option>
+              {data.horaires.filter(h => h.ouvert).map((h) => <option value={h.jour} class="text-marlene-noir">{h.jour}</option>)}
+            </select>
+          </div>
+          <div>
+            <label for="resa-plage" class="block font-mulish text-[10px] uppercase tracking-[0.22em] text-marlene-rose mb-2">Plage horaire</label>
+            <select
+              id="resa-plage"
+              name="plage"
+              class="w-full h-11 bg-transparent border-0 border-b border-marlene-nacre/30 focus:border-marlene-champagne font-eb-garamond italic text-marlene-nacre text-base outline-none cursor-pointer appearance-none"
+            >
+              <option value="" class="text-marlene-noir">— Indifférent —</option>
+              <option value="matin" class="text-marlene-noir">Matin (10h – 12h)</option>
+              <option value="midi" class="text-marlene-noir">Midi (12h – 14h)</option>
+              <option value="aprem" class="text-marlene-noir">Après-midi (14h – 17h)</option>
+              <option value="soir" class="text-marlene-noir">Fin de journée (17h – 19h)</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Section 3 : coordonnées -->
+      <fieldset class="mb-10">
+        <legend class="font-mulish text-[10px] uppercase tracking-[0.32em] text-marlene-champagne pb-3 border-b border-marlene-nacre/20 w-full mb-5">
+          III. Vos coordonnées
+        </legend>
+        <div class="grid sm:grid-cols-2 gap-6 mb-6">
+          <div>
+            <label for="resa-prenom" class="block font-mulish text-[10px] uppercase tracking-[0.22em] text-marlene-rose mb-2">Prénom</label>
+            <input
+              id="resa-prenom"
+              name="prenom"
+              type="text"
+              required
+              autocomplete="given-name"
+              class="w-full h-11 bg-transparent border-0 border-b border-marlene-nacre/30 focus:border-marlene-champagne font-eb-garamond italic text-marlene-nacre text-lg outline-none transition-colors"
+            />
+          </div>
+          <div>
+            <label for="resa-tel" class="block font-mulish text-[10px] uppercase tracking-[0.22em] text-marlene-rose mb-2">Téléphone</label>
+            <input
+              id="resa-tel"
+              name="telephone"
+              type="tel"
+              required
+              autocomplete="tel"
+              class="w-full h-11 bg-transparent border-0 border-b border-marlene-nacre/30 focus:border-marlene-champagne font-eb-garamond italic text-marlene-nacre text-lg outline-none transition-colors tabular-nums"
+            />
+          </div>
+        </div>
+        <div>
+          <label for="resa-message" class="block font-mulish text-[10px] uppercase tracking-[0.22em] text-marlene-rose mb-2">Une précision <span class="lowercase italic font-eb-garamond text-marlene-rose/70 normal-case">(facultatif)</span></label>
+          <textarea
+            id="resa-message"
+            name="message"
+            rows="2"
+            class="w-full bg-transparent border-0 border-b border-marlene-nacre/30 focus:border-marlene-champagne py-2 font-eb-garamond italic text-marlene-nacre text-base outline-none transition-colors resize-none"
+            placeholder="Allergies, sensibilités, occasion particulière…"
+          ></textarea>
+        </div>
+      </fieldset>
+
+      <!-- Submit -->
+      <div class="text-center pt-4">
+        <button
+          type="submit"
+          class="inline-flex items-center justify-center h-14 px-12 bg-marlene-bordeaux text-marlene-nacre font-marcellus tracking-wider text-sm uppercase hover:bg-marlene-rose hover:text-marlene-noir transition-colors duration-500"
+        >
+          Envoyer la demande
+        </button>
+        <p class="mt-5 font-eb-garamond italic text-marlene-rose/80 text-sm">
+          Votre demande nous parvient via WhatsApp · réponse dans la journée.
+        </p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<script define:vars={{ waBase }}>
+  const form = document.getElementById('resa-form');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fd = new FormData(form);
+      const soin = fd.get('soin') || '';
+      const jour = fd.get('jour') || '';
+      const plage = fd.get('plage') || '';
+      const prenom = fd.get('prenom') || '';
+      const tel = fd.get('telephone') || '';
+      const message = fd.get('message') || '';
+      const text = [
+        'Bonjour Maison Marléne, je souhaite réserver un soin.',
+        soin ? `Soin : ${soin}` : '',
+        jour ? `Jour : ${jour}` : '',
+        plage ? `Plage : ${plage}` : '',
+        prenom ? `Prénom : ${prenom}` : '',
+        tel ? `Tél : ${tel}` : '',
+        message ? `Note : ${message}` : '',
+      ].filter(Boolean).join('\n');
+      window.open(`${waBase}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
+    });
+  }
+</script>

@@ -1,0 +1,46 @@
+---
+/**
+ * CTAFinal — chic et minimal. Citation finale serif italique.
+ */
+import data from '../../../data/templates/marlene.json';
+---
+
+<section class="bg-marlene-sable py-24 md:py-36 px-6 md:px-10 text-center">
+  <div class="max-w-2xl mx-auto">
+
+    <!-- Filet champagne ornemental -->
+    <div class="flex items-center justify-center gap-4 mb-12" aria-hidden="true">
+      <span class="block h-px w-20 bg-gradient-to-r from-transparent to-marlene-champagne"></span>
+      <span class="font-eb-garamond italic text-marlene-champagne text-2xl">&amp;</span>
+      <span class="block h-px w-20 bg-gradient-to-l from-transparent to-marlene-champagne"></span>
+    </div>
+
+    <h2 class="font-marcellus text-marlene-noir uppercase tracking-[0.08em] leading-[1.0]" style="font-size: clamp(40px, 6.5vw, 80px);">
+      L'art de
+      <span class="block italic font-eb-garamond text-marlene-bordeaux normal-case tracking-normal">prendre soin.</span>
+    </h2>
+
+    <p class="mt-10 font-eb-garamond italic text-marlene-moka text-lg md:text-xl leading-relaxed max-w-md mx-auto">
+      {data.pitch.promesse}
+    </p>
+
+    <div class="mt-14 flex flex-wrap items-center justify-center gap-x-7 gap-y-4">
+      <a
+        href="#reservation"
+        class="inline-flex items-center justify-center h-14 px-10 bg-marlene-noir text-marlene-nacre font-marcellus tracking-wider text-sm uppercase hover:bg-marlene-bordeaux transition-colors duration-500"
+      >
+        Réserver mon soin
+      </a>
+      <a
+        href={`tel:${data.info.telephoneHref}`}
+        class="font-marcellus text-marlene-noir text-base tabular-nums underline underline-offset-4 decoration-marlene-champagne hover:decoration-marlene-bordeaux transition-colors"
+      >
+        {data.info.telephone}
+      </a>
+    </div>
+
+    <p class="mt-12 font-mulish text-[10px] uppercase tracking-[0.4em] text-marlene-champagne">
+      ✦ {data.info.wordmark1} {data.info.wordmark2} · {data.info.ville} ✦
+    </p>
+  </div>
+</section>

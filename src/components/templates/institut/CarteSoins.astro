@@ -1,0 +1,92 @@
+---
+/**
+ * CarteSoins — 5 catégories pliantes (accordéons natifs <details>).
+ * Chaque catégorie déroule une liste menu de bistrot avec dotted leaders.
+ * Chiffres romains pour numéroter les catégories.
+ */
+import data from '../../../data/templates/marlene.json';
+
+const romains = ['I', 'II', 'III', 'IV', 'V'];
+---
+
+<section id="carte" class="bg-marlene-nacre py-24 md:py-36 px-6 md:px-10">
+  <div class="max-w-3xl mx-auto">
+
+    <!-- Header -->
+    <header class="text-center mb-16 md:mb-20">
+      <p class="font-mulish text-[10px] uppercase tracking-[0.4em] text-marlene-bordeaux mb-5">
+        Carte des soins
+      </p>
+      <h2 class="font-marcellus text-marlene-noir uppercase tracking-[0.05em] leading-[1.05]" style="font-size: clamp(36px, 5.5vw, 64px);">
+        Toutes nos prestations
+      </h2>
+      <p class="mt-5 font-eb-garamond italic text-marlene-moka text-lg md:text-xl">
+        Cliquez sur une catégorie pour voir le détail.
+      </p>
+    </header>
+
+    <!-- Accordéons par catégorie -->
+    <ul class="border-t border-marlene-noir/15">
+      {data.categories.map((cat, i) => (
+        <li class="border-b border-marlene-noir/15">
+          <details class="group" open={i === 0}>
+            <summary class="cursor-pointer list-none flex items-baseline gap-4 md:gap-6 py-7 md:py-8 hover:bg-marlene-sable/40 transition-colors duration-500 px-2">
+
+              <!-- Numéro romain -->
+              <span class="font-marcellus text-marlene-champagne text-2xl md:text-3xl shrink-0 w-8 md:w-10 leading-none">
+                {romains[i]}.
+              </span>
+
+              <!-- Titre + soustitre -->
+              <div class="flex-1">
+                <h3 class="font-marcellus text-marlene-noir text-2xl md:text-3xl uppercase tracking-wide leading-tight">
+                  {cat.label}
+                </h3>
+                <p class="mt-1 font-eb-garamond italic text-marlene-moka text-sm md:text-base">
+                  {cat.soustitre}
+                </p>
+              </div>
+
+              <!-- Toggle + / − -->
+              <span class="font-marcellus text-marlene-noir/40 group-hover:text-marlene-bordeaux group-open:text-marlene-bordeaux text-2xl shrink-0 w-6 text-center transition-colors duration-500" aria-hidden="true">
+                <span class="block group-open:hidden">+</span>
+                <span class="hidden group-open:block">—</span>
+              </span>
+            </summary>
+
+            <!-- Contenu déplié : liste menu bistrot -->
+            <div class="pb-9 pl-2 md:pl-14 pr-2">
+              <ul class="space-y-4">
+                {cat.soins.map((s) => (
+                  <li class="flex items-baseline gap-3 group/soin">
+                    <span class="font-eb-garamond italic text-marlene-noir text-base md:text-lg shrink-0">
+                      {s.nom}
+                    </span>
+                    <span class="font-mulish text-[10px] uppercase tracking-[0.22em] text-marlene-moka shrink-0 tabular-nums">
+                      {s.duree}
+                    </span>
+                    <!-- Dotted leader -->
+                    <span class="flex-1 mt-2 border-b border-dotted border-marlene-noir/30" aria-hidden="true"></span>
+                    <!-- Prix -->
+                    <span class="font-marcellus text-marlene-bordeaux text-base md:text-lg tabular-nums shrink-0">
+                      {s.prix}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </details>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Note de bas de carte -->
+    <p class="mt-12 text-center font-eb-garamond italic text-marlene-moka text-sm leading-relaxed">
+      Tous nos soins sont réalisés sur rendez-vous. Pour les forfaits longue durée, prévoir une demi-journée minimum.
+    </p>
+  </div>
+
+  <style>
+    details > summary::-webkit-details-marker { display: none; }
+  </style>
+</section>
