@@ -46,6 +46,9 @@ export default {
     {
       pattern: /^(bg|text|ring|border|from|to|via)-(verveine-creme|verveine-papier|verveine-glacier|verveine-sauge|verveine-beton|verveine-encre|verveine-blanc)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
     },
+    {
+      pattern: /^(bg|text|ring|border|from|to|via)-(mona-creme|mona-papier|mona-vert|mona-vert-fonce|mona-terracotta|mona-framboise|mona-cacao)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
+    },
   ],
   theme: {
     extend: {
@@ -170,6 +173,16 @@ export default {
         'verveine-beton':   '#5C5C58',  // gris béton chaud — texte secondaire
         'verveine-encre':   '#1C1C1A',  // noir encre — texte AAA
         'verveine-blanc':   '#FFFFFF',
+        // Palette diététicienne (template /templates/dieteticienne — Mona Levray)
+        // Style "Magazine Cuisine & santé éditorial" : crème blanche + vert
+        // tendre pousse de salade + terracotta doux + brun cacao + framboise rare.
+        'mona-creme':       '#FAF7F1',  // blanc cassé crème — fond principal
+        'mona-papier':      '#F2EBDC',  // sections alternées papier kraft
+        'mona-vert':        '#9BBC8B',  // vert pousse de salade — accent doux
+        'mona-vert-fonce':  '#6B8C5C',  // vert foncé — texte/titres accent
+        'mona-terracotta':  '#D27D54',  // terracotta doux — accents chauds
+        'mona-framboise':   '#C84A5C',  // rose framboise — accent rare (fruits)
+        'mona-cacao':       '#3E2A1E',  // brun cacao — texte AAA
       },
       fontFamily: {
         sora: ['Sora', 'system-ui', 'sans-serif'],
@@ -199,6 +212,9 @@ export default {
         cardo: ['Cardo', 'Georgia', 'serif'],
         'public-sans': ['"Public Sans"', 'system-ui', 'sans-serif'],
         karla: ['Karla', 'system-ui', 'sans-serif'],
+        newsreader: ['Newsreader', 'Georgia', 'serif'],
+        jakarta: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+        reenie: ['"Reenie Beanie"', 'cursive'],
       },
       fontSize: {
         'hero': ['clamp(2.5rem, 5vw + 1rem, 5rem)', { lineHeight: '1.05', letterSpacing: '-0.02em' }],

@@ -1,0 +1,215 @@
+{
+  "info": {
+    "nom": "Mona Levray",
+    "wordmark": "Mona Levray",
+    "soustitre": "Diététicienne nutritionniste D.E.",
+    "tagline": "Manger mieux, sans se priver.",
+    "ville": "Le Tampon",
+    "adresseLigne1": "23 rue Hubert Delisle",
+    "adresseLigne2": "97430 Le Tampon",
+    "telephone": "0692 38 14 92",
+    "telephoneHref": "+33692381492",
+    "whatsapp": "33692381492",
+    "email": "contact@mona-nutrition.re",
+    "instagram": "@mona.nutrition",
+    "siret": "23456789000017",
+    "adeli": "974 1 1789 4",
+    "annee": "2015",
+    "photoHero": "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=1600&q=85",
+    "photoMona": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=900&q=85",
+    "photoCabinet": "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1200&q=85"
+  },
+  "diplomes": [
+    "BTS Diététique — Lycée Saint-Vincent-de-Paul, Paris (2010)",
+    "DU Nutrition du sportif — Université Claude-Bernard Lyon 1 (2014)",
+    "Mémoire « Diversification alimentaire chez l'enfant » (2018)",
+    "Inscrite ADELI · Conventionnée Almerys"
+  ],
+  "presentation": [
+    {
+      "question": "Pourquoi avez-vous choisi ce métier ?",
+      "reponse": "Parce que j'ai grandi dans une famille où la table comptait — beaucoup. Quand j'ai compris que ce qu'on mangeait pouvait nous abîmer ou au contraire nous remettre debout, j'ai eu envie d'accompagner les gens à retrouver une relation simple avec leur assiette."
+    },
+    {
+      "question": "Votre approche en trois mots ?",
+      "reponse": "Écoute, équilibre, progressivité. Aucun régime miracle, aucune privation absolue. Je travaille avec ce que vous avez l'habitude de manger, et on ajuste pas à pas."
+    },
+    {
+      "question": "À qui s'adresse votre cabinet ?",
+      "reponse": "À toutes les personnes qui veulent comprendre ce qu'elles mangent et faire des choix plus alignés. Adultes, enfants, femmes enceintes, sportifs, personnes diabétiques, ou simplement curieuses."
+    },
+    {
+      "question": "Le mot de la fin ?",
+      "reponse": "On ne change pas son alimentation en deux semaines, mais on peut commencer à se sentir mieux dès la première consultation. Mon rôle est de vous donner les bons outils, pas de vous imposer un cadre rigide."
+    }
+  ],
+  "piliers": [
+    {
+      "titre": "Écoute",
+      "description": "Avant de parler aliments, on parle de vous. Vos habitudes, votre rythme, vos contraintes, ce que vous aimez."
+    },
+    {
+      "titre": "Équilibre",
+      "description": "Pas de diabolisation. Aucun aliment n'est interdit en soi. C'est la place qu'on lui donne qui compte."
+    },
+    {
+      "titre": "Progressivité",
+      "description": "On change une chose à la fois. La durabilité avant la performance — un changement tenu vaut dix résolutions abandonnées."
+    }
+  ],
+  "publics": [
+    {
+      "id": "perte",
+      "label": "Perte de poids durable",
+      "description": "Un protocole sans privation, basé sur les bons combos.",
+      "photo": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500&q=80"
+    },
+    {
+      "id": "sportif",
+      "label": "Sportif & performance",
+      "description": "Adapter l'apport selon les phases d'entraînement et de récupération.",
+      "photo": "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=500&q=80"
+    },
+    {
+      "id": "grossesse",
+      "label": "Grossesse & post-partum",
+      "description": "Couvrir les besoins essentiels sans excès, avant et après la naissance.",
+      "photo": "https://images.unsplash.com/photo-1547592180-85f173990554?w=500&q=80"
+    },
+    {
+      "id": "enfant",
+      "label": "Enfant & ado",
+      "description": "Apprendre à manger varié, gérer les difficultés, accompagner les parents.",
+      "photo": "https://images.unsplash.com/photo-1572445271230-a78b5944a659?w=500&q=80"
+    },
+    {
+      "id": "diabete",
+      "label": "Diabète & cholestérol",
+      "description": "Stabiliser la glycémie et les marqueurs sans renoncer au plaisir.",
+      "photo": "https://images.unsplash.com/photo-1505253716362-afaea1d3d1af?w=500&q=80"
+    },
+    {
+      "id": "digestion",
+      "label": "Troubles digestifs",
+      "description": "Identifier les déclencheurs, soulager les inconforts du quotidien.",
+      "photo": "https://images.unsplash.com/photo-1473893604213-3df9c15cf066?w=500&q=80"
+    }
+  ],
+  "etapes": [
+    {
+      "num": "1",
+      "titre": "Première consultation",
+      "duree": "60 min",
+      "description": "Bilan complet : antécédents, mode de vie, journée alimentaire type. On prend le temps de tout poser."
+    },
+    {
+      "num": "2",
+      "titre": "Plan personnalisé",
+      "duree": "Dans la semaine",
+      "description": "Vous recevez un document écrit avec des objectifs concrets, des recettes adaptées et des conseils pratiques."
+    },
+    {
+      "num": "3",
+      "titre": "Suivi régulier",
+      "duree": "30 min",
+      "description": "Toutes les 3 à 6 semaines selon vos besoins. On ajuste, on encourage, on évite les rechutes."
+    }
+  ],
+  "programmes": [
+    {
+      "id": "decouverte",
+      "label": "Consultation découverte",
+      "prix": "55 €",
+      "duree": "1 séance · 1h",
+      "description": "Pour répondre à une question précise, faire un bilan ou tester l'approche avant un suivi.",
+      "inclus": [
+        "Bilan nutritionnel complet",
+        "1 plan alimentaire écrit",
+        "1 fiche conseils personnalisée"
+      ],
+      "photo": "https://images.unsplash.com/photo-1543339308-43e59d6b73a6?w=500&q=80"
+    },
+    {
+      "id": "trois-mois",
+      "label": "Suivi 3 mois",
+      "prix": "180 €",
+      "duree": "4 séances · sur 12 sem.",
+      "description": "Le format le plus demandé. Un vrai changement s'installe en 3 mois si on tient le cap.",
+      "inclus": [
+        "1 consultation initiale 1h",
+        "3 suivis 30 min (échelonnés)",
+        "Plan personnalisé évolutif",
+        "Réponses WhatsApp entre séances"
+      ],
+      "photo": "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=500&q=80",
+      "populaire": true
+    },
+    {
+      "id": "six-mois",
+      "label": "Accompagnement 6 mois",
+      "prix": "320 €",
+      "duree": "8 séances · sur 24 sem.",
+      "description": "Pour les changements profonds : perte de poids importante, diabète, troubles installés.",
+      "inclus": [
+        "1 consultation initiale 1h",
+        "7 suivis 30 min (échelonnés)",
+        "Plan évolutif et fiches recettes",
+        "Bilan mi-parcours et bilan final",
+        "Disponibilité WhatsApp"
+      ],
+      "photo": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&q=80"
+    }
+  ],
+  "recettes": [
+    {
+      "nom": "Bowl de quinoa & légumes grillés",
+      "tempsTotal": "25 min",
+      "ingredient": "Quinoa rouge",
+      "photo": "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=500&q=80"
+    },
+    {
+      "nom": "Smoothie banane & graines de chia",
+      "tempsTotal": "5 min",
+      "ingredient": "Chia",
+      "photo": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&q=80"
+    },
+    {
+      "nom": "Curry de pois chiches au lait coco",
+      "tempsTotal": "30 min",
+      "ingredient": "Pois chiches",
+      "photo": "https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=500&q=80"
+    },
+    {
+      "nom": "Pancakes flocons d'avoine & banane",
+      "tempsTotal": "15 min",
+      "ingredient": "Avoine",
+      "photo": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&q=80"
+    }
+  ],
+  "avis": [
+    {
+      "prenom": "Camille",
+      "duree": "après 4 mois",
+      "texte": "Je n'arrivais plus à manger sans culpabiliser. Mona m'a appris à écouter ma faim. J'ai perdu 9 kg sans frustration."
+    },
+    {
+      "prenom": "Yohan",
+      "duree": "après 2 mois",
+      "texte": "Diabétique de type 2 depuis 5 ans. Glycémie stable, énergie retrouvée. Le suivi WhatsApp change tout."
+    },
+    {
+      "prenom": "Inès",
+      "duree": "post-grossesse",
+      "texte": "Conseils précieux pour reprendre une alimentation équilibrée pendant l'allaitement. Patiente et rassurante."
+    }
+  ],
+  "horaires": [
+    { "jour": "Lundi", "label": "08h30 – 17h30", "ouvert": true },
+    { "jour": "Mardi", "label": "08h30 – 17h30", "ouvert": true },
+    { "jour": "Mercredi", "label": "08h30 – 12h30", "ouvert": true },
+    { "jour": "Jeudi", "label": "08h30 – 17h30", "ouvert": true },
+    { "jour": "Vendredi", "label": "08h30 – 14h00", "ouvert": true },
+    { "jour": "Samedi", "label": "Téléconsultation", "ouvert": true },
+    { "jour": "Dimanche", "label": "Fermé", "ouvert": false }
+  ]
+}

@@ -39,7 +39,8 @@ type PageKey =
   | 'templateCoach'
   | 'templateYoga'
   | 'templateDanse'
-  | 'templateOsteo';
+  | 'templateOsteo'
+  | 'templateDieteticienne';
 
 const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'> & { noindex?: boolean; ogImage?: string; ogImageAlt?: string }> = {
   home: {
@@ -159,6 +160,13 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
     description:
       'Aperçu du template "Cabinet d\'ostéopathie" proposé par 9site4 : approche, motifs de consultation, déroulé d\'une séance, tarifs et prise de rendez-vous. Site fictif de démonstration.',
     canonical: '/templates/osteo',
+    noindex: true,
+  },
+  templateDieteticienne: {
+    title: 'Mona Levray — Diététicienne nutritionniste au Tampon (Réunion) | Template 9site4',
+    description:
+      'Aperçu du template "Diététicienne" proposé par 9site4 : approche, programmes, recettes, témoignages et rendez-vous en ligne. Site fictif de démonstration.',
+    canonical: '/templates/dieteticienne',
     noindex: true,
   },
 };
