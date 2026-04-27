@@ -49,7 +49,8 @@ type PageKey =
   | 'templateLocation'
   | 'templateConsultant'
   | 'templateComptable'
-  | 'templateArchitecte';
+  | 'templateArchitecte'
+  | 'templateAutoEcole';
 
 const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'> & { noindex?: boolean; ogImage?: string; ogImageAlt?: string }> = {
   home: {
@@ -239,6 +240,13 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
     description:
       'Aperçu du template "Architecte" proposé par 9site4 : portfolio de projets, méthode, honoraires, distinctions et rendez-vous. Site fictif de démonstration.',
     canonical: '/templates/architecte',
+    noindex: true,
+  },
+  templateAutoEcole: {
+    title: 'Boost Conduite — Auto-école à Saint-Denis (Réunion) | Template 9site4',
+    description:
+      'Aperçu du template "Auto-école" proposé par 9site4 : forfaits permis, code en ligne, équipe pédagogique, témoignages et inscription. Site fictif de démonstration.',
+    canonical: '/templates/auto-ecole',
     noindex: true,
   },
 };

@@ -76,6 +76,9 @@ export default {
     {
       pattern: /^(bg|text|ring|border|from|to|via)-(mahatma-encre|mahatma-charbon|mahatma-beton|mahatma-ciment|mahatma-papier|mahatma-blanc|mahatma-cachet)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
     },
+    {
+      pattern: /^(bg|text|ring|border|from|to|via)-(boost-acier|boost-jaune|boost-asphalte|boost-noir|boost-route|boost-feu|boost-stop)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
+    },
   ],
   theme: {
     extend: {
@@ -307,6 +310,17 @@ export default {
         'mahatma-papier':  '#F2F0EB',  // blanc papier — fond clair
         'mahatma-blanc':   '#FFFFFF',
         'mahatma-cachet':  '#D02F32',  // rouge cachet d'architecte — accent rare
+        // Palette auto-école (template /templates/auto-ecole — Boost Conduite)
+        // Style "énergie jeune, accessible, parcours gamifié, signalétique routière"
+        // — couleurs codes route saturées, tutoiement permanent, achievements style
+        // jeu vidéo. Cible 17-25 ans + parents.
+        'boost-acier':    '#2456E8',  // bleu acier panneau routier — accent dominant
+        'boost-jaune':    '#FFD93D',  // jaune signal signalisation — alerte / attention
+        'boost-asphalte': '#3D3D3F',  // gris asphalte — texte secondaire
+        'boost-noir':     '#0F0F11',  // noir asphalte — fond dark, texte AAA
+        'boost-route':    '#FAFAF7',  // blanc route — fond clair
+        'boost-feu':      '#3FBE6B',  // vert feu — validations / succès
+        'boost-stop':     '#E53E3E',  // rouge stop — alertes critiques
       },
       fontFamily: {
         sora: ['Sora', 'system-ui', 'sans-serif'],
@@ -365,6 +379,9 @@ export default {
         schibsted: ['"Schibsted Grotesk"', 'system-ui', 'sans-serif'],
         atkinson: ['"Atkinson Hyperlegible"', 'system-ui', 'sans-serif'],
         'fira-mono': ['"Fira Mono"', 'ui-monospace', 'monospace'],
+        'funnel-display': ['"Funnel Display"', 'system-ui', 'sans-serif'],
+        'funnel-sans': ['"Funnel Sans"', 'system-ui', 'sans-serif'],
+        'geist-mono': ['"Geist Mono"', 'ui-monospace', 'monospace'],
       },
       fontSize: {
         'hero': ['clamp(2.5rem, 5vw + 1rem, 5rem)', { lineHeight: '1.05', letterSpacing: '-0.02em' }],

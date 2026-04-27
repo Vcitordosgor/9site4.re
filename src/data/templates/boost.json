@@ -1,0 +1,206 @@
+{
+  "info": {
+    "nom": "Boost Conduite",
+    "wordmark": "Boost",
+    "wordmark2": "Conduite",
+    "soustitre": "Auto-école · Permis B & code en ligne",
+    "tagline": "Ton permis. Sans stress.",
+    "ville": "Saint-Denis",
+    "adresseLigne1": "47 boulevard Joffre",
+    "adresseLigne2": "97400 Saint-Denis",
+    "telephone": "0692 14 73 28",
+    "telephoneHref": "+33692147328",
+    "whatsapp": "33692147328",
+    "email": "salut@boost-conduite.re",
+    "instagram": "@boost.conduite",
+    "siret": "55667788900017",
+    "agrement": "Agrément préfectoral E 14 974 0247 0",
+    "annee": "2013"
+  },
+  "stats": [
+    { "valeur": "87 %", "label": "réussite 1ʳᵉ tentative" },
+    { "valeur": "3 500+", "label": "permis délivrés" },
+    { "valeur": "12", "label": "ans d'expérience" },
+    { "valeur": "4,7/5", "label": "sur 412 avis Google" }
+  ],
+  "etapes": [
+    { "num": "01", "label": "Inscription", "valide": true, "duree": "30 min" },
+    { "num": "02", "label": "Code", "valide": true, "duree": "1 à 3 mois" },
+    { "num": "03", "label": "Conduite", "valide": false, "duree": "20 à 30 h" },
+    { "num": "04", "label": "Permis", "valide": false, "duree": "le grand jour" }
+  ],
+  "forfaits": [
+    {
+      "id": "code",
+      "label": "Code seul",
+      "prix": "390",
+      "tagline": "Pour celles & ceux qui ont déjà un permis ou veulent juste valider le code.",
+      "inclus": [
+        "Code en ligne 24/7",
+        "4 000+ questions à jour",
+        "1 examen blanc encadré",
+        "Inscription préfecture incluse"
+      ],
+      "duree": "Validité 5 ans",
+      "couleur": "boost-jaune"
+    },
+    {
+      "id": "classique",
+      "label": "Permis B classique",
+      "prix": "1 290",
+      "tagline": "Le forfait le plus demandé. 25 heures de conduite, code illimité, suivi perso.",
+      "inclus": [
+        "Code en ligne illimité",
+        "25 heures de conduite",
+        "Évaluation initiale offerte",
+        "1 présentation examen pratique",
+        "Présentation examen code incluse"
+      ],
+      "duree": "À votre rythme · 4 à 8 mois",
+      "couleur": "boost-acier",
+      "populaire": true
+    },
+    {
+      "id": "accelere",
+      "label": "Permis B accéléré",
+      "prix": "1 690",
+      "tagline": "Permis en 4 semaines. Pour ceux qui ont besoin du papier rose vite.",
+      "inclus": [
+        "Code en ligne intensif",
+        "30 heures de conduite",
+        "Stage code week-end",
+        "Présentation prioritaire",
+        "Coaching anti-stress inclus"
+      ],
+      "duree": "4 semaines · stage intensif",
+      "couleur": "boost-feu"
+    }
+  ],
+  "code": {
+    "titre": "Le code en ligne, sans limites.",
+    "description": "Tu te connectes quand tu veux, où tu veux. 4 000+ questions actualisées tous les mois. Tu gagnes des points pour chaque session terminée.",
+    "stats": [
+      { "valeur": "4 000+", "label": "questions" },
+      { "valeur": "24/7", "label": "accès" },
+      { "valeur": "80 %", "label": "réussite code" },
+      { "valeur": "0 €", "label": "supplément" }
+    ]
+  },
+  "parcours": [
+    {
+      "num": "01",
+      "panneau": "stop",
+      "titre": "Évaluation gratuite",
+      "description": "On évalue ton niveau actuel sur simulateur (gratuit, sans engagement)."
+    },
+    {
+      "num": "02",
+      "panneau": "rond-point",
+      "titre": "Inscription préfecture",
+      "description": "On s'occupe de tout : NEPH, photo, formulaires. Tu n'as rien à faire."
+    },
+    {
+      "num": "03",
+      "panneau": "code",
+      "titre": "Code en ligne",
+      "description": "Accès illimité à la plateforme. Examens blancs encadrés en agence."
+    },
+    {
+      "num": "04",
+      "panneau": "ceder",
+      "titre": "Examen code",
+      "description": "Présentation au centre officiel. Préparation 100 % avec ton moniteur."
+    },
+    {
+      "num": "05",
+      "panneau": "vitesse",
+      "titre": "Heures de conduite",
+      "description": "20 h minimum, à ton rythme. Voitures BVA et BVM disponibles."
+    },
+    {
+      "num": "06",
+      "panneau": "fin-route",
+      "titre": "Examen pratique",
+      "description": "Le grand jour. Ton moniteur t'accompagne. 87 % de réussite à la 1ʳᵉ."
+    }
+  ],
+  "moniteurs": [
+    {
+      "prenom": "Anaïs",
+      "specialite": "Coach anti-stress",
+      "experience": "10 ans",
+      "trait": "Très patiente · examen blanc systématique",
+      "photo": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=500&q=80"
+    },
+    {
+      "prenom": "Marc",
+      "specialite": "Conduite éco & autoroute",
+      "experience": "15 ans",
+      "trait": "Calme, technique, fan de mécanique",
+      "photo": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&q=80"
+    },
+    {
+      "prenom": "Sofia",
+      "specialite": "Boîte automatique",
+      "experience": "7 ans",
+      "trait": "Pédagogue, rigoureuse sur le code",
+      "photo": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=500&q=80"
+    },
+    {
+      "prenom": "Yann",
+      "specialite": "Conduite supervisée 15-17 ans",
+      "experience": "8 ans",
+      "trait": "Bienveillant avec les plus jeunes",
+      "photo": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=500&q=80"
+    }
+  ],
+  "avis": [
+    {
+      "prenom": "Léa",
+      "age": 19,
+      "duree": "4 mois",
+      "etoiles": 5,
+      "texte": "Anaïs au top, j'avais peur en conduite et c'est passé tout seul. Permis du premier coup."
+    },
+    {
+      "prenom": "Yohan",
+      "age": 24,
+      "duree": "6 semaines",
+      "etoiles": 5,
+      "texte": "Forfait accéléré, j'ai mon permis en 1 mois et demi. Marc est un super moniteur."
+    },
+    {
+      "prenom": "Inès",
+      "age": 17,
+      "duree": "5 mois",
+      "etoiles": 5,
+      "texte": "Première année conduite supervisée avec Yann. Bienveillant, jamais grondé."
+    },
+    {
+      "prenom": "Karim",
+      "age": 32,
+      "duree": "3 mois",
+      "etoiles": 5,
+      "texte": "J'avais raté 3 fois ailleurs. Sofia a tout repris depuis le début. Validé."
+    },
+    {
+      "prenom": "Mélanie",
+      "age": 21,
+      "duree": "5 mois",
+      "etoiles": 5,
+      "texte": "Code en ligne hyper bien fait, j'ai pu réviser depuis le bus pour aller au boulot."
+    },
+    {
+      "prenom": "Thomas",
+      "age": 18,
+      "duree": "4 mois",
+      "etoiles": 4,
+      "texte": "Bonne école, salle de cours top, parking pas évident parfois mais c'est tout."
+    }
+  ],
+  "horaires": [
+    { "jour": "Lundi – Vendredi", "label": "08h – 19h", "ouvert": true },
+    { "jour": "Samedi", "label": "08h – 17h", "ouvert": true },
+    { "jour": "Dimanche", "label": "Fermé", "ouvert": false }
+  ]
+}
