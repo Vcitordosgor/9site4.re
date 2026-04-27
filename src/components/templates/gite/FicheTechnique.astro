@@ -1,0 +1,47 @@
+---
+/**
+ * FicheTechnique — tableau "fiche technique" en data tabulaire monospace.
+ * Style topo-guide / cahier d'expert. Pas de cards.
+ */
+import data from '../../../data/templates/cap-anglais.json';
+---
+
+<section id="fiche" class="bg-cap-mousse text-cap-papier py-20 md:py-28 px-6 md:px-10 relative">
+
+  <!-- Filet rouge en haut décoratif -->
+  <span class="absolute top-0 inset-x-0 h-1 bg-cap-rouge" aria-hidden="true"></span>
+
+  <div class="max-w-content mx-auto">
+
+    <header class="mb-12 md:mb-16 max-w-2xl">
+      <p class="font-jetbrains text-[10px] uppercase tracking-[0.32em] text-cap-papier/65 mb-4">
+        § II — Fiche technique
+      </p>
+      <h2 class="font-bricolage font-semibold text-cap-papier leading-[1.05]" style="font-size: clamp(34px, 5vw, 56px);">
+        Le gîte en chiffres
+      </h2>
+      <p class="mt-4 font-crimson-pro italic text-cap-papier/75 text-lg leading-relaxed">
+        Aucune surprise à l'arrivée. Voici exactement ce qui vous attend.
+      </p>
+    </header>
+
+    <!-- Tableau data -->
+    <ul class="grid sm:grid-cols-2 gap-x-12 gap-y-px max-w-4xl">
+      {data.fiche.map((f) => (
+        <li class="flex items-baseline justify-between gap-4 py-3 border-b border-cap-papier/15">
+          <span class="font-jetbrains text-[11px] uppercase tracking-[0.22em] text-cap-papier/65">
+            {f.label}
+          </span>
+          <span class="font-bricolage text-cap-papier text-base text-right">
+            {f.valeur}
+          </span>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Note de bas de section -->
+    <p class="mt-12 font-crimson-pro italic text-cap-papier/65 text-sm leading-relaxed max-w-2xl">
+      Toutes les chambres sont équipées de draps et serviettes propres à l'arrivée. Un kit de toilette de bienvenue (savon de Marseille, gel douche bio) est offert.
+    </p>
+  </div>
+</section>

@@ -1,0 +1,81 @@
+---
+/**
+ * Alentours — 4 randonnées au départ du gîte avec data viz dénivelé/durée/niveau.
+ * Format topo-guide : pictos randonnée, niveaux étoiles, données mono.
+ */
+import data from '../../../data/templates/cap-anglais.json';
+---
+
+<section id="alentours" class="bg-cap-papier py-24 md:py-36 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="mb-14 md:mb-20 max-w-2xl">
+      <p class="font-jetbrains text-[10px] uppercase tracking-[0.32em] text-cap-mousse mb-4">
+        § V — Aux alentours
+      </p>
+      <h2 class="font-bricolage font-semibold text-cap-charbon leading-[1.05]" style="font-size: clamp(36px, 5.5vw, 60px);">
+        Quatre randonnées<br/>au départ.
+      </h2>
+      <p class="mt-5 font-crimson-pro italic text-cap-terre text-lg leading-relaxed">
+        De la balade familiale à l'ascension sportive, sans matériel technique. Les sentiers sont balisés ONF.
+      </p>
+    </header>
+
+    <ul class="space-y-px bg-cap-charbon/10">
+      {data.alentours.map((r, i) => (
+        <li class="bg-cap-papier hover:bg-cap-mousse/8 transition-colors">
+          <div class="grid grid-cols-12 gap-4 md:gap-6 items-center py-7 md:py-9 px-2 md:px-6">
+
+            <!-- Numéro + nom + lieu de départ -->
+            <div class="col-span-12 md:col-span-5">
+              <p class="font-jetbrains text-[10px] uppercase tracking-[0.28em] text-cap-mousse mb-1.5">
+                Sentier #{String(i + 1).padStart(2, '0')}
+              </p>
+              <h3 class="font-bricolage font-semibold text-cap-charbon text-2xl md:text-3xl leading-tight">
+                {r.nom}
+              </h3>
+              <p class="mt-2 font-crimson-pro italic text-cap-terre text-sm leading-relaxed">
+                {r.depart}
+              </p>
+            </div>
+
+            <!-- Description -->
+            <p class="hidden md:block md:col-span-3 font-bricolage text-cap-charbon/75 text-sm leading-relaxed">
+              {r.description}
+            </p>
+
+            <!-- Data viz : durée + dénivelé + niveau -->
+            <div class="col-span-12 md:col-span-4 grid grid-cols-3 gap-4 md:gap-3 font-jetbrains text-[11px] uppercase tracking-[0.18em]">
+
+              <!-- Durée -->
+              <div>
+                <p class="text-cap-terre mb-1">Durée</p>
+                <p class="font-bricolage font-semibold text-cap-charbon text-lg leading-none">{r.duree}</p>
+              </div>
+
+              <!-- Dénivelé -->
+              <div>
+                <p class="text-cap-terre mb-1">Dénivelé</p>
+                <p class="font-bricolage font-semibold text-cap-charbon text-lg leading-none tabular-nums">{r.denivele}</p>
+              </div>
+
+              <!-- Niveau -->
+              <div>
+                <p class="text-cap-terre mb-1">Niveau</p>
+                <p class="leading-none flex gap-0.5" aria-label={`Niveau ${r.niveau} sur 4`}>
+                  {[1, 2, 3, 4].map((n) => (
+                    <span class:list={['block w-2 h-3', n <= r.niveau ? 'bg-cap-rouge' : 'bg-cap-charbon/15']}></span>
+                  ))}
+                </p>
+              </div>
+            </div>
+          </div>
+        </li>
+      ))}
+    </ul>
+
+    <p class="mt-10 font-crimson-pro italic text-cap-terre text-sm leading-relaxed max-w-2xl">
+      Cartes IGN détaillées disponibles à l'accueil. Des bâtons de marche et lampes frontales sont en prêt gratuit. Pensez à signer le registre de départ avant toute sortie.
+    </p>
+  </div>
+</section>

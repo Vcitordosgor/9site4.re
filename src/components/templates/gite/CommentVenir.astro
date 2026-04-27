@@ -1,0 +1,68 @@
+---
+/**
+ * CommentVenir — itinéraire détaillé style topo-guide.
+ * 4 sections : voiture / transport / code / parking.
+ */
+import data from '../../../data/templates/cap-anglais.json';
+---
+
+<section id="acces" class="bg-cap-charbon text-cap-papier py-24 md:py-32 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="mb-12 md:mb-16 max-w-2xl">
+      <p class="font-jetbrains text-[10px] uppercase tracking-[0.32em] text-cap-rouge mb-4">
+        § VIII — Comment venir
+      </p>
+      <h2 class="font-bricolage font-semibold text-cap-papier leading-[1.05]" style="font-size: clamp(36px, 5.5vw, 60px);">
+        L'accès au gîte.
+      </h2>
+    </header>
+
+    <div class="grid md:grid-cols-2 gap-x-12 gap-y-10 max-w-4xl">
+
+      <article>
+        <p class="font-jetbrains text-[10px] uppercase tracking-[0.28em] text-cap-mousse mb-3">
+          ★ En voiture
+        </p>
+        <p class="font-crimson-pro text-cap-papier/85 text-base md:text-lg leading-[1.75]">
+          {data.acces.voiture}
+        </p>
+      </article>
+
+      <article>
+        <p class="font-jetbrains text-[10px] uppercase tracking-[0.28em] text-cap-mousse mb-3">
+          ★ En transport
+        </p>
+        <p class="font-crimson-pro text-cap-papier/85 text-base md:text-lg leading-[1.75]">
+          {data.acces.transport}
+        </p>
+      </article>
+
+      <article>
+        <p class="font-jetbrains text-[10px] uppercase tracking-[0.28em] text-cap-mousse mb-3">
+          ★ Parking
+        </p>
+        <p class="font-crimson-pro text-cap-papier/85 text-base md:text-lg leading-[1.75]">
+          {data.acces.parking}
+        </p>
+      </article>
+
+      <article>
+        <p class="font-jetbrains text-[10px] uppercase tracking-[0.28em] text-cap-mousse mb-3">
+          ★ Code d'accès
+        </p>
+        <p class="font-crimson-pro text-cap-papier/85 text-base md:text-lg leading-[1.75]">
+          {data.acces.code}
+        </p>
+      </article>
+    </div>
+
+    <!-- GPS rappel -->
+    <div class="mt-14 pt-8 border-t border-cap-papier/15 flex flex-wrap items-baseline justify-between gap-4 font-jetbrains text-[11px] uppercase tracking-[0.22em] text-cap-papier/60">
+      <span>{data.info.adresseLigne1} · {data.info.adresseLigne2}</span>
+      <span class="tabular-nums text-cap-rouge">
+        GPS : {data.info.gpsLat}, {data.info.gpsLon}
+      </span>
+    </div>
+  </div>
+</section>

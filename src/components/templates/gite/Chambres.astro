@@ -1,0 +1,75 @@
+---
+/**
+ * Chambres — 4 chambres en fiches polaroïd avec photo + nom + équipement + lits.
+ * Layout grid 2x2, légère rotation alternée par card.
+ */
+import data from '../../../data/templates/cap-anglais.json';
+
+const rotations = ['rotate-[-1deg]', 'rotate-[1deg]', 'rotate-[-0.5deg]', 'rotate-[1.5deg]'];
+---
+
+<section id="chambres" class="bg-cap-papier py-24 md:py-36 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="mb-14 md:mb-20 max-w-2xl">
+      <p class="font-jetbrains text-[10px] uppercase tracking-[0.32em] text-cap-mousse mb-4">
+        § III — Les chambres
+      </p>
+      <h2 class="font-bricolage font-semibold text-cap-charbon leading-[1.05]" style="font-size: clamp(36px, 5.5vw, 60px);">
+        Quatre chambres,<br/>quatre cirques.
+      </h2>
+      <p class="mt-5 font-crimson-pro italic text-cap-terre text-lg leading-relaxed">
+        Chacune porte le nom d'un cirque réunionnais. Mafate la simple, Salazie la cosy, Bélouve le dortoir, Bébour la familiale.
+      </p>
+    </header>
+
+    <ul class="grid sm:grid-cols-2 gap-8 md:gap-12">
+      {data.chambres.map((c, i) => (
+        <li class:list={['transform transition-transform duration-500 hover:!rotate-0 hover:scale-[1.01]', rotations[i]]}>
+          <article class="bg-cap-papier border border-cap-charbon/15 p-3" style="box-shadow: 0 12px 32px -10px rgba(27,27,23,0.18);">
+
+            <!-- Photo grande -->
+            <div class="relative aspect-[4/3] overflow-hidden bg-cap-pierre/20">
+              <img
+                src={c.photo}
+                alt={`Chambre ${c.nom}`}
+                loading="lazy"
+                decoding="async"
+                class="w-full h-full object-cover"
+              />
+              <!-- Étiquette numéro chambre -->
+              <span class="absolute top-3 left-3 inline-flex items-center justify-center w-8 h-8 bg-cap-papier font-bricolage font-bold text-cap-charbon text-sm">
+                0{i + 1}
+              </span>
+            </div>
+
+            <!-- Caption polaroïd -->
+            <div class="pt-5 px-3 pb-3">
+              <div class="flex items-baseline justify-between gap-3 mb-2">
+                <h3 class="font-bricolage font-semibold text-cap-charbon text-2xl leading-tight">
+                  {c.nom}
+                </h3>
+                <span class="font-jetbrains text-[10px] uppercase tracking-[0.22em] text-cap-mousse tabular-nums">
+                  {c.personnes} pers.
+                </span>
+              </div>
+
+              <p class="font-crimson-pro italic text-cap-terre text-base mb-3">
+                {c.lits}
+              </p>
+
+              <p class="font-bricolage text-cap-charbon/75 text-sm leading-relaxed mb-3">
+                {c.details}
+              </p>
+
+              <!-- Tarif supplément -->
+              <p class="pt-3 border-t border-cap-charbon/10 font-jetbrains text-[11px] uppercase tracking-[0.22em] text-cap-rouge">
+                {c.prix}
+              </p>
+            </div>
+          </article>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

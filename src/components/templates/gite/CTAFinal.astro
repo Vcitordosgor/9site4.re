@@ -1,0 +1,56 @@
+---
+/**
+ * CTAFinal — clôture topo-guide. Une phrase, deux CTAs.
+ */
+import data from '../../../data/templates/cap-anglais.json';
+---
+
+<section class="bg-cap-papier py-24 md:py-36 px-6 md:px-10 text-center relative overflow-hidden">
+
+  <!-- Lignes topo en arrière-plan grand format -->
+  <svg class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] opacity-[0.07] pointer-events-none" viewBox="0 0 600 600" fill="none" stroke="#3D5840" stroke-width="0.6" aria-hidden="true">
+    <ellipse cx="300" cy="300" rx="280" ry="200" transform="rotate(-15 300 300)"/>
+    <ellipse cx="300" cy="300" rx="240" ry="170" transform="rotate(-12 300 300)"/>
+    <ellipse cx="305" cy="295" rx="200" ry="140" transform="rotate(-10 305 295)"/>
+    <ellipse cx="310" cy="290" rx="160" ry="115" transform="rotate(-8 310 290)"/>
+    <ellipse cx="315" cy="285" rx="120" ry="90" transform="rotate(-5 315 285)"/>
+    <ellipse cx="320" cy="282" rx="80" ry="65"/>
+    <ellipse cx="325" cy="280" rx="40" ry="35"/>
+    <circle cx="328" cy="278" r="6" fill="#C03A2C"/>
+  </svg>
+
+  <div class="relative max-w-2xl mx-auto">
+
+    <p class="font-jetbrains text-[10px] uppercase tracking-[0.32em] text-cap-mousse mb-6">
+      ★ Carnet de gîtes péi · Fin du chapitre 47 ★
+    </p>
+
+    <h2 class="font-bricolage font-semibold text-cap-charbon leading-[1.05]" style="font-size: clamp(48px, 7vw, 96px);">
+      Le sommet
+      <span class="block text-cap-mousse">vous attend.</span>
+    </h2>
+
+    <p class="mt-10 font-crimson-pro italic text-cap-terre text-lg md:text-xl leading-relaxed max-w-md mx-auto">
+      Cilaos n'est pas une destination — c'est un retour à quelque chose qu'on avait oublié.
+    </p>
+
+    <div class="mt-14 flex flex-wrap items-center justify-center gap-x-7 gap-y-4">
+      <a
+        href="#reservation"
+        class="inline-flex items-center justify-center h-14 px-10 bg-cap-mousse text-cap-papier font-bricolage font-semibold text-base hover:bg-cap-charbon transition-colors"
+      >
+        Réserver mon séjour →
+      </a>
+      <a
+        href={`tel:${data.info.telephoneHref}`}
+        class="font-bricolage text-cap-charbon text-base tabular-nums underline underline-offset-4 decoration-cap-rouge hover:decoration-cap-mousse transition-colors"
+      >
+        {data.info.telephone}
+      </a>
+    </div>
+
+    <p class="mt-12 font-jetbrains text-[10px] uppercase tracking-[0.32em] text-cap-mousse">
+      {data.info.gpsLat}, {data.info.gpsLon} · alt. {data.info.altitude}
+    </p>
+  </div>
+</section>

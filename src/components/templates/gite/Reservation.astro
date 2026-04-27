@@ -1,0 +1,195 @@
+---
+/**
+ * Reservation — tarifs en tableau + formulaire avec dates arrivée/départ.
+ * Format fiche tarifaire topo-guide.
+ */
+import data from '../../../data/templates/cap-anglais.json';
+const waBase = `https://wa.me/${data.info.whatsapp}`;
+---
+
+<section id="tarifs" class="bg-cap-mousse text-cap-papier py-24 md:py-36 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="mb-14 md:mb-20 max-w-2xl">
+      <p class="font-jetbrains text-[10px] uppercase tracking-[0.32em] text-cap-papier/65 mb-4">
+        § VI — Tarifs & réservation
+      </p>
+      <h2 class="font-bricolage font-semibold text-cap-papier leading-[1.05]" style="font-size: clamp(36px, 5.5vw, 60px);">
+        Tarifs<br/>transparents.
+      </h2>
+    </header>
+
+    <!-- Tableau tarifs -->
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 mb-16">
+
+      <!-- Tableau gauche -->
+      <div class="lg:col-span-7">
+        <ul class="border-t border-cap-papier/25">
+          {data.tarifs.map((t, i) => (
+            <li class="grid grid-cols-12 gap-3 py-5 items-baseline border-b border-cap-papier/15">
+              <div class="col-span-7 sm:col-span-7">
+                <p class="font-bricolage font-semibold text-cap-papier text-base md:text-lg">
+                  {t.label}
+                </p>
+                <p class="mt-1 font-jetbrains text-[11px] uppercase tracking-[0.18em] text-cap-papier/55">
+                  {t.periode}
+                </p>
+              </div>
+              <div class="col-span-5 sm:col-span-5 text-right">
+                <p class="font-bricolage font-semibold text-cap-papier text-2xl tabular-nums leading-none">
+                  {t.prix}
+                </p>
+                <p class="mt-1 font-jetbrains text-[10px] uppercase tracking-[0.18em] text-cap-papier/55">
+                  {t.unite}
+                </p>
+              </div>
+            </li>
+          ))}
+        </ul>
+
+        <p class="mt-6 font-crimson-pro italic text-cap-papier/70 text-sm leading-relaxed">
+          Acompte de 30 % à la réservation. Solde sur place, espèces ou virement. Pas de carte bancaire.
+        </p>
+      </div>
+
+      <!-- Encart info à droite -->
+      <aside class="lg:col-span-5 bg-cap-charbon p-7 md:p-8 border-l-4 border-cap-rouge">
+        <p class="font-jetbrains text-[10px] uppercase tracking-[0.28em] text-cap-rouge mb-4">
+          ★ Annulation
+        </p>
+        <p class="font-bricolage text-cap-papier text-base leading-relaxed mb-4">
+          Annulation gratuite jusqu'à 7 jours avant l'arrivée.
+        </p>
+        <p class="font-crimson-pro italic text-cap-papier/70 text-sm leading-relaxed">
+          Au-delà, l'acompte est conservé sauf cas de force majeure (cyclone, route fermée). On reste flexibles — appelez-nous.
+        </p>
+      </aside>
+    </div>
+
+    <!-- Formulaire réservation -->
+    <div id="reservation" class="bg-cap-papier text-cap-charbon p-7 md:p-10 max-w-3xl">
+      <p class="font-jetbrains text-[10px] uppercase tracking-[0.32em] text-cap-mousse mb-3">
+        Demander une disponibilité
+      </p>
+      <h3 class="font-bricolage font-semibold text-cap-charbon text-2xl md:text-3xl mb-6">
+        Votre séjour au gîte
+      </h3>
+
+      <form id="resa-form" class="space-y-6" novalidate>
+
+        <div class="grid sm:grid-cols-2 gap-5">
+          <div>
+            <label for="resa-arrivee" class="block font-jetbrains text-[10px] uppercase tracking-[0.22em] text-cap-mousse mb-2">Arrivée</label>
+            <input
+              id="resa-arrivee"
+              name="arrivee"
+              type="date"
+              required
+              class="w-full h-11 px-3 bg-cap-papier border border-cap-charbon/25 focus:border-cap-mousse font-bricolage text-cap-charbon text-base outline-none transition-colors tabular-nums"
+            />
+          </div>
+          <div>
+            <label for="resa-depart" class="block font-jetbrains text-[10px] uppercase tracking-[0.22em] text-cap-mousse mb-2">Départ</label>
+            <input
+              id="resa-depart"
+              name="depart"
+              type="date"
+              required
+              class="w-full h-11 px-3 bg-cap-papier border border-cap-charbon/25 focus:border-cap-mousse font-bricolage text-cap-charbon text-base outline-none transition-colors tabular-nums"
+            />
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-5">
+          <div>
+            <label for="resa-pers" class="block font-jetbrains text-[10px] uppercase tracking-[0.22em] text-cap-mousse mb-2">Nombre de personnes</label>
+            <input
+              id="resa-pers"
+              name="personnes"
+              type="number"
+              min="1"
+              max="12"
+              required
+              placeholder="Ex. 4"
+              class="w-full h-11 px-3 bg-cap-papier border border-cap-charbon/25 focus:border-cap-mousse font-bricolage text-cap-charbon text-base outline-none transition-colors tabular-nums"
+            />
+          </div>
+          <div>
+            <label for="resa-tel" class="block font-jetbrains text-[10px] uppercase tracking-[0.22em] text-cap-mousse mb-2">Téléphone</label>
+            <input
+              id="resa-tel"
+              name="telephone"
+              type="tel"
+              required
+              autocomplete="tel"
+              placeholder="0692 xx xx xx"
+              class="w-full h-11 px-3 bg-cap-papier border border-cap-charbon/25 focus:border-cap-mousse font-bricolage text-cap-charbon text-base outline-none transition-colors tabular-nums"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label for="resa-nom" class="block font-jetbrains text-[10px] uppercase tracking-[0.22em] text-cap-mousse mb-2">Votre nom</label>
+          <input
+            id="resa-nom"
+            name="nom"
+            type="text"
+            required
+            autocomplete="name"
+            class="w-full h-11 px-3 bg-cap-papier border border-cap-charbon/25 focus:border-cap-mousse font-bricolage text-cap-charbon text-base outline-none transition-colors"
+          />
+        </div>
+
+        <div>
+          <label for="resa-message" class="block font-jetbrains text-[10px] uppercase tracking-[0.22em] text-cap-mousse mb-2">Une demande particulière <span class="lowercase italic font-crimson-pro text-cap-charbon/55 normal-case">(facultatif)</span></label>
+          <textarea
+            id="resa-message"
+            name="message"
+            rows="3"
+            placeholder="Demi-pension, accompagnement randonnée, allergies…"
+            class="w-full px-3 py-2 bg-cap-papier border border-cap-charbon/25 focus:border-cap-mousse font-bricolage text-cap-charbon text-base outline-none transition-colors resize-none"
+          ></textarea>
+        </div>
+
+        <div class="pt-4">
+          <button
+            type="submit"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-3 h-13 px-9 bg-cap-mousse text-cap-papier font-bricolage font-semibold text-base hover:bg-cap-charbon transition-colors"
+            style="height: 52px;"
+          >
+            Envoyer la demande →
+          </button>
+          <p class="mt-4 font-crimson-pro italic text-cap-terre text-sm">
+            La demande ouvre WhatsApp. Réponse de Jean-Marie sous 24 h.
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ waBase }}>
+  const form = document.getElementById('resa-form');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fd = new FormData(form);
+      const arrivee = fd.get('arrivee') || '';
+      const depart = fd.get('depart') || '';
+      const personnes = fd.get('personnes') || '';
+      const tel = fd.get('telephone') || '';
+      const nom = fd.get('nom') || '';
+      const message = fd.get('message') || '';
+      const text = [
+        'Bonjour, je souhaite réserver Le Cap Anglais.',
+        nom ? `Nom : ${nom}` : '',
+        tel ? `Tél : ${tel}` : '',
+        arrivee ? `Arrivée : ${arrivee}` : '',
+        depart ? `Départ : ${depart}` : '',
+        personnes ? `Personnes : ${personnes}` : '',
+        message ? `Demande : ${message}` : '',
+      ].filter(Boolean).join('\n');
+      window.open(`${waBase}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
+    });
+  }
+</script>

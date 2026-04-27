@@ -1,0 +1,44 @@
+---
+import data from '../../../data/templates/cap-anglais.json';
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-cap-charbon text-cap-papier/75 py-12 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+
+      <div>
+        <p class="flex items-center gap-2">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="text-cap-rouge" aria-hidden="true">
+            <path d="M12 2L4 8l8 14 8-14-8-6z"/>
+            <circle cx="12" cy="9" r="2.5" fill="#1B1B17"/>
+          </svg>
+          <span class="font-bricolage font-semibold text-cap-papier text-lg leading-none">{data.info.wordmark}</span>
+        </p>
+        <p class="mt-2 font-crimson-pro italic text-cap-papier/55 text-sm">
+          {data.info.soustitre} · alt. {data.info.altitude} · depuis {data.info.annee}
+        </p>
+      </div>
+
+      <ul class="flex flex-col md:flex-row md:items-center gap-2 md:gap-7 font-bricolage text-sm">
+        <li><a href={`tel:${data.info.telephoneHref}`} class="hover:text-cap-mousse transition-colors tabular-nums">{data.info.telephone}</a></li>
+        <li class="hidden md:inline-block w-1 h-1 rounded-full bg-cap-rouge" aria-hidden="true"></li>
+        <li><a href={`mailto:${data.info.email}`} class="hover:text-cap-mousse transition-colors break-all">{data.info.email}</a></li>
+        <li class="hidden md:inline-block w-1 h-1 rounded-full bg-cap-rouge" aria-hidden="true"></li>
+        <li class="font-jetbrains text-[11px] uppercase tracking-[0.18em] text-cap-papier/55 tabular-nums">{data.info.gpsLat}, {data.info.gpsLon}</li>
+      </ul>
+    </div>
+
+    <!-- Filet rouge balisage -->
+    <div class="h-1 mb-6 bg-cap-rouge" aria-hidden="true"></div>
+
+    <div class="flex flex-col-reverse md:flex-row md:items-center md:justify-between gap-3 font-jetbrains text-[10px] uppercase tracking-[0.25em] text-cap-papier/45">
+      <p>© {year} {data.info.nom} · SIRET {data.info.siret}</p>
+      <p>
+        Site créé par
+        <a href="/" class="text-cap-papier/70 hover:text-cap-mousse transition-colors">9site4</a>
+      </p>
+    </div>
+  </div>
+</footer>

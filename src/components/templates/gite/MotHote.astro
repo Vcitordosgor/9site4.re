@@ -1,0 +1,36 @@
+---
+/**
+ * MotHote — section "à propos" en format lettre de l'hôte.
+ * Texte serif Crimson Pro flottant, signature en italique.
+ */
+import data from '../../../data/templates/cap-anglais.json';
+---
+
+<section class="bg-cap-papier py-24 md:py-36 px-6 md:px-10">
+  <div class="max-w-3xl mx-auto">
+
+    <header class="mb-12">
+      <p class="font-jetbrains text-[10px] uppercase tracking-[0.32em] text-cap-mousse mb-4">
+        § VII — Le mot de l'hôte
+      </p>
+      <h2 class="font-bricolage font-semibold text-cap-charbon leading-[1.05]" style="font-size: clamp(34px, 5vw, 52px);">
+        Bonjour,<br/>moi c'est Jean-Marie.
+      </h2>
+    </header>
+
+    <!-- Lettre Crimson Pro -->
+    <div class="font-crimson-pro text-cap-charbon/85 leading-[1.85] space-y-7 text-lg md:text-xl border-l-2 border-cap-mousse pl-7">
+      <p class="italic text-cap-charbon">
+        {data.motHote.intro}
+      </p>
+      {data.motHote.paragraphes.map((p) => (
+        <p>{p}</p>
+      ))}
+    </div>
+
+    <!-- Signature -->
+    <p class="mt-12 pl-7 font-crimson-pro italic text-cap-terre text-base text-right">
+      {data.motHote.signature}
+    </p>
+  </div>
+</section>

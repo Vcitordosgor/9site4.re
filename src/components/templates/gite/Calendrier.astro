@@ -1,0 +1,154 @@
+---
+/**
+ * Calendrier — vue 2 mois affichant les nuits libres/occupées.
+ * Génération en JS au mount, occupation passée via data-occupied.
+ * Différent du date-picker simple Verveine et du panier Lagon.
+ */
+import data from '../../../data/templates/cap-anglais.json';
+const occupiedJson = JSON.stringify(data.occupation);
+---
+
+<section id="calendrier" class="bg-cap-charbon text-cap-papier py-24 md:py-32 px-6 md:px-10 relative overflow-hidden">
+
+  <!-- Lignes topo en arrière-plan -->
+  <svg class="absolute -left-40 -top-40 w-[600px] h-[600px] opacity-[0.06] pointer-events-none" viewBox="0 0 600 600" fill="none" stroke="#F1EBDB" stroke-width="0.6" aria-hidden="true">
+    <ellipse cx="300" cy="300" rx="280" ry="200"/>
+    <ellipse cx="300" cy="300" rx="240" ry="170"/>
+    <ellipse cx="300" cy="300" rx="200" ry="140"/>
+    <ellipse cx="300" cy="300" rx="160" ry="115"/>
+    <ellipse cx="300" cy="300" rx="120" ry="90"/>
+    <ellipse cx="300" cy="300" rx="80" ry="65"/>
+    <ellipse cx="300" cy="300" rx="40" ry="35"/>
+  </svg>
+
+  <div class="relative max-w-content mx-auto">
+
+    <header class="mb-12 md:mb-16 max-w-2xl">
+      <p class="font-jetbrains text-[10px] uppercase tracking-[0.32em] text-cap-rouge mb-4">
+        § IV — Disponibilités
+      </p>
+      <h2 class="font-bricolage font-semibold text-cap-papier leading-[1.05]" style="font-size: clamp(36px, 5.5vw, 60px);">
+        Vue d'ensemble<br/>sur 2 mois.
+      </h2>
+      <p class="mt-5 font-crimson-pro italic text-cap-papier/75 text-lg leading-relaxed">
+        Vert = libre. Rouge = complet. Cliquez sur une date libre pour pré-remplir votre demande.
+      </p>
+    </header>
+
+    <!-- Légende -->
+    <div class="mb-6 flex flex-wrap items-center gap-x-6 gap-y-2 font-jetbrains text-[11px] uppercase tracking-[0.18em] text-cap-papier/65">
+      <span class="flex items-center gap-2">
+        <span class="block w-3.5 h-3.5 bg-cap-mousse"></span>
+        Disponible
+      </span>
+      <span class="flex items-center gap-2">
+        <span class="block w-3.5 h-3.5 bg-cap-rouge"></span>
+        Complet
+      </span>
+      <span class="flex items-center gap-2">
+        <span class="block w-3.5 h-3.5 bg-cap-papier/15 border border-cap-papier/30"></span>
+        Mois suivant
+      </span>
+    </div>
+
+    <!-- Grilles 2 mois côte à côte -->
+    <div class="grid lg:grid-cols-2 gap-8 lg:gap-12">
+      <div id="cal-month-1" class="cal-month bg-cap-papier/5 p-6 border border-cap-papier/15"></div>
+      <div id="cal-month-2" class="cal-month bg-cap-papier/5 p-6 border border-cap-papier/15"></div>
+    </div>
+
+    <!-- Date sélectionnée -->
+    <div id="cal-selected" class="mt-8 hidden">
+      <p class="font-jetbrains text-[11px] uppercase tracking-[0.22em] text-cap-rouge mb-2">Date sélectionnée</p>
+      <p class="font-bricolage font-semibold text-cap-papier text-2xl mb-4">
+        <span id="cal-selected-date">—</span>
+      </p>
+      <a href="#reservation" id="cal-cta" class="inline-flex items-center gap-2 h-12 px-6 bg-cap-rouge text-cap-papier font-bricolage font-semibold text-sm hover:bg-cap-papier hover:text-cap-charbon transition-colors">
+        Réserver à partir de cette date →
+      </a>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ occupiedJson }}>
+  const occupied = new Set(JSON.parse(occupiedJson));
+  const moisNoms = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
+  const joursAbbr = ['L','M','M','J','V','S','D'];
+
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
+
+  function buildMonth(targetEl, year, month) {
+    const first = new Date(year, month, 1);
+    const last = new Date(year, month + 1, 0);
+    const startDay = (first.getDay() + 6) % 7; // Convert Sunday=0 to Monday=0
+    const daysInMonth = last.getDate();
+
+    let html = `
+      <p class="font-bricolage font-semibold text-cap-papier text-xl mb-4">
+        ${moisNoms[month]} <span class="font-jetbrains text-cap-papier/55 text-sm tabular-nums">${year}</span>
+      </p>
+      <div class="grid grid-cols-7 gap-1 mb-2 font-jetbrains text-[10px] uppercase tracking-wider text-cap-papier/55 text-center">
+        ${joursAbbr.map(j => `<span>${j}</span>`).join('')}
+      </div>
+      <div class="grid grid-cols-7 gap-1">
+    `;
+
+    // Empty cells before
+    for (let i = 0; i < startDay; i++) {
+      html += '<div class="aspect-square"></div>';
+    }
+
+    // Days
+    for (let d = 1; d <= daysInMonth; d++) {
+      const iso = `${year}-${pad(month + 1)}-${pad(d)}`;
+      const isOccupied = occupied.has(iso);
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      const dateObj = new Date(year, month, d);
+      const isPast = dateObj < today;
+
+      let cls = 'aspect-square flex items-center justify-center font-jetbrains text-xs tabular-nums transition-all';
+      if (isPast) {
+        cls += ' bg-cap-papier/5 text-cap-papier/25 cursor-not-allowed';
+      } else if (isOccupied) {
+        cls += ' bg-cap-rouge text-cap-papier cursor-not-allowed';
+      } else {
+        cls += ' bg-cap-mousse text-cap-papier hover:bg-cap-papier hover:text-cap-charbon cursor-pointer cal-day-free';
+      }
+
+      html += `<button type="button" class="${cls}" ${!isPast && !isOccupied ? `data-iso="${iso}"` : 'disabled'} aria-label="${d} ${moisNoms[month]} ${year}${isOccupied ? ', complet' : ''}">${d}</button>`;
+    }
+
+    html += '</div>';
+    targetEl.innerHTML = html;
+  }
+
+  const today = new Date();
+  const m1 = document.getElementById('cal-month-1');
+  const m2 = document.getElementById('cal-month-2');
+
+  if (m1) buildMonth(m1, today.getFullYear(), today.getMonth());
+  if (m2) {
+    const next = new Date(today.getFullYear(), today.getMonth() + 1, 1);
+    buildMonth(m2, next.getFullYear(), next.getMonth());
+  }
+
+  // Click on free day → show selected
+  document.addEventListener('click', (e) => {
+    const t = e.target;
+    if (t.dataset && t.dataset.iso) {
+      const iso = t.dataset.iso;
+      const [y, mo, d] = iso.split('-');
+      const display = `${parseInt(d)} ${moisNoms[parseInt(mo) - 1]} ${y}`;
+      const selectedDate = document.getElementById('cal-selected-date');
+      const selectedBox = document.getElementById('cal-selected');
+      const cta = document.getElementById('cal-cta');
+      if (selectedDate) selectedDate.textContent = display;
+      if (selectedBox) selectedBox.classList.remove('hidden');
+      if (cta) cta.dataset.dateIso = iso;
+      // Update form arrival field if present
+      const arrivee = document.getElementById('resa-arrivee');
+      if (arrivee) arrivee.value = iso;
+    }
+  });
+</script>

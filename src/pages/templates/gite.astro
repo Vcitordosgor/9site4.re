@@ -1,0 +1,85 @@
+---
+import '@fontsource/bricolage-grotesque/400.css';
+import '@fontsource/bricolage-grotesque/500.css';
+import '@fontsource/bricolage-grotesque/600.css';
+import '@fontsource/bricolage-grotesque/700.css';
+import '@fontsource/crimson-pro/300.css';
+import '@fontsource/crimson-pro/400.css';
+import '@fontsource/crimson-pro/500.css';
+import '@fontsource/crimson-pro/300-italic.css';
+import '@fontsource/crimson-pro/400-italic.css';
+import '@fontsource/jetbrains-mono/400.css';
+import '@fontsource/jetbrains-mono/500.css';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getSeo } from '../../lib/seo';
+import capData from '../../data/templates/cap-anglais.json';
+
+import CapHeader from '../../components/templates/gite/CapHeader.astro';
+import HeroTopoGuide from '../../components/templates/gite/HeroTopoGuide.astro';
+import FicheTechnique from '../../components/templates/gite/FicheTechnique.astro';
+import Chambres from '../../components/templates/gite/Chambres.astro';
+import Calendrier from '../../components/templates/gite/Calendrier.astro';
+import Alentours from '../../components/templates/gite/Alentours.astro';
+import Reservation from '../../components/templates/gite/Reservation.astro';
+import MotHote from '../../components/templates/gite/MotHote.astro';
+import CommentVenir from '../../components/templates/gite/CommentVenir.astro';
+import CTAFinal from '../../components/templates/gite/CTAFinal.astro';
+import CapFooter from '../../components/templates/gite/CapFooter.astro';
+---
+
+<BaseLayout seo={getSeo('templateGite')} bare={true}>
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <link rel="dns-prefetch" href="https://images.unsplash.com" />
+    <link
+      rel="preload"
+      as="image"
+      href={capData.info.photoHero}
+      fetchpriority="high"
+    />
+  </Fragment>
+
+  <CapHeader />
+
+  <main id="top" class="bg-cap-papier text-cap-charbon font-bricolage">
+    <HeroTopoGuide />
+    <FicheTechnique />
+    <Chambres />
+    <Calendrier />
+    <Alentours />
+    <Reservation />
+    <MotHote />
+    <CommentVenir />
+    <CTAFinal />
+  </main>
+
+  <CapFooter />
+
+  <!-- Sticky CTA mobile : rectangle plein mousse Bricolage uppercase -->
+  <a
+    id="cap-sticky-cta"
+    href="#reservation"
+    data-visible="false"
+    class="md:hidden fixed bottom-5 inset-x-5 z-40 inline-flex items-center justify-center h-13 bg-cap-mousse text-cap-papier font-bricolage font-semibold text-sm transition-all duration-300 data-[visible=false]:opacity-0 data-[visible=false]:translate-y-4 data-[visible=false]:pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0"
+    style="height: 52px; box-shadow: 0 12px 28px rgba(61,88,64,0.35);"
+  >
+    Réserver mon séjour →
+  </a>
+
+  <script>
+    const sticky = document.getElementById('cap-sticky-cta');
+    const reservation = document.getElementById('reservation');
+    if (sticky && reservation) {
+      const update = () => {
+        const rect = reservation.getBoundingClientRect();
+        const inSection = rect.top < window.innerHeight && rect.bottom > 80;
+        const scrolledPastHero = window.scrollY > 600;
+        sticky.dataset.visible = String(scrolledPastHero && !inSection);
+      };
+      update();
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update, { passive: true });
+    }
+  </script>
+</BaseLayout>

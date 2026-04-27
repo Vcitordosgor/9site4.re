@@ -1,0 +1,140 @@
+---
+/**
+ * HeroTopoGuide — composition style page de topo-guide papier.
+ * Photo paysage à gauche avec épingle SVG + GPS mono.
+ * Fiche du gîte à droite (titre, altitude, capacité, classification, prix).
+ * Lignes topographiques SVG en arrière-plan (cercles concentriques).
+ */
+import data from '../../../data/templates/cap-anglais.json';
+---
+
+<section id="top" class="relative bg-cap-papier overflow-hidden">
+
+  <!-- Lignes topographiques en arrière-plan -->
+  <svg class="absolute -right-32 -bottom-32 w-[700px] h-[700px] opacity-[0.08] pointer-events-none" viewBox="0 0 600 600" fill="none" stroke="#3D5840" stroke-width="0.6" aria-hidden="true">
+    <ellipse cx="300" cy="300" rx="280" ry="200" transform="rotate(-15 300 300)"/>
+    <ellipse cx="300" cy="300" rx="240" ry="170" transform="rotate(-12 300 300)"/>
+    <ellipse cx="305" cy="295" rx="200" ry="140" transform="rotate(-10 305 295)"/>
+    <ellipse cx="310" cy="290" rx="160" ry="115" transform="rotate(-8 310 290)"/>
+    <ellipse cx="315" cy="285" rx="120" ry="90" transform="rotate(-5 315 285)"/>
+    <ellipse cx="320" cy="282" rx="80" ry="65" transform="rotate(0 320 282)"/>
+    <ellipse cx="325" cy="280" rx="40" ry="35"/>
+    <circle cx="328" cy="278" r="5" fill="#C03A2C"/>
+  </svg>
+
+  <div class="relative max-w-content mx-auto px-6 md:px-10 pt-32 pb-20 md:pt-40 md:pb-28">
+
+    <!-- En-tête type page de carnet -->
+    <div class="flex items-baseline justify-between font-jetbrains text-[10px] uppercase tracking-[0.28em] text-cap-terre mb-10 md:mb-14 pb-3 border-b border-cap-charbon/15">
+      <span>Carnet de gîtes péi · n°47</span>
+      <span class="hidden sm:inline">Île de La Réunion · 974</span>
+      <span>p. 01</span>
+    </div>
+
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+
+      <!-- Photo paysage à gauche avec épingle GPS -->
+      <div class="lg:col-span-7">
+        <div class="relative aspect-[4/3] bg-cap-charbon overflow-hidden">
+          <img
+            src={data.info.photoHero}
+            alt={`Le Cap Anglais, gîte de ${data.info.ville}`}
+            class="w-full h-full object-cover"
+            fetchpriority="high"
+            decoding="async"
+          />
+          <!-- Épingle topo SVG centrée -->
+          <div class="absolute top-1/3 left-2/3 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-1.5">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="currentColor" class="text-cap-rouge drop-shadow-md" aria-hidden="true">
+              <path d="M12 2L4 8l8 14 8-14-8-6z" stroke="#F1EBDB" stroke-width="0.5"/>
+              <circle cx="12" cy="9" r="2.5" fill="#F1EBDB"/>
+            </svg>
+            <span class="font-jetbrains text-[10px] text-cap-papier bg-cap-charbon/85 px-2 py-1 tabular-nums">
+              {data.info.gpsLat}, {data.info.gpsLon}
+            </span>
+          </div>
+
+          <!-- Cadre intérieur fin -->
+          <div class="absolute inset-3 border border-cap-papier/30 pointer-events-none" aria-hidden="true"></div>
+
+          <!-- Étiquette altitude en bas gauche -->
+          <div class="absolute bottom-4 left-4 bg-cap-papier/95 px-3 py-2">
+            <p class="font-jetbrains text-[10px] uppercase tracking-[0.22em] text-cap-terre">Altitude</p>
+            <p class="font-bricolage font-semibold text-cap-charbon text-base tabular-nums">{data.info.altitude}</p>
+          </div>
+        </div>
+
+        <!-- Légende sous photo, style topo-guide -->
+        <p class="mt-3 font-crimson-pro italic text-cap-terre text-sm leading-relaxed">
+          Fig. 1 — Le gîte vu depuis le sentier d'accès, côté est. Le Pic du Maïdo est visible par temps clair (à droite).
+        </p>
+      </div>
+
+      <!-- Fiche du gîte à droite -->
+      <aside class="lg:col-span-5">
+
+        <!-- Section titre -->
+        <p class="font-jetbrains text-[10px] uppercase tracking-[0.32em] text-cap-mousse mb-3">
+          Fiche n°47 · Cilaos
+        </p>
+        <h1 class="font-bricolage font-semibold text-cap-charbon leading-[1.0]" style="font-size: clamp(40px, 6vw, 72px);">
+          {data.info.wordmark}
+        </h1>
+        <p class="mt-2 font-crimson-pro italic text-cap-terre text-xl">
+          {data.info.soustitre}
+        </p>
+
+        <!-- Classification ananas -->
+        <div class="mt-6 flex items-center gap-2">
+          {Array.from({ length: 5 }).map((_, i) => (
+            <span class:list={['text-2xl leading-none', i < data.info.classification ? 'text-cap-mousse' : 'text-cap-pierre/30']} aria-hidden="true">
+              ✦
+            </span>
+          ))}
+          <span class="ml-2 font-jetbrains text-[10px] uppercase tracking-[0.22em] text-cap-terre">
+            Classification gîtes péi
+          </span>
+        </div>
+
+        <!-- Filet rouge balisage -->
+        <div class="mt-6 mb-6 h-1 w-16 bg-cap-rouge" aria-hidden="true"></div>
+
+        <!-- Récap rapide en data tabulaire -->
+        <ul class="space-y-2.5 mb-8 font-jetbrains text-[12px]">
+          <li class="flex items-baseline justify-between gap-3 py-1.5 border-b border-cap-charbon/15">
+            <span class="uppercase tracking-[0.18em] text-cap-terre">Capacité</span>
+            <span class="text-cap-charbon">12 personnes</span>
+          </li>
+          <li class="flex items-baseline justify-between gap-3 py-1.5 border-b border-cap-charbon/15">
+            <span class="uppercase tracking-[0.18em] text-cap-terre">Chambres</span>
+            <span class="text-cap-charbon">4 chambres</span>
+          </li>
+          <li class="flex items-baseline justify-between gap-3 py-1.5 border-b border-cap-charbon/15">
+            <span class="uppercase tracking-[0.18em] text-cap-terre">Tarif</span>
+            <span class="text-cap-charbon">22–32 € /pers /nuit</span>
+          </li>
+          <li class="flex items-baseline justify-between gap-3 py-1.5">
+            <span class="uppercase tracking-[0.18em] text-cap-terre">Hôte</span>
+            <span class="text-cap-charbon">{data.info.hote}</span>
+          </li>
+        </ul>
+
+        <!-- CTA -->
+        <a
+          href="#calendrier"
+          class="inline-flex items-center gap-2 h-13 px-7 bg-cap-mousse text-cap-papier font-bricolage font-semibold text-base hover:bg-cap-charbon transition-colors"
+          style="height: 52px;"
+        >
+          Vérifier les disponibilités
+          <span aria-hidden="true">→</span>
+        </a>
+        <p class="mt-3 font-crimson-pro italic text-cap-terre text-sm">
+          Ou par téléphone :
+          <a href={`tel:${data.info.telephoneHref}`} class="text-cap-charbon underline underline-offset-4 decoration-cap-mousse tabular-nums">
+            {data.info.telephone}
+          </a>
+        </p>
+      </aside>
+    </div>
+  </div>
+</section>
