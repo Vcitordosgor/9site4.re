@@ -149,7 +149,8 @@
     "categorie": "tourisme",
     "sousTitre": "Itinéraires, tarifs et réservation des sorties",
     "moduleInclus": "Réservation",
-    "slug": "excursions-randonnee"
+    "slug": "excursions-randonnee",
+    "previewUrl": "/templates/excursions"
   },
   {
     "id": 18,
