@@ -212,6 +212,7 @@
     "categorie": "particuliers",
     "sousTitre": "Services, zone d'intervention et planning",
     "moduleInclus": "Intervention",
-    "slug": "aide-a-domicile"
+    "slug": "aide-a-domicile",
+    "previewUrl": "/templates/aide-domicile"
   }
 ]
