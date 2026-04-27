@@ -167,7 +167,8 @@
     "categorie": "pro",
     "sousTitre": "Expertise, références et prise de rendez-vous",
     "moduleInclus": "Rendez-vous",
-    "slug": "consultant"
+    "slug": "consultant",
+    "previewUrl": "/templates/consultant"
   },
   {
     "id": 20,
