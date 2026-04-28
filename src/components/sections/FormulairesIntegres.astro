@@ -363,8 +363,11 @@ function fieldDisplay(f: Field): string {
   switch (f.type) {
     case 'input-text':
     case 'input-tel':
+    case 'input-email':
     case 'input-number':
       return f.defaultValue || f.placeholder || placeholder;
+    case 'input-file':
+      return f.defaultValue || 'Aucune photo jointe';
     case 'input-date': {
       if (!f.defaultValue) return placeholder;
       const d = new Date(f.defaultValue);
@@ -599,6 +602,29 @@ const etapes = [
                             autocomplete="tel" placeholder={f.placeholder}
                             value={f.defaultValue ?? ''}
                             class={`${inputBase} tabular-nums`} />
+                        )}
+
+                        {f.type === 'input-email' && (
+                          <input id={fieldId} type="email" name={f.name}
+                            autocomplete="email" placeholder={f.placeholder}
+                            value={f.defaultValue ?? ''}
+                            class={inputBase} />
+                        )}
+
+                        {f.type === 'input-file' && (
+                          <label for={fieldId} class="flex flex-col items-center justify-center gap-1 h-[74px] px-3 rounded-xl ring-1 ring-dashed ring-bleu-nuit/25 bg-blanc-casse cursor-pointer hover:ring-bleu-nuit/45 hover:bg-bleu-nuit/[0.02] transition-all text-center">
+                            <input id={fieldId} type="file" name={f.name}
+                              accept="image/*"
+                              class="sr-only" />
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="text-bleu-nuit/45" aria-hidden="true">
+                              <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/>
+                              <circle cx="12" cy="13" r="3"/>
+                            </svg>
+                            <span class="text-[11px] font-medium text-bleu-nuit/70 leading-tight">Cliquez pour joindre une photo</span>
+                            {f.hint && (
+                              <span class="text-[9px] text-bleu-nuit/45 leading-tight">{f.hint}</span>
+                            )}
+                          </label>
                         )}
 
                         {f.type === 'input-date' && (
@@ -853,6 +879,10 @@ const etapes = [
         if (el.type === 'checkbox') return el.checked ? 'Oui' : 'Non';
         if (el.type === 'date') return formatDate(el.value);
         if (el.type === 'time') return formatTime(el.value);
+        if (el.type === 'file') {
+          const f = el.files?.[0];
+          return f ? f.name : 'Aucune photo jointe';
+        }
         return el.value || el.placeholder || placeholder;
       }
       if (el instanceof HTMLTextAreaElement) {
