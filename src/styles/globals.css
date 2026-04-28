@@ -254,3 +254,43 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* Curseur custom : silhouette stylisée de La Réunion (clin d'œil identité locale).
+   Activé uniquement sur pointeur fin (desktop avec souris) — jamais sur tactile.
+   Hotspot calé sur le NW (point pointu de l'île) pour tomber juste sur le pixel cliqué. */
+@media (hover: hover) and (pointer: fine) {
+  body {
+    cursor: url('/cursors/reunion.svg') 4 6, auto;
+  }
+  /* Variante orange sur tout élément interactif — garde le fallback `pointer` natif. */
+  a,
+  button,
+  summary,
+  label,
+  select,
+  [role='button'],
+  [role='tab'],
+  [role='link'],
+  input[type='submit'],
+  input[type='reset'],
+  input[type='button'],
+  input[type='checkbox'],
+  input[type='radio'],
+  .cursor-pointer {
+    cursor: url('/cursors/reunion-active.svg') 4 6, pointer;
+  }
+  /* Champs de saisie texte : on garde le caret système, plus accessible. */
+  input[type='text'],
+  input[type='email'],
+  input[type='tel'],
+  input[type='url'],
+  input[type='search'],
+  input[type='password'],
+  input[type='number'],
+  input[type='date'],
+  input[type='time'],
+  textarea,
+  [contenteditable='true'] {
+    cursor: text;
+  }
+}
