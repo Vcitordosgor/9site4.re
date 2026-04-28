@@ -255,9 +255,9 @@
   }
 }
 
-/* Curseur custom : silhouette stylisée de La Réunion (clin d'œil identité locale).
+/* Curseur custom : drapeau régional 'Volcan' de La Réunion (clin d'œil identité locale).
    Activé uniquement sur pointeur fin (desktop avec souris) — jamais sur tactile.
-   Hotspot calé sur le NW (point pointu de l'île) pour tomber juste sur le pixel cliqué. */
+   Hotspot (4, 6) proche du coin haut-gauche pour tomber juste sur le pixel cliqué. */
 @media (hover: hover) and (pointer: fine) {
   body {
     cursor: url('/cursors/reunion.svg') 4 6, auto;
