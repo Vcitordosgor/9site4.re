@@ -120,10 +120,28 @@ const metiers: Metier[] = [
   },
 ];
 
-const benefits = [
-  { icon: 'wand', titre: 'Pensé pour votre métier', texte: 'Réservation, devis, RDV ou intervention — pas un "Contactez-nous" générique.' },
-  { icon: 'shield-check', titre: 'Filtre les bonnes demandes', texte: 'Champs adaptés qui qualifient le besoin et écartent le spam.' },
-  { icon: 'calendar-check', titre: 'Notification immédiate', texte: 'Email + WhatsApp dès qu’une demande arrive. Pas de retard, pas de loupé.' },
+const etapes = [
+  {
+    num: '01',
+    icon: 'file-text',
+    color: 'bleu',
+    titre: 'Le client remplit le formulaire',
+    texte: 'Il indique ce dont il a besoin : rendez-vous, devis, réservation, créneau, message…',
+  },
+  {
+    num: '02',
+    icon: 'mail',
+    color: 'orange',
+    titre: 'Vous recevez les informations',
+    texte: 'Tout arrive directement par e-mail et/ou WhatsApp, déjà structuré.',
+  },
+  {
+    num: '03',
+    icon: 'calendar-check',
+    color: 'bleu',
+    titre: 'Vous répondez plus vite',
+    texte: 'Vous avez les bonnes infos pour rappeler, confirmer, envoyer un devis ou proposer un créneau.',
+  },
 ];
 ---
 
@@ -144,30 +162,55 @@ const benefits = [
         Formulaires intégrés
       </p>
       <h2 id="formulaires-titre" class="scroll-reveal mt-4 font-sora font-bold text-3xl md:text-5xl text-bleu-nuit text-balance leading-tight">
-        Votre site reçoit les bonnes demandes,
-        <span class="text-bleu-nuit/60">pas du spam.</span>
+        Votre site devient
+        <span class="text-bleu-nuit/60">un vrai point d'entrée commercial.</span>
       </h2>
       <p class="scroll-reveal mt-6 text-lg text-bleu-nuit/70 leading-relaxed">
-        Un site joli ne suffit pas. Pour qu’il rapporte, il doit transformer
-        les visiteurs en clients. Chez 9site4, votre formulaire est conçu pour
-        votre métier — chaque champ a une raison d’être.
+        Un site joli ne suffit pas. Pour qu'il rapporte, il doit transformer
+        les visiteurs en clients. Voici comment ça se passe — en 3 étapes simples.
       </p>
     </div>
 
-    <!-- 3 bénéfices -->
-    <ul class="scroll-reveal mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
-      {benefits.map((b) => (
-        <li class="flex items-start gap-3 rounded-2xl bg-blanc-casse ring-1 ring-bleu-nuit/10 p-5">
-          <span class="flex w-10 h-10 rounded-xl bg-bleu/20 text-bleu-nuit items-center justify-center shrink-0">
-            <Icon name={b.icon} size={20} strokeWidth={1.75} />
-          </span>
-          <div>
-            <p class="font-sora font-semibold text-bleu-nuit leading-snug">{b.titre}</p>
-            <p class="mt-1 text-sm text-bleu-nuit/65 leading-relaxed">{b.texte}</p>
-          </div>
+    <!-- Section A : 3 étapes pédagogiques (Le client remplit → Vous recevez → Vous répondez) -->
+    <ol
+      class="scroll-reveal mt-12 grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 relative"
+      aria-label="Les 3 étapes du parcours formulaire"
+    >
+      {etapes.map((e, i) => (
+        <li class="relative">
+          <article class="relative h-full flex flex-col rounded-2xl bg-blanc-casse ring-1 ring-bleu-nuit/10 p-6 md:p-7 transition-all duration-300 ease-out-soft hover:-translate-y-0.5 hover:shadow-card-hover hover:ring-bleu-nuit/15">
+            <div class="flex items-start justify-between gap-4">
+              <span class:list={[
+                'flex w-12 h-12 rounded-xl items-center justify-center shrink-0',
+                e.color === 'orange'
+                  ? 'bg-orange/20 text-bleu-nuit'
+                  : 'bg-bleu/25 text-bleu-nuit',
+              ]}>
+                <Icon name={e.icon} size={22} strokeWidth={1.75} />
+              </span>
+              <span class="font-sora font-bold text-bleu-nuit/15 leading-none tabular-nums" style="font-size: 44px;">
+                {e.num}
+              </span>
+            </div>
+            <h3 class="mt-5 font-sora font-semibold text-lg text-bleu-nuit leading-snug">
+              {e.titre}
+            </h3>
+            <p class="mt-2 text-sm text-bleu-nuit/65 leading-relaxed">
+              {e.texte}
+            </p>
+          </article>
+          {/* Connecteur flèche entre les cartes (desktop only) */}
+          {i < etapes.length - 1 && (
+            <span
+              class="hidden md:flex absolute top-1/2 -translate-y-1/2 -right-3.5 w-7 h-7 rounded-full bg-blanc-casse ring-1 ring-bleu-nuit/10 items-center justify-center text-bleu-nuit/40 z-10"
+              aria-hidden="true"
+            >
+              <Icon name="arrow-right" size={14} strokeWidth={2.25} />
+            </span>
+          )}
         </li>
       ))}
-    </ul>
+    </ol>
 
     <!-- Démo interactive -->
     <div
