@@ -1,7 +1,11 @@
 ---
 /**
- * RendezVous — formulaire compact 4 champs avec encart "à distance".
- * Form simple, ton chaleureux. Différent du calendrier-picker de Verveine.
+ * RendezVous — Wizard diététicienne 4 étapes best-in-class.
+ * 1. Objectif principal (6 cards visuelles avec photos food)
+ * 2. Habitudes alimentaires (chips multi-select : végé, sans gluten, etc.)
+ * 3. Format préféré (cabinet / téléconsult / hybride)
+ * 4. Coordonnées
+ * Sidebar récap "Votre suivi" avec recommandation programme.
  */
 import data from '../../../data/templates/mona.json';
 const waBase = `https://wa.me/${data.info.whatsapp}`;
@@ -9,31 +13,186 @@ const waBase = `https://wa.me/${data.info.whatsapp}`;
 
 <section id="rendez-vous" class="bg-mona-cacao text-mona-creme py-24 md:py-36 px-6 md:px-10 relative overflow-hidden">
 
-  <!-- Halo terracotta diffus -->
   <div class="absolute top-1/2 left-1/4 -translate-y-1/2 w-[40rem] h-[40rem] rounded-full pointer-events-none" aria-hidden="true"
        style="background: radial-gradient(circle, rgba(210,125,84,0.15) 0%, transparent 65%);"></div>
 
   <div class="relative max-w-content mx-auto">
 
-    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+    <header class="mb-12 md:mb-16 max-w-2xl">
+      <p class="font-jakarta text-[10px] uppercase tracking-[0.32em] text-mona-terracotta mb-6 font-semibold">
+        Rendez-vous
+      </p>
+      <h2 class="font-newsreader text-mona-creme leading-[1.05]" style="font-size: clamp(36px, 5vw, 64px);">
+        On en parle ?
+        <span class="block italic text-mona-vert">Sans engagement.</span>
+      </h2>
+      <p class="mt-5 font-newsreader text-mona-creme/75 text-lg leading-relaxed max-w-md">
+        4 questions, 60 secondes. Mon plan vous parvient pré-rempli sur WhatsApp.
+      </p>
+    </header>
 
-      <!-- Pitch gauche -->
-      <div class="lg:col-span-5">
-        <p class="font-jakarta text-[10px] uppercase tracking-[0.32em] text-mona-terracotta mb-6">
-          Rendez-vous
-        </p>
-        <h2 class="font-newsreader text-mona-creme leading-[1.05]" style="font-size: clamp(36px, 5vw, 64px);">
-          On en parle ?
-          <span class="block italic text-mona-vert">Sans engagement.</span>
-        </h2>
+    <div class="grid lg:grid-cols-12 gap-8 items-start">
 
-        <p class="mt-8 font-newsreader text-mona-creme/75 text-lg leading-relaxed max-w-md">
-          Remplissez le formulaire — j'ouvre WhatsApp avec votre demande, on convient ensemble du créneau qui vous convient.
-        </p>
+      <!-- LEFT : Wizard -->
+      <div class="lg:col-span-8">
+        <form id="m-form" class="bg-mona-creme text-mona-cacao p-7 md:p-10 rounded-3xl" novalidate>
 
-        <!-- Encart télé-consultation -->
-        <div class="mt-10 p-5 bg-mona-creme/10 border-l-2 border-mona-vert">
-          <p class="font-jakarta text-[10px] uppercase tracking-[0.25em] text-mona-vert mb-2">
+          <p class="font-reenie text-mona-terracotta text-3xl rotate-[-1deg] mb-2">
+            Bonjour Mona !
+          </p>
+
+          <!-- Progress -->
+          <div class="mb-7">
+            <div class="flex items-center justify-between mb-2">
+              <p class="font-jakarta text-[10px] uppercase tracking-[0.28em] text-mona-cacao/65 font-medium">
+                Étape <span id="m-step-current" class="text-mona-terracotta tabular-nums">1</span>/4
+              </p>
+              <p id="m-step-label" class="font-jakarta text-[10px] uppercase tracking-[0.28em] text-mona-terracotta font-semibold">Votre objectif</p>
+            </div>
+            <div class="h-[3px] bg-mona-cacao/10 rounded-full overflow-hidden">
+              <div id="m-progress" class="h-full bg-mona-terracotta rounded-full transition-all duration-500" style="width: 25%;"></div>
+            </div>
+          </div>
+
+          <!-- ÉTAPE 1 : Objectif (cards avec photos) -->
+          <fieldset class="m-step" data-step="1">
+            <legend class="font-newsreader text-mona-cacao text-xl md:text-2xl mb-5 leading-tight">
+              Quel est votre objectif principal ?
+            </legend>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              {data.publics.map((p) => (
+                <label class="cursor-pointer">
+                  <input type="radio" name="objectif" value={p.id} data-label={p.label} class="peer sr-only" required />
+                  <span class="block bg-mona-papier border-2 border-transparent peer-checked:border-mona-terracotta peer-checked:bg-mona-terracotta/5 transition-all overflow-hidden rounded-2xl">
+                    <span class="block aspect-[4/3] overflow-hidden">
+                      <img src={p.photo} alt="" loading="lazy" class="w-full h-full object-cover" />
+                    </span>
+                    <span class="block p-3">
+                      <p class="font-newsreader text-mona-cacao text-base leading-tight">{p.label}</p>
+                      <p class="mt-1 font-jakarta text-mona-cacao/65 text-xs leading-snug">{p.description}</p>
+                    </span>
+                  </span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+
+          <!-- ÉTAPE 2 : Habitudes alimentaires -->
+          <fieldset class="m-step hidden" data-step="2">
+            <legend class="font-newsreader text-mona-cacao text-xl md:text-2xl mb-5 leading-tight">
+              Quelques précisions sur votre alimentation ?
+            </legend>
+
+            <p class="font-jakarta text-[10px] uppercase tracking-[0.22em] text-mona-cacao/65 mb-3 font-medium">
+              Régime particulier <span class="font-normal italic normal-case tracking-normal">(plusieurs choix possibles)</span>
+            </p>
+            <div class="flex flex-wrap gap-2 mb-5">
+              {[
+                'Aucun', 'Végétarien·ne', 'Végan·e', 'Sans gluten', 'Sans lactose',
+                'Diabète', 'Cholestérol', 'Hypertension', 'Allergies'
+              ].map((r) => (
+                <label class="cursor-pointer">
+                  <input type="checkbox" name="regime" value={r} class="peer sr-only" />
+                  <span class="inline-flex items-center px-4 h-10 bg-mona-papier border-2 border-transparent peer-checked:border-mona-vert-fonce peer-checked:bg-mona-vert/15 font-jakarta text-mona-cacao text-sm transition-colors rounded-full">
+                    {r}
+                  </span>
+                </label>
+              ))}
+            </div>
+
+            <p class="font-jakarta text-[10px] uppercase tracking-[0.22em] text-mona-cacao/65 mb-3 font-medium">
+              Repas par jour <span class="font-normal italic normal-case tracking-normal">(en moyenne)</span>
+            </p>
+            <div class="flex flex-wrap gap-2">
+              {[
+                { v: '1-2',  l: '1-2 repas/j' },
+                { v: '3',    l: '3 repas/j' },
+                { v: '4-5',  l: '4-5 repas/j' },
+                { v: 'snack', l: 'Grignote souvent' },
+              ].map((r, i) => (
+                <label class="cursor-pointer">
+                  <input type="radio" name="repas" value={r.v} class="peer sr-only" checked={i === 1} />
+                  <span class="inline-flex items-center px-4 h-10 bg-mona-papier border-2 border-transparent peer-checked:border-mona-vert-fonce peer-checked:bg-mona-vert/15 font-jakarta text-mona-cacao text-sm transition-colors rounded-full">
+                    {r.l}
+                  </span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+
+          <!-- ÉTAPE 3 : Format -->
+          <fieldset class="m-step hidden" data-step="3">
+            <legend class="font-newsreader text-mona-cacao text-xl md:text-2xl mb-5 leading-tight">
+              Comment préférez-vous nous voir ?
+            </legend>
+            <div class="grid sm:grid-cols-3 gap-3">
+              {[
+                { v: 'cabinet',  l: 'Au cabinet',         sub: 'Au Tampon, en face à face' },
+                { v: 'tele',     l: 'Téléconsultation',   sub: 'Visio, depuis chez vous' },
+                { v: 'hybride',  l: 'À voir ensemble',    sub: 'On en discute' },
+              ].map((f, i) => (
+                <label class="cursor-pointer">
+                  <input type="radio" name="format" value={f.v} data-label={f.l} class="peer sr-only" checked={i === 0} required />
+                  <span class="block p-4 bg-mona-papier border-2 border-transparent peer-checked:border-mona-terracotta peer-checked:bg-mona-terracotta/5 text-center transition-all rounded-2xl">
+                    <p class="font-newsreader text-mona-cacao text-lg leading-tight">{f.l}</p>
+                    <p class="mt-1 font-jakarta italic text-mona-cacao/60 text-sm">{f.sub}</p>
+                  </span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+
+          <!-- ÉTAPE 4 : Coordonnées -->
+          <fieldset class="m-step hidden" data-step="4">
+            <legend class="font-newsreader text-mona-cacao text-xl md:text-2xl mb-5 leading-tight">
+              Pour vous rappeler.
+            </legend>
+
+            <div class="grid sm:grid-cols-2 gap-4 mb-4">
+              <div>
+                <label for="m-prenom" class="block font-jakarta text-[10px] uppercase tracking-[0.22em] text-mona-cacao/65 mb-2 font-medium">Prénom</label>
+                <input id="m-prenom" name="prenom" type="text" required autocomplete="given-name"
+                  class="w-full h-12 px-4 bg-mona-papier border-0 border-b-2 border-mona-cacao/15 focus:border-mona-vert-fonce font-newsreader text-mona-cacao text-lg outline-none transition-colors" />
+              </div>
+              <div>
+                <label for="m-tel" class="block font-jakarta text-[10px] uppercase tracking-[0.22em] text-mona-cacao/65 mb-2 font-medium">Téléphone</label>
+                <input id="m-tel" name="telephone" type="tel" inputmode="tel" required autocomplete="tel"
+                  class="w-full h-12 px-4 bg-mona-papier border-0 border-b-2 border-mona-cacao/15 focus:border-mona-vert-fonce font-newsreader text-mona-cacao text-lg outline-none transition-colors tabular-nums" />
+              </div>
+            </div>
+
+            <div>
+              <label for="m-mot" class="block font-jakarta text-[10px] uppercase tracking-[0.22em] text-mona-cacao/65 mb-2 font-medium">
+                Un mot pour Mona <span class="lowercase italic font-normal normal-case">(facultatif)</span>
+              </label>
+              <textarea id="m-mot" name="message" rows="3" placeholder="Ce qui vous amène, vos contraintes, vos attentes…"
+                class="w-full px-4 py-3 bg-mona-papier border-0 border-b-2 border-mona-cacao/15 focus:border-mona-vert-fonce font-newsreader text-mona-cacao text-base outline-none transition-colors resize-none"></textarea>
+            </div>
+          </fieldset>
+
+          <!-- Navigation -->
+          <div class="mt-7 flex flex-wrap items-center justify-between gap-3">
+            <button type="button" id="m-btn-prev"
+              class="hidden inline-flex items-center gap-1 h-10 px-4 border border-mona-cacao/30 text-mona-cacao font-jakarta text-[11px] uppercase tracking-wider hover:border-mona-terracotta hover:text-mona-terracotta transition-colors cursor-pointer rounded-full">
+              ← Retour
+            </button>
+            <button type="button" id="m-btn-next"
+              class="ml-auto inline-flex items-center justify-center h-12 px-7 bg-mona-cacao text-mona-creme font-jakarta text-sm font-semibold hover:bg-mona-terracotta transition-colors disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer rounded-full">
+              Continuer →
+            </button>
+            <button type="submit" id="m-btn-submit"
+              class="hidden ml-auto inline-flex items-center justify-center gap-3 h-13 px-9 bg-mona-terracotta text-mona-creme font-jakarta text-sm font-semibold hover:bg-mona-cacao transition-colors cursor-pointer rounded-full"
+              style="height: 52px;">
+              Envoyer ma demande →
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- RIGHT : Sidebar -->
+      <aside class="lg:col-span-4 lg:sticky lg:top-24 space-y-4">
+        <div class="bg-mona-creme/10 backdrop-blur-sm border-l-2 border-mona-vert p-6 rounded-2xl">
+          <p class="font-jakarta text-[10px] uppercase tracking-[0.28em] text-mona-vert mb-3 font-semibold">
             ✓ Téléconsultation possible
           </p>
           <p class="font-newsreader italic text-mona-creme/85 text-sm leading-relaxed">
@@ -41,127 +200,112 @@ const waBase = `https://wa.me/${data.info.whatsapp}`;
           </p>
         </div>
 
-        <!-- Tél fallback -->
-        <p class="mt-8 font-newsreader text-mona-creme/75 text-base">
+        <div class="bg-mona-creme text-mona-cacao p-6 rounded-2xl">
+          <p class="font-jakarta text-[10px] uppercase tracking-[0.28em] text-mona-terracotta mb-4 font-semibold">
+            ✦ Votre suivi
+          </p>
+          <ul class="space-y-3 text-sm">
+            <li class="pb-2 border-b border-mona-cacao/15">
+              <span class="block font-jakarta text-[9px] uppercase tracking-[0.22em] text-mona-cacao/65">Objectif</span>
+              <span id="m-recap-obj" class="font-newsreader text-mona-cacao text-base">—</span>
+            </li>
+            <li class="pb-2 border-b border-mona-cacao/15">
+              <span class="block font-jakarta text-[9px] uppercase tracking-[0.22em] text-mona-cacao/65">Format</span>
+              <span id="m-recap-format" class="font-newsreader text-mona-cacao text-base">—</span>
+            </li>
+            <li>
+              <span class="block font-jakarta text-[9px] uppercase tracking-[0.22em] text-mona-cacao/65">Programme suggéré</span>
+              <span id="m-recap-prog" class="font-newsreader italic text-mona-vert-fonce text-base">—</span>
+            </li>
+          </ul>
+        </div>
+
+        <p class="font-newsreader text-mona-creme/75 text-base">
           Ou par téléphone :
           <a href={`tel:${data.info.telephoneHref}`} class="text-mona-creme tabular-nums underline underline-offset-4 decoration-mona-vert/60 hover:decoration-mona-vert">
             {data.info.telephone}
           </a>
         </p>
-      </div>
-
-      <!-- Form droite -->
-      <div class="lg:col-span-7">
-        <form id="rdv-mona-form" class="bg-mona-creme text-mona-cacao p-7 md:p-10 space-y-5" novalidate>
-
-          <p class="font-reenie text-mona-terracotta text-3xl rotate-[-1deg]">
-            Bonjour Mona !
-          </p>
-
-          <div class="grid sm:grid-cols-2 gap-5">
-            <div>
-              <label for="rdv-prenom" class="block font-jakarta text-[10px] uppercase tracking-[0.25em] text-mona-cacao/65 mb-1.5">Prénom</label>
-              <input
-                id="rdv-prenom"
-                name="prenom"
-                type="text"
-                required
-                autocomplete="given-name"
-                class="w-full h-12 px-4 bg-mona-papier border-0 border-b-2 border-mona-cacao/15 focus:border-mona-vert-fonce font-newsreader text-mona-cacao text-lg outline-none transition-colors"
-              />
-            </div>
-            <div>
-              <label for="rdv-tel-mona" class="block font-jakarta text-[10px] uppercase tracking-[0.25em] text-mona-cacao/65 mb-1.5">Téléphone</label>
-              <input
-                id="rdv-tel-mona"
-                name="telephone"
-                type="tel"
-                required
-                autocomplete="tel"
-                class="w-full h-12 px-4 bg-mona-papier border-0 border-b-2 border-mona-cacao/15 focus:border-mona-vert-fonce font-newsreader text-mona-cacao text-lg outline-none transition-colors tabular-nums"
-              />
-            </div>
-          </div>
-
-          <div>
-            <label for="rdv-besoin" class="block font-jakarta text-[10px] uppercase tracking-[0.25em] text-mona-cacao/65 mb-1.5">Mon besoin principal</label>
-            <select
-              id="rdv-besoin"
-              name="besoin"
-              class="w-full h-12 px-4 bg-mona-papier border-0 border-b-2 border-mona-cacao/15 focus:border-mona-vert-fonce font-newsreader text-mona-cacao text-lg outline-none cursor-pointer"
-            >
-              <option value="">— Choisir —</option>
-              {data.publics.map((p) => <option value={p.label}>{p.label}</option>)}
-              <option value="autre">Autre / À discuter</option>
-            </select>
-          </div>
-
-          <div>
-            <label for="rdv-format" class="block font-jakarta text-[10px] uppercase tracking-[0.25em] text-mona-cacao/65 mb-2">Format souhaité</label>
-            <div class="flex gap-3">
-              {[
-                { val: 'cabinet', label: 'Au cabinet' },
-                { val: 'tele', label: 'Téléconsultation' },
-                { val: 'indecis', label: 'À voir' },
-              ].map((f, i) => (
-                <label class="flex-1 cursor-pointer">
-                  <input type="radio" name="format" value={f.val} class="peer sr-only" checked={i === 0} />
-                  <span class="block text-center px-3 py-2.5 bg-mona-papier border-2 border-transparent peer-checked:border-mona-vert-fonce peer-checked:bg-mona-vert/15 font-newsreader text-mona-cacao text-base transition-colors">
-                    {f.label}
-                  </span>
-                </label>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <label for="rdv-mot" class="block font-jakarta text-[10px] uppercase tracking-[0.25em] text-mona-cacao/65 mb-1.5">Un mot pour Mona <span class="lowercase italic text-mona-cacao/40 normal-case">(facultatif)</span></label>
-            <textarea
-              id="rdv-mot"
-              name="message"
-              rows="3"
-              placeholder="Ce qui vous amène, vos contraintes…"
-              class="w-full px-4 py-3 bg-mona-papier border-0 border-b-2 border-mona-cacao/15 focus:border-mona-vert-fonce font-newsreader text-mona-cacao text-base outline-none transition-colors resize-none"
-            ></textarea>
-          </div>
-
-          <button
-            type="submit"
-            class="w-full h-13 inline-flex items-center justify-center gap-3 bg-mona-cacao text-mona-creme font-jakarta text-sm font-semibold rounded-full hover:bg-mona-terracotta transition-colors"
-            style="height: 52px;"
-          >
-            Envoyer ma demande
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.92 0-2.65-1.03-5.14-2.91-7.01zm-7.01 15.24h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.21 8.21 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83 8.25 8.25 0 0 1-8.24 8.22z"/>
-            </svg>
-          </button>
-        </form>
-      </div>
+      </aside>
     </div>
   </div>
 </section>
 
-<script define:vars={{ waBase }}>
-  const form = document.getElementById('rdv-mona-form');
+<script define:vars={{ waBase, programmes: data.programmes }}>
+  const form = document.getElementById('m-form');
   if (form) {
+    const steps = form.querySelectorAll('.m-step');
+    const stepLabels = ['Votre objectif', 'Habitudes', 'Format', 'Coordonnées'];
+    const totalSteps = steps.length;
+    let currentStep = 1;
+
+    function updateRecap() {
+      const obj = form.querySelector('input[name="objectif"]:checked');
+      const format = form.querySelector('input[name="format"]:checked');
+      document.getElementById('m-recap-obj').textContent = obj?.dataset.label || '—';
+      document.getElementById('m-recap-format').textContent = format?.dataset.label || '—';
+      document.getElementById('m-recap-prog').textContent = obj ? programmes[1].label : '—';
+    }
+
+    function showStep(n) {
+      steps.forEach((s) => s.classList.add('hidden'));
+      form.querySelector(`.m-step[data-step="${n}"]`)?.classList.remove('hidden');
+      currentStep = n;
+      document.getElementById('m-step-current').textContent = String(n);
+      document.getElementById('m-step-label').textContent = stepLabels[n - 1];
+      document.getElementById('m-progress').style.width = `${(n / totalSteps) * 100}%`;
+      document.getElementById('m-btn-prev').classList.toggle('hidden', n === 1);
+      document.getElementById('m-btn-next').classList.toggle('hidden', n === totalSteps);
+      document.getElementById('m-btn-submit').classList.toggle('hidden', n !== totalSteps);
+      validateCurrent();
+    }
+
+    function validateCurrent() {
+      let valid = false;
+      if (currentStep === 1) valid = !!form.querySelector('input[name="objectif"]:checked');
+      else if (currentStep === 2) valid = true;
+      else if (currentStep === 3) valid = !!form.querySelector('input[name="format"]:checked');
+      else if (currentStep === 4) valid = !!form.querySelector('#m-prenom')?.value.trim() && !!form.querySelector('#m-tel')?.value.trim();
+      document.getElementById('m-btn-next').disabled = !valid;
+    }
+
+    form.querySelectorAll('input, textarea').forEach((input) => {
+      input.addEventListener('change', () => { validateCurrent(); updateRecap(); });
+      input.addEventListener('input', () => { validateCurrent(); updateRecap(); });
+    });
+    document.getElementById('m-btn-next').addEventListener('click', () => { if (currentStep < totalSteps) showStep(currentStep + 1); });
+    document.getElementById('m-btn-prev').addEventListener('click', () => { if (currentStep > 1) showStep(currentStep - 1); });
+
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const fd = new FormData(form);
-      const prenom = fd.get('prenom') || '';
-      const tel = fd.get('telephone') || '';
-      const besoin = fd.get('besoin') || '';
-      const format = fd.get('format') || '';
-      const message = fd.get('message') || '';
-      const formatLabels = { cabinet: 'Cabinet du Tampon', tele: 'Téléconsultation', indecis: 'À discuter' };
+      const obj = form.querySelector('input[name="objectif"]:checked');
+      const format = form.querySelector('input[name="format"]:checked');
+      const regimes = Array.from(form.querySelectorAll('input[name="regime"]:checked')).map((i) => i.value);
+
       const text = [
         'Bonjour Mona, je souhaite un rendez-vous.',
-        prenom ? `Prénom : ${prenom}` : '',
-        tel ? `Tél : ${tel}` : '',
-        besoin ? `Besoin : ${besoin}` : '',
-        format ? `Format : ${formatLabels[format] || format}` : '',
-        message ? `Note : ${message}` : '',
+        '',
+        '— OBJECTIF —',
+        obj ? `Besoin : ${obj.dataset.label}` : '',
+        '',
+        '— PROFIL —',
+        regimes.length ? `Régime : ${regimes.join(', ')}` : '',
+        fd.get('repas') ? `Repas/jour : ${fd.get('repas')}` : '',
+        '',
+        '— PRATIQUE —',
+        format ? `Format : ${format.dataset.label}` : '',
+        '',
+        '— CONTACT —',
+        fd.get('prenom') ? `Prénom : ${fd.get('prenom')}` : '',
+        fd.get('telephone') ? `Tél : ${fd.get('telephone')}` : '',
+        fd.get('message') ? `\nNote : ${fd.get('message')}` : '',
       ].filter(Boolean).join('\n');
+
       window.open(`${waBase}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
     });
+
+    validateCurrent();
+    updateRecap();
   }
 </script>

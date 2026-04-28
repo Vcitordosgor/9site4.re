@@ -1,132 +1,271 @@
 ---
 /**
- * Reservation — formulaire centré minimal une seule colonne.
- * Style éditorial : labels lexend uppercase petits, inputs underline only
- * (pas de borders pleines). Submit → WhatsApp pre-filled.
+ * Reservation — Wizard yoga 4 étapes best-in-class.
+ * 1. Pratique souhaitée (4 cards : Hatha/Vinyasa/Yin/Pranayama)
+ * 2. Niveau (3 chips)
+ * 3. Format (drop-in / carnet / pass)
+ * 4. Coordonnées + date
+ * Sidebar récap sticky avec tarif live.
  */
 import data from '../../../data/templates/souffle.json';
 const waBase = `https://wa.me/${data.info.whatsapp}`;
-
-// Construction de la liste de cours dispo
-const coursDispo: { id: string; label: string }[] = [];
-data.planning.forEach((j) => {
-  j.creneaux.forEach((c) => {
-    coursDispo.push({
-      id: `${j.jour.toLowerCase()}-${c.heure}`,
-      label: `${j.jour} ${c.heure} — ${c.cours} (${c.prof})`,
-    });
-  });
-});
 ---
 
 <section id="reservation" class="bg-yoga-creme py-24 md:py-36 px-6 md:px-10">
-  <div class="max-w-xl mx-auto">
+  <div class="max-w-content mx-auto">
 
-    <!-- Header centré -->
-    <header class="text-center mb-14 md:mb-16">
-      <p class="font-lexend text-[10px] uppercase tracking-[0.4em] text-yoga-pierre mb-6">
-        Réservation
-      </p>
+    <header class="text-center mb-12 md:mb-16">
+      <p class="font-lexend text-[10px] uppercase tracking-[0.4em] text-yoga-pierre mb-6">Réservation</p>
       <h2 class="font-dm-serif text-yoga-encre leading-[1.1]" style="font-size: clamp(34px, 5vw, 52px);">
         Vous voulez essayer ?
-        <span class="block italic font-spectral font-light text-yoga-ocre mt-1">Écrivez-nous.</span>
+        <span class="block italic font-spectral font-light text-yoga-ocre mt-1">Quatre questions et c'est fait.</span>
       </h2>
-      <p class="mt-6 font-spectral italic text-yoga-encre/65 leading-relaxed text-base md:text-lg">
-        Premier cours d'essai à 12 €. On vous répond personnellement, sous quelques heures.
+      <p class="mt-6 font-spectral italic text-yoga-encre/65 leading-relaxed text-base md:text-lg max-w-md mx-auto">
+        Premier cours d'essai à 12 €. Réponse personnelle sous quelques heures.
       </p>
     </header>
 
-    <!-- Form minimal underline only -->
-    <form id="yoga-reservation-form" class="space-y-8" novalidate>
+    <div class="grid lg:grid-cols-12 gap-8 max-w-6xl mx-auto items-start">
 
-      <div>
-        <label for="yr-prenom" class="block font-lexend text-[10px] uppercase tracking-[0.3em] text-yoga-pierre mb-2">Votre prénom</label>
-        <input
-          id="yr-prenom"
-          name="prenom"
-          type="text"
-          autocomplete="given-name"
-          required
-          class="w-full bg-transparent border-0 border-b border-yoga-encre/25 focus:border-yoga-ocre py-2 font-dm-serif text-xl text-yoga-encre placeholder:text-yoga-pierre/50 outline-none transition-colors"
-          placeholder="Ex. Margaux"
-        />
+      <!-- LEFT : Wizard (8 cols) -->
+      <div class="lg:col-span-8">
+        <form id="yoga-form" class="bg-yoga-blanc/50 border border-yoga-encre/15 p-7 md:p-10" novalidate>
+
+          <div class="mb-7">
+            <div class="flex items-center justify-between mb-2">
+              <p class="font-lexend text-[10px] uppercase tracking-[0.32em] text-yoga-pierre">
+                Étape <span id="y-step-current" class="text-yoga-ocre tabular-nums">1</span>/4
+              </p>
+              <p id="y-step-label" class="font-lexend text-[10px] uppercase tracking-[0.32em] text-yoga-ocre font-medium">Votre pratique</p>
+            </div>
+            <div class="h-px bg-yoga-encre/20 overflow-hidden">
+              <div id="y-progress" class="h-full bg-yoga-ocre transition-all duration-500" style="width: 25%;"></div>
+            </div>
+          </div>
+
+          <fieldset class="y-step" data-step="1">
+            <legend class="font-dm-serif text-yoga-encre text-xl md:text-2xl mb-5 leading-tight">
+              Quelle pratique vous attire ?
+            </legend>
+            <div class="grid sm:grid-cols-2 gap-3">
+              {data.pratiques.map((p) => (
+                <label class="cursor-pointer">
+                  <input type="radio" name="pratique" value={p.id} data-label={p.nom} class="peer sr-only" required />
+                  <span class="block p-4 bg-yoga-creme border border-yoga-encre/15 peer-checked:border-yoga-ocre peer-checked:bg-yoga-ocre/5 transition-all hover:border-yoga-encre/30">
+                    <div class="flex items-baseline gap-2 mb-1">
+                      <span class="font-dm-serif italic text-yoga-ocre text-base">{p.numero}</span>
+                      <p class="font-dm-serif text-yoga-encre text-xl leading-tight">{p.nom}</p>
+                    </div>
+                    <p class="font-spectral italic text-yoga-ocre/85 text-sm mb-1">{p.ressenti}</p>
+                    <p class="font-lexend text-[10px] uppercase tracking-[0.22em] text-yoga-pierre">{p.duree} · {p.niveau}</p>
+                  </span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+
+          <fieldset class="y-step hidden" data-step="2">
+            <legend class="font-dm-serif text-yoga-encre text-xl md:text-2xl mb-5 leading-tight">
+              C'est votre première fois ?
+            </legend>
+            <div class="grid sm:grid-cols-3 gap-3">
+              {[
+                { id: 'debut',         label: 'Débutant·e',    sub: 'Jamais ou peu pratiqué' },
+                { id: 'intermediaire', label: 'Intermédiaire', sub: 'Pratique régulière' },
+                { id: 'confirme',      label: 'Confirmé·e',    sub: 'Plusieurs années' },
+              ].map((n) => (
+                <label class="cursor-pointer">
+                  <input type="radio" name="niveau" value={n.id} data-label={n.label} class="peer sr-only" required />
+                  <span class="block p-4 bg-yoga-creme border border-yoga-encre/15 peer-checked:border-yoga-ocre peer-checked:bg-yoga-ocre/5 text-center transition-all hover:border-yoga-encre/30">
+                    <p class="font-dm-serif text-yoga-encre text-lg leading-tight">{n.label}</p>
+                    <p class="mt-1 font-spectral italic text-yoga-pierre text-sm">{n.sub}</p>
+                  </span>
+                </label>
+              ))}
+            </div>
+            <p class="mt-4 font-spectral italic text-yoga-pierre text-sm leading-relaxed">
+              Quelle que soit votre réponse, le 1ᵉʳ cours est adapté à votre rythme.
+            </p>
+          </fieldset>
+
+          <fieldset class="y-step hidden" data-step="3">
+            <legend class="font-dm-serif text-yoga-encre text-xl md:text-2xl mb-5 leading-tight">
+              Quel format vous tente ?
+            </legend>
+            <div class="space-y-2">
+              {data.tarifs.map((t) => (
+                <label class="cursor-pointer block">
+                  <input type="radio" name="format" value={t.label} data-label={t.label} data-prix={t.prix} class="peer sr-only" required />
+                  <span class="flex items-baseline gap-3 p-4 bg-yoga-creme border border-yoga-encre/15 peer-checked:border-yoga-ocre peer-checked:bg-yoga-ocre/5 transition-all hover:border-yoga-encre/30">
+                    <span class="flex-1">
+                      <p class="font-dm-serif text-yoga-encre text-lg leading-tight">{t.label}</p>
+                      <p class="mt-1 font-spectral italic text-yoga-pierre text-sm">{t.detail}</p>
+                    </span>
+                    <span class="font-dm-serif text-yoga-ocre text-xl tabular-nums shrink-0">{t.prix}</span>
+                  </span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+
+          <fieldset class="y-step hidden" data-step="4">
+            <legend class="font-dm-serif text-yoga-encre text-xl md:text-2xl mb-5 leading-tight">
+              Pour vous rappeler.
+            </legend>
+
+            <div class="space-y-5">
+              <div>
+                <label for="y-prenom" class="block font-lexend text-[10px] uppercase tracking-[0.3em] text-yoga-pierre mb-2">Votre prénom</label>
+                <input id="y-prenom" name="prenom" type="text" autocomplete="given-name" placeholder="Margaux"
+                  class="w-full bg-transparent border-0 border-b border-yoga-encre/25 focus:border-yoga-ocre py-2 font-dm-serif text-xl text-yoga-encre outline-none transition-colors" />
+              </div>
+              <div>
+                <label for="y-tel" class="block font-lexend text-[10px] uppercase tracking-[0.3em] text-yoga-pierre mb-2">Téléphone</label>
+                <input id="y-tel" name="telephone" type="tel" inputmode="tel" autocomplete="tel" placeholder="0692 xx xx xx"
+                  class="w-full bg-transparent border-0 border-b border-yoga-encre/25 focus:border-yoga-ocre py-2 font-dm-serif text-xl text-yoga-encre outline-none transition-colors tabular-nums" />
+              </div>
+              <div>
+                <label for="y-date" class="block font-lexend text-[10px] uppercase tracking-[0.3em] text-yoga-pierre mb-2">
+                  Quand aimeriez-vous venir ? <span class="font-spectral italic normal-case tracking-normal">(facultatif)</span>
+                </label>
+                <input id="y-date" name="date" type="date"
+                  class="w-full bg-transparent border-0 border-b border-yoga-encre/25 focus:border-yoga-ocre py-2 font-dm-serif text-xl text-yoga-encre outline-none transition-colors tabular-nums" />
+              </div>
+              <div>
+                <label for="y-message" class="block font-lexend text-[10px] uppercase tracking-[0.3em] text-yoga-pierre mb-2">
+                  Un mot <span class="font-spectral italic normal-case tracking-normal">(facultatif)</span>
+                </label>
+                <textarea id="y-message" name="message" rows="2" placeholder="Une douleur particulière ? Une attente ?"
+                  class="w-full bg-transparent border-0 border-b border-yoga-encre/25 focus:border-yoga-ocre py-2 font-dm-serif text-base text-yoga-encre outline-none transition-colors resize-none"></textarea>
+              </div>
+            </div>
+          </fieldset>
+
+          <div class="mt-7 flex flex-wrap items-center justify-between gap-3">
+            <button type="button" id="y-btn-prev"
+              class="hidden inline-flex items-center gap-1 h-10 px-4 border border-yoga-encre/30 text-yoga-encre/85 font-lexend text-[10px] uppercase tracking-[0.22em] hover:border-yoga-ocre hover:text-yoga-ocre transition-colors cursor-pointer">
+              ← Précédent
+            </button>
+            <button type="button" id="y-btn-next"
+              class="ml-auto inline-flex items-center justify-center h-12 px-7 bg-yoga-encre text-yoga-creme font-lexend text-[12px] uppercase tracking-[0.18em] font-light hover:bg-yoga-ocre transition-colors disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer">
+              Continuer →
+            </button>
+            <button type="submit" id="y-btn-submit"
+              class="hidden ml-auto inline-flex items-center justify-center h-13 px-9 bg-yoga-ocre text-yoga-creme font-lexend text-[12px] uppercase tracking-[0.18em] font-medium hover:bg-yoga-encre transition-colors cursor-pointer"
+              style="height: 52px;">
+              Envoyer la demande →
+            </button>
+          </div>
+        </form>
       </div>
 
-      <div>
-        <label for="yr-tel" class="block font-lexend text-[10px] uppercase tracking-[0.3em] text-yoga-pierre mb-2">Téléphone</label>
-        <input
-          id="yr-tel"
-          name="telephone"
-          type="tel"
-          autocomplete="tel"
-          required
-          class="w-full bg-transparent border-0 border-b border-yoga-encre/25 focus:border-yoga-ocre py-2 font-dm-serif text-xl text-yoga-encre placeholder:text-yoga-pierre/50 outline-none transition-colors tabular-nums"
-          placeholder="0692 xx xx xx"
-        />
-      </div>
+      <aside class="lg:col-span-4 lg:sticky lg:top-24 space-y-4">
+        <div class="bg-yoga-blanc border border-yoga-ocre/30 p-6">
+          <p class="font-lexend text-[10px] uppercase tracking-[0.4em] text-yoga-ocre mb-4 font-medium">
+            ✦ Votre séance
+          </p>
+          <ul class="space-y-3 text-sm">
+            <li class="pb-2 border-b border-yoga-encre/15">
+              <span class="block font-lexend text-[9px] uppercase tracking-[0.28em] text-yoga-pierre">Pratique</span>
+              <span id="y-recap-pratique" class="font-dm-serif text-yoga-encre text-lg leading-tight">—</span>
+            </li>
+            <li class="pb-2 border-b border-yoga-encre/15">
+              <span class="block font-lexend text-[9px] uppercase tracking-[0.28em] text-yoga-pierre">Niveau</span>
+              <span id="y-recap-niveau" class="font-dm-serif italic text-yoga-encre">—</span>
+            </li>
+            <li>
+              <span class="block font-lexend text-[9px] uppercase tracking-[0.28em] text-yoga-pierre">Tarif</span>
+              <span id="y-recap-tarif" class="font-dm-serif text-yoga-ocre text-2xl tabular-nums">—</span>
+            </li>
+          </ul>
+        </div>
 
-      <div>
-        <label for="yr-cours" class="block font-lexend text-[10px] uppercase tracking-[0.3em] text-yoga-pierre mb-2">Cours souhaité (facultatif)</label>
-        <select
-          id="yr-cours"
-          name="cours"
-          class="w-full bg-transparent border-0 border-b border-yoga-encre/25 focus:border-yoga-ocre py-2 font-dm-serif text-xl text-yoga-encre outline-none transition-colors cursor-pointer appearance-none"
-        >
-          <option value="">— On choisira ensemble —</option>
-          {coursDispo.map((c) => <option value={c.label}>{c.label}</option>)}
-        </select>
-      </div>
-
-      <div>
-        <label for="yr-message" class="block font-lexend text-[10px] uppercase tracking-[0.3em] text-yoga-pierre mb-2">Un mot (facultatif)</label>
-        <textarea
-          id="yr-message"
-          name="message"
-          rows="3"
-          class="w-full bg-transparent border-0 border-b border-yoga-encre/25 focus:border-yoga-ocre py-2 font-dm-serif text-lg text-yoga-encre placeholder:text-yoga-pierre/50 outline-none transition-colors resize-none"
-          placeholder="Première fois ? Une douleur particulière ? Dites-nous tout."
-        ></textarea>
-      </div>
-
-      <!-- Submit centré -->
-      <div class="pt-6 text-center">
-        <button
-          type="submit"
-          class="inline-flex items-center justify-center gap-3 h-13 px-10 bg-yoga-encre text-yoga-creme font-lexend text-[12px] uppercase tracking-[0.18em] font-light hover:bg-yoga-ocre transition-colors duration-500"
-          style="height: 52px;"
-        >
-          Envoyer via WhatsApp
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.92 0-2.65-1.03-5.14-2.91-7.01zm-7.01 15.24h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.21 8.21 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83 8.25 8.25 0 0 1-8.24 8.22z"/>
-          </svg>
-        </button>
-        <p class="mt-5 font-spectral italic text-yoga-encre/55 text-sm">
-          Ou simplement par téléphone : <a href={`tel:${data.info.telephoneHref}`} class="underline underline-offset-4 decoration-yoga-ocre/40 hover:decoration-yoga-ocre tabular-nums">{data.info.telephone}</a>
-        </p>
-      </div>
-    </form>
-
+        <div class="p-5 bg-yoga-papier border-l-2 border-yoga-ocre">
+          <p class="font-lexend text-[10px] uppercase tracking-[0.3em] text-yoga-ocre mb-2 font-medium">
+            ✦ Bon à savoir
+          </p>
+          <ul class="space-y-1.5 font-spectral italic text-yoga-encre/85 text-sm leading-relaxed">
+            <li>· 12 tapis maximum par séance</li>
+            <li>· Tapis & briques fournis</li>
+            <li>· 1ᵉʳ cours d'essai à 12 € seulement</li>
+            <li>· Annulation gratuite jusqu'à 4h avant</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
   </div>
 </section>
 
 <script define:vars={{ waBase }}>
-  const form = document.getElementById('yoga-reservation-form');
+  const form = document.getElementById('yoga-form');
   if (form) {
+    const steps = form.querySelectorAll('.y-step');
+    const stepLabels = ['Votre pratique', 'Votre niveau', 'Votre format', 'Vos infos'];
+    const totalSteps = steps.length;
+    let currentStep = 1;
+
+    function updateRecap() {
+      const pratique = form.querySelector('input[name="pratique"]:checked');
+      const niveau = form.querySelector('input[name="niveau"]:checked');
+      const format = form.querySelector('input[name="format"]:checked');
+      document.getElementById('y-recap-pratique').textContent = pratique?.dataset.label || '—';
+      document.getElementById('y-recap-niveau').textContent = niveau?.dataset.label || '—';
+      document.getElementById('y-recap-tarif').textContent = format?.dataset.prix || '—';
+    }
+
+    function showStep(n) {
+      steps.forEach((s) => s.classList.add('hidden'));
+      form.querySelector(`.y-step[data-step="${n}"]`)?.classList.remove('hidden');
+      currentStep = n;
+      document.getElementById('y-step-current').textContent = String(n);
+      document.getElementById('y-step-label').textContent = stepLabels[n - 1];
+      document.getElementById('y-progress').style.width = `${(n / totalSteps) * 100}%`;
+      document.getElementById('y-btn-prev').classList.toggle('hidden', n === 1);
+      document.getElementById('y-btn-next').classList.toggle('hidden', n === totalSteps);
+      document.getElementById('y-btn-submit').classList.toggle('hidden', n !== totalSteps);
+      validateCurrent();
+    }
+
+    function validateCurrent() {
+      let valid = false;
+      if (currentStep === 1) valid = !!form.querySelector('input[name="pratique"]:checked');
+      else if (currentStep === 2) valid = !!form.querySelector('input[name="niveau"]:checked');
+      else if (currentStep === 3) valid = !!form.querySelector('input[name="format"]:checked');
+      else if (currentStep === 4) valid = !!form.querySelector('#y-prenom')?.value.trim() && !!form.querySelector('#y-tel')?.value.trim();
+      document.getElementById('y-btn-next').disabled = !valid;
+    }
+
+    form.querySelectorAll('input, textarea').forEach((input) => {
+      input.addEventListener('change', () => { validateCurrent(); updateRecap(); });
+      input.addEventListener('input', () => { validateCurrent(); updateRecap(); });
+    });
+    document.getElementById('y-btn-next').addEventListener('click', () => { if (currentStep < totalSteps) showStep(currentStep + 1); });
+    document.getElementById('y-btn-prev').addEventListener('click', () => { if (currentStep > 1) showStep(currentStep - 1); });
+
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const fd = new FormData(form);
-      const prenom = fd.get('prenom') || '';
-      const tel = fd.get('telephone') || '';
-      const cours = fd.get('cours') || '';
-      const msg = fd.get('message') || '';
+      const pratique = form.querySelector('input[name="pratique"]:checked');
+      const niveau = form.querySelector('input[name="niveau"]:checked');
+      const format = form.querySelector('input[name="format"]:checked');
       const text = [
         'Bonjour Souffle Studio, je souhaite réserver un cours.',
-        prenom ? `Prénom : ${prenom}` : '',
-        tel ? `Tél : ${tel}` : '',
-        cours ? `Cours : ${cours}` : '',
-        msg ? `Note : ${msg}` : '',
+        '',
+        '— PRATIQUE —',
+        pratique ? `Pratique : ${pratique.dataset.label}` : '',
+        niveau ? `Niveau : ${niveau.dataset.label}` : '',
+        format ? `Format : ${format.dataset.label} (${format.dataset.prix})` : '',
+        '',
+        '— CONTACT —',
+        fd.get('prenom') ? `Prénom : ${fd.get('prenom')}` : '',
+        fd.get('telephone') ? `Tél : ${fd.get('telephone')}` : '',
+        fd.get('date') ? `Souhaite venir : ${fd.get('date')}` : '',
+        fd.get('message') ? `\nNote : ${fd.get('message')}` : '',
       ].filter(Boolean).join('\n');
       window.open(`${waBase}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
     });
+
+    validateCurrent();
+    updateRecap();
   }
 </script>

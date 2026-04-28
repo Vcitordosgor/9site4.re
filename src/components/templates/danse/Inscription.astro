@@ -1,9 +1,11 @@
 ---
 /**
- * Inscription — formulaire bulletin papier.
- * Layout type "fiche d'inscription" sur fond ivoire avec encre bordeaux.
- * Checkboxes visibles pour la discipline (cases carrées style papier).
- * Inputs underline only (lignes d'écriture). Annotation manuscrite Caveat.
+ * Inscription — Wizard école de danse 4 étapes.
+ * 1. Discipline (5 cards visuelles avec niveaux)
+ * 2. Profil élève (âge + niveau actuel)
+ * 3. Pratique (formule année + nombre de cours/sem)
+ * 4. Coordonnées
+ * Format bulletin théâtral conservé : encart velours + ornements ✦
  */
 import data from '../../../data/templates/vermeille.json';
 const waBase = `https://wa.me/${data.info.whatsapp}`;
@@ -11,8 +13,7 @@ const waBase = `https://wa.me/${data.info.whatsapp}`;
 
 <section id="inscription" class="bg-vermeille-ivoire py-24 md:py-36 px-6 md:px-10 relative">
 
-  <!-- Header -->
-  <header class="max-w-2xl mx-auto text-center mb-16 md:mb-20">
+  <header class="max-w-2xl mx-auto text-center mb-12 md:mb-16">
     <p class="font-inter-tight text-[10px] uppercase tracking-[0.4em] text-vermeille-bordeaux mb-6">
       Inscription · Saison {data.info.saison}
     </p>
@@ -21,185 +22,303 @@ const waBase = `https://wa.me/${data.info.whatsapp}`;
       <span class="italic text-vermeille-bordeaux">d'inscription.</span>
     </h2>
     <p class="mt-6 font-italiana italic text-vermeille-velours/65 text-lg leading-relaxed">
-      À remplir, à envoyer. On vous recontacte sous 48 heures pour fixer l'audition de niveau.
+      4 questions · réponse sous 48 h pour fixer l'audition.
     </p>
   </header>
 
-  <!-- Formulaire bulletin -->
-  <form id="inscription-form" class="max-w-2xl mx-auto bg-vermeille-blanc/60 border border-vermeille-velours/15 p-8 md:p-12 relative" novalidate>
+  <div class="grid lg:grid-cols-12 gap-8 max-w-6xl mx-auto items-start">
 
-    <!-- Annotation manuscrite en haut -->
-    <p class="absolute -top-3 right-6 md:right-10 font-caveat text-vermeille-bordeaux text-xl rotate-3 bg-vermeille-ivoire px-3" aria-hidden="true">
-      à remplir en lettres capitales ✦
-    </p>
+    <!-- LEFT : Wizard -->
+    <div class="lg:col-span-8">
+      <form id="d-form" class="bg-vermeille-blanc/60 border border-vermeille-velours/15 p-7 md:p-10 relative" novalidate>
 
-    <!-- Section : Identité -->
-    <fieldset class="mb-10">
-      <legend class="font-inter-tight text-[10px] uppercase tracking-[0.3em] text-vermeille-bordeaux pb-3 border-b border-vermeille-velours/15 w-full mb-6">
-        Identité de l'élève
-      </legend>
+        <p class="absolute -top-3 right-6 md:right-10 font-caveat text-vermeille-bordeaux text-xl rotate-3 bg-vermeille-ivoire px-3" aria-hidden="true">
+          à remplir en lettres capitales ✦
+        </p>
 
-      <div class="grid sm:grid-cols-2 gap-6">
-        <div>
-          <label for="ins-prenom" class="block font-italiana italic text-vermeille-velours/65 text-sm mb-1">Prénom</label>
-          <input
-            id="ins-prenom"
-            name="prenom"
-            type="text"
-            required
-            autocomplete="given-name"
-            class="w-full bg-transparent border-0 border-b border-vermeille-velours/30 focus:border-vermeille-bordeaux py-2 font-italiana text-vermeille-velours text-xl outline-none transition-colors"
-          />
+        <!-- Progress -->
+        <div class="mb-7">
+          <div class="flex items-center justify-between mb-2">
+            <p class="font-inter-tight text-[10px] uppercase tracking-[0.3em] text-vermeille-velours/65">
+              Étape <span id="d-step-current" class="text-vermeille-bordeaux tabular-nums">1</span>/4
+            </p>
+            <p id="d-step-label" class="font-inter-tight text-[10px] uppercase tracking-[0.3em] text-vermeille-bordeaux font-medium">Discipline</p>
+          </div>
+          <div class="h-px bg-vermeille-velours/20 overflow-hidden">
+            <div id="d-progress" class="h-full bg-vermeille-bordeaux transition-all duration-500" style="width: 25%;"></div>
+          </div>
         </div>
-        <div>
-          <label for="ins-nom" class="block font-italiana italic text-vermeille-velours/65 text-sm mb-1">Nom</label>
-          <input
-            id="ins-nom"
-            name="nom"
-            type="text"
-            required
-            autocomplete="family-name"
-            class="w-full bg-transparent border-0 border-b border-vermeille-velours/30 focus:border-vermeille-bordeaux py-2 font-italiana text-vermeille-velours text-xl outline-none transition-colors"
-          />
+
+        <!-- ÉTAPE 1 : Discipline -->
+        <fieldset class="d-step" data-step="1">
+          <legend class="font-inter-tight text-[10px] uppercase tracking-[0.3em] text-vermeille-bordeaux pb-3 border-b border-vermeille-velours/15 w-full mb-5">
+            I. Discipline souhaitée
+          </legend>
+          <div class="grid sm:grid-cols-2 gap-3">
+            {data.disciplines.map((d) => (
+              <label class="cursor-pointer">
+                <input type="radio" name="discipline" value={d.nom} data-label={d.nom} class="peer sr-only" required />
+                <span class="block p-4 bg-vermeille-ivoire border border-vermeille-velours/20 peer-checked:border-vermeille-bordeaux peer-checked:bg-vermeille-bordeaux/5 transition-all">
+                  <div class="flex items-baseline gap-2 mb-1">
+                    <span class="font-italiana italic text-vermeille-or text-base">{d.numero}</span>
+                    <p class="font-italiana text-vermeille-velours text-xl leading-tight">{d.nom}</p>
+                  </div>
+                  <p class="font-inter-tight text-[10px] uppercase tracking-[0.22em] text-vermeille-bordeaux/80">{d.niveaux}</p>
+                </span>
+              </label>
+            ))}
+          </div>
+        </fieldset>
+
+        <!-- ÉTAPE 2 : Profil élève -->
+        <fieldset class="d-step hidden" data-step="2">
+          <legend class="font-inter-tight text-[10px] uppercase tracking-[0.3em] text-vermeille-bordeaux pb-3 border-b border-vermeille-velours/15 w-full mb-5">
+            II. Profil de l'élève
+          </legend>
+
+          <!-- Âge -->
+          <div class="mb-5">
+            <p class="font-inter-tight text-[10px] uppercase tracking-[0.22em] text-vermeille-velours/75 mb-2">Tranche d'âge</p>
+            <div class="grid grid-cols-3 sm:grid-cols-6 gap-2">
+              {[
+                { v: '4-7', l: '4-7' },
+                { v: '8-12', l: '8-12' },
+                { v: '13-17', l: '13-17' },
+                { v: '18-30', l: '18-30' },
+                { v: '30-50', l: '30-50' },
+                { v: '50+', l: '50+' },
+              ].map((a, i) => (
+                <label class="cursor-pointer">
+                  <input type="radio" name="age" value={a.v} class="peer sr-only" />
+                  <span class="block px-2 py-3 bg-vermeille-ivoire border border-vermeille-velours/20 peer-checked:border-vermeille-bordeaux peer-checked:bg-vermeille-bordeaux peer-checked:text-vermeille-ivoire text-center font-italiana text-base transition-colors tabular-nums">
+                    {a.l}
+                  </span>
+                </label>
+              ))}
+            </div>
+          </div>
+
+          <!-- Niveau -->
+          <div>
+            <p class="font-inter-tight text-[10px] uppercase tracking-[0.22em] text-vermeille-velours/75 mb-2">Niveau actuel</p>
+            <div class="flex flex-wrap gap-2">
+              {[
+                { v: 'debut',     l: 'Débutant·e' },
+                { v: 'inter',     l: 'Intermédiaire' },
+                { v: 'avance',    l: 'Avancé·e' },
+                { v: 'pro',       l: 'Pré-pro / pro' },
+              ].map((n) => (
+                <label class="cursor-pointer">
+                  <input type="radio" name="niveau" value={n.v} data-label={n.l} class="peer sr-only" />
+                  <span class="inline-flex items-center px-4 h-10 bg-vermeille-ivoire border border-vermeille-velours/20 peer-checked:border-vermeille-bordeaux peer-checked:bg-vermeille-bordeaux peer-checked:text-vermeille-ivoire font-italiana text-base transition-colors">
+                    {n.l}
+                  </span>
+                </label>
+              ))}
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- ÉTAPE 3 : Pratique -->
+        <fieldset class="d-step hidden" data-step="3">
+          <legend class="font-inter-tight text-[10px] uppercase tracking-[0.3em] text-vermeille-bordeaux pb-3 border-b border-vermeille-velours/15 w-full mb-5">
+            III. Rythme & engagement
+          </legend>
+          <div class="space-y-2">
+            {[
+              { v: '1-cours',  l: '1 cours / semaine',                detail: 'Découverte ou loisir',          prix: '95 €/mois' },
+              { v: '2-cours',  l: '2 cours / semaine',                detail: 'Pratique régulière',            prix: '165 €/mois' },
+              { v: '3-plus',   l: '3 cours et + / semaine',           detail: 'Pratique sérieuse',             prix: '215 €/mois' },
+              { v: 'gala',     l: 'Préparation gala',                 detail: 'Tarif spécifique sur audition', prix: 'Sur audition' },
+            ].map((p) => (
+              <label class="cursor-pointer block">
+                <input type="radio" name="rythme" value={p.v} data-label={p.l} data-prix={p.prix} class="peer sr-only" required />
+                <span class="flex items-baseline gap-3 p-4 bg-vermeille-ivoire border border-vermeille-velours/20 peer-checked:border-vermeille-bordeaux peer-checked:bg-vermeille-bordeaux/5 transition-all">
+                  <span class="flex-1">
+                    <p class="font-italiana text-vermeille-velours text-lg leading-tight">{p.l}</p>
+                    <p class="mt-1 font-inter-tight italic text-vermeille-velours/65 text-sm">{p.detail}</p>
+                  </span>
+                  <span class="font-italiana text-vermeille-bordeaux text-lg tabular-nums shrink-0">{p.prix}</span>
+                </span>
+              </label>
+            ))}
+          </div>
+        </fieldset>
+
+        <!-- ÉTAPE 4 : Coordonnées -->
+        <fieldset class="d-step hidden" data-step="4">
+          <legend class="font-inter-tight text-[10px] uppercase tracking-[0.3em] text-vermeille-bordeaux pb-3 border-b border-vermeille-velours/15 w-full mb-5">
+            IV. Coordonnées
+          </legend>
+
+          <div class="grid sm:grid-cols-2 gap-5 mb-5">
+            <div>
+              <label for="d-prenom" class="block font-italiana italic text-vermeille-velours/65 text-sm mb-1">Prénom élève</label>
+              <input id="d-prenom" name="prenom" type="text" required autocomplete="given-name"
+                class="w-full bg-transparent border-0 border-b border-vermeille-velours/30 focus:border-vermeille-bordeaux py-2 font-italiana text-vermeille-velours text-xl outline-none transition-colors" />
+            </div>
+            <div>
+              <label for="d-nom" class="block font-italiana italic text-vermeille-velours/65 text-sm mb-1">Nom de famille</label>
+              <input id="d-nom" name="nom" type="text" required autocomplete="family-name"
+                class="w-full bg-transparent border-0 border-b border-vermeille-velours/30 focus:border-vermeille-bordeaux py-2 font-italiana text-vermeille-velours text-xl outline-none transition-colors" />
+            </div>
+            <div>
+              <label for="d-tel" class="block font-italiana italic text-vermeille-velours/65 text-sm mb-1">Téléphone</label>
+              <input id="d-tel" name="telephone" type="tel" inputmode="tel" required autocomplete="tel"
+                class="w-full bg-transparent border-0 border-b border-vermeille-velours/30 focus:border-vermeille-bordeaux py-2 font-italiana text-vermeille-velours text-xl outline-none transition-colors tabular-nums" />
+            </div>
+            <div>
+              <label for="d-email" class="block font-italiana italic text-vermeille-velours/65 text-sm mb-1">Email</label>
+              <input id="d-email" name="email" type="email" autocomplete="email"
+                class="w-full bg-transparent border-0 border-b border-vermeille-velours/30 focus:border-vermeille-bordeaux py-2 font-italiana text-vermeille-velours text-xl outline-none transition-colors" />
+            </div>
+          </div>
+
+          <div>
+            <label for="d-message" class="block font-italiana italic text-vermeille-velours/65 text-sm mb-1">
+              Un mot pour Camille <span class="lowercase">(facultatif)</span>
+            </label>
+            <textarea id="d-message" name="message" rows="2" placeholder="Antécédents, motivations, contraintes…"
+              class="w-full bg-transparent border-0 border-b border-vermeille-velours/30 focus:border-vermeille-bordeaux py-2 font-italiana text-vermeille-velours text-base outline-none transition-colors resize-none"></textarea>
+          </div>
+        </fieldset>
+
+        <!-- Navigation -->
+        <div class="mt-7 pt-6 border-t-2 border-double border-vermeille-velours/20 flex flex-wrap items-center justify-between gap-3">
+          <button type="button" id="d-btn-prev"
+            class="hidden inline-flex items-center gap-1 h-10 px-4 border border-vermeille-velours/30 text-vermeille-velours/85 font-inter-tight text-[10px] uppercase tracking-[0.22em] hover:border-vermeille-bordeaux hover:text-vermeille-bordeaux transition-colors cursor-pointer">
+            ← Précédent
+          </button>
+          <button type="button" id="d-btn-next"
+            class="ml-auto inline-flex items-center justify-center h-12 px-7 bg-vermeille-velours text-vermeille-ivoire font-italiana text-base tracking-wide hover:bg-vermeille-bordeaux transition-colors disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer">
+            Continuer →
+          </button>
+          <button type="submit" id="d-btn-submit"
+            class="hidden ml-auto inline-flex items-center justify-center h-14 px-12 bg-vermeille-bordeaux text-vermeille-ivoire font-italiana text-lg tracking-wide hover:bg-vermeille-velours transition-colors cursor-pointer">
+            Envoyer le bulletin <span class="text-vermeille-rose ml-2">✦</span>
+          </button>
         </div>
-        <div>
-          <label for="ins-age" class="block font-italiana italic text-vermeille-velours/65 text-sm mb-1">Âge de l'élève</label>
-          <input
-            id="ins-age"
-            name="age"
-            type="number"
-            min="3"
-            max="99"
-            required
-            class="w-full bg-transparent border-0 border-b border-vermeille-velours/30 focus:border-vermeille-bordeaux py-2 font-italiana text-vermeille-velours text-xl outline-none transition-colors tabular-nums"
-          />
-        </div>
-        <div>
-          <label for="ins-tel" class="block font-italiana italic text-vermeille-velours/65 text-sm mb-1">Téléphone</label>
-          <input
-            id="ins-tel"
-            name="telephone"
-            type="tel"
-            required
-            autocomplete="tel"
-            class="w-full bg-transparent border-0 border-b border-vermeille-velours/30 focus:border-vermeille-bordeaux py-2 font-italiana text-vermeille-velours text-xl outline-none transition-colors tabular-nums"
-          />
-        </div>
-      </div>
-    </fieldset>
-
-    <!-- Section : Discipline avec checkboxes -->
-    <fieldset class="mb-10">
-      <legend class="font-inter-tight text-[10px] uppercase tracking-[0.3em] text-vermeille-bordeaux pb-3 border-b border-vermeille-velours/15 w-full mb-5">
-        Discipline souhaitée <span class="lowercase italic text-vermeille-velours/55 font-italiana tracking-normal text-sm">(une ou plusieurs)</span>
-      </legend>
-
-      <div class="grid sm:grid-cols-2 gap-3">
-        {data.disciplines.map((d) => (
-          <label class="flex items-center gap-3 cursor-pointer group">
-            <input
-              type="checkbox"
-              name="discipline"
-              value={d.nom}
-              class="discipline-cb peer sr-only"
-            />
-            <span class="shrink-0 w-5 h-5 border border-vermeille-velours/40 group-hover:border-vermeille-bordeaux peer-checked:bg-vermeille-bordeaux peer-checked:border-vermeille-bordeaux flex items-center justify-center transition-colors" aria-hidden="true">
-              <svg class="w-3 h-3 text-vermeille-ivoire opacity-0 peer-checked-show" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-            </span>
-            <span class="font-italiana text-vermeille-velours text-lg group-hover:text-vermeille-bordeaux transition-colors">
-              {d.nom}
-            </span>
-          </label>
-        ))}
-      </div>
-    </fieldset>
-
-    <!-- Section : Niveau radio -->
-    <fieldset class="mb-10">
-      <legend class="font-inter-tight text-[10px] uppercase tracking-[0.3em] text-vermeille-bordeaux pb-3 border-b border-vermeille-velours/15 w-full mb-5">
-        Niveau
-      </legend>
-
-      <div class="flex flex-wrap gap-x-8 gap-y-3">
-        {['Débutant·e', 'Intermédiaire', 'Confirmé·e'].map((n, i) => (
-          <label class="flex items-center gap-3 cursor-pointer group">
-            <input
-              type="radio"
-              name="niveau"
-              value={n}
-              class="peer sr-only"
-              checked={i === 0}
-            />
-            <span class="shrink-0 w-5 h-5 rounded-full border border-vermeille-velours/40 group-hover:border-vermeille-bordeaux peer-checked:border-vermeille-bordeaux flex items-center justify-center transition-colors" aria-hidden="true">
-              <span class="w-2.5 h-2.5 rounded-full bg-vermeille-bordeaux opacity-0 peer-checked-show-radio"></span>
-            </span>
-            <span class="font-italiana text-vermeille-velours text-lg group-hover:text-vermeille-bordeaux transition-colors">{n}</span>
-          </label>
-        ))}
-      </div>
-    </fieldset>
-
-    <!-- Section : Mot libre -->
-    <fieldset class="mb-10">
-      <legend class="font-inter-tight text-[10px] uppercase tracking-[0.3em] text-vermeille-bordeaux pb-3 border-b border-vermeille-velours/15 w-full mb-5">
-        Un mot pour Camille <span class="lowercase italic text-vermeille-velours/55 font-italiana tracking-normal text-sm">(facultatif)</span>
-      </legend>
-      <textarea
-        id="ins-message"
-        name="message"
-        rows="3"
-        class="w-full bg-transparent border-0 border-b border-vermeille-velours/30 focus:border-vermeille-bordeaux py-2 font-italiana text-vermeille-velours text-lg outline-none transition-colors resize-none"
-        placeholder="Antécédents, motivations, contraintes…"
-      ></textarea>
-    </fieldset>
-
-    <!-- Submit -->
-    <div class="text-center pt-4 border-t-2 border-double border-vermeille-velours/20">
-      <button
-        type="submit"
-        class="inline-flex items-center justify-center gap-3 h-14 px-12 bg-vermeille-bordeaux text-vermeille-ivoire font-italiana text-lg tracking-wide hover:bg-vermeille-velours transition-colors duration-500"
-      >
-        Envoyer le bulletin
-        <span class="text-vermeille-rose">✦</span>
-      </button>
-      <p class="mt-5 font-caveat text-vermeille-bordeaux text-lg rotate-[-1deg]">
-        ouvre WhatsApp avec votre bulletin pré-rempli
-      </p>
+      </form>
     </div>
-  </form>
 
-  <style>
-    /* Checkboxes / radios visibles via state */
-    .peer-checked-show { opacity: 0; transition: opacity 0.2s; }
-    input[type="checkbox"]:checked ~ span > .peer-checked-show { opacity: 1; }
-    .peer-checked-show-radio { opacity: 0; transition: opacity 0.2s; }
-    input[type="radio"]:checked ~ span > .peer-checked-show-radio { opacity: 1; }
-  </style>
+    <!-- RIGHT : Sidebar récap -->
+    <aside class="lg:col-span-4 lg:sticky lg:top-24 space-y-4">
+      <div class="bg-vermeille-blanc border border-vermeille-or/40 p-6">
+        <p class="font-inter-tight text-[10px] uppercase tracking-[0.32em] text-vermeille-or mb-4 font-medium">
+          ✦ Votre inscription
+        </p>
+        <ul class="space-y-3 text-sm">
+          <li class="pb-2 border-b border-vermeille-velours/15">
+            <span class="block font-inter-tight text-[9px] uppercase tracking-[0.22em] text-vermeille-velours/65">Discipline</span>
+            <span id="d-recap-disc" class="font-italiana text-vermeille-velours text-lg leading-tight">—</span>
+          </li>
+          <li class="pb-2 border-b border-vermeille-velours/15">
+            <span class="block font-inter-tight text-[9px] uppercase tracking-[0.22em] text-vermeille-velours/65">Niveau</span>
+            <span id="d-recap-niv" class="font-italiana italic text-vermeille-velours">—</span>
+          </li>
+          <li class="pb-2 border-b border-vermeille-velours/15">
+            <span class="block font-inter-tight text-[9px] uppercase tracking-[0.22em] text-vermeille-velours/65">Rythme</span>
+            <span id="d-recap-rythme" class="font-italiana text-vermeille-velours">—</span>
+          </li>
+          <li>
+            <span class="block font-inter-tight text-[9px] uppercase tracking-[0.22em] text-vermeille-velours/65">Tarif</span>
+            <span id="d-recap-prix" class="font-italiana text-vermeille-bordeaux text-2xl tabular-nums">—</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="p-5 bg-vermeille-velours text-vermeille-ivoire border-l-2 border-vermeille-or">
+        <p class="font-inter-tight text-[10px] uppercase tracking-[0.32em] text-vermeille-or mb-2 font-medium">
+          ✦ Étapes après envoi
+        </p>
+        <ul class="space-y-1.5 font-italiana italic text-vermeille-ivoire/85 text-sm leading-relaxed">
+          <li>1. Réponse sous 48 h ouvrées</li>
+          <li>2. Audition de niveau (offerte)</li>
+          <li>3. Validation et inscription définitive</li>
+        </ul>
+      </div>
+    </aside>
+  </div>
 </section>
 
 <script define:vars={{ waBase }}>
-  const form = document.getElementById('inscription-form');
+  const form = document.getElementById('d-form');
   if (form) {
+    const steps = form.querySelectorAll('.d-step');
+    const stepLabels = ['Discipline', 'Profil', 'Rythme', 'Coordonnées'];
+    const totalSteps = steps.length;
+    let currentStep = 1;
+
+    function updateRecap() {
+      const disc = form.querySelector('input[name="discipline"]:checked');
+      const niv = form.querySelector('input[name="niveau"]:checked');
+      const rythme = form.querySelector('input[name="rythme"]:checked');
+      document.getElementById('d-recap-disc').textContent = disc?.dataset.label || '—';
+      document.getElementById('d-recap-niv').textContent = niv?.dataset.label || '—';
+      document.getElementById('d-recap-rythme').textContent = rythme?.dataset.label || '—';
+      document.getElementById('d-recap-prix').textContent = rythme?.dataset.prix || '—';
+    }
+
+    function showStep(n) {
+      steps.forEach((s) => s.classList.add('hidden'));
+      form.querySelector(`.d-step[data-step="${n}"]`)?.classList.remove('hidden');
+      currentStep = n;
+      document.getElementById('d-step-current').textContent = String(n);
+      document.getElementById('d-step-label').textContent = stepLabels[n - 1];
+      document.getElementById('d-progress').style.width = `${(n / totalSteps) * 100}%`;
+      document.getElementById('d-btn-prev').classList.toggle('hidden', n === 1);
+      document.getElementById('d-btn-next').classList.toggle('hidden', n === totalSteps);
+      document.getElementById('d-btn-submit').classList.toggle('hidden', n !== totalSteps);
+      validateCurrent();
+    }
+
+    function validateCurrent() {
+      let valid = false;
+      if (currentStep === 1) valid = !!form.querySelector('input[name="discipline"]:checked');
+      else if (currentStep === 2) valid = !!form.querySelector('input[name="age"]:checked') && !!form.querySelector('input[name="niveau"]:checked');
+      else if (currentStep === 3) valid = !!form.querySelector('input[name="rythme"]:checked');
+      else if (currentStep === 4) valid = !!form.querySelector('#d-prenom')?.value.trim() && !!form.querySelector('#d-nom')?.value.trim() && !!form.querySelector('#d-tel')?.value.trim();
+      document.getElementById('d-btn-next').disabled = !valid;
+    }
+
+    form.querySelectorAll('input, textarea').forEach((input) => {
+      input.addEventListener('change', () => { validateCurrent(); updateRecap(); });
+      input.addEventListener('input', () => { validateCurrent(); updateRecap(); });
+    });
+    document.getElementById('d-btn-next').addEventListener('click', () => { if (currentStep < totalSteps) showStep(currentStep + 1); });
+    document.getElementById('d-btn-prev').addEventListener('click', () => { if (currentStep > 1) showStep(currentStep - 1); });
+
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const fd = new FormData(form);
-      const prenom = fd.get('prenom') || '';
-      const nom = fd.get('nom') || '';
-      const age = fd.get('age') || '';
-      const tel = fd.get('telephone') || '';
-      const niveau = fd.get('niveau') || '';
-      const disciplines = fd.getAll('discipline');
-      const message = fd.get('message') || '';
+      const disc = form.querySelector('input[name="discipline"]:checked');
+      const age = form.querySelector('input[name="age"]:checked');
+      const niveau = form.querySelector('input[name="niveau"]:checked');
+      const rythme = form.querySelector('input[name="rythme"]:checked');
+
       const text = [
-        'Bonjour Vermeille, je souhaite inscrire :',
-        prenom || nom ? `Élève : ${prenom} ${nom}` : '',
-        age ? `Âge : ${age} ans` : '',
-        tel ? `Tél : ${tel}` : '',
-        disciplines.length ? `Discipline : ${disciplines.join(', ')}` : '',
-        niveau ? `Niveau : ${niveau}` : '',
-        message ? `Mot : ${message}` : '',
+        'Bonjour Vermeille, bulletin d\'inscription saison 2025—2026 :',
+        '',
+        '— ÉLÈVE —',
+        fd.get('prenom') ? `Prénom : ${fd.get('prenom')}` : '',
+        fd.get('nom') ? `Nom : ${fd.get('nom')}` : '',
+        age ? `Âge : ${age.value} ans` : '',
+        niveau ? `Niveau : ${niveau.dataset.label}` : '',
+        '',
+        '— PRATIQUE SOUHAITÉE —',
+        disc ? `Discipline : ${disc.dataset.label}` : '',
+        rythme ? `Rythme : ${rythme.dataset.label} (${rythme.dataset.prix})` : '',
+        '',
+        '— CONTACT —',
+        fd.get('telephone') ? `Tél : ${fd.get('telephone')}` : '',
+        fd.get('email') ? `Email : ${fd.get('email')}` : '',
+        fd.get('message') ? `\nMot : ${fd.get('message')}` : '',
       ].filter(Boolean).join('\n');
+
       window.open(`${waBase}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
     });
+
+    validateCurrent();
+    updateRecap();
   }
 </script>
