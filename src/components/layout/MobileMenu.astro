@@ -35,13 +35,11 @@ const isActive = (href: string) => {
           <a
             href={link.href}
             data-mobile-link
+            data-nav-link
+            data-href={link.href}
+            data-active={isActive(link.href) ? 'true' : 'false'}
             aria-current={isActive(link.href) ? 'page' : undefined}
-            class:list={[
-              'block py-4 text-3xl font-sora font-semibold transition-colors duration-200',
-              isActive(link.href)
-                ? 'text-orange'
-                : 'text-bleu-nuit hover:text-orange',
-            ]}
+            class="block py-4 text-3xl font-sora font-semibold transition-colors duration-200 text-bleu-nuit hover:text-orange data-[active=true]:text-orange"
           >
             {link.label}
           </a>
