@@ -785,7 +785,16 @@ const etapes = [
       dds.forEach((dd) => {
         const name = dd.dataset.messageKey;
         if (!name) return;
-        dd.textContent = displayValue(panel, name);
+        const newValue = displayValue(panel, name);
+        if (dd.textContent === newValue) return; // pas de changement → pas de flash
+        dd.textContent = newValue;
+        // Flash orange bref pour signaler que la valeur a changé en live
+        if (typeof dd.animate === 'function') {
+          dd.animate(
+            [{ color: '#FF8F00' }, { color: '#FEFEFA' }],
+            { duration: 700, easing: 'ease-out' }
+          );
+        }
       });
     };
 
