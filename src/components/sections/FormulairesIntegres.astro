@@ -456,78 +456,126 @@ const etapes = [
 
                 <p class="mt-5 font-sora font-semibold text-lg leading-snug">{m.formTitle}</p>
 
-                <div class="mt-5 space-y-4">
-                  {m.fields.map((f) => (
-                    <div>
-                      <p class="text-[11px] font-medium text-bleu-nuit/55 uppercase tracking-wide">{f.label}</p>
+                <p class="mt-1 text-sm text-bleu-nuit/65">
+                  Aperçu interactif — cliquez dans les champs.
+                </p>
 
-                      {f.type === 'text' && (
-                        <div class="mt-1.5 h-11 flex items-center px-3.5 rounded-xl ring-1 ring-bleu-nuit/15 bg-blanc-casse text-sm font-medium text-bleu-nuit">
-                          {f.value}
-                        </div>
-                      )}
+                <form
+                  class="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3.5"
+                  data-demo-form
+                  data-metier={m.id}
+                  onsubmit="event.preventDefault();"
+                  novalidate
+                >
+                  {m.fields.map((f) => {
+                    const fieldId = `${m.id}-${f.name}`;
+                    const wrapClass = f.span === 2 ? 'sm:col-span-2' : '';
+                    const inputBase = 'w-full h-11 px-3.5 rounded-xl ring-1 ring-bleu-nuit/15 bg-blanc-casse text-sm font-medium text-bleu-nuit placeholder:text-bleu-nuit/30 focus:ring-2 focus:ring-bleu-nuit/40 outline-none transition-shadow';
+                    return (
+                      <div class={wrapClass}>
+                        {f.type !== 'checkbox' && (
+                          <label for={fieldId} class="block text-[11px] font-medium text-bleu-nuit/55 uppercase tracking-wide mb-1.5">
+                            {f.label}
+                          </label>
+                        )}
 
-                      {f.type === 'date' && (
-                        <div class="mt-1.5 h-11 flex items-center justify-between px-3.5 rounded-xl ring-1 ring-bleu-nuit/15 bg-blanc-casse text-sm font-medium text-bleu-nuit">
-                          <span>{f.value}</span>
-                          <Icon name="calendar-clock" size={16} class="text-bleu-nuit/40" strokeWidth={2} />
-                        </div>
-                      )}
+                        {f.type === 'input-text' && (
+                          <input id={fieldId} type="text" name={f.name}
+                            placeholder={f.placeholder} value={f.defaultValue ?? ''}
+                            class={inputBase} />
+                        )}
 
-                      {f.type === 'time' && (
-                        <div class="mt-1.5 h-11 flex items-center justify-between px-3.5 rounded-xl ring-1 ring-bleu-nuit/15 bg-blanc-casse text-sm font-medium text-bleu-nuit">
-                          <span>{f.value}</span>
-                          <Icon name="calendar-clock" size={16} class="text-bleu-nuit/40" strokeWidth={2} />
-                        </div>
-                      )}
+                        {f.type === 'input-tel' && (
+                          <input id={fieldId} type="tel" name={f.name} inputmode="tel"
+                            autocomplete="tel" placeholder={f.placeholder}
+                            value={f.defaultValue ?? ''}
+                            class={`${inputBase} tabular-nums`} />
+                        )}
 
-                      {f.type === 'tel' && (
-                        <div class="mt-1.5 h-11 flex items-center px-3.5 rounded-xl ring-1 ring-bleu-nuit/15 bg-blanc-casse text-sm font-medium text-bleu-nuit tabular-nums">
-                          {f.value}
-                        </div>
-                      )}
+                        {f.type === 'input-date' && (
+                          <input id={fieldId} type="date" name={f.name}
+                            value={f.defaultValue ?? ''}
+                            class={`${inputBase} tabular-nums cursor-pointer`} />
+                        )}
 
-                      {f.type === 'counter' && (
-                        <div class="mt-1.5 h-11 flex items-center justify-between px-1 rounded-xl ring-1 ring-bleu-nuit/15 bg-blanc-casse">
-                          <button type="button" disabled class="w-9 h-9 rounded-lg flex items-center justify-center text-lg font-bold text-bleu-nuit/40 cursor-not-allowed" aria-label="Diminuer">−</button>
-                          <span class="text-sm font-bold text-bleu-nuit tabular-nums">{f.value}</span>
-                          <button type="button" disabled class="w-9 h-9 rounded-lg flex items-center justify-center text-lg font-bold text-bleu-nuit/40 cursor-not-allowed" aria-label="Augmenter">+</button>
-                        </div>
-                      )}
+                        {f.type === 'input-time' && (
+                          <input id={fieldId} type="time" name={f.name}
+                            value={f.defaultValue ?? ''}
+                            class={`${inputBase} tabular-nums cursor-pointer`} />
+                        )}
 
-                      {f.type === 'chips' && (
-                        <div class="mt-1.5 flex flex-wrap gap-1.5">
-                          {f.options?.map((opt, idx) => (
-                            <span class:list={[
-                              'inline-flex items-center h-8 px-3 rounded-full text-xs font-medium transition-colors',
-                              idx === (f.active ?? 0)
-                                ? 'bg-bleu-nuit text-blanc-casse'
-                                : 'bg-bleu-nuit/[0.06] text-bleu-nuit/70 ring-1 ring-bleu-nuit/10',
-                            ]}>{opt}</span>
-                          ))}
-                        </div>
-                      )}
+                        {f.type === 'input-number' && (
+                          <input id={fieldId} type="number" name={f.name}
+                            min={f.min} max={f.max} value={f.defaultValue ?? ''}
+                            class={`${inputBase} tabular-nums`} />
+                        )}
 
-                      {f.type === 'cards' && (
-                        <div class="mt-1.5 grid grid-cols-3 gap-1.5">
-                          {f.options?.map((opt, idx) => (
-                            <div class:list={[
-                              'flex flex-col items-center justify-center text-center px-2 py-3 rounded-xl text-[11px] font-medium leading-tight transition-colors',
-                              idx === (f.active ?? 0)
-                                ? (m.color === 'orange' ? 'bg-orange text-bleu-nuit ring-2 ring-bleu-nuit/20' : 'bg-bleu text-bleu-nuit ring-2 ring-bleu-nuit/20')
-                                : 'bg-bleu-nuit/[0.04] text-bleu-nuit/65 ring-1 ring-bleu-nuit/10',
-                            ]}>
-                              {f.icon && idx === (f.active ?? 0) && (
-                                <Icon name={f.icon} size={16} strokeWidth={2} class="mb-1" />
-                              )}
-                              {opt}
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
+                        {f.type === 'select-real' && (
+                          <select id={fieldId} name={f.name}
+                            class={`${inputBase} cursor-pointer appearance-none bg-no-repeat bg-[right_0.875rem_center] pr-9`}
+                            style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%2212%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%230B1437%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><path d=%22m6 9 6 6 6-6%22/></svg>'); background-size: 12px;">
+                            {(f.options as FieldOption[]).map((o) => (
+                              <option value={o.value} selected={o.value === f.defaultValue}>
+                                {o.label}
+                              </option>
+                            ))}
+                          </select>
+                        )}
+
+                        {f.type === 'textarea' && (
+                          <textarea id={fieldId} name={f.name}
+                            rows={f.rows ?? 2} placeholder={f.placeholder}
+                            class="w-full px-3.5 py-2.5 rounded-xl ring-1 ring-bleu-nuit/15 bg-blanc-casse text-sm font-medium text-bleu-nuit placeholder:text-bleu-nuit/30 focus:ring-2 focus:ring-bleu-nuit/40 outline-none resize-none transition-shadow"
+                          >{f.defaultValue ?? ''}</textarea>
+                        )}
+
+                        {f.type === 'radios-cards' && (
+                          <div class="grid grid-cols-2 sm:grid-cols-4 gap-1.5">
+                            {(f.options as FieldOption[]).map((o, idx) => (
+                              <label class="cursor-pointer">
+                                <input type="radio" name={fieldId} value={o.value}
+                                  checked={o.value === f.defaultValue ? true : undefined}
+                                  class="peer sr-only" />
+                                <span class="block text-center px-2 py-2.5 rounded-xl text-xs font-medium leading-tight transition-all bg-bleu-nuit/[0.04] text-bleu-nuit/70 ring-1 ring-bleu-nuit/10 peer-checked:bg-bleu-nuit peer-checked:text-blanc-casse peer-checked:ring-bleu-nuit hover:bg-bleu-nuit/[0.08] peer-focus-visible:ring-2 peer-focus-visible:ring-bleu-nuit/40">
+                                  {o.label}
+                                </span>
+                              </label>
+                            ))}
+                          </div>
+                        )}
+
+                        {f.type === 'radios-chips' && (
+                          <div class="flex flex-wrap gap-1.5">
+                            {(f.options as FieldOption[]).map((o) => (
+                              <label class="cursor-pointer">
+                                <input type="radio" name={fieldId} value={o.value}
+                                  checked={o.value === f.defaultValue ? true : undefined}
+                                  class="peer sr-only" />
+                                <span class="inline-flex items-center h-8 px-3 rounded-full text-xs font-medium transition-all bg-bleu-nuit/[0.06] text-bleu-nuit/70 ring-1 ring-bleu-nuit/10 peer-checked:bg-bleu-nuit peer-checked:text-blanc-casse peer-checked:ring-bleu-nuit hover:bg-bleu-nuit/[0.10] peer-focus-visible:ring-2 peer-focus-visible:ring-bleu-nuit/40">
+                                  {o.label}
+                                </span>
+                              </label>
+                            ))}
+                          </div>
+                        )}
+
+                        {f.type === 'checkbox' && (
+                          <label for={fieldId} class="flex items-center gap-2.5 h-11 px-3.5 rounded-xl ring-1 ring-bleu-nuit/15 bg-blanc-casse cursor-pointer hover:ring-bleu-nuit/30 transition-all">
+                            <input id={fieldId} type="checkbox" name={f.name}
+                              checked={f.defaultChecked ? true : undefined}
+                              class="peer sr-only" />
+                            <span class="flex items-center justify-center w-5 h-5 rounded-md ring-1 ring-bleu-nuit/25 peer-checked:bg-bleu-nuit peer-checked:ring-bleu-nuit transition-all shrink-0">
+                              <svg class="w-3 h-3 text-blanc-casse opacity-0 peer-checked:opacity-100 transition-opacity" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path d="M16.7 5.3a1 1 0 0 1 0 1.4l-7 7a1 1 0 0 1-1.4 0l-3-3a1 1 0 0 1 1.4-1.4l2.3 2.3 6.3-6.3a1 1 0 0 1 1.4 0z"/>
+                              </svg>
+                            </span>
+                            <span class="text-sm font-medium text-bleu-nuit">{f.label}</span>
+                          </label>
+                        )}
+                      </div>
+                    );
+                  })}
+                </form>
 
                 <button
                   type="button"
