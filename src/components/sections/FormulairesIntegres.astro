@@ -453,10 +453,9 @@ const etapes = [
             data-panel={m.id}
             data-active={i === 0 ? 'true' : 'false'}
             hidden={i !== 0}
-            class="grid lg:grid-cols-5 gap-8 lg:gap-10 items-start"
           >
-            <!-- Colonne explication -->
-            <div class="lg:col-span-2">
+            <!-- Header full-width : kicker + titre + intro orientée bénéfice pro -->
+            <header class="mb-6 lg:mb-8 max-w-3xl">
               <p class="font-roboto-mono text-[10px] uppercase tracking-[0.28em] text-orange">
                 {m.formKicker}
               </p>
@@ -466,21 +465,10 @@ const etapes = [
               <p class="mt-3 text-sm text-blanc-casse/70 leading-relaxed">
                 {m.example}
               </p>
-              <ul class="mt-6 space-y-2.5 text-sm text-blanc-casse/85">
-                <li class="flex items-start gap-2.5">
-                  <Icon name="shield-check" size={16} class="text-orange shrink-0 mt-0.5" strokeWidth={2.25} />
-                  <span>Champs adaptés au métier</span>
-                </li>
-                <li class="flex items-start gap-2.5">
-                  <Icon name="shield-check" size={16} class="text-orange shrink-0 mt-0.5" strokeWidth={2.25} />
-                  <span>Notification immédiate</span>
-                </li>
-                <li class="flex items-start gap-2.5">
-                  <Icon name="shield-check" size={16} class="text-orange shrink-0 mt-0.5" strokeWidth={2.25} />
-                  <span>Pré-rempli selon disponibilités</span>
-                </li>
-              </ul>
-            </div>
+            </header>
+
+            <!-- Grid : formulaire à gauche (3/5) + carte 'Message reçu' à droite (2/5) -->
+            <div class="grid lg:grid-cols-5 gap-6 lg:gap-8 items-start">
 
             <!-- Colonne mini-formulaire -->
             <div class="lg:col-span-3">
@@ -634,6 +622,54 @@ const etapes = [
                   Aperçu non fonctionnel — chaque site reçoit un formulaire sur mesure.
                 </p>
               </div>
+            </div>
+
+            <!-- Colonne 'Message reçu' : ce que le pro reçoit après envoi -->
+            <aside class="lg:col-span-2 lg:sticky lg:top-24" aria-label={`Message reçu pour ${m.label}`}>
+              <div
+                class="rounded-2xl ring-1 ring-blanc-casse/20 bg-blanc-casse/[0.04] p-5 md:p-6"
+                data-message-card
+              >
+                <!-- Header carte -->
+                <div class="flex items-start gap-3 pb-4 border-b border-blanc-casse/10">
+                  <span class="flex w-9 h-9 rounded-full bg-orange/15 text-orange items-center justify-center shrink-0">
+                    <Icon name="mail" size={16} strokeWidth={2} />
+                  </span>
+                  <div class="min-w-0">
+                    <p class="font-roboto-mono text-[9px] uppercase tracking-[0.28em] text-orange">
+                      Reçu par e-mail / WhatsApp
+                    </p>
+                    <p class="mt-0.5 font-sora font-semibold text-blanc-casse text-sm leading-tight truncate">
+                      Nouveau contact — {m.label}
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Liste des champs -->
+                <dl class="mt-4 space-y-3">
+                  {m.fields.map((f) => (
+                    <div class="grid grid-cols-[7rem_1fr] gap-3 items-baseline">
+                      <dt class="text-[10px] uppercase tracking-wide text-blanc-casse/55 font-medium leading-tight">
+                        {f.label}
+                      </dt>
+                      <dd
+                        class="text-sm text-blanc-casse leading-snug"
+                        data-message-key={f.name}
+                      >
+                        {fieldDisplay(f)}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+
+                <!-- Footer -->
+                <div class="mt-5 pt-4 border-t border-blanc-casse/10 flex items-center gap-2 text-xs text-blanc-casse/55">
+                  <Icon name="calendar-check" size={14} strokeWidth={2} class="text-orange/70 shrink-0" />
+                  <span>Reçu il y a quelques secondes — vous pouvez répondre.</span>
+                </div>
+              </div>
+            </aside>
+
             </div>
           </div>
         ))}
