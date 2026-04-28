@@ -557,9 +557,10 @@ const etapes = [
 
                         {f.type === 'radios-cards' && (
                           <div class="grid grid-cols-2 sm:grid-cols-4 gap-1.5">
-                            {(f.options as FieldOption[]).map((o, idx) => (
+                            {(f.options as FieldOption[]).map((o) => (
                               <label class="cursor-pointer">
                                 <input type="radio" name={fieldId} value={o.value}
+                                  data-field-name={f.name} data-label={o.label}
                                   checked={o.value === f.defaultValue ? true : undefined}
                                   class="peer sr-only" />
                                 <span class="block text-center px-2 py-2.5 rounded-xl text-xs font-medium leading-tight transition-all bg-bleu-nuit/[0.04] text-bleu-nuit/70 ring-1 ring-bleu-nuit/10 peer-checked:bg-bleu-nuit peer-checked:text-blanc-casse peer-checked:ring-bleu-nuit hover:bg-bleu-nuit/[0.08] peer-focus-visible:ring-2 peer-focus-visible:ring-bleu-nuit/40">
@@ -575,6 +576,7 @@ const etapes = [
                             {(f.options as FieldOption[]).map((o) => (
                               <label class="cursor-pointer">
                                 <input type="radio" name={fieldId} value={o.value}
+                                  data-field-name={f.name} data-label={o.label}
                                   checked={o.value === f.defaultValue ? true : undefined}
                                   class="peer sr-only" />
                                 <span class="inline-flex items-center h-8 px-3 rounded-full text-xs font-medium transition-all bg-bleu-nuit/[0.06] text-bleu-nuit/70 ring-1 ring-bleu-nuit/10 peer-checked:bg-bleu-nuit peer-checked:text-blanc-casse peer-checked:ring-bleu-nuit hover:bg-bleu-nuit/[0.10] peer-focus-visible:ring-2 peer-focus-visible:ring-bleu-nuit/40">
@@ -724,6 +726,74 @@ const etapes = [
         const id = next.dataset.tab;
         if (id) select(id, true);
       });
+    });
+
+    // Sync live : quand un input du form change, mettre à jour la carte 'Message reçu'
+    const placeholder = '—';
+    const formatDate = (iso: string): string => {
+      if (!iso) return placeholder;
+      const d = new Date(iso);
+      if (isNaN(d.getTime())) return iso;
+      return d.toLocaleDateString('fr-FR', {
+        weekday: 'long', day: 'numeric', month: 'long',
+      });
+    };
+    const formatTime = (v: string): string =>
+      v ? v.replace(':', 'h') : placeholder;
+
+    const displayValue = (panel: HTMLElement, fieldName: string): string => {
+      const form = panel.querySelector<HTMLFormElement>('[data-demo-form]');
+      if (!form) return placeholder;
+
+      // 1. Radio group : retrouvé via data-field-name
+      const radioChecked = form.querySelector<HTMLInputElement>(
+        `input[type="radio"][data-field-name="${fieldName}"]:checked`
+      );
+      if (radioChecked) {
+        return radioChecked.dataset.label || radioChecked.value || placeholder;
+      }
+      // Si pas de radio coché mais un radio existe avec ce data-field-name → '—'
+      const anyRadio = form.querySelector(`input[type="radio"][data-field-name="${fieldName}"]`);
+      if (anyRadio) return placeholder;
+
+      // 2. Autres inputs : par name
+      const el = form.querySelector<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>(
+        `[name="${fieldName}"]`
+      );
+      if (!el) return placeholder;
+
+      if (el.tagName === 'SELECT') {
+        const sel = el as HTMLSelectElement;
+        return sel.options[sel.selectedIndex]?.textContent?.trim() || placeholder;
+      }
+      if (el instanceof HTMLInputElement) {
+        if (el.type === 'checkbox') return el.checked ? 'Oui' : 'Non';
+        if (el.type === 'date') return formatDate(el.value);
+        if (el.type === 'time') return formatTime(el.value);
+        return el.value || el.placeholder || placeholder;
+      }
+      if (el instanceof HTMLTextAreaElement) {
+        return el.value || el.placeholder || placeholder;
+      }
+      return placeholder;
+    };
+
+    const syncMessageCard = (panel: HTMLElement) => {
+      const card = panel.querySelector<HTMLElement>('[data-message-card]');
+      if (!card) return;
+      const dds = card.querySelectorAll<HTMLElement>('[data-message-key]');
+      dds.forEach((dd) => {
+        const name = dd.dataset.messageKey;
+        if (!name) return;
+        dd.textContent = displayValue(panel, name);
+      });
+    };
+
+    panels.forEach((panel) => {
+      const form = panel.querySelector<HTMLFormElement>('[data-demo-form]');
+      if (!form) return;
+      form.addEventListener('input', () => syncMessageCard(panel));
+      form.addEventListener('change', () => syncMessageCard(panel));
     });
   });
 </script>
