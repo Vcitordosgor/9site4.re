@@ -271,6 +271,44 @@ const metiers: Metier[] = [
   },
 ];
 
+/**
+ * Formate la valeur initiale d'un field pour l'affichage dans la carte
+ * "Message reçu". Le JS côté client (étape 2c.2) appliquera la même logique
+ * en live quand l'utilisateur modifie un champ.
+ */
+function fieldDisplay(f: Field): string {
+  const placeholder = '—';
+  switch (f.type) {
+    case 'input-text':
+    case 'input-tel':
+    case 'input-number':
+      return f.defaultValue || f.placeholder || placeholder;
+    case 'input-date': {
+      if (!f.defaultValue) return placeholder;
+      const d = new Date(f.defaultValue);
+      if (isNaN(d.getTime())) return f.defaultValue;
+      return d.toLocaleDateString('fr-FR', {
+        weekday: 'long', day: 'numeric', month: 'long',
+      });
+    }
+    case 'input-time':
+      return f.defaultValue ? f.defaultValue.replace(':', 'h') : placeholder;
+    case 'select-real':
+    case 'radios-cards':
+    case 'radios-chips': {
+      const opts = (f.options as FieldOption[]) ?? [];
+      const opt = opts.find((o) => o.value === f.defaultValue);
+      return opt?.label ?? placeholder;
+    }
+    case 'textarea':
+      return f.defaultValue || f.placeholder || placeholder;
+    case 'checkbox':
+      return f.defaultChecked ? 'Oui' : 'Non';
+    default:
+      return placeholder;
+  }
+}
+
 const etapes = [
   {
     num: '01',
