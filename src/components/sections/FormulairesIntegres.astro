@@ -7,16 +7,51 @@ import Button from '../ui/Button.astro';
  * Tabs "Je suis…" + démo de formulaire adapté au métier.
  */
 
-type FieldType = 'text' | 'date' | 'time' | 'counter' | 'tel' | 'chips' | 'select' | 'cards';
+type FieldType =
+  // Anciens types (rendu visuel) — encore utilisés en attendant 2b.3
+  | 'text'
+  | 'date'
+  | 'time'
+  | 'counter'
+  | 'tel'
+  | 'chips'
+  | 'select'
+  | 'cards'
+  // Nouveaux types (vrais HTML inputs interactifs) — utilisés à partir de 2b.3
+  | 'input-text'
+  | 'input-tel'
+  | 'input-date'
+  | 'input-time'
+  | 'input-number'
+  | 'select-real'
+  | 'textarea'
+  | 'radios-cards'
+  | 'radios-chips'
+  | 'checkbox';
+
+interface FieldOption {
+  value: string;
+  label: string;
+}
 
 interface Field {
   type: FieldType;
   label: string;
+  // Anciens props (rendu visuel statique)
   value?: string;
-  hint?: string;
-  options?: string[];
+  options?: string[] | FieldOption[];
   active?: number;
+  hint?: string;
   icon?: string;
+  // Nouveaux props (vrais HTML inputs)
+  name?: string;
+  placeholder?: string;
+  defaultValue?: string;
+  defaultChecked?: boolean;
+  min?: string | number;
+  max?: string | number;
+  rows?: number;
+  span?: 1 | 2;
 }
 
 interface Metier {
