@@ -1,8 +1,12 @@
 ---
 /**
- * Essai — booking minimal en 1 question principale.
- * Pas de long formulaire : objectif (select) + téléphone + nom = WhatsApp.
- * Layout : split asymétrique (texte gauche large, form compact à droite).
+ * Essai — Assessment quiz fitness best-in-class.
+ * 4 étapes : objectif → niveau → fréquence → coordonnées
+ * - Progress bar live + step labels
+ * - Auto-recommandation de programme en temps réel (sticky preview à gauche)
+ * - Slider fréquence avec hint dynamique
+ * - Validation par étape (boutons disabled si incomplet)
+ * - Submit final → WhatsApp avec récap structuré
  */
 import data from '../../../data/templates/foudre.json';
 const waBase = `https://wa.me/${data.info.whatsapp}`;
@@ -11,123 +15,419 @@ const waBase = `https://wa.me/${data.info.whatsapp}`;
 <section id="essai" class="bg-coach-charbon py-20 md:py-28 px-5 md:px-8 border-t border-coach-blanc/5">
   <div class="max-w-content mx-auto">
 
-    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+    <header class="flex items-baseline gap-4 mb-8 md:mb-12">
+      <span class="font-jetbrains text-coach-lime text-sm">[04]</span>
+      <h2 class="font-big-shoulders font-black text-coach-blanc uppercase leading-[0.9]" style="font-size: clamp(40px, 6.5vw, 84px);">
+        4 questions.<br/>
+        <span class="text-coach-lime">Ta séance d'essai en cadeau.</span>
+      </h2>
+    </header>
 
-      <!-- Colonne gauche : pitch (7 cols) -->
-      <div class="lg:col-span-7">
-        <header class="flex items-baseline gap-4 mb-8">
-          <span class="font-jetbrains text-coach-lime text-sm">[04]</span>
-          <h2 class="font-big-shoulders font-black text-coach-blanc uppercase leading-[0.9]" style="font-size: clamp(44px, 7vw, 96px);">
-            La séance<br/>
-            d'essai est<br/>
-            <span class="text-coach-lime">offerte.</span>
-          </h2>
-        </header>
+    <div class="grid lg:grid-cols-12 gap-8 items-start">
 
-        <p class="font-barlow text-coach-blanc/70 leading-relaxed text-base md:text-lg max-w-md">
-          Tu choisis ton objectif, je te rappelle dans la journée. On fixe un créneau, on se voit, et tu décides ensuite si tu veux continuer.
-        </p>
+      <!-- LEFT : sidebar live recommandation (sticky) -->
+      <aside class="lg:col-span-4 lg:sticky lg:top-24 space-y-4">
 
-        <!-- Promesses brutes en bullets jetbrains -->
-        <ul class="mt-8 space-y-3 font-jetbrains text-[12px] uppercase tracking-wider text-coach-blanc/85">
-          <li class="flex gap-3"><span class="text-coach-lime">→</span> Aucun engagement, aucune carte bancaire</li>
-          <li class="flex gap-3"><span class="text-coach-lime">→</span> Bilan posture + test cardio rapide</li>
-          <li class="flex gap-3"><span class="text-coach-lime">→</span> Réponse en moins de 4 heures</li>
-        </ul>
-      </div>
+        <!-- Recommandation auto -->
+        <div class="bg-coach-noir p-6 border-l-2 border-coach-lime relative overflow-hidden">
+          <p class="font-jetbrains text-[10px] uppercase tracking-widest text-coach-lime mb-3 font-medium flex items-center gap-2">
+            <span class="block w-1.5 h-1.5 bg-coach-lime animate-pulse"></span>
+            Ta reco · live
+          </p>
+          <p id="reco-titre" class="font-big-shoulders font-black text-coach-blanc uppercase leading-[0.95] mb-2" style="font-size: clamp(28px, 3vw, 40px);">
+            En attente…
+          </p>
+          <p id="reco-detail" class="font-barlow text-coach-blanc/65 text-sm leading-relaxed mb-4">
+            Réponds aux 4 questions et ton programme idéal s'affiche ici en temps réel.
+          </p>
+          <div id="reco-prix-wrap" class="hidden flex items-baseline gap-2">
+            <p class="font-big-shoulders font-black text-coach-lime tabular-nums" style="font-size: clamp(32px, 3.5vw, 48px);">
+              <span id="reco-prix">—</span>
+            </p>
+            <p class="font-jetbrains text-[10px] uppercase tracking-widest text-coach-gris">
+              <span id="reco-frequence">/ séance</span>
+            </p>
+          </div>
+        </div>
 
-      <!-- Colonne droite : form compact (5 cols) -->
-      <div class="lg:col-span-5">
+        <!-- Trust block -->
+        <div class="p-5 border border-coach-blanc/10">
+          <p class="font-jetbrains text-[10px] uppercase tracking-wider text-coach-lime font-medium mb-3">
+            ▸ Tes garanties
+          </p>
+          <ul class="space-y-2 font-jetbrains text-[11px] uppercase tracking-wider text-coach-blanc/85">
+            <li class="flex gap-2"><span class="text-coach-lime">✓</span> 1ʳᵉ séance offerte</li>
+            <li class="flex gap-2"><span class="text-coach-lime">✓</span> Aucun engagement</li>
+            <li class="flex gap-2"><span class="text-coach-lime">✓</span> Réponse &lt; 4h en semaine</li>
+            <li class="flex gap-2"><span class="text-coach-lime">✓</span> Bilan posture inclus</li>
+          </ul>
+        </div>
+      </aside>
+
+      <!-- RIGHT : Wizard form -->
+      <div class="lg:col-span-8">
         <form id="essai-form" class="bg-coach-noir p-6 md:p-8 border-l-2 border-coach-lime" novalidate>
 
-          <p class="font-jetbrains text-[10px] uppercase tracking-widest text-coach-lime mb-1">Étape unique</p>
-          <p class="font-big-shoulders font-bold text-coach-blanc uppercase mb-6 leading-tight" style="font-size: clamp(20px, 2vw, 26px);">
-            Quel est ton objectif ?
-          </p>
+          <!-- Progress bar -->
+          <div class="mb-7">
+            <div class="flex items-center justify-between mb-2">
+              <p class="font-jetbrains text-[10px] uppercase tracking-widest text-coach-gris">
+                Étape <span id="step-current" class="text-coach-lime tabular-nums">1</span>/4
+              </p>
+              <p id="step-label" class="font-jetbrains text-[10px] uppercase tracking-widest text-coach-lime font-medium">
+                Ton objectif
+              </p>
+            </div>
+            <div class="h-[3px] bg-coach-graphite overflow-hidden">
+              <div id="progress-bar" class="h-full bg-coach-lime transition-all duration-500 ease-out" style="width: 25%;"></div>
+            </div>
+          </div>
 
-          <!-- Objectif (select) -->
-          <div class="mb-4">
-            <label for="essai-objectif" class="sr-only">Objectif</label>
-            <select
-              id="essai-objectif"
-              name="objectif"
-              required
-              class="w-full h-12 px-4 bg-coach-graphite text-coach-blanc border border-coach-blanc/15 focus:border-coach-lime font-barlow text-sm outline-none cursor-pointer"
-            >
-              <option value="">— Choisir un objectif —</option>
+          <!-- ============ ÉTAPE 1 : Objectif ============ -->
+          <fieldset class="step" data-step="1">
+            <legend class="font-big-shoulders font-bold text-coach-blanc uppercase mb-5 leading-tight" style="font-size: clamp(22px, 2.2vw, 32px);">
+              Quel est ton objectif principal ?
+            </legend>
+
+            <div class="grid sm:grid-cols-2 gap-2">
               {data.objectifs.map((o) => (
-                <option value={o.id}>{o.label}</option>
+                <label class="cursor-pointer">
+                  <input type="radio" name="objectif" value={o.id} data-label={o.label} class="peer sr-only" required />
+                  <span class="block px-4 py-3.5 bg-coach-graphite border border-coach-blanc/10 peer-checked:border-coach-lime peer-checked:bg-coach-lime/10 transition-all hover:border-coach-blanc/30">
+                    <span class="font-big-shoulders font-bold text-coach-blanc uppercase tracking-wide" style="font-size: 15px;">
+                      {o.label}
+                    </span>
+                  </span>
+                </label>
               ))}
-            </select>
+            </div>
+          </fieldset>
+
+          <!-- ============ ÉTAPE 2 : Niveau actuel ============ -->
+          <fieldset class="step hidden" data-step="2">
+            <legend class="font-big-shoulders font-bold text-coach-blanc uppercase mb-5 leading-tight" style="font-size: clamp(22px, 2.2vw, 32px);">
+              Ton niveau aujourd'hui ?
+            </legend>
+
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+              {[
+                { val: 'sedentaire',  label: 'Sédentaire',  sub: '0 sport',     intensite: 1 },
+                { val: 'occasionnel', label: 'Occasionnel', sub: '1× / sem',    intensite: 1 },
+                { val: 'regulier',    label: 'Régulier',    sub: '2-3× / sem',  intensite: 2 },
+                { val: 'sportif',     label: 'Sportif',     sub: '4+ / sem',    intensite: 3 },
+              ].map((n) => (
+                <label class="cursor-pointer">
+                  <input type="radio" name="niveau" value={n.val} data-label={n.label} data-intensite={n.intensite} class="peer sr-only" />
+                  <span class="block px-3 py-4 bg-coach-graphite border border-coach-blanc/10 peer-checked:border-coach-lime peer-checked:bg-coach-lime/10 text-center transition-all hover:border-coach-blanc/30">
+                    <span class="font-big-shoulders font-bold text-coach-blanc uppercase block leading-tight" style="font-size: 13px;">{n.label}</span>
+                    <span class="font-jetbrains text-[10px] uppercase tracking-wider text-coach-gris mt-1 block">{n.sub}</span>
+                  </span>
+                </label>
+              ))}
+            </div>
+
+            <p class="mt-4 font-barlow italic text-coach-blanc/55 text-sm leading-relaxed">
+              Sois honnête — c'est ce qui m'aide à calibrer la première séance pour qu'elle te plaise.
+            </p>
+          </fieldset>
+
+          <!-- ============ ÉTAPE 3 : Fréquence souhaitée (slider) ============ -->
+          <fieldset class="step hidden" data-step="3">
+            <legend class="font-big-shoulders font-bold text-coach-blanc uppercase mb-5 leading-tight" style="font-size: clamp(22px, 2.2vw, 32px);">
+              Combien de séances par semaine ?
+            </legend>
+
+            <div class="bg-coach-graphite p-6 border border-coach-blanc/10">
+              <div class="flex items-baseline justify-between mb-4">
+                <p class="font-jetbrains text-[10px] uppercase tracking-widest text-coach-gris">Glisser →</p>
+                <p>
+                  <span id="freq-value" class="font-big-shoulders font-black text-coach-lime tabular-nums leading-none" style="font-size: clamp(40px, 5vw, 60px);">3</span>
+                  <span class="font-big-shoulders text-coach-blanc uppercase ml-2 tracking-wider" style="font-size: 14px;">séances/sem</span>
+                </p>
+              </div>
+              <input
+                type="range"
+                name="frequence"
+                id="freq-slider"
+                min="1"
+                max="7"
+                value="3"
+                step="1"
+                class="w-full accent-coach-lime cursor-pointer"
+              />
+              <div class="grid grid-cols-7 gap-0 mt-2 font-jetbrains text-[10px] uppercase tracking-wider text-coach-gris">
+                {[1,2,3,4,5,6,7].map((n) => (
+                  <span class="text-center tabular-nums">{n}</span>
+                ))}
+              </div>
+            </div>
+
+            <p id="freq-hint" class="mt-4 font-barlow italic text-coach-blanc/75 text-sm leading-relaxed">
+              3 séances par semaine — c'est le sweet spot. Résultats visibles en 6 semaines.
+            </p>
+          </fieldset>
+
+          <!-- ============ ÉTAPE 4 : Coordonnées + lieu ============ -->
+          <fieldset class="step hidden" data-step="4">
+            <legend class="font-big-shoulders font-bold text-coach-blanc uppercase mb-5 leading-tight" style="font-size: clamp(22px, 2.2vw, 32px);">
+              On finalise.
+            </legend>
+
+            <div class="grid sm:grid-cols-2 gap-4 mb-5">
+              <div>
+                <label for="essai-prenom" class="block font-jetbrains text-[10px] uppercase tracking-wider text-coach-lime mb-2 font-medium">
+                  Ton prénom
+                </label>
+                <input id="essai-prenom" name="prenom" type="text" autocomplete="given-name" placeholder="Karim, Léa…"
+                  class="w-full h-12 px-4 bg-coach-graphite text-coach-blanc placeholder:text-coach-gris border border-coach-blanc/15 focus:border-coach-lime font-barlow text-base outline-none transition-colors" />
+              </div>
+              <div>
+                <label for="essai-tel" class="block font-jetbrains text-[10px] uppercase tracking-wider text-coach-lime mb-2 font-medium">
+                  Ton tél
+                </label>
+                <input id="essai-tel" name="telephone" type="tel" inputmode="tel" autocomplete="tel" placeholder="0692 xx xx xx"
+                  class="w-full h-12 px-4 bg-coach-graphite text-coach-blanc placeholder:text-coach-gris border border-coach-blanc/15 focus:border-coach-lime font-barlow text-base outline-none tabular-nums transition-colors" />
+              </div>
+            </div>
+
+            <div class="mb-5">
+              <p class="font-jetbrains text-[10px] uppercase tracking-wider text-coach-lime mb-2 font-medium">
+                Tu préfères s'entraîner où ?
+              </p>
+              <div class="flex flex-wrap gap-2">
+                {data.lieux.map((l, i) => (
+                  <label class="cursor-pointer">
+                    <input type="radio" name="lieu" value={l.id} data-label={l.nom} class="peer sr-only" checked={i === 0} />
+                    <span class="inline-flex items-center px-3 h-9 bg-coach-graphite border border-coach-blanc/10 peer-checked:border-coach-lime peer-checked:bg-coach-lime/10 font-big-shoulders font-bold text-coach-blanc uppercase tracking-wider transition-colors text-[12px]">
+                      {l.nom}
+                    </span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            <!-- Récap recommandation -->
+            <div class="mt-6 p-4 bg-coach-lime/5 border-l border-coach-lime">
+              <p class="font-jetbrains text-[10px] uppercase tracking-widest text-coach-lime mb-2 font-medium">
+                ▸ Récap programme recommandé
+              </p>
+              <p id="recap-text" class="font-barlow text-coach-blanc/85 text-sm leading-relaxed">
+                On te confirmera tout ça par téléphone.
+              </p>
+            </div>
+          </fieldset>
+
+          <!-- Navigation -->
+          <div class="mt-8 flex flex-wrap items-center justify-between gap-3">
+            <button type="button" id="btn-prev"
+              class="hidden inline-flex items-center gap-1.5 h-11 px-4 border border-coach-blanc/20 text-coach-blanc/85 font-jetbrains text-[11px] uppercase tracking-widest hover:border-coach-lime hover:text-coach-lime transition-colors cursor-pointer"
+            >
+              ← Retour
+            </button>
+            <button type="button" id="btn-next"
+              class="ml-auto inline-flex items-center justify-center gap-2 h-12 px-7 bg-coach-lime text-coach-noir font-big-shoulders font-bold text-sm uppercase tracking-wider hover:bg-coach-blanc transition-colors disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
+              disabled
+            >
+              Continuer →
+            </button>
+            <button type="submit" id="btn-submit"
+              class="hidden ml-auto inline-flex items-center justify-center gap-3 h-14 px-9 bg-coach-lime text-coach-noir font-big-shoulders font-bold text-base uppercase tracking-wider hover:bg-coach-blanc transition-colors cursor-pointer"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.92 0-2.65-1.03-5.14-2.91-7.01zm-7.01 15.24h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.21 8.21 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83 8.25 8.25 0 0 1-8.24 8.22z"/>
+              </svg>
+              Réserver via WhatsApp
+            </button>
           </div>
-
-          <!-- Prénom -->
-          <div class="mb-4">
-            <label for="essai-prenom" class="sr-only">Prénom</label>
-            <input
-              id="essai-prenom"
-              name="prenom"
-              type="text"
-              autocomplete="given-name"
-              placeholder="Ton prénom"
-              required
-              class="w-full h-12 px-4 bg-coach-graphite text-coach-blanc placeholder:text-coach-gris border border-coach-blanc/15 focus:border-coach-lime font-barlow text-sm outline-none"
-            />
-          </div>
-
-          <!-- Téléphone -->
-          <div class="mb-6">
-            <label for="essai-tel" class="sr-only">Téléphone</label>
-            <input
-              id="essai-tel"
-              name="telephone"
-              type="tel"
-              autocomplete="tel"
-              placeholder="0692 xx xx xx"
-              required
-              class="w-full h-12 px-4 bg-coach-graphite text-coach-blanc placeholder:text-coach-gris border border-coach-blanc/15 focus:border-coach-lime font-barlow text-sm outline-none tabular-nums"
-            />
-          </div>
-
-          <!-- CTA submit -->
-          <button
-            type="submit"
-            class="w-full h-14 inline-flex items-center justify-center gap-2 bg-coach-lime text-coach-noir font-big-shoulders font-bold text-base uppercase tracking-wider hover:bg-coach-blanc transition-colors"
-          >
-            Envoyer via WhatsApp
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.92 0-2.65-1.03-5.14-2.91-7.01zm-7.01 15.24h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.21 8.21 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83 8.25 8.25 0 0 1-8.24 8.22z"/>
-            </svg>
-          </button>
-
-          <p class="mt-4 font-jetbrains text-[10px] tracking-wider text-coach-gris text-center">
-            Réponse en &lt; 4 h · Garantie satisfaction
-          </p>
         </form>
       </div>
-
     </div>
-
   </div>
 </section>
 
-<script define:vars={{ waBase, objectifsLabels: Object.fromEntries(data.objectifs.map(o => [o.id, o.label])) }}>
+<script define:vars={{
+  waBase,
+  programmes: data.programmes,
+}}>
+  /* Multi-step wizard avec live recommandation programme */
   const form = document.getElementById('essai-form');
-  if (form) {
+  if (!form) {
+    /* noop */
+  } else {
+    const steps = form.querySelectorAll('.step');
+    const stepLabels = ['Ton objectif', 'Ton niveau', 'Ta fréquence', 'Tes infos'];
+    const totalSteps = steps.length;
+
+    const stepCurrentEl = document.getElementById('step-current');
+    const stepLabelEl = document.getElementById('step-label');
+    const progressBar = document.getElementById('progress-bar');
+    const btnPrev = document.getElementById('btn-prev');
+    const btnNext = document.getElementById('btn-next');
+    const btnSubmit = document.getElementById('btn-submit');
+
+    let currentStep = 1;
+
+    /* Live recommandation engine */
+    const recoTitre = document.getElementById('reco-titre');
+    const recoDetail = document.getElementById('reco-detail');
+    const recoPrixWrap = document.getElementById('reco-prix-wrap');
+    const recoPrix = document.getElementById('reco-prix');
+    const recoFrequence = document.getElementById('reco-frequence');
+    const recapText = document.getElementById('recap-text');
+
+    function recommendProgramme() {
+      const objectif = form.querySelector('input[name="objectif"]:checked');
+      const niveau = form.querySelector('input[name="niveau"]:checked');
+      const freq = parseInt(document.getElementById('freq-slider')?.value || '3', 10);
+
+      let recommended = programmes[0]; /* Discovery par défaut */
+      let detail = "Choisis un objectif pour voir ta reco.";
+
+      if (objectif) {
+        const obj = objectif.value;
+        const intensite = niveau ? parseInt(niveau.dataset.intensite, 10) : 1;
+
+        /* Logique de matching simple : objectif + niveau → programme */
+        if (obj === 'muscle' || obj === 'performance') {
+          recommended = intensite >= 2 ? programmes[2] : programmes[1]; /* Forge ou Push */
+        } else if (obj === 'endurance' || obj === 'perte') {
+          recommended = intensite >= 2 ? programmes[1] : programmes[0]; /* Push ou Discovery */
+        } else if (obj === 'postnatal' || obj === 'confiance') {
+          recommended = programmes[0]; /* Discovery */
+        }
+
+        /* Si fréquence très élevée, recommander programme plus intense */
+        if (freq >= 5 && intensite >= 2) {
+          recommended = programmes[2]; /* Forge */
+        }
+        if (freq <= 2) {
+          recommended = programmes[3] || programmes[0]; /* Sniper */
+        }
+
+        detail = `Au vu de ton objectif et ton niveau, je te recommande le programme ${recommended.nom}. ${recommended.description}`;
+      }
+
+      if (recoTitre) recoTitre.textContent = recommended.nom;
+      if (recoDetail) recoDetail.textContent = detail;
+      if (objectif) {
+        recoPrixWrap?.classList.remove('hidden');
+        recoPrixWrap?.classList.add('flex');
+        if (recoPrix) recoPrix.textContent = recommended.prix;
+        if (recoFrequence) recoFrequence.textContent = recommended.frequence;
+      } else {
+        recoPrixWrap?.classList.add('hidden');
+        recoPrixWrap?.classList.remove('flex');
+      }
+      if (recapText) {
+        const objLabel = objectif?.dataset.label || '—';
+        const niveauLabel = niveau?.dataset.label || '—';
+        recapText.textContent = `Programme ${recommended.nom} (${recommended.duree}, ${recommended.prix}) · Objectif : ${objLabel} · Niveau : ${niveauLabel} · Fréquence : ${freq} séances/sem.`;
+      }
+
+      return { recommended, freq };
+    }
+
+    /* Navigation entre étapes */
+    function showStep(n) {
+      steps.forEach((s) => s.classList.add('hidden'));
+      const target = form.querySelector(`.step[data-step="${n}"]`);
+      target?.classList.remove('hidden');
+      currentStep = n;
+
+      if (stepCurrentEl) stepCurrentEl.textContent = String(n);
+      if (stepLabelEl) stepLabelEl.textContent = stepLabels[n - 1];
+      if (progressBar) progressBar.style.width = `${(n / totalSteps) * 100}%`;
+
+      btnPrev?.classList.toggle('hidden', n === 1);
+      btnNext?.classList.toggle('hidden', n === totalSteps);
+      btnSubmit?.classList.toggle('hidden', n !== totalSteps);
+
+      validateCurrent();
+    }
+
+    function validateCurrent() {
+      let valid = false;
+      if (currentStep === 1) {
+        valid = !!form.querySelector('input[name="objectif"]:checked');
+      } else if (currentStep === 2) {
+        valid = !!form.querySelector('input[name="niveau"]:checked');
+      } else if (currentStep === 3) {
+        valid = true; /* slider toujours valide */
+      } else if (currentStep === 4) {
+        const prenom = form.querySelector('#essai-prenom')?.value.trim();
+        const tel = form.querySelector('#essai-tel')?.value.trim();
+        valid = !!prenom && !!tel;
+      }
+      if (btnNext) btnNext.disabled = !valid;
+    }
+
+    /* Listeners */
+    form.querySelectorAll('input').forEach((input) => {
+      input.addEventListener('change', () => {
+        validateCurrent();
+        recommendProgramme();
+      });
+      input.addEventListener('input', () => {
+        validateCurrent();
+        if (input.id === 'freq-slider') {
+          const v = input.value;
+          document.getElementById('freq-value').textContent = v;
+          const hint = document.getElementById('freq-hint');
+          if (hint) {
+            const messages = {
+              '1': "1 séance par semaine, c'est un démarrage tranquille. Idéal pour reprendre.",
+              '2': "2 séances, c'est régulier et tenable. On peut commencer à voir des résultats.",
+              '3': "3 séances, c'est le sweet spot. Résultats visibles en 6 semaines.",
+              '4': "4 séances, tu es sérieux. Programme Push ou Forge recommandé.",
+              '5': "5 séances, intense. Il faut bien gérer la récup — on en parle.",
+              '6': "6 séances, niveau athlète amateur. Forge tous les jours.",
+              '7': "7 séances, tu vises haut. On parlera nutrition et sommeil aussi.",
+            };
+            hint.textContent = messages[v] || messages['3'];
+          }
+          recommendProgramme();
+        }
+      });
+    });
+
+    btnNext?.addEventListener('click', () => {
+      if (currentStep < totalSteps) showStep(currentStep + 1);
+    });
+    btnPrev?.addEventListener('click', () => {
+      if (currentStep > 1) showStep(currentStep - 1);
+    });
+
+    /* Submit */
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const fd = new FormData(form);
-      const obj = fd.get('objectif') || '';
-      const prenom = fd.get('prenom') || '';
-      const tel = fd.get('telephone') || '';
-      const objLabel = objectifsLabels[obj] || obj;
+      const objectif = form.querySelector('input[name="objectif"]:checked');
+      const niveau = form.querySelector('input[name="niveau"]:checked');
+      const lieu = form.querySelector('input[name="lieu"]:checked');
+      const { recommended, freq } = recommendProgramme();
+
       const text = [
         'Salut Marius, je veux ma séance d\'essai.',
-        prenom ? `Prénom : ${prenom}` : '',
-        tel ? `Tél : ${tel}` : '',
-        objLabel ? `Objectif : ${objLabel}` : '',
+        '',
+        '— PROFIL —',
+        objectif ? `Objectif : ${objectif.dataset.label}` : '',
+        niveau ? `Niveau : ${niveau.dataset.label}` : '',
+        `Fréquence : ${freq} séances/sem`,
+        lieu ? `Lieu : ${lieu.dataset.label}` : '',
+        '',
+        '— RECO PROGRAMME —',
+        `→ ${recommended.nom} (${recommended.duree}, ${recommended.prix}${recommended.frequence})`,
+        '',
+        '— CONTACT —',
+        fd.get('prenom') ? `Prénom : ${fd.get('prenom')}` : '',
+        fd.get('telephone') ? `Tél : ${fd.get('telephone')}` : '',
       ].filter(Boolean).join('\n');
+
       window.open(`${waBase}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
     });
+
+    /* Init */
+    validateCurrent();
+    recommendProgramme();
   }
 </script>

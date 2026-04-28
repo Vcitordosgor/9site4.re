@@ -1,9 +1,35 @@
 ---
+/**
+ * RendezVous — Wizard architecte best-in-class.
+ * 4 étapes : projet → budget+surface → échéance → coordonnées
+ * - Cards visuelles pour le type de projet (avec mini-icônes axonométriques)
+ * - Slider de budget travaux avec calcul auto des honoraires (10-12% du CT)
+ * - Surface en input numérique avec hint
+ * - Échéance en chips
+ * - Récap projet en sidebar sticky
+ * - Validation par étape, progress bar
+ */
 import data from '../../../data/templates/mahatma.json';
 const waBase = `https://wa.me/${data.info.whatsapp}`;
+
+const projets = [
+  { id: 'maison',     label: 'Maison individuelle',  detail: 'Neuve ou rénovation',          axo: 'M10 38 L24 22 L38 38 L38 14 L10 14 Z M20 22 L20 34 L28 34 L28 22 Z' },
+  { id: 'logements',  label: 'Logements collectifs', detail: 'Petit collectif (4-20 lots)',  axo: 'M6 14 L12 8 L36 8 L42 14 L42 38 L6 38 Z M14 18 L14 26 M22 18 L22 26 M30 18 L30 26' },
+  { id: 'tertiaire',  label: 'Tertiaire',            detail: 'Bureaux, commerce, atelier',   axo: 'M8 12 L24 6 L40 12 L40 38 L8 38 Z M14 18 L14 30 L20 30 L20 18 M28 18 L28 30 L34 30 L34 18' },
+  { id: 'public',     label: 'Équipement public',    detail: 'École, médiathèque, salle',    axo: 'M6 38 L42 38 M10 38 L10 16 L24 8 L38 16 L38 38 M14 24 L14 32 M22 24 L22 32 M30 24 L30 32' },
+  { id: 'patrimoine', label: 'Restauration patrimoine', detail: 'Bâtiment ancien, monument', axo: 'M8 12 L16 6 L24 10 L32 6 L40 12 L40 38 L8 38 Z M14 18 L14 28 M24 18 L24 28 M34 18 L34 28' },
+  { id: 'etude',      label: 'Étude de faisabilité', detail: 'Avant tout engagement',        axo: 'M10 8 L38 8 L38 40 L10 40 Z M16 16 L32 16 M16 22 L32 22 M16 28 L26 28' },
+];
+
+const echeances = [
+  { id: 'immediate', label: 'Immédiate', sub: 'Démarrer dans 1 mois' },
+  { id: '6mois',     label: 'Dans 6 mois', sub: 'Préparation longue' },
+  { id: '1an',       label: 'D\'ici 1 an', sub: 'Étude amont' },
+  { id: 'reflexion', label: 'En réflexion', sub: 'Pas pressé' },
+];
 ---
 
-<section id="rendez-vous" class="bg-mahatma-papier py-24 md:py-32 px-6 md:px-10 border-t border-mahatma-encre/15">
+<section id="rendez-vous" class="bg-mahatma-papier py-24 md:py-36 px-6 md:px-10 border-t border-mahatma-encre/15">
   <div class="max-w-content mx-auto">
 
     <header class="grid grid-cols-12 gap-4 mb-14">
@@ -20,154 +46,370 @@ const waBase = `https://wa.me/${data.info.whatsapp}`;
           Premier contact,<br/>sans engagement.
         </h2>
         <p class="mt-5 font-atkinson italic text-mahatma-beton text-base md:text-lg leading-relaxed max-w-2xl">
-          Visite du site possible à La Réunion. Sur métropole, premier RDV en visio.
+          4 questions, 60 secondes. Honoraires estimés en temps réel selon votre projet.
         </p>
       </div>
     </header>
 
-    <form id="mahatma-form" class="grid grid-cols-12 gap-4" novalidate>
+    <div class="grid lg:grid-cols-12 gap-8 items-start">
 
-      <!-- Type de projet -->
-      <div class="col-span-12">
-        <label for="mahatma-type" class="block font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-cachet mb-2">
-          ▢ Type de projet
-        </label>
-        <select
-          id="mahatma-type"
-          name="type"
-          required
-          class="w-full h-12 px-4 bg-mahatma-blanc border border-mahatma-encre/30 focus:border-mahatma-cachet font-atkinson text-mahatma-encre text-base outline-none transition-colors cursor-pointer"
-        >
-          <option value="">— Choisir —</option>
-          <option value="maison">Maison individuelle (neuve ou rénovation)</option>
-          <option value="logements">Logements collectifs</option>
-          <option value="tertiaire">Tertiaire / commerce / bureaux</option>
-          <option value="public">Équipement public</option>
-          <option value="patrimoine">Restauration patrimoine</option>
-          <option value="etude">Étude de faisabilité seule</option>
-          <option value="autre">Autre / À discuter</option>
-        </select>
+      <!-- LEFT : Wizard -->
+      <div class="lg:col-span-8">
+        <form id="mahatma-form" class="bg-mahatma-blanc border border-mahatma-encre/15 p-6 md:p-8" novalidate>
+
+          <!-- Progress bar -->
+          <div class="mb-7">
+            <div class="flex items-center justify-between mb-2">
+              <p class="font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-beton">
+                Étape <span id="m-step-current" class="text-mahatma-cachet tabular-nums">1</span>/4
+              </p>
+              <p id="m-step-label" class="font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-cachet font-medium">
+                Type de projet
+              </p>
+            </div>
+            <div class="h-[2px] bg-mahatma-encre/10 overflow-hidden">
+              <div id="m-progress" class="h-full bg-mahatma-cachet transition-all duration-500 ease-out" style="width: 25%;"></div>
+            </div>
+          </div>
+
+          <!-- ÉTAPE 1 : Type de projet (cards) -->
+          <fieldset class="m-step" data-step="1">
+            <legend class="font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-cachet mb-4">
+              ▢ Quel type de projet ?
+            </legend>
+            <div class="grid sm:grid-cols-2 gap-2">
+              {projets.map((p) => (
+                <label class="cursor-pointer">
+                  <input type="radio" name="type" value={p.id} data-label={p.label} class="peer sr-only" required />
+                  <span class="block p-4 bg-mahatma-papier border border-mahatma-encre/15 peer-checked:border-mahatma-cachet peer-checked:bg-mahatma-cachet/5 transition-all hover:border-mahatma-encre/30">
+                    <div class="flex items-start gap-3">
+                      <svg width="32" height="32" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 text-mahatma-encre/70 peer-checked:text-mahatma-cachet" aria-hidden="true">
+                        <path d={p.axo}/>
+                      </svg>
+                      <div>
+                        <p class="font-schibsted font-bold text-mahatma-encre uppercase tracking-tight text-sm">{p.label}</p>
+                        <p class="mt-0.5 font-atkinson italic text-mahatma-beton text-xs leading-snug">{p.detail}</p>
+                      </div>
+                    </div>
+                  </span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+
+          <!-- ÉTAPE 2 : Budget + surface -->
+          <fieldset class="m-step hidden" data-step="2">
+            <legend class="font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-cachet mb-4">
+              ▢ Budget travaux estimé
+            </legend>
+
+            <!-- Slider budget -->
+            <div class="bg-mahatma-papier border border-mahatma-encre/15 p-5 mb-5">
+              <div class="flex items-baseline justify-between mb-3">
+                <p class="font-fira-mono text-[10px] uppercase tracking-[0.18em] text-mahatma-beton">
+                  De 50 K€ à 2 M€+
+                </p>
+                <p>
+                  <span id="m-budget-display" class="font-schibsted font-bold text-mahatma-cachet tabular-nums" style="font-size: clamp(20px, 2.5vw, 32px);">300 K€</span>
+                </p>
+              </div>
+              <input
+                type="range"
+                name="budget"
+                id="m-budget-slider"
+                min="0"
+                max="10"
+                value="3"
+                step="1"
+                class="w-full accent-mahatma-cachet cursor-pointer"
+              />
+              <div class="grid grid-cols-5 gap-0 mt-2 font-fira-mono text-[9px] uppercase tracking-wider text-mahatma-beton">
+                <span class="text-left">50K</span>
+                <span class="text-center">300K</span>
+                <span class="text-center">700K</span>
+                <span class="text-center">1.5M</span>
+                <span class="text-right">2M+</span>
+              </div>
+            </div>
+
+            <!-- Surface (optionnel) -->
+            <div class="mb-5">
+              <label for="m-surface" class="block font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-cachet mb-2">
+                ▢ Surface estimée <span class="font-atkinson normal-case italic text-mahatma-beton tracking-normal">(facultatif)</span>
+              </label>
+              <div class="flex items-center gap-2">
+                <input
+                  id="m-surface"
+                  name="surface"
+                  type="number"
+                  min="0"
+                  inputmode="numeric"
+                  placeholder="Ex. 180"
+                  class="w-32 h-11 px-3 bg-mahatma-papier border border-mahatma-encre/25 focus:border-mahatma-cachet font-schibsted font-bold text-mahatma-encre text-lg outline-none transition-colors tabular-nums"
+                />
+                <span class="font-fira-mono text-[11px] uppercase tracking-wider text-mahatma-beton">m²</span>
+              </div>
+            </div>
+
+            <!-- Honoraires estimés (live) -->
+            <div class="p-5 bg-mahatma-charbon text-mahatma-papier">
+              <p class="font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-cachet mb-2">
+                ▢ Honoraires estimés (mission complète)
+              </p>
+              <p class="font-schibsted font-light text-mahatma-papier leading-none mb-1" style="font-size: clamp(28px, 3vw, 44px);">
+                <span id="m-honoraires-min">30 K€</span> – <span id="m-honoraires-max">36 K€</span>
+              </p>
+              <p class="font-atkinson italic text-mahatma-ciment text-sm">
+                Soit 10–12 % du coût travaux. Conforme aux pratiques de l'Ordre des architectes.
+              </p>
+            </div>
+          </fieldset>
+
+          <!-- ÉTAPE 3 : Échéance -->
+          <fieldset class="m-step hidden" data-step="3">
+            <legend class="font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-cachet mb-4">
+              ▢ Échéance souhaitée
+            </legend>
+            <div class="grid sm:grid-cols-2 gap-2">
+              {echeances.map((e) => (
+                <label class="cursor-pointer">
+                  <input type="radio" name="echeance" value={e.id} data-label={e.label} class="peer sr-only" />
+                  <span class="block p-4 bg-mahatma-papier border border-mahatma-encre/15 peer-checked:border-mahatma-cachet peer-checked:bg-mahatma-cachet/5 transition-all hover:border-mahatma-encre/30">
+                    <p class="font-schibsted font-bold text-mahatma-encre uppercase tracking-tight">{e.label}</p>
+                    <p class="mt-1 font-atkinson italic text-mahatma-beton text-sm">{e.sub}</p>
+                  </span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+
+          <!-- ÉTAPE 4 : Coordonnées -->
+          <fieldset class="m-step hidden" data-step="4">
+            <legend class="font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-cachet mb-4">
+              ▢ Vos coordonnées
+            </legend>
+
+            <div class="grid sm:grid-cols-2 gap-4 mb-4">
+              <div>
+                <label for="m-nom" class="block font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-beton mb-1.5">Nom & prénom</label>
+                <input id="m-nom" name="nom" type="text" required autocomplete="name"
+                  class="w-full h-11 px-3 bg-mahatma-papier border border-mahatma-encre/25 focus:border-mahatma-cachet font-atkinson text-mahatma-encre text-base outline-none transition-colors" />
+              </div>
+              <div>
+                <label for="m-tel" class="block font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-beton mb-1.5">Téléphone</label>
+                <input id="m-tel" name="telephone" type="tel" inputmode="tel" required autocomplete="tel" placeholder="0692 xx xx xx"
+                  class="w-full h-11 px-3 bg-mahatma-papier border border-mahatma-encre/25 focus:border-mahatma-cachet font-atkinson text-mahatma-encre text-base outline-none transition-colors tabular-nums" />
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <label for="m-message" class="block font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-beton mb-1.5">
+                Le projet en quelques mots <span class="font-atkinson normal-case italic tracking-normal">(facultatif)</span>
+              </label>
+              <textarea id="m-message" name="message" rows="3" placeholder="Lieu, surface précise, contraintes particulières…"
+                class="w-full px-3 py-2 bg-mahatma-papier border border-mahatma-encre/25 focus:border-mahatma-cachet font-atkinson text-mahatma-encre text-base placeholder:text-mahatma-beton/55 outline-none transition-colors resize-none"></textarea>
+            </div>
+          </fieldset>
+
+          <!-- Navigation -->
+          <div class="mt-7 pt-6 border-t border-mahatma-encre/15 flex flex-wrap items-center justify-between gap-3">
+            <button type="button" id="m-btn-prev"
+              class="hidden inline-flex items-center gap-1.5 h-10 px-4 border border-mahatma-encre/30 text-mahatma-encre font-fira-mono text-[10px] uppercase tracking-[0.22em] hover:border-mahatma-cachet hover:text-mahatma-cachet transition-colors cursor-pointer">
+              ← Retour
+            </button>
+            <button type="button" id="m-btn-next"
+              class="ml-auto inline-flex items-center justify-center h-12 px-7 bg-mahatma-encre text-mahatma-papier font-atkinson font-bold text-sm hover:bg-mahatma-cachet transition-colors disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
+              disabled>
+              Continuer →
+            </button>
+            <button type="submit" id="m-btn-submit"
+              class="hidden ml-auto inline-flex items-center justify-center h-13 px-9 bg-mahatma-cachet text-mahatma-papier font-atkinson font-bold text-sm hover:bg-mahatma-encre transition-colors cursor-pointer"
+              style="height: 52px;">
+              Envoyer la demande →
+            </button>
+          </div>
+
+          <p class="mt-4 font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-beton">
+            ▸ Réponse de l'agence sous 48 h ouvrées
+          </p>
+        </form>
       </div>
 
-      <!-- Budget -->
-      <div class="col-span-12 md:col-span-6">
-        <label for="mahatma-budget" class="block font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-cachet mb-2">
-          ▢ Budget travaux estimé
-        </label>
-        <select
-          id="mahatma-budget"
-          name="budget"
-          class="w-full h-12 px-4 bg-mahatma-blanc border border-mahatma-encre/30 focus:border-mahatma-cachet font-atkinson text-mahatma-encre text-base outline-none transition-colors cursor-pointer"
-        >
-          <option value="">— Choisir —</option>
-          <option value="moins-100k">Moins de 100 000 €</option>
-          <option value="100-300k">100 000 – 300 000 €</option>
-          <option value="300-700k">300 000 – 700 000 €</option>
-          <option value="700-1500k">700 000 – 1 500 000 €</option>
-          <option value="plus-1500k">Plus de 1 500 000 €</option>
-          <option value="ne-sait-pas">Je ne sais pas encore</option>
-        </select>
-      </div>
+      <!-- RIGHT : Sidebar récap (sticky) -->
+      <aside class="lg:col-span-4 lg:sticky lg:top-24">
+        <div class="bg-mahatma-charbon text-mahatma-papier p-6 border-l-4 border-mahatma-cachet">
+          <p class="font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-cachet mb-3 font-medium">
+            ▢ Récapitulatif projet
+          </p>
+          <ul class="space-y-3 font-fira-mono text-[11px]">
+            <li class="flex items-baseline justify-between gap-3 pb-2 border-b border-mahatma-papier/15">
+              <span class="text-mahatma-ciment uppercase tracking-[0.18em]">Type</span>
+              <span id="recap-type" class="text-mahatma-papier text-right uppercase">—</span>
+            </li>
+            <li class="flex items-baseline justify-between gap-3 pb-2 border-b border-mahatma-papier/15">
+              <span class="text-mahatma-ciment uppercase tracking-[0.18em]">Budget</span>
+              <span id="recap-budget" class="text-mahatma-papier tabular-nums">—</span>
+            </li>
+            <li class="flex items-baseline justify-between gap-3 pb-2 border-b border-mahatma-papier/15">
+              <span class="text-mahatma-ciment uppercase tracking-[0.18em]">Échéance</span>
+              <span id="recap-echeance" class="text-mahatma-papier text-right uppercase">—</span>
+            </li>
+            <li class="flex items-baseline justify-between gap-3">
+              <span class="text-mahatma-cachet uppercase tracking-[0.18em] font-medium">Honoraires</span>
+              <span id="recap-honoraires" class="text-mahatma-cachet font-medium tabular-nums">—</span>
+            </li>
+          </ul>
+        </div>
 
-      <!-- Échéance -->
-      <div class="col-span-12 md:col-span-6">
-        <label for="mahatma-echeance" class="block font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-cachet mb-2">
-          ▢ Échéance souhaitée
-        </label>
-        <select
-          id="mahatma-echeance"
-          name="echeance"
-          class="w-full h-12 px-4 bg-mahatma-blanc border border-mahatma-encre/30 focus:border-mahatma-cachet font-atkinson text-mahatma-encre text-base outline-none transition-colors cursor-pointer"
-        >
-          <option value="">— Choisir —</option>
-          <option value="immediate">Immédiate</option>
-          <option value="6mois">Dans 6 mois</option>
-          <option value="1an">D'ici 1 an</option>
-          <option value="reflexion">En réflexion</option>
-        </select>
-      </div>
-
-      <!-- Coordonnées -->
-      <div class="col-span-12 md:col-span-6">
-        <label for="mahatma-nom" class="block font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-cachet mb-2">
-          ▢ Nom & prénom
-        </label>
-        <input
-          id="mahatma-nom"
-          name="nom"
-          type="text"
-          required
-          autocomplete="name"
-          class="w-full h-12 px-4 bg-mahatma-blanc border border-mahatma-encre/30 focus:border-mahatma-cachet font-atkinson text-mahatma-encre text-base outline-none transition-colors"
-        />
-      </div>
-
-      <div class="col-span-12 md:col-span-6">
-        <label for="mahatma-tel" class="block font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-cachet mb-2">
-          ▢ Téléphone
-        </label>
-        <input
-          id="mahatma-tel"
-          name="telephone"
-          type="tel"
-          required
-          autocomplete="tel"
-          class="w-full h-12 px-4 bg-mahatma-blanc border border-mahatma-encre/30 focus:border-mahatma-cachet font-atkinson text-mahatma-encre text-base outline-none transition-colors tabular-nums"
-        />
-      </div>
-
-      <div class="col-span-12">
-        <label for="mahatma-message" class="block font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-cachet mb-2">
-          ▢ Le projet en quelques mots <span class="lowercase italic font-atkinson text-mahatma-beton normal-case">(facultatif)</span>
-        </label>
-        <textarea
-          id="mahatma-message"
-          name="message"
-          rows="4"
-          placeholder="Lieu, surface estimée, contraintes particulières, échéances…"
-          class="w-full px-4 py-3 bg-mahatma-blanc border border-mahatma-encre/30 focus:border-mahatma-cachet font-atkinson text-mahatma-encre text-base placeholder:text-mahatma-beton/55 outline-none transition-colors resize-none"
-        ></textarea>
-      </div>
-
-      <!-- Submit -->
-      <div class="col-span-12 pt-4 border-t border-mahatma-encre/15 flex flex-wrap items-baseline justify-between gap-4">
-        <p class="font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-beton">
-          ▸ Réponse de l'agence sous 48h
-        </p>
-        <button
-          type="submit"
-          class="inline-flex items-center justify-center h-13 px-9 bg-mahatma-encre text-mahatma-papier font-atkinson font-bold text-sm hover:bg-mahatma-cachet transition-colors"
-          style="height: 52px;"
-        >
-          Envoyer la demande →
-        </button>
-      </div>
-    </form>
+        <div class="mt-4 p-5 border border-mahatma-encre/15">
+          <p class="font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-cachet mb-3 font-medium">
+            ▸ Engagements
+          </p>
+          <ul class="space-y-2 font-atkinson text-mahatma-encre/85 text-sm leading-relaxed">
+            <li>✓ Convention écrite avant tout engagement</li>
+            <li>✓ Inscription Ordre des architectes</li>
+            <li>✓ RCP & garantie décennale</li>
+            <li>✓ Devis personnalisé sous 48h</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
   </div>
 </section>
 
 <script define:vars={{ waBase }}>
   const form = document.getElementById('mahatma-form');
   if (form) {
+    const steps = form.querySelectorAll('.m-step');
+    const stepLabels = ['Type de projet', 'Budget & surface', 'Échéance', 'Coordonnées'];
+    const totalSteps = steps.length;
+    const stepCurrentEl = document.getElementById('m-step-current');
+    const stepLabelEl = document.getElementById('m-step-label');
+    const progressBar = document.getElementById('m-progress');
+    const btnPrev = document.getElementById('m-btn-prev');
+    const btnNext = document.getElementById('m-btn-next');
+    const btnSubmit = document.getElementById('m-btn-submit');
+    let currentStep = 1;
+
+    /* Budget mapping (slider value 0-10 → € display + numeric) */
+    const budgetSteps = [
+      { display: '50 K€',  value: 50000   },
+      { display: '100 K€', value: 100000  },
+      { display: '200 K€', value: 200000  },
+      { display: '300 K€', value: 300000  },
+      { display: '500 K€', value: 500000  },
+      { display: '700 K€', value: 700000  },
+      { display: '1 M€',   value: 1000000 },
+      { display: '1.5 M€', value: 1500000 },
+      { display: '2 M€',   value: 2000000 },
+      { display: '3 M€',   value: 3000000 },
+      { display: '5 M€+',  value: 5000000 },
+    ];
+
+    const recapType = document.getElementById('recap-type');
+    const recapBudget = document.getElementById('recap-budget');
+    const recapEcheance = document.getElementById('recap-echeance');
+    const recapHonoraires = document.getElementById('recap-honoraires');
+
+    function fmtMoney(n) {
+      if (n >= 1000000) return (n/1000000).toFixed(n%1000000===0?0:1).replace('.0','') + ' M€';
+      if (n >= 1000) return Math.round(n/1000) + ' K€';
+      return n + ' €';
+    }
+
+    function updateRecap() {
+      const type = form.querySelector('input[name="type"]:checked');
+      const budgetIdx = parseInt(document.getElementById('m-budget-slider')?.value || '3', 10);
+      const echeance = form.querySelector('input[name="echeance"]:checked');
+      const budget = budgetSteps[budgetIdx];
+
+      if (recapType) recapType.textContent = type?.dataset.label || '—';
+      if (recapBudget) recapBudget.textContent = budget?.display || '—';
+      if (recapEcheance) recapEcheance.textContent = echeance?.dataset.label || '—';
+
+      if (type && budget) {
+        const minH = Math.round(budget.value * 0.10);
+        const maxH = Math.round(budget.value * 0.12);
+        if (recapHonoraires) recapHonoraires.textContent = `${fmtMoney(minH)}–${fmtMoney(maxH)}`;
+      } else {
+        if (recapHonoraires) recapHonoraires.textContent = '—';
+      }
+
+      /* Honoraires box on step 2 */
+      if (budget) {
+        const minH = Math.round(budget.value * 0.10);
+        const maxH = Math.round(budget.value * 0.12);
+        const minEl = document.getElementById('m-honoraires-min');
+        const maxEl = document.getElementById('m-honoraires-max');
+        if (minEl) minEl.textContent = fmtMoney(minH);
+        if (maxEl) maxEl.textContent = fmtMoney(maxH);
+        const display = document.getElementById('m-budget-display');
+        if (display) display.textContent = budget.display;
+      }
+    }
+
+    function showStep(n) {
+      steps.forEach((s) => s.classList.add('hidden'));
+      form.querySelector(`.m-step[data-step="${n}"]`)?.classList.remove('hidden');
+      currentStep = n;
+      if (stepCurrentEl) stepCurrentEl.textContent = String(n);
+      if (stepLabelEl) stepLabelEl.textContent = stepLabels[n - 1];
+      if (progressBar) progressBar.style.width = `${(n / totalSteps) * 100}%`;
+      btnPrev?.classList.toggle('hidden', n === 1);
+      btnNext?.classList.toggle('hidden', n === totalSteps);
+      btnSubmit?.classList.toggle('hidden', n !== totalSteps);
+      validateCurrent();
+    }
+
+    function validateCurrent() {
+      let valid = false;
+      if (currentStep === 1) valid = !!form.querySelector('input[name="type"]:checked');
+      else if (currentStep === 2) valid = true; /* slider toujours valide */
+      else if (currentStep === 3) valid = !!form.querySelector('input[name="echeance"]:checked');
+      else if (currentStep === 4) {
+        const nom = form.querySelector('#m-nom')?.value.trim();
+        const tel = form.querySelector('#m-tel')?.value.trim();
+        valid = !!nom && !!tel;
+      }
+      if (btnNext) btnNext.disabled = !valid;
+    }
+
+    form.querySelectorAll('input, textarea').forEach((input) => {
+      input.addEventListener('change', () => { validateCurrent(); updateRecap(); });
+      input.addEventListener('input', () => { validateCurrent(); updateRecap(); });
+    });
+
+    btnNext?.addEventListener('click', () => { if (currentStep < totalSteps) showStep(currentStep + 1); });
+    btnPrev?.addEventListener('click', () => { if (currentStep > 1) showStep(currentStep - 1); });
+
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const fd = new FormData(form);
-      const type = fd.get('type') || '';
-      const budget = fd.get('budget') || '';
-      const echeance = fd.get('echeance') || '';
-      const nom = fd.get('nom') || '';
-      const tel = fd.get('telephone') || '';
-      const message = fd.get('message') || '';
+      const type = form.querySelector('input[name="type"]:checked');
+      const echeance = form.querySelector('input[name="echeance"]:checked');
+      const budgetIdx = parseInt(document.getElementById('m-budget-slider')?.value || '3', 10);
+      const budget = budgetSteps[budgetIdx];
+
       const text = [
         'Bonjour, je souhaite un rendez-vous avec l\'Atelier Mahatma.',
-        type ? `Type : ${type}` : '',
-        budget ? `Budget : ${budget}` : '',
-        echeance ? `Échéance : ${echeance}` : '',
-        nom ? `Nom : ${nom}` : '',
-        tel ? `Tél : ${tel}` : '',
-        message ? `Projet : ${message}` : '',
+        '',
+        '— PROJET —',
+        type ? `Type : ${type.dataset.label}` : '',
+        budget ? `Budget travaux : ${budget.display}` : '',
+        fd.get('surface') ? `Surface estimée : ${fd.get('surface')} m²` : '',
+        echeance ? `Échéance : ${echeance.dataset.label}` : '',
+        '',
+        '— CONTACT —',
+        fd.get('nom') ? `Nom : ${fd.get('nom')}` : '',
+        fd.get('telephone') ? `Tél : ${fd.get('telephone')}` : '',
+        fd.get('message') ? `\nProjet : ${fd.get('message')}` : '',
       ].filter(Boolean).join('\n');
+
       window.open(`${waBase}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
     });
+
+    /* Init */
+    validateCurrent();
+    updateRecap();
   }
 </script>
