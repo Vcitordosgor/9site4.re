@@ -1,51 +1,60 @@
 ---
 /**
- * Mini-preview Elio Spa — Nature distilled, terracotta + crème + sable.
+ * Mini-preview Elio Spa — fidèle au hero full-bleed : photo plein écran
+ * + overlay sombre + ornement vague terracotta + tagline Lora centrée
+ * "L'art du geste, le souffle du temps."
  */
 ---
 
-<div class="absolute inset-0 bg-spa-creme text-spa-cacao font-manrope overflow-hidden">
+<div class="absolute inset-0 bg-spa-cacao text-spa-creme overflow-hidden">
 
-  <!-- Mini header -->
-  <div class="flex items-center justify-between px-3 pt-2 pb-1.5">
-    <div class="flex items-baseline gap-1">
-      <span class="font-bodoni italic font-light text-spa-cacao text-[11px]">Elio</span>
-      <span class="font-bodoni italic font-light text-spa-terracotta text-[11px]">spa</span>
+  <!-- Photo full-bleed -->
+  <img
+    src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=600&q=75"
+    alt=""
+    class="absolute inset-0 w-full h-full object-cover"
+    loading="lazy"
+    decoding="async"
+  />
+
+  <!-- Double overlay pour lisibilité (matche le hero) -->
+  <div class="absolute inset-0 bg-spa-cacao/40" aria-hidden="true"></div>
+  <div class="absolute inset-0" aria-hidden="true"
+       style="background: linear-gradient(180deg, rgb(58 47 38 / 0.55) 0%, rgb(58 47 38 / 0.20) 35%, rgb(58 47 38 / 0.20) 65%, rgb(58 47 38 / 0.85) 100%);">
+  </div>
+
+  <!-- Mini header transparent -->
+  <div class="relative flex items-center justify-between px-3 pt-2">
+    <div class="flex items-baseline gap-0.5">
+      <span class="font-bodoni italic font-light text-spa-creme text-[10px]">Elio</span>
+      <span class="font-bodoni italic font-light text-spa-rose text-[10px]">spa</span>
     </div>
-    <div class="flex items-center gap-1.5 text-[6px] uppercase tracking-[0.18em] text-spa-cacao/65 font-medium">
+    <div class="flex items-center gap-1.5 text-[6px] uppercase tracking-[0.18em] text-spa-creme/80 font-medium">
       <span>Rituels</span>
       <span>Soins</span>
     </div>
-    <span class="font-bodoni italic text-spa-argile text-[7px] underline underline-offset-2 decoration-spa-terracotta/50">
-      Réserver
-    </span>
   </div>
 
-  <!-- Hero centré -->
-  <div class="flex flex-col items-center justify-center text-center px-4 pt-2 pb-3 h-[calc(100%-1.5rem)]">
+  <!-- Ornement vague terracotta -->
+  <svg class="relative z-10 mx-auto mt-2 w-12 h-3 text-spa-terracotta/85" viewBox="0 0 100 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+    <path d="M2 12 Q 15 4, 28 12 T 54 12 T 80 12 T 98 12" />
+  </svg>
 
-    <p class="font-manrope text-[6px] uppercase tracking-[0.32em] text-spa-terracotta mb-1.5 font-semibold">
-      ✦ Saint-Pierre · La Réunion
+  <!-- Contenu centré -->
+  <div class="relative z-10 absolute inset-x-3 bottom-2.5 text-center">
+    <p class="font-raleway font-light text-[5.5px] uppercase tracking-[0.4em] text-spa-rose mb-1.5">
+      Spa &amp; massages · Saint-Pierre
     </p>
-
-    <p class="font-bodoni font-light text-spa-cacao leading-[0.95]" style="font-size: clamp(14px, 2.8vw, 26px);">
-      Le rituel,
-      <span class="block italic text-spa-terracotta">avant tout.</span>
+    <p class="font-lora text-spa-creme leading-[1.05] font-medium" style="font-size: clamp(13px, 2.8vw, 22px);">
+      L'art du geste,
     </p>
-
-    <p class="mt-2 max-w-[80%] font-bodoni italic text-spa-cacao/65 text-[7px] leading-snug">
-      Soins du visage, massages signature, hammam.
+    <p class="font-lora italic font-normal text-spa-rose leading-[1.05]" style="font-size: clamp(13px, 2.8vw, 22px);">
+      le souffle du temps.
     </p>
-
-    <!-- Filet ornement -->
-    <div class="mt-2 flex items-center gap-1.5">
-      <span class="block h-px w-6 bg-spa-terracotta/50"></span>
-      <span class="text-spa-terracotta text-[5px]">✦</span>
-      <span class="block h-px w-6 bg-spa-terracotta/50"></span>
+    <div class="mt-1.5 flex items-center justify-center gap-1.5">
+      <span class="inline-flex items-center h-3 px-2 bg-spa-terracotta text-spa-blanc font-raleway font-semibold text-[6px] uppercase tracking-[0.18em] rounded-full">
+        Réserver un soin
+      </span>
     </div>
-
-    <span class="mt-2 inline-flex items-center h-3 px-2 bg-spa-argile text-spa-creme font-manrope font-semibold text-[6px] uppercase tracking-[0.18em]">
-      Réserver un rituel
-    </span>
   </div>
 </div>

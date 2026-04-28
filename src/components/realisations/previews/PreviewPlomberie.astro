@@ -1,54 +1,66 @@
 ---
 /**
- * Mini-preview Bernard Plomberie — poster industriel utilitaire.
- * Anthracite + jaune signalisation + ciment + URGENCE rouge.
+ * Mini-preview Bernard Plomberie — fidèle au hero poster industriel :
+ * fond anthracite + wordmark Bebas géant 'FUITE, BOUCHON OU PANNE ? /
+ * BERNARD ARRIVE.' jaune + tél XXL + bloc jaune urgence à droite.
  */
 ---
 
-<div class="absolute inset-0 bg-bp-ciment text-bp-anthracite overflow-hidden">
+<div class="absolute inset-0 bg-bp-anthracite text-bp-blanc overflow-hidden">
+
+  <!-- Trame pointillée jaune en arrière-plan (technical pattern) -->
+  <div class="absolute inset-0 opacity-[0.08]" aria-hidden="true"
+       style="background-image: radial-gradient(circle, rgb(255 199 44) 1px, transparent 1px); background-size: 8px 8px;">
+  </div>
 
   <!-- Mini header utilitaire -->
-  <div class="flex items-center justify-between px-3 pt-1.5 pb-1.5 bg-bp-anthracite text-bp-jaune">
+  <div class="relative flex items-center justify-between px-3 pt-2 pb-1.5 border-b border-bp-jaune/20">
     <div class="flex items-center gap-1">
-      <span class="inline-flex items-center justify-center w-3 h-3 bg-bp-jaune text-bp-anthracite font-bebas text-[8px] leading-none">B</span>
+      <span class="inline-flex items-center justify-center w-3.5 h-3.5 bg-bp-jaune text-bp-anthracite font-bebas text-[8px] leading-none">B</span>
       <span class="font-bebas text-[10px] tracking-wide text-bp-blanc leading-none">BERNARD</span>
       <span class="font-bebas text-[10px] tracking-wide text-bp-jaune leading-none">PLOMBERIE</span>
     </div>
-    <span class="inline-flex items-center h-3 px-2 bg-bp-rouge text-bp-blanc font-bebas text-[6px] tracking-widest uppercase">
-      ☎ URGENCE 24/7
+    <span class="inline-flex items-center h-3 px-2 bg-bp-jaune text-bp-anthracite font-bebas text-[6px] tracking-widest uppercase">
+      ☎ Appeler
     </span>
   </div>
 
-  <!-- Hero -->
-  <div class="grid grid-cols-12 gap-2 px-3 pt-2 pb-2 h-[calc(100%-1.6rem)]">
+  <!-- Hero : grid 8/4 (poster gauche + bloc jaune droite) -->
+  <div class="relative grid grid-cols-12 gap-1.5 px-3 pt-2 pb-2 h-[calc(100%-1.6rem)]">
 
-    <!-- LEFT (8) : titre poster -->
+    <!-- LEFT (8) : poster anthracite + wordmark BEBAS massif -->
     <div class="col-span-8 flex flex-col justify-center">
-      <p class="font-archivo text-[6px] uppercase tracking-[0.22em] text-bp-rouge mb-1 font-bold">
-        ▲ Le Tampon · 974
+      <p class="flex items-center gap-1 font-archivo font-bold text-[5.5px] uppercase tracking-[0.32em] text-bp-jaune mb-1">
+        <span class="block w-3 h-[2px] bg-bp-jaune" aria-hidden="true"></span>
+        <span>Plombier · Le Tampon · Sud</span>
       </p>
-      <p class="font-bebas font-bold text-bp-anthracite leading-[0.85] tracking-tight" style="font-size: clamp(15px, 3.2vw, 28px);">
-        DÉPANNAGE<br/>
-        <span class="text-bp-jaune-fonce">RAPIDE.</span>
+      <p class="font-bebas text-bp-blanc leading-[0.85] tracking-tight uppercase" style="font-size: clamp(13px, 2.7vw, 22px);">
+        Fuite, bouchon
       </p>
-      <p class="mt-1 font-archivo text-bp-anthracite/85 text-[6.5px] font-medium leading-snug">
-        18 ans · Sud de l'île · Devis gratuit en 1h.
+      <p class="font-bebas text-bp-blanc leading-[0.85] tracking-tight uppercase" style="font-size: clamp(13px, 2.7vw, 22px);">
+        ou panne ?
       </p>
-      <div class="mt-1.5 flex items-center gap-1">
-        <span class="inline-flex items-center h-3 px-1.5 bg-bp-jaune text-bp-anthracite font-bebas tracking-widest text-[7px]">
-          DEMANDER UN DEVIS
+      <p class="font-bebas text-bp-jaune leading-[0.85] tracking-tight uppercase mt-0.5" style="font-size: clamp(13px, 2.7vw, 22px);">
+        Bernard arrive.
+      </p>
+      <!-- Tél XXL -->
+      <div class="mt-1.5 inline-flex items-baseline gap-1">
+        <span class="text-[5px] font-archivo font-bold uppercase tracking-[0.25em] text-bp-blanc/55 self-end pb-0.5">
+          Direct
+        </span>
+        <span class="font-bebas text-bp-jaune leading-none tabular-nums tracking-wide" style="font-size: 14px;">
+          0692 00 00
         </span>
       </div>
     </div>
 
-    <!-- RIGHT (4) : grand numéro tél -->
-    <div class="col-span-4 flex flex-col items-center justify-center">
-      <div class="bg-bp-anthracite text-bp-jaune p-1.5 w-full text-center" style="border: 1.5px solid #FFC72C;">
-        <p class="font-archivo text-[5px] uppercase tracking-wider opacity-80">Téléphone</p>
-        <p class="font-bebas tracking-tight text-[10px] tabular-nums leading-tight">0692 00 00 00</p>
-      </div>
-      <p class="mt-1 font-archivo text-bp-anthracite text-[5px] uppercase tracking-wider font-bold">
-        ★ Service rapide
+    <!-- RIGHT (4) : bloc jaune avec promesses -->
+    <div class="col-span-4 bg-bp-jaune text-bp-anthracite p-1.5 flex flex-col justify-center text-center">
+      <p class="font-bebas text-[8px] leading-tight tracking-tight uppercase">Sous</p>
+      <p class="font-bebas text-[16px] leading-none tracking-tight">1H</p>
+      <span class="block h-px w-3 bg-bp-anthracite/50 mx-auto my-1"></span>
+      <p class="font-archivo font-bold text-[5.5px] uppercase tracking-wider leading-tight">
+        Devis<br/>gratuit
       </p>
     </div>
   </div>
