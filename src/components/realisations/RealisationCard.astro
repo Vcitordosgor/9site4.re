@@ -32,7 +32,7 @@ import PreviewAideDomicile from './previews/PreviewAideDomicile.astro';
 /**
  * RealisationCard — chaque carte affiche un VRAI mini-preview du template
  * (composant Astro custom reproduisant fidèlement le hero du template),
- * encadré dans une frame navigateur (3 ronds + URL bar).
+ * encadré dans une frame navigateur ultra-minimaliste (3 ronds, pas d'URL).
  */
 interface Realisation {
   id: number;
@@ -127,22 +127,11 @@ const moduleColor = moduleColors[realisation.moduleInclus] ?? 'orange';
       class="block group/preview overflow-hidden border-b border-bleu-nuit/10 bg-bleu-nuit"
       aria-label={`Voir le template ${realisation.nom}`}
     >
-      <!-- Browser chrome -->
-      <div class="flex items-center gap-2 px-3 py-2 bg-bleu-nuit/95">
-        <div class="flex gap-1.5 shrink-0" aria-hidden="true">
-          <span class="block w-2.5 h-2.5 rounded-full bg-[#FF5F57]"></span>
-          <span class="block w-2.5 h-2.5 rounded-full bg-[#FEBC2E]"></span>
-          <span class="block w-2.5 h-2.5 rounded-full bg-[#28C840]"></span>
-        </div>
-        <div class="flex-1 mx-2 flex items-center gap-1.5 px-3 py-1 rounded-md bg-blanc-casse/10 text-blanc-casse/85 text-[10px] font-mono truncate min-w-0">
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" class="shrink-0 opacity-70" aria-hidden="true">
-            <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
-          </svg>
-          <span class="truncate">9site4.re{realisation.previewUrl}</span>
-        </div>
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="shrink-0 text-blanc-casse/40" aria-hidden="true">
-          <path d="M3 12h18M9 6l-6 6 6 6"/>
-        </svg>
+      <!-- Browser chrome minimaliste : 3 ronds seuls, pas d'URL fake -->
+      <div class="flex items-center gap-1.5 px-3 py-2 bg-bleu-nuit/95" aria-hidden="true">
+        <span class="block w-2.5 h-2.5 rounded-full bg-[#FF5F57]"></span>
+        <span class="block w-2.5 h-2.5 rounded-full bg-[#FEBC2E]"></span>
+        <span class="block w-2.5 h-2.5 rounded-full bg-[#28C840]"></span>
       </div>
 
       <!-- Viewport : vrai mini-preview du template -->
