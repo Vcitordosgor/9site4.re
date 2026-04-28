@@ -730,19 +730,21 @@ const etapes = [
                 </form>
 
                 <button
-                  type="button"
-                  disabled
-                  aria-label="Aperçu du bouton — démo non fonctionnelle"
+                  type="submit"
                   class:list={[
-                    'mt-6 w-full h-12 rounded-full font-inter font-semibold text-base inline-flex items-center justify-center gap-2 cursor-not-allowed',
+                    'mt-6 w-full h-12 rounded-full font-inter font-semibold text-base inline-flex items-center justify-center gap-2 cursor-pointer transition-all duration-200 ease-out hover:-translate-y-0.5 active:translate-y-0',
                     m.color === 'orange'
-                      ? 'bg-orange text-bleu-nuit hover:bg-orange/90'
-                      : 'bg-bleu-nuit text-blanc-casse hover:bg-bleu-nuit/90',
+                      ? 'bg-orange text-bleu-nuit hover:bg-orange/90 shadow-[0_8px_24px_rgba(255,143,0,0.35)]'
+                      : 'bg-bleu-nuit text-blanc-casse hover:bg-bleu-nuit/85 shadow-[0_8px_24px_rgba(11,20,55,0.35)]',
                   ]}
                 >
                   {m.cta}
                   <Icon name="arrow-right" size={18} strokeWidth={2} />
                 </button>
+                <p class="mt-2 text-[11px] text-bleu-nuit/45 text-center">
+                  Cliquez pour simuler l'envoi — la conversation à droite
+                  s'animera comme à la réception.
+                </p>
 
                 <p class="mt-3 text-[11px] text-bleu-nuit/45 text-center">
                   Démo visuelle — sur votre site, les demandes arrivent directement par e-mail ou WhatsApp.
@@ -787,7 +789,10 @@ const etapes = [
 
                   <!-- Bulle 2 : notification 9site4 (centre, ring orange) -->
                   <div class="flex justify-center">
-                    <div class="w-full rounded-xl bg-blanc-casse ring-1 ring-orange/40 px-3.5 py-3 shadow-sm">
+                    <div
+                      class="w-full rounded-xl bg-blanc-casse ring-1 ring-orange/40 px-3.5 py-3 shadow-sm"
+                      data-notif-bubble
+                    >
                       <p class="font-roboto-mono text-[9px] uppercase tracking-[0.22em] font-semibold text-orange flex items-center gap-1.5 mb-2">
                         <Icon name="mail" size={11} strokeWidth={2.5} class="shrink-0" />
                         9site4 · Nouveau formulaire
@@ -957,11 +962,51 @@ const etapes = [
       });
     };
 
+    // 'Simuler l'envoi' : au submit du form, on déclenche une animation sur la
+    // carte conversation (pulse + flash de la bulle 9site4). Pas d'envoi réel.
+    const simulateSend = (panel: HTMLElement) => {
+      const card = panel.querySelector<HTMLElement>('[data-message-card]');
+      if (!card) return;
+
+      // Pulse + glow orange de toute la carte
+      if (typeof card.animate === 'function') {
+        card.animate(
+          [
+            { transform: 'scale(1)',     boxShadow: '0 0 0 0 rgba(255, 143, 0, 0)' },
+            { transform: 'scale(1.015)', boxShadow: '0 0 0 8px rgba(255, 143, 0, 0.25)' },
+            { transform: 'scale(1)',     boxShadow: '0 0 0 0 rgba(255, 143, 0, 0)' },
+          ],
+          { duration: 800, easing: 'ease-out' }
+        );
+      }
+
+      // Flash subtil du fond de la bulle 9site4 (notification reçue)
+      const notif = card.querySelector<HTMLElement>('[data-notif-bubble]');
+      if (notif && typeof notif.animate === 'function') {
+        notif.animate(
+          [
+            { backgroundColor: 'rgba(255, 143, 0, 0.18)' },
+            { backgroundColor: 'rgba(254, 254, 250, 1)' },
+          ],
+          { duration: 700, easing: 'ease-out' }
+        );
+      }
+
+      // Sur mobile, scroller doucement vers la conversation pour voir l'effet
+      if (window.matchMedia('(max-width: 1023px)').matches) {
+        card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    };
+
     panels.forEach((panel) => {
       const form = panel.querySelector<HTMLFormElement>('[data-demo-form]');
       if (!form) return;
       form.addEventListener('input', () => syncMessageCard(panel));
       form.addEventListener('change', () => syncMessageCard(panel));
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        simulateSend(panel);
+      });
     });
   });
 </script>
