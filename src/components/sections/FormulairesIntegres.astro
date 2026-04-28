@@ -67,6 +67,9 @@ interface Metier {
   fields: Field[];
   cta: string;
   example: string;
+  // Conversation WhatsApp (étape 5b) — message d'intro client + réponse pro
+  clientIntro: string;
+  proReply: string;
 }
 
 /**
@@ -112,6 +115,8 @@ const metiers: Metier[] = [
     ],
     cta: 'Je réserve ma place',
     example: 'Le client choisit son cours et son niveau — vous savez immédiatement à quel créneau il s\'inscrit.',
+    clientIntro: 'Bonjour, je voudrais m\'inscrire à un cours.',
+    proReply: 'Bonjour Emma, merci pour votre demande. Je vous confirme votre place rapidement.',
   },
   {
     id: 'resto',
@@ -145,6 +150,8 @@ const metiers: Metier[] = [
     ],
     cta: 'Réserver ma table',
     example: 'Date, heure, couverts, demande spéciale — la réservation arrive structurée, fini les allers-retours.',
+    clientIntro: 'Bonjour, je voudrais réserver une table.',
+    proReply: 'Bonjour Emma, merci. Je vérifie la disponibilité et je reviens vers vous tout de suite.',
   },
   {
     id: 'artisan',
@@ -206,6 +213,8 @@ const metiers: Metier[] = [
     ],
     cta: 'Demander un devis',
     example: 'Le client qualifie son besoin et joint une photo — vous gagnez du temps et vous chiffrez plus juste dès le 1er échange.',
+    clientIntro: 'Bonjour, j\'aurais besoin d\'un devis.',
+    proReply: 'Bonjour Emma, merci pour votre demande. Je regarde cela et je vous recontacte rapidement.',
   },
   {
     id: 'institut',
@@ -254,6 +263,8 @@ const metiers: Metier[] = [
     ],
     cta: 'Demander un rendez-vous',
     example: 'Soin, créneau, préférences — votre planning se remplit sans que vous décrochiez le téléphone.',
+    clientIntro: 'Bonjour, je souhaite réserver un soin.',
+    proReply: 'Bonjour Emma, merci. Je vous propose un créneau au plus vite.',
   },
   {
     id: 'gite',
@@ -291,6 +302,8 @@ const metiers: Metier[] = [
     ],
     cta: 'Demander une disponibilité',
     example: 'Dates, voyageurs, type de séjour — vous voyez la demande en un coup d\'œil et confirmez en 1 minute.',
+    clientIntro: 'Bonjour, je voudrais connaître vos disponibilités.',
+    proReply: 'Bonjour Emma, merci pour votre demande. Je vérifie les disponibilités et je reviens vers vous rapidement.',
   },
   {
     id: 'coach',
@@ -350,6 +363,8 @@ const metiers: Metier[] = [
     ],
     cta: 'Demander un premier bilan',
     example: 'Objectif, niveau, contraintes, format — vous proposez le bon accompagnement dès le 1er échange.',
+    clientIntro: 'Bonjour, je cherche un accompagnement sportif.',
+    proReply: 'Bonjour Emma, merci pour votre message. Je vous propose un premier échange pour en parler.',
   },
 ];
 
