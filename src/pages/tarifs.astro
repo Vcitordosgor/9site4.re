@@ -33,9 +33,63 @@ const cardItems = inclusions.map((i) => i.titre);
     </div>
   </section>
 
-  <!-- 2 cartes de prix -->
-  <section class="relative px-6 pb-20" aria-label="Formules tarifaires">
-    <div class="mx-auto max-w-4xl">
+  <!-- Section "Ce qui est inclus" : reprise détaillée des 8 items
+       (placée AVANT la section prix pour expliquer la valeur avant le tarif) -->
+  <section class="relative overflow-hidden px-6 pb-20 md:pb-24" aria-labelledby="inclus-titre">
+    <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+      <div class="absolute top-1/4 -left-24 w-[28rem] h-[28rem] halo-bleu opacity-40"></div>
+      <div class="absolute bottom-0 -right-24 w-[24rem] h-[24rem] halo-orange opacity-30"></div>
+    </div>
+    <div class="relative mx-auto max-w-content">
+      <div class="text-center max-w-2xl mx-auto">
+        <p class="scroll-reveal inline-flex items-center px-3 py-1.5 rounded-full bg-bleu text-bleu-nuit text-xs font-semibold uppercase tracking-wide">
+          Ce qui est inclus
+        </p>
+        <h2 id="inclus-titre" class="scroll-reveal mt-4 font-sora font-bold text-3xl md:text-5xl text-bleu-nuit text-balance leading-tight">
+          Tout ce dont vous avez besoin
+        </h2>
+      </div>
+      <ul class="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {inclusions.map((item, i) => {
+          const isBleu = i % 2 === 0;
+          return (
+            <li
+              class="scroll-reveal group bg-blanc-casse rounded-2xl ring-1 ring-bleu-nuit/10 p-6 transition-all duration-300 ease-out-soft hover:-translate-y-0.5 hover:shadow-card-hover hover:ring-bleu-nuit/15"
+              style={`transition-delay: ${(i % 4) * 60}ms`}
+            >
+              <span class:list={[
+                'flex w-12 h-12 rounded-xl items-center justify-center transition-colors duration-300',
+                isBleu
+                  ? 'bg-bleu/25 text-bleu-nuit group-hover:bg-bleu-nuit group-hover:text-blanc-casse'
+                  : 'bg-orange/15 text-orange group-hover:bg-orange group-hover:text-bleu-nuit',
+              ]}>
+                <Icon name={item.icon} size={22} strokeWidth={1.75} />
+              </span>
+              <h3 class="mt-5 font-sora font-semibold text-lg text-bleu-nuit leading-snug">
+                {item.titre}
+              </h3>
+              <p class="mt-2 text-sm text-bleu-nuit/65 leading-relaxed">{item.texte}</p>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  </section>
+
+  <!-- 2 cartes de prix : présentées APRÈS l'explication de la valeur incluse -->
+  <section class="relative overflow-hidden px-6 py-20 md:py-24 bg-bleu/[0.06]" aria-labelledby="prix-titre">
+    <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+      <div class="absolute -top-24 right-0 w-[28rem] h-[28rem] halo-bleu opacity-30"></div>
+    </div>
+    <div class="relative mx-auto max-w-4xl">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <p class="scroll-reveal inline-flex items-center px-3 py-1.5 rounded-full bg-orange text-bleu-nuit text-xs font-semibold uppercase tracking-wide">
+          Tarifs
+        </p>
+        <h2 id="prix-titre" class="scroll-reveal mt-4 font-sora font-bold text-3xl md:text-5xl text-bleu-nuit text-balance leading-tight">
+          Choisissez votre formule
+        </h2>
+      </div>
       <div class="grid sm:grid-cols-2 gap-5">
         <!-- Mensuel -->
         <article class="scroll-reveal flex flex-col bg-blanc-casse rounded-2xl ring-2 ring-bleu shadow-card p-7 md:p-8 transition-all duration-300 ease-out-soft hover:-translate-y-0.5 hover:shadow-card-hover">
@@ -88,48 +142,6 @@ const cardItems = inclusions.map((i) => i.titre);
           </div>
         </article>
       </div>
-    </div>
-  </section>
-
-  <!-- Section "Ce qui est inclus" : reprise détaillée des 8 items -->
-  <section class="relative overflow-hidden px-6 py-20 md:py-28 bg-bleu/[0.06]" aria-labelledby="inclus-titre">
-    <div class="pointer-events-none absolute inset-0" aria-hidden="true">
-      <div class="absolute top-1/4 -left-24 w-[28rem] h-[28rem] halo-bleu opacity-50"></div>
-      <div class="absolute bottom-0 -right-24 w-[24rem] h-[24rem] halo-orange opacity-40"></div>
-    </div>
-    <div class="relative mx-auto max-w-content">
-      <div class="text-center max-w-2xl mx-auto">
-        <p class="scroll-reveal inline-flex items-center px-3 py-1.5 rounded-full bg-bleu text-bleu-nuit text-xs font-semibold uppercase tracking-wide">
-          Ce qui est inclus
-        </p>
-        <h2 id="inclus-titre" class="scroll-reveal mt-4 font-sora font-bold text-3xl md:text-5xl text-bleu-nuit text-balance leading-tight">
-          Tout ce dont vous avez besoin
-        </h2>
-      </div>
-      <ul class="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        {inclusions.map((item, i) => {
-          const isBleu = i % 2 === 0;
-          return (
-            <li
-              class="scroll-reveal group bg-blanc-casse rounded-2xl ring-1 ring-bleu-nuit/10 p-6 transition-all duration-300 ease-out-soft hover:-translate-y-0.5 hover:shadow-card-hover hover:ring-bleu-nuit/15"
-              style={`transition-delay: ${(i % 4) * 60}ms`}
-            >
-              <span class:list={[
-                'flex w-12 h-12 rounded-xl items-center justify-center transition-colors duration-300',
-                isBleu
-                  ? 'bg-bleu/25 text-bleu-nuit group-hover:bg-bleu-nuit group-hover:text-blanc-casse'
-                  : 'bg-orange/15 text-orange group-hover:bg-orange group-hover:text-bleu-nuit',
-              ]}>
-                <Icon name={item.icon} size={22} strokeWidth={1.75} />
-              </span>
-              <h3 class="mt-5 font-sora font-semibold text-lg text-bleu-nuit leading-snug">
-                {item.titre}
-              </h3>
-              <p class="mt-2 text-sm text-bleu-nuit/65 leading-relaxed">{item.texte}</p>
-            </li>
-          );
-        })}
-      </ul>
     </div>
   </section>
 
