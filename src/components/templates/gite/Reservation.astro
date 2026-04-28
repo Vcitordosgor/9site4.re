@@ -1,195 +1,485 @@
 ---
 /**
- * Reservation — tarifs en tableau + formulaire avec dates arrivée/départ.
- * Format fiche tarifaire topo-guide.
+ * Reservation — Wizard gîte 4 étapes best-in-class.
+ * 1. Dates (arrivée + départ HTML5 avec calcul nuits)
+ * 2. Voyageurs (nombre adultes/enfants/animaux)
+ * 3. Options (petit-déj, demi-pension, accompagnement rando)
+ * 4. Coordonnées
+ * Sidebar récap "Votre séjour" avec PRIX TOTAL CALCULÉ EN LIVE
+ * (basé sur tarifs basse/haute saison + nuits + options).
  */
 import data from '../../../data/templates/cap-anglais.json';
 const waBase = `https://wa.me/${data.info.whatsapp}`;
 ---
 
-<section id="tarifs" class="bg-cap-mousse text-cap-papier py-24 md:py-36 px-6 md:px-10">
+<section id="reservation" class="bg-cap-mousse text-cap-papier py-24 md:py-36 px-6 md:px-10 relative">
   <div class="max-w-content mx-auto">
 
-    <header class="mb-14 md:mb-20 max-w-2xl">
+    <header class="mb-12 md:mb-16 max-w-2xl">
       <p class="font-jetbrains text-[10px] uppercase tracking-[0.32em] text-cap-papier/65 mb-4">
         § VI — Tarifs & réservation
       </p>
       <h2 class="font-bricolage font-semibold text-cap-papier leading-[1.05]" style="font-size: clamp(36px, 5.5vw, 60px);">
-        Tarifs<br/>transparents.
+        Votre séjour<br/>en 4 questions.
       </h2>
+      <p class="mt-4 font-crimson-pro italic text-cap-papier/75 text-lg">
+        Prix calculé en temps réel. Convention écrite avant tout engagement.
+      </p>
     </header>
 
-    <!-- Tableau tarifs -->
-    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 mb-16">
+    <div class="grid lg:grid-cols-12 gap-8 items-start">
 
-      <!-- Tableau gauche -->
-      <div class="lg:col-span-7">
-        <ul class="border-t border-cap-papier/25">
-          {data.tarifs.map((t, i) => (
-            <li class="grid grid-cols-12 gap-3 py-5 items-baseline border-b border-cap-papier/15">
-              <div class="col-span-7 sm:col-span-7">
-                <p class="font-bricolage font-semibold text-cap-papier text-base md:text-lg">
-                  {t.label}
-                </p>
-                <p class="mt-1 font-jetbrains text-[11px] uppercase tracking-[0.18em] text-cap-papier/55">
-                  {t.periode}
-                </p>
-              </div>
-              <div class="col-span-5 sm:col-span-5 text-right">
-                <p class="font-bricolage font-semibold text-cap-papier text-2xl tabular-nums leading-none">
-                  {t.prix}
-                </p>
-                <p class="mt-1 font-jetbrains text-[10px] uppercase tracking-[0.18em] text-cap-papier/55">
-                  {t.unite}
-                </p>
-              </div>
-            </li>
-          ))}
-        </ul>
+      <!-- LEFT : Wizard -->
+      <div class="lg:col-span-8">
+        <form id="g-form" class="bg-cap-papier text-cap-charbon p-7 md:p-10" novalidate>
 
-        <p class="mt-6 font-crimson-pro italic text-cap-papier/70 text-sm leading-relaxed">
-          Acompte de 30 % à la réservation. Solde sur place, espèces ou virement. Pas de carte bancaire.
-        </p>
+          <!-- Progress -->
+          <div class="mb-7">
+            <div class="flex items-center justify-between mb-2">
+              <p class="font-jetbrains text-[10px] uppercase tracking-[0.28em] text-cap-terre">
+                Étape <span id="g-step-current" class="text-cap-rouge tabular-nums">1</span>/4
+              </p>
+              <p id="g-step-label" class="font-jetbrains text-[10px] uppercase tracking-[0.28em] text-cap-mousse font-semibold">Vos dates</p>
+            </div>
+            <div class="h-[2px] bg-cap-charbon/15 overflow-hidden">
+              <div id="g-progress" class="h-full bg-cap-mousse transition-all duration-500" style="width: 25%;"></div>
+            </div>
+          </div>
+
+          <!-- ÉTAPE 1 : Dates -->
+          <fieldset class="g-step" data-step="1">
+            <legend class="font-bricolage font-semibold text-cap-charbon text-xl md:text-2xl mb-5 leading-tight">
+              Quand venez-vous ?
+            </legend>
+
+            <div class="grid sm:grid-cols-2 gap-4 mb-4">
+              <div>
+                <label for="g-arrivee" class="block font-jetbrains text-[10px] uppercase tracking-[0.22em] text-cap-mousse mb-2 font-medium">Arrivée</label>
+                <input id="g-arrivee" name="arrivee" type="date" required
+                  class="w-full h-12 px-3 bg-cap-papier border border-cap-charbon/25 focus:border-cap-mousse font-bricolage text-cap-charbon text-base outline-none transition-colors tabular-nums" />
+              </div>
+              <div>
+                <label for="g-depart" class="block font-jetbrains text-[10px] uppercase tracking-[0.22em] text-cap-mousse mb-2 font-medium">Départ</label>
+                <input id="g-depart" name="depart" type="date" required
+                  class="w-full h-12 px-3 bg-cap-papier border border-cap-charbon/25 focus:border-cap-mousse font-bricolage text-cap-charbon text-base outline-none transition-colors tabular-nums" />
+              </div>
+            </div>
+
+            <!-- Nuits + saison live -->
+            <div id="g-nuits-info" class="hidden p-4 bg-cap-mousse/10 border-l-2 border-cap-mousse">
+              <p class="font-jetbrains text-[10px] uppercase tracking-[0.22em] text-cap-mousse mb-1 font-medium">
+                ▸ Séjour calculé
+              </p>
+              <p class="font-bricolage text-cap-charbon">
+                <span id="g-nuits-count" class="font-bold tabular-nums">0</span> nuits · saison <span id="g-saison" class="italic">—</span>
+              </p>
+            </div>
+          </fieldset>
+
+          <!-- ÉTAPE 2 : Voyageurs -->
+          <fieldset class="g-step hidden" data-step="2">
+            <legend class="font-bricolage font-semibold text-cap-charbon text-xl md:text-2xl mb-5 leading-tight">
+              Combien de voyageurs ?
+            </legend>
+
+            <!-- Adultes -->
+            <div class="flex items-center justify-between gap-4 py-3 border-b border-cap-charbon/15">
+              <div>
+                <p class="font-bricolage text-cap-charbon text-base">Adultes</p>
+                <p class="font-crimson-pro italic text-cap-terre text-sm">12 ans et +</p>
+              </div>
+              <div class="flex items-center gap-2">
+                <button type="button" data-counter="adultes" data-action="dec"
+                  class="w-9 h-9 flex items-center justify-center bg-cap-papier border border-cap-charbon/25 hover:border-cap-mousse font-bricolage font-bold text-cap-charbon text-lg cursor-pointer">−</button>
+                <span id="g-c-adultes" class="font-bricolage font-bold text-cap-charbon w-8 text-center tabular-nums text-lg">2</span>
+                <button type="button" data-counter="adultes" data-action="inc"
+                  class="w-9 h-9 flex items-center justify-center bg-cap-mousse text-cap-papier hover:bg-cap-charbon font-bricolage font-bold text-lg cursor-pointer">+</button>
+              </div>
+            </div>
+
+            <!-- Enfants -->
+            <div class="flex items-center justify-between gap-4 py-3 border-b border-cap-charbon/15">
+              <div>
+                <p class="font-bricolage text-cap-charbon text-base">Enfants</p>
+                <p class="font-crimson-pro italic text-cap-terre text-sm">3-11 ans</p>
+              </div>
+              <div class="flex items-center gap-2">
+                <button type="button" data-counter="enfants" data-action="dec"
+                  class="w-9 h-9 flex items-center justify-center bg-cap-papier border border-cap-charbon/25 hover:border-cap-mousse font-bricolage font-bold text-cap-charbon text-lg cursor-pointer">−</button>
+                <span id="g-c-enfants" class="font-bricolage font-bold text-cap-charbon w-8 text-center tabular-nums text-lg">0</span>
+                <button type="button" data-counter="enfants" data-action="inc"
+                  class="w-9 h-9 flex items-center justify-center bg-cap-mousse text-cap-papier hover:bg-cap-charbon font-bricolage font-bold text-lg cursor-pointer">+</button>
+              </div>
+            </div>
+
+            <!-- Bébés -->
+            <div class="flex items-center justify-between gap-4 py-3 border-b border-cap-charbon/15">
+              <div>
+                <p class="font-bricolage text-cap-charbon text-base">Bébés</p>
+                <p class="font-crimson-pro italic text-cap-terre text-sm">moins de 3 ans · gratuit</p>
+              </div>
+              <div class="flex items-center gap-2">
+                <button type="button" data-counter="bebes" data-action="dec"
+                  class="w-9 h-9 flex items-center justify-center bg-cap-papier border border-cap-charbon/25 hover:border-cap-mousse font-bricolage font-bold text-cap-charbon text-lg cursor-pointer">−</button>
+                <span id="g-c-bebes" class="font-bricolage font-bold text-cap-charbon w-8 text-center tabular-nums text-lg">0</span>
+                <button type="button" data-counter="bebes" data-action="inc"
+                  class="w-9 h-9 flex items-center justify-center bg-cap-mousse text-cap-papier hover:bg-cap-charbon font-bricolage font-bold text-lg cursor-pointer">+</button>
+              </div>
+            </div>
+
+            <!-- Animaux -->
+            <div class="flex items-center justify-between gap-4 py-3">
+              <div>
+                <p class="font-bricolage text-cap-charbon text-base">Animaux</p>
+                <p class="font-crimson-pro italic text-cap-terre text-sm">acceptés sur demande</p>
+              </div>
+              <label class="cursor-pointer">
+                <input type="checkbox" name="animaux" class="peer sr-only" />
+                <span class="inline-flex items-center px-4 h-9 bg-cap-papier border border-cap-charbon/25 peer-checked:border-cap-mousse peer-checked:bg-cap-mousse peer-checked:text-cap-papier font-bricolage font-medium text-sm transition-colors">Oui</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <!-- ÉTAPE 3 : Options -->
+          <fieldset class="g-step hidden" data-step="3">
+            <legend class="font-bricolage font-semibold text-cap-charbon text-xl md:text-2xl mb-5 leading-tight">
+              Voulez-vous des options ?
+            </legend>
+
+            <div class="space-y-3">
+              <label class="cursor-pointer block">
+                <input type="checkbox" name="petitdej" data-prix="8" class="peer sr-only" />
+                <span class="flex items-baseline gap-3 p-4 bg-cap-papier border border-cap-charbon/15 peer-checked:border-cap-mousse peer-checked:bg-cap-mousse/5 transition-all">
+                  <span class="flex-1">
+                    <p class="font-bricolage text-cap-charbon text-lg">Petit-déjeuner</p>
+                    <p class="mt-1 font-crimson-pro italic text-cap-terre text-sm">Pain frais, confitures maison, café · service 7h30-9h30</p>
+                  </span>
+                  <span class="font-bricolage text-cap-mousse text-lg tabular-nums shrink-0">+ 8 €/pers/j</span>
+                </span>
+              </label>
+
+              <label class="cursor-pointer block">
+                <input type="checkbox" name="demipension" data-prix="18" class="peer sr-only" />
+                <span class="flex items-baseline gap-3 p-4 bg-cap-papier border border-cap-charbon/15 peer-checked:border-cap-mousse peer-checked:bg-cap-mousse/5 transition-all">
+                  <span class="flex-1">
+                    <p class="font-bricolage text-cap-charbon text-lg">Demi-pension</p>
+                    <p class="mt-1 font-crimson-pro italic text-cap-terre text-sm">Plat unique du jour · service 19h-20h30</p>
+                  </span>
+                  <span class="font-bricolage text-cap-mousse text-lg tabular-nums shrink-0">+ 18 €/pers/j</span>
+                </span>
+              </label>
+
+              <label class="cursor-pointer block">
+                <input type="checkbox" name="accompagnement" class="peer sr-only" />
+                <span class="flex items-baseline gap-3 p-4 bg-cap-papier border border-cap-charbon/15 peer-checked:border-cap-mousse peer-checked:bg-cap-mousse/5 transition-all">
+                  <span class="flex-1">
+                    <p class="font-bricolage text-cap-charbon text-lg">Accompagnement randonnée</p>
+                    <p class="mt-1 font-crimson-pro italic text-cap-terre text-sm">Avec Jean-Marie sur les sentiers les moins évidents</p>
+                  </span>
+                  <span class="font-bricolage text-cap-mousse text-lg shrink-0">Offert</span>
+                </span>
+              </label>
+            </div>
+          </fieldset>
+
+          <!-- ÉTAPE 4 : Coordonnées -->
+          <fieldset class="g-step hidden" data-step="4">
+            <legend class="font-bricolage font-semibold text-cap-charbon text-xl md:text-2xl mb-5 leading-tight">
+              Pour confirmer.
+            </legend>
+
+            <div class="grid sm:grid-cols-2 gap-4 mb-4">
+              <div>
+                <label for="g-nom" class="block font-jetbrains text-[10px] uppercase tracking-[0.22em] text-cap-mousse mb-2 font-medium">Nom complet</label>
+                <input id="g-nom" name="nom" type="text" required autocomplete="name"
+                  class="w-full h-12 px-3 bg-cap-papier border border-cap-charbon/25 focus:border-cap-mousse font-bricolage text-cap-charbon text-base outline-none transition-colors" />
+              </div>
+              <div>
+                <label for="g-tel" class="block font-jetbrains text-[10px] uppercase tracking-[0.22em] text-cap-mousse mb-2 font-medium">Téléphone</label>
+                <input id="g-tel" name="telephone" type="tel" inputmode="tel" required autocomplete="tel"
+                  class="w-full h-12 px-3 bg-cap-papier border border-cap-charbon/25 focus:border-cap-mousse font-bricolage text-cap-charbon text-base outline-none transition-colors tabular-nums" />
+              </div>
+            </div>
+            <div class="mb-4">
+              <label for="g-email" class="block font-jetbrains text-[10px] uppercase tracking-[0.22em] text-cap-mousse mb-2 font-medium">Email</label>
+              <input id="g-email" name="email" type="email" inputmode="email" autocomplete="email"
+                class="w-full h-12 px-3 bg-cap-papier border border-cap-charbon/25 focus:border-cap-mousse font-bricolage text-cap-charbon text-base outline-none transition-colors" />
+            </div>
+            <div>
+              <label for="g-message" class="block font-jetbrains text-[10px] uppercase tracking-[0.22em] text-cap-mousse mb-2 font-medium">
+                Une demande particulière <span class="font-crimson-pro normal-case italic tracking-normal">(facultatif)</span>
+              </label>
+              <textarea id="g-message" name="message" rows="3" placeholder="Allergies, objectif rando, occasion spéciale…"
+                class="w-full px-3 py-2 bg-cap-papier border border-cap-charbon/25 focus:border-cap-mousse font-bricolage text-cap-charbon text-base outline-none transition-colors resize-none"></textarea>
+            </div>
+          </fieldset>
+
+          <!-- Navigation -->
+          <div class="mt-7 flex flex-wrap items-center justify-between gap-3">
+            <button type="button" id="g-btn-prev"
+              class="hidden inline-flex items-center gap-1 h-10 px-4 border border-cap-charbon/30 text-cap-charbon font-jetbrains text-[10px] uppercase tracking-[0.22em] hover:border-cap-mousse hover:text-cap-mousse transition-colors cursor-pointer">
+              ← Retour
+            </button>
+            <button type="button" id="g-btn-next"
+              class="ml-auto inline-flex items-center justify-center h-12 px-7 bg-cap-mousse text-cap-papier font-bricolage font-semibold text-sm hover:bg-cap-charbon transition-colors disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer">
+              Continuer →
+            </button>
+            <button type="submit" id="g-btn-submit"
+              class="hidden ml-auto inline-flex items-center justify-center h-13 px-9 bg-cap-rouge text-cap-papier font-bricolage font-semibold text-base hover:bg-cap-charbon transition-colors cursor-pointer"
+              style="height: 52px;">
+              Envoyer la demande →
+            </button>
+          </div>
+        </form>
       </div>
 
-      <!-- Encart info à droite -->
-      <aside class="lg:col-span-5 bg-cap-charbon p-7 md:p-8 border-l-4 border-cap-rouge">
-        <p class="font-jetbrains text-[10px] uppercase tracking-[0.28em] text-cap-rouge mb-4">
-          ★ Annulation
-        </p>
-        <p class="font-bricolage text-cap-papier text-base leading-relaxed mb-4">
-          Annulation gratuite jusqu'à 7 jours avant l'arrivée.
-        </p>
-        <p class="font-crimson-pro italic text-cap-papier/70 text-sm leading-relaxed">
-          Au-delà, l'acompte est conservé sauf cas de force majeure (cyclone, route fermée). On reste flexibles — appelez-nous.
-        </p>
-      </aside>
-    </div>
-
-    <!-- Formulaire réservation -->
-    <div id="reservation" class="bg-cap-papier text-cap-charbon p-7 md:p-10 max-w-3xl">
-      <p class="font-jetbrains text-[10px] uppercase tracking-[0.32em] text-cap-mousse mb-3">
-        Demander une disponibilité
-      </p>
-      <h3 class="font-bricolage font-semibold text-cap-charbon text-2xl md:text-3xl mb-6">
-        Votre séjour au gîte
-      </h3>
-
-      <form id="resa-form" class="space-y-6" novalidate>
-
-        <div class="grid sm:grid-cols-2 gap-5">
-          <div>
-            <label for="resa-arrivee" class="block font-jetbrains text-[10px] uppercase tracking-[0.22em] text-cap-mousse mb-2">Arrivée</label>
-            <input
-              id="resa-arrivee"
-              name="arrivee"
-              type="date"
-              required
-              class="w-full h-11 px-3 bg-cap-papier border border-cap-charbon/25 focus:border-cap-mousse font-bricolage text-cap-charbon text-base outline-none transition-colors tabular-nums"
-            />
-          </div>
-          <div>
-            <label for="resa-depart" class="block font-jetbrains text-[10px] uppercase tracking-[0.22em] text-cap-mousse mb-2">Départ</label>
-            <input
-              id="resa-depart"
-              name="depart"
-              type="date"
-              required
-              class="w-full h-11 px-3 bg-cap-papier border border-cap-charbon/25 focus:border-cap-mousse font-bricolage text-cap-charbon text-base outline-none transition-colors tabular-nums"
-            />
-          </div>
-        </div>
-
-        <div class="grid sm:grid-cols-2 gap-5">
-          <div>
-            <label for="resa-pers" class="block font-jetbrains text-[10px] uppercase tracking-[0.22em] text-cap-mousse mb-2">Nombre de personnes</label>
-            <input
-              id="resa-pers"
-              name="personnes"
-              type="number"
-              min="1"
-              max="12"
-              required
-              placeholder="Ex. 4"
-              class="w-full h-11 px-3 bg-cap-papier border border-cap-charbon/25 focus:border-cap-mousse font-bricolage text-cap-charbon text-base outline-none transition-colors tabular-nums"
-            />
-          </div>
-          <div>
-            <label for="resa-tel" class="block font-jetbrains text-[10px] uppercase tracking-[0.22em] text-cap-mousse mb-2">Téléphone</label>
-            <input
-              id="resa-tel"
-              name="telephone"
-              type="tel"
-              required
-              autocomplete="tel"
-              placeholder="0692 xx xx xx"
-              class="w-full h-11 px-3 bg-cap-papier border border-cap-charbon/25 focus:border-cap-mousse font-bricolage text-cap-charbon text-base outline-none transition-colors tabular-nums"
-            />
-          </div>
-        </div>
-
-        <div>
-          <label for="resa-nom" class="block font-jetbrains text-[10px] uppercase tracking-[0.22em] text-cap-mousse mb-2">Votre nom</label>
-          <input
-            id="resa-nom"
-            name="nom"
-            type="text"
-            required
-            autocomplete="name"
-            class="w-full h-11 px-3 bg-cap-papier border border-cap-charbon/25 focus:border-cap-mousse font-bricolage text-cap-charbon text-base outline-none transition-colors"
-          />
-        </div>
-
-        <div>
-          <label for="resa-message" class="block font-jetbrains text-[10px] uppercase tracking-[0.22em] text-cap-mousse mb-2">Une demande particulière <span class="lowercase italic font-crimson-pro text-cap-charbon/55 normal-case">(facultatif)</span></label>
-          <textarea
-            id="resa-message"
-            name="message"
-            rows="3"
-            placeholder="Demi-pension, accompagnement randonnée, allergies…"
-            class="w-full px-3 py-2 bg-cap-papier border border-cap-charbon/25 focus:border-cap-mousse font-bricolage text-cap-charbon text-base outline-none transition-colors resize-none"
-          ></textarea>
-        </div>
-
-        <div class="pt-4">
-          <button
-            type="submit"
-            class="w-full sm:w-auto inline-flex items-center justify-center gap-3 h-13 px-9 bg-cap-mousse text-cap-papier font-bricolage font-semibold text-base hover:bg-cap-charbon transition-colors"
-            style="height: 52px;"
-          >
-            Envoyer la demande →
-          </button>
-          <p class="mt-4 font-crimson-pro italic text-cap-terre text-sm">
-            La demande ouvre WhatsApp. Réponse de Jean-Marie sous 24 h.
+      <!-- RIGHT : Sidebar récap avec total live -->
+      <aside class="lg:col-span-4 lg:sticky lg:top-24 space-y-4">
+        <div class="bg-cap-charbon text-cap-papier p-6 border-l-4 border-cap-rouge">
+          <p class="font-jetbrains text-[10px] uppercase tracking-[0.32em] text-cap-rouge mb-4 font-medium">
+            ▸ Votre séjour
           </p>
+          <ul class="space-y-3 text-sm">
+            <li class="pb-2 border-b border-cap-papier/15">
+              <span class="block font-jetbrains text-[9px] uppercase tracking-[0.22em] text-cap-papier/65">Dates</span>
+              <span id="g-recap-dates" class="font-bricolage text-cap-papier">—</span>
+            </li>
+            <li class="pb-2 border-b border-cap-papier/15">
+              <span class="block font-jetbrains text-[9px] uppercase tracking-[0.22em] text-cap-papier/65">Voyageurs</span>
+              <span id="g-recap-voyageurs" class="font-bricolage text-cap-papier">2 adultes</span>
+            </li>
+            <li class="pb-2 border-b border-cap-papier/15">
+              <span class="block font-jetbrains text-[9px] uppercase tracking-[0.22em] text-cap-papier/65">Tarif/nuit/pers</span>
+              <span id="g-recap-tarif" class="font-bricolage text-cap-papier tabular-nums">22 €</span>
+            </li>
+            <li id="g-recap-options-wrap" class="hidden pb-2 border-b border-cap-papier/15">
+              <span class="block font-jetbrains text-[9px] uppercase tracking-[0.22em] text-cap-papier/65">Options</span>
+              <span id="g-recap-options" class="font-bricolage text-cap-papier text-xs leading-relaxed">—</span>
+            </li>
+            <li class="pt-1">
+              <span class="block font-jetbrains text-[9px] uppercase tracking-[0.22em] text-cap-rouge font-semibold">Total estimé</span>
+              <span id="g-recap-total" class="font-bricolage font-bold text-cap-rouge text-3xl tabular-nums">—</span>
+            </li>
+          </ul>
         </div>
-      </form>
+
+        <div class="p-5 bg-cap-papier text-cap-charbon border border-cap-charbon/15">
+          <p class="font-jetbrains text-[10px] uppercase tracking-[0.28em] text-cap-mousse mb-2 font-medium">
+            ▸ Engagements
+          </p>
+          <ul class="space-y-1.5 font-crimson-pro italic text-cap-charbon/85 text-sm leading-relaxed">
+            <li>· Acompte 30 % à la résa</li>
+            <li>· Annulation gratuite jusqu'à J-7</li>
+            <li>· Pas de carte bancaire (espèces/virement)</li>
+            <li>· Réponse de Jean-Marie sous 24 h</li>
+          </ul>
+        </div>
+      </aside>
     </div>
   </div>
 </section>
 
 <script define:vars={{ waBase }}>
-  const form = document.getElementById('resa-form');
+  const form = document.getElementById('g-form');
   if (form) {
+    const steps = form.querySelectorAll('.g-step');
+    const stepLabels = ['Vos dates', 'Voyageurs', 'Options', 'Coordonnées'];
+    const totalSteps = steps.length;
+    let currentStep = 1;
+    let counters = { adultes: 2, enfants: 0, bebes: 0 };
+
+    function getNuits() {
+      const a = document.getElementById('g-arrivee')?.value;
+      const d = document.getElementById('g-depart')?.value;
+      if (!a || !d) return 0;
+      const diff = Math.round((new Date(d) - new Date(a)) / (1000 * 60 * 60 * 24));
+      return diff > 0 ? diff : 0;
+    }
+
+    function getTarif(arrivee) {
+      if (!arrivee) return 22;
+      const m = new Date(arrivee).getMonth() + 1;
+      /* Haute : juillet-août (7,8) + déc-fév (12,1,2) */
+      if (m === 7 || m === 8 || m === 12 || m === 1 || m === 2) return 32;
+      /* Moyenne : mars-avril, novembre */
+      if (m === 3 || m === 4 || m === 11) return 28;
+      /* Basse : mai-juin, sept-oct */
+      return 22;
+    }
+
+    function getSaison(arrivee) {
+      if (!arrivee) return '—';
+      const m = new Date(arrivee).getMonth() + 1;
+      if (m === 7 || m === 8 || m === 12 || m === 1 || m === 2) return 'haute';
+      if (m === 3 || m === 4 || m === 11) return 'moyenne';
+      return 'basse';
+    }
+
+    function fmtDate(s) {
+      if (!s) return '—';
+      const d = new Date(s);
+      return d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
+    }
+
+    function updateRecap() {
+      const arrivee = document.getElementById('g-arrivee')?.value;
+      const depart = document.getElementById('g-depart')?.value;
+      const nuits = getNuits();
+      const tarif = getTarif(arrivee);
+      const saison = getSaison(arrivee);
+      const personnesPayantes = counters.adultes + counters.enfants;
+      const animaux = form.querySelector('input[name="animaux"]')?.checked;
+      const petitdej = form.querySelector('input[name="petitdej"]')?.checked;
+      const demipension = form.querySelector('input[name="demipension"]')?.checked;
+
+      /* Update nuits info */
+      const nuitsInfo = document.getElementById('g-nuits-info');
+      if (nuits > 0 && nuitsInfo) {
+        nuitsInfo.classList.remove('hidden');
+        document.getElementById('g-nuits-count').textContent = nuits;
+        document.getElementById('g-saison').textContent = saison;
+      } else if (nuitsInfo) {
+        nuitsInfo.classList.add('hidden');
+      }
+
+      /* Recap dates */
+      let datesText = '—';
+      if (arrivee && depart && nuits > 0) {
+        datesText = `${fmtDate(arrivee)} → ${fmtDate(depart)} (${nuits} nuits)`;
+      }
+      document.getElementById('g-recap-dates').textContent = datesText;
+
+      /* Voyageurs */
+      const parts = [];
+      if (counters.adultes) parts.push(`${counters.adultes} adulte${counters.adultes > 1 ? 's' : ''}`);
+      if (counters.enfants) parts.push(`${counters.enfants} enfant${counters.enfants > 1 ? 's' : ''}`);
+      if (counters.bebes) parts.push(`${counters.bebes} bébé${counters.bebes > 1 ? 's' : ''}`);
+      if (animaux) parts.push('+ animaux');
+      document.getElementById('g-recap-voyageurs').textContent = parts.join(' · ') || '—';
+
+      /* Tarif/nuit/pers + saison */
+      document.getElementById('g-recap-tarif').textContent = `${tarif} € (${saison})`;
+
+      /* Options */
+      const opts = [];
+      if (petitdej) opts.push('Petit-déj');
+      if (demipension) opts.push('Demi-pension');
+      const optsWrap = document.getElementById('g-recap-options-wrap');
+      if (opts.length && optsWrap) {
+        optsWrap.classList.remove('hidden');
+        document.getElementById('g-recap-options').textContent = opts.join(' · ');
+      } else if (optsWrap) {
+        optsWrap.classList.add('hidden');
+      }
+
+      /* Total */
+      let total = 0;
+      if (nuits > 0 && personnesPayantes > 0) {
+        total = tarif * nuits * personnesPayantes;
+        if (petitdej) total += 8 * nuits * personnesPayantes;
+        if (demipension) total += 18 * nuits * personnesPayantes;
+        /* Forfait week-end -10% si exactement 2 nuits */
+        if (nuits === 2) total = Math.round(total * 0.9);
+        /* Forfait semaine -20% si 7 nuits */
+        if (nuits >= 7) total = Math.round(total * 0.8);
+      }
+      document.getElementById('g-recap-total').textContent = total > 0 ? `${total} €` : '—';
+    }
+
+    function showStep(n) {
+      steps.forEach((s) => s.classList.add('hidden'));
+      form.querySelector(`.g-step[data-step="${n}"]`)?.classList.remove('hidden');
+      currentStep = n;
+      document.getElementById('g-step-current').textContent = String(n);
+      document.getElementById('g-step-label').textContent = stepLabels[n - 1];
+      document.getElementById('g-progress').style.width = `${(n / totalSteps) * 100}%`;
+      document.getElementById('g-btn-prev').classList.toggle('hidden', n === 1);
+      document.getElementById('g-btn-next').classList.toggle('hidden', n === totalSteps);
+      document.getElementById('g-btn-submit').classList.toggle('hidden', n !== totalSteps);
+      validateCurrent();
+    }
+
+    function validateCurrent() {
+      let valid = false;
+      if (currentStep === 1) {
+        const a = document.getElementById('g-arrivee')?.value;
+        const d = document.getElementById('g-depart')?.value;
+        valid = !!a && !!d && getNuits() > 0;
+      } else if (currentStep === 2) {
+        valid = (counters.adultes + counters.enfants) > 0;
+      } else if (currentStep === 3) valid = true;
+      else if (currentStep === 4) valid = !!form.querySelector('#g-nom')?.value.trim() && !!form.querySelector('#g-tel')?.value.trim();
+      document.getElementById('g-btn-next').disabled = !valid;
+    }
+
+    /* Counters */
+    form.querySelectorAll('[data-counter]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const c = btn.dataset.counter;
+        const action = btn.dataset.action;
+        if (action === 'inc') counters[c]++;
+        else if (action === 'dec') counters[c] = Math.max(0, counters[c] - 1);
+        if (c === 'adultes' && counters.adultes < 1) counters.adultes = 1;
+        document.getElementById(`g-c-${c}`).textContent = counters[c];
+        updateRecap();
+        validateCurrent();
+      });
+    });
+
+    form.querySelectorAll('input, textarea').forEach((input) => {
+      input.addEventListener('change', () => { validateCurrent(); updateRecap(); });
+      input.addEventListener('input', () => { validateCurrent(); updateRecap(); });
+    });
+    document.getElementById('g-btn-next').addEventListener('click', () => { if (currentStep < totalSteps) showStep(currentStep + 1); });
+    document.getElementById('g-btn-prev').addEventListener('click', () => { if (currentStep > 1) showStep(currentStep - 1); });
+
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const fd = new FormData(form);
-      const arrivee = fd.get('arrivee') || '';
-      const depart = fd.get('depart') || '';
-      const personnes = fd.get('personnes') || '';
-      const tel = fd.get('telephone') || '';
-      const nom = fd.get('nom') || '';
-      const message = fd.get('message') || '';
+      const nuits = getNuits();
+      const tarif = getTarif(fd.get('arrivee'));
+      const total = document.getElementById('g-recap-total').textContent;
+      const opts = [];
+      if (form.querySelector('input[name="petitdej"]')?.checked) opts.push('Petit-déj');
+      if (form.querySelector('input[name="demipension"]')?.checked) opts.push('Demi-pension');
+      if (form.querySelector('input[name="accompagnement"]')?.checked) opts.push('Accompagnement rando');
+
       const text = [
         'Bonjour, je souhaite réserver Le Cap Anglais.',
-        nom ? `Nom : ${nom}` : '',
-        tel ? `Tél : ${tel}` : '',
-        arrivee ? `Arrivée : ${arrivee}` : '',
-        depart ? `Départ : ${depart}` : '',
-        personnes ? `Personnes : ${personnes}` : '',
-        message ? `Demande : ${message}` : '',
+        '',
+        '— SÉJOUR —',
+        fd.get('arrivee') ? `Arrivée : ${fd.get('arrivee')}` : '',
+        fd.get('depart') ? `Départ : ${fd.get('depart')}` : '',
+        nuits ? `Durée : ${nuits} nuits (${tarif} €/pers/nuit)` : '',
+        '',
+        '— VOYAGEURS —',
+        `Adultes : ${counters.adultes}`,
+        counters.enfants ? `Enfants : ${counters.enfants}` : '',
+        counters.bebes ? `Bébés : ${counters.bebes}` : '',
+        form.querySelector('input[name="animaux"]')?.checked ? 'Animaux : oui' : '',
+        '',
+        opts.length ? `— OPTIONS —\n${opts.join(', ')}` : '',
+        '',
+        `TOTAL ESTIMÉ : ${total}`,
+        '',
+        '— CONTACT —',
+        fd.get('nom') ? `Nom : ${fd.get('nom')}` : '',
+        fd.get('telephone') ? `Tél : ${fd.get('telephone')}` : '',
+        fd.get('email') ? `Email : ${fd.get('email')}` : '',
+        fd.get('message') ? `\nDemande : ${fd.get('message')}` : '',
       ].filter(Boolean).join('\n');
+
       window.open(`${waBase}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
     });
+
+    /* Init : defaults */
+    const today = new Date();
+    const tomorrow = new Date(today.getTime() + 86400000);
+    const dayAfter = new Date(today.getTime() + 86400000 * 4);
+    document.getElementById('g-arrivee').min = today.toISOString().split('T')[0];
+    document.getElementById('g-depart').min = tomorrow.toISOString().split('T')[0];
+
+    validateCurrent();
+    updateRecap();
   }
 </script>
