@@ -25,7 +25,7 @@ interface FormData {
 const BESOINS = [
   { value: 'creation', label: 'Création complète' },
   { value: 'refonte', label: 'Refonte' },
-  { value: 'module', label: 'Juste un module de contact' },
+  { value: 'module', label: 'Juste un formulaire de contact' },
   { value: 'inconnu', label: 'Je ne sais pas encore' },
 ];
 

@@ -26,8 +26,8 @@ export const inclusions: Inclusion[] = [
   },
   {
     icon: 'mail',
-    titre: 'Module de contact métier',
-    texte: 'Réservation, devis, rendez-vous ou intervention selon votre besoin.',
+    titre: 'Formulaire métier intégré',
+    texte: 'Réservation, devis, rendez-vous ou intervention selon votre activité.',
   },
   {
     icon: 'globe',
