@@ -1,67 +1,57 @@
 ---
 /**
- * Mini-preview Pizza Lé O — trattoria éditoriale.
- * Crème + rouge tomate + dorée vintage, typo Fraunces serif italien.
+ * Mini-preview Pizza Lé O — fidèle au hero immersif : photo plein écran
+ * + overlay gradient sombre + wordmark Playfair calé en bas-gauche
+ * + tagline italique or.
  */
 ---
 
-<div class="absolute inset-0 bg-pizza-creme text-pizza-charbon overflow-hidden">
+<div class="absolute inset-0 bg-pizza-charbon text-pizza-creme overflow-hidden">
 
-  <!-- Mini header -->
-  <div class="flex items-center justify-between px-3 pt-2 pb-1.5 border-b border-pizza-charbon/15">
-    <div class="flex items-baseline gap-1">
-      <span class="font-fraunces font-bold text-pizza-rouge text-[10px] italic">Pizza</span>
-      <span class="font-fraunces font-light text-pizza-charbon text-[10px] italic">Lé O</span>
-    </div>
-    <div class="flex items-center gap-1.5 text-[6px] uppercase tracking-wider text-pizza-charbon/65 font-medium">
-      <span>Carte</span>
-      <span>Menus</span>
-      <span>Réserver</span>
-    </div>
-    <span class="inline-flex items-center h-3 px-2 bg-pizza-rouge text-pizza-creme font-dm-sans font-bold text-[6px] uppercase tracking-wider">
-      Commander
-    </span>
+  <!-- Photo plein écran -->
+  <img
+    src="https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?w=600&q=75"
+    alt=""
+    class="absolute inset-0 w-full h-full object-cover scale-[1.02]"
+    loading="lazy"
+    decoding="async"
+  />
+
+  <!-- Overlay gradient + vignette latérale (lisibilité texte) -->
+  <div class="absolute inset-0" aria-hidden="true"
+       style="background:
+         linear-gradient(180deg, rgb(28 26 23 / 0.40) 0%, rgb(28 26 23 / 0) 30%, rgb(28 26 23 / 0) 50%, rgb(28 26 23 / 0.92) 100%),
+         linear-gradient(90deg, rgb(28 26 23 / 0.55) 0%, transparent 45%);">
   </div>
 
-  <!-- Hero -->
-  <div class="grid grid-cols-12 gap-2 px-3 pt-1 pb-2 h-[calc(100%-1.6rem)]">
-
-    <!-- LEFT : titre éditorial -->
-    <div class="col-span-7 flex flex-col justify-center">
-      <p class="font-dm-sans text-[6px] uppercase tracking-[0.22em] text-pizza-rouge mb-1 font-semibold">
-        ✦ Saint-Paul · 974
-      </p>
-      <p class="font-fraunces font-bold italic text-pizza-charbon leading-[0.95]" style="font-size: clamp(13px, 2.6vw, 22px);">
-        La trattoria<br/>
-        <span class="text-pizza-rouge">comme à Naples.</span>
-      </p>
-      <p class="mt-1.5 font-dm-sans italic text-pizza-charbon/65 text-[6.5px] leading-snug">
-        Pizzas au feu de bois, carte courte, ardoise du jour.
-      </p>
-      <div class="mt-2 flex items-center gap-1">
-        <span class="inline-flex items-center h-3 px-1.5 bg-pizza-charbon text-pizza-creme font-dm-sans font-bold text-[6px] uppercase tracking-wider">
-          Voir la carte
-        </span>
-        <span class="font-fraunces italic text-pizza-rouge text-[7px] underline underline-offset-2 decoration-pizza-dore/50">
-          Réserver
-        </span>
-      </div>
+  <!-- Mini top-bar transparente -->
+  <div class="relative flex items-center justify-between px-3 pt-2">
+    <span class="font-playfair font-bold italic text-pizza-creme text-[10px]">Pizza <span class="text-pizza-dore">Lé O</span></span>
+    <div class="flex items-center gap-1.5 text-[6px] uppercase tracking-wider text-pizza-creme/80 font-medium">
+      <span>Carte</span>
+      <span>Commander</span>
     </div>
+  </div>
 
-    <!-- RIGHT : photo pizza recadrée -->
-    <div class="col-span-5">
-      <div class="relative aspect-square bg-pizza-charbon overflow-hidden rounded-sm" style="transform: rotate(2deg);">
-        <img
-          src="https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?w=300&q=70"
-          alt=""
-          class="w-full h-full object-cover"
-          loading="lazy"
-          decoding="async"
-        />
-        <span class="absolute top-1 left-1 px-1 bg-pizza-creme/95 font-fraunces italic text-pizza-rouge text-[6px]">
-          Margherita
-        </span>
-      </div>
+  <!-- Contenu : aligné bas-gauche style éditorial -->
+  <div class="absolute left-3 right-3 bottom-2.5">
+    <p class="flex items-center gap-1.5 font-dm-sans font-semibold text-[5.5px] uppercase tracking-[0.25em] text-pizza-dore mb-1">
+      <span class="inline-block w-3 h-px bg-pizza-dore" aria-hidden="true"></span>
+      <span>Depuis 2014</span>
+    </p>
+    <p class="font-playfair font-bold text-pizza-creme leading-[0.92] tracking-tight" style="font-size: clamp(15px, 3.2vw, 26px);">
+      Pizza Lé O
+    </p>
+    <p class="mt-0.5 font-playfair italic font-medium text-pizza-dore leading-tight" style="font-size: clamp(8px, 1.6vw, 13px);">
+      La Réunion, à l'italienne.
+    </p>
+    <div class="mt-1.5 flex items-center gap-1.5">
+      <span class="inline-flex items-center h-3 px-2 bg-pizza-rouge text-pizza-creme font-dm-sans font-semibold text-[6px] uppercase tracking-wider rounded-full">
+        Voir la carte
+      </span>
+      <span class="inline-flex items-center h-3 px-2 ring-1 ring-pizza-creme/40 text-pizza-creme font-dm-sans font-semibold text-[6px] uppercase tracking-wider rounded-full">
+        Commander
+      </span>
     </div>
   </div>
 </div>
