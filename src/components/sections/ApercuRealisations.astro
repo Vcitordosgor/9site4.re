@@ -6,12 +6,18 @@ import realisations from '../../data/realisations.json';
 
 /**
  * Aperçu des réalisations — brief §7.5.
- * Sélection de 3 réalisations dans des catégories différentes pour donner un aperçu varié.
+ * Sélection de 3 réalisations dans des catégories très différentes pour
+ * illustrer la diversité de l'offre (HORECA / bien-être / tourisme).
  */
-const selection = ['restaurant-creole', 'spa-massage', 'gite-de-montagne'];
+const selection = ['restaurant-gastronomique', 'spa-massage', 'gite-de-montagne'];
 const cards = selection
   .map((slug) => realisations.find((r) => r.slug === slug))
   .filter((r): r is (typeof realisations)[number] => Boolean(r));
+
+if (cards.length !== selection.length) {
+  const missing = selection.filter((s) => !realisations.find((r) => r.slug === s));
+  throw new Error(`ApercuRealisations: slugs introuvables → ${missing.join(', ')}`);
+}
 ---
 
 <section class="relative overflow-hidden px-6 py-20 md:py-28 bg-bleu/[0.06]">
@@ -36,7 +42,7 @@ const cards = selection
       </div>
     </div>
 
-    <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
       {cards.map((r, i) => (
         <div class="scroll-reveal" style={`transition-delay: ${i * 80}ms`}>
           <RealisationCard realisation={r} />
