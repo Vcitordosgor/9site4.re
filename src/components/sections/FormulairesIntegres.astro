@@ -750,48 +750,79 @@ const etapes = [
               </div>
             </div>
 
-            <!-- Colonne 'Message reçu' : ce que le pro reçoit après envoi -->
-            <aside class="lg:col-span-2 lg:sticky lg:top-24" aria-label={`Message reçu pour ${m.label}`}>
+            <!-- Colonne conversation WhatsApp Business : 3 bulles (client, formulaire 9site4, pro) -->
+            <aside class="lg:col-span-2 lg:sticky lg:top-24" aria-label={`Aperçu conversation pour ${m.label}`}>
               <div
-                class="rounded-2xl ring-1 ring-blanc-casse/20 bg-blanc-casse/[0.04] p-5 md:p-6"
+                class="rounded-2xl bg-[#0E1A24] ring-1 ring-blanc-casse/15 overflow-hidden shadow-card-hover"
                 data-message-card
               >
-                <!-- Header carte -->
-                <div class="flex items-start gap-3 pb-4 border-b border-blanc-casse/10">
-                  <span class="flex w-9 h-9 rounded-full bg-orange/15 text-orange items-center justify-center shrink-0">
-                    <Icon name="mail" size={16} strokeWidth={2} />
+                <!-- Header WhatsApp Business -->
+                <header class="flex items-center gap-3 px-4 py-3 bg-[#075E54] text-blanc-casse">
+                  <span class="flex w-9 h-9 rounded-full bg-blanc-casse/20 items-center justify-center font-sora font-bold text-sm shrink-0" aria-hidden="true">
+                    {m.label.charAt(0)}
                   </span>
-                  <div class="min-w-0">
-                    <p class="font-roboto-mono text-[9px] uppercase tracking-[0.28em] text-orange">
-                      Reçu par e-mail / WhatsApp
-                    </p>
-                    <p class="mt-0.5 font-sora font-semibold text-blanc-casse text-sm leading-tight truncate">
-                      Nouveau contact — {m.label}
+                  <div class="flex-1 min-w-0">
+                    <p class="font-sora font-semibold text-sm leading-tight truncate">Vous · WhatsApp Business</p>
+                    <p class="text-[11px] text-blanc-casse/75 leading-tight flex items-center gap-1.5 mt-0.5">
+                      <span class="block w-1.5 h-1.5 rounded-full bg-[#25D366]"></span>
+                      en ligne
                     </p>
                   </div>
-                </div>
+                  <span class="flex items-center gap-3 text-blanc-casse/70" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="6" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="18" r="1.5"/></svg>
+                  </span>
+                </header>
 
-                <!-- Liste des champs -->
-                <dl class="mt-4 space-y-3">
-                  {m.fields.map((f) => (
-                    <div class="grid grid-cols-[7rem_1fr] gap-3 items-baseline">
-                      <dt class="text-[10px] uppercase tracking-wide text-blanc-casse/55 font-medium leading-tight">
-                        {f.label}
-                      </dt>
-                      <dd
-                        class="text-sm text-blanc-casse leading-snug"
-                        data-message-key={f.name}
-                      >
-                        {fieldDisplay(f)}
-                      </dd>
+                <!-- Convo body (fond bleu nuit léger pour évoquer WA) -->
+                <div class="px-3 py-4 space-y-2.5">
+
+                  <!-- Bulle 1 : message client (gauche) -->
+                  <div class="flex justify-start">
+                    <div class="max-w-[85%] rounded-2xl rounded-bl-sm bg-blanc-casse text-bleu-nuit px-3 py-2 shadow-sm">
+                      <p class="text-[13px] leading-snug">{m.clientIntro}</p>
+                      <p class="text-[10px] text-bleu-nuit/40 mt-1 text-right tabular-nums">10:24</p>
                     </div>
-                  ))}
-                </dl>
+                  </div>
 
-                <!-- Footer -->
-                <div class="mt-5 pt-4 border-t border-blanc-casse/10 flex items-center gap-2 text-xs text-blanc-casse/55">
-                  <Icon name="calendar-check" size={14} strokeWidth={2} class="text-orange/70 shrink-0" />
-                  <span>Reçu il y a quelques secondes — vous pouvez répondre.</span>
+                  <!-- Bulle 2 : notification 9site4 (centre, ring orange) -->
+                  <div class="flex justify-center">
+                    <div class="w-full rounded-xl bg-blanc-casse ring-1 ring-orange/40 px-3.5 py-3 shadow-sm">
+                      <p class="font-roboto-mono text-[9px] uppercase tracking-[0.22em] font-semibold text-orange flex items-center gap-1.5 mb-2">
+                        <Icon name="mail" size={11} strokeWidth={2.5} class="shrink-0" />
+                        9site4 · Nouveau formulaire
+                      </p>
+                      <p class="font-sora font-semibold text-bleu-nuit text-sm leading-snug">
+                        Nouvelle demande — {m.label}
+                      </p>
+                      <dl class="mt-2.5 space-y-1.5">
+                        {m.fields.map((f) => (
+                          <div class="grid grid-cols-[6rem_1fr] gap-2 items-baseline">
+                            <dt class="text-[9.5px] uppercase tracking-wide text-bleu-nuit/55 font-medium leading-tight">
+                              {f.label}
+                            </dt>
+                            <dd
+                              class="text-[12px] text-bleu-nuit leading-snug break-words"
+                              data-message-key={f.name}
+                            >
+                              {fieldDisplay(f)}
+                            </dd>
+                          </div>
+                        ))}
+                      </dl>
+                      <p class="text-[10px] text-bleu-nuit/40 mt-2.5 text-right tabular-nums">10:24 ✓✓</p>
+                    </div>
+                  </div>
+
+                  <!-- Bulle 3 : réponse pro (droite, vert WhatsApp) -->
+                  <div class="flex justify-end">
+                    <div class="max-w-[85%] rounded-2xl rounded-br-sm bg-[#DCF8C6] text-bleu-nuit px-3 py-2 shadow-sm">
+                      <p class="text-[13px] leading-snug">{m.proReply}</p>
+                      <p class="text-[10px] text-bleu-nuit/40 mt-1 text-right tabular-nums">
+                        10:25 <span class="text-[#34B7F1]">✓✓</span>
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </aside>
