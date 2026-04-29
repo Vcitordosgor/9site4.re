@@ -207,8 +207,8 @@ const schemaOrg = {
 
         var x = 0, y = 0, raf = 0;
         var update = function () {
-          // -2/-10 pour caler le coin haut-gauche de l'emoji sur le pixel cliqué
-          cursor.style.transform = 'translate(' + (x - 2) + 'px, ' + (y - 10) + 'px)';
+          // -4/-20 pour caler le coin haut-gauche de l'emoji 28px sur le pixel cliqué
+          cursor.style.transform = 'translate(' + (x - 4) + 'px, ' + (y - 20) + 'px)';
           raf = 0;
         };
         document.addEventListener('mousemove', function (e) {
