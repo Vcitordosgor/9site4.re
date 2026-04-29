@@ -26,12 +26,28 @@ import data from '../../../data/templates/vermeille.json';
   <div class="absolute top-0 bottom-0 left-6 md:left-10 w-px bg-gradient-to-b from-transparent via-vermeille-or/30 to-transparent" aria-hidden="true"></div>
   <div class="absolute top-0 bottom-0 right-6 md:right-10 w-px bg-gradient-to-b from-transparent via-vermeille-or/30 to-transparent" aria-hidden="true"></div>
 
+  <!-- Cachet 'Auditions ouvertes' style billet de spectacle, rotaté -6°.
+       z-20 pour passer sous les rideaux (z-30) puis se révéler à leur ouverture. -->
+  <div
+    class="absolute top-24 right-6 md:top-32 md:right-12 z-20 ticket-stamp"
+    aria-label="Auditions ouvertes — septembre 2025, entrée libre"
+    style="transform: rotate(-6deg);"
+  >
+    <div class="bg-vermeille-ivoire text-vermeille-bordeaux px-4 py-2.5 ring-2 ring-vermeille-or shadow-[0_8px_24px_rgba(26,15,18,0.45)]" style="clip-path: polygon(0 8px, 8px 0, calc(100% - 8px) 0, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0 calc(100% - 8px));">
+      <p class="font-inter-tight text-[8px] uppercase tracking-[0.32em] text-vermeille-bordeaux/70">Auditions</p>
+      <p class="font-italiana text-base md:text-lg leading-tight">Sept 2025</p>
+      <p class="font-inter-tight text-[8px] uppercase tracking-[0.28em] text-vermeille-or/85 mt-0.5">Entrée libre</p>
+    </div>
+  </div>
+
   <!-- Contenu hero -->
   <div class="relative max-w-content mx-auto px-10 md:px-16 pt-32 pb-20 md:pt-40 md:pb-24 min-h-[100svh] flex flex-col">
 
-    <!-- Saison en haut, micro -->
-    <p class="font-inter-tight text-[10px] uppercase tracking-[0.5em] text-vermeille-or text-center mb-12 md:mb-16">
-      Saison {data.info.saison}
+    <!-- Saison en haut, micro — avec numéro de volume romain (livret théâtre) -->
+    <p class="font-inter-tight text-[10px] uppercase tracking-[0.5em] text-vermeille-or text-center mb-12 md:mb-16 flex items-center justify-center gap-3 flex-wrap">
+      <span class="font-italiana text-base normal-case tracking-normal text-vermeille-or italic">Vol. XVII</span>
+      <span class="text-vermeille-or/30" aria-hidden="true">·</span>
+      <span>Saison {data.info.saison}</span>
     </p>
 
     <!-- Titre central très grand serif italienne -->
@@ -117,9 +133,19 @@ import data from '../../../data/templates/vermeille.json';
       from { transform: translateX(0); }
       to   { transform: translateX(101%); }
     }
+    /* Apparition douce du cachet 'Auditions' après l'ouverture des rideaux. */
+    .ticket-stamp {
+      opacity: 0;
+      animation: ticketStamp 0.6s 1.7s ease-out forwards;
+    }
+    @keyframes ticketStamp {
+      from { opacity: 0; transform: rotate(-12deg) scale(0.85); }
+      to   { opacity: 1; transform: rotate(-6deg) scale(1); }
+    }
     @media (prefers-reduced-motion: reduce) {
       #rideau-left  { transform: translateX(-101%); animation: none; }
       #rideau-right { transform: translateX(101%);  animation: none; }
+      .ticket-stamp { opacity: 1; animation: none; transform: rotate(-6deg); }
     }
   </style>
 </section>
