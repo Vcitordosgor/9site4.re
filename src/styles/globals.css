@@ -255,42 +255,60 @@
   }
 }
 
-/* Curseur custom : drapeau régional 'Volcan' de La Réunion (clin d'œil identité locale).
-   Activé uniquement sur pointeur fin (desktop avec souris) — jamais sur tactile.
-   Asset compact 14×14 (≈ taille emoji), hotspot (3, 3) en haut-gauche du drapeau. */
+/* Curseur custom : emoji 🇷🇪 (drapeau de La Réunion) — clin d'œil identité locale.
+   Le caractère emoji unicode n'est pas supportable directement par cursor: url(),
+   donc on cache le curseur natif et on affiche un span DOM qui suit la souris,
+   rendu avec la font emoji du système (Apple Color Emoji, Segoe UI Emoji…).
+   Activé uniquement après que le JS a posé la classe .js-emoji-cursor sur <body>
+   et uniquement sur pointeur fin (desktop souris) — jamais sur tactile/mobile. */
 @media (hover: hover) and (pointer: fine) {
-  body {
-    cursor: url('/cursors/reunion.svg') 3 3, auto;
-  }
-  /* Variante orange sur tout élément interactif — garde le fallback `pointer` natif. */
-  a,
-  button,
-  summary,
-  label,
-  select,
-  [role='button'],
-  [role='tab'],
-  [role='link'],
-  input[type='submit'],
-  input[type='reset'],
-  input[type='button'],
-  input[type='checkbox'],
-  input[type='radio'],
-  .cursor-pointer {
-    cursor: url('/cursors/reunion-active.svg') 3 3, pointer;
+  body.js-emoji-cursor,
+  body.js-emoji-cursor a,
+  body.js-emoji-cursor button,
+  body.js-emoji-cursor summary,
+  body.js-emoji-cursor label,
+  body.js-emoji-cursor select,
+  body.js-emoji-cursor [role='button'],
+  body.js-emoji-cursor [role='tab'],
+  body.js-emoji-cursor [role='link'],
+  body.js-emoji-cursor input[type='submit'],
+  body.js-emoji-cursor input[type='reset'],
+  body.js-emoji-cursor input[type='button'],
+  body.js-emoji-cursor input[type='checkbox'],
+  body.js-emoji-cursor input[type='radio'],
+  body.js-emoji-cursor .cursor-pointer {
+    cursor: none;
   }
   /* Champs de saisie texte : on garde le caret système, plus accessible. */
-  input[type='text'],
-  input[type='email'],
-  input[type='tel'],
-  input[type='url'],
-  input[type='search'],
-  input[type='password'],
-  input[type='number'],
-  input[type='date'],
-  input[type='time'],
-  textarea,
-  [contenteditable='true'] {
+  body.js-emoji-cursor input[type='text'],
+  body.js-emoji-cursor input[type='email'],
+  body.js-emoji-cursor input[type='tel'],
+  body.js-emoji-cursor input[type='url'],
+  body.js-emoji-cursor input[type='search'],
+  body.js-emoji-cursor input[type='password'],
+  body.js-emoji-cursor input[type='number'],
+  body.js-emoji-cursor input[type='date'],
+  body.js-emoji-cursor input[type='time'],
+  body.js-emoji-cursor textarea,
+  body.js-emoji-cursor [contenteditable='true'] {
     cursor: text;
   }
+}
+
+/* Le span emoji qui suit la souris. Position fixed + transform pour perfo GPU. */
+#emoji-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 99999;
+  font-size: 14px;
+  line-height: 1;
+  user-select: none;
+  will-change: transform;
+  transition: opacity 0.12s ease-out;
+  font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', 'Twemoji Mozilla', sans-serif;
+}
+@media (prefers-reduced-motion: reduce) {
+  #emoji-cursor { transition: none; }
 }

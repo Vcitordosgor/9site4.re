@@ -189,5 +189,46 @@ const schemaOrg = {
       // Re-boot après chaque navigation View Transitions
       document.addEventListener('astro:page-load', bootstrap);
     </script>
+
+    <!-- Curseur custom emoji 🇷🇪 (drapeau de La Réunion) — desktop souris uniquement.
+         Le caractère emoji n'étant pas supporté par cursor: url(), on superpose
+         un span DOM qui suit la souris et rend l'emoji via la font emoji du système. -->
+    <script is:inline>
+      (function () {
+        if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+        if (document.getElementById('emoji-cursor')) return; // idempotent (View Transitions)
+
+        var cursor = document.createElement('span');
+        cursor.id = 'emoji-cursor';
+        cursor.textContent = '🇷🇪'; // 🇷🇪
+        cursor.setAttribute('aria-hidden', 'true');
+        document.body.appendChild(cursor);
+        document.body.classList.add('js-emoji-cursor');
+
+        var x = 0, y = 0, raf = 0;
+        var update = function () {
+          // -2/-10 pour caler le coin haut-gauche de l'emoji sur le pixel cliqué
+          cursor.style.transform = 'translate(' + (x - 2) + 'px, ' + (y - 10) + 'px)';
+          raf = 0;
+        };
+        document.addEventListener('mousemove', function (e) {
+          x = e.clientX;
+          y = e.clientY;
+          if (!raf) raf = requestAnimationFrame(update);
+        }, { passive: true });
+
+        // Cache l'emoji quand la souris quitte la fenêtre (sinon il reste figé en bord)
+        document.addEventListener('mouseleave', function () { cursor.style.opacity = '0'; });
+        document.addEventListener('mouseenter', function () { cursor.style.opacity = '1'; });
+
+        // Cache l'emoji au-dessus des champs de saisie texte (caret natif visible)
+        var textSelector = 'input[type="text"], input[type="email"], input[type="tel"], input[type="number"], input[type="date"], input[type="time"], input[type="search"], input[type="url"], input[type="password"], textarea, [contenteditable="true"]';
+        document.addEventListener('mouseover', function (e) {
+          var t = e.target;
+          if (!(t instanceof Element)) return;
+          cursor.style.opacity = t.closest(textSelector) ? '0' : '1';
+        });
+      })();
+    </script>
   </body>
 </html>
