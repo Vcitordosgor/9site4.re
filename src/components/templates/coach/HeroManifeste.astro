@@ -90,4 +90,32 @@ import data from '../../../data/templates/foudre.json';
     </div>
 
   </div>
+
+  <!-- Bandeau 'Programme de la semaine' façon signage de salle de sport.
+       Touche WOD pro, monospace JetBrains, full-width. -->
+  <div class="mt-12 md:mt-16 -mx-5 md:-mx-8 px-5 md:px-10 py-4 md:py-5 border-t border-coach-lime/40 bg-coach-noir">
+    <div class="max-w-content mx-auto flex items-center gap-4 md:gap-6 overflow-x-auto">
+      <span class="flex items-center gap-2 shrink-0 font-jetbrains text-[10px] md:text-[11px] uppercase tracking-[0.22em] text-coach-lime">
+        <span class="block w-1.5 h-1.5 bg-coach-lime rounded-full" aria-hidden="true"></span>
+        Programme de la semaine
+      </span>
+      <ul class="flex items-center gap-x-5 md:gap-x-8 font-jetbrains text-[11px] md:text-[12px] text-coach-blanc/85 whitespace-nowrap">
+        {[
+          { jour: 'LUN', wod: 'squat 5×5' },
+          { jour: 'MAR', wod: 'hiit 30 min' },
+          { jour: 'MER', wod: 'repos' },
+          { jour: 'JEU', wod: 'push & pull' },
+          { jour: 'VEN', wod: 'cardio sprint' },
+          { jour: 'SAM', wod: 'mobilité' },
+          { jour: 'DIM', wod: 'off' },
+        ].map((d) => (
+          <li class="flex items-baseline gap-1.5">
+            <span class="text-coach-lime font-bold">{d.jour}</span>
+            <span class="text-coach-blanc/55">—</span>
+            <span class="lowercase">{d.wod}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
 </section>
