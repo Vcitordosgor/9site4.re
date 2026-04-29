@@ -1,0 +1,133 @@
+---
+/**
+ * HeroPlongee — photo full-bleed sous-marine + dashboard data type 'tableau de plongée'.
+ * Touche unique : pas de carrousel (excursions a déjà), pas de split (autres).
+ * Layout : photo immersive + overlay gradient + texte centré-gauche en bas
+ * + grille data dashboard (profondeur, vis, temp eau, saison baleines).
+ */
+import data from '../../../data/templates/bleulagon.json';
+
+const today = new Date();
+const month = today.getMonth(); // 0 = janvier
+const baleinesSaison = month >= 5 && month <= 9; // juin → octobre
+---
+
+<section id="top" class="relative min-h-dvh bg-plongee-abysse text-plongee-ecume overflow-hidden">
+
+  <!-- Photo plein écran sous-marine -->
+  <img
+    src={data.info.photoHero}
+    alt={data.info.photoHeroAlt}
+    class="absolute inset-0 w-full h-full object-cover"
+    fetchpriority="high"
+    decoding="async"
+  />
+
+  <!-- Overlay gradient profond : dégradé du clair au plus sombre vers le bas -->
+  <div class="absolute inset-0" aria-hidden="true"
+       style="background: linear-gradient(180deg, rgba(10,35,66,0.40) 0%, rgba(10,35,66,0.20) 30%, rgba(10,35,66,0.65) 70%, rgba(10,35,66,0.95) 100%);">
+  </div>
+
+  <!-- Caustiques ondulantes (texture de lumière sous-marine, SVG très subtil) -->
+  <svg class="absolute inset-0 w-full h-full opacity-[0.08] pointer-events-none mix-blend-screen" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <filter id="caustic" x="-50%" y="-50%" width="200%" height="200%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.01 0.02" numOctaves="2" seed="3"/>
+        <feColorMatrix values="0 0 0 0 0.25  0 0 0 0 0.66  0 0 0 0 0.84  0 0 0 1 0"/>
+      </filter>
+    </defs>
+    <rect width="800" height="600" filter="url(#caustic)"/>
+  </svg>
+
+  <!-- Mini-bandeau 'Conditions du jour' en haut, façon dashboard plongeur -->
+  <div class="relative z-10 px-6 md:px-10 pt-24 md:pt-28">
+    <div class="max-w-content mx-auto">
+      <div class="inline-flex flex-wrap items-center gap-x-4 gap-y-1.5 px-4 py-2 rounded-full bg-plongee-abysse/55 backdrop-blur-sm ring-1 ring-plongee-ecume/15">
+        <span class="flex items-center gap-1.5 font-jetbrains text-[10px] uppercase tracking-[0.22em] text-plongee-corail">
+          <span class="block w-1.5 h-1.5 rounded-full bg-plongee-corail" aria-hidden="true"></span>
+          Conditions du jour · Saint-Leu
+        </span>
+        <span class="font-jetbrains text-[11px] tabular-nums text-plongee-ecume/85">
+          Eau 25°C · Visi 22 m · Houle 0,4 m · UV 9
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenu hero principal en bas -->
+  <div class="relative z-10 px-6 md:px-10 pb-12 md:pb-16 absolute inset-x-0 bottom-0">
+    <div class="max-w-content mx-auto">
+
+      <!-- Eyebrow agrément + année -->
+      <p class="font-jetbrains text-[11px] uppercase tracking-[0.32em] text-plongee-lagon mb-5 flex items-center gap-2 flex-wrap">
+        <span aria-hidden="true">▼</span>
+        <span>{data.info.agrement}</span>
+        <span class="text-plongee-ecume/40" aria-hidden="true">·</span>
+        <span>Depuis {data.info.annee}</span>
+      </p>
+
+      <!-- Titre principal -->
+      <h1 class="font-space-grotesk font-bold text-plongee-ecume leading-[0.92] tracking-tight max-w-4xl" style="font-size: clamp(48px, 8vw, 128px);">
+        Voir le lagon
+        <span class="block italic font-light text-plongee-lagon">de l'intérieur.</span>
+      </h1>
+
+      <!-- Sous-titre court -->
+      <p class="mt-6 font-inter text-plongee-ecume/85 text-lg md:text-xl leading-relaxed max-w-2xl">
+        Centre de plongée FFESSM &amp; PADI à Saint-Leu, dans la plus belle réserve marine de l'île. Du baptême à la formation, en petit groupe.
+      </p>
+
+      <!-- CTAs -->
+      <div class="mt-10 flex flex-wrap items-center gap-4">
+        <a
+          href="#formules"
+          class="inline-flex items-center justify-center h-13 px-8 bg-plongee-corail text-plongee-ecume font-inter font-semibold text-base rounded-full hover:bg-plongee-ecume hover:text-plongee-abysse transition-colors duration-300"
+          style="height: 52px; box-shadow: 0 12px 32px rgba(255,122,92,0.35);"
+        >
+          Réserver mon baptême
+          <svg class="ml-2" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+            <path d="M5 12h14M14 5l7 7-7 7"/>
+          </svg>
+        </a>
+        <a
+          href="#formules"
+          class="font-inter font-semibold text-plongee-lagon hover:text-plongee-ecume text-base underline underline-offset-[6px] decoration-plongee-lagon/50 hover:decoration-plongee-ecume transition-colors"
+        >
+          Voir toutes les sorties
+        </a>
+      </div>
+
+      <!-- Dashboard 'tableau de plongée' : 4 stats avec data style instrument -->
+      <ul class="mt-12 md:mt-14 grid grid-cols-2 md:grid-cols-4 gap-px bg-plongee-ecume/10 rounded-2xl overflow-hidden ring-1 ring-plongee-ecume/15 backdrop-blur-sm max-w-3xl">
+        <li class="bg-plongee-abysse/65 px-5 py-4">
+          <p class="font-jetbrains text-[9px] uppercase tracking-[0.22em] text-plongee-lagon mb-1.5">Profondeur max enseignée</p>
+          <p class="font-space-grotesk font-bold text-plongee-ecume text-2xl md:text-3xl tabular-nums leading-none">32 m</p>
+        </li>
+        <li class="bg-plongee-abysse/65 px-5 py-4">
+          <p class="font-jetbrains text-[9px] uppercase tracking-[0.22em] text-plongee-lagon mb-1.5">Espèces observables</p>
+          <p class="font-space-grotesk font-bold text-plongee-ecume text-2xl md:text-3xl tabular-nums leading-none">350+</p>
+        </li>
+        <li class="bg-plongee-abysse/65 px-5 py-4">
+          <p class="font-jetbrains text-[9px] uppercase tracking-[0.22em] text-plongee-lagon mb-1.5">Plongeurs accompagnés</p>
+          <p class="font-space-grotesk font-bold text-plongee-ecume text-2xl md:text-3xl tabular-nums leading-none">1 800</p>
+        </li>
+        <li class="bg-plongee-abysse/65 px-5 py-4">
+          <p class="font-jetbrains text-[9px] uppercase tracking-[0.22em] text-plongee-lagon mb-1.5">Saison baleines</p>
+          <p class="font-space-grotesk font-bold leading-none flex items-baseline gap-1.5">
+            <span class={`text-2xl md:text-3xl ${baleinesSaison ? 'text-plongee-corail' : 'text-plongee-ecume/55'}`}>
+              {baleinesSaison ? 'EN COURS' : 'JUIN → OCT'}
+            </span>
+          </p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Indicateur de scroll en bas (style technique plongée) -->
+  <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1 text-plongee-ecume/55" aria-hidden="true">
+    <span class="font-jetbrains text-[9px] uppercase tracking-[0.32em]">Descendre</span>
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="animate-bounce" style="animation-duration: 2.5s">
+      <path d="M12 5v14M5 12l7 7 7-7"/>
+    </svg>
+  </div>
+</section>
