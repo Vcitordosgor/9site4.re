@@ -26,6 +26,16 @@ import data from '../../../data/templates/mona.json';
       <span class="text-mona-terracotta">✿</span>
     </p>
 
+    <!-- Sticker tampon : '1ère séance 20 min offerte' (style sceau magazine) -->
+    <div
+      class="absolute top-6 left-6 md:top-10 md:left-10 w-[88px] h-[88px] md:w-[112px] md:h-[112px] rounded-full bg-mona-terracotta text-mona-creme flex flex-col items-center justify-center text-center rotate-[-12deg] shadow-[0_8px_24px_rgba(170,80,50,0.45)] ring-2 ring-mona-creme/40"
+      aria-label="Première consultation de 20 minutes offerte"
+    >
+      <span class="font-reenie text-base md:text-lg leading-none">1ère séance</span>
+      <span class="font-newsreader italic text-xl md:text-2xl leading-none mt-1">20 min</span>
+      <span class="font-jakarta uppercase tracking-[0.18em] font-bold text-[8px] md:text-[9px] leading-none mt-1.5 text-mona-creme/85">offerte</span>
+    </div>
+
     <!-- Titre principal en bas à gauche -->
     <div class="absolute bottom-6 md:bottom-12 left-6 md:left-12 right-6 md:right-12 max-w-3xl">
       <p class="font-jakarta text-[10px] md:text-[11px] uppercase tracking-[0.32em] text-mona-creme/85 mb-3 md:mb-5">
@@ -48,6 +58,25 @@ import data from '../../../data/templates/mona.json';
       <p class="font-newsreader text-mona-cacao text-xl md:text-2xl leading-[1.55]">
         Je m'appelle <span class="italic text-mona-vert-fonce">Mona Levray</span>, je vous reçois au cabinet du Tampon ou en téléconsultation. <span class="text-mona-cacao/65">Aucun régime miracle, aucune privation absolue.</span> On part de votre quotidien, et on bouge un curseur à la fois.
       </p>
+
+      <!-- Mini-bandeau 'Au menu' : 3 chips façon carte du jour -->
+      <div class="mt-7">
+        <p class="font-reenie text-mona-terracotta text-xl md:text-2xl leading-none mb-3" aria-hidden="true">
+          au menu de la consultation —
+        </p>
+        <ul class="flex flex-wrap gap-2">
+          {[
+            'Bilan personnalisé',
+            'Plan sur-mesure',
+            'Suivi continu',
+          ].map((item) => (
+            <li class="inline-flex items-center gap-2 h-8 px-3.5 rounded-full bg-mona-creme ring-1 ring-mona-cacao/15 font-jakarta text-xs font-medium text-mona-cacao">
+              <span class="text-mona-terracotta" aria-hidden="true">✿</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
 
     <!-- CTA + tél compact -->
