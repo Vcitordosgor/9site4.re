@@ -257,10 +257,10 @@
 
 /* Curseur custom : drapeau régional 'Volcan' de La Réunion (clin d'œil identité locale).
    Activé uniquement sur pointeur fin (desktop avec souris) — jamais sur tactile.
-   Hotspot (4, 6) proche du coin haut-gauche pour tomber juste sur le pixel cliqué. */
+   Asset compact 14×14 (≈ taille emoji), hotspot (3, 3) en haut-gauche du drapeau. */
 @media (hover: hover) and (pointer: fine) {
   body {
-    cursor: url('/cursors/reunion.svg') 4 6, auto;
+    cursor: url('/cursors/reunion.svg') 3 3, auto;
   }
   /* Variante orange sur tout élément interactif — garde le fallback `pointer` natif. */
   a,
@@ -277,7 +277,7 @@
   input[type='checkbox'],
   input[type='radio'],
   .cursor-pointer {
-    cursor: url('/cursors/reunion-active.svg') 4 6, pointer;
+    cursor: url('/cursors/reunion-active.svg') 3 3, pointer;
   }
   /* Champs de saisie texte : on garde le caret système, plus accessible. */
   input[type='text'],
