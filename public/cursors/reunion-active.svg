@@ -1,12 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14">
-  <!-- État active (élément cliquable) — même drapeau, outline orange épaisse. -->
-  <rect x="0" y="0" width="14" height="14" rx="2" fill="#FFFFFF"/>
-  <rect x="0" y="0" width="14" height="3" fill="#0E1F52"/>
-  <rect x="0" y="3" width="14" height="3" fill="#1E4596"/>
-  <rect x="0" y="6" width="14" height="2" fill="#4D8AC9"/>
-  <path d="M0 14 L7 6 L14 14 Z" fill="#DC4A2A"/>
-  <line x1="7" y1="6" x2="3" y2="2"   stroke="#FCD34D" stroke-width="0.5" stroke-linecap="round"/>
-  <line x1="7" y1="6" x2="7" y2="0.5" stroke="#FCD34D" stroke-width="0.5" stroke-linecap="round"/>
-  <line x1="7" y1="6" x2="11" y2="2"  stroke="#FCD34D" stroke-width="0.5" stroke-linecap="round"/>
-  <rect x="0.5" y="0.5" width="13" height="13" rx="1.5" fill="none" stroke="#FF8F00" stroke-width="0.9"/>
+  <!-- État active (élément cliquable) — drapeau français + outline orange. -->
+  <rect x="0" y="2" width="14" height="10" rx="1.5" fill="#FFFFFF"/>
+  <path d="M0 3.5 A 1.5 1.5 0 0 1 1.5 2 H 4.67 V 12 H 1.5 A 1.5 1.5 0 0 1 0 10.5 Z" fill="#0055A4"/>
+  <path d="M9.33 2 H 12.5 A 1.5 1.5 0 0 1 14 3.5 V 10.5 A 1.5 1.5 0 0 1 12.5 12 H 9.33 Z" fill="#EF4135"/>
+  <rect x="0.5" y="2.5" width="13" height="9" rx="1" fill="none" stroke="#FF8F00" stroke-width="0.9"/>
 </svg>
