@@ -1,5 +1,14 @@
 ---
 import data from '../../../data/templates/boost.json';
+
+// Avatars graphiques (substitut aux portraits Unsplash stock recyclés sur
+// d'autres templates). Cycle de 4 couleurs route ⇄ jaune ⇄ feu ⇄ acier.
+const avatarVariants = [
+  'bg-boost-noir text-boost-jaune',
+  'bg-boost-jaune text-boost-noir',
+  'bg-boost-feu text-boost-route',
+  'bg-boost-acier text-boost-route',
+];
 ---
 
 <section id="moniteurs" class="bg-boost-route py-20 md:py-28 px-5 md:px-8 border-t-4 border-boost-jaune">
@@ -16,19 +25,28 @@ import data from '../../../data/templates/boost.json';
     </header>
 
     <ul class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-      {data.moniteurs.map((m) => (
+      {data.moniteurs.map((m, i) => (
         <li class="group">
           <article class="bg-boost-jaune/15 hover:bg-boost-jaune p-5 rounded-3xl transition-colors h-full flex flex-col">
 
-            <!-- Photo ronde -->
-            <div class="relative w-24 h-24 mx-auto mb-5 rounded-full overflow-hidden ring-4 ring-boost-noir">
-              <img
-                src={m.photo}
-                alt={`Portrait de ${m.prenom}`}
-                loading="lazy"
-                decoding="async"
-                class="w-full h-full object-cover"
-              />
+            <!-- Avatar graphique : cercle initiale + ring noir épais (rappel panneau routier) -->
+            <div
+              class:list={[
+                'relative w-24 h-24 mx-auto mb-5 rounded-full overflow-hidden ring-4 ring-boost-noir flex items-center justify-center',
+                avatarVariants[i % avatarVariants.length],
+              ]}
+              role="img"
+              aria-label={`Avatar de ${m.prenom}`}
+            >
+              <span
+                class="font-funnel-display font-black leading-none select-none"
+                style="font-size: 44px;"
+                aria-hidden="true"
+              >
+                {m.prenom.charAt(0)}
+              </span>
+              <!-- Mini-pastille feu en haut-droite (signal panneau) -->
+              <span class="absolute top-0 right-0 w-3 h-3 rounded-full bg-boost-feu ring-2 ring-boost-route" aria-hidden="true"></span>
             </div>
 
             <!-- Identité -->
