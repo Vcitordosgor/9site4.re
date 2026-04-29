@@ -268,5 +268,15 @@
     "slug": "patisserie-creole",
     "previewUrl": "/templates/patisserie",
     "thumbnail": "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=900&q=80"
+  },
+  {
+    "id": 28,
+    "nom": "Garage mécanique",
+    "categorie": "artisans",
+    "sousTitre": "Interventions chiffrées, devis 24h et bordereau atelier",
+    "moduleInclus": "Devis",
+    "slug": "garage-mecanique",
+    "previewUrl": "/templates/garage",
+    "thumbnail": "https://images.unsplash.com/photo-1486006920555-c77dcf18193c?w=900&q=80"
   }
 ]

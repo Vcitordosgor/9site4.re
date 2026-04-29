@@ -1,0 +1,53 @@
+---
+import data from '../../../data/templates/motorpiton.json';
+---
+
+<section id="equipe" class="bg-piton-asphalte text-piton-beton py-20 md:py-28">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-14 items-start">
+
+      <!-- Fondateur -->
+      <div class="md:col-span-7">
+        <p class="font-jetbrains text-[11px] uppercase tracking-[0.4em] text-piton-feu mb-4">▸ Le chef d'atelier</p>
+        <h2 class="font-bebas text-piton-blanc text-5xl md:text-6xl leading-[0.9] tracking-[0.02em]">
+          {data.fondateur.nom.toUpperCase()}
+        </h2>
+        <p class="font-inter-tight italic text-piton-feu text-2xl mt-2">{data.fondateur.titre}</p>
+
+        <p class="mt-6 font-inter-tight text-piton-beton/85 text-[15px] md:text-base leading-relaxed">
+          {data.fondateur.bio}
+        </p>
+
+        <blockquote class="mt-6 border-l-4 border-piton-feu pl-5 py-2 font-bebas text-piton-blanc text-2xl md:text-3xl tracking-[0.02em] leading-tight">
+          {data.fondateur.credo}
+        </blockquote>
+      </div>
+
+      <!-- Équipe carte -->
+      <div class="md:col-span-5">
+        <div class="bg-piton-acier border-2 border-piton-feu p-5 md:p-6">
+          <div class="flex items-center justify-between mb-5 pb-3 border-b-2 border-piton-feu">
+            <p class="font-bebas text-piton-feu text-xl tracking-[0.08em]">FICHE ÉQUIPE</p>
+            <p class="font-jetbrains text-[10px] uppercase tracking-wider text-piton-beton/65">N° EFF-04</p>
+          </div>
+
+          <ul class="space-y-3">
+            {data.equipe.map((m, i) => (
+              <li class="grid grid-cols-[36px_1fr_auto] gap-3 items-center pb-3 border-b border-piton-fonte/40 last:border-0 last:pb-0">
+                <div class="w-9 h-9 rounded-full bg-piton-feu text-piton-asphalte font-bebas text-base flex items-center justify-center tracking-tight">
+                  {String(i + 1).padStart(2, '0')}
+                </div>
+                <div class="min-w-0">
+                  <p class="font-bebas text-piton-blanc text-lg tracking-[0.04em] leading-none">{m.prenom}</p>
+                  <p class="font-jetbrains text-[10.5px] uppercase tracking-wider text-piton-beton/65 mt-1">{m.role} · {m.specialite}</p>
+                </div>
+                <p class="font-jetbrains text-[10.5px] tabular-nums text-piton-feu uppercase tracking-wider whitespace-nowrap">{m.anciennete}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

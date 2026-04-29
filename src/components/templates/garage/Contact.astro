@@ -1,0 +1,74 @@
+---
+import data from '../../../data/templates/motorpiton.json';
+const wa = `https://wa.me/${data.info.whatsapp}?text=${encodeURIComponent('Bonjour Mickaël, je voudrais un devis.')}`;
+---
+
+<section id="contact" class="bg-piton-asphalte text-piton-beton py-20 md:py-28">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
+
+      <div class="md:col-span-7">
+        <p class="font-jetbrains text-[11px] uppercase tracking-[0.4em] text-piton-feu mb-4">▸ Prendre rendez-vous</p>
+        <h2 class="font-bebas text-piton-blanc text-5xl md:text-7xl leading-[0.9] tracking-[0.02em]">
+          DEVIS GRATUIT<br/>
+          <span class="text-piton-feu">SOUS 24H.</span>
+        </h2>
+        <p class="mt-5 font-inter-tight text-piton-beton/80 text-[15px] leading-relaxed max-w-xl">
+          Décrivez le souci en 2 phrases (et le modèle de votre voiture). On revient avec un devis ferme. Si on doit voir la voiture, on prend rendez-vous sous 48h.
+        </p>
+
+        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <a href={`tel:${data.info.telephoneHref}`} class="group flex flex-col p-5 bg-piton-acier border-l-4 border-piton-feu hover:bg-piton-fonte/40 transition-colors">
+            <span class="font-jetbrains text-[10px] uppercase tracking-[0.2em] text-piton-feu">Téléphone</span>
+            <span class="mt-1 font-bebas text-piton-blanc text-2xl tracking-[0.04em] group-hover:text-piton-feu transition-colors">{data.info.telephone}</span>
+          </a>
+          <a href={`mailto:${data.info.email}`} class="group flex flex-col p-5 bg-piton-acier border-l-4 border-piton-feu hover:bg-piton-fonte/40 transition-colors">
+            <span class="font-jetbrains text-[10px] uppercase tracking-[0.2em] text-piton-feu">Email</span>
+            <span class="mt-1 font-bebas text-piton-blanc text-xl tracking-[0.04em] break-all group-hover:text-piton-feu transition-colors">{data.info.email}</span>
+          </a>
+        </div>
+
+        <div class="mt-5">
+          <a href={wa} target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 h-12 px-6 bg-piton-acide text-piton-asphalte font-bebas text-lg tracking-[0.06em] hover:opacity-90 transition-opacity">
+            ▸ WhatsApp · réponse atelier dans l'heure
+          </a>
+        </div>
+      </div>
+
+      <div class="md:col-span-5">
+        <div class="bg-piton-acier border-2 border-piton-feu p-6 md:p-7 h-full flex flex-col relative">
+
+          <!-- Header bordereau -->
+          <div class="flex items-center justify-between pb-3 mb-4 border-b-2 border-piton-feu">
+            <p class="font-bebas text-piton-feu text-xl tracking-[0.08em]">ADRESSE ATELIER</p>
+            <p class="font-jetbrains text-[10px] uppercase tracking-wider text-piton-beton/65">SIRET · {data.info.siret.slice(-5)}</p>
+          </div>
+
+          <p class="font-bebas text-piton-blanc text-2xl tracking-[0.04em] leading-tight">{data.info.adresseLigne1}</p>
+          <p class="font-bebas text-piton-blanc text-2xl tracking-[0.04em] leading-tight">{data.info.adresseLigne2}</p>
+
+          <div class="mt-5 pt-4 border-t border-piton-fonte/40 space-y-2 font-jetbrains text-[12.5px]">
+            <div class="flex justify-between gap-3">
+              <span class="text-[10px] uppercase tracking-wider text-piton-feu">Lundi → Vendredi</span>
+              <span class="text-piton-blanc">7h30 → 17h30</span>
+            </div>
+            <div class="flex justify-between gap-3">
+              <span class="text-[10px] uppercase tracking-wider text-piton-feu">Samedi</span>
+              <span class="text-piton-blanc">8h → 12h</span>
+            </div>
+            <div class="flex justify-between gap-3">
+              <span class="text-[10px] uppercase tracking-wider text-piton-feu">Dimanche</span>
+              <span class="text-piton-beton/60">Fermé</span>
+            </div>
+          </div>
+
+          <div class="mt-auto pt-6">
+            <p class="font-jetbrains text-[10px] uppercase tracking-[0.18em] text-piton-feu mb-2">Voiture de courtoisie</p>
+            <p class="font-bebas text-piton-blanc text-xl tracking-[0.04em] leading-tight">2 véhicules de prêt — gratuits, sur RDV</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

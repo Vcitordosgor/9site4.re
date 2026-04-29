@@ -1,0 +1,35 @@
+---
+import data from '../../../data/templates/motorpiton.json';
+---
+
+<section id="engagements" class="bg-piton-beton text-piton-asphalte py-20 md:py-28 relative overflow-hidden">
+  <!-- Caution tape top -->
+  <div class="absolute top-0 inset-x-0 h-2" aria-hidden="true"
+       style="background: repeating-linear-gradient(45deg, #FF5A1F 0 14px, #0F1014 14px 28px);"></div>
+
+  <div class="max-w-content mx-auto px-6 md:px-10">
+
+    <div class="max-w-2xl mb-12 md:mb-16">
+      <p class="font-jetbrains text-[11px] uppercase tracking-[0.4em] text-piton-feu mb-4">▸ Nos engagements</p>
+      <h2 class="font-bebas text-piton-asphalte text-5xl md:text-7xl leading-[0.9] tracking-[0.02em]">
+        QUATRE RÈGLES<br/>
+        <span class="text-piton-feu">NON NÉGOCIABLES.</span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+      {data.engagements.map((e) => (
+        <article class="bg-piton-asphalte text-piton-beton border-l-4 border-piton-feu p-6 md:p-7 relative">
+          <span class="font-bebas text-piton-feu text-6xl md:text-7xl leading-none tracking-tight absolute top-4 right-5 opacity-30">
+            {e.code}
+          </span>
+          <p class="font-jetbrains text-[10px] uppercase tracking-[0.25em] text-piton-feu mb-2">RÈGLE {e.code}</p>
+          <h3 class="font-bebas text-piton-blanc text-2xl md:text-[28px] leading-tight tracking-[0.04em]">
+            {e.titre}
+          </h3>
+          <p class="mt-3 font-inter-tight text-piton-beton/85 text-[14.5px] leading-relaxed">{e.texte}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

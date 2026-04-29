@@ -1,0 +1,64 @@
+---
+/**
+ * Mini-preview Atelier Motorpiton — fidèle au hero fiche d'intervention :
+ * fond asphalte + wordmark MOTOR.PITON Bebas + bordereau ORDRE DE
+ * RÉPARATION + caution tape orange/noir.
+ */
+---
+
+<div class="absolute inset-0 bg-piton-asphalte text-piton-beton font-inter-tight overflow-hidden">
+
+  <!-- Caution tape top -->
+  <div class="absolute top-0 inset-x-0 h-1 bg-piton-feu" aria-hidden="true"></div>
+
+  <div class="grid grid-cols-7 h-full p-2 gap-1.5">
+
+    <!-- Wordmark gauche -->
+    <div class="col-span-4 flex flex-col justify-center">
+      <p class="font-jetbrains uppercase text-piton-feu" style="font-size:4px;letter-spacing:0.3em;">▸ Garage · Le Tampon</p>
+      <h1 class="font-bebas leading-[0.85] tracking-[0.02em] mt-1">
+        <span class="block text-piton-blanc" style="font-size: clamp(13px, 2.7vw, 22px);">MOTOR<span class="text-piton-feu">.</span></span>
+        <span class="block text-piton-feu -mt-0.5" style="font-size: clamp(13px, 2.7vw, 22px);">PITON</span>
+      </h1>
+      <p class="mt-1 font-inter-tight text-piton-blanc leading-tight" style="font-size: 5.5px;">
+        Mécanique honnête,<br/>devis sans détour.
+      </p>
+      <span class="mt-1.5 inline-flex w-fit bg-piton-feu text-piton-asphalte font-bebas tracking-[0.06em] px-1 py-0.5" style="font-size: 5px;">DEVIS ▸</span>
+    </div>
+
+    <!-- Bordereau droite -->
+    <div class="col-span-3 bg-piton-beton text-piton-asphalte border border-piton-feu flex flex-col">
+      <div class="bg-piton-asphalte text-piton-feu px-1 py-0.5 border-b border-piton-feu flex items-center justify-between">
+        <span class="font-bebas tracking-wider" style="font-size:4.5px;">ORDRE RÉPARATION</span>
+        <span class="font-jetbrains text-piton-beton/70" style="font-size:3.5px;">N°142</span>
+      </div>
+      <div class="p-1 flex-1 space-y-0.5 font-jetbrains" style="font-size: 3.5px;">
+        <div class="flex justify-between"><span class="text-piton-fonte">DATE</span><span>29.04.26</span></div>
+        <div class="flex justify-between"><span class="text-piton-fonte">STATUT</span><span class="text-piton-feu">▸ ACTIF</span></div>
+        <div class="grid grid-cols-2 gap-px mt-1">
+          <div class="bg-piton-asphalte text-piton-beton p-0.5 text-center">
+            <p class="text-piton-feu" style="font-size:2.5px;">INTERV/AN</p>
+            <p class="font-bebas text-piton-blanc leading-none" style="font-size:6px;">1900</p>
+          </div>
+          <div class="bg-piton-asphalte text-piton-beton p-0.5 text-center">
+            <p class="text-piton-feu" style="font-size:2.5px;">GOOGLE</p>
+            <p class="font-bebas text-piton-acide leading-none" style="font-size:6px;">4.9/5</p>
+          </div>
+        </div>
+        <!-- Mini code-barre -->
+        <div class="flex items-end gap-px mt-1 h-2">
+          {Array.from({length: 12}).map((_,i)=>(
+            <span class="block bg-piton-asphalte" style={`width:1px;height:${[3,5,7,4,6,2][i%6]}px;`}></span>
+          ))}
+        </div>
+      </div>
+      <div class="bg-piton-feu text-piton-asphalte text-center font-jetbrains py-0.5 font-bold tracking-widest" style="font-size:3.5px;">
+        ▸ GARANTIE 12 MOIS ▸
+      </div>
+    </div>
+  </div>
+
+  <!-- Caution tape bottom -->
+  <div class="absolute bottom-0 inset-x-0 h-1.5" aria-hidden="true"
+       style="background: repeating-linear-gradient(45deg, #FF5A1F 0 5px, #0F1014 5px 10px);"></div>
+</div>

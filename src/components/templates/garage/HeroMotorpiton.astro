@@ -1,0 +1,175 @@
+---
+/**
+ * HeroMotorpiton — fiche d'intervention atelier signature.
+ * Encadré bordereau type "Ordre de Réparation" : entête, n°, code-barre,
+ * signature mécanicien. Wordmark stencil + photo atelier en bandeau.
+ */
+import data from '../../../data/templates/motorpiton.json';
+
+const today = new Date().toLocaleDateString('fr-FR', { day:'2-digit', month:'2-digit', year:'numeric' });
+const orderNum = `OR-${new Date().getFullYear()}-${String(Math.floor(Math.random()*900)+100)}`;
+---
+
+<section id="top" class="relative bg-piton-asphalte text-piton-beton overflow-hidden">
+
+  <!-- Photo atelier en fond -->
+  <div class="absolute inset-0 opacity-20" aria-hidden="true">
+    <img
+      src={data.info.photoHero}
+      alt=""
+      class="w-full h-full object-cover"
+      loading="eager"
+      fetchpriority="high"
+    />
+    <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(15,16,20,0.85) 0%, rgba(15,16,20,0.95) 100%);"></div>
+  </div>
+
+  <!-- Hatching diagonale (caution tape style) -->
+  <div class="absolute top-0 inset-x-0 h-1 bg-piton-feu" aria-hidden="true"></div>
+
+  <div class="max-w-content mx-auto px-6 md:px-10 pt-12 md:pt-16 pb-16 md:pb-24 relative">
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+
+      <!-- Côté gauche : wordmark stencil + tagline -->
+      <div class="lg:col-span-7">
+        <p class="font-jetbrains text-[11px] uppercase tracking-[0.4em] text-piton-feu mb-5">
+          ▸ Garage mécanique · {data.info.ville}
+        </p>
+
+        <!-- Wordmark XXL stencil -->
+        <h1 class="font-bebas leading-[0.85] tracking-[0.02em]">
+          <span class="block text-piton-blanc text-[68px] sm:text-[92px] md:text-[120px] lg:text-[150px]">
+            MOTOR<span class="text-piton-feu">.</span>
+          </span>
+          <span class="block text-piton-feu text-[68px] sm:text-[92px] md:text-[120px] lg:text-[150px] -mt-2 md:-mt-4">
+            PITON
+          </span>
+        </h1>
+
+        <!-- Tagline -->
+        <p class="mt-6 md:mt-8 font-inter-tight font-medium text-piton-blanc text-2xl md:text-3xl leading-tight max-w-xl">
+          {data.info.tagline}
+        </p>
+        <p class="mt-4 font-inter-tight text-piton-beton/80 text-[15px] md:text-base leading-relaxed max-w-xl">
+          {data.promesse}
+        </p>
+
+        <!-- CTAs -->
+        <div class="mt-8 flex flex-col sm:flex-row gap-3">
+          <a
+            href="#interventions"
+            class="inline-flex items-center justify-center h-12 px-7 bg-piton-feu text-piton-asphalte font-bebas text-lg tracking-[0.06em] hover:bg-piton-feu-fonce transition-colors"
+          >
+            Voir nos interventions ▸
+          </a>
+          <a
+            href={`tel:${data.info.telephoneHref}`}
+            class="inline-flex items-center justify-center h-12 px-7 bg-transparent text-piton-blanc border-2 border-piton-blanc font-bebas text-lg tracking-[0.06em] hover:bg-piton-blanc hover:text-piton-asphalte transition-colors"
+          >
+            {data.info.telephone}
+          </a>
+        </div>
+      </div>
+
+      <!-- Côté droit : FICHE BORDEREAU signature -->
+      <div class="lg:col-span-5">
+        <div class="bg-piton-beton text-piton-asphalte border-[3px] border-piton-feu shadow-2xl">
+
+          <!-- Entête bordereau -->
+          <div class="bg-piton-asphalte text-piton-beton px-5 py-3 border-b-2 border-piton-feu flex items-center justify-between">
+            <span class="font-bebas text-xl tracking-[0.08em] text-piton-feu">ORDRE DE RÉPARATION</span>
+            <span class="font-jetbrains text-[10px] uppercase tracking-wider text-piton-beton/70">N° {orderNum}</span>
+          </div>
+
+          <!-- Lignes data -->
+          <div class="p-5 space-y-3 font-jetbrains text-[12px] tabular-nums">
+
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <p class="text-[9px] uppercase tracking-[0.18em] text-piton-fonte mb-0.5">Date</p>
+                <p class="font-semibold text-piton-asphalte">{today}</p>
+              </div>
+              <div>
+                <p class="text-[9px] uppercase tracking-[0.18em] text-piton-fonte mb-0.5">Atelier</p>
+                <p class="font-semibold text-piton-asphalte">{data.info.ville}</p>
+              </div>
+            </div>
+
+            <div class="border-t border-piton-fonte/30 pt-3">
+              <p class="text-[9px] uppercase tracking-[0.18em] text-piton-fonte mb-1.5">Statut atelier</p>
+              <div class="flex items-center gap-2">
+                <span class="block w-2 h-2 rounded-full bg-piton-acide animate-pulse"></span>
+                <span class="font-bebas text-piton-asphalte text-base tracking-[0.06em]">EN ACTIVITÉ — 7H30 → 17H30</span>
+              </div>
+            </div>
+
+            <!-- Stats compteur -->
+            <ul class="grid grid-cols-2 gap-2 pt-2">
+              <li class="bg-piton-asphalte text-piton-beton p-2.5">
+                <p class="text-[8.5px] uppercase tracking-[0.18em] text-piton-feu">Interventions/an</p>
+                <p class="font-bebas text-2xl text-piton-blanc leading-none mt-1">{data.infosCles.interventionsParAn}</p>
+              </li>
+              <li class="bg-piton-asphalte text-piton-beton p-2.5">
+                <p class="text-[8.5px] uppercase tracking-[0.18em] text-piton-feu">Note Google</p>
+                <p class="font-bebas text-2xl text-piton-acide leading-none mt-1">{data.infosCles.satisfactionGoogle} <span class="text-[10px] text-piton-beton/70">/5 · {data.infosCles.avisGoogle} avis</span></p>
+              </li>
+              <li class="bg-piton-asphalte text-piton-beton p-2.5">
+                <p class="text-[8.5px] uppercase tracking-[0.18em] text-piton-feu">Mécaniciens</p>
+                <p class="font-bebas text-2xl text-piton-blanc leading-none mt-1">04 <span class="text-[10px] text-piton-beton/70">spécialistes</span></p>
+              </li>
+              <li class="bg-piton-asphalte text-piton-beton p-2.5">
+                <p class="text-[8.5px] uppercase tracking-[0.18em] text-piton-feu">Garantie</p>
+                <p class="font-bebas text-2xl text-piton-blanc leading-none mt-1">12 <span class="text-[10px] text-piton-beton/70">mois P+MO</span></p>
+              </li>
+            </ul>
+
+            <!-- Code-barre fake -->
+            <div class="pt-3 border-t border-piton-fonte/30">
+              <div class="flex items-end gap-px h-9">
+                {Array.from({ length: 38 }).map((_, i) => (
+                  <span
+                    class="block bg-piton-asphalte"
+                    style={`width: ${(i % 3 === 0 ? 2 : 1)}px; height: ${[18, 28, 36, 22, 32, 14][i % 6]}px;`}
+                  ></span>
+                ))}
+              </div>
+              <p class="font-jetbrains text-[9.5px] tracking-[0.15em] text-piton-fonte mt-1">{orderNum} · MOTORPITON · {data.info.ville.toUpperCase()}</p>
+            </div>
+
+            <!-- Signature -->
+            <div class="grid grid-cols-2 gap-3 pt-3 border-t border-piton-fonte/30">
+              <div>
+                <p class="text-[9px] uppercase tracking-[0.18em] text-piton-fonte mb-1">Chef d'atelier</p>
+                <p class="font-italianno text-piton-feu text-2xl leading-none">M. Hoarau</p>
+              </div>
+              <div class="text-right">
+                <p class="text-[9px] uppercase tracking-[0.18em] text-piton-fonte mb-1">Cachet</p>
+                <span class="inline-block px-2.5 py-1 border-2 border-piton-feu/80 text-piton-feu font-bebas text-[11px] tracking-[0.15em] -rotate-3">DEPUIS {data.info.annee}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bandeau bas (caution tape) -->
+          <div class="bg-piton-feu text-piton-asphalte font-jetbrains text-[10px] uppercase tracking-[0.25em] py-1.5 text-center font-bold">
+            ▸ DEVIS GRATUIT · GARANTIE 12 MOIS · ▸
+          </div>
+        </div>
+
+        <!-- Mention agréments -->
+        <ul class="mt-4 space-y-1.5">
+          {data.info.agreements.map((a) => (
+            <li class="flex items-center gap-2 font-jetbrains text-[11px] uppercase tracking-[0.12em] text-piton-beton/70">
+              <span class="text-piton-acide">✓</span>
+              <span>{a}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bandeau caution tape bas -->
+  <div class="absolute bottom-0 inset-x-0 h-2" aria-hidden="true"
+       style="background: repeating-linear-gradient(45deg, #FF5A1F 0 14px, #0F1014 14px 28px);"></div>
+</section>

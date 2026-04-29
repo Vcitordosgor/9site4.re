@@ -1,0 +1,43 @@
+---
+import '@fontsource/bebas-neue/400.css';
+import '@fontsource/inter-tight/400.css';
+import '@fontsource/inter-tight/500.css';
+import '@fontsource/inter-tight/600.css';
+import '@fontsource/inter-tight/400-italic.css';
+import '@fontsource/jetbrains-mono/400.css';
+import '@fontsource/jetbrains-mono/500.css';
+import '@fontsource/italianno/400.css';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getSeo } from '../../lib/seo';
+import data from '../../data/templates/motorpiton.json';
+
+import MotorpitonHeader from '../../components/templates/garage/MotorpitonHeader.astro';
+import HeroMotorpiton from '../../components/templates/garage/HeroMotorpiton.astro';
+import Interventions from '../../components/templates/garage/Interventions.astro';
+import Equipe from '../../components/templates/garage/Equipe.astro';
+import Engagements from '../../components/templates/garage/Engagements.astro';
+import Avis from '../../components/templates/garage/Avis.astro';
+import Contact from '../../components/templates/garage/Contact.astro';
+import MotorpitonFooter from '../../components/templates/garage/MotorpitonFooter.astro';
+---
+
+<BaseLayout seo={getSeo('templateGarage')} bare={true}>
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <link rel="preload" as="image" href={data.info.photoHero} fetchpriority="high" />
+  </Fragment>
+
+  <MotorpitonHeader />
+
+  <main class="bg-piton-asphalte text-piton-beton font-inter-tight">
+    <HeroMotorpiton />
+    <Interventions />
+    <Equipe />
+    <Engagements />
+    <Avis />
+    <Contact />
+  </main>
+
+  <MotorpitonFooter />
+</BaseLayout>

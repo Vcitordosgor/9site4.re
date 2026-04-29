@@ -1,0 +1,46 @@
+---
+import data from '../../../data/templates/motorpiton.json';
+---
+
+<section class="bg-piton-acier text-piton-beton py-20 md:py-28">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 md:mb-16">
+      <div class="max-w-xl">
+        <p class="font-jetbrains text-[11px] uppercase tracking-[0.4em] text-piton-feu mb-4">▸ Témoignages clients</p>
+        <h2 class="font-bebas text-piton-blanc text-5xl md:text-6xl leading-[0.9] tracking-[0.02em]">
+          ILS SONT REVENUS,<br/>
+          <span class="text-piton-feu">ILS EN PARLENT.</span>
+        </h2>
+      </div>
+      <div class="flex gap-6 font-jetbrains tabular-nums">
+        <div>
+          <p class="font-bebas text-piton-acide text-5xl leading-none">{data.infosCles.satisfactionGoogle}<span class="text-2xl text-piton-beton/60">/5</span></p>
+          <p class="text-[10px] uppercase tracking-[0.18em] text-piton-beton/65 mt-1">Google · {data.infosCles.avisGoogle} avis</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
+      {data.avis.map((a) => (
+        <article class="bg-piton-asphalte border border-piton-fonte/60 p-6 flex flex-col">
+          <div class="flex items-center justify-between mb-4 pb-3 border-b border-piton-fonte/40">
+            <div class="flex gap-0.5 text-piton-feu" aria-label={`${a.etoiles} étoiles`}>
+              {Array.from({ length: a.etoiles }).map(() => <span>★</span>)}
+            </div>
+            <span class="font-jetbrains text-[10px] uppercase tracking-wider text-piton-beton/55">{a.vehicule}</span>
+          </div>
+
+          <blockquote class="flex-1 font-inter-tight text-piton-beton text-[14.5px] leading-relaxed italic">
+            « {a.texte} »
+          </blockquote>
+
+          <div class="mt-5 pt-3 border-t border-piton-fonte/40">
+            <p class="font-bebas text-piton-blanc text-lg tracking-[0.05em] leading-none">{a.prenom}</p>
+            <p class="font-jetbrains text-[10.5px] uppercase tracking-wider text-piton-feu mt-1">{a.ville}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

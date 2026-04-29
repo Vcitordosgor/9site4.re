@@ -55,7 +55,8 @@ type PageKey =
   | 'templateAideDomicile'
   | 'templatePlongee'
   | 'templateWedding'
-  | 'templatePatisserie';
+  | 'templatePatisserie'
+  | 'templateGarage';
 
 const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'> & { noindex?: boolean; ogImage?: string; ogImageAlt?: string }> = {
   home: {
@@ -286,6 +287,13 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
     description:
       'Aperçu du template "Pâtisserie créole" proposé par 9site4 : carte du jour, calendrier des fruits de saison, commandes spéciales, mariages et événements. Site fictif de démonstration.',
     canonical: '/templates/patisserie',
+    noindex: true,
+  },
+  templateGarage: {
+    title: 'Atelier Motorpiton — Garage mécanique au Tampon (Réunion) | Template 9site4',
+    description:
+      'Aperçu du template "Garage mécanique" proposé par 9site4 : interventions chiffrées, fiche bordereau atelier, équipe, engagements, devis 24h. Site fictif de démonstration.',
+    canonical: '/templates/garage',
     noindex: true,
   },
 };
