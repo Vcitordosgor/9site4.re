@@ -87,6 +87,30 @@ import data from '../../../data/templates/sentiers.json';
       </a>
     </div>
 
+    <!-- Bulletin 'Conditions du jour' façon guide rando pro -->
+    <div class="mt-10 inline-flex flex-wrap items-center gap-x-4 gap-y-2 px-4 py-2.5 rounded-full bg-sentiers-foret/45 backdrop-blur-sm ring-1 ring-sentiers-brume/15 max-w-full">
+      <span class="flex items-center gap-1.5 shrink-0 font-roboto-mono text-[10px] uppercase tracking-[0.22em] text-sentiers-soleil">
+        <span class="block w-1.5 h-1.5 rounded-full bg-sentiers-soleil sentiers-pulse" aria-hidden="true"></span>
+        Conditions Maïdo
+      </span>
+      <span class="flex items-center gap-1.5 font-roboto-mono text-[11px] text-sentiers-brume/85 tabular-nums">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-sentiers-brume/65" aria-hidden="true"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>
+        6°C
+      </span>
+      <span class="flex items-center gap-1.5 font-roboto-mono text-[11px] text-sentiers-brume/85 tabular-nums">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-sentiers-brume/65" aria-hidden="true"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/></svg>
+        NE 25 km/h
+      </span>
+      <span class="flex items-center gap-1.5 font-roboto-mono text-[11px] text-sentiers-brume/85">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-sentiers-brume/65" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        ciel dégagé
+      </span>
+      <span class="flex items-center gap-1.5 font-roboto-mono text-[11px] text-sentiers-brume/85 tabular-nums">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-sentiers-brume/65" aria-hidden="true"><path d="M17 18a5 5 0 0 0-10 0M12 9V2M4.22 10.22l1.42 1.42M1 18h2M21 18h2M18.36 11.64l1.42-1.42M23 22H1"/></svg>
+        lever 5h47
+      </span>
+    </div>
+
     <!-- Indicateurs de slide -->
     <div class="mt-16 flex items-center gap-3">
       {data.carrousel.map((_, i) => (
@@ -102,6 +126,18 @@ import data from '../../../data/templates/sentiers.json';
       ))}
     </div>
   </div>
+
+  <style>
+    /* Pulse subtil de la pastille 'live' du bulletin de conditions */
+    .sentiers-pulse { animation: sentiers-pulse 2.4s ease-in-out infinite; }
+    @keyframes sentiers-pulse {
+      0%, 100% { opacity: 0.45; transform: scale(1); }
+      50%      { opacity: 1;    transform: scale(1.4); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .sentiers-pulse { animation: none; }
+    }
+  </style>
 
   <script>
     const slides = document.querySelectorAll<HTMLElement>('[data-slide]');
