@@ -1,9 +1,18 @@
 ---
 /**
  * Associes — trombinoscope institutionnel des 4 associés.
- * Photos B&W carrées avec étiquette OEC, format formel.
+ * Avatars graphiques (initiales serif + pattern lignes verticales)
+ * en lieu et place de portraits photo, pour assumer le côté
+ * 'exemple de site fictionnel' et éviter l'impression IA fake.
  */
 import data from '../../../data/templates/auberval.json';
+
+const avatarVariants = [
+  'bg-auberval-marine text-auberval-feutre',
+  'bg-auberval-or text-auberval-marine',
+  'bg-auberval-encre text-auberval-feutre',
+  'bg-auberval-feutre text-auberval-marine ring-1 ring-inset ring-auberval-marine/35',
+];
 ---
 
 <section id="associes" class="bg-auberval-blanc py-24 md:py-32 px-6 md:px-10">
@@ -23,15 +32,31 @@ import data from '../../../data/templates/auberval.json';
       {data.associes.map((a, i) => (
         <li>
           <article class="h-full">
-            <!-- Photo carrée B&W -->
-            <div class="relative aspect-square overflow-hidden bg-auberval-gris mb-5">
-              <img
-                src={a.photo}
-                alt={`Portrait de ${a.prenom} ${a.nom}`}
-                loading="lazy"
-                decoding="async"
-                class="w-full h-full object-cover grayscale"
-              />
+            <!-- Avatar graphique : initiales serif + pattern lignes verticales -->
+            <div
+              class:list={[
+                'relative aspect-square overflow-hidden mb-5 flex items-center justify-center',
+                avatarVariants[i % avatarVariants.length],
+              ]}
+              role="img"
+              aria-label={`Avatar de ${a.prenom} ${a.nom}`}
+            >
+              <!-- Pattern lignes verticales (rappel rapport annuel) -->
+              <div
+                class="absolute inset-0 opacity-[0.10] pointer-events-none"
+                aria-hidden="true"
+                style="background-image: repeating-linear-gradient(90deg, transparent 0, transparent 22px, currentColor 22px, currentColor 23px);"
+              ></div>
+              <!-- Filet doré horizontal en haut -->
+              <div class="absolute top-0 inset-x-0 h-px bg-auberval-or/60" aria-hidden="true"></div>
+              <!-- Initiales -->
+              <span
+                class="relative font-source-serif font-light leading-none tabular-nums select-none"
+                style="font-size: clamp(80px, 14vw, 144px);"
+                aria-hidden="true"
+              >
+                {a.prenom.charAt(0)}{a.nom.charAt(0)}
+              </span>
               <!-- Étiquette OEC -->
               <span class="absolute bottom-3 left-3 inline-block bg-auberval-marine text-auberval-feutre font-dm-mono text-[10px] uppercase tracking-[0.18em] px-2.5 py-1.5">
                 ✦ {a.memberOEC}
