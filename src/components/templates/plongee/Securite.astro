@@ -1,0 +1,59 @@
+---
+/**
+ * Securite — 4 engagements en grid 2x2.
+ * Pas de bullet generic : chaque engagement a un picto SVG inline + titre + texte.
+ */
+import data from '../../../data/templates/bleulagon.json';
+
+const pictos: Record<number, { paths: string[]; }> = {
+  0: {
+    // Outil / clé pour 'Matériel pro révisé'
+    paths: ['M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z'],
+  },
+  1: {
+    // Petits groupes (3 pers)
+    paths: ['M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2', 'M8.5 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z', 'M22 21v-2a4 4 0 0 0-3-3.87', 'M16 3.13a4 4 0 0 1 0 7.75'],
+  },
+  2: {
+    // Cœur main (sans pression / bienveillance)
+    paths: ['M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z'],
+  },
+  3: {
+    // Feuille / corail (Réserve Marine)
+    paths: ['M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z', 'M2 21c0-3 1.85-5.36 5.08-6'],
+  },
+};
+---
+
+<section id="securite" class="bg-plongee-ecume py-24 md:py-36 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="mb-14 md:mb-16 max-w-3xl">
+      <p class="font-jetbrains text-[10px] uppercase tracking-[0.32em] text-plongee-corail font-medium mb-5">
+        ▼ Pourquoi nous · 4 engagements
+      </p>
+      <h2 class="font-space-grotesk font-bold text-plongee-abysse leading-[1.0]" style="font-size: clamp(40px, 6vw, 72px);">
+        On plonge sérieusement,
+        <span class="block italic font-light text-plongee-lagon">jamais bêtement.</span>
+      </h2>
+    </header>
+
+    <ul class="grid sm:grid-cols-2 gap-5 md:gap-6">
+      {data.securite.map((s, i) => (
+        <li class="bg-plongee-abysse text-plongee-ecume rounded-2xl p-7 md:p-8 ring-1 ring-plongee-marine/40 hover:ring-plongee-lagon transition-all">
+          <span class="flex w-12 h-12 rounded-xl bg-plongee-lagon/15 text-plongee-lagon items-center justify-center mb-5">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              {pictos[i].paths.map((d) => <path d={d} />)}
+            </svg>
+          </span>
+          <h3 class="font-space-grotesk font-bold text-plongee-ecume text-xl leading-snug">
+            {s.titre}
+          </h3>
+          <p class="mt-3 font-inter text-plongee-ecume/75 text-sm leading-relaxed">
+            {s.texte}
+          </p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

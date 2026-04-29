@@ -1,0 +1,96 @@
+---
+/**
+ * Contact — accès Saint-Leu + horaires + CTA WhatsApp final.
+ * Mix dashboard data + photo carte simple.
+ */
+import data from '../../../data/templates/bleulagon.json';
+
+const waUrl = `https://wa.me/${data.info.whatsapp}?text=${encodeURIComponent('Bonjour, je voudrais réserver une plongée.')}`;
+---
+
+<section id="contact" class="bg-plongee-ecume py-24 md:py-32 px-6 md:px-10">
+  <div class="max-w-content mx-auto grid lg:grid-cols-12 gap-10 lg:gap-16">
+
+    <!-- Colonne info -->
+    <div class="lg:col-span-7">
+      <p class="font-jetbrains text-[10px] uppercase tracking-[0.32em] text-plongee-corail font-medium mb-5">
+        ▼ Réserver · Accès · Horaires
+      </p>
+      <h2 class="font-space-grotesk font-bold text-plongee-abysse leading-[1.0]" style="font-size: clamp(36px, 5vw, 60px);">
+        Rendez-vous au
+        <span class="italic font-light text-plongee-lagon">Quai des Plongeurs.</span>
+      </h2>
+
+      <p class="mt-6 font-inter text-plongee-marine/85 text-lg leading-relaxed">
+        {data.infos.acces}
+      </p>
+
+      <!-- Horaires en grille -->
+      <div class="mt-10">
+        <h3 class="font-jetbrains text-[10px] uppercase tracking-[0.28em] text-plongee-marine/65 font-medium mb-4">
+          Horaires de sortie
+        </h3>
+        <ul class="divide-y divide-plongee-marine/15">
+          {data.infos.horaires.map((h) => (
+            <li class="flex items-baseline justify-between gap-4 py-3 font-inter">
+              <span class="font-space-grotesk font-semibold text-plongee-abysse text-base">{h.jour}</span>
+              <span class="font-jetbrains text-sm text-plongee-marine tabular-nums text-right">{h.creneaux}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Annulation -->
+      <div class="mt-8 rounded-2xl bg-plongee-lagon/10 ring-1 ring-plongee-lagon/30 p-5">
+        <p class="flex items-center gap-2 font-jetbrains text-[10px] uppercase tracking-[0.22em] text-plongee-lagon font-medium mb-2">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/>
+          </svg>
+          Annulation gratuite
+        </p>
+        <p class="font-inter text-plongee-marine text-sm leading-relaxed">
+          {data.infos.annulation}
+        </p>
+      </div>
+    </div>
+
+    <!-- Colonne CTA WhatsApp + dashboard contact -->
+    <aside class="lg:col-span-5 lg:sticky lg:top-24 self-start">
+      <div class="bg-plongee-abysse text-plongee-ecume rounded-2xl p-7 md:p-8 ring-1 ring-plongee-marine/50">
+        <p class="font-jetbrains text-[10px] uppercase tracking-[0.32em] text-plongee-corail font-medium mb-3">
+          ▼ Le plus rapide
+        </p>
+        <h3 class="font-space-grotesk font-bold text-plongee-ecume text-2xl md:text-3xl leading-tight">
+          On répond sur WhatsApp.
+        </h3>
+        <p class="mt-3 font-inter text-plongee-ecume/75 text-sm leading-relaxed">
+          Réponse moyenne sous 1 heure en journée. Indiquez la formule et la date souhaitées, on vous confirme votre créneau.
+        </p>
+
+        <a
+          href={waUrl}
+          target="_blank"
+          rel="noopener"
+          class="mt-7 inline-flex items-center justify-center w-full h-13 px-6 bg-plongee-corail text-plongee-ecume font-inter font-semibold text-base rounded-full hover:bg-plongee-ecume hover:text-plongee-abysse transition-colors"
+          style="height: 52px;"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="mr-2" aria-hidden="true">
+            <path d="M17.6 6.31999C16.8669 5.58141 15.9943 4.99596 15.033 4.59767C14.0716 4.19938 13.0406 3.99622 12 3.99999C10.6089 4.00135 9.24248 4.36819 8.03771 5.06377C6.83294 5.75935 5.83208 6.75926 5.13534 7.96342C4.4386 9.16758 4.07046 10.5337 4.06776 11.9248C4.06507 13.316 4.42793 14.6836 5.12 15.89L4 20L8.2 18.9C9.36829 19.5374 10.6783 19.8728 12.01 19.8754C14.0993 19.8754 16.103 19.0444 17.5817 17.5648C19.0604 16.0851 19.8911 14.0808 19.89 11.9915C19.8954 10.9594 19.6957 9.93631 19.3022 8.98134C18.9087 8.02637 18.3289 7.15883 17.6 6.42999"/>
+          </svg>
+          Envoyer un message
+        </a>
+
+        <a
+          href={`tel:${data.info.telephoneHref}`}
+          class="mt-3 inline-flex items-center justify-center w-full h-12 px-6 ring-1 ring-plongee-ecume/30 text-plongee-ecume font-inter font-medium text-sm rounded-full hover:ring-plongee-ecume hover:bg-plongee-ecume/5 transition-all tabular-nums"
+        >
+          {data.info.telephone}
+        </a>
+
+        <p class="mt-6 pt-5 border-t border-plongee-ecume/10 font-jetbrains text-[10px] uppercase tracking-[0.22em] text-plongee-lagon/85 text-center leading-relaxed">
+          {data.info.agrement}
+        </p>
+      </div>
+    </aside>
+  </div>
+</section>
