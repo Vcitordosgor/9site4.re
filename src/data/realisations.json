@@ -238,5 +238,15 @@
     "slug": "aide-a-domicile",
     "previewUrl": "/templates/aide-domicile",
     "thumbnail": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=900&q=80"
+  },
+  {
+    "id": 25,
+    "nom": "Centre de plongée",
+    "categorie": "tourisme",
+    "sousTitre": "Formules de plongée, sécurité et baptême Saint-Leu",
+    "moduleInclus": "Réservation",
+    "slug": "plongee",
+    "previewUrl": "/templates/plongee",
+    "thumbnail": "https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=900&q=80"
   }
 ]

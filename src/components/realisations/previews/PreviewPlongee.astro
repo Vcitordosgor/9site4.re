@@ -1,0 +1,66 @@
+---
+/**
+ * Mini-preview Bleu Lagon Plongée — fidèle au hero immersif :
+ * photo full-bleed sous-marine + dashboard data (eau/visi) + titre
+ * Space Grotesk + bandeau conditions + dashboard 4 stats compact.
+ */
+---
+
+<div class="absolute inset-0 bg-plongee-abysse text-plongee-ecume font-inter overflow-hidden">
+
+  <!-- Photo plein écran sous-marine -->
+  <img
+    src="https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=600&q=70"
+    alt=""
+    class="absolute inset-0 w-full h-full object-cover"
+    loading="lazy"
+    decoding="async"
+  />
+
+  <!-- Overlay gradient profond -->
+  <div class="absolute inset-0" aria-hidden="true"
+       style="background: linear-gradient(180deg, rgba(10,35,66,0.40) 0%, rgba(10,35,66,0.20) 30%, rgba(10,35,66,0.65) 70%, rgba(10,35,66,0.95) 100%);">
+  </div>
+
+  <!-- Mini-bandeau conditions du jour en haut -->
+  <div class="relative px-3 pt-2">
+    <div class="inline-flex items-center gap-1.5 px-2 py-1 rounded-full bg-plongee-abysse/55 ring-1 ring-plongee-ecume/15">
+      <span class="block w-1 h-1 rounded-full bg-plongee-corail" aria-hidden="true"></span>
+      <span class="font-jetbrains text-[5.5px] uppercase tracking-[0.2em] text-plongee-corail">Conditions Saint-Leu</span>
+      <span class="font-jetbrains text-[6px] tabular-nums text-plongee-ecume/85">25°C · 22m</span>
+    </div>
+  </div>
+
+  <!-- Hero text + dashboard en bas -->
+  <div class="absolute left-3 right-3 bottom-2.5">
+    <p class="font-jetbrains text-[5px] uppercase tracking-[0.32em] text-plongee-lagon mb-1">
+      ▼ FFESSM E 974 0019 · Depuis 2014
+    </p>
+    <p class="font-space-grotesk font-bold text-plongee-ecume leading-[0.9]" style="font-size: clamp(13px, 2.7vw, 22px);">
+      Voir le lagon
+    </p>
+    <p class="font-space-grotesk italic font-light text-plongee-lagon leading-[0.9]" style="font-size: clamp(11px, 2.3vw, 18px);">
+      de l'intérieur.
+    </p>
+
+    <!-- Mini dashboard 4 stats -->
+    <ul class="mt-2 grid grid-cols-4 gap-px rounded-md overflow-hidden ring-1 ring-plongee-ecume/15">
+      <li class="bg-plongee-abysse/65 px-1.5 py-1">
+        <p class="font-jetbrains text-[4.5px] uppercase tracking-wider text-plongee-lagon mb-px">Prof.</p>
+        <p class="font-space-grotesk font-bold text-plongee-ecume text-[8px] tabular-nums leading-none">32m</p>
+      </li>
+      <li class="bg-plongee-abysse/65 px-1.5 py-1">
+        <p class="font-jetbrains text-[4.5px] uppercase tracking-wider text-plongee-lagon mb-px">Espèces</p>
+        <p class="font-space-grotesk font-bold text-plongee-ecume text-[8px] tabular-nums leading-none">350+</p>
+      </li>
+      <li class="bg-plongee-abysse/65 px-1.5 py-1">
+        <p class="font-jetbrains text-[4.5px] uppercase tracking-wider text-plongee-lagon mb-px">Plong.</p>
+        <p class="font-space-grotesk font-bold text-plongee-ecume text-[8px] tabular-nums leading-none">1800</p>
+      </li>
+      <li class="bg-plongee-abysse/65 px-1.5 py-1">
+        <p class="font-jetbrains text-[4.5px] uppercase tracking-wider text-plongee-lagon mb-px">Baleines</p>
+        <p class="font-space-grotesk font-bold text-plongee-corail text-[7px] leading-none">JUIN→OCT</p>
+      </li>
+    </ul>
+  </div>
+</div>

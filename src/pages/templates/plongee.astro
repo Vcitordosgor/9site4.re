@@ -1,0 +1,49 @@
+---
+import '@fontsource/space-grotesk/400.css';
+import '@fontsource/space-grotesk/500.css';
+import '@fontsource/space-grotesk/700.css';
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/600.css';
+import '@fontsource/jetbrains-mono/400.css';
+import '@fontsource/jetbrains-mono/500.css';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getSeo } from '../../lib/seo';
+import bleulagonData from '../../data/templates/bleulagon.json';
+
+import BleuLagonHeader from '../../components/templates/plongee/BleuLagonHeader.astro';
+import HeroPlongee from '../../components/templates/plongee/HeroPlongee.astro';
+import Formules from '../../components/templates/plongee/Formules.astro';
+import LeMoniteur from '../../components/templates/plongee/LeMoniteur.astro';
+import Securite from '../../components/templates/plongee/Securite.astro';
+import Avis from '../../components/templates/plongee/Avis.astro';
+import Contact from '../../components/templates/plongee/Contact.astro';
+import BleuLagonFooter from '../../components/templates/plongee/BleuLagonFooter.astro';
+---
+
+<BaseLayout seo={getSeo('templatePlongee')} bare={true}>
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <link rel="dns-prefetch" href="https://images.unsplash.com" />
+    <link
+      rel="preload"
+      as="image"
+      href={bleulagonData.info.photoHero}
+      fetchpriority="high"
+    />
+  </Fragment>
+
+  <BleuLagonHeader />
+
+  <main class="bg-plongee-ecume text-plongee-marine font-inter">
+    <HeroPlongee />
+    <Formules />
+    <LeMoniteur />
+    <Securite />
+    <Avis />
+    <Contact />
+  </main>
+
+  <BleuLagonFooter />
+</BaseLayout>

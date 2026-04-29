@@ -52,7 +52,8 @@ type PageKey =
   | 'templateArchitecte'
   | 'templateAutoEcole'
   | 'templateConciergerie'
-  | 'templateAideDomicile';
+  | 'templateAideDomicile'
+  | 'templatePlongee';
 
 const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'> & { noindex?: boolean; ogImage?: string; ogImageAlt?: string }> = {
   home: {
@@ -262,6 +263,13 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
     description:
       'Aperçu du template "Aide à domicile" proposé par 9site4 : services à la personne, équipe, tarifs APA/PCH, témoignages familles. Site fictif de démonstration.',
     canonical: '/templates/aide-domicile',
+    noindex: true,
+  },
+  templatePlongee: {
+    title: 'Bleu Lagon Plongée — Centre de plongée à Saint-Leu (Réunion) | Template 9site4',
+    description:
+      'Aperçu du template "Centre de plongée" proposé par 9site4 : formules baptême et exploration, dashboard de plongée, sécurité, sortie baleines. Site fictif de démonstration.',
+    canonical: '/templates/plongee',
     noindex: true,
   },
 };
