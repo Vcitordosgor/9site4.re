@@ -15,33 +15,115 @@ const { seo, bare = false } = Astro.props;
 const canonicalUrl = absoluteUrl(seo.canonical);
 const ogImageUrl = absoluteUrl(seo.ogImage);
 
-// Schema.org LocalBusiness — placeholder data, complétée via siteConfig
+// Schema.org enrichi : Organization + ProfessionalService + Service
+// Pour SEO local La Réunion (974) : aire desservie multi-villes + service explicite + prix
 const schemaOrg = {
   '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  '@id': `${siteConfig.siteUrl}/#localbusiness`,
-  name: siteConfig.siteName,
-  description: siteConfig.baseline,
-  url: siteConfig.siteUrl,
-  email: siteConfig.contact.email,
-  telephone: `+${siteConfig.contact.whatsapp}`,
-  image: absoluteUrl(seo.ogImage),
-  priceRange: '€',
-  knowsLanguage: 'fr',
-  areaServed: {
-    '@type': 'AdministrativeArea',
-    name: siteConfig.location.region,
-  },
-  address: {
-    '@type': 'PostalAddress',
-    addressRegion: siteConfig.location.region,
-    addressCountry: siteConfig.location.country,
-  },
+  '@graph': [
+    // Organization : entité 9site4
+    {
+      '@type': 'Organization',
+      '@id': `${siteConfig.siteUrl}/#organization`,
+      name: siteConfig.siteName,
+      url: siteConfig.siteUrl,
+      email: siteConfig.contact.email,
+      logo: {
+        '@type': 'ImageObject',
+        url: absoluteUrl('/og-image.png'),
+        width: 1200,
+        height: 630,
+      },
+      slogan: siteConfig.baseline,
+      knowsLanguage: 'fr',
+    },
+    // WebSite : permet la box de recherche Google
+    {
+      '@type': 'WebSite',
+      '@id': `${siteConfig.siteUrl}/#website`,
+      url: siteConfig.siteUrl,
+      name: siteConfig.siteName,
+      description: siteConfig.baseline,
+      inLanguage: 'fr-RE',
+      publisher: { '@id': `${siteConfig.siteUrl}/#organization` },
+    },
+    // ProfessionalService : agence web locale
+    {
+      '@type': 'ProfessionalService',
+      '@id': `${siteConfig.siteUrl}/#localbusiness`,
+      name: siteConfig.siteName,
+      description: siteConfig.baseline,
+      url: siteConfig.siteUrl,
+      email: siteConfig.contact.email,
+      telephone: `+${siteConfig.contact.whatsapp}`,
+      image: absoluteUrl(seo.ogImage),
+      priceRange: '€€',
+      knowsLanguage: 'fr',
+      // Aire géographique desservie : Île de La Réunion + 7 grandes villes
+      areaServed: [
+        { '@type': 'AdministrativeArea', name: 'La Réunion' },
+        { '@type': 'City', name: 'Saint-Denis', containedInPlace: { '@type': 'AdministrativeArea', name: 'La Réunion' } },
+        { '@type': 'City', name: 'Saint-Pierre', containedInPlace: { '@type': 'AdministrativeArea', name: 'La Réunion' } },
+        { '@type': 'City', name: 'Saint-Paul', containedInPlace: { '@type': 'AdministrativeArea', name: 'La Réunion' } },
+        { '@type': 'City', name: 'Saint-Gilles-les-Bains', containedInPlace: { '@type': 'AdministrativeArea', name: 'La Réunion' } },
+        { '@type': 'City', name: 'Le Tampon', containedInPlace: { '@type': 'AdministrativeArea', name: 'La Réunion' } },
+        { '@type': 'City', name: 'Saint-Leu', containedInPlace: { '@type': 'AdministrativeArea', name: 'La Réunion' } },
+        { '@type': 'City', name: 'Saint-André', containedInPlace: { '@type': 'AdministrativeArea', name: 'La Réunion' } },
+      ],
+      // Géolocalisation centrale Réunion (pour Google Maps / Local Pack)
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: -21.1151,
+        longitude: 55.5364,
+      },
+      address: {
+        '@type': 'PostalAddress',
+        addressRegion: 'La Réunion',
+        addressCountry: 'FR',
+        postalCode: '974',
+      },
+      // Service principal avec prix
+      makesOffer: {
+        '@type': 'Offer',
+        url: `${siteConfig.siteUrl}/tarifs`,
+        priceSpecification: {
+          '@type': 'PriceSpecification',
+          price: 97.4,
+          priceCurrency: 'EUR',
+          unitText: 'MON',
+          description: '97,4 €/mois — Tout inclus (site, domaine, hébergement, maintenance)',
+        },
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Création de site vitrine clé en main',
+          description: 'Site web professionnel sur-mesure pour TPE et PME réunionnaises. Domaine, hébergement, maintenance et modifications inclus.',
+          provider: { '@id': `${siteConfig.siteUrl}/#organization` },
+          areaServed: { '@type': 'AdministrativeArea', name: 'La Réunion' },
+          serviceType: 'Web design · Création de site internet',
+        },
+      },
+      // Lien vers l'organisation parente
+      parentOrganization: { '@id': `${siteConfig.siteUrl}/#organization` },
+    },
+    // WebPage : page courante
+    {
+      '@type': 'WebPage',
+      '@id': `${canonicalUrl}#webpage`,
+      url: canonicalUrl,
+      name: seo.title,
+      description: seo.description,
+      isPartOf: { '@id': `${siteConfig.siteUrl}/#website` },
+      inLanguage: 'fr-RE',
+      primaryImageOfPage: {
+        '@type': 'ImageObject',
+        url: ogImageUrl,
+      },
+    },
+  ],
 };
 ---
 
 <!doctype html>
-<html lang="fr">
+<html lang="fr-RE">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -52,6 +134,13 @@ const schemaOrg = {
     <title>{seo.title}</title>
     <meta name="description" content={seo.description} />
     <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" hreflang="fr-RE" href={canonicalUrl} />
+    <link rel="alternate" hreflang="fr" href={canonicalUrl} />
+    <link rel="alternate" hreflang="x-default" href={canonicalUrl} />
+    <meta name="geo.region" content="RE" />
+    <meta name="geo.placename" content="La Réunion" />
+    <meta name="geo.position" content="-21.1151;55.5364" />
+    <meta name="ICBM" content="-21.1151, 55.5364" />
     {seo.noindex && <meta name="robots" content="noindex,nofollow" />}
 
     <!-- Favicon -->

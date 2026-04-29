@@ -56,34 +56,33 @@ type PageKey =
 
 const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'> & { noindex?: boolean; ogImage?: string; ogImageAlt?: string }> = {
   home: {
-    title: `${siteConfig.siteName} — Création de site vitrine à La Réunion (974)`,
+    title: `${siteConfig.siteName} — Création de site internet à La Réunion (974)`,
     description:
-      'Sites vitrines clé en main pour TPE/PME réunionnaises. Tout inclus : domaine, hébergement, maintenance. À partir de 97,4€/mois.',
+      'Agence web pour TPE et PME à La Réunion. Création de site vitrine clé en main : Saint-Denis, Saint-Pierre, Saint-Paul, Saint-Gilles, Le Tampon. Tout inclus (domaine, hébergement, maintenance) à partir de 97,4€/mois.',
     canonical: '/',
   },
   realisations: {
-    title: `Réalisations — Exemples de sites par métier | ${siteConfig.siteName}`,
+    title: `Réalisations — 24 exemples de sites par métier à La Réunion | ${siteConfig.siteName}`,
     description:
-      'Exemples de sites vitrines pour restaurants, artisans, beauté, santé, tourisme et services à La Réunion.',
+      'Exemples de sites web pour artisans, restaurants, instituts de beauté, gîtes, coachs, professions libérales à La Réunion (974). Voir nos 24 templates métier sur-mesure.',
     canonical: '/realisations',
   },
   tarifs: {
-    title: `Tarifs — 97,4€/mois ou 974€/an, tout inclus | ${siteConfig.siteName}`,
+    title: `Tarifs — Site web tout compris à 97,4€/mois | ${siteConfig.siteName}`,
     description:
-      'Une offre simple et tout compris. Site, domaine, hébergement, maintenance et modifications inclus.',
+      'Création de site internet à La Réunion : 97,4€/mois ou 974€/an. Domaine, hébergement, maintenance et modifications inclus. Sans engagement, sans frais cachés. Pour TPE et PME du 974.',
     canonical: '/tarifs',
   },
   contact: {
-    title: `Contact — Demandez votre site vitrine | ${siteConfig.siteName}`,
+    title: `Contact — Devis gratuit site web Réunion | ${siteConfig.siteName}`,
     description:
-      'Parlons de votre projet. Formulaire ou WhatsApp. Réponse rapide, sans cahier des charges compliqué.',
+      'Demandez votre devis gratuit pour la création de votre site internet à La Réunion. Réponse rapide par WhatsApp ou formulaire. Saint-Denis, Saint-Pierre, Saint-Paul et toute l\'île.',
     canonical: '/contact',
   },
   legal: {
     title: `Mentions légales | ${siteConfig.siteName}`,
-    description: `Mentions légales du site ${siteConfig.siteName}.`,
+    description: `Mentions légales et informations sur l'éditeur du site ${siteConfig.siteName}, agence web à La Réunion (974).`,
     canonical: '/mentions-legales',
-    noindex: true,
   },
   notFound: {
     title: `Page non trouvée | ${siteConfig.siteName}`,
