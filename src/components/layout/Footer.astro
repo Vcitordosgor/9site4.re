@@ -99,12 +99,34 @@ const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeU
       <p class="text-xs text-blanc-casse/50">
         © {currentYear} {siteConfig.siteName}. Tous droits réservés.
       </p>
-      <a
-        href="/mentions-legales"
-        class="text-xs text-blanc-casse/60 hover:text-blanc-casse transition-colors underline-offset-4 hover:underline"
-      >
-        Mentions légales
-      </a>
+      <ul class="flex flex-wrap items-center gap-x-5 gap-y-1.5 text-xs">
+        <li>
+          <a
+            href="/mentions-legales"
+            class="text-blanc-casse/60 hover:text-blanc-casse transition-colors underline-offset-4 hover:underline"
+          >
+            Mentions légales
+          </a>
+        </li>
+        <li class="hidden md:block text-blanc-casse/30" aria-hidden="true">·</li>
+        <li>
+          <a
+            href="/mentions-legales#donnees"
+            class="text-blanc-casse/60 hover:text-blanc-casse transition-colors underline-offset-4 hover:underline"
+          >
+            Confidentialité
+          </a>
+        </li>
+        <li class="hidden md:block text-blanc-casse/30" aria-hidden="true">·</li>
+        <li>
+          <a
+            href="/mentions-legales#cookies"
+            class="text-blanc-casse/60 hover:text-blanc-casse transition-colors underline-offset-4 hover:underline"
+          >
+            Cookies
+          </a>
+        </li>
+      </ul>
     </div>
   </div>
 </footer>

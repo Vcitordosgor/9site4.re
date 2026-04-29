@@ -403,8 +403,13 @@ export default function ContactForm({ categories }: Props) {
             <path d="M5 12h14M12 5l7 7-7 7" />
           </svg>
         </button>
-        <p class="mt-3 text-xs text-bleu-nuit/70 text-center">
+        <p class="mt-3 text-xs text-bleu-nuit/70 text-center leading-relaxed">
           En soumettant ce formulaire, vous acceptez d'être recontacté(e) au sujet de votre projet.
+          Vos données restent confidentielles, ne sont pas revendues, et sont conservées au maximum 12 mois.
+          {' '}
+          <a href="/mentions-legales#donnees" class="underline underline-offset-2 hover:text-orange">
+            En savoir plus
+          </a>.
         </p>
       </div>
     </form>

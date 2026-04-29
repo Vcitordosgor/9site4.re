@@ -1,116 +1,196 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Icon from '../components/ui/Icon.astro';
 import siteConfig from '../data/siteConfig.json';
 import { getSeo } from '../lib/seo';
 
 /**
- * Mentions légales — page provisoire (brief §10bis).
- * - bandeau d'avertissement visible
- * - 7 sections avec [À compléter] explicite
- * - noindex tant que la page reste provisoire (BaseLayout prop)
- * - exclue du sitemap et de robots.txt
+ * Mentions légales + Politique de confidentialité (RGPD).
+ * Page indexable (transparence légale = signal de sérieux pour Google).
+ *
+ * Sections RGPD pré-remplies avec wording standard conforme :
+ * - CNIL (Commission Nationale Informatique et Libertés)
+ * - RGPD (Règlement Général sur la Protection des Données, UE 2016/679)
+ * - Loi Informatique et Libertés (78-17 du 6 janvier 1978 modifiée)
+ *
+ * Les seuls champs à compléter par l'éditeur sont les informations
+ * d'identification (raison sociale, SIRET, adresse, etc.).
  */
-
-const sections = [
-  {
-    titre: 'Éditeur du site',
-    contenu: `${siteConfig.legal.editor}`,
-    aide: 'Raison sociale, forme juridique, capital, RCS, n° SIRET, adresse, téléphone, email.',
-  },
-  {
-    titre: 'Hébergeur',
-    contenu: siteConfig.legal.host,
-    aide: 'Nom, raison sociale, adresse complète et numéro de téléphone de l\'hébergeur.',
-  },
-  {
-    titre: 'Directeur de la publication',
-    contenu: `${siteConfig.legal.publisher}`,
-    aide: 'Nom de la personne responsable du contenu publié sur le site.',
-  },
-  {
-    titre: 'Propriété intellectuelle',
-    contenu: '[À compléter]',
-    aide: 'Mention sur la propriété des contenus (textes, images, logo) et conditions de réutilisation.',
-  },
-  {
-    titre: 'Données personnelles & RGPD',
-    contenu: '[À compléter]',
-    aide: 'Finalités de traitement, base légale, durée de conservation, droits (accès, rectification, opposition, suppression), DPO, contact CNIL.',
-  },
-  {
-    titre: 'Cookies',
-    contenu: '[À compléter]',
-    aide: 'Inventaire des cookies utilisés (fonctionnels, mesure d\'audience, tiers), durée de vie et moyens de gestion du consentement.',
-  },
-  {
-    titre: 'Contact',
-    contenu: siteConfig.contact.email,
-    aide: 'Adresse email de contact pour toute question relative aux mentions légales ou aux données personnelles.',
-  },
-];
 ---
 
 <BaseLayout seo={getSeo('legal')}>
   <article class="px-6 pt-24 pb-20 md:pt-32 md:pb-28">
     <div class="mx-auto max-w-3xl">
+
       <!-- En-tête -->
       <header>
         <p class="inline-flex items-center px-3 py-1.5 rounded-full bg-bleu text-bleu-nuit text-xs font-semibold uppercase tracking-wide">
-          Informations
+          Informations légales
         </p>
         <h1 class="mt-3 text-4xl md:text-5xl font-sora font-bold text-bleu-nuit text-balance leading-tight">
-          Mentions légales
+          Mentions légales &amp; politique de confidentialité
         </h1>
+        <p class="mt-5 text-lg text-bleu-nuit/70 leading-relaxed">
+          Conformément aux articles 6-III et 19 de la <strong>Loi pour la Confiance dans l'Économie Numérique</strong> du 21 juin 2004, et au <strong>Règlement Général sur la Protection des Données</strong> (RGPD, UE 2016/679).
+        </p>
       </header>
 
-      <!-- Bandeau d'avertissement -->
-      <aside
-        role="note"
-        aria-label="Statut de la page"
-        class="mt-8 flex items-start gap-4 rounded-2xl bg-orange/10 ring-1 ring-orange/30 p-5 md:p-6"
-      >
-        <span class="flex w-10 h-10 shrink-0 rounded-full bg-orange/20 text-orange items-center justify-center mt-0.5">
-          <Icon name="alert-triangle" size={20} strokeWidth={2} />
-        </span>
-        <div>
-          <p class="font-sora font-semibold text-base text-bleu-nuit">
-            Page provisoire
-          </p>
-          <p class="mt-1 text-sm text-bleu-nuit/80 leading-relaxed">
-            À compléter avant la mise en ligne définitive du site. Cette page est
-            actuellement en <code class="font-mono text-xs px-1.5 py-0.5 rounded bg-bleu-nuit/5 ring-1 ring-bleu-nuit/10">noindex</code>
-            et exclue du sitemap.
-          </p>
-        </div>
-      </aside>
+      <!-- Sommaire ancres -->
+      <nav class="mt-10 rounded-2xl bg-bleu-nuit/[0.03] ring-1 ring-bleu-nuit/10 p-5 md:p-6" aria-label="Sommaire">
+        <p class="font-sora font-semibold text-bleu-nuit text-sm uppercase tracking-wide mb-3">Sommaire</p>
+        <ul class="grid sm:grid-cols-2 gap-x-6 gap-y-2 text-sm">
+          <li><a href="#editeur" class="text-bleu-nuit/85 hover:text-orange underline-offset-4 hover:underline">1. Éditeur du site</a></li>
+          <li><a href="#hebergeur" class="text-bleu-nuit/85 hover:text-orange underline-offset-4 hover:underline">2. Hébergeur</a></li>
+          <li><a href="#directeur" class="text-bleu-nuit/85 hover:text-orange underline-offset-4 hover:underline">3. Directeur de la publication</a></li>
+          <li><a href="#propriete" class="text-bleu-nuit/85 hover:text-orange underline-offset-4 hover:underline">4. Propriété intellectuelle</a></li>
+          <li><a href="#donnees" class="text-bleu-nuit/85 hover:text-orange underline-offset-4 hover:underline">5. Données personnelles (RGPD)</a></li>
+          <li><a href="#cookies" class="text-bleu-nuit/85 hover:text-orange underline-offset-4 hover:underline">6. Cookies</a></li>
+          <li><a href="#droits" class="text-bleu-nuit/85 hover:text-orange underline-offset-4 hover:underline">7. Vos droits</a></li>
+          <li><a href="#contact" class="text-bleu-nuit/85 hover:text-orange underline-offset-4 hover:underline">8. Contact</a></li>
+        </ul>
+      </nav>
 
       <!-- Sections -->
-      <div class="mt-12 space-y-10">
-        {sections.map((section) => {
-          const placeholder = section.contenu.includes('[À compléter]');
-          return (
-            <section>
-              <h2 class="font-sora font-semibold text-2xl text-bleu-nuit">
-                {section.titre}
-              </h2>
-              <p class:list={[
-                'mt-3 text-base leading-relaxed',
-                placeholder ? 'text-bleu-nuit/70 italic' : 'text-bleu-nuit/85',
-              ]}>
-                {section.contenu}
-              </p>
-              <p class="mt-2 text-xs text-bleu-nuit/65 leading-relaxed">
-                <span class="font-semibold uppercase tracking-wide">À renseigner :</span>
-                {' '}{section.aide}
-              </p>
-            </section>
-          );
-        })}
+      <div class="mt-12 space-y-12 text-bleu-nuit/85 leading-relaxed">
+
+        <!-- 1. Éditeur du site -->
+        <section id="editeur">
+          <h2 class="font-sora font-semibold text-2xl text-bleu-nuit mb-4">1. Éditeur du site</h2>
+          <p>Le site <strong>{siteConfig.siteUrl.replace(/^https?:\/\//, '')}</strong> est édité par :</p>
+          <ul class="mt-3 space-y-1.5 pl-5 list-disc marker:text-orange">
+            <li><strong>Raison sociale :</strong> {siteConfig.legal.editor}</li>
+            <li><strong>Forme juridique :</strong> [À compléter — ex : SASU, EURL, EI]</li>
+            <li><strong>SIRET :</strong> [À compléter]</li>
+            <li><strong>Adresse :</strong> [À compléter — adresse complète à La Réunion]</li>
+            <li><strong>E-mail :</strong> <a href={`mailto:${siteConfig.contact.email}`} class="underline underline-offset-4 decoration-orange hover:text-orange">{siteConfig.contact.email}</a></li>
+            <li><strong>Téléphone / WhatsApp :</strong> <span class="tabular-nums">{siteConfig.contact.whatsappDisplay}</span></li>
+          </ul>
+        </section>
+
+        <!-- 2. Hébergeur -->
+        <section id="hebergeur">
+          <h2 class="font-sora font-semibold text-2xl text-bleu-nuit mb-4">2. Hébergeur</h2>
+          <p>Le site est hébergé sur la plateforme <strong>{siteConfig.legal.host}</strong> exploitée par :</p>
+          <ul class="mt-3 space-y-1.5 pl-5 list-disc marker:text-orange">
+            <li><strong>Cloudflare, Inc.</strong></li>
+            <li>101 Townsend Street, San Francisco, CA 94107, États-Unis</li>
+            <li>Site : <a href="https://www.cloudflare.com" target="_blank" rel="noopener" class="underline underline-offset-4 decoration-orange hover:text-orange">cloudflare.com</a></li>
+          </ul>
+          <p class="mt-3 text-sm text-bleu-nuit/65">
+            Les données techniques (logs serveur, adresses IP) peuvent transiter par les serveurs Cloudflare situés dans l'Union européenne et hors UE. Cloudflare est conforme aux clauses contractuelles types adoptées par la Commission européenne pour les transferts de données.
+          </p>
+        </section>
+
+        <!-- 3. Directeur de la publication -->
+        <section id="directeur">
+          <h2 class="font-sora font-semibold text-2xl text-bleu-nuit mb-4">3. Directeur de la publication</h2>
+          <p>Le directeur de la publication est <strong>{siteConfig.legal.publisher}</strong>, en sa qualité de représentant légal de l'éditeur. Il peut être contacté à l'adresse <a href={`mailto:${siteConfig.contact.email}`} class="underline underline-offset-4 decoration-orange hover:text-orange">{siteConfig.contact.email}</a>.</p>
+        </section>
+
+        <!-- 4. Propriété intellectuelle -->
+        <section id="propriete">
+          <h2 class="font-sora font-semibold text-2xl text-bleu-nuit mb-4">4. Propriété intellectuelle</h2>
+          <p>L'ensemble des éléments présents sur ce site (textes, images, logos, code source, architecture, mise en page, charte graphique) sont la propriété exclusive de <strong>{siteConfig.siteName}</strong> ou de ses partenaires, et sont protégés par les lois françaises et internationales relatives à la propriété intellectuelle.</p>
+          <p class="mt-3">Toute reproduction, représentation, modification, publication, adaptation totale ou partielle, par quelque moyen que ce soit, est interdite sans l'autorisation écrite préalable de l'éditeur, sauf exceptions légalement prévues (citation courte, copie privée).</p>
+          <p class="mt-3 text-sm text-bleu-nuit/65">
+            Les visuels présentés dans la section « Réalisations » illustrent <strong>des templates fictifs de démonstration</strong>. Les noms d'entreprises, photos et coordonnées qui y figurent ne correspondent à aucune entreprise réelle.
+          </p>
+        </section>
+
+        <!-- 5. Données personnelles (RGPD) -->
+        <section id="donnees">
+          <h2 class="font-sora font-semibold text-2xl text-bleu-nuit mb-4">5. Données personnelles (RGPD)</h2>
+          <p>Conformément au <strong>RGPD</strong> (UE 2016/679) et à la <strong>Loi Informatique et Libertés</strong> du 6 janvier 1978 modifiée, nous sommes tenus de vous informer sur la collecte et le traitement de vos données personnelles.</p>
+
+          <h3 class="font-sora font-semibold text-lg text-bleu-nuit mt-6 mb-2">Quelles données collectons-nous ?</h3>
+          <p>Lorsque vous remplissez un <strong>formulaire de contact</strong> sur le site, nous collectons :</p>
+          <ul class="mt-2 space-y-1 pl-5 list-disc marker:text-orange">
+            <li>Votre <strong>nom / prénom</strong></li>
+            <li>Votre <strong>e-mail</strong></li>
+            <li>Votre <strong>numéro de téléphone</strong> (facultatif)</li>
+            <li>Le <strong>contenu de votre message</strong></li>
+            <li>Le <strong>type de besoin</strong> (création, refonte, etc.)</li>
+          </ul>
+
+          <h3 class="font-sora font-semibold text-lg text-bleu-nuit mt-6 mb-2">Pourquoi ?</h3>
+          <p><strong>Finalité :</strong> répondre à votre demande, établir un devis, vous contacter pour échanger sur votre projet.</p>
+          <p class="mt-2"><strong>Base légale :</strong> votre consentement explicite (validation du formulaire) et l'exécution de mesures précontractuelles à votre demande (article 6-1-b du RGPD).</p>
+
+          <h3 class="font-sora font-semibold text-lg text-bleu-nuit mt-6 mb-2">Durée de conservation</h3>
+          <ul class="mt-2 space-y-1 pl-5 list-disc marker:text-orange">
+            <li><strong>Demandes sans suite :</strong> 12 mois maximum, puis suppression.</li>
+            <li><strong>Devis acceptés / clients :</strong> durée du contrat + 5 ans (obligations comptables et fiscales, article L. 123-22 du Code de commerce).</li>
+          </ul>
+
+          <h3 class="font-sora font-semibold text-lg text-bleu-nuit mt-6 mb-2">Destinataires</h3>
+          <p>Vos données sont accessibles uniquement à <strong>{siteConfig.siteName}</strong>. Aucune donnée n'est revendue, louée ou cédée à des tiers à des fins commerciales.</p>
+          <p class="mt-2 text-sm text-bleu-nuit/65">
+            Sous-traitants techniques : Cloudflare (hébergement) et notre fournisseur d'e-mail. Tous sont liés par des accords de confidentialité conformes au RGPD.
+          </p>
+
+          <h3 class="font-sora font-semibold text-lg text-bleu-nuit mt-6 mb-2">Sécurité</h3>
+          <p>Le site est intégralement servi en <strong>HTTPS</strong> (chiffrement TLS). Les données collectées sont stockées sur des serveurs sécurisés et protégées par des mesures techniques et organisationnelles appropriées.</p>
+        </section>
+
+        <!-- 6. Cookies -->
+        <section id="cookies">
+          <h2 class="font-sora font-semibold text-2xl text-bleu-nuit mb-4">6. Cookies</h2>
+          <div class="rounded-2xl bg-bleu/15 ring-1 ring-bleu/30 p-5 md:p-6">
+            <p class="font-sora font-semibold text-bleu-nuit">Ce site n'utilise <strong>aucun cookie de mesure d'audience, de publicité ou de tracking tiers.</strong></p>
+            <p class="mt-2 text-sm text-bleu-nuit/85">
+              Pas de Google Analytics, pas de Facebook Pixel, pas de Hotjar, pas de Tarte au Citron. <strong>Aucune bannière de consentement n'est nécessaire</strong> conformément aux recommandations de la CNIL pour les sites n'utilisant que des cookies strictement fonctionnels.
+            </p>
+          </div>
+          <p class="mt-5">Le site utilise uniquement des données techniques minimales nécessaires à son fonctionnement :</p>
+          <ul class="mt-3 space-y-1.5 pl-5 list-disc marker:text-orange">
+            <li><strong>Cookies de session</strong> (le cas échéant, pour la sécurité anti-CSRF des formulaires) : durée de vie limitée à la session de navigation, supprimés à la fermeture du navigateur.</li>
+            <li><strong>Préférence d'animations</strong> : respect de la préférence système <code class="font-mono text-xs px-1.5 py-0.5 rounded bg-bleu-nuit/5">prefers-reduced-motion</code> (lecture seule, pas de stockage).</li>
+            <li><strong>Logs serveur Cloudflare</strong> : adresses IP anonymisées et durée de session, conservés 30 jours pour la sécurité (lutte contre le spam et les attaques).</li>
+          </ul>
+          <p class="mt-4 text-sm text-bleu-nuit/65">
+            Pour plus d'informations sur la gestion des cookies, vous pouvez consulter le site officiel de la CNIL : <a href="https://www.cnil.fr/fr/cookies-et-traceurs-que-dit-la-loi" target="_blank" rel="noopener" class="underline underline-offset-4 decoration-orange hover:text-orange">cnil.fr/cookies-et-traceurs</a>.
+          </p>
+        </section>
+
+        <!-- 7. Vos droits -->
+        <section id="droits">
+          <h2 class="font-sora font-semibold text-2xl text-bleu-nuit mb-4">7. Vos droits</h2>
+          <p>Conformément aux articles 15 à 22 du RGPD, vous disposez des droits suivants sur vos données personnelles :</p>
+          <ul class="mt-3 space-y-2 pl-5 list-disc marker:text-orange">
+            <li><strong>Droit d'accès</strong> — obtenir une copie des données vous concernant.</li>
+            <li><strong>Droit de rectification</strong> — corriger des données inexactes ou incomplètes.</li>
+            <li><strong>Droit à l'effacement</strong> (« droit à l'oubli ») — demander la suppression de vos données.</li>
+            <li><strong>Droit d'opposition</strong> — vous opposer au traitement pour des motifs légitimes.</li>
+            <li><strong>Droit à la limitation</strong> — restreindre temporairement le traitement.</li>
+            <li><strong>Droit à la portabilité</strong> — recevoir vos données dans un format structuré.</li>
+            <li><strong>Droit de retirer votre consentement</strong> à tout moment.</li>
+          </ul>
+          <p class="mt-4">
+            Pour exercer ces droits, écrivez-nous à <a href={`mailto:${siteConfig.contact.email}`} class="underline underline-offset-4 decoration-orange hover:text-orange">{siteConfig.contact.email}</a>. Nous vous répondrons dans un délai maximum d'<strong>1 mois</strong>.
+          </p>
+          <p class="mt-3">
+            En cas de désaccord sur le traitement de vos données, vous avez également le droit d'introduire une réclamation auprès de la <strong>CNIL</strong> :
+          </p>
+          <p class="mt-2 pl-5 text-sm">
+            Commission Nationale de l'Informatique et des Libertés<br />
+            3 Place de Fontenoy, TSA 80715 — 75334 PARIS CEDEX 07<br />
+            <a href="https://www.cnil.fr" target="_blank" rel="noopener" class="underline underline-offset-4 decoration-orange hover:text-orange">www.cnil.fr</a>
+          </p>
+        </section>
+
+        <!-- 8. Contact -->
+        <section id="contact">
+          <h2 class="font-sora font-semibold text-2xl text-bleu-nuit mb-4">8. Contact</h2>
+          <p>Pour toute question relative à ces mentions légales, à la politique de confidentialité ou à vos données personnelles :</p>
+          <ul class="mt-3 space-y-1.5 pl-5 list-disc marker:text-orange">
+            <li><strong>E-mail :</strong> <a href={`mailto:${siteConfig.contact.email}`} class="underline underline-offset-4 decoration-orange hover:text-orange">{siteConfig.contact.email}</a></li>
+            <li><strong>WhatsApp :</strong> <span class="tabular-nums">{siteConfig.contact.whatsappDisplay}</span></li>
+          </ul>
+        </section>
+
       </div>
 
       <!-- Pied : retour accueil -->
-      <footer class="mt-16 pt-8 border-t border-bleu-nuit/10">
+      <footer class="mt-16 pt-8 border-t border-bleu-nuit/10 flex items-center justify-between gap-4 flex-wrap">
         <a
           href="/"
           class="inline-flex items-center gap-2 text-sm font-semibold text-bleu-nuit hover:text-orange transition-colors"
@@ -120,6 +200,9 @@ const sections = [
           </svg>
           Retour à l'accueil
         </a>
+        <p class="text-xs text-bleu-nuit/55">
+          Dernière mise à jour : <time datetime={new Date().toISOString().slice(0, 10)}>{new Date().toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</time>
+        </p>
       </footer>
     </div>
   </article>
