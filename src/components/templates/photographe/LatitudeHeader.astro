@@ -1,0 +1,65 @@
+---
+import data from '../../../data/templates/latitude.json';
+
+const navLinks = [
+  { href: '#series', label: 'Séries' },
+  { href: '#auteur', label: 'Auteur' },
+  { href: '#demarche', label: 'Démarche' },
+  { href: '#contact', label: 'Contact' },
+];
+---
+
+<header
+  id="latitude-header"
+  data-scrolled="false"
+  class="sticky top-0 z-50 transition-[background-color,backdrop-filter,box-shadow] duration-500 border-b border-latitude-cendre/30"
+>
+  <div class="max-w-content mx-auto px-6 md:px-10 h-16 md:h-20 flex items-center justify-between gap-6">
+
+    <a href="#top" class="flex items-baseline gap-2" aria-label="Studio Latitude — accueil">
+      <span class="font-instrument italic text-latitude-blanc text-2xl md:text-[26px] leading-none">Studio</span>
+      <span class="font-dm-serif text-latitude-or text-2xl md:text-[26px] leading-none tracking-tight">Latitude</span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-7 lg:gap-9 font-hanken text-[12px] uppercase tracking-[0.2em] font-medium" aria-label="Navigation">
+      {navLinks.map((link) => (
+        <a href={link.href} class="text-latitude-blanc/85 hover:text-latitude-or transition-colors duration-300">
+          {link.label}
+        </a>
+      ))}
+    </nav>
+
+    <a
+      href="#contact"
+      class="hidden md:inline-flex items-center justify-center h-10 px-5 bg-latitude-blanc text-latitude-noir font-hanken font-semibold text-[12px] uppercase tracking-[0.18em] hover:bg-latitude-or transition-colors duration-300"
+    >
+      Prendre contact
+    </a>
+
+    <a
+      href={`tel:${data.info.telephoneHref}`}
+      class="md:hidden inline-flex items-center justify-center h-10 px-4 bg-latitude-blanc text-latitude-noir font-hanken font-semibold text-[12px] uppercase tracking-wider"
+      aria-label="Appeler"
+    >
+      Appeler
+    </a>
+  </div>
+</header>
+
+<style>
+  #latitude-header { background-color: rgb(10 10 11 / 0.96); }
+  #latitude-header[data-scrolled='true'] {
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 1px 0 rgb(184 151 102 / 0.2);
+  }
+</style>
+
+<script>
+  const header = document.getElementById('latitude-header');
+  if (header) {
+    const update = () => { header.dataset.scrolled = String(window.scrollY > 8); };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+  }
+</script>

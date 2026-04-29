@@ -278,5 +278,15 @@
     "slug": "garage-mecanique",
     "previewUrl": "/templates/garage",
     "thumbnail": "https://images.unsplash.com/photo-1486006920555-c77dcf18193c?w=900&q=80"
+  },
+  {
+    "id": 29,
+    "nom": "Photographe d'auteur",
+    "categorie": "pro",
+    "sousTitre": "Portraits argentiques, mariage éditorial et tirages d'art",
+    "moduleInclus": "Devis",
+    "slug": "photographe-auteur",
+    "previewUrl": "/templates/photographe",
+    "thumbnail": "https://images.unsplash.com/photo-1606983340126-99ab4feaa64a?w=900&q=80"
   }
 ]

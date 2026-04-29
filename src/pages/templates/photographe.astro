@@ -1,0 +1,42 @@
+---
+import '@fontsource/dm-serif-display/400.css';
+import '@fontsource/dm-serif-display/400-italic.css';
+import '@fontsource/instrument-serif/400.css';
+import '@fontsource/instrument-serif/400-italic.css';
+import '@fontsource/hanken-grotesk/400.css';
+import '@fontsource/hanken-grotesk/500.css';
+import '@fontsource/hanken-grotesk/600.css';
+import '@fontsource/caveat/400.css';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getSeo } from '../../lib/seo';
+import data from '../../data/templates/latitude.json';
+
+import LatitudeHeader from '../../components/templates/photographe/LatitudeHeader.astro';
+import HeroLatitude from '../../components/templates/photographe/HeroLatitude.astro';
+import Series from '../../components/templates/photographe/Series.astro';
+import Auteur from '../../components/templates/photographe/Auteur.astro';
+import Demarche from '../../components/templates/photographe/Demarche.astro';
+import Avis from '../../components/templates/photographe/Avis.astro';
+import Contact from '../../components/templates/photographe/Contact.astro';
+import LatitudeFooter from '../../components/templates/photographe/LatitudeFooter.astro';
+---
+
+<BaseLayout seo={getSeo('templatePhotographe')} bare={true}>
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+  </Fragment>
+
+  <LatitudeHeader />
+
+  <main class="bg-latitude-noir text-latitude-blanc font-hanken">
+    <HeroLatitude />
+    <Series />
+    <Auteur />
+    <Demarche />
+    <Avis />
+    <Contact />
+  </main>
+
+  <LatitudeFooter />
+</BaseLayout>

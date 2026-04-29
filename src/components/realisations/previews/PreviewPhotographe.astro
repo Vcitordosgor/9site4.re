@@ -1,0 +1,64 @@
+---
+/**
+ * Mini-preview Studio Latitude — fidèle au hero planche-contact :
+ * fond noir argentique + wordmark Studio Latitude DM Serif italic +
+ * bandeau pellicule sprocket avec 4 mini-vignettes EXIF.
+ */
+const vignettes = [
+  'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=70',
+  'https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=200&q=70',
+  'https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=200&q=70',
+  'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=200&q=70',
+];
+---
+
+<div class="absolute inset-0 bg-latitude-noir text-latitude-blanc font-hanken overflow-hidden p-2">
+
+  <!-- Eyebrow -->
+  <p class="font-hanken uppercase text-latitude-or" style="font-size:4px;letter-spacing:0.4em;">
+    ✦ Photo d'auteur · Saint-Denis · 2016
+  </p>
+
+  <!-- Wordmark -->
+  <h1 class="font-dm-serif leading-[0.92] tracking-tight mt-1">
+    <span class="block text-latitude-blanc" style="font-size: clamp(11px, 2.4vw, 18px);">Studio</span>
+    <span class="block italic text-latitude-or -mt-0.5" style="font-size: clamp(11px, 2.4vw, 18px);">Latitude.</span>
+  </h1>
+
+  <!-- Tagline -->
+  <p class="font-instrument italic text-latitude-blanc leading-snug mt-1" style="font-size: 6px;">
+    L'image juste, jamais l'image facile.
+  </p>
+
+  <!-- Bandeau pellicule -->
+  <div class="absolute inset-x-2 bottom-2 bg-latitude-charbon py-1.5 relative">
+    <!-- Sprocket top -->
+    <div class="absolute top-0.5 inset-x-0 flex justify-around" aria-hidden="true">
+      {Array.from({length: 14}).map(() => (
+        <span class="block bg-latitude-noir rounded-sm" style="width:2px;height:1.5px;"></span>
+      ))}
+    </div>
+    <!-- Sprocket bottom -->
+    <div class="absolute bottom-0.5 inset-x-0 flex justify-around" aria-hidden="true">
+      {Array.from({length: 14}).map(() => (
+        <span class="block bg-latitude-noir rounded-sm" style="width:2px;height:1.5px;"></span>
+      ))}
+    </div>
+
+    <div class="px-1.5 grid grid-cols-4 gap-1">
+      {vignettes.map((src, i) => (
+        <figure class="relative">
+          <div class="aspect-[4/5] overflow-hidden bg-latitude-noir grayscale-[0.4]">
+            <img src={src} alt="" loading="lazy" decoding="async" class="w-full h-full object-cover"/>
+          </div>
+          <span class="absolute top-0.5 left-0.5 bg-latitude-noir/80 text-latitude-blanc px-1 leading-none" style="font-size:3.5px;">
+            {12 + i}
+          </span>
+          {i === 0 && (
+            <span class="absolute top-0.5 right-0.5 bg-latitude-labo text-latitude-blanc px-1 leading-none" style="font-size:3.5px;">M</span>
+          )}
+        </figure>
+      ))}
+    </div>
+  </div>
+</div>

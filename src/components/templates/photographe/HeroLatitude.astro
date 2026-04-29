@@ -1,0 +1,153 @@
+---
+/**
+ * HeroLatitude — planche-contact pellicule signature.
+ * Bandeau pellicule 35mm avec encoches sprocket + 4 vignettes EXIF +
+ * wordmark serif éditorial + cartouche données techniques.
+ */
+import data from '../../../data/templates/latitude.json';
+
+const vignettes = [
+  { src: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&q=80', exif: 'f/2 · 1/250s · ISO 400', frame: '12' },
+  { src: 'https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=600&q=80', exif: 'f/4 · 1/125s · ISO 400', frame: '13' },
+  { src: 'https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=600&q=80', exif: 'f/2.8 · 1/500s · ISO 200', frame: '14' },
+  { src: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80', exif: 'f/5.6 · 1/60s · ISO 400', frame: '15' },
+];
+---
+
+<section id="top" class="relative bg-latitude-noir text-latitude-blanc overflow-hidden">
+
+  <!-- Grain papier subtle -->
+  <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-[0.07]" aria-hidden="true">
+    <filter id="lat-grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2"/></filter>
+    <rect width="100%" height="100%" filter="url(#lat-grain)"/>
+  </svg>
+
+  <div class="max-w-content mx-auto px-6 md:px-10 pt-12 md:pt-16 pb-0 relative">
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-end">
+
+      <!-- Côté gauche : titre éditorial -->
+      <div class="lg:col-span-7">
+        <p class="font-hanken text-[11px] uppercase tracking-[0.4em] text-latitude-or mb-6">
+          ✦ {data.info.soustitre} · depuis {data.info.annee}
+        </p>
+
+        <h1 class="font-dm-serif text-latitude-blanc leading-[0.92] tracking-tight">
+          <span class="block text-5xl sm:text-6xl md:text-7xl lg:text-[100px]">{data.info.wordmark1}</span>
+          <span class="block italic text-latitude-or text-5xl sm:text-6xl md:text-7xl lg:text-[100px]">{data.info.wordmark2}.</span>
+        </h1>
+
+        <p class="mt-7 md:mt-9 font-instrument italic text-latitude-blanc text-2xl md:text-3xl leading-snug max-w-xl">
+          {data.info.tagline}
+        </p>
+
+        <p class="mt-5 font-hanken text-latitude-blanc/75 text-[15px] md:text-base leading-relaxed max-w-xl">
+          {data.promesse}
+        </p>
+
+        <div class="mt-8 flex flex-col sm:flex-row gap-3">
+          <a
+            href="#series"
+            class="inline-flex items-center justify-center h-12 px-7 bg-latitude-blanc text-latitude-noir font-hanken font-semibold text-[12px] uppercase tracking-[0.2em] hover:bg-latitude-or transition-colors"
+          >
+            Voir les séries
+          </a>
+          <a
+            href="#contact"
+            class="inline-flex items-center justify-center h-12 px-7 bg-transparent text-latitude-blanc border border-latitude-blanc/50 font-hanken font-semibold text-[12px] uppercase tracking-[0.2em] hover:border-latitude-or hover:text-latitude-or transition-colors"
+          >
+            Prendre contact
+          </a>
+        </div>
+      </div>
+
+      <!-- Côté droit : cartouche EXIF -->
+      <div class="lg:col-span-5">
+        <div class="bg-latitude-charbon border border-latitude-cendre p-6">
+          <div class="flex items-center justify-between pb-3 mb-4 border-b border-latitude-cendre/60">
+            <p class="font-caveat text-latitude-or text-2xl leading-none">— Le matériel</p>
+            <span class="font-hanken text-[10px] uppercase tracking-[0.18em] text-latitude-blanc/50">EXIF · 002</span>
+          </div>
+
+          <ul class="space-y-3 font-hanken text-[13px]">
+            <li>
+              <p class="text-[10px] uppercase tracking-[0.2em] text-latitude-or/80 mb-0.5">Boîtier</p>
+              <p class="text-latitude-blanc">{data.info.exif.appareil}</p>
+            </li>
+            <li>
+              <p class="text-[10px] uppercase tracking-[0.2em] text-latitude-or/80 mb-0.5">Optiques</p>
+              <p class="text-latitude-blanc">{data.info.exif.objectifs}</p>
+            </li>
+            <li>
+              <p class="text-[10px] uppercase tracking-[0.2em] text-latitude-or/80 mb-0.5">Pellicules</p>
+              <p class="text-latitude-blanc">{data.info.exif.pellicules}</p>
+            </li>
+          </ul>
+
+          <div class="mt-5 pt-4 border-t border-latitude-cendre/60 grid grid-cols-2 gap-3">
+            <div>
+              <p class="font-dm-serif text-latitude-blanc text-3xl leading-none">{data.infosCles.anneesActivite}</p>
+              <p class="font-hanken text-[10px] uppercase tracking-[0.18em] text-latitude-blanc/55 mt-1">années · Saint-Denis</p>
+            </div>
+            <div>
+              <p class="font-dm-serif text-latitude-or text-3xl leading-none">{data.infosCles.expositions}</p>
+              <p class="font-hanken text-[10px] uppercase tracking-[0.18em] text-latitude-blanc/55 mt-1">expositions personnelles</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Signature manuscrite -->
+        <div class="mt-4 flex items-center gap-3">
+          <span class="block flex-1 h-px bg-latitude-cendre/60"></span>
+          <span class="font-caveat text-latitude-or text-3xl leading-none">A. Maillot</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- BANDEAU PELLICULE signature -->
+    <div class="mt-14 md:mt-20">
+      <div class="relative bg-latitude-charbon py-4 md:py-5">
+        <!-- Bandeau sprocket haut -->
+        <div class="absolute top-1.5 inset-x-0 flex justify-around" aria-hidden="true">
+          {Array.from({ length: 32 }).map(() => (
+            <span class="block w-3 h-2 bg-latitude-noir rounded-sm"></span>
+          ))}
+        </div>
+        <!-- Bandeau sprocket bas -->
+        <div class="absolute bottom-1.5 inset-x-0 flex justify-around" aria-hidden="true">
+          {Array.from({ length: 32 }).map(() => (
+            <span class="block w-3 h-2 bg-latitude-noir rounded-sm"></span>
+          ))}
+        </div>
+
+        <!-- Vignettes -->
+        <div class="px-6 md:px-10 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+          {vignettes.map((v) => (
+            <figure class="relative group">
+              <div class="aspect-[4/5] overflow-hidden bg-latitude-noir grayscale-[0.4]">
+                <img
+                  src={v.src}
+                  alt=""
+                  loading="eager"
+                  class="w-full h-full object-cover transition-all duration-500 group-hover:grayscale-0 group-hover:scale-[1.02]"
+                />
+              </div>
+              <figcaption class="absolute top-1.5 left-1.5 right-1.5 flex items-center justify-between font-hanken text-[8.5px] uppercase tracking-[0.15em] text-latitude-blanc">
+                <span class="bg-latitude-noir/80 px-1.5 py-0.5">▸ {v.frame}</span>
+                <span class="bg-latitude-labo px-1.5 py-0.5 text-latitude-blanc">M</span>
+              </figcaption>
+              <figcaption class="absolute bottom-1.5 left-1.5 font-hanken text-[8.5px] uppercase tracking-[0.12em] text-latitude-blanc bg-latitude-noir/80 px-1.5 py-0.5 tabular-nums">
+                {v.exif}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+
+      <!-- Légende sous-bandeau -->
+      <p class="mt-3 mb-12 md:mb-16 font-hanken text-[11px] uppercase tracking-[0.3em] text-latitude-blanc/55 text-center">
+        ✦ Planche-contact 35mm · Tri-X 400 · Roll #142 · Saint-Denis 2026 ✦
+      </p>
+    </div>
+  </div>
+</section>

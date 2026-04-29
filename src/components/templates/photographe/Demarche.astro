@@ -1,0 +1,27 @@
+---
+import data from '../../../data/templates/latitude.json';
+---
+
+<section id="demarche" class="bg-latitude-creme text-latitude-noir py-20 md:py-28">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+    <div class="max-w-2xl mb-12 md:mb-16">
+      <p class="font-hanken text-[11px] uppercase tracking-[0.4em] text-latitude-or mb-4">✦ Méthode de travail</p>
+      <h2 class="font-dm-serif text-latitude-noir text-5xl md:text-6xl leading-[0.95] tracking-tight">
+        Du brief au tirage,<br/>
+        <span class="italic text-latitude-or">quatre temps.</span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-5 md:gap-6">
+      {data.demarches.map((d) => (
+        <article class="bg-latitude-papier border border-latitude-or/30 p-6 flex flex-col">
+          <p class="font-dm-serif italic text-latitude-or text-5xl leading-none mb-3">{d.etape}</p>
+          <h3 class="font-dm-serif text-latitude-noir text-xl md:text-[22px] leading-tight tracking-tight">
+            {d.titre}
+          </h3>
+          <p class="mt-3 font-hanken text-[13.5px] text-latitude-noir/80 leading-relaxed">{d.texte}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

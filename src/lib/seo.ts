@@ -56,7 +56,8 @@ type PageKey =
   | 'templatePlongee'
   | 'templateWedding'
   | 'templatePatisserie'
-  | 'templateGarage';
+  | 'templateGarage'
+  | 'templatePhotographe';
 
 const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'> & { noindex?: boolean; ogImage?: string; ogImageAlt?: string }> = {
   home: {
@@ -294,6 +295,13 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
     description:
       'Aperçu du template "Garage mécanique" proposé par 9site4 : interventions chiffrées, fiche bordereau atelier, équipe, engagements, devis 24h. Site fictif de démonstration.',
     canonical: '/templates/garage',
+    noindex: true,
+  },
+  templatePhotographe: {
+    title: 'Studio Latitude — Photographe d\'auteur à Saint-Denis (Réunion) | Template 9site4',
+    description:
+      'Aperçu du template "Photographe d\'auteur" proposé par 9site4 : portraits argentiques, mariage éditorial, reportage, tirages d\'art numérotés. Site fictif de démonstration.',
+    canonical: '/templates/photographe',
     noindex: true,
   },
 };

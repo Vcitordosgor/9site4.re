@@ -1,0 +1,46 @@
+---
+import data from '../../../data/templates/latitude.json';
+---
+
+<footer class="bg-latitude-noir text-latitude-blanc border-t border-latitude-cendre/40">
+  <div class="max-w-content mx-auto px-6 md:px-10 py-14 md:py-16">
+
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-10 mb-12">
+      <div class="md:col-span-5">
+        <div class="flex items-baseline gap-2">
+          <span class="font-instrument italic text-latitude-blanc text-4xl leading-none">Studio</span>
+          <span class="font-dm-serif text-latitude-or text-4xl leading-none">Latitude.</span>
+        </div>
+        <p class="mt-4 font-instrument italic text-lg text-latitude-blanc/80 max-w-sm leading-relaxed">
+          {data.info.tagline} — Photographie d'auteur à Saint-Denis, La Réunion, depuis {data.info.annee}.
+        </p>
+      </div>
+
+      <div class="md:col-span-3">
+        <p class="font-hanken text-[10px] uppercase tracking-[0.25em] text-latitude-or mb-3">Studio</p>
+        <ul class="space-y-2 font-hanken text-[13.5px]">
+          <li><a href="#series" class="hover:text-latitude-or transition-colors">Séries</a></li>
+          <li><a href="#auteur" class="hover:text-latitude-or transition-colors">Auteur</a></li>
+          <li><a href="#demarche" class="hover:text-latitude-or transition-colors">Démarche</a></li>
+          <li><a href="#contact" class="hover:text-latitude-or transition-colors">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="md:col-span-4">
+        <p class="font-hanken text-[10px] uppercase tracking-[0.25em] text-latitude-or mb-3">Adresse</p>
+        <ul class="space-y-2 font-hanken text-[13.5px]">
+          <li>{data.info.adresseLigne1}</li>
+          <li>{data.info.adresseLigne2}</li>
+          <li><a href={`tel:${data.info.telephoneHref}`} class="hover:text-latitude-or transition-colors">{data.info.telephone}</a></li>
+          <li><a href={`mailto:${data.info.email}`} class="hover:text-latitude-or transition-colors">{data.info.email}</a></li>
+          <li class="text-latitude-blanc/65">Instagram {data.info.instagram}</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pt-6 border-t border-latitude-cendre/40 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 font-hanken text-[11px] text-latitude-blanc/55">
+      <p>© {data.info.annee}–2026 {data.info.nom} · SIRET {data.info.siret}</p>
+      <p class="font-caveat text-latitude-or text-2xl leading-none">— L'image juste, jamais l'image facile.</p>
+    </div>
+  </div>
+</footer>
