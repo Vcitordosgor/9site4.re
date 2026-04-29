@@ -97,6 +97,10 @@ export default {
     {
       pattern: /^(bg|text|ring|border|from|to|via)-(vanille-creme|vanille-papier|vanille-gousse|vanille-caramel|vanille-pandan|vanille-piment|vanille-grain|vanille-blanc)(\/(5|10|15|20|25|30|40|50|55|60|65|70|75|80|85|90))?$/,
     },
+    // Palette garagiste — Atelier Motorpiton (Le Tampon)
+    {
+      pattern: /^(bg|text|ring|border|from|to|via)-(piton-asphalte|piton-acier|piton-fonte|piton-beton|piton-feu|piton-feu-fonce|piton-acide|piton-blanc)(\/(5|10|15|20|25|30|40|50|55|60|65|70|75|80|85|90))?$/,
+    },
   ],
   theme: {
     extend: {
@@ -394,6 +398,19 @@ export default {
         'vanille-piment':  '#D14B3C',  // rouge piment — accent rare (épices)
         'vanille-grain':   '#2A1B0F',  // brun grain torréfié — fond dark
         'vanille-blanc':   '#FFFEF9',  // blanc casssé sucre glace
+
+        // Palette garagiste — Atelier Motorpiton (Le Tampon, hauts)
+        // Style "fiche d'intervention atelier mécanique" : noir asphalte + acier
+        // brossé + orange feu signal + crème béton. Distinct de la plomberie
+        // (jaune sécu) et de l'auto-école (bleu route saturé).
+        'piton-asphalte':  '#0F1014',  // noir asphalte profond — fond dominant
+        'piton-acier':     '#2B2D33',  // acier brossé sombre — sections
+        'piton-fonte':     '#454850',  // fonte gris — bordures, secondaire
+        'piton-beton':     '#E8E5DD',  // crème béton chaud — fond clair
+        'piton-feu':       '#FF5A1F',  // orange feu signal — accent CTA, AAA on dark
+        'piton-feu-fonce': '#CC4416',  // hover feu
+        'piton-acide':     '#D4FF3A',  // jaune acide diagnostic — accent rare diag/scan
+        'piton-blanc':     '#FAFAF8',
       },
       fontFamily: {
         sora: ['Sora', 'system-ui', 'sans-serif'],

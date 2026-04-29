@@ -1,0 +1,175 @@
+{
+  "info": {
+    "nom": "Atelier Motorpiton",
+    "wordmark1": "MOTOR",
+    "wordmark2": "PITON",
+    "soustitre": "Garage mécanique · Le Tampon",
+    "tagline": "Mécanique honnête, devis sans détour.",
+    "fondateur": "Mickaël Hoarau",
+    "ville": "Le Tampon",
+    "adresseLigne1": "47 chemin Bras-Creux",
+    "adresseLigne2": "97430 Le Tampon",
+    "telephone": "0262 27 41 88",
+    "telephoneHref": "+262262274188",
+    "whatsapp": "262692771204",
+    "email": "atelier@motorpiton.re",
+    "siret": "82301548700019",
+    "annee": "2014",
+    "horaires": "Lundi → vendredi · 7h30 → 17h30 / Samedi 8h → 12h",
+    "photoHero": "https://images.unsplash.com/photo-1486006920555-c77dcf18193c?w=1800&q=85",
+    "photoHeroAlt": "Atelier mécanique au Tampon, voiture sur pont élévateur, mécanicien en bleu de travail",
+    "agreements": ["Centre de Contrôle Technique partenaire", "Bosch Car Service Partner", "Agréé toutes assurances"]
+  },
+  "promesse": "Au Tampon depuis 2014. Mickaël et son équipe de 4 mécaniciens diagnostiquent, réparent et entretiennent toutes marques. Devis détaillé avant chaque intervention, photos des pièces remplacées, garantie 12 mois pièces et main d'œuvre.",
+  "interventions": [
+    {
+      "id": "diagnostic",
+      "code": "DIAG-001",
+      "titre": "Diagnostic électronique",
+      "duree": "30 min",
+      "prix": "39 €",
+      "tagline": "On lit la voiture, on vous explique.",
+      "description": "Lecture des codes défaut sur valise multimarque (Bosch KTS), test des capteurs principaux, analyse OBD-II en direct. Rapport imprimé remis avec préconisation chiffrée.",
+      "outils": ["Bosch KTS 990", "Launch X-431", "Scope 4 voies"],
+      "marques": "Toutes marques essence/diesel/hybride"
+    },
+    {
+      "id": "vidange",
+      "code": "ENT-100",
+      "titre": "Vidange + filtres",
+      "duree": "1h",
+      "prix": "à partir de 89 €",
+      "tagline": "Huile constructeur, jamais de générique.",
+      "description": "Vidange huile moteur (Total Quartz / Mobil 1 selon préco), remplacement filtre à huile + filtre à air, contrôle des niveaux liquide de frein/refroidissement/lave-glace, mise à zéro indicateur d'entretien.",
+      "outils": ["Pont 4 colonnes", "Pompe huile pneumatique"],
+      "marques": "Citadines, berlines, SUV jusqu'à 3,5T"
+    },
+    {
+      "id": "freinage",
+      "code": "FRE-200",
+      "titre": "Plaquettes + disques",
+      "duree": "1h30 par essieu",
+      "prix": "à partir de 195 € / essieu",
+      "tagline": "On contrôle l'épaisseur, vous décidez.",
+      "description": "Mesure micro-mètre des plaquettes et des disques avant intervention, photos remises au client. Si seules les plaquettes sont à faire, on ne touche pas aux disques. Pose de plaquettes Brembo / TRW / Ferodo (au choix).",
+      "outils": ["Pied à coulisse digital", "Banc de freinage"],
+      "marques": "Toutes marques sauf Tesla"
+    },
+    {
+      "id": "embrayage",
+      "code": "TRAN-300",
+      "titre": "Embrayage complet",
+      "duree": "6 à 8 heures",
+      "prix": "à partir de 690 €",
+      "tagline": "Devis ferme, pas de surprise.",
+      "description": "Dépose boîte de vitesses, remplacement kit embrayage 3 pièces (mécanisme, disque, butée), contrôle volant moteur (changement si voilé), repose et remplissage huile boîte. Rodage 500 km offert si besoin.",
+      "outils": ["Pont 2 colonnes 3,2T", "Élévateur boîte hydraulique"],
+      "marques": "Toutes marques BVM"
+    },
+    {
+      "id": "distribution",
+      "code": "MOT-400",
+      "titre": "Courroie de distribution + pompe",
+      "duree": "4 à 6 heures",
+      "prix": "à partir de 540 €",
+      "tagline": "Préventif > curatif. Toujours.",
+      "description": "Remplacement kit distribution complet (courroie, galets, tendeur) + pompe à eau systématique. Remplacement liquide de refroidissement et purge. Remise contrôle 30 jours / 1 000 km.",
+      "outils": ["Outils calage spécifiques", "Coffret distribution Facom"],
+      "marques": "Renault, Peugeot, Citroën, Dacia, VW, Hyundai, Toyota"
+    },
+    {
+      "id": "ct",
+      "code": "CT-500",
+      "titre": "Contre-visite + remise en conformité",
+      "duree": "Variable (devis)",
+      "prix": "Selon défauts",
+      "tagline": "Vous repartez avec la macaron OK.",
+      "description": "Reprise des défauts contrôle technique : feux, géométrie, freinage, suspension, échappement, pollution. Devis détaillé poste par poste. Présentation à la contre-visite incluse (nous y allons).",
+      "outils": ["Banc géo 3D Hunter", "Banc pollution diesel/essence"],
+      "marques": "Toutes marques"
+    }
+  ],
+  "equipe": [
+    {
+      "prenom": "Mickaël",
+      "role": "Chef d'atelier · Fondateur",
+      "anciennete": "12 ans",
+      "specialite": "Diagnostic & moteur"
+    },
+    {
+      "prenom": "Jean-Yves",
+      "role": "Mécanicien confirmé",
+      "anciennete": "8 ans",
+      "specialite": "Boîtes & embrayages"
+    },
+    {
+      "prenom": "Émilie",
+      "role": "Mécanicienne",
+      "anciennete": "4 ans",
+      "specialite": "Électricité auto"
+    },
+    {
+      "prenom": "Loïc",
+      "role": "Apprenti CAP",
+      "anciennete": "2e année",
+      "specialite": "Entretien courant"
+    }
+  ],
+  "fondateur": {
+    "nom": "Mickaël Hoarau",
+    "titre": "Chef d'atelier & fondateur",
+    "bio": "Mickaël a passé son CAP mécanique à La Plaine-des-Cafres en 2002. 12 ans chez Renault Le Tampon comme technicien expert avant de monter Motorpiton en 2014. Il déteste l'arnaque, il adore expliquer ce qu'il fait. Mickaël est CQP Réparation Carrosserie Peinture et Bosch Diesel Specialist.",
+    "credo": "« Si je peux pas l'expliquer en 2 minutes au client, c'est que j'ai pas compris moi-même. »"
+  },
+  "engagements": [
+    {
+      "code": "01",
+      "titre": "Devis avant intervention, toujours",
+      "texte": "Aucune réparation lancée sans devis signé. Si on découvre un problème pendant l'intervention, on appelle, on discute, on chiffre."
+    },
+    {
+      "code": "02",
+      "titre": "Photos des pièces remplacées",
+      "texte": "Vous repartez avec les photos avant/après et les pièces démontées si vous voulez les voir. Aucune pièce changée 'pour rien'."
+    },
+    {
+      "code": "03",
+      "titre": "Garantie 12 mois pièces + main d'œuvre",
+      "texte": "Toute intervention est garantie 12 mois ou 20 000 km. Pièces neuves uniquement (jamais de récupération sauf accord explicite client)."
+    },
+    {
+      "code": "04",
+      "titre": "Voiture de courtoisie",
+      "texte": "2 véhicules de prêt (Twingo + Clio) gratuits pour interventions > 4h, sur réservation 48h à l'avance. Permis B obligatoire."
+    }
+  ],
+  "avis": [
+    {
+      "prenom": "Bertrand",
+      "ville": "Le Tampon",
+      "vehicule": "Peugeot 308 · 2018",
+      "etoiles": 5,
+      "texte": "Dépanneur honnête, devis ferme, intervention nickel. Mickaël m'a montré la pièce d'embrayage usée, expliqué ce qu'il avait fait, garantie 1 an. Mes parents y vont aussi maintenant."
+    },
+    {
+      "prenom": "Sandra",
+      "ville": "Saint-Pierre",
+      "vehicule": "Renault Captur · 2020",
+      "etoiles": 5,
+      "texte": "Contre-visite passée du premier coup, prix 30% en dessous du concessionnaire pour un kit distribution. Ils m'ont prêté une voiture pendant la journée. Je recommande à tout Saint-Pierre."
+    },
+    {
+      "prenom": "Yann",
+      "ville": "La Plaine-des-Cafres",
+      "vehicule": "Toyota Hilux · 2015",
+      "etoiles": 5,
+      "texte": "Diagnostic électronique en 30 min, ils ont trouvé un capteur ABS pour 78 € quand le concess voulait me changer toute la centrale (1 200 €). Probité totale. Bravo."
+    }
+  ],
+  "infosCles": {
+    "interventionsParAn": "1 900",
+    "satisfactionGoogle": "4.9",
+    "avisGoogle": "247",
+    "anneesActivite": "12"
+  }
+}
