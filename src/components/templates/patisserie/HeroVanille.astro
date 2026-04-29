@@ -1,0 +1,141 @@
+---
+/**
+ * HeroVanille — étiquette de bocal vanille vintage géante.
+ * Encadré ornemental double-filet, tampon "fait main", gousses SVG en
+ * cartouche, chiffres production du jour façon ardoise de boutique.
+ */
+import data from '../../../data/templates/vanille.json';
+
+const today = new Date().toLocaleDateString('fr-FR', {
+  weekday: 'long', day: 'numeric', month: 'long',
+});
+---
+
+<section id="top" class="relative bg-vanille-creme overflow-hidden">
+  <!-- Texture papier (subtle noise via SVG) -->
+  <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-[0.06]" aria-hidden="true">
+    <filter id="vanille-grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" />
+      <feColorMatrix values="0 0 0 0 0.36  0 0 0 0 0.23  0 0 0 0 0.12  0 0 0 1 0" />
+    </filter>
+    <rect width="100%" height="100%" filter="url(#vanille-grain)" />
+  </svg>
+
+  <div class="max-w-content mx-auto px-6 md:px-10 pt-10 md:pt-14 pb-16 md:pb-24 relative">
+
+    <!-- ÉTIQUETTE GÉANTE encadrée -->
+    <div class="relative max-w-4xl mx-auto bg-vanille-blanc/60 border-[3px] border-double border-vanille-gousse p-8 md:p-14">
+      <!-- Filet intérieur -->
+      <div class="absolute inset-3 border border-vanille-gousse/30 pointer-events-none" aria-hidden="true"></div>
+
+      <!-- Gousse SVG ornementale haut gauche -->
+      <svg viewBox="0 0 120 60" class="absolute -top-3 left-6 md:left-12 w-24 md:w-32 text-vanille-caramel" aria-hidden="true">
+        <g>
+          <path d="M5 35 Q25 15 60 8 Q90 5 115 12 Q90 18 60 22 Q30 28 5 35 Z" fill="currentColor" opacity="0.85"/>
+          <path d="M5 35 Q25 15 60 8 Q90 5 115 12" fill="none" stroke="#5C3A1E" stroke-width="0.6" opacity="0.5"/>
+        </g>
+      </svg>
+      <!-- Gousse droite -->
+      <svg viewBox="0 0 120 60" class="absolute -bottom-3 right-6 md:right-12 w-24 md:w-32 text-vanille-caramel rotate-180" aria-hidden="true">
+        <g>
+          <path d="M5 35 Q25 15 60 8 Q90 5 115 12 Q90 18 60 22 Q30 28 5 35 Z" fill="currentColor" opacity="0.85"/>
+        </g>
+      </svg>
+
+      <!-- Eyebrow -->
+      <div class="text-center">
+        <p class="font-karla text-[10px] md:text-[11px] uppercase tracking-[0.4em] text-vanille-caramel mb-3 md:mb-5">
+          ✦ Pâtisserie créole · depuis {data.info.annee} ✦
+        </p>
+
+        <!-- Wordmark XXL -->
+        <h1 class="font-yeseva text-vanille-gousse leading-[0.9]">
+          <span class="block text-5xl sm:text-6xl md:text-7xl lg:text-[88px]">La Vanille</span>
+          <span class="block font-italianno text-vanille-caramel text-5xl md:text-7xl lg:text-8xl leading-none mt-1">de Bel-Air</span>
+        </h1>
+
+        <!-- Filet ornemental -->
+        <div class="flex items-center justify-center gap-3 my-6 md:my-8" aria-hidden="true">
+          <span class="block w-16 md:w-24 h-px bg-vanille-gousse/50"></span>
+          <span class="text-vanille-caramel text-lg">❦</span>
+          <span class="block w-16 md:w-24 h-px bg-vanille-gousse/50"></span>
+        </div>
+
+        <!-- Tagline -->
+        <p class="font-yeseva italic text-vanille-gousse text-xl md:text-3xl leading-snug max-w-xl mx-auto">
+          {data.info.tagline}
+        </p>
+
+        <!-- Description -->
+        <p class="mt-5 md:mt-7 font-karla text-[14px] md:text-[15px] text-vanille-gousse/85 leading-relaxed max-w-xl mx-auto">
+          Tout est fait le matin même, à la main, dans la cuisine au fond de la boutique.<br class="hidden md:block" />
+          Vanille bourbon de Bras-Panon · Œufs fermiers de Salazie · Rhum arrangé maison.
+        </p>
+      </div>
+
+      <!-- Cartouche du jour : production -->
+      <div class="mt-8 md:mt-10 grid grid-cols-3 gap-3 md:gap-5">
+        <div class="bg-vanille-gousse text-vanille-creme p-3 md:p-4 text-center">
+          <p class="font-karla text-[9px] uppercase tracking-[0.2em] text-vanille-caramel mb-1">Aujourd'hui</p>
+          <p class="font-yeseva text-base md:text-xl leading-tight capitalize">{today}</p>
+        </div>
+        <div class="bg-vanille-papier border border-vanille-gousse/40 p-3 md:p-4 text-center">
+          <p class="font-karla text-[9px] uppercase tracking-[0.2em] text-vanille-caramel mb-1">Au four ce matin</p>
+          <p class="font-yeseva text-vanille-gousse text-xl md:text-2xl leading-tight">42 mille-feuilles</p>
+        </div>
+        <div class="bg-vanille-papier border border-vanille-gousse/40 p-3 md:p-4 text-center">
+          <p class="font-karla text-[9px] uppercase tracking-[0.2em] text-vanille-caramel mb-1">Boutique ouvre à</p>
+          <p class="font-yeseva text-vanille-gousse text-xl md:text-2xl leading-tight">6h30</p>
+        </div>
+      </div>
+
+      <!-- CTAs -->
+      <div class="mt-8 md:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4">
+        <a
+          href="#specialites"
+          class="inline-flex items-center justify-center h-12 px-7 bg-vanille-gousse text-vanille-creme font-karla font-semibold text-[12.5px] uppercase tracking-[0.18em] rounded-full hover:bg-vanille-caramel transition-colors duration-300"
+        >
+          Voir les spécialités
+        </a>
+        <a
+          href={`https://wa.me/${data.info.whatsapp}?text=${encodeURIComponent('Bonjour Stéphanie, je souhaite passer commande.')}`}
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center justify-center h-12 px-7 bg-transparent text-vanille-gousse border-2 border-vanille-gousse font-karla font-semibold text-[12.5px] uppercase tracking-[0.18em] rounded-full hover:bg-vanille-gousse hover:text-vanille-creme transition-colors duration-300"
+        >
+          Commander 24h
+        </a>
+      </div>
+
+      <!-- Tampon "fait main" en cachet rouge -->
+      <div class="absolute bottom-3 right-3 md:bottom-6 md:right-6 -rotate-12">
+        <div class="w-20 h-20 md:w-28 md:h-28 rounded-full border-2 border-vanille-piment/80 flex items-center justify-center text-vanille-piment/85">
+          <div class="text-center font-karla">
+            <p class="text-[9px] md:text-[10px] uppercase tracking-[0.25em] leading-none">Fait</p>
+            <p class="text-[9px] md:text-[10px] uppercase tracking-[0.25em] leading-none mt-0.5">à la main</p>
+            <div class="flex justify-center my-1 md:my-2">
+              <span class="block w-6 md:w-10 h-px bg-vanille-piment/70"></span>
+            </div>
+            <p class="font-yeseva text-base md:text-xl leading-none">N°{data.info.annee}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Photo gros plan dessous -->
+    <div class="mt-12 md:mt-16 max-w-5xl mx-auto">
+      <div class="aspect-[16/7] overflow-hidden border-[3px] border-vanille-gousse">
+        <img
+          src={data.info.photoHero}
+          alt={data.info.photoHeroAlt}
+          loading="eager"
+          fetchpriority="high"
+          class="w-full h-full object-cover"
+        />
+      </div>
+      <p class="mt-3 text-center font-yeseva italic text-vanille-caramel text-base md:text-lg">
+        — Pétri à 4h30 ce matin par Stéphanie —
+      </p>
+    </div>
+  </div>
+</section>
