@@ -1,0 +1,63 @@
+---
+/**
+ * MobileStickyCTA — bouton flottant 'Demander mon site' qui apparaît
+ * en bas de l'écran sur mobile après un scroll (~250px).
+ *
+ * - Mobile uniquement (md:hidden)
+ * - Caché par défaut, apparaît au scroll après 250px
+ * - Caché sur la page /contact (CTA déjà présent)
+ * - Boost conversion mobile (booster +15-20% typique)
+ * - safe-area-inset-bottom pour respecter le notch / home indicator iOS
+ */
+import siteConfig from '../../data/siteConfig.json';
+
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+const hideOnPaths = ['/contact'];
+const hide = hideOnPaths.includes(currentPath);
+---
+
+{!hide && (
+  <div
+    id="mobile-sticky-cta"
+    class="md:hidden fixed inset-x-0 bottom-0 z-40 px-4 pb-[max(env(safe-area-inset-bottom),0.75rem)] pt-3 pointer-events-none translate-y-full transition-transform duration-300 ease-out"
+    aria-hidden="true"
+    data-mobile-cta
+  >
+    <div class="pointer-events-auto rounded-2xl bg-bleu-nuit/95 backdrop-blur-md text-blanc-casse shadow-[0_8px_32px_rgba(11,20,55,0.35)] ring-1 ring-blanc-casse/10 px-4 py-3 flex items-center gap-3">
+      <div class="flex-1 min-w-0">
+        <p class="font-sora font-semibold text-sm leading-tight truncate">
+          Demandez votre site
+        </p>
+        <p class="text-[11px] text-blanc-casse/70 leading-tight truncate">
+          À partir de 97,4&thinsp;€/mois — sans engagement
+        </p>
+      </div>
+      <a
+        href="/contact"
+        class="inline-flex items-center justify-center h-10 px-4 rounded-full bg-orange text-bleu-nuit font-inter font-semibold text-sm whitespace-nowrap hover:bg-orange/90 active:translate-y-px transition-all"
+      >
+        Demander
+      </a>
+    </div>
+  </div>
+)}
+
+<script>
+  // Sticky CTA mobile : apparaît après 250px de scroll, masqué tout en haut
+  const SCROLL_THRESHOLD = 250;
+  const cta = document.querySelector<HTMLElement>('[data-mobile-cta]');
+  if (cta) {
+    let visible = false;
+    const update = () => {
+      const shouldShow = window.scrollY > SCROLL_THRESHOLD;
+      if (shouldShow !== visible) {
+        visible = shouldShow;
+        cta.classList.toggle('translate-y-full', !visible);
+        cta.classList.toggle('translate-y-0', visible);
+        cta.setAttribute('aria-hidden', String(!visible));
+      }
+    };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+  }
+</script>

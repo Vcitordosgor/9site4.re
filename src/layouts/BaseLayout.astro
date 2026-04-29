@@ -4,6 +4,7 @@ import { ClientRouter } from 'astro:transitions';
 import siteConfig from '../data/siteConfig.json';
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
+import MobileStickyCTA from '../components/layout/MobileStickyCTA.astro';
 import { absoluteUrl, type PageSeo } from '../lib/seo';
 
 interface Props {
@@ -188,6 +189,7 @@ const schemaOrg = {
       <slot />
     </main>
     {!bare && <Footer />}
+    {!bare && <MobileStickyCTA />}
 
     <script>
       // Bootstrap des animations interactives (rejoué à chaque navigation View Transitions)
