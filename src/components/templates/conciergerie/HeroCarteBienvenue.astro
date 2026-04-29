@@ -33,11 +33,25 @@ import data from '../../../data/templates/concierge.json';
       </p>
 
       <!-- Filet doré ornemental -->
-      <div class="mt-10 mb-10 flex items-center gap-3" aria-hidden="true">
+      <div class="mt-10 mb-8 flex items-center gap-3" aria-hidden="true">
         <span class="block h-px w-16 bg-gradient-to-r from-concierge-laiton/60 to-concierge-laiton"></span>
         <span class="text-concierge-laiton text-sm">✦</span>
         <span class="block h-px w-16 bg-gradient-to-l from-concierge-laiton/60 to-concierge-laiton"></span>
       </div>
+
+      <!-- Compteur 'Heures rendues à nos clients' — métrique signature concierge -->
+      <figure class="mb-10">
+        <figcaption class="flex items-center gap-2 font-hubot text-[10px] uppercase tracking-[0.32em] text-concierge-laiton mb-2">
+          <span aria-hidden="true">✦</span>
+          <span>Heures rendues à nos clients · 2025</span>
+        </figcaption>
+        <p class="font-volkhov font-bold text-concierge-nuit leading-none tabular-nums" style="font-size: clamp(38px, 5vw, 56px);">
+          2 847 h
+        </p>
+        <p class="mt-2 font-volkhov italic text-concierge-graphite text-base md:text-lg">
+          Soit 119 jours retrouvés.
+        </p>
+      </figure>
 
       <!-- CTAs -->
       <div class="flex flex-wrap items-center gap-x-7 gap-y-4">
