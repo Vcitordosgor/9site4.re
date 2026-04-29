@@ -31,6 +31,27 @@ import data from '../../../data/templates/sentiers.json';
     ))}
   </div>
 
+  <!-- Légende lieu de la photo courante (synchronisée avec le slide actif) -->
+  <div class="absolute top-24 md:top-32 left-6 md:left-10 z-10 flex flex-col gap-2 max-w-[60%]" aria-live="polite">
+    {data.carrousel.map((p, i) => (
+      <div
+        data-slide-caption={i}
+        class:list={[
+          'inline-flex items-baseline gap-2 px-3 py-1.5 bg-sentiers-foret/60 backdrop-blur-sm ring-1 ring-sentiers-brume/15 transition-opacity duration-700',
+          i === 0 ? 'opacity-100' : 'opacity-0 absolute',
+        ]}
+      >
+        <span class="text-sentiers-soleil text-[10px]" aria-hidden="true">📍</span>
+        <span class="font-roboto-mono text-[10px] uppercase tracking-[0.22em] text-sentiers-brume">
+          {p.lieu}
+        </span>
+        <span class="font-roboto-mono text-[10px] tabular-nums text-sentiers-soleil/80">
+          · {p.altitude}
+        </span>
+      </div>
+    ))}
+  </div>
+
   <!-- Voile vert sombre dégradé -->
   <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(14,40,32,0.7) 0%, rgba(14,40,32,0.45) 50%, rgba(14,40,32,0.85) 100%);" aria-hidden="true"></div>
 
@@ -142,11 +163,17 @@ import data from '../../../data/templates/sentiers.json';
   <script>
     const slides = document.querySelectorAll<HTMLElement>('[data-slide]');
     const dots = document.querySelectorAll<HTMLElement>('[data-dot]');
+    const captions = document.querySelectorAll<HTMLElement>('[data-slide-caption]');
     let current = 0;
 
     function go(idx: number) {
       slides.forEach((s, i) => {
         s.style.opacity = i === idx ? '1' : '0';
+      });
+      captions.forEach((c, i) => {
+        c.style.opacity = i === idx ? '1' : '0';
+        if (i === idx) c.classList.remove('absolute');
+        else c.classList.add('absolute');
       });
       dots.forEach((d, i) => {
         if (i === idx) {

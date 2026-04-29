@@ -23,19 +23,27 @@
   "carrousel": [
     {
       "src": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1800&q=85",
-      "alt": "Vue panoramique sur les montagnes au lever du soleil"
+      "alt": "Lever de soleil au belvédère du Maïdo, vue sur le cirque de Mafate",
+      "lieu": "Maïdo · belvédère",
+      "altitude": "2 205 m"
     },
     {
       "src": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1800&q=85",
-      "alt": "Sommet brumeux de la Réunion"
+      "alt": "Sommet brumeux des hauts de La Réunion, mer de nuages",
+      "lieu": "Cirque de Cilaos · sommet",
+      "altitude": "2 190 m"
     },
     {
       "src": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1800&q=85",
-      "alt": "Cascade en forêt tropicale"
+      "alt": "Cascade Niagara à Sainte-Suzanne, forêt tropicale humide",
+      "lieu": "Cascade Niagara · Sainte-Suzanne",
+      "altitude": "25 m"
     },
     {
       "src": "https://images.unsplash.com/photo-1570032295547-a40af6cb1e88?w=1800&q=85",
-      "alt": "Coucher de soleil sur les pitons"
+      "alt": "Coucher de soleil sur les Trois Salazes, cirque de Mafate",
+      "lieu": "Trois Salazes · Mafate",
+      "altitude": "2 145 m"
     }
   ],
   "diplomes": [

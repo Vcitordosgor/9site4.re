@@ -19,7 +19,9 @@
     "annee": "2008",
     "classification": 4,
     "photoHero": "https://images.unsplash.com/photo-1488462237308-ecaa28b729d7?w=1600&q=85",
-    "photoExterieur": "https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=1200&q=85"
+    "photoHeroAlt": "Le Cap Anglais, gîte de cirque à Cilaos, 1 220 m d'altitude",
+    "photoExterieur": "https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=1200&q=85",
+    "photoExterieurAlt": "Vue extérieure du gîte, façade nord côté Bras-Sec"
   },
   "fiche": [
     { "label": "Capacité", "valeur": "12 personnes" },

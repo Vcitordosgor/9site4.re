@@ -13,12 +13,20 @@ import data from '../../../data/templates/lazuli.json';
   <div class="absolute inset-0">
     <img
       src={data.info.photoHero}
-      alt="Villa Lazuli, vue extérieure avec piscine"
+      alt={data.info.photoHeroAlt ?? "Villa Lazuli, vue extérieure avec piscine"}
       class="w-full h-full object-cover"
       fetchpriority="high"
       decoding="async"
     />
     <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(27,45,58,0.4) 0%, rgba(27,45,58,0.15) 35%, rgba(27,45,58,0.85) 100%);" aria-hidden="true"></div>
+  </div>
+
+  <!-- Marqueur lieu Saint-Leu (haut-gauche) — clarifie que la villa est à La Réunion -->
+  <div class="absolute top-24 md:top-32 left-6 md:left-10 z-10 inline-flex items-center gap-2 bg-lazuli-marine/45 backdrop-blur-sm ring-1 ring-lazuli-casse/15 px-3 py-1.5 rounded-full">
+    <span class="text-lazuli-coco text-[10px]" aria-hidden="true">📍</span>
+    <span class="font-geist text-[10px] uppercase tracking-[0.28em] text-lazuli-casse font-semibold">
+      Saint-Leu · 2ᵉ ligne lagon · 974
+    </span>
   </div>
 
   <!-- Sticker disponibilité en haut droite -->
