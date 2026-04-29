@@ -1,8 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14">
-  <!-- Imite le rendu emoji 🇷🇪 sur Apple/iOS/macOS récent : drapeau français
-       (3 bandes verticales bleu / blanc / rouge), coins légèrement arrondis. -->
-  <rect x="0" y="2" width="14" height="10" rx="1.5" fill="#FFFFFF"/>
-  <path d="M0 3.5 A 1.5 1.5 0 0 1 1.5 2 H 4.67 V 12 H 1.5 A 1.5 1.5 0 0 1 0 10.5 Z" fill="#0055A4"/>
-  <path d="M9.33 2 H 12.5 A 1.5 1.5 0 0 1 14 3.5 V 10.5 A 1.5 1.5 0 0 1 12.5 12 H 9.33 Z" fill="#EF4135"/>
+  <!-- Drapeau régional de La Réunion (rendu Twemoji de l'emoji 🇷🇪) :
+       3 bandes bleues du foncé au clair en haut, triangle rouge volcan
+       en bas, 5 rayons jaunes émergeant du sommet du triangle. -->
+  <rect x="0" y="2" width="14" height="10" rx="1.5" fill="#1E4596"/>
+  <!-- Bandes bleues (du foncé en haut au plus clair en bas) -->
+  <rect x="0" y="2" width="14" height="2.2" fill="#0E1F52"/>
+  <rect x="0" y="4.2" width="14" height="2.2" fill="#1E4596"/>
+  <rect x="0" y="6.4" width="14" height="2.2" fill="#4D8AC9"/>
+  <!-- Triangle volcan rouge -->
+  <path d="M0 12 L7 6.4 L14 12 Z" fill="#DC4A2A"/>
+  <!-- 5 rayons jaunes émergeant du sommet du triangle -->
+  <line x1="7" y1="6.4" x2="2" y2="2.5"  stroke="#FCD34D" stroke-width="0.5" stroke-linecap="round"/>
+  <line x1="7" y1="6.4" x2="4.5" y2="2"  stroke="#FCD34D" stroke-width="0.5" stroke-linecap="round"/>
+  <line x1="7" y1="6.4" x2="7" y2="1.7"  stroke="#FCD34D" stroke-width="0.5" stroke-linecap="round"/>
+  <line x1="7" y1="6.4" x2="9.5" y2="2"  stroke="#FCD34D" stroke-width="0.5" stroke-linecap="round"/>
+  <line x1="7" y1="6.4" x2="12" y2="2.5" stroke="#FCD34D" stroke-width="0.5" stroke-linecap="round"/>
+  <!-- Outline subtil -->
   <rect x="0.25" y="2.25" width="13.5" height="9.5" rx="1.25" fill="none" stroke="#0B1437" stroke-width="0.4" opacity="0.4"/>
 </svg>
