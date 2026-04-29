@@ -1,0 +1,178 @@
+{
+  "info": {
+    "nom": "Étude Roussin",
+    "wordmark1": "Roussin",
+    "wordmark2": "& Associés",
+    "soustitre": "Cabinet d'avocats · Saint-Pierre",
+    "tagline": "Le droit, sans la posture.",
+    "deviseLatine": "Audi alteram partem",
+    "deviseTraduction": "Entendre la partie adverse",
+    "fondateur": "Maître Olivier Roussin",
+    "ville": "Saint-Pierre",
+    "adresseLigne1": "27 rue Marius et Ary Leblond",
+    "adresseLigne2": "97410 Saint-Pierre",
+    "telephone": "0262 22 47 91",
+    "telephoneHref": "+262262224791",
+    "email": "contact@etude-roussin.re",
+    "siret": "78912045600014",
+    "annee": "2008",
+    "ordreBarreau": "Barreau de Saint-Pierre · Toque n°218",
+    "horaires": "Lundi → vendredi · 8h30 → 12h30 / 14h → 18h"
+  },
+  "promesse": "L'Étude Roussin a été fondée en 2008 à Saint-Pierre. Trois avocats associés, une assistante juridique. Nous défendons des particuliers et des PME. Pas de communication tapageuse, pas de promesse de résultat : nous travaillons avec sérieux et clarté, et nous vous rendons compte par écrit, à chaque étape.",
+  "domaines": [
+    {
+      "id": "droit-famille",
+      "code": "DOM-001",
+      "titre": "Droit de la famille",
+      "tagline": "La fin d'une histoire, pas la fin du monde.",
+      "description": "Divorces (par consentement mutuel ou contentieux), séparations, autorité parentale, garde d'enfants, pension alimentaire, partages successoraux. Nous privilégions toujours la médiation lorsqu'elle est possible : c'est plus rapide, moins coûteux, et émotionnellement plus tenable.",
+      "missions": [
+        "Divorce par consentement mutuel (acte d'avocats)",
+        "Divorce contentieux (faute, altération du lien)",
+        "Procédure résidence enfants & pension",
+        "Successions et partages immobiliers",
+        "Médiation familiale conventionnelle"
+      ],
+      "tarif": "Consultation 90 € · forfaits transparents",
+      "responsable": "Me Olivier Roussin"
+    },
+    {
+      "id": "droit-affaires",
+      "code": "DOM-002",
+      "titre": "Droit des affaires & PME",
+      "tagline": "Côté avocat conseil, côté avocat plaidant.",
+      "description": "Création d'entreprise, rédaction et négociation de contrats commerciaux, baux commerciaux, contentieux entre associés, recouvrement, accompagnement quotidien des dirigeants. Audit annuel possible pour anticiper les risques juridiques de votre PME réunionnaise.",
+      "missions": [
+        "Statuts SAS / SARL / EI / SCI",
+        "Cession de fonds de commerce",
+        "Baux commerciaux et professionnels",
+        "Contentieux commercial / TCSP",
+        "Audit juridique annuel PME"
+      ],
+      "tarif": "Forfait audit 1 800 € HT · honoraires sur devis",
+      "responsable": "Me Sandrine Hoarau"
+    },
+    {
+      "id": "droit-travail",
+      "code": "DOM-003",
+      "titre": "Droit du travail",
+      "tagline": "Salarié ou employeur : un seul cabinet.",
+      "description": "Licenciement abusif, rupture conventionnelle, harcèlement, contestation devant les Prud'hommes (CPH Saint-Pierre & Saint-Denis). Nous intervenons aussi pour les chefs d'entreprise : règlement intérieur, procédure disciplinaire, transaction. Nos honoraires de défendeur salarié sont modulables selon vos revenus.",
+      "missions": [
+        "Licenciement et rupture conventionnelle",
+        "Conseil de Prud'hommes (saisine)",
+        "Harcèlement moral et sexuel",
+        "Représentation devant la Cour d'Appel",
+        "Conseil RH PME (règlement intérieur, contrats)"
+      ],
+      "tarif": "1ère consultation 60 € · barème détaillé",
+      "responsable": "Me Olivier Roussin & Me Karim Aly"
+    },
+    {
+      "id": "droit-immobilier",
+      "code": "DOM-004",
+      "titre": "Droit immobilier & construction",
+      "tagline": "L'acquisition, le bail, le litige.",
+      "description": "Acquisition immobilière, malfaçons, litiges entre voisins (servitudes, mitoyenneté), copropriété, baux d'habitation, expulsions. La Réunion a ses spécificités (terrains familiaux, indivisions héritées, défrichement) : nous les connaissons.",
+      "missions": [
+        "Compromis et acte authentique (consultation)",
+        "Malfaçons / désordres de construction",
+        "Litiges propriétaire / locataire",
+        "Indivisions et partages familiaux",
+        "Servitudes, mitoyenneté, bornage"
+      ],
+      "tarif": "Consultation 90 € · suivi sur devis",
+      "responsable": "Me Karim Aly"
+    }
+  ],
+  "associes": [
+    {
+      "prenom": "Olivier",
+      "nom": "Roussin",
+      "titre": "Avocat associé fondateur",
+      "barreau": "Barreau Saint-Pierre · Toque n°218",
+      "specialite": "Droit de la famille · droit du travail",
+      "annees": "18 ans"
+    },
+    {
+      "prenom": "Sandrine",
+      "nom": "Hoarau",
+      "titre": "Avocate associée",
+      "barreau": "Barreau Saint-Pierre · Toque n°289",
+      "specialite": "Droit des affaires · droit fiscal",
+      "annees": "12 ans"
+    },
+    {
+      "prenom": "Karim",
+      "nom": "Aly",
+      "titre": "Avocat associé",
+      "barreau": "Barreau Saint-Pierre · Toque n°341",
+      "specialite": "Droit immobilier · droit du travail",
+      "annees": "9 ans"
+    }
+  ],
+  "fondateur": {
+    "nom": "Maître Olivier Roussin",
+    "titre": "Avocat associé fondateur",
+    "bio": "Olivier Roussin est inscrit au Barreau de Saint-Pierre depuis 2007. Diplômé du CRFPA d'Aix-en-Provence (2006) après une maîtrise de droit privé à La Réunion. Il a fondé l'Étude Roussin en 2008 avec la conviction qu'un cabinet de proximité, transparent sur ses honoraires, avait sa place dans le sud de l'île.",
+    "credo": "« Notre métier, ce n'est pas de promettre une victoire. C'est de vous expliquer ce qui peut, ce qui ne peut pas, et combien ça coûte. »",
+    "engagements": [
+      "Bâtonnier suppléant 2019-2021",
+      "Chargé d'enseignement Université de La Réunion (Procédure civile)",
+      "Médiateur certifié CMAP",
+      "Aide juridictionnelle acceptée"
+    ]
+  },
+  "demarches": [
+    {
+      "etape": "01",
+      "titre": "Rendez-vous d'écoute (1h)",
+      "texte": "Vous exposez les faits, nous écoutons. Pas d'avis hâtif. À la fin du rendez-vous, nous vous indiquons si une procédure est envisageable, raisonnable, et combien elle coûterait. 90 € pour cette première heure (60 € en droit du travail salarié)."
+    },
+    {
+      "etape": "02",
+      "titre": "Convention d'honoraires écrite",
+      "texte": "Avant tout démarrage, vous recevez une convention d'honoraires détaillée : forfait, taux horaire ou résultat. Vous signez en toute connaissance de cause. Nous appliquons l'aide juridictionnelle quand vous y êtes éligibles."
+    },
+    {
+      "etape": "03",
+      "titre": "Conduite du dossier",
+      "texte": "Vous êtes informés par courriel à chaque acte significatif (assignation, conclusions, audience). Pas de jargon : nous reformulons. Vos décisions vous appartiennent, nous vous éclairons."
+    },
+    {
+      "etape": "04",
+      "titre": "Bilan & suite",
+      "texte": "À la fin de la mission, bilan écrit : ce qui a été obtenu, ce qui aurait pu l'être, ce qui n'a pas pu l'être. Nous archivons votre dossier 10 ans. Vous pouvez toujours nous le demander."
+    }
+  ],
+  "avis": [
+    {
+      "prenom": "Madame B.",
+      "ville": "Le Tampon",
+      "domaine": "Divorce",
+      "etoiles": 5,
+      "texte": "Maître Roussin a accompagné mon divorce avec une grande humanité. Il m'a déconseillée de partir au contentieux, ce qui m'a fait économiser 6 000 € et 18 mois. Acte d'avocats signé en 8 semaines. Je le recommande à mes amies."
+    },
+    {
+      "prenom": "M. P., dirigeant SARL",
+      "ville": "Saint-Pierre",
+      "domaine": "Droit des affaires",
+      "etoiles": 5,
+      "texte": "Audit juridique annuel par Me Hoarau depuis 2020 pour ma société (12 salariés, BTP). Chaque année, elle identifie 2-3 risques que nous corrigeons à froid. Forfait 1 800 €, ROI évident. Je leur ai aussi confié un contentieux commercial gagné en 1ère instance."
+    },
+    {
+      "prenom": "Mlle T.",
+      "ville": "Saint-Joseph",
+      "domaine": "Prud'hommes",
+      "etoiles": 5,
+      "texte": "Licenciement abusif, j'avais peur du coût. Me Aly a accepté un honoraire 'résultat' (5% des indemnités obtenues). 9 mois plus tard, 22 000 € d'indemnités. Pas un centime déboursé d'avance. Très professionnel."
+    }
+  ],
+  "infosCles": {
+    "anneesActivite": "18",
+    "associes": "3",
+    "dossiersOuvertsAn": "240",
+    "tauxAccordsAmiables": "62"
+  }
+}

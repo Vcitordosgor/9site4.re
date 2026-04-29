@@ -105,6 +105,10 @@ export default {
     {
       pattern: /^(bg|text|ring|border|from|to|via)-(latitude-noir|latitude-charbon|latitude-cendre|latitude-papier|latitude-creme|latitude-or|latitude-labo|latitude-blanc)(\/(5|10|15|20|25|30|40|50|55|60|65|70|75|80|85|90))?$/,
     },
+    // Palette avocat — Étude Roussin (Saint-Pierre, cabinet)
+    {
+      pattern: /^(bg|text|ring|border|from|to|via)-(roussin-nuit|roussin-encre|roussin-velin|roussin-papier|roussin-or|roussin-laiton|roussin-bordeaux|roussin-blanc)(\/(5|10|15|20|25|30|40|50|55|60|65|70|75|80|85|90))?$/,
+    },
   ],
   theme: {
     extend: {
@@ -427,6 +431,18 @@ export default {
         'latitude-or':      '#B89766',  // or rosé subtil — accents discrets
         'latitude-labo':    '#C0392B',  // rouge safelight chambre noire — accent CTA rare
         'latitude-blanc':   '#FAF7F0',  // blanc papier — texte AAA
+
+        // Palette avocat — Étude Roussin (Saint-Pierre, cabinet juridique)
+        // Style "en-tête de cabinet d'avocats, courrier officiel" : bleu nuit
+        // institutionnel + ivoire vélin + or laiton fin + bordeaux Ordre.
+        'roussin-nuit':     '#0E1B36',  // bleu nuit profond — accent dominant
+        'roussin-encre':    '#1A1A1F',  // noir encre — texte AAA
+        'roussin-velin':    '#F5EFE0',  // ivoire vélin chaud — fond principal
+        'roussin-papier':   '#EBE3CE',  // papier ancien — sections alternées
+        'roussin-or':       '#A88B47',  // or laiton — filets ornementaux
+        'roussin-laiton':   '#C9A96E',  // laiton clair — accents dorés
+        'roussin-bordeaux': '#7A1F2A',  // bordeaux Ordre des avocats — sceau, accent
+        'roussin-blanc':    '#FFFEF7',  // blanc cassé crème
       },
       fontFamily: {
         sora: ['Sora', 'system-ui', 'sans-serif'],
