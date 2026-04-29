@@ -113,6 +113,28 @@ import data from '../../../data/templates/boost.json';
           ))}
         </ul>
 
+        <!-- Mini-panneau routier : prochaine session code -->
+        <div class="mt-6 relative bg-boost-jaune text-boost-noir border-[3px] border-boost-noir px-4 py-3">
+          <!-- Triangle indicateur sur le côté gauche, façon panneau directionnel -->
+          <span class="absolute -left-[3px] top-1/2 -translate-y-1/2 -translate-x-full w-0 h-0" style="border-top: 14px solid transparent; border-bottom: 14px solid transparent; border-right: 12px solid #1A1A1A;" aria-hidden="true"></span>
+          <p class="flex items-center gap-2 font-funnel-display font-bold text-[10px] uppercase tracking-[0.18em] mb-1">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <rect x="6" y="2" width="12" height="20" rx="2"/>
+              <circle cx="12" cy="6" r="1.5" fill="#FF3B30"/>
+              <circle cx="12" cy="12" r="1.5" fill="#FFC700"/>
+              <circle cx="12" cy="18" r="1.5" fill="#34C759"/>
+            </svg>
+            Prochaine session code
+          </p>
+          <p class="font-geist-mono text-[12px] tabular-nums leading-tight">
+            <span class="font-funnel-display font-bold">LUN 10h</span>
+            <span class="text-boost-noir/55"> · </span>
+            <span>St-Denis</span>
+            <span class="text-boost-noir/55"> · </span>
+            <span class="font-funnel-display font-bold text-boost-feu">3 places restantes</span>
+          </p>
+        </div>
+
         <p class="mt-6 pt-5 border-t border-boost-route/15 font-funnel-sans text-sm text-boost-route/75 text-center">
           Tu débutes ? L'évaluation est <strong class="text-boost-jaune">gratuite</strong>.
         </p>
