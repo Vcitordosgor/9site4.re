@@ -37,18 +37,29 @@ import data from '../../../data/templates/verveine.json';
 
     <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
 
-      <!-- Photo carrée 1:1 -->
+      <!-- Avatar typographique 1:1 (substitut au portrait Unsplash en doublon) -->
       <div class="lg:col-span-5">
-        <div class="relative aspect-square max-w-md lg:max-w-none mx-auto bg-verveine-papier overflow-hidden">
-          <img
-            src={data.info.photoPraticienne}
-            alt={`Portrait de ${data.info.titre}`}
-            class="w-full h-full object-cover grayscale"
-            fetchpriority="high"
-            decoding="async"
-          />
+        <div class="relative aspect-square max-w-md lg:max-w-none mx-auto bg-verveine-creme overflow-hidden flex items-center justify-center" role="img" aria-label={`Portrait de ${data.info.titre}`}>
+          <!-- Schéma anatomique vertébral subtil en arrière-plan (rappel hero) -->
+          <svg class="absolute inset-0 w-full h-full opacity-[0.08] pointer-events-none" viewBox="0 0 200 200" fill="none" stroke="#1C1C1A" stroke-width="0.6" aria-hidden="true">
+            <ellipse cx="100" cy="22" rx="14" ry="18"/>
+            <path d="M100 40 L98 60 L94 90 L92 120 Q90 150 94 180"/>
+            <circle cx="98" cy="70" r="1.2" fill="#1C1C1A"/>
+            <circle cx="98" cy="90" r="1.2" fill="#1C1C1A"/>
+            <circle cx="96" cy="110" r="1.2" fill="#1C1C1A"/>
+            <circle cx="96" cy="130" r="1.2" fill="#1C1C1A"/>
+            <circle cx="94" cy="150" r="1.2" fill="#1C1C1A"/>
+          </svg>
+          <!-- Initiales en Cardo géant (typo serif clinique du hero) -->
+          <span class="relative font-cardo text-verveine-encre leading-none select-none" style="font-size: clamp(160px, 24vw, 280px);" aria-hidden="true">
+            HS
+          </span>
+          <!-- Petit caducée discret en haut-droite -->
+          <span class="absolute top-6 right-6 font-karla text-[9px] uppercase tracking-[0.28em] text-verveine-beton" aria-hidden="true">
+            D.O.
+          </span>
           <!-- Cadre fin -->
-          <div class="absolute inset-3 border border-verveine-creme/40" aria-hidden="true"></div>
+          <div class="absolute inset-3 border border-verveine-encre/15" aria-hidden="true"></div>
           <!-- Filet sauge en bas -->
           <div class="absolute bottom-0 left-0 right-0 h-1 bg-verveine-sauge"></div>
         </div>

@@ -45,15 +45,16 @@ import data from '../../../data/templates/lucas.json';
 <span class="text-lucas-encre">─────────────────────────────────────────────</span>
     </pre>
 
-    <!-- Avatar + ligne d'identité minimale -->
+    <!-- Avatar typographique + ligne d'identité minimale (substitut photo stock) -->
     <div class="mt-12 flex items-center gap-4">
-      <img
-        src={data.info.photoAvatar}
-        alt={`Avatar de ${data.info.wordmark}`}
-        class="w-14 h-14 md:w-16 md:h-16 rounded-full object-cover ring-2 ring-lucas-vert/40"
-        fetchpriority="high"
-        decoding="async"
-      />
+      <span
+        class="flex w-14 h-14 md:w-16 md:h-16 rounded-full ring-2 ring-lucas-vert/40 bg-lucas-noir items-center justify-center font-instrument italic text-lucas-vert leading-none select-none"
+        style="font-size: 26px;"
+        role="img"
+        aria-label={`Avatar de ${data.info.wordmark}`}
+      >
+        LF
+      </span>
       <div>
         <p class="font-hanken font-semibold text-lucas-blanc text-base">{data.info.wordmark}</p>
         <p class="font-space-mono text-[11px] text-lucas-encre">{data.info.ville} · La Réunion</p>

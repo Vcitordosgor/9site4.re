@@ -55,25 +55,34 @@ import data from '../../../data/templates/doudou.json';
       </div>
     </div>
 
-    <!-- Photo chaleureuse droite -->
+    <!-- Composition graphique : pas de portrait stock, scène évoquée par
+         dégradés doux + stickers manuscrits + ornements floraux. -->
     <div class="lg:col-span-6">
-      <div class="relative aspect-[4/5] max-w-md mx-auto rounded-3xl overflow-hidden bg-doudou-ciel">
-        <img
-          src={data.info.photoHero}
-          alt="Aide-soignante avec une personne âgée à domicile"
-          class="w-full h-full object-cover"
-          fetchpriority="high"
-          decoding="async"
-        />
-        <!-- Sticker prénom -->
-        <div class="absolute top-4 left-4 bg-doudou-creme/95 px-4 py-2.5 rounded-full">
+      <div class="relative aspect-[4/5] max-w-md mx-auto rounded-3xl overflow-hidden flex items-center justify-center" role="img" aria-label="Maguy, aidante, en visite chez Mme R., 87 ans">
+        <!-- Dégradé chaleureux ciel → soleil → rose -->
+        <div class="absolute inset-0" style="background: linear-gradient(155deg, #C9DBE7 0%, #F8E9C4 45%, #F2C5B5 100%);" aria-hidden="true"></div>
+        <!-- Mini soleil radial en haut-droite -->
+        <div class="absolute top-8 right-8 w-16 h-16 rounded-full" style="background: radial-gradient(circle, #FCD34D 0%, transparent 70%);" aria-hidden="true"></div>
+        <!-- Pictogramme maison ♡ stylisée au centre -->
+        <svg class="relative w-24 h-24 text-doudou-rose/85" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+          <!-- Maison toit + corps -->
+          <path d="M50 18 L18 46 L26 46 L26 78 L74 78 L74 46 L82 46 Z" opacity="0.85"/>
+          <!-- Cœur dans la maison -->
+          <path d="M50 60 C 42 52 32 56 32 64 C 32 70 42 76 50 76 C 58 76 68 70 68 64 C 68 56 58 52 50 60 Z" fill="#FEFEFA" opacity="0.9"/>
+        </svg>
+        <!-- Petites annotations Homemade autour -->
+        <p class="absolute top-[35%] left-[12%] font-homemade text-doudou-bleu text-lg rotate-[-6deg] opacity-75" aria-hidden="true">tisane ♡</p>
+        <p class="absolute bottom-[30%] right-[14%] font-homemade text-doudou-bourgeon text-base rotate-[5deg] opacity-75" aria-hidden="true">les fleurs</p>
+
+        <!-- Sticker prénom (conservé) -->
+        <div class="absolute top-4 left-4 bg-doudou-creme/95 px-4 py-2.5 rounded-full shadow-sm">
           <p class="font-homemade text-doudou-rose text-2xl leading-none">Maguy &</p>
           <p class="font-be-vietnam text-doudou-encre text-sm font-medium leading-tight mt-0.5">
             Mme R., 87 ans
           </p>
         </div>
-        <!-- Sticker rose pâle bas -->
-        <div class="absolute bottom-6 right-6 bg-doudou-rose text-doudou-creme px-4 py-3 rounded-2xl rotate-[3deg]">
+        <!-- Sticker rose pâle bas (conservé) -->
+        <div class="absolute bottom-6 right-6 bg-doudou-rose text-doudou-creme px-4 py-3 rounded-2xl rotate-[3deg] shadow-sm">
           <p class="font-homemade text-2xl leading-none">7 jours / 7</p>
           <p class="font-be-vietnam text-[10px] uppercase tracking-wider mt-1 opacity-90">07h – 22h</p>
         </div>
