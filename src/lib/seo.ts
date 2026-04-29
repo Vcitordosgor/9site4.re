@@ -54,7 +54,8 @@ type PageKey =
   | 'templateConciergerie'
   | 'templateAideDomicile'
   | 'templatePlongee'
-  | 'templateWedding';
+  | 'templateWedding'
+  | 'templatePatisserie';
 
 const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'> & { noindex?: boolean; ogImage?: string; ogImageAlt?: string }> = {
   home: {
@@ -278,6 +279,13 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
     description:
       'Aperçu du template "Wedding planner" proposé par 9site4 : cérémonies plage, civiles et intimes, lieux iconiques de La Réunion, démarches sur-mesure. Site fictif de démonstration.',
     canonical: '/templates/wedding',
+    noindex: true,
+  },
+  templatePatisserie: {
+    title: 'La Vanille de Bel-Air — Pâtisserie créole à Saint-André (Réunion) | Template 9site4',
+    description:
+      'Aperçu du template "Pâtisserie créole" proposé par 9site4 : carte du jour, calendrier des fruits de saison, commandes spéciales, mariages et événements. Site fictif de démonstration.',
+    canonical: '/templates/patisserie',
     noindex: true,
   },
 };

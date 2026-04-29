@@ -1,0 +1,51 @@
+---
+import data from '../../../data/templates/vanille.json';
+---
+
+<footer class="bg-vanille-grain text-vanille-creme">
+  <div class="max-w-content mx-auto px-6 md:px-10 py-14 md:py-16">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-10 mb-12">
+
+      <div class="md:col-span-5">
+        <div class="flex items-center gap-3">
+          <svg viewBox="0 0 32 32" class="w-9 h-9 text-vanille-caramel" aria-hidden="true">
+            <path d="M6 24 Q12 14 22 8 Q24 7 25 9 Q24 12 18 18 Q12 24 8 26 Q5 27 6 24 Z" fill="currentColor"/>
+          </svg>
+          <div class="leading-none">
+            <p class="font-yeseva text-2xl">La Vanille</p>
+            <p class="font-italianno text-vanille-caramel text-2xl -mt-1">de Bel-Air</p>
+          </div>
+        </div>
+        <p class="mt-5 font-karla text-[14px] text-vanille-creme/80 leading-relaxed max-w-sm">
+          {data.info.tagline} — Pâtisserie artisanale créole à Saint-André depuis {data.info.annee}.
+        </p>
+      </div>
+
+      <div class="md:col-span-3">
+        <p class="font-karla text-[10px] uppercase tracking-[0.25em] text-vanille-caramel mb-3">Carte</p>
+        <ul class="space-y-2 font-karla text-[13.5px]">
+          <li><a href="#specialites" class="hover:text-vanille-caramel transition-colors">Spécialités</a></li>
+          <li><a href="#saisons" class="hover:text-vanille-caramel transition-colors">Calendrier saisons</a></li>
+          <li><a href="#patissiere" class="hover:text-vanille-caramel transition-colors">Stéphanie</a></li>
+          <li><a href="#commandes" class="hover:text-vanille-caramel transition-colors">Commander</a></li>
+        </ul>
+      </div>
+
+      <div class="md:col-span-4">
+        <p class="font-karla text-[10px] uppercase tracking-[0.25em] text-vanille-caramel mb-3">Boutique</p>
+        <ul class="space-y-2 font-karla text-[13.5px]">
+          <li>{data.info.adresseLigne1}</li>
+          <li>{data.info.adresseLigne2}</li>
+          <li><a href={`tel:${data.info.telephoneHref}`} class="hover:text-vanille-caramel transition-colors">{data.info.telephone}</a></li>
+          <li><a href={`mailto:${data.info.email}`} class="hover:text-vanille-caramel transition-colors">{data.info.email}</a></li>
+          <li class="text-vanille-creme/70">Instagram {data.info.instagram}</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pt-6 border-t border-vanille-caramel/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 font-karla text-[11px] text-vanille-creme/65">
+      <p>© {data.info.annee}–2026 {data.info.nom} · SIRET {data.info.siret}</p>
+      <p class="font-italianno text-vanille-caramel text-2xl leading-none">Le sucre, la vanille, le geste.</p>
+    </div>
+  </div>
+</footer>

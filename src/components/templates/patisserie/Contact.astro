@@ -1,0 +1,70 @@
+---
+import data from '../../../data/templates/vanille.json';
+const wa = `https://wa.me/${data.info.whatsapp}?text=${encodeURIComponent('Bonjour Stéphanie, je voudrais commander.')}`;
+---
+
+<section id="contact" class="bg-vanille-creme py-20 md:py-28">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-14">
+
+      <div class="md:col-span-7">
+        <p class="font-karla text-[11px] uppercase tracking-[0.4em] text-vanille-caramel mb-4">— La boutique —</p>
+        <h2 class="font-yeseva text-vanille-gousse text-4xl md:text-5xl leading-tight">
+          Passez nous voir
+          <em class="font-italianno text-vanille-caramel text-5xl md:text-6xl not-italic">à Bel-Air</em>
+        </h2>
+        <p class="mt-5 font-karla text-[15px] text-vanille-gousse/80 leading-relaxed max-w-xl">
+          Le four chauffe à 4h30, on ouvre à 6h30. À 10h les samedis, les mille-feuilles sont souvent partis. Venez tôt, ou commandez la veille par WhatsApp.
+        </p>
+
+        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <a href={`tel:${data.info.telephoneHref}`} class="group block p-5 bg-vanille-blanc border-[2px] border-double border-vanille-gousse hover:border-vanille-caramel transition-colors">
+            <span class="font-karla text-[10px] uppercase tracking-[0.25em] text-vanille-caramel">Téléphone</span>
+            <p class="mt-1 font-yeseva text-2xl text-vanille-gousse group-hover:text-vanille-caramel transition-colors">{data.info.telephone}</p>
+          </a>
+          <a href={`mailto:${data.info.email}`} class="group block p-5 bg-vanille-blanc border-[2px] border-double border-vanille-gousse hover:border-vanille-caramel transition-colors">
+            <span class="font-karla text-[10px] uppercase tracking-[0.25em] text-vanille-caramel">Email</span>
+            <p class="mt-1 font-yeseva text-lg text-vanille-gousse group-hover:text-vanille-caramel transition-colors break-all">{data.info.email}</p>
+          </a>
+        </div>
+
+        <div class="mt-5">
+          <a href={wa} target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 h-12 px-6 bg-vanille-pandan text-vanille-creme font-karla font-semibold text-[12px] uppercase tracking-[0.2em] rounded-full hover:opacity-90 transition-opacity">
+            WhatsApp · réponse avant 14h
+          </a>
+        </div>
+      </div>
+
+      <div class="md:col-span-5">
+        <div class="bg-vanille-gousse text-vanille-creme p-7 md:p-9 h-full flex flex-col relative">
+          <!-- Petite gousse -->
+          <svg viewBox="0 0 100 30" class="absolute top-4 right-4 w-20 text-vanille-caramel" aria-hidden="true">
+            <path d="M2 22 Q25 8 50 4 Q80 3 98 6 Q75 12 50 14 Q25 18 2 22 Z" fill="currentColor"/>
+          </svg>
+
+          <p class="font-karla text-[10px] uppercase tracking-[0.3em] text-vanille-caramel mb-2">Boutique</p>
+          <p class="font-yeseva text-2xl leading-tight">{data.info.adresseLigne1}</p>
+          <p class="font-yeseva text-2xl leading-tight">{data.info.adresseLigne2}</p>
+
+          <div class="mt-6 pt-6 border-t border-vanille-caramel/30 space-y-2.5 font-karla text-[13.5px]">
+            <div class="flex justify-between gap-3">
+              <span class="text-vanille-creme/65 uppercase tracking-wider text-[10.5px]">Ouverture</span>
+              <span class="text-right">{data.info.ouvertureHebdo}</span>
+            </div>
+            <div class="flex justify-between gap-3">
+              <span class="text-vanille-creme/65 uppercase tracking-wider text-[10.5px]">Fermeture</span>
+              <span>{data.info.fermeture}</span>
+            </div>
+          </div>
+
+          <div class="mt-auto pt-8">
+            <p class="font-karla text-[10px] uppercase tracking-[0.3em] text-vanille-caramel mb-2">Commande mariage / événement</p>
+            <p class="font-italianno text-vanille-caramel text-2xl leading-snug">
+              4 semaines minimum · pièce montée jusqu'à 200 personnes
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

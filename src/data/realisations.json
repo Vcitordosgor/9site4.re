@@ -258,5 +258,15 @@
     "slug": "wedding-planner",
     "previewUrl": "/templates/wedding",
     "thumbnail": "https://images.unsplash.com/photo-1519741497674-611481863552?w=900&q=80"
+  },
+  {
+    "id": 27,
+    "nom": "Pâtisserie créole",
+    "categorie": "restaurants",
+    "sousTitre": "Carte du jour, calendrier des saisons et commandes spéciales",
+    "moduleInclus": "Réservation",
+    "slug": "patisserie-creole",
+    "previewUrl": "/templates/patisserie",
+    "thumbnail": "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=900&q=80"
   }
 ]

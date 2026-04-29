@@ -1,0 +1,43 @@
+---
+import data from '../../../data/templates/vanille.json';
+---
+
+<section id="saisons" class="bg-vanille-papier py-20 md:py-28 relative overflow-hidden">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+
+    <div class="text-center max-w-2xl mx-auto mb-14 md:mb-16">
+      <p class="font-karla text-[11px] uppercase tracking-[0.4em] text-vanille-caramel mb-4">— Calendrier des fruits —</p>
+      <h2 class="font-yeseva text-vanille-gousse text-4xl md:text-5xl leading-tight">
+        On suit
+        <em class="font-italianno text-vanille-caramel text-5xl md:text-6xl not-italic">la saison</em>
+      </h2>
+      <p class="mt-4 font-karla text-vanille-gousse/75 text-[15px] leading-relaxed">
+        À La Réunion, chaque mois apporte ses fruits. Notre carte change avec eux.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-7">
+      {data.saisons.map((s) => (
+        <article class="bg-vanille-blanc border-[2px] border-double border-vanille-gousse p-6 md:p-7 relative">
+          <!-- Petite gousse coin -->
+          <svg viewBox="0 0 60 30" class="absolute top-3 right-3 w-12 text-vanille-caramel/50" aria-hidden="true">
+            <path d="M2 18 Q15 8 30 4 Q45 3 58 6 Q45 10 30 12 Q15 15 2 18 Z" fill="currentColor"/>
+          </svg>
+
+          <p class="font-karla text-[10px] uppercase tracking-[0.3em] text-vanille-caramel">Mois</p>
+          <p class="font-yeseva text-vanille-gousse text-xl md:text-2xl leading-tight mt-1">{s.mois}</p>
+
+          <div class="mt-5 pt-4 border-t border-vanille-gousse/25">
+            <p class="font-karla text-[10px] uppercase tracking-[0.2em] text-vanille-caramel mb-1.5">Fruits frais</p>
+            <p class="font-karla text-[14px] text-vanille-gousse/85 leading-relaxed">{s.fruits}</p>
+          </div>
+
+          <div class="mt-4 pt-4 border-t border-vanille-gousse/25">
+            <p class="font-karla text-[10px] uppercase tracking-[0.2em] text-vanille-caramel mb-1.5">Stars de la saison</p>
+            <p class="font-italianno text-vanille-caramel text-2xl leading-snug">{s.stars}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

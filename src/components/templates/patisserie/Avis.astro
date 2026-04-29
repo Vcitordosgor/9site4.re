@@ -1,0 +1,37 @@
+---
+import data from '../../../data/templates/vanille.json';
+---
+
+<section class="bg-vanille-papier py-20 md:py-28">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+
+    <div class="text-center max-w-2xl mx-auto mb-14 md:mb-16">
+      <p class="font-karla text-[11px] uppercase tracking-[0.4em] text-vanille-caramel mb-4">— Le livre d'or —</p>
+      <h2 class="font-yeseva text-vanille-gousse text-4xl md:text-5xl leading-tight">
+        Trois clients,
+        <em class="font-italianno text-vanille-caramel text-5xl md:text-6xl not-italic">trois mots</em>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7">
+      {data.avis.map((a) => (
+        <article class="bg-vanille-blanc border border-vanille-gousse/25 p-7 md:p-8 flex flex-col relative">
+          <div class="text-vanille-caramel/30 font-yeseva text-7xl leading-none absolute top-2 right-4" aria-hidden="true">"</div>
+
+          <div class="flex gap-1 text-vanille-caramel text-base mb-4" aria-label={`${a.etoiles} étoiles`}>
+            {Array.from({ length: a.etoiles }).map(() => <span>★</span>)}
+          </div>
+
+          <blockquote class="flex-1 font-yeseva italic text-[16.5px] md:text-[17px] text-vanille-gousse/90 leading-relaxed">
+            {a.texte}
+          </blockquote>
+
+          <div class="mt-5 pt-4 border-t border-vanille-gousse/25">
+            <p class="font-yeseva text-vanille-gousse text-lg leading-tight">{a.prenom}</p>
+            <p class="font-karla text-[11px] uppercase tracking-[0.18em] text-vanille-caramel mt-1">{a.ville}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

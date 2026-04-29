@@ -1,0 +1,71 @@
+---
+import data from '../../../data/templates/vanille.json';
+
+const epiceColors: Record<string, string> = {
+  vanille: 'bg-vanille-caramel/15 text-vanille-caramel',
+  coco: 'bg-vanille-pandan/15 text-vanille-pandan',
+  letchi: 'bg-vanille-piment/15 text-vanille-piment',
+  piment: 'bg-vanille-piment/15 text-vanille-piment',
+};
+---
+
+<section id="specialites" class="bg-vanille-creme py-20 md:py-28 relative">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+
+    <div class="text-center max-w-2xl mx-auto mb-14 md:mb-20">
+      <p class="font-karla text-[11px] uppercase tracking-[0.4em] text-vanille-caramel mb-4">— Carte du jour —</p>
+      <h2 class="font-yeseva text-vanille-gousse text-4xl md:text-5xl leading-tight">
+        Cinq spécialités
+        <em class="font-italianno text-vanille-caramel text-5xl md:text-6xl not-italic block">de la maison</em>
+      </h2>
+    </div>
+
+    <ul class="space-y-5 md:space-y-7">
+      {data.specialites.map((s, i) => (
+        <li class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 items-start bg-vanille-blanc border border-vanille-gousse/20 p-6 md:p-8 hover:border-vanille-caramel/60 transition-colors">
+          <!-- Numéro romain et badge -->
+          <div class="md:col-span-2 flex md:flex-col md:gap-3 items-center md:items-start gap-4">
+            <div class="font-yeseva text-vanille-caramel text-5xl md:text-6xl leading-none">
+              {String(i + 1).padStart(2, '0')}
+            </div>
+            <span class={`inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-karla uppercase tracking-[0.18em] ${epiceColors[s.epice]}`}>
+              {s.categorie}
+            </span>
+          </div>
+
+          <!-- Texte principal -->
+          <div class="md:col-span-7">
+            <h3 class="font-yeseva text-vanille-gousse text-2xl md:text-[28px] leading-tight">
+              {s.nom}
+            </h3>
+            <p class="font-italianno text-vanille-caramel text-2xl md:text-3xl leading-none mt-1">
+              {s.tagline}
+            </p>
+            <p class="mt-3 font-karla text-[14.5px] text-vanille-gousse/85 leading-relaxed">
+              {s.description}
+            </p>
+            <p class="mt-3 font-karla text-[11.5px] uppercase tracking-[0.15em] text-vanille-caramel">
+              ✦ {s.details}
+            </p>
+          </div>
+
+          <!-- Prix + CTA -->
+          <div class="md:col-span-3 flex md:flex-col items-center md:items-end gap-4 md:gap-3 md:text-right border-t md:border-t-0 md:border-l border-vanille-gousse/20 pt-4 md:pt-0 md:pl-6">
+            <div>
+              <p class="font-karla text-[10px] uppercase tracking-[0.2em] text-vanille-caramel">Tarif</p>
+              <p class="font-yeseva text-vanille-gousse text-2xl md:text-[26px] leading-tight">{s.prix}</p>
+            </div>
+            <a
+              href={`https://wa.me/${data.info.whatsapp}?text=${encodeURIComponent(`Bonjour, je voudrais commander : ${s.nom}.`)}`}
+              target="_blank"
+              rel="noopener"
+              class="inline-flex items-center justify-center h-9 px-4 bg-vanille-gousse text-vanille-creme font-karla font-semibold text-[11px] uppercase tracking-[0.15em] rounded-full hover:bg-vanille-caramel transition-colors whitespace-nowrap"
+            >
+              Commander
+            </a>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

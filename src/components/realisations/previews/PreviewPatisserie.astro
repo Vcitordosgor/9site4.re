@@ -1,0 +1,71 @@
+---
+/**
+ * Mini-preview La Vanille de Bel-Air — fidèle au hero étiquette bocal :
+ * fond crème + encadré double-filet + wordmark Yeseva + tampon "fait main"
+ * + 3 chiffres production du jour.
+ */
+---
+
+<div class="absolute inset-0 bg-vanille-creme text-vanille-gousse font-karla overflow-hidden p-2">
+
+  <!-- Encadré double-filet -->
+  <div class="relative w-full h-full bg-vanille-blanc/60 border-[1.5px] border-double border-vanille-gousse p-2">
+    <div class="absolute inset-1 border border-vanille-gousse/30 pointer-events-none" aria-hidden="true"></div>
+
+    <!-- Gousse coin haut-gauche -->
+    <svg viewBox="0 0 60 30" class="absolute -top-1 left-3 w-10 text-vanille-caramel" aria-hidden="true">
+      <path d="M2 22 Q20 8 40 4 Q55 3 58 6 Q40 10 25 12 Q10 18 2 22 Z" fill="currentColor"/>
+    </svg>
+    <svg viewBox="0 0 60 30" class="absolute -bottom-1 right-3 w-10 text-vanille-caramel rotate-180" aria-hidden="true">
+      <path d="M2 22 Q20 8 40 4 Q55 3 58 6 Q40 10 25 12 Q10 18 2 22 Z" fill="currentColor"/>
+    </svg>
+
+    <!-- Eyebrow -->
+    <p class="text-center text-vanille-caramel uppercase tracking-[0.3em]" style="font-size:4.5px;">
+      ✦ Pâtisserie créole · 2009 ✦
+    </p>
+
+    <!-- Wordmark -->
+    <h1 class="text-center font-yeseva text-vanille-gousse leading-[0.9] mt-1" style="font-size: clamp(11px, 2.4vw, 18px);">
+      La Vanille
+    </h1>
+    <p class="text-center font-italianno text-vanille-caramel leading-none -mt-0.5" style="font-size: clamp(11px, 2.4vw, 18px);">
+      de Bel-Air
+    </p>
+
+    <!-- Filet ornemental -->
+    <div class="flex items-center justify-center gap-1 my-1" aria-hidden="true">
+      <span class="block w-6 h-px bg-vanille-gousse/50"></span>
+      <span class="text-vanille-caramel" style="font-size:6px;">❦</span>
+      <span class="block w-6 h-px bg-vanille-gousse/50"></span>
+    </div>
+
+    <!-- Tagline -->
+    <p class="text-center font-yeseva italic text-vanille-gousse leading-snug" style="font-size:6.5px;">
+      Le sucre, la vanille, le geste.
+    </p>
+
+    <!-- Cartouche 3 stats -->
+    <div class="absolute inset-x-2 bottom-2 grid grid-cols-3 gap-1">
+      <div class="bg-vanille-gousse text-vanille-creme p-1 text-center">
+        <p class="text-vanille-caramel uppercase tracking-wider" style="font-size:3.5px;letter-spacing:0.2em;">Aujourd'hui</p>
+        <p class="font-yeseva leading-none mt-0.5" style="font-size:6px;">Vendredi</p>
+      </div>
+      <div class="bg-vanille-papier border border-vanille-gousse/40 p-1 text-center">
+        <p class="text-vanille-caramel uppercase tracking-wider" style="font-size:3.5px;letter-spacing:0.2em;">Au four</p>
+        <p class="font-yeseva text-vanille-gousse leading-none mt-0.5" style="font-size:6px;">42 mille-feuilles</p>
+      </div>
+      <div class="bg-vanille-papier border border-vanille-gousse/40 p-1 text-center">
+        <p class="text-vanille-caramel uppercase tracking-wider" style="font-size:3.5px;letter-spacing:0.2em;">Ouvre à</p>
+        <p class="font-yeseva text-vanille-gousse leading-none mt-0.5" style="font-size:6px;">6h30</p>
+      </div>
+    </div>
+
+    <!-- Tampon -->
+    <div class="absolute -rotate-12" style="bottom: 22px; right: 6px;">
+      <div class="rounded-full border border-vanille-piment/80 flex items-center justify-center text-vanille-piment/85" style="width:22px; height:22px;">
+        <p class="font-yeseva leading-none" style="font-size:6px;">N°09</p>
+      </div>
+    </div>
+  </div>
+</div>
