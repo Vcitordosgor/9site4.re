@@ -101,6 +101,10 @@ export default {
     {
       pattern: /^(bg|text|ring|border|from|to|via)-(piton-asphalte|piton-acier|piton-fonte|piton-beton|piton-feu|piton-feu-fonce|piton-acide|piton-blanc)(\/(5|10|15|20|25|30|40|50|55|60|65|70|75|80|85|90))?$/,
     },
+    // Palette photographe — Studio Latitude (Saint-Denis, chambre noire)
+    {
+      pattern: /^(bg|text|ring|border|from|to|via)-(latitude-noir|latitude-charbon|latitude-cendre|latitude-papier|latitude-creme|latitude-or|latitude-labo|latitude-blanc)(\/(5|10|15|20|25|30|40|50|55|60|65|70|75|80|85|90))?$/,
+    },
   ],
   theme: {
     extend: {
@@ -411,6 +415,18 @@ export default {
         'piton-feu-fonce': '#CC4416',  // hover feu
         'piton-acide':     '#D4FF3A',  // jaune acide diagnostic — accent rare diag/scan
         'piton-blanc':     '#FAFAF8',
+
+        // Palette photographe — Studio Latitude (Saint-Denis, argentique)
+        // Style "planche-contact noir profond, chambre noire" : noir argentique
+        // + cendre + papier baryté chaud + or rosé subtil + rouge labo (safelight).
+        'latitude-noir':    '#0A0A0B',  // noir profond argentique — fond hero
+        'latitude-charbon': '#161618',  // charbon — sections élevées dark
+        'latitude-cendre':  '#3A3A3D',  // gris cendre — bordures, secondaire
+        'latitude-papier':  '#F2EBDD',  // papier baryté chaud — fond clair
+        'latitude-creme':   '#E8DFCB',  // crème vieillie — papier sépia
+        'latitude-or':      '#B89766',  // or rosé subtil — accents discrets
+        'latitude-labo':    '#C0392B',  // rouge safelight chambre noire — accent CTA rare
+        'latitude-blanc':   '#FAF7F0',  // blanc papier — texte AAA
       },
       fontFamily: {
         sora: ['Sora', 'system-ui', 'sans-serif'],

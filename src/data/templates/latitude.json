@@ -1,0 +1,138 @@
+{
+  "info": {
+    "nom": "Studio Latitude",
+    "wordmark1": "Studio",
+    "wordmark2": "Latitude",
+    "soustitre": "Photographie d'auteur · Saint-Denis",
+    "tagline": "L'image juste, jamais l'image facile.",
+    "fondateur": "Aurélien Maillot",
+    "ville": "Saint-Denis",
+    "adresseLigne1": "8 rue Juliette Dodu",
+    "adresseLigne2": "97400 Saint-Denis",
+    "telephone": "0262 21 84 30",
+    "telephoneHref": "+262262218430",
+    "whatsapp": "262692108374",
+    "email": "studio@latitude-photo.re",
+    "instagram": "@studio.latitude.re",
+    "siret": "79234108100015",
+    "annee": "2016",
+    "photoHero": "https://images.unsplash.com/photo-1606983340126-99ab4feaa64a?w=1800&q=85",
+    "photoHeroAlt": "Photographe professionnel en studio avec appareil Leica argentique, Saint-Denis La Réunion",
+    "exif": {
+      "appareil": "Leica M11 + Hasselblad 500CM",
+      "objectifs": "Summicron 35/50/90 · Zeiss 80mm",
+      "pellicules": "Kodak Portra 400 · Tri-X 400"
+    }
+  },
+  "promesse": "Studio Latitude, c'est Aurélien Maillot, photographe d'auteur installé à Saint-Denis depuis 2016. Argentique moyen format pour les portraits, numérique haut de gamme pour le reportage. Chaque image est tirée, retouchée et signée à la main. Pas de presets industriels.",
+  "series": [
+    {
+      "id": "portraits-auteur",
+      "code": "PORT.001",
+      "titre": "Portraits d'auteur",
+      "format": "120 mm · Hasselblad",
+      "duree": "2h studio + 5 tirages baryté",
+      "prix": "À partir de 480 €",
+      "tagline": "Le silence avant le clic.",
+      "description": "Séances en studio Saint-Denis, lumière continue tungstène + flash Profoto. Argentique 120mm Kodak Portra ou Tri-X selon le rendu. Vous repartez avec 5 tirages baryté 30×40 numérotés et signés.",
+      "moments": ["Portrait d'écrivain", "Portrait corporate auteur", "Portrait de famille NB"],
+      "livraison": "3 semaines · scan haute déf inclus"
+    },
+    {
+      "id": "mariage-editorial",
+      "code": "MAR.002",
+      "titre": "Mariage éditorial",
+      "format": "Mix numérique + argentique",
+      "duree": "Journée complète + album",
+      "prix": "À partir de 2 800 €",
+      "tagline": "Le mariage qui se feuillette dans 30 ans.",
+      "description": "Reportage discret du matin au soir. Couverture en mode magazine éditorial (pas de pose forcée, pas de drone, pas de Boomerang Insta). 2 boîtiers Leica + 1 Hasselblad pour les portraits clé. Album 30 pages relié main inclus.",
+      "moments": ["Préparatifs intimes", "Cérémonie", "Cocktail", "Soirée", "Album relié"],
+      "livraison": "8 semaines · 350 photos retouchées + album"
+    },
+    {
+      "id": "reportage",
+      "code": "REP.003",
+      "titre": "Reportage corporate & culturel",
+      "format": "Numérique 35mm",
+      "duree": "Demi-journée à 5 jours",
+      "prix": "Sur devis · 950 €/jour",
+      "tagline": "L'œil est éditorial, pas publicitaire.",
+      "description": "Couverture d'événements, portraits d'équipe en situation, reportage en immersion sur 1 à 5 jours. Production de séries longues (50-200 images) livrées en haute définition + sélection éditoriale.",
+      "moments": ["Festival musique", "Portraits d'équipe", "Inauguration", "Inside-the-business"],
+      "livraison": "10 jours · galerie cloud privée"
+    },
+    {
+      "id": "tirage-art",
+      "code": "ART.004",
+      "titre": "Tirage d'art / collection",
+      "format": "Baryté 30×40 → 80×120 cm",
+      "duree": "Édition limitée numérotée",
+      "prix": "180 → 1 200 € selon format",
+      "tagline": "L'image en 30 exemplaires, jamais 31.",
+      "description": "Tirages personnels d'Aurélien (séries Hauts-Réunionnais, Île-paysage, Le Volcan). Édition limitée à 30 exemplaires numérotés et signés au crayon graphite. Disponibles à l'atelier de Saint-Denis ou sur commande.",
+      "moments": ["Hauts-Réunionnais", "L'île-paysage", "Le Volcan", "Bras-Cabot la nuit"],
+      "livraison": "Disponible immédiat ou 4 semaines"
+    }
+  ],
+  "fondateur": {
+    "nom": "Aurélien Maillot",
+    "titre": "Photographe d'auteur",
+    "bio": "Aurélien est né au Port en 1984. Études à l'École Nationale Supérieure de la Photographie d'Arles (2007-2010), puis 6 ans à Marseille comme assistant studio. Retour à La Réunion en 2016 pour fonder Studio Latitude. Son travail personnel a été exposé à la Réunion des Arts Plastiques (2019, 2022) et à la Cité Internationale des Arts (Paris, 2023).",
+    "credo": "« La meilleure image, c'est celle qu'on n'a pas honte de montrer dans 20 ans. »",
+    "expositions": [
+      "2023 · Cité Internationale des Arts, Paris — 'Hauts-Réunionnais'",
+      "2022 · Réunion des Arts Plastiques — 'Le Volcan'",
+      "2019 · Festival Photographique de Stella Matutina",
+      "2018 · Galerie Dell'Arte, Saint-Denis"
+    ]
+  },
+  "demarches": [
+    {
+      "etape": "01",
+      "titre": "Brief & rencontre (gratuit)",
+      "texte": "On parle de ce que vous voulez, pas de ce que je sais faire. Si on ne se sent pas, je vous oriente vers un confrère plus adapté."
+    },
+    {
+      "etape": "02",
+      "titre": "Devis ferme & calendrier",
+      "texte": "Sous 48h, devis détaillé poste par poste. Acompte 30%. Calage des dates de séance / shooting / livraison."
+    },
+    {
+      "etape": "03",
+      "titre": "Séance / Reportage",
+      "texte": "Je viens à vous, ou vous venez au studio. Le matériel argentique est lent, j'aime ça. On prend le temps."
+    },
+    {
+      "etape": "04",
+      "titre": "Sélection & tirage",
+      "texte": "Vous recevez une planche-contact en ligne. On sélectionne ensemble. Je tire et je signe à la main."
+    }
+  ],
+  "avis": [
+    {
+      "prenom": "Camille",
+      "metier": "Écrivaine",
+      "etoiles": 5,
+      "texte": "Aurélien a fait mes portraits pour la couverture de mon roman. Il a passé 30 minutes à parler avant de toucher l'appareil. Le résultat : la photo de moi la plus juste qu'on m'ait jamais faite."
+    },
+    {
+      "prenom": "Léa & Mathis",
+      "metier": "Mariés · 2024",
+      "etoiles": 5,
+      "texte": "On voulait un photographe qui ne fasse pas le clown au mariage. On a eu un photographe-auteur qui a livré un album de 30 pages qu'on ressort à chaque visite. Pas une pose forcée. Travail magistral."
+    },
+    {
+      "prenom": "Région Réunion",
+      "metier": "Direction culture",
+      "etoiles": 5,
+      "texte": "Couverture du Festival Sakifo pendant 4 jours. Aurélien sait disparaître et capter des moments inaccessibles aux autres photographes. Bibliothèque de 800 images livrées : utilisable sur tous nos supports."
+    }
+  ],
+  "infosCles": {
+    "anneesActivite": "10",
+    "expositions": "4",
+    "mariagesParAn": "12",
+    "tiragesEditesAn": "180"
+  }
+}
