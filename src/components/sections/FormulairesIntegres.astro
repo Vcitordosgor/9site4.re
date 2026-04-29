@@ -507,8 +507,9 @@ const etapes = [
       class="scroll-reveal mt-16 rounded-3xl bg-blanc-casse text-bleu-nuit ring-1 ring-bleu-nuit/10 overflow-hidden shadow-card-hover"
       data-form-demo
     >
-      <!-- Header démo -->
-      <div class="px-6 md:px-10 pt-8 md:pt-10 pb-6">
+      <!-- Header démo (zone 'barre de contrôle' légèrement teintée pour
+           hiérarchie visuelle vs le panel ci-dessous) -->
+      <div class="px-6 md:px-10 pt-8 md:pt-10 pb-6 bg-bleu-nuit/[0.025] border-b border-bleu-nuit/[0.06]">
         <div class="flex flex-wrap items-end justify-between gap-4">
           <div>
             <p class="font-roboto-mono text-[10px] uppercase tracking-[0.32em] text-orange">
@@ -574,11 +575,18 @@ const etapes = [
             <!-- Colonne mini-formulaire -->
             <div class="lg:col-span-3">
               <div class="rounded-2xl bg-white text-bleu-nuit p-6 md:p-7 shadow-card ring-1 ring-bleu-nuit/12">
-                <!-- Faux entête : 3 ronds style fenêtre -->
-                <div class="flex items-center gap-1.5 pb-4 border-b border-bleu-nuit/10">
-                  <span class="w-2.5 h-2.5 rounded-full bg-bleu-nuit/15"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-bleu-nuit/15"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-bleu-nuit/15"></span>
+                <!-- Mini-badge 'Aperçu live' avec point pulsant orange -->
+                <div class="flex items-center justify-between gap-3 pb-4 border-b border-bleu-nuit/10">
+                  <span class="inline-flex items-center gap-1.5 font-roboto-mono text-[9px] uppercase tracking-[0.22em] text-bleu-nuit/55 font-semibold">
+                    <span class="relative flex h-1.5 w-1.5" aria-hidden="true">
+                      <span class="absolute inline-flex h-full w-full rounded-full bg-orange opacity-60 animate-ping"></span>
+                      <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-orange"></span>
+                    </span>
+                    Aperçu live
+                  </span>
+                  <span class="font-roboto-mono text-[9px] uppercase tracking-[0.22em] text-bleu-nuit/35">
+                    Formulaire {m.id}
+                  </span>
                 </div>
 
                 <p class="mt-5 font-sora font-semibold text-lg leading-snug">{m.formTitle}</p>
@@ -741,10 +749,8 @@ const etapes = [
                   {m.cta}
                   <Icon name="arrow-right" size={18} strokeWidth={2} />
                 </button>
-                <p class="mt-2.5 text-[11px] text-bleu-nuit/45 text-center leading-relaxed">
-                  Cliquez pour simuler l'envoi — la conversation à droite s'animera.
-                  <br />
-                  <span class="text-bleu-nuit/55">Sur votre site, les demandes arrivent directement par e-mail ou WhatsApp.</span>
+                <p class="mt-2.5 text-[11px] text-bleu-nuit/55 text-center leading-relaxed">
+                  Cliquez pour simuler l'envoi — sur votre site, les demandes arrivent par e-mail ou WhatsApp.
                 </p>
               </div>
             </div>
@@ -784,10 +790,11 @@ const etapes = [
                     </div>
                   </div>
 
-                  <!-- Bulle 2 : notification 9site4 (centre, ring orange) -->
+                  <!-- Bulle 2 : notification 9site4 (centre, ring orange,
+                       coin tr-sm comme une notif descendant en push) -->
                   <div class="flex justify-center">
                     <div
-                      class="w-full rounded-xl bg-blanc-casse ring-1 ring-orange/40 px-3.5 py-3 shadow-sm"
+                      class="w-full rounded-2xl rounded-tr-sm bg-blanc-casse ring-1 ring-orange/40 px-3.5 py-3 shadow-sm"
                       data-notif-bubble
                     >
                       <p class="font-roboto-mono text-[9px] uppercase tracking-[0.22em] font-semibold text-orange flex items-center gap-1.5 mb-2">
