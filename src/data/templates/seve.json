@@ -1,0 +1,164 @@
+{
+  "info": {
+    "nom": "Sève & Sel",
+    "wordmark1": "Sève",
+    "wordmark2": "Sel",
+    "soustitre": "Wedding planner · Saint-Gilles-les-Bains",
+    "tagline": "L'océan vous marie.",
+    "fondatrice": "Cléa Hoarau",
+    "ville": "Saint-Gilles-les-Bains",
+    "adresseLigne1": "23 boulevard Roland Garros",
+    "adresseLigne2": "97434 Saint-Gilles-les-Bains",
+    "telephone": "0692 51 87 26",
+    "telephoneHref": "+33692518726",
+    "whatsapp": "33692518726",
+    "email": "bonjour@seve-et-sel.re",
+    "instagram": "@seve.et.sel",
+    "siret": "78901234500017",
+    "annee": "2017",
+    "photoHero": "https://images.unsplash.com/photo-1519741497674-611481863552?w=1800&q=85",
+    "photoHeroAlt": "Cérémonie de mariage pieds dans le sable au coucher du soleil sur la plage de Saint-Gilles, La Réunion",
+    "ceremonies2025": 47,
+    "ceremoniesPrevues2026": 32
+  },
+  "promesse": "Vous arrivez d'Auckland, de Lyon ou de Saint-Pierre. Vous voulez vous marier les pieds dans le sable, sous les filaos, devant un lagon turquoise. Mais vous ne connaissez personne ici, vous travaillez à l'autre bout du monde, et vous n'avez pas envie de vous occuper du fleuriste pendant 6 mois. C'est exactement ce que nous faisons : tout, pour vous, sur place — pour qu'il ne vous reste qu'à dire oui.",
+  "ceremonies": [
+    {
+      "id": "laique-plage",
+      "titre": "Cérémonie laïque · pieds dans le sable",
+      "lieu": "Plages de l'Hermitage, Boucan Canot, La Saline-les-Bains",
+      "duree": "30 à 45 min",
+      "invites": "2 à 80 personnes",
+      "prix": "À partir de 2 400 €",
+      "tagline": "Le coucher de soleil comme témoin.",
+      "inclus": [
+        "Repérage du lieu et autorisation municipale",
+        "Officiant·e bilingue (français / anglais)",
+        "Arche florale tropicale + tapis blanc",
+        "Sonorisation discrète batterie + 2 micros sans fil",
+        "Coordination le jour-J de 14h à 22h",
+        "Photographe pendant la cérémonie (1h)"
+      ],
+      "ideal": "Couples qui veulent une cérémonie sur-mesure, sans liturgie, dans un cadre 100% nature."
+    },
+    {
+      "id": "civile-jardin",
+      "titre": "Cérémonie civile · jardin tropical",
+      "lieu": "Mairies de Saint-Gilles, Saint-Paul, Saint-Leu + jardin privatif",
+      "duree": "Civile 20 min · Cocktail 3h",
+      "invites": "2 à 50 personnes",
+      "prix": "À partir de 3 200 €",
+      "tagline": "Le code civil, version tropicale.",
+      "inclus": [
+        "Constitution du dossier de mariage civil (publication des bans, audition)",
+        "Décoration mairie + sortie pétales et confettis",
+        "Cocktail dans un jardin botanique privé (3h)",
+        "Traiteur 'tapas péi' (samoussas, bouchons, pains tropicaux)",
+        "Coordination de A à Z avec les services municipaux",
+        "Photographe + voiture cabriolet entre mairie et jardin"
+      ],
+      "ideal": "Résidents (ou expatriés revenant au pays) qui veulent l'officialité légale + un cadre paradisiaque."
+    },
+    {
+      "id": "intime-deux",
+      "titre": "Cérémonie intime · à deux",
+      "lieu": "Plage privée à l'aube ou au crépuscule",
+      "duree": "20 min + petit-déjeuner ou champagne",
+      "invites": "2 personnes (vous deux)",
+      "prix": "1 100 €",
+      "tagline": "Juste vous, l'océan, et un témoin discret.",
+      "inclus": [
+        "Lieu réservé en exclusivité (45 min)",
+        "Officiant·e + 1 témoin local de confiance",
+        "Bouquet de la mariée + boutonnière",
+        "Petit-déjeuner créole ou bouteille de champagne",
+        "Reportage photo léger (30 min)",
+        "Vidéo souvenir 1 min en cadeau"
+      ],
+      "ideal": "Renouvellement de vœux, mariage en seconde noces discret, élopement de couple longue distance."
+    }
+  ],
+  "lieuxIconiques": [
+    {
+      "nom": "Plage de l'Hermitage",
+      "ambiance": "Sable blanc, filaos, lagon protégé.",
+      "moment": "Idéal au coucher du soleil (mai → octobre)",
+      "photo": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=85"
+    },
+    {
+      "nom": "Boucan Canot",
+      "ambiance": "Plage de sable noir et basalte, vagues spectaculaires.",
+      "moment": "Magique au crépuscule, plus dramatique",
+      "photo": "https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&q=85"
+    },
+    {
+      "nom": "Jardin de l'Eden (Saint-Leu)",
+      "ambiance": "Jardin botanique privé, allées fleuries.",
+      "moment": "Splendide en matinée (rosée + lumière douce)",
+      "photo": "https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=1200&q=85"
+    },
+    {
+      "nom": "Cap La Houssaye",
+      "ambiance": "Falaises, point de vue océan, ciel sans bâti.",
+      "moment": "Cérémonie laïque ou renouvellement intime",
+      "photo": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1200&q=85"
+    }
+  ],
+  "fondatrice": {
+    "nom": "Cléa Hoarau",
+    "titre": "Fondatrice & coordinatrice",
+    "bio": "Cléa est née à Saint-Gilles-les-Bains. Après 8 ans à organiser des mariages destination en Polynésie et au Mexique, elle est rentrée à La Réunion en 2017 pour fonder Sève & Sel. Aujourd'hui elle accompagne 40 à 50 couples par an, dont 70% viennent de métropole, du Canada, ou de pays anglophones. Sa devise : « un mariage doit ressembler aux mariés, pas à un Pinterest. »",
+    "promesse": "Une seule interlocutrice du brief à la dernière chanson. Pas de sous-traitance opaque, pas d'intermédiaire qui s'évapore après le devis."
+  },
+  "couples": [
+    {
+      "prenoms": "Marie & Théo",
+      "origine": "Lyon → Hermitage",
+      "date": "Octobre 2025",
+      "etoiles": 5,
+      "texte": "On voulait un mariage 'pieds nus' à La Réunion, mais on travaillait tous les deux 70h par semaine à Lyon. Cléa a TOUT géré pendant 9 mois. Le jour J, on a juste eu à se présenter. La cérémonie au coucher du soleil, le lagon orange, les invités en larmes : exactement ce qu'on imaginait — en mille fois mieux."
+    },
+    {
+      "prenoms": "Aroha & Kenji",
+      "origine": "Auckland → Boucan Canot",
+      "date": "Mai 2025",
+      "etoiles": 5,
+      "texte": "Cérémonie bilingue maori-français-anglais sur Boucan Canot. Cléa parle anglais couramment et a coordonné nos 3 cultures sans jamais perdre le sens. Mes parents ont passé leur première semaine à La Réunion, ils en parlent toujours."
+    },
+    {
+      "prenoms": "Léa & Inès",
+      "origine": "Saint-Denis → Jardin Eden",
+      "date": "Août 2025",
+      "etoiles": 5,
+      "texte": "Cérémonie civile au matin, cocktail au jardin l'après-midi, 32 invités. Cléa a négocié avec la mairie de Saint-Gilles pour qu'on se marie un mardi (toutes nos famille de métropole étaient en vacances). Le traiteur tapas péi : à pleurer."
+    }
+  ],
+  "demarches": [
+    {
+      "etape": "01",
+      "titre": "Premier appel découverte (gratuit, 30 min)",
+      "texte": "On parle de votre histoire, votre rêve, votre budget réaliste. Si on est faits pour travailler ensemble, on continue. Sinon, je vous oriente vers un confrère plus adapté."
+    },
+    {
+      "etape": "02",
+      "titre": "Devis détaillé personnalisé",
+      "texte": "Sous 7 jours, vous recevez un devis ligne par ligne, sans 'forfait obscur'. Vous voyez exactement combien coûte chaque prestataire, je facture une coordination transparente."
+    },
+    {
+      "etape": "03",
+      "titre": "Coordination 6 à 12 mois",
+      "texte": "Lieu, fleuriste, traiteur, photographe, DJ, hébergement des invités, transferts aéroport. Une seule interlocutrice (moi) pour tout. Vous validez par email."
+    },
+    {
+      "etape": "04",
+      "titre": "Le jour-J",
+      "texte": "Je suis sur place de l'arrivée des prestataires (souvent 6h du matin) au dernier départ. Vous, vous profitez. Si quoi que ce soit dérape, vous ne le saurez jamais."
+    }
+  ],
+  "saison": {
+    "label": "Saison sèche",
+    "mois": "Avril → Octobre",
+    "explication": "Saison la plus prisée pour les cérémonies plage (peu de pluie, températures 22-28°C, lagons calmes). Décembre à mars : possible mais saison cyclonique, on adapte avec lieux couverts ou jardins.",
+    "mariagesEntierementDispos": "Avril 2026, Juin 2026, Septembre 2026"
+  }
+}

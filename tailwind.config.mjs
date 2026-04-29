@@ -89,6 +89,10 @@ export default {
     {
       pattern: /^(bg|text|ring|border|from|to|via)-(plongee-abysse|plongee-marine|plongee-lagon|plongee-ecume|plongee-corail|plongee-sable|plongee-charbon)(\/(5|10|15|20|25|30|40|50|55|60|65|70|75|80|85|90))?$/,
     },
+    // Palette wedding — Sève & Sel (Saint-Gilles-les-Bains, cérémonies plage)
+    {
+      pattern: /^(bg|text|ring|border|from|to|via)-(seve-ivoire|seve-creme|seve-or|seve-corail|seve-lagon|seve-marine|seve-vert)(\/(5|10|15|20|25|30|40|50|55|60|65|70|75|80|85|90))?$/,
+    },
   ],
   theme: {
     extend: {
@@ -362,6 +366,17 @@ export default {
         'plongee-corail':  '#FF7A5C',  // corail vif — CTA, accents chaud
         'plongee-sable':   '#F4E5D2',  // sable corallien — surfaces tertiaires
         'plongee-charbon': '#0F1419',  // noir océan — texte dark mode
+
+        // Palette wedding — Sève & Sel (Saint-Gilles, cérémonies plage)
+        // Ivoire chaleureux + or pâle élégant + corail tropical + lagon turquoise
+        // (template /templates/wedding — pas la charte 9site4)
+        'seve-ivoire': '#FAF4EA',  // ivoire chaleureux — fond principal
+        'seve-creme':  '#F4EBD7',  // crème un cran plus saturé — fonds doux
+        'seve-or':     '#C9A96E',  // or pâle — accents, ornements floraux
+        'seve-corail': '#E8826C',  // corail tropical — CTA, accents chaud
+        'seve-lagon':  '#7FCDD8',  // turquoise lagon — accents froids subtils
+        'seve-marine': '#2A3F5C',  // bleu marine profond — texte principal
+        'seve-vert':   '#7A9461',  // vert sauge — feuillage SVG
       },
       fontFamily: {
         sora: ['Sora', 'system-ui', 'sans-serif'],
