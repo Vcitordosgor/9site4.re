@@ -1,0 +1,180 @@
+---
+/**
+ * HeroSeve — hero éditorial wedding magazine.
+ * Signature : monogramme géant "S&S" en Italianno + ornements floraux SVG +
+ * photo plage en bandeau bas + tagline + bandeau saison.
+ */
+import data from '../../../data/templates/seve.json';
+---
+
+<section id="top" class="relative bg-seve-ivoire overflow-hidden">
+  <!-- Filets dorés horizontaux ultra-fins -->
+  <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-seve-or/40 to-transparent" aria-hidden="true"></div>
+
+  <div class="max-w-content mx-auto px-6 md:px-10 pt-12 md:pt-20 pb-0">
+
+    <!-- Eyebrow centré -->
+    <div class="flex items-center justify-center gap-3 mb-6 md:mb-10">
+      <span class="block w-10 h-px bg-seve-or" aria-hidden="true"></span>
+      <p class="font-outfit text-[11px] uppercase tracking-[0.3em] text-seve-marine/70">
+        {data.info.soustitre}
+      </p>
+      <span class="block w-10 h-px bg-seve-or" aria-hidden="true"></span>
+    </div>
+
+    <!-- Bloc central : ornements + monogramme géant -->
+    <div class="relative grid grid-cols-[1fr_auto_1fr] items-center gap-4 md:gap-10">
+
+      <!-- Ornement floral gauche : fleur tropicale stylisée -->
+      <svg
+        viewBox="0 0 200 280"
+        class="hidden md:block w-full max-w-[180px] justify-self-end text-seve-or"
+        aria-hidden="true"
+      >
+        <g fill="none" stroke="currentColor" stroke-width="0.8" stroke-linecap="round">
+          <!-- Tige -->
+          <path d="M150 280 Q140 220 130 170 Q120 130 100 90 Q90 70 70 50" />
+          <!-- Feuille 1 -->
+          <path d="M130 170 Q90 160 60 180 Q90 175 130 170 Z" fill="currentColor" fill-opacity="0.08" />
+          <!-- Feuille 2 -->
+          <path d="M120 130 Q160 115 180 130 Q160 130 120 130 Z" fill="currentColor" fill-opacity="0.08" />
+          <!-- Fleur tropicale (5 pétales) -->
+          <g transform="translate(70 50)">
+            <ellipse cx="0" cy="-18" rx="8" ry="20" fill="currentColor" fill-opacity="0.12" />
+            <ellipse cx="17" cy="-6" rx="8" ry="20" fill="currentColor" fill-opacity="0.12" transform="rotate(72 17 -6)" />
+            <ellipse cx="11" cy="17" rx="8" ry="20" fill="currentColor" fill-opacity="0.12" transform="rotate(144 11 17)" />
+            <ellipse cx="-11" cy="17" rx="8" ry="20" fill="currentColor" fill-opacity="0.12" transform="rotate(216 -11 17)" />
+            <ellipse cx="-17" cy="-6" rx="8" ry="20" fill="currentColor" fill-opacity="0.12" transform="rotate(288 -17 -6)" />
+            <circle cx="0" cy="0" r="5" fill="currentColor" fill-opacity="0.5" />
+          </g>
+          <!-- Petites baies -->
+          <circle cx="105" cy="200" r="2.5" fill="currentColor" fill-opacity="0.5" />
+          <circle cx="115" cy="215" r="2" fill="currentColor" fill-opacity="0.5" />
+          <circle cx="98" cy="215" r="2" fill="currentColor" fill-opacity="0.5" />
+        </g>
+      </svg>
+
+      <!-- Monogramme géant -->
+      <div class="text-center px-2">
+        <h1 class="font-italianno leading-[0.85] text-seve-marine text-[120px] sm:text-[180px] md:text-[240px] lg:text-[300px] tracking-tight">
+          <span>S</span><span class="text-seve-or align-middle text-[0.7em]">&amp;</span><span>S</span>
+        </h1>
+      </div>
+
+      <!-- Ornement floral droit : palme tropicale -->
+      <svg
+        viewBox="0 0 200 280"
+        class="hidden md:block w-full max-w-[180px] justify-self-start text-seve-or"
+        aria-hidden="true"
+      >
+        <g fill="none" stroke="currentColor" stroke-width="0.8" stroke-linecap="round">
+          <!-- Stipe -->
+          <path d="M50 280 Q60 220 70 170 Q80 130 100 90 Q110 70 130 50" />
+          <!-- Palmes -->
+          <g transform="translate(130 50)">
+            <g stroke-width="0.6">
+              <path d="M0 0 Q-15 -10 -35 -8" />
+              <path d="M0 0 Q-12 -18 -30 -22" />
+              <path d="M0 0 Q-5 -25 -10 -42" />
+              <path d="M0 0 Q8 -22 18 -38" />
+              <path d="M0 0 Q18 -15 38 -18" />
+              <path d="M0 0 Q22 -5 42 -2" />
+              <path d="M0 0 Q15 8 32 18" />
+              <path d="M0 0 Q-10 8 -20 22" />
+            </g>
+            <!-- Folioles -->
+            <g fill="currentColor" fill-opacity="0.1" stroke="none">
+              <ellipse cx="-22" cy="-7" rx="14" ry="3" transform="rotate(-15 -22 -7)" />
+              <ellipse cx="-18" cy="-22" rx="14" ry="3" transform="rotate(45 -18 -22)" />
+              <ellipse cx="-7" cy="-32" rx="14" ry="3" transform="rotate(75 -7 -32)" />
+              <ellipse cx="12" cy="-28" rx="14" ry="3" transform="rotate(115 12 -28)" />
+              <ellipse cx="26" cy="-13" rx="14" ry="3" transform="rotate(160 26 -13)" />
+              <ellipse cx="28" cy="6" rx="14" ry="3" transform="rotate(190 28 6)" />
+            </g>
+          </g>
+          <!-- Petites fleurs dispersées -->
+          <g transform="translate(85 200)">
+            <circle cx="0" cy="0" r="1.8" fill="currentColor" fill-opacity="0.6" />
+            <circle cx="6" cy="-4" r="1.5" fill="currentColor" fill-opacity="0.6" />
+            <circle cx="-5" cy="-3" r="1.5" fill="currentColor" fill-opacity="0.6" />
+            <circle cx="2" cy="6" r="1.5" fill="currentColor" fill-opacity="0.6" />
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Tagline + sous-tagline -->
+    <div class="text-center mt-4 md:mt-2 max-w-2xl mx-auto">
+      <p class="font-cormorant italic text-seve-marine text-2xl md:text-4xl leading-tight">
+        {data.info.tagline}
+      </p>
+      <p class="mt-5 md:mt-7 font-outfit text-[13px] md:text-sm text-seve-marine/75 leading-relaxed tracking-wide">
+        Wedding planning sur-mesure à La Réunion.<br class="hidden md:block" />
+        De votre appel découverte au dernier verre de champagne — une seule interlocutrice.
+      </p>
+    </div>
+
+    <!-- CTAs -->
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 mt-8 md:mt-10">
+      <a
+        href="#contact"
+        class="inline-flex items-center justify-center h-12 px-7 bg-seve-marine text-seve-ivoire font-outfit font-semibold text-[12px] uppercase tracking-[0.2em] rounded-full hover:bg-seve-corail transition-colors duration-300"
+      >
+        Premier appel — gratuit
+      </a>
+      <a
+        href="#ceremonies"
+        class="inline-flex items-center justify-center h-12 px-7 bg-transparent text-seve-marine border border-seve-marine/30 font-outfit font-semibold text-[12px] uppercase tracking-[0.2em] rounded-full hover:border-seve-or hover:text-seve-or transition-colors duration-300"
+      >
+        Voir les cérémonies
+      </a>
+    </div>
+
+    <!-- Bandeau saison / chiffres -->
+    <div class="mt-12 md:mt-16 border-y border-seve-or/30 py-5 md:py-6 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-4 text-center">
+      <div>
+        <div class="font-cormorant text-3xl md:text-4xl text-seve-marine">{data.info.ceremonies2025}</div>
+        <div class="mt-1 font-outfit text-[10px] uppercase tracking-[0.2em] text-seve-marine/65">cérémonies en 2025</div>
+      </div>
+      <div>
+        <div class="font-cormorant text-3xl md:text-4xl text-seve-marine">{data.info.ceremoniesPrevues2026}</div>
+        <div class="mt-1 font-outfit text-[10px] uppercase tracking-[0.2em] text-seve-marine/65">prévues en 2026</div>
+      </div>
+      <div>
+        <div class="font-cormorant text-3xl md:text-4xl text-seve-or">{data.saison.mois}</div>
+        <div class="mt-1 font-outfit text-[10px] uppercase tracking-[0.2em] text-seve-marine/65">{data.saison.label}</div>
+      </div>
+      <div>
+        <div class="font-cormorant text-3xl md:text-4xl text-seve-marine">2017</div>
+        <div class="mt-1 font-outfit text-[10px] uppercase tracking-[0.2em] text-seve-marine/65">depuis · La Réunion</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bandeau photo plage full-bleed -->
+  <div class="relative mt-10 md:mt-14 h-[42vh] md:h-[58vh] min-h-[320px] overflow-hidden">
+    <img
+      src={data.info.photoHero}
+      alt={data.info.photoHeroAlt}
+      class="absolute inset-0 w-full h-full object-cover"
+      loading="eager"
+      fetchpriority="high"
+    />
+    <!-- Voile ivoire en haut pour fondu doux avec le hero -->
+    <div class="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-seve-ivoire to-transparent" aria-hidden="true"></div>
+    <!-- Voile marine en bas pour lisibilité de la signature -->
+    <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-seve-marine/60 to-transparent" aria-hidden="true"></div>
+
+    <!-- Signature in-photo -->
+    <div class="absolute bottom-5 md:bottom-8 left-0 right-0 px-6 md:px-10">
+      <div class="max-w-content mx-auto flex items-end justify-between gap-4">
+        <p class="font-italianno text-seve-ivoire text-3xl md:text-5xl leading-none drop-shadow-sm">
+          — Cléa
+        </p>
+        <p class="hidden md:block font-outfit text-[11px] uppercase tracking-[0.25em] text-seve-ivoire/85">
+          {data.info.adresseLigne1} · {data.info.ville}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
