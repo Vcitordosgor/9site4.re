@@ -1,0 +1,37 @@
+---
+import data from '../../../data/templates/seve.json';
+---
+
+<section id="demarches" class="bg-seve-ivoire py-20 md:py-28">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+
+    <div class="text-center max-w-2xl mx-auto mb-14 md:mb-20">
+      <p class="font-outfit text-[11px] uppercase tracking-[0.3em] text-seve-or mb-4">— Notre méthode —</p>
+      <h2 class="font-cormorant text-4xl md:text-5xl text-seve-marine leading-tight">
+        De l'appel découverte au <em class="font-italianno text-seve-corail text-5xl md:text-6xl not-italic">jour-J</em>
+      </h2>
+    </div>
+
+    <ol class="relative max-w-3xl mx-auto">
+      <!-- Ligne verticale -->
+      <div class="absolute left-[26px] md:left-1/2 top-3 bottom-3 w-px bg-gradient-to-b from-seve-or/60 via-seve-or/30 to-seve-or/60" aria-hidden="true"></div>
+
+      {data.demarches.map((d, i) => (
+        <li class={`relative grid grid-cols-[60px_1fr] md:grid-cols-2 gap-6 md:gap-12 mb-10 md:mb-14 last:mb-0 ${i % 2 === 1 ? 'md:[&>*:first-child]:order-2' : ''}`}>
+          <!-- Pastille numéro -->
+          <div class="md:col-span-1 flex md:justify-center">
+            <div class={`relative md:absolute md:left-1/2 md:-translate-x-1/2 w-[52px] h-[52px] rounded-full bg-seve-marine border-2 border-seve-or flex items-center justify-center font-cormorant text-seve-ivoire text-xl z-10`}>
+              {d.etape}
+            </div>
+          </div>
+
+          <!-- Contenu -->
+          <div class={`${i % 2 === 1 ? 'md:text-right md:pr-12' : 'md:pl-12'}`}>
+            <h3 class="font-cormorant text-2xl md:text-[26px] text-seve-marine leading-tight">{d.titre}</h3>
+            <p class="mt-3 font-outfit text-[14px] text-seve-marine/75 leading-relaxed">{d.texte}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

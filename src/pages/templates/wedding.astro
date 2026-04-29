@@ -1,0 +1,51 @@
+---
+import '@fontsource/italianno/400.css';
+import '@fontsource/cormorant-garamond/400.css';
+import '@fontsource/cormorant-garamond/400-italic.css';
+import '@fontsource/cormorant-garamond/500.css';
+import '@fontsource/cormorant-garamond/600.css';
+import '@fontsource/outfit/400.css';
+import '@fontsource/outfit/500.css';
+import '@fontsource/outfit/600.css';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getSeo } from '../../lib/seo';
+import seveData from '../../data/templates/seve.json';
+
+import SeveHeader from '../../components/templates/wedding/SeveHeader.astro';
+import HeroSeve from '../../components/templates/wedding/HeroSeve.astro';
+import Ceremonies from '../../components/templates/wedding/Ceremonies.astro';
+import Lieux from '../../components/templates/wedding/Lieux.astro';
+import Fondatrice from '../../components/templates/wedding/Fondatrice.astro';
+import Demarches from '../../components/templates/wedding/Demarches.astro';
+import Couples from '../../components/templates/wedding/Couples.astro';
+import Contact from '../../components/templates/wedding/Contact.astro';
+import SeveFooter from '../../components/templates/wedding/SeveFooter.astro';
+---
+
+<BaseLayout seo={getSeo('templateWedding')} bare={true}>
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <link rel="dns-prefetch" href="https://images.unsplash.com" />
+    <link
+      rel="preload"
+      as="image"
+      href={seveData.info.photoHero}
+      fetchpriority="high"
+    />
+  </Fragment>
+
+  <SeveHeader />
+
+  <main class="bg-seve-ivoire text-seve-marine font-outfit">
+    <HeroSeve />
+    <Ceremonies />
+    <Lieux />
+    <Fondatrice />
+    <Demarches />
+    <Couples />
+    <Contact />
+  </main>
+
+  <SeveFooter />
+</BaseLayout>

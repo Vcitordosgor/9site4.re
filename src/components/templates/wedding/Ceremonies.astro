@@ -1,0 +1,76 @@
+---
+import data from '../../../data/templates/seve.json';
+---
+
+<section id="ceremonies" class="bg-seve-ivoire py-20 md:py-28">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+
+    <div class="text-center max-w-2xl mx-auto mb-14 md:mb-20">
+      <p class="font-outfit text-[11px] uppercase tracking-[0.3em] text-seve-or mb-4">— Nos cérémonies —</p>
+      <h2 class="font-cormorant text-4xl md:text-5xl text-seve-marine leading-tight">
+        Trois manières de se dire <em class="font-italianno text-seve-corail text-5xl md:text-6xl not-italic">oui</em>
+      </h2>
+      <p class="mt-5 font-outfit text-sm md:text-base text-seve-marine/75 leading-relaxed">
+        Cérémonie laïque pieds nus, civile en jardin botanique, ou intime à deux.<br class="hidden md:block" />
+        Chaque formule est entièrement personnalisable.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+      {data.ceremonies.map((c, i) => (
+        <article class="group relative bg-white border border-seve-or/20 rounded-sm p-7 md:p-8 flex flex-col hover:border-seve-or/60 transition-colors duration-500">
+          <!-- Numéro romain en filigrane -->
+          <div class="absolute top-5 right-6 font-cormorant italic text-seve-or/30 text-2xl">
+            {['I', 'II', 'III'][i]}
+          </div>
+
+          <p class="font-outfit text-[10px] uppercase tracking-[0.25em] text-seve-corail mb-4">
+            {c.duree}
+          </p>
+          <h3 class="font-cormorant text-2xl md:text-[26px] text-seve-marine leading-tight">
+            {c.titre}
+          </h3>
+          <p class="font-italianno text-seve-or text-2xl mt-1">{c.tagline}</p>
+
+          <div class="mt-5 pt-5 border-t border-seve-or/20 space-y-2 font-outfit text-[12px] text-seve-marine/75">
+            <div class="flex justify-between gap-3">
+              <span class="uppercase tracking-wider text-seve-marine/50">Lieu</span>
+              <span class="text-right">{c.lieu}</span>
+            </div>
+            <div class="flex justify-between gap-3">
+              <span class="uppercase tracking-wider text-seve-marine/50">Invités</span>
+              <span>{c.invites}</span>
+            </div>
+          </div>
+
+          <ul class="mt-5 space-y-2.5 flex-1">
+            {c.inclus.map((item) => (
+              <li class="flex gap-2.5 font-outfit text-[13px] text-seve-marine/85 leading-relaxed">
+                <span class="text-seve-or shrink-0 mt-0.5">✦</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div class="mt-6 pt-5 border-t border-seve-or/20">
+            <p class="font-outfit text-[11px] uppercase tracking-wider text-seve-marine/50 mb-1">Idéal pour</p>
+            <p class="font-outfit text-[12px] italic text-seve-marine/70 leading-relaxed">{c.ideal}</p>
+          </div>
+
+          <div class="mt-6 flex items-end justify-between gap-3">
+            <div>
+              <p class="font-outfit text-[10px] uppercase tracking-wider text-seve-marine/50">Tarif</p>
+              <p class="font-cormorant text-2xl text-seve-marine">{c.prix}</p>
+            </div>
+            <a
+              href="#contact"
+              class="inline-flex items-center justify-center h-10 px-4 bg-seve-marine text-seve-ivoire font-outfit font-semibold text-[11px] uppercase tracking-[0.18em] rounded-full hover:bg-seve-corail transition-colors duration-300"
+            >
+              Demander
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

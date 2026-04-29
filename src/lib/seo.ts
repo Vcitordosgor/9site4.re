@@ -53,7 +53,8 @@ type PageKey =
   | 'templateAutoEcole'
   | 'templateConciergerie'
   | 'templateAideDomicile'
-  | 'templatePlongee';
+  | 'templatePlongee'
+  | 'templateWedding';
 
 const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'> & { noindex?: boolean; ogImage?: string; ogImageAlt?: string }> = {
   home: {
@@ -270,6 +271,13 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
     description:
       'Aperçu du template "Centre de plongée" proposé par 9site4 : formules baptême et exploration, dashboard de plongée, sécurité, sortie baleines. Site fictif de démonstration.',
     canonical: '/templates/plongee',
+    noindex: true,
+  },
+  templateWedding: {
+    title: 'Sève & Sel — Wedding planner à Saint-Gilles-les-Bains (Réunion) | Template 9site4',
+    description:
+      'Aperçu du template "Wedding planner" proposé par 9site4 : cérémonies plage, civiles et intimes, lieux iconiques de La Réunion, démarches sur-mesure. Site fictif de démonstration.',
+    canonical: '/templates/wedding',
     noindex: true,
   },
 };

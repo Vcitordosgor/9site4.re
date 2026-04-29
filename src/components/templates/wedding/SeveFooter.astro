@@ -1,0 +1,48 @@
+---
+import data from '../../../data/templates/seve.json';
+---
+
+<footer class="bg-seve-marine text-seve-ivoire">
+  <div class="max-w-content mx-auto px-6 md:px-10 py-14 md:py-16">
+
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-10 mb-12">
+      <div class="md:col-span-5">
+        <div class="flex items-baseline gap-1">
+          <span class="font-italianno text-seve-ivoire text-5xl leading-none">Sève</span>
+          <span class="font-italianno text-seve-or text-5xl leading-none">&amp;</span>
+          <span class="font-italianno text-seve-ivoire text-5xl leading-none">Sel</span>
+        </div>
+        <p class="mt-4 font-cormorant italic text-lg text-seve-ivoire/85 max-w-sm leading-relaxed">
+          {data.info.tagline} — Wedding planning sur-mesure à La Réunion depuis {data.info.annee}.
+        </p>
+      </div>
+
+      <div class="md:col-span-3">
+        <p class="font-outfit text-[10px] uppercase tracking-[0.25em] text-seve-or mb-3">Navigation</p>
+        <ul class="space-y-2 font-outfit text-[13.5px]">
+          <li><a href="#ceremonies" class="hover:text-seve-or transition-colors">Cérémonies</a></li>
+          <li><a href="#lieux" class="hover:text-seve-or transition-colors">Lieux iconiques</a></li>
+          <li><a href="#fondatrice" class="hover:text-seve-or transition-colors">Cléa</a></li>
+          <li><a href="#demarches" class="hover:text-seve-or transition-colors">Démarches</a></li>
+          <li><a href="#contact" class="hover:text-seve-or transition-colors">Premier appel</a></li>
+        </ul>
+      </div>
+
+      <div class="md:col-span-4">
+        <p class="font-outfit text-[10px] uppercase tracking-[0.25em] text-seve-or mb-3">Contact</p>
+        <ul class="space-y-2 font-outfit text-[13.5px]">
+          <li>{data.info.adresseLigne1}</li>
+          <li>{data.info.adresseLigne2}</li>
+          <li><a href={`tel:${data.info.telephoneHref}`} class="hover:text-seve-or transition-colors">{data.info.telephone}</a></li>
+          <li><a href={`mailto:${data.info.email}`} class="hover:text-seve-or transition-colors">{data.info.email}</a></li>
+          <li class="text-seve-ivoire/70">Instagram {data.info.instagram}</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pt-6 border-t border-seve-or/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 font-outfit text-[11px] text-seve-ivoire/65">
+      <p>© {data.info.annee}–2026 {data.info.nom} · SIRET {data.info.siret}</p>
+      <p class="font-italianno text-seve-or text-2xl leading-none">L'océan vous marie.</p>
+    </div>
+  </div>
+</footer>

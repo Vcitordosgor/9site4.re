@@ -248,5 +248,15 @@
     "slug": "plongee",
     "previewUrl": "/templates/plongee",
     "thumbnail": "https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=900&q=80"
+  },
+  {
+    "id": 26,
+    "nom": "Wedding planner",
+    "categorie": "particuliers",
+    "sousTitre": "Cérémonies plage, civiles et intimes à La Réunion",
+    "moduleInclus": "Devis",
+    "slug": "wedding-planner",
+    "previewUrl": "/templates/wedding",
+    "thumbnail": "https://images.unsplash.com/photo-1519741497674-611481863552?w=900&q=80"
   }
 ]
