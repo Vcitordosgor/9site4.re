@@ -62,6 +62,19 @@ import data from '../../../data/templates/souffle.json';
         Réserver un cours d'essai
       </a>
     </div>
+
+    <!-- Mini-bloc 'Aujourd'hui à Souffle Studio' : signal prochain cours en temps réel -->
+    <div class="mt-12 md:mt-14 inline-flex flex-wrap items-center justify-center gap-x-3 gap-y-1 px-5 py-2.5 rounded-full bg-yoga-creme ring-1 ring-yoga-ocre/30 max-w-full">
+      <span class="flex items-center gap-1.5 shrink-0">
+        <span class="block w-1.5 h-1.5 rounded-full bg-yoga-ocre breath-pulse" aria-hidden="true"></span>
+        <span class="font-lexend text-[10px] uppercase tracking-[0.28em] text-yoga-pierre">Aujourd'hui</span>
+      </span>
+      <span class="font-spectral italic text-yoga-encre text-sm md:text-[15px]">Mercredi · 18h30</span>
+      <span class="text-yoga-pierre/50 hidden sm:inline" aria-hidden="true">·</span>
+      <span class="font-lexend text-[11px] tracking-wide text-yoga-encre/75">Hatha doux</span>
+      <span class="text-yoga-pierre/50 hidden sm:inline" aria-hidden="true">·</span>
+      <span class="font-lexend text-[11px] tracking-wide text-yoga-ocre">4 places</span>
+    </div>
   </div>
 
   <!-- Animation de respiration -->
@@ -84,8 +97,14 @@ import data from '../../../data/templates/souffle.json';
       50%  { transform: scale(1.08); opacity: 0.7; }
       100% { transform: scale(0.65); opacity: 0.3; }
     }
+    /* Pulse subtil de la pastille 'Aujourd'hui' (cycle plus lent que le cercle principal) */
+    .breath-pulse { animation: breath-pulse 3.5s ease-in-out infinite; }
+    @keyframes breath-pulse {
+      0%, 100% { opacity: 0.45; transform: scale(1); }
+      50%      { opacity: 1;    transform: scale(1.4); }
+    }
     @media (prefers-reduced-motion: reduce) {
-      .breath-orb, .breath-ring-1 { animation: none; transform: scale(0.85); }
+      .breath-orb, .breath-ring-1, .breath-pulse { animation: none; transform: scale(0.85); }
     }
   </style>
 </section>
