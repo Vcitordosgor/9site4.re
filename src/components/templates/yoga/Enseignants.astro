@@ -1,10 +1,19 @@
 ---
 /**
  * Enseignants — polaroids légèrement décalés.
- * 3 portraits photo carrée, chacun avec rotation différente (-2°, +1.5°, -1°).
- * Pas une grille égalitaire : un mur de polaroids éditorial.
+ * 3 cartes carrées avec rotation différente (-2°, +1.5°, -1°). Pas une
+ * grille égalitaire : un mur de polaroids éditorial.
+ * Avatars typographiques (initiales serif sur fond crème) en lieu et
+ * place de portraits photo, pour assumer le côté 'exemple fictionnel'
+ * et éviter les portraits stock recyclés.
  */
 import data from '../../../data/templates/souffle.json';
+
+const avatarVariants = [
+  'bg-yoga-ocre/15 text-yoga-encre',
+  'bg-yoga-encre text-yoga-creme',
+  'bg-yoga-pierre/20 text-yoga-encre',
+];
 ---
 
 <section id="enseignants" class="bg-yoga-creme py-24 md:py-36 px-6 md:px-10 overflow-hidden">
@@ -32,15 +41,31 @@ import data from '../../../data/templates/souffle.json';
           ]}
           style={`transform: rotate(${e.rotation}); box-shadow: 0 12px 30px -10px rgba(42,32,26,0.18);`}
         >
-          <!-- Photo carrée monochrome -->
-          <div class="relative aspect-square overflow-hidden bg-yoga-papier">
-            <img
-              src={e.photo}
-              alt={`Portrait de ${e.prenom} ${e.nom}`}
-              loading="lazy"
-              decoding="async"
-              class="w-full h-full object-cover sepia-[0.15] group-hover:sepia-0 transition-all duration-700"
-            />
+          <!-- Avatar typographique : initiales DM Serif géant + halo radial subtil -->
+          <div
+            class:list={[
+              'relative aspect-square overflow-hidden flex items-center justify-center',
+              avatarVariants[i % avatarVariants.length],
+            ]}
+            role="img"
+            aria-label={`Avatar de ${e.prenom} ${e.nom}`}
+          >
+            <!-- Halo radial ocre très subtil (cohérence respiration) -->
+            <div
+              class="absolute inset-0 pointer-events-none"
+              aria-hidden="true"
+              style="background: radial-gradient(circle at 50% 60%, rgba(201,136,94,0.12) 0%, transparent 60%);"
+            ></div>
+            <!-- Initiales -->
+            <span
+              class="relative font-dm-serif leading-none select-none"
+              style="font-size: clamp(72px, 13vw, 132px);"
+              aria-hidden="true"
+            >
+              {e.prenom.charAt(0)}<span class="font-spectral italic">{e.nom.charAt(0)}</span>
+            </span>
+            <!-- Petit pictogramme '✿' en haut-droite (cohérence yoga) -->
+            <span class="absolute top-3 right-3 text-yoga-ocre/55 text-base leading-none" aria-hidden="true">✿</span>
           </div>
 
           <!-- Légende polaroid : nom + rôle + bio courte en serif italique -->
