@@ -1,5 +1,14 @@
 ---
 import data from '../../../data/templates/doudou.json';
+
+// Avatars graphiques (substitut aux portraits Unsplash stock recyclés
+// sur d'autres templates). Cycle de 4 couleurs douces palette Doudou.
+const avatarVariants = [
+  'bg-doudou-rose text-doudou-creme',
+  'bg-doudou-bleu text-doudou-creme',
+  'bg-doudou-soleil text-doudou-encre',
+  'bg-doudou-bourgeon text-doudou-creme',
+];
 ---
 
 <section id="aidants" class="bg-doudou-ciel/40 py-20 md:py-28 px-6 md:px-10">
@@ -16,19 +25,30 @@ import data from '../../../data/templates/doudou.json';
     </header>
 
     <ul class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-      {data.aidants.map((a) => (
+      {data.aidants.map((a, i) => (
         <li>
           <article class="bg-doudou-creme p-6 rounded-3xl text-center group hover:bg-doudou-blanc transition-colors h-full flex flex-col">
 
-            <!-- Photo ronde grande -->
-            <div class="relative w-32 h-32 mx-auto mb-5 rounded-full overflow-hidden ring-4 ring-doudou-rose/40 group-hover:ring-doudou-rose transition-all">
-              <img
-                src={a.photo}
-                alt={`Portrait de ${a.prenom}`}
-                loading="lazy"
-                decoding="async"
-                class="w-full h-full object-cover"
-              />
+            <!-- Avatar graphique : cercle pastel + ♡ + initiale Nunito -->
+            <div
+              class:list={[
+                'relative w-32 h-32 mx-auto mb-5 rounded-full overflow-hidden ring-4 ring-doudou-rose/40 group-hover:ring-doudou-rose transition-all flex items-center justify-center',
+                avatarVariants[i % avatarVariants.length],
+              ]}
+              role="img"
+              aria-label={`Avatar de ${a.prenom}`}
+            >
+              <span
+                class="font-nunito font-bold leading-none select-none"
+                style="font-size: 56px;"
+                aria-hidden="true"
+              >
+                {a.prenom.charAt(0)}
+              </span>
+              <!-- Mini-cœur bas-droite (signal aide à la personne) -->
+              <span class="absolute bottom-2 right-2 w-5 h-5 rounded-full bg-doudou-creme/95 flex items-center justify-center text-doudou-rose text-[10px] leading-none" aria-hidden="true">
+                ♥
+              </span>
             </div>
 
             <p class="font-homemade text-doudou-bleu text-3xl leading-none mb-1">
