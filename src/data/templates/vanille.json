@@ -1,0 +1,143 @@
+{
+  "info": {
+    "nom": "La Vanille de Bel-Air",
+    "wordmark": "La Vanille",
+    "wordmark2": "de Bel-Air",
+    "soustitre": "Pâtisserie créole · Saint-André",
+    "tagline": "Le sucre, la vanille, le geste.",
+    "fondatrice": "Stéphanie Payet",
+    "ville": "Saint-André",
+    "adresseLigne1": "12 chemin de Bel-Air",
+    "adresseLigne2": "97440 Saint-André",
+    "telephone": "0262 58 12 04",
+    "telephoneHref": "+262262581204",
+    "whatsapp": "262692441207",
+    "email": "bonjour@vanille-bel-air.re",
+    "instagram": "@vanille.belair",
+    "siret": "85412034500021",
+    "annee": "2009",
+    "photoHero": "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=1800&q=85",
+    "photoHeroAlt": "Gâteau pâtissier glacé à la vanille avec gousses fraîches sur table en bois, La Vanille de Bel-Air, Saint-André, La Réunion",
+    "ouvertureHebdo": "Mardi → dimanche · 6h30-13h / 15h-19h",
+    "fermeture": "Lundi"
+  },
+  "promesse": "À Bel-Air depuis 2009, on pétrit, on glace, on caramélise. La vanille bourbon vient de Bras-Panon, le rhum arrangé de chez Gerry, les œufs des pondeuses de Madame Hoarau à Salazie. Tout est fait le matin même, à la main, dans la cuisine au fond de la boutique.",
+  "specialites": [
+    {
+      "id": "gateau-patate",
+      "nom": "Gâteau patate",
+      "categorie": "Pâtisserie créole",
+      "prix": "3,80 € · part",
+      "tagline": "Patate douce, lait de coco, vanille.",
+      "description": "Gâteau humide à base de patate douce blanche râpée, lait de coco frais, vanille fendue, et une pincée de muscade. Recette de la grand-mère de Stéphanie, inchangée depuis 1972.",
+      "details": "Préparation : 45 min · Cuisson : 1h15 · Conservation : 4 jours",
+      "epice": "vanille"
+    },
+    {
+      "id": "millefeuille-vanille",
+      "nom": "Mille-feuille vanille bourbon",
+      "categorie": "Pâtisserie française",
+      "prix": "5,90 € · pièce",
+      "tagline": "3 gousses dans la crème pâtissière.",
+      "description": "Pâte feuilletée pur beurre tournée 6 fois, crème pâtissière infusée 24h avec 3 gousses de vanille bourbon de Bras-Panon, sucre glace tamisé minute. Croustillant garanti.",
+      "details": "Préparation veille · 6 tours feuilletage · Vanille IGP",
+      "epice": "vanille"
+    },
+    {
+      "id": "macatia-coco",
+      "nom": "Macatia coco-rhum arrangé",
+      "categorie": "Viennoiserie créole",
+      "prix": "1,80 € · pièce",
+      "tagline": "La brioche péi du goûter.",
+      "description": "Brioche moelleuse créole, fourrée à la noix de coco fraîche, parfumée au rhum arrangé vanille-letchi. À déguster tiède avec un café péi.",
+      "details": "Pousse 4h · 18 brioches/fournée · 6h30 → matin",
+      "epice": "coco"
+    },
+    {
+      "id": "tarte-letchi",
+      "nom": "Tarte letchis caramélisés",
+      "categorie": "Tarte de saison",
+      "prix": "32 € · entremets 6 pers.",
+      "tagline": "Disponible nov → janvier seulement.",
+      "description": "Pâte sablée vanille, crème d'amande, letchis frais de Saint-Joseph caramélisés au sucre roux et zestes de combava. Fenêtre courte, 8 semaines/an.",
+      "details": "Saison letchi La Réunion · 1 cuisson minute · Sur commande 48h",
+      "epice": "letchi"
+    },
+    {
+      "id": "bonbon-piment-sucre",
+      "nom": "Bonbon piment sucré",
+      "categorie": "Curiosité maison",
+      "prix": "2,10 € · pièce",
+      "tagline": "Le pari de Stéphanie : sucré + piment doux.",
+      "description": "Petit beignet créole revisité version dessert : pois du Cap, piment doux, glaçage caramel-gingembre. Réservé aux palais curieux. Notre signature audacieuse.",
+      "details": "Friture minute · 12 pièces/jour · Stop dès épuisement",
+      "epice": "piment"
+    }
+  ],
+  "saisons": [
+    {
+      "mois": "Mai → Octobre",
+      "fruits": "Mangue Carotte, ananas Victoria, fruit de la passion",
+      "stars": "Tarte mangue-vanille, entremets passion-coco"
+    },
+    {
+      "mois": "Novembre → Janvier",
+      "fruits": "Letchi Kwaï Mi, longani, ananas Victoria",
+      "stars": "Tarte letchis caramélisés, savarin longani-rhum"
+    },
+    {
+      "mois": "Février → Avril",
+      "fruits": "Goyavier, banane figue, fruit de la passion",
+      "stars": "Confiture goyavier-vanille, mille-feuille banane"
+    }
+  ],
+  "patissiere": {
+    "nom": "Stéphanie Payet",
+    "titre": "Pâtissière & fondatrice",
+    "bio": "Stéphanie a appris la pâtisserie chez sa grand-mère à Sainte-Suzanne, puis a fait son CAP au lycée hôtelier de La Renaissance. Après 6 ans à Paris (Lenôtre, Pierre Hermé), elle est rentrée à Saint-André en 2009 pour ouvrir La Vanille de Bel-Air. Elle pétrit elle-même les pâtes feuilletées chaque matin à 4h30.",
+    "credo": "« Une viennoiserie réussie, c'est trois choses : du beurre, du temps, et personne qui te bouscule à 5h du matin. »",
+    "certif": ["CAP Pâtisserie 2003", "BTM Pâtisserie 2007", "Passage chez Pierre Hermé Paris", "Maître Restaurateur 2018"]
+  },
+  "avis": [
+    {
+      "prenom": "Marie-Claire",
+      "ville": "Saint-Benoît",
+      "etoiles": 5,
+      "texte": "Je viens chaque samedi depuis 12 ans. Le gâteau patate de Stéphanie a le goût de l'enfance. Le mille-feuille vanille, j'ai encore jamais trouvé mieux à La Réunion."
+    },
+    {
+      "prenom": "Jean-Luc",
+      "ville": "Bras-Panon",
+      "etoiles": 5,
+      "texte": "Mariage de ma fille en novembre, pièce montée 80 personnes : Stéphanie a livré le matin même, à 9h, fraîche du four. Tout le monde a réclamé la recette du macatia coco. Service impeccable."
+    },
+    {
+      "prenom": "Sophie & David",
+      "ville": "Saint-Denis",
+      "etoiles": 5,
+      "texte": "On commande nos entremets tous les anniversaires depuis 2018. La saveur letchi-vanille de leur tarte de saison est une dinguerie. On fait 1h de route, ça vaut le coup."
+    }
+  ],
+  "commandes": [
+    {
+      "etape": "01",
+      "titre": "Boutique 6h30 → 13h",
+      "texte": "Tout est prêt à 6h30 quand on ouvre. Les mille-feuilles partent vite (souvent rupture à 10h le samedi). Pas de réservation pour la vente du jour."
+    },
+    {
+      "etape": "02",
+      "titre": "Commande spéciale (24h)",
+      "texte": "Entremets, gâteaux d'anniversaire, plateaux de viennoiseries : passez par WhatsApp avant 14h pour le lendemain. Minimum 25 €."
+    },
+    {
+      "etape": "03",
+      "titre": "Événements (mariage, baptême)",
+      "texte": "Pièces montées choux/croquembouche, wedding cake créole, plateaux 50 → 200 personnes. Devis sous 48h, dépôt 30% à la réservation, 4 semaines minimum."
+    },
+    {
+      "etape": "04",
+      "titre": "Livraison Est & Nord",
+      "texte": "Livraison gratuite Saint-André et Bras-Panon. Saint-Benoît / Sainte-Suzanne / Saint-Denis : forfait 25 €. À partir de 15 €/dépôt-vente local."
+    }
+  ]
+}

@@ -93,6 +93,10 @@ export default {
     {
       pattern: /^(bg|text|ring|border|from|to|via)-(seve-ivoire|seve-creme|seve-or|seve-corail|seve-lagon|seve-marine|seve-vert)(\/(5|10|15|20|25|30|40|50|55|60|65|70|75|80|85|90))?$/,
     },
+    // Palette pâtisserie créole — La Vanille de Bel-Air (Saint-André)
+    {
+      pattern: /^(bg|text|ring|border|from|to|via)-(vanille-creme|vanille-papier|vanille-gousse|vanille-caramel|vanille-pandan|vanille-piment|vanille-grain|vanille-blanc)(\/(5|10|15|20|25|30|40|50|55|60|65|70|75|80|85|90))?$/,
+    },
   ],
   theme: {
     extend: {
@@ -377,6 +381,19 @@ export default {
         'seve-lagon':  '#7FCDD8',  // turquoise lagon — accents froids subtils
         'seve-marine': '#2A3F5C',  // bleu marine profond — texte principal
         'seve-vert':   '#7A9461',  // vert sauge — feuillage SVG
+
+        // Palette pâtisserie créole — La Vanille de Bel-Air (Saint-André, Est)
+        // Style "vitrine de pâtisserie artisanale, identité créole/vanille
+        // bourbon" : crème vanille chaude + brun gousse + vert pandan + rouge
+        // piment rare. Distinct de la trattoria pizzeria et du gastro.
+        'vanille-creme':   '#FBF3E2',  // crème vanille chaude — fond principal
+        'vanille-papier':  '#F4E8CE',  // papier sucré — sections alternées
+        'vanille-gousse':  '#5C3A1E',  // brun gousse — texte AAA, accents
+        'vanille-caramel': '#C68642',  // caramel doré — accents chauds, CTA
+        'vanille-pandan':  '#7AA05B',  // vert pandan — herbes, micro-accent
+        'vanille-piment':  '#D14B3C',  // rouge piment — accent rare (épices)
+        'vanille-grain':   '#2A1B0F',  // brun grain torréfié — fond dark
+        'vanille-blanc':   '#FFFEF9',  // blanc casssé sucre glace
       },
       fontFamily: {
         sora: ['Sora', 'system-ui', 'sans-serif'],
