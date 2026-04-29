@@ -1,0 +1,174 @@
+{
+  "info": {
+    "nom": "Bleu Lagon Plongée",
+    "wordmark": "Bleu Lagon",
+    "wordmark2": "Plongée",
+    "soustitre": "Centre de plongée · Saint-Leu",
+    "tagline": "Voir le lagon de l'intérieur.",
+    "moniteur": "Antoine Roussel",
+    "ville": "Saint-Leu",
+    "adresseLigne1": "Quai des Plongeurs · Pointe au Sel",
+    "adresseLigne2": "97436 Saint-Leu",
+    "telephone": "0692 47 38 19",
+    "telephoneHref": "+33692473819",
+    "whatsapp": "33692473819",
+    "email": "antoine@bleu-lagon-plongee.re",
+    "instagram": "@bleulagon.plongee",
+    "siret": "12345678900017",
+    "agrement": "FFESSM E 974 0019 · PADI Resort #29017",
+    "annee": "2014",
+    "photoHero": "https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=1800&q=85",
+    "photoHeroAlt": "Plongeur observant un banc de poissons dans le lagon de Saint-Leu, La Réunion"
+  },
+  "stats": [
+    { "valeur": "11 ans", "label": "d'expérience" },
+    { "valeur": "1 800+", "label": "plongeurs accompagnés" },
+    { "valeur": "32 m", "label": "profondeur max enseignée" },
+    { "valeur": "5/5", "label": "412 avis Google" }
+  ],
+  "promesse": "À Saint-Leu, on plonge sur la plus belle réserve marine de la Réunion : 19 km de côte protégée, 350 espèces de poissons, des tortues quasi tous les jours, des baleines de juin à octobre. On plonge en petit groupe (4 max), on prend le temps d'expliquer, on ne fait jamais redescendre quelqu'un qui n'est pas à l'aise.",
+  "formules": [
+    {
+      "id": "bapteme",
+      "titre": "Baptême découverte",
+      "duree": "2h sur place · 25 min sous l'eau",
+      "profondeur": "6 m max",
+      "prix": "65 €",
+      "niveau": "Débutant total",
+      "inclus": [
+        "Briefing 30 min en surface",
+        "Matériel complet fourni (combi 5 mm + détendeur + bouteille)",
+        "Encadrement individuel (1 moniteur pour 2 maximum)",
+        "Photos sous-marines offertes"
+      ],
+      "description": "Vous n'avez jamais plongé ? On vous accompagne main dans la main. Aucun pré-requis sportif, juste savoir nager et avoir 8 ans révolus.",
+      "icone": "spark"
+    },
+    {
+      "id": "exploration",
+      "titre": "Plongée exploration",
+      "duree": "Demi-journée · 45 min sous l'eau",
+      "profondeur": "20 m max",
+      "prix": "55 €",
+      "niveau": "PADI Open Water ou équiv.",
+      "inclus": [
+        "Sortie sur tombant ou épave (selon météo)",
+        "Petit groupe — 4 plongeurs max",
+        "Briefing sur la vie locale",
+        "Bouteille + plombs inclus"
+      ],
+      "description": "Vous avez votre niveau 1. On vous emmène sur les sites mythiques : la Pointe au Sel, le tombant de Saint-Leu, l'épave du Hai-Siang.",
+      "icone": "waves"
+    },
+    {
+      "id": "biologie",
+      "titre": "Plongée biologie",
+      "duree": "3h · 2 plongées",
+      "profondeur": "18 m max",
+      "prix": "120 €",
+      "niveau": "Tous niveaux (à partir de N1)",
+      "inclus": [
+        "Encadrement par moniteur biologiste marin",
+        "Ardoise immergeable + carnet d'identification",
+        "Photos espèces rencontrées",
+        "Café-brief débrief en terrasse"
+      ],
+      "description": "Apprendre à reconnaître les espèces, comprendre le récif, repérer les comportements. Plongée pédagogique, pour curieux et passionnés.",
+      "icone": "leaf"
+    },
+    {
+      "id": "baleines",
+      "titre": "Sortie baleines (saison)",
+      "duree": "Demi-journée · juin → octobre",
+      "profondeur": "Snorkeling surface",
+      "prix": "85 €",
+      "niveau": "Savoir nager · 10 ans+",
+      "inclus": [
+        "Recherche en bateau homologué",
+        "PMT (palmes-masque-tuba) fournis",
+        "Charte Quietude respectée à 100%",
+        "Pas garanti — remboursé si zéro observation"
+      ],
+      "description": "Approche éthique des baleines à bosse en saison. Aucune garantie d'observation — c'est l'océan qui décide. Mais on connaît leurs habitudes et on respecte la charte.",
+      "icone": "compass"
+    },
+    {
+      "id": "passage-niveau",
+      "titre": "Passage niveau 1 (PADI OW)",
+      "duree": "4 jours · 5 plongées",
+      "profondeur": "18 m",
+      "prix": "490 €",
+      "niveau": "Débutant motivé",
+      "inclus": [
+        "Théorie en ligne (e-learning PADI inclus)",
+        "5 plongées en mer + exercices de sécurité",
+        "Brevet international à vie",
+        "Carte PADI fournie"
+      ],
+      "description": "En 4 jours, vous devenez plongeur autonome. Le brevet PADI Open Water est reconnu dans le monde entier — vous plongez ensuite partout, sur n'importe quel spot.",
+      "icone": "shield"
+    }
+  ],
+  "moniteur": {
+    "nom": "Antoine Roussel",
+    "titre": "Moniteur fédéral 2e degré · Instructeur PADI",
+    "diplomes": [
+      "BPJEPS Plongée subaquatique (2011)",
+      "MF2 — Moniteur Fédéral 2e degré FFESSM (2015)",
+      "PADI Master Scuba Diver Trainer (2017)",
+      "Formation biologie marine — Université de La Réunion (2019)"
+    ],
+    "bio": "Originaire de l'île, Antoine plonge à Saint-Leu depuis 1998. Il a travaillé 5 ans en mer Rouge avant de revenir ouvrir Bleu Lagon en 2014. Aujourd'hui, il forme la majorité des moniteurs de la côte Ouest et collabore avec la Réserve Marine sur le suivi des tortues."
+  },
+  "securite": [
+    {
+      "titre": "Matériel pro révisé tous les 6 mois",
+      "texte": "Détendeurs Scubapro révisés 2× par an en atelier agréé. Bouteilles en alu Luxfer testées TÜV. Combinaisons Aqualung 5 mm pour le confort thermique."
+    },
+    {
+      "titre": "Petits groupes — 4 plongeurs max",
+      "texte": "On refuse les groupes de 8-10 que d'autres centres font. Pour la sécurité, le confort et l'expérience, on plafonne strictement à 4 par moniteur."
+    },
+    {
+      "titre": "Plongée sans pression",
+      "texte": "Si à 6 mètres vous voulez remonter, on remonte. Pas de jugement, pas de remboursement réduit. Le but, c'est que vous reveniez heureux — et plus tard."
+    },
+    {
+      "titre": "Charte Réserve Marine respectée",
+      "texte": "Pas de palmage sur le corail, jamais. Pas de touche d'animaux, jamais. Mouillages sur bouées dédiées uniquement. C'est notre lagon — on en prend soin."
+    }
+  ],
+  "avis": [
+    {
+      "prenom": "Léa",
+      "metier": "Touriste métropole",
+      "date": "Octobre 2025",
+      "etoiles": 5,
+      "texte": "Premier baptême de ma vie à 38 ans. Antoine m'a tellement mise en confiance que j'ai prolongé pour faire une 2ᵉ plongée le lendemain. Une tortue est venue à 1 mètre de mon masque. Inoubliable."
+    },
+    {
+      "prenom": "Marc",
+      "metier": "Plongeur N3 confirmé",
+      "date": "Septembre 2025",
+      "etoiles": 5,
+      "texte": "J'ai plongé en mer Rouge, aux Maldives, en Polynésie. Le tombant de Saint-Leu rivalise. Et le briefing d'Antoine sur la biologie locale était un vrai cours. À refaire."
+    },
+    {
+      "prenom": "Karine",
+      "metier": "Famille",
+      "date": "Juillet 2025",
+      "etoiles": 5,
+      "texte": "Sortie baleines un matin de juillet. Pas vu de baleines (l'océan a décidé), mais des dauphins par centaines, plus rapide que le bateau. Antoine et son équipe : pédagogues, drôles, pros. Mes ados en parlent encore."
+    }
+  ],
+  "infos": {
+    "horaires": [
+      { "jour": "Mar — Ven", "creneaux": "8h · 10h30 · 14h" },
+      { "jour": "Sam — Dim", "creneaux": "7h30 · 10h · 13h30 · 16h" },
+      { "jour": "Lundi", "creneaux": "Fermé (jour de repos)" }
+    ],
+    "saison": "Toute l'année. Eau 22°C en hiver austral, 27°C en été. Visibilité moyenne : 20 m.",
+    "acces": "RD11, juste après le port de Saint-Leu en venant du sud. Parking gratuit devant. Bus Citalis ligne ZE arrêt Pointe au Sel.",
+    "annulation": "Annulation gratuite jusqu'à 24h avant. Remboursement intégral si plongée annulée par nos soins (météo, mer agitée)."
+  }
+}

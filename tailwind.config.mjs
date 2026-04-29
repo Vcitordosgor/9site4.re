@@ -85,6 +85,10 @@ export default {
     {
       pattern: /^(bg|text|ring|border|from|to|via)-(doudou-ciel|doudou-bleu|doudou-rose|doudou-creme|doudou-soleil|doudou-encre|doudou-bourgeon)(\/(5|10|15|20|25|30|40|50|60|70|80|90))?$/,
     },
+    // Palette plongée — Bleu Lagon Plongée (Saint-Leu)
+    {
+      pattern: /^(bg|text|ring|border|from|to|via)-(plongee-abysse|plongee-marine|plongee-lagon|plongee-ecume|plongee-corail|plongee-sable|plongee-charbon)(\/(5|10|15|20|25|30|40|50|55|60|65|70|75|80|85|90))?$/,
+    },
   ],
   theme: {
     extend: {
@@ -347,6 +351,17 @@ export default {
         'doudou-soleil':   '#FFE89F',  // jaune solaire pâle — micro-accent
         'doudou-encre':    '#3D3D3F',  // gris encre — texte
         'doudou-bourgeon': '#7FA66B',  // vert bourgeon — accent vif rare
+
+        // Palette plongée — Bleu Lagon Plongée (Saint-Leu, réserve marine)
+        // Profondeur océan + clarté lagon + accents corail vifs
+        // (template /templates/plongee — pas la charte 9site4)
+        'plongee-abysse':  '#0A2342',  // bleu nuit profond — fond hero immersif
+        'plongee-marine':  '#1E3A5F',  // bleu marine — sections sombres
+        'plongee-lagon':   '#3FA9D6',  // bleu lagon clair — accents froids
+        'plongee-ecume':   '#F0F7FB',  // blanc bleuté — fond doux
+        'plongee-corail':  '#FF7A5C',  // corail vif — CTA, accents chaud
+        'plongee-sable':   '#F4E5D2',  // sable corallien — surfaces tertiaires
+        'plongee-charbon': '#0F1419',  // noir océan — texte dark mode
       },
       fontFamily: {
         sora: ['Sora', 'system-ui', 'sans-serif'],
