@@ -35,6 +35,25 @@ import data from '../../../data/templates/mahatma.json';
       <div class="absolute top-4 right-4 md:top-8 md:right-8 border-2 border-mahatma-cachet text-mahatma-cachet px-3 py-1.5 font-fira-mono text-[10px] uppercase tracking-[0.22em] bg-mahatma-papier/90 transform rotate-[-3deg]">
         ◯ Récent · {data.heroProjet.annee}
       </div>
+
+      <!-- Cartouche d'architecte (bloc d'identification de plan technique) -->
+      <div class="absolute bottom-4 left-4 md:bottom-6 md:left-6 bg-mahatma-papier/95 ring-1 ring-mahatma-encre/60 shadow-sm">
+        <!-- Ligne d'en-tête : nom de l'agence -->
+        <p class="px-3 py-1.5 border-b border-mahatma-encre/30 font-fira-mono text-[9px] uppercase tracking-[0.28em] text-mahatma-encre">
+          Atelier Mahatma <span class="text-mahatma-cachet">·</span> Cartouche
+        </p>
+        <!-- Grille de données technique -->
+        <dl class="px-3 py-2 font-fira-mono text-[10px] uppercase tracking-[0.18em] grid grid-cols-[3.5rem_1fr] gap-x-3 gap-y-1">
+          <dt class="text-mahatma-beton">N°</dt>
+          <dd class="text-mahatma-encre tabular-nums">0001-A</dd>
+          <dt class="text-mahatma-beton">Éch.</dt>
+          <dd class="text-mahatma-encre tabular-nums">1:200</dd>
+          <dt class="text-mahatma-beton">Phase</dt>
+          <dd class="text-mahatma-encre">APD · plan masse</dd>
+          <dt class="text-mahatma-beton">Arch.</dt>
+          <dd class="text-mahatma-encre tabular-nums">M.MA · {data.heroProjet.annee}</dd>
+        </dl>
+      </div>
     </figure>
 
     <!-- Légende technique en grille -->
