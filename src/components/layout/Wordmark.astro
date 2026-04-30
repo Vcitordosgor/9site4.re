@@ -17,10 +17,12 @@ const {
 } = Astro.props;
 
 const sizeClasses = {
-  sm: 'text-xl gap-1.5',
-  md: 'text-2xl gap-2',
-  lg: 'text-3xl gap-2.5',
+  sm: 'text-xl gap-2',
+  md: 'text-2xl gap-2.5',
+  lg: 'text-3xl gap-3',
 };
+
+const letters = ['9', 's', 'i', 't', 'e', '4'];
 
 const toneClasses = {
   dark: 'text-bleu-nuit',
@@ -40,7 +42,7 @@ const Element = href ? 'a' : 'span';
   ]}
 >
   <svg
-    class="h-[1.15em] w-auto shrink-0"
+    class="h-[3em] w-auto shrink-0"
     viewBox="0 0 418 597"
     xmlns="http://www.w3.org/2000/svg"
     aria-hidden="true"
@@ -48,10 +50,13 @@ const Element = href ? 'a' : 'span';
     <polygon points="36 0 243 265 334 268 251 385 0 597 149 356 111 330 36 0" fill="#91A6FF"/>
     <polygon class="wordmark-pulse" points="363 268 418 300 362 331 363 268" fill="#FF8F00"/>
   </svg>
-  <span>9site<span class="text-orange">4</span></span>
+  <span class="wordmark-text inline-flex">
+    {letters.map((letter) => <span class="wordmark-letter">{letter}</span>)}
+  </span>
 </Element>
 
 <style>
+  /* Pulse continu sur le triangle orange du logo */
   @keyframes wordmark-pulse {
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.08); }
@@ -61,7 +66,25 @@ const Element = href ? 'a' : 'span';
     transform-box: fill-box;
     transform-origin: center;
   }
+
+  /* Vague orange qui traverse les 6 lettres de "9site4" en boucle (3s) */
+  @keyframes wordmark-letter-flash {
+    0%, 16.67% { color: #FF8F00; }
+    16.68%, 100% { color: inherit; }
+  }
+  .wordmark-letter {
+    animation: wordmark-letter-flash 3s linear infinite;
+  }
+  .wordmark-letter:nth-child(1) { animation-delay: 0s; }
+  .wordmark-letter:nth-child(2) { animation-delay: 0.5s; }
+  .wordmark-letter:nth-child(3) { animation-delay: 1s; }
+  .wordmark-letter:nth-child(4) { animation-delay: 1.5s; }
+  .wordmark-letter:nth-child(5) { animation-delay: 2s; }
+  .wordmark-letter:nth-child(6) { animation-delay: 2.5s; }
+
   @media (prefers-reduced-motion: reduce) {
-    .wordmark-pulse { animation: none; }
+    .wordmark-pulse,
+    .wordmark-letter { animation: none; }
+    .wordmark-letter:last-child { color: #FF8F00; }
   }
 </style>
