@@ -22,24 +22,13 @@ import data from '../../../data/templates/mona.json';
     <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
       {data.publics.map((p, i) => (
         <li class="group">
-          <a href="#rendez-vous" class="block h-full">
-            <!-- Photo carrée -->
-            <div class="relative aspect-square overflow-hidden bg-mona-creme">
-              <img
-                src={p.photo}
-                alt=""
-                loading="lazy"
-                decoding="async"
-                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              <!-- Numéro en surimpression -->
-              <span class="absolute top-3 left-3 inline-flex items-center justify-center w-8 h-8 bg-mona-creme/95 font-newsreader italic text-mona-cacao text-base">
-                {String(i + 1).padStart(2, '0')}
-              </span>
-            </div>
+          <a href="#rendez-vous" class="block h-full bg-mona-creme rounded-sm p-6 md:p-7 transition-shadow hover:shadow-md">
+            <!-- Numéro -->
+            <span class="inline-flex items-center justify-center w-9 h-9 bg-mona-vert-fonce/10 font-newsreader italic text-mona-vert-fonce text-base mb-4">
+              {String(i + 1).padStart(2, '0')}
+            </span>
 
-            <!-- Texte sous la photo -->
-            <div class="pt-5">
+            <div>
               <h3 class="font-newsreader text-mona-cacao text-xl md:text-2xl leading-tight group-hover:text-mona-vert-fonce transition-colors">
                 {p.label}
               </h3>

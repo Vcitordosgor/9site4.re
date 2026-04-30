@@ -63,14 +63,9 @@ const waBase = `https://wa.me/${data.info.whatsapp}`;
               {data.publics.map((p) => (
                 <label class="cursor-pointer">
                   <input type="radio" name="objectif" value={p.id} data-label={p.label} class="peer sr-only" required />
-                  <span class="block bg-mona-papier border-2 border-transparent peer-checked:border-mona-terracotta peer-checked:bg-mona-terracotta/5 transition-all overflow-hidden rounded-2xl">
-                    <span class="block aspect-[4/3] overflow-hidden">
-                      <img src={p.photo} alt="" loading="lazy" class="w-full h-full object-cover" />
-                    </span>
-                    <span class="block p-3">
-                      <p class="font-newsreader text-mona-cacao text-base leading-tight">{p.label}</p>
-                      <p class="mt-1 font-jakarta text-mona-cacao/65 text-xs leading-snug">{p.description}</p>
-                    </span>
+                  <span class="block bg-mona-papier border-2 border-transparent peer-checked:border-mona-terracotta peer-checked:bg-mona-terracotta/5 transition-all overflow-hidden rounded-2xl p-4">
+                    <p class="font-newsreader text-mona-cacao text-base leading-tight">{p.label}</p>
+                    <p class="mt-1 font-jakarta text-mona-cacao/65 text-xs leading-snug">{p.description}</p>
                   </span>
                 </label>
               ))}
