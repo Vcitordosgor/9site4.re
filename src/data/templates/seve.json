@@ -16,8 +16,8 @@
     "instagram": "@seve.et.sel",
     "siret": "78901234500017",
     "annee": "2017",
-    "photoHero": "https://images.unsplash.com/photo-1519741497674-611481863552?w=1800&q=85",
-    "photoHeroAlt": "Cérémonie de mariage pieds dans le sable au coucher du soleil sur la plage de Saint-Gilles, La Réunion",
+    "photoHero": "/images/seve/hero.jpg",
+    "photoHeroAlt": "Lagon turquoise de Saint-Leu, La Réunion — cadre idéal pour une cérémonie de mariage",
     "ceremonies2025": 47,
     "ceremoniesPrevues2026": 32
   },
@@ -83,25 +83,25 @@
       "nom": "Plage de l'Hermitage",
       "ambiance": "Sable blanc, filaos, lagon protégé.",
       "moment": "Idéal au coucher du soleil (mai → octobre)",
-      "photo": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=85"
+      "photo": "/images/seve/hermitage.jpg"
     },
     {
       "nom": "Boucan Canot",
-      "ambiance": "Plage de sable noir et basalte, vagues spectaculaires.",
+      "ambiance": "Plage de sable doré, eau turquoise, ambiance festive.",
       "moment": "Magique au crépuscule, plus dramatique",
-      "photo": "https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&q=85"
+      "photo": "/images/seve/boucan-canot.jpg"
     },
     {
       "nom": "Jardin de l'Eden (Saint-Leu)",
-      "ambiance": "Jardin botanique privé, allées fleuries.",
+      "ambiance": "Jardin botanique privé, passerelles bois, palmiers tropicaux.",
       "moment": "Splendide en matinée (rosée + lumière douce)",
-      "photo": "https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=1200&q=85"
+      "photo": "/images/seve/jardin-eden.jpg"
     },
     {
       "nom": "Cap La Houssaye",
       "ambiance": "Falaises, point de vue océan, ciel sans bâti.",
       "moment": "Cérémonie laïque ou renouvellement intime",
-      "photo": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1200&q=85"
+      "photo": "/images/seve/cap-houssaye.jpg"
     }
   ],
   "fondatrice": {

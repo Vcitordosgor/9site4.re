@@ -17,8 +17,8 @@
     "siret": "12345678900017",
     "agrement": "FFESSM E 974 0019 · PADI Resort #29017",
     "annee": "2014",
-    "photoHero": "https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=1800&q=85",
-    "photoHeroAlt": "Plongeur observant un banc de poissons dans le lagon de Saint-Leu, La Réunion"
+    "photoHero": "/images/bleulagon/hero.jpg",
+    "photoHeroAlt": "Plongeur en apnée sur le récif corallien du lagon de Saint-Leu, La Réunion"
   },
   "stats": [
     { "valeur": "11 ans", "label": "d'expérience" },

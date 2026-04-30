@@ -22,26 +22,26 @@
   },
   "carrousel": [
     {
-      "src": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1800&q=85",
+      "src": "/images/sentiers/maido.jpg",
       "alt": "Lever de soleil au belvédère du Maïdo, vue sur le cirque de Mafate",
       "lieu": "Maïdo · belvédère",
       "altitude": "2 205 m"
     },
     {
-      "src": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1800&q=85",
-      "alt": "Sommet brumeux des hauts de La Réunion, mer de nuages",
-      "lieu": "Cirque de Cilaos · sommet",
+      "src": "/images/sentiers/cilaos.jpg",
+      "alt": "Vue panoramique sur le cirque de Cilaos depuis les hauteurs",
+      "lieu": "Cirque de Cilaos",
       "altitude": "2 190 m"
     },
     {
-      "src": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1800&q=85",
+      "src": "/images/sentiers/niagara.jpg",
       "alt": "Cascade Niagara à Sainte-Suzanne, forêt tropicale humide",
       "lieu": "Cascade Niagara · Sainte-Suzanne",
       "altitude": "25 m"
     },
     {
-      "src": "https://images.unsplash.com/photo-1570032295547-a40af6cb1e88?w=1800&q=85",
-      "alt": "Coucher de soleil sur les Trois Salazes, cirque de Mafate",
+      "src": "/images/sentiers/trois-salazes.jpg",
+      "alt": "Les Trois Salazes, hameau isolé dans le cirque de Mafate",
       "lieu": "Trois Salazes · Mafate",
       "altitude": "2 145 m"
     }
@@ -68,7 +68,7 @@
       "niveau": 3,
       "prix": "75 €",
       "description": "Boucle dans le cirque le plus reculé. Vue sur les hameaux d'Aurère et Marla. Pique-nique en altitude.",
-      "photo": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=900&q=80"
+      "photo": "/images/sentiers/trois-salazes.jpg"
     },
     {
       "id": "mafate-aurore",
@@ -79,7 +79,7 @@
       "niveau": 3,
       "prix": "65 €",
       "description": "Départ à 4h pour voir le lever du soleil sur Mafate. Le moment le plus magique de l'île.",
-      "photo": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=900&q=80"
+      "photo": "/images/sentiers/maido.jpg"
     },
     {
       "id": "benare-nuit",
@@ -90,7 +90,7 @@
       "niveau": 4,
       "prix": "95 €",
       "description": "Ascension par clair de lune jusqu'au sommet à 2 896 m. Sortie nocturne, frontale obligatoire.",
-      "photo": "https://images.unsplash.com/photo-1532978879514-6cb4d0a83b8e?w=900&q=80"
+      "photo": "/images/sentiers/grand-benare.jpg"
     },
     {
       "id": "bras-cabot",
@@ -101,7 +101,7 @@
       "niveau": 2,
       "prix": "50 €",
       "description": "Boucle accessible familles. Cascades, bassins de baignade, forêt humide. Idéale enfants 8+.",
-      "photo": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=900&q=80"
+      "photo": "/images/sentiers/bras-cabot.jpg"
     },
     {
       "id": "volcan",
@@ -112,7 +112,7 @@
       "niveau": 3,
       "prix": "85 €",
       "description": "Traversée Pas de Bellecombe → cratère Dolomieu. Transport depuis Saint-Denis inclus.",
-      "photo": "https://images.unsplash.com/photo-1554629947-334ff61d85dc?w=900&q=80"
+      "photo": "/images/sentiers/fournaise.jpg"
     },
     {
       "id": "trail-decouverte",
@@ -123,7 +123,7 @@
       "niveau": 2,
       "prix": "60 €",
       "description": "Initiation course en montagne. Technique, allure, gestion d'effort. Niveau intermédiaire requis.",
-      "photo": "https://images.unsplash.com/photo-1528228617535-e2569e63b6cf?w=900&q=80"
+      "photo": "/images/sentiers/bebour.jpg"
     }
   ],
   "prochaines": [
@@ -157,13 +157,13 @@
     }
   ],
   "galerie": [
-    "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=75",
-    "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=75",
-    "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=600&q=75",
-    "https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=600&q=75",
-    "https://images.unsplash.com/photo-1570032295547-a40af6cb1e88?w=600&q=75",
-    "https://images.unsplash.com/photo-1554629947-334ff61d85dc?w=600&q=75",
-    "https://images.unsplash.com/photo-1487621167305-5d248087c724?w=600&q=75",
-    "https://images.unsplash.com/photo-1532978879514-6cb4d0a83b8e?w=600&q=75"
+    "/images/sentiers/maido.jpg",
+    "/images/sentiers/mafate.jpg",
+    "/images/sentiers/niagara.jpg",
+    "/images/sentiers/cilaos.jpg",
+    "/images/sentiers/trois-salazes.jpg",
+    "/images/sentiers/fournaise.jpg",
+    "/images/sentiers/grand-benare.jpg",
+    "/images/sentiers/bras-cabot.jpg"
   ]
 }
