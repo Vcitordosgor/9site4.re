@@ -26,14 +26,14 @@
     ],
     "photoHero": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=1400&q=85",
     "photoHeroAlt": "Mains versant de l'huile chaude pour un massage",
-    "photoCabine1": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=900&q=85",
-    "photoCabine1Alt": "Cabine de massage lumineuse, bois clair et lin",
-    "photoCabine2": "https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=900&q=85",
-    "photoCabine2Alt": "Pierres chaudes empilées, ambiance minérale",
-    "photoCabine3": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=900&q=85",
-    "photoCabine3Alt": "Branches d'eucalyptus et bougie naturelle",
-    "photoCabine4": "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=900&q=85",
-    "photoCabine4Alt": "Espace tisanerie cosy après le soin"
+    "photoCabine1": "https://plus.unsplash.com/premium_photo-1723867490491-10519f8ed969?q=80&w=1200&auto=format&fit=crop",
+    "photoCabine1Alt": "Cabine de massage signature, ambiance cocooning et zen",
+    "photoCabine2": "https://images.unsplash.com/photo-1583417267826-aebc4d1542e1?q=80&w=1200&auto=format&fit=crop",
+    "photoCabine2Alt": "Détail spa, ambiance détente et naturelle",
+    "photoCabine3": "https://images.unsplash.com/photo-1603077864615-538e955d1ad1?q=80&w=900&auto=format&fit=crop",
+    "photoCabine3Alt": "Univers spa, soin et bien-être",
+    "photoCabine4": "https://images.unsplash.com/photo-1696841212541-449ca29397cc?q=80&w=1200&auto=format&fit=crop",
+    "photoCabine4Alt": "Tisanerie ouverte sur le jardin, petite terrasse zen"
   },
   "manifesto": "Le luxe, ici, c'est le temps. Chaque soin commence par une pause, et finit par une autre.",
   "rituel": [
