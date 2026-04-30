@@ -384,7 +384,7 @@ Mon téléphone : ${data.telephone}${noteLine}`;
                               type="button"
                               onClick={() => setQty(line.item.id, line.qty - 1)}
                               aria-label={`Retirer ${line.item.nom}`}
-                              class="w-8 h-8 flex items-center justify-center rounded-full bg-pizza-creme hover:bg-pizza-rouge hover:text-pizza-creme text-pizza-charbon transition-colors cursor-pointer ring-1 ring-pizza-charbon/10"
+                              class="w-10 h-10 sm:w-9 sm:h-9 flex items-center justify-center rounded-full bg-pizza-creme hover:bg-pizza-rouge hover:text-pizza-creme text-pizza-charbon transition-colors cursor-pointer ring-1 ring-pizza-charbon/10"
                             >
                               −
                             </button>
@@ -393,7 +393,7 @@ Mon téléphone : ${data.telephone}${noteLine}`;
                               type="button"
                               onClick={() => setQty(line.item.id, line.qty + 1)}
                               aria-label={`Ajouter ${line.item.nom}`}
-                              class="w-8 h-8 flex items-center justify-center rounded-full bg-pizza-creme hover:bg-pizza-rouge hover:text-pizza-creme text-pizza-charbon transition-colors cursor-pointer ring-1 ring-pizza-charbon/10"
+                              class="w-10 h-10 sm:w-9 sm:h-9 flex items-center justify-center rounded-full bg-pizza-creme hover:bg-pizza-rouge hover:text-pizza-creme text-pizza-charbon transition-colors cursor-pointer ring-1 ring-pizza-charbon/10"
                             >
                               +
                             </button>

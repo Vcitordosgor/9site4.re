@@ -198,7 +198,7 @@ const waBase = `https://wa.me/${data.info.whatsapp}`;
                 {data.lieux.map((l, i) => (
                   <label class="cursor-pointer">
                     <input type="radio" name="lieu" value={l.id} data-label={l.nom} class="peer sr-only" checked={i === 0} />
-                    <span class="inline-flex items-center px-3 h-9 bg-coach-graphite border border-coach-blanc/10 peer-checked:border-coach-lime peer-checked:bg-coach-lime/10 font-big-shoulders font-bold text-coach-blanc uppercase tracking-wider transition-colors text-[12px]">
+                    <span class="inline-flex items-center px-3 h-11 sm:h-9 bg-coach-graphite border border-coach-blanc/10 peer-checked:border-coach-lime peer-checked:bg-coach-lime/10 font-big-shoulders font-bold text-coach-blanc uppercase tracking-wider transition-colors text-[12px]">
                       {l.nom}
                     </span>
                   </label>

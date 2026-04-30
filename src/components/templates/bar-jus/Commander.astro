@@ -140,9 +140,9 @@ const waBase = `https://wa.me/${data.info.whatsapp}`;
           <span class="flex-1 font-bagel text-base text-lagon-charbon">${item.nom}</span>
           <span class="font-onest text-sm text-lagon-charbon/60 tabular-nums">${format(item.prix)} ×</span>
           <div class="flex items-center gap-2">
-            <button type="button" data-dec="${id}" class="w-8 h-8 bg-lagon-charbon text-lagon-mangue font-bagel rounded-full hover:bg-lagon-pitaya">−</button>
+            <button type="button" data-dec="${id}" aria-label="Retirer 1" class="w-10 h-10 sm:w-9 sm:h-9 flex items-center justify-center bg-lagon-charbon text-lagon-mangue font-bagel rounded-full hover:bg-lagon-pitaya">−</button>
             <span class="font-bagel text-lg w-6 text-center text-lagon-charbon tabular-nums">${item.qty}</span>
-            <button type="button" data-inc="${id}" class="w-8 h-8 bg-lagon-charbon text-lagon-mangue font-bagel rounded-full hover:bg-lagon-pitaya">+</button>
+            <button type="button" data-inc="${id}" aria-label="Ajouter 1" class="w-10 h-10 sm:w-9 sm:h-9 flex items-center justify-center bg-lagon-charbon text-lagon-mangue font-bagel rounded-full hover:bg-lagon-pitaya">+</button>
           </div>
           <span class="font-bagel text-lg text-lagon-pitaya tabular-nums w-20 text-right">${format(item.prix * item.qty)}</span>
         `;
