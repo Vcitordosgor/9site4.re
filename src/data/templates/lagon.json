@@ -132,7 +132,7 @@
       "nom": "Bowl Tropical",
       "ingredients": "Mangue, ananas, granola coco, copeaux noix de coco, fruit du dragon",
       "prix": 9,
-      "photo": "https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?w=700&q=80",
+      "photo": "/images/lagon/bowl-tropical.jpg",
       "alt": "Açaí bowl tropical aux fruits frais et noix de coco"
     },
     {
@@ -140,7 +140,7 @@
       "nom": "Bowl Açaí",
       "ingredients": "Açaí, banane, fraise, miel, granola, banane fraîche",
       "prix": 9.5,
-      "photo": "https://images.unsplash.com/photo-1502741338009-cac2772e18bc?w=700&q=80",
+      "photo": "/images/lagon/bowl-acai.jpg",
       "alt": "Açaí bowl violet à la banane et aux fraises"
     },
     {
@@ -148,7 +148,7 @@
       "nom": "Bowl Vert Power",
       "ingredients": "Épinard, banane, pomme, beurre cacahuète, granola",
       "prix": 8.5,
-      "photo": "https://images.unsplash.com/photo-1638176067000-9e2cef47f1c0?w=700&q=80",
+      "photo": "/images/lagon/bowl-vert.jpg",
       "alt": "Smoothie bowl vert épinard banane et granola"
     },
     {
@@ -156,7 +156,7 @@
       "nom": "Bowl Choco-Banane",
       "ingredients": "Banane, cacao, lait amande, granola, chips chocolat",
       "prix": 8.5,
-      "photo": "https://images.unsplash.com/photo-1577805947697-89e18249d767?w=700&q=80",
+      "photo": "/images/lagon/bowl-choco.jpg",
       "alt": "Smoothie bowl chocolat banane et granola"
     }
   ],
