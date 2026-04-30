@@ -1,0 +1,35 @@
+---
+import '@fontsource/eb-garamond/400.css';
+import '@fontsource/eb-garamond/400-italic.css';
+import '@fontsource/eb-garamond/500.css';
+import '@fontsource/public-sans/400.css';
+import '@fontsource/public-sans/500.css';
+import '@fontsource/public-sans/600.css';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getSeo } from '../../lib/seo';
+
+import RoussinHeader from '../../components/templates/avocat/RoussinHeader.astro';
+import HeroRoussin from '../../components/templates/avocat/HeroRoussin.astro';
+import Domaines from '../../components/templates/avocat/Domaines.astro';
+import Associes from '../../components/templates/avocat/Associes.astro';
+import Demarche from '../../components/templates/avocat/Demarche.astro';
+import Avis from '../../components/templates/avocat/Avis.astro';
+import Contact from '../../components/templates/avocat/Contact.astro';
+import RoussinFooter from '../../components/templates/avocat/RoussinFooter.astro';
+---
+
+<BaseLayout seo={getSeo('templateAvocat')} bare={true}>
+  <RoussinHeader />
+
+  <main class="bg-roussin-velin text-roussin-nuit font-public-sans">
+    <HeroRoussin />
+    <Domaines />
+    <Associes />
+    <Demarche />
+    <Avis />
+    <Contact />
+  </main>
+
+  <RoussinFooter />
+</BaseLayout>

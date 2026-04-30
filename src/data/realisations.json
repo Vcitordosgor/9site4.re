@@ -288,5 +288,15 @@
     "slug": "photographe-auteur",
     "previewUrl": "/templates/photographe",
     "thumbnail": "https://images.unsplash.com/photo-1606983340126-99ab4feaa64a?w=900&q=80"
+  },
+  {
+    "id": 30,
+    "nom": "Cabinet d'avocats",
+    "categorie": "pro",
+    "sousTitre": "Domaines d'intervention, associés et honoraires transparents",
+    "moduleInclus": "Rendez-vous",
+    "slug": "avocat-cabinet",
+    "previewUrl": "/templates/avocat",
+    "thumbnail": "https://images.unsplash.com/photo-1505664194779-8beaceb93744?w=900&q=80"
   }
 ]

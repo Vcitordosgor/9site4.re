@@ -1,0 +1,83 @@
+---
+import data from '../../../data/templates/roussin.json';
+---
+
+<section id="contact" class="bg-roussin-velin text-roussin-nuit py-20 md:py-28 relative">
+
+  <!-- Filets dorés -->
+  <div class="absolute inset-x-0 top-0 h-px bg-roussin-or" aria-hidden="true"></div>
+
+  <div class="max-w-content mx-auto px-6 md:px-10">
+
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-14">
+
+      <div class="md:col-span-7">
+        <p class="font-public-sans text-[11px] uppercase tracking-[0.4em] text-roussin-or mb-4">— Premier rendez-vous —</p>
+        <h2 class="font-eb-garamond text-roussin-nuit text-5xl md:text-6xl leading-[0.95]">
+          Une heure d'écoute,<br/>
+          <em class="text-roussin-or italic">sans engagement.</em>
+        </h2>
+        <p class="mt-6 font-public-sans text-[15px] text-roussin-nuit/80 leading-relaxed max-w-xl">
+          Vous nous exposez les faits, nous vous expliquons ce qui peut, ce qui ne peut pas, et combien cela coûterait. Tarif transparent : 90 € (60 € en droit du travail salarié). Aide juridictionnelle acceptée.
+        </p>
+
+        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <a href={`tel:${data.info.telephoneHref}`} class="group block p-5 bg-roussin-papier border border-roussin-or/40 hover:border-roussin-bordeaux transition-colors">
+            <span class="font-public-sans text-[10px] uppercase tracking-[0.25em] text-roussin-or">Téléphone secrétariat</span>
+            <p class="mt-1 font-eb-garamond text-2xl text-roussin-nuit group-hover:text-roussin-bordeaux transition-colors">{data.info.telephone}</p>
+          </a>
+          <a href={`mailto:${data.info.email}`} class="group block p-5 bg-roussin-papier border border-roussin-or/40 hover:border-roussin-bordeaux transition-colors">
+            <span class="font-public-sans text-[10px] uppercase tracking-[0.25em] text-roussin-or">Email</span>
+            <p class="mt-1 font-eb-garamond text-lg text-roussin-nuit group-hover:text-roussin-bordeaux transition-colors break-all">{data.info.email}</p>
+          </a>
+        </div>
+
+        <div class="mt-6 p-5 bg-roussin-bordeaux/5 border-l-4 border-roussin-bordeaux">
+          <p class="font-public-sans text-[10px] uppercase tracking-[0.2em] text-roussin-bordeaux">Confidentialité</p>
+          <p class="mt-1 font-eb-garamond italic text-roussin-nuit text-[15px] leading-snug">
+            Tout échange avec un avocat est protégé par le secret professionnel — y compris le premier appel.
+          </p>
+        </div>
+      </div>
+
+      <div class="md:col-span-5">
+        <div class="bg-roussin-nuit text-roussin-velin p-7 md:p-9 h-full flex flex-col relative">
+
+          <!-- Filets dorés -->
+          <div class="absolute top-3 inset-x-3 h-px bg-roussin-or/50" aria-hidden="true"></div>
+          <div class="absolute bottom-3 inset-x-3 h-px bg-roussin-or/50" aria-hidden="true"></div>
+
+          <div class="flex items-center justify-between pb-4 mb-4 border-b border-roussin-or/40">
+            <p class="font-eb-garamond italic text-roussin-or text-2xl">— Le cabinet</p>
+            <p class="font-public-sans text-[10px] uppercase tracking-wider text-roussin-velin/60">SIRET · {data.info.siret.slice(-5)}</p>
+          </div>
+
+          <p class="font-eb-garamond text-roussin-velin text-2xl leading-tight">{data.info.adresseLigne1}</p>
+          <p class="font-eb-garamond text-roussin-velin text-2xl leading-tight">{data.info.adresseLigne2}</p>
+
+          <div class="mt-6 pt-5 border-t border-roussin-or/40 space-y-2 font-public-sans text-[13px]">
+            <div class="flex justify-between gap-3">
+              <span class="text-[10px] uppercase tracking-wider text-roussin-or">Lundi → Vendredi</span>
+              <span>8h30 → 12h30 / 14h → 18h</span>
+            </div>
+            <div class="flex justify-between gap-3">
+              <span class="text-[10px] uppercase tracking-wider text-roussin-or">Samedi</span>
+              <span>Sur rendez-vous</span>
+            </div>
+            <div class="flex justify-between gap-3">
+              <span class="text-[10px] uppercase tracking-wider text-roussin-or">Visio</span>
+              <span>Disponible (toute La Réunion)</span>
+            </div>
+          </div>
+
+          <div class="mt-auto pt-7">
+            <p class="font-public-sans text-[10px] uppercase tracking-[0.25em] text-roussin-or mb-2">Inscription</p>
+            <p class="font-eb-garamond italic text-roussin-velin text-lg leading-snug">
+              {data.info.ordreBarreau}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

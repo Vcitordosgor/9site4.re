@@ -57,7 +57,8 @@ type PageKey =
   | 'templateWedding'
   | 'templatePatisserie'
   | 'templateGarage'
-  | 'templatePhotographe';
+  | 'templatePhotographe'
+  | 'templateAvocat';
 
 const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'> & { noindex?: boolean; ogImage?: string; ogImageAlt?: string }> = {
   home: {
@@ -302,6 +303,13 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
     description:
       'Aperçu du template "Photographe d\'auteur" proposé par 9site4 : portraits argentiques, mariage éditorial, reportage, tirages d\'art numérotés. Site fictif de démonstration.',
     canonical: '/templates/photographe',
+    noindex: true,
+  },
+  templateAvocat: {
+    title: 'Étude Roussin — Cabinet d\'avocats à Saint-Pierre (Réunion) | Template 9site4',
+    description:
+      'Aperçu du template "Cabinet d\'avocats" proposé par 9site4 : domaines d\'intervention (famille, affaires, travail, immobilier), associés, démarche, honoraires transparents. Site fictif de démonstration.',
+    canonical: '/templates/avocat',
     noindex: true,
   },
 };

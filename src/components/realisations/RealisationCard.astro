@@ -33,6 +33,7 @@ import PreviewWedding from './previews/PreviewWedding.astro';
 import PreviewPatisserie from './previews/PreviewPatisserie.astro';
 import PreviewGarage from './previews/PreviewGarage.astro';
 import PreviewPhotographe from './previews/PreviewPhotographe.astro';
+import PreviewAvocat from './previews/PreviewAvocat.astro';
 
 /**
  * RealisationCard — chaque carte affiche un VRAI mini-preview du template
@@ -92,6 +93,7 @@ const previewMap: Record<string, any> = {
   'patisserie-creole':                PreviewPatisserie,
   'garage-mecanique':                 PreviewGarage,
   'photographe-auteur':               PreviewPhotographe,
+  'avocat-cabinet':                   PreviewAvocat,
 };
 
 const Preview = previewMap[realisation.slug] ?? null;

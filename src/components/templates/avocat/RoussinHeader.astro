@@ -1,0 +1,79 @@
+---
+import data from '../../../data/templates/roussin.json';
+
+const navLinks = [
+  { href: '#domaines', label: 'Domaines' },
+  { href: '#associes', label: 'Associés' },
+  { href: '#demarche', label: 'Démarche' },
+  { href: '#contact', label: 'Contact' },
+];
+---
+
+<header
+  id="roussin-header"
+  data-scrolled="false"
+  class="sticky top-0 z-50 transition-[background-color,box-shadow] duration-500 border-b border-roussin-or/30"
+>
+  <div class="max-w-content mx-auto px-6 md:px-10 h-16 md:h-20 flex items-center justify-between gap-6">
+
+    <a href="#top" class="flex items-center gap-3" aria-label="Étude Roussin — accueil">
+      <!-- Mini balance armoiries -->
+      <svg viewBox="0 0 32 32" class="w-8 h-8 text-roussin-or" aria-hidden="true">
+        <line x1="16" y1="4" x2="16" y2="28" stroke="currentColor" stroke-width="1.2"/>
+        <line x1="8" y1="9" x2="24" y2="9" stroke="currentColor" stroke-width="1.2"/>
+        <line x1="8" y1="9" x2="6" y2="16" stroke="currentColor" stroke-width="1"/>
+        <line x1="8" y1="9" x2="10" y2="16" stroke="currentColor" stroke-width="1"/>
+        <line x1="24" y1="9" x2="22" y2="16" stroke="currentColor" stroke-width="1"/>
+        <line x1="24" y1="9" x2="26" y2="16" stroke="currentColor" stroke-width="1"/>
+        <path d="M5 16 Q8 18 11 16" fill="none" stroke="currentColor" stroke-width="1"/>
+        <path d="M21 16 Q24 18 27 16" fill="none" stroke="currentColor" stroke-width="1"/>
+        <line x1="13" y1="28" x2="19" y2="28" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+      <div class="flex flex-col leading-none">
+        <span class="font-eb-garamond text-roussin-nuit text-xl md:text-2xl tracking-tight">{data.info.wordmark1}</span>
+        <span class="font-eb-garamond italic text-roussin-or text-[12px] md:text-[13px] mt-0.5">{data.info.wordmark2}</span>
+      </div>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-7 lg:gap-9 font-public-sans text-[12px] uppercase tracking-[0.2em] font-medium" aria-label="Navigation">
+      {navLinks.map((link) => (
+        <a href={link.href} class="text-roussin-nuit/85 hover:text-roussin-bordeaux transition-colors duration-300">
+          {link.label}
+        </a>
+      ))}
+    </nav>
+
+    <a
+      href={`tel:${data.info.telephoneHref}`}
+      class="hidden md:inline-flex items-center justify-center h-10 px-5 bg-roussin-nuit text-roussin-velin font-public-sans font-semibold text-[12px] uppercase tracking-[0.18em] hover:bg-roussin-bordeaux transition-colors duration-300"
+    >
+      Prendre rendez-vous
+    </a>
+
+    <a
+      href={`tel:${data.info.telephoneHref}`}
+      class="md:hidden inline-flex items-center justify-center h-10 px-4 bg-roussin-nuit text-roussin-velin font-public-sans font-semibold text-[12px] uppercase tracking-wider"
+      aria-label="Appeler"
+    >
+      Appeler
+    </a>
+  </div>
+</header>
+
+<style>
+  #roussin-header { background-color: rgb(245 239 224 / 0.96); }
+  #roussin-header[data-scrolled='true'] {
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 1px 0 rgb(168 139 71 / 0.3);
+  }
+</style>
+
+<script>
+  const header = document.getElementById('roussin-header');
+  if (header) {
+    const update = () => { header.dataset.scrolled = String(window.scrollY > 8); };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+  }
+</script>

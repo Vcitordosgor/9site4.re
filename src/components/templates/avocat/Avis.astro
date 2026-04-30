@@ -1,0 +1,41 @@
+---
+import data from '../../../data/templates/roussin.json';
+---
+
+<section class="bg-roussin-papier text-roussin-nuit py-20 md:py-28">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+
+    <div class="max-w-2xl mx-auto text-center mb-14 md:mb-16">
+      <p class="font-public-sans text-[11px] uppercase tracking-[0.4em] text-roussin-or mb-4">— Témoignages —</p>
+      <h2 class="font-eb-garamond text-roussin-nuit text-5xl md:text-6xl leading-[0.95]">
+        Trois clients,<br/>
+        <em class="text-roussin-or italic">trois dossiers.</em>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7">
+      {data.avis.map((a) => (
+        <article class="bg-roussin-velin border border-roussin-or/50 p-7 md:p-8 flex flex-col relative">
+          <div class="absolute inset-2 border border-roussin-or/20 pointer-events-none" aria-hidden="true"></div>
+          <div class="relative flex flex-col flex-1">
+            <div class="flex items-center justify-between mb-4 pb-3 border-b border-roussin-or/40">
+              <div class="flex gap-1 text-roussin-or text-base" aria-label={`${a.etoiles} étoiles`}>
+                {Array.from({ length: a.etoiles }).map(() => <span>★</span>)}
+              </div>
+              <span class="font-public-sans text-[10px] uppercase tracking-wider text-roussin-bordeaux">{a.domaine}</span>
+            </div>
+
+            <blockquote class="flex-1 font-eb-garamond italic text-[16.5px] md:text-[17px] text-roussin-nuit/90 leading-relaxed">
+              « {a.texte} »
+            </blockquote>
+
+            <div class="mt-5 pt-4 border-t border-roussin-or/40">
+              <p class="font-eb-garamond text-roussin-nuit text-lg leading-tight">{a.prenom}</p>
+              <p class="font-public-sans text-[10.5px] uppercase tracking-[0.2em] text-roussin-or mt-1">{a.ville}</p>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

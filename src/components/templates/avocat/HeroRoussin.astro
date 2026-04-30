@@ -1,0 +1,160 @@
+---
+/**
+ * HeroRoussin — en-tête de courrier officiel cabinet d'avocats.
+ * Filets dorés double, armoiries balance SVG géante centrée, devise latine,
+ * cartouche références dossier (n° barreau, toques), sceau Bordeaux.
+ */
+import data from '../../../data/templates/roussin.json';
+
+const today = new Date().toLocaleDateString('fr-FR', { day:'numeric', month:'long', year:'numeric' });
+---
+
+<section id="top" class="relative bg-roussin-velin text-roussin-nuit overflow-hidden">
+
+  <!-- Filets dorés horizontaux -->
+  <div class="absolute inset-x-0 top-0 h-[2px] bg-roussin-or" aria-hidden="true"></div>
+  <div class="absolute inset-x-0 top-[6px] h-px bg-roussin-or/50" aria-hidden="true"></div>
+
+  <div class="max-w-content mx-auto px-6 md:px-10 pt-16 md:pt-20 pb-16 md:pb-24 relative">
+
+    <!-- Référence dossier en-tête (style courrier) -->
+    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-3 mb-10 md:mb-14 font-public-sans text-[11px] uppercase tracking-[0.2em] text-roussin-nuit/65">
+      <div>
+        <span class="text-roussin-or">Réf.</span> <span class="tabular-nums">RSN/2026/04-001</span>
+      </div>
+      <div>
+        <span class="text-roussin-or">Saint-Pierre, le</span> <span>{today}</span>
+      </div>
+    </div>
+
+    <!-- Bloc central -->
+    <div class="text-center max-w-3xl mx-auto">
+
+      <!-- Armoiries balance géantes -->
+      <svg viewBox="0 0 200 220" class="w-32 md:w-40 mx-auto text-roussin-or" aria-hidden="true">
+        <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+          <!-- Mât central -->
+          <line x1="100" y1="20" x2="100" y2="190" />
+          <!-- Pommeau -->
+          <circle cx="100" cy="20" r="6" fill="currentColor"/>
+          <!-- Fléau horizontal -->
+          <line x1="40" y1="50" x2="160" y2="50" />
+          <!-- Suspension plateau gauche -->
+          <line x1="40" y1="50" x2="30" y2="100" stroke-width="1"/>
+          <line x1="40" y1="50" x2="50" y2="100" stroke-width="1"/>
+          <path d="M22 100 Q40 115 58 100" fill="currentColor" fill-opacity="0.18"/>
+          <path d="M22 100 Q40 115 58 100" />
+          <!-- Suspension plateau droit -->
+          <line x1="160" y1="50" x2="150" y2="100" stroke-width="1"/>
+          <line x1="160" y1="50" x2="170" y2="100" stroke-width="1"/>
+          <path d="M142 100 Q160 115 178 100" fill="currentColor" fill-opacity="0.18"/>
+          <path d="M142 100 Q160 115 178 100" />
+          <!-- Socle -->
+          <rect x="80" y="190" width="40" height="6" fill="currentColor"/>
+          <rect x="70" y="196" width="60" height="4" fill="currentColor"/>
+          <!-- Ornements feuilles laurier -->
+          <g stroke-width="0.8" opacity="0.7">
+            <path d="M55 130 Q70 125 85 130 Q70 140 55 130 Z" fill="currentColor" fill-opacity="0.15"/>
+            <path d="M115 130 Q130 125 145 130 Q130 140 115 130 Z" fill="currentColor" fill-opacity="0.15"/>
+          </g>
+        </g>
+      </svg>
+
+      <!-- Devise latine -->
+      <p class="font-eb-garamond italic text-roussin-or text-base md:text-lg tracking-wide mt-3">
+        ❦ {data.info.deviseLatine} ❦
+      </p>
+      <p class="font-public-sans text-[10.5px] uppercase tracking-[0.3em] text-roussin-nuit/55 mt-1">
+        — {data.info.deviseTraduction} —
+      </p>
+
+      <!-- Wordmark -->
+      <h1 class="mt-8 md:mt-10 font-eb-garamond text-roussin-nuit leading-[0.95] tracking-tight">
+        <span class="block text-6xl md:text-7xl lg:text-[110px]">{data.info.wordmark1}</span>
+        <span class="block italic text-roussin-or text-3xl md:text-4xl lg:text-5xl mt-2">{data.info.wordmark2}</span>
+      </h1>
+
+      <!-- Filet ornemental -->
+      <div class="flex items-center justify-center gap-3 my-6 md:my-8" aria-hidden="true">
+        <span class="block w-20 md:w-32 h-px bg-roussin-or"></span>
+        <span class="text-roussin-or text-xl">⚖</span>
+        <span class="block w-20 md:w-32 h-px bg-roussin-or"></span>
+      </div>
+
+      <!-- Tagline -->
+      <p class="font-eb-garamond italic text-roussin-nuit text-2xl md:text-3xl leading-snug max-w-xl mx-auto">
+        {data.info.tagline}
+      </p>
+
+      <!-- Description -->
+      <p class="mt-6 md:mt-8 font-public-sans text-[14.5px] md:text-[15px] text-roussin-nuit/80 leading-relaxed max-w-2xl mx-auto">
+        {data.promesse}
+      </p>
+
+      <!-- CTAs -->
+      <div class="mt-9 flex flex-col sm:flex-row items-center justify-center gap-3">
+        <a
+          href="#domaines"
+          class="inline-flex items-center justify-center h-12 px-7 bg-roussin-nuit text-roussin-velin font-public-sans font-semibold text-[12px] uppercase tracking-[0.2em] hover:bg-roussin-bordeaux transition-colors"
+        >
+          Nos domaines d'intervention
+        </a>
+        <a
+          href="#contact"
+          class="inline-flex items-center justify-center h-12 px-7 bg-transparent text-roussin-nuit border border-roussin-nuit font-public-sans font-semibold text-[12px] uppercase tracking-[0.2em] hover:bg-roussin-or hover:text-roussin-velin hover:border-roussin-or transition-colors"
+        >
+          Prendre rendez-vous
+        </a>
+      </div>
+    </div>
+
+    <!-- Cartouche infos cabinet -->
+    <div class="mt-14 md:mt-20 max-w-4xl mx-auto bg-roussin-papier border border-roussin-or relative">
+      <!-- Filets internes -->
+      <div class="absolute inset-2 border border-roussin-or/40 pointer-events-none" aria-hidden="true"></div>
+
+      <div class="relative grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-roussin-or/30">
+        <div class="p-5 md:p-6 text-center">
+          <p class="font-eb-garamond text-roussin-nuit text-4xl md:text-5xl leading-none">{data.infosCles.anneesActivite}</p>
+          <p class="font-public-sans text-[10px] uppercase tracking-[0.18em] text-roussin-nuit/65 mt-2">années d'exercice</p>
+        </div>
+        <div class="p-5 md:p-6 text-center">
+          <p class="font-eb-garamond text-roussin-or text-4xl md:text-5xl leading-none">{data.infosCles.associes}</p>
+          <p class="font-public-sans text-[10px] uppercase tracking-[0.18em] text-roussin-nuit/65 mt-2">avocats associés</p>
+        </div>
+        <div class="p-5 md:p-6 text-center">
+          <p class="font-eb-garamond text-roussin-nuit text-4xl md:text-5xl leading-none">{data.infosCles.dossiersOuvertsAn}</p>
+          <p class="font-public-sans text-[10px] uppercase tracking-[0.18em] text-roussin-nuit/65 mt-2">dossiers/an</p>
+        </div>
+        <div class="p-5 md:p-6 text-center">
+          <p class="font-eb-garamond text-roussin-bordeaux text-4xl md:text-5xl leading-none">{data.infosCles.tauxAccordsAmiables}<span class="text-2xl">%</span></p>
+          <p class="font-public-sans text-[10px] uppercase tracking-[0.18em] text-roussin-nuit/65 mt-2">accords amiables</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sceau bordeaux Ordre des Avocats -->
+    <div class="mt-10 flex items-center justify-center gap-6 md:gap-8">
+      <div class="hidden sm:block flex-1 h-px bg-roussin-or/40" aria-hidden="true"></div>
+      <div class="-rotate-3">
+        <div class="w-24 h-24 md:w-28 md:h-28 rounded-full border-2 border-roussin-bordeaux flex items-center justify-center text-roussin-bordeaux">
+          <div class="text-center font-public-sans">
+            <p class="text-[8px] uppercase tracking-[0.25em] leading-none">Inscrit</p>
+            <p class="text-[8px] uppercase tracking-[0.25em] leading-none mt-0.5">au</p>
+            <p class="font-eb-garamond text-base leading-none mt-1.5">Barreau</p>
+            <div class="flex justify-center my-1">
+              <span class="block w-8 h-px bg-roussin-bordeaux"></span>
+            </div>
+            <p class="text-[8.5px] uppercase tracking-wider leading-none">St-Pierre</p>
+            <p class="font-eb-garamond text-sm leading-none mt-1">2008</p>
+          </div>
+        </div>
+      </div>
+      <div class="hidden sm:block flex-1 h-px bg-roussin-or/40" aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <!-- Filets dorés bas -->
+  <div class="absolute inset-x-0 bottom-[6px] h-px bg-roussin-or/50" aria-hidden="true"></div>
+  <div class="absolute inset-x-0 bottom-0 h-[2px] bg-roussin-or" aria-hidden="true"></div>
+</section>

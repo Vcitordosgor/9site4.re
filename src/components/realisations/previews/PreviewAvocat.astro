@@ -1,0 +1,79 @@
+---
+/**
+ * Mini-preview Étude Roussin — fidèle au hero en-tête de cabinet :
+ * fond vélin + filets dorés double + armoiries balance SVG + wordmark
+ * Roussin EB Garamond + devise latine + sceau bordeaux Barreau.
+ */
+---
+
+<div class="absolute inset-0 bg-roussin-velin text-roussin-nuit font-public-sans overflow-hidden">
+
+  <!-- Filets dorés top -->
+  <div class="absolute top-0 inset-x-0 h-[1.5px] bg-roussin-or" aria-hidden="true"></div>
+  <div class="absolute top-[3px] inset-x-0 h-px bg-roussin-or/50" aria-hidden="true"></div>
+
+  <!-- Référence dossier -->
+  <div class="absolute top-2 left-2 right-2 flex justify-between font-public-sans uppercase text-roussin-nuit/60" style="font-size:3.5px;letter-spacing:0.2em;">
+    <span><span class="text-roussin-or">Réf.</span> RSN/2026/04</span>
+    <span><span class="text-roussin-or">St-Pierre</span> · 30.04.26</span>
+  </div>
+
+  <div class="absolute inset-0 flex flex-col items-center justify-center px-2 pt-3">
+
+    <!-- Armoiries balance -->
+    <svg viewBox="0 0 200 220" class="w-9 text-roussin-or" aria-hidden="true">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+        <line x1="100" y1="20" x2="100" y2="190"/>
+        <circle cx="100" cy="20" r="8" fill="currentColor"/>
+        <line x1="40" y1="50" x2="160" y2="50"/>
+        <line x1="40" y1="50" x2="30" y2="100"/>
+        <line x1="40" y1="50" x2="50" y2="100"/>
+        <path d="M22 100 Q40 115 58 100" fill="currentColor" fill-opacity="0.2"/>
+        <line x1="160" y1="50" x2="150" y2="100"/>
+        <line x1="160" y1="50" x2="170" y2="100"/>
+        <path d="M142 100 Q160 115 178 100" fill="currentColor" fill-opacity="0.2"/>
+        <rect x="80" y="190" width="40" height="6" fill="currentColor"/>
+        <rect x="70" y="196" width="60" height="4" fill="currentColor"/>
+      </g>
+    </svg>
+
+    <!-- Devise -->
+    <p class="font-eb-garamond italic text-roussin-or text-center mt-0.5" style="font-size:5px;">
+      ❦ Audi alteram partem ❦
+    </p>
+
+    <!-- Wordmark -->
+    <h1 class="text-center font-eb-garamond text-roussin-nuit leading-[0.92] tracking-tight mt-0.5" style="font-size: clamp(13px, 2.7vw, 22px);">
+      Roussin
+    </h1>
+    <p class="text-center font-eb-garamond italic text-roussin-or leading-none -mt-0.5" style="font-size: 7px;">
+      &amp; Associés
+    </p>
+
+    <!-- Filet ornemental -->
+    <div class="flex items-center gap-1 my-1" aria-hidden="true">
+      <span class="block w-6 h-px bg-roussin-or"></span>
+      <span class="text-roussin-or" style="font-size:5px;">⚖</span>
+      <span class="block w-6 h-px bg-roussin-or"></span>
+    </div>
+
+    <!-- Tagline -->
+    <p class="font-eb-garamond italic text-roussin-nuit text-center" style="font-size: 6px;">
+      Le droit, sans la posture.
+    </p>
+  </div>
+
+  <!-- Sceau Bordeaux coin bas droit -->
+  <div class="absolute -rotate-3 bottom-1 right-1">
+    <div class="rounded-full border border-roussin-bordeaux flex items-center justify-center text-roussin-bordeaux text-center" style="width: 22px; height: 22px;">
+      <div class="font-public-sans leading-none">
+        <p class="uppercase" style="font-size:2.5px;letter-spacing:0.15em;">Barreau</p>
+        <p class="font-eb-garamond" style="font-size:5px;">2008</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filets dorés bas -->
+  <div class="absolute bottom-[3px] inset-x-0 h-px bg-roussin-or/50" aria-hidden="true"></div>
+  <div class="absolute bottom-0 inset-x-0 h-[1.5px] bg-roussin-or" aria-hidden="true"></div>
+</div>
