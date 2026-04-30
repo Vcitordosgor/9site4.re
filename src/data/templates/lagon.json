@@ -52,27 +52,27 @@
       "prix": 5.5,
       "badge": "STAR",
       "couleur": "lagon-mangue",
-      "photo": "https://images.unsplash.com/photo-1546173159-315724a31696?w=600&q=80",
+      "photo": "/images/lagon/mangue-passion.jpg",
       "alt": "Verre de jus de mangue et fruit de la passion"
     },
     {
       "id": "carotte-gingembre",
       "nom": "Carotte & Gingembre",
       "ingredients": "Carotte fraîche · gingembre · citron",
-      "prix": 5.0,
+      "prix": 5,
       "badge": "ÉNERGIE",
       "couleur": "lagon-pitaya",
-      "photo": "https://images.unsplash.com/photo-1638176066140-37a2e8c0bbb6?w=600&q=80",
+      "photo": "/images/lagon/carotte-gingembre.jpg",
       "alt": "Verre de jus de carotte au gingembre"
     },
     {
       "id": "ananas-menthe",
       "nom": "Ananas & Menthe",
       "ingredients": "Ananas Victoria · menthe · citron",
-      "prix": 5.0,
+      "prix": 5,
       "badge": null,
       "couleur": "lagon-lime",
-      "photo": "https://images.unsplash.com/photo-1623428187969-5da2dcea5ebf?w=600&q=80",
+      "photo": "/images/lagon/ananas-menthe.jpg",
       "alt": "Verre de jus d'ananas frais et menthe"
     },
     {
@@ -82,7 +82,7 @@
       "prix": 5.5,
       "badge": "DETOX",
       "couleur": "lagon-lime",
-      "photo": "https://images.unsplash.com/photo-1610970881699-44a5587cabec?w=600&q=80",
+      "photo": "/images/lagon/vert-detox.jpg",
       "alt": "Verre de jus vert détox épinard concombre"
     },
     {
@@ -92,17 +92,17 @@
       "prix": 5.5,
       "badge": "NOUVEAU",
       "couleur": "lagon-pitaya",
-      "photo": "https://images.unsplash.com/photo-1622597467836-f3285f2131b8?w=600&q=80",
+      "photo": "/images/lagon/goyave-hibiscus.jpg",
       "alt": "Verre de jus rose goyave hibiscus"
     },
     {
       "id": "betterave-orange",
       "nom": "Betterave & Orange",
       "ingredients": "Betterave · orange · gingembre",
-      "prix": 5.0,
+      "prix": 5,
       "badge": null,
       "couleur": "lagon-pitaya",
-      "photo": "https://images.unsplash.com/photo-1582548822937-2c8da17c7f15?w=600&q=80",
+      "photo": "/images/lagon/betterave-orange.jpg",
       "alt": "Verre de jus rouge betterave orange"
     },
     {
@@ -112,17 +112,17 @@
       "prix": 5.5,
       "badge": "DOUX",
       "couleur": "lagon-coco",
-      "photo": "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=600&q=80",
+      "photo": "/images/lagon/coco-vanille.jpg",
       "alt": "Verre de boisson coco vanille"
     },
     {
       "id": "pomme-fenouil",
       "nom": "Pomme & Fenouil",
       "ingredients": "Pomme · fenouil · citron",
-      "prix": 5.0,
+      "prix": 5,
       "badge": null,
       "couleur": "lagon-turquoise",
-      "photo": "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?w=600&q=80",
+      "photo": "/images/lagon/pomme-fenouil.jpg",
       "alt": "Verre de jus clair pomme fenouil"
     }
   ],
@@ -131,7 +131,7 @@
       "id": "tropical",
       "nom": "Bowl Tropical",
       "ingredients": "Mangue, ananas, granola coco, copeaux noix de coco, fruit du dragon",
-      "prix": 9.0,
+      "prix": 9,
       "photo": "https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?w=700&q=80",
       "alt": "Açaí bowl tropical aux fruits frais et noix de coco"
     },
@@ -191,8 +191,20 @@
     }
   ],
   "horaires": [
-    { "jour": "Lundi – Vendredi", "label": "09h – 19h", "ouvert": true },
-    { "jour": "Samedi", "label": "09h – 21h", "ouvert": true },
-    { "jour": "Dimanche", "label": "09h – 15h", "ouvert": true }
+    {
+      "jour": "Lundi – Vendredi",
+      "label": "09h – 19h",
+      "ouvert": true
+    },
+    {
+      "jour": "Samedi",
+      "label": "09h – 21h",
+      "ouvert": true
+    },
+    {
+      "jour": "Dimanche",
+      "label": "09h – 15h",
+      "ouvert": true
+    }
   ]
 }
