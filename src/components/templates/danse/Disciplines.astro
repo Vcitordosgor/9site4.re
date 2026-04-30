@@ -33,21 +33,12 @@ import data from '../../../data/templates/vermeille.json';
         <li class:list={['group relative', i % 2 === 1 ? 'lg:mt-12' : '']}>
           <a href="#inscription" class="block">
 
-            <!-- Photo portrait haute -->
-            <div class="relative aspect-[3/4] overflow-hidden bg-vermeille-velours">
-              <img
-                src={d.photo}
-                alt={`${d.nom} — discipline`}
-                loading="lazy"
-                decoding="async"
-                class="absolute inset-0 w-full h-full object-cover grayscale brightness-95 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-700"
-              />
-              <!-- Voile bordeaux léger qui disparaît au hover -->
-              <div class="absolute inset-0 bg-vermeille-bordeaux/15 group-hover:bg-vermeille-bordeaux/0 transition-colors duration-700" aria-hidden="true"></div>
-              <!-- Numéro romain en haut à gauche -->
-              <span class="absolute top-3 left-3 font-italiana italic text-vermeille-ivoire text-2xl md:text-3xl">
+            <!-- Carte discipline (sans photo) -->
+            <div class="relative aspect-[3/4] overflow-hidden bg-vermeille-velours flex items-start justify-between p-6 md:p-8">
+              <span class="font-italiana italic text-vermeille-ivoire text-3xl md:text-4xl">
                 {d.numero}
               </span>
+              <span class="text-vermeille-or text-2xl" aria-hidden="true">✦</span>
             </div>
 
             <!-- Nom -->
