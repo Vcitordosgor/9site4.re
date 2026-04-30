@@ -10,18 +10,12 @@ import data from '../../../data/templates/sentiers.json';
 
     <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center mb-16 md:mb-20">
 
-      <!-- Photo guide -->
+      <!-- Bloc initiales du guide -->
       <div class="lg:col-span-5">
-        <div class="relative aspect-[3/4] max-w-md mx-auto overflow-hidden">
-          <img
-            src={data.info.photoGuide}
-            alt={`${data.info.guide}, guide de randonnée`}
-            loading="lazy"
-            decoding="async"
-            class="w-full h-full object-cover"
-          />
-          <!-- Voile lichen léger -->
-          <div class="absolute inset-0 bg-gradient-to-t from-sentiers-foret/70 to-transparent"></div>
+        <div class="relative aspect-[3/4] max-w-md mx-auto overflow-hidden bg-sentiers-foret ring-1 ring-sentiers-brume/20 flex items-center justify-center">
+          <span aria-hidden="true" class="font-tinos italic text-sentiers-soleil leading-none" style="font-size: clamp(120px, 18vw, 200px);">
+            {data.info.guide.split(' ').map(p => p[0]).join('')}
+          </span>
           <!-- Étiquette en bas -->
           <div class="absolute bottom-4 left-4 right-4">
             <p class="font-roboto-mono text-[10px] uppercase tracking-[0.28em] text-sentiers-soleil mb-1">

@@ -16,34 +16,34 @@
     "photoGuide": "https://images.unsplash.com/photo-1552058544-f2b08422138a?w=900&q=85",
     "sortieDuJour": {
       "label": "Sortie du jour",
-      "titre": "Mafate Aurore",
+      "titre": "Mafate",
       "date": "Demain · 4h30 départ"
     }
   },
   "carrousel": [
     {
-      "src": "/images/sentiers/maido.jpg",
-      "alt": "Lever de soleil au belvédère du Maïdo, vue sur le cirque de Mafate",
-      "lieu": "Maïdo · belvédère",
-      "altitude": "2 205 m"
+      "src": "/images/sentiers/mafate.jpg",
+      "alt": "Vue sur le cirque de Mafate",
+      "lieu": "Cirque de Mafate",
+      "altitude": "1 200 m"
     },
     {
-      "src": "/images/sentiers/cilaos.jpg",
-      "alt": "Vue panoramique sur le cirque de Cilaos depuis les hauteurs",
-      "lieu": "Cirque de Cilaos",
-      "altitude": "2 190 m"
-    },
-    {
-      "src": "/images/sentiers/niagara.jpg",
-      "alt": "Cascade Niagara à Sainte-Suzanne, forêt tropicale humide",
-      "lieu": "Cascade Niagara · Sainte-Suzanne",
-      "altitude": "25 m"
+      "src": "/images/sentiers/grand-benare.jpg",
+      "alt": "Sommet du Grand Bénare avec sa croix",
+      "lieu": "Grand Bénare",
+      "altitude": "2 896 m"
     },
     {
       "src": "/images/sentiers/trois-salazes.jpg",
-      "alt": "Les Trois Salazes, hameau isolé dans le cirque de Mafate",
+      "alt": "Les Trois Salazes, formations rocheuses spectaculaires",
       "lieu": "Trois Salazes · Mafate",
       "altitude": "2 145 m"
+    },
+    {
+      "src": "/images/sentiers/volcan.jpg",
+      "alt": "Piton de la Fournaise au lever du jour",
+      "lieu": "Piton de la Fournaise",
+      "altitude": "2 632 m"
     }
   ],
   "diplomes": [
@@ -53,10 +53,22 @@
     "Membre du Syndicat National des Guides"
   ],
   "stats": [
-    { "valeur": "1 500", "label": "personnes accompagnées" },
-    { "valeur": "12", "label": "ans de guidage" },
-    { "valeur": "47", "label": "itinéraires connus" },
-    { "valeur": "5/5", "label": "234 avis Google" }
+    {
+      "valeur": "1 500",
+      "label": "personnes accompagnées"
+    },
+    {
+      "valeur": "12",
+      "label": "ans de guidage"
+    },
+    {
+      "valeur": "47",
+      "label": "itinéraires connus"
+    },
+    {
+      "valeur": "5/5",
+      "label": "234 avis Google"
+    }
   ],
   "sorties": [
     {
@@ -71,19 +83,19 @@
       "photo": "/images/sentiers/trois-salazes.jpg"
     },
     {
-      "id": "mafate-aurore",
-      "nom": "Mafate Aurore",
+      "id": "mafate",
+      "nom": "Mafate",
       "lieu": "Maïdo",
       "duree": "5h",
       "denivele": "+ 500 m",
       "niveau": 3,
       "prix": "65 €",
       "description": "Départ à 4h pour voir le lever du soleil sur Mafate. Le moment le plus magique de l'île.",
-      "photo": "/images/sentiers/maido.jpg"
+      "photo": "/images/sentiers/mafate.jpg"
     },
     {
-      "id": "benare-nuit",
-      "nom": "Bénare de nuit",
+      "id": "grand-benare",
+      "nom": "Grand Bénare",
       "lieu": "Cilaos",
       "duree": "6h",
       "denivele": "+ 1100 m",
@@ -112,7 +124,7 @@
       "niveau": 3,
       "prix": "85 €",
       "description": "Traversée Pas de Bellecombe → cratère Dolomieu. Transport depuis Saint-Denis inclus.",
-      "photo": "/images/sentiers/fournaise.jpg"
+      "photo": "/images/sentiers/volcan.jpg"
     },
     {
       "id": "trail-decouverte",
@@ -123,29 +135,69 @@
       "niveau": 2,
       "prix": "60 €",
       "description": "Initiation course en montagne. Technique, allure, gestion d'effort. Niveau intermédiaire requis.",
-      "photo": "/images/sentiers/bebour.jpg"
+      "photo": "/images/sentiers/trail-decouverte.jpg"
     }
   ],
   "prochaines": [
-    { "date": "14 nov", "jour": "Vendredi", "sortie": "Mafate Aurore", "places": 3 },
-    { "date": "18 nov", "jour": "Mardi", "sortie": "Trois Salazes", "places": 5 },
-    { "date": "22 nov", "jour": "Samedi", "sortie": "Bras de Cabot", "places": 0 },
-    { "date": "25 nov", "jour": "Mardi", "sortie": "Volcan", "places": 4 },
-    { "date": "29 nov", "jour": "Samedi", "sortie": "Trail découverte", "places": 6 },
-    { "date": "02 déc", "jour": "Mardi", "sortie": "Mafate Aurore", "places": 5 },
-    { "date": "06 déc", "jour": "Samedi", "sortie": "Bénare nuit", "places": 2 },
-    { "date": "10 déc", "jour": "Mercredi", "sortie": "Trois Salazes", "places": 8 }
+    {
+      "date": "14 nov",
+      "jour": "Vendredi",
+      "sortie": "Mafate",
+      "places": 3
+    },
+    {
+      "date": "18 nov",
+      "jour": "Mardi",
+      "sortie": "Trois Salazes",
+      "places": 5
+    },
+    {
+      "date": "22 nov",
+      "jour": "Samedi",
+      "sortie": "Bras de Cabot",
+      "places": 0
+    },
+    {
+      "date": "25 nov",
+      "jour": "Mardi",
+      "sortie": "Volcan",
+      "places": 4
+    },
+    {
+      "date": "29 nov",
+      "jour": "Samedi",
+      "sortie": "Trail découverte",
+      "places": 6
+    },
+    {
+      "date": "02 déc",
+      "jour": "Mardi",
+      "sortie": "Mafate",
+      "places": 5
+    },
+    {
+      "date": "06 déc",
+      "jour": "Samedi",
+      "sortie": "Grand Bénare",
+      "places": 2
+    },
+    {
+      "date": "10 déc",
+      "jour": "Mercredi",
+      "sortie": "Trois Salazes",
+      "places": 8
+    }
   ],
   "temoignages": [
     {
       "prenom": "Léa",
-      "sortie": "Mafate Aurore",
+      "sortie": "Mafate",
       "date": "Octobre 2025",
       "texte": "Sortie inoubliable. Lever de soleil au Maïdo, à 30 secondes près le moment parfait."
     },
     {
       "prenom": "Marc",
-      "sortie": "Bénare de nuit",
+      "sortie": "Grand Bénare",
       "date": "Septembre 2025",
       "texte": "On a tout : technique, sécurité, anecdotes. Théo connaît sa montagne par cœur."
     },
@@ -157,13 +209,10 @@
     }
   ],
   "galerie": [
-    "/images/sentiers/maido.jpg",
     "/images/sentiers/mafate.jpg",
-    "/images/sentiers/niagara.jpg",
-    "/images/sentiers/cilaos.jpg",
     "/images/sentiers/trois-salazes.jpg",
-    "/images/sentiers/fournaise.jpg",
     "/images/sentiers/grand-benare.jpg",
-    "/images/sentiers/bras-cabot.jpg"
+    "/images/sentiers/bras-cabot.jpg",
+    "/images/sentiers/volcan.jpg"
   ]
 }
