@@ -18,8 +18,8 @@
     "siret": "67890123300017",
     "annee": "2008",
     "classification": 4,
-    "photoHero": "/images/cap-anglais/hero.jpg",
-    "photoHeroAlt": "Vue panoramique depuis Le Cap Anglais, gîte de cirque à Cilaos, 1 220 m d'altitude",
+    "photoHero": "/images/gite/hero-cilaos.jpg",
+    "photoHeroAlt": "Vue panoramique du cirque de Cilaos a La Reunion",
     "photoExterieur": "https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=1200&q=85",
     "photoExterieurAlt": "Vue extérieure du gîte, façade nord côté Bras-Sec"
   },
@@ -65,7 +65,8 @@
       "personnes": 2,
       "details": "Vue sur le cirque · douche partagée",
       "prix": "Comprise",
-      "photo": "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=800&q=85"
+      "photo": "/images/gite/chambre-la-nouvelle.jpg",
+      "photoAlt": "Chambre La Nouvelle, draps bleus et lumiere naturelle"
     },
     {
       "id": "trois-roches",
@@ -74,7 +75,8 @@
       "personnes": 2,
       "details": "Salle d'eau privée · vue jardin",
       "prix": "+ 5€/nuit",
-      "photo": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=85"
+      "photo": "/images/gite/chambre-trois-roches.jpg",
+      "photoAlt": "Chambre 3 Roches, draps vert sauge et deco champetre"
     },
     {
       "id": "roche-plate",
@@ -83,7 +85,8 @@
       "personnes": 4,
       "details": "Format dortoir · vestiaire avec casiers",
       "prix": "Comprise",
-      "photo": "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=800&q=85"
+      "photo": "/images/gite/chambre-roche-plate.jpg",
+      "photoAlt": "Chambre Roche Plate, draps terracotta et tete de lit en cannage"
     },
     {
       "id": "marla",
@@ -92,7 +95,8 @@
       "personnes": 4,
       "details": "Petite terrasse privative · idéale famille",
       "prix": "+ 8€/nuit",
-      "photo": "https://images.unsplash.com/photo-1615873968403-89e068629265?w=800&q=85"
+      "photo": "/images/gite/chambre-marla.jpg",
+      "photoAlt": "Chambre Marla, draps blancs et pierre apparente"
     }
   ],
   "alentours": [
