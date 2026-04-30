@@ -15,18 +15,30 @@
     "instagram": "@villa.lazuli",
     "siret": "89012345500017",
     "annee": "2019",
-    "photoHero": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1800&q=85",
-    "photoHeroAlt": "Villa Lazuli, façade et piscine face au lagon de Saint-Leu",
+    "photoHero": "/images/location/hero.jpg",
+    "photoHeroAlt": "Villa Lazuli, vue d ensemble avec piscine et terrasse",
     "photoSticker": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600&q=85",
     "photoStickerAlt": "Vue du lagon depuis la terrasse de la villa",
     "note": "4,8/5",
     "nbAvis": 87
   },
   "stats": [
-    { "valeur": "120 m²", "label": "habitables" },
-    { "valeur": "4", "label": "chambres" },
-    { "valeur": "8", "label": "voyageurs max" },
-    { "valeur": "✓", "label": "piscine privée" }
+    {
+      "valeur": "120 m²",
+      "label": "habitables"
+    },
+    {
+      "valeur": "4",
+      "label": "chambres"
+    },
+    {
+      "valeur": "8",
+      "label": "voyageurs max"
+    },
+    {
+      "valeur": "✓",
+      "label": "piscine privée"
+    }
   ],
   "pitch": [
     "Posée à flanc de coteau juste au-dessus du lagon de Saint-Leu, la villa offre une vue dégagée sur l'océan, accessible à pied à la plage en cinq minutes. Quatre chambres, une grande terrasse couverte, une cuisine entièrement équipée.",
@@ -38,25 +50,25 @@
       "id": "salon",
       "titre": "Le salon",
       "description": "Grand canapé d'angle, vue piscine, bibliothèque garnie. La pièce centrale.",
-      "photo": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=85"
+      "photo": "/images/location/salon.jpg"
     },
     {
       "id": "cuisine",
       "titre": "La cuisine",
       "description": "Entièrement équipée, îlot central, lave-vaisselle, four et plaque induction.",
-      "photo": "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&q=85"
+      "photo": "/images/location/cuisine.jpg"
     },
     {
       "id": "chambre",
       "titre": "Chambre principale",
       "description": "Lit king size 180×200, dressing, vue lagon au lever du soleil.",
-      "photo": "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=85"
+      "photo": "/images/location/chambre.jpg"
     },
     {
       "id": "terrasse",
       "titre": "La terrasse",
       "description": "Couverte, salon de jardin pour 8 personnes, barbecue à gaz, brumisateur.",
-      "photo": "https://images.unsplash.com/photo-1571508601891-ca5e7a713859?w=1200&q=85"
+      "photo": "/images/location/terrasse.jpg"
     },
     {
       "id": "piscine",
@@ -148,11 +160,26 @@
   "caution": "1 500 € (chèque ou virement, restitué sous 7 jours après le départ).",
   "tarifsExtras": "Ménage hebdomadaire 80 €. Petit-déjeuner livré 12 €/pers. Linge supplémentaire 8 €/pers.",
   "occupation": [
-    "2025-11-01", "2025-11-02", "2025-11-03",
-    "2025-11-15", "2025-11-16",
-    "2025-11-22", "2025-11-23", "2025-11-24",
-    "2025-12-15", "2025-12-16", "2025-12-17", "2025-12-18", "2025-12-19", "2025-12-20",
-    "2025-12-26", "2025-12-27", "2025-12-28", "2025-12-29", "2025-12-30", "2025-12-31"
+    "2025-11-01",
+    "2025-11-02",
+    "2025-11-03",
+    "2025-11-15",
+    "2025-11-16",
+    "2025-11-22",
+    "2025-11-23",
+    "2025-11-24",
+    "2025-12-15",
+    "2025-12-16",
+    "2025-12-17",
+    "2025-12-18",
+    "2025-12-19",
+    "2025-12-20",
+    "2025-12-26",
+    "2025-12-27",
+    "2025-12-28",
+    "2025-12-29",
+    "2025-12-30",
+    "2025-12-31"
   ],
   "avis": [
     {
