@@ -1,0 +1,52 @@
+---
+/**
+ * Bulle flottante "Revenir sur 9site4" — affichée sur les pages /templates/*
+ * (rendues avec bare={true} dans BaseLayout). Permet à un visiteur arrivé
+ * sur une démo de revenir facilement au site principal sans avoir à scroller
+ * jusqu'au footer du template.
+ *
+ * Placement : bottom-left, safe-area aware, md:hidden ? non — visible aussi
+ * desktop car les templates n'embarquent pas la nav 9site4. Discret, neutre.
+ */
+---
+
+<a
+  href="/"
+  aria-label="Revenir sur le site 9site4"
+  class="back-to-9site4 group fixed left-3 z-[60] inline-flex items-center gap-2 h-11 pl-3 pr-4 rounded-full bg-blanc-casse/95 text-bleu-nuit ring-1 ring-bleu-nuit/12 shadow-[0_8px_24px_rgba(11,20,55,0.18)] backdrop-blur-md hover:bg-blanc-casse hover:ring-bleu-nuit/25 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 ease-out"
+  style="bottom: calc(env(safe-area-inset-bottom, 0px) + 0.75rem); left: calc(env(safe-area-inset-left, 0px) + 0.75rem);"
+>
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2.25"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+    class="transition-transform duration-200 group-hover:-translate-x-0.5"
+  >
+    <path d="M19 12H5" />
+    <path d="m12 19-7-7 7-7" />
+  </svg>
+  <span class="font-inter font-semibold text-[13px] leading-none tracking-tight">
+    <span class="text-bleu-nuit/55 font-medium">Démo ·</span> 9site4
+  </span>
+</a>
+
+<style>
+  /* Légère pulsation à l'apparition pour signaler la présence de la bulle.
+     On respecte prefers-reduced-motion. */
+  @keyframes back-bubble-in {
+    from { opacity: 0; transform: translateY(8px) scale(0.96); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .back-to-9site4 {
+    animation: back-bubble-in 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .back-to-9site4 { animation: none; }
+  }
+</style>
