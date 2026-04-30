@@ -46,7 +46,22 @@ const Element = href ? 'a' : 'span';
     aria-hidden="true"
   >
     <polygon points="36 0 243 265 334 268 251 385 0 597 149 356 111 330 36 0" fill="#91A6FF"/>
-    <polygon points="363 268 418 300 362 331 363 268" fill="#FF8F00"/>
+    <polygon class="wordmark-pulse" points="363 268 418 300 362 331 363 268" fill="#FF8F00"/>
   </svg>
   <span>9site<span class="text-orange">4</span></span>
 </Element>
+
+<style>
+  @keyframes wordmark-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+  }
+  .wordmark-pulse {
+    animation: wordmark-pulse 2.5s ease-in-out infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .wordmark-pulse { animation: none; }
+  }
+</style>
