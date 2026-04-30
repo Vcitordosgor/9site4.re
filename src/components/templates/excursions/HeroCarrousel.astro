@@ -32,7 +32,7 @@ import data from '../../../data/templates/sentiers.json';
   </div>
 
   <!-- Légende lieu de la photo courante (synchronisée avec le slide actif) -->
-  <div class="absolute top-24 md:top-32 left-6 md:left-10 z-10 flex flex-col gap-2 max-w-[60%]" aria-live="polite">
+  <div class="hidden md:flex absolute top-32 left-10 z-10 flex-col gap-2 max-w-[40%]" aria-live="polite">
     {data.carrousel.map((p, i) => (
       <div
         data-slide-caption={i}
