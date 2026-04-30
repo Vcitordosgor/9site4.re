@@ -22,28 +22,28 @@
   },
   "carrousel": [
     {
-      "src": "/images/sentiers/mafate.jpg",
-      "alt": "Vue sur le cirque de Mafate",
+      "src": "/images/sentiers/cilaos.jpg",
+      "alt": "Vue panoramique sur le cirque de Cilaos depuis les hauteurs",
+      "lieu": "Cirque de Cilaos",
+      "altitude": "1 200 m"
+    },
+    {
+      "src": "/images/sentiers/mafate-aerien.jpg",
+      "alt": "Vue aerienne du cirque de Mafate",
       "lieu": "Cirque de Mafate",
       "altitude": "1 200 m"
     },
     {
-      "src": "/images/sentiers/grand-benare.jpg",
-      "alt": "Sommet du Grand Bénare avec sa croix",
-      "lieu": "Grand Bénare",
-      "altitude": "2 896 m"
+      "src": "/images/sentiers/cascade.jpg",
+      "alt": "Cascade et bassin de baignade",
+      "lieu": "Cascade Niagara",
+      "altitude": "25 m"
     },
     {
-      "src": "/images/sentiers/trois-salazes.jpg",
-      "alt": "Les Trois Salazes, formations rocheuses spectaculaires",
-      "lieu": "Trois Salazes · Mafate",
-      "altitude": "2 145 m"
-    },
-    {
-      "src": "/images/sentiers/volcan.jpg",
-      "alt": "Piton de la Fournaise au lever du jour",
-      "lieu": "Piton de la Fournaise",
-      "altitude": "2 632 m"
+      "src": "/images/sentiers/plaine.jpg",
+      "alt": "Plaine herbeuse face a l ocean",
+      "lieu": "Cap Mechant",
+      "altitude": "200 m"
     }
   ],
   "diplomes": [
@@ -209,10 +209,13 @@
     }
   ],
   "galerie": [
-    "/images/sentiers/mafate.jpg",
+    "/images/sentiers/cilaos.jpg",
+    "/images/sentiers/mafate-aerien.jpg",
+    "/images/sentiers/cascade.jpg",
+    "/images/sentiers/plaine.jpg",
     "/images/sentiers/trois-salazes.jpg",
     "/images/sentiers/grand-benare.jpg",
-    "/images/sentiers/bras-cabot.jpg",
-    "/images/sentiers/volcan.jpg"
+    "/images/sentiers/volcan.jpg",
+    "/images/sentiers/bras-cabot.jpg"
   ]
 }
