@@ -74,25 +74,25 @@
       "id": "piscine",
       "titre": "La piscine",
       "description": "Privée, chauffée, 8 × 4 m. Profondeur progressive. Transats et parasol.",
-      "photo": "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=1200&q=85"
+      "photo": "/images/location/piscine.jpg"
     },
     {
       "id": "vue",
       "titre": "La vue",
       "description": "Le lagon de Saint-Leu, depuis la terrasse et les chambres côté mer.",
-      "photo": "https://images.unsplash.com/photo-1505881502353-a1986add3762?w=1200&q=85"
+      "photo": "/images/location/vue.jpg"
     },
     {
       "id": "sdb",
       "titre": "Salle de bain",
       "description": "Douche italienne, double vasque, marbre, baignoire séparée dans la suite.",
-      "photo": "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1200&q=85"
+      "photo": "/images/location/sdb.jpg"
     },
     {
       "id": "exterieur",
       "titre": "Vue extérieure",
       "description": "Architecture créole revisitée, toits en bardeaux, palmiers et frangipaniers.",
-      "photo": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200&q=85"
+      "photo": "/images/location/exterieur.jpg"
     }
   ],
   "equipements": {
