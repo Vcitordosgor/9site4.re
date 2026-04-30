@@ -165,25 +165,25 @@
       "nom": "Bowl de quinoa & légumes grillés",
       "tempsTotal": "25 min",
       "ingredient": "Quinoa rouge",
-      "photo": "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=500&q=80"
+      "photo": "/images/diet/quinoa.jpg"
     },
     {
       "nom": "Smoothie banane & graines de chia",
       "tempsTotal": "5 min",
       "ingredient": "Chia",
-      "photo": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&q=80"
+      "photo": "/images/diet/smoothie.jpg"
     },
     {
       "nom": "Curry de pois chiches au lait coco",
       "tempsTotal": "30 min",
       "ingredient": "Pois chiches",
-      "photo": "https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=500&q=80"
+      "photo": "/images/diet/curry.jpg"
     },
     {
       "nom": "Pancakes flocons d'avoine & banane",
       "tempsTotal": "15 min",
       "ingredient": "Avoine",
-      "photo": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&q=80"
+      "photo": "/images/diet/pancakes.jpg"
     }
   ],
   "avis": [
@@ -204,12 +204,40 @@
     }
   ],
   "horaires": [
-    { "jour": "Lundi", "label": "08h30 – 17h30", "ouvert": true },
-    { "jour": "Mardi", "label": "08h30 – 17h30", "ouvert": true },
-    { "jour": "Mercredi", "label": "08h30 – 12h30", "ouvert": true },
-    { "jour": "Jeudi", "label": "08h30 – 17h30", "ouvert": true },
-    { "jour": "Vendredi", "label": "08h30 – 14h00", "ouvert": true },
-    { "jour": "Samedi", "label": "Téléconsultation", "ouvert": true },
-    { "jour": "Dimanche", "label": "Fermé", "ouvert": false }
+    {
+      "jour": "Lundi",
+      "label": "08h30 – 17h30",
+      "ouvert": true
+    },
+    {
+      "jour": "Mardi",
+      "label": "08h30 – 17h30",
+      "ouvert": true
+    },
+    {
+      "jour": "Mercredi",
+      "label": "08h30 – 12h30",
+      "ouvert": true
+    },
+    {
+      "jour": "Jeudi",
+      "label": "08h30 – 17h30",
+      "ouvert": true
+    },
+    {
+      "jour": "Vendredi",
+      "label": "08h30 – 14h00",
+      "ouvert": true
+    },
+    {
+      "jour": "Samedi",
+      "label": "Téléconsultation",
+      "ouvert": true
+    },
+    {
+      "jour": "Dimanche",
+      "label": "Fermé",
+      "ouvert": false
+    }
   ]
 }
