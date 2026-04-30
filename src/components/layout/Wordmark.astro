@@ -1,7 +1,6 @@
 ---
 /**
- * Wordmark temporaire — "9site4" en Sora 700, "9site" bleu-nuit, "4" orange.
- * Sera remplacé par le logo définitif (fourni par le client).
+ * Wordmark — logo SVG 9site4 + texte "9site4" (Sora 700, "9site" bleu-nuit, "4" orange).
  */
 interface Props {
   href?: string;
@@ -18,9 +17,9 @@ const {
 } = Astro.props;
 
 const sizeClasses = {
-  sm: 'text-xl',
-  md: 'text-2xl',
-  lg: 'text-3xl',
+  sm: 'text-xl gap-1.5',
+  md: 'text-2xl gap-2',
+  lg: 'text-3xl gap-2.5',
 };
 
 const toneClasses = {
@@ -34,11 +33,20 @@ const Element = href ? 'a' : 'span';
 <Element
   {...(href ? { href } : {})}
   class:list={[
-    'inline-flex items-baseline font-sora font-bold leading-none tracking-tight transition-opacity duration-200 ease-out hover:opacity-80',
+    'inline-flex items-center font-sora font-bold leading-none tracking-tight transition-opacity duration-200 ease-out hover:opacity-80',
     sizeClasses[size],
     toneClasses[tone],
     className,
   ]}
 >
-  9site<span class="text-orange">4</span>
+  <svg
+    class="h-[1.15em] w-auto shrink-0"
+    viewBox="0 0 418 597"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+    <polygon points="36 0 243 265 334 268 251 385 0 597 149 356 111 330 36 0" fill="#91A6FF"/>
+    <polygon points="363 268 418 300 362 331 363 268" fill="#FF8F00"/>
+  </svg>
+  <span>9site<span class="text-orange">4</span></span>
 </Element>
