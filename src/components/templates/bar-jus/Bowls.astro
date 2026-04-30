@@ -47,7 +47,7 @@ import data from '../../../data/templates/lagon.json';
             <div class="relative aspect-square max-w-md mx-auto rounded-full overflow-hidden ring-8 ring-lagon-charbon" style={`transform: rotate(${i % 2 === 0 ? -3 : 3}deg);`}>
               <img
                 src={b.photo}
-                alt={b.nom}
+                alt={b.alt ?? b.nom}
                 loading="lazy"
                 decoding="async"
                 class="w-full h-full object-cover"

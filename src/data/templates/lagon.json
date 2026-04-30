@@ -17,7 +17,7 @@
     "siret": "45678901100017",
     "annee": "2021",
     "photoHero": "https://images.unsplash.com/photo-1622597467836-f3285f2131b8?w=1600&q=85",
-    "photoBar": "https://images.unsplash.com/photo-1572916118970-fbd335ec03d5?w=1200&q=85"
+    "photoBar": "https://images.unsplash.com/photo-1525193612562-0ec53b0e5d7c?w=1200&q=85"
   },
   "marquee": [
     "Jus pressé · 5€",
@@ -52,7 +52,8 @@
       "prix": 5.5,
       "badge": "STAR",
       "couleur": "lagon-mangue",
-      "photo": "https://images.unsplash.com/photo-1546173159-315724a31696?w=600&q=80"
+      "photo": "https://images.unsplash.com/photo-1546173159-315724a31696?w=600&q=80",
+      "alt": "Verre de jus de mangue et fruit de la passion"
     },
     {
       "id": "carotte-gingembre",
@@ -61,7 +62,8 @@
       "prix": 5.0,
       "badge": "ÉNERGIE",
       "couleur": "lagon-pitaya",
-      "photo": "https://images.unsplash.com/photo-1624174503243-9a32c44ed5e0?w=600&q=80"
+      "photo": "https://images.unsplash.com/photo-1638176066140-37a2e8c0bbb6?w=600&q=80",
+      "alt": "Verre de jus de carotte au gingembre"
     },
     {
       "id": "ananas-menthe",
@@ -70,7 +72,8 @@
       "prix": 5.0,
       "badge": null,
       "couleur": "lagon-lime",
-      "photo": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&q=80"
+      "photo": "https://images.unsplash.com/photo-1623428187969-5da2dcea5ebf?w=600&q=80",
+      "alt": "Verre de jus d'ananas frais et menthe"
     },
     {
       "id": "vert-detox",
@@ -79,7 +82,8 @@
       "prix": 5.5,
       "badge": "DETOX",
       "couleur": "lagon-lime",
-      "photo": "https://images.unsplash.com/photo-1610970881699-44a5587cabec?w=600&q=80"
+      "photo": "https://images.unsplash.com/photo-1610970881699-44a5587cabec?w=600&q=80",
+      "alt": "Verre de jus vert détox épinard concombre"
     },
     {
       "id": "goyave-hibiscus",
@@ -88,7 +92,8 @@
       "prix": 5.5,
       "badge": "NOUVEAU",
       "couleur": "lagon-pitaya",
-      "photo": "https://images.unsplash.com/photo-1437418747212-8d9709afab22?w=600&q=80"
+      "photo": "https://images.unsplash.com/photo-1622597467836-f3285f2131b8?w=600&q=80",
+      "alt": "Verre de jus rose goyave hibiscus"
     },
     {
       "id": "betterave-orange",
@@ -97,7 +102,8 @@
       "prix": 5.0,
       "badge": null,
       "couleur": "lagon-pitaya",
-      "photo": "https://images.unsplash.com/photo-1622597467836-f3285f2131b8?w=600&q=80"
+      "photo": "https://images.unsplash.com/photo-1582548822937-2c8da17c7f15?w=600&q=80",
+      "alt": "Verre de jus rouge betterave orange"
     },
     {
       "id": "coco-vanille",
@@ -106,7 +112,8 @@
       "prix": 5.5,
       "badge": "DOUX",
       "couleur": "lagon-coco",
-      "photo": "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=600&q=80"
+      "photo": "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=600&q=80",
+      "alt": "Verre de boisson coco vanille"
     },
     {
       "id": "pomme-fenouil",
@@ -115,7 +122,8 @@
       "prix": 5.0,
       "badge": null,
       "couleur": "lagon-turquoise",
-      "photo": "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?w=600&q=80"
+      "photo": "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?w=600&q=80",
+      "alt": "Verre de jus clair pomme fenouil"
     }
   ],
   "bowls": [
@@ -124,28 +132,32 @@
       "nom": "Bowl Tropical",
       "ingredients": "Mangue, ananas, granola coco, copeaux noix de coco, fruit du dragon",
       "prix": 9.0,
-      "photo": "https://images.unsplash.com/photo-1490323914169-4ef723768c8b?w=700&q=80"
+      "photo": "https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?w=700&q=80",
+      "alt": "Açaí bowl tropical aux fruits frais et noix de coco"
     },
     {
       "id": "acai",
       "nom": "Bowl Açaí",
       "ingredients": "Açaí, banane, fraise, miel, granola, banane fraîche",
       "prix": 9.5,
-      "photo": "https://images.unsplash.com/photo-1494859802809-d069c3b71a8a?w=700&q=80"
+      "photo": "https://images.unsplash.com/photo-1502741338009-cac2772e18bc?w=700&q=80",
+      "alt": "Açaí bowl violet à la banane et aux fraises"
     },
     {
       "id": "vert",
       "nom": "Bowl Vert Power",
       "ingredients": "Épinard, banane, pomme, beurre cacahuète, granola",
       "prix": 8.5,
-      "photo": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=700&q=80"
+      "photo": "https://images.unsplash.com/photo-1638176067000-9e2cef47f1c0?w=700&q=80",
+      "alt": "Smoothie bowl vert épinard banane et granola"
     },
     {
       "id": "choco",
       "nom": "Bowl Choco-Banane",
       "ingredients": "Banane, cacao, lait amande, granola, chips chocolat",
       "prix": 8.5,
-      "photo": "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=700&q=80"
+      "photo": "https://images.unsplash.com/photo-1577805947697-89e18249d767?w=700&q=80",
+      "alt": "Smoothie bowl chocolat banane et granola"
     }
   ],
   "evenements": [
