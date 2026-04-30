@@ -56,6 +56,14 @@
   },
   "projets": [
     {
+      "nom": "Villa La Source",
+      "annee": "2024",
+      "lieu": "Saint-Leu",
+      "typologie": "Maison individuelle · 280 m²",
+      "statut": "Livré",
+      "photo": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=80"
+    },
+    {
       "nom": "Bureaux Volkanik",
       "annee": "2023",
       "lieu": "Saint-Pierre",
@@ -72,6 +80,14 @@
       "photo": "/images/architecte/lotissement.jpg"
     },
     {
+      "nom": "Maison Carrère",
+      "annee": "2022",
+      "lieu": "Saint-Denis",
+      "typologie": "Restauration patrimoine",
+      "statut": "Livré · primé",
+      "photo": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=900&q=80"
+    },
+    {
       "nom": "École primaire",
       "annee": "2022",
       "lieu": "Bras-Panon",
@@ -86,6 +102,22 @@
       "typologie": "Commerce · 80 m²",
       "statut": "Livré",
       "photo": "/images/architecte/magasin.jpg"
+    },
+    {
+      "nom": "Bibliothèque Aurore",
+      "annee": "2021",
+      "lieu": "Sainte-Marie",
+      "typologie": "Public · 950 m²",
+      "statut": "Livré",
+      "photo": "https://images.unsplash.com/photo-1568667256549-094345857637?w=900&q=80"
+    },
+    {
+      "nom": "Maison Tropic",
+      "annee": "2020",
+      "lieu": "L'Étang-Salé",
+      "typologie": "Maison individuelle · 195 m²",
+      "statut": "Livré",
+      "photo": "https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?w=900&q=80"
     }
   ],
   "phases": [
