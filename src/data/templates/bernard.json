@@ -25,10 +25,10 @@
     "photoBernardAlt": "Bernard, plombier, dans son atelier",
     "photoVan": "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=900&q=85",
     "photoVanAlt": "Camionnette d'intervention équipée",
-    "photoAvant1": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=900&q=85",
-    "photoApres1": "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=900&q=85",
-    "photoAvant2": "https://images.unsplash.com/photo-1620626011761-996317b8d101?w=900&q=85",
-    "photoApres2": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=85"
+    "photoAvant1": "/images/plomberie/sdb-avant.jpg",
+    "photoApres1": "/images/plomberie/sdb-apres.jpg",
+    "photoAvant2": "/images/plomberie/cuisine-avant.jpg",
+    "photoApres2": "/images/plomberie/cuisine-apres.jpg"
   },
   "tagline": "FUITE, BOUCHON OU PANNE ?",
   "taglineLarge": "BERNARD ARRIVE.",
@@ -59,7 +59,7 @@
   ],
   "realisations": [
     { "id": "r1", "lieu": "Saint-Pierre", "type": "Rénovation salle de bain", "description": "Refonte complète après dégât des eaux : douche italienne, lavabo, faïence." },
-    { "id": "r2", "lieu": "Le Tampon",    "type": "Chauffe-eau solaire",      "description": "Remplacement chauffe-eau électrique par chauffe-eau solaire 200L sur toiture." }
+    { "id": "r2", "lieu": "Le Tampon",    "type": "Rénovation cuisine",       "description": "Remplacement de l'évier simple par une grande double vasque, raccords plomberie complets et étanchéité." }
   ],
   "bernard": {
     "nom": "Bernard Hoarau",
