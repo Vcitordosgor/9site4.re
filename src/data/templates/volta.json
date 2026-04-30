@@ -18,9 +18,21 @@
     "photoHero": "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1600&q=80"
   },
   "horaires": [
-    { "jour": "Lundi – Vendredi", "label": "07h – 18h", "ouvert": true },
-    { "jour": "Samedi", "label": "08h – 12h", "ouvert": true },
-    { "jour": "Dimanche", "label": "Fermé", "ouvert": false }
+    {
+      "jour": "Lundi – Vendredi",
+      "label": "07h – 18h",
+      "ouvert": true
+    },
+    {
+      "jour": "Samedi",
+      "label": "08h – 12h",
+      "ouvert": true
+    },
+    {
+      "jour": "Dimanche",
+      "label": "Fermé",
+      "ouvert": false
+    }
   ],
   "urgence": {
     "actif": true,
@@ -78,23 +90,28 @@
   ],
   "galerie": [
     {
-      "src": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=75",
-      "alt": "Tableau électrique neuf câblé proprement",
-      "label": "Villa neuve — Saint-André"
+      "src": "/images/electricien/tableau.jpg",
+      "alt": "Tableau électrique câblé proprement",
+      "label": "Tableau électrique — Saint-André"
     },
     {
-      "src": "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=75",
-      "alt": "Câblage industriel et gaines électriques",
-      "label": "Local commercial — Sainte-Marie"
+      "src": "/images/electricien/eclairage-interieur.jpg",
+      "alt": "Éclairage intérieur LED, suspensions et spots encastrés",
+      "label": "Éclairage intérieur — Saint-Pierre"
     },
     {
-      "src": "https://images.unsplash.com/photo-1545259741-2ea3ebf61fa3?w=800&q=75",
-      "alt": "Installation éclairage LED encastré",
-      "label": "Appartement — Saint-Benoît"
+      "src": "/images/electricien/eclairage-exterieur.jpg",
+      "alt": "Éclairage extérieur de façade et balisage de jardin",
+      "label": "Éclairage extérieur — Le Tampon"
     },
     {
-      "src": "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=800&q=75",
-      "alt": "Borne de recharge IRVE installée",
+      "src": "/images/electricien/domotique.jpg",
+      "alt": "Interrupteurs domotiques et thermostat connecté",
+      "label": "Domotique — Saint-Denis"
+    },
+    {
+      "src": "/images/electricien/irve.jpg",
+      "alt": "Borne de recharge véhicule électrique installée en extérieur",
       "label": "Borne IRVE — Bras-Panon"
     }
   ],
