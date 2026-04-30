@@ -194,28 +194,22 @@ Mon téléphone : ${data.telephone}${noteLine}`;
             type="button"
             onClick={() => addItem(item.id)}
             aria-label={`Ajouter ${item.nom} au panier`}
-            class={`group/btn relative inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] transition-colors duration-300 cursor-pointer ${
-              isJustAdded ? 'text-pizza-rouge' : 'text-pizza-charbon/80 hover:text-pizza-rouge'
+            class={`group/btn inline-flex items-center gap-2 h-10 px-4 rounded-full text-[11px] font-semibold uppercase tracking-[0.2em] transition-all duration-200 cursor-pointer ring-1 active:scale-[0.97] ${
+              isJustAdded
+                ? 'bg-pizza-charbon text-pizza-creme ring-pizza-charbon'
+                : 'bg-pizza-rouge text-pizza-creme ring-pizza-rouge hover:bg-[#8B1F2A] hover:ring-[#8B1F2A]'
             }`}
           >
-            <span class="relative">
-              {isJustAdded ? 'Ajouté' : 'Ajouter'}
-              <span
-                class={`absolute left-0 right-0 -bottom-0.5 h-px bg-pizza-rouge origin-left transition-transform duration-300 ${
-                  isJustAdded ? 'scale-x-100' : 'scale-x-0 group-hover/btn:scale-x-100'
-                }`}
-                aria-hidden="true"
-              />
-            </span>
             {isJustAdded ? (
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M20 6L9 17l-5-5"/>
               </svg>
             ) : (
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
                 <path d="M12 5v14M5 12h14"/>
               </svg>
             )}
+            <span>{isJustAdded ? 'Ajouté' : 'Ajouter au panier'}</span>
           </button>
           {inCart > 0 && (
             <span
@@ -342,7 +336,7 @@ Mon téléphone : ${data.telephone}${noteLine}`;
               <div class="bg-white rounded-sm p-7 md:p-8 ring-1 ring-pizza-charbon/10 lg:sticky lg:top-24"
                    style="box-shadow: 0 1px 3px rgb(28 26 23 / 0.04);">
                 <h3 class="flex items-baseline justify-between gap-2">
-                  <span class="font-playfair font-semibold text-2xl text-pizza-charbon">Votre table</span>
+                  <span class="font-playfair font-semibold text-2xl text-pizza-charbon">Votre panier</span>
                   {totalCount > 0 && (
                     <span class="text-sm uppercase tracking-[0.18em] text-pizza-charbon/50 tabular-nums">
                       {totalCount} article{totalCount > 1 ? 's' : ''}
