@@ -56,20 +56,12 @@
   },
   "projets": [
     {
-      "nom": "Villa La Source",
-      "annee": "2024",
-      "lieu": "Saint-Leu",
-      "typologie": "Maison individuelle · 280 m²",
-      "statut": "Livré",
-      "photo": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=80"
-    },
-    {
-      "nom": "Bureaux Volcanic",
+      "nom": "Bureaux Volkanik",
       "annee": "2023",
       "lieu": "Saint-Pierre",
       "typologie": "Tertiaire · 600 m²",
       "statut": "Livré",
-      "photo": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=80"
+      "photo": "/images/architecte/bureaux.jpg"
     },
     {
       "nom": "Lotissement Les Îlets",
@@ -77,15 +69,7 @@
       "lieu": "Le Tampon",
       "typologie": "12 logements collectifs",
       "statut": "Livré",
-      "photo": "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=900&q=80"
-    },
-    {
-      "nom": "Maison Carrère",
-      "annee": "2022",
-      "lieu": "Saint-Denis",
-      "typologie": "Restauration patrimoine",
-      "statut": "Livré · primé",
-      "photo": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=900&q=80"
+      "photo": "/images/architecte/lotissement.jpg"
     },
     {
       "nom": "École primaire",
@@ -93,31 +77,15 @@
       "lieu": "Bras-Panon",
       "typologie": "Public · 1 200 m²",
       "statut": "Livré",
-      "photo": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=900&q=80"
+      "photo": "/images/architecte/ecole.jpg"
     },
     {
-      "nom": "Boutique Karli",
+      "nom": "Maison 162",
       "annee": "2021",
       "lieu": "Saint-Pierre",
       "typologie": "Commerce · 80 m²",
       "statut": "Livré",
-      "photo": "https://images.unsplash.com/photo-1542338347-4fff3276af78?w=900&q=80"
-    },
-    {
-      "nom": "Bibliothèque Aurore",
-      "annee": "2021",
-      "lieu": "Sainte-Marie",
-      "typologie": "Public · 950 m²",
-      "statut": "Livré",
-      "photo": "https://images.unsplash.com/photo-1568667256549-094345857637?w=900&q=80"
-    },
-    {
-      "nom": "Maison Tropic",
-      "annee": "2020",
-      "lieu": "L'Étang-Salé",
-      "typologie": "Maison individuelle · 195 m²",
-      "statut": "Livré",
-      "photo": "https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?w=900&q=80"
+      "photo": "/images/architecte/magasin.jpg"
     }
   ],
   "phases": [
@@ -203,8 +171,20 @@
     }
   ],
   "horaires": [
-    { "jour": "Lundi – Jeudi", "label": "09h – 18h", "ouvert": true },
-    { "jour": "Vendredi", "label": "09h – 17h", "ouvert": true },
-    { "jour": "Samedi – Dimanche", "label": "Sur RDV chantier", "ouvert": false }
+    {
+      "jour": "Lundi – Jeudi",
+      "label": "09h – 18h",
+      "ouvert": true
+    },
+    {
+      "jour": "Vendredi",
+      "label": "09h – 17h",
+      "ouvert": true
+    },
+    {
+      "jour": "Samedi – Dimanche",
+      "label": "Sur RDV chantier",
+      "ouvert": false
+    }
   ]
 }
