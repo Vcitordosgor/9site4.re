@@ -1,6 +1,7 @@
 /** @jsxImportSource preact */
 import { useRef, useState } from 'preact/hooks';
 import type { JSX } from 'preact';
+import siteConfig from '../../data/siteConfig.json';
 
 interface Category {
   id: string;
@@ -9,6 +10,37 @@ interface Category {
 
 interface Props {
   categories: Category[];
+}
+
+const WHATSAPP_NUMBER = siteConfig.contact.whatsapp;
+const CONTACT_EMAIL = siteConfig.contact.email;
+
+function buildMessage(data: FormData, categories: Category[]): string {
+  const secteurLabel =
+    categories.find((c) => c.id === data.secteur)?.nom ??
+    (data.secteur === 'autre' ? 'Autre' : data.secteur);
+  const besoinLabel =
+    BESOINS.find((b) => b.value === data.besoin)?.label ?? data.besoin;
+  const prefLabel =
+    PREFERENCES.find((p) => p.value === data.preference)?.label ??
+    data.preference;
+  const lines = [
+    'Bonjour 9site4, je souhaite être recontacté(e).',
+    '',
+    `Nom : ${data.nom}`,
+  ];
+  if (data.entreprise) lines.push(`Entreprise : ${data.entreprise}`);
+  lines.push(
+    `Secteur : ${secteurLabel}`,
+    `Téléphone : ${data.telephone}`,
+    `Email : ${data.email}`,
+    `Besoin : ${besoinLabel}`,
+    `Préférence de contact : ${prefLabel}`
+  );
+  if (data.message) {
+    lines.push('', 'Message :', data.message);
+  }
+  return lines.join('\n');
 }
 
 interface FormData {
@@ -49,6 +81,7 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 export default function ContactForm({ categories }: Props) {
   const formRef = useRef<HTMLFormElement>(null);
   const [submitted, setSubmitted] = useState(false);
+  const [lastMessage, setLastMessage] = useState('');
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>(
     {}
   );
@@ -103,16 +136,20 @@ export default function ContactForm({ categories }: Props) {
       return;
     }
 
-    // TODO front-only : on log au lieu d'envoyer. À remplacer par un POST
-    // vers un backend ou un service d'envoi (Formspree, EmailJS, etc.).
-    // eslint-disable-next-line no-console
-    console.log('[ContactForm] formData =', data);
+    const message = buildMessage(data, categories);
+    const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    window.open(waUrl, '_blank', 'noopener,noreferrer');
+    setLastMessage(message);
     setSubmitted(true);
     form.reset();
   };
 
   // ===== ÉTAT DE SUCCÈS =====
   if (submitted) {
+    const mailtoUrl = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
+      'Demande de contact — 9site4'
+    )}&body=${encodeURIComponent(lastMessage)}`;
+    const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lastMessage)}`;
     return (
       <div
         role="status"
@@ -135,15 +172,32 @@ export default function ContactForm({ categories }: Props) {
           </svg>
         </div>
         <h3 class="mt-5 font-sora font-semibold text-2xl text-bleu-nuit">
-          Merci !
+          WhatsApp ouvert dans un nouvel onglet
         </h3>
         <p class="mt-3 text-base text-bleu-nuit/75">
-          On vous recontacte rapidement.
+          Validez l'envoi du message pré-rempli pour finaliser votre demande.
+          Si WhatsApp ne s'est pas ouvert, utilisez l'un des liens ci-dessous.
         </p>
+        <div class="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
+          <a
+            href={waUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center h-11 px-5 text-sm font-semibold rounded-full bg-bleu text-blanc-casse hover:bg-bleu-nuit transition-all duration-200"
+          >
+            Rouvrir WhatsApp
+          </a>
+          <a
+            href={mailtoUrl}
+            class="inline-flex items-center justify-center h-11 px-5 text-sm font-semibold rounded-full bg-bleu-nuit/5 text-bleu-nuit ring-1 ring-bleu-nuit/15 hover:ring-bleu-nuit/30 transition-all duration-200"
+          >
+            Envoyer par email
+          </a>
+        </div>
         <button
           type="button"
           onClick={() => setSubmitted(false)}
-          class="mt-6 inline-flex items-center justify-center h-11 px-5 text-sm font-semibold rounded-full bg-bleu-nuit/5 text-bleu-nuit ring-1 ring-bleu-nuit/15 hover:ring-bleu-nuit/30 transition-all duration-200 cursor-pointer"
+          class="mt-4 inline-flex items-center justify-center h-11 px-5 text-sm font-semibold rounded-full text-bleu-nuit/70 hover:text-bleu-nuit transition-all duration-200 cursor-pointer"
         >
           Envoyer une autre demande
         </button>
@@ -387,25 +441,25 @@ export default function ContactForm({ categories }: Props) {
           type="submit"
           class="group relative inline-flex w-full items-center justify-center gap-2 h-14 px-8 text-lg font-semibold rounded-full bg-bleu text-blanc-casse shadow-card hover:bg-bleu-nuit hover:shadow-card-hover active:translate-y-px transition-all duration-200 ease-out cursor-pointer"
         >
-          Envoyer ma demande
+          Envoyer via WhatsApp
           <svg
             width="20"
             height="20"
             viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.25"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            fill="currentColor"
             aria-hidden="true"
             class="transition-transform duration-300 ease-out group-hover:translate-x-1"
           >
-            <path d="M5 12h14M12 5l7 7-7 7" />
+            <path d="M19.11 4.91A10 10 0 0 0 4.06 18.2L3 22l3.91-1.03A10 10 0 1 0 19.11 4.91Zm-7.1 15.4a8.3 8.3 0 0 1-4.24-1.16l-.3-.18-2.32.61.62-2.26-.2-.31a8.3 8.3 0 1 1 6.44 3.3Zm4.55-6.22c-.25-.13-1.47-.73-1.7-.81-.23-.08-.4-.13-.56.13-.17.25-.65.81-.8.98-.14.16-.29.18-.54.06-.25-.13-1.05-.39-2-1.23a7.5 7.5 0 0 1-1.39-1.72c-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.16.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.83-.2-.49-.41-.42-.56-.43h-.48c-.16 0-.42.06-.64.31-.22.25-.84.82-.84 2 0 1.18.86 2.32.98 2.48.13.16 1.7 2.6 4.12 3.65.58.25 1.02.4 1.37.51.57.18 1.1.16 1.51.1.46-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.1-.23-.16-.48-.29Z"/>
           </svg>
         </button>
         <p class="mt-3 text-xs text-bleu-nuit/70 text-center leading-relaxed">
-          En soumettant ce formulaire, vous acceptez d'être recontacté(e) au sujet de votre projet.
-          Vos données restent confidentielles, ne sont pas revendues, et sont conservées au maximum 12 mois.
+          À la validation, votre demande s'ouvre pré-remplie dans WhatsApp.
+          Vous pouvez aussi écrire directement à{' '}
+          <a href={`mailto:${CONTACT_EMAIL}`} class="underline underline-offset-2 hover:text-orange">
+            {CONTACT_EMAIL}
+          </a>.
+          Vos données restent confidentielles et sont conservées 12 mois maximum.
           {' '}
           <a href="/mentions-legales#donnees" class="underline underline-offset-2 hover:text-orange">
             En savoir plus
