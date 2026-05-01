@@ -81,17 +81,19 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 export default function ContactForm({ categories }: Props) {
   const formRef = useRef<HTMLFormElement>(null);
   const [submitted, setSubmitted] = useState(false);
+  const [submittedChannel, setSubmittedChannel] = useState<'whatsapp' | 'email'>('whatsapp');
   const [lastMessage, setLastMessage] = useState('');
+  const [sending, setSending] = useState(false);
+  const [serverError, setServerError] = useState<string | null>(null);
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>(
     {}
   );
 
-  const onSubmit: JSX.GenericEventHandler<HTMLFormElement> = (e) => {
+  const onSubmit: JSX.GenericEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
     const form = e.currentTarget;
     const fd = new FormData(form);
 
-    // Honeypot anti-spam : si rempli, on simule un succès silencieux
     if ((fd.get('website') as string)?.trim()) {
       setSubmitted(true);
       form.reset();
@@ -137,19 +139,44 @@ export default function ContactForm({ categories }: Props) {
     }
 
     const message = buildMessage(data, categories);
-    const channel = (fd.get('channel') as string) || 'whatsapp';
-    if (channel === 'email') {
-      const mailtoUrl = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
-        'Demande de contact — 9site4'
-      )}&body=${encodeURIComponent(message)}`;
-      window.location.href = mailtoUrl;
-    } else {
+    const channel = ((fd.get('channel') as string) || 'whatsapp') as 'whatsapp' | 'email';
+    setServerError(null);
+
+    if (channel === 'whatsapp') {
       const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
       window.open(waUrl, '_blank', 'noopener,noreferrer');
+      setLastMessage(message);
+      setSubmittedChannel('whatsapp');
+      setSubmitted(true);
+      form.reset();
+      return;
     }
-    setLastMessage(message);
-    setSubmitted(true);
-    form.reset();
+
+    setSending(true);
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}));
+        setServerError(
+          body?.error === 'validation'
+            ? 'Certains champs sont invalides.'
+            : "L'envoi a échoué. Réessayez ou utilisez WhatsApp."
+        );
+        return;
+      }
+      setLastMessage(message);
+      setSubmittedChannel('email');
+      setSubmitted(true);
+      form.reset();
+    } catch {
+      setServerError("Impossible d'envoyer le message (réseau). Réessayez ou utilisez WhatsApp.");
+    } finally {
+      setSending(false);
+    }
   };
 
   // ===== ÉTAT DE SUCCÈS =====
@@ -180,11 +207,12 @@ export default function ContactForm({ categories }: Props) {
           </svg>
         </div>
         <h3 class="mt-5 font-sora font-semibold text-2xl text-bleu-nuit">
-          Message prêt à être envoyé
+          {submittedChannel === 'email' ? 'Message envoyé' : 'WhatsApp ouvert'}
         </h3>
         <p class="mt-3 text-base text-bleu-nuit/75">
-          Votre message a été pré-rempli. Validez l'envoi dans la fenêtre qui vient
-          de s'ouvrir, ou utilisez l'un des liens ci-dessous si rien ne s'est passé.
+          {submittedChannel === 'email'
+            ? 'Merci ! Votre message vient d\'être envoyé. Nous revenons vers vous très vite.'
+            : 'Validez l\'envoi du message pré-rempli dans WhatsApp pour finaliser votre demande.'}
         </p>
         <div class="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
           <a
@@ -445,12 +473,18 @@ export default function ContactForm({ categories }: Props) {
 
       {/* Submit — deux canaux d'envoi */}
       <div class="pt-2">
+        {serverError && (
+          <p role="alert" class="mb-3 text-sm text-red-700 bg-red-50 ring-1 ring-red-200 rounded-xl px-4 py-3">
+            {serverError}
+          </p>
+        )}
         <div class="grid sm:grid-cols-2 gap-3">
           <button
             type="submit"
             name="channel"
             value="whatsapp"
-            class="group relative inline-flex items-center justify-center gap-2 h-14 px-6 text-base font-semibold rounded-full bg-[#25D366] text-white shadow-card hover:bg-[#1ebe57] hover:shadow-card-hover active:translate-y-px transition-all duration-200 ease-out cursor-pointer"
+            disabled={sending}
+            class="group relative inline-flex items-center justify-center gap-2 h-14 px-6 text-base font-semibold rounded-full bg-[#25D366] text-white shadow-card hover:bg-[#1ebe57] hover:shadow-card-hover active:translate-y-px transition-all duration-200 ease-out cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
           >
             <svg
               width="20"
@@ -467,23 +501,21 @@ export default function ContactForm({ categories }: Props) {
             type="submit"
             name="channel"
             value="email"
-            class="group relative inline-flex items-center justify-center gap-2 h-14 px-6 text-base font-semibold rounded-full bg-bleu text-blanc-casse shadow-card hover:bg-bleu-nuit hover:shadow-card-hover active:translate-y-px transition-all duration-200 ease-out cursor-pointer"
+            disabled={sending}
+            aria-busy={sending}
+            class="group relative inline-flex items-center justify-center gap-2 h-14 px-6 text-base font-semibold rounded-full bg-bleu text-blanc-casse shadow-card hover:bg-bleu-nuit hover:shadow-card-hover active:translate-y-px transition-all duration-200 ease-out cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
           >
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
-            >
-              <rect x="3" y="5" width="18" height="14" rx="2" />
-              <path d="m3 7 9 6 9-6" />
-            </svg>
-            Envoyer par mail
+            {sending ? (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="animate-spin">
+                <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+              </svg>
+            ) : (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <path d="m3 7 9 6 9-6" />
+              </svg>
+            )}
+            {sending ? 'Envoi…' : 'Envoyer par mail'}
           </button>
         </div>
         <p class="mt-3 text-xs text-bleu-nuit/70 text-center leading-relaxed">
