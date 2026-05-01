@@ -81,10 +81,7 @@ import data from '../../../data/templates/lagon.json';
         <img
           src={data.info.photoHero}
           alt="Verres de jus colorés sur fond tropical"
-          class="w-full h-full object-cover"
-          fetchpriority="high"
-          decoding="async"
-        />
+          class="w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async">
       </div>
       <!-- Sticker prix -->
       <div class="absolute -top-4 -right-4 md:-top-6 md:-right-6 w-24 h-24 md:w-32 md:h-32 bg-lagon-lime text-lagon-charbon rounded-full flex flex-col items-center justify-center font-bagel rotate-12 ring-4 ring-lagon-charbon">

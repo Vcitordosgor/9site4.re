@@ -27,10 +27,7 @@ import data from '../../../data/templates/mahatma.json';
       <img
         src={data.heroProjet.photo}
         alt={`${data.heroProjet.nom}, ${data.heroProjet.lieu}`}
-        class="w-full h-full object-cover grayscale"
-        fetchpriority="high"
-        decoding="async"
-      />
+        class="w-full h-full object-cover grayscale" loading="eager" fetchpriority="high" decoding="async">
       <!-- Cachet rouge en surimpression -->
       <div class="absolute top-4 right-4 md:top-8 md:right-8 border-2 border-mahatma-cachet text-mahatma-cachet px-3 py-1.5 font-fira-mono text-[10px] uppercase tracking-[0.22em] bg-mahatma-papier/90 transform rotate-[-3deg]">
         ◯ Récent · {data.heroProjet.annee}

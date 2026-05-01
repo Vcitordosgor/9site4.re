@@ -14,10 +14,7 @@ import data from '../../../data/templates/lazuli.json';
     <img
       src={data.info.photoHero}
       alt={data.info.photoHeroAlt ?? "Villa Lazuli, vue extérieure avec piscine"}
-      class="w-full h-full object-cover"
-      fetchpriority="high"
-      decoding="async"
-    />
+      class="w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async">
     <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(27,45,58,0.4) 0%, rgba(27,45,58,0.15) 35%, rgba(27,45,58,0.85) 100%);" aria-hidden="true"></div>
   </div>
 

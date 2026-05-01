@@ -24,9 +24,7 @@ import data from '../../../data/templates/sentiers.json';
           alt={p.alt}
           class="w-full h-full object-cover"
           fetchpriority={i === 0 ? 'high' : 'low'}
-          loading={i === 0 ? 'eager' : 'lazy'}
-          decoding="async"
-        />
+          loading={i === 0 ? 'eager' : 'lazy'} loading="eager" fetchpriority="high" decoding="async">
       </div>
     ))}
   </div>

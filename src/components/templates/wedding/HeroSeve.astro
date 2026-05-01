@@ -156,10 +156,7 @@ import data from '../../../data/templates/seve.json';
     <img
       src={data.info.photoHero}
       alt={data.info.photoHeroAlt}
-      class="absolute inset-0 w-full h-full object-cover"
-      loading="eager"
-      fetchpriority="high"
-    />
+      class="absolute inset-0 w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async">
     <!-- Voile ivoire en haut pour fondu doux avec le hero -->
     <div class="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-seve-ivoire to-transparent" aria-hidden="true"></div>
     <!-- Voile marine en bas pour lisibilité de la signature -->

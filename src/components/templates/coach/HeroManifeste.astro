@@ -61,10 +61,7 @@ import data from '../../../data/templates/foudre.json';
         <img
           src={data.info.photoHero}
           alt=""
-          class="w-full h-full object-cover object-center grayscale contrast-110"
-          fetchpriority="high"
-          decoding="async"
-        />
+          class="w-full h-full object-cover object-center grayscale contrast-110" loading="eager" fetchpriority="high" decoding="async">
         <!-- Overlay lime en bas -->
         <div class="absolute bottom-0 left-0 right-0 h-1 bg-coach-lime"></div>
         <!-- Étiquette coach -->

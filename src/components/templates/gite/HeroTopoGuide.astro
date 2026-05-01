@@ -39,10 +39,7 @@ import data from '../../../data/templates/cap-anglais.json';
           <img
             src={data.info.photoHero}
             alt={`Le Cap Anglais, gîte de ${data.info.ville}`}
-            class="w-full h-full object-cover"
-            fetchpriority="high"
-            decoding="async"
-          />
+            class="w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async">
           <!-- Épingle topo SVG centrée -->
           <div class="absolute top-1/3 left-2/3 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-1.5">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="currentColor" class="text-cap-rouge drop-shadow-md" aria-hidden="true">

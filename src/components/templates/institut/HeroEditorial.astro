@@ -52,10 +52,7 @@ import data from '../../../data/templates/marlene.json';
           <img
             src={data.info.photoHero}
             alt="Détail de l'institut Maison Marléne"
-            class="w-full h-full object-cover"
-            fetchpriority="high"
-            decoding="async"
-          />
+            class="w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async">
           <!-- Cadre champagne intérieur -->
           <div class="absolute inset-3 border border-marlene-champagne/40" aria-hidden="true"></div>
         </div>

@@ -77,10 +77,7 @@ import data from '../../../data/templates/concierge.json';
         <img
           src={data.info.photoHero}
           alt="Détail de bienvenue Concierge & Co"
-          class="w-full h-full object-cover"
-          fetchpriority="high"
-          decoding="async"
-        />
+          class="w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async">
         <!-- Cadre laiton intérieur -->
         <div class="absolute inset-3 border border-concierge-laiton/40" aria-hidden="true"></div>
         <!-- Étiquette manuscrite en bas -->

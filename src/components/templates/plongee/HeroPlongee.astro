@@ -18,10 +18,7 @@ const baleinesSaison = month >= 5 && month <= 9; // juin → octobre
   <img
     src={data.info.photoHero}
     alt={data.info.photoHeroAlt}
-    class="absolute inset-0 w-full h-full object-cover"
-    fetchpriority="high"
-    decoding="async"
-  />
+    class="absolute inset-0 w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async">
 
   <!-- Overlay gradient profond : dégradé du clair au plus sombre vers le bas -->
   <div class="absolute inset-0" aria-hidden="true"

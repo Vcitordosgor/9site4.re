@@ -13,10 +13,7 @@ import data from '../../../data/templates/mona.json';
     <img
       src={data.info.photoHero}
       alt="Table garnie de légumes frais et de plats équilibrés"
-      class="w-full h-full object-cover"
-      fetchpriority="high"
-      decoding="async"
-    />
+      class="w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async">
     <!-- Voile sombre pour lisibilité du texte -->
     <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(62,42,30,0.35) 0%, rgba(62,42,30,0.1) 35%, rgba(62,42,30,0.55) 100%);"></div>
 
