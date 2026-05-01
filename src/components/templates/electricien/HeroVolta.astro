@@ -7,7 +7,7 @@ import data from '../../../data/templates/volta.json';
   <!-- Photo hero en overlay sombre -->
   <div class="absolute inset-0" aria-hidden="true">
     <img
-      src={data.info.photoHero}
+      src={data.info.photoHero} srcset={`${(data.info.photoHero).replace(/\.webp$/, "-640.webp")} 640w, ${(data.info.photoHero).replace(/\.webp$/, "-1024.webp")} 1024w, ${data.info.photoHero} 1600w`} sizes="100vw"
       alt=""
       class="w-full h-full object-cover object-center" loading="eager" fetchpriority="high" decoding="async">
     <div class="absolute inset-0" style="background: linear-gradient(110deg, rgb(15 17 21 / 0.92) 0%, rgb(15 17 21 / 0.75) 55%, rgb(15 17 21 / 0.60) 100%);"></div>

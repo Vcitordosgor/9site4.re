@@ -25,7 +25,7 @@ import data from '../../../data/templates/mahatma.json';
     <!-- Grande photo projet emblématique -->
     <figure class="relative aspect-[16/10] mb-8 overflow-hidden bg-mahatma-charbon">
       <img
-        src={data.heroProjet.photo}
+        src={data.heroProjet.photo} srcset={`${(data.heroProjet.photo).replace(/\.webp$/, "-640.webp")} 640w, ${(data.heroProjet.photo).replace(/\.webp$/, "-1024.webp")} 1024w, ${data.heroProjet.photo} 1600w`} sizes="100vw"
         alt={`${data.heroProjet.nom}, ${data.heroProjet.lieu}`}
         class="w-full h-full object-cover grayscale" loading="eager" fetchpriority="high" decoding="async">
       <!-- Cachet rouge en surimpression -->

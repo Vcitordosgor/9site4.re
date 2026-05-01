@@ -11,7 +11,7 @@ import data from '../../../data/templates/mona.json';
   <!-- Photo top-shot pleine largeur -->
   <div class="relative aspect-[16/10] md:aspect-[16/9] lg:aspect-[21/9] overflow-hidden">
     <img
-      src={data.info.photoHero}
+      src={data.info.photoHero} srcset={`${(data.info.photoHero).replace(/\.webp$/, "-640.webp")} 640w, ${(data.info.photoHero).replace(/\.webp$/, "-1024.webp")} 1024w, ${data.info.photoHero} 1600w`} sizes="100vw"
       alt="Table garnie de légumes frais et de plats équilibrés"
       class="w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async">
     <!-- Voile sombre pour lisibilité du texte -->

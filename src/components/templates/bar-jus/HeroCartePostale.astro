@@ -79,7 +79,7 @@ import data from '../../../data/templates/lagon.json';
     <div class="lg:col-span-5 relative">
       <div class="relative aspect-square max-w-md mx-auto rounded-full overflow-hidden ring-8 ring-lagon-charbon" style="transform: rotate(3deg);">
         <img
-          src={data.info.photoHero}
+          src={data.info.photoHero} srcset={`${(data.info.photoHero).replace(/\.webp$/, "-640.webp")} 640w, ${(data.info.photoHero).replace(/\.webp$/, "-1024.webp")} 1024w, ${data.info.photoHero} 1600w`} sizes="100vw"
           alt="Verres de jus colorés sur fond tropical"
           class="w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async">
       </div>

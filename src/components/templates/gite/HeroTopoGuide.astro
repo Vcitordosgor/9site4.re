@@ -37,7 +37,7 @@ import data from '../../../data/templates/cap-anglais.json';
       <div class="lg:col-span-7">
         <div class="relative aspect-[4/3] bg-cap-charbon overflow-hidden">
           <img
-            src={data.info.photoHero}
+            src={data.info.photoHero} srcset={`${(data.info.photoHero).replace(/\.webp$/, "-640.webp")} 640w, ${(data.info.photoHero).replace(/\.webp$/, "-1024.webp")} 1024w, ${data.info.photoHero} 1600w`} sizes="100vw"
             alt={`Le Cap Anglais, gîte de ${data.info.ville}`}
             class="w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async">
           <!-- Épingle topo SVG centrée -->

@@ -16,7 +16,7 @@ const baleinesSaison = month >= 5 && month <= 9; // juin → octobre
 
   <!-- Photo plein écran sous-marine -->
   <img
-    src={data.info.photoHero}
+    src={data.info.photoHero} srcset={`${(data.info.photoHero).replace(/\.webp$/, "-640.webp")} 640w, ${(data.info.photoHero).replace(/\.webp$/, "-1024.webp")} 1024w, ${data.info.photoHero} 1600w`} sizes="100vw"
     alt={data.info.photoHeroAlt}
     class="absolute inset-0 w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async">
 

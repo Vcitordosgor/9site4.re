@@ -20,7 +20,7 @@ import data from '../../../data/templates/sentiers.json';
         ]}
       >
         <img
-          src={p.src}
+          src={p.src} srcset={`${(p.src).replace(/\.webp$/, "-640.webp")} 640w, ${(p.src).replace(/\.webp$/, "-1024.webp")} 1024w, ${p.src} 1600w`} sizes="100vw"
           alt={p.alt}
           class="w-full h-full object-cover"
           fetchpriority={i === 0 ? 'high' : 'low'}

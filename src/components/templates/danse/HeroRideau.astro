@@ -13,7 +13,7 @@ import data from '../../../data/templates/vermeille.json';
   <!-- Photo silhouette en arrière-plan, floutée et désaturée -->
   <div class="absolute inset-0" aria-hidden="true">
     <img
-      src={data.info.photoHero}
+      src={data.info.photoHero} srcset={`${(data.info.photoHero).replace(/\.webp$/, "-640.webp")} 640w, ${(data.info.photoHero).replace(/\.webp$/, "-1024.webp")} 1024w, ${data.info.photoHero} 1600w`} sizes="100vw"
       alt=""
       class="w-full h-full object-cover object-center grayscale opacity-40" loading="eager" fetchpriority="high" decoding="async">
     <div class="absolute inset-0 bg-gradient-to-b from-vermeille-velours/85 via-vermeille-velours/55 to-vermeille-velours"></div>

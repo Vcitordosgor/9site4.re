@@ -126,7 +126,7 @@ const today = new Date().toLocaleDateString('fr-FR', {
     <div class="mt-12 md:mt-16 max-w-5xl mx-auto">
       <div class="aspect-[16/7] overflow-hidden border-[3px] border-vanille-gousse">
         <img
-          src={data.info.photoHero}
+          src={data.info.photoHero} srcset={`${(data.info.photoHero).replace(/\.webp$/, "-640.webp")} 640w, ${(data.info.photoHero).replace(/\.webp$/, "-1024.webp")} 1024w, ${data.info.photoHero} 1600w`} sizes="100vw"
           alt={data.info.photoHeroAlt}
           class="w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async">
       </div>

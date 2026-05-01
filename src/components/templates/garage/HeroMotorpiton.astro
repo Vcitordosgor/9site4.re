@@ -15,7 +15,7 @@ const orderNum = `OR-${new Date().getFullYear()}-${String(Math.floor(Math.random
   <!-- Photo atelier en fond -->
   <div class="absolute inset-0 opacity-20" aria-hidden="true">
     <img
-      src={data.info.photoHero}
+      src={data.info.photoHero} srcset={`${(data.info.photoHero).replace(/\.webp$/, "-640.webp")} 640w, ${(data.info.photoHero).replace(/\.webp$/, "-1024.webp")} 1024w, ${data.info.photoHero} 1600w`} sizes="100vw"
       alt=""
       class="w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async">
     <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(15,16,20,0.85) 0%, rgba(15,16,20,0.95) 100%);"></div>

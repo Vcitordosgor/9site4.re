@@ -12,7 +12,7 @@ import data from '../../../data/templates/lazuli.json';
   <!-- Photo plein écran -->
   <div class="absolute inset-0">
     <img
-      src={data.info.photoHero}
+      src={data.info.photoHero} srcset={`${(data.info.photoHero).replace(/\.webp$/, "-640.webp")} 640w, ${(data.info.photoHero).replace(/\.webp$/, "-1024.webp")} 1024w, ${data.info.photoHero} 1600w`} sizes="100vw"
       alt={data.info.photoHeroAlt ?? "Villa Lazuli, vue extérieure avec piscine"}
       class="w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async">
     <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(27,45,58,0.4) 0%, rgba(27,45,58,0.15) 35%, rgba(27,45,58,0.85) 100%);" aria-hidden="true"></div>

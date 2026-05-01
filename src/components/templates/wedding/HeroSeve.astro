@@ -154,7 +154,7 @@ import data from '../../../data/templates/seve.json';
   <!-- Bandeau photo plage full-bleed -->
   <div class="relative mt-10 md:mt-14 h-[42vh] md:h-[58vh] min-h-[320px] overflow-hidden">
     <img
-      src={data.info.photoHero}
+      src={data.info.photoHero} srcset={`${(data.info.photoHero).replace(/\.webp$/, "-640.webp")} 640w, ${(data.info.photoHero).replace(/\.webp$/, "-1024.webp")} 1024w, ${data.info.photoHero} 1600w`} sizes="100vw"
       alt={data.info.photoHeroAlt}
       class="absolute inset-0 w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async">
     <!-- Voile ivoire en haut pour fondu doux avec le hero -->

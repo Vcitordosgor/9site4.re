@@ -59,7 +59,7 @@ import data from '../../../data/templates/foudre.json';
     <div class="lg:col-span-5 lg:pl-8">
       <div class="relative aspect-[4/5] max-w-[420px] mx-auto lg:mx-0 lg:ml-auto bg-coach-graphite overflow-hidden">
         <img
-          src={data.info.photoHero}
+          src={data.info.photoHero} srcset={`${(data.info.photoHero).replace(/\.webp$/, "-640.webp")} 640w, ${(data.info.photoHero).replace(/\.webp$/, "-1024.webp")} 1024w, ${data.info.photoHero} 1600w`} sizes="100vw"
           alt=""
           class="w-full h-full object-cover object-center grayscale contrast-110" loading="eager" fetchpriority="high" decoding="async">
         <!-- Overlay lime en bas -->

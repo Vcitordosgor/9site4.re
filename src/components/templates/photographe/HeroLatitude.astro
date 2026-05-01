@@ -126,7 +126,7 @@ const vignettes = [
             <figure class="relative group">
               <div class="aspect-[4/5] overflow-hidden bg-latitude-noir grayscale-[0.4]">
                 <img
-                  src={v.src}
+                  src={v.src} srcset={`${(v.src).replace(/\.webp$/, "-640.webp")} 640w, ${(v.src).replace(/\.webp$/, "-1024.webp")} 1024w, ${v.src} 1600w`} sizes="100vw"
                   alt=""
                   class="w-full h-full object-cover transition-all duration-500 group-hover:grayscale-0 group-hover:scale-[1.02]" loading="eager" fetchpriority="high" decoding="async">
               </div>

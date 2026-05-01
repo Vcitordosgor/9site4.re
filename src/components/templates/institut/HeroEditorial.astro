@@ -50,7 +50,7 @@ import data from '../../../data/templates/marlene.json';
       <div class="lg:col-span-4">
         <div class="relative aspect-square max-w-xs mx-auto bg-marlene-sable overflow-hidden">
           <img
-            src={data.info.photoHero}
+            src={data.info.photoHero} srcset={`${(data.info.photoHero).replace(/\.webp$/, "-640.webp")} 640w, ${(data.info.photoHero).replace(/\.webp$/, "-1024.webp")} 1024w, ${data.info.photoHero} 1600w`} sizes="100vw"
             alt="Détail de l'institut Maison Marléne"
             class="w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async">
           <!-- Cadre champagne intérieur -->

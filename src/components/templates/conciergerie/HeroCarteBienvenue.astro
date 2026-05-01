@@ -75,7 +75,7 @@ import data from '../../../data/templates/concierge.json';
     <div class="lg:col-span-5">
       <div class="relative aspect-[3/4] max-w-md mx-auto bg-concierge-blanc overflow-hidden">
         <img
-          src={data.info.photoHero}
+          src={data.info.photoHero} srcset={`${(data.info.photoHero).replace(/\.webp$/, "-640.webp")} 640w, ${(data.info.photoHero).replace(/\.webp$/, "-1024.webp")} 1024w, ${data.info.photoHero} 1600w`} sizes="100vw"
           alt="Détail de bienvenue Concierge & Co"
           class="w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async">
         <!-- Cadre laiton intérieur -->

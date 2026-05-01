@@ -70,7 +70,7 @@ import data from '../../../data/templates/agapanthes.json';
 
         <div class="relative overflow-hidden rounded-full border border-agap-violet/15" style="aspect-ratio: 1/1;">
           <img
-            src={data.info.photoHero}
+            src={data.info.photoHero} srcset={`${(data.info.photoHero).replace(/\.webp$/, "-640.webp")} 640w, ${(data.info.photoHero).replace(/\.webp$/, "-1024.webp")} 1024w, ${data.info.photoHero} 1600w`} sizes="100vw"
             alt={data.info.photoHeroAlt}
             width="900"
             height="900"
