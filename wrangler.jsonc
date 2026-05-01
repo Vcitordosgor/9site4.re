@@ -13,5 +13,11 @@
   "assets": {
     "binding": "ASSETS",
     "directory": "dist"
-  }
+  },
+  "send_email": [
+    {
+      "name": "SEB",
+      "destination_address": "9site4@gmail.com"
+    }
+  ]
 }
