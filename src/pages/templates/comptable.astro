@@ -13,6 +13,7 @@ import '@fontsource/dm-mono/latin-500.css';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSeo } from '../../lib/seo';
+import { localBusinessSchema } from "../../lib/businessSchema";
 import aubervalData from '../../data/templates/auberval.json';
 
 import AubervalHeader from '../../components/templates/comptable/AubervalHeader.astro';
@@ -26,10 +27,13 @@ import LeCabinet from '../../components/templates/comptable/LeCabinet.astro';
 import RendezVous from '../../components/templates/comptable/RendezVous.astro';
 import CTAFinal from '../../components/templates/comptable/CTAFinal.astro';
 import AubervalFooter from '../../components/templates/comptable/AubervalFooter.astro';
+const businessLD = localBusinessSchema(aubervalData);
+
 ---
 
 <BaseLayout seo={getSeo('templateComptable')} bare={true}>
   <Fragment slot="head">
+    {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
     <link rel="dns-prefetch" href="https://images.unsplash.com" />
   </Fragment>

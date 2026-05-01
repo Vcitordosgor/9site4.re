@@ -12,6 +12,7 @@ import '@fontsource/lexend/latin-500.css';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSeo } from '../../lib/seo';
+import { localBusinessSchema } from "../../lib/businessSchema";
 import souffleData from '../../data/templates/souffle.json';
 
 import YogaHeader from '../../components/templates/yoga/YogaHeader.astro';
@@ -25,10 +26,13 @@ import Reservation from '../../components/templates/yoga/Reservation.astro';
 import Lieu from '../../components/templates/yoga/Lieu.astro';
 import CTAFinal from '../../components/templates/yoga/CTAFinal.astro';
 import YogaFooter from '../../components/templates/yoga/YogaFooter.astro';
+const businessLD = localBusinessSchema(souffleData);
+
 ---
 
 <BaseLayout seo={getSeo('templateYoga')} bare={true}>
   <Fragment slot="head">
+    {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
     <link rel="dns-prefetch" href="https://images.unsplash.com" />
     <link

@@ -11,6 +11,7 @@ import '@fontsource/pinyon-script/latin-400.css';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSeo } from '../../lib/seo';
+import { localBusinessSchema } from "../../lib/businessSchema";
 import conciergeData from '../../data/templates/concierge.json';
 
 import ConciergeHeader from '../../components/templates/conciergerie/ConciergeHeader.astro';
@@ -23,10 +24,13 @@ import Temoignages from '../../components/templates/conciergerie/Temoignages.ast
 import Demande from '../../components/templates/conciergerie/Demande.astro';
 import CTAFinal from '../../components/templates/conciergerie/CTAFinal.astro';
 import ConciergeFooter from '../../components/templates/conciergerie/ConciergeFooter.astro';
+const businessLD = localBusinessSchema(conciergeData);
+
 ---
 
 <BaseLayout seo={getSeo('templateConciergerie')} bare={true}>
   <Fragment slot="head">
+    {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
     <link rel="dns-prefetch" href="https://images.unsplash.com" />
     <link

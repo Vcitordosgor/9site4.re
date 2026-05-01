@@ -13,6 +13,7 @@ import '@fontsource/jetbrains-mono/latin-500.css';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSeo } from '../../lib/seo';
+import { localBusinessSchema } from "../../lib/businessSchema";
 import capData from '../../data/templates/cap-anglais.json';
 
 import CapHeader from '../../components/templates/gite/CapHeader.astro';
@@ -26,10 +27,13 @@ import MotHote from '../../components/templates/gite/MotHote.astro';
 import CommentVenir from '../../components/templates/gite/CommentVenir.astro';
 import CTAFinal from '../../components/templates/gite/CTAFinal.astro';
 import CapFooter from '../../components/templates/gite/CapFooter.astro';
+const businessLD = localBusinessSchema(capData);
+
 ---
 
 <BaseLayout seo={getSeo('templateGite')} bare={true}>
   <Fragment slot="head">
+    {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
     <link rel="dns-prefetch" href="https://images.unsplash.com" />
     <link

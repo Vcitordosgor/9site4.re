@@ -8,6 +8,7 @@ import '@fontsource/archivo/latin-800.css';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSeo } from '../../lib/seo';
+import { localBusinessSchema } from "../../lib/businessSchema";
 import bernardData from '../../data/templates/bernard.json';
 
 import UrgenceBar from '../../components/templates/plomberie/UrgenceBar.astro';
@@ -25,9 +26,14 @@ import CTAFinal from '../../components/templates/plomberie/CTAFinal.astro';
 import PlomberieFooter from '../../components/templates/plomberie/PlomberieFooter.astro';
 
 const phoneHref = bernardData.info.telephoneHref;
+const businessLD = localBusinessSchema(bernardData);
+
 ---
 
 <BaseLayout seo={getSeo('templatePlomberie')} bare={true}>
+  <Fragment slot="head">
+    {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
+  </Fragment>
 
   <!-- UrgenceBar : bandeau noir collé tout en haut, AVANT le header -->
   <UrgenceBar />

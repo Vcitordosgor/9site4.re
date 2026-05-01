@@ -10,6 +10,7 @@ import '@fontsource/outfit/latin-600.css';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSeo } from '../../lib/seo';
+import { localBusinessSchema } from "../../lib/businessSchema";
 import seveData from '../../data/templates/seve.json';
 
 import SeveHeader from '../../components/templates/wedding/SeveHeader.astro';
@@ -21,10 +22,13 @@ import Demarches from '../../components/templates/wedding/Demarches.astro';
 import Couples from '../../components/templates/wedding/Couples.astro';
 import Contact from '../../components/templates/wedding/Contact.astro';
 import SeveFooter from '../../components/templates/wedding/SeveFooter.astro';
+const businessLD = localBusinessSchema(seveData);
+
 ---
 
 <BaseLayout seo={getSeo('templateWedding')} bare={true}>
   <Fragment slot="head">
+    {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
     <link rel="dns-prefetch" href="https://images.unsplash.com" />
     <link

@@ -11,6 +11,7 @@ import '@fontsource/fira-mono/latin-500.css';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSeo } from '../../lib/seo';
+import { localBusinessSchema } from "../../lib/businessSchema";
 import mahatmaData from '../../data/templates/mahatma.json';
 
 import MahatmaHeader from '../../components/templates/architecte/MahatmaHeader.astro';
@@ -23,10 +24,13 @@ import Distinctions from '../../components/templates/architecte/Distinctions.ast
 import RendezVous from '../../components/templates/architecte/RendezVous.astro';
 import CTAFinal from '../../components/templates/architecte/CTAFinal.astro';
 import MahatmaFooter from '../../components/templates/architecte/MahatmaFooter.astro';
+const businessLD = localBusinessSchema(mahatmaData);
+
 ---
 
 <BaseLayout seo={getSeo('templateArchitecte')} bare={true}>
   <Fragment slot="head">
+    {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
     <link rel="dns-prefetch" href="https://images.unsplash.com" />
     <link

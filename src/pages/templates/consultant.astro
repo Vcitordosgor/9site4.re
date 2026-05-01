@@ -11,6 +11,7 @@ import '@fontsource/space-mono/latin-700.css';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSeo } from '../../lib/seo';
+import { localBusinessSchema } from "../../lib/businessSchema";
 import lucasData from '../../data/templates/lucas.json';
 
 import LucasHeader from '../../components/templates/consultant/LucasHeader.astro';
@@ -24,10 +25,13 @@ import RendezVous from '../../components/templates/consultant/RendezVous.astro';
 import CV from '../../components/templates/consultant/CV.astro';
 import CTAFinal from '../../components/templates/consultant/CTAFinal.astro';
 import LucasFooter from '../../components/templates/consultant/LucasFooter.astro';
+const businessLD = localBusinessSchema(lucasData);
+
 ---
 
 <BaseLayout seo={getSeo('templateConsultant')} bare={true}>
   <Fragment slot="head">
+    {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
     <link rel="dns-prefetch" href="https://images.unsplash.com" />
   </Fragment>

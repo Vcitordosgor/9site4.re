@@ -12,6 +12,7 @@ import '@fontsource/dm-sans/latin-700.css';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSeo } from '../../lib/seo';
+import { localBusinessSchema } from "../../lib/businessSchema";
 import salonData from '../../data/templates/salon.json';
 
 import SalonHeader from '../../components/templates/salon/SalonHeader.astro';
@@ -23,10 +24,13 @@ import RendezVous from '../../components/templates/salon/RendezVous.astro';
 import ReassuranceInfos from '../../components/templates/salon/ReassuranceInfos.astro';
 import CTAFinal from '../../components/templates/salon/CTAFinal.astro';
 import SalonFooter from '../../components/templates/salon/SalonFooter.astro';
+const businessLD = localBusinessSchema(salonData);
+
 ---
 
 <BaseLayout seo={getSeo('templateSalon')} bare={true}>
   <Fragment slot="head">
+    {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
     <link rel="dns-prefetch" href="https://images.unsplash.com" />
     <link

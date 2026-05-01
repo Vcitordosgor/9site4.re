@@ -12,6 +12,7 @@ import '@fontsource/space-grotesk/latin-700.css';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSeo } from '../../lib/seo';
+import { localBusinessSchema } from "../../lib/businessSchema";
 import voltaData from '../../data/templates/volta.json';
 
 import VoltaHeader from '../../components/templates/electricien/VoltaHeader.astro';
@@ -25,10 +26,13 @@ import Devis from '../../components/templates/electricien/Devis.astro';
 import Trouver from '../../components/templates/electricien/Trouver.astro';
 import CTAFinal from '../../components/templates/electricien/CTAFinal.astro';
 import VoltaFooter from '../../components/templates/electricien/VoltaFooter.astro';
+const businessLD = localBusinessSchema(voltaData);
+
 ---
 
 <BaseLayout seo={getSeo('templateElectricien')} bare={true}>
   <Fragment slot="head">
+    {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
     <link rel="dns-prefetch" href="https://images.unsplash.com" />
     <link

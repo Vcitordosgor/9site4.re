@@ -10,6 +10,7 @@ import '@fontsource/eb-garamond/latin-400-italic.css';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSeo } from '../../lib/seo';
+import { localBusinessSchema } from "../../lib/businessSchema";
 import marleneData from '../../data/templates/marlene.json';
 
 import MarleneHeader from '../../components/templates/institut/MarleneHeader.astro';
@@ -22,10 +23,13 @@ import Reservation from '../../components/templates/institut/Reservation.astro';
 import Institut from '../../components/templates/institut/Institut.astro';
 import CTAFinal from '../../components/templates/institut/CTAFinal.astro';
 import MarleneFooter from '../../components/templates/institut/MarleneFooter.astro';
+const businessLD = localBusinessSchema(marleneData);
+
 ---
 
 <BaseLayout seo={getSeo('templateInstitut')} bare={true}>
   <Fragment slot="head">
+    {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
     <link rel="dns-prefetch" href="https://images.unsplash.com" />
     <link

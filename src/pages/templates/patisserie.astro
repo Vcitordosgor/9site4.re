@@ -7,6 +7,7 @@ import '@fontsource/karla/latin-600.css';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSeo } from '../../lib/seo';
+import { localBusinessSchema } from "../../lib/businessSchema";
 import vanilleData from '../../data/templates/vanille.json';
 
 import VanilleHeader from '../../components/templates/patisserie/VanilleHeader.astro';
@@ -18,10 +19,13 @@ import Commandes from '../../components/templates/patisserie/Commandes.astro';
 import Avis from '../../components/templates/patisserie/Avis.astro';
 import Contact from '../../components/templates/patisserie/Contact.astro';
 import VanilleFooter from '../../components/templates/patisserie/VanilleFooter.astro';
+const businessLD = localBusinessSchema(vanilleData);
+
 ---
 
 <BaseLayout seo={getSeo('templatePatisserie')} bare={true}>
   <Fragment slot="head">
+    {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
     <link rel="preload" as="image" href={vanilleData.info.photoHero} fetchpriority="high" />
   </Fragment>

@@ -13,6 +13,7 @@ import '@fontsource/jetbrains-mono/latin-700.css';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSeo } from '../../lib/seo';
+import { localBusinessSchema } from "../../lib/businessSchema";
 import foudreData from '../../data/templates/foudre.json';
 
 import CoachHeader from '../../components/templates/coach/CoachHeader.astro';
@@ -25,10 +26,13 @@ import Essai from '../../components/templates/coach/Essai.astro';
 import Lieux from '../../components/templates/coach/Lieux.astro';
 import CTAFinal from '../../components/templates/coach/CTAFinal.astro';
 import CoachFooter from '../../components/templates/coach/CoachFooter.astro';
+const businessLD = localBusinessSchema(foudreData);
+
 ---
 
 <BaseLayout seo={getSeo('templateCoach')} bare={true}>
   <Fragment slot="head">
+    {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
     <link rel="dns-prefetch" href="https://images.unsplash.com" />
     <link

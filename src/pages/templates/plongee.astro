@@ -10,6 +10,7 @@ import '@fontsource/jetbrains-mono/latin-500.css';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSeo } from '../../lib/seo';
+import { localBusinessSchema } from "../../lib/businessSchema";
 import bleulagonData from '../../data/templates/bleulagon.json';
 
 import BleuLagonHeader from '../../components/templates/plongee/BleuLagonHeader.astro';
@@ -20,10 +21,13 @@ import Securite from '../../components/templates/plongee/Securite.astro';
 import Avis from '../../components/templates/plongee/Avis.astro';
 import Contact from '../../components/templates/plongee/Contact.astro';
 import BleuLagonFooter from '../../components/templates/plongee/BleuLagonFooter.astro';
+const businessLD = localBusinessSchema(bleulagonData);
+
 ---
 
 <BaseLayout seo={getSeo('templatePlongee')} bare={true}>
   <Fragment slot="head">
+    {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
     <link rel="dns-prefetch" href="https://images.unsplash.com" />
     <link

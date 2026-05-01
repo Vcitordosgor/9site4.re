@@ -8,6 +8,7 @@ import '@fontsource/architects-daughter/latin-400.css';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSeo } from '../../lib/seo';
+import { localBusinessSchema } from "../../lib/businessSchema";
 import lagonData from '../../data/templates/lagon.json';
 
 import LagonHeader from '../../components/templates/bar-jus/LagonHeader.astro';
@@ -20,10 +21,13 @@ import Commander from '../../components/templates/bar-jus/Commander.astro';
 import Trouver from '../../components/templates/bar-jus/Trouver.astro';
 import CTAFinal from '../../components/templates/bar-jus/CTAFinal.astro';
 import LagonFooter from '../../components/templates/bar-jus/LagonFooter.astro';
+const businessLD = localBusinessSchema(lagonData);
+
 ---
 
 <BaseLayout seo={getSeo('templateBarJus')} bare={true}>
   <Fragment slot="head">
+    {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
     <link rel="dns-prefetch" href="https://images.unsplash.com" />
     <link

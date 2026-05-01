@@ -12,6 +12,7 @@ import '@fontsource/roboto-mono/latin-500.css';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSeo } from '../../lib/seo';
+import { localBusinessSchema } from "../../lib/businessSchema";
 import sentiersData from '../../data/templates/sentiers.json';
 
 import SentiersHeader from '../../components/templates/excursions/SentiersHeader.astro';
@@ -24,10 +25,13 @@ import Galerie from '../../components/templates/excursions/Galerie.astro';
 import Reservation from '../../components/templates/excursions/Reservation.astro';
 import CTAFinal from '../../components/templates/excursions/CTAFinal.astro';
 import SentiersFooter from '../../components/templates/excursions/SentiersFooter.astro';
+const businessLD = localBusinessSchema(sentiersData);
+
 ---
 
 <BaseLayout seo={getSeo('templateExcursions')} bare={true}>
   <Fragment slot="head">
+    {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
     <link rel="dns-prefetch" href="https://images.unsplash.com" />
     <link

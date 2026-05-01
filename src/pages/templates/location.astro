@@ -9,6 +9,7 @@ import '@fontsource/italianno/latin-400.css';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSeo } from '../../lib/seo';
+import { localBusinessSchema } from "../../lib/businessSchema";
 import lazuliData from '../../data/templates/lazuli.json';
 
 import LazuliHeader from '../../components/templates/location/LazuliHeader.astro';
@@ -22,10 +23,13 @@ import BonnesAdresses from '../../components/templates/location/BonnesAdresses.a
 import Reservation from '../../components/templates/location/Reservation.astro';
 import CTAFinal from '../../components/templates/location/CTAFinal.astro';
 import LazuliFooter from '../../components/templates/location/LazuliFooter.astro';
+const businessLD = localBusinessSchema(lazuliData);
+
 ---
 
 <BaseLayout seo={getSeo('templateLocation')} bare={true}>
   <Fragment slot="head">
+    {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
     <link rel="dns-prefetch" href="https://images.unsplash.com" />
     <link

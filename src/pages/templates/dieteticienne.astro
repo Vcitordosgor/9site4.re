@@ -12,6 +12,7 @@ import '@fontsource/reenie-beanie/latin-400.css';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSeo } from '../../lib/seo';
+import { localBusinessSchema } from "../../lib/businessSchema";
 import monaData from '../../data/templates/mona.json';
 
 import MonaHeader from '../../components/templates/dieteticienne/MonaHeader.astro';
@@ -27,10 +28,13 @@ import RendezVous from '../../components/templates/dieteticienne/RendezVous.astr
 import Trouver from '../../components/templates/dieteticienne/Trouver.astro';
 import CTAFinal from '../../components/templates/dieteticienne/CTAFinal.astro';
 import MonaFooter from '../../components/templates/dieteticienne/MonaFooter.astro';
+const businessLD = localBusinessSchema(monaData);
+
 ---
 
 <BaseLayout seo={getSeo('templateDieteticienne')} bare={true}>
   <Fragment slot="head">
+    {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
     <link rel="dns-prefetch" href="https://images.unsplash.com" />
     <link

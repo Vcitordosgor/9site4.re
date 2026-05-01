@@ -13,6 +13,7 @@ import '@fontsource/homemade-apple/latin-400.css';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSeo } from '../../lib/seo';
+import { localBusinessSchema } from "../../lib/businessSchema";
 import doudouData from '../../data/templates/doudou.json';
 
 import DoudouHeader from '../../components/templates/aide-domicile/DoudouHeader.astro';
@@ -26,10 +27,13 @@ import Temoignages from '../../components/templates/aide-domicile/Temoignages.as
 import Demande from '../../components/templates/aide-domicile/Demande.astro';
 import CTAFinal from '../../components/templates/aide-domicile/CTAFinal.astro';
 import DoudouFooter from '../../components/templates/aide-domicile/DoudouFooter.astro';
+const businessLD = localBusinessSchema(doudouData);
+
 ---
 
 <BaseLayout seo={getSeo('templateAideDomicile')} bare={true}>
   <Fragment slot="head">
+    {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
     <link rel="dns-prefetch" href="https://images.unsplash.com" />
     <link

@@ -10,6 +10,7 @@ import '@fontsource/caveat/latin-500.css';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSeo } from '../../lib/seo';
+import { localBusinessSchema } from "../../lib/businessSchema";
 import vermeilleData from '../../data/templates/vermeille.json';
 
 import VermeilleHeader from '../../components/templates/danse/VermeilleHeader.astro';
@@ -22,10 +23,13 @@ import Studio from '../../components/templates/danse/Studio.astro';
 import Inscription from '../../components/templates/danse/Inscription.astro';
 import CTAFinal from '../../components/templates/danse/CTAFinal.astro';
 import VermeilleFooter from '../../components/templates/danse/VermeilleFooter.astro';
+const businessLD = localBusinessSchema(vermeilleData);
+
 ---
 
 <BaseLayout seo={getSeo('templateDanse')} bare={true}>
   <Fragment slot="head">
+    {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
     <link rel="dns-prefetch" href="https://images.unsplash.com" />
     <link
