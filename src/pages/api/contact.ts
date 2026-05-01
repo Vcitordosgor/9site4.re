@@ -117,8 +117,11 @@ export const POST: APIRoute = async ({ request, locals }) => {
       html,
     });
   } catch (err) {
+    const detail =
+      err instanceof Error ? `${err.name}: ${err.message}` : String(err);
+    console.error('[api/contact] send failed', detail, err);
     return new Response(
-      JSON.stringify({ ok: false, error: 'send_failed', detail: String(err) }),
+      JSON.stringify({ ok: false, error: 'send_failed', detail }),
       { status: 502, headers: { 'Content-Type': 'application/json' } }
     );
   }

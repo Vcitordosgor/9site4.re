@@ -167,11 +167,13 @@ export default function ContactForm({ categories }: Props) {
         body: JSON.stringify(data),
       });
       if (!res.ok) {
-        const body = await res.json().catch(() => ({}));
+        const body = await res.json().catch(() => ({} as Record<string, unknown>));
+        const code = (body as { error?: string }).error ?? `http_${res.status}`;
+        const detail = (body as { detail?: string }).detail;
         setServerError(
-          body?.error === 'validation'
+          code === 'validation'
             ? 'Certains champs sont invalides.'
-            : "L'envoi a échoué. Réessayez ou utilisez WhatsApp."
+            : `L'envoi a échoué [${code}${detail ? ` — ${detail}` : ''}]. Réessayez ou utilisez WhatsApp.`
         );
         return;
       }
