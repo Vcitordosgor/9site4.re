@@ -110,7 +110,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
   try {
     await seb.send({
       from: `9site4 Contact <contact@9site4.re>`,
-      to: siteConfig.contact.email,
+      to: siteConfig.contact.notifyEmail,
       replyTo: email,
       subject: `Demande de contact — ${nom}${entreprise ? ` (${entreprise})` : ''}`,
       text,
