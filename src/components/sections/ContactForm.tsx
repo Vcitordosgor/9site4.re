@@ -137,8 +137,16 @@ export default function ContactForm({ categories }: Props) {
     }
 
     const message = buildMessage(data, categories);
-    const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-    window.open(waUrl, '_blank', 'noopener,noreferrer');
+    const channel = (fd.get('channel') as string) || 'whatsapp';
+    if (channel === 'email') {
+      const mailtoUrl = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
+        'Demande de contact — 9site4'
+      )}&body=${encodeURIComponent(message)}`;
+      window.location.href = mailtoUrl;
+    } else {
+      const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+      window.open(waUrl, '_blank', 'noopener,noreferrer');
+    }
     setLastMessage(message);
     setSubmitted(true);
     form.reset();
@@ -172,11 +180,11 @@ export default function ContactForm({ categories }: Props) {
           </svg>
         </div>
         <h3 class="mt-5 font-sora font-semibold text-2xl text-bleu-nuit">
-          WhatsApp ouvert dans un nouvel onglet
+          Message prêt à être envoyé
         </h3>
         <p class="mt-3 text-base text-bleu-nuit/75">
-          Validez l'envoi du message pré-rempli pour finaliser votre demande.
-          Si WhatsApp ne s'est pas ouvert, utilisez l'un des liens ci-dessous.
+          Votre message a été pré-rempli. Validez l'envoi dans la fenêtre qui vient
+          de s'ouvrir, ou utilisez l'un des liens ci-dessous si rien ne s'est passé.
         </p>
         <div class="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
           <a
@@ -435,30 +443,52 @@ export default function ContactForm({ categories }: Props) {
         ></textarea>
       </div>
 
-      {/* Submit */}
+      {/* Submit — deux canaux d'envoi */}
       <div class="pt-2">
-        <button
-          type="submit"
-          class="group relative inline-flex w-full items-center justify-center gap-2 h-14 px-8 text-lg font-semibold rounded-full bg-bleu text-blanc-casse shadow-card hover:bg-bleu-nuit hover:shadow-card-hover active:translate-y-px transition-all duration-200 ease-out cursor-pointer"
-        >
-          Envoyer via WhatsApp
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            aria-hidden="true"
-            class="transition-transform duration-300 ease-out group-hover:translate-x-1"
+        <div class="grid sm:grid-cols-2 gap-3">
+          <button
+            type="submit"
+            name="channel"
+            value="whatsapp"
+            class="group relative inline-flex items-center justify-center gap-2 h-14 px-6 text-base font-semibold rounded-full bg-[#25D366] text-white shadow-card hover:bg-[#1ebe57] hover:shadow-card-hover active:translate-y-px transition-all duration-200 ease-out cursor-pointer"
           >
-            <path d="M19.11 4.91A10 10 0 0 0 4.06 18.2L3 22l3.91-1.03A10 10 0 1 0 19.11 4.91Zm-7.1 15.4a8.3 8.3 0 0 1-4.24-1.16l-.3-.18-2.32.61.62-2.26-.2-.31a8.3 8.3 0 1 1 6.44 3.3Zm4.55-6.22c-.25-.13-1.47-.73-1.7-.81-.23-.08-.4-.13-.56.13-.17.25-.65.81-.8.98-.14.16-.29.18-.54.06-.25-.13-1.05-.39-2-1.23a7.5 7.5 0 0 1-1.39-1.72c-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.16.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.83-.2-.49-.41-.42-.56-.43h-.48c-.16 0-.42.06-.64.31-.22.25-.84.82-.84 2 0 1.18.86 2.32.98 2.48.13.16 1.7 2.6 4.12 3.65.58.25 1.02.4 1.37.51.57.18 1.1.16 1.51.1.46-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.1-.23-.16-.48-.29Z"/>
-          </svg>
-        </button>
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path d="M19.11 4.91A10 10 0 0 0 4.06 18.2L3 22l3.91-1.03A10 10 0 1 0 19.11 4.91Zm-7.1 15.4a8.3 8.3 0 0 1-4.24-1.16l-.3-.18-2.32.61.62-2.26-.2-.31a8.3 8.3 0 1 1 6.44 3.3Zm4.55-6.22c-.25-.13-1.47-.73-1.7-.81-.23-.08-.4-.13-.56.13-.17.25-.65.81-.8.98-.14.16-.29.18-.54.06-.25-.13-1.05-.39-2-1.23a7.5 7.5 0 0 1-1.39-1.72c-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.16.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.83-.2-.49-.41-.42-.56-.43h-.48c-.16 0-.42.06-.64.31-.22.25-.84.82-.84 2 0 1.18.86 2.32.98 2.48.13.16 1.7 2.6 4.12 3.65.58.25 1.02.4 1.37.51.57.18 1.1.16 1.51.1.46-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.1-.23-.16-.48-.29Z"/>
+            </svg>
+            Envoyer par WhatsApp
+          </button>
+          <button
+            type="submit"
+            name="channel"
+            value="email"
+            class="group relative inline-flex items-center justify-center gap-2 h-14 px-6 text-base font-semibold rounded-full bg-bleu text-blanc-casse shadow-card hover:bg-bleu-nuit hover:shadow-card-hover active:translate-y-px transition-all duration-200 ease-out cursor-pointer"
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <rect x="3" y="5" width="18" height="14" rx="2" />
+              <path d="m3 7 9 6 9-6" />
+            </svg>
+            Envoyer par mail
+          </button>
+        </div>
         <p class="mt-3 text-xs text-bleu-nuit/70 text-center leading-relaxed">
-          À la validation, votre demande s'ouvre pré-remplie dans WhatsApp.
-          Vous pouvez aussi écrire directement à{' '}
-          <a href={`mailto:${CONTACT_EMAIL}`} class="underline underline-offset-2 hover:text-orange">
-            {CONTACT_EMAIL}
-          </a>.
+          Choisissez le canal qui vous convient. Le message sera pré-rempli avec
+          les informations du formulaire — vous pourrez le relire avant l'envoi.
           Vos données restent confidentielles et sont conservées 12 mois maximum.
           {' '}
           <a href="/mentions-legales#donnees" class="underline underline-offset-2 hover:text-orange">
