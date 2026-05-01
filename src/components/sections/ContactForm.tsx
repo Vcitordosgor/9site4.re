@@ -92,7 +92,14 @@ export default function ContactForm({ categories }: Props) {
   const onSubmit: JSX.GenericEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
     const form = e.currentTarget;
+    const submitter = (e as unknown as { submitter?: HTMLElement | null }).submitter
+      ?? (e.nativeEvent as SubmitEvent | undefined)?.submitter
+      ?? null;
     const fd = new FormData(form);
+    const channelFromSubmitter =
+      submitter instanceof HTMLButtonElement && submitter.name === 'channel'
+        ? submitter.value
+        : null;
 
     if ((fd.get('website') as string)?.trim()) {
       setSubmitted(true);
@@ -139,7 +146,7 @@ export default function ContactForm({ categories }: Props) {
     }
 
     const message = buildMessage(data, categories);
-    const channel = ((fd.get('channel') as string) || 'whatsapp') as 'whatsapp' | 'email';
+    const channel = (channelFromSubmitter || (fd.get('channel') as string) || 'whatsapp') as 'whatsapp' | 'email';
     setServerError(null);
 
     if (channel === 'whatsapp') {
