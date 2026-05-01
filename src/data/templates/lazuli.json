@@ -15,7 +15,7 @@
     "instagram": "@villa.lazuli",
     "siret": "89012345500017",
     "annee": "2019",
-    "photoHero": "/images/location/hero.jpg",
+    "photoHero": "/images/location/hero.webp",
     "photoHeroAlt": "Villa Lazuli, vue d ensemble avec piscine et terrasse",
     "photoSticker": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600&q=85",
     "photoStickerAlt": "Vue du lagon depuis la terrasse de la villa",
@@ -50,49 +50,49 @@
       "id": "salon",
       "titre": "Le salon",
       "description": "Grand canapé d'angle, vue piscine, bibliothèque garnie. La pièce centrale.",
-      "photo": "/images/location/salon.jpg"
+      "photo": "/images/location/salon.webp"
     },
     {
       "id": "cuisine",
       "titre": "La cuisine",
       "description": "Entièrement équipée, îlot central, lave-vaisselle, four et plaque induction.",
-      "photo": "/images/location/cuisine.jpg"
+      "photo": "/images/location/cuisine.webp"
     },
     {
       "id": "chambre",
       "titre": "Chambre principale",
       "description": "Lit king size 180×200, dressing, vue lagon au lever du soleil.",
-      "photo": "/images/location/chambre.jpg"
+      "photo": "/images/location/chambre.webp"
     },
     {
       "id": "terrasse",
       "titre": "La terrasse",
       "description": "Couverte, salon de jardin pour 8 personnes, barbecue à gaz, brumisateur.",
-      "photo": "/images/location/terrasse.jpg"
+      "photo": "/images/location/terrasse.webp"
     },
     {
       "id": "piscine",
       "titre": "La piscine",
       "description": "Privée, chauffée, 8 × 4 m. Profondeur progressive. Transats et parasol.",
-      "photo": "/images/location/piscine.jpg"
+      "photo": "/images/location/piscine.webp"
     },
     {
       "id": "vue",
       "titre": "La vue",
       "description": "Le lagon de Saint-Leu, depuis la terrasse et les chambres côté mer.",
-      "photo": "/images/location/vue.jpg"
+      "photo": "/images/location/vue.webp"
     },
     {
       "id": "sdb",
       "titre": "Salle de bain",
       "description": "Douche italienne, double vasque, marbre, baignoire séparée dans la suite.",
-      "photo": "/images/location/sdb.jpg"
+      "photo": "/images/location/sdb.webp"
     },
     {
       "id": "exterieur",
       "titre": "Vue extérieure",
       "description": "Architecture créole revisitée, toits en bardeaux, palmiers et frangipaniers.",
-      "photo": "/images/location/exterieur.jpg"
+      "photo": "/images/location/exterieur.webp"
     }
   ],
   "equipements": {

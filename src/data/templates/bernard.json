@@ -25,10 +25,10 @@
     "photoBernardAlt": "Bernard, plombier, dans son atelier",
     "photoVan": "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=900&q=85",
     "photoVanAlt": "Camionnette d'intervention équipée",
-    "photoAvant1": "/images/plomberie/sdb-avant.jpg",
-    "photoApres1": "/images/plomberie/sdb-apres.jpg",
-    "photoAvant2": "/images/plomberie/cuisine-avant.jpg",
-    "photoApres2": "/images/plomberie/cuisine-apres.jpg"
+    "photoAvant1": "/images/plomberie/sdb-avant.webp",
+    "photoApres1": "/images/plomberie/sdb-apres.webp",
+    "photoAvant2": "/images/plomberie/cuisine-avant.webp",
+    "photoApres2": "/images/plomberie/cuisine-apres.webp"
   },
   "tagline": "FUITE, BOUCHON OU PANNE ?",
   "taglineLarge": "BERNARD ARRIVE.",

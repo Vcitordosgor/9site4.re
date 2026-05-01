@@ -18,7 +18,7 @@
     "siret": "67890123300017",
     "annee": "2008",
     "classification": 4,
-    "photoHero": "/images/gite/hero-cilaos.jpg",
+    "photoHero": "/images/gite/hero-cilaos.webp",
     "photoHeroAlt": "Vue panoramique du cirque de Cilaos a La Reunion",
     "photoExterieur": "https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=1200&q=85",
     "photoExterieurAlt": "Vue extérieure du gîte, façade nord côté Bras-Sec"
@@ -65,7 +65,7 @@
       "personnes": 2,
       "details": "Vue sur le cirque · douche partagée",
       "prix": "Comprise",
-      "photo": "/images/gite/chambre-la-nouvelle.jpg",
+      "photo": "/images/gite/chambre-la-nouvelle.webp",
       "photoAlt": "Chambre La Nouvelle, draps bleus et lumiere naturelle"
     },
     {
@@ -75,7 +75,7 @@
       "personnes": 2,
       "details": "Salle d'eau privée · vue jardin",
       "prix": "+ 5€/nuit",
-      "photo": "/images/gite/chambre-trois-roches.jpg",
+      "photo": "/images/gite/chambre-trois-roches.webp",
       "photoAlt": "Chambre 3 Roches, draps vert sauge et deco champetre"
     },
     {
@@ -85,7 +85,7 @@
       "personnes": 4,
       "details": "Format dortoir · vestiaire avec casiers",
       "prix": "Comprise",
-      "photo": "/images/gite/chambre-roche-plate.jpg",
+      "photo": "/images/gite/chambre-roche-plate.webp",
       "photoAlt": "Chambre Roche Plate, draps terracotta et tete de lit en cannage"
     },
     {
@@ -95,7 +95,7 @@
       "personnes": 4,
       "details": "Petite terrasse privative · idéale famille",
       "prix": "+ 8€/nuit",
-      "photo": "/images/gite/chambre-marla.jpg",
+      "photo": "/images/gite/chambre-marla.webp",
       "photoAlt": "Chambre Marla, draps blancs et pierre apparente"
     }
   ],

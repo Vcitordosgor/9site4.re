@@ -69,7 +69,7 @@
       "lieu": "Saint-Pierre",
       "typologie": "Tertiaire · 600 m²",
       "statut": "Livré",
-      "photo": "/images/architecte/bureaux.jpg"
+      "photo": "/images/architecte/bureaux.webp"
     },
     {
       "nom": "Lotissement Les Îlets",
@@ -77,7 +77,7 @@
       "lieu": "Le Tampon",
       "typologie": "12 logements collectifs",
       "statut": "Livré",
-      "photo": "/images/architecte/lotissement.jpg"
+      "photo": "/images/architecte/lotissement.webp"
     },
     {
       "nom": "Maison Carrère",
@@ -93,7 +93,7 @@
       "lieu": "Bras-Panon",
       "typologie": "Public · 1 200 m²",
       "statut": "Livré",
-      "photo": "/images/architecte/ecole.jpg"
+      "photo": "/images/architecte/ecole.webp"
     },
     {
       "nom": "Maison 162",
@@ -101,7 +101,7 @@
       "lieu": "Saint-Pierre",
       "typologie": "Commerce · 80 m²",
       "statut": "Livré",
-      "photo": "/images/architecte/magasin.jpg"
+      "photo": "/images/architecte/magasin.webp"
     },
     {
       "nom": "Bibliothèque Aurore",

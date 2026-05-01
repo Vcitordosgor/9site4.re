@@ -16,7 +16,7 @@
     "instagram": "@seve.et.sel",
     "siret": "78901234500017",
     "annee": "2017",
-    "photoHero": "/images/seve/hero.jpg",
+    "photoHero": "/images/seve/hero.webp",
     "photoHeroAlt": "Lagon turquoise de Saint-Leu, La Réunion — cadre idéal pour une cérémonie de mariage",
     "ceremonies2025": 47,
     "ceremoniesPrevues2026": 32
@@ -83,25 +83,25 @@
       "nom": "Plage de l'Hermitage",
       "ambiance": "Sable blanc, filaos, lagon protégé.",
       "moment": "Idéal au coucher du soleil (mai → octobre)",
-      "photo": "/images/seve/hermitage.jpg"
+      "photo": "/images/seve/hermitage.webp"
     },
     {
       "nom": "Boucan Canot",
       "ambiance": "Plage de sable doré, eau turquoise, ambiance festive.",
       "moment": "Magique au crépuscule, plus dramatique",
-      "photo": "/images/seve/boucan-canot.jpg"
+      "photo": "/images/seve/boucan-canot.webp"
     },
     {
       "nom": "Jardin de l'Eden (Saint-Leu)",
       "ambiance": "Jardin botanique privé, passerelles bois, palmiers tropicaux.",
       "moment": "Splendide en matinée (rosée + lumière douce)",
-      "photo": "/images/seve/jardin-eden.jpg"
+      "photo": "/images/seve/jardin-eden.webp"
     },
     {
       "nom": "Cap La Houssaye",
       "ambiance": "Falaises, point de vue océan, ciel sans bâti.",
       "moment": "Cérémonie laïque ou renouvellement intime",
-      "photo": "/images/seve/cap-houssaye.jpg"
+      "photo": "/images/seve/cap-houssaye.webp"
     }
   ],
   "fondatrice": {

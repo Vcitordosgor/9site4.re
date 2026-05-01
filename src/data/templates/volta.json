@@ -90,27 +90,27 @@
   ],
   "galerie": [
     {
-      "src": "/images/electricien/tableau.jpg",
+      "src": "/images/electricien/tableau.webp",
       "alt": "Tableau électrique câblé proprement",
       "label": "Tableau électrique — Saint-André"
     },
     {
-      "src": "/images/electricien/eclairage-interieur.jpg",
+      "src": "/images/electricien/eclairage-interieur.webp",
       "alt": "Éclairage intérieur LED, suspensions et spots encastrés",
       "label": "Éclairage intérieur — Saint-Pierre"
     },
     {
-      "src": "/images/electricien/eclairage-exterieur.jpg",
+      "src": "/images/electricien/eclairage-exterieur.webp",
       "alt": "Éclairage extérieur de façade et balisage de jardin",
       "label": "Éclairage extérieur — Le Tampon"
     },
     {
-      "src": "/images/electricien/domotique.jpg",
+      "src": "/images/electricien/domotique.webp",
       "alt": "Interrupteurs domotiques et thermostat connecté",
       "label": "Domotique — Saint-Denis"
     },
     {
-      "src": "/images/electricien/irve.jpg",
+      "src": "/images/electricien/irve.webp",
       "alt": "Borne de recharge véhicule électrique installée en extérieur",
       "label": "Borne IRVE — Bras-Panon"
     }

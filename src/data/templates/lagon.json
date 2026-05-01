@@ -52,7 +52,7 @@
       "prix": 5.5,
       "badge": "STAR",
       "couleur": "lagon-mangue",
-      "photo": "/images/lagon/mangue-passion.jpg",
+      "photo": "/images/lagon/mangue-passion.webp",
       "alt": "Verre de jus de mangue et fruit de la passion"
     },
     {
@@ -62,7 +62,7 @@
       "prix": 5,
       "badge": "ÉNERGIE",
       "couleur": "lagon-pitaya",
-      "photo": "/images/lagon/carotte-gingembre.jpg",
+      "photo": "/images/lagon/carotte-gingembre.webp",
       "alt": "Verre de jus de carotte au gingembre"
     },
     {
@@ -72,7 +72,7 @@
       "prix": 5,
       "badge": null,
       "couleur": "lagon-lime",
-      "photo": "/images/lagon/ananas-menthe.jpg",
+      "photo": "/images/lagon/ananas-menthe.webp",
       "alt": "Verre de jus d'ananas frais et menthe"
     },
     {
@@ -82,7 +82,7 @@
       "prix": 5.5,
       "badge": "DETOX",
       "couleur": "lagon-lime",
-      "photo": "/images/lagon/vert-detox.jpg",
+      "photo": "/images/lagon/vert-detox.webp",
       "alt": "Verre de jus vert détox épinard concombre"
     },
     {
@@ -92,7 +92,7 @@
       "prix": 5.5,
       "badge": "NOUVEAU",
       "couleur": "lagon-pitaya",
-      "photo": "/images/lagon/goyave-hibiscus.jpg",
+      "photo": "/images/lagon/goyave-hibiscus.webp",
       "alt": "Verre de jus rose goyave hibiscus"
     },
     {
@@ -102,7 +102,7 @@
       "prix": 5,
       "badge": null,
       "couleur": "lagon-pitaya",
-      "photo": "/images/lagon/betterave-orange.jpg",
+      "photo": "/images/lagon/betterave-orange.webp",
       "alt": "Verre de jus rouge betterave orange"
     },
     {
@@ -112,7 +112,7 @@
       "prix": 5.5,
       "badge": "DOUX",
       "couleur": "lagon-coco",
-      "photo": "/images/lagon/coco-vanille.jpg",
+      "photo": "/images/lagon/coco-vanille.webp",
       "alt": "Verre de boisson coco vanille"
     },
     {
@@ -122,7 +122,7 @@
       "prix": 5,
       "badge": null,
       "couleur": "lagon-turquoise",
-      "photo": "/images/lagon/pomme-fenouil.jpg",
+      "photo": "/images/lagon/pomme-fenouil.webp",
       "alt": "Verre de jus clair pomme fenouil"
     }
   ],
@@ -132,7 +132,7 @@
       "nom": "Bowl Tropical",
       "ingredients": "Mangue, ananas, granola coco, copeaux noix de coco, fruit du dragon",
       "prix": 9,
-      "photo": "/images/lagon/bowl-tropical.jpg",
+      "photo": "/images/lagon/bowl-tropical.webp",
       "alt": "Açaí bowl tropical aux fruits frais et noix de coco"
     },
     {
@@ -140,7 +140,7 @@
       "nom": "Bowl Açaí",
       "ingredients": "Açaí, banane, fraise, miel, granola, banane fraîche",
       "prix": 9.5,
-      "photo": "/images/lagon/bowl-acai.jpg",
+      "photo": "/images/lagon/bowl-acai.webp",
       "alt": "Açaí bowl violet à la banane et aux fraises"
     },
     {
@@ -148,7 +148,7 @@
       "nom": "Bowl Vert Power",
       "ingredients": "Épinard, banane, pomme, beurre cacahuète, granola",
       "prix": 8.5,
-      "photo": "/images/lagon/bowl-vert.jpg",
+      "photo": "/images/lagon/bowl-vert.webp",
       "alt": "Smoothie bowl vert épinard banane et granola"
     },
     {
@@ -156,7 +156,7 @@
       "nom": "Bowl Choco-Banane",
       "ingredients": "Banane, cacao, lait amande, granola, chips chocolat",
       "prix": 8.5,
-      "photo": "/images/lagon/bowl-choco.jpg",
+      "photo": "/images/lagon/bowl-choco.webp",
       "alt": "Smoothie bowl chocolat banane et granola"
     }
   ],

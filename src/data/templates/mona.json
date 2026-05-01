@@ -165,25 +165,25 @@
       "nom": "Bowl de quinoa & légumes grillés",
       "tempsTotal": "25 min",
       "ingredient": "Quinoa rouge",
-      "photo": "/images/diet/quinoa.jpg"
+      "photo": "/images/diet/quinoa.webp"
     },
     {
       "nom": "Smoothie banane & graines de chia",
       "tempsTotal": "5 min",
       "ingredient": "Chia",
-      "photo": "/images/diet/smoothie.jpg"
+      "photo": "/images/diet/smoothie.webp"
     },
     {
       "nom": "Curry de pois chiches au lait coco",
       "tempsTotal": "30 min",
       "ingredient": "Pois chiches",
-      "photo": "/images/diet/curry.jpg"
+      "photo": "/images/diet/curry.webp"
     },
     {
       "nom": "Pancakes flocons d'avoine & banane",
       "tempsTotal": "15 min",
       "ingredient": "Avoine",
-      "photo": "/images/diet/pancakes.jpg"
+      "photo": "/images/diet/pancakes.webp"
     }
   ],
   "avis": [

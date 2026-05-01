@@ -22,25 +22,25 @@
   },
   "carrousel": [
     {
-      "src": "/images/sentiers/cilaos.jpg",
+      "src": "/images/sentiers/cilaos.webp",
       "alt": "Vue panoramique sur le cirque de Cilaos depuis les hauteurs",
       "lieu": "Cirque de Cilaos",
       "altitude": "1 200 m"
     },
     {
-      "src": "/images/sentiers/mafate-aerien.jpg",
+      "src": "/images/sentiers/mafate-aerien.webp",
       "alt": "Vue aerienne du cirque de Mafate",
       "lieu": "Cirque de Mafate",
       "altitude": "1 200 m"
     },
     {
-      "src": "/images/sentiers/cascade.jpg",
+      "src": "/images/sentiers/cascade.webp",
       "alt": "Cascade et bassin de baignade",
       "lieu": "Cascade Niagara",
       "altitude": "25 m"
     },
     {
-      "src": "/images/sentiers/plaine.jpg",
+      "src": "/images/sentiers/plaine.webp",
       "alt": "Plaine herbeuse face a l ocean",
       "lieu": "Cap Mechant",
       "altitude": "200 m"
@@ -80,7 +80,7 @@
       "niveau": 3,
       "prix": "75 €",
       "description": "Boucle dans le cirque le plus reculé. Vue sur les hameaux d'Aurère et Marla. Pique-nique en altitude.",
-      "photo": "/images/sentiers/trois-salazes.jpg"
+      "photo": "/images/sentiers/trois-salazes.webp"
     },
     {
       "id": "mafate",
@@ -91,7 +91,7 @@
       "niveau": 3,
       "prix": "65 €",
       "description": "Départ à 4h pour voir le lever du soleil sur Mafate. Le moment le plus magique de l'île.",
-      "photo": "/images/sentiers/mafate.jpg"
+      "photo": "/images/sentiers/mafate.webp"
     },
     {
       "id": "grand-benare",
@@ -102,7 +102,7 @@
       "niveau": 4,
       "prix": "95 €",
       "description": "Ascension par clair de lune jusqu'au sommet à 2 896 m. Sortie nocturne, frontale obligatoire.",
-      "photo": "/images/sentiers/grand-benare.jpg"
+      "photo": "/images/sentiers/grand-benare.webp"
     },
     {
       "id": "bras-cabot",
@@ -113,7 +113,7 @@
       "niveau": 2,
       "prix": "50 €",
       "description": "Boucle accessible familles. Cascades, bassins de baignade, forêt humide. Idéale enfants 8+.",
-      "photo": "/images/sentiers/bras-cabot.jpg"
+      "photo": "/images/sentiers/bras-cabot.webp"
     },
     {
       "id": "volcan",
@@ -124,7 +124,7 @@
       "niveau": 3,
       "prix": "85 €",
       "description": "Traversée Pas de Bellecombe → cratère Dolomieu. Transport depuis Saint-Denis inclus.",
-      "photo": "/images/sentiers/volcan.jpg"
+      "photo": "/images/sentiers/volcan.webp"
     },
     {
       "id": "trail-decouverte",
@@ -135,7 +135,7 @@
       "niveau": 2,
       "prix": "60 €",
       "description": "Initiation course en montagne. Technique, allure, gestion d'effort. Niveau intermédiaire requis.",
-      "photo": "/images/sentiers/trail-decouverte.jpg"
+      "photo": "/images/sentiers/trail-decouverte.webp"
     }
   ],
   "prochaines": [
@@ -209,13 +209,13 @@
     }
   ],
   "galerie": [
-    "/images/sentiers/cilaos.jpg",
-    "/images/sentiers/mafate-aerien.jpg",
-    "/images/sentiers/cascade.jpg",
-    "/images/sentiers/plaine.jpg",
-    "/images/sentiers/trois-salazes.jpg",
-    "/images/sentiers/grand-benare.jpg",
-    "/images/sentiers/volcan.jpg",
-    "/images/sentiers/bras-cabot.jpg"
+    "/images/sentiers/cilaos.webp",
+    "/images/sentiers/mafate-aerien.webp",
+    "/images/sentiers/cascade.webp",
+    "/images/sentiers/plaine.webp",
+    "/images/sentiers/trois-salazes.webp",
+    "/images/sentiers/grand-benare.webp",
+    "/images/sentiers/volcan.webp",
+    "/images/sentiers/bras-cabot.webp"
   ]
 }
