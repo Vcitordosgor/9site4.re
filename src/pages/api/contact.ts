@@ -107,27 +107,78 @@ export const POST: APIRoute = async ({ request, locals }) => {
     );
   }
 
-  try {
-    await seb.send({
-      from: `9site4 Contact <contact@9site4.re>`,
-      to: siteConfig.contact.notifyEmail,
-      replyTo: email,
-      subject: `Demande de contact — ${nom}${entreprise ? ` (${entreprise})` : ''}`,
-      text,
-      html,
-    });
-  } catch (err) {
-    const detail =
-      err instanceof Error ? `${err.name}: ${err.message}` : String(err);
-    console.error('[api/contact] send failed', detail, err);
+  const discordWebhook = typeof env?.DISCORD_WEBHOOK_URL === 'string'
+    ? (env.DISCORD_WEBHOOK_URL as string)
+    : null;
+
+  const emailTask = seb.send({
+    from: `9site4 Contact <contact@9site4.re>`,
+    to: siteConfig.contact.notifyEmail,
+    replyTo: email,
+    subject: `Demande de contact — ${nom}${entreprise ? ` (${entreprise})` : ''}`,
+    text,
+    html,
+  });
+
+  const discordTask = discordWebhook
+    ? fetch(discordWebhook, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          username: '9site4 Contact',
+          embeds: [
+            {
+              title: `Nouvelle demande — ${nom}${entreprise ? ` (${entreprise})` : ''}`,
+              color: 0xff7a1a,
+              fields: [
+                { name: 'Nom', value: nom, inline: true },
+                ...(entreprise ? [{ name: 'Entreprise', value: entreprise, inline: true }] : []),
+                { name: 'Secteur', value: secteur, inline: true },
+                { name: 'Téléphone', value: telephone, inline: true },
+                { name: 'Email', value: email, inline: true },
+                { name: 'Besoin', value: besoin, inline: true },
+                { name: 'Préférence', value: preference, inline: true },
+                ...(message ? [{ name: 'Message', value: message.slice(0, 1024) }] : []),
+              ],
+              timestamp: new Date().toISOString(),
+              footer: { text: '9site4.re — formulaire de contact' },
+            },
+          ],
+        }),
+      }).then((r) => {
+        if (!r.ok) throw new Error(`Discord ${r.status}`);
+      })
+    : Promise.resolve();
+
+  const [emailRes, discordRes] = await Promise.allSettled([emailTask, discordTask]);
+
+  if (emailRes.status === 'rejected') {
+    const err = emailRes.reason;
+    const detail = err instanceof Error ? `${err.name}: ${err.message}` : String(err);
+    console.error('[api/contact] email failed', detail, err);
     return new Response(
       JSON.stringify({ ok: false, error: 'send_failed', detail }),
       { status: 502, headers: { 'Content-Type': 'application/json' } }
     );
   }
 
-  return new Response(JSON.stringify({ ok: true }), {
-    status: 200,
-    headers: { 'Content-Type': 'application/json' },
-  });
+  if (discordRes.status === 'rejected') {
+    console.error('[api/contact] discord failed', discordRes.reason);
+  }
+
+  return new Response(
+    JSON.stringify({
+      ok: true,
+      channels: {
+        email: 'sent',
+        discord: discordWebhook
+          ? discordRes.status === 'fulfilled' ? 'sent' : 'failed'
+          : 'disabled',
+      },
+    }),
+    {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    }
+  );
 };
