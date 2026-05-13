@@ -107,9 +107,13 @@ export const POST: APIRoute = async ({ request, locals }) => {
     );
   }
 
-  const discordWebhook = typeof env?.DISCORD_WEBHOOK_URL === 'string'
-    ? (env.DISCORD_WEBHOOK_URL as string)
-    : null;
+  const discordWebhook =
+    (typeof env?.DISCORD_WEBHOOK_URL === 'string' && (env.DISCORD_WEBHOOK_URL as string)) ||
+    (typeof env?.DISCORD_WEBHOOK === 'string' && (env.DISCORD_WEBHOOK as string)) ||
+    (typeof (globalThis as Record<string, unknown>).DISCORD_WEBHOOK_URL === 'string' &&
+      ((globalThis as Record<string, unknown>).DISCORD_WEBHOOK_URL as string)) ||
+    null;
+  const envKeys = env ? Object.keys(env) : [];
 
   const emailTask = seb.send({
     from: `9site4 Contact <contact@9site4.re>`,
@@ -162,8 +166,11 @@ export const POST: APIRoute = async ({ request, locals }) => {
     );
   }
 
+  let discordDetail: string | undefined;
   if (discordRes.status === 'rejected') {
-    console.error('[api/contact] discord failed', discordRes.reason);
+    const err = discordRes.reason;
+    discordDetail = err instanceof Error ? `${err.name}: ${err.message}` : String(err);
+    console.error('[api/contact] discord failed', discordDetail, err);
   }
 
   return new Response(
@@ -174,6 +181,10 @@ export const POST: APIRoute = async ({ request, locals }) => {
         discord: discordWebhook
           ? discordRes.status === 'fulfilled' ? 'sent' : 'failed'
           : 'disabled',
+      },
+      diag: {
+        envKeys,
+        discordDetail,
       },
     }),
     {
