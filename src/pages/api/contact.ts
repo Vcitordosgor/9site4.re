@@ -107,13 +107,13 @@ export const POST: APIRoute = async ({ request, locals }) => {
     );
   }
 
-  const discordWebhook =
-    (typeof env?.DISCORD_WEBHOOK_URL === 'string' && (env.DISCORD_WEBHOOK_URL as string)) ||
-    (typeof env?.DISCORD_WEBHOOK === 'string' && (env.DISCORD_WEBHOOK as string)) ||
-    (typeof (globalThis as Record<string, unknown>).DISCORD_WEBHOOK_URL === 'string' &&
-      ((globalThis as Record<string, unknown>).DISCORD_WEBHOOK_URL as string)) ||
-    null;
   const envKeys = env ? Object.keys(env) : [];
+  const discordKey = envKeys.find(
+    (k) => /discord/i.test(k) && /webhook/i.test(k)
+  );
+  const discordWebhook =
+    (discordKey && typeof env?.[discordKey] === 'string' && (env[discordKey] as string)) ||
+    null;
 
   const emailTask = seb.send({
     from: `9site4 Contact <contact@9site4.re>`,
