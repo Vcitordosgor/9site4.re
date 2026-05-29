@@ -1,0 +1,91 @@
+---
+import Icon from '../ui/Icon.astro';
+
+/**
+ * Approche — section éditoriale Squarespace : 2 blocs alternés image/texte.
+ * Bloc 1 : le problème (infos dispersées). Bloc 2 : la solution 9site4.
+ * Images réelles (Unsplash, comme le reste du site). Ratios réservés (no CLS).
+ */
+
+const IMG_PROBLEME =
+  'https://images.unsplash.com/photo-1556745757-8d76bdb6984b?w=1100&q=80';
+const IMG_SOLUTION =
+  'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1100&q=80';
+---
+
+<section class="relative px-6 py-20 md:py-28" aria-labelledby="approche-titre">
+  <div class="mx-auto max-w-content">
+    <h2 id="approche-titre" class="sr-only">Le problème et la solution 9site4</h2>
+
+    <!-- Bloc 1 : problème (texte gauche / image droite) -->
+    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <div class="scroll-reveal max-w-xl">
+        <p class="inline-flex items-center gap-2 text-sm font-semibold text-orange uppercase tracking-wide">
+          Le constat
+        </p>
+        <h3 class="mt-4 font-sora font-bold text-3xl md:text-4xl text-bleu-nuit text-balance leading-tight">
+          Vos infos sont partout. Vos clients, eux, hésitent.
+        </h3>
+        <p class="mt-5 text-lg text-bleu-nuit/70 leading-relaxed">
+          Horaires sur Google, photos sur Instagram, tarifs dans une story,
+          demandes sur WhatsApp, adresse introuvable. Quand tout est dispersé,
+          vos clients doutent, repoussent, ou contactent quelqu'un d'autre.
+        </p>
+      </div>
+      <div class="scroll-reveal">
+        <div class="relative aspect-[4/3] rounded-3xl overflow-hidden ring-1 ring-bleu-nuit/10 shadow-card">
+          <img
+            src={IMG_PROBLEME}
+            alt="Une personne jongle entre plusieurs écrans et applications"
+            class="w-full h-full object-cover"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Bloc 2 : solution (image gauche / texte droite) -->
+    <div class="mt-16 md:mt-24 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <div class="scroll-reveal order-2 lg:order-1">
+        <div class="relative aspect-[4/3] rounded-3xl overflow-hidden ring-1 ring-bleu-nuit/10 shadow-card">
+          <img
+            src={IMG_SOLUTION}
+            alt="Un commerce local accueillant, mis en valeur par un site clair"
+            class="w-full h-full object-cover"
+            loading="lazy"
+            decoding="async"
+          />
+          <!-- Petit badge "Demande reçue" posé sur l'image -->
+          <div class="absolute bottom-4 left-4 inline-flex items-center gap-2 h-9 px-3.5 rounded-full bg-blanc-casse/95 backdrop-blur-sm ring-1 ring-bleu-nuit/10 text-xs font-semibold text-bleu-nuit shadow-card">
+            <span class="w-2 h-2 rounded-full bg-[#25D366]"></span>
+            Nouvelle demande reçue
+          </div>
+        </div>
+      </div>
+      <div class="scroll-reveal order-1 lg:order-2 max-w-xl">
+        <p class="inline-flex items-center gap-2 text-sm font-semibold text-bleu-nuit uppercase tracking-wide">
+          <span class="w-2 h-2 rounded-full bg-bleu"></span> La solution
+        </p>
+        <h3 class="mt-4 font-sora font-bold text-3xl md:text-4xl text-bleu-nuit text-balance leading-tight">
+          Un seul site clair, qui vous ramène des demandes.
+        </h3>
+        <p class="mt-5 text-lg text-bleu-nuit/70 leading-relaxed">
+          9site4 rassemble tout au même endroit : horaires, prestations, contact,
+          et un formulaire adapté à votre métier. Vos clients trouvent tout, et
+          vous envoient une demande complète — directement par e-mail ou WhatsApp.
+        </p>
+        <ul class="mt-6 space-y-2.5">
+          {['Toutes vos infos réunies', 'Un formulaire pensé pour votre métier', 'Des demandes claires, moins d\'allers-retours'].map((t) => (
+            <li class="flex items-center gap-3 text-base text-bleu-nuit/80">
+              <span class="flex w-6 h-6 rounded-full bg-bleu/25 text-bleu-nuit items-center justify-center shrink-0">
+                <Icon name="check" size={14} strokeWidth={2.5} />
+              </span>
+              {t}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

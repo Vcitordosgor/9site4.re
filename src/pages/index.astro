@@ -1,29 +1,21 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/sections/Hero.astro';
-import Douleur from '../components/sections/Douleur.astro';
-import Promesse from '../components/sections/Promesse.astro';
-import Offre from '../components/sections/Offre.astro';
+import Approche from '../components/sections/Approche.astro';
 import FormulairesIntegres from '../components/sections/FormulairesIntegres.astro';
-import ApercuRealisations from '../components/sections/ApercuRealisations.astro';
-import PenseePour from '../components/sections/PenseePour.astro';
-import PourQui from '../components/sections/PourQui.astro';
-import CeQuOnVousDemande from '../components/sections/CeQuOnVousDemande.astro';
+import Etapes7Jours from '../components/sections/Etapes7Jours.astro';
 import TarifsBref from '../components/sections/TarifsBref.astro';
+import ApercuRealisations from '../components/sections/ApercuRealisations.astro';
 import CTABand from '../components/sections/CTABand.astro';
 import { getSeo } from '../lib/seo';
 ---
 
 <BaseLayout seo={getSeo('home')}>
   <Hero />
-  <Douleur />
-  <Promesse />
-  <Offre />
+  <Approche />
   <FormulairesIntegres />
-  <ApercuRealisations />
-  <PenseePour />
-  <PourQui />
-  <CeQuOnVousDemande />
+  <Etapes7Jours />
   <TarifsBref />
+  <ApercuRealisations />
   <CTABand />
 </BaseLayout>
