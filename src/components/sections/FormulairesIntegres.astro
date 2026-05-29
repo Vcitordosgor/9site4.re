@@ -1,6 +1,5 @@
 ---
 import Icon from '../ui/Icon.astro';
-import Button from '../ui/Button.astro';
 
 /**
  * Formulaires intégrés — section conversion (brief §13).
@@ -696,12 +695,7 @@ const etapes = [
                 <button
                   type="submit"
                   form={`demo-form-${m.id}`}
-                  class:list={[
-                    'mt-6 w-full h-12 rounded-full font-inter font-semibold text-base inline-flex items-center justify-center gap-2 cursor-pointer transition-all duration-200 ease-out hover:-translate-y-0.5 active:translate-y-0',
-                    m.color === 'orange'
-                      ? 'bg-orange text-bleu-nuit hover:bg-orange/90 shadow-[0_8px_24px_rgba(145,166,255,0.45)]'
-                      : 'bg-bleu-nuit text-blanc-casse hover:bg-bleu-nuit/85 shadow-[0_8px_24px_rgba(0,0,0,0.35)]',
-                  ]}
+                  class="mt-6 w-full h-12 rounded-full font-inter font-semibold text-base inline-flex items-center justify-center gap-2 cursor-pointer transition-all duration-200 ease-out hover:-translate-y-0.5 active:translate-y-0 bg-bleu text-white hover:bg-[#7e95ff] shadow-[0_8px_24px_rgba(145,166,255,0.45)]"
                 >
                   {m.cta}
                   <Icon name="arrow-right" size={18} strokeWidth={2} />
@@ -819,10 +813,13 @@ const etapes = [
         Aucun de ces 6 cas n'est exactement le vôtre ? On adapte le formulaire
         à toute activité — c'est inclus.
       </p>
-      <Button variant="secondary" size="md" href="/contact">
+      <a
+        href="/contact"
+        class="group inline-flex shrink-0 items-center justify-center gap-2 h-12 px-6 text-base font-semibold rounded-full bg-bleu text-white hover:bg-[#7e95ff] hover:-translate-y-0.5 shadow-[0_8px_24px_rgba(145,166,255,0.45)] transition-all duration-200 ease-out"
+      >
         Décrire mon besoin
-        <Icon name="arrow-right" size={18} strokeWidth={2} />
-      </Button>
+        <Icon name="arrow-right" size={18} strokeWidth={2} class="transition-transform duration-300 group-hover:translate-x-1" />
+      </a>
     </div>
   </div>
 </section>
