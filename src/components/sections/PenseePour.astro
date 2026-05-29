@@ -1,0 +1,76 @@
+---
+import Icon from '../ui/Icon.astro';
+
+{/*
+  ZONE À REMPLACER plus tard par de vrais témoignages
+  (src/data/temoignages.json + composant Temoignages).
+  Cette section présente la MÉTHODE 9site4, pas des avis clients.
+*/}
+
+const preuves = [
+  {
+    icon: 'palette',
+    titre: 'Exemples métiers',
+    texte: 'Des démonstrations concrètes par activité pour vous projeter avant de vous lancer.',
+  },
+  {
+    icon: 'file-text',
+    titre: 'Formulaire adapté',
+    texte: 'Chaque site reçoit un formulaire pensé pour votre métier, pas un champ générique.',
+  },
+  {
+    icon: 'map-pin',
+    titre: 'Accompagnement local',
+    texte: 'Un interlocuteur à La Réunion qui comprend votre activité et votre territoire.',
+  },
+  {
+    icon: 'euro',
+    titre: 'Prix clair',
+    texte: 'Un abonnement simple et prévisible, sans frais de création ni mauvaise surprise.',
+  },
+  {
+    icon: 'rocket',
+    titre: 'Mise en ligne rapide',
+    texte: 'Votre site est prêt en quelques jours, pas en plusieurs mois.',
+  },
+];
+---
+
+<section class="relative px-6 py-20 md:py-28" aria-labelledby="pensee-pour-titre">
+  <div class="mx-auto max-w-content">
+    <div class="max-w-3xl">
+      <p class="scroll-reveal inline-flex items-center px-3 py-1.5 rounded-full bg-bleu text-bleu-nuit text-xs font-semibold uppercase tracking-wide">
+        Une méthode, pas des promesses
+      </p>
+      <h2
+        id="pensee-pour-titre"
+        class="scroll-reveal mt-4 font-sora font-bold text-3xl md:text-5xl text-bleu-nuit text-balance leading-tight"
+      >
+        Une offre pensée pour les petites entreprises réunionnaises.
+      </h2>
+      <p class="scroll-reveal mt-6 text-lg text-bleu-nuit/70 leading-relaxed">
+        9site4 a été pensé pour les professionnels qui ont besoin d'un site clair,
+        rapide et géré, sans passer par une agence traditionnelle ni apprendre à
+        tout faire eux-mêmes.
+      </p>
+    </div>
+
+    <ul class="scroll-reveal mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-5">
+      {preuves.map((p) => (
+        <li class="h-full">
+          <article class="h-full flex flex-col rounded-2xl bg-blanc-casse ring-1 ring-bleu-nuit/10 p-5 md:p-6 transition-all duration-300 ease-out-soft hover:-translate-y-0.5 hover:shadow-card-hover hover:ring-bleu-nuit/15">
+            <span class="flex w-11 h-11 rounded-xl bg-orange/20 text-bleu-nuit items-center justify-center shrink-0">
+              <Icon name={p.icon} size={20} strokeWidth={1.75} />
+            </span>
+            <h3 class="mt-4 font-sora font-semibold text-base text-bleu-nuit leading-snug">
+              {p.titre}
+            </h3>
+            <p class="mt-2 text-sm text-bleu-nuit/65 leading-relaxed">
+              {p.texte}
+            </p>
+          </article>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

@@ -28,7 +28,8 @@ const cardItems = inclusions.map((i) => i.titre);
         Une offre claire, tout est inclus.
       </h1>
       <p class="mt-6 text-lg md:text-xl text-bleu-nuit/70 leading-relaxed">
-        Pas d'option cachée, pas d'engagement de durée. Choisissez la formule qui vous convient.
+        {siteConfig.pricing.monthly}/mois, soit environ {siteConfig.pricing.daily}/jour.
+        Pas d'option cachée, pas d'engagement de durée.
       </p>
     </div>
   </section>
@@ -145,22 +146,74 @@ const cardItems = inclusions.map((i) => i.titre);
     </div>
   </section>
 
-  <!-- Ce qui nous différencie -->
-  <section class="relative px-6 py-20 md:py-28" aria-labelledby="differencie-titre">
-    <div class="mx-auto max-w-3xl text-center">
-      <p class="scroll-reveal inline-flex items-center px-3 py-1.5 rounded-full bg-orange text-bleu-nuit text-xs font-semibold uppercase tracking-wide">
-        Ce qui nous différencie
-      </p>
-      <h2 id="differencie-titre" class="scroll-reveal mt-4 font-sora font-bold text-3xl md:text-5xl text-bleu-nuit text-balance leading-tight">
-        Une seule équipe pour tout votre site
-      </h2>
-      <p class="scroll-reveal mt-6 text-lg text-bleu-nuit/70 leading-relaxed">
-        Votre site, votre nom de domaine, votre hébergement, votre maintenance et
-        vos modifications simples sont inclus. Vous avez un seul interlocuteur,
-        un site adapté à votre métier, et un formulaire intégré pensé pour
-        recevoir les bonnes demandes : réservation, devis, rendez-vous ou
-        intervention.
-      </p>
+  <!-- Pourquoi 97,4€/mois ? -->
+  <section class="relative px-6 py-20 md:py-24" aria-labelledby="pourquoi-titre">
+    <div class="mx-auto max-w-content">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 id="pourquoi-titre" class="scroll-reveal font-sora font-bold text-3xl md:text-5xl text-bleu-nuit text-balance leading-tight">
+          Pourquoi {siteConfig.pricing.monthly}/mois ?
+        </h2>
+        <p class="scroll-reveal mt-6 text-lg text-bleu-nuit/70 leading-relaxed">
+          Parce qu'un site ne se limite pas à sa création. Il faut le mettre en
+          ligne, l'héberger, le sécuriser, le maintenir, changer les horaires,
+          modifier les textes, remplacer les photos et garder un interlocuteur
+          quand quelque chose bloque.
+        </p>
+      </div>
+      <div class="scroll-reveal mt-12 grid grid-cols-1 md:grid-cols-3 gap-5">
+        <article class="rounded-2xl bg-blanc-casse ring-1 ring-bleu-nuit/10 p-6 md:p-7 transition-all duration-300 ease-out-soft hover:-translate-y-0.5 hover:shadow-card-hover hover:ring-bleu-nuit/15">
+          <span class="flex w-12 h-12 rounded-xl bg-bleu/25 text-bleu-nuit items-center justify-center">
+            <Icon name="euro" size={22} strokeWidth={1.75} />
+          </span>
+          <h3 class="mt-5 font-sora font-semibold text-lg text-bleu-nuit leading-snug">Sans frais de création</h3>
+          <p class="mt-2 text-sm text-bleu-nuit/65 leading-relaxed">Pas besoin de sortir 1 500 € au démarrage. Votre site est inclus dans l'abonnement.</p>
+        </article>
+        <article class="rounded-2xl bg-blanc-casse ring-1 ring-bleu-nuit/10 p-6 md:p-7 transition-all duration-300 ease-out-soft hover:-translate-y-0.5 hover:shadow-card-hover hover:ring-bleu-nuit/15">
+          <span class="flex w-12 h-12 rounded-xl bg-orange/15 text-orange items-center justify-center">
+            <Icon name="shield-check" size={22} strokeWidth={1.75} />
+          </span>
+          <h3 class="mt-5 font-sora font-semibold text-lg text-bleu-nuit leading-snug">Sans technique à gérer</h3>
+          <p class="mt-2 text-sm text-bleu-nuit/65 leading-relaxed">Nom de domaine, hébergement, sécurité, maintenance : 9site4 s'en occupe.</p>
+        </article>
+        <article class="rounded-2xl bg-blanc-casse ring-1 ring-bleu-nuit/10 p-6 md:p-7 transition-all duration-300 ease-out-soft hover:-translate-y-0.5 hover:shadow-card-hover hover:ring-bleu-nuit/15">
+          <span class="flex w-12 h-12 rounded-xl bg-bleu/25 text-bleu-nuit items-center justify-center">
+            <Icon name="check" size={22} strokeWidth={1.75} />
+          </span>
+          <h3 class="mt-5 font-sora font-semibold text-lg text-bleu-nuit leading-snug">Sans mauvaise surprise</h3>
+          <p class="mt-2 text-sm text-bleu-nuit/65 leading-relaxed">Une offre claire, un prix prévisible, des modifications simples incluses.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ce que vous n'avez pas à gérer -->
+  <section class="relative px-6 py-20 md:py-28" aria-labelledby="pas-a-gerer-titre">
+    <div class="mx-auto max-w-content">
+      <div class="max-w-3xl">
+        <p class="scroll-reveal inline-flex items-center px-3 py-1.5 rounded-full bg-orange text-bleu-nuit text-xs font-semibold uppercase tracking-wide">
+          Ce que vous n'avez pas à gérer
+        </p>
+        <h2 id="pas-a-gerer-titre" class="scroll-reveal mt-4 font-sora font-bold text-3xl md:text-5xl text-bleu-nuit text-balance leading-tight">
+          On s'occupe de tout ce qui vous ralentit.
+        </h2>
+      </div>
+      <ul class="scroll-reveal mt-10 grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {[
+          'Pas de WordPress à apprendre',
+          'Pas d\'hébergement à configurer',
+          'Pas de plugin à maintenir',
+          'Pas de freelance à relancer',
+          'Pas de cahier des charges compliqué',
+          'Pas de mise à jour de sécurité à suivre',
+        ].map((item) => (
+          <li class="flex items-start gap-3 rounded-2xl bg-blanc-casse ring-1 ring-bleu-nuit/10 px-5 py-4">
+            <span class="flex w-6 h-6 rounded-full bg-bleu/25 text-bleu-nuit items-center justify-center shrink-0 mt-0.5">
+              <Icon name="check" size={14} strokeWidth={2.5} />
+            </span>
+            <span class="text-base text-bleu-nuit/80 leading-snug">{item}</span>
+          </li>
+        ))}
+      </ul>
     </div>
   </section>
 

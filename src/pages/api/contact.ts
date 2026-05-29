@@ -166,27 +166,14 @@ export const POST: APIRoute = async ({ request, locals }) => {
     );
   }
 
-  let discordDetail: string | undefined;
   if (discordRes.status === 'rejected') {
     const err = discordRes.reason;
-    discordDetail = err instanceof Error ? `${err.name}: ${err.message}` : String(err);
+    const discordDetail = err instanceof Error ? `${err.name}: ${err.message}` : String(err);
     console.error('[api/contact] discord failed', discordDetail, err);
   }
 
   return new Response(
-    JSON.stringify({
-      ok: true,
-      channels: {
-        email: 'sent',
-        discord: discordWebhook
-          ? discordRes.status === 'fulfilled' ? 'sent' : 'failed'
-          : 'disabled',
-      },
-      diag: {
-        envKeys,
-        discordDetail,
-      },
-    }),
+    JSON.stringify({ ok: true }),
     {
       status: 200,
       headers: { 'Content-Type': 'application/json' },

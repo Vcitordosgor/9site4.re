@@ -1,10 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/sections/Hero.astro';
+import Douleur from '../components/sections/Douleur.astro';
 import Promesse from '../components/sections/Promesse.astro';
 import Offre from '../components/sections/Offre.astro';
 import FormulairesIntegres from '../components/sections/FormulairesIntegres.astro';
 import ApercuRealisations from '../components/sections/ApercuRealisations.astro';
+import PenseePour from '../components/sections/PenseePour.astro';
+import PourQui from '../components/sections/PourQui.astro';
+import CeQuOnVousDemande from '../components/sections/CeQuOnVousDemande.astro';
 import TarifsBref from '../components/sections/TarifsBref.astro';
 import CTABand from '../components/sections/CTABand.astro';
 import { getSeo } from '../lib/seo';
@@ -12,10 +16,14 @@ import { getSeo } from '../lib/seo';
 
 <BaseLayout seo={getSeo('home')}>
   <Hero />
+  <Douleur />
   <Promesse />
   <Offre />
   <FormulairesIntegres />
   <ApercuRealisations />
+  <PenseePour />
+  <PourQui />
+  <CeQuOnVousDemande />
   <TarifsBref />
   <CTABand />
 </BaseLayout>
