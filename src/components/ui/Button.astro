@@ -43,13 +43,12 @@ const tertiarySizes = {
 
 const variants = {
   primary:
-    'btn-shimmer bg-bleu text-blanc-casse shadow-card hover:bg-bleu-nuit hover:shadow-card-hover active:translate-y-px',
-  // Variante pour CTA sur fond foncé (carte annuelle, sections sombres) :
-  // hover bascule en blanc cassé + bleu nuit pour un contraste premium et lisible.
+    'bg-bleu text-white shadow-[0_8px_24px_rgba(145,166,255,0.45)] hover:bg-[#7e95ff] hover:-translate-y-0.5 hover:shadow-card-hover active:translate-y-0',
+  // CTA sur fond foncé : même mauve, texte blanc.
   'primary-on-dark':
-    'btn-shimmer bg-bleu text-blanc-casse shadow-card hover:bg-blanc-casse hover:text-bleu-nuit hover:shadow-card-hover active:translate-y-px',
+    'bg-bleu text-white shadow-[0_8px_24px_rgba(145,166,255,0.45)] hover:bg-[#7e95ff] hover:-translate-y-0.5 hover:shadow-card-hover active:translate-y-0',
   secondary:
-    'bg-transparent border border-bleu-nuit text-bleu-nuit hover:bg-bleu-nuit hover:text-blanc-casse',
+    'bg-bleu text-white hover:bg-[#7e95ff] hover:-translate-y-0.5 shadow-[0_8px_24px_rgba(145,166,255,0.45)]',
   tertiary:
     'bg-transparent text-bleu-nuit hover:text-orange',
 };
