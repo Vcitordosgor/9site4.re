@@ -17,6 +17,12 @@ const categoriesWithCount = categories.map((c) => ({
   ...c,
   count: counts[c.id] ?? 0,
 }));
+
+// 3 exemples vedettes (métiers variés) mis en avant avant la grille complète
+const featuredCats = ['restaurants', 'artisans', 'beaute'];
+const featured = featuredCats
+  .map((cat) => realisations.find((r) => r.categorie === cat))
+  .filter(Boolean) as typeof realisations;
 ---
 
 <BaseLayout seo={getSeo('realisations')}>
@@ -30,13 +36,63 @@ const categoriesWithCount = categories.map((c) => ({
         Exemples métiers
       </p>
       <h1 class="mt-4 text-4xl md:text-6xl font-sora font-bold text-bleu-nuit text-balance leading-tight">
-        Exemples métiers
+        Un aperçu de ce qu'on peut créer pour vous.
       </h1>
       <p class="mt-6 text-lg md:text-xl text-bleu-nuit/70 leading-relaxed">
         Ces exemples sont des démonstrations créées par 9site4 pour vous aider à
         vous projeter. Chaque site client est ensuite adapté à son activité, ses
         contenus et ses objectifs.
       </p>
+    </div>
+  </section>
+
+  <!-- Exemples vedettes -->
+  <section class="relative px-6 pb-4 md:pb-8" aria-labelledby="vedettes-titre">
+    <div class="mx-auto max-w-content">
+      <h2 id="vedettes-titre" class="sr-only">Exemples mis en avant</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {featured.map((r) => (
+          <a
+            href={r.previewUrl}
+            class="group relative flex flex-col rounded-3xl overflow-hidden ring-1 ring-bleu-nuit/10 bg-blanc-casse shadow-card transition-all duration-300 ease-out-soft hover:-translate-y-1 hover:shadow-card-hover"
+          >
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <img
+                src={r.thumbnail}
+                alt={`Exemple de site — ${r.nom}`}
+                class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="absolute top-3 left-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-orange text-bleu-nuit text-[10px] font-bold uppercase tracking-wide">
+                Démo métier
+              </span>
+            </div>
+            <div class="flex flex-col flex-1 p-6">
+              <p class="font-sora font-semibold text-lg text-bleu-nuit">{r.nom}</p>
+              <p class="mt-1 text-sm text-bleu-nuit/65 leading-relaxed">{r.sousTitre}</p>
+              <div class="mt-4 flex items-center justify-between">
+                <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-bleu/20 text-bleu-nuit text-xs font-semibold">
+                  Module : {r.moduleInclus}
+                </span>
+                <span class="inline-flex items-center gap-1 text-sm font-semibold text-bleu-nuit group-hover:text-orange transition-colors">
+                  Voir la démo
+                  <span aria-hidden="true" class="transition-transform duration-300 group-hover:translate-x-0.5">→</span>
+                </span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Séparateur : toute la collection -->
+  <section class="relative px-6 pt-12 md:pt-16 pb-2" aria-hidden="true">
+    <div class="mx-auto max-w-content flex items-center gap-4">
+      <span class="h-px flex-1 bg-bleu-nuit/10"></span>
+      <span class="font-roboto-mono text-[11px] uppercase tracking-[0.28em] text-bleu-nuit/45">Toute la collection</span>
+      <span class="h-px flex-1 bg-bleu-nuit/10"></span>
     </div>
   </section>
 
