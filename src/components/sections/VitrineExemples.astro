@@ -1,0 +1,110 @@
+---
+import realisations from '../data/realisations.json';
+
+/**
+ * VitrineExemples — carrousel auto (marquee) d'exemples de sites, façon
+ * Squarespace. Fond sombre, cartes qui défilent en boucle, accroche + chiffres
+ * HONNÊTES (pas de faux clients). Pause au survol. Coupé sous reduced-motion.
+ */
+
+// Sélection variée pour le défilé
+const items = realisations.slice(0, 10);
+// Dupliqué pour une boucle sans couture
+const loop = [...items, ...items];
+
+const stats = [
+  { value: `${realisations.length}`, label: 'exemples de sites en ligne' },
+  { value: '7 jours', label: 'pour mettre votre site en ligne' },
+  { value: '97,4€', label: 'par mois, tout compris' },
+];
+---
+
+<section class="relative overflow-hidden bg-bleu-nuit text-blanc-casse py-20 md:py-28" aria-labelledby="vitrine-titre">
+  <div class="mx-auto max-w-content px-6 text-center">
+    <h2 id="vitrine-titre" class="font-sora font-bold text-3xl md:text-5xl text-balance leading-tight">
+      Un site pensé pour votre métier.
+    </h2>
+    <p class="mt-5 mx-auto max-w-2xl text-lg text-blanc-casse/70 leading-relaxed">
+      Découvrez des exemples de sites créés par 9site4, métier par métier —
+      de quoi vous projeter pour le vôtre.
+    </p>
+  </div>
+
+  <!-- Marquee -->
+  <div class="vitrine-marquee relative mt-12 md:mt-16" aria-label="Exemples de sites qui défilent">
+    <div class="vitrine-track flex gap-5 w-max px-3">
+      {loop.map((r, i) => (
+        <a
+          href={r.previewUrl}
+          class="group relative shrink-0 w-72 md:w-80 rounded-2xl overflow-hidden ring-1 ring-blanc-casse/10 bg-blanc-casse/[0.03] transition-transform duration-300 hover:-translate-y-1"
+          aria-hidden={i >= items.length ? 'true' : undefined}
+          tabindex={i >= items.length ? -1 : undefined}
+        >
+          <div class="relative aspect-[4/3] overflow-hidden">
+            <img
+              src={r.thumbnail}
+              alt={`Exemple de site — ${r.nom}`}
+              class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-bleu-nuit/70 via-transparent to-transparent"></div>
+            <div class="absolute bottom-0 inset-x-0 p-4 flex items-end justify-between gap-2">
+              <span class="font-sora font-semibold text-sm text-blanc-casse">{r.nom}</span>
+              <span class="inline-flex items-center px-2 py-0.5 rounded-full bg-orange text-bleu-nuit text-[10px] font-bold uppercase tracking-wide">
+                {r.moduleInclus}
+              </span>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+    <!-- Fondus latéraux -->
+    <div class="pointer-events-none absolute inset-y-0 left-0 w-16 md:w-28 bg-gradient-to-r from-bleu-nuit to-transparent" aria-hidden="true"></div>
+    <div class="pointer-events-none absolute inset-y-0 right-0 w-16 md:w-28 bg-gradient-to-l from-bleu-nuit to-transparent" aria-hidden="true"></div>
+  </div>
+
+  <!-- Chiffres honnêtes -->
+  <div class="mx-auto max-w-content px-6 mt-14 md:mt-20">
+    <dl class="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+      {stats.map((s) => (
+        <div>
+          <dt class="sr-only">{s.label}</dt>
+          <dd>
+            <span class="block font-sora font-bold text-4xl md:text-5xl text-blanc-casse">{s.value}</span>
+            <span class="mt-2 block text-sm text-blanc-casse/65">{s.label}</span>
+          </dd>
+        </div>
+      ))}
+    </dl>
+
+    <div class="mt-12 flex justify-center">
+      <a
+        href="/realisations"
+        class="inline-flex items-center justify-center gap-2 h-13 px-8 py-3.5 text-base font-semibold rounded-full ring-1 ring-blanc-casse/30 text-blanc-casse hover:bg-blanc-casse hover:text-bleu-nuit transition-all duration-200 ease-out"
+      >
+        Voir tous les exemples métiers
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .vitrine-marquee { -webkit-mask-image: none; }
+  .vitrine-track {
+    animation: vitrine-scroll 50s linear infinite;
+    will-change: transform;
+  }
+  .vitrine-marquee:hover .vitrine-track {
+    animation-play-state: paused;
+  }
+  @keyframes vitrine-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .vitrine-marquee { overflow-x: auto; }
+    .vitrine-track { animation: none; }
+  }
+</style>
