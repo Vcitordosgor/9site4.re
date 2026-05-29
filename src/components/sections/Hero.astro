@@ -3,21 +3,16 @@ import Icon from '../ui/Icon.astro';
 import siteConfig from '../../data/siteConfig.json';
 
 /**
- * Hero — bold, aligné à gauche, charte 9site4 (orange + bleu mauve).
- * Le métier défile dans le H1 (effet "Squarespace" léger, 100% CSS/JS,
- * aucune vidéo/image lourde). Respecte prefers-reduced-motion.
- * Le H1 reste l'élément prioritaire (LCP) — texte réel pour le SEO via aria-label.
+ * Hero — plein cadre façon Squarespace, vidéo de fond + overlay.
+ * La vidéo est optionnelle : si /videos/hero.mp4 est absent, un dégradé de
+ * marque sert de fond (aucune erreur). Vidéo muette/autoplay/loop/playsinline,
+ * coupée sous prefers-reduced-motion (poster/dégradé affiché à la place).
+ *
+ * À DÉPOSER PAR L'HUMAIN :
+ *   public/videos/hero.mp4      (montage métiers, paysage, ~10-20s, < 5 Mo idéal)
+ *   public/videos/hero.webm     (optionnel, meilleure compression)
+ *   public/images/hero-poster.jpg (optionnel, 1ère image figée pour le chargement)
  */
-
-const metiers = [
-  'restaurant',
-  'salon de coiffure',
-  'garage',
-  'institut',
-  'gîte',
-  'artisan',
-  'cabinet',
-];
 
 const trust = [
   'Sans frais de création',
@@ -28,49 +23,52 @@ const trust = [
 ---
 
 <section
-  class="relative overflow-hidden px-6 pt-24 pb-20 md:pt-32 md:pb-28"
+  class="relative isolate overflow-hidden min-h-[88vh] flex items-center"
   aria-label="Présentation de 9site4"
 >
-  <!-- Halos charte (bleu mauve + orange), discrets -->
-  <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
-    <div class="absolute -top-40 -left-32 w-[42rem] h-[42rem] rounded-full bg-bleu/25 blur-3xl halo-pulse"></div>
-    <div class="absolute top-10 -right-40 w-[40rem] h-[40rem] rounded-full bg-orange/15 blur-3xl halo-pulse-slow"></div>
-    <span class="absolute right-0 bottom-0 select-none font-sora font-bold text-[30vw] md:text-[18vw] leading-[0.8] tracking-tighter text-bleu-nuit/[0.035] translate-x-[8%] translate-y-[20%]">974</span>
-  </div>
+  <!-- Fond : dégradé de marque (fallback) + vidéo par-dessus si dispo -->
+  <div class="absolute inset-0 -z-20 bg-gradient-to-br from-bleu-nuit via-bleu-nuit to-[#1a2456]" aria-hidden="true"></div>
 
-  <div class="relative z-10 mx-auto max-w-content text-left">
+  <video
+    class="hero-video absolute inset-0 -z-10 w-full h-full object-cover"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="metadata"
+    poster="/images/hero-poster.jpg"
+    aria-hidden="true"
+  >
+    <source src="/videos/hero.webm" type="video/webm" />
+    <source src="/videos/hero.mp4" type="video/mp4" />
+  </video>
+
+  <!-- Overlay pour lisibilité du texte -->
+  <div
+    class="absolute inset-0 -z-10 bg-gradient-to-r from-bleu-nuit/90 via-bleu-nuit/70 to-bleu-nuit/40"
+    aria-hidden="true"
+  ></div>
+
+  <div class="relative z-10 w-full mx-auto max-w-content px-6 py-20 text-left text-blanc-casse">
     <!-- Eyebrow -->
-    <p class="hero-rise hero-rise-1 inline-flex items-center gap-2 px-4 h-9 rounded-full ring-1 ring-bleu-nuit/10 bg-blanc-casse/70 text-sm font-medium text-bleu-nuit/75">
+    <p class="hero-rise hero-rise-1 inline-flex items-center gap-2 px-4 h-9 rounded-full ring-1 ring-blanc-casse/20 bg-blanc-casse/[0.06] backdrop-blur-sm text-sm font-medium text-blanc-casse/85">
       <span class="inline-block w-2 h-2 rounded-full bg-orange"></span>
       Agence web à La Réunion · {siteConfig.location.areaCode}
     </p>
 
-    <!-- H1 XXL avec métier qui défile -->
-    <h1
-      class="hero-rise hero-rise-2 mt-7 max-w-4xl text-hero font-sora font-bold text-bleu-nuit text-balance"
-      aria-label="Le site pro de votre commerce, en ligne en 7 jours."
-    >
-      <span aria-hidden="true">Le site pro de votre</span>
-      <br />
-      <span
-        id="hero-metier"
-        class="relative inline-block align-baseline"
-        aria-hidden="true"
-        data-metiers={JSON.stringify(metiers)}
-      >
-        <span class="relative z-10 hero-metier-word">{metiers[0]}</span>
-        <span class="absolute inset-x-0 bottom-1 md:bottom-2 h-3 md:h-4 bg-bleu -z-0"></span>
-      </span>
-      <span aria-hidden="true">,</span>
+    <!-- H1 XXL -->
+    <h1 class="hero-rise hero-rise-2 mt-7 max-w-4xl text-hero font-sora font-bold text-balance">
+      Le site pro de votre métier,
       <br class="hidden sm:block" />
-      <span aria-hidden="true" class="relative inline-block">
-        <span class="relative z-10">en ligne en 7 jours.</span>
-        <span class="absolute inset-x-0 bottom-1 md:bottom-2 h-3 md:h-4 bg-orange/70 -z-0"></span>
+      en ligne en
+      <span class="relative inline-block">
+        <span class="relative z-10">7 jours.</span>
+        <span class="absolute inset-x-0 bottom-1 md:bottom-2 h-3 md:h-4 bg-orange/80 -z-0" aria-hidden="true"></span>
       </span>
     </h1>
 
     <!-- Sous-titre -->
-    <p class="hero-rise hero-rise-3 mt-6 max-w-2xl text-lg md:text-xl text-bleu-nuit/70 leading-relaxed">
+    <p class="hero-rise hero-rise-3 mt-6 max-w-2xl text-lg md:text-xl text-blanc-casse/80 leading-relaxed">
       9site4 crée votre site vitrine, l'héberge, le maintient et y intègre un
       formulaire adapté à votre métier pour recevoir des demandes plus claires.
       À partir de {siteConfig.pricing.monthly}/mois, sans frais de création.
@@ -87,7 +85,7 @@ const trust = [
       </a>
       <a
         href="/realisations"
-        class="inline-flex items-center justify-center gap-2 h-14 px-8 text-lg font-semibold rounded-full ring-1 ring-bleu-nuit/20 text-bleu-nuit hover:bg-bleu hover:ring-bleu transition-all duration-200 ease-out"
+        class="inline-flex items-center justify-center gap-2 h-14 px-8 text-lg font-semibold rounded-full ring-1 ring-blanc-casse/30 text-blanc-casse hover:bg-blanc-casse hover:text-bleu-nuit transition-all duration-200 ease-out"
       >
         Voir un exemple pour mon métier
       </a>
@@ -96,7 +94,7 @@ const trust = [
     <!-- Réassurance -->
     <ul class="hero-rise hero-rise-5 mt-10 flex flex-wrap items-center gap-x-5 gap-y-2.5">
       {trust.map((t) => (
-        <li class="inline-flex items-center gap-2 text-sm text-bleu-nuit/70">
+        <li class="inline-flex items-center gap-2 text-sm text-blanc-casse/80">
           <Icon name="check" size={15} strokeWidth={2.5} class="text-orange" />
           {t}
         </li>
@@ -104,63 +102,38 @@ const trust = [
     </ul>
 
     <!-- Prix signature inline -->
-    <p class="hero-rise hero-rise-5 mt-7 inline-flex items-baseline gap-2 text-bleu-nuit/55 text-sm">
-      <span class="font-sora font-bold text-2xl text-bleu-nuit">{siteConfig.pricing.monthly}</span>
+    <p class="hero-rise hero-rise-5 mt-7 inline-flex items-baseline gap-2 text-blanc-casse/65 text-sm">
+      <span class="font-sora font-bold text-2xl text-blanc-casse">{siteConfig.pricing.monthly}</span>
       <span>/mois — soit environ {siteConfig.pricing.daily}/jour · sans engagement</span>
     </p>
   </div>
 </section>
 
 <style>
-  .hero-metier-word {
-    display: inline-block;
-    transition: opacity 0.4s ease, transform 0.4s ease;
-  }
-  .hero-metier-word.is-out {
-    opacity: 0;
-    transform: translateY(-0.35em);
-  }
+  /* Coupe l'autoplay vidéo sous reduced-motion : on met la vidéo en pause
+     (le poster / dégradé reste affiché). */
   @media (prefers-reduced-motion: reduce) {
-    .hero-metier-word {
-      transition: none;
+    .hero-video {
+      display: none;
     }
   }
 </style>
 
 <script>
-  function initHeroMetier() {
-    const host = document.getElementById('hero-metier');
-    if (!host) return;
-    const word = host.querySelector<HTMLElement>('.hero-metier-word');
-    if (!word) return;
-
-    let metiers: string[] = [];
-    try {
-      metiers = JSON.parse(host.dataset.metiers || '[]');
-    } catch {
+  function initHeroVideo() {
+    const v = document.querySelector<HTMLVideoElement>('.hero-video');
+    if (!v) return;
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) {
+      v.removeAttribute('autoplay');
+      v.pause();
       return;
     }
-    if (metiers.length < 2) return;
-
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduced) return; // on garde le premier métier figé
-
-    let i = 0;
-    const tick = () => {
-      i = (i + 1) % metiers.length;
-      word.classList.add('is-out');
-      window.setTimeout(() => {
-        word.textContent = metiers[i];
-        word.classList.remove('is-out');
-      }, 400);
-    };
-
-    // Évite les timers multiples après navigations View Transitions
-    const w = window as unknown as { __heroMetierTimer?: number };
-    if (w.__heroMetierTimer) window.clearInterval(w.__heroMetierTimer);
-    w.__heroMetierTimer = window.setInterval(tick, 2200);
+    // Certains navigateurs mobiles exigent un play() explicite après interaction
+    const tryPlay = () => v.play().catch(() => {});
+    tryPlay();
+    document.addEventListener('astro:page-load', tryPlay, { once: true });
   }
-
-  initHeroMetier();
-  document.addEventListener('astro:page-load', initHeroMetier);
+  initHeroVideo();
+  document.addEventListener('astro:page-load', initHeroVideo);
 </script>
