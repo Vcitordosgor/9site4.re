@@ -456,50 +456,9 @@ const etapes = [
       </p>
     </div>
 
-    <!-- Section A : 3 étapes pédagogiques (Le client remplit → Vous recevez → Vous répondez) -->
-    <ol
-      class="scroll-reveal mt-12 grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 relative"
-      aria-label="Les 3 étapes du parcours formulaire"
-    >
-      {etapes.map((e, i) => (
-        <li class="relative">
-          <article class="relative h-full flex flex-col rounded-2xl bg-blanc-casse ring-1 ring-bleu-nuit/10 p-6 md:p-7 transition-all duration-300 ease-out-soft hover:-translate-y-0.5 hover:shadow-card-hover hover:ring-bleu-nuit/15">
-            <div class="flex items-start justify-between gap-4">
-              <span class:list={[
-                'flex w-12 h-12 rounded-xl items-center justify-center shrink-0',
-                e.color === 'orange'
-                  ? 'bg-orange/20 text-bleu-nuit'
-                  : 'bg-bleu/25 text-bleu-nuit',
-              ]}>
-                <Icon name={e.icon} size={22} strokeWidth={1.75} />
-              </span>
-              <span class="font-sora font-bold text-bleu-nuit/15 leading-none tabular-nums" style="font-size: 44px;">
-                {e.num}
-              </span>
-            </div>
-            <h3 class="mt-5 font-sora font-semibold text-lg text-bleu-nuit leading-snug">
-              {e.titre}
-            </h3>
-            <p class="mt-2 text-sm text-bleu-nuit/65 leading-relaxed">
-              {e.texte}
-            </p>
-          </article>
-          {/* Connecteur flèche entre les cartes (desktop only) */}
-          {i < etapes.length - 1 && (
-            <span
-              class="hidden md:flex absolute top-1/2 -translate-y-1/2 -right-3.5 w-7 h-7 rounded-full bg-blanc-casse ring-1 ring-bleu-nuit/10 items-center justify-center text-bleu-nuit/40 z-10"
-              aria-hidden="true"
-            >
-              <Icon name="arrow-right" size={14} strokeWidth={2.25} />
-            </span>
-          )}
-        </li>
-      ))}
-    </ol>
-
     <!-- Démo interactive (fond clair, ring discret pour délimiter) -->
     <div
-      class="scroll-reveal mt-16 rounded-3xl bg-blanc-casse text-bleu-nuit ring-1 ring-bleu-nuit/10 overflow-hidden shadow-card-hover"
+      class="scroll-reveal mt-10 md:mt-14 rounded-3xl bg-blanc-casse text-bleu-nuit ring-1 ring-bleu-nuit/10 overflow-hidden shadow-card-hover"
       data-form-demo
     >
       <!-- Header démo (zone 'barre de contrôle' légèrement teintée pour
