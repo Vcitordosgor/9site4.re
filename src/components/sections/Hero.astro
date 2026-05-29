@@ -1,34 +1,21 @@
 ---
-import Icon from '../ui/Icon.astro';
 import siteConfig from '../../data/siteConfig.json';
 
 /**
- * Hero — plein cadre façon Squarespace, vidéo de fond + overlay.
- * La vidéo est optionnelle : si /videos/hero.mp4 est absent, un dégradé de
- * marque sert de fond (aucune erreur). Vidéo muette/autoplay/loop/playsinline,
- * coupée sous prefers-reduced-motion (poster/dégradé affiché à la place).
- *
- * À DÉPOSER PAR L'HUMAIN :
- *   public/videos/hero.mp4      (montage métiers, paysage, ~10-20s, < 5 Mo idéal)
- *   public/videos/hero.webm     (optionnel, meilleure compression)
- *   public/images/hero-poster.jpg (optionnel, 1ère image figée pour le chargement)
+ * Hero — style Squarespace : vidéo plein cadre, contenu centré, titre blanc
+ * épuré, un seul bouton blanc plein, une ligne de réassurance. Minimaliste.
+ * Vidéo optionnelle : dégradé de marque en fallback. Coupée sous reduced-motion.
  */
-
-const trust = [
-  'Sans frais de création',
-  'Hébergement inclus',
-  'Maintenance incluse',
-  'Fait à La Réunion',
-];
 ---
 
 <section
-  class="relative isolate overflow-hidden min-h-[88vh] flex items-center"
+  class="relative isolate overflow-hidden min-h-[92vh] flex items-center justify-center"
   aria-label="Présentation de 9site4"
 >
-  <!-- Fond : dégradé de marque (fallback) + vidéo par-dessus si dispo -->
+  <!-- Fallback dégradé de marque -->
   <div class="absolute inset-0 -z-20 bg-gradient-to-br from-bleu-nuit via-bleu-nuit to-[#1a2456]" aria-hidden="true"></div>
 
+  <!-- Vidéo de fond -->
   <video
     class="hero-video absolute inset-0 -z-10 w-full h-full object-cover"
     autoplay
@@ -43,79 +30,44 @@ const trust = [
     <source src="/videos/hero.mp4" type="video/mp4" />
   </video>
 
-  <!-- Overlay pour lisibilité du texte -->
-  <div
-    class="absolute inset-0 -z-10 bg-gradient-to-r from-bleu-nuit/90 via-bleu-nuit/70 to-bleu-nuit/40"
-    aria-hidden="true"
-  ></div>
+  <!-- Overlay léger pour lisibilité (l'image/vidéo reste visible) -->
+  <div class="absolute inset-0 -z-10 bg-bleu-nuit/45" aria-hidden="true"></div>
+  <div class="absolute inset-x-0 top-0 h-40 -z-10 bg-gradient-to-b from-bleu-nuit/40 to-transparent" aria-hidden="true"></div>
 
-  <div class="relative z-10 w-full mx-auto max-w-content px-6 py-20 text-left text-blanc-casse">
-    <!-- Eyebrow -->
-    <p class="hero-rise hero-rise-1 inline-flex items-center gap-2 px-4 h-9 rounded-full ring-1 ring-blanc-casse/20 bg-blanc-casse/[0.06] backdrop-blur-sm text-sm font-medium text-blanc-casse/85">
-      <span class="inline-block w-2 h-2 rounded-full bg-orange"></span>
-      Agence web à La Réunion · {siteConfig.location.areaCode}
-    </p>
-
-    <!-- H1 XXL -->
-    <h1 class="hero-rise hero-rise-2 mt-7 max-w-4xl text-hero font-sora font-bold text-balance">
-      Le site pro de votre métier,
+  <!-- Contenu centré -->
+  <div class="relative z-10 mx-auto max-w-4xl px-6 py-28 text-center text-blanc-casse">
+    <h1 class="hero-rise hero-rise-2 font-sora font-bold text-balance leading-[1.05] text-[clamp(2.75rem,6vw+1rem,5.5rem)] tracking-tight">
+      Votre site pro,
       <br class="hidden sm:block" />
-      en ligne en
-      <span class="relative inline-block">
-        <span class="relative z-10">7 jours.</span>
-        <span class="absolute inset-x-0 bottom-1 md:bottom-2 h-3 md:h-4 bg-orange/80 -z-0" aria-hidden="true"></span>
-      </span>
+      prêt en 7 jours.
     </h1>
 
-    <!-- Sous-titre -->
-    <p class="hero-rise hero-rise-3 mt-6 max-w-2xl text-lg md:text-xl text-blanc-casse/80 leading-relaxed">
-      9site4 crée votre site vitrine, l'héberge, le maintient et y intègre un
-      formulaire adapté à votre métier pour recevoir des demandes plus claires.
-      À partir de {siteConfig.pricing.monthly}/mois, sans frais de création.
-    </p>
-
-    <!-- CTAs -->
-    <div class="hero-rise hero-rise-4 mt-10 flex flex-col sm:flex-row gap-4 justify-start">
+    <div class="hero-rise hero-rise-4 mt-10 flex justify-center">
       <a
         href="/contact"
-        class="group inline-flex items-center justify-center gap-2 h-14 px-8 text-lg font-semibold rounded-full bg-orange text-bleu-nuit shadow-card hover:shadow-card-hover hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 ease-out"
+        class="inline-flex items-center justify-center h-14 px-10 text-base font-semibold rounded-md bg-blanc-casse text-bleu-nuit hover:bg-white hover:-translate-y-0.5 shadow-card hover:shadow-card-hover transition-all duration-200 ease-out"
       >
         Demander mon site
-        <Icon name="arrow-right" size={20} strokeWidth={2.25} class="transition-transform duration-300 group-hover:translate-x-1" />
-      </a>
-      <a
-        href="/realisations"
-        class="inline-flex items-center justify-center gap-2 h-14 px-8 text-lg font-semibold rounded-full ring-1 ring-blanc-casse/30 text-blanc-casse hover:bg-blanc-casse hover:text-bleu-nuit transition-all duration-200 ease-out"
-      >
-        Voir un exemple pour mon métier
       </a>
     </div>
 
-    <!-- Réassurance -->
-    <ul class="hero-rise hero-rise-5 mt-10 flex flex-wrap items-center gap-x-5 gap-y-2.5">
-      {trust.map((t) => (
-        <li class="inline-flex items-center gap-2 text-sm text-blanc-casse/80">
-          <Icon name="check" size={15} strokeWidth={2.5} class="text-orange" />
-          {t}
-        </li>
-      ))}
-    </ul>
-
-    <!-- Prix signature inline -->
-    <p class="hero-rise hero-rise-5 mt-7 inline-flex items-baseline gap-2 text-blanc-casse/65 text-sm">
-      <span class="font-sora font-bold text-2xl text-blanc-casse">{siteConfig.pricing.monthly}</span>
-      <span>/mois — soit environ {siteConfig.pricing.daily}/jour · sans engagement</span>
+    <p class="hero-rise hero-rise-5 mt-6 text-base text-blanc-casse/85">
+      Géré pour vous · Sans frais de création · {siteConfig.pricing.monthly}/mois
     </p>
+  </div>
+
+  <!-- Indicateur de scroll discret -->
+  <div class="hero-rise hero-rise-5 absolute bottom-6 left-1/2 -translate-x-1/2 z-10 text-blanc-casse/60" aria-hidden="true">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="animate-bounce">
+      <path d="M12 5v14M5 12l7 7 7-7" />
+    </svg>
   </div>
 </section>
 
 <style>
-  /* Coupe l'autoplay vidéo sous reduced-motion : on met la vidéo en pause
-     (le poster / dégradé reste affiché). */
   @media (prefers-reduced-motion: reduce) {
-    .hero-video {
-      display: none;
-    }
+    .hero-video { display: none; }
+    .animate-bounce { animation: none; }
   }
 </style>
 
@@ -123,16 +75,12 @@ const trust = [
   function initHeroVideo() {
     const v = document.querySelector<HTMLVideoElement>('.hero-video');
     if (!v) return;
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduced) {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       v.removeAttribute('autoplay');
       v.pause();
       return;
     }
-    // Certains navigateurs mobiles exigent un play() explicite après interaction
-    const tryPlay = () => v.play().catch(() => {});
-    tryPlay();
-    document.addEventListener('astro:page-load', tryPlay, { once: true });
+    v.play().catch(() => {});
   }
   initHeroVideo();
   document.addEventListener('astro:page-load', initHeroVideo);
