@@ -1,171 +1,89 @@
 ---
-import Button from '../ui/Button.astro';
 import Icon from '../ui/Icon.astro';
 import siteConfig from '../../data/siteConfig.json';
 
 /**
- * Hero — section prioritaire (brief §4.6).
- * - H1 grand impactant avec word-reveal mot par mot
- * - 2 CTA + mention de réassurance
- * - 3 cartes flottantes en perspective (float continu décalé)
- * - 974 stylisé en filigrane derrière, halos pulsants
+ * Hero — version "bold & impactant".
+ * Fond sombre plein contraste, titre XXL, accent orange, 2 CTA francs,
+ * bandeau de réassurance. Aucun mockup/illustration. Le H1 reste le LCP.
  */
+
+const trust = [
+  'Sans frais de création',
+  'Hébergement inclus',
+  'Maintenance incluse',
+  'Fait à La Réunion',
+];
 ---
 
 <section
-  class="relative overflow-hidden px-6 pt-24 pb-16 md:pt-32 md:pb-28"
+  class="relative overflow-hidden bg-bleu-nuit text-blanc-casse"
   aria-label="Présentation de 9site4"
 >
-  <!-- Halos en arrière-plan (avec pulse continu) -->
-  <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
-    <div class="absolute -top-32 -left-24 w-[40rem] h-[40rem] halo-bleu halo-pulse"></div>
-    <div class="absolute top-32 -right-32 w-[40rem] h-[40rem] halo-orange opacity-90 halo-pulse-slow"></div>
-    <div class="absolute bottom-0 left-1/3 w-[30rem] h-[30rem] halo-bleu opacity-60 halo-pulse"></div>
-  </div>
-
-  <!-- 974 en filigrane -->
-  <div
-    class="pointer-events-none absolute inset-x-0 bottom-0 -z-10 flex justify-center select-none overflow-hidden"
-    aria-hidden="true"
-  >
-    <span class="font-sora font-bold text-[28vw] md:text-[20vw] leading-[0.85] tracking-tighter text-bleu-nuit/[0.04] translate-y-[15%]">
+  <!-- Fond : halos discrets + 974 en filigrane -->
+  <div class="pointer-events-none absolute inset-0 -z-0" aria-hidden="true">
+    <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[55rem] h-[55rem] rounded-full bg-bleu/10 blur-3xl halo-pulse"></div>
+    <div class="absolute -bottom-32 -right-24 w-[40rem] h-[40rem] rounded-full bg-orange/10 blur-3xl halo-pulse-slow"></div>
+    <span class="absolute inset-x-0 bottom-0 flex justify-center select-none font-sora font-bold text-[34vw] md:text-[24vw] leading-[0.8] tracking-tighter text-blanc-casse/[0.03] translate-y-[18%]">
       974
     </span>
   </div>
 
-  <div class="mx-auto max-w-content grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-    <!-- Colonne texte -->
-    <div class="lg:col-span-7 text-left">
-      <p class="hero-rise hero-rise-1 inline-flex items-center gap-2 text-sm font-medium text-bleu-nuit/70 tracking-wide">
-        <span class="inline-block w-2 h-2 rounded-full bg-orange"></span>
-        <span class="uppercase">{siteConfig.location.areaCode} · {siteConfig.location.region}</span>
-      </p>
+  <div class="relative z-10 mx-auto max-w-content px-6 pt-28 pb-24 md:pt-36 md:pb-32 text-center">
+    <!-- Eyebrow -->
+    <p class="hero-rise hero-rise-1 inline-flex items-center gap-2 px-4 h-9 rounded-full ring-1 ring-blanc-casse/15 bg-blanc-casse/[0.04] text-sm font-medium text-blanc-casse/80">
+      <span class="inline-block w-2 h-2 rounded-full bg-orange"></span>
+      Agence web à La Réunion · {siteConfig.location.areaCode}
+    </p>
 
-      <h1 class="mt-5 text-hero font-sora font-bold text-bleu-nuit text-balance">
-        <span class="word-reveal" style="--word-i: 0">Votre</span>{' '}
-        <span class="word-reveal relative inline-block" style="--word-i: 1">
-          <span class="relative z-10">site pro à La Réunion</span>
-          <span class="absolute inset-x-0 bottom-1 md:bottom-2 h-2 md:h-3 bg-bleu -z-0" aria-hidden="true"></span>
-        </span>,{' '}
-        <span class="word-reveal" style="--word-i: 2">prêt</span>{' '}
-        <span class="word-reveal" style="--word-i: 3">en</span>{' '}
-        <span class="word-reveal" style="--word-i: 4">7</span>{' '}
-        <span class="word-reveal" style="--word-i: 5">jours,</span>{' '}
-        <span class="word-reveal relative inline-block" style="--word-i: 6">
-          <span class="relative z-10">géré pour vous.</span>
-          <span class="absolute inset-x-0 bottom-1 md:bottom-2 h-2 md:h-3 bg-orange -z-0" aria-hidden="true"></span>
-        </span>
-      </h1>
+    <!-- H1 XXL -->
+    <h1 class="hero-rise hero-rise-2 mx-auto mt-7 max-w-4xl text-hero font-sora font-bold text-balance">
+      Votre site pro, en ligne en
+      <span class="relative inline-block text-orange">
+        7 jours.
+      </span>
+      <br class="hidden sm:block" />
+      Géré pour vous.
+    </h1>
 
-      <p class="hero-rise hero-rise-3 mt-6 text-lg md:text-xl text-bleu-nuit/70 max-w-2xl leading-relaxed">
-        9site4 crée votre site vitrine, l'héberge, le maintient et y intègre un
-        formulaire adapté à votre métier pour recevoir des demandes plus claires.
-        À partir de {siteConfig.pricing.monthly}/mois, sans frais de création.
-      </p>
+    <!-- Sous-titre -->
+    <p class="hero-rise hero-rise-3 mx-auto mt-6 max-w-2xl text-lg md:text-xl text-blanc-casse/75 leading-relaxed">
+      9site4 crée votre site vitrine, l'héberge, le maintient et y intègre un
+      formulaire adapté à votre métier pour recevoir des demandes plus claires.
+      À partir de {siteConfig.pricing.monthly}/mois, sans frais de création.
+    </p>
 
-      <div class="hero-rise hero-rise-4 mt-10 flex flex-col sm:flex-row gap-4 justify-start">
-        <Button variant="primary" size="lg" href="/contact">
-          Demander mon site
-          <Icon name="arrow-right" size={20} strokeWidth={2.25} />
-        </Button>
-        <Button variant="secondary" size="lg" href="/realisations">
-          Voir un exemple pour mon métier
-        </Button>
-      </div>
-
-      <p class="hero-rise hero-rise-5 mt-6 text-sm text-bleu-nuit/65 flex items-center gap-2 justify-start">
-        <Icon name="shield-check" size={16} class="text-bleu-nuit" strokeWidth={2} />
-        <span>{siteConfig.pricing.monthly}/mois · Sans frais de création · Tout inclus · Fait à La Réunion</span>
-      </p>
+    <!-- CTAs -->
+    <div class="hero-rise hero-rise-4 mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+      <a
+        href="/contact"
+        class="group inline-flex items-center justify-center gap-2 h-14 px-8 text-lg font-semibold rounded-full bg-orange text-bleu-nuit shadow-card hover:shadow-card-hover hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 ease-out"
+      >
+        Demander mon site
+        <Icon name="arrow-right" size={20} strokeWidth={2.25} class="transition-transform duration-300 group-hover:translate-x-1" />
+      </a>
+      <a
+        href="/realisations"
+        class="inline-flex items-center justify-center gap-2 h-14 px-8 text-lg font-semibold rounded-full ring-1 ring-blanc-casse/25 text-blanc-casse hover:bg-blanc-casse hover:text-bleu-nuit transition-all duration-200 ease-out"
+      >
+        Voir un exemple pour mon métier
+      </a>
     </div>
 
-    <!-- Colonne visuelle : mockup produit composé (browser window + notif + badges) -->
-    <div
-      class="hero-rise hero-rise-5 lg:col-span-5 relative mt-14 sm:mt-16 lg:mt-0 px-2 sm:px-6 lg:px-2"
-      aria-hidden="true"
-    >
-      <!-- Fenêtre navigateur : aperçu du site vitrine livré -->
-      <div class="relative mx-auto w-full max-w-md rounded-2xl bg-blanc-casse ring-1 ring-bleu-nuit/10 shadow-card-hover overflow-hidden">
-        <!-- Topbar browser -->
-        <div class="flex items-center gap-2 px-4 h-10 bg-bleu-nuit/[0.04] border-b border-bleu-nuit/[0.07]">
-          <span class="flex gap-1.5">
-            <span class="w-2.5 h-2.5 rounded-full bg-bleu-nuit/15"></span>
-            <span class="w-2.5 h-2.5 rounded-full bg-bleu-nuit/15"></span>
-            <span class="w-2.5 h-2.5 rounded-full bg-bleu-nuit/15"></span>
-          </span>
-          <span class="ml-2 flex-1 flex items-center h-6 px-3 rounded-full bg-blanc-casse ring-1 ring-bleu-nuit/10 text-[11px] font-roboto-mono text-bleu-nuit/45 truncate">
-            votre-entreprise.re
-          </span>
-        </div>
+    <!-- Réassurance -->
+    <ul class="hero-rise hero-rise-5 mt-10 flex flex-wrap items-center justify-center gap-x-5 gap-y-2.5">
+      {trust.map((t) => (
+        <li class="inline-flex items-center gap-2 text-sm text-blanc-casse/70">
+          <Icon name="check" size={15} strokeWidth={2.5} class="text-orange" />
+          {t}
+        </li>
+      ))}
+    </ul>
 
-        <!-- Faux site vitrine -->
-        <div class="p-5">
-          <!-- Hero du faux site -->
-          <div class="flex items-center justify-between gap-3">
-            <div class="min-w-0">
-              <p class="font-sora font-bold text-bleu-nuit text-base leading-tight truncate">Votre entreprise péi</p>
-              <p class="text-[11px] text-bleu-nuit/55 mt-0.5 flex items-center gap-1">
-                <Icon name="map-pin" size={11} strokeWidth={2} /> Saint-Pierre · La Réunion
-              </p>
-            </div>
-            <span class="shrink-0 inline-flex items-center h-7 px-3 rounded-full bg-orange text-bleu-nuit text-[11px] font-semibold">
-              Réserver
-            </span>
-          </div>
-
-          <!-- Mini-sections horaires / prestations / contact -->
-          <div class="mt-4 grid grid-cols-3 gap-2">
-            <div class="rounded-xl bg-bleu-nuit/[0.04] p-2.5">
-              <Icon name="clock" size={14} class="text-bleu-nuit/55" strokeWidth={2} />
-              <p class="mt-1.5 text-[9px] uppercase tracking-wide text-bleu-nuit/50 font-semibold">Horaires</p>
-              <div class="mt-1 h-1.5 rounded-full bg-bleu/40 w-3/4"></div>
-            </div>
-            <div class="rounded-xl bg-bleu-nuit/[0.04] p-2.5">
-              <Icon name="list" size={14} class="text-bleu-nuit/55" strokeWidth={2} />
-              <p class="mt-1.5 text-[9px] uppercase tracking-wide text-bleu-nuit/50 font-semibold">Offres</p>
-              <div class="mt-1 h-1.5 rounded-full bg-orange/50 w-full"></div>
-            </div>
-            <div class="rounded-xl bg-bleu-nuit/[0.04] p-2.5">
-              <Icon name="smartphone" size={14} class="text-bleu-nuit/55" strokeWidth={2} />
-              <p class="mt-1.5 text-[9px] uppercase tracking-wide text-bleu-nuit/50 font-semibold">Contact</p>
-              <div class="mt-1 h-1.5 rounded-full bg-bleu/40 w-2/3"></div>
-            </div>
-          </div>
-
-          <!-- Mini-formulaire métier -->
-          <div class="mt-3 rounded-xl ring-1 ring-bleu-nuit/10 p-3">
-            <p class="font-roboto-mono text-[8.5px] uppercase tracking-[0.18em] text-orange font-semibold">Formulaire · Devis</p>
-            <div class="mt-2 space-y-1.5">
-              <div class="h-2 rounded-full bg-bleu-nuit/10 w-full"></div>
-              <div class="h-2 rounded-full bg-bleu-nuit/10 w-5/6"></div>
-            </div>
-            <div class="mt-2.5 flex items-center justify-center h-7 rounded-lg bg-bleu-nuit text-blanc-casse text-[10px] font-semibold">
-              Demander un devis
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Notification flottante : nouvelle demande reçue -->
-      <div class="hero-float-b absolute -top-6 -right-1 sm:-right-3 w-60 max-w-[78%] rounded-2xl bg-blanc-casse ring-1 ring-orange/40 shadow-card-hover p-3.5">
-        <p class="font-roboto-mono text-[8.5px] uppercase tracking-[0.2em] font-semibold text-orange flex items-center gap-1.5">
-          <Icon name="mail" size={11} strokeWidth={2.5} /> Nouvelle demande
-        </p>
-        <p class="mt-1.5 font-sora font-semibold text-bleu-nuit text-[13px] leading-snug">Devis reçu</p>
-        <p class="mt-0.5 text-[11px] text-bleu-nuit/60 leading-snug">Saint-Pierre · Budget indiqué · Photo jointe</p>
-        <p class="text-[9px] text-bleu-nuit/40 mt-1.5 text-right tabular-nums">à l'instant ✓✓</p>
-      </div>
-
-      <!-- Badge flottant : délai 7 jours -->
-      <div class="hero-float-a absolute -left-1 sm:-left-3 top-1/3 inline-flex items-center gap-1.5 h-9 px-3.5 rounded-full bg-bleu-nuit text-blanc-casse shadow-card-hover text-[12px] font-semibold">
-        <Icon name="rocket" size={14} strokeWidth={2} /> En ligne en 7 jours
-      </div>
-
-      <!-- Badge flottant : prix signature -->
-      <div class="hero-float-c absolute -bottom-5 left-6 sm:left-10 inline-flex items-baseline gap-1 h-10 px-4 rounded-full bg-orange text-bleu-nuit shadow-card-hover">
-        <span class="font-sora font-bold text-base leading-none">{siteConfig.pricing.monthly}</span>
-        <span class="text-[11px] font-semibold leading-none">/mois</span>
-      </div>
-    </div>
+    <!-- Prix signature inline -->
+    <p class="hero-rise hero-rise-5 mt-8 inline-flex items-baseline gap-2 text-blanc-casse/55 text-sm">
+      <span class="font-sora font-bold text-2xl text-blanc-casse">{siteConfig.pricing.monthly}</span>
+      <span>/mois — soit environ {siteConfig.pricing.daily}/jour · sans engagement</span>
+    </p>
   </div>
 </section>
