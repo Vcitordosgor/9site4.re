@@ -1,0 +1,49 @@
+---
+import Icon from '../ui/Icon.astro';
+
+/**
+ * Ce qu'on vous demande — rassure sur la simplicité du démarrage.
+ */
+
+const elements = [
+  { icon: 'clock', label: 'Vos horaires' },
+  { icon: 'list', label: 'Vos prestations' },
+  { icon: 'smartphone', label: 'Vos coordonnées' },
+  { icon: 'map-pin', label: 'Votre zone d\'intervention' },
+  { icon: 'image', label: 'Quelques photos' },
+  { icon: 'instagram', label: 'Vos réseaux sociaux' },
+  { icon: 'message-circle', label: 'Votre préférence de contact' },
+];
+---
+
+<section class="relative px-6 py-20 md:py-28" aria-labelledby="ce-quon-demande-titre">
+  <div class="mx-auto max-w-content">
+    <div class="max-w-3xl">
+      <h2
+        id="ce-quon-demande-titre"
+        class="scroll-reveal font-sora font-bold text-3xl md:text-5xl text-bleu-nuit text-balance leading-tight"
+      >
+        Pas besoin de cahier des charges compliqué.
+      </h2>
+      <p class="scroll-reveal mt-6 text-lg text-bleu-nuit/70 leading-relaxed">
+        Pour démarrer, quelques informations suffisent. 9site4 transforme vos
+        éléments en site clair, structuré et prêt à être mis en ligne.
+      </p>
+    </div>
+
+    <ul class="scroll-reveal mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {elements.map((e) => (
+        <li class="flex items-center gap-3 rounded-2xl bg-blanc-casse ring-1 ring-bleu-nuit/10 px-5 py-4 transition-all duration-300 ease-out-soft hover:ring-bleu-nuit/15">
+          <span class="flex w-10 h-10 rounded-xl bg-bleu/20 text-bleu-nuit items-center justify-center shrink-0">
+            <Icon name={e.icon} size={18} strokeWidth={1.75} />
+          </span>
+          <span class="text-base font-medium text-bleu-nuit">{e.label}</span>
+        </li>
+      ))}
+    </ul>
+
+    <p class="scroll-reveal mt-10 font-sora font-bold text-xl md:text-2xl text-bleu-nuit text-balance leading-snug">
+      Vous envoyez vos infos. On structure le site.
+    </p>
+  </div>
+</section>

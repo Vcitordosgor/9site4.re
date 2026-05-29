@@ -43,23 +43,24 @@ import siteConfig from '../../data/siteConfig.json';
 
       <h1 class="mt-5 text-hero font-sora font-bold text-bleu-nuit text-balance">
         <span class="word-reveal" style="--word-i: 0">Votre</span>{' '}
-        <span class="word-reveal" style="--word-i: 1">site</span>{' '}
-        <span class="word-reveal" style="--word-i: 2">
-          <span class="relative inline-block">
-            <span class="relative z-10">tout-en-un</span>
-            <span class="absolute inset-x-0 bottom-1 md:bottom-2 h-2 md:h-3 bg-bleu -z-0" aria-hidden="true"></span>
-          </span>,
-        </span>{' '}
-        <span class="word-reveal relative inline-block" style="--word-i: 3">
-          <span class="relative z-10">la gestion en moins.</span>
+        <span class="word-reveal relative inline-block" style="--word-i: 1">
+          <span class="relative z-10">site pro à La Réunion</span>
+          <span class="absolute inset-x-0 bottom-1 md:bottom-2 h-2 md:h-3 bg-bleu -z-0" aria-hidden="true"></span>
+        </span>,{' '}
+        <span class="word-reveal" style="--word-i: 2">prêt</span>{' '}
+        <span class="word-reveal" style="--word-i: 3">en</span>{' '}
+        <span class="word-reveal" style="--word-i: 4">7</span>{' '}
+        <span class="word-reveal" style="--word-i: 5">jours,</span>{' '}
+        <span class="word-reveal relative inline-block" style="--word-i: 6">
+          <span class="relative z-10">géré pour vous.</span>
           <span class="absolute inset-x-0 bottom-1 md:bottom-2 h-2 md:h-3 bg-orange -z-0" aria-hidden="true"></span>
         </span>
       </h1>
 
       <p class="hero-rise hero-rise-3 mt-6 text-lg md:text-xl text-bleu-nuit/70 max-w-2xl leading-relaxed">
-        Un site pro adapté à votre métier, prêt à recevoir vos demandes clients.
-        Tout est inclus : nom de domaine, hébergement, maintenance, modifications.
-        Vous, vous gérez votre activité.
+        9site4 crée votre site vitrine, l'héberge, le maintient et y intègre un
+        formulaire adapté à votre métier pour recevoir des demandes plus claires.
+        À partir de {siteConfig.pricing.monthly}/mois, sans frais de création.
       </p>
 
       <div class="hero-rise hero-rise-4 mt-10 flex flex-col sm:flex-row gap-4 justify-start">
@@ -68,13 +69,13 @@ import siteConfig from '../../data/siteConfig.json';
           <Icon name="arrow-right" size={20} strokeWidth={2.25} />
         </Button>
         <Button variant="secondary" size="lg" href="/realisations">
-          Voir les réalisations
+          Voir un exemple pour mon métier
         </Button>
       </div>
 
       <p class="hero-rise hero-rise-5 mt-6 text-sm text-bleu-nuit/65 flex items-center gap-2 justify-start">
         <Icon name="shield-check" size={16} class="text-bleu-nuit" strokeWidth={2} />
-        <span>{siteConfig.pricing.highlight}</span>
+        <span>{siteConfig.pricing.monthly}/mois · Sans frais de création · Tout inclus · Fait à La Réunion</span>
       </p>
     </div>
 

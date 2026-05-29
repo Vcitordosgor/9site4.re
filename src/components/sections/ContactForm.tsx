@@ -57,7 +57,7 @@ interface FormData {
 const BESOINS = [
   { value: 'creation', label: 'Création complète' },
   { value: 'refonte', label: 'Refonte' },
-  { value: 'module', label: 'Juste un formulaire de contact' },
+  { value: 'module', label: 'Recevoir des demandes plus complètes' },
   { value: 'inconnu', label: 'Je ne sais pas encore' },
 ];
 
@@ -88,9 +88,6 @@ export default function ContactForm({ categories }: Props) {
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>(
     {}
   );
-
-  const [channelsStatus, setChannelsStatus] = useState<{ email?: string; discord?: string } | null>(null);
-  const [diag, setDiag] = useState<{ envKeys?: string[]; discordDetail?: string } | null>(null);
 
   const onSubmit: JSX.GenericEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
@@ -180,11 +177,6 @@ export default function ContactForm({ categories }: Props) {
         );
         return;
       }
-      const okBody = await res.json().catch(() => ({} as Record<string, unknown>));
-      const channels = (okBody as { channels?: { email?: string; discord?: string } }).channels;
-      const diagBody = (okBody as { diag?: { envKeys?: string[]; discordDetail?: string } }).diag;
-      setChannelsStatus(channels ?? null);
-      setDiag(diagBody ?? null);
       setLastMessage(message);
       setSubmittedChannel('email');
       setSubmitted(true);
@@ -224,24 +216,15 @@ export default function ContactForm({ categories }: Props) {
           </svg>
         </div>
         <h3 class="mt-5 font-sora font-semibold text-2xl text-bleu-nuit">
-          {submittedChannel === 'email' ? 'Message envoyé' : 'WhatsApp ouvert'}
+          {submittedChannel === 'email'
+            ? 'Votre demande a bien été envoyée.'
+            : 'WhatsApp ouvert'}
         </h3>
         <p class="mt-3 text-base text-bleu-nuit/75">
           {submittedChannel === 'email'
-            ? 'Merci ! Votre message vient d\'être envoyé. Nous revenons vers vous très vite.'
+            ? 'Merci, nous avons bien reçu votre message. Nous vous répondrons rapidement pour voir quel site 9site4 peut créer pour votre activité.'
             : 'Validez l\'envoi du message pré-rempli dans WhatsApp pour finaliser votre demande.'}
         </p>
-        {channelsStatus && (
-          <div class="mt-3 inline-block text-left text-xs font-mono text-bleu-nuit/60 bg-bleu-nuit/5 rounded px-3 py-2 max-w-full overflow-x-auto">
-            <div>email: {channelsStatus.email ?? '?'} · discord: {channelsStatus.discord ?? '?'}</div>
-            {diag?.envKeys && (
-              <div class="mt-1">env keys: [{diag.envKeys.join(', ')}]</div>
-            )}
-            {diag?.discordDetail && (
-              <div class="mt-1">discord err: {diag.discordDetail}</div>
-            )}
-          </div>
-        )}
         <div class="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
           <a
             href={waUrl}

@@ -185,6 +185,16 @@ const schemaOrg = {
     <meta name="build-id" content={`9site4-${new Date().toISOString().slice(0, 19)}-24templates-thumbnails`} />
   </head>
   <body class="flex flex-col min-h-dvh">
+    {bare && (
+      <div class="bg-bleu-nuit text-blanc-casse text-center text-xs md:text-sm px-4 py-2.5 leading-snug">
+        <span class="font-semibold">Démo fictive · Exemple de site métier.</span>{' '}
+        Ce site est une démonstration 9site4 — il montre le type de rendu possible
+        pour ce métier.{' '}
+        <a href="/" class="underline underline-offset-2 font-semibold hover:text-orange transition-colors">
+          Revenir sur 9site4
+        </a>
+      </div>
+    )}
     {!bare && <Header />}
     <main class="flex-1">
       <slot />

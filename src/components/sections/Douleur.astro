@@ -1,0 +1,54 @@
+---
+import Icon from '../ui/Icon.astro';
+
+/**
+ * Douleur — section problème (placée juste après le Hero).
+ * Met en lumière la dispersion des infos client avant la résolution 9site4.
+ */
+
+const cartes = [
+  { icon: 'clock', titre: 'Vos horaires sont introuvables' },
+  { icon: 'mail', titre: 'Vos demandes arrivent en vrac' },
+  { icon: 'help-circle', titre: 'Vos clients hésitent avant de vous contacter' },
+  { icon: 'instagram', titre: 'Votre Instagram ne suffit pas toujours' },
+  { icon: 'rocket', titre: 'Votre site devrait travailler pour vous' },
+];
+---
+
+<section class="relative px-6 py-20 md:py-28" aria-labelledby="douleur-titre">
+  <div class="mx-auto max-w-content">
+    <div class="max-w-3xl">
+      <h2
+        id="douleur-titre"
+        class="scroll-reveal font-sora font-bold text-3xl md:text-5xl text-bleu-nuit text-balance leading-tight"
+      >
+        Vos clients ne devraient pas chercher vos infos partout.
+      </h2>
+      <p class="scroll-reveal mt-6 text-lg text-bleu-nuit/70 leading-relaxed">
+        Horaires sur Google, photos sur Instagram, tarifs dans une story,
+        demandes sur WhatsApp, adresse introuvable, formulaire absent… Quand vos
+        informations sont dispersées, vos clients hésitent, repoussent ou passent
+        à quelqu'un d'autre.
+      </p>
+    </div>
+
+    <ul class="scroll-reveal mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-5">
+      {cartes.map((c) => (
+        <li class="h-full">
+          <article class="h-full flex flex-col items-start rounded-2xl bg-blanc-casse ring-1 ring-bleu-nuit/10 p-5 md:p-6 transition-all duration-300 ease-out-soft hover:-translate-y-0.5 hover:shadow-card-hover hover:ring-bleu-nuit/15">
+            <span class="flex w-11 h-11 rounded-xl bg-bleu-nuit/[0.06] text-bleu-nuit items-center justify-center shrink-0">
+              <Icon name={c.icon} size={20} strokeWidth={1.75} />
+            </span>
+            <h3 class="mt-4 font-sora font-semibold text-base text-bleu-nuit leading-snug">
+              {c.titre}
+            </h3>
+          </article>
+        </li>
+      ))}
+    </ul>
+
+    <p class="scroll-reveal mt-10 font-sora font-bold text-xl md:text-2xl text-bleu-nuit text-balance leading-snug">
+      9site4 rassemble tout dans un site clair, local et prêt à recevoir des demandes.
+    </p>
+  </div>
+</section>

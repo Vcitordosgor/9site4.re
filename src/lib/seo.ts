@@ -62,21 +62,21 @@ type PageKey =
 
 const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'> & { noindex?: boolean; ogImage?: string; ogImageAlt?: string }> = {
   home: {
-    title: `${siteConfig.siteName} — Création de site internet à La Réunion (974)`,
+    title: `${siteConfig.siteName} — Site pro à La Réunion, prêt en 7 jours`,
     description:
-      'Agence web pour TPE et PME à La Réunion. Création de site vitrine clé en main : Saint-Denis, Saint-Pierre, Saint-Paul, Saint-Gilles, Le Tampon. Tout inclus (domaine, hébergement, maintenance) à partir de 97,4€/mois.',
+      'Agence web pour TPE et PME à La Réunion. 9site4 crée et gère le site vitrine des entreprises réunionnaises : hébergement, maintenance, modifications simples et formulaire métier inclus, dès 97,4€/mois sans frais de création.',
     canonical: '/',
   },
   realisations: {
-    title: `Réalisations — 24 exemples de sites par métier à La Réunion | ${siteConfig.siteName}`,
+    title: `Exemples métiers — Sites vitrines pour TPE à La Réunion | ${siteConfig.siteName}`,
     description:
-      'Exemples de sites web pour artisans, restaurants, instituts de beauté, gîtes, coachs, professions libérales à La Réunion (974). Voir nos 24 templates métier sur-mesure.',
+      'Exemples de sites vitrines par métier à La Réunion (974) : artisans, restaurants, instituts de beauté, gîtes, coachs, professions libérales. Des démonstrations pour vous projeter, ensuite adaptées à votre activité.',
     canonical: '/realisations',
   },
   tarifs: {
-    title: `Tarifs — Site web tout compris à 97,4€/mois | ${siteConfig.siteName}`,
+    title: `Tarifs 9site4 — Site vitrine tout compris dès 97,4€/mois`,
     description:
-      'Création de site internet à La Réunion : 97,4€/mois ou 974€/an. Domaine, hébergement, maintenance et modifications inclus. Sans engagement, sans frais cachés. Pour TPE et PME du 974.',
+      'Site internet à La Réunion dès 97,4€/mois, soit environ 3,24€/jour. Domaine, hébergement, maintenance, modifications simples et formulaire métier inclus. Sans frais de création, sans engagement.',
     canonical: '/tarifs',
   },
   contact: {
