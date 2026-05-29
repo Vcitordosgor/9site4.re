@@ -2,17 +2,18 @@
 import Icon from '../ui/Icon.astro';
 
 /**
- * Douleur — scène problème / solution en split-screen.
- * Gauche : infos dispersées (chaos contrôlé). Droite : site 9site4 ordonné.
+ * Douleur — scène problème / solution en split-screen (sans photo).
+ * Gauche : infos dispersées (chaos contrôlé, désaturé). Droite : 9site4 ordonné.
  */
 
 const chaos = [
-  { label: 'Horaires ?', x: 'left-2 top-3', rot: '-rotate-3' },
-  { label: 'Vous êtes ouverts ?', x: 'right-3 top-8', rot: 'rotate-2' },
-  { label: 'Tarifs ?', x: 'left-8 top-24', rot: 'rotate-3' },
-  { label: 'Je peux réserver ?', x: 'right-6 top-28', rot: '-rotate-2' },
-  { label: 'Adresse ?', x: 'left-3 bottom-20', rot: 'rotate-1' },
-  { label: 'Dispo ce week-end ?', x: 'right-4 bottom-10', rot: '-rotate-3' },
+  { label: 'Vous êtes ouverts ?', pos: 'left-3 top-2', rot: '-rotate-3' },
+  { label: 'C\'est combien ?', pos: 'right-4 top-5', rot: 'rotate-2' },
+  { label: 'Vous faites quoi exactement ?', pos: 'left-6 top-20', rot: 'rotate-1' },
+  { label: 'Je peux réserver ?', pos: 'right-3 top-24', rot: '-rotate-2' },
+  { label: 'C\'est où ?', pos: 'left-2 top-40', rot: 'rotate-3' },
+  { label: 'Dispo ce week-end ?', pos: 'right-6 top-44', rot: '-rotate-1' },
+  { label: 'Vous livrez ?', pos: 'left-1/3 top-32', rot: 'rotate-2' },
 ];
 
 const sources = [
@@ -21,101 +22,103 @@ const sources = [
   { icon: 'message-circle', label: 'WhatsApp' },
   { icon: 'image', label: 'Story' },
 ];
+
+const ordered = [
+  { icon: 'clock', label: 'Horaires clairs, toujours à jour' },
+  { icon: 'list', label: 'Prestations et tarifs présentés' },
+  { icon: 'map-pin', label: 'Adresse et zone d\'intervention' },
+];
 ---
 
-<section class="relative px-6 py-20 md:py-28" aria-labelledby="douleur-titre">
+<section class="relative px-6 py-20 md:py-28 overflow-hidden" aria-labelledby="douleur-titre">
   <div class="mx-auto max-w-content">
-    <div class="max-w-3xl">
+    <div class="max-w-3xl mx-auto text-center">
       <h2
         id="douleur-titre"
         class="scroll-reveal font-sora font-bold text-2xl md:text-4xl text-bleu-nuit text-balance leading-tight"
       >
         Vos clients ne devraient pas chercher vos infos partout.
       </h2>
-      <p class="scroll-reveal mt-6 text-lg text-bleu-nuit/70 leading-relaxed">
-        Horaires sur Google, photos sur Instagram, tarifs dans une story,
-        demandes sur WhatsApp, adresse introuvable, formulaire absent… Quand vos
-        informations sont dispersées, vos clients hésitent, repoussent ou passent
-        à quelqu'un d'autre.
+      <p class="scroll-reveal mt-5 text-lg text-bleu-nuit/65 leading-relaxed">
+        Quand vos informations sont dispersées, vos clients hésitent, repoussent
+        ou passent à quelqu'un d'autre.
       </p>
     </div>
 
-    <div class="scroll-reveal mt-12 grid grid-cols-1 lg:grid-cols-2 gap-5 md:gap-6 items-stretch">
-      <!-- AVANT : chaos contrôlé -->
-      <div class="relative rounded-3xl bg-bleu-nuit/[0.035] ring-1 ring-bleu-nuit/10 p-6 md:p-7 overflow-hidden">
-        <div class="flex items-center gap-2">
-          <span class="flex w-7 h-7 rounded-full bg-bleu-nuit/10 text-bleu-nuit/60 items-center justify-center">
-            <Icon name="alert-triangle" size={15} strokeWidth={2} />
+    <div class="scroll-reveal relative mt-14 grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-stretch">
+      <!-- Séparateur central "vs" (desktop) -->
+      <div class="hidden lg:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-bleu-nuit text-white items-center justify-center font-sora font-bold text-sm shadow-card-hover ring-4 ring-blanc-casse" aria-hidden="true">
+        vs
+      </div>
+
+      <!-- AVANT : chaos désaturé -->
+      <div class="relative rounded-[1.75rem] bg-bleu-nuit/[0.04] ring-1 ring-bleu-nuit/10 p-7 md:p-8 overflow-hidden grayscale-[0.2]">
+        <div class="flex items-center gap-2.5">
+          <span class="flex w-9 h-9 rounded-full bg-bleu-nuit/10 text-bleu-nuit/50 items-center justify-center">
+            <Icon name="alert-triangle" size={17} strokeWidth={2} />
           </span>
-          <p class="font-sora font-semibold text-bleu-nuit">Sans 9site4</p>
+          <p class="font-sora font-semibold text-lg text-bleu-nuit/70">Sans 9site4</p>
         </div>
 
-        <!-- Sources dispersées -->
         <div class="mt-5 flex flex-wrap gap-2">
           {sources.map((s) => (
-            <span class="inline-flex items-center gap-1.5 h-8 px-3 rounded-full bg-blanc-casse ring-1 ring-bleu-nuit/10 text-xs font-medium text-bleu-nuit/65">
+            <span class="inline-flex items-center gap-1.5 h-8 px-3 rounded-full bg-blanc-casse ring-1 ring-bleu-nuit/10 text-xs font-medium text-bleu-nuit/55">
               <Icon name={s.icon} size={13} strokeWidth={2} />
               {s.label}
             </span>
           ))}
         </div>
 
-        <!-- Bulles de questions clients (chaos lisible) -->
-        <div class="relative mt-5 h-52" aria-hidden="true">
+        <!-- Nuage de questions (chaos lisible) -->
+        <div class="relative mt-6 h-64" aria-hidden="true">
           {chaos.map((c) => (
-            <span class={`absolute ${c.x} ${c.rot} inline-flex items-center max-w-[60%] rounded-2xl rounded-bl-sm bg-blanc-casse ring-1 ring-bleu-nuit/10 px-3 py-1.5 text-[12px] text-bleu-nuit/70 shadow-sm`}>
+            <span class={`absolute ${c.pos} ${c.rot} inline-flex items-center max-w-[62%] rounded-2xl rounded-bl-sm bg-blanc-casse ring-1 ring-bleu-nuit/10 px-3 py-1.5 text-[12.5px] text-bleu-nuit/65 shadow-sm`}>
               {c.label}
             </span>
           ))}
         </div>
 
-        <p class="mt-2 text-sm text-bleu-nuit/55 leading-relaxed">
+        <p class="mt-2 text-sm text-bleu-nuit/50 leading-relaxed">
           Des questions en boucle, des demandes en vrac, des clients qui hésitent.
         </p>
       </div>
 
-      <!-- AVEC : site 9site4 ordonné -->
-      <div class="relative rounded-3xl bg-blanc-casse ring-1 ring-bleu/40 shadow-card p-6 md:p-7">
-        <div class="flex items-center gap-2">
-          <span class="flex w-7 h-7 rounded-full bg-bleu/25 text-bleu-nuit items-center justify-center">
-            <Icon name="check" size={15} strokeWidth={2.5} />
+      <!-- AVEC : 9site4 ordonné -->
+      <div class="relative rounded-[1.75rem] bg-white ring-1 ring-bleu/50 shadow-card-hover p-7 md:p-8">
+        <div class="flex items-center gap-2.5">
+          <span class="flex w-9 h-9 rounded-full bg-bleu/25 text-bleu-nuit items-center justify-center">
+            <Icon name="check" size={17} strokeWidth={2.5} />
           </span>
-          <p class="font-sora font-semibold text-bleu-nuit">Avec 9site4</p>
+          <p class="font-sora font-semibold text-lg text-bleu-nuit">Avec 9site4</p>
         </div>
 
-        <div class="mt-5 space-y-2.5">
-          <div class="flex items-center gap-3 rounded-xl bg-bleu-nuit/[0.03] px-3.5 py-2.5">
-            <Icon name="clock" size={16} class="text-bleu-nuit/60 shrink-0" strokeWidth={2} />
-            <span class="text-sm font-medium text-bleu-nuit">Horaires clairs, toujours à jour</span>
-          </div>
-          <div class="flex items-center gap-3 rounded-xl bg-bleu-nuit/[0.03] px-3.5 py-2.5">
-            <Icon name="list" size={16} class="text-bleu-nuit/60 shrink-0" strokeWidth={2} />
-            <span class="text-sm font-medium text-bleu-nuit">Prestations et tarifs présentés</span>
-          </div>
-          <div class="flex items-center gap-3 rounded-xl bg-bleu-nuit/[0.03] px-3.5 py-2.5">
-            <Icon name="map-pin" size={16} class="text-bleu-nuit/60 shrink-0" strokeWidth={2} />
-            <span class="text-sm font-medium text-bleu-nuit">Adresse et zone d'intervention</span>
-          </div>
-          <div class="flex items-center justify-between gap-3 rounded-xl bg-orange/15 ring-1 ring-orange/30 px-3.5 py-2.5">
+        <div class="relative mt-6 space-y-2.5">
+          {ordered.map((o) => (
+            <div class="flex items-center gap-3 rounded-xl bg-bleu-nuit/[0.03] px-4 py-3">
+              <span class="flex w-8 h-8 rounded-lg bg-white ring-1 ring-bleu-nuit/10 text-bleu-nuit/70 items-center justify-center shrink-0">
+                <Icon name={o.icon} size={16} strokeWidth={2} />
+              </span>
+              <span class="text-sm font-medium text-bleu-nuit">{o.label}</span>
+            </div>
+          ))}
+          <div class="flex items-center justify-between gap-3 rounded-xl bg-bleu/15 ring-1 ring-bleu/40 px-4 py-3">
             <span class="flex items-center gap-3">
-              <Icon name="file-text" size={16} class="text-bleu-nuit shrink-0" strokeWidth={2} />
+              <span class="flex w-8 h-8 rounded-lg bg-bleu text-white items-center justify-center shrink-0">
+                <Icon name="file-text" size={16} strokeWidth={2} />
+              </span>
               <span class="text-sm font-semibold text-bleu-nuit">Formulaire métier intégré</span>
             </span>
-            <span class="inline-flex items-center gap-1.5 h-6 px-2.5 rounded-full bg-bleu-nuit text-blanc-casse text-[10px] font-semibold">
+            <span class="inline-flex items-center gap-1.5 h-6 px-2.5 rounded-full bg-bleu-nuit text-white text-[10px] font-semibold shrink-0">
               <span class="w-1.5 h-1.5 rounded-full bg-[#25D366]"></span> Demande reçue
             </span>
           </div>
         </div>
 
-        <p class="mt-4 text-sm text-bleu-nuit/60 leading-relaxed">
+        <p class="relative mt-5 text-sm text-bleu-nuit/60 leading-relaxed">
           Un seul site clair : vos clients trouvent tout et vous envoient une
           demande complète.
         </p>
       </div>
     </div>
-
-    <p class="scroll-reveal mt-10 font-sora font-bold text-xl md:text-2xl text-bleu-nuit text-balance leading-snug">
-      9site4 rassemble tout dans un site clair, local et prêt à recevoir des demandes.
-    </p>
   </div>
 </section>
