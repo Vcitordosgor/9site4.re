@@ -48,7 +48,7 @@ const Element = href ? 'a' : 'span';
     aria-hidden="true"
   >
     <polygon points="36 0 243 265 334 268 251 385 0 597 149 356 111 330 36 0" fill="#91A6FF"/>
-    <polygon class="wordmark-pulse" points="363 268 418 300 362 331 363 268" fill="#FF8F00"/>
+    <polygon class="wordmark-pulse" points="363 268 418 300 362 331 363 268" fill="#91A6FF"/>
   </svg>
   <span class="wordmark-text inline-flex">
     {letters.map((letter) => <span class="wordmark-letter">{letter}</span>)}
@@ -69,7 +69,7 @@ const Element = href ? 'a' : 'span';
 
   /* Vague orange qui traverse les 6 lettres de "9site4" en boucle (3s) */
   @keyframes wordmark-letter-flash {
-    0%, 16.67% { color: #FF8F00; }
+    0%, 16.67% { color: #91A6FF; }
     16.68%, 100% { color: inherit; }
   }
   .wordmark-letter {
@@ -85,6 +85,6 @@ const Element = href ? 'a' : 'span';
   @media (prefers-reduced-motion: reduce) {
     .wordmark-pulse,
     .wordmark-letter { animation: none; }
-    .wordmark-letter:last-child { color: #FF8F00; }
+    .wordmark-letter:last-child { color: #91A6FF; }
   }
 </style>
