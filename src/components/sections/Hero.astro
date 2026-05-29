@@ -3,9 +3,9 @@ import Icon from '../ui/Icon.astro';
 import siteConfig from '../../data/siteConfig.json';
 
 /**
- * Hero — version "bold & impactant".
- * Fond sombre plein contraste, titre XXL, accent orange, 2 CTA francs,
- * bandeau de réassurance. Aucun mockup/illustration. Le H1 reste le LCP.
+ * Hero — bold, aligné à gauche, charte 9site4 (orange + bleu mauve).
+ * Fond clair, titre XXL, accents de couleur sur mots-clés. Aucun mockup.
+ * Le H1 reste l'élément prioritaire (LCP).
  */
 
 const trust = [
@@ -17,44 +17,46 @@ const trust = [
 ---
 
 <section
-  class="relative overflow-hidden bg-bleu-nuit text-blanc-casse"
+  class="relative overflow-hidden px-6 pt-24 pb-20 md:pt-32 md:pb-28"
   aria-label="Présentation de 9site4"
 >
-  <!-- Fond : halos discrets + 974 en filigrane -->
-  <div class="pointer-events-none absolute inset-0 -z-0" aria-hidden="true">
-    <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[55rem] h-[55rem] rounded-full bg-bleu/10 blur-3xl halo-pulse"></div>
-    <div class="absolute -bottom-32 -right-24 w-[40rem] h-[40rem] rounded-full bg-orange/10 blur-3xl halo-pulse-slow"></div>
-    <span class="absolute inset-x-0 bottom-0 flex justify-center select-none font-sora font-bold text-[34vw] md:text-[24vw] leading-[0.8] tracking-tighter text-blanc-casse/[0.03] translate-y-[18%]">
-      974
-    </span>
+  <!-- Halos charte (bleu mauve + orange), discrets -->
+  <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
+    <div class="absolute -top-40 -left-32 w-[42rem] h-[42rem] rounded-full bg-bleu/25 blur-3xl halo-pulse"></div>
+    <div class="absolute top-10 -right-40 w-[40rem] h-[40rem] rounded-full bg-orange/15 blur-3xl halo-pulse-slow"></div>
+    <span class="absolute right-0 bottom-0 select-none font-sora font-bold text-[30vw] md:text-[18vw] leading-[0.8] tracking-tighter text-bleu-nuit/[0.035] translate-x-[8%] translate-y-[20%]">974</span>
   </div>
 
-  <div class="relative z-10 mx-auto max-w-content px-6 pt-28 pb-24 md:pt-36 md:pb-32 text-center">
+  <div class="relative z-10 mx-auto max-w-content text-left">
     <!-- Eyebrow -->
-    <p class="hero-rise hero-rise-1 inline-flex items-center gap-2 px-4 h-9 rounded-full ring-1 ring-blanc-casse/15 bg-blanc-casse/[0.04] text-sm font-medium text-blanc-casse/80">
+    <p class="hero-rise hero-rise-1 inline-flex items-center gap-2 px-4 h-9 rounded-full ring-1 ring-bleu-nuit/10 bg-blanc-casse/70 text-sm font-medium text-bleu-nuit/75">
       <span class="inline-block w-2 h-2 rounded-full bg-orange"></span>
       Agence web à La Réunion · {siteConfig.location.areaCode}
     </p>
 
     <!-- H1 XXL -->
-    <h1 class="hero-rise hero-rise-2 mx-auto mt-7 max-w-4xl text-hero font-sora font-bold text-balance">
+    <h1 class="hero-rise hero-rise-2 mt-7 max-w-4xl text-hero font-sora font-bold text-bleu-nuit text-balance">
       Votre site pro, en ligne en
-      <span class="relative inline-block text-orange">
-        7 jours.
-      </span>
+      <span class="relative inline-block">
+        <span class="relative z-10">7 jours</span>
+        <span class="absolute inset-x-0 bottom-1 md:bottom-2 h-3 md:h-4 bg-bleu -z-0" aria-hidden="true"></span>
+      </span>.
       <br class="hidden sm:block" />
-      Géré pour vous.
+      <span class="relative inline-block">
+        <span class="relative z-10">Géré pour vous.</span>
+        <span class="absolute inset-x-0 bottom-1 md:bottom-2 h-3 md:h-4 bg-orange/70 -z-0" aria-hidden="true"></span>
+      </span>
     </h1>
 
     <!-- Sous-titre -->
-    <p class="hero-rise hero-rise-3 mx-auto mt-6 max-w-2xl text-lg md:text-xl text-blanc-casse/75 leading-relaxed">
+    <p class="hero-rise hero-rise-3 mt-6 max-w-2xl text-lg md:text-xl text-bleu-nuit/70 leading-relaxed">
       9site4 crée votre site vitrine, l'héberge, le maintient et y intègre un
       formulaire adapté à votre métier pour recevoir des demandes plus claires.
       À partir de {siteConfig.pricing.monthly}/mois, sans frais de création.
     </p>
 
     <!-- CTAs -->
-    <div class="hero-rise hero-rise-4 mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+    <div class="hero-rise hero-rise-4 mt-10 flex flex-col sm:flex-row gap-4 justify-start">
       <a
         href="/contact"
         class="group inline-flex items-center justify-center gap-2 h-14 px-8 text-lg font-semibold rounded-full bg-orange text-bleu-nuit shadow-card hover:shadow-card-hover hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 ease-out"
@@ -64,16 +66,16 @@ const trust = [
       </a>
       <a
         href="/realisations"
-        class="inline-flex items-center justify-center gap-2 h-14 px-8 text-lg font-semibold rounded-full ring-1 ring-blanc-casse/25 text-blanc-casse hover:bg-blanc-casse hover:text-bleu-nuit transition-all duration-200 ease-out"
+        class="inline-flex items-center justify-center gap-2 h-14 px-8 text-lg font-semibold rounded-full ring-1 ring-bleu-nuit/20 text-bleu-nuit hover:bg-bleu hover:ring-bleu transition-all duration-200 ease-out"
       >
         Voir un exemple pour mon métier
       </a>
     </div>
 
     <!-- Réassurance -->
-    <ul class="hero-rise hero-rise-5 mt-10 flex flex-wrap items-center justify-center gap-x-5 gap-y-2.5">
+    <ul class="hero-rise hero-rise-5 mt-10 flex flex-wrap items-center gap-x-5 gap-y-2.5">
       {trust.map((t) => (
-        <li class="inline-flex items-center gap-2 text-sm text-blanc-casse/70">
+        <li class="inline-flex items-center gap-2 text-sm text-bleu-nuit/70">
           <Icon name="check" size={15} strokeWidth={2.5} class="text-orange" />
           {t}
         </li>
@@ -81,8 +83,8 @@ const trust = [
     </ul>
 
     <!-- Prix signature inline -->
-    <p class="hero-rise hero-rise-5 mt-8 inline-flex items-baseline gap-2 text-blanc-casse/55 text-sm">
-      <span class="font-sora font-bold text-2xl text-blanc-casse">{siteConfig.pricing.monthly}</span>
+    <p class="hero-rise hero-rise-5 mt-7 inline-flex items-baseline gap-2 text-bleu-nuit/55 text-sm">
+      <span class="font-sora font-bold text-2xl text-bleu-nuit">{siteConfig.pricing.monthly}</span>
       <span>/mois — soit environ {siteConfig.pricing.daily}/jour · sans engagement</span>
     </p>
   </div>
