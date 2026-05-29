@@ -22,10 +22,10 @@ const isActive = (href: string) => {
   data-scrolled="false"
   transition:persist
   transition:name="site-header"
-  class="sticky top-0 z-50 transition-[background-color,backdrop-filter,box-shadow,border-color] duration-300 ease-out border-b border-transparent"
+  class="sticky top-0 z-50 bg-black text-blanc-casse transition-[background-color,backdrop-filter,box-shadow,border-color] duration-300 ease-out border-b border-blanc-casse/10"
 >
   <div class="max-w-content mx-auto px-6 h-24 md:h-28 flex items-center justify-between gap-6">
-    <Wordmark href="/" size="md" />
+    <Wordmark href="/" size="md" tone="light" />
 
     <nav class="hidden md:flex items-center gap-1" aria-label="Navigation principale">
       {navLinks.map((link) => (
@@ -35,7 +35,7 @@ const isActive = (href: string) => {
           data-href={link.href}
           data-active={isActive(link.href) ? 'true' : 'false'}
           aria-current={isActive(link.href) ? 'page' : undefined}
-          class="group/nav relative px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 ease-out text-bleu-nuit/70 hover:text-bleu-nuit data-[active=true]:text-bleu-nuit"
+          class="group/nav relative px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 ease-out text-blanc-casse/70 hover:text-blanc-casse data-[active=true]:text-blanc-casse"
         >
           {link.label}
           <span
@@ -47,7 +47,12 @@ const isActive = (href: string) => {
     </nav>
 
     <div class="hidden md:block">
-      <Button variant="primary" size="sm" href="/contact">Demander mon site</Button>
+      <a
+        href="/contact"
+        class="inline-flex items-center justify-center h-11 px-5 text-sm font-semibold rounded-full bg-blanc-casse text-black hover:bg-white hover:-translate-y-0.5 transition-all duration-200 ease-out"
+      >
+        Demander mon site
+      </a>
     </div>
 
     <button
@@ -57,13 +62,13 @@ const isActive = (href: string) => {
       aria-expanded="false"
       aria-controls="mobile-menu"
       aria-label="Ouvrir le menu"
-      class="group md:hidden relative w-11 h-11 -mr-2 flex items-center justify-center rounded-full hover:bg-bleu-nuit/5 transition-colors"
+      class="group md:hidden relative w-11 h-11 -mr-2 flex items-center justify-center rounded-full hover:bg-blanc-casse/10 transition-colors"
     >
       <span class="sr-only">Menu</span>
       <span class="relative flex flex-col items-center justify-center gap-1.5 w-6 h-6">
-        <span class="block w-6 h-0.5 bg-bleu-nuit rounded-full transition-transform duration-300 ease-out origin-center group-data-[open=true]:rotate-45 group-data-[open=true]:translate-y-2"></span>
-        <span class="block w-6 h-0.5 bg-bleu-nuit rounded-full transition-opacity duration-200 ease-out group-data-[open=true]:opacity-0"></span>
-        <span class="block w-6 h-0.5 bg-bleu-nuit rounded-full transition-transform duration-300 ease-out origin-center group-data-[open=true]:-rotate-45 group-data-[open=true]:-translate-y-2"></span>
+        <span class="block w-6 h-0.5 bg-blanc-casse rounded-full transition-transform duration-300 ease-out origin-center group-data-[open=true]:rotate-45 group-data-[open=true]:translate-y-2"></span>
+        <span class="block w-6 h-0.5 bg-blanc-casse rounded-full transition-opacity duration-200 ease-out group-data-[open=true]:opacity-0"></span>
+        <span class="block w-6 h-0.5 bg-blanc-casse rounded-full transition-transform duration-300 ease-out origin-center group-data-[open=true]:-rotate-45 group-data-[open=true]:-translate-y-2"></span>
       </span>
     </button>
   </div>
@@ -74,11 +79,11 @@ const isActive = (href: string) => {
 <style>
   /* Effet glassmorphism subtil au scroll — règle brief §4.5 */
   #site-header[data-scrolled='true'] {
-    background-color: rgb(254 254 250 / 0.82);
+    background-color: rgb(0 0 0 / 0.85);
     -webkit-backdrop-filter: saturate(180%) blur(12px);
     backdrop-filter: saturate(180%) blur(12px);
-    box-shadow: 0 1px 3px rgb(0 0 0 / 0.08);
-    border-bottom-color: rgb(0 0 0 / 0.08);
+    box-shadow: 0 1px 3px rgb(0 0 0 / 0.4);
+    border-bottom-color: rgb(254 254 250 / 0.12);
   }
 </style>
 
