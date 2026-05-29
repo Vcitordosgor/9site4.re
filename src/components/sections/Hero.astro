@@ -4,9 +4,20 @@ import siteConfig from '../../data/siteConfig.json';
 
 /**
  * Hero — bold, aligné à gauche, charte 9site4 (orange + bleu mauve).
- * Fond clair, titre XXL, accents de couleur sur mots-clés. Aucun mockup.
- * Le H1 reste l'élément prioritaire (LCP).
+ * Le métier défile dans le H1 (effet "Squarespace" léger, 100% CSS/JS,
+ * aucune vidéo/image lourde). Respecte prefers-reduced-motion.
+ * Le H1 reste l'élément prioritaire (LCP) — texte réel pour le SEO via aria-label.
  */
+
+const metiers = [
+  'restaurant',
+  'salon de coiffure',
+  'garage',
+  'institut',
+  'gîte',
+  'artisan',
+  'cabinet',
+];
 
 const trust = [
   'Sans frais de création',
@@ -34,17 +45,27 @@ const trust = [
       Agence web à La Réunion · {siteConfig.location.areaCode}
     </p>
 
-    <!-- H1 XXL -->
-    <h1 class="hero-rise hero-rise-2 mt-7 max-w-4xl text-hero font-sora font-bold text-bleu-nuit text-balance">
-      Votre site pro, en ligne en
-      <span class="relative inline-block">
-        <span class="relative z-10">7 jours</span>
-        <span class="absolute inset-x-0 bottom-1 md:bottom-2 h-3 md:h-4 bg-bleu -z-0" aria-hidden="true"></span>
-      </span>.
+    <!-- H1 XXL avec métier qui défile -->
+    <h1
+      class="hero-rise hero-rise-2 mt-7 max-w-4xl text-hero font-sora font-bold text-bleu-nuit text-balance"
+      aria-label="Le site pro de votre commerce, en ligne en 7 jours."
+    >
+      <span aria-hidden="true">Le site pro de votre</span>
+      <br />
+      <span
+        id="hero-metier"
+        class="relative inline-block align-baseline"
+        aria-hidden="true"
+        data-metiers={JSON.stringify(metiers)}
+      >
+        <span class="relative z-10 hero-metier-word">{metiers[0]}</span>
+        <span class="absolute inset-x-0 bottom-1 md:bottom-2 h-3 md:h-4 bg-bleu -z-0"></span>
+      </span>
+      <span aria-hidden="true">,</span>
       <br class="hidden sm:block" />
-      <span class="relative inline-block">
-        <span class="relative z-10">Géré pour vous.</span>
-        <span class="absolute inset-x-0 bottom-1 md:bottom-2 h-3 md:h-4 bg-orange/70 -z-0" aria-hidden="true"></span>
+      <span aria-hidden="true" class="relative inline-block">
+        <span class="relative z-10">en ligne en 7 jours.</span>
+        <span class="absolute inset-x-0 bottom-1 md:bottom-2 h-3 md:h-4 bg-orange/70 -z-0"></span>
       </span>
     </h1>
 
@@ -89,3 +110,57 @@ const trust = [
     </p>
   </div>
 </section>
+
+<style>
+  .hero-metier-word {
+    display: inline-block;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  .hero-metier-word.is-out {
+    opacity: 0;
+    transform: translateY(-0.35em);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-metier-word {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  function initHeroMetier() {
+    const host = document.getElementById('hero-metier');
+    if (!host) return;
+    const word = host.querySelector<HTMLElement>('.hero-metier-word');
+    if (!word) return;
+
+    let metiers: string[] = [];
+    try {
+      metiers = JSON.parse(host.dataset.metiers || '[]');
+    } catch {
+      return;
+    }
+    if (metiers.length < 2) return;
+
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) return; // on garde le premier métier figé
+
+    let i = 0;
+    const tick = () => {
+      i = (i + 1) % metiers.length;
+      word.classList.add('is-out');
+      window.setTimeout(() => {
+        word.textContent = metiers[i];
+        word.classList.remove('is-out');
+      }, 400);
+    };
+
+    // Évite les timers multiples après navigations View Transitions
+    const w = window as unknown as { __heroMetierTimer?: number };
+    if (w.__heroMetierTimer) window.clearInterval(w.__heroMetierTimer);
+    w.__heroMetierTimer = window.setInterval(tick, 2200);
+  }
+
+  initHeroMetier();
+  document.addEventListener('astro:page-load', initHeroMetier);
+</script>
