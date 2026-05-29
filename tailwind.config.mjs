@@ -16,10 +16,12 @@ export default {
   theme: {
     extend: {
       colors: {
+        // Charte 9site4 : noir / blanc / bleu mauve.
+        // (tokens "orange" et "bleu-nuit" conservés par compat mais remappés)
         bleu: '#91A6FF',
-        orange: '#FF8F00',
+        orange: '#91A6FF',
         'blanc-casse': '#FEFEFA',
-        'bleu-nuit': '#0B1437',
+        'bleu-nuit': '#000000',
         // Palette pizzeria — refonte trattoria éditoriale
         // (template /templates/pizzeria — pas la charte 9site4)
         'pizza-creme':   '#FAF7F0',  // warm cream (fond principal)
