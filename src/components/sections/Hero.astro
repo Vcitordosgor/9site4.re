@@ -79,66 +79,92 @@ import siteConfig from '../../data/siteConfig.json';
       </p>
     </div>
 
-    <!-- Colonne visuelle : 3 cartes flottantes (float continu, décalé) -->
+    <!-- Colonne visuelle : mockup produit composé (browser window + notif + badges) -->
     <div
-      class="hero-rise hero-rise-5 lg:col-span-5 relative h-[420px] hidden lg:block"
+      class="hero-rise hero-rise-5 lg:col-span-5 relative mt-14 sm:mt-16 lg:mt-0 px-2 sm:px-6 lg:px-2"
       aria-hidden="true"
     >
-      <!-- Card 1 : Réservation (haut gauche) -->
-      <div class="absolute top-0 left-2 w-64 hero-float-a">
-        <div class="bg-blanc-casse rounded-2xl ring-2 ring-bleu shadow-card-hover p-5 -rotate-[4deg] transition-transform duration-500 ease-out-soft hover:rotate-0 hover:scale-105">
-          <div class="flex items-center gap-3">
-            <span class="flex w-10 h-10 rounded-xl bg-bleu-nuit text-blanc-casse items-center justify-center">
-              <Icon name="calendar-clock" size={20} strokeWidth={2.25} />
+      <!-- Fenêtre navigateur : aperçu du site vitrine livré -->
+      <div class="relative mx-auto w-full max-w-md rounded-2xl bg-blanc-casse ring-1 ring-bleu-nuit/10 shadow-card-hover overflow-hidden">
+        <!-- Topbar browser -->
+        <div class="flex items-center gap-2 px-4 h-10 bg-bleu-nuit/[0.04] border-b border-bleu-nuit/[0.07]">
+          <span class="flex gap-1.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-bleu-nuit/15"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-bleu-nuit/15"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-bleu-nuit/15"></span>
+          </span>
+          <span class="ml-2 flex-1 flex items-center h-6 px-3 rounded-full bg-blanc-casse ring-1 ring-bleu-nuit/10 text-[11px] font-roboto-mono text-bleu-nuit/45 truncate">
+            votre-entreprise.re
+          </span>
+        </div>
+
+        <!-- Faux site vitrine -->
+        <div class="p-5">
+          <!-- Hero du faux site -->
+          <div class="flex items-center justify-between gap-3">
+            <div class="min-w-0">
+              <p class="font-sora font-bold text-bleu-nuit text-base leading-tight truncate">Votre entreprise péi</p>
+              <p class="text-[11px] text-bleu-nuit/55 mt-0.5 flex items-center gap-1">
+                <Icon name="map-pin" size={11} strokeWidth={2} /> Saint-Pierre · La Réunion
+              </p>
+            </div>
+            <span class="shrink-0 inline-flex items-center h-7 px-3 rounded-full bg-orange text-bleu-nuit text-[11px] font-semibold">
+              Réserver
             </span>
-            <div>
-              <p class="text-xs font-medium text-bleu-nuit/60 uppercase tracking-wide">Formulaire</p>
-              <p class="text-sm font-sora font-semibold text-bleu-nuit">Réservation</p>
+          </div>
+
+          <!-- Mini-sections horaires / prestations / contact -->
+          <div class="mt-4 grid grid-cols-3 gap-2">
+            <div class="rounded-xl bg-bleu-nuit/[0.04] p-2.5">
+              <Icon name="clock" size={14} class="text-bleu-nuit/55" strokeWidth={2} />
+              <p class="mt-1.5 text-[9px] uppercase tracking-wide text-bleu-nuit/50 font-semibold">Horaires</p>
+              <div class="mt-1 h-1.5 rounded-full bg-bleu/40 w-3/4"></div>
+            </div>
+            <div class="rounded-xl bg-bleu-nuit/[0.04] p-2.5">
+              <Icon name="list" size={14} class="text-bleu-nuit/55" strokeWidth={2} />
+              <p class="mt-1.5 text-[9px] uppercase tracking-wide text-bleu-nuit/50 font-semibold">Offres</p>
+              <div class="mt-1 h-1.5 rounded-full bg-orange/50 w-full"></div>
+            </div>
+            <div class="rounded-xl bg-bleu-nuit/[0.04] p-2.5">
+              <Icon name="smartphone" size={14} class="text-bleu-nuit/55" strokeWidth={2} />
+              <p class="mt-1.5 text-[9px] uppercase tracking-wide text-bleu-nuit/50 font-semibold">Contact</p>
+              <div class="mt-1 h-1.5 rounded-full bg-bleu/40 w-2/3"></div>
             </div>
           </div>
-          <div class="mt-4 space-y-2">
-            <div class="h-2 rounded-full bg-bleu w-3/4"></div>
-            <div class="h-2 rounded-full bg-bleu-nuit/10 w-1/2"></div>
+
+          <!-- Mini-formulaire métier -->
+          <div class="mt-3 rounded-xl ring-1 ring-bleu-nuit/10 p-3">
+            <p class="font-roboto-mono text-[8.5px] uppercase tracking-[0.18em] text-orange font-semibold">Formulaire · Devis</p>
+            <div class="mt-2 space-y-1.5">
+              <div class="h-2 rounded-full bg-bleu-nuit/10 w-full"></div>
+              <div class="h-2 rounded-full bg-bleu-nuit/10 w-5/6"></div>
+            </div>
+            <div class="mt-2.5 flex items-center justify-center h-7 rounded-lg bg-bleu-nuit text-blanc-casse text-[10px] font-semibold">
+              Demander un devis
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Card 2 : Devis (centre droit) -->
-      <div class="absolute top-32 right-0 w-64 hero-float-b">
-        <div class="bg-blanc-casse rounded-2xl ring-2 ring-orange shadow-card-hover p-5 rotate-[3deg] transition-transform duration-500 ease-out-soft hover:rotate-0 hover:scale-105">
-          <div class="flex items-center gap-3">
-            <span class="flex w-10 h-10 rounded-xl bg-bleu-nuit text-blanc-casse items-center justify-center">
-              <Icon name="file-text" size={20} strokeWidth={2.25} />
-            </span>
-            <div>
-              <p class="text-xs font-medium text-bleu-nuit/60 uppercase tracking-wide">Formulaire</p>
-              <p class="text-sm font-sora font-semibold text-bleu-nuit">Devis</p>
-            </div>
-          </div>
-          <div class="mt-4 space-y-2">
-            <div class="h-2 rounded-full bg-orange w-full"></div>
-            <div class="h-2 rounded-full bg-bleu-nuit/10 w-2/3"></div>
-          </div>
-        </div>
+      <!-- Notification flottante : nouvelle demande reçue -->
+      <div class="hero-float-b absolute -top-6 -right-1 sm:-right-3 w-60 max-w-[78%] rounded-2xl bg-blanc-casse ring-1 ring-orange/40 shadow-card-hover p-3.5">
+        <p class="font-roboto-mono text-[8.5px] uppercase tracking-[0.2em] font-semibold text-orange flex items-center gap-1.5">
+          <Icon name="mail" size={11} strokeWidth={2.5} /> Nouvelle demande
+        </p>
+        <p class="mt-1.5 font-sora font-semibold text-bleu-nuit text-[13px] leading-snug">Devis reçu</p>
+        <p class="mt-0.5 text-[11px] text-bleu-nuit/60 leading-snug">Saint-Pierre · Budget indiqué · Photo jointe</p>
+        <p class="text-[9px] text-bleu-nuit/40 mt-1.5 text-right tabular-nums">à l'instant ✓✓</p>
       </div>
 
-      <!-- Card 3 : Rendez-vous (bas centre) -->
-      <div class="absolute bottom-0 left-12 w-64 hero-float-c">
-        <div class="bg-blanc-casse rounded-2xl ring-2 ring-bleu shadow-card-hover p-5 -rotate-[2deg] transition-transform duration-500 ease-out-soft hover:rotate-0 hover:scale-105">
-          <div class="flex items-center gap-3">
-            <span class="flex w-10 h-10 rounded-xl bg-bleu-nuit text-blanc-casse items-center justify-center">
-              <Icon name="calendar-check" size={20} strokeWidth={2.25} />
-            </span>
-            <div>
-              <p class="text-xs font-medium text-bleu-nuit/60 uppercase tracking-wide">Formulaire</p>
-              <p class="text-sm font-sora font-semibold text-bleu-nuit">Rendez-vous</p>
-            </div>
-          </div>
-          <div class="mt-4 space-y-2">
-            <div class="h-2 rounded-full bg-bleu w-2/3"></div>
-            <div class="h-2 rounded-full bg-bleu-nuit/10 w-3/4"></div>
-          </div>
-        </div>
+      <!-- Badge flottant : délai 7 jours -->
+      <div class="hero-float-a absolute -left-1 sm:-left-3 top-1/3 inline-flex items-center gap-1.5 h-9 px-3.5 rounded-full bg-bleu-nuit text-blanc-casse shadow-card-hover text-[12px] font-semibold">
+        <Icon name="rocket" size={14} strokeWidth={2} /> En ligne en 7 jours
+      </div>
+
+      <!-- Badge flottant : prix signature -->
+      <div class="hero-float-c absolute -bottom-5 left-6 sm:left-10 inline-flex items-baseline gap-1 h-10 px-4 rounded-full bg-orange text-bleu-nuit shadow-card-hover">
+        <span class="font-sora font-bold text-base leading-none">{siteConfig.pricing.monthly}</span>
+        <span class="text-[11px] font-semibold leading-none">/mois</span>
       </div>
     </div>
   </div>

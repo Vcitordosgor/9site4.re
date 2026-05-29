@@ -2,16 +2,24 @@
 import Icon from '../ui/Icon.astro';
 
 /**
- * Douleur — section problème (placée juste après le Hero).
- * Met en lumière la dispersion des infos client avant la résolution 9site4.
+ * Douleur — scène problème / solution en split-screen.
+ * Gauche : infos dispersées (chaos contrôlé). Droite : site 9site4 ordonné.
  */
 
-const cartes = [
-  { icon: 'clock', titre: 'Vos horaires sont introuvables' },
-  { icon: 'mail', titre: 'Vos demandes arrivent en vrac' },
-  { icon: 'help-circle', titre: 'Vos clients hésitent avant de vous contacter' },
-  { icon: 'instagram', titre: 'Votre Instagram ne suffit pas toujours' },
-  { icon: 'rocket', titre: 'Votre site devrait travailler pour vous' },
+const chaos = [
+  { label: 'Horaires ?', x: 'left-2 top-3', rot: '-rotate-3' },
+  { label: 'Vous êtes ouverts ?', x: 'right-3 top-8', rot: 'rotate-2' },
+  { label: 'Tarifs ?', x: 'left-8 top-24', rot: 'rotate-3' },
+  { label: 'Je peux réserver ?', x: 'right-6 top-28', rot: '-rotate-2' },
+  { label: 'Adresse ?', x: 'left-3 bottom-20', rot: 'rotate-1' },
+  { label: 'Dispo ce week-end ?', x: 'right-4 bottom-10', rot: '-rotate-3' },
+];
+
+const sources = [
+  { icon: 'instagram', label: 'Instagram' },
+  { icon: 'globe', label: 'Google' },
+  { icon: 'message-circle', label: 'WhatsApp' },
+  { icon: 'image', label: 'Story' },
 ];
 ---
 
@@ -32,20 +40,79 @@ const cartes = [
       </p>
     </div>
 
-    <ul class="scroll-reveal mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-5">
-      {cartes.map((c) => (
-        <li class="h-full">
-          <article class="h-full flex flex-col items-start rounded-2xl bg-blanc-casse ring-1 ring-bleu-nuit/10 p-5 md:p-6 transition-all duration-300 ease-out-soft hover:-translate-y-0.5 hover:shadow-card-hover hover:ring-bleu-nuit/15">
-            <span class="flex w-11 h-11 rounded-xl bg-bleu-nuit/[0.06] text-bleu-nuit items-center justify-center shrink-0">
-              <Icon name={c.icon} size={20} strokeWidth={1.75} />
+    <div class="scroll-reveal mt-12 grid grid-cols-1 lg:grid-cols-2 gap-5 md:gap-6 items-stretch">
+      <!-- AVANT : chaos contrôlé -->
+      <div class="relative rounded-3xl bg-bleu-nuit/[0.035] ring-1 ring-bleu-nuit/10 p-6 md:p-7 overflow-hidden">
+        <div class="flex items-center gap-2">
+          <span class="flex w-7 h-7 rounded-full bg-bleu-nuit/10 text-bleu-nuit/60 items-center justify-center">
+            <Icon name="alert-triangle" size={15} strokeWidth={2} />
+          </span>
+          <p class="font-sora font-semibold text-bleu-nuit">Sans 9site4</p>
+        </div>
+
+        <!-- Sources dispersées -->
+        <div class="mt-5 flex flex-wrap gap-2">
+          {sources.map((s) => (
+            <span class="inline-flex items-center gap-1.5 h-8 px-3 rounded-full bg-blanc-casse ring-1 ring-bleu-nuit/10 text-xs font-medium text-bleu-nuit/65">
+              <Icon name={s.icon} size={13} strokeWidth={2} />
+              {s.label}
             </span>
-            <h3 class="mt-4 font-sora font-semibold text-base text-bleu-nuit leading-snug">
-              {c.titre}
-            </h3>
-          </article>
-        </li>
-      ))}
-    </ul>
+          ))}
+        </div>
+
+        <!-- Bulles de questions clients (chaos lisible) -->
+        <div class="relative mt-5 h-52" aria-hidden="true">
+          {chaos.map((c) => (
+            <span class={`absolute ${c.x} ${c.rot} inline-flex items-center max-w-[60%] rounded-2xl rounded-bl-sm bg-blanc-casse ring-1 ring-bleu-nuit/10 px-3 py-1.5 text-[12px] text-bleu-nuit/70 shadow-sm`}>
+              {c.label}
+            </span>
+          ))}
+        </div>
+
+        <p class="mt-2 text-sm text-bleu-nuit/55 leading-relaxed">
+          Des questions en boucle, des demandes en vrac, des clients qui hésitent.
+        </p>
+      </div>
+
+      <!-- AVEC : site 9site4 ordonné -->
+      <div class="relative rounded-3xl bg-blanc-casse ring-1 ring-bleu/40 shadow-card p-6 md:p-7">
+        <div class="flex items-center gap-2">
+          <span class="flex w-7 h-7 rounded-full bg-bleu/25 text-bleu-nuit items-center justify-center">
+            <Icon name="check" size={15} strokeWidth={2.5} />
+          </span>
+          <p class="font-sora font-semibold text-bleu-nuit">Avec 9site4</p>
+        </div>
+
+        <div class="mt-5 space-y-2.5">
+          <div class="flex items-center gap-3 rounded-xl bg-bleu-nuit/[0.03] px-3.5 py-2.5">
+            <Icon name="clock" size={16} class="text-bleu-nuit/60 shrink-0" strokeWidth={2} />
+            <span class="text-sm font-medium text-bleu-nuit">Horaires clairs, toujours à jour</span>
+          </div>
+          <div class="flex items-center gap-3 rounded-xl bg-bleu-nuit/[0.03] px-3.5 py-2.5">
+            <Icon name="list" size={16} class="text-bleu-nuit/60 shrink-0" strokeWidth={2} />
+            <span class="text-sm font-medium text-bleu-nuit">Prestations et tarifs présentés</span>
+          </div>
+          <div class="flex items-center gap-3 rounded-xl bg-bleu-nuit/[0.03] px-3.5 py-2.5">
+            <Icon name="map-pin" size={16} class="text-bleu-nuit/60 shrink-0" strokeWidth={2} />
+            <span class="text-sm font-medium text-bleu-nuit">Adresse et zone d'intervention</span>
+          </div>
+          <div class="flex items-center justify-between gap-3 rounded-xl bg-orange/15 ring-1 ring-orange/30 px-3.5 py-2.5">
+            <span class="flex items-center gap-3">
+              <Icon name="file-text" size={16} class="text-bleu-nuit shrink-0" strokeWidth={2} />
+              <span class="text-sm font-semibold text-bleu-nuit">Formulaire métier intégré</span>
+            </span>
+            <span class="inline-flex items-center gap-1.5 h-6 px-2.5 rounded-full bg-bleu-nuit text-blanc-casse text-[10px] font-semibold">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#25D366]"></span> Demande reçue
+            </span>
+          </div>
+        </div>
+
+        <p class="mt-4 text-sm text-bleu-nuit/60 leading-relaxed">
+          Un seul site clair : vos clients trouvent tout et vous envoient une
+          demande complète.
+        </p>
+      </div>
+    </div>
 
     <p class="scroll-reveal mt-10 font-sora font-bold text-xl md:text-2xl text-bleu-nuit text-balance leading-snug">
       9site4 rassemble tout dans un site clair, local et prêt à recevoir des demandes.

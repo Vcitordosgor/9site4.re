@@ -5,52 +5,88 @@ import Badge from '../ui/Badge.astro';
 import siteConfig from '../../data/siteConfig.json';
 
 /**
- * Tarifs en bref — brief §7.6.
- * Bloc compact : 2 formules + CTA vers la page Tarifs.
+ * Tarifs en bref — moment visuel signature autour de 97,4€/mois.
+ * Carte prix centrale + inclusions en bento, puis 2 formules compactes.
  */
+
+const inclus = [
+  { icon: 'monitor', label: 'Site créé' },
+  { icon: 'globe', label: 'Hébergement inclus' },
+  { icon: 'shield-check', label: 'Maintenance incluse' },
+  { icon: 'wand', label: 'Modifications simples' },
+  { icon: 'file-text', label: 'Formulaire métier' },
+  { icon: 'map-pin', label: 'Accompagnement local' },
+];
 ---
 
 <section class="relative px-6 py-20 md:py-28">
-  <div class="mx-auto max-w-4xl">
+  <div class="mx-auto max-w-5xl">
     <div class="text-center max-w-2xl mx-auto">
       <p class="scroll-reveal inline-flex items-center px-3 py-1.5 rounded-full bg-orange text-bleu-nuit text-xs font-semibold uppercase tracking-wide">
         Tarifs
       </p>
       <h2 class="scroll-reveal mt-4 font-sora font-bold text-3xl md:text-5xl text-bleu-nuit text-balance leading-tight">
-        Une offre simple, à partir de {siteConfig.pricing.monthly}/mois
+        Un prix simple, tout compris.
       </h2>
-      <p class="scroll-reveal mt-5 text-lg text-bleu-nuit/70">
-        Tout est inclus dans votre abonnement. Aucune option cachée.
-      </p>
     </div>
 
-    <div class="scroll-reveal mt-12 grid sm:grid-cols-2 gap-5">
-      <div class="bg-blanc-casse rounded-2xl ring-2 ring-bleu shadow-card p-7 transition-all duration-300 ease-out-soft hover:-translate-y-0.5 hover:shadow-card-hover">
-        <p class="text-sm font-semibold text-bleu-nuit/60 uppercase tracking-wide">
-          Mensuel
+    <!-- Carte prix signature -->
+    <div class="scroll-reveal mt-12 grid lg:grid-cols-5 gap-5 items-stretch">
+      <!-- Prix central -->
+      <div class="lg:col-span-2 relative overflow-hidden rounded-3xl bg-bleu-nuit text-blanc-casse p-8 md:p-9 flex flex-col justify-center shadow-card-hover">
+        <div class="pointer-events-none absolute -top-16 -right-16 w-56 h-56 rounded-full bg-orange/20 blur-2xl" aria-hidden="true"></div>
+        <p class="relative font-roboto-mono text-[11px] uppercase tracking-[0.28em] text-orange font-semibold">À partir de</p>
+        <p class="relative mt-2 flex items-baseline gap-1.5">
+          <span class="font-sora font-bold text-5xl md:text-6xl leading-none" data-count="97.4" data-count-decimals="1" data-count-suffix="€">{siteConfig.pricing.monthly}</span>
+          <span class="text-lg text-blanc-casse/70">/mois</span>
         </p>
-        <p class="mt-3 flex items-baseline gap-1">
-          <span class="font-sora font-bold text-4xl md:text-5xl text-bleu-nuit" data-count="97.4" data-count-decimals="1" data-count-suffix="€">{siteConfig.pricing.monthly}</span>
-          <span class="text-base text-bleu-nuit/60">/mois</span>
+        <p class="relative mt-3 inline-flex items-center gap-2 text-sm text-blanc-casse/80">
+          <Icon name="info" size={15} strokeWidth={2} class="text-orange" />
+          soit environ {siteConfig.pricing.daily}/jour
         </p>
-        <p class="mt-3 text-sm text-bleu-nuit/65">
-          Sans engagement de durée.
+        <p class="relative mt-5 text-sm text-blanc-casse/70 leading-relaxed">
+          Pour moins qu'un petit achat du quotidien par jour, votre site est créé,
+          hébergé, sécurisé, maintenu et modifiable simplement.
         </p>
       </div>
 
-      <div class="relative bg-bleu-nuit text-blanc-casse rounded-2xl shadow-card-hover p-7 transition-all duration-300 ease-out-soft hover:-translate-y-0.5">
-        <div class="flex items-center justify-between">
-          <p class="text-sm font-semibold text-blanc-casse/70 uppercase tracking-wide">
-            Annuel
-          </p>
-          <Badge variant="primary" size="sm">≈ 2 mois offerts</Badge>
+      <!-- Inclusions en bento -->
+      <div class="lg:col-span-3 grid grid-cols-2 sm:grid-cols-3 gap-3">
+        {inclus.map((item) => (
+          <div class="flex flex-col rounded-2xl bg-blanc-casse ring-1 ring-bleu-nuit/10 p-4 transition-all duration-300 ease-out-soft hover:-translate-y-0.5 hover:shadow-card-hover hover:ring-bleu-nuit/15">
+            <span class="flex w-10 h-10 rounded-xl bg-bleu/20 text-bleu-nuit items-center justify-center">
+              <Icon name={item.icon} size={18} strokeWidth={1.75} />
+            </span>
+            <p class="mt-3 text-sm font-semibold text-bleu-nuit leading-snug">{item.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- 2 formules compactes -->
+    <div class="scroll-reveal mt-5 grid sm:grid-cols-2 gap-5">
+      <div class="flex items-center justify-between gap-4 bg-blanc-casse rounded-2xl ring-2 ring-bleu p-6 transition-all duration-300 ease-out-soft hover:-translate-y-0.5 hover:shadow-card-hover">
+        <div>
+          <p class="text-sm font-semibold text-bleu-nuit/60 uppercase tracking-wide">Mensuel</p>
+          <p class="mt-1 text-sm text-bleu-nuit/65">Sans engagement de durée.</p>
         </div>
-        <p class="mt-3 flex items-baseline gap-1">
-          <span class="font-sora font-bold text-4xl md:text-5xl" data-count="974" data-count-suffix="€">{siteConfig.pricing.yearly}</span>
-          <span class="text-base text-blanc-casse/60">/an</span>
+        <p class="flex items-baseline gap-1 shrink-0">
+          <span class="font-sora font-bold text-3xl text-bleu-nuit">{siteConfig.pricing.monthly}</span>
+          <span class="text-sm text-bleu-nuit/60">/mois</span>
         </p>
-        <p class="mt-3 text-sm text-blanc-casse/70">
-          Plus économique sur l'année.
+      </div>
+
+      <div class="flex items-center justify-between gap-4 bg-bleu-nuit text-blanc-casse rounded-2xl p-6 transition-all duration-300 ease-out-soft hover:-translate-y-0.5 hover:shadow-card-hover">
+        <div>
+          <div class="flex items-center gap-2">
+            <p class="text-sm font-semibold text-blanc-casse/70 uppercase tracking-wide">Annuel</p>
+            <Badge variant="primary" size="sm">≈ 2 mois offerts</Badge>
+          </div>
+          <p class="mt-1 text-sm text-blanc-casse/70">Plus économique sur l'année.</p>
+        </div>
+        <p class="flex items-baseline gap-1 shrink-0">
+          <span class="font-sora font-bold text-3xl">{siteConfig.pricing.yearly}</span>
+          <span class="text-sm text-blanc-casse/60">/an</span>
         </p>
       </div>
     </div>
