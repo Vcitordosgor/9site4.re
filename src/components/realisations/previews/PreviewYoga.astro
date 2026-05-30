@@ -1,58 +1,54 @@
 ---
+import data from '../../../data/templates/souffle.json';
 /**
- * Mini-preview Souffle Studio — slow & contemplatif.
- * Hero centré, beaucoup d'air, cercle de respiration animé, typo serif.
+ * Mini-preview Souffle Studio — photo plein cadre yoga contemplatif.
  */
 ---
 
 <div class="absolute inset-0 bg-yoga-creme text-yoga-encre font-spectral overflow-hidden">
 
-  <!-- Halo radial diffus -->
-  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full"
-         style="background: radial-gradient(circle, rgba(201,136,94,0.15) 0%, transparent 60%);"></div>
+  <img
+    src={data.info.photoLieu}
+    alt=""
+    class="absolute inset-0 w-full h-full object-cover scale-[1.03]"
+    loading="lazy"
+    decoding="async"
+  />
+
+  <div class="absolute inset-0" aria-hidden="true"
+       style="background:
+         linear-gradient(180deg, rgb(30 25 22 / 0.30) 0%, rgb(30 25 22 / 0) 32%, rgb(30 25 22 / 0) 48%, rgb(30 25 22 / 0.92) 100%),
+         linear-gradient(90deg, rgb(30 25 22 / 0.45) 0%, transparent 55%);">
   </div>
 
-  <!-- Mini header italique -->
-  <div class="relative flex items-center justify-between px-3 pt-2 pb-1.5">
+  <div class="relative flex items-center justify-between px-3 pt-2">
     <div class="flex items-baseline gap-1">
-      <span class="font-dm-serif text-yoga-encre text-[10px]">Souffle</span>
-      <span class="font-spectral italic text-yoga-ocre text-[8px]">Studio</span>
+      <span class="font-dm-serif text-yoga-creme text-[11px]">Souffle</span>
+      <span class="font-spectral italic text-yoga-ocre text-[9px]">Studio</span>
     </div>
-    <div class="flex items-center gap-1.5 text-[6px] uppercase tracking-[0.18em] text-yoga-encre/70 font-light">
+    <div class="flex items-center gap-1.5 text-[6px] uppercase tracking-[0.18em] text-yoga-creme/85 font-light">
       <span>Planning</span>
       <span>Pratiques</span>
-      <span>Tarifs</span>
     </div>
-    <span class="font-spectral italic text-yoga-encre text-[6px] underline underline-offset-2 decoration-yoga-ocre/50">
-      Réserver
-    </span>
   </div>
 
-  <!-- Hero centré avec air -->
-  <div class="relative flex flex-col items-center justify-center text-center px-4 pt-3 pb-3 h-[calc(100%-1.5rem)]">
-
-    <p class="font-lexend text-[6px] uppercase tracking-[0.32em] text-yoga-pierre mb-2">
-      Souffle · Studio · La Réunion
+  <div class="absolute left-3 right-3 bottom-2.5">
+    <p class="font-lexend text-[5.5px] uppercase tracking-[0.32em] text-yoga-ocre mb-1">
+      Studio · La Réunion
     </p>
-
-    <p class="font-dm-serif text-yoga-encre leading-[1.05]" style="font-size: clamp(12px, 2.6vw, 22px);">
+    <p class="font-dm-serif text-yoga-creme leading-[1.0]" style="font-size: clamp(14px, 3vw, 24px);">
       Le yoga,
-      <span class="block italic font-spectral font-light text-yoga-ocre">comme on respire.</span>
     </p>
-
-    <p class="mt-2 font-spectral italic text-yoga-encre/65 text-[7px]">
-      Un studio à taille humaine, pour pratiquer en confiance.
+    <p class="font-spectral italic font-light text-yoga-ocre leading-[1.0]" style="font-size: clamp(14px, 3vw, 24px);">
+      comme on respire.
     </p>
-
-    <!-- Cercle de respiration miniature -->
-    <div class="mt-3 flex flex-col items-center gap-1">
-      <div class="relative w-8 h-8 flex items-center justify-center">
-        <span class="absolute inset-0 rounded-full border border-yoga-ocre/40"></span>
-        <span class="absolute inset-1 rounded-full" style="background: radial-gradient(circle, rgba(201,136,94,0.5) 0%, rgba(201,136,94,0.08) 70%, transparent 100%);"></span>
-        <span class="relative font-spectral italic text-yoga-encre/50 text-[5px]">inspirer</span>
-      </div>
-      <p class="font-lexend text-[5px] uppercase tracking-[0.25em] text-yoga-pierre">6 sec · 6 sec</p>
+    <div class="mt-1.5 flex items-center gap-1.5">
+      <span class="inline-flex items-center h-3 px-2 bg-yoga-ocre text-yoga-creme font-lexend font-semibold text-[6px] uppercase tracking-wider rounded-full">
+        Réserver
+      </span>
+      <span class="inline-flex items-center h-3 px-2 ring-1 ring-yoga-creme/45 text-yoga-creme font-lexend font-semibold text-[6px] uppercase tracking-wider rounded-full">
+        Planning
+      </span>
     </div>
   </div>
 </div>

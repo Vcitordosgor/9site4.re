@@ -1,61 +1,52 @@
 ---
+import data from '../../../data/templates/lazuli.json';
 /**
- * Mini-preview Villa Lazuli — brochure villa Airbnb haut de gamme.
- * Bleu lagon + sable doré + terracotta, Yeseva One + Italianno cursive.
+ * Mini-preview Villa Lazuli — photo plein cadre villa.
  */
 ---
 
 <div class="absolute inset-0 bg-lazuli-marine text-lazuli-casse overflow-hidden">
 
-  <!-- Photo villa en fond -->
   <img
-    src="/images/location/hero.webp"
+    src={data.info.photoHero}
     alt=""
-    class="absolute inset-0 w-full h-full object-cover"
+    class="absolute inset-0 w-full h-full object-cover scale-[1.03]"
     loading="lazy"
     decoding="async"
   />
-  <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(27,45,58,0.45) 0%, rgba(27,45,58,0.15) 35%, rgba(27,45,58,0.9) 100%);"></div>
 
-  <!-- Mini header -->
-  <div class="relative flex items-center justify-between px-3 pt-2 pb-1.5">
+  <div class="absolute inset-0" aria-hidden="true"
+       style="background:
+         linear-gradient(180deg, rgb(27 45 58 / 0.35) 0%, rgb(27 45 58 / 0.05) 30%, rgb(27 45 58 / 0.10) 50%, rgb(27 45 58 / 0.93) 100%),
+         linear-gradient(90deg, rgb(27 45 58 / 0.50) 0%, transparent 55%);">
+  </div>
+
+  <div class="relative flex items-center justify-between px-3 pt-2">
     <div class="flex items-baseline gap-1">
       <span class="font-italianno text-lazuli-coco text-[14px] leading-none">Villa</span>
       <span class="font-yeseva text-lazuli-casse text-[10px] tracking-wide leading-none">Lazuli</span>
     </div>
-    <div class="flex items-center gap-1.5 text-[6px] text-lazuli-casse/75">
+    <div class="flex items-center gap-1.5 text-[6px] uppercase tracking-wider text-lazuli-casse/85 font-medium">
       <span>Visite</span>
       <span>Tarifs</span>
     </div>
-    <span class="inline-flex items-center h-3 px-2 bg-lazuli-terracotta text-lazuli-casse font-geist font-medium text-[6px] rounded-full">
-      Réserver
-    </span>
   </div>
 
-  <!-- Sticker dispo en haut droite -->
-  <div class="absolute top-7 right-3 bg-lazuli-casse text-lazuli-marine px-2 py-1 max-w-[40%]" style="box-shadow: 0 6px 18px rgba(27,45,58,0.30);">
-    <p class="font-geist text-[5px] uppercase tracking-wider text-lazuli-lagon font-semibold">✦ Disponible</p>
-    <p class="font-yeseva text-lazuli-marine text-[8px] leading-tight">À partir du 15 nov.</p>
-  </div>
-
-  <!-- Hero text bas-gauche -->
-  <div class="absolute left-3 right-3 bottom-2 text-lazuli-casse">
-    <p class="font-geist text-[5.5px] uppercase tracking-wider text-lazuli-coco font-semibold mb-0.5">
-      ★ 4,8/5 · 87 avis
+  <div class="absolute left-3 right-3 bottom-2.5">
+    <p class="font-geist text-[5.5px] uppercase tracking-[0.25em] text-lazuli-coco font-semibold mb-1">
+      ★ 4,8/5 · Villa privée
     </p>
-    <p class="font-italianno text-lazuli-coco text-[14px] leading-none">Villa</p>
-    <p class="font-yeseva text-lazuli-casse leading-[0.9] tracking-tight" style="font-size: clamp(20px, 4vw, 36px);">
-      Lazuli
+    <p class="font-italianno text-lazuli-coco leading-none" style="font-size: clamp(14px, 2.8vw, 22px);">Villa</p>
+    <p class="font-yeseva text-lazuli-casse leading-[0.9] tracking-tight" style="font-size: clamp(20px, 4vw, 32px);">
+      Lazuli.
     </p>
-
-    <!-- 4 stats -->
-    <div class="mt-1 grid grid-cols-4 gap-0.5 max-w-[90%]">
-      {[['120m²', 'habitable'], ['4', 'chambres'], ['8', 'voyageurs'], ['✓', 'piscine']].map(([v, l]) => (
-        <div class="bg-lazuli-marine/60 backdrop-blur-sm px-1 py-0.5 border border-lazuli-casse/15">
-          <p class="font-yeseva text-lazuli-coco text-[7px] leading-none tabular-nums">{v}</p>
-          <p class="font-geist text-[4.5px] uppercase tracking-wider text-lazuli-casse/65">{l}</p>
-        </div>
-      ))}
+    <div class="mt-1.5 flex items-center gap-1.5">
+      <span class="inline-flex items-center h-3 px-2 bg-lazuli-terracotta text-lazuli-casse font-geist font-semibold text-[6.5px] rounded-full">
+        Réserver
+      </span>
+      <span class="inline-flex items-center h-3 px-2 ring-1 ring-lazuli-casse/45 text-lazuli-casse font-geist font-semibold text-[6.5px] rounded-full">
+        Visite
+      </span>
     </div>
   </div>
 </div>

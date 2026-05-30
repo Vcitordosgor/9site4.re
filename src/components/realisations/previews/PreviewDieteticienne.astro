@@ -1,52 +1,56 @@
 ---
+import data from '../../../data/templates/mona.json';
 /**
- * Mini-preview Mona Levray — magazine cuisine éditorial.
- * Crème + vert pousse + terracotta, Newsreader + Plus Jakarta Sans.
+ * Mini-preview Mona Levray — photo plein cadre cuisine éditoriale.
  */
 ---
 
 <div class="absolute inset-0 bg-mona-creme text-mona-cacao font-jakarta overflow-hidden">
 
-  <!-- Mini header -->
-  <div class="flex items-center justify-between px-3 pt-2 pb-1.5">
+  <img
+    src={data.info.photoHero}
+    alt=""
+    class="absolute inset-0 w-full h-full object-cover scale-[1.03]"
+    loading="lazy"
+    decoding="async"
+  />
+
+  <div class="absolute inset-0" aria-hidden="true"
+       style="background:
+         linear-gradient(180deg, rgb(62 42 30 / 0.30) 0%, rgb(62 42 30 / 0) 32%, rgb(62 42 30 / 0) 48%, rgb(62 42 30 / 0.90) 100%),
+         linear-gradient(90deg, rgb(62 42 30 / 0.45) 0%, transparent 55%);">
+  </div>
+
+  <div class="relative flex items-center justify-between px-3 pt-2">
     <div class="flex items-baseline gap-1">
-      <span class="font-newsreader text-mona-cacao text-[10px]">Mona Levray</span>
+      <span class="font-newsreader text-mona-creme text-[11px]">Mona Levray</span>
       <span class="block w-1 h-1 rounded-full bg-mona-vert"></span>
     </div>
-    <div class="flex items-center gap-1.5 text-[6px] uppercase tracking-wider text-mona-cacao/65 font-medium">
+    <div class="flex items-center gap-1.5 text-[6px] uppercase tracking-wider text-mona-creme/85 font-medium">
       <span>Approche</span>
       <span>Programmes</span>
     </div>
-    <span class="inline-flex items-center h-3 px-2 bg-mona-terracotta text-mona-creme font-jakarta font-semibold text-[6px] uppercase tracking-wider rounded-full">
-      RDV
-    </span>
   </div>
 
-  <!-- Hero photo top-shot -->
-  <div class="relative h-[calc(100%-1.5rem)] overflow-hidden">
-    <img
-      src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=70"
-      alt=""
-      class="absolute inset-0 w-full h-full object-cover"
-      loading="lazy"
-      decoding="async"
-    />
-    <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(250,247,241,0.2) 0%, rgba(62,42,30,0.55) 100%);"></div>
+  <p class="absolute top-2 right-3 mt-5 font-reenie text-mona-creme/90 text-[10px] -rotate-3">
+    manger c'est ressentir ✿
+  </p>
 
-    <!-- Annotation Reenie en haut -->
-    <p class="absolute top-2 right-3 font-reenie text-mona-creme text-[10px] -rotate-3">
-      manger c'est aussi ressentir ✿
+  <div class="absolute left-3 right-3 bottom-2.5">
+    <p class="font-jakarta font-semibold text-[5.5px] uppercase tracking-[0.32em] text-mona-creme/85 mb-1">
+      Diététique · La Réunion
     </p>
-
-    <!-- Titre en bas -->
-    <div class="absolute bottom-2 left-3 right-3">
-      <p class="font-jakarta text-[5.5px] uppercase tracking-[0.32em] text-mona-creme/85 mb-0.5 font-semibold">
-        Diététique · La Réunion
-      </p>
-      <p class="font-newsreader text-mona-creme leading-[0.95]" style="font-size: clamp(12px, 2.6vw, 22px);">
-        Manger mieux,
-        <span class="block italic">sans se priver.</span>
-      </p>
+    <p class="font-newsreader text-mona-creme leading-[0.95]" style="font-size: clamp(15px, 3.2vw, 26px);">
+      Manger mieux,
+      <span class="block italic">sans se priver.</span>
+    </p>
+    <div class="mt-1.5 flex items-center gap-1.5">
+      <span class="inline-flex items-center h-3 px-2 bg-mona-terracotta text-mona-creme font-jakarta font-semibold text-[6.5px] uppercase tracking-wider rounded-full">
+        Prendre RDV
+      </span>
+      <span class="inline-flex items-center h-3 px-2 ring-1 ring-mona-creme/45 text-mona-creme font-jakarta font-semibold text-[6.5px] uppercase tracking-wider rounded-full">
+        Approche
+      </span>
     </div>
   </div>
 </div>

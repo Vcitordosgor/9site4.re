@@ -1,64 +1,57 @@
 ---
+import data from '../../../data/templates/latitude.json';
 /**
- * Mini-preview Studio Latitude — fidèle au hero planche-contact :
- * fond noir argentique + wordmark Studio Latitude DM Serif italic +
- * bandeau pellicule sprocket avec 4 mini-vignettes EXIF.
+ * Mini-preview Studio Latitude — photo plein cadre auteur.
  */
-const vignettes = [
-  '/images/latitude/runner.webp',
-  '/images/latitude/plat.webp',
-  '/images/latitude/salon.webp',
-  '/images/latitude/portrait.webp',
-];
 ---
 
-<div class="absolute inset-0 bg-latitude-noir text-latitude-blanc font-hanken overflow-hidden p-2">
+<div class="absolute inset-0 bg-latitude-noir text-latitude-blanc font-hanken overflow-hidden">
 
-  <!-- Eyebrow -->
-  <p class="font-hanken uppercase text-latitude-or" style="font-size:4px;letter-spacing:0.4em;">
-    ✦ Photo d'auteur · La Réunion · 2016
-  </p>
+  <img
+    src={data.info.photoHero}
+    alt=""
+    class="absolute inset-0 w-full h-full object-cover scale-[1.03]"
+    loading="lazy"
+    decoding="async"
+  />
 
-  <!-- Wordmark -->
-  <h1 class="font-dm-serif leading-[0.92] tracking-tight mt-1">
-    <span class="block text-latitude-blanc" style="font-size: clamp(11px, 2.4vw, 18px);">Studio</span>
-    <span class="block italic text-latitude-or -mt-0.5" style="font-size: clamp(11px, 2.4vw, 18px);">Latitude.</span>
-  </h1>
+  <div class="absolute inset-0" aria-hidden="true"
+       style="background:
+         linear-gradient(180deg, rgb(10 10 12 / 0.40) 0%, rgb(10 10 12 / 0.05) 30%, rgb(10 10 12 / 0.10) 50%, rgb(10 10 12 / 0.95) 100%),
+         linear-gradient(90deg, rgb(10 10 12 / 0.55) 0%, transparent 55%);">
+  </div>
 
-  <!-- Tagline -->
-  <p class="font-instrument italic text-latitude-blanc leading-snug mt-1" style="font-size: 6px;">
-    L'image juste, jamais l'image facile.
-  </p>
-
-  <!-- Bandeau pellicule -->
-  <div class="absolute inset-x-2 bottom-2 bg-latitude-charbon py-1.5 relative">
-    <!-- Sprocket top -->
-    <div class="absolute top-0.5 inset-x-0 flex justify-around" aria-hidden="true">
-      {Array.from({length: 14}).map(() => (
-        <span class="block bg-latitude-noir rounded-sm" style="width:2px;height:1.5px;"></span>
-      ))}
+  <div class="relative flex items-center justify-between px-3 pt-2">
+    <div class="flex items-baseline gap-1">
+      <span class="font-dm-serif text-latitude-blanc text-[10px]">Studio</span>
+      <span class="font-dm-serif italic text-latitude-or text-[10px]">Latitude.</span>
     </div>
-    <!-- Sprocket bottom -->
-    <div class="absolute bottom-0.5 inset-x-0 flex justify-around" aria-hidden="true">
-      {Array.from({length: 14}).map(() => (
-        <span class="block bg-latitude-noir rounded-sm" style="width:2px;height:1.5px;"></span>
-      ))}
+    <div class="flex items-center gap-1.5 text-[6px] uppercase tracking-wider text-latitude-blanc/85 font-medium">
+      <span>Portfolio</span>
+      <span>Tarifs</span>
     </div>
+  </div>
 
-    <div class="px-1.5 grid grid-cols-4 gap-1">
-      {vignettes.map((src, i) => (
-        <figure class="relative">
-          <div class="aspect-[4/5] overflow-hidden bg-latitude-noir grayscale-[0.4]">
-            <img src={src} alt="" loading="lazy" decoding="async" class="w-full h-full object-cover"/>
-          </div>
-          <span class="absolute top-0.5 left-0.5 bg-latitude-noir/80 text-latitude-blanc px-1 leading-none" style="font-size:3.5px;">
-            {12 + i}
-          </span>
-          {i === 0 && (
-            <span class="absolute top-0.5 right-0.5 bg-latitude-labo text-latitude-blanc px-1 leading-none" style="font-size:3.5px;">M</span>
-          )}
-        </figure>
-      ))}
+  <div class="absolute left-3 right-3 bottom-2.5">
+    <p class="font-hanken uppercase text-latitude-or mb-1" style="font-size:5.5px;letter-spacing:0.32em;">
+      ✦ Photo d'auteur · 2016
+    </p>
+    <p class="font-dm-serif text-latitude-blanc leading-[0.9]" style="font-size: clamp(15px, 3.2vw, 26px);">
+      Studio
+    </p>
+    <p class="font-dm-serif italic text-latitude-or leading-[0.9]" style="font-size: clamp(15px, 3.2vw, 26px);">
+      Latitude.
+    </p>
+    <p class="mt-0.5 font-instrument italic text-latitude-blanc/90 leading-tight" style="font-size: clamp(8px, 1.6vw, 12px);">
+      L'image juste, jamais l'image facile.
+    </p>
+    <div class="mt-1.5 flex items-center gap-1.5">
+      <span class="inline-flex items-center h-3 px-2 bg-latitude-or text-latitude-noir font-hanken font-semibold text-[6.5px] uppercase tracking-wider">
+        Portfolio
+      </span>
+      <span class="inline-flex items-center h-3 px-2 ring-1 ring-latitude-blanc/45 text-latitude-blanc font-hanken font-semibold text-[6.5px] uppercase tracking-wider">
+        Contact
+      </span>
     </div>
   </div>
 </div>

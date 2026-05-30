@@ -1,71 +1,57 @@
 ---
+import data from '../../../data/templates/vanille.json';
 /**
- * Mini-preview La Vanille de Bel-Air — fidèle au hero étiquette bocal :
- * fond crème + encadré double-filet + wordmark Yeseva + tampon "fait main"
- * + 3 chiffres production du jour.
+ * Mini-preview La Vanille de Bel-Air — photo plein cadre pâtisserie.
  */
 ---
 
-<div class="absolute inset-0 bg-vanille-creme text-vanille-gousse font-karla overflow-hidden p-2">
+<div class="absolute inset-0 bg-vanille-creme text-vanille-gousse font-karla overflow-hidden">
 
-  <!-- Encadré double-filet -->
-  <div class="relative w-full h-full bg-vanille-blanc/60 border-[1.5px] border-double border-vanille-gousse p-2">
-    <div class="absolute inset-1 border border-vanille-gousse/30 pointer-events-none" aria-hidden="true"></div>
+  <img
+    src={data.info.photoHero}
+    alt=""
+    class="absolute inset-0 w-full h-full object-cover scale-[1.03]"
+    loading="lazy"
+    decoding="async"
+  />
 
-    <!-- Gousse coin haut-gauche -->
-    <svg viewBox="0 0 60 30" class="absolute -top-1 left-3 w-10 text-vanille-caramel" aria-hidden="true">
-      <path d="M2 22 Q20 8 40 4 Q55 3 58 6 Q40 10 25 12 Q10 18 2 22 Z" fill="currentColor"/>
-    </svg>
-    <svg viewBox="0 0 60 30" class="absolute -bottom-1 right-3 w-10 text-vanille-caramel rotate-180" aria-hidden="true">
-      <path d="M2 22 Q20 8 40 4 Q55 3 58 6 Q40 10 25 12 Q10 18 2 22 Z" fill="currentColor"/>
-    </svg>
+  <div class="absolute inset-0" aria-hidden="true"
+       style="background:
+         linear-gradient(180deg, rgb(45 30 22 / 0.32) 0%, rgb(45 30 22 / 0) 32%, rgb(45 30 22 / 0) 48%, rgb(45 30 22 / 0.92) 100%),
+         linear-gradient(90deg, rgb(45 30 22 / 0.50) 0%, transparent 55%);">
+  </div>
 
-    <!-- Eyebrow -->
-    <p class="text-center text-vanille-caramel uppercase tracking-[0.3em]" style="font-size:4.5px;">
-      ✦ Pâtisserie créole · 2009 ✦
-    </p>
-
-    <!-- Wordmark -->
-    <h1 class="text-center font-yeseva text-vanille-gousse leading-[0.9] mt-1" style="font-size: clamp(11px, 2.4vw, 18px);">
-      La Vanille
-    </h1>
-    <p class="text-center font-italianno text-vanille-caramel leading-none -mt-0.5" style="font-size: clamp(11px, 2.4vw, 18px);">
-      de Bel-Air
-    </p>
-
-    <!-- Filet ornemental -->
-    <div class="flex items-center justify-center gap-1 my-1" aria-hidden="true">
-      <span class="block w-6 h-px bg-vanille-gousse/50"></span>
-      <span class="text-vanille-caramel" style="font-size:6px;">❦</span>
-      <span class="block w-6 h-px bg-vanille-gousse/50"></span>
+  <div class="relative flex items-center justify-between px-3 pt-2">
+    <div class="flex items-baseline gap-1">
+      <span class="font-yeseva text-vanille-creme text-[10px]">La Vanille</span>
+      <span class="font-italianno text-vanille-caramel text-[11px] leading-none">de Bel-Air</span>
     </div>
+    <div class="flex items-center gap-1.5 text-[6px] uppercase tracking-wider text-vanille-creme/85 font-medium">
+      <span>Carte</span>
+      <span>Commander</span>
+    </div>
+  </div>
 
-    <!-- Tagline -->
-    <p class="text-center font-yeseva italic text-vanille-gousse leading-snug" style="font-size:6.5px;">
+  <div class="absolute left-3 right-3 bottom-2.5">
+    <p class="font-karla text-[5.5px] uppercase tracking-[0.32em] text-vanille-caramel mb-1 font-semibold">
+      ✦ Pâtisserie créole · 2009
+    </p>
+    <p class="font-yeseva text-vanille-creme leading-[0.9]" style="font-size: clamp(15px, 3.2vw, 26px);">
+      La Vanille
+    </p>
+    <p class="font-italianno text-vanille-caramel leading-none" style="font-size: clamp(14px, 2.8vw, 22px);">
+      de Bel-Air.
+    </p>
+    <p class="mt-0.5 font-yeseva italic text-vanille-creme/90 leading-tight" style="font-size: clamp(7px, 1.4vw, 11px);">
       Le sucre, la vanille, le geste.
     </p>
-
-    <!-- Cartouche 3 stats -->
-    <div class="absolute inset-x-2 bottom-2 grid grid-cols-3 gap-1">
-      <div class="bg-vanille-gousse text-vanille-creme p-1 text-center">
-        <p class="text-vanille-caramel uppercase tracking-wider" style="font-size:3.5px;letter-spacing:0.2em;">Aujourd'hui</p>
-        <p class="font-yeseva leading-none mt-0.5" style="font-size:6px;">Vendredi</p>
-      </div>
-      <div class="bg-vanille-papier border border-vanille-gousse/40 p-1 text-center">
-        <p class="text-vanille-caramel uppercase tracking-wider" style="font-size:3.5px;letter-spacing:0.2em;">Au four</p>
-        <p class="font-yeseva text-vanille-gousse leading-none mt-0.5" style="font-size:6px;">42 mille-feuilles</p>
-      </div>
-      <div class="bg-vanille-papier border border-vanille-gousse/40 p-1 text-center">
-        <p class="text-vanille-caramel uppercase tracking-wider" style="font-size:3.5px;letter-spacing:0.2em;">Ouvre à</p>
-        <p class="font-yeseva text-vanille-gousse leading-none mt-0.5" style="font-size:6px;">6h30</p>
-      </div>
-    </div>
-
-    <!-- Tampon -->
-    <div class="absolute -rotate-12" style="bottom: 22px; right: 6px;">
-      <div class="rounded-full border border-vanille-piment/80 flex items-center justify-center text-vanille-piment/85" style="width:22px; height:22px;">
-        <p class="font-yeseva leading-none" style="font-size:6px;">N°09</p>
-      </div>
+    <div class="mt-1.5 flex items-center gap-1.5">
+      <span class="inline-flex items-center h-3 px-2 bg-vanille-caramel text-vanille-creme font-karla font-semibold text-[6.5px] uppercase tracking-wider">
+        Commander
+      </span>
+      <span class="inline-flex items-center h-3 px-2 ring-1 ring-vanille-creme/45 text-vanille-creme font-karla font-semibold text-[6.5px] uppercase tracking-wider">
+        Voir la carte
+      </span>
     </div>
   </div>
 </div>

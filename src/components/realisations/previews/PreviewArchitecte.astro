@@ -1,66 +1,54 @@
 ---
 /**
- * Mini-preview Atelier Mahatma — portfolio architectural monochrome.
- * Encre + papier + ciment + rouge cachet d'architecte.
+ * Mini-preview Atelier Mahatma — photo plein cadre noir & blanc, vignette architectural.
  */
 ---
 
 <div class="absolute inset-0 bg-mahatma-papier text-mahatma-encre font-atkinson overflow-hidden">
 
-  <!-- Pattern grille technique -->
-  <div class="absolute inset-0 opacity-[0.05] pointer-events-none" aria-hidden="true"
-       style="background-image: linear-gradient(to right, #0A0A0C 1px, transparent 1px), linear-gradient(to bottom, #0A0A0C 1px, transparent 1px); background-size: 20px 20px;">
+  <img
+    src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=1200&q=80"
+    alt=""
+    class="absolute inset-0 w-full h-full object-cover grayscale scale-[1.03]"
+    loading="lazy"
+    decoding="async"
+  />
+
+  <div class="absolute inset-0" aria-hidden="true"
+       style="background:
+         linear-gradient(180deg, rgb(10 10 12 / 0.25) 0%, rgb(10 10 12 / 0) 35%, rgb(10 10 12 / 0) 50%, rgb(10 10 12 / 0.90) 100%),
+         linear-gradient(90deg, rgb(10 10 12 / 0.55) 0%, transparent 55%);">
   </div>
 
-  <!-- Mini header -->
-  <div class="relative flex items-center justify-between px-3 pt-2 pb-1.5 border-b border-mahatma-encre/15">
+  <div class="relative flex items-center justify-between px-3 pt-2">
     <div class="flex items-baseline gap-1">
       <span class="font-fira-mono text-mahatma-cachet text-[7px]">▢</span>
-      <span class="font-schibsted font-bold text-mahatma-encre text-[8px] uppercase tracking-tight">ATELIER</span>
-      <span class="font-schibsted font-light text-mahatma-encre text-[8px] uppercase tracking-tight">MAHATMA</span>
+      <span class="font-schibsted font-bold text-mahatma-papier text-[8px] uppercase tracking-tight">ATELIER</span>
+      <span class="font-schibsted font-light text-mahatma-papier text-[8px] uppercase tracking-tight">MAHATMA</span>
     </div>
-    <div class="flex items-center gap-1.5 text-[6px] text-mahatma-encre/75">
+    <div class="flex items-center gap-1.5 text-[6px] uppercase tracking-wider text-mahatma-papier/80">
       <span>Projets</span>
       <span>Méthode</span>
     </div>
-    <span class="inline-flex items-center h-3 px-2 border border-mahatma-encre text-mahatma-encre font-atkinson font-bold text-[6px]">
-      Rendez-vous
-    </span>
   </div>
 
-  <!-- Hero portfolio -->
-  <div class="relative px-3 pt-2 pb-2 h-[calc(100%-1.5rem)] grid grid-cols-12 gap-2">
-
-    <!-- LEFT (8) : photo projet emblématique B&W -->
-    <div class="col-span-8">
-      <div class="relative aspect-[4/3] bg-mahatma-charbon overflow-hidden">
-        <img
-          src="/images/architecte/bureaux.webp"
-          alt=""
-          class="w-full h-full object-cover grayscale"
-          loading="lazy"
-          decoding="async"
-        />
-        <!-- Cachet rouge rotated -->
-        <div class="absolute top-1 right-1 border border-mahatma-cachet text-mahatma-cachet px-1 font-fira-mono text-[5px] uppercase tracking-wider bg-mahatma-papier/85" style="transform: rotate(-3deg);">
-          ◯ Récent · 2024
-        </div>
-      </div>
-    </div>
-
-    <!-- RIGHT (4) : fiche -->
-    <div class="col-span-4 flex flex-col justify-center">
-      <p class="font-fira-mono text-[5px] uppercase tracking-[0.22em] text-mahatma-beton mb-1">
-        Œuvre n° 0001
-      </p>
-      <p class="font-schibsted font-bold text-mahatma-encre uppercase tracking-tight leading-[0.95]" style="font-size: clamp(10px, 2vw, 16px);">
-        Villa<br/>La Source
-      </p>
-      <ul class="mt-1.5 space-y-px font-fira-mono text-[5px] uppercase tracking-[0.18em]">
-        <li class="flex justify-between"><span class="text-mahatma-beton">An.</span><span class="text-mahatma-encre">2024</span></li>
-        <li class="flex justify-between"><span class="text-mahatma-beton">Lieu</span><span class="text-mahatma-encre">La Réunion</span></li>
-        <li class="flex justify-between"><span class="text-mahatma-beton">Surf.</span><span class="text-mahatma-encre">280 m²</span></li>
-      </ul>
+  <div class="absolute left-3 right-3 bottom-2.5">
+    <p class="font-fira-mono text-[5.5px] uppercase tracking-[0.32em] text-mahatma-cachet mb-1">
+      Œuvre n° 0001 · 2024
+    </p>
+    <p class="font-schibsted font-bold text-mahatma-papier uppercase tracking-tight leading-[0.9]" style="font-size: clamp(15px, 3.2vw, 26px);">
+      Villa<br/>La Source.
+    </p>
+    <p class="mt-0.5 font-atkinson italic text-mahatma-papier/85 leading-tight" style="font-size: clamp(8px, 1.6vw, 12px);">
+      280 m² · La Réunion.
+    </p>
+    <div class="mt-1.5 flex items-center gap-1.5">
+      <span class="inline-flex items-center h-3 px-2 bg-mahatma-cachet text-mahatma-papier font-atkinson font-bold text-[6px] uppercase tracking-wider">
+        Voir les projets
+      </span>
+      <span class="inline-flex items-center h-3 px-2 ring-1 ring-mahatma-papier/45 text-mahatma-papier font-atkinson font-bold text-[6px] uppercase tracking-wider">
+        Rendez-vous
+      </span>
     </div>
   </div>
 </div>

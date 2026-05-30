@@ -1,60 +1,49 @@
 ---
 /**
- * Mini-preview Camille Aubry — page de livre, registre littéraire.
- * Gris perle + bleu nuit + prune + terre rose. Aucune photo.
+ * Mini-preview Camille Aubry — photo plein cadre, ambiance feutrée.
  */
 ---
 
 <div class="absolute inset-0 bg-aubry-perle text-aubry-encre font-albert overflow-hidden">
 
-  <!-- Esperluette ornement géant en arrière-plan -->
-  <p class="absolute top-1/2 -right-3 -translate-y-1/2 font-caslon italic text-aubry-rose/15 leading-none select-none pointer-events-none" style="font-size: 110px;" aria-hidden="true">
-    &amp;
-  </p>
+  <img
+    src="https://images.unsplash.com/photo-1519181245277-cffeb31da2e3?w=1200&q=80"
+    alt=""
+    class="absolute inset-0 w-full h-full object-cover scale-[1.03]"
+    loading="lazy"
+    decoding="async"
+  />
 
-  <!-- Mini header -->
-  <div class="relative flex items-center justify-between px-3 pt-2 pb-1.5">
-    <span class="font-caslon text-aubry-encre text-[10px]">Camille Aubry<span class="text-aubry-rose">.</span></span>
-    <div class="flex items-center gap-1.5 text-[6px] uppercase tracking-[0.18em] text-aubry-encre/65 font-light">
-      <span>Approche</span>
-      <span>Cadre</span>
-      <span>Modalités</span>
-    </div>
-    <span class="font-caslon italic text-aubry-encre text-[7px] underline underline-offset-2 decoration-aubry-rose">
-      Prendre RDV
-    </span>
+  <div class="absolute inset-0" aria-hidden="true"
+       style="background:
+         linear-gradient(180deg, rgb(28 30 45 / 0.32) 0%, rgb(28 30 45 / 0) 32%, rgb(28 30 45 / 0) 48%, rgb(28 30 45 / 0.92) 100%),
+         linear-gradient(90deg, rgb(28 30 45 / 0.55) 0%, transparent 55%);">
   </div>
 
-  <!-- Hero composition typographique livre -->
-  <div class="relative px-3 pt-1.5 pb-2 h-[calc(100%-1.5rem)] flex flex-col">
-
-    <div class="flex items-baseline justify-between font-plex-mono text-[5.5px] uppercase tracking-[0.28em] text-aubry-prune mb-1.5">
-      <span>Cabinet Aubry — La Réunion</span>
-      <span>p. 01</span>
+  <div class="relative flex items-center justify-between px-3 pt-2">
+    <span class="font-caslon text-aubry-perle text-[11px]">Camille Aubry<span class="text-aubry-rose">.</span></span>
+    <div class="flex items-center gap-1.5 text-[6px] uppercase tracking-[0.18em] text-aubry-perle/85 font-light">
+      <span>Approche</span>
+      <span>Cadre</span>
     </div>
+  </div>
 
-    <!-- Chiffre romain géant -->
-    <p class="font-caslon italic text-aubry-prune leading-none mb-1 select-none" style="font-size: 32px;">
-      I.
+  <div class="absolute left-3 right-3 bottom-2.5">
+    <p class="font-plex-mono text-[5.5px] uppercase tracking-[0.28em] text-aubry-rose mb-1">
+      Cabinet · La Réunion
     </p>
-
-    <!-- Titre incipit -->
-    <p class="font-caslon text-aubry-encre leading-[1.05] max-w-[80%]" style="font-size: clamp(11px, 2.3vw, 18px);">
-      Une consultation, ça commence par un appel.
+    <p class="font-caslon italic text-aubry-rose leading-none mb-0.5" style="font-size: clamp(22px, 4.5vw, 36px);">I.</p>
+    <p class="font-caslon text-aubry-perle leading-[1.05]" style="font-size: clamp(13px, 2.6vw, 22px);">
+      Une consultation,<br/>
+      <span class="italic">ça commence par un appel.</span>
     </p>
-
-    <!-- Filet rose -->
-    <span class="mt-1.5 block w-6 h-px bg-aubry-rose"></span>
-
-    <!-- Mini paragraphe filé -->
-    <p class="mt-1 font-caslon text-aubry-encre/80 leading-[1.6] text-[6.5px] max-w-[85%] line-clamp-2">
-      Vous tapez un numéro, vous laissez sonner, et quelque chose change déjà.
-    </p>
-
-    <!-- ADELI footer -->
-    <div class="mt-auto pt-1.5 border-t border-aubry-encre/15 flex items-baseline justify-between font-plex-mono text-[5.5px] uppercase tracking-[0.22em] text-aubry-prune">
-      <span>ADELI 974 31 5896</span>
-      <span>↓ Continuer</span>
+    <div class="mt-1.5 flex items-center gap-1.5">
+      <span class="inline-flex items-center h-3 px-2 bg-aubry-rose text-aubry-encre font-albert font-semibold text-[6px] uppercase tracking-wider">
+        Prendre RDV
+      </span>
+      <span class="inline-flex items-center h-3 px-2 ring-1 ring-aubry-perle/45 text-aubry-perle font-albert font-semibold text-[6px] uppercase tracking-wider">
+        Le cadre
+      </span>
     </div>
   </div>
 </div>
