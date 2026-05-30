@@ -95,10 +95,10 @@ import data from '../../../data/templates/jardin.json';
 
       <div class="grid md:grid-cols-3 gap-6 md:gap-8">
         {data.menus.map((m, i) => (
-          <article class="scroll-reveal relative bg-resto-blanc-casse rounded-sm p-8 md:p-10 ring-1 ring-resto-bleu-encre/10 hover:ring-resto-or/60 transition-all flex flex-col" style={`transition-delay: ${i * 80}ms`}>
+          <article class={`scroll-reveal relative bg-resto-blanc-casse rounded-sm p-8 md:p-10 ring-1 hover:ring-resto-or/60 transition-all flex flex-col ${m.id === 'decouverte' ? 'ring-2 ring-resto-or shadow-[0_12px_36px_-12px_rgba(200,166,94,0.45)]' : 'ring-resto-bleu-encre/10'}`} style={`transition-delay: ${i * 80}ms`}>
             <!-- Mise en avant Carte blanche au milieu -->
             {m.id === 'decouverte' && (
-              <span class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 text-[10px] font-manrope font-semibold uppercase tracking-[0.2em] bg-resto-or text-resto-bleu-encre rounded-full whitespace-nowrap">
+              <span class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 h-7 inline-flex items-center text-[10px] font-manrope font-bold uppercase tracking-[0.22em] bg-resto-bleu-encre text-resto-or ring-2 ring-resto-or rounded-full whitespace-nowrap shadow-[0_4px_12px_rgba(11,20,55,0.3)]">
                 Le plus choisi
               </span>
             )}

@@ -27,18 +27,20 @@ import data from '../../../data/templates/jardin.json';
         Une cave d'auteur de plus de 200 références. Notre sommelier
         compose chaque accord — voici quelques flacons emblématiques.
       </p>
+      <!-- Filet or décoratif sous l'intro -->
+      <span class="scroll-reveal block mx-auto mt-10 h-px w-16 bg-resto-or" aria-hidden="true"></span>
     </header>
 
     <!-- Liste vins en 2 colonnes desktop -->
-    <ul class="grid md:grid-cols-2 gap-x-12 lg:gap-x-20 gap-y-10 max-w-5xl mx-auto">
+    <ul class="grid md:grid-cols-2 gap-x-12 lg:gap-x-20 gap-y-12 max-w-5xl mx-auto">
       {data.vins.map((v, i) => (
-        <li class="scroll-reveal flex items-start gap-5" style={`transition-delay: ${i * 60}ms`}>
-          <!-- Numéro romain en or -->
-          <span class="flex-shrink-0 mt-1 w-10 text-right font-bodoni italic text-resto-or tabular-nums" style="font-size: 22px;">
+        <li class="scroll-reveal flex items-start gap-6" style={`transition-delay: ${i * 60}ms`}>
+          <!-- Numéro romain en or, plus présent -->
+          <span class="flex-shrink-0 w-14 text-right font-bodoni italic text-resto-or tabular-nums leading-none" style="font-size: 40px;">
             {String.fromCharCode(8544 + i)}
           </span>
 
-          <div class="flex-1 min-w-0">
+          <div class="flex-1 min-w-0 border-l border-resto-or/30 pl-5">
             <h4 class="font-bodoni font-medium text-resto-bleu-encre uppercase tracking-[0.04em] leading-snug" style="font-size: 16px;">
               {v.nom}
             </h4>

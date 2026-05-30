@@ -27,12 +27,12 @@
     "photoSalleAlt": "Salle principale du restaurant, tables dressées",
     "photoChef": "https://images.unsplash.com/photo-1581349485608-9469926a8e5e?w=900&q=85",
     "photoChefAlt": "Augustin Lambert, chef au travail dans sa cuisine",
-    "photoAmbiance1": "https://images.unsplash.com/photo-1592861956120-e524fc739696?w=900&q=85",
-    "photoAmbiance1Alt": "Détail d'un dressage gastronomique",
-    "photoAmbiance2": "https://images.unsplash.com/photo-1507914372368-b2b085b925a1?w=900&q=85",
-    "photoAmbiance2Alt": "Terrasse sous les filaos, en début de soirée",
-    "photoAmbiance3": "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=900&q=85",
-    "photoAmbiance3Alt": "Bar à vins du restaurant, bouteilles alignées"
+    "photoAmbiance1": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=900&q=85",
+    "photoAmbiance1Alt": "Détail d'un dressage gastronomique signature",
+    "photoAmbiance2": "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=900&q=85",
+    "photoAmbiance2Alt": "Sommelier au service d'un grand cru",
+    "photoAmbiance3": "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=900&q=85",
+    "photoAmbiance3Alt": "Table dressée pour le service du soir"
   },
   "manifesto": "Une cuisine simple en apparence, exigeante dans le détail. On ne cherche pas à impressionner — on cherche à faire plaisir.",
   "chiffres": [
