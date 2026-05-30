@@ -1,0 +1,67 @@
+---
+import data from '../../../data/templates/frangipane.json';
+---
+
+<section id="saison" class="py-20 md:py-28 relative" style="background-color: #5C7448; color: #F4E6E0;">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-14 items-start">
+
+      <div class="md:col-span-5">
+        <p class="font-jakarta text-[11px] uppercase tracking-[0.45em] mb-4" style="color: #C49B62;">— {data.saison.label} —</p>
+        <h2 class="font-cormorant leading-[0.95]" style="font-size: clamp(40px, 6vw, 72px); font-weight: 400;">
+          {data.saison.titre}
+          <em class="block italic text-xl md:text-2xl mt-3 normal-case" style="color: #C49B62; font-size: clamp(20px, 2.5vw, 26px);">
+            {data.saison.mois}
+          </em>
+        </h2>
+
+        <p class="mt-7 font-cormorant italic leading-snug" style="font-size: clamp(20px, 2.5vw, 28px); color: rgba(244, 230, 224, 0.92);">
+          {data.saison.ambiance}.
+        </p>
+
+        <p class="mt-6 font-jakarta text-[15px] leading-relaxed" style="color: rgba(244, 230, 224, 0.82);">
+          {data.saison.texte}
+        </p>
+      </div>
+
+      <div class="md:col-span-7">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-6">
+
+          <div class="p-7" style="background-color: rgba(244, 230, 224, 0.08); border: 1px solid rgba(196, 155, 98, 0.3);">
+            <p class="font-jakarta text-[10.5px] uppercase tracking-[0.3em] mb-4" style="color: #C49B62;">Fleurs du moment</p>
+            <ul class="space-y-3">
+              {data.saison.fleurs.map((f) => (
+                <li class="flex items-start gap-2.5 font-cormorant text-[16.5px] leading-snug" style="color: #F4E6E0;">
+                  <span class="mt-1.5 inline-block w-1.5 h-1.5 rounded-full flex-shrink-0" style="background-color: #C49B62;"></span>
+                  <span>{f}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="p-7" style="background-color: rgba(244, 230, 224, 0.08); border: 1px solid rgba(196, 155, 98, 0.3);">
+            <p class="font-jakarta text-[10.5px] uppercase tracking-[0.3em] mb-4" style="color: #C49B62;">Feuillages structurants</p>
+            <ul class="space-y-3">
+              {data.saison.feuillages.map((f) => (
+                <li class="flex items-start gap-2.5 font-cormorant text-[16.5px] leading-snug" style="color: #F4E6E0;">
+                  <span class="mt-1.5 inline-block w-1.5 h-1.5 rounded-full flex-shrink-0" style="background-color: #C49B62;"></span>
+                  <span>{f}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <!-- Manifeste -->
+        <div class="mt-6 p-7" style="background-color: #2A2520;">
+          <p class="font-cormorant italic leading-snug" style="font-size: clamp(20px, 2.5vw, 28px); color: #C49B62;">
+            « {data.manifesto.split('.')[0]}. »
+          </p>
+          <p class="mt-3 font-jakarta text-[11px] uppercase tracking-[0.25em]" style="color: rgba(244, 230, 224, 0.7);">
+            — Manifeste de l'atelier
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

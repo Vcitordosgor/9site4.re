@@ -1,0 +1,48 @@
+---
+import '@fontsource/cormorant-garamond/latin-400.css';
+import '@fontsource/cormorant-garamond/latin-500.css';
+import '@fontsource/cormorant-garamond/latin-400-italic.css';
+import '@fontsource/cormorant-garamond/latin-500-italic.css';
+import '@fontsource/plus-jakarta-sans/latin-400.css';
+import '@fontsource/plus-jakarta-sans/latin-500.css';
+import '@fontsource/plus-jakarta-sans/latin-600.css';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getSeo } from '../../lib/seo';
+import { localBusinessSchema } from '../../lib/businessSchema';
+import frangipaneData from '../../data/templates/frangipane.json';
+
+import Header from '../../components/templates/fleuriste/Header.astro';
+import HeroPoudre from '../../components/templates/fleuriste/HeroPoudre.astro';
+import Compositions from '../../components/templates/fleuriste/Compositions.astro';
+import Saison from '../../components/templates/fleuriste/Saison.astro';
+import Mariage from '../../components/templates/fleuriste/Mariage.astro';
+import Galerie from '../../components/templates/fleuriste/Galerie.astro';
+import Atelier from '../../components/templates/fleuriste/Atelier.astro';
+import Faq from '../../components/templates/fleuriste/Faq.astro';
+import Footer from '../../components/templates/fleuriste/Footer.astro';
+
+const businessLD = localBusinessSchema(frangipaneData, 'Florist');
+---
+
+<BaseLayout seo={getSeo('templatePatisserie' as any)} bare={true}>
+  <Fragment slot="head">
+    {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <link rel="preload" as="image" href={frangipaneData.info.photoHero} fetchpriority="high" />
+  </Fragment>
+
+  <Header />
+
+  <main class="font-jakarta" style="background-color: #F4E6E0; color: #2A2520;">
+    <HeroPoudre />
+    <Compositions />
+    <Saison />
+    <Mariage />
+    <Galerie />
+    <Atelier />
+    <Faq />
+  </main>
+
+  <Footer />
+</BaseLayout>

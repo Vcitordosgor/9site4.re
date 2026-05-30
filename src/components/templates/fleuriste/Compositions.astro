@@ -1,0 +1,65 @@
+---
+import data from '../../../data/templates/frangipane.json';
+---
+
+<section id="compositions" class="py-20 md:py-28 relative" style="background-color: #F4E6E0;">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+
+    <div class="max-w-2xl mb-14 md:mb-20">
+      <p class="font-jakarta text-[11px] uppercase tracking-[0.45em] mb-4" style="color: #C49B62;">— Le catalogue —</p>
+      <h2 class="font-cormorant leading-[0.95]" style="color: #2A2520; font-size: clamp(40px, 6vw, 72px); font-weight: 400;">
+        Six familles
+        <em class="block italic mt-1" style="color: #5C7448;">de compositions.</em>
+      </h2>
+      <p class="mt-5 font-jakarta text-[15px] leading-relaxed" style="color: rgba(42, 37, 32, 0.78);">
+        Du bouquet de la semaine au mariage complet. Chaque composition est unique — les fleurs varient selon la saison et l'arrivage.
+      </p>
+    </div>
+
+    <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-7">
+      {data.compositions.map((c, i) => (
+        <li class="group p-7 md:p-9 transition-colors" style="background-color: #FFFFFF; border: 1px solid rgba(196, 155, 98, 0.35);">
+          <div class="flex items-baseline justify-between gap-3 mb-3">
+            <p class="font-jakarta text-[10px] uppercase tracking-[0.3em]" style="color: #C49B62;">
+              {c.categorie}
+            </p>
+            <p class="font-cormorant italic text-base" style="color: rgba(42, 37, 32, 0.4);">
+              n°{String(i + 1).padStart(2, '0')}
+            </p>
+          </div>
+
+          <h3 class="font-cormorant text-2xl md:text-[28px] leading-tight" style="color: #2A2520; font-weight: 400;">
+            {c.nom}
+          </h3>
+          <p class="mt-1.5 font-cormorant italic text-xl md:text-2xl leading-snug" style="color: #5C7448;">
+            {c.tagline}
+          </p>
+
+          <p class="mt-5 font-jakarta text-[14px] leading-relaxed" style="color: rgba(42, 37, 32, 0.82);">
+            {c.description}
+          </p>
+
+          <p class="mt-4 pt-4 border-t font-jakarta text-[11px] uppercase tracking-[0.18em]" style="color: #C49B62; border-color: rgba(196, 155, 98, 0.25);">
+            ⟡ {c.details}
+          </p>
+
+          <div class="mt-5 flex items-baseline justify-between gap-3 pt-4 border-t" style="border-color: rgba(196, 155, 98, 0.25);">
+            <div>
+              <p class="font-jakarta text-[10px] uppercase tracking-[0.2em]" style="color: #C49B62;">Tarif</p>
+              <p class="font-cormorant italic text-2xl leading-tight" style="color: #2A2520;">{c.prix}</p>
+            </div>
+            <a
+              href={`https://wa.me/${data.info.whatsapp}?text=${encodeURIComponent('Bonjour Inès, je voudrais en savoir plus sur : ' + c.nom + '.')}`}
+              target="_blank"
+              rel="noopener"
+              class="inline-flex items-center justify-center h-10 px-4 font-jakarta font-semibold text-[11px] uppercase tracking-[0.18em] rounded-full transition-opacity hover:opacity-90"
+              style="background-color: #2A2520; color: #F4E6E0;"
+            >
+              Demander
+            </a>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
