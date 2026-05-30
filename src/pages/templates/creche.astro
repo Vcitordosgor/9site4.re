@@ -1,0 +1,59 @@
+---
+import '@fontsource/nunito/latin-400.css';
+import '@fontsource/nunito/latin-600.css';
+import '@fontsource/nunito/latin-700.css';
+import '@fontsource/nunito/latin-800.css';
+import '@fontsource/caveat/latin-400.css';
+import '@fontsource/caveat/latin-500.css';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { localBusinessSchema } from "../../lib/businessSchema";
+import nidData from '../../data/templates/nid.json';
+
+import NidHeader from '../../components/templates/creche/NidHeader.astro';
+import HeroNid from '../../components/templates/creche/HeroNid.astro';
+import Pedagogie from '../../components/templates/creche/Pedagogie.astro';
+import Equipe from '../../components/templates/creche/Equipe.astro';
+import Journee from '../../components/templates/creche/Journee.astro';
+import Locaux from '../../components/templates/creche/Locaux.astro';
+import Securite from '../../components/templates/creche/Securite.astro';
+import Tarifs from '../../components/templates/creche/Tarifs.astro';
+import Faq from '../../components/templates/creche/Faq.astro';
+import Contact from '../../components/templates/creche/Contact.astro';
+import NidFooter from '../../components/templates/creche/NidFooter.astro';
+
+const businessLD = localBusinessSchema(nidData);
+
+const localSeo = {
+  title: 'Le Nid — Micro-crèche à La Réunion | Template 9site4',
+  description: 'Aperçu du template "Micro-crèche" proposé par 9site4 : pédagogie Montessori, équipe diplômée, journée type, locaux, sécurité, tarifs CAF. Site fictif de démonstration.',
+  canonical: '/templates/creche',
+  ogImage: '/og-image.png',
+  ogImageAlt: 'Le Nid — Micro-crèche à La Réunion',
+  noindex: true,
+};
+---
+
+<BaseLayout seo={localSeo} bare={true}>
+  <Fragment slot="head">
+    {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <link rel="preload" as="image" href={nidData.info.photoHero} fetchpriority="high" />
+  </Fragment>
+
+  <NidHeader />
+
+  <main style="background-color: #FFFFFF;">
+    <HeroNid />
+    <Pedagogie />
+    <Equipe />
+    <Journee />
+    <Locaux />
+    <Securite />
+    <Tarifs />
+    <Faq />
+    <Contact />
+  </main>
+
+  <NidFooter />
+</BaseLayout>

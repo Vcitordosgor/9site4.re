@@ -1,0 +1,170 @@
+{
+  "info": {
+    "nom": "Le Nid",
+    "wordmark": "Le Nid",
+    "soustitre": "Micro-crèche · La Réunion",
+    "tagline": "Un nid pour grandir à son rythme.",
+    "directrice": "Anaïs Beaufort",
+    "ville": "La Réunion",
+    "adresseLigne1": "Micro-crèche du quartier",
+    "adresseLigne2": "La Réunion",
+    "telephone": "0692 12 34 56",
+    "telephoneHref": "+262692123456",
+    "whatsapp": "262692123456",
+    "email": "bonjour@le-nid.re",
+    "instagram": "@le.nid.creche",
+    "siret": "85276432900015",
+    "annee": "2017",
+    "photoHero": "https://images.unsplash.com/photo-1587654780291-39c9404d746b?q=80&w=1600&auto=format&fit=crop",
+    "photoHeroAlt": "Enfants jouant avec des crayons de couleur et des jouets en bois — micro-crèche Le Nid, La Réunion",
+    "ouvertureHebdo": "Lundi → vendredi · 7h-19h",
+    "fermeture": "Week-end et jours fériés"
+  },
+  "promesse": "Micro-crèche agréée PMI, ouverte depuis 2017 à La Réunion. Dix berceaux maximum, trois professionnelles diplômées en permanence. Inspiration Montessori, matériel naturel, rythme respecté.",
+  "pedagogie": [
+    {
+      "id": "montessori",
+      "icon": "leaf",
+      "titre": "Inspiration Montessori",
+      "tagline": "L'enfant choisit, l'adulte accompagne.",
+      "description": "Plateaux libres adaptés à chaque âge, mobilier à hauteur d'enfant, activités auto-correctrices. On ne fait pas à la place, on aménage pour que l'enfant puisse faire."
+    },
+    {
+      "id": "rythme",
+      "icon": "moon",
+      "titre": "Respect du rythme",
+      "tagline": "Pas de lit collectif imposé.",
+      "description": "Chaque enfant a son rituel d'endormissement, son lit personnel, sa doudou. Réveil libre quand le sommeil est terminé. Aucun rythme adulte imposé."
+    },
+    {
+      "id": "communication",
+      "icon": "hand",
+      "titre": "Communication bienveillante",
+      "tagline": "Verbalisation et signes pour bébé.",
+      "description": "On verbalise les gestes du quotidien (« je vais te changer la couche »), on accueille les émotions, on propose des signes Makaton aux bébés non-verbaux."
+    },
+    {
+      "id": "nature",
+      "icon": "sun",
+      "titre": "Nature & extérieur",
+      "tagline": "Au jardin chaque matin.",
+      "description": "Sortie au jardin tous les matins, peu importe la météo. Jardinage saisonnier, observation des insectes, jeux d'eau et de sable. Le toucher avant le tactile."
+    }
+  ],
+  "equipe": [
+    {
+      "nom": "Anaïs Beaufort",
+      "role": "Directrice & EJE",
+      "diplome": "Éducatrice de Jeunes Enfants · DE 2014",
+      "anciennete": "10 ans expérience petite enfance",
+      "bio": "Anaïs a ouvert Le Nid en 2017 après six ans en multi-accueil collectif. Diplômée EJE et formée Montessori 0-3 ans, elle assure la direction pédagogique et reste sur le terrain.",
+      "photo": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=600&auto=format&fit=crop"
+    },
+    {
+      "nom": "Solène Lépine",
+      "role": "Auxiliaire de puériculture",
+      "diplome": "DEAP 2018 · Formation IBCLC allaitement",
+      "anciennete": "6 ans expérience",
+      "bio": "Solène est référente bébés (0-12 mois). Elle accompagne particulièrement les transitions allaitement et la diversification alimentaire. Formée au portage physiologique.",
+      "photo": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=600&auto=format&fit=crop"
+    },
+    {
+      "nom": "Léna Robert",
+      "role": "Auxiliaire de puériculture",
+      "diplome": "DEAP 2020 · Formation signes Makaton",
+      "anciennete": "4 ans expérience",
+      "bio": "Léna est référente moyens-grands (12-36 mois). Elle anime les ateliers d'éveil sensoriel et signe Makaton, et coordonne la transition vers l'école maternelle.",
+      "photo": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=600&auto=format&fit=crop"
+    },
+    {
+      "nom": "Marie-Jo Vidot",
+      "role": "Cuisinière & lingère",
+      "diplome": "CAP Cuisine · Hygiène HACCP",
+      "anciennete": "15 ans en collectivité",
+      "bio": "Marie-Jo prépare le repas et le goûter sur place chaque jour, avec des produits frais et de saison. Linge changé quotidiennement, sans détergent agressif.",
+      "photo": "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=600&auto=format&fit=crop"
+    }
+  ],
+  "journee": [
+    { "horaire": "7h00 → 9h00", "moment": "Arrivée & câlins", "detail": "Accueil échelonné, doudou en main, lecture libre. Transmissions matinales avec les parents." },
+    { "horaire": "9h00 → 10h00", "moment": "Activité libre", "detail": "Plateaux Montessori, motricité libre, lecture. Bébés au tapis d'éveil." },
+    { "horaire": "10h00 → 11h00", "moment": "Jardin & extérieur", "detail": "Sortie quotidienne, par groupes d'âges. Jardinage, jeux d'eau, observation." },
+    { "horaire": "11h15 → 12h00", "moment": "Repas", "detail": "Repas en petits groupes, sans contrainte de tout finir. Verre et assiette adaptés." },
+    { "horaire": "12h00 → 14h30", "moment": "Sieste", "detail": "Endormissement individualisé, doudou et rituel. Réveil libre sans bruit." },
+    { "horaire": "14h30 → 15h30", "moment": "Réveil & goûter", "detail": "Goûter dès le réveil, jamais collectif imposé. Fruits frais et laitages." },
+    { "horaire": "15h30 → 17h30", "moment": "Atelier ou jardin", "detail": "Peinture, pâte à modeler, contes, motricité — selon l'envie du groupe." },
+    { "horaire": "17h30 → 19h00", "moment": "Départ échelonné", "detail": "Transmissions du soir, derniers jeux calmes, attente des parents au calme." }
+  ],
+  "locaux": [
+    {
+      "espace": "Salle de vie principale",
+      "description": "Lumineuse, plein sud. Tapis d'éveil, étagères basses, coin lecture en igloo.",
+      "photo": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      "espace": "Dortoir individualisé",
+      "description": "Six lits à barreaux nominatifs, lumière douce, lit bébé apart pour les moins de 12 mois.",
+      "photo": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      "espace": "Salle de change & soins",
+      "description": "Plan de change Mauricienne, baignoires bébés, espace transmission parents.",
+      "photo": "https://images.unsplash.com/photo-1551601651-bc60f254d532?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      "espace": "Jardin clôturé 80m²",
+      "description": "Plantation potagère adaptée, bac à sable, structure de motricité bois.",
+      "photo": "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?q=80&w=800&auto=format&fit=crop"
+    }
+  ],
+  "securite": [
+    {
+      "titre": "Encadrement PMI",
+      "texte": "Agrément Protection Maternelle et Infantile renouvelé. Visite annuelle, dossiers à jour, registre des entrées sorties."
+    },
+    {
+      "titre": "Taux d'encadrement renforcé",
+      "texte": "1 adulte pour 5 enfants quel que soit l'horaire. Toujours 3 professionnelles diplômées en présence simultanée."
+    },
+    {
+      "titre": "Hygiène alimentaire HACCP",
+      "texte": "Cuisine sur place, traçabilité des matières premières, plats témoins conservés 5 jours. Marie-Jo formée HACCP."
+    },
+    {
+      "titre": "Médecin référent",
+      "texte": "Suivi médical par un pédiatre référent. Protocoles écrits pour fièvre, varicelle, allergies. Pharmacie sous clé."
+    }
+  ],
+  "tarifs": [
+    { "type": "Place régulière", "duree": "5 jours/semaine", "indication": "Selon barème CAF — quotient familial", "detail": "Reste à charge moyen : 250 à 480 €/mois selon revenus" },
+    { "type": "Mi-temps", "duree": "2 à 3 jours/semaine", "indication": "Tarif CAF prorata", "detail": "Idéal congé parental partiel" },
+    { "type": "Occasionnel", "duree": "À la demi-journée", "indication": "8,50 €/heure", "detail": "Sous réserve de places disponibles, prévenir 48h avant" },
+    { "type": "Repas inclus", "duree": "Repas + goûter compris", "indication": "Sans supplément", "detail": "Produits frais, plan alimentaire validé pédiatre" }
+  ],
+  "faq": [
+    {
+      "q": "Comment se déroule la période d'adaptation ?",
+      "r": "Une semaine progressive : 30 minutes avec parent jour 1, 1h sans parent jour 2, puis montée graduelle jusqu'à la journée complète. Rythme ajusté selon l'enfant, jamais forcé."
+    },
+    {
+      "q": "Faites-vous la diversification alimentaire ?",
+      "r": "Oui, en partenariat avec vos consignes. Premier goût toujours fait à la maison le week-end, jamais en crèche. Nous suivons votre fiche allergènes et préférences."
+    },
+    {
+      "q": "Que se passe-t-il si mon enfant est malade ?",
+      "r": "Fièvre >38,5°C, diarrhée, varicelle : éviction selon protocole national. Vous êtes prévenus immédiatement par téléphone et invités à venir le chercher. Aucun médicament administré sans ordonnance."
+    },
+    {
+      "q": "Acceptez-vous l'allaitement maternel ?",
+      "r": "Bien sûr. Vous pouvez venir allaiter sur place dans notre espace dédié, ou nous fournir des biberons de lait maternel conservés au frigo. Solène est formée IBCLC."
+    },
+    {
+      "q": "Comment se passent les transmissions ?",
+      "r": "Transmissions orales matin et soir avec une référente. Carnet de liaison numérique pour les bébés (siestes, repas, change). Photos quotidiennes via application privée."
+    },
+    {
+      "q": "Quand ouvrent les inscriptions ?",
+      "r": "Listes d'attente ouvertes en continu. Priorité aux frères et sœurs, puis aux familles du quartier. Visite obligatoire avant inscription, sur rendez-vous, en présence de votre enfant."
+    }
+  ]
+}
