@@ -1,0 +1,53 @@
+---
+/**
+ * Process — 5 étapes : du diagnostic à la restitution.
+ * Timeline verticale style atelier, codes alphanumériques mono.
+ */
+const steps = [
+  { num: '01', code: 'INTAKE', titre: 'Réception du véhicule', desc: 'Accueil sur RDV ou sans, dépose des clés, fiche d\'entrée signée. Photos d\'arrivée datées.' },
+  { num: '02', code: 'DIAG', titre: 'Diagnostic complet', desc: 'Valise Bosch KTS + scope, lecture défauts, point d\'usure visuel. Rapport imprimé.' },
+  { num: '03', code: 'QUOTE', titre: 'Devis détaillé envoyé', desc: 'Chiffrage poste par poste, références des pièces, durée. Validation par signature ou SMS.' },
+  { num: '04', code: 'WORK', titre: 'Intervention atelier', desc: 'Pont 4 colonnes, outillage marque, photos des pièces remplacées remises au client.' },
+  { num: '05', code: 'OUT', titre: 'Essai & restitution', desc: 'Test routier de 5 km, contrôle final, facture détaillée et garantie 12 mois remises.' },
+];
+---
+
+<section id="process" class="relative bg-piton-asphalte text-piton-beton py-20 md:py-28 px-6 md:px-10 overflow-hidden">
+  <div class="pointer-events-none absolute inset-0 opacity-[0.06]" aria-hidden="true"
+       style="background-image: repeating-linear-gradient(45deg, rgb(255 90 31) 0 1px, transparent 1px 24px);">
+  </div>
+
+  <div class="relative max-w-content mx-auto">
+    <header class="max-w-3xl mb-14 md:mb-16">
+      <p class="scroll-reveal inline-flex items-center gap-3 font-jetbrains-mono text-[11px] uppercase tracking-[0.32em] text-piton-feu">
+        <span class="block w-8 h-px bg-piton-feu" aria-hidden="true"></span>
+        <span>WORKFLOW · 005 STEPS</span>
+      </p>
+      <h2 class="scroll-reveal mt-5 font-bebas uppercase text-piton-blanc leading-[0.95] tracking-tight" style="font-size: clamp(40px, 5.5vw, 72px);">
+        De la valise<br/>
+        <span class="text-piton-feu">aux clés rendues.</span>
+      </h2>
+    </header>
+
+    <ol class="relative space-y-0 border-l-2 border-piton-feu/30 pl-6 sm:pl-10 md:pl-14">
+      {steps.map((s, i) => (
+        <li class="scroll-reveal relative pb-12 last:pb-0" style={`transition-delay: ${i * 80}ms`}>
+          <span class="absolute -left-[34px] sm:-left-[50px] md:-left-[66px] top-1 inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-piton-feu text-piton-asphalte font-bebas text-2xl sm:text-3xl border-4 border-piton-asphalte">
+            {s.num}
+          </span>
+          <div>
+            <p class="font-jetbrains-mono text-[11px] text-piton-acide uppercase tracking-[0.28em]">
+              {s.code}
+            </p>
+            <h3 class="mt-2 font-bebas uppercase text-piton-blanc leading-tight tracking-wide" style="font-size: clamp(26px, 3vw, 36px);">
+              {s.titre}
+            </h3>
+            <p class="mt-3 max-w-2xl font-inter-tight text-piton-beton/70 leading-[1.65]" style="font-size: 15.5px;">
+              {s.desc}
+            </p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
