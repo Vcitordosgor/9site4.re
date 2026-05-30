@@ -38,7 +38,7 @@ const stats = [
       {row1.map((r, i) => (
         <a
           href={r.previewUrl}
-          class="group relative shrink-0 w-72 md:w-80 rounded-2xl overflow-hidden ring-1 ring-blanc-casse/15 bg-black transition-all duration-300 hover:-translate-y-1 hover:ring-bleu/60"
+          class="group relative shrink-0 w-80 md:w-96 rounded-2xl overflow-hidden ring-1 ring-blanc-casse/15 bg-black transition-all duration-300 hover:-translate-y-1 hover:ring-bleu/60"
           aria-hidden={i >= row1Items.length ? 'true' : undefined}
           tabindex={i >= row1Items.length ? -1 : undefined}
         >
@@ -73,7 +73,7 @@ const stats = [
       {row2.map((r, i) => (
         <a
           href={r.previewUrl}
-          class="group relative shrink-0 w-72 md:w-80 rounded-2xl overflow-hidden ring-1 ring-blanc-casse/15 bg-black transition-all duration-300 hover:-translate-y-1 hover:ring-bleu/60"
+          class="group relative shrink-0 w-80 md:w-96 rounded-2xl overflow-hidden ring-1 ring-blanc-casse/15 bg-black transition-all duration-300 hover:-translate-y-1 hover:ring-bleu/60"
           aria-hidden={i >= row2Items.length ? 'true' : undefined}
           tabindex={i >= row2Items.length ? -1 : undefined}
         >
@@ -121,10 +121,10 @@ const stats = [
     <div class="mt-12 flex justify-center">
       <a
         href="/realisations"
-        class="inline-flex items-center justify-center gap-2 h-12 px-7 text-base font-semibold rounded-full ring-1 ring-blanc-casse/30 text-blanc-casse hover:bg-blanc-casse hover:text-bleu-nuit transition-all duration-200 ease-out"
+        class="group inline-flex items-center justify-center gap-2 h-13 px-8 py-3.5 text-base font-semibold rounded-full bg-bleu text-white hover:bg-[#7e95ff] hover:-translate-y-0.5 shadow-[0_8px_30px_rgba(145,166,255,0.45)] transition-all duration-200 ease-out"
       >
         Voir tous les exemples métiers
-        <span aria-hidden="true">→</span>
+        <span aria-hidden="true" class="transition-transform duration-300 group-hover:translate-x-1">→</span>
       </a>
     </div>
   </div>
