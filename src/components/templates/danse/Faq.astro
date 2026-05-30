@@ -1,0 +1,55 @@
+---
+const faq = [
+  {
+    q: 'À partir de quel âge peut-on s\'inscrire ?',
+    r: 'Éveil dès 4 ans (45 minutes hebdomadaires), initiation dès 6 ans, cours technique à partir de 8 ans. Pour les adultes, accueil dès le débutant complet, aucune limite d\'âge.',
+  },
+  {
+    q: 'Faut-il déjà avoir fait de la danse pour s\'inscrire ?',
+    r: 'Non. Chaque discipline a son cours débutant absolu. Le professeur évalue votre niveau au cours d\'essai et oriente vers le groupe le plus adapté à votre rythme.',
+  },
+  {
+    q: 'Quel équipement faut-il acheter pour commencer ?',
+    r: 'Pour le cours d\'essai : tenue souple, cheveux attachés, pieds nus. Pour la suite : chaussons spécifiques selon la discipline (entre 25 et 60 euros), tenue de danse souple.',
+  },
+  {
+    q: 'Le spectacle de fin d\'année est-il obligatoire ?',
+    r: 'Non, jamais. Près de 80% des élèves choisissent d\'y participer mais ce n\'est pas une condition. Coût supplémentaire de 90 euros si vous participez (couvre costume, location théâtre, captation vidéo).',
+  },
+  {
+    q: 'Peut-on essayer plusieurs disciplines avant de choisir ?',
+    r: 'Oui, jusqu\'à trois cours d\'essai gratuits dans trois disciplines différentes pendant les deux premières semaines de septembre. Aucun engagement.',
+  },
+  {
+    q: 'Y a-t-il des bourses ou aides au financement ?',
+    r: 'Oui. Pass Culture pour les 15-25 ans, conventions avec la mairie et le département pour les familles modestes, paiement en trois fois sans frais ouvert à tous.',
+  },
+];
+---
+
+<section class="bg-vermeille-ivoire py-20 md:py-28">
+  <div class="max-w-3xl mx-auto px-6 md:px-10">
+
+    <div class="text-center mb-12 md:mb-16">
+      <p class="font-inter-tight uppercase tracking-[0.4em] text-[10px] md:text-[11px] text-vermeille-bordeaux mb-4">— Avant l'inscription —</p>
+      <h2 class="font-italiana text-vermeille-velours text-4xl md:text-6xl leading-tight">
+        Questions
+        <span class="text-vermeille-bordeaux">qu'on entend chaque rentrée</span>
+      </h2>
+    </div>
+
+    <div class="space-y-2">
+      {faq.map((f) => (
+        <details class="group border-b border-vermeille-velours/15 hover:border-vermeille-bordeaux transition-colors">
+          <summary class="cursor-pointer list-none flex items-start gap-5 py-5 md:py-7">
+            <span class="font-italiana text-vermeille-bordeaux text-3xl leading-none mt-0 transition-transform duration-300 group-open:rotate-45" aria-hidden="true">+</span>
+            <span class="flex-1 font-italiana text-vermeille-velours text-lg md:text-xl leading-snug">{f.q}</span>
+          </summary>
+          <div class="pb-6 md:pb-8 pl-12 pr-2">
+            <p class="font-inter-tight text-[14.5px] md:text-[15px] text-vermeille-velours/85 leading-relaxed">{f.r}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

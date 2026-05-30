@@ -28,6 +28,10 @@ import RendezVous from '../../components/templates/osteo/RendezVous.astro';
 import Trouver from '../../components/templates/osteo/Trouver.astro';
 import CTAFinal from '../../components/templates/osteo/CTAFinal.astro';
 import VerveineFooter from '../../components/templates/osteo/VerveineFooter.astro';
+import Chiffres from '../../components/templates/osteo/Chiffres.astro';
+import Manifeste from '../../components/templates/osteo/Manifeste.astro';
+import Processus from '../../components/templates/osteo/Processus.astro';
+import Faq from '../../components/templates/osteo/Faq.astro';
 const businessLD = localBusinessSchema(verveineData);
 
 ---
@@ -50,13 +54,17 @@ const businessLD = localBusinessSchema(verveineData);
   <main id="top" class="bg-verveine-creme text-verveine-encre font-public-sans">
     <HeroFiche />
     <Approche />
+    <Chiffres />
     <Motifs />
     <PhotoCabinet />
+    <Manifeste />
     <Bandeau />
     <Seance />
+    <Processus />
     <Citation />
     <Tarifs />
     <RendezVous />
+    <Faq />
     <Trouver />
     <CTAFinal />
   </main>

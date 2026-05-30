@@ -1,0 +1,61 @@
+---
+const sans = [
+  'Une chambre anonyme, lits collés au mur, vue parking.',
+  'Personne pour vous dire où boire un café à 5h avant la rando.',
+  'Petit-déjeuner industriel servi dans une salle sans fenêtre.',
+  'Aucune connaissance des sentiers, des horaires de soleil, du météo local.',
+];
+
+const avec = [
+  'Chambres baptisées comme les villages voisins, vue cirque ou jardin.',
+  'Jean-Marie debout à 4h, café en main, prêt à briefer chaque randonneur.',
+  'Petit-déj maison : pain au levain, confiture goyavier, fruits du verger.',
+  'Topo précis, météo locale, conseils dénivelé selon votre niveau réel.',
+];
+---
+
+<section class="bg-cap-papier py-20 md:py-28">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+
+    <div class="text-center max-w-2xl mx-auto mb-14 md:mb-20">
+      <p class="font-jetbrains text-[10px] uppercase tracking-[0.28em] text-cap-mousse mb-4">— Pourquoi le Cap, plutôt qu'un autre —</p>
+      <h2 class="font-crimson italic text-cap-charbon text-4xl md:text-5xl leading-tight">
+        Deux nuits qui n'ont rien à voir.
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6 md:gap-10">
+
+      <div class="bg-cap-papier border-2 border-cap-rouge/40 p-7 md:p-10">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="inline-flex w-10 h-10 rounded-full border-2 border-cap-rouge/70 items-center justify-center text-cap-rouge font-bricolage font-semibold">×</span>
+          <p class="font-jetbrains text-[11px] uppercase tracking-[0.28em] text-cap-rouge">Un dortoir lambda</p>
+        </div>
+        <ul class="space-y-4">
+          {sans.map((s) => (
+            <li class="flex items-start gap-3">
+              <span class="font-jetbrains text-cap-rouge/70 mt-1 select-none" aria-hidden="true">—</span>
+              <p class="font-crimson text-cap-charbon/85 text-[16.5px] leading-relaxed">{s}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="bg-cap-mousse text-cap-papier p-7 md:p-10 relative">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="inline-flex w-10 h-10 rounded-full bg-cap-papier text-cap-mousse items-center justify-center font-bricolage font-semibold">✓</span>
+          <p class="font-jetbrains text-[11px] uppercase tracking-[0.28em] text-cap-papier/90">Une nuit au Cap Anglais</p>
+        </div>
+        <ul class="space-y-4">
+          {avec.map((a) => (
+            <li class="flex items-start gap-3">
+              <span class="font-jetbrains text-cap-papier/70 mt-1 select-none" aria-hidden="true">+</span>
+              <p class="font-crimson text-cap-papier text-[16.5px] leading-relaxed">{a}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>

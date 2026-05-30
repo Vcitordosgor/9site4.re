@@ -1,0 +1,36 @@
+---
+const etapes = [
+  { num: '01', titre: 'Diagnostic', duree: '15 min', texte: 'Vous arrivez. On observe le cheveu sec, on demande la routine, on parle entretien. Vingt euros, déductibles du soin si vous restez.' },
+  { num: '02', titre: 'Shampoing', duree: '10 min', texte: 'Bac chauffant, massage crânien long. Eau filtrée, formules sans sulfates ni silicones. Vous fermez les yeux.' },
+  { num: '03', titre: 'La coupe', duree: '30-45 min', texte: 'Méthode américaine, ciseaux droits puis effilage. On taille la matière, pas le centimètre. On vous laisse tester avant de continuer.' },
+  { num: '04', titre: 'Coiffage', duree: '15 min', texte: 'Brushing si vous voulez, séchage naturel sinon. Conseils produits — on vend uniquement ce qui vous sert vraiment.' },
+];
+---
+
+<section class="bg-salon-blanc py-20 md:py-32 relative">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+
+    <div class="text-center max-w-2xl mx-auto mb-16 md:mb-24">
+      <p class="font-dm-sans uppercase tracking-[0.4em] text-[10px] md:text-[11px] text-salon-vert mb-4">— Le déroulé d'un rendez-vous —</p>
+      <h2 class="font-fraunces text-salon-noir text-3xl md:text-5xl leading-tight">
+        Quatre temps,
+        <em class="font-fraunces italic text-salon-vert block md:inline">au calme.</em>
+      </h2>
+    </div>
+
+    <ol class="relative grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-0">
+      <div class="hidden md:block absolute top-12 left-[12%] right-[12%] h-px bg-salon-vert/30" aria-hidden="true"></div>
+
+      {etapes.map((e) => (
+        <li class="relative text-center md:px-4">
+          <div class="relative inline-flex items-center justify-center w-24 h-24 rounded-full bg-salon-blanc border-2 border-salon-vert/60 hover:border-salon-vert hover:shadow-lg transition-all duration-300 mb-6">
+            <span class="font-fraunces italic text-salon-noir text-3xl leading-none">{e.num}</span>
+          </div>
+          <p class="font-dm-sans uppercase tracking-[0.3em] text-[10px] text-salon-vert mb-2">{e.duree}</p>
+          <h3 class="font-fraunces text-salon-noir text-2xl md:text-[26px] mb-3">{e.titre}</h3>
+          <p class="font-dm-sans text-[14.5px] text-salon-noir/80 leading-relaxed max-w-xs mx-auto">{e.texte}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

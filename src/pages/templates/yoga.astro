@@ -29,6 +29,10 @@ import Reservation from '../../components/templates/yoga/Reservation.astro';
 import Lieu from '../../components/templates/yoga/Lieu.astro';
 import CTAFinal from '../../components/templates/yoga/CTAFinal.astro';
 import YogaFooter from '../../components/templates/yoga/YogaFooter.astro';
+import Chiffres from '../../components/templates/yoga/Chiffres.astro';
+import MotsCles from '../../components/templates/yoga/MotsCles.astro';
+import Processus from '../../components/templates/yoga/Processus.astro';
+import Faq from '../../components/templates/yoga/Faq.astro';
 const businessLD = localBusinessSchema(souffleData);
 
 ---
@@ -51,14 +55,18 @@ const businessLD = localBusinessSchema(souffleData);
   <main id="top" class="bg-yoga-creme text-yoga-encre font-spectral">
     <HeroRespiration />
     <Manifeste />
+    <Chiffres />
     <Planning />
     <Pratiques />
     <PhotoLieu />
+    <Processus />
     <Bandeau />
     <Enseignants />
+    <MotsCles />
     <Citation />
     <Tarifs />
     <Reservation />
+    <Faq />
     <Lieu />
     <CTAFinal />
   </main>

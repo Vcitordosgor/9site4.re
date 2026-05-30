@@ -1,0 +1,55 @@
+---
+const faq = [
+  {
+    q: 'Vous prenez les cheveux frisés / crépus / texturés ?',
+    r: 'Salon mixte : on coupe sur cheveux secs pour les textures bouclées, on travaille en méthode rebondi pour les frisés à 3c-4c. Diagnostic gratuit avant tout premier rendez-vous.',
+  },
+  {
+    q: 'Le diagnostic à vingt euros est-il vraiment nécessaire ?',
+    r: 'Pour les nouveaux clients, oui : on prend le temps de regarder votre fibre, votre routine, vos attentes. Vingt euros déductibles si vous restez pour une prestation ensuite.',
+  },
+  {
+    q: 'Combien de temps tient une coupe / une couleur ?',
+    r: 'Coupe : entre 8 et 12 semaines selon votre rythme et votre repousse. Couleur racines : 5 à 7 semaines. Balayage : 4 à 5 mois. On planifie ensemble votre calendrier.',
+  },
+  {
+    q: 'Acceptez-vous les enfants ?',
+    r: 'À partir de 8 ans, sur rendez-vous spécifique du mardi matin uniquement (jour calme). Tarif réduit : 28 euros la coupe simple, choucroute offerte au shampoing.',
+  },
+  {
+    q: 'Vendez-vous des produits sans prendre de prestation ?',
+    r: 'Bien sûr. La boutique est ouverte aux horaires du salon. Conseils gratuits, échantillons systématiques, retour possible si le produit ne convient pas (sous 15 jours).',
+  },
+  {
+    q: 'Quel est votre engagement écologique concret ?',
+    r: 'Eau filtrée et économisée (12 litres par shampoing au lieu de 20), serviettes en lin lavées sur place, recyclage Coiffeurs Justes des cheveux coupés, électricité verte 100%.',
+  },
+];
+---
+
+<section class="bg-salon-blanc py-20 md:py-28">
+  <div class="max-w-3xl mx-auto px-6 md:px-10">
+
+    <div class="text-center mb-12 md:mb-16">
+      <p class="font-dm-sans uppercase tracking-[0.4em] text-[10px] md:text-[11px] text-salon-vert mb-4">— Avant de prendre rendez-vous —</p>
+      <h2 class="font-fraunces text-salon-noir text-3xl md:text-5xl leading-tight">
+        Questions
+        <em class="font-fraunces italic text-salon-vert">qu'on entend chaque semaine</em>
+      </h2>
+    </div>
+
+    <div class="space-y-2">
+      {faq.map((f) => (
+        <details class="group border-b border-salon-noir/15 hover:border-salon-vert transition-colors">
+          <summary class="cursor-pointer list-none flex items-start gap-5 py-5 md:py-7">
+            <span class="font-fraunces italic text-salon-vert text-3xl leading-none mt-0 transition-transform duration-300 group-open:rotate-45" aria-hidden="true">+</span>
+            <span class="flex-1 font-fraunces text-salon-noir text-lg md:text-xl leading-snug">{f.q}</span>
+          </summary>
+          <div class="pb-6 md:pb-8 pl-12 pr-2">
+            <p class="font-dm-sans text-[14.5px] md:text-[15px] text-salon-noir/85 leading-relaxed">{f.r}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,36 @@
+---
+const etapes = [
+  { num: 'I.', titre: 'Vous écrivez', delai: 'J + 0', texte: 'Un mot par WhatsApp ou en ligne. Anjali vous répond sous 24h, vous propose un créneau d\'essai gratuit selon votre disponibilité.' },
+  { num: 'II.', titre: 'Vous venez', delai: 'J + 3', texte: 'Tenue souple, pieds nus, gourde d\'eau. Les tapis, briques, sangles et coussins sont prêtés. Arrivée 10 minutes avant pour un mot d\'accueil.' },
+  { num: 'III.', titre: 'Vous pratiquez', delai: 'Pendant 75 min', texte: 'Cours commun avec les autres élèves. Anjali ajuste selon vos limites, propose des variantes. Aucune posture obligatoire, aucune compétition.' },
+  { num: 'IV.', titre: 'Vous revenez', delai: 'À votre rythme', texte: 'Si l\'essai vous a plu, on parle abonnement à la sortie. Sinon, on se quitte sans rien — aucune relance jamais.' },
+];
+---
+
+<section class="bg-yoga-creme py-20 md:py-32 relative">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+
+    <div class="text-center max-w-2xl mx-auto mb-16 md:mb-24">
+      <p class="font-lexend uppercase tracking-[0.4em] text-[10px] md:text-[11px] text-yoga-ocre mb-4 font-light">— Le premier cours, simplement —</p>
+      <h2 class="font-dm-serif text-yoga-encre text-3xl md:text-5xl leading-tight">
+        Quatre étapes,
+        <em class="font-dm-serif italic text-yoga-ocre block md:inline">avant que vous décidiez.</em>
+      </h2>
+    </div>
+
+    <ol class="relative grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-0">
+      <div class="hidden md:block absolute top-12 left-[12%] right-[12%] h-px bg-yoga-ocre/30" aria-hidden="true"></div>
+
+      {etapes.map((e) => (
+        <li class="relative text-center md:px-4">
+          <div class="relative inline-flex items-center justify-center w-24 h-24 rounded-full bg-yoga-creme border border-yoga-ocre/50 hover:border-yoga-ocre hover:shadow-lg transition-all duration-300 mb-6">
+            <span class="font-dm-serif italic text-yoga-encre text-3xl leading-none">{e.num}</span>
+          </div>
+          <p class="font-lexend uppercase tracking-[0.3em] text-[10px] text-yoga-ocre mb-2 font-light">{e.delai}</p>
+          <h3 class="font-dm-serif text-yoga-encre text-2xl mb-3">{e.titre}</h3>
+          <p class="font-spectral text-[15px] text-yoga-encre/80 leading-relaxed max-w-xs mx-auto">{e.texte}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

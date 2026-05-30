@@ -1,0 +1,39 @@
+---
+const mots = [
+  { mot: 'Souffle', taille: 'clamp(60px,9vw,110px)', italic: true, color: 'text-yoga-encre' },
+  { mot: 'Lenteur', taille: 'clamp(54px,8vw,100px)', italic: false, color: 'text-yoga-ocre' },
+  { mot: 'Présence', taille: 'clamp(54px,8vw,100px)', italic: true, color: 'text-yoga-mousse' },
+  { mot: 'Écoute', taille: 'clamp(48px,7vw,90px)', italic: false, color: 'text-yoga-encre' },
+  { mot: 'Ancrage', taille: 'clamp(60px,9vw,110px)', italic: true, color: 'text-yoga-ocre' },
+  { mot: 'Silence', taille: 'clamp(54px,8vw,100px)', italic: true, color: 'text-yoga-mousse' },
+];
+---
+
+<section class="bg-yoga-creme py-20 md:py-32 relative overflow-hidden">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+
+    <div class="text-center mb-14 md:mb-20">
+      <p class="font-lexend uppercase tracking-[0.4em] text-[10px] md:text-[11px] text-yoga-ocre mb-4 font-light">— Six mots, posés là —</p>
+      <h2 class="font-dm-serif text-yoga-encre text-3xl md:text-5xl leading-tight">
+        Le vocabulaire
+        <em class="font-dm-serif italic text-yoga-ocre">du studio</em>
+      </h2>
+    </div>
+
+    <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-2 md:gap-x-14 md:gap-y-4 leading-none">
+      {mots.map((m, i) => (
+        <span
+          class={`font-dm-serif ${m.italic ? 'italic' : ''} ${m.color} ${i % 2 === 0 ? 'md:-translate-y-3' : 'md:translate-y-4'}`}
+          style={`font-size:${m.taille};`}
+        >
+          {m.mot}
+          {i < mots.length - 1 && <span class="font-spectral italic text-yoga-pierre/60 mx-3 not-italic" aria-hidden="true">·</span>}
+        </span>
+      ))}
+    </div>
+
+    <p class="mt-16 text-center font-spectral italic text-yoga-pierre text-base md:text-lg">
+      — Rien à atteindre. Juste à revenir, doucement, à soi.
+    </p>
+  </div>
+</section>

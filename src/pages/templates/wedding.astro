@@ -25,6 +25,10 @@ import Demarches from '../../components/templates/wedding/Demarches.astro';
 import Couples from '../../components/templates/wedding/Couples.astro';
 import Contact from '../../components/templates/wedding/Contact.astro';
 import SeveFooter from '../../components/templates/wedding/SeveFooter.astro';
+import Chiffres from '../../components/templates/wedding/Chiffres.astro';
+import Calligraphie from '../../components/templates/wedding/Calligraphie.astro';
+import Processus from '../../components/templates/wedding/Processus.astro';
+import Faq from '../../components/templates/wedding/Faq.astro';
 const businessLD = localBusinessSchema(seveData);
 
 ---
@@ -47,13 +51,17 @@ const businessLD = localBusinessSchema(seveData);
   <main class="bg-seve-ivoire text-seve-marine font-outfit">
     <HeroSeve />
     <Ceremonies />
+    <Chiffres />
     <Lieux />
     <PhotoPanorama />
+    <Processus />
     <Fondatrice />
     <Bandeau />
     <Demarches />
     <Citation />
+    <Calligraphie />
     <Couples />
+    <Faq />
     <Contact />
   </main>
 

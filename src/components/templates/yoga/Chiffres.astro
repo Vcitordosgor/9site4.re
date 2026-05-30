@@ -1,0 +1,44 @@
+---
+import data from '../../../data/templates/souffle.json';
+
+const ans = new Date().getFullYear() - parseInt(data.info.annee);
+const chiffres = [
+  { gros: ans + '', unite: 'ans', petit: 'studio ouvert sans interruption' },
+  { gros: '12', unite: 'max', petit: 'élèves par séance, jamais plus' },
+  { gros: '4', unite: 'tapis', petit: 'pour pratiquer côte à côte sans se gêner' },
+  { gros: '0', unite: '€', petit: 'le premier cours d\'essai, à vie' },
+];
+---
+
+<section class="bg-yoga-papier py-20 md:py-32 relative overflow-hidden">
+
+  <svg class="absolute -right-32 -top-32 w-[500px] h-[500px] opacity-[0.08] pointer-events-none" viewBox="0 0 200 200" fill="none" stroke="#3F4A3A" stroke-width="0.7" aria-hidden="true">
+    <circle cx="100" cy="100" r="95"/>
+    <circle cx="100" cy="100" r="75"/>
+    <circle cx="100" cy="100" r="55"/>
+    <circle cx="100" cy="100" r="35"/>
+  </svg>
+
+  <div class="max-w-content mx-auto px-6 md:px-10 relative">
+
+    <div class="text-center mb-14 md:mb-20">
+      <p class="font-lexend uppercase tracking-[0.4em] text-[10px] md:text-[11px] text-yoga-ocre mb-4 font-light">— Le studio, en quatre repères —</p>
+      <h2 class="font-dm-serif text-yoga-encre text-3xl md:text-5xl leading-tight">
+        Petit lieu,
+        <em class="font-dm-serif italic text-yoga-ocre">grands gestes calmes.</em>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-y-14 md:gap-y-20 md:gap-x-10">
+      {chiffres.map((c, i) => (
+        <div class={`md:col-span-6 ${i === 1 ? 'md:translate-y-12' : ''} ${i === 2 ? 'md:-translate-y-6 md:text-right' : ''} ${i === 3 ? 'md:translate-y-6 md:text-right' : ''}`}>
+          <p class="font-dm-serif text-yoga-encre leading-[0.85] inline-flex items-end gap-3">
+            <span style="font-size:clamp(72px,14vw,150px);">{c.gros}</span>
+            <span class="font-lexend uppercase tracking-[0.2em] text-yoga-ocre text-base md:text-xl mb-3 md:mb-6 font-light">{c.unite}</span>
+          </p>
+          <p class="mt-4 font-spectral italic text-yoga-mousse text-lg md:text-xl leading-snug max-w-md">{c.petit}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

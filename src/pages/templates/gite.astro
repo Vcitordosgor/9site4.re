@@ -30,6 +30,10 @@ import Citation from '../../components/templates/gite/Citation.astro';
 import CommentVenir from '../../components/templates/gite/CommentVenir.astro';
 import CTAFinal from '../../components/templates/gite/CTAFinal.astro';
 import CapFooter from '../../components/templates/gite/CapFooter.astro';
+import Chiffres from '../../components/templates/gite/Chiffres.astro';
+import Comparatif from '../../components/templates/gite/Comparatif.astro';
+import Labels from '../../components/templates/gite/Labels.astro';
+import Faq from '../../components/templates/gite/Faq.astro';
 const businessLD = localBusinessSchema(capData);
 
 ---
@@ -52,14 +56,18 @@ const businessLD = localBusinessSchema(capData);
   <main id="top" class="bg-cap-papier text-cap-charbon font-bricolage">
     <HeroTopoGuide />
     <FicheTechnique />
+    <Chiffres />
     <Chambres />
     <PhotoPanorama />
+    <Comparatif />
     <Calendrier />
     <Alentours />
+    <Labels />
     <Bandeau />
     <Reservation />
     <MotHote />
     <Citation />
+    <Faq />
     <CommentVenir />
     <CTAFinal />
   </main>

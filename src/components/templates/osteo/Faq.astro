@@ -1,0 +1,55 @@
+---
+const faq = [
+  {
+    q: 'Quelle est la différence entre ostéopathie et kinésithérapie ?',
+    r: 'Le kiné rééduque sur prescription médicale, séances courtes répétées. L\'ostéopathe travaille en première intention sur la cause d\'un trouble fonctionnel, séances longues espacées. Les deux sont complémentaires, jamais opposés.',
+  },
+  {
+    q: 'Combien de séances faut-il en général ?',
+    r: 'Une à trois séances suffisent pour la majorité des plaintes aiguës. Pour un suivi de fond ou un trouble chronique : un rendez-vous tous les trois à quatre mois. Je décline les prescriptions de longue durée non justifiées.',
+  },
+  {
+    q: 'Faut-il une ordonnance pour consulter ?',
+    r: 'Non, l\'ostéopathie est une consultation en première intention. Aucune ordonnance n\'est requise. Une mutuelle peut rembourser tout ou partie de la séance : vérifiez auprès de la vôtre, je fournis une facture détaillée.',
+  },
+  {
+    q: 'Recevez-vous les nourrissons et les femmes enceintes ?',
+    r: 'Oui, c\'est même une grande partie de ma pratique (deux D.U. spécifiques : pédiatrique et périnatale). L\'approche est exclusivement crânio-sacrée, sans manipulation forte, sans déshabillage pour le nourrisson.',
+  },
+  {
+    q: 'Que se passe-t-il si l\'ostéopathie ne suffit pas pour mon cas ?',
+    r: 'Je vous oriente vers un médecin, un kinésithérapeute, un rhumatologue ou un autre spécialiste selon le besoin. J\'ai un réseau de confrères de confiance dans le quartier que je peux vous recommander.',
+  },
+  {
+    q: 'Quel est le tarif d\'une consultation ?',
+    r: 'Soixante euros la séance adulte (60 minutes), cinquante euros nourrisson moins de 18 mois (45 minutes), soixante-dix euros consultation périnatale (75 minutes). Paiement par carte, chèque ou espèces.',
+  },
+];
+---
+
+<section class="bg-verveine-papier py-20 md:py-28">
+  <div class="max-w-3xl mx-auto px-6 md:px-10">
+
+    <div class="text-center mb-12 md:mb-16">
+      <p class="font-public-sans uppercase tracking-[0.4em] text-[10px] md:text-[11px] text-verveine-sauge mb-4 font-medium">— Avant la première consultation —</p>
+      <h2 class="font-cardo text-verveine-encre text-3xl md:text-5xl leading-tight">
+        Questions
+        <em class="font-cardo italic text-verveine-beton">qu'on me pose au téléphone</em>
+      </h2>
+    </div>
+
+    <div class="space-y-2">
+      {faq.map((f) => (
+        <details class="group border-b border-verveine-encre/15 hover:border-verveine-sauge transition-colors">
+          <summary class="cursor-pointer list-none flex items-start gap-5 py-5 md:py-7">
+            <span class="font-cardo italic text-verveine-encre text-3xl leading-none mt-0 transition-transform duration-300 group-open:rotate-45" aria-hidden="true">+</span>
+            <span class="flex-1 font-cardo text-verveine-encre text-lg md:text-xl leading-snug">{f.q}</span>
+          </summary>
+          <div class="pb-6 md:pb-8 pl-12 pr-2">
+            <p class="font-public-sans text-[14.5px] md:text-[15px] text-verveine-beton leading-relaxed">{f.r}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
