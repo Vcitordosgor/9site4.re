@@ -1,0 +1,120 @@
+---
+import data from '../../../data/templates/onde.json';
+---
+
+<section id="top" class="relative overflow-hidden" style="background-color: #0D0D14; color: #F5F4F8;">
+
+  <!-- Glow violet en arrière-plan -->
+  <div class="absolute -top-32 -left-32 w-96 h-96 rounded-full blur-3xl opacity-30 pointer-events-none" style="background-color: #7C3AED;" aria-hidden="true"></div>
+  <div class="absolute -bottom-32 -right-32 w-96 h-96 rounded-full blur-3xl opacity-25 pointer-events-none" style="background-color: #22D3EE;" aria-hidden="true"></div>
+
+  <!-- Grille fond -->
+  <div class="absolute inset-0 opacity-[0.05] pointer-events-none" aria-hidden="true"
+       style="background-image: linear-gradient(rgba(245,244,248,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(245,244,248,0.5) 1px, transparent 1px); background-size: 40px 40px;">
+  </div>
+
+  <div class="max-w-content mx-auto px-6 md:px-10 pt-14 md:pt-24 pb-16 md:pb-28 relative">
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-14 items-center">
+
+      <!-- Texte -->
+      <div class="lg:col-span-7">
+        <!-- Eyebrow code mono -->
+        <div class="inline-flex items-center gap-3 px-4 py-2 border mb-7" style="border-color: #22D3EE; background-color: rgb(34 211 238 / 0.05);">
+          <span class="block w-2 h-2 rounded-full animate-pulse" style="background-color: #22D3EE; box-shadow: 0 0 12px #22D3EE;" aria-hidden="true"></span>
+          <p class="font-jetbrains text-[10.5px] uppercase tracking-[0.22em]" style="color: #22D3EE;">
+            STUDIO_ONLINE · La Réunion · v.{data.info.annee}
+          </p>
+        </div>
+
+        <!-- Wordmark XXL avec effet glitch via stack -->
+        <h1 class="font-space-grotesk font-bold leading-[0.85]" style="font-size: clamp(64px, 11vw, 168px); letter-spacing: -0.04em;">
+          <span class="block" style="color: #F5F4F8; text-shadow: 4px 4px 0 #7C3AED, -2px -2px 0 #22D3EE;">
+            ONDE.
+          </span>
+        </h1>
+
+        <!-- Tagline -->
+        <p class="mt-8 md:mt-10 font-space-grotesk text-2xl md:text-4xl font-medium leading-tight max-w-xl">
+          <span style="color: #F5F4F8;">{data.info.tagline.split('.')[0]}.</span>
+          <span style="color: #22D3EE;">{data.info.tagline.split('.')[1]}.</span>
+          <span style="color: #7C3AED;">{data.info.tagline.split('.')[2]}.</span>
+        </p>
+
+        <!-- Description code -->
+        <p class="mt-7 font-jetbrains text-[12.5px] md:text-[13.5px] leading-relaxed max-w-lg" style="color: rgb(245 244 248 / 0.65);">
+          <span style="color: #22D3EE;">{'>'}</span> Studio professionnel · 4 services · 2 ingénieurs résidents<br/>
+          <span style="color: #22D3EE;">{'>'}</span> Console SSL AWS 948 · Pro Tools HDX · Mastering streaming<br/>
+          <span style="color: #22D3EE;">{'>'}</span> Pop · rap · électro · jazz · voix off · post-prod
+        </p>
+
+        <!-- CTAs -->
+        <div class="mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+          <a
+            href="#tarifs"
+            class="inline-flex items-center justify-center h-13 py-3.5 px-8 font-jetbrains font-semibold text-[12px] uppercase tracking-[0.2em] transition-all duration-300"
+            style="background-color: #7C3AED; color: #F5F4F8; box-shadow: 0 0 24px rgba(124, 58, 237, 0.5);"
+            onmouseover="this.style.backgroundColor='#22D3EE'; this.style.color='#0D0D14'; this.style.boxShadow='0 0 28px rgba(34, 211, 238, 0.7)';"
+            onmouseout="this.style.backgroundColor='#7C3AED'; this.style.color='#F5F4F8'; this.style.boxShadow='0 0 24px rgba(124, 58, 237, 0.5)';"
+          >
+            Réserver une session
+          </a>
+          <a
+            href="#services"
+            class="inline-flex items-center justify-center h-13 py-3.5 px-8 font-jetbrains font-semibold text-[12px] uppercase tracking-[0.2em] border-2 transition-colors duration-300"
+            style="border-color: #22D3EE; color: #22D3EE;"
+            onmouseover="this.style.backgroundColor='#22D3EE'; this.style.color='#0D0D14';"
+            onmouseout="this.style.backgroundColor='transparent'; this.style.color='#22D3EE';"
+          >
+            Nos services
+          </a>
+        </div>
+      </div>
+
+      <!-- Photo console -->
+      <div class="lg:col-span-5 relative">
+        <div class="relative aspect-square overflow-hidden border" style="border-color: #7C3AED; box-shadow: 0 0 48px rgba(124, 58, 237, 0.4);">
+          <img
+            src={data.info.photoHero}
+            alt={data.info.photoHeroAlt}
+            class="w-full h-full object-cover"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+          />
+          <!-- Overlay -->
+          <div class="absolute inset-0 mix-blend-color" style="background: linear-gradient(135deg, rgba(124, 58, 237, 0.18), rgba(34, 211, 238, 0.18));" aria-hidden="true"></div>
+        </div>
+
+        <!-- Cartouche corner top-left -->
+        <div class="absolute -top-3 -left-3 px-3 py-2 font-jetbrains text-[10px] uppercase tracking-[0.22em]" style="background-color: #22D3EE; color: #0D0D14;">
+          SSL.AWS948
+        </div>
+        <!-- Cartouche corner bottom-right -->
+        <div class="absolute -bottom-3 -right-3 px-3 py-2 font-jetbrains text-[10px] uppercase tracking-[0.22em]" style="background-color: #7C3AED; color: #F5F4F8;">
+          MIX.READY
+        </div>
+      </div>
+    </div>
+
+    <!-- Bandeau chiffres bas -->
+    <div class="mt-16 md:mt-24 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+      <div class="px-5 py-5 md:px-6 md:py-7 border" style="border-color: rgb(124 58 237 / 0.3); background-color: rgb(124 58 237 / 0.05);">
+        <p class="font-jetbrains text-[10px] uppercase tracking-[0.2em] mb-2" style="color: #22D3EE;">// CONSOLE</p>
+        <p class="font-space-grotesk font-bold text-2xl md:text-3xl">SSL AWS</p>
+      </div>
+      <div class="px-5 py-5 md:px-6 md:py-7 border" style="border-color: rgb(34 211 238 / 0.3); background-color: rgb(34 211 238 / 0.05);">
+        <p class="font-jetbrains text-[10px] uppercase tracking-[0.2em] mb-2" style="color: #22D3EE;">// MICROS</p>
+        <p class="font-space-grotesk font-bold text-2xl md:text-3xl">U87 · C414</p>
+      </div>
+      <div class="px-5 py-5 md:px-6 md:py-7 border" style="border-color: rgb(124 58 237 / 0.3); background-color: rgb(124 58 237 / 0.05);">
+        <p class="font-jetbrains text-[10px] uppercase tracking-[0.2em] mb-2" style="color: #22D3EE;">// MONITORING</p>
+        <p class="font-space-grotesk font-bold text-2xl md:text-3xl">Genelec</p>
+      </div>
+      <div class="px-5 py-5 md:px-6 md:py-7 border" style="border-color: rgb(34 211 238 / 0.3); background-color: rgb(34 211 238 / 0.05);">
+        <p class="font-jetbrains text-[10px] uppercase tracking-[0.2em] mb-2" style="color: #22D3EE;">// SESSIONS</p>
+        <p class="font-space-grotesk font-bold text-2xl md:text-3xl">245+</p>
+      </div>
+    </div>
+  </div>
+</section>

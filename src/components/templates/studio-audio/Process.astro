@@ -1,0 +1,40 @@
+---
+import data from '../../../data/templates/onde.json';
+---
+
+<section id="process" class="py-20 md:py-28" style="background-color: #F5F4F8; color: #0D0D14;">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+
+    <div class="max-w-2xl mb-14 md:mb-20">
+      <p class="font-jetbrains text-[11px] uppercase tracking-[0.35em] mb-4" style="color: #7C3AED;">// PROCESS</p>
+      <h2 class="font-space-grotesk font-bold text-4xl md:text-6xl leading-[0.95]">
+        Du devis au master,
+        <span style="color: #7C3AED;">en quatre étapes.</span>
+      </h2>
+    </div>
+
+    <ol class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
+      {data.process.map((p, i) => (
+        <li class="relative p-7 md:p-8 border-2 transition-all hover:-translate-y-1" style={`background-color: #FFFFFF; border-color: ${i % 2 === 0 ? '#7C3AED' : '#22D3EE'};`}>
+
+          <!-- Numéro grand -->
+          <p class="font-space-grotesk font-bold leading-none mb-4" style={`color: ${i % 2 === 0 ? '#7C3AED' : '#22D3EE'}; font-size: clamp(56px, 6vw, 80px);`}>
+            {p.etape}
+          </p>
+
+          <h3 class="font-space-grotesk font-bold text-xl md:text-2xl leading-tight" style="color: #0D0D14;">
+            {p.titre}
+          </h3>
+          <p class="mt-4 font-jetbrains text-[12px] leading-relaxed" style="color: rgb(13 13 20 / 0.75);">
+            {p.texte}
+          </p>
+
+          <!-- Connector ligne -->
+          {i < 3 && (
+            <div class="hidden lg:block absolute top-1/2 right-[-1.5rem] w-12 h-px" style={`background-color: ${i % 2 === 0 ? '#7C3AED' : '#22D3EE'};`} aria-hidden="true"></div>
+          )}
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

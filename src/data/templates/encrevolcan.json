@@ -1,0 +1,166 @@
+{
+  "info": {
+    "nom": "Encre Volcan",
+    "wordmark": "Encre",
+    "wordmark2": "Volcan",
+    "soustitre": "Studio de tatouage · La Réunion",
+    "tagline": "L'encre, l'aiguille, la main qui ne tremble pas.",
+    "fondateur": "Léo Carvalho",
+    "ville": "La Réunion",
+    "adresseLigne1": "Atelier intra-muros",
+    "adresseLigne2": "La Réunion",
+    "telephone": "0692 12 34 56",
+    "telephoneHref": "+262692123456",
+    "whatsapp": "262692123456",
+    "email": "studio@encre-volcan.re",
+    "instagram": "@encre.volcan",
+    "siret": "92103847600014",
+    "annee": "2016",
+    "photoHero": "https://images.unsplash.com/photo-1565058379802-bbe93b2f703a?q=80&w=1600&auto=format&fit=crop",
+    "photoHeroAlt": "Tatoueur au travail avec dermographe sur peau, atelier sombre, lumière rouge — Encre Volcan, La Réunion",
+    "ouvertureHebdo": "Mardi → samedi · 11h-19h",
+    "fermeture": "Dimanche et lundi"
+  },
+  "promesse": "Atelier de tatouage ouvert en 2016 à La Réunion. Trois encreurs résidents, un piercer associé, des projets sur rendez-vous uniquement. On dessine, on confronte, on perfore — toujours stérile, toujours net, jamais à la chaîne.",
+  "styles": [
+    {
+      "id": "blackwork",
+      "nom": "Blackwork & traditional",
+      "tagline": "Noir dense, contours nets.",
+      "description": "Lignes épaisses, aplats noirs intenses, dotwork. Style nord-européen et tradi américain revisités, parfaits sur grandes surfaces : cuisse, dos, manche complète.",
+      "details": "Léo & Sami · Séances 3 à 6h · Durée 1 à 4 séances",
+      "marqueur": "01"
+    },
+    {
+      "id": "lettering",
+      "nom": "Lettering & calligraphie",
+      "tagline": "Le mot devient image.",
+      "description": "Gothique, script chicano, copperplate, sumi-e. On dessine chaque caractère à la main avant la machine. Citations, prénoms, dates : on prend le temps de la composition.",
+      "details": "Sami spécialiste · Consultation 1h obligatoire · Mockup fourni 48h",
+      "marqueur": "02"
+    },
+    {
+      "id": "floral",
+      "nom": "Floral & botanique",
+      "tagline": "Vetiver, frangipanier, hibiscus.",
+      "description": "Style botanique vintage gravure : flore péi rendue en blackwork fin, à la planche d'herbier. Hibiscus rouge, frangipanier, vétyver, fleur de canne. Très demandé sur avant-bras.",
+      "details": "Mira encreuse · 4 à 8h selon taille · Petites pièces dès 90 mn",
+      "marqueur": "03"
+    },
+    {
+      "id": "old-school",
+      "nom": "Old school & flash",
+      "tagline": "Pancartes de port, pin-ups, ancres.",
+      "description": "Old school américain et marin. Flash sheet renouvelée chaque mois, prix flat-rate, idéal première fois ou cadeau. Roses, swallows, dagues, voiliers — la base bien faite.",
+      "details": "Tous les artistes · Forfait dès 95€ · 1h en moyenne",
+      "marqueur": "04"
+    }
+  ],
+  "artistes": [
+    {
+      "nom": "Léo Carvalho",
+      "role": "Tatoueur résident · Fondateur",
+      "specialite": "Blackwork, dotwork, large pieces",
+      "bio": "Tatoue depuis 2009. Formation chez un encreur lisboète, puis tour des conventions européennes pendant cinq ans avant d'ouvrir Encre Volcan. Spécialiste des manches complètes et des pièces dos.",
+      "anciennete": "10 ans de métier",
+      "photo": "https://images.unsplash.com/photo-1622495966505-72e2fac6f586?q=80&w=600&auto=format&fit=crop"
+    },
+    {
+      "nom": "Sami Houareau",
+      "role": "Tatoueur résident",
+      "specialite": "Lettering, gothique, traditional",
+      "bio": "Calligraphe de formation, tatoue depuis 2014. Le seul de l'atelier qui dessine encore tous ses lettrages au pinceau sumi avant numérisation. Patient, méticuleux, jamais pressé.",
+      "anciennete": "7 ans de métier",
+      "photo": "https://images.unsplash.com/photo-1521252659862-eec69941b071?q=80&w=600&auto=format&fit=crop"
+    },
+    {
+      "nom": "Mira Almeida",
+      "role": "Tatoueuse résidente",
+      "specialite": "Botanique, fine line, micro-réalisme",
+      "bio": "Illustratrice botanique pour éditions naturalistes pendant six ans, reconvertie en tatouage en 2019. Travaille à la planche d'herbier sur flore endémique péi. Petites pièces et avant-bras.",
+      "anciennete": "5 ans de métier",
+      "photo": "https://images.unsplash.com/photo-1599842057874-37393e9342df?q=80&w=600&auto=format&fit=crop"
+    }
+  ],
+  "flash": [
+    { "ref": "EV-082", "style": "Old school", "prix": "95 €" },
+    { "ref": "EV-091", "style": "Dotwork", "prix": "120 €" },
+    { "ref": "EV-104", "style": "Floral", "prix": "140 €" },
+    { "ref": "EV-115", "style": "Lettering", "prix": "110 €" },
+    { "ref": "EV-127", "style": "Blackwork", "prix": "160 €" },
+    { "ref": "EV-133", "style": "Fine line", "prix": "85 €" }
+  ],
+  "process": [
+    {
+      "etape": "01",
+      "titre": "Consultation libre",
+      "texte": "Vingt minutes en atelier ou en visio. On parle du projet, on regarde des références, on cadre les contraintes (placement, peau, temps disponible). Gratuit, sans engagement."
+    },
+    {
+      "etape": "02",
+      "titre": "Dessin & devis",
+      "texte": "L'artiste dessine un mockup numérique sous 7 à 14 jours. On échange par mail jusqu'à validation. Devis signé, acompte 30% versé pour bloquer la séance."
+    },
+    {
+      "etape": "03",
+      "titre": "Séance(s)",
+      "texte": "Matériel stérile sorti devant vous. Aiguilles à usage unique, encres végan dermatologiquement testées. Pauses libres, eau, snacks à dispo. Lignes en première séance, ombrage en seconde si pièce longue."
+    },
+    {
+      "etape": "04",
+      "titre": "Cicatrisation & retouches",
+      "texte": "Saniderm posé 5 jours. Soin Bepanthen 3 semaines. Une retouche gratuite est incluse dans le tarif si nécessaire, à 6 semaines minimum après la séance."
+    }
+  ],
+  "hygiene": [
+    {
+      "titre": "Stérilisation autoclave",
+      "texte": "Tout le matériel réutilisable (grips, pinces) passe en autoclave classe B après chaque session, traçabilité datée. Tests Helix hebdomadaires."
+    },
+    {
+      "titre": "Aiguilles à usage unique",
+      "texte": "Cartouches Cheyenne ou Stigma, déballées devant vous. Ouverture stérile, élimination immédiate dans collecteur DASRI agréé."
+    },
+    {
+      "titre": "Encres dermatologiques",
+      "texte": "Eternal Ink, World Famous, Quantum Pro. Conformes REACH 2022, certifiées sans nickel ni métaux lourds. Lots tracés sur la fiche de séance."
+    },
+    {
+      "titre": "Formation hygiène",
+      "texte": "Tous les artistes ont passé la formation hygiène & salubrité (21h) prévue par l'Arrêté du 12 décembre 2008. Diplômes affichés à l'accueil."
+    }
+  ],
+  "tarification": [
+    { "categorie": "Flash sheet", "prix": "85 → 160 €", "detail": "Forfait, motif déjà dessiné" },
+    { "categorie": "Petite pièce (< 8cm)", "prix": "120 → 220 €", "detail": "1h à 1h30, lignes simples" },
+    { "categorie": "Pièce moyenne (8 → 20 cm)", "prix": "300 → 600 €", "detail": "2 à 4h, ombrage léger" },
+    { "categorie": "Grande pièce (manche, dos)", "prix": "Sur devis", "detail": "Multi-séances, à partir de 1 200 €" },
+    { "categorie": "Tarif horaire", "prix": "110 €/h", "detail": "Au-delà de 3h sur projet custom" }
+  ],
+  "faq": [
+    {
+      "q": "Acceptez-vous les walk-ins ?",
+      "r": "Non. Tous les projets passent par consultation. C'est ce qui nous permet de dessiner proprement et de respecter les délais des autres clients."
+    },
+    {
+      "q": "Quel est le délai pour bloquer une séance ?",
+      "r": "Compter 4 à 8 semaines entre la consultation et la séance, selon l'artiste choisi. Les flash sheets passent en 2 semaines."
+    },
+    {
+      "q": "Faites-vous des retouches sur tatouages d'autres studios ?",
+      "r": "Cover-up et reprises, oui — sous condition d'examen en consultation. Simples retouches d'encreur extérieur : on préfère ne pas, par respect du travail initial."
+    },
+    {
+      "q": "Quel âge minimum ?",
+      "r": "18 ans révolus avec pièce d'identité. Aucune autorisation parentale acceptée — la loi interdit le tatouage des mineurs en France."
+    },
+    {
+      "q": "Quelles modalités de paiement ?",
+      "r": "Acompte 30% par virement ou CB pour bloquer la séance. Solde le jour J en CB, espèces ou virement instantané. Pas de paiement en plusieurs fois."
+    },
+    {
+      "q": "Combien de temps faut-il prévoir pour cicatriser ?",
+      "r": "Trois semaines pour la cicatrisation de surface, trois mois pour la cicatrisation profonde. Éviter mer, piscine, sauna les 3 premières semaines. Crème hydratante 2 mois minimum."
+    }
+  ]
+}

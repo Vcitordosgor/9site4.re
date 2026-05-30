@@ -1,0 +1,59 @@
+---
+import '@fontsource/space-grotesk/latin-400.css';
+import '@fontsource/space-grotesk/latin-500.css';
+import '@fontsource/space-grotesk/latin-700.css';
+import '@fontsource/jetbrains-mono/latin-400.css';
+import '@fontsource/jetbrains-mono/latin-500.css';
+import '@fontsource/jetbrains-mono/latin-600.css';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { localBusinessSchema } from "../../lib/businessSchema";
+import ondeData from '../../data/templates/onde.json';
+
+import OndeHeader from '../../components/templates/studio-audio/OndeHeader.astro';
+import HeroOnde from '../../components/templates/studio-audio/HeroOnde.astro';
+import Services from '../../components/templates/studio-audio/Services.astro';
+import Studio from '../../components/templates/studio-audio/Studio.astro';
+import Ingenieurs from '../../components/templates/studio-audio/Ingenieurs.astro';
+import Process from '../../components/templates/studio-audio/Process.astro';
+import Clients from '../../components/templates/studio-audio/Clients.astro';
+import Tarifs from '../../components/templates/studio-audio/Tarifs.astro';
+import Faq from '../../components/templates/studio-audio/Faq.astro';
+import Contact from '../../components/templates/studio-audio/Contact.astro';
+import OndeFooter from '../../components/templates/studio-audio/OndeFooter.astro';
+
+const businessLD = localBusinessSchema(ondeData);
+
+const localSeo = {
+  title: 'Onde — Studio d\'enregistrement à La Réunion | Template 9site4',
+  description: 'Aperçu du template "Studio audio" proposé par 9site4 : enregistrement, mixage, mastering, production, équipement, ingénieurs, tarifs. Site fictif de démonstration.',
+  canonical: '/templates/studio-audio',
+  ogImage: '/og-image.png',
+  ogImageAlt: 'Onde — Studio d\'enregistrement à La Réunion',
+  noindex: true,
+};
+---
+
+<BaseLayout seo={localSeo} bare={true}>
+  <Fragment slot="head">
+    {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <link rel="preload" as="image" href={ondeData.info.photoHero} fetchpriority="high" />
+  </Fragment>
+
+  <OndeHeader />
+
+  <main style="background-color: #0D0D14;">
+    <HeroOnde />
+    <Services />
+    <Studio />
+    <Ingenieurs />
+    <Process />
+    <Clients />
+    <Tarifs />
+    <Faq />
+    <Contact />
+  </main>
+
+  <OndeFooter />
+</BaseLayout>

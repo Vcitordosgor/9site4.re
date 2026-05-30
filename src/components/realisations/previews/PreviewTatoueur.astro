@@ -1,0 +1,60 @@
+---
+import data from '../../../data/templates/encrevolcan.json';
+/**
+ * Mini-preview Encre Volcan — photo plein cadre tatoueur grayscale.
+ */
+---
+
+<div class="absolute inset-0 overflow-hidden" style="background-color: #0A0A0A; color: #EEE6D8;">
+
+  <img
+    src={data.info.photoHero}
+    alt=""
+    class="absolute inset-0 w-full h-full object-cover scale-[1.03] grayscale contrast-[1.15]"
+    loading="lazy"
+    decoding="async"
+  />
+
+  <div class="absolute inset-0" aria-hidden="true"
+       style="background:
+         linear-gradient(180deg, rgb(10 10 10 / 0.42) 0%, rgb(10 10 10 / 0) 30%, rgb(10 10 10 / 0) 45%, rgb(10 10 10 / 0.95) 100%),
+         linear-gradient(90deg, rgb(10 10 10 / 0.55) 0%, transparent 55%);">
+  </div>
+
+  <!-- Rouge sang strip à gauche -->
+  <div class="absolute top-0 left-0 bottom-0 w-[2px]" style="background-color: #A11920;" aria-hidden="true"></div>
+
+  <div class="relative flex items-center justify-between px-3 pt-2">
+    <div class="flex items-baseline gap-1.5">
+      <span class="font-cardo italic text-[10px]" style="color: #EEE6D8;">Encre</span>
+      <span class="font-mono uppercase tracking-[0.18em] text-[6px]" style="color: #A11920;">Volcan</span>
+    </div>
+    <div class="flex items-center gap-1.5 text-[6px] uppercase tracking-wider font-mono" style="color: rgb(238 230 216 / 0.65);">
+      <span>Styles</span>
+      <span>Réserver</span>
+    </div>
+  </div>
+
+  <div class="absolute left-3 right-3 bottom-2.5">
+    <p class="font-mono text-[5.5px] uppercase tracking-[0.32em] mb-1" style="color: #A11920;">
+      ✦ Tatouage · 2016
+    </p>
+    <p class="font-cardo leading-[0.88]" style="color: #EEE6D8; font-size: clamp(15px, 3.2vw, 26px);">
+      ENCRE
+    </p>
+    <p class="font-cardo italic leading-none" style="color: #A11920; font-size: clamp(15px, 3.2vw, 26px);">
+      Volcan.
+    </p>
+    <p class="mt-0.5 font-cardo italic leading-tight" style="color: rgb(238 230 216 / 0.88); font-size: clamp(6.5px, 1.4vw, 10px);">
+      L'aiguille, la main qui ne tremble pas.
+    </p>
+    <div class="mt-1.5 flex items-center gap-1.5">
+      <span class="inline-flex items-center h-3 px-2 font-mono font-semibold text-[6.5px] uppercase tracking-wider" style="background-color: #A11920; color: #EEE6D8;">
+        Réserver
+      </span>
+      <span class="inline-flex items-center h-3 px-2 font-mono font-semibold text-[6.5px] uppercase tracking-wider border" style="border-color: rgb(238 230 216 / 0.5); color: #EEE6D8;">
+        Voir flash
+      </span>
+    </div>
+  </div>
+</div>

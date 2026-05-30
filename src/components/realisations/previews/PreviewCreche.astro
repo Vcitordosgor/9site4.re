@@ -1,0 +1,61 @@
+---
+import data from '../../../data/templates/nid.json';
+/**
+ * Mini-preview Le Nid — photo plein cadre crèche/enfants pastels.
+ */
+---
+
+<div class="absolute inset-0 overflow-hidden" style="background-color: #FFF8EE; color: #2E2A26;">
+
+  <img
+    src={data.info.photoHero}
+    alt=""
+    class="absolute inset-0 w-full h-full object-cover scale-[1.03]"
+    loading="lazy"
+    decoding="async"
+  />
+
+  <div class="absolute inset-0" aria-hidden="true"
+       style="background:
+         linear-gradient(180deg, rgb(46 42 38 / 0.35) 0%, rgb(46 42 38 / 0) 30%, rgb(46 42 38 / 0) 45%, rgb(46 42 38 / 0.85) 100%),
+         linear-gradient(90deg, rgb(46 42 38 / 0.35) 0%, transparent 50%);">
+  </div>
+
+  <!-- Bulle déco -->
+  <div class="absolute top-3 right-3 w-8 h-8 rounded-full opacity-90" style="background-color: #F8D77E;" aria-hidden="true"></div>
+  <div class="absolute top-5 right-9 w-3 h-3 rounded-full opacity-80" style="background-color: #F5C4C4;" aria-hidden="true"></div>
+
+  <div class="relative flex items-center justify-between px-3 pt-2">
+    <div class="flex items-baseline gap-1.5">
+      <span class="font-nunito font-extrabold text-[11px]" style="color: #FFF8EE;">Le Nid</span>
+      <span class="font-caveat text-[10px]" style="color: #F8D77E;">crèche</span>
+    </div>
+    <div class="flex items-center gap-1.5 text-[6px] uppercase tracking-wider font-nunito font-bold" style="color: rgb(255 248 238 / 0.75);">
+      <span>Pédagogie</span>
+      <span>Visite</span>
+    </div>
+  </div>
+
+  <div class="absolute left-3 right-3 bottom-2.5">
+    <p class="font-caveat text-[8px] mb-1" style="color: #F8D77E;">
+      ✦ Micro-crèche 0-3 ans · 2017
+    </p>
+    <p class="font-nunito font-extrabold leading-[0.9]" style="color: #FFF8EE; font-size: clamp(14px, 3vw, 24px);">
+      Un nid
+    </p>
+    <p class="font-nunito font-extrabold leading-[0.9]" style="color: #FFF8EE; font-size: clamp(14px, 3vw, 24px);">
+      pour grandir
+    </p>
+    <p class="font-caveat leading-[0.95]" style="color: #F8D77E; font-size: clamp(14px, 3vw, 24px);">
+      à son rythme.
+    </p>
+    <div class="mt-1.5 flex items-center gap-1.5">
+      <span class="inline-flex items-center h-3 px-2 font-nunito font-bold text-[6.5px] uppercase tracking-wider rounded-full" style="background-color: #F8D77E; color: #2E2A26;">
+        Visiter
+      </span>
+      <span class="inline-flex items-center h-3 px-2 font-nunito font-bold text-[6.5px] uppercase tracking-wider rounded-full" style="background-color: #FFF8EE; color: #2E2A26;">
+        Pédagogie
+      </span>
+    </div>
+  </div>
+</div>

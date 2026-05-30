@@ -1,0 +1,58 @@
+---
+import '@fontsource/cormorant-garamond/latin-400.css';
+import '@fontsource/cormorant-garamond/latin-400-italic.css';
+import '@fontsource/cormorant-garamond/latin-500.css';
+import '@fontsource/cormorant-garamond/latin-600.css';
+import '@fontsource/inter/latin-400.css';
+import '@fontsource/inter/latin-500.css';
+import '@fontsource/inter/latin-600.css';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { localBusinessSchema } from "../../lib/businessSchema";
+import notaireData from '../../data/templates/notaire.json';
+
+import NotaireHeader from '../../components/templates/notaire/NotaireHeader.astro';
+import HeroNotaire from '../../components/templates/notaire/HeroNotaire.astro';
+import Domaines from '../../components/templates/notaire/Domaines.astro';
+import Notaires from '../../components/templates/notaire/Notaires.astro';
+import Methode from '../../components/templates/notaire/Methode.astro';
+import Frais from '../../components/templates/notaire/Frais.astro';
+import Documents from '../../components/templates/notaire/Documents.astro';
+import Faq from '../../components/templates/notaire/Faq.astro';
+import Contact from '../../components/templates/notaire/Contact.astro';
+import NotaireFooter from '../../components/templates/notaire/NotaireFooter.astro';
+
+const businessLD = localBusinessSchema(notaireData);
+
+const localSeo = {
+  title: 'Étude Notariale & Associés — Notaires à La Réunion | Template 9site4',
+  description: 'Aperçu du template "Étude notariale" proposé par 9site4 : domaines (famille, succession, immobilier, sociétés), notaires associés, méthode, frais, documents. Site fictif de démonstration.',
+  canonical: '/templates/notaire',
+  ogImage: '/og-image.png',
+  ogImageAlt: 'Étude Notariale & Associés — Notaires à La Réunion',
+  noindex: true,
+};
+---
+
+<BaseLayout seo={localSeo} bare={true}>
+  <Fragment slot="head">
+    {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <link rel="preload" as="image" href={notaireData.info.photoHero} fetchpriority="high" />
+  </Fragment>
+
+  <NotaireHeader />
+
+  <main style="background-color: #FFFFFF;">
+    <HeroNotaire />
+    <Domaines />
+    <Notaires />
+    <Methode />
+    <Frais />
+    <Documents />
+    <Faq />
+    <Contact />
+  </main>
+
+  <NotaireFooter />
+</BaseLayout>

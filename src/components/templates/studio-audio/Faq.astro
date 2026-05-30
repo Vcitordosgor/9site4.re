@@ -1,0 +1,30 @@
+---
+import data from '../../../data/templates/onde.json';
+---
+
+<section class="py-20 md:py-28" style="background-color: #0D0D14; color: #F5F4F8;">
+  <div class="max-w-3xl mx-auto px-6 md:px-10">
+
+    <div class="text-center mb-12 md:mb-16">
+      <p class="font-jetbrains text-[11px] uppercase tracking-[0.35em] mb-4" style="color: #22D3EE;">// FAQ</p>
+      <h2 class="font-space-grotesk font-bold text-4xl md:text-6xl leading-[0.95]">
+        Avant de booker
+        <span style="color: #7C3AED;">une session.</span>
+      </h2>
+    </div>
+
+    <div class="space-y-3">
+      {data.faq.map((f) => (
+        <details class="group border-2 transition-colors" style="background-color: rgb(124 58 237 / 0.05); border-color: rgb(124 58 237 / 0.3);" onmouseover="this.style.borderColor='#22D3EE';" onmouseout="this.style.borderColor='rgb(124 58 237 / 0.3)';">
+          <summary class="cursor-pointer list-none flex items-start gap-4 p-5 md:p-7">
+            <span class="font-jetbrains font-bold text-2xl leading-none mt-0.5 transition-transform duration-300 group-open:rotate-45" style="color: #22D3EE;" aria-hidden="true">+</span>
+            <span class="flex-1 font-space-grotesk font-medium text-base md:text-lg leading-snug">{f.q}</span>
+          </summary>
+          <div class="px-5 md:px-7 pb-6 md:pb-8 pl-14 md:pl-16">
+            <p class="font-jetbrains text-[12.5px] leading-relaxed" style="color: rgb(245 244 248 / 0.75);">{f.r}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

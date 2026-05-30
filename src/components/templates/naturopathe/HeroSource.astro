@@ -1,0 +1,99 @@
+---
+import data from '../../../data/templates/source.json';
+---
+
+<section id="top" class="relative overflow-hidden" style="background-color: #E4F0EE;">
+
+  <div class="max-w-content mx-auto px-6 md:px-10 pt-14 md:pt-20 pb-16 md:pb-24 relative">
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-14 items-center">
+
+      <!-- Texte -->
+      <div class="lg:col-span-7 order-2 lg:order-1">
+        <p class="font-manrope text-[11px] uppercase tracking-[0.35em] mb-6" style="color: #5D7C68;">
+          ✦ Naturopathie · {data.info.ville} · depuis {data.info.annee}
+        </p>
+
+        <h1 class="font-lora leading-[0.95]" style="color: #1F2926;">
+          <span class="block italic" style="font-size: clamp(56px, 10vw, 130px); font-weight: 400;">
+            Comprendre,
+          </span>
+          <span class="block" style="font-size: clamp(56px, 10vw, 130px); font-weight: 400;">
+            accompagner,
+          </span>
+          <span class="block italic" style="font-size: clamp(56px, 10vw, 130px); font-weight: 400; color: #5D7C68;">
+            ralentir.
+          </span>
+        </h1>
+
+        <p class="mt-8 font-manrope text-[15px] md:text-[17px] leading-relaxed max-w-lg" style="color: rgb(31 41 38 / 0.78);">
+          Accompagnement individuel en hygiène de vie. Pas de complément miracle,
+          pas de cure choc. Trois mois, quatre rendez-vous, des ajustements à votre rythme.
+        </p>
+
+        <!-- CTAs -->
+        <div class="mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-3 md:gap-4">
+          <a
+            href={`https://wa.me/${data.info.whatsapp}?text=${encodeURIComponent('Bonjour Camille, je souhaite prendre rendez-vous.')}`}
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-center justify-center h-12 px-7 font-manrope font-semibold text-[13px] tracking-wide rounded-full transition-colors duration-300"
+            style="background-color: #5D7C68; color: #FFFFFF;"
+            onmouseover="this.style.backgroundColor='#1F2926';"
+            onmouseout="this.style.backgroundColor='#5D7C68';"
+          >
+            Prendre RDV première séance
+          </a>
+          <a
+            href="#methode"
+            class="inline-flex items-center justify-center h-12 px-7 font-manrope font-semibold text-[13px] tracking-wide rounded-full border-2 transition-colors duration-300"
+            style="border-color: #5D7C68; color: #5D7C68;"
+            onmouseover="this.style.backgroundColor='#5D7C68'; this.style.color='#FFFFFF';"
+            onmouseout="this.style.backgroundColor='transparent'; this.style.color='#5D7C68';"
+          >
+            Découvrir la méthode
+          </a>
+        </div>
+
+        <!-- Chiffres bas -->
+        <div class="mt-12 md:mt-16 grid grid-cols-3 gap-8 max-w-md">
+          <div>
+            <p class="font-lora italic text-3xl md:text-4xl leading-none" style="color: #5D7C68;">7</p>
+            <p class="mt-1 font-manrope text-[10.5px] uppercase tracking-[0.2em]" style="color: rgb(31 41 38 / 0.6);">ans cabinet</p>
+          </div>
+          <div>
+            <p class="font-lora italic text-3xl md:text-4xl leading-none" style="color: #5D7C68;">1 200h</p>
+            <p class="mt-1 font-manrope text-[10.5px] uppercase tracking-[0.2em]" style="color: rgb(31 41 38 / 0.6);">formation</p>
+          </div>
+          <div>
+            <p class="font-lora italic text-3xl md:text-4xl leading-none" style="color: #5D7C68;">FENA</p>
+            <p class="mt-1 font-manrope text-[10.5px] uppercase tracking-[0.2em]" style="color: rgb(31 41 38 / 0.6);">certifiée</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Photo -->
+      <div class="lg:col-span-5 order-1 lg:order-2 relative">
+        <div class="relative aspect-[4/5] overflow-hidden rounded-tl-[80px] rounded-br-[80px]" style="background-color: #D3C29C;">
+          <img
+            src={data.info.photoHero}
+            alt={data.info.photoHeroAlt}
+            class="w-full h-full object-cover"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+          />
+        </div>
+        <!-- Citation flottante -->
+        <div class="absolute -bottom-4 left-4 md:left-8 max-w-xs px-5 py-4 shadow-lg" style="background-color: #FFFFFF;">
+          <p class="font-lora italic text-base md:text-lg leading-snug" style="color: #1F2926;">
+            « On ralentit pour aller plus loin. »
+          </p>
+          <p class="mt-2 font-manrope text-[10px] uppercase tracking-[0.22em]" style="color: #5D7C68;">
+            — Camille Hoarau
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

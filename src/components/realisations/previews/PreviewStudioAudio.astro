@@ -1,0 +1,55 @@
+---
+import data from '../../../data/templates/onde.json';
+/**
+ * Mini-preview Onde — photo plein cadre studio/console néon.
+ */
+---
+
+<div class="absolute inset-0 overflow-hidden" style="background-color: #0D0D14; color: #F5F4F8;">
+
+  <img
+    src={data.info.photoHero}
+    alt=""
+    class="absolute inset-0 w-full h-full object-cover scale-[1.03]"
+    loading="lazy"
+    decoding="async"
+  />
+
+  <div class="absolute inset-0" aria-hidden="true"
+       style="background:
+         linear-gradient(180deg, rgb(13 13 20 / 0.4) 0%, rgb(13 13 20 / 0) 30%, rgb(13 13 20 / 0) 45%, rgb(13 13 20 / 0.96) 100%),
+         linear-gradient(90deg, rgb(13 13 20 / 0.5) 0%, transparent 55%),
+         radial-gradient(circle at 80% 20%, rgba(124, 58, 237, 0.4) 0%, transparent 50%);">
+  </div>
+
+  <div class="relative flex items-center justify-between px-3 pt-2">
+    <div class="flex items-baseline gap-1.5">
+      <span class="font-space-grotesk font-bold text-[12px]" style="color: #F5F4F8;">Onde</span>
+      <span class="font-jetbrains uppercase tracking-[0.22em] text-[5px]" style="color: #22D3EE;">studio_audio</span>
+    </div>
+    <div class="flex items-center gap-1.5 text-[6px] uppercase tracking-wider font-jetbrains" style="color: rgb(245 244 248 / 0.7);">
+      <span>Services</span>
+      <span>Booker</span>
+    </div>
+  </div>
+
+  <div class="absolute left-3 right-3 bottom-2.5">
+    <p class="font-jetbrains text-[5.5px] uppercase tracking-[0.32em] mb-1" style="color: #22D3EE;">
+      // STUDIO_ONLINE · 2018
+    </p>
+    <p class="font-space-grotesk font-bold leading-[0.88]" style="color: #F5F4F8; font-size: clamp(16px, 3.4vw, 28px); text-shadow: 1px 1px 0 #7C3AED;">
+      ONDE.
+    </p>
+    <p class="mt-0.5 font-space-grotesk leading-tight" style="color: rgb(245 244 248 / 0.92); font-size: clamp(7px, 1.5vw, 11px);">
+      <span style="color: #22D3EE;">Capter.</span> <span style="color: #7C3AED;">Sculpter.</span>
+    </p>
+    <div class="mt-1.5 flex items-center gap-1.5">
+      <span class="inline-flex items-center h-3 px-2 font-jetbrains font-semibold text-[6.5px] uppercase tracking-wider" style="background-color: #7C3AED; color: #F5F4F8;">
+        Réserver
+      </span>
+      <span class="inline-flex items-center h-3 px-2 font-jetbrains font-semibold text-[6.5px] uppercase tracking-wider border" style="border-color: #22D3EE; color: #22D3EE;">
+        Services
+      </span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,164 @@
+{
+  "info": {
+    "nom": "Source",
+    "wordmark": "Source",
+    "soustitre": "Naturopathie · La Réunion",
+    "tagline": "Comprendre, accompagner, ralentir.",
+    "fondatrice": "Camille Hoarau",
+    "ville": "La Réunion",
+    "adresseLigne1": "Cabinet sur rendez-vous",
+    "adresseLigne2": "La Réunion",
+    "telephone": "0692 12 34 56",
+    "telephoneHref": "+262692123456",
+    "whatsapp": "262692123456",
+    "email": "bonjour@source-naturopathie.re",
+    "instagram": "@source.naturopathie",
+    "siret": "89045671200029",
+    "annee": "2019",
+    "photoHero": "https://images.unsplash.com/photo-1545558014-8692077e9b5c?q=80&w=1600&auto=format&fit=crop",
+    "photoHeroAlt": "Eau de source claire entre fougères luxuriantes — Source, naturopathie La Réunion",
+    "ouvertureHebdo": "Lundi → vendredi · 9h-19h · Samedi matin",
+    "fermeture": "Dimanche"
+  },
+  "promesse": "Cabinet de naturopathie ouvert depuis 2019. Approche fondée sur l'alimentation, le sommeil, le mouvement et la gestion du stress. Accompagnement individuel, sans recette miracle ni complément complément. On part de votre quotidien, on ajuste à petits pas.",
+  "publics": [
+    {
+      "id": "fatigue",
+      "icon": "battery",
+      "nom": "Fatigue chronique",
+      "tagline": "Quand le café ne suffit plus.",
+      "description": "Asthénie de fond, réveils difficiles, baisses d'énergie en milieu d'après-midi. On regarde le sommeil, la digestion, la charge mentale et les carences possibles avant d'orienter."
+    },
+    {
+      "id": "sommeil",
+      "icon": "moon",
+      "nom": "Sommeil & insomnies",
+      "tagline": "Retrouver le repos profond.",
+      "description": "Endormissement long, réveils nocturnes, sommeil non réparateur. Travail sur l'hygiène de vie, le rythme circadien, l'alimentation du soir et le système nerveux."
+    },
+    {
+      "id": "digestion",
+      "icon": "leaf",
+      "nom": "Digestion & ventre",
+      "tagline": "Apaiser l'intestin.",
+      "description": "Ballonnements, transit perturbé, intolérances qu'on a l'impression de cumuler. Phase d'observation alimentaire, hypothèses ciblées, mise en place progressive."
+    },
+    {
+      "id": "stress",
+      "icon": "wave",
+      "nom": "Stress & anxiété",
+      "tagline": "Diminuer la tension de fond.",
+      "description": "Tension permanente, irritabilité, ruminations. Outils respiratoires, alimentation chrono-nutritionnelle, rituels de coupure, soutien plante adapté si besoin."
+    }
+  ],
+  "methode": [
+    {
+      "etape": "01",
+      "titre": "Première séance · 1h30",
+      "texte": "Anamnèse complète : histoire de santé, alimentation, sommeil, contexte professionnel et émotionnel. On définit ensemble l'objectif réaliste pour les 3 mois à venir."
+    },
+    {
+      "etape": "02",
+      "titre": "Bilan personnalisé",
+      "texte": "Sous 7 jours, vous recevez un document écrit : observations, hypothèses, premières recommandations en alimentation, hygiène de vie et gestion du stress. Toujours discutable, jamais imposé."
+    },
+    {
+      "etape": "03",
+      "titre": "Mise en place progressive",
+      "texte": "On ne change pas tout d'un coup. Trois à cinq ajustements maximum, qu'on tient deux semaines avant d'en ajouter. C'est lent par choix, jamais par laxisme."
+    },
+    {
+      "etape": "04",
+      "titre": "Suivi · 45 min",
+      "texte": "Une à deux séances de suivi sur 3 mois pour ajuster, célébrer ce qui fonctionne et identifier ce qui résiste. Espacement décidé ensemble selon le rythme."
+    }
+  ],
+  "formations": [
+    {
+      "annee": "2018",
+      "intitule": "Praticienne en naturopathie · FENA",
+      "ecole": "Cenatho Daniel Kieffer · 1 200 heures de formation"
+    },
+    {
+      "annee": "2019",
+      "intitule": "Spécialisation micronutrition",
+      "ecole": "IEDM · Institut Européen de Diététique et Micronutrition"
+    },
+    {
+      "annee": "2021",
+      "intitule": "Sommeil & chronobiologie",
+      "ecole": "Institut National du Sommeil et de la Vigilance · 60h"
+    },
+    {
+      "annee": "2023",
+      "intitule": "Approche cognitive du stress",
+      "ecole": "Université Paris Cité · DU Médecines complémentaires · 80h"
+    }
+  ],
+  "cabinet": [
+    {
+      "titre": "Espace d'accueil",
+      "texte": "Pièce lumineuse, lin et bois clair, fauteuils bas. Tisanes maison, eau filtrée. Aucun écran, pas de musique.",
+      "photo": "https://images.unsplash.com/photo-1532303174432-450d3b3f5dd3?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      "titre": "Salle de consultation",
+      "texte": "Bureau ouvert sur jardin, sans cloison froide. Mesures simples (poids, tension, tour de taille) si pertinent.",
+      "photo": "https://images.unsplash.com/photo-1604881991720-f91add269bed?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      "titre": "Coin lecture",
+      "texte": "Bibliothèque ouverte au public en attendant. Ouvrages références : nutrition, sommeil, gestion du stress, mycologie.",
+      "photo": "https://images.unsplash.com/photo-1568667256549-094345857637?q=80&w=800&auto=format&fit=crop"
+    }
+  ],
+  "tarifs": [
+    { "categorie": "Première consultation", "duree": "1h30", "prix": "85 €", "detail": "Anamnèse + bilan écrit sous 7 jours" },
+    { "categorie": "Séance de suivi", "duree": "45 min", "prix": "55 €", "detail": "Ajustement, écoute, micro-objectifs" },
+    { "categorie": "Forfait trimestriel", "duree": "1 + 3 séances", "prix": "220 €", "detail": "Économie de 20 € sur 3 mois" },
+    { "categorie": "Atelier groupe (5 → 8 pers.)", "duree": "2h", "prix": "35 €/pers.", "detail": "Thème mensuel : sommeil, ventre, stress…" }
+  ],
+  "conseils": [
+    {
+      "categorie": "Sommeil",
+      "titre": "Pourquoi votre montre connectée n'aidera pas votre sommeil",
+      "extrait": "On confond souvent mesurer et améliorer. Trois pistes simples qui valent mieux qu'un score de récupération matinal."
+    },
+    {
+      "categorie": "Alimentation",
+      "titre": "Les trois assiettes du midi qui changent l'après-midi",
+      "extrait": "Pourquoi votre coup de barre de 15h commence à 12h30, et comment composer un déjeuner qui ne provoque pas de pic glycémique."
+    },
+    {
+      "categorie": "Stress",
+      "titre": "Respiration cohérente : trois minutes, pas plus",
+      "extrait": "L'outil le plus simple et le plus moqué. Pourquoi il fonctionne vraiment, à condition de cesser de le faire en attendant le métro."
+    }
+  ],
+  "faq": [
+    {
+      "q": "La naturopathie remplace-t-elle un suivi médical ?",
+      "r": "Jamais. C'est un accompagnement complémentaire en hygiène de vie. Tout traitement, tout diagnostic relève de votre médecin traitant ou spécialiste, que je ne remplace ni ne contredis."
+    },
+    {
+      "q": "Faut-il prendre des compléments alimentaires ?",
+      "r": "Très rarement et toujours en concertation. Les ajustements alimentaires couvrent 80% des besoins. Si un complément est pertinent, on en discute en amont, on lit l'étiquette, on évite la cure inutile."
+    },
+    {
+      "q": "À partir de combien de séances voit-on un changement ?",
+      "r": "Les premières prises de conscience arrivent souvent à la deuxième semaine. Les changements durables se mesurent à 3 mois. La naturopathie n'est pas une solution rapide — c'est sa force comme sa contrainte."
+    },
+    {
+      "q": "Recevez-vous les enfants et adolescents ?",
+      "r": "Oui, à partir de 12 ans avec présence d'un parent en première séance. Pour les plus jeunes, je travaille en lien avec votre pédiatre, jamais en autonomie sur les questions alimentaires d'enfant."
+    },
+    {
+      "q": "Les séances sont-elles remboursées ?",
+      "r": "La naturopathie n'est pas remboursée par la Sécurité sociale. Certaines mutuelles proposent un forfait médecines douces — vérifiez auprès de la vôtre. Facture détaillée fournie à chaque séance."
+    },
+    {
+      "q": "Peut-on consulter en visio ?",
+      "r": "Oui, après une première séance en cabinet (sauf cas particulier). La visio fonctionne bien pour les suivis. La première rencontre en présence reste préférable pour bien capter le contexte de vie."
+    }
+  ]
+}

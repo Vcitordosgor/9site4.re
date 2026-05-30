@@ -1,0 +1,30 @@
+---
+import data from '../../../data/templates/encrevolcan.json';
+---
+
+<section class="py-20 md:py-28" style="background-color: #EEE6D8;">
+  <div class="max-w-3xl mx-auto px-6 md:px-10">
+
+    <div class="text-center mb-12 md:mb-16">
+      <p class="font-mono text-[11px] uppercase tracking-[0.4em] mb-4" style="color: #A11920;">— Avant d'arriver —</p>
+      <h2 class="font-cardo text-4xl md:text-6xl leading-[0.95]" style="color: #0A0A0A;">
+        Questions
+        <em class="italic" style="color: #A11920;">qu'on entend souvent.</em>
+      </h2>
+    </div>
+
+    <div class="space-y-3">
+      {data.faq.map((f) => (
+        <details class="group border-2 transition-colors" style="background-color: #FFFFFF; border-color: rgba(31, 26, 24, 0.25);">
+          <summary class="cursor-pointer list-none flex items-start gap-4 p-5 md:p-7">
+            <span class="font-cardo text-3xl leading-none mt-0.5 transition-transform duration-300 group-open:rotate-45" style="color: #A11920;" aria-hidden="true">+</span>
+            <span class="flex-1 font-cardo text-lg md:text-xl leading-snug" style="color: #0A0A0A;">{f.q}</span>
+          </summary>
+          <div class="px-5 md:px-7 pb-6 md:pb-8 pl-14 md:pl-16">
+            <p class="font-mono text-[12.5px] md:text-[13px] leading-relaxed" style="color: rgb(31 26 24 / 0.78);">{f.r}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

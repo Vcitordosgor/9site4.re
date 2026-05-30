@@ -1,0 +1,172 @@
+{
+  "info": {
+    "nom": "Onde",
+    "wordmark": "Onde",
+    "soustitre": "Studio d'enregistrement · La Réunion",
+    "tagline": "Capter. Sculpter. Diffuser.",
+    "fondateur": "Théo Marchand",
+    "ville": "La Réunion",
+    "adresseLigne1": "Studio d'enregistrement",
+    "adresseLigne2": "La Réunion",
+    "telephone": "0692 12 34 56",
+    "telephoneHref": "+262692123456",
+    "whatsapp": "262692123456",
+    "email": "studio@onde-audio.re",
+    "instagram": "@onde.studio",
+    "siret": "82547391000023",
+    "annee": "2018",
+    "photoHero": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=1600&auto=format&fit=crop",
+    "photoHeroAlt": "Console de mixage néon violet et cyan dans studio d'enregistrement sombre — Onde, La Réunion",
+    "ouvertureHebdo": "Lundi → samedi · 10h-22h (sessions étendues sur demande)",
+    "fermeture": "Dimanche"
+  },
+  "promesse": "Studio d'enregistrement professionnel ouvert à La Réunion en 2018. Deux ingénieurs résidents, équipement analogique et numérique haut de gamme. Pop, rap, électro, jazz, voix off, post-prod : on enregistre, on mixe, on master.",
+  "services": [
+    {
+      "id": "recording",
+      "icon": "mic",
+      "code": "REC",
+      "nom": "Enregistrement",
+      "tagline": "Session live ou overdub.",
+      "description": "Captation studio en multipiste jusqu'à 32 canaux simultanés. Cabine voix Vocal Booth Pro, cabine batterie acoustique traitée, ligne directe DI pour basse, claviers et guitare.",
+      "tarif": "350 €/journée"
+    },
+    {
+      "id": "mixing",
+      "icon": "sliders",
+      "code": "MIX",
+      "nom": "Mixage",
+      "tagline": "L'équilibre, la couleur, la dynamique.",
+      "description": "Mixage hybride analogique + ITB. Console Neve summing, plugins UAD, Soundtoys, FabFilter. Mix radio-ready, format streaming optimisé, alternates (instru, TV, capella).",
+      "tarif": "180 €/titre"
+    },
+    {
+      "id": "mastering",
+      "icon": "wave",
+      "code": "MAS",
+      "nom": "Mastering",
+      "tagline": "La dernière main avant la diffusion.",
+      "description": "Mastering analogique-numérique pour streaming Spotify/Apple, vinyle, CD. Loudness conforme -14 LUFS, true peak ≤ -1 dBTP, version mp3 + wav 24/48 livrée.",
+      "tarif": "90 €/titre"
+    },
+    {
+      "id": "production",
+      "icon": "music",
+      "code": "PROD",
+      "nom": "Production musicale",
+      "tagline": "De la maquette au master.",
+      "description": "Accompagnement compositionnel, arrangement, programmation. Studio en mode pré-production, beatmaking, top-line, direction artistique. Sortie clé en main DSP.",
+      "tarif": "Sur devis"
+    }
+  ],
+  "equipement": [
+    {
+      "categorie": "Console",
+      "items": ["SSL AWS 948 — 48 canaux", "Neve 8816 Summing Mixer", "Avid Pro Tools HDX 64 i/o"]
+    },
+    {
+      "categorie": "Micros",
+      "items": ["Neumann U87 Ai · paire stéréo", "AKG C414 XLS · paire", "Shure SM7B · Royer R-121"]
+    },
+    {
+      "categorie": "Préampli",
+      "items": ["Neve 1073 DPD · 4 canaux", "API 3124+ · 4 canaux", "Universal Audio Apollo X16"]
+    },
+    {
+      "categorie": "Monitoring",
+      "items": ["Genelec 1031A paire principale", "Yamaha NS-10 référence", "Audeze LCD-X mastering"]
+    },
+    {
+      "categorie": "Plugins",
+      "items": ["UAD Bundle Complete (160+)", "FabFilter Pro Q3, L2, C2", "Soundtoys, iZotope RX10, Ozone 11"]
+    },
+    {
+      "categorie": "Outboard",
+      "items": ["Tube-Tech CL1B compresseur", "Manley Massive Passive EQ", "Bricasti M7 réverbération"]
+    }
+  ],
+  "ingenieurs": [
+    {
+      "nom": "Théo Marchand",
+      "role": "Ingé son résident · Fondateur",
+      "specialite": "Mixage électronique · Mastering",
+      "diplome": "SAE Institute Paris · 2014",
+      "anciennete": "12 ans expérience",
+      "bio": "Théo a ouvert Onde en 2018 après quatre ans à Studio Davout (Paris). Spécialisé mixage électronique et mastering streaming. Travaillé pour labels indépendants pop et techno.",
+      "photo": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop"
+    },
+    {
+      "nom": "Lila Bertrand",
+      "role": "Ingé son résidente",
+      "specialite": "Prise de son · Production jazz",
+      "diplome": "ENS Louis-Lumière · 2017",
+      "anciennete": "8 ans expérience",
+      "bio": "Lila a rejoint Onde en 2021. Formation Louis-Lumière, deux saisons assistante à La Buissonne (Pernes-les-Fontaines). Référente captation acoustique : jazz, classique, voix.",
+      "photo": "https://images.unsplash.com/photo-1573497019418-b400bb3ab074?q=80&w=600&auto=format&fit=crop"
+    }
+  ],
+  "process": [
+    {
+      "etape": "01",
+      "titre": "Devis sous 48h",
+      "texte": "Vous nous décrivez le projet (titre, genre, format, deadline). On vous envoie un devis chiffré sous 48h avec disponibilités calendrier."
+    },
+    {
+      "etape": "02",
+      "titre": "Session studio",
+      "texte": "Vous arrivez avec vos sessions DAW, vos références, votre artiste. On configure le studio, vous travaillez librement avec l'ingé. Pauses café, snacks, frigo dispo."
+    },
+    {
+      "etape": "03",
+      "titre": "Révisions ciblées",
+      "texte": "Deux révisions incluses par titre. Notes écrites précises de votre part. Chaque révision sous 72h. Au-delà, facturation à l'heure (60 €/h)."
+    },
+    {
+      "etape": "04",
+      "titre": "Livraison & assets",
+      "texte": "Master final en WAV 24/48, MP3 320, alternates (instru, TV, capella). Stems disponibles sur demande. Cloud sécurisé, archivage 5 ans."
+    }
+  ],
+  "clients": [
+    { "genre": "Pop · variété française", "nombre": 47 },
+    { "genre": "Rap · trap · drill", "nombre": 38 },
+    { "genre": "Électro · techno · house", "nombre": 52 },
+    { "genre": "Jazz · world · acoustique", "nombre": 24 },
+    { "genre": "Voix off · podcast · pub", "nombre": 65 },
+    { "genre": "Post-production audiovisuelle", "nombre": 19 }
+  ],
+  "tarifs": [
+    { "type": "Demi-journée recording", "duree": "4h ingé inclus", "prix": "180 €" },
+    { "type": "Journée recording", "duree": "8h ingé inclus", "prix": "350 €" },
+    { "type": "Mixage standard", "duree": "Délai 5 jours", "prix": "180 €/titre" },
+    { "type": "Mastering streaming", "duree": "Délai 3 jours", "prix": "90 €/titre" },
+    { "type": "Forfait EP 5 titres", "duree": "Mix + master", "prix": "1 100 €" },
+    { "type": "Forfait album 10 titres", "duree": "Mix + master", "prix": "2 100 €" }
+  ],
+  "faq": [
+    {
+      "q": "Faut-il venir avec sa propre session DAW ?",
+      "r": "Idéalement oui — sessions Pro Tools, Logic, Ableton ou Cubase acceptées. Format préféré : multipistes 24-bit 48kHz, stems calés, fichiers nommés clairement. On peut convertir depuis n'importe quel format au besoin."
+    },
+    {
+      "q": "Combien de musiciens peut accueillir le studio ?",
+      "r": "Cabine batterie + cabine voix + control room : on enregistre confortablement un trio jusqu'à quintet jazz en captation simultanée. Pour orchestre ou ensemble, on travaille en overdub par section."
+    },
+    {
+      "q": "Quels formats de livraison fournissez-vous ?",
+      "r": "Master WAV 24/48 (streaming), DDP CD-ready, vinyle pre-master, MP3 320 et formats alternates (instrumental, TV mix, capella). DDS, ISRC, métadonnées intégrées sur demande."
+    },
+    {
+      "q": "Peut-on travailler à distance sans venir au studio ?",
+      "r": "Oui pour le mix et le mastering : vous nous envoyez vos stems, on travaille à distance, on partage en cloud, vous validez en streaming. Sessions visio possibles pour debriefer."
+    },
+    {
+      "q": "Combien de révisions sont incluses ?",
+      "r": "Deux révisions par titre incluses dans le forfait, à transmettre par notes écrites précises (timecode + description). Révisions supplémentaires facturées 60 €/h."
+    },
+    {
+      "q": "Acceptez-vous les artistes débutants ?",
+      "r": "Bien sûr. On accompagne aussi bien les premiers EP que les productions confirmées. Conseils gratuits avant projet pour cadrer le budget et orienter sur la formule adaptée."
+    }
+  ]
+}

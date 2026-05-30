@@ -1,0 +1,105 @@
+---
+import data from '../../../data/templates/notaire.json';
+---
+
+<section id="top" class="relative overflow-hidden" style="background-color: #F5F1EB;">
+
+  <!-- Texture marbre subtile -->
+  <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-[0.05]" aria-hidden="true">
+    <filter id="notaire-grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="2" seed="3" />
+      <feColorMatrix values="0 0 0 0 0.10  0 0 0 0 0.09  0 0 0 0 0.08  0 0 0 1 0" />
+    </filter>
+    <rect width="100%" height="100%" filter="url(#notaire-grain)" />
+  </svg>
+
+  <div class="max-w-content mx-auto px-6 md:px-10 pt-12 md:pt-20 pb-16 md:pb-24 relative">
+
+    <!-- Eyebrow blason -->
+    <div class="text-center mb-10 md:mb-14">
+      <div class="flex items-center justify-center gap-3 mb-3" aria-hidden="true">
+        <span class="block w-12 h-px" style="background-color: #A28B5C;"></span>
+        <svg viewBox="0 0 24 24" class="w-5 h-5" style="color: #A28B5C;" fill="currentColor" aria-hidden="true">
+          <path d="M12 2 L18 4 L18 12 Q18 18 12 22 Q6 18 6 12 L6 4 Z" stroke="currentColor" stroke-width="1.2" fill="none"/>
+        </svg>
+        <span class="block w-12 h-px" style="background-color: #A28B5C;"></span>
+      </div>
+      <p class="font-inter text-[11px] md:text-[12px] uppercase tracking-[0.4em]" style="color: #A28B5C;">
+        Office Notarial · La Réunion · depuis {data.info.annee}
+      </p>
+    </div>
+
+    <!-- Wordmark XXL -->
+    <h1 class="text-center font-cormorant leading-[0.95]" style="color: #1A1715;">
+      <span class="block font-light" style="font-size: clamp(48px, 9vw, 110px);">
+        Étude Notariale
+      </span>
+      <span class="block italic mt-1" style="font-size: clamp(52px, 9.5vw, 116px); color: #A28B5C;">
+        &amp; Associés
+      </span>
+    </h1>
+
+    <!-- Tagline -->
+    <p class="mt-8 md:mt-10 text-center font-cormorant italic max-w-2xl mx-auto leading-snug" style="color: #1A1715; font-size: clamp(20px, 2.4vw, 28px);">
+      {data.info.tagline}
+    </p>
+
+    <!-- Description -->
+    <p class="mt-6 text-center font-inter text-[14px] md:text-[15px] leading-relaxed max-w-xl mx-auto" style="color: rgb(26 23 21 / 0.72);">
+      Trois notaires associés, douze collaborateurs. Droit de la famille, succession,
+      immobilier, sociétés. Tradition rigoureuse, accompagnement contemporain.
+    </p>
+
+    <!-- CTAs -->
+    <div class="mt-10 md:mt-12 flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4">
+      <a
+        href="#contact"
+        class="inline-flex items-center justify-center h-12 px-8 font-inter font-semibold text-[12px] uppercase tracking-[0.18em] transition-colors duration-300"
+        style="background-color: #1A1715; color: #F5F1EB;"
+        onmouseover="this.style.backgroundColor='#A28B5C';"
+        onmouseout="this.style.backgroundColor='#1A1715';"
+      >
+        Prendre rendez-vous
+      </a>
+      <a
+        href="#domaines"
+        class="inline-flex items-center justify-center h-12 px-8 font-inter font-semibold text-[12px] uppercase tracking-[0.18em] border-2 transition-colors duration-300"
+        style="border-color: #1A1715; color: #1A1715;"
+        onmouseover="this.style.backgroundColor='#1A1715'; this.style.color='#F5F1EB';"
+        onmouseout="this.style.backgroundColor='transparent'; this.style.color='#1A1715';"
+      >
+        Nos domaines d'intervention
+      </a>
+    </div>
+
+    <!-- Photo bas, large -->
+    <div class="mt-16 md:mt-24 max-w-5xl mx-auto">
+      <div class="aspect-[16/8] overflow-hidden border-2" style="border-color: #A28B5C;">
+        <img
+          src={data.info.photoHero}
+          alt={data.info.photoHeroAlt}
+          class="w-full h-full object-cover"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </div>
+    </div>
+
+    <!-- Chiffres bas -->
+    <div class="mt-12 md:mt-16 grid grid-cols-3 gap-4 md:gap-8 max-w-3xl mx-auto">
+      <div class="text-center">
+        <p class="font-cormorant italic text-3xl md:text-5xl leading-none" style="color: #A28B5C;">27</p>
+        <p class="mt-2 font-inter text-[10.5px] uppercase tracking-[0.2em]" style="color: rgb(26 23 21 / 0.65);">ans d'office</p>
+      </div>
+      <div class="text-center">
+        <p class="font-cormorant italic text-3xl md:text-5xl leading-none" style="color: #A28B5C;">3</p>
+        <p class="mt-2 font-inter text-[10.5px] uppercase tracking-[0.2em]" style="color: rgb(26 23 21 / 0.65);">notaires associés</p>
+      </div>
+      <div class="text-center">
+        <p class="font-cormorant italic text-3xl md:text-5xl leading-none" style="color: #A28B5C;">12</p>
+        <p class="mt-2 font-inter text-[10.5px] uppercase tracking-[0.2em]" style="color: rgb(26 23 21 / 0.65);">collaborateurs</p>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,57 @@
+---
+import data from '../../../data/templates/source.json';
+/**
+ * Mini-preview Source — photo plein cadre eau/nature.
+ */
+---
+
+<div class="absolute inset-0 overflow-hidden" style="background-color: #E4F0EE; color: #1F2926;">
+
+  <img
+    src={data.info.photoHero}
+    alt=""
+    class="absolute inset-0 w-full h-full object-cover scale-[1.03]"
+    loading="lazy"
+    decoding="async"
+  />
+
+  <div class="absolute inset-0" aria-hidden="true"
+       style="background:
+         linear-gradient(180deg, rgb(31 41 38 / 0.32) 0%, rgb(31 41 38 / 0) 30%, rgb(31 41 38 / 0) 45%, rgb(31 41 38 / 0.92) 100%),
+         linear-gradient(90deg, rgb(31 41 38 / 0.42) 0%, transparent 55%);">
+  </div>
+
+  <div class="relative flex items-center justify-between px-3 pt-2">
+    <div class="flex items-baseline gap-1.5">
+      <span class="font-lora italic text-[11px]" style="color: #E4F0EE;">Source</span>
+      <span class="font-manrope uppercase tracking-[0.18em] text-[6px]" style="color: #D3C29C;">naturopathie</span>
+    </div>
+    <div class="flex items-center gap-1.5 text-[6px] uppercase tracking-wider font-manrope" style="color: rgb(228 240 238 / 0.7);">
+      <span>Méthode</span>
+      <span>RDV</span>
+    </div>
+  </div>
+
+  <div class="absolute left-3 right-3 bottom-2.5">
+    <p class="font-manrope text-[5.5px] uppercase tracking-[0.32em] mb-1" style="color: #D3C29C;">
+      ✦ Naturopathie · 2019
+    </p>
+    <p class="font-lora italic leading-[0.95]" style="color: #E4F0EE; font-size: clamp(13px, 2.9vw, 23px);">
+      Comprendre,
+    </p>
+    <p class="font-lora leading-[0.95]" style="color: #E4F0EE; font-size: clamp(13px, 2.9vw, 23px);">
+      accompagner,
+    </p>
+    <p class="font-lora italic leading-[0.95]" style="color: #D3C29C; font-size: clamp(13px, 2.9vw, 23px);">
+      ralentir.
+    </p>
+    <div class="mt-1.5 flex items-center gap-1.5">
+      <span class="inline-flex items-center h-3 px-2 font-manrope font-semibold text-[6.5px] uppercase tracking-wider rounded-full" style="background-color: #5D7C68; color: #E4F0EE;">
+        Prendre RDV
+      </span>
+      <span class="inline-flex items-center h-3 px-2 font-manrope font-semibold text-[6.5px] uppercase tracking-wider border rounded-full" style="border-color: rgb(228 240 238 / 0.5); color: #E4F0EE;">
+        Méthode
+      </span>
+    </div>
+  </div>
+</div>
