@@ -485,7 +485,7 @@ const etapes = [
               aria-controls={`panel-${m.id}`}
               id={`tab-${m.id}`}
               tabindex={i === 0 ? 0 : -1}
-              class="group inline-flex items-center gap-2 h-11 px-4 rounded-full text-sm font-medium text-blanc-casse/65 transition-all duration-200 ease-out hover:bg-blanc-casse/[0.08] hover:text-blanc-casse aria-selected:bg-bleu aria-selected:text-bleu-nuit aria-selected:font-semibold cursor-pointer"
+              class="group inline-flex items-center gap-2 h-11 px-4 rounded-full text-sm font-medium text-blanc-casse/65 transition-all duration-200 ease-out hover:bg-blanc-casse/[0.08] hover:text-blanc-casse aria-selected:bg-bleu aria-selected:text-white aria-selected:font-semibold cursor-pointer"
             >
               <Icon name={m.icon} size={16} strokeWidth={2} />
               <span class="md:hidden">{m.shortLabel ?? m.label}</span>
@@ -525,7 +525,7 @@ const etapes = [
             <!-- Connecteur formulaire → téléphone (desktop) -->
             <div class="hidden lg:flex absolute left-[58%] top-1/2 -translate-y-1/2 z-10 items-center gap-1" aria-hidden="true">
               <span class="block w-12 h-px bg-bleu/60"></span>
-              <span class="flex items-center justify-center w-8 h-8 rounded-full bg-bleu text-bleu-nuit shadow-[0_0_18px_rgba(145,166,255,0.55)]">
+              <span class="flex items-center justify-center w-8 h-8 rounded-full bg-bleu text-white shadow-[0_0_18px_rgba(145,166,255,0.55)]">
                 <Icon name="arrow-right" size={16} strokeWidth={2.5} />
               </span>
             </div>
