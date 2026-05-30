@@ -1,0 +1,63 @@
+---
+const sans = [
+  'Vingt-cinq élèves par cours, professeur qui ne voit personne en particulier.',
+  'Studio froid, parquet usé, miroir grêlé, vestiaire commun étriqué.',
+  'Spectacle de fin d\'année dans une salle de gym, drap noir au mur.',
+  'Inscription forfait à l\'année non remboursable, aucun essai possible.',
+];
+
+const avec = [
+  'Douze élèves maximum, le professeur connaît votre prénom dès le deuxième cours.',
+  'Studio en parquet souple, barres en bois massif, miroirs neufs, vestiaires séparés.',
+  'Gala dans un vrai théâtre, costumes prêtés, photographe et vidéaste officiels.',
+  'Cours d\'essai offert, paiement en trois fois, désinscription possible jusqu\'en octobre.',
+];
+---
+
+<section class="bg-vermeille-charbon text-vermeille-ivoire py-20 md:py-28">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+
+    <div class="text-center max-w-2xl mx-auto mb-14 md:mb-20">
+      <p class="font-inter-tight uppercase tracking-[0.4em] text-[10px] md:text-[11px] text-vermeille-or mb-4">— Notre conviction, en clair —</p>
+      <h2 class="font-italiana text-vermeille-ivoire text-4xl md:text-6xl leading-tight">
+        Deux écoles
+        <span class="text-vermeille-rose">qui n'ont rien à voir.</span>
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6 md:gap-10">
+
+      <div class="bg-vermeille-velours border border-vermeille-or/25 p-7 md:p-10">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="inline-flex w-10 h-10 rounded-full border border-vermeille-or/50 items-center justify-center text-vermeille-or font-italiana">×</span>
+          <p class="font-inter-tight uppercase tracking-[0.3em] text-[10px] text-vermeille-or">Une école de masse</p>
+        </div>
+        <ul class="space-y-4">
+          {sans.map((s) => (
+            <li class="flex items-start gap-3">
+              <span class="font-italiana text-vermeille-or/70 mt-1 select-none" aria-hidden="true">—</span>
+              <p class="font-inter-tight text-vermeille-ivoire/85 text-[15px] leading-relaxed">{s}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="bg-vermeille-bordeaux text-vermeille-ivoire p-7 md:p-10 relative">
+        <div class="absolute top-4 right-4 text-vermeille-or text-3xl font-italiana" aria-hidden="true">★</div>
+        <div class="flex items-center gap-3 mb-6">
+          <span class="inline-flex w-10 h-10 rounded-full bg-vermeille-or text-vermeille-velours items-center justify-center font-italiana">✓</span>
+          <p class="font-inter-tight uppercase tracking-[0.3em] text-[10px] text-vermeille-or">Vermeille</p>
+        </div>
+        <ul class="space-y-4">
+          {avec.map((a) => (
+            <li class="flex items-start gap-3">
+              <span class="font-italiana text-vermeille-or mt-1 select-none" aria-hidden="true">+</span>
+              <p class="font-inter-tight text-vermeille-ivoire text-[15px] leading-relaxed">{a}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
