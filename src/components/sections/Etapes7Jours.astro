@@ -27,16 +27,16 @@ const etapes = [
 ];
 ---
 
-<section class="relative px-6 py-20 md:py-28 bg-bleu/[0.06]" aria-labelledby="etapes-titre">
+<section class="relative px-6 py-14 md:py-20 bg-black text-blanc-casse" aria-labelledby="etapes-titre">
   <div class="mx-auto max-w-content">
     <div class="max-w-3xl">
-      <p class="scroll-reveal inline-flex items-center px-3 py-1.5 rounded-full bg-orange text-bleu-nuit text-xs font-semibold uppercase tracking-wide">
+      <p class="scroll-reveal inline-flex items-center px-3 py-1.5 rounded-full bg-bleu text-bleu-nuit text-xs font-semibold uppercase tracking-wide">
         Simple et rapide
       </p>
-      <h2 id="etapes-titre" class="scroll-reveal mt-4 font-sora font-bold text-2xl md:text-4xl text-bleu-nuit text-balance leading-tight">
+      <h2 id="etapes-titre" class="scroll-reveal mt-4 font-sora font-bold text-2xl md:text-4xl text-blanc-casse text-balance leading-tight">
         Votre site en ligne en 7 jours.
       </h2>
-      <p class="scroll-reveal mt-5 text-lg text-bleu-nuit/70 leading-relaxed">
+      <p class="scroll-reveal mt-5 text-lg text-blanc-casse/70 leading-relaxed">
         Pas de cahier des charges interminable, pas de mois d'attente. Un parcours
         clair, un seul interlocuteur.
       </p>
@@ -45,24 +45,24 @@ const etapes = [
     <ol class="scroll-reveal mt-12 grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 relative">
       {etapes.map((e, i) => (
         <li class="relative">
-          <article class="h-full flex flex-col rounded-3xl bg-blanc-casse ring-1 ring-bleu-nuit/10 p-7 md:p-8 transition-all duration-300 ease-out-soft hover:-translate-y-0.5 hover:shadow-card-hover">
+          <article class="h-full flex flex-col rounded-3xl bg-blanc-casse/[0.04] ring-1 ring-blanc-casse/10 p-7 md:p-8 transition-all duration-300 ease-out-soft hover:-translate-y-0.5 hover:bg-blanc-casse/[0.07] hover:ring-blanc-casse/20">
             <div class="flex items-center justify-between gap-4">
-              <span class="flex w-12 h-12 rounded-2xl bg-bleu/20 text-bleu-nuit items-center justify-center">
+              <span class="flex w-12 h-12 rounded-2xl bg-bleu/20 text-bleu items-center justify-center">
                 <Icon name={e.icon} size={22} strokeWidth={1.75} />
               </span>
-              <span class="font-roboto-mono text-xs uppercase tracking-[0.18em] text-orange font-semibold">
+              <span class="font-roboto-mono text-xs uppercase tracking-[0.18em] text-bleu font-semibold">
                 {e.jour}
               </span>
             </div>
-            <h3 class="mt-6 font-sora font-semibold text-xl text-bleu-nuit leading-snug">
+            <h3 class="mt-6 font-sora font-semibold text-xl text-blanc-casse leading-snug">
               {e.titre}
             </h3>
-            <p class="mt-2.5 text-base text-bleu-nuit/65 leading-relaxed">
+            <p class="mt-2.5 text-base text-blanc-casse/65 leading-relaxed">
               {e.texte}
             </p>
           </article>
           {i < etapes.length - 1 && (
-            <span class="hidden md:flex absolute top-12 -right-3.5 w-7 h-7 rounded-full bg-blanc-casse ring-1 ring-bleu-nuit/10 items-center justify-center text-bleu-nuit/40 z-10" aria-hidden="true">
+            <span class="hidden md:flex absolute top-12 -right-3.5 w-7 h-7 rounded-full bg-black ring-1 ring-blanc-casse/15 items-center justify-center text-blanc-casse/50 z-10" aria-hidden="true">
               <Icon name="arrow-right" size={14} strokeWidth={2.25} />
             </span>
           )}
@@ -73,12 +73,12 @@ const etapes = [
     <div class="scroll-reveal mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-4">
       <a
         href="/contact"
-        class="group inline-flex items-center justify-center gap-2 h-14 px-8 text-lg font-semibold rounded-full bg-orange text-bleu-nuit shadow-card hover:shadow-card-hover hover:-translate-y-0.5 transition-all duration-200 ease-out"
+        class="group inline-flex items-center justify-center gap-2 h-14 px-8 text-lg font-semibold rounded-full bg-bleu text-white hover:bg-[#7e95ff] hover:-translate-y-0.5 shadow-[0_8px_24px_rgba(145,166,255,0.45)] transition-all duration-200 ease-out"
       >
         Demander mon site
         <Icon name="arrow-right" size={20} strokeWidth={2.25} class="transition-transform duration-300 group-hover:translate-x-1" />
       </a>
-      <p class="text-sm text-bleu-nuit/55 max-w-md leading-relaxed">
+      <p class="text-sm text-blanc-casse/55 max-w-md leading-relaxed">
         Délai indicatif pour un site vitrine standard, après réception des éléments nécessaires.
       </p>
     </div>
