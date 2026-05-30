@@ -1,0 +1,27 @@
+---
+import data from '../../../data/templates/seve.json';
+---
+
+<section class="bg-seve-marine text-seve-ivoire py-28 md:py-40 px-6 md:px-10 relative overflow-hidden">
+  <svg viewBox="0 0 400 220" class="absolute inset-x-0 top-0 w-full opacity-[0.07] pointer-events-none" aria-hidden="true">
+    <g fill="none" stroke="#C9A96E" stroke-width="0.6" stroke-linecap="round">
+      <path d="M0 110 Q100 60 200 110 T400 110" />
+      <path d="M0 130 Q100 80 200 130 T400 130" />
+      <path d="M0 150 Q100 100 200 150 T400 150" />
+    </g>
+  </svg>
+
+  <div class="max-w-4xl mx-auto relative text-center">
+    <div class="flex items-center justify-center gap-3 mb-8" aria-hidden="true">
+      <span class="block w-12 h-px bg-seve-or"></span>
+      <span class="font-italianno text-seve-or text-3xl leading-none">vœu</span>
+      <span class="block w-12 h-px bg-seve-or"></span>
+    </div>
+    <blockquote class="font-cormorant italic text-seve-ivoire leading-[1.12]" style="font-size:clamp(28px,5vw,56px);">
+      Un mariage à La Réunion ne s'organise pas, il se ressent — l'océan dicte le tempo, le coucher de soleil signe la cérémonie.
+    </blockquote>
+    <p class="mt-10 font-outfit text-[11px] uppercase tracking-[0.32em] text-seve-or">
+      {data.info.fondatrice} · fondatrice, depuis {data.info.annee}
+    </p>
+  </div>
+</section>
