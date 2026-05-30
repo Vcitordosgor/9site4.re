@@ -23,13 +23,17 @@ import agapData from '../../data/templates/agapanthes.json';
 import PaysagisteHeader from '../../components/templates/paysagiste/PaysagisteHeader.astro';
 import HeroBotanique from '../../components/templates/paysagiste/HeroBotanique.astro';
 import Approche from '../../components/templates/paysagiste/Approche.astro';
+import Manifeste from '../../components/templates/paysagiste/Manifeste.astro';
 import Saisons from '../../components/templates/paysagiste/Saisons.astro';
 import Services from '../../components/templates/paysagiste/Services.astro';
+import Process from '../../components/templates/paysagiste/Process.astro';
 import Plantes from '../../components/templates/paysagiste/Plantes.astro';
 import PhotoPanorama from '../../components/templates/paysagiste/PhotoPanorama.astro';
 import Galerie from '../../components/templates/paysagiste/Galerie.astro';
+import Pepinieres from '../../components/templates/paysagiste/Pepinieres.astro';
 import Citation from '../../components/templates/paysagiste/Citation.astro';
 import Equipe from '../../components/templates/paysagiste/Equipe.astro';
+import Faq from '../../components/templates/paysagiste/Faq.astro';
 import Devis from '../../components/templates/paysagiste/Devis.astro';
 import Trouver from '../../components/templates/paysagiste/Trouver.astro';
 import CTAFinal from '../../components/templates/paysagiste/CTAFinal.astro';
@@ -56,13 +60,17 @@ const businessLD = localBusinessSchema(agapData);
   <main id="top" class="bg-agap-lin text-agap-feuille font-outfit">
     <HeroBotanique />
     <Approche />
+    <Manifeste />
     <Saisons />
     <Services />
+    <Process />
     <Plantes />
     <PhotoPanorama />
     <Galerie />
+    <Pepinieres />
     <Citation />
     <Equipe />
+    <Faq />
     <Devis />
     <Trouver />
     <CTAFinal />
