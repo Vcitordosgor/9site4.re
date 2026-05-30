@@ -1,0 +1,177 @@
+{
+  "info": {
+    "nom": "Étude Notariale & Associés",
+    "wordmark": "Étude Notariale",
+    "wordmark2": "& Associés",
+    "soustitre": "Office notarial · La Réunion",
+    "tagline": "L'acte qui sécurise. La parole qui rassure.",
+    "fondateur": "Maître Patricia Lefèvre",
+    "ville": "La Réunion",
+    "adresseLigne1": "Office notarial",
+    "adresseLigne2": "La Réunion",
+    "telephone": "0692 12 34 56",
+    "telephoneHref": "+262692123456",
+    "whatsapp": "262692123456",
+    "email": "etude@notariale-associes.re",
+    "instagram": "@etude.notariale",
+    "siret": "78921045300017",
+    "annee": "1998",
+    "photoHero": "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=1600&auto=format&fit=crop",
+    "photoHeroAlt": "Bureau d'étude notariale, livres reliés et écritoire en bois noble — Étude Notariale & Associés, La Réunion",
+    "ouvertureHebdo": "Lundi → vendredi · 8h30-12h30 / 13h30-18h",
+    "fermeture": "Samedi sur rendez-vous"
+  },
+  "promesse": "Office notarial fondé en 1998, regroupant trois notaires associés et douze collaborateurs. Compétences en droit de la famille, succession, immobilier, droit des sociétés. Tradition rigoureuse, accompagnement contemporain.",
+  "domaines": [
+    {
+      "id": "famille",
+      "icon": "users",
+      "nom": "Droit de la famille",
+      "tagline": "Mariage, PACS, divorce, donation.",
+      "description": "Contrat de mariage, séparation de biens, PACS, donation entre époux, divorce par consentement mutuel. Médiation familiale agréée pour les situations sensibles. Confidentialité absolue.",
+      "actes": ["Contrat de mariage", "Convention PACS", "Donation entre époux", "Changement régime matrimonial", "Divorce par consentement"]
+    },
+    {
+      "id": "succession",
+      "icon": "scroll",
+      "nom": "Succession & transmission",
+      "tagline": "Anticipation, ouverture, partage.",
+      "description": "Anticipation successorale, ouverture de succession, partage d'indivision, testament authentique. Accompagnement humain dans les moments difficiles, jamais de précipitation imposée.",
+      "actes": ["Testament authentique", "Ouverture de succession", "Inventaire successoral", "Acte de notoriété", "Partage amiable"]
+    },
+    {
+      "id": "immobilier",
+      "icon": "home",
+      "nom": "Immobilier",
+      "tagline": "Vente, achat, prêt, copropriété.",
+      "description": "Compromis et acte définitif de vente, prêt immobilier, état des lieux, copropriété, viager. Vérifications urbanisme exhaustives, délais respectés, accompagnement bancaire en lien direct.",
+      "actes": ["Compromis de vente", "Acte authentique de vente", "Prêt immobilier", "Servitude & mitoyenneté", "Vente en viager"]
+    },
+    {
+      "id": "entreprise",
+      "icon": "briefcase",
+      "nom": "Droit des sociétés",
+      "tagline": "Création, cession, holding.",
+      "description": "Création de société (SARL, SAS, SCI), cession de parts, holding patrimoniale, pacte d'associés. Suivi long terme, conseil fiscal en coordination avec votre expert-comptable.",
+      "actes": ["Statuts de société", "Cession de parts sociales", "Pacte d'associés", "Création SCI", "Apport en société"]
+    }
+  ],
+  "notaires": [
+    {
+      "nom": "Maître Patricia Lefèvre",
+      "role": "Notaire associée · Présidente",
+      "specialite": "Droit de la famille & succession",
+      "diplome": "DSN 1996 · Médiation familiale 2008",
+      "anciennete": "27 ans d'exercice",
+      "bio": "Patricia a fondé l'étude en 1998. Diplôme supérieur du notariat, médiation familiale, spécialisation succession internationale. Préside la commission Famille du Conseil régional du notariat.",
+      "photo": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=600&auto=format&fit=crop"
+    },
+    {
+      "nom": "Maître Antoine Riberol",
+      "role": "Notaire associé",
+      "specialite": "Immobilier & urbanisme",
+      "diplome": "DSN 2003 · DU Droit de l'urbanisme",
+      "anciennete": "21 ans d'exercice",
+      "bio": "Antoine a rejoint l'étude en 2008 et est devenu associé en 2014. Compétences pointues en droit immobilier, urbanisme et copropriété. Suit également les SCI patrimoniales.",
+      "photo": "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=600&auto=format&fit=crop"
+    },
+    {
+      "nom": "Maître Camille Verdier",
+      "role": "Notaire associée",
+      "specialite": "Droit des sociétés & fiscalité",
+      "diplome": "DSN 2010 · M2 Droit fiscal",
+      "anciennete": "14 ans d'exercice",
+      "bio": "Camille est associée depuis 2019. Double formation droit notarial et fiscalité. Référente entreprises, structures patrimoniales et opérations de transmission familiale d'entreprise.",
+      "photo": "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=600&auto=format&fit=crop"
+    }
+  ],
+  "methode": [
+    {
+      "etape": "01",
+      "titre": "Rendez-vous d'écoute",
+      "texte": "Premier entretien gratuit de 30 à 60 minutes. Présentation de votre situation, des enjeux, des options possibles. Aucun engagement, aucune obligation de poursuivre."
+    },
+    {
+      "etape": "02",
+      "titre": "Étude personnalisée",
+      "texte": "Sous 7 à 21 jours selon la complexité, vous recevez une note écrite : analyse juridique, conséquences fiscales, options recommandées et alternatives. Devis transparent joint."
+    },
+    {
+      "etape": "03",
+      "titre": "Rédaction & vérifications",
+      "texte": "Rédaction du projet d'acte, vérifications administratives (cadastre, état civil, urbanisme, fiscalité), interrogation des fichiers obligatoires. Échanges avec parties prenantes."
+    },
+    {
+      "etape": "04",
+      "titre": "Signature & enregistrement",
+      "texte": "Signature de l'acte authentique en présence de toutes les parties. Lecture intégrale, explications, signature électronique sécurisée. Enregistrement aux services concernés."
+    }
+  ],
+  "frais": [
+    { "categorie": "Émoluments tarifés", "exemple": "Vente immobilière, succession", "indication": "Tarif réglementé Décret 2016" },
+    { "categorie": "Émoluments libres", "exemple": "Conseil, négociation", "indication": "Devis préalable obligatoire" },
+    { "categorie": "Droits & taxes", "exemple": "Droits d'enregistrement, TVA", "indication": "Reversés au Trésor Public" },
+    { "categorie": "Débours", "exemple": "Cadastre, état civil, urbanisme", "indication": "Frais externes refacturés à l'euro près" }
+  ],
+  "documents": [
+    {
+      "categorie": "Vente immobilière",
+      "items": [
+        "Pièce d'identité en cours de validité",
+        "Justificatif de domicile (< 3 mois)",
+        "Titre de propriété ou attestation notariée",
+        "Diagnostics techniques complets (DPE, amiante, plomb, électricité, gaz, termites)",
+        "Acte de mariage / PACS / divorce si applicable",
+        "Mainlevée d'hypothèque éventuelle"
+      ]
+    },
+    {
+      "categorie": "Succession",
+      "items": [
+        "Acte de décès",
+        "Livret de famille du défunt",
+        "Contrat de mariage du défunt si applicable",
+        "Inventaire patrimoine (comptes, biens, contrats)",
+        "Coordonnées de tous les héritiers",
+        "Donations antérieures éventuelles"
+      ]
+    },
+    {
+      "categorie": "Création de société",
+      "items": [
+        "Pièce d'identité de chaque associé",
+        "Justificatif de domicile du siège",
+        "Attestation de dépôt de capital",
+        "Liste des associés et répartition prévue",
+        "Pièces justificatives apports en nature éventuels",
+        "Statuts projet (ou demande de rédaction)"
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "q": "Quand prendre rendez-vous avec un notaire ?",
+      "r": "Le plus tôt possible dans le projet. Avant tout achat immobilier, dès la décision de mariage, avant 60 ans pour anticiper la transmission, dès la création d'une activité économique. L'anticipation évite les conflits et optimise les coûts."
+    },
+    {
+      "q": "Le premier rendez-vous est-il payant ?",
+      "r": "Non, le premier entretien d'écoute est gratuit et sans engagement. Il dure 30 à 60 minutes selon la complexité. Vous repartez avec une idée claire des options, des coûts indicatifs et du calendrier prévisionnel."
+    },
+    {
+      "q": "Combien coûtent les frais de notaire pour une vente immobilière ?",
+      "r": "Pour un bien ancien : environ 7 à 8% du prix de vente, dont 80% sont des droits et taxes reversés à l'État. Pour un bien neuf : environ 2 à 3%. Le devis détaillé vous est fourni avant compromis."
+    },
+    {
+      "q": "Combien de temps pour finaliser une succession ?",
+      "r": "Six mois minimum entre l'ouverture de succession et la signature du partage. Plus rapide pour les successions simples (3 mois), plus long en cas d'indivision complexe ou de patrimoine international (12 à 24 mois)."
+    },
+    {
+      "q": "Peut-on signer un acte authentique à distance ?",
+      "r": "Oui, depuis 2020 nous proposons la signature électronique à distance via comparution vidéo. Procédure sécurisée homologuée par le Conseil supérieur du notariat. Idéale pour les expatriés ou en cas de mobilité réduite."
+    },
+    {
+      "q": "Quelle différence entre testament olographe et authentique ?",
+      "r": "L'olographe est écrit, daté et signé de votre main : gratuit mais risque de perte ou contestation. L'authentique est reçu par notaire : payant (environ 130€) mais inattaquable, conservé au Fichier central des dispositions de dernières volontés."
+    }
+  ]
+}
