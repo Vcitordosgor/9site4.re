@@ -2,15 +2,16 @@
 import realisations from '../../data/realisations.json';
 
 /**
- * VitrineExemples — carrousel auto (marquee) d'exemples de sites, façon
- * Squarespace. Fond sombre, cartes qui défilent en boucle, accroche + chiffres
- * HONNÊTES (pas de faux clients). Pause au survol. Coupé sous reduced-motion.
+ * VitrineExemples — double carrousel (rangées défilant en sens inverse),
+ * cartes type "screenshot de site" avec barre de navigateur, overlay au hover.
+ * Chiffres honnêtes. Pause au survol, coupé sous reduced-motion.
  */
 
-// Sélection variée pour le défilé
-const items = realisations.slice(0, 10);
-// Dupliqué pour une boucle sans couture
-const loop = [...items, ...items];
+const half = Math.ceil(realisations.length / 2);
+const row1Items = realisations.slice(0, half);
+const row2Items = realisations.slice(half);
+const row1 = [...row1Items, ...row1Items];
+const row2 = [...row2Items, ...row2Items];
 
 const stats = [
   { value: `${realisations.length}`, label: 'exemples de sites en ligne' },
@@ -30,16 +31,28 @@ const stats = [
     </p>
   </div>
 
-  <!-- Marquee -->
-  <div class="vitrine-marquee relative mt-12 md:mt-16" aria-label="Exemples de sites qui défilent">
-    <div class="vitrine-track flex gap-5 w-max px-3">
-      {loop.map((r, i) => (
+  <!-- Double marquee -->
+  <div class="vitrine-marquee relative mt-10 md:mt-14 space-y-5" aria-label="Exemples de sites qui défilent">
+    <!-- Rangée 1 (sens normal) -->
+    <div class="vitrine-track-1 flex gap-5 w-max px-3">
+      {row1.map((r, i) => (
         <a
           href={r.previewUrl}
-          class="group relative shrink-0 w-72 md:w-80 rounded-2xl overflow-hidden ring-1 ring-blanc-casse/15 bg-blanc-casse/[0.06] transition-transform duration-300 hover:-translate-y-1"
-          aria-hidden={i >= items.length ? 'true' : undefined}
-          tabindex={i >= items.length ? -1 : undefined}
+          class="group relative shrink-0 w-72 md:w-80 rounded-2xl overflow-hidden ring-1 ring-blanc-casse/15 bg-black transition-all duration-300 hover:-translate-y-1 hover:ring-bleu/60"
+          aria-hidden={i >= row1Items.length ? 'true' : undefined}
+          tabindex={i >= row1Items.length ? -1 : undefined}
         >
+          <!-- Barre de navigateur -->
+          <div class="flex items-center gap-2 h-7 px-3 bg-[#0b0b0b] border-b border-blanc-casse/10">
+            <span class="flex gap-1">
+              <span class="w-2 h-2 rounded-full bg-blanc-casse/25"></span>
+              <span class="w-2 h-2 rounded-full bg-blanc-casse/25"></span>
+              <span class="w-2 h-2 rounded-full bg-blanc-casse/25"></span>
+            </span>
+            <span class="flex-1 flex items-center h-4 px-2 rounded-full bg-blanc-casse/[0.07] text-[9px] font-roboto-mono text-blanc-casse/55 truncate">
+              {r.slug}.re
+            </span>
+          </div>
           <div class="relative aspect-[4/3] overflow-hidden">
             <img
               src={r.thumbnail}
@@ -50,8 +63,59 @@ const stats = [
             />
             <div class="absolute bottom-0 inset-x-0 p-4 flex items-end justify-between gap-2 bg-bleu-nuit/55">
               <span class="font-sora font-semibold text-sm text-blanc-casse">{r.nom}</span>
-              <span class="inline-flex items-center px-2 py-0.5 rounded-full bg-orange text-bleu-nuit text-[10px] font-bold uppercase tracking-wide">
+              <span class="inline-flex items-center px-2 py-0.5 rounded-full bg-bleu text-bleu-nuit text-[10px] font-bold uppercase tracking-wide">
                 {r.moduleInclus}
+              </span>
+            </div>
+            <!-- Hover overlay -->
+            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-bleu-nuit/70">
+              <span class="inline-flex items-center gap-1.5 h-10 px-5 rounded-full bg-bleu text-bleu-nuit font-semibold text-sm shadow-[0_0_24px_rgba(145,166,255,0.5)]">
+                Voir la démo
+                <span aria-hidden="true">→</span>
+              </span>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <!-- Rangée 2 (sens inverse) -->
+    <div class="vitrine-track-2 flex gap-5 w-max px-3">
+      {row2.map((r, i) => (
+        <a
+          href={r.previewUrl}
+          class="group relative shrink-0 w-72 md:w-80 rounded-2xl overflow-hidden ring-1 ring-blanc-casse/15 bg-black transition-all duration-300 hover:-translate-y-1 hover:ring-bleu/60"
+          aria-hidden={i >= row2Items.length ? 'true' : undefined}
+          tabindex={i >= row2Items.length ? -1 : undefined}
+        >
+          <div class="flex items-center gap-2 h-7 px-3 bg-[#0b0b0b] border-b border-blanc-casse/10">
+            <span class="flex gap-1">
+              <span class="w-2 h-2 rounded-full bg-blanc-casse/25"></span>
+              <span class="w-2 h-2 rounded-full bg-blanc-casse/25"></span>
+              <span class="w-2 h-2 rounded-full bg-blanc-casse/25"></span>
+            </span>
+            <span class="flex-1 flex items-center h-4 px-2 rounded-full bg-blanc-casse/[0.07] text-[9px] font-roboto-mono text-blanc-casse/55 truncate">
+              {r.slug}.re
+            </span>
+          </div>
+          <div class="relative aspect-[4/3] overflow-hidden">
+            <img
+              src={r.thumbnail}
+              alt={`Exemple de site — ${r.nom}`}
+              class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="absolute bottom-0 inset-x-0 p-4 flex items-end justify-between gap-2 bg-bleu-nuit/55">
+              <span class="font-sora font-semibold text-sm text-blanc-casse">{r.nom}</span>
+              <span class="inline-flex items-center px-2 py-0.5 rounded-full bg-bleu text-bleu-nuit text-[10px] font-bold uppercase tracking-wide">
+                {r.moduleInclus}
+              </span>
+            </div>
+            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-bleu-nuit/70">
+              <span class="inline-flex items-center gap-1.5 h-10 px-5 rounded-full bg-bleu text-bleu-nuit font-semibold text-sm shadow-[0_0_24px_rgba(145,166,255,0.5)]">
+                Voir la démo
+                <span aria-hidden="true">→</span>
               </span>
             </div>
           </div>
@@ -60,15 +124,16 @@ const stats = [
     </div>
   </div>
 
-  <!-- Chiffres honnêtes -->
-  <div class="mx-auto max-w-content px-6 mt-14 md:mt-20">
-    <dl class="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+  <!-- Chiffres honnêtes (plus typographiques) -->
+  <div class="mx-auto max-w-content px-6 mt-16 md:mt-24">
+    <dl class="grid grid-cols-1 sm:grid-cols-3 gap-10 text-center">
       {stats.map((s) => (
         <div>
           <dt class="sr-only">{s.label}</dt>
           <dd>
-            <span class="block font-sora font-bold text-4xl md:text-5xl text-blanc-casse">{s.value}</span>
-            <span class="mt-2 block text-sm text-blanc-casse/65">{s.label}</span>
+            <span class="block font-sora font-bold text-6xl md:text-7xl text-blanc-casse leading-none tracking-tight">{s.value}</span>
+            <span class="block mx-auto mt-4 h-[2px] w-10 bg-bleu" aria-hidden="true"></span>
+            <span class="mt-4 block text-sm md:text-base text-blanc-casse/70">{s.label}</span>
           </dd>
         </div>
       ))}
@@ -77,7 +142,7 @@ const stats = [
     <div class="mt-12 flex justify-center">
       <a
         href="/realisations"
-        class="inline-flex items-center justify-center gap-2 h-13 px-8 py-3.5 text-base font-semibold rounded-full ring-1 ring-blanc-casse/30 text-blanc-casse hover:bg-blanc-casse hover:text-bleu-nuit transition-all duration-200 ease-out"
+        class="inline-flex items-center justify-center gap-2 h-12 px-7 text-base font-semibold rounded-full ring-1 ring-blanc-casse/30 text-blanc-casse hover:bg-blanc-casse hover:text-bleu-nuit transition-all duration-200 ease-out"
       >
         Voir tous les exemples métiers
         <span aria-hidden="true">→</span>
@@ -87,12 +152,16 @@ const stats = [
 </section>
 
 <style>
-  .vitrine-marquee { -webkit-mask-image: none; }
-  .vitrine-track {
-    animation: vitrine-scroll 50s linear infinite;
+  .vitrine-track-1 {
+    animation: vitrine-scroll 55s linear infinite;
     will-change: transform;
   }
-  .vitrine-marquee:hover .vitrine-track {
+  .vitrine-track-2 {
+    animation: vitrine-scroll 70s linear infinite reverse;
+    will-change: transform;
+  }
+  .vitrine-marquee:hover .vitrine-track-1,
+  .vitrine-marquee:hover .vitrine-track-2 {
     animation-play-state: paused;
   }
   @keyframes vitrine-scroll {
@@ -101,6 +170,7 @@ const stats = [
   }
   @media (prefers-reduced-motion: reduce) {
     .vitrine-marquee { overflow-x: auto; }
-    .vitrine-track { animation: none; }
+    .vitrine-track-1,
+    .vitrine-track-2 { animation: none; }
   }
 </style>
