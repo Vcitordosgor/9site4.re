@@ -46,7 +46,7 @@ import data from '../../../data/templates/borddeau.json';
     </div>
 
     <div class="pt-6 border-t flex flex-col md:flex-row items-start md:items-center justify-between gap-3 font-inter text-[11px]" style="border-color: rgba(229, 201, 154, 0.3); color: rgba(244, 248, 247, 0.65);">
-      <p>© {data.info.annee}–2026 {data.info.nom} · SIRET {data.info.siret}</p>
+      <p>© {data.info.annee}–2026 {data.info.nom} · SIRET …{data.info.siret.slice(-5)}</p>
       <p class="font-anton text-xl uppercase tracking-wider" style="color: #E5C99A; font-family: 'Anton', Impact, sans-serif;">{data.info.tagline}</p>
     </div>
   </div>

@@ -47,7 +47,7 @@ import data from '../../../data/templates/encrevolcan.json';
     </div>
 
     <div class="pt-6 border-t flex flex-col md:flex-row items-start md:items-center justify-between gap-3 font-mono text-[10.5px] uppercase tracking-[0.18em]" style="border-color: rgba(238, 230, 216, 0.2); color: rgb(238 230 216 / 0.5);">
-      <p>© {data.info.annee}–2026 {data.info.nom} · SIRET {data.info.siret}</p>
+      <p>© {data.info.annee}–2026 {data.info.nom} · SIRET …{data.info.siret.slice(-5)}</p>
       <p class="font-cardo italic normal-case tracking-normal text-base" style="color: #A11920;">— L'encre, l'aiguille, la main.</p>
     </div>
   </div>

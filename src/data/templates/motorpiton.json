@@ -9,7 +9,7 @@
     "ville": "La Réunion",
     "adresseLigne1": "47 chemin Bras-Creux",
     "adresseLigne2": "97430 La Réunion",
-    "telephone": "0262 27 41 88",
+    "telephone": "0692 12 34 56",
     "telephoneHref": "+262692123456",
     "whatsapp": "262692123456",
     "email": "atelier@motorpiton.re",
@@ -17,7 +17,7 @@
     "annee": "2014",
     "horaires": "Lundi → vendredi · 7h30 → 17h30 / Samedi 8h → 12h",
     "photoHero": "https://images.unsplash.com/photo-1486006920555-c77dcf18193c?w=1800&q=85",
-    "photoHeroAlt": "Atelier mécanique au La Réunion, voiture sur pont élévateur, mécanicien en bleu de travail",
+    "photoHeroAlt": "Atelier mécanique à La Réunion, voiture sur pont élévateur, mécanicien en bleu de travail",
     "agreements": [
       "Centre de Contrôle Technique partenaire",
       "Bosch Car Service Partner",
@@ -116,25 +116,25 @@
     {
       "prenom": "Mickaël",
       "role": "Chef d'atelier · Fondateur",
-      "anciennete": "12 ans",
+      "anciennete": "",
       "specialite": "Diagnostic & moteur"
     },
     {
       "prenom": "Jean-Yves",
       "role": "Mécanicien confirmé",
-      "anciennete": "8 ans",
+      "anciennete": "",
       "specialite": "Boîtes & embrayages"
     },
     {
       "prenom": "Émilie",
       "role": "Mécanicienne",
-      "anciennete": "4 ans",
+      "anciennete": "",
       "specialite": "Électricité auto"
     },
     {
       "prenom": "Loïc",
-      "role": "Apprenti CAP",
-      "anciennete": "2e année",
+      "role": "Apprenti",
+      "anciennete": "",
       "specialite": "Entretien courant"
     }
   ],

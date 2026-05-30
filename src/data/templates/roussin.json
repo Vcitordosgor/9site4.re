@@ -11,12 +11,12 @@
     "ville": "La Réunion",
     "adresseLigne1": "27 rue Marius et Ary Leblond",
     "adresseLigne2": "97410 La Réunion",
-    "telephone": "0262 22 47 91",
+    "telephone": "0692 12 34 56",
     "telephoneHref": "+262692123456",
     "email": "contact@etude-roussin.re",
     "siret": "78912045600014",
     "annee": "2008",
-    "ordreBarreau": "Barreau de l'île · Toque n°218",
+    "ordreBarreau": "Barreau de La Réunion",
     "horaires": "Lundi → vendredi · 8h30 → 12h30 / 14h → 18h"
   },
   "promesse": "L'Étude Roussin a été fondée en 2008 à La Réunion. Trois avocats associés, une assistante juridique. Nous défendons des particuliers et des PME. Pas de communication tapageuse, pas de promesse de résultat : nous travaillons avec sérieux et clarté, et nous vous rendons compte par écrit, à chaque étape.",
@@ -91,25 +91,25 @@
       "prenom": "Olivier",
       "nom": "Roussin",
       "titre": "Avocat associé fondateur",
-      "barreau": "Barreau La Réunion · Toque n°218",
+      "barreau": "Barreau de La Réunion",
       "specialite": "Droit de la famille · droit du travail",
-      "annees": "18 ans"
+      "annees": ""
     },
     {
       "prenom": "Sandrine",
       "nom": "Hoarau",
       "titre": "Avocate associée",
-      "barreau": "Barreau La Réunion · Toque n°289",
+      "barreau": "Barreau de La Réunion",
       "specialite": "Droit des affaires · droit fiscal",
-      "annees": "12 ans"
+      "annees": ""
     },
     {
       "prenom": "Karim",
       "nom": "Aly",
       "titre": "Avocat associé",
-      "barreau": "Barreau La Réunion · Toque n°341",
+      "barreau": "Barreau de La Réunion",
       "specialite": "Droit immobilier · droit du travail",
-      "annees": "9 ans"
+      "annees": ""
     }
   ],
   "fondateur": {
