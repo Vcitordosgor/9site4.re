@@ -128,85 +128,88 @@ const moduleIcon = moduleIcons[realisation.moduleInclus] ?? 'sparkle';
 const moduleColor = moduleColors[realisation.moduleInclus] ?? 'orange';
 ---
 
-<article class="tilt-card group relative bg-blanc-casse rounded-2xl ring-1 ring-bleu-nuit/10 shadow-card overflow-hidden flex flex-col hover:shadow-card-hover hover:ring-bleu-nuit/15">
+<article class="tilt-card group relative bg-blanc-casse rounded-2xl ring-1 ring-bleu-nuit/10 shadow-card overflow-hidden flex flex-col hover:shadow-card-hover hover:ring-bleu/40 transition-all duration-300">
 
   {realisation.previewUrl && Preview ? (
-    <!-- 🖥️ MINI-PREVIEW NAVIGATEUR : vrai composant template miniaturisé -->
+    <!-- 🖥️ MINI-PREVIEW : la star de la carte, plus grand, avec overlay au survol -->
     <a
       href={realisation.previewUrl}
       target="_blank"
       rel="noopener"
-      class="block group/preview overflow-hidden border-b border-bleu-nuit/10 bg-bleu-nuit"
+      class="block relative group/preview overflow-hidden border-b border-bleu-nuit/10 bg-bleu-nuit"
       aria-label={`Voir le site ${realisation.nom}`}
     >
-      <!-- Browser chrome minimaliste : 3 ronds seuls, pas d'URL fake -->
+      <!-- Browser chrome minimaliste -->
       <div class="flex items-center gap-1.5 px-3 py-2 bg-bleu-nuit/95" aria-hidden="true">
         <span class="block w-2.5 h-2.5 rounded-full bg-[#FF5F57]"></span>
         <span class="block w-2.5 h-2.5 rounded-full bg-[#FEBC2E]"></span>
         <span class="block w-2.5 h-2.5 rounded-full bg-[#28C840]"></span>
       </div>
 
-      <!-- Viewport : vrai mini-preview du template -->
-      <div class="relative aspect-[5/3] overflow-hidden bg-blanc-casse transition-transform duration-700 ease-out-soft group-hover/preview:scale-[1.015]">
-        <Preview />
+      <!-- Viewport plus grand (4/3 au lieu de 5/3) -->
+      <div class="relative aspect-[4/3] overflow-hidden bg-blanc-casse">
+        <div class="absolute inset-0 transition-transform duration-700 ease-out-soft group-hover/preview:scale-[1.03]">
+          <Preview />
+        </div>
+        <!-- Overlay au hover avec pill "Voir la démo" -->
+        <div class="absolute inset-0 flex items-center justify-center bg-bleu-nuit/55 opacity-0 group-hover/preview:opacity-100 transition-opacity duration-300">
+          <span class="inline-flex items-center gap-2 h-11 px-5 rounded-full bg-bleu text-white font-semibold text-sm shadow-[0_0_24px_rgba(145,166,255,0.6)]">
+            Voir la démo
+            <Icon name="arrow-right" size={16} strokeWidth={2.5} />
+          </span>
+        </div>
       </div>
     </a>
   ) : (
-    <!-- Fallback : gradient placeholder -->
-    <div class="relative aspect-[5/3] overflow-hidden bg-gradient-to-br from-bleu-nuit/30 via-bleu/30 to-orange/15">
+    <!-- Fallback -->
+    <div class="relative aspect-[4/3] overflow-hidden bg-bleu-nuit/[0.05]">
       <div class="absolute inset-0 flex items-center justify-center text-bleu-nuit/30">
         <Icon name={visual.icon} size={48} strokeWidth={1.5} />
       </div>
     </div>
   )}
 
-  <!-- Corps de carte : métadonnées catalogue -->
-  <div class="flex-1 flex flex-col p-6">
+  <!-- Corps : métadonnées épurées -->
+  <div class="flex-1 flex flex-col p-5 md:p-6">
 
-    <div class="flex items-center justify-between gap-3 mb-3 flex-wrap">
-      <Badge variant="secondary" size="sm">{categoryName}</Badge>
+    <!-- Meta inline : catégorie + module sur une ligne discrète -->
+    <div class="flex items-center gap-2 text-[10.5px] font-roboto-mono uppercase tracking-[0.18em] text-bleu-nuit/55 font-semibold mb-3">
+      <span>{categoryName}</span>
       {realisation.previewUrl && (
-        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-orange text-white text-[10px] font-bold uppercase tracking-wide">
-          <span class="w-1.5 h-1.5 rounded-full bg-bleu-nuit animate-pulse" aria-hidden="true"></span>
-          Démo métier
-        </span>
+        <>
+          <span aria-hidden="true" class="text-bleu-nuit/30">·</span>
+          <span class="inline-flex items-center gap-1.5 text-bleu">
+            <Icon name={moduleIcon} size={11} strokeWidth={2.25} />
+            Module {realisation.moduleInclus}
+          </span>
+        </>
       )}
     </div>
 
-    <h3 class="text-xl font-sora font-semibold text-bleu-nuit">{realisation.nom}</h3>
-    <p class="mt-2 text-sm text-bleu-nuit/70 leading-relaxed">{realisation.sousTitre}</p>
+    <h3 class="font-sora font-bold text-xl text-bleu-nuit leading-snug">{realisation.nom}</h3>
+    <p class="mt-2 text-sm text-bleu-nuit/65 leading-relaxed">{realisation.sousTitre}</p>
 
-    <div class:list={[
-      'pill-bounce mt-4 inline-flex items-center gap-2 self-start px-3 py-1.5 rounded-full text-sm text-bleu-nuit',
-      moduleColor === 'bleu' ? 'bg-bleu' : 'bg-orange',
-    ]}>
-      <Icon
-        name={moduleIcon}
-        size={16}
-        class="text-bleu-nuit shrink-0"
-        strokeWidth={2}
-      />
-      <span><strong class="font-semibold">{realisation.moduleInclus}</strong></span>
-    </div>
+    <!-- CTA ligne : bouton mauve + lien tertiaire -->
+    <div class="mt-6 flex items-center justify-between gap-3 pt-5 border-t border-bleu-nuit/10">
+      {realisation.previewUrl ? (
+        <a
+          href={realisation.previewUrl}
+          target="_blank"
+          rel="noopener"
+          class="group/cta inline-flex items-center gap-1.5 h-10 px-4 text-sm font-semibold rounded-full bg-bleu text-white hover:bg-[#7e95ff] hover:-translate-y-0.5 shadow-[0_4px_16px_rgba(145,166,255,0.45)] transition-all duration-200"
+        >
+          Voir la démo
+          <Icon name="arrow-right" size={14} strokeWidth={2.5} class="transition-transform duration-200 group-hover/cta:translate-x-0.5" />
+        </a>
+      ) : <span />}
 
-    {realisation.previewUrl && (
       <a
-        href={realisation.previewUrl}
-        target="_blank"
-        rel="noopener"
-        class="mt-5 inline-flex items-center justify-center gap-2 h-10 px-4 text-sm font-semibold rounded-full bg-bleu-nuit text-blanc-casse hover:bg-orange hover:text-bleu-nuit transition-all"
+        href={ctaHref}
+        class="inline-flex items-center gap-1.5 text-sm font-semibold text-bleu-nuit/70 hover:text-bleu transition-colors"
       >
-        Voir le site
-        <Icon name="arrow-right" size={14} strokeWidth={2.5} />
+        Je veux celui-ci
+        <Icon name="arrow-right" size={14} strokeWidth={2.5} class="transition-transform duration-200 group-hover:translate-x-0.5" />
       </a>
-    )}
-
-    <a
-      href={ctaHref}
-      class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-bleu-nuit group-hover:text-orange transition-colors"
-    >
-      Je veux un site comme celui-ci
-      <Icon name="arrow-right" size={16} class="transition-transform duration-300 ease-out-soft group-hover:translate-x-1" strokeWidth={2} />
-    </a>
+    </div>
   </div>
 </article>
