@@ -1,0 +1,74 @@
+---
+/**
+ * Process — calendrier annuel du dirigeant en 4 étapes, timeline horizontale
+ * traitée comme un sommaire de rapport annuel.
+ */
+const etapes = [
+  {
+    num: '01',
+    periode: 'Janvier — Mars',
+    titre: 'Clôture & bilan',
+    desc: "Récupération des pièces, lettrage, bilan annuel, liasse fiscale. Rendu garanti avant le 31 mars.",
+  },
+  {
+    num: '02',
+    periode: 'Avril — Juin',
+    titre: 'Déclarations & AG',
+    desc: "IS, CVAE, déclarations sociales. Procès-verbal d'assemblée générale. Dépôt des comptes au greffe.",
+  },
+  {
+    num: '03',
+    periode: 'Juillet — Septembre',
+    titre: 'Pilotage trimestriel',
+    desc: "Situation comptable au 30/06, indicateurs de gestion, conseil stratégique pour la fin d'exercice.",
+  },
+  {
+    num: '04',
+    periode: 'Octobre — Décembre',
+    titre: 'Prévisionnel N+1',
+    desc: "Pré-clôture, optimisations fiscales, budget et prévisionnel N+1, audit interne préventif.",
+  },
+];
+---
+
+<section class="bg-auberval-feutre border-t border-b border-auberval-marine/10 py-24 md:py-32 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="mb-16 md:mb-20 max-w-4xl">
+      <p class="font-plex-sans text-[10px] uppercase tracking-[0.32em] text-auberval-or font-semibold mb-6">
+        ✦ Sommaire — Calendrier annuel
+      </p>
+      <h2 class="font-source-serif text-auberval-marine leading-[0.95]" style="font-size: clamp(40px, 6vw, 88px);">
+        Une année comptable,<br/>
+        <span class="italic text-auberval-or font-light">quatre temps</span> rythmés.
+      </h2>
+    </header>
+
+    <ol class="relative grid md:grid-cols-4 gap-y-12 md:gap-x-px md:bg-auberval-marine/15 border-y border-auberval-marine/15">
+      {etapes.map((e) => (
+        <li class="bg-auberval-feutre p-7 md:p-9 hover:bg-auberval-blanc transition-colors relative">
+
+          <p class="font-dm-mono text-[10px] uppercase tracking-[0.28em] text-auberval-or mb-5">
+            T·{e.num}
+          </p>
+
+          <p class="font-source-serif text-auberval-marine leading-none tabular-nums mb-6" style="font-size: clamp(56px, 6vw, 96px);">
+            {e.num}
+          </p>
+
+          <p class="font-dm-mono text-[11px] uppercase tracking-[0.22em] text-auberval-vert pb-3 mb-3 border-b border-auberval-marine/20">
+            ◆ {e.periode}
+          </p>
+
+          <h3 class="font-source-serif text-auberval-marine text-xl md:text-2xl mb-3 leading-snug">
+            {e.titre}
+          </h3>
+
+          <p class="font-plex-sans text-auberval-encre text-sm leading-[1.75]">
+            {e.desc}
+          </p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
