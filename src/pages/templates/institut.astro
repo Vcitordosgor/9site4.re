@@ -16,6 +16,9 @@ import marleneData from '../../data/templates/marlene.json';
 import MarleneHeader from '../../components/templates/institut/MarleneHeader.astro';
 import HeroEditorial from '../../components/templates/institut/HeroEditorial.astro';
 import RituelSignature from '../../components/templates/institut/RituelSignature.astro';
+import PhotoCabine from '../../components/templates/institut/PhotoCabine.astro';
+import Bandeau from '../../components/templates/institut/Bandeau.astro';
+import Citation from '../../components/templates/institut/Citation.astro';
 import CarteSoins from '../../components/templates/institut/CarteSoins.astro';
 import Marques from '../../components/templates/institut/Marques.astro';
 import CartesCadeaux from '../../components/templates/institut/CartesCadeaux.astro';
@@ -45,10 +48,13 @@ const businessLD = localBusinessSchema(marleneData);
   <main id="top" class="bg-marlene-nacre text-marlene-noir font-mulish">
     <HeroEditorial />
     <RituelSignature />
+    <PhotoCabine />
     <CarteSoins />
     <Marques />
+    <Bandeau />
     <CartesCadeaux />
     <Reservation />
+    <Citation />
     <Institut />
     <CTAFinal />
   </main>

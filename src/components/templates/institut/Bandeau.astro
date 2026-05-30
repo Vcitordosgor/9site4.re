@@ -1,0 +1,21 @@
+---
+import data from '../../../data/templates/marlene.json';
+---
+
+<section aria-label="Reservation" class="bg-marlene-bordeaux text-marlene-nacre py-6 md:py-7">
+  <div class="max-w-content mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-8">
+    <div class="flex items-center gap-3">
+      <span class="font-marcellus text-2xl md:text-3xl text-marlene-nacre leading-none">Sur rendez-vous</span>
+      <span class="hidden md:inline font-mulish text-[11px] uppercase tracking-[0.3em] text-marlene-rose">institut · soins · personnalisés</span>
+    </div>
+    <p class="font-eb-garamond italic text-marlene-nacre text-base md:text-lg text-center">
+      Petits gestes, grands soins.
+    </p>
+    <a
+      href={`tel:${data.info.telephoneHref}`}
+      class="inline-flex items-center justify-center h-11 px-6 bg-marlene-nacre text-marlene-bordeaux font-mulish font-semibold text-[11.5px] uppercase tracking-[0.22em] rounded-full hover:bg-marlene-champagne hover:text-marlene-noir transition-colors tabular-nums"
+    >
+      0692 12 34 56
+    </a>
+  </div>
+</section>
