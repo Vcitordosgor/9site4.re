@@ -1,0 +1,79 @@
+---
+import data from '../../../data/templates/encrevolcan.json';
+
+const navLinks = [
+  { href: '#styles', label: 'Styles' },
+  { href: '#artistes', label: 'Tatoueurs' },
+  { href: '#flash', label: 'Flash' },
+  { href: '#process', label: 'Process' },
+  { href: '#tarifs', label: 'Tarifs' },
+];
+---
+
+<header
+  id="encre-header"
+  data-scrolled="false"
+  class="sticky top-0 z-50 transition-[background-color,backdrop-filter,box-shadow] duration-500 border-b"
+  style="background-color: rgb(10 10 10 / 0.92); border-color: rgb(161 25 32 / 0.25);"
+>
+  <div class="max-w-content mx-auto px-6 md:px-10 h-16 md:h-20 flex items-center justify-between gap-6">
+
+    <a href="#top" class="flex items-center gap-2.5 group" aria-label="Encre Volcan — accueil">
+      <!-- Picto aiguille -->
+      <svg viewBox="0 0 32 32" class="w-7 h-7" style="color: #A11920;" aria-hidden="true">
+        <path d="M16 2 L18 14 L26 22 L22 26 L14 18 L2 16 Z" fill="currentColor" />
+        <circle cx="22" cy="22" r="2" fill="#EEE6D8" />
+      </svg>
+      <div class="flex flex-col leading-none">
+        <span class="font-cardo italic text-lg md:text-xl" style="color: #EEE6D8;">Encre</span>
+        <span class="font-mono tracking-[0.2em] uppercase text-[10px] -mt-0.5" style="color: #A11920;">Volcan</span>
+      </div>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-7 lg:gap-9 font-mono text-[11px] uppercase tracking-[0.22em]" aria-label="Navigation">
+      {navLinks.map((link) => (
+        <a href={link.href} class="transition-colors duration-300" style="color: #EEE6D8;" onmouseover="this.style.color='#A11920'" onmouseout="this.style.color='#EEE6D8'">
+          {link.label}
+        </a>
+      ))}
+    </nav>
+
+    <a
+      href={`https://wa.me/${data.info.whatsapp}?text=${encodeURIComponent('Bonjour, je souhaite réserver une consultation tatouage.')}`}
+      target="_blank"
+      rel="noopener"
+      class="hidden md:inline-flex items-center justify-center h-10 px-5 font-mono font-semibold text-[11px] uppercase tracking-[0.2em] border-2 transition-colors duration-300"
+      style="color: #EEE6D8; border-color: #A11920; background-color: #A11920;"
+      onmouseover="this.style.backgroundColor='transparent'; this.style.color='#A11920';"
+      onmouseout="this.style.backgroundColor='#A11920'; this.style.color='#EEE6D8';"
+    >
+      Consultation
+    </a>
+
+    <a
+      href={`tel:${data.info.telephoneHref}`}
+      class="md:hidden inline-flex items-center justify-center h-10 px-4 font-mono font-semibold text-[11px] uppercase tracking-wider"
+      style="background-color: #A11920; color: #EEE6D8;"
+      aria-label="Appeler"
+    >
+      Appeler
+    </a>
+  </div>
+</header>
+
+<style>
+  #encre-header[data-scrolled='true'] {
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    backdrop-filter: saturate(180%) blur(12px);
+    box-shadow: 0 1px 3px rgb(0 0 0 / 0.5);
+  }
+</style>
+
+<script>
+  const header = document.getElementById('encre-header');
+  if (header) {
+    const update = () => { header.dataset.scrolled = String(window.scrollY > 8); };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+  }
+</script>

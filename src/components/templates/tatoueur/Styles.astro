@@ -1,0 +1,54 @@
+---
+import data from '../../../data/templates/encrevolcan.json';
+---
+
+<section id="styles" class="py-20 md:py-28 relative" style="background-color: #EEE6D8;">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+
+    <div class="max-w-2xl mb-14 md:mb-20">
+      <p class="font-mono text-[11px] uppercase tracking-[0.4em] mb-4" style="color: #A11920;">— Notre vocabulaire —</p>
+      <h2 class="font-cardo text-4xl md:text-6xl leading-[0.95]" style="color: #0A0A0A;">
+        Quatre styles,
+        <em class="italic" style="color: #A11920;">une seule main.</em>
+      </h2>
+      <p class="mt-6 font-cardo italic text-lg md:text-xl leading-relaxed" style="color: rgb(31 26 24 / 0.75);">
+        Chaque artiste a sa signature, mais l'atelier garde une cohérence : ligne nette,
+        encre dense, jamais bâclé. Si votre projet ne rentre pas dans une de ces cases,
+        on en discute.
+      </p>
+    </div>
+
+    <ul class="grid grid-cols-1 md:grid-cols-2 gap-px" style="background-color: rgba(31, 26, 24, 0.15);">
+      {data.styles.map((s, i) => (
+        <li class="p-7 md:p-10 transition-colors group" style="background-color: #EEE6D8;" onmouseover="this.style.backgroundColor='#1F1A18'; this.querySelectorAll('.txt-flip').forEach(e => e.style.color='#EEE6D8'); this.querySelectorAll('.txt-flip-red').forEach(e => e.style.color='#EEE6D8');" onmouseout="this.style.backgroundColor='#EEE6D8'; this.querySelectorAll('.txt-flip').forEach(e => e.style.color='#0A0A0A'); this.querySelectorAll('.txt-flip-red').forEach(e => e.style.color='#A11920');">
+
+          <div class="flex items-baseline justify-between gap-4 mb-6">
+            <span class="font-cardo text-6xl md:text-7xl leading-none txt-flip-red transition-colors" style="color: #A11920;">
+              {s.marqueur}
+            </span>
+            <span class="font-mono text-[10px] uppercase tracking-[0.25em] txt-flip transition-colors" style="color: rgb(31 26 24 / 0.55);">
+              Style
+            </span>
+          </div>
+
+          <h3 class="font-cardo text-2xl md:text-3xl leading-tight txt-flip transition-colors" style="color: #0A0A0A;">
+            {s.nom}
+          </h3>
+          <p class="mt-2 font-cardo italic text-lg md:text-xl txt-flip-red transition-colors" style="color: #A11920;">
+            {s.tagline}
+          </p>
+
+          <p class="mt-5 font-mono text-[12.5px] leading-relaxed txt-flip transition-colors" style="color: rgb(31 26 24 / 0.78);">
+            {s.description}
+          </p>
+
+          <div class="mt-7 pt-5 border-t txt-flip transition-colors" style="border-color: rgba(31,26,24,0.18); color: rgb(31 26 24 / 0.65);">
+            <p class="font-mono text-[10.5px] uppercase tracking-[0.18em]">
+              ✦ {s.details}
+            </p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
