@@ -1,0 +1,97 @@
+---
+/**
+ * HeroPop — Wordmark XXL Fraunces italique + boules de glace SVG empilées
+ * + photo plein cadre tropicale. Vibe pop pastel.
+ */
+import data from '../../../data/templates/sorbetpei.json';
+---
+
+<section id="top" class="relative overflow-hidden" style="background-color: #FFF8E7;">
+  <!-- Boules de couleur abstraites en arrière-plan -->
+  <div class="absolute top-12 -left-12 w-72 h-72 rounded-full opacity-30 blur-3xl" style="background-color: #FFB347;" aria-hidden="true"></div>
+  <div class="absolute top-32 right-0 w-80 h-80 rounded-full opacity-25 blur-3xl" style="background-color: #FF6F91;" aria-hidden="true"></div>
+  <div class="absolute bottom-12 left-1/3 w-64 h-64 rounded-full opacity-25 blur-3xl" style="background-color: #A8D5BA;" aria-hidden="true"></div>
+
+  <div class="max-w-content mx-auto px-6 md:px-10 pt-10 md:pt-16 pb-16 md:pb-24 relative">
+
+    <!-- Bandeau eyebrow -->
+    <div class="text-center mb-7 md:mb-10">
+      <p class="inline-flex items-center gap-3 font-dm-sans text-[11px] md:text-[12px] uppercase tracking-[0.4em]" style="color: #FF6F91;">
+        <span class="block w-8 h-px" style="background-color: #FF6F91;"></span>
+        <span>Glacier artisanal · depuis {data.info.annee} · La Réunion</span>
+        <span class="block w-8 h-px" style="background-color: #FF6F91;"></span>
+      </p>
+    </div>
+
+    <!-- Wordmark hero -->
+    <div class="text-center max-w-5xl mx-auto">
+      <h1 class="font-fraunces font-semibold leading-[0.85]" style="color: #3D2817;">
+        <span class="block" style="font-size: clamp(64px, 13vw, 156px); letter-spacing: -0.025em;">Sorbet</span>
+        <span class="block font-fraunces italic" style="font-size: clamp(80px, 15vw, 184px); color: #FF6F91; line-height: 0.88; margin-top: -0.05em;">Péi.</span>
+      </h1>
+
+      <!-- Sous-titre + emoji glace -->
+      <div class="mt-7 md:mt-9 flex items-center justify-center gap-3 flex-wrap">
+        <!-- 3 boules SVG inline -->
+        <svg viewBox="0 0 32 32" class="w-7 md:w-9" aria-hidden="true">
+          <circle cx="16" cy="11" r="6" fill="#FFB347" stroke="#3D2817" stroke-width="0.5"/>
+          <path d="M10 14 L16 28 L22 14 Z" fill="#3D2817"/>
+        </svg>
+        <p class="font-fraunces text-3xl md:text-5xl italic" style="color: #3D2817;">
+          {data.info.tagline}
+        </p>
+        <svg viewBox="0 0 32 32" class="w-7 md:w-9" aria-hidden="true">
+          <circle cx="16" cy="11" r="6" fill="#FF6F91" stroke="#3D2817" stroke-width="0.5"/>
+          <path d="M10 14 L16 28 L22 14 Z" fill="#3D2817"/>
+        </svg>
+      </div>
+
+      <p class="mt-7 md:mt-9 font-dm-sans text-[15px] md:text-[17px] leading-relaxed max-w-2xl mx-auto" style="color: rgba(61, 40, 23, 0.78);">
+        Tous les fruits péi récoltés à la main, sucre roux uniquement, zéro stabilisant, zéro colorant.<br class="hidden md:block" />
+        Une turbine qui tourne tous les mardis dans l'atelier de Léna.
+      </p>
+
+      <!-- CTAs -->
+      <div class="mt-9 md:mt-11 flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4">
+        <a
+          href="#parfums"
+          class="inline-flex items-center justify-center h-12 px-8 font-dm-sans font-semibold text-[13px] uppercase tracking-[0.18em] rounded-full transition-opacity hover:opacity-90"
+          style="background-color: #FF6F91; color: #FFF8E7;"
+        >
+          Voir les parfums
+        </a>
+        <a
+          href="#tournee"
+          class="inline-flex items-center justify-center h-12 px-8 font-dm-sans font-semibold text-[13px] uppercase tracking-[0.18em] rounded-full border-2 transition-colors duration-300"
+          style="background-color: transparent; color: #3D2817; border-color: #3D2817;"
+        >
+          Où nous trouver
+        </a>
+      </div>
+    </div>
+
+    <!-- Photo plein cadre -->
+    <div class="mt-12 md:mt-16 max-w-5xl mx-auto relative">
+      <div class="aspect-[16/8] overflow-hidden rounded-[40px] md:rounded-[60px] relative" style="border: 4px solid #3D2817;">
+        <img
+          src={data.info.photoHero}
+          alt={data.info.photoHeroAlt}
+          class="w-full h-full object-cover"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </div>
+
+      <!-- Sticker rond flottant -->
+      <div class="absolute -top-4 -right-4 md:-top-8 md:-right-8 w-24 h-24 md:w-32 md:h-32 rounded-full flex flex-col items-center justify-center font-dm-sans font-semibold" style="background-color: #FFD93D; color: #3D2817; border: 3px solid #3D2817; transform: rotate(-12deg);">
+        <span class="font-fraunces italic text-2xl md:text-3xl leading-none">3€</span>
+        <span class="text-[8px] md:text-[10px] uppercase tracking-wider mt-0.5">la boule</span>
+      </div>
+    </div>
+
+    <p class="mt-5 text-center font-fraunces italic text-lg md:text-xl" style="color: #FF6F91;">
+      — Quatre fruits péi turbinés ce matin —
+    </p>
+  </div>
+</section>

@@ -1,0 +1,153 @@
+{
+  "info": {
+    "nom": "Sorbet Péi",
+    "wordmark": "Sorbet",
+    "wordmark2": "Péi",
+    "soustitre": "Glacier artisanal · La Réunion",
+    "tagline": "Tous les fruits péi, en cône.",
+    "fondatrice": "Léna Bègue",
+    "ville": "La Réunion",
+    "adresseLigne1": "Camion glacé itinérant",
+    "adresseLigne2": "Tournée hebdomadaire La Réunion",
+    "telephone": "0692 12 34 56",
+    "telephoneHref": "+262692123456",
+    "whatsapp": "262692123456",
+    "email": "salut@sorbetpei.re",
+    "instagram": "@sorbetpei.974",
+    "siret": "85213045700013",
+    "annee": "2021",
+    "photoHero": "https://images.unsplash.com/photo-1501443762994-82bd5dace89a?q=80&w=1600&auto=format&fit=crop",
+    "photoHeroAlt": "Cône de glace artisanal au sorbet mangue avec fruits frais, La Réunion",
+    "ouvertureHebdo": "Mercredi → dimanche · 14h00 → 20h00",
+    "fermeture": "Lundi · mardi"
+  },
+  "promesse": "On part chercher les fruits chez les producteurs péi, on les ramène le matin, on turbine l'après-midi. Une mangue Carotte récoltée à La Plaine ne devrait pas devenir un sirop industriel — elle mérite mieux. Voilà pourquoi Léna a démarré ce camion en 2021.",
+  "parfumsPhares": [
+    {
+      "id": "mangue-carotte",
+      "nom": "Mangue Carotte",
+      "type": "Sorbet",
+      "couleur": "#FFB347",
+      "couleurFond": "#FFE4B8",
+      "tagline": "La plus locale de toutes.",
+      "description": "Mangue Carotte des Hauts, récoltée mûre à point. Pulpe travaillée sans sucre raffiné, juste l'eau et un peu de jus de citron vert pour fixer la couleur. Le goût direct du fruit, rien de plus.",
+      "saison": "Novembre → mars"
+    },
+    {
+      "id": "letchi",
+      "nom": "Letchi",
+      "type": "Sorbet",
+      "couleur": "#FF6F91",
+      "couleurFond": "#FFD9E1",
+      "tagline": "Disponible 8 semaines/an.",
+      "description": "Letchis Kwaï Mi de l'île, dénoyautés à la main, mixés avec leur jus. Texture cristalline, parfum floral léger. Une vraie fenêtre courte : on en fait dès que la saison ouvre, on s'arrête net quand elle ferme.",
+      "saison": "Novembre → janvier"
+    },
+    {
+      "id": "ananas-victoria",
+      "nom": "Ananas Victoria",
+      "type": "Sorbet",
+      "couleur": "#FFD93D",
+      "couleurFond": "#FFF3B8",
+      "tagline": "Le plus parfumé du monde.",
+      "description": "Ananas Victoria mûri sur pied, ramené à maturité parfaite. Pulpe et jus, un soupçon de gingembre frais pour rallonger la finale. Couleur jaune-or, parfum tropical pur.",
+      "saison": "Toute l'année"
+    },
+    {
+      "id": "goyave",
+      "nom": "Goyave rose",
+      "type": "Sorbet",
+      "couleur": "#FF7F50",
+      "couleurFond": "#FFDCC4",
+      "tagline": "La couleur du coucher de soleil.",
+      "description": "Goyaves roses péi, passées au tamis pour retirer les pépins. Pulpe veloutée, sucre roux léger, citron vert. Une couleur orangée naturelle, sans colorant ajouté.",
+      "saison": "Février → août"
+    },
+    {
+      "id": "vanille-bourbon",
+      "nom": "Vanille bourbon",
+      "type": "Crème glacée",
+      "couleur": "#FFF8E7",
+      "couleurFond": "#FFEFCC",
+      "tagline": "Trois gousses par litre de lait.",
+      "description": "Crème glacée onctueuse, lait entier de l'île, jaunes d'œufs bio, trois gousses de vanille bourbon fendues et infusées 24h. Texture beurrée, parfum chaud-doux. La classique réinventée.",
+      "saison": "Toute l'année"
+    },
+    {
+      "id": "chocolat-cacao",
+      "nom": "Chocolat 70% Madagascar",
+      "type": "Crème glacée",
+      "couleur": "#3D2817",
+      "couleurFond": "#D4B89E",
+      "tagline": "Le seul parfum non péi qu'on assume.",
+      "description": "Chocolat Madagascar 70% fondu doucement, lait entier, crème, sucre roux. Texture dense, parfum cacao-fruits rouges. Notre concession au continent voisin.",
+      "saison": "Toute l'année"
+    }
+  ],
+  "saveursMoment": [
+    {
+      "label": "Cette semaine",
+      "parfum": "Letchi · pic de saison",
+      "texte": "On rentre 12 kg de letchis Kwaï Mi tous les mardis matin chez Robert. À turbiner immédiatement, fenêtre de 48h max après cueillette."
+    },
+    {
+      "label": "Le mois prochain",
+      "parfum": "Combava sorbet",
+      "texte": "Préparation d'une édition limitée combava-citron vert. 200 bacs prévus, ça partira en deux week-ends. Annonce sur Instagram."
+    },
+    {
+      "label": "Bientôt fini",
+      "parfum": "Goyave rose",
+      "texte": "Les goyaves ralentissent. Plus que trois semaines avant le stop. Profitez-en sur le camion ou en bac à emporter."
+    }
+  ],
+  "processus": [
+    {
+      "etape": "01",
+      "titre": "Marché producteurs",
+      "texte": "Mardi matin tôt, Léna passe chez les producteurs : mangues à La Plaine, letchis chez Robert, vanille à Bras-Panon. On ne prend que ce qui est mûr à point."
+    },
+    {
+      "etape": "02",
+      "titre": "Préparation pulpes",
+      "texte": "Mardi après-midi : épluchage, dénoyautage, mixage. Tout passe au tamis pour une texture lisse. Conservation 24h max au frais, sinon on perd le parfum."
+    },
+    {
+      "etape": "03",
+      "titre": "Turbinage à -18°C",
+      "texte": "Mercredi matin : la turbine tourne sans arrêt. 5 litres par bac, 25 minutes par parfum. Sucre roux uniquement, jamais de stabilisant ni d'arôme ajouté."
+    },
+    {
+      "etape": "04",
+      "titre": "Tournée du camion",
+      "texte": "Mercredi 14h, le camion démarre sa tournée. Cinq spots fixes dans la semaine, plus deux marchés le week-end. Tournée détaillée sur Instagram chaque lundi."
+    }
+  ],
+  "tournee": [
+    { "jour": "Mercredi", "lieu": "À La Réunion · sortie écoles", "horaire": "14h00 → 18h00" },
+    { "jour": "Jeudi", "lieu": "À La Réunion · marché soir", "horaire": "16h00 → 20h00" },
+    { "jour": "Vendredi", "lieu": "À La Réunion · front de mer", "horaire": "15h00 → 20h00" },
+    { "jour": "Samedi", "lieu": "À La Réunion · marché matin + bord lagon", "horaire": "8h00 → 13h00 / 15h00 → 20h00" },
+    { "jour": "Dimanche", "lieu": "À La Réunion · pique-nique plage", "horaire": "10h00 → 19h00" }
+  ],
+  "prive": [
+    {
+      "titre": "Anniversaire enfants",
+      "tagline": "Le camion se gare devant chez toi.",
+      "details": "Formule 25 personnes, deux parfums au choix, 90 minutes de service. À partir de 320 €.",
+      "minimum": "1 semaine à l'avance"
+    },
+    {
+      "titre": "Mariages & événementiel",
+      "tagline": "Cocktail glacé sur-mesure.",
+      "details": "Sélection de 4 parfums saisonniers, cônes ou coupes, service durant 2 heures. Devis selon volume invités.",
+      "minimum": "2 mois à l'avance"
+    },
+    {
+      "titre": "Entreprises (afterwork)",
+      "tagline": "On apporte 3 parfums signature.",
+      "details": "Formule 40 personnes, dégustation comparative producteurs péi, parfums au choix. 480 € forfait.",
+      "minimum": "3 semaines à l'avance"
+    }
+  ]
+}
