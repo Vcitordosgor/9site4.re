@@ -1,0 +1,77 @@
+---
+import data from '../../../data/templates/onde.json';
+---
+
+<section id="services" class="py-20 md:py-28" style="background-color: #0D0D14; color: #F5F4F8;">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+
+    <div class="max-w-2xl mb-14 md:mb-20">
+      <p class="font-jetbrains text-[11px] uppercase tracking-[0.35em] mb-4" style="color: #22D3EE;">// SERVICES</p>
+      <h2 class="font-space-grotesk font-bold text-4xl md:text-6xl leading-[0.95]">
+        Quatre services,
+        <span style="color: #7C3AED;">workflow complet.</span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+      {data.services.map((s) => (
+        <article class="group relative p-7 md:p-9 border-2 transition-all hover:-translate-y-1 overflow-hidden" style="background-color: rgb(124 58 237 / 0.05); border-color: rgb(124 58 237 / 0.4);" onmouseover="this.style.borderColor='#22D3EE'; this.style.boxShadow='0 0 28px rgba(34, 211, 238, 0.3)';" onmouseout="this.style.borderColor='rgb(124 58 237 / 0.4)'; this.style.boxShadow='none';">
+
+          <!-- Code badge -->
+          <div class="flex items-baseline justify-between gap-4 mb-6">
+            <div>
+              <p class="font-jetbrains text-[10px] uppercase tracking-[0.22em] mb-1" style="color: #22D3EE;">
+                /service/{s.code}
+              </p>
+              <h3 class="font-space-grotesk font-bold text-3xl md:text-4xl leading-tight" style="color: #F5F4F8;">
+                {s.nom}
+              </h3>
+            </div>
+            <!-- Icon -->
+            <div class="shrink-0 w-12 h-12 border flex items-center justify-center" style="border-color: #7C3AED; color: #7C3AED;">
+              <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                {s.icon === 'mic' && (
+                  <>
+                    <path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z" />
+                    <path d="M19 10v2a7 7 0 01-14 0v-2M12 19v4M8 23h8" stroke-linecap="round"/>
+                  </>
+                )}
+                {s.icon === 'sliders' && (
+                  <path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6" stroke-linecap="round"/>
+                )}
+                {s.icon === 'wave' && (
+                  <path d="M3 12h2l2-6 4 12 4-9 4 6 2-3h2" stroke-linecap="round" stroke-linejoin="round"/>
+                )}
+                {s.icon === 'music' && (
+                  <>
+                    <path d="M9 18V5l12-2v13" />
+                    <circle cx="6" cy="18" r="3" />
+                    <circle cx="18" cy="16" r="3" />
+                  </>
+                )}
+              </svg>
+            </div>
+          </div>
+
+          <p class="font-space-grotesk italic text-lg md:text-xl" style="color: #22D3EE;">
+            {s.tagline}
+          </p>
+
+          <p class="mt-4 font-jetbrains text-[12.5px] leading-relaxed" style="color: rgb(245 244 248 / 0.7);">
+            {s.description}
+          </p>
+
+          <!-- Tarif bas -->
+          <div class="mt-6 pt-5 border-t flex items-center justify-between" style="border-color: rgb(245 244 248 / 0.15);">
+            <p class="font-jetbrains text-[10px] uppercase tracking-[0.2em]" style="color: rgb(245 244 248 / 0.55);">
+              tarif_indicatif
+            </p>
+            <p class="font-space-grotesk font-bold text-xl md:text-2xl" style="color: #22D3EE;">
+              {s.tarif}
+            </p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

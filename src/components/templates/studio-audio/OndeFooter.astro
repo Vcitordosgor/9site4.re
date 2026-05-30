@@ -1,0 +1,57 @@
+---
+import data from '../../../data/templates/onde.json';
+---
+
+<footer style="background-color: #0D0D14; color: #F5F4F8; border-top: 1px solid rgb(124 58 237 / 0.3);">
+  <div class="max-w-content mx-auto px-6 md:px-10 py-14 md:py-16">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-10 mb-12">
+
+      <div class="md:col-span-5">
+        <div class="flex items-center gap-3">
+          <svg viewBox="0 0 36 36" class="w-10 h-10" aria-hidden="true">
+            <rect x="3" y="14" width="2.5" height="8" rx="1" fill="#7C3AED"/>
+            <rect x="8" y="10" width="2.5" height="16" rx="1" fill="#22D3EE"/>
+            <rect x="13" y="6" width="2.5" height="24" rx="1" fill="#7C3AED"/>
+            <rect x="18" y="11" width="2.5" height="14" rx="1" fill="#22D3EE"/>
+            <rect x="23" y="14" width="2.5" height="8" rx="1" fill="#7C3AED"/>
+            <rect x="28" y="9" width="2.5" height="18" rx="1" fill="#22D3EE"/>
+          </svg>
+          <div class="leading-tight">
+            <p class="font-space-grotesk font-bold text-2xl">Onde</p>
+            <p class="font-jetbrains text-[10px] uppercase tracking-[0.25em] mt-0.5" style="color: #22D3EE;">studio_audio</p>
+          </div>
+        </div>
+        <p class="mt-5 font-jetbrains text-[12.5px] leading-relaxed max-w-sm" style="color: rgb(245 244 248 / 0.7);">
+          {'>'} {data.info.tagline} — Studio d'enregistrement à La Réunion depuis {data.info.annee}.
+        </p>
+      </div>
+
+      <div class="md:col-span-3">
+        <p class="font-jetbrains text-[10px] uppercase tracking-[0.22em] mb-3" style="color: #22D3EE;">// STUDIO</p>
+        <ul class="space-y-2 font-jetbrains text-[12.5px]">
+          <li><a href="#services" class="transition-colors" onmouseover="this.style.color='#22D3EE';" onmouseout="this.style.color='inherit';">Services</a></li>
+          <li><a href="#studio" class="transition-colors" onmouseover="this.style.color='#22D3EE';" onmouseout="this.style.color='inherit';">Équipement</a></li>
+          <li><a href="#ingenieurs" class="transition-colors" onmouseover="this.style.color='#22D3EE';" onmouseout="this.style.color='inherit';">Équipe</a></li>
+          <li><a href="#process" class="transition-colors" onmouseover="this.style.color='#22D3EE';" onmouseout="this.style.color='inherit';">Process</a></li>
+          <li><a href="#tarifs" class="transition-colors" onmouseover="this.style.color='#22D3EE';" onmouseout="this.style.color='inherit';">Tarifs</a></li>
+        </ul>
+      </div>
+
+      <div class="md:col-span-4">
+        <p class="font-jetbrains text-[10px] uppercase tracking-[0.22em] mb-3" style="color: #22D3EE;">// CONTACT</p>
+        <ul class="space-y-2 font-jetbrains text-[12.5px]">
+          <li>{data.info.adresseLigne1}</li>
+          <li>{data.info.adresseLigne2}</li>
+          <li><a href={`tel:${data.info.telephoneHref}`} class="hover:underline" style="color: #22D3EE;">{data.info.telephone}</a></li>
+          <li><a href={`mailto:${data.info.email}`} class="hover:underline">{data.info.email}</a></li>
+          <li style="color: rgb(245 244 248 / 0.55);">▸ instagram {data.info.instagram}</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pt-6 border-t flex flex-col md:flex-row items-start md:items-center justify-between gap-3 font-jetbrains text-[10.5px] uppercase tracking-[0.18em]" style="border-color: rgb(124 58 237 / 0.3); color: rgb(245 244 248 / 0.5);">
+      <p>© {data.info.annee}–2026 {data.info.nom} · SIRET {data.info.siret}</p>
+      <p class="normal-case tracking-normal text-base font-space-grotesk italic" style="color: #22D3EE;">— Capter. Sculpter. Diffuser.</p>
+    </div>
+  </div>
+</footer>

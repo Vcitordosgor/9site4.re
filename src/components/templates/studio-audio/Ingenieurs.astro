@@ -1,0 +1,66 @@
+---
+import data from '../../../data/templates/onde.json';
+---
+
+<section id="ingenieurs" class="py-20 md:py-28" style="background-color: #0D0D14; color: #F5F4F8;">
+
+  <!-- Glow background -->
+  <div class="absolute top-1/2 left-1/4 w-96 h-96 rounded-full blur-3xl opacity-20 pointer-events-none -translate-y-1/2" style="background-color: #7C3AED;" aria-hidden="true"></div>
+
+  <div class="max-w-content mx-auto px-6 md:px-10 relative">
+
+    <div class="text-center max-w-2xl mx-auto mb-14 md:mb-20">
+      <p class="font-jetbrains text-[11px] uppercase tracking-[0.35em] mb-4" style="color: #22D3EE;">// ÉQUIPE</p>
+      <h2 class="font-space-grotesk font-bold text-4xl md:text-6xl leading-[0.95]">
+        Deux ingénieurs,
+        <span style="color: #7C3AED;">vingt ans d'oreille.</span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-4xl mx-auto">
+      {data.ingenieurs.map((ing, i) => (
+        <article class="group">
+          <div class="relative aspect-square overflow-hidden border-2" style="border-color: #7C3AED;">
+            <img
+              src={ing.photo}
+              alt={`Portrait de ${ing.nom}, ${ing.role}`}
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+              decoding="async"
+            />
+            <!-- Overlay -->
+            <div class="absolute inset-0 mix-blend-color group-hover:opacity-0 transition-opacity duration-500" style="background-color: rgba(124, 58, 237, 0.3);" aria-hidden="true"></div>
+            <!-- Code corner -->
+            <div class="absolute top-3 left-3 px-2 py-1 font-jetbrains text-[9px] uppercase tracking-wider" style="background-color: #22D3EE; color: #0D0D14;">
+              ING_0{i + 1}
+            </div>
+            <!-- Anciennete bas -->
+            <div class="absolute inset-x-0 bottom-0 px-4 py-3" style="background-color: rgb(13 13 20 / 0.92);">
+              <p class="font-jetbrains text-[10px] uppercase tracking-[0.22em]" style="color: #22D3EE;">
+                ▸ {ing.anciennete}
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-5">
+            <h3 class="font-space-grotesk font-bold text-2xl md:text-3xl leading-tight">
+              {ing.nom}
+            </h3>
+            <p class="mt-1 font-jetbrains text-[11px] uppercase tracking-[0.22em]" style="color: #22D3EE;">
+              {ing.role}
+            </p>
+            <p class="mt-3 font-space-grotesk italic text-lg md:text-xl leading-snug" style="color: rgb(245 244 248 / 0.92);">
+              {ing.specialite}
+            </p>
+            <p class="mt-2 font-jetbrains text-[11.5px] uppercase tracking-wider" style="color: rgb(245 244 248 / 0.55);">
+              {ing.diplome}
+            </p>
+            <p class="mt-4 font-jetbrains text-[12.5px] leading-relaxed" style="color: rgb(245 244 248 / 0.7);">
+              {ing.bio}
+            </p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
