@@ -34,15 +34,15 @@ const piliers = [
   <!-- 3 piliers -->
   <div class="mx-auto max-w-5xl mt-14 md:mt-16 grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
     {piliers.map((p, i) => (
-      <div class="scroll-reveal relative rounded-3xl bg-blanc-casse ring-1 ring-bleu-nuit/10 p-7 md:p-8 transition-all duration-300 ease-out-soft hover:-translate-y-1 hover:shadow-card-hover">
+      <div class="scroll-reveal pillier group relative rounded-3xl bg-blanc-casse p-7 md:p-8 transition-all duration-300 ease-out-soft hover:-translate-y-1 hover:bg-bleu hover:shadow-[0_10px_30px_-10px_rgba(145,166,255,0.55)]">
         <div class="flex items-center justify-between">
-          <span class="flex w-12 h-12 rounded-2xl bg-bleu/20 text-bleu-nuit items-center justify-center">
+          <span class="flex w-12 h-12 rounded-2xl bg-bleu/20 group-hover:bg-bleu-nuit/15 text-bleu-nuit items-center justify-center transition-colors duration-300">
             <Icon name={p.icon} size={22} strokeWidth={1.75} />
           </span>
-          <span class="font-sora font-bold text-bleu-nuit/10 text-3xl leading-none tabular-nums">0{i + 1}</span>
+          <span class="font-sora font-bold text-bleu-nuit/10 group-hover:text-bleu-nuit/25 text-3xl leading-none tabular-nums transition-colors duration-300">0{i + 1}</span>
         </div>
         <h3 class="mt-6 font-sora font-semibold text-lg text-bleu-nuit leading-snug">{p.titre}</h3>
-        <p class="mt-2 text-sm text-bleu-nuit/65 leading-relaxed">{p.texte}</p>
+        <p class="mt-2 text-sm text-bleu-nuit/65 group-hover:text-bleu-nuit/80 leading-relaxed transition-colors duration-300">{p.texte}</p>
       </div>
     ))}
   </div>

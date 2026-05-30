@@ -45,24 +45,24 @@ const etapes = [
     <ol class="scroll-reveal mt-12 grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 relative">
       {etapes.map((e, i) => (
         <li class="relative">
-          <article class="h-full flex flex-col rounded-3xl bg-blanc-casse/[0.08] ring-1 ring-blanc-casse/20 p-7 md:p-8 transition-all duration-300 ease-out-soft hover:-translate-y-0.5 hover:bg-blanc-casse/[0.12] hover:ring-blanc-casse/30">
+          <article class="h-full flex flex-col rounded-3xl bg-blanc-casse p-7 md:p-8 transition-all duration-300 ease-out-soft hover:-translate-y-0.5 hover:shadow-card-hover">
             <div class="flex items-center justify-between gap-4">
-              <span class="flex w-12 h-12 rounded-2xl bg-bleu/20 text-bleu items-center justify-center">
+              <span class="flex w-12 h-12 rounded-2xl bg-bleu/25 text-bleu-nuit items-center justify-center">
                 <Icon name={e.icon} size={22} strokeWidth={1.75} />
               </span>
-              <span class="font-roboto-mono text-xs uppercase tracking-[0.18em] text-bleu font-semibold">
+              <span class="font-roboto-mono text-xs uppercase tracking-[0.18em] text-bleu-nuit/55 font-semibold">
                 {e.jour}
               </span>
             </div>
-            <h3 class="mt-6 font-sora font-semibold text-xl text-blanc-casse leading-snug">
+            <h3 class="mt-6 font-sora font-semibold text-xl text-bleu-nuit leading-snug">
               {e.titre}
             </h3>
-            <p class="mt-2.5 text-base text-blanc-casse/65 leading-relaxed">
+            <p class="mt-2.5 text-base text-bleu-nuit/65 leading-relaxed">
               {e.texte}
             </p>
           </article>
           {i < etapes.length - 1 && (
-            <span class="hidden md:flex absolute top-12 -right-3.5 w-7 h-7 rounded-full bg-black ring-1 ring-blanc-casse/15 items-center justify-center text-blanc-casse/50 z-10" aria-hidden="true">
+            <span class="hidden md:flex absolute top-12 -right-3.5 w-7 h-7 rounded-full bg-black ring-1 ring-blanc-casse/15 items-center justify-center text-blanc-casse/60 z-10" aria-hidden="true">
               <Icon name="arrow-right" size={14} strokeWidth={2.25} />
             </span>
           )}
