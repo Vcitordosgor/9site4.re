@@ -1,0 +1,56 @@
+---
+const etapes = [
+  {
+    num: '01',
+    titre: 'Pétrir',
+    heure: '04h30',
+    texte: 'Stéphanie pétrit la pâte feuilletée à la main, six tours, dans la cuisine au fond. Aucune machine, aucun pâton congelé.',
+  },
+  {
+    num: '02',
+    titre: 'Tourer',
+    heure: '05h30',
+    texte: 'Pliage du beurre frais des Hauts, repos au froid quinze minutes entre chaque tour. Le feuilletage se construit lentement.',
+  },
+  {
+    num: '03',
+    titre: 'Cuire',
+    heure: '06h00',
+    texte: 'Premier four à 195°. Crème pâtissière infusée la veille à trois gousses, dressée à la poche à 6h15.',
+  },
+  {
+    num: '04',
+    titre: 'Ouvrir',
+    heure: '06h30',
+    texte: 'Vitrine prête, café péi sur le comptoir. Les premiers clients du marché passent à 6h45 pour le macatia tiède.',
+  },
+];
+---
+
+<section class="bg-vanille-creme py-20 md:py-32 relative">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+
+    <div class="text-center max-w-2xl mx-auto mb-16 md:mb-24">
+      <p class="font-karla text-[11px] uppercase tracking-[0.4em] text-vanille-caramel mb-4">— Le matin chez Vanille —</p>
+      <h2 class="font-yeseva text-vanille-gousse text-4xl md:text-5xl leading-tight">
+        Quatre gestes,
+        <em class="font-italianno text-vanille-caramel text-5xl md:text-6xl not-italic block">avant le café du matin</em>
+      </h2>
+    </div>
+
+    <ol class="relative grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-0">
+      <div class="hidden md:block absolute top-12 left-[12%] right-[12%] h-px bg-vanille-gousse/25" aria-hidden="true"></div>
+
+      {etapes.map((e) => (
+        <li class="relative text-center md:px-5">
+          <div class="relative inline-flex items-center justify-center w-24 h-24 rounded-full bg-vanille-blanc border-2 border-vanille-caramel/60 mb-6">
+            <span class="font-yeseva text-vanille-caramel text-3xl leading-none">{e.num}</span>
+          </div>
+          <p class="font-karla text-[10px] uppercase tracking-[0.4em] text-vanille-caramel mb-2">{e.heure}</p>
+          <h3 class="font-yeseva text-vanille-gousse text-2xl md:text-[28px] mb-3">{e.titre}</h3>
+          <p class="font-karla text-[14.5px] text-vanille-gousse/80 leading-relaxed max-w-xs mx-auto">{e.texte}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

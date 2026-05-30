@@ -1,0 +1,37 @@
+---
+const mots = [
+  'Mille-feuille',
+  'Gâteau patate',
+  'Macatia coco',
+  'Tarte letchi',
+  'Bonbon piment sucré',
+  'Pâte feuilletée 6 tours',
+  'Vanille bourbon',
+];
+---
+
+<section class="relative bg-vanille-grain text-vanille-creme py-6 md:py-8 overflow-hidden border-y-2 border-vanille-caramel/40">
+  <div class="vanille-marquee flex whitespace-nowrap">
+    <div class="vanille-marquee-content flex shrink-0 items-center">
+      {[...mots, ...mots, ...mots].map((m) => (
+        <span class="font-yeseva italic text-3xl md:text-5xl px-8 md:px-12 flex items-center gap-8 md:gap-12">
+          {m}
+          <span class="text-vanille-caramel text-2xl md:text-3xl" aria-hidden="true">❦</span>
+        </span>
+      ))}
+    </div>
+  </div>
+
+  <style>
+    .vanille-marquee-content {
+      animation: vanille-marquee 38s linear infinite;
+    }
+    @keyframes vanille-marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-33.333%); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .vanille-marquee-content { animation: none; }
+    }
+  </style>
+</section>

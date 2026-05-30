@@ -1,0 +1,55 @@
+---
+const faq = [
+  {
+    q: 'Faites-vous les wedding cakes et pièces montées ?',
+    r: 'Oui. Croquembouche, wedding cake créole, plateaux 50 à 200 personnes. Réservation minimum quatre semaines à l\'avance, dépôt de 30% à la commande, devis sous 48h après échange WhatsApp.',
+  },
+  {
+    q: 'Acceptez-vous les commandes pour le lendemain ?',
+    r: 'Pour les entremets et plateaux de viennoiseries, oui — à condition de passer commande avant 14h, par WhatsApp ou en boutique. Le minimum est de 25 euros.',
+  },
+  {
+    q: 'Avez-vous des desserts sans gluten ou sans œuf ?',
+    r: 'Oui, sur commande 48h. Les bonbons piment sucrés et certains entremets passent en version sans gluten avec une farine de riz/sarrasin. Toujours pétris sur un plan séparé.',
+  },
+  {
+    q: 'D\'où viennent vos vanilles et vos fruits ?',
+    r: 'Vanille bourbon IGP de l\'île, œufs des pondeuses de Madame Hoarau, rhum arrangé de chez Gerry. Les letchis, mangues et goyaviers : producteurs locaux selon la saison.',
+  },
+  {
+    q: 'Que reste-t-il en boutique l\'après-midi ?',
+    r: 'Honnêtement, peu. Les mille-feuilles partent souvent avant 10h le samedi. Le gâteau patate et le macatia coco tiennent mieux. La fournée d\'après-midi (15h) refait quelques pièces de viennoiserie.',
+  },
+  {
+    q: 'Peut-on visiter l\'atelier ?',
+    r: 'Sur demande, oui — le mardi matin uniquement, autour de 9h. Stéphanie aime montrer le tour de feuilletage. Réservation par téléphone, groupes de 4 personnes maximum.',
+  },
+];
+---
+
+<section class="bg-vanille-papier py-20 md:py-28 relative">
+  <div class="max-w-3xl mx-auto px-6 md:px-10 relative">
+
+    <div class="text-center mb-12 md:mb-16">
+      <p class="font-karla text-[11px] uppercase tracking-[0.4em] text-vanille-caramel mb-4">— Avant de pousser la porte —</p>
+      <h2 class="font-yeseva text-vanille-gousse text-4xl md:text-5xl leading-tight">
+        Questions
+        <em class="font-italianno text-vanille-caramel text-5xl md:text-6xl not-italic">qu'on nous pose souvent</em>
+      </h2>
+    </div>
+
+    <div class="space-y-3">
+      {faq.map((f) => (
+        <details class="group bg-vanille-blanc border border-vanille-gousse/25 hover:border-vanille-caramel/60 transition-colors">
+          <summary class="cursor-pointer list-none flex items-start gap-4 p-5 md:p-7">
+            <span class="font-yeseva text-vanille-caramel text-2xl leading-none mt-1 transition-transform duration-300 group-open:rotate-45" aria-hidden="true">+</span>
+            <span class="flex-1 font-yeseva text-vanille-gousse text-lg md:text-xl leading-snug">{f.q}</span>
+          </summary>
+          <div class="px-5 md:px-7 pb-6 md:pb-8 pl-14 md:pl-16">
+            <p class="font-karla text-[14.5px] md:text-[15px] text-vanille-gousse/85 leading-relaxed">{f.r}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
