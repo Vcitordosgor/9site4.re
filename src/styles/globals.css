@@ -33,7 +33,7 @@
   }
 
   body {
-    @apply bg-blanc-casse text-bleu-nuit font-inter antialiased;
+    @apply bg-black text-blanc-casse font-inter antialiased;
     font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
   }
 
