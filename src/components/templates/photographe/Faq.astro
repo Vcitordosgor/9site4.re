@@ -1,0 +1,74 @@
+---
+/**
+ * Faq — questions photographe, ton sobre éditorial.
+ * Accordion natif sans dépendances.
+ */
+const faq = [
+  {
+    q: 'Combien de photos sont livrées après une séance ?',
+    r: 'Entre 40 et 80 images sélectionnées et retouchées pour un portrait ou un mariage demi-journée. Plus de 150 pour un mariage complet. La sélection prime sur la quantité — je préfère vingt vraies photos à deux cents tirages moyens.',
+  },
+  {
+    q: 'Quel est votre style de retouche ?',
+    r: 'Mesurée. Je conserve la lumière naturelle, le grain, les imperfections qui font respirer l\'image. Pas de filtre brutal, pas de peau lissée à l\'excès. Le résultat reste vous, en juste un peu mieux.',
+  },
+  {
+    q: 'Délais de livraison ?',
+    r: 'Quatorze jours ouvrés pour une séance portrait ou éditoriale. Trois à six semaines pour un mariage, selon la saison. Je travaille sans précipitation parce qu\'une bonne édition demande du recul.',
+  },
+  {
+    q: 'Vous déplacez-vous ?',
+    r: 'Sur toute l\'île pour les commandes locales, sans surcoût dans le sud. Pour la métropole ou l\'étranger, devis sur mesure intégrant les frais de transport et l\'hébergement.',
+  },
+  {
+    q: 'Et les droits sur les images ?',
+    r: 'Vous obtenez les fichiers en haute définition pour un usage privé illimité (impression, partage, mémoire). L\'usage commercial ou publication presse fait l\'objet d\'un avenant simple, généralement gratuit pour les particuliers.',
+  },
+];
+---
+
+<section id="faq" class="relative bg-latitude-noir text-latitude-blanc py-20 md:py-28 px-6 md:px-10">
+  <div class="max-w-3xl mx-auto">
+
+    <header class="mb-12 md:mb-14">
+      <p class="scroll-reveal text-xs font-hanken uppercase tracking-[0.35em] text-latitude-or">
+        Questions fréquentes
+      </p>
+      <h2 class="scroll-reveal mt-4 font-dm-serif text-latitude-blanc leading-[1.05]" style="font-size: clamp(32px, 4.2vw, 48px);">
+        Ce qu'on me demande<br/><span class="italic">avant de me confier un moment.</span>
+      </h2>
+    </header>
+
+    <ul class="divide-y divide-latitude-cendre border-y border-latitude-cendre">
+      {faq.map((item, i) => (
+        <li class="scroll-reveal" style={`transition-delay: ${i * 50}ms`}>
+          <details class="group latitude-faq">
+            <summary class="flex items-start justify-between gap-6 py-7 cursor-pointer list-none">
+              <span class="font-instrument italic text-latitude-blanc leading-snug" style="font-size: clamp(20px, 2vw, 24px);">
+                {item.q}
+              </span>
+              <span class="shrink-0 mt-1 inline-flex items-center justify-center w-9 h-9 border border-latitude-or/40 text-latitude-or transition-transform duration-300 group-open:rotate-90" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"/>
+                </svg>
+              </span>
+            </summary>
+            <div class="pb-8 pr-14">
+              <p class="font-hanken text-latitude-blanc/75 leading-[1.75]" style="font-size: 15px;">
+                {item.r}
+              </p>
+            </div>
+          </details>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .latitude-faq summary::-webkit-details-marker { display: none; }
+  .latitude-faq summary:focus-visible {
+    outline: 2px solid rgb(184 151 102);
+    outline-offset: 4px;
+  }
+</style>

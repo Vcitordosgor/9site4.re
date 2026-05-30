@@ -1,0 +1,42 @@
+---
+/**
+ * Numbers — chiffres clés photographe.
+ * Style éditorial sobre, papier baryté.
+ */
+const stats = [
+  { value: '14', unit: 'ans', label: 'Photographe au La Réunion' },
+  { value: '320', unit: 'séries', label: 'Réalisées et archivées' },
+  { value: '6', unit: 'pays', label: 'Couverts en reportage' },
+  { value: '∞', unit: 'lumière', label: 'Toujours à chercher la juste' },
+];
+---
+
+<section class="relative bg-latitude-papier text-latitude-noir py-20 md:py-28 px-6 md:px-10 border-t border-latitude-or/40">
+  <div class="max-w-content mx-auto">
+
+    <header class="mb-14 md:mb-16 max-w-2xl">
+      <p class="scroll-reveal text-xs font-hanken uppercase tracking-[0.35em] text-latitude-or">
+        Quatorze ans de pratique
+      </p>
+      <h2 class="scroll-reveal mt-4 font-dm-serif text-latitude-noir leading-[1.05]" style="font-size: clamp(34px, 4.6vw, 56px);">
+        Ce qu'on retient<br/><span class="italic">en silence.</span>
+      </h2>
+    </header>
+
+    <ul class="grid grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-8 items-end">
+      {stats.map((s, i) => (
+        <li class="scroll-reveal text-left border-l-2 border-latitude-or/40 pl-6" style={`transition-delay: ${i * 80}ms`}>
+          <span class="block font-dm-serif italic text-latitude-noir leading-[0.9] tabular-nums" style="font-size: clamp(60px, 9vw, 140px);">
+            {s.value}
+          </span>
+          <span class="mt-4 block font-hanken uppercase tracking-[0.28em] text-latitude-or text-[11px]">
+            {s.unit}
+          </span>
+          <p class="mt-2 font-instrument text-latitude-noir/70 leading-snug" style="font-size: 16px;">
+            {s.label}
+          </p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

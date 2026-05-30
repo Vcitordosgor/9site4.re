@@ -1,0 +1,61 @@
+---
+/**
+ * Polaroid — 3 cards-polaroid décalées avec rotation et légendes manuscrites.
+ * Style table d'atelier, photos imprimées.
+ */
+const photos = [
+  {
+    src: 'https://images.unsplash.com/photo-1502136969935-8d8eef54d77b?w=900&q=85',
+    alt: 'Sentier au bord d\'une falaise au lever du jour',
+    legende: 'Premier rayon — Cap Méchant, 6h47',
+    rotate: '-rotate-3',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=900&q=85',
+    alt: 'Scène de marché au La Réunion, lumière chaude',
+    legende: 'Marché du samedi',
+    rotate: 'rotate-2',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1551269901-5c5e14c25df7?w=900&q=85',
+    alt: 'Bouquet de fleurs tropicales sur fond noir',
+    legende: 'Anthuriums, lumière nord',
+    rotate: '-rotate-1',
+  },
+];
+---
+
+<section class="relative bg-latitude-papier py-20 md:py-28 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="mb-14 md:mb-20">
+      <p class="scroll-reveal text-xs font-hanken uppercase tracking-[0.35em] text-latitude-or">
+        Carnet d'atelier
+      </p>
+      <h2 class="scroll-reveal mt-4 font-dm-serif text-latitude-noir leading-[1.05] max-w-3xl" style="font-size: clamp(36px, 5vw, 64px);">
+        Tirages posés<br/>
+        <span class="italic">sur la table.</span>
+      </h2>
+    </header>
+
+    <ul class="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-6 justify-items-center">
+      {photos.map((p, i) => (
+        <li
+          class:list={[
+            'scroll-reveal relative bg-latitude-blanc p-3 pb-12 sm:p-4 sm:pb-14 shadow-[0_22px_44px_-20px_rgba(10,10,11,0.55)] hover:scale-105 hover:rotate-0 transition-transform duration-500',
+            p.rotate,
+            i === 1 ? 'sm:translate-y-8' : '',
+          ]}
+          style={`transition-delay: ${i * 100}ms; max-width: 320px;`}
+        >
+          <div class="relative w-full aspect-[4/5] overflow-hidden bg-latitude-noir">
+            <img src={p.src} alt={p.alt} loading="lazy" decoding="async" class="w-full h-full object-cover" />
+          </div>
+          <p class="absolute left-0 right-0 bottom-2 sm:bottom-3 text-center text-latitude-noir/85 px-3" style="font-family: 'Caveat', cursive; font-size: clamp(18px, 1.6vw, 22px);">
+            {p.legende}
+          </p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
