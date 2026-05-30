@@ -27,6 +27,10 @@ import RendezVous from '../../components/templates/salon/RendezVous.astro';
 import ReassuranceInfos from '../../components/templates/salon/ReassuranceInfos.astro';
 import CTAFinal from '../../components/templates/salon/CTAFinal.astro';
 import SalonFooter from '../../components/templates/salon/SalonFooter.astro';
+import Processus from '../../components/templates/salon/Processus.astro';
+import Polaroids from '../../components/templates/salon/Polaroids.astro';
+import Marques from '../../components/templates/salon/Marques.astro';
+import Faq from '../../components/templates/salon/Faq.astro';
 const businessLD = localBusinessSchema(salonData);
 
 ---
@@ -50,11 +54,15 @@ const businessLD = localBusinessSchema(salonData);
     <HeroSplit />
     <Manifesto />
     <Prestations />
+    <Processus />
     <PhotoAtelier />
+    <Polaroids />
     <Bandeau />
     <Pourquoi />
+    <Marques />
     <Citation />
     <RendezVous />
+    <Faq />
     <ReassuranceInfos />
     <CTAFinal />
   </main>
