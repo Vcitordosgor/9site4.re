@@ -1,0 +1,70 @@
+---
+import data from '../../../data/templates/painleve.json';
+/**
+ * Mini-preview Le Pain Levé — photo plein cadre + overlay sombre + wordmark
+ * Crimson Pro + accent caveat doré bas-gauche.
+ */
+---
+
+<div class="absolute inset-0 overflow-hidden" style="background-color: #1A1614; color: #F5EBD5;">
+
+  <!-- Photo plein cadre -->
+  <img
+    src={data.info.photoHero}
+    alt=""
+    class="absolute inset-0 w-full h-full object-cover scale-[1.04]"
+    loading="lazy"
+    decoding="async"
+  />
+
+  <!-- Overlay sombre bas + kraft chaud -->
+  <div class="absolute inset-0" aria-hidden="true"
+       style="background:
+         linear-gradient(180deg, rgb(26 22 20 / 0.45) 0%, rgb(26 22 20 / 0) 30%, rgb(26 22 20 / 0) 45%, rgb(26 22 20 / 0.92) 100%),
+         linear-gradient(90deg, rgb(26 22 20 / 0.45) 0%, transparent 55%);">
+  </div>
+
+  <!-- Mini top-bar -->
+  <div class="relative flex items-center justify-between px-3 pt-2">
+    <span class="font-crimson-pro font-semibold text-[10px]" style="color: #F5EBD5;">
+      Le Pain <span style="color: #C89B3C;">Levé</span>
+    </span>
+    <div class="flex items-center gap-1.5 text-[6px] uppercase tracking-wider font-semibold" style="color: rgba(245, 235, 213, 0.85);">
+      <span>Carte</span>
+      <span>Réserver</span>
+    </div>
+  </div>
+
+  <!-- Tampon levain en cercle -->
+  <div class="absolute top-7 right-3 w-9 h-9 rounded-full flex flex-col items-center justify-center" style="border: 1.5px solid #C89B3C; color: #C89B3C; background-color: rgba(26, 22, 20, 0.4); transform: rotate(-10deg);">
+    <span class="font-caveat text-[10px] leading-none">levain</span>
+    <span class="text-[5px] uppercase tracking-wider mt-0.5">mère 2018</span>
+  </div>
+
+  <!-- Annotation manuscrite haut -->
+  <p class="absolute top-2.5 left-1/2 -translate-x-1/2 font-caveat text-[8px] -rotate-2 mt-5" style="color: rgba(245, 235, 213, 0.85);">
+    Une fournée / jour ∼
+  </p>
+
+  <!-- Contenu : bas gauche éditorial -->
+  <div class="absolute left-3 right-3 bottom-2.5">
+    <p class="flex items-center gap-1.5 font-crimson-pro font-semibold text-[5.5px] uppercase tracking-[0.25em] mb-1" style="color: #C89B3C;">
+      <span class="inline-block w-3 h-px" style="background-color: #C89B3C;" aria-hidden="true"></span>
+      <span>Depuis 2018</span>
+    </p>
+    <p class="font-crimson-pro font-semibold leading-[0.92] tracking-tight" style="color: #F5EBD5; font-size: clamp(14px, 3vw, 24px);">
+      Le Pain Levé.
+    </p>
+    <p class="mt-0.5 font-caveat leading-tight" style="color: #C89B3C; font-size: clamp(9px, 1.8vw, 14px);">
+      Farine, eau, sel, temps.
+    </p>
+    <div class="mt-1.5 flex items-center gap-1.5">
+      <span class="inline-flex items-center h-3 px-2 font-crimson-pro font-semibold text-[6px] uppercase tracking-wider rounded-full" style="background-color: #C89B3C; color: #1A1614;">
+        Voir la carte
+      </span>
+      <span class="inline-flex items-center h-3 px-2 ring-1 font-crimson-pro font-semibold text-[6px] uppercase tracking-wider rounded-full" style="color: #F5EBD5; --tw-ring-color: rgba(245, 235, 213, 0.4);">
+        Réserver
+      </span>
+    </div>
+  </div>
+</div>

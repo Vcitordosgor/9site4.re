@@ -1,0 +1,55 @@
+---
+const faq = [
+  {
+    q: 'Puis-je passer en boutique acheter un bouquet spontané ?',
+    r: 'L\'atelier n\'est pas une boutique grand public — il fonctionne sur rendez-vous. Pour un bouquet rapide, le mieux est de commander la veille par WhatsApp avec une plage horaire de récupération. Inès le prépare le matin et vous le récupérez à l\'heure dite.',
+  },
+  {
+    q: 'Combien coûte un mariage floral ?',
+    r: 'Très variable selon le format : intime à 30 invités, bouquet + boutonnière + arche autour de 1200 €. Mariage de 100 personnes avec décors de tables et plusieurs cérémonies, plutôt 2500 à 4500 €. Le RDV initial (1h offert) permet d\'établir un budget réaliste.',
+  },
+  {
+    q: 'Travaillez-vous avec des fleurs locales uniquement ?',
+    r: 'Majoritairement, oui — environ 70% de notre approvisionnement vient de producteurs péi : anthuriums, frangipaniers, orchidées, fougères. On importe 30% pour des espèces non disponibles localement (roses anciennes, eucalyptus, certaines pivoines). On l\'assume mais on choisit avec discernement.',
+  },
+  {
+    q: 'Faites-vous des livraisons à La Réunion ?',
+    r: 'Oui, livraison sur toute l\'île. Forfait 12 € en zone proche, 18 € au-delà. Pour les mariages et événements, la livraison + installation + démontage est incluse dans le devis.',
+  },
+  {
+    q: 'Vendez-vous des plantes ou seulement des bouquets ?',
+    r: 'Les deux. On a une sélection rotative de plantes d\'intérieur tropicales (monstera, calathea, orchidées, pothos) dans des pots céramique d\'une potière de La Réunion. À partir de 38 €. Conseil entretien et garantie 30 jours inclus.',
+  },
+  {
+    q: 'Proposez-vous des abonnements pour bureaux ou commerces ?',
+    r: 'Oui — composition renouvelée toutes les 2 semaines, livrée et installée. Formules M (95 €/mois), L (165 €/mois), XL (230 €/mois). Engagement minimum 3 mois. Idéal pour réceptions d\'hôtels, restaurants, cabinets, boutiques de luxe.',
+  },
+];
+---
+
+<section class="py-20 md:py-28 relative" style="background-color: #F4E6E0;">
+  <div class="max-w-3xl mx-auto px-6 md:px-10 relative">
+
+    <div class="text-center mb-12 md:mb-16">
+      <p class="font-jakarta text-[11px] uppercase tracking-[0.45em] mb-4" style="color: #C49B62;">— Avant de pousser la porte —</p>
+      <h2 class="font-cormorant leading-[0.95]" style="color: #2A2520; font-size: clamp(40px, 6vw, 72px); font-weight: 400;">
+        Questions
+        <em class="block italic mt-1" style="color: #5C7448;">qu'on nous pose.</em>
+      </h2>
+    </div>
+
+    <div class="space-y-3">
+      {faq.map((f) => (
+        <details class="group transition-colors" style="background-color: #FFFFFF; border: 1px solid rgba(196, 155, 98, 0.3);">
+          <summary class="cursor-pointer list-none flex items-start gap-4 p-5 md:p-7">
+            <span class="font-cormorant italic text-3xl leading-none mt-0 transition-transform duration-300 group-open:rotate-45" style="color: #C49B62;" aria-hidden="true">+</span>
+            <span class="flex-1 font-cormorant text-lg md:text-xl leading-snug" style="color: #2A2520; font-weight: 500;">{f.q}</span>
+          </summary>
+          <div class="px-5 md:px-7 pb-6 md:pb-8 pl-14 md:pl-16">
+            <p class="font-jakarta text-[14.5px] md:text-[15px] leading-relaxed" style="color: rgba(42, 37, 32, 0.82);">{f.r}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

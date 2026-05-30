@@ -1,0 +1,49 @@
+---
+import '@fontsource/crimson-pro/latin-400.css';
+import '@fontsource/crimson-pro/latin-500.css';
+import '@fontsource/crimson-pro/latin-600.css';
+import '@fontsource/crimson-pro/latin-400-italic.css';
+import '@fontsource/caveat/latin-400.css';
+import '@fontsource/caveat/latin-500.css';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getSeo } from '../../lib/seo';
+import { localBusinessSchema } from '../../lib/businessSchema';
+import painleveData from '../../data/templates/painleve.json';
+
+import Header from '../../components/templates/boulangerie/Header.astro';
+import HeroKraft from '../../components/templates/boulangerie/HeroKraft.astro';
+import Manifesto from '../../components/templates/boulangerie/Manifesto.astro';
+import Four from '../../components/templates/boulangerie/Four.astro';
+import Levain from '../../components/templates/boulangerie/Levain.astro';
+import Carte from '../../components/templates/boulangerie/Carte.astro';
+import Calendrier from '../../components/templates/boulangerie/Calendrier.astro';
+import Trouver from '../../components/templates/boulangerie/Trouver.astro';
+import Faq from '../../components/templates/boulangerie/Faq.astro';
+import Footer from '../../components/templates/boulangerie/Footer.astro';
+
+const businessLD = localBusinessSchema(painleveData, 'Bakery');
+---
+
+<BaseLayout seo={getSeo('templatePatisserie' as any)} bare={true}>
+  <Fragment slot="head">
+    {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <link rel="preload" as="image" href={painleveData.info.photoHero} fetchpriority="high" />
+  </Fragment>
+
+  <Header />
+
+  <main class="font-crimson-pro" style="background-color: #F5EBD5; color: #1A1614;">
+    <HeroKraft />
+    <Manifesto />
+    <Four />
+    <Levain />
+    <Carte />
+    <Calendrier />
+    <Trouver />
+    <Faq />
+  </main>
+
+  <Footer />
+</BaseLayout>

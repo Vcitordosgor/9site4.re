@@ -1,0 +1,177 @@
+{
+  "info": {
+    "nom": "Frangipane",
+    "wordmark": "Frangipane",
+    "wordmark2": "atelier floral",
+    "soustitre": "Fleuriste éditorial · La Réunion",
+    "tagline": "Composer comme on écrit.",
+    "fondatrice": "Inès Cazeneuve",
+    "ville": "La Réunion",
+    "adresseLigne1": "L'atelier — sur rendez-vous",
+    "adresseLigne2": "À La Réunion",
+    "telephone": "0692 12 34 56",
+    "telephoneHref": "+262692123456",
+    "whatsapp": "262692123456",
+    "email": "atelier@frangipane.re",
+    "instagram": "@frangipane.974",
+    "siret": "85412034500032",
+    "annee": "2019",
+    "photoHero": "https://images.unsplash.com/photo-1494973367193-3f1f0a4cdcbe?q=80&w=1600&auto=format&fit=crop",
+    "photoHeroAlt": "Bouquet pastel d'inspiration éditoriale, pivoines et eucalyptus, La Réunion",
+    "ouvertureHebdo": "Mardi → samedi · 10h00 → 13h00 / 15h00 → 19h00",
+    "fermeture": "Dimanche · lundi"
+  },
+  "manifesto": "On compose avec ce que la saison donne. Pas de fleurs forcées hors-saison, pas de tulipes en mars qui viennent de l'autre bout du monde. À La Réunion, on a la chance d'avoir un microclimat permanent : pivoines créoles, anthuriums, orchidées, frangipaniers, bougainvilliers, fougères des Hauts. Et quelques importations qu'on assume : roses anciennes, eucalyptus, branches mortes graphiques. Tout est arrangé à la main, en pensant l'objet comme un dessin.",
+  "fondatrice": {
+    "nom": "Inès Cazeneuve",
+    "titre": "Fleuriste éditoriale & fondatrice",
+    "bio": "Diplômée de l'École Pratique des Métiers Floristes de Paris, Inès a travaillé six ans chez deux grandes maisons parisiennes avant de rentrer ouvrir l'atelier Frangipane en 2019. Style éditorial, formes asymétriques, palettes éteintes. Spécialisée mariage et événementiel haut de gamme.",
+    "credo": "« Un bouquet doit raconter une saison, pas reproduire un mood-board. »",
+    "certif": [
+      "CAP Fleuriste 2009",
+      "BP Fleuriste 2011",
+      "Stage Pierre Banchereau (Paris) 2013",
+      "Master class Sarah Winward (USA) 2017"
+    ]
+  },
+  "compositions": [
+    {
+      "id": "bouquets-saison",
+      "categorie": "Bouquets",
+      "nom": "Bouquet de saison",
+      "tagline": "Composé à la main, en atelier.",
+      "prix": "Dès 45 €",
+      "description": "Bouquet asymétrique composé avec les fleurs de la semaine et trois espèces de feuillages éditoriaux. Format S (35 €), M (55 €), L (85 €). Sur place ou livré La Réunion.",
+      "details": "Renouvelé chaque mardi · Saisons strictes · Photos avant livraison"
+    },
+    {
+      "id": "plantes-vertes",
+      "categorie": "Plantes",
+      "nom": "Plantes & céramique",
+      "tagline": "Pot artisanal péi inclus.",
+      "prix": "Dès 38 €",
+      "description": "Sélection de plantes d'intérieur tropicales (monstera, calathea, pothos, orchidée) dans des pots en céramique d'une potière de La Réunion. Petit format 38 €, moyen 65 €, grand 95 €.",
+      "details": "Conseil entretien personnalisé · Garantie 30 jours"
+    },
+    {
+      "id": "mariage",
+      "categorie": "Mariage",
+      "nom": "Mariage & cérémonie",
+      "tagline": "Du bouquet de mariée à la décoration florale complète.",
+      "prix": "Devis personnalisé",
+      "description": "Bouquet de mariée + boutonnière marié + couronne témoin + arche fleurie cérémonie + décors tables. RDV en atelier obligatoire 4 mois avant. Budget moyen 1200 € → 4500 €.",
+      "details": "Rendez-vous initial 1h offert · 3 maquettes possibles"
+    },
+    {
+      "id": "evenementiel",
+      "categorie": "Pro",
+      "nom": "Événementiel pro",
+      "tagline": "Inaugurations, vernissages, scénographies florales.",
+      "prix": "Devis sur projet",
+      "description": "Décors floraux pour ouvertures de boutiques, expositions, dîners de gala, défilés. Travail conjoint avec scénographe si besoin. Démontage inclus dans le devis.",
+      "details": "Devis sous 5 jours · Tarif dégressif volume"
+    },
+    {
+      "id": "abonnement",
+      "categorie": "Bureau",
+      "nom": "Abonnement bureau",
+      "tagline": "Une composition fraîche tous les 15 jours.",
+      "prix": "Dès 95 €/mois",
+      "description": "Composition florale renouvelée toutes les deux semaines, livrée et installée dans votre espace pro. Formule M (1 bouquet, 95 €), L (2 bouquets, 165 €), XL (3 bouquets, 230 €).",
+      "details": "Engagement minimum 3 mois · Sans frais d'installation"
+    },
+    {
+      "id": "deuil",
+      "categorie": "Hommage",
+      "nom": "Compositions deuil",
+      "tagline": "Sobriété, justesse, respect.",
+      "prix": "Dès 75 €",
+      "description": "Gerbe, raquette, coussin de pétales. Inès reçoit les familles en atelier ou par téléphone pour discuter de la justesse de l'hommage. Préparation 24h, livraison directe au lieu de cérémonie.",
+      "details": "Livraison cérémonie incluse · Réception confidentielle"
+    }
+  ],
+  "saison": {
+    "label": "Saison en cours",
+    "mois": "Mai → Octobre",
+    "titre": "Hiver austral",
+    "ambiance": "Couleurs éteintes, formes graphiques, branches nues",
+    "fleurs": [
+      "Anthurium blanc grand format",
+      "Orchidée Cymbidium",
+      "Frangipanier rose pâle",
+      "Pivoine de Cilaos",
+      "Eucalyptus argenté (import)"
+    ],
+    "feuillages": [
+      "Fougère arborescente des Hauts",
+      "Branche de bois flotté",
+      "Feuille de bananier séchée",
+      "Mousse stabilisée locale"
+    ],
+    "texte": "L'hiver austral pousse à la sobriété. On compose avec moins de fleurs, plus de feuillage et de structure. Les blancs cassés, les beiges, les verts profonds dominent. Un bouquet d'hiver doit pouvoir tenir 10 jours sans flétrir."
+  },
+  "mariage": {
+    "titre": "Mariage & cérémonie",
+    "soustitre": "Quatre mois avant, idéalement",
+    "texte": "Un mariage floral réussi se prépare bien en amont. Inès reçoit le couple en atelier (RDV 1h offert) pour comprendre l'ambiance, la palette, le lieu, l'organisation. Suit une maquette photo dans les 15 jours, puis deux ajustements maximum. Démontage et nettoyage inclus le lendemain de la cérémonie.",
+    "etapes": [
+      { "label": "M-4", "titre": "Premier rendez-vous", "texte": "1h en atelier, ambiance, lieu, palette, première estimation budgétaire." },
+      { "label": "M-3", "titre": "Devis & maquette", "texte": "Devis détaillé + maquette photo des 3 pièces majeures. 2 ajustements gratuits." },
+      { "label": "M-1", "titre": "Validation finale", "texte": "Choix définitif, signature, dépôt 50%. Logistique livraison et démontage." },
+      { "label": "Jour J", "titre": "Installation & démontage", "texte": "Livraison & installation 4h avant cérémonie. Démontage le lendemain matin." }
+    ]
+  },
+  "galerie": [
+    {
+      "src": "https://images.unsplash.com/photo-1487530811176-3780de880c2d?q=80&w=900&auto=format&fit=crop",
+      "alt": "Composition florale asymétrique blanc cassé sur table dressée",
+      "tag": "Mariage"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1561181286-d3fee7d55364?q=80&w=900&auto=format&fit=crop",
+      "alt": "Bouquet de pivoines roses poudrées et eucalyptus",
+      "tag": "Bouquet"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?q=80&w=900&auto=format&fit=crop",
+      "alt": "Arche fleurie pour cérémonie de mariage en bord de mer",
+      "tag": "Mariage"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?q=80&w=900&auto=format&fit=crop",
+      "alt": "Composition de plantes vertes dans pots céramique artisanale",
+      "tag": "Plantes"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1455659817273-f96807779a8a?q=80&w=900&auto=format&fit=crop",
+      "alt": "Bouquet rond éditorial bouquet de mariée tons crème",
+      "tag": "Bouquet"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1490750967868-88aa4486c946?q=80&w=900&auto=format&fit=crop",
+      "alt": "Composition graphique anthurium et bois flotté",
+      "tag": "Éditorial"
+    }
+  ],
+  "atelier": {
+    "titre": "Visiter l'atelier",
+    "tagline": "Sur rendez-vous uniquement",
+    "texte": "L'atelier n'est pas une boutique grand public. C'est un espace de travail où Inès compose, où elle reçoit ses clients mariage et événementiel, où elle conserve la chambre froide et les vases anciens. Visite sur RDV uniquement : pour discuter d'un projet, pour récupérer une commande, pour les ateliers découverte mensuels."
+  },
+  "ateliers": [
+    {
+      "titre": "Composer son bouquet",
+      "duree": "2 h 30",
+      "prix": "85 €",
+      "quand": "Un samedi par mois",
+      "details": "5 personnes max. Vous repartez avec votre bouquet et les techniques de base : choix des fleurs, harmonisation, structure asymétrique, tenue."
+    },
+    {
+      "titre": "Couronne saisonnière",
+      "duree": "3 h",
+      "prix": "120 €",
+      "quand": "Décembre & Pâques",
+      "details": "Couronne de l'Avent ou couronne de Pâques en feuillages locaux. Vous repartez avec votre œuvre prête à accrocher."
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+---
+import data from '../../../data/templates/borddeau.json';
+---
+
+<section id="process" class="py-20 md:py-28 relative overflow-hidden" style="background-color: #3CACAE;">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+
+    <div class="text-center max-w-2xl mx-auto mb-14 md:mb-16">
+      <p class="font-inter text-[11px] uppercase tracking-[0.45em] mb-4" style="color: #0F2A36;">— Première session —</p>
+      <h2 class="font-anton uppercase leading-[0.92]" style="color: #F4F8F7; font-size: clamp(36px, 5vw, 60px); font-family: 'Anton', Impact, sans-serif;">
+        Comment ça se passe<br />
+        <span style="color: #0F2A36;">le jour J ?</span>
+      </h2>
+    </div>
+
+    <div class="max-w-4xl mx-auto space-y-3">
+      {data.premiereSession.map((p, i) => (
+        <article class="grid grid-cols-12 gap-4 md:gap-6 p-5 md:p-7 items-start" style="background-color: #F4F8F7;">
+          <div class="col-span-2 md:col-span-1">
+            <p class="font-anton text-3xl md:text-5xl leading-none" style="color: #3CACAE; font-family: 'Anton', Impact, sans-serif;">{p.etape}</p>
+          </div>
+          <div class="col-span-10 md:col-span-11">
+            <h3 class="font-anton uppercase leading-tight" style="color: #0F2A36; font-size: clamp(20px, 2.5vw, 28px); font-family: 'Anton', Impact, sans-serif;">
+              {p.titre}
+            </h3>
+            <p class="mt-2 font-inter text-[14.5px] leading-relaxed" style="color: rgba(15, 42, 54, 0.82);">
+              {p.texte}
+            </p>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <div class="mt-12 text-center">
+      <a
+        href={`tel:${data.info.telephoneHref}`}
+        class="inline-flex items-center justify-center h-14 px-9 font-anton text-base uppercase tracking-[0.2em] rounded-full transition-opacity hover:opacity-90"
+        style="background-color: #0F2A36; color: #F4F8F7; font-family: 'Anton', Impact, sans-serif;"
+      >
+        Réserver ma première session
+      </a>
+    </div>
+  </div>
+</section>

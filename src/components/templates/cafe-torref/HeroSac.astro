@@ -1,0 +1,134 @@
+---
+/**
+ * HeroSac — Étiquette type sac de café avec numéro lot, codes mono,
+ * wordmark serif sombre, données chiffrées du jour.
+ */
+import data from '../../../data/templates/brulerie.json';
+
+const today = new Date().toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: 'numeric' });
+const lot = `R-${data.info.annee}-${String(new Date().getFullYear() - 2017).padStart(2, '0')}`;
+---
+
+<section id="top" class="relative overflow-hidden" style="background-color: #E8DDC7;">
+  <div class="max-w-content mx-auto px-6 md:px-10 pt-10 md:pt-16 pb-16 md:pb-24 relative">
+
+    <!-- Eyebrow code -->
+    <div class="text-center mb-8 md:mb-10">
+      <p class="font-dm-mono text-[10.5px] md:text-[11.5px] uppercase tracking-[0.4em]" style="color: #B57A4A;">
+        [ Lot {lot} · cuvée {today} · La Réunion ]
+      </p>
+    </div>
+
+    <!-- Wordmark hero serif -->
+    <div class="text-center max-w-5xl mx-auto">
+      <h1 class="font-plex-serif font-semibold leading-[0.88]" style="color: #1A0F0A; font-family: 'IBM Plex Serif', Georgia, serif;">
+        <span class="block" style="font-size: clamp(54px, 11vw, 132px); letter-spacing: -0.02em;">Brûlerie</span>
+        <span class="block italic" style="font-size: clamp(64px, 13vw, 152px); color: #B57A4A; line-height: 0.88; margin-top: -0.04em;">d'altitude</span>
+      </h1>
+
+      <!-- Filet ornemental -->
+      <div class="flex items-center justify-center gap-3 my-6 md:my-9" aria-hidden="true">
+        <span class="block w-12 md:w-20 h-px" style="background-color: rgba(62, 42, 31, 0.45);"></span>
+        <span class="font-dm-mono text-xs" style="color: #B57A4A;">{'∗'}</span>
+        <span class="block w-12 md:w-20 h-px" style="background-color: rgba(62, 42, 31, 0.45);"></span>
+      </div>
+
+      <p class="font-plex-serif italic text-2xl md:text-4xl leading-tight" style="color: #3E2A1F; font-family: 'IBM Plex Serif', Georgia, serif;">
+        {data.info.tagline}
+      </p>
+
+      <p class="mt-7 md:mt-9 font-dm-mono text-[13.5px] md:text-[14px] leading-relaxed max-w-2xl mx-auto" style="color: rgba(26, 15, 10, 0.78);">
+        Une Probat L12 de 1968 · 12 kg par torréfaction · 18 min de cycle ·<br class="hidden md:block" />
+        Quatre origines au catalogue, dont un Bourbon Pointu unique au monde.
+      </p>
+    </div>
+
+    <!-- ÉTIQUETTE SAC GÉANT -->
+    <div class="mt-12 md:mt-16 max-w-5xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-0">
+
+        <!-- Étiquette gauche : infos chiffrées -->
+        <div class="md:col-span-7 p-8 md:p-10" style="background-color: #1A0F0A; color: #E8DDC7;">
+          <div class="grid grid-cols-3 gap-4 md:gap-6">
+            <div>
+              <p class="font-dm-mono text-[9.5px] uppercase tracking-[0.25em] mb-1" style="color: #B57A4A;">Origines</p>
+              <p class="font-plex-serif text-3xl md:text-4xl leading-none" style="font-family: 'IBM Plex Serif', Georgia, serif;">04</p>
+            </div>
+            <div>
+              <p class="font-dm-mono text-[9.5px] uppercase tracking-[0.25em] mb-1" style="color: #B57A4A;">Cuvée mois</p>
+              <p class="font-plex-serif text-3xl md:text-4xl leading-none" style="font-family: 'IBM Plex Serif', Georgia, serif;">48 kg</p>
+            </div>
+            <div>
+              <p class="font-dm-mono text-[9.5px] uppercase tracking-[0.25em] mb-1" style="color: #B57A4A;">Depuis</p>
+              <p class="font-plex-serif text-3xl md:text-4xl leading-none" style="font-family: 'IBM Plex Serif', Georgia, serif;">{data.info.annee}</p>
+            </div>
+          </div>
+
+          <div class="mt-7 pt-5 border-t" style="border-color: rgba(181, 122, 74, 0.3);">
+            <p class="font-dm-mono text-[10.5px] uppercase tracking-[0.25em] mb-3" style="color: #B57A4A;">Au programme torréfaction</p>
+            <ul class="space-y-1.5 font-plex-serif text-[14.5px]" style="font-family: 'IBM Plex Serif', Georgia, serif;">
+              <li class="flex justify-between gap-3">
+                <span>Mardi</span>
+                <span style="color: rgba(232, 221, 199, 0.65);">Arabica des Hauts · 12 kg</span>
+              </li>
+              <li class="flex justify-between gap-3">
+                <span>Jeudi</span>
+                <span style="color: rgba(232, 221, 199, 0.65);">Blend Altitude espresso · 12 kg</span>
+              </li>
+              <li class="flex justify-between gap-3">
+                <span>Vendredi</span>
+                <span style="color: rgba(232, 221, 199, 0.65);">Bourbon Pointu · 4 kg (édition)</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Étiquette droite : CTAs + cachet -->
+        <div class="md:col-span-5 p-8 md:p-10 relative" style="background-color: #B57A4A; color: #1A0F0A;">
+          <p class="font-dm-mono text-[10.5px] uppercase tracking-[0.3em]" style="color: rgba(26, 15, 10, 0.75);">
+            [ commande ]
+          </p>
+          <p class="mt-3 font-plex-serif text-xl md:text-2xl leading-snug" style="font-family: 'IBM Plex Serif', Georgia, serif;">
+            Pas d'abonnement ?<br />
+            Grain frais torréfié hier,<br />
+            <em class="italic">livraison La Réunion 48h.</em>
+          </p>
+
+          <div class="mt-8 space-y-3">
+            <a
+              href="#origines"
+              class="flex items-center justify-center h-12 px-7 font-dm-mono font-semibold text-[12px] uppercase tracking-[0.18em]"
+              style="background-color: #1A0F0A; color: #E8DDC7;"
+            >
+              Voir les origines
+            </a>
+            <a
+              href="#abonnement"
+              class="flex items-center justify-center h-12 px-7 font-dm-mono font-semibold text-[12px] uppercase tracking-[0.18em] border-2"
+              style="background-color: transparent; color: #1A0F0A; border-color: #1A0F0A;"
+            >
+              S'abonner · 14€/15j
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Photo plein cadre -->
+    <div class="mt-12 md:mt-16 max-w-5xl mx-auto">
+      <div class="aspect-[16/8] overflow-hidden" style="border: 2px solid #1A0F0A;">
+        <img
+          src={data.info.photoHero}
+          alt={data.info.photoHeroAlt}
+          class="w-full h-full object-cover"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </div>
+      <p class="mt-3 text-center font-dm-mono text-[11px] uppercase tracking-[0.25em]" style="color: #B57A4A;">
+        — Grain bourbon pointu, torréfaction du {today} —
+      </p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,55 @@
+---
+const faq = [
+  {
+    q: 'Faut-il savoir nager ?',
+    r: 'Oui — 25 mètres minimum sans appui, ça suffit. Pas besoin d\'être nageur de compétition. À l\'inscription, vous signez une déclaration sur l\'honneur. À partir de 8 ans, accompagnés au début pour les plus jeunes.',
+  },
+  {
+    q: 'Et si le temps est mauvais le jour de mon cours ?',
+    r: 'On consulte la météo et la marée la veille au soir. Si les conditions ne le permettent pas (vagues trop fortes, vent contraire, pluie persistante), on annule et on reporte gratuitement à une date qui vous arrange. Sécurité d\'abord.',
+  },
+  {
+    q: 'Qu\'est-ce que je dois apporter ?',
+    r: 'Un maillot de bain, une serviette, une bouteille d\'eau, une casquette ou un chapeau pour après le cours, et de la crème solaire reef-safe (la corail vous remercie). On fournit planche, leash, combinaison, vestiaire et douche.',
+  },
+  {
+    q: 'Mon enfant peut surfer à partir de quel âge ?',
+    r: 'À partir de 8 ans pour les cours collectifs, dans la limite où il sait nager 25 m. Pour les 6-7 ans, on propose des sessions parent-enfant en privé (1 moniteur pour 2). À partir de 13 ans : groupe ados dédié le mercredi après-midi.',
+  },
+  {
+    q: 'Quelle est la meilleure période pour apprendre à La Réunion ?',
+    r: 'On enseigne toute l\'année. Mai à octobre c\'est l\'hiver austral : vagues plus grosses et plus régulières, eau autour de 23°C. Novembre à avril c\'est l\'été : vagues plus petites souvent, eau autour de 26°C, idéal pour les débutants.',
+  },
+  {
+    q: 'Vous proposez des stages pour groupes / EVG / anniversaires ?',
+    r: 'Oui — sessions privatisées pour groupes constitués (6 à 12 personnes), enterrements de vie de garçon/fille avec briefing fun, anniversaires ados. Devis sur mesure par WhatsApp en précisant date, nombre, niveau.',
+  },
+];
+---
+
+<section class="py-20 md:py-28 relative" style="background-color: #F4F8F7;">
+  <div class="max-w-3xl mx-auto px-6 md:px-10 relative">
+
+    <div class="text-center mb-12 md:mb-16">
+      <p class="font-inter text-[11px] uppercase tracking-[0.45em] mb-4" style="color: #3CACAE;">— Avant de te jeter à l'eau —</p>
+      <h2 class="font-anton uppercase leading-[0.92]" style="color: #0F2A36; font-size: clamp(36px, 5vw, 60px); font-family: 'Anton', Impact, sans-serif;">
+        Questions<br />
+        <span style="color: #3CACAE;">qu'on nous pose</span>
+      </h2>
+    </div>
+
+    <div class="space-y-3">
+      {faq.map((f) => (
+        <details class="group transition-colors" style="background-color: #FFFFFF; border: 1px solid rgba(15, 42, 54, 0.18);">
+          <summary class="cursor-pointer list-none flex items-start gap-4 p-5 md:p-7">
+            <span class="font-anton text-2xl leading-none mt-0.5 transition-transform duration-300 group-open:rotate-45" style="color: #3CACAE; font-family: 'Anton', Impact, sans-serif;" aria-hidden="true">+</span>
+            <span class="flex-1 font-anton text-lg md:text-xl leading-tight uppercase" style="color: #0F2A36; font-family: 'Anton', Impact, sans-serif;">{f.q}</span>
+          </summary>
+          <div class="px-5 md:px-7 pb-6 md:pb-8 pl-14 md:pl-16">
+            <p class="font-inter text-[14.5px] md:text-[15px] leading-relaxed" style="color: rgba(15, 42, 54, 0.82);">{f.r}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,85 @@
+---
+import data from '../../../data/templates/painleve.json';
+
+const navLinks = [
+  { href: '#four', label: 'Le four' },
+  { href: '#levain', label: 'Le levain' },
+  { href: '#carte', label: 'La carte' },
+  { href: '#calendrier', label: 'Calendrier' },
+];
+---
+
+<header
+  id="painleve-header"
+  data-scrolled="false"
+  class="sticky top-0 z-50 transition-[background-color,backdrop-filter,box-shadow] duration-500"
+  style="border-bottom: 1px solid rgba(122, 74, 42, 0.10);"
+>
+  <div class="max-w-content mx-auto px-6 md:px-10 h-16 md:h-20 flex items-center justify-between gap-6">
+
+    <a href="#top" class="flex items-center gap-3 group" aria-label="Le Pain Levé — accueil">
+      <!-- Picto épi de blé minimal -->
+      <svg viewBox="0 0 32 32" class="w-7 h-7" style="color: #7A4A2A;" aria-hidden="true">
+        <g fill="currentColor">
+          <path d="M16 4 L16 28" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          <ellipse cx="13" cy="9" rx="2" ry="3.5" transform="rotate(-25 13 9)"/>
+          <ellipse cx="19" cy="9" rx="2" ry="3.5" transform="rotate(25 19 9)"/>
+          <ellipse cx="13" cy="14" rx="2" ry="3.5" transform="rotate(-25 13 14)"/>
+          <ellipse cx="19" cy="14" rx="2" ry="3.5" transform="rotate(25 19 14)"/>
+          <ellipse cx="13" cy="19" rx="2" ry="3.5" transform="rotate(-25 13 19)"/>
+          <ellipse cx="19" cy="19" rx="2" ry="3.5" transform="rotate(25 19 19)"/>
+        </g>
+      </svg>
+      <div class="flex flex-col leading-none">
+        <span class="font-crimson-pro font-semibold text-lg md:text-xl" style="color: #1A1614;">Le Pain Levé</span>
+        <span class="font-caveat text-base md:text-lg -mt-0.5" style="color: #7A4A2A;">— fournil artisanal</span>
+      </div>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-7 lg:gap-9 font-crimson-pro text-[13.5px] font-medium" aria-label="Navigation">
+      {navLinks.map((link) => (
+        <a href={link.href} class="transition-colors duration-300 hover:opacity-70" style="color: #1A1614;">
+          {link.label}
+        </a>
+      ))}
+    </nav>
+
+    <a
+      href={`tel:${data.info.telephoneHref}`}
+      class="hidden md:inline-flex items-center justify-center h-10 px-5 font-crimson-pro font-semibold text-[12.5px] tracking-wider rounded-full transition-opacity hover:opacity-90"
+      style="background-color: #7A4A2A; color: #F5EBD5;"
+    >
+      Réserver pain
+    </a>
+
+    <a
+      href={`tel:${data.info.telephoneHref}`}
+      class="md:hidden inline-flex items-center justify-center h-10 px-4 font-crimson-pro font-semibold text-[12px] tracking-wider rounded-full"
+      style="background-color: #7A4A2A; color: #F5EBD5;"
+      aria-label="Appeler"
+    >
+      Appeler
+    </a>
+  </div>
+</header>
+
+<style>
+  #painleve-header {
+    background-color: rgb(245 235 213 / 0.96);
+  }
+  #painleve-header[data-scrolled='true'] {
+    background-color: rgb(245 235 213 / 0.97);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    backdrop-filter: saturate(180%) blur(12px);
+    box-shadow: 0 1px 3px rgb(122 74 42 / 0.08);
+  }
+</style>
+
+<script>
+  const header = document.getElementById('painleve-header');
+  if (header) {
+    const update = () => { header.dataset.scrolled = String(window.scrollY > 8); };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+  }
+</script>

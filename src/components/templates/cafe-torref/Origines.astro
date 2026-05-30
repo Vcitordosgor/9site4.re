@@ -1,0 +1,101 @@
+---
+import data from '../../../data/templates/brulerie.json';
+---
+
+<section id="origines" class="py-20 md:py-28 relative" style="background-color: #E8DDC7;">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+
+    <div class="max-w-2xl mb-14 md:mb-20">
+      <p class="font-dm-mono text-[10.5px] uppercase tracking-[0.4em] mb-4" style="color: #B57A4A;">— Sélection 2026 —</p>
+      <h2 class="font-plex-serif font-semibold leading-[0.95]" style="color: #1A0F0A; font-size: clamp(36px, 5vw, 56px); font-family: 'IBM Plex Serif', Georgia, serif;">
+        Quatre origines
+        <em class="block italic mt-2" style="color: #B57A4A; font-size: clamp(40px, 5.5vw, 60px);">
+          au catalogue.
+        </em>
+      </h2>
+      <p class="mt-5 font-dm-mono text-[13.5px] leading-relaxed" style="color: rgba(26, 15, 10, 0.78);">
+        Trois cafés péi + un café d'altitude éthiopien. Chaque fiche détaille terroir, process, torréfaction et notes de tasse.
+      </p>
+    </div>
+
+    <ul class="space-y-5 md:space-y-6">
+      {data.origines.map((o, i) => (
+        <li class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 p-6 md:p-10" style="background-color: rgba(255, 255, 255, 0.6); border: 1px solid rgba(62, 42, 31, 0.18);">
+
+          <!-- Carte mini + numéro -->
+          <div class="md:col-span-3">
+            <p class="font-dm-mono text-[9.5px] uppercase tracking-[0.3em]" style="color: #B57A4A;">
+              [ Origine n°{String(i + 1).padStart(2, '0')} ]
+            </p>
+            <div class="mt-3 p-4 aspect-square flex flex-col items-center justify-center text-center" style="background-color: #1A0F0A; color: #E8DDC7;">
+              <!-- SVG carte simplifiée -->
+              <svg viewBox="0 0 60 60" class="w-12 h-12 opacity-60 mb-3" aria-hidden="true">
+                <circle cx="30" cy="30" r="25" fill="none" stroke="currentColor" stroke-width="0.8" />
+                <circle cx="30" cy="30" r="15" fill="none" stroke="currentColor" stroke-width="0.8" />
+                <circle cx="30" cy="30" r="3" fill="currentColor" />
+                <path d="M5 30 L55 30 M30 5 L30 55" stroke="currentColor" stroke-width="0.5" opacity="0.4" />
+              </svg>
+              <p class="font-dm-mono text-[10px] uppercase tracking-[0.2em]" style="color: #B57A4A;">{o.fiche}</p>
+            </div>
+            <div class="mt-3 space-y-1.5 font-dm-mono text-[11px]" style="color: rgba(26, 15, 10, 0.78);">
+              <div class="flex justify-between gap-2">
+                <span style="color: #B57A4A;">Altitude</span>
+                <span>{o.altitude}</span>
+              </div>
+              <div class="flex justify-between gap-2">
+                <span style="color: #B57A4A;">Process</span>
+                <span>{o.process}</span>
+              </div>
+              <div class="flex justify-between gap-2">
+                <span style="color: #B57A4A;">Torréf.</span>
+                <span>{o.torrefaction}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Texte principal -->
+          <div class="md:col-span-6">
+            <p class="font-dm-mono text-[10px] uppercase tracking-[0.25em]" style="color: #B57A4A;">
+              {o.terroir}
+            </p>
+            <h3 class="mt-1 font-plex-serif font-semibold text-2xl md:text-[30px] leading-tight" style="color: #1A0F0A; font-family: 'IBM Plex Serif', Georgia, serif;">
+              {o.nom}
+            </h3>
+            <p class="mt-1.5 font-plex-serif italic text-xl md:text-2xl leading-snug" style="color: #B57A4A; font-family: 'IBM Plex Serif', Georgia, serif;">
+              {o.tagline}
+            </p>
+            <p class="mt-4 font-plex-serif text-[15px] leading-relaxed" style="color: rgba(26, 15, 10, 0.82); font-family: 'IBM Plex Serif', Georgia, serif;">
+              {o.description}
+            </p>
+
+            <div class="mt-5 p-4 inline-block" style="background-color: rgba(181, 122, 74, 0.15); border-left: 2px solid #B57A4A;">
+              <p class="font-dm-mono text-[10px] uppercase tracking-[0.25em] mb-1" style="color: #B57A4A;">Notes en tasse</p>
+              <p class="font-plex-serif italic text-[15px]" style="color: #1A0F0A; font-family: 'IBM Plex Serif', Georgia, serif;">
+                {o.notes}
+              </p>
+            </div>
+          </div>
+
+          <!-- Prix + CTA -->
+          <div class="md:col-span-3 flex md:flex-col items-center md:items-end gap-4 md:gap-3 md:text-right pt-4 md:pt-0 md:pl-6 md:border-l border-t md:border-t-0" style="border-color: rgba(62, 42, 31, 0.18);">
+            <div>
+              <p class="font-dm-mono text-[10px] uppercase tracking-[0.2em]" style="color: #B57A4A;">Tarif</p>
+              <p class="font-plex-serif font-semibold text-2xl md:text-3xl leading-tight" style="color: #1A0F0A; font-family: 'IBM Plex Serif', Georgia, serif;">
+                {o.prix}
+              </p>
+            </div>
+            <a
+              href={`https://wa.me/${data.info.whatsapp}?text=${encodeURIComponent('Bonjour, je voudrais commander : ' + o.nom + '.')}`}
+              target="_blank"
+              rel="noopener"
+              class="inline-flex items-center justify-center h-11 px-4 font-dm-mono font-semibold text-[10.5px] uppercase tracking-[0.18em] whitespace-nowrap"
+              style="background-color: #1A0F0A; color: #E8DDC7;"
+            >
+              [ commander ]
+            </a>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,162 @@
+{
+  "info": {
+    "nom": "Le Pain Levé",
+    "wordmark": "Le Pain",
+    "wordmark2": "Levé",
+    "soustitre": "Boulangerie au levain · La Réunion",
+    "tagline": "Farine, eau, sel, temps.",
+    "fondateur": "Mathieu Hoarau",
+    "ville": "La Réunion",
+    "adresseLigne1": "Le fournil — À La Réunion",
+    "adresseLigne2": "Précisé à la commande",
+    "telephone": "0692 12 34 56",
+    "telephoneHref": "+262692123456",
+    "whatsapp": "262692123456",
+    "email": "fournil@painleve.re",
+    "instagram": "@painleve.974",
+    "siret": "84512033500017",
+    "annee": "2018",
+    "photoHero": "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=1600&auto=format&fit=crop",
+    "photoHeroAlt": "Pain de campagne au levain au four à bois, mie alvéolée, croûte dorée, La Réunion",
+    "ouvertureHebdo": "Mercredi → samedi · 7h00 → 13h00",
+    "fermeture": "Dimanche · lundi · mardi",
+    "rythme": "Une fournée par jour, 6h du matin"
+  },
+  "manifesto": "Une seule farine bio T80 du moulin de Saint-Joseph. Un levain mère né d'une grappe de raisin péi, nourri tous les jours depuis 2018. Une fermentation longue, 18 à 24 heures à température douce, qui donne à la mie son grain humide et son acidité fruitée. Du sel de Salins-les-Bains. De l'eau. Pas de levure de boulanger, pas d'améliorants, pas de raccourci.",
+  "fournisseurs": [
+    "Farine bio T80 — Moulin de Saint-Joseph",
+    "Beurre fermier AOP Charentes-Poitou",
+    "Sel marin Salins-les-Bains",
+    "Œufs plein air poule rousse — Madame Hoarau"
+  ],
+  "four": {
+    "titre": "Notre four à sole tournante",
+    "soustitre": "Soixante-douze pierres réfractaires",
+    "texte": "Le four est en activité dès quatre heures du matin. Quatre cents kilos de pierre réfractaire montent à 240°C en deux heures. La sole tournante permet de cuire trente pains en simultané, sans déplacement de la pâte. La voûte basse retient la vapeur — c'est elle qui donne la croûte dorée et le grigne ouvert.",
+    "stats": [
+      { "valeur": "240°C", "label": "Température de sole" },
+      { "valeur": "72 pierres", "label": "Sole réfractaire" },
+      { "valeur": "30 pains", "label": "Par fournée" },
+      { "valeur": "45 min", "label": "Temps de cuisson" }
+    ]
+  },
+  "levain": {
+    "titre": "Notre levain mère",
+    "annee": "2018",
+    "origine": "Né d'une grappe de raisin muscat de l'île",
+    "soustitre": "Nourri tous les matins depuis 2018",
+    "texte": "Le levain a été lancé en mars 2018 avec une grappe de raisin péi écrasée dans de la farine et de l'eau. Sept ans plus tard, on le nourrit tous les matins : une cuillère de farine, une cuillère d'eau, on touille, on attend. Il fait sa vie, il bulle, il acidifie. C'est lui qui fait lever la pâte, c'est lui qui donne ce petit goût aigrelet inimitable.",
+    "etapes": [
+      { "label": "06h00", "titre": "Rafraîchi du matin", "texte": "Farine + eau, ratio 1:1, brassage doux à la cuillère bois." },
+      { "label": "07h30", "titre": "Pétrissage", "texte": "Autolyse 30 min, puis pétrissage doux à la main, 12 minutes." },
+      { "label": "08h00", "titre": "Pointage", "texte": "Pâte couverte, repos 4h en cuve à 22°C avec deux rabats à 1h et 2h." },
+      { "label": "12h00", "titre": "Façonnage", "texte": "Boules, bâtards, miches : pesées à la main, repos en banneton de raphia." },
+      { "label": "20h00", "titre": "Apprêt au froid", "texte": "Mise en chambre froide 4°C, fermentation lente 12 heures." },
+      { "label": "08h00 J+1", "titre": "Enfournement", "texte": "Grignage, coup de buée, cuisson 45 min sur sole à 240°C." }
+    ]
+  },
+  "carte": {
+    "pains": [
+      {
+        "id": "campagne",
+        "nom": "Pain de campagne",
+        "format": "Miche 800g",
+        "prix": "6,50 €",
+        "tagline": "Le pain de la maison.",
+        "description": "Farine bio T80, levain mère 30%, hydratation 78%. Mie alvéolée souple, croûte fine et croustillante, acidité douce de longue fermentation.",
+        "conserve": "5 jours sous torchon"
+      },
+      {
+        "id": "seigle",
+        "nom": "Pain de seigle nordique",
+        "format": "Pavé 600g",
+        "prix": "7,20 €",
+        "tagline": "Dense, complet, idéal pour les fromages.",
+        "description": "Mélange T80 et seigle complet 40%, graines de tournesol, lin doré, fenouil. Fermentation 24h, mie compacte et parfumée.",
+        "conserve": "7 jours sous torchon"
+      },
+      {
+        "id": "petit-epeautre",
+        "nom": "Petit épeautre des Hauts",
+        "format": "Miche 700g",
+        "prix": "8,40 €",
+        "tagline": "Céréale ancestrale, digestion légère.",
+        "description": "Petit épeautre cultivé en agriculture biologique, mouture sur pierre. Mie souple jaune paille, parfum noisette grillée, idéal au petit déjeuner.",
+        "conserve": "5 jours sous torchon"
+      },
+      {
+        "id": "tournesol-curcuma",
+        "nom": "Tournesol curcuma",
+        "format": "Bâtard 400g",
+        "prix": "5,80 €",
+        "tagline": "La signature de Mathieu.",
+        "description": "T80, graines de tournesol grillées 12%, pointe de curcuma frais râpé du jardin. Mie souple, croûte cuivrée, parfum doux et terreux.",
+        "conserve": "4 jours sous torchon"
+      }
+    ],
+    "viennoiseries": [
+      {
+        "id": "croissant-beurre",
+        "nom": "Croissant pur beurre AOP",
+        "prix": "1,40 €",
+        "tagline": "81 plis, beurre Charentes-Poitou.",
+        "description": "Pâte feuilletée pur beurre AOP Charentes-Poitou, six tours simples, pousse 2h30, dorure à l'œuf. Friable, beurré, jamais sucré."
+      },
+      {
+        "id": "pain-chocolat",
+        "nom": "Pain au chocolat",
+        "prix": "1,60 €",
+        "tagline": "Deux barres Valrhona Caraïbe 66%.",
+        "description": "Même pâte feuilletée que le croissant, deux barres Valrhona Caraïbe enrobées, dorure à l'œuf, sucre cassonade en sortie de four."
+      },
+      {
+        "id": "chausson-mangue",
+        "nom": "Chausson mangue-vanille",
+        "prix": "2,40 €",
+        "tagline": "Saison mangue Carotte oct → janv.",
+        "description": "Pâte feuilletée inversée, compotée de mangue Carotte de l'île, vanille bourbon fendue, citron vert. Fenêtre courte 12 semaines/an."
+      },
+      {
+        "id": "brioche-feuilletee",
+        "nom": "Brioche feuilletée",
+        "format": "Pièce 500g",
+        "prix": "9,00 €",
+        "tagline": "Pour le brunch du samedi.",
+        "description": "Pâte briochée pur beurre, feuilletée façon kouign, sucre perlé sur le dessus. Se réserve la veille — six pièces par fournée seulement."
+      }
+    ],
+    "sucre": [
+      {
+        "id": "tartelette-citron",
+        "nom": "Tartelette citron meringuée",
+        "prix": "3,80 €",
+        "tagline": "Citron vert de l'île, meringue brûlée au chalumeau.",
+        "description": "Pâte sablée pur beurre, crème citron vert, meringue italienne brûlée minute. À consommer le jour même."
+      },
+      {
+        "id": "flan-vanille",
+        "nom": "Flan pâtissier vanille bourbon",
+        "prix": "3,40 €",
+        "tagline": "Trois gousses, sans œuf de couleur ajoutée.",
+        "description": "Pâte brisée pur beurre, appareil flan vanille fendue, cuisson lente jusqu'à coloration naturelle dorée. Recette de la grand-mère du fournil."
+      },
+      {
+        "id": "cake-marbre",
+        "nom": "Cake marbré chocolat",
+        "format": "Pièce 350g",
+        "prix": "8,00 €",
+        "tagline": "Beurre, œufs, chocolat, point.",
+        "description": "Cake moelleux pur beurre, marbrures cacao Valrhona 70%, glaçage chocolat noir. Six cakes par fournée."
+      }
+    ]
+  },
+  "calendrier": [
+    { "jour": "Mercredi", "fournee": "Campagne · seigle · viennoiseries", "ouverture": "7h00 → 13h00" },
+    { "jour": "Jeudi", "fournee": "Campagne · épeautre · brioche", "ouverture": "7h00 → 13h00" },
+    { "jour": "Vendredi", "fournee": "Toute la gamme + flan vanille", "ouverture": "7h00 → 13h00" },
+    { "jour": "Samedi", "fournee": "Brunch · brioches feuilletées · chaussons saison", "ouverture": "7h00 → 13h00" },
+    { "jour": "Dimanche", "fournee": "Le four se repose.", "ouverture": "Fermé" },
+    { "jour": "Lundi", "fournee": "Préparation du levain, ménage du fournil.", "ouverture": "Fermé" },
+    { "jour": "Mardi", "fournee": "Marché de producteurs, achat des farines.", "ouverture": "Fermé" }
+  ]
+}

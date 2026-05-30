@@ -1,0 +1,82 @@
+---
+import data from '../../../data/templates/painleve.json';
+
+const sections = [
+  { key: 'pains' as const, label: 'Pains', titre: 'Nos pains', tagline: 'au levain mère', items: data.carte.pains },
+  { key: 'viennoiseries' as const, label: 'Viennoiseries', titre: 'Viennoiseries', tagline: 'pur beurre AOP', items: data.carte.viennoiseries },
+  { key: 'sucre' as const, label: 'Sucré', titre: 'Pâtisserie', tagline: 'maison du jour', items: data.carte.sucre },
+];
+---
+
+<section id="carte" class="py-20 md:py-28 relative" style="background-color: rgba(122, 74, 42, 0.05);">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+
+    <div class="text-center max-w-2xl mx-auto mb-14 md:mb-20">
+      <p class="font-crimson-pro text-[11px] uppercase tracking-[0.45em] mb-4" style="color: #7A4A2A;">— La carte du fournil —</p>
+      <h2 class="font-crimson-pro font-semibold leading-[0.95]" style="color: #1A1614; font-size: clamp(36px, 5vw, 56px);">
+        Ce que l'on cuit,
+        <em class="block font-caveat not-italic mt-2" style="color: #C89B3C; font-size: clamp(44px, 6vw, 64px);">
+          ce que l'on lève
+        </em>
+      </h2>
+      <p class="mt-5 font-crimson-pro text-[15px] leading-relaxed" style="color: rgba(26, 22, 20, 0.78);">
+        Carte indicative — la disponibilité dépend du jour et du four. Voir le calendrier de cuisson.
+      </p>
+    </div>
+
+    {sections.map((sec) => (
+      <div class="mb-14 md:mb-20 last:mb-0">
+        <div class="flex items-baseline justify-between gap-4 mb-7 md:mb-9 pb-4 border-b" style="border-color: rgba(122, 74, 42, 0.25);">
+          <div>
+            <p class="font-crimson-pro text-[10.5px] uppercase tracking-[0.3em]" style="color: #7A4A2A;">{sec.label}</p>
+            <h3 class="font-crimson-pro font-semibold text-2xl md:text-3xl" style="color: #1A1614;">
+              {sec.titre}
+              <em class="font-caveat ml-3 not-italic" style="color: #C89B3C; font-size: 1.1em;">{sec.tagline}</em>
+            </h3>
+          </div>
+        </div>
+
+        <ul class="space-y-5">
+          {sec.items.map((item, i) => (
+            <li class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 items-start p-6 md:p-7" style="background-color: rgba(255, 255, 255, 0.65); border: 1px solid rgba(122, 74, 42, 0.18);">
+              <div class="md:col-span-1">
+                <p class="font-caveat leading-none" style="color: #C89B3C; font-size: clamp(36px, 4vw, 48px);">
+                  {String(i + 1).padStart(2, '0')}
+                </p>
+              </div>
+              <div class="md:col-span-8">
+                <h4 class="font-crimson-pro font-semibold text-xl md:text-2xl leading-tight" style="color: #1A1614;">
+                  {item.nom}
+                  {'format' in item && item.format ? (
+                    <span class="ml-2 font-crimson-pro font-normal text-[13px] uppercase tracking-[0.18em]" style="color: rgba(122, 74, 42, 0.7);">
+                      · {item.format}
+                    </span>
+                  ) : null}
+                </h4>
+                <p class="font-caveat text-2xl md:text-3xl leading-tight mt-1" style="color: #7A4A2A;">
+                  {item.tagline}
+                </p>
+                <p class="mt-3 font-crimson-pro text-[14.5px] leading-relaxed" style="color: rgba(26, 22, 20, 0.78);">
+                  {item.description}
+                </p>
+                {'conserve' in item && item.conserve ? (
+                  <p class="mt-3 font-crimson-pro text-[11px] uppercase tracking-[0.2em]" style="color: #7A4A2A;">
+                    ✦ Se conserve {item.conserve}
+                  </p>
+                ) : null}
+              </div>
+              <div class="md:col-span-3 flex md:flex-col items-center md:items-end gap-4 md:gap-3 md:text-right pt-4 md:pt-0 md:pl-6 md:border-l border-t md:border-t-0" style="border-color: rgba(122, 74, 42, 0.18);">
+                <div>
+                  <p class="font-crimson-pro text-[10px] uppercase tracking-[0.2em]" style="color: #7A4A2A;">Tarif</p>
+                  <p class="font-crimson-pro font-semibold text-2xl md:text-3xl leading-tight" style="color: #1A1614;">
+                    {item.prix}
+                  </p>
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+</section>

@@ -1,0 +1,91 @@
+---
+/**
+ * HeroVague — Image plein écran d'une vague, wordmark Anton ultra large
+ * en bas, tagline + CTAs et stats école.
+ */
+import data from '../../../data/templates/borddeau.json';
+---
+
+<section id="top" class="relative overflow-hidden min-h-[680px] md:min-h-[760px] flex flex-col" style="background-color: #0F2A36;">
+
+  <!-- Image plein cadre -->
+  <img
+    src={data.info.photoHero}
+    alt={data.info.photoHeroAlt}
+    class="absolute inset-0 w-full h-full object-cover"
+    loading="eager"
+    fetchpriority="high"
+    decoding="async"
+  />
+
+  <!-- Overlay dégradé océan -->
+  <div class="absolute inset-0" aria-hidden="true"
+       style="background:
+         linear-gradient(180deg, rgb(15 42 54 / 0.55) 0%, rgb(15 42 54 / 0.2) 30%, rgb(15 42 54 / 0.35) 60%, rgb(15 42 54 / 0.92) 100%),
+         linear-gradient(90deg, rgb(15 42 54 / 0.3) 0%, transparent 55%);">
+  </div>
+
+  <!-- Eyebrow top -->
+  <div class="relative max-w-content mx-auto w-full px-6 md:px-10 pt-8 md:pt-12">
+    <p class="font-inter text-[11px] md:text-[12px] uppercase tracking-[0.4em]" style="color: #E5C99A;">
+      <span class="inline-block w-8 h-px mr-3 align-middle" style="background-color: #E5C99A;"></span>
+      École de surf · La Réunion · BEES diplômé · depuis {data.info.annee}
+    </p>
+  </div>
+
+  <!-- Wordmark XXL en bas -->
+  <div class="relative max-w-content mx-auto w-full px-6 md:px-10 mt-auto pb-16 md:pb-20">
+    <h1 class="font-anton uppercase leading-[0.85] tracking-tight" style="color: #F4F8F7; font-family: 'Anton', Impact, sans-serif;">
+      <span class="block" style="font-size: clamp(78px, 18vw, 220px);">Bord</span>
+      <span class="block" style="font-size: clamp(78px, 18vw, 220px); color: #3CACAE; margin-top: -0.06em;">d'eau.</span>
+    </h1>
+
+    <p class="mt-6 md:mt-8 font-inter italic text-xl md:text-3xl leading-snug max-w-xl" style="color: #F4F8F7;">
+      {data.info.tagline}
+    </p>
+
+    <p class="mt-4 md:mt-5 font-inter text-[15px] md:text-[16px] leading-relaxed max-w-xl" style="color: rgba(244, 248, 247, 0.85);">
+      École de surf labellisée, encadrement diplômé d'État, dix ans à apprendre la lecture de l'océan aux débutants et la progression aux confirmés.
+    </p>
+
+    <!-- CTAs -->
+    <div class="mt-8 flex flex-col sm:flex-row items-start gap-3 md:gap-4">
+      <a
+        href="#formules"
+        class="inline-flex items-center justify-center h-12 px-8 font-anton text-[14px] uppercase tracking-[0.18em] rounded-full transition-opacity hover:opacity-90"
+        style="background-color: #3CACAE; color: #F4F8F7; font-family: 'Anton', Impact, sans-serif;"
+      >
+        Voir les formules
+      </a>
+      <a
+        href={`https://wa.me/${data.info.whatsapp}?text=${encodeURIComponent('Bonjour, je voudrais réserver une session de surf.')}`}
+        target="_blank"
+        rel="noopener"
+        class="inline-flex items-center justify-center h-12 px-8 font-anton text-[14px] uppercase tracking-[0.18em] rounded-full border-2 transition-colors duration-300"
+        style="background-color: transparent; color: #F4F8F7; border-color: #F4F8F7;"
+      >
+        Réserver WhatsApp
+      </a>
+    </div>
+
+    <!-- Stats bas -->
+    <div class="mt-12 md:mt-16 grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-8 max-w-3xl">
+      <div class="border-l pl-4" style="border-color: rgba(229, 201, 154, 0.5);">
+        <p class="font-anton text-3xl md:text-4xl leading-none" style="color: #E5C99A; font-family: 'Anton', Impact, sans-serif;">10 ans</p>
+        <p class="mt-1 font-inter text-[11px] uppercase tracking-[0.2em]" style="color: rgba(244, 248, 247, 0.75);">D'enseignement</p>
+      </div>
+      <div class="border-l pl-4" style="border-color: rgba(229, 201, 154, 0.5);">
+        <p class="font-anton text-3xl md:text-4xl leading-none" style="color: #E5C99A; font-family: 'Anton', Impact, sans-serif;">BEES</p>
+        <p class="mt-1 font-inter text-[11px] uppercase tracking-[0.2em]" style="color: rgba(244, 248, 247, 0.75);">Diplôme d'État</p>
+      </div>
+      <div class="border-l pl-4" style="border-color: rgba(229, 201, 154, 0.5);">
+        <p class="font-anton text-3xl md:text-4xl leading-none" style="color: #E5C99A; font-family: 'Anton', Impact, sans-serif;">22</p>
+        <p class="mt-1 font-inter text-[11px] uppercase tracking-[0.2em]" style="color: rgba(244, 248, 247, 0.75);">Planches école</p>
+      </div>
+      <div class="border-l pl-4" style="border-color: rgba(229, 201, 154, 0.5);">
+        <p class="font-anton text-3xl md:text-4xl leading-none" style="color: #E5C99A; font-family: 'Anton', Impact, sans-serif;">04</p>
+        <p class="mt-1 font-inter text-[11px] uppercase tracking-[0.2em]" style="color: rgba(244, 248, 247, 0.75);">Spots étudiés</p>
+      </div>
+    </div>
+  </div>
+</section>

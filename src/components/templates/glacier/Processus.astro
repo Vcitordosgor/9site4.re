@@ -1,0 +1,43 @@
+---
+import data from '../../../data/templates/sorbetpei.json';
+---
+
+<section id="processus" class="py-20 md:py-28 relative" style="background-color: #FFF8E7;">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+
+    <div class="text-center max-w-2xl mx-auto mb-14 md:mb-20">
+      <p class="font-dm-sans text-[11px] uppercase tracking-[0.45em] mb-4" style="color: #FF6F91;">— Du fruit au cône —</p>
+      <h2 class="font-fraunces font-semibold leading-[0.95]" style="color: #3D2817; font-size: clamp(36px, 5vw, 56px);">
+        Comment ça
+        <em class="block font-fraunces italic mt-2" style="color: #FF6F91; font-size: clamp(44px, 6vw, 64px);">fonctionne</em>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6 max-w-6xl mx-auto">
+      {data.processus.map((p, i) => (
+        <article class="relative p-6 md:p-7" style={`background-color: ${i === 0 ? '#FFB347' : i === 1 ? '#FF6F91' : i === 2 ? '#A8D5BA' : '#FFD93D'}; border: 2px solid #3D2817; border-radius: 28px;`}>
+          <p class="font-fraunces italic text-6xl leading-none mb-4" style="color: rgba(61, 40, 23, 0.7);">
+            {p.etape}
+          </p>
+          <h3 class="font-fraunces font-semibold text-xl md:text-2xl leading-tight" style="color: #3D2817;">
+            {p.titre}
+          </h3>
+          <p class="mt-3 font-dm-sans text-[14px] leading-relaxed" style="color: rgba(61, 40, 23, 0.85);">
+            {p.texte}
+          </p>
+        </article>
+      ))}
+    </div>
+
+    <!-- Citation bas -->
+    <div class="mt-16 max-w-3xl mx-auto text-center px-6 py-10 md:py-12" style="background-color: #3D2817; color: #FFF8E7; border-radius: 32px;">
+      <p class="font-fraunces italic text-2xl md:text-3xl leading-snug">
+        « Une mangue Carotte qui finit en sirop industriel,<br class="hidden md:block" />
+        ça me rend triste pour la mangue. »
+      </p>
+      <p class="mt-5 font-dm-sans text-[11px] uppercase tracking-[0.25em]" style="color: #FFB347;">
+        — Léna, glacière
+      </p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,49 @@
+---
+import '@fontsource/fraunces/latin-400.css';
+import '@fontsource/fraunces/latin-500.css';
+import '@fontsource/fraunces/latin-600.css';
+import '@fontsource/fraunces/latin-400-italic.css';
+import '@fontsource/fraunces/latin-500-italic.css';
+import '@fontsource/dm-sans/latin-400.css';
+import '@fontsource/dm-sans/latin-500.css';
+import '@fontsource/dm-sans/latin-600.css';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getSeo } from '../../lib/seo';
+import { localBusinessSchema } from '../../lib/businessSchema';
+import sorbetData from '../../data/templates/sorbetpei.json';
+
+import Header from '../../components/templates/glacier/Header.astro';
+import HeroPop from '../../components/templates/glacier/HeroPop.astro';
+import Parfums from '../../components/templates/glacier/Parfums.astro';
+import Moment from '../../components/templates/glacier/Moment.astro';
+import Processus from '../../components/templates/glacier/Processus.astro';
+import Tournee from '../../components/templates/glacier/Tournee.astro';
+import Privatisation from '../../components/templates/glacier/Privatisation.astro';
+import Faq from '../../components/templates/glacier/Faq.astro';
+import Footer from '../../components/templates/glacier/Footer.astro';
+
+const businessLD = localBusinessSchema(sorbetData, 'FoodEstablishment');
+---
+
+<BaseLayout seo={getSeo('templatePatisserie' as any)} bare={true}>
+  <Fragment slot="head">
+    {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <link rel="preload" as="image" href={sorbetData.info.photoHero} fetchpriority="high" />
+  </Fragment>
+
+  <Header />
+
+  <main class="font-dm-sans" style="background-color: #FFF8E7; color: #3D2817;">
+    <HeroPop />
+    <Parfums />
+    <Moment />
+    <Processus />
+    <Tournee />
+    <Privatisation />
+    <Faq />
+  </main>
+
+  <Footer />
+</BaseLayout>
