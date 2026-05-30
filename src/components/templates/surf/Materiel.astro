@@ -1,0 +1,62 @@
+---
+import data from '../../../data/templates/borddeau.json';
+---
+
+<section id="materiel" class="py-20 md:py-28 relative" style="background-color: #F4F8F7;">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+
+    <div class="max-w-2xl mb-14 md:mb-20">
+      <p class="font-inter text-[11px] uppercase tracking-[0.45em] mb-4" style="color: #3CACAE;">— Matériel & encadrement —</p>
+      <h2 class="font-anton uppercase leading-[0.92]" style="color: #0F2A36; font-size: clamp(36px, 5vw, 60px); font-family: 'Anton', Impact, sans-serif;">
+        {data.materiel.titre}
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-7">
+      {data.materiel.items.map((m, i) => (
+        <article class="p-7 md:p-9 flex gap-5" style="background-color: #FFFFFF; border: 1px solid rgba(15, 42, 54, 0.15);">
+          <div class="flex-shrink-0">
+            <div class="w-14 h-14 flex items-center justify-center" style="background-color: #3CACAE; color: #F4F8F7;">
+              <span class="font-anton text-xl" style="font-family: 'Anton', Impact, sans-serif;">{String(i + 1).padStart(2, '0')}</span>
+            </div>
+          </div>
+          <div class="flex-1">
+            <h3 class="font-anton uppercase leading-tight" style="color: #0F2A36; font-size: clamp(24px, 3vw, 30px); font-family: 'Anton', Impact, sans-serif;">
+              {m.titre}
+            </h3>
+            <p class="mt-3 font-inter text-[14.5px] leading-relaxed" style="color: rgba(15, 42, 54, 0.82);">
+              {m.details}
+            </p>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <!-- Bio fondateur -->
+    <div class="mt-14 md:mt-20 grid grid-cols-1 md:grid-cols-12 gap-8 p-7 md:p-10" style="background-color: #0F2A36; color: #F4F8F7;">
+      <div class="md:col-span-7">
+        <p class="font-inter text-[10.5px] uppercase tracking-[0.3em] mb-3" style="color: #E5C99A;">— Le fondateur —</p>
+        <h3 class="font-anton uppercase leading-[0.95]" style="font-size: clamp(28px, 4vw, 42px); font-family: 'Anton', Impact, sans-serif;">
+          {data.fondateur.nom}
+        </h3>
+        <p class="mt-1 font-inter italic text-lg" style="color: #3CACAE;">
+          {data.fondateur.titre}
+        </p>
+        <p class="mt-5 font-inter text-[14.5px] leading-relaxed" style="color: rgba(244, 248, 247, 0.85);">
+          {data.fondateur.bio}
+        </p>
+      </div>
+      <div class="md:col-span-5">
+        <p class="font-inter text-[10.5px] uppercase tracking-[0.3em] mb-3" style="color: #E5C99A;">Certifications</p>
+        <ul class="space-y-2 font-inter text-[14px]">
+          {data.fondateur.certif.map((c) => (
+            <li class="flex items-start gap-2.5 p-3" style="background-color: rgba(244, 248, 247, 0.05);">
+              <span class="font-anton text-base mt-0 leading-none" style="color: #E5C99A; font-family: 'Anton', Impact, sans-serif;">✓</span>
+              <span>{c}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

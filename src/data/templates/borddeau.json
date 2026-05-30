@@ -1,0 +1,162 @@
+{
+  "info": {
+    "nom": "Bord d'eau",
+    "wordmark": "Bord",
+    "wordmark2": "d'eau",
+    "soustitre": "École de surf · La Réunion",
+    "tagline": "L'océan, c'est l'école.",
+    "fondateur": "Nicolas Hoarau",
+    "ville": "La Réunion",
+    "adresseLigne1": "Spot de l'école",
+    "adresseLigne2": "Précisé à l'inscription",
+    "telephone": "0692 12 34 56",
+    "telephoneHref": "+262692123456",
+    "whatsapp": "262692123456",
+    "email": "info@borddeau.re",
+    "instagram": "@borddeau.974",
+    "siret": "85214036700024",
+    "annee": "2015",
+    "photoHero": "https://images.unsplash.com/photo-1502680390469-be75c86b636f?q=80&w=1600&auto=format&fit=crop",
+    "photoHeroAlt": "Vague océanique azur avec surfeur en silhouette au coucher du soleil, La Réunion",
+    "ouvertureHebdo": "Mardi → dimanche · 7h00 → 18h00",
+    "fermeture": "Lundi"
+  },
+  "manifesto": "Dix ans qu'on apprend à des gamins, des ados, des adultes à se tenir debout sur une planche. Le surf n'est pas un exploit, c'est une humilité. La vague décide, on s'adapte. À l'école, on apprend d'abord à lire la mer, ensuite à pousser, ensuite à se lever. Et on ne se baigne jamais seul.",
+  "fondateur": {
+    "nom": "Nicolas Hoarau",
+    "titre": "Moniteur diplômé d'État · BEES surf",
+    "bio": "Nicolas a commencé le surf à 12 ans à La Réunion. Diplômé BEES surf en 2010, il a enseigné cinq ans en Métropole avant de rentrer ouvrir Bord d'eau en 2015. Spécialiste du surf longboard, formé secourisme aquatique, surveillant de baignade BNSSA.",
+    "certif": [
+      "BEES 1° Surf (2010)",
+      "BNSSA Surveillant de baignade",
+      "PSE2 Premier secours équipe niveau 2",
+      "Brevet fédéral entraîneur FFS"
+    ]
+  },
+  "formules": [
+    {
+      "id": "initiation",
+      "label": "Initiation",
+      "duree": "2 h",
+      "prix": "55 €",
+      "tagline": "Se mettre debout, pour de vrai.",
+      "description": "Cours collectif (max 6 personnes) sur planche mousse 8'2, vague d'école 80 cm. Théorie sécurité au bord, échauffement, exercices à plat, mise à l'eau encadrée, premières vagues debout. À partir de 8 ans, savoir nager 25 m.",
+      "inclus": ["Planche + leash", "Combinaison shorty 2 mm", "Encadrement BEES diplômé", "Photos prises depuis le bord"]
+    },
+    {
+      "id": "perfectionnement",
+      "label": "Perfectionnement",
+      "duree": "2 h",
+      "prix": "70 €",
+      "tagline": "Passer du mousse au polyester.",
+      "description": "Cours collectif (max 4) pour ceux qui se lèvent déjà et veulent prendre des vagues plus engagées. Travail du take-off, gestion de la rame, bottom turn et premières manœuvres. Planche selon niveau, vague jusqu'à 1,20 m.",
+      "inclus": ["Planche évolutive ou polyester", "Combi 2 mm ou shorty", "Analyse vidéo bord", "Conseil progression personnalisé"]
+    },
+    {
+      "id": "stage-5j",
+      "label": "Stage 5 jours",
+      "duree": "10 h",
+      "prix": "295 €",
+      "tagline": "L'engagement vacances, 5 séances.",
+      "description": "Stage progressif sur une semaine, du lundi au vendredi (2 h/jour). Adapté niveau initiation OU perfectionnement. Suivi quotidien, vidéo analyse en milieu de stage, défi vague le dernier jour. Tarif promo -30 € vs séances à l'unité.",
+      "inclus": ["Tout matériel inclus", "Suivi 5 séances", "Vidéo analyse jour 3", "Tee-shirt école offert"]
+    }
+  ],
+  "spots": [
+    {
+      "id": "spot-debutants",
+      "nom": "Le bord, l'école",
+      "niveau": "Initiation",
+      "vague": "Mousse à 80 cm",
+      "fond": "Sable doux",
+      "marée": "Toutes marées",
+      "description": "Spot d'apprentissage idéal : bord de plage plat, mousse longue qui pousse, peu de courant. Le terrain de jeu de tous les premiers cours. Surveillance plage en saison."
+    },
+    {
+      "id": "spot-progression",
+      "nom": "Pointe gauche",
+      "niveau": "Progression",
+      "vague": "1 m à 1,50 m",
+      "fond": "Sable / pointe rocheuse",
+      "marée": "Mi-marée montante",
+      "description": "Vague gauche sympa quand le swell est modéré. Idéale pour le perfectionnement : gauche longue, rideau cassant gentil, peu de monde le matin tôt. Notre spot de prédilection."
+    },
+    {
+      "id": "spot-confirme",
+      "nom": "Le récif d'en face",
+      "niveau": "Confirmé",
+      "vague": "1,50 m à 2,50 m",
+      "fond": "Récif corallien",
+      "marée": "Marée haute uniquement",
+      "description": "Vague de récif droite, plus engagée. Pour stagiaires expérimentés avec moniteur uniquement. Lecture de pic exigeante, pas pour les débutants. Encadrement renforcé."
+    },
+    {
+      "id": "spot-couche",
+      "nom": "Sunset spot",
+      "niveau": "Tous niveaux",
+      "vague": "Selon jour",
+      "fond": "Sable",
+      "marée": "Marée descendante",
+      "description": "Spot polyvalent qu'on garde pour les sessions au coucher du soleil. Lumière dorée, vague molle qui pardonne, ambiance fin de journée. Sessions thématiques mensuelles."
+    }
+  ],
+  "maree": {
+    "titre": "Lecture marée & sécurité",
+    "soustitre": "Pourquoi ça compte",
+    "texte": "À La Réunion, la marée influence directement la forme et la sécurité de la vague. Une vague qui casse à marée haute peut devenir piège à marée basse (récif découvert). On consulte le calendrier marée à chaque réservation, on adapte le spot et l'heure. C'est non-négociable.",
+    "infos": [
+      { "label": "Source officielle", "valeur": "SHOM (Service hydrographique)" },
+      { "label": "Application conseillée", "valeur": "Marée Pro / SurfForecast" },
+      { "label": "Fenêtre sécurité école", "valeur": "Marée mi-haute généralement" },
+      { "label": "Consultation par session", "valeur": "Systématique avant chaque cours" }
+    ]
+  },
+  "materiel": {
+    "titre": "Notre matériel & sécurité",
+    "items": [
+      {
+        "titre": "Planches",
+        "details": "12 planches mousse 8'2 (débutants), 6 évolutives 7'4 (progression), 4 polyester 6'8 et 6'2 (perf). Toutes équipées de leash neuf chaque saison. Cire éco-responsable."
+      },
+      {
+        "titre": "Combinaisons",
+        "details": "20 shorty 2 mm tailles XS → XXL. Rincées et séchées après chaque session. Renouvellement tous les 18 mois pour préserver le confort."
+      },
+      {
+        "titre": "Sécurité aquatique",
+        "details": "Bouée torpédo de secours sur chaque créneau, sifflet bord, talkie-walkie monitor-bord. Tous nos moniteurs sont titulaires du PSE2."
+      },
+      {
+        "titre": "Encadrement",
+        "details": "Ratio 6 stagiaires / 1 moniteur initiation, 4/1 perfectionnement, 2/1 confirmé. Toujours un second moniteur de bord en cas de groupe complet."
+      }
+    ]
+  },
+  "premiereSession": [
+    {
+      "etape": "01",
+      "titre": "Inscription en ligne",
+      "texte": "Réservation via WhatsApp ou téléphone. Vous remplissez la fiche médicale + déclaration savoir nager. Acompte 20 €, solde au cours."
+    },
+    {
+      "etape": "02",
+      "titre": "Rendez-vous au spot",
+      "texte": "RDV 15 min avant l'heure pile, parking gratuit. Vestiaires et douches sur place. Tenue : maillot + serviette + crème solaire reef-safe."
+    },
+    {
+      "etape": "03",
+      "titre": "Briefing & échauffement",
+      "texte": "20 min : sécurité, lecture de l'océan, repères courants, gestes essentiels. Puis échauffement type yoga 10 min pour préparer le corps."
+    },
+    {
+      "etape": "04",
+      "titre": "1h30 dans l'eau",
+      "texte": "Exercices progressifs : couché, rame, push-up, take-off, premières vagues encadrées. Photos par le moniteur de bord."
+    },
+    {
+      "etape": "05",
+      "titre": "Debrief & photos",
+      "texte": "Retour sur la session, conseils individualisés, planning de progression. Photos transmises par WhatsApp dans les 48h. Café-jus offert au club."
+    }
+  ]
+}

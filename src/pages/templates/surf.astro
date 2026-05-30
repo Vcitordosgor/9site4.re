@@ -1,0 +1,48 @@
+---
+import '@fontsource/inter/latin-400.css';
+import '@fontsource/inter/latin-500.css';
+import '@fontsource/inter/latin-600.css';
+import '@fontsource/inter/latin-400-italic.css';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getSeo } from '../../lib/seo';
+import { localBusinessSchema } from '../../lib/businessSchema';
+import borddeauData from '../../data/templates/borddeau.json';
+
+import Header from '../../components/templates/surf/Header.astro';
+import HeroVague from '../../components/templates/surf/HeroVague.astro';
+import Formules from '../../components/templates/surf/Formules.astro';
+import Spots from '../../components/templates/surf/Spots.astro';
+import Maree from '../../components/templates/surf/Maree.astro';
+import Materiel from '../../components/templates/surf/Materiel.astro';
+import Process from '../../components/templates/surf/Process.astro';
+import Faq from '../../components/templates/surf/Faq.astro';
+import Footer from '../../components/templates/surf/Footer.astro';
+
+const businessLD = localBusinessSchema(borddeauData, 'SportsActivityLocation');
+---
+
+<BaseLayout seo={getSeo('templatePlongee' as any)} bare={true}>
+  <Fragment slot="head">
+    {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <link rel="preload" as="image" href={borddeauData.info.photoHero} fetchpriority="high" />
+  </Fragment>
+
+  <Header />
+
+  <main class="font-inter" style="background-color: #F4F8F7; color: #0F2A36;">
+    <HeroVague />
+    <Formules />
+    <Spots />
+    <Maree />
+    <Materiel />
+    <Process />
+    <Faq />
+  </main>
+
+  <Footer />
+</BaseLayout>

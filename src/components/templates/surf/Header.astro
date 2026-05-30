@@ -1,0 +1,79 @@
+---
+import data from '../../../data/templates/borddeau.json';
+
+const navLinks = [
+  { href: '#formules', label: 'Formules' },
+  { href: '#spots', label: 'Spots' },
+  { href: '#materiel', label: 'Sécurité' },
+  { href: '#process', label: '1ère session' },
+];
+---
+
+<header
+  id="surf-header"
+  data-scrolled="false"
+  class="sticky top-0 z-50 transition-[background-color,backdrop-filter,box-shadow] duration-500"
+  style="border-bottom: 1px solid rgba(15, 42, 54, 0.10);"
+>
+  <div class="max-w-content mx-auto px-6 md:px-10 h-16 md:h-20 flex items-center justify-between gap-6">
+
+    <a href="#top" class="flex items-center gap-3 group" aria-label="Bord d'eau — accueil">
+      <!-- Picto vague + planche -->
+      <svg viewBox="0 0 32 32" class="w-8 h-8" aria-hidden="true">
+        <path d="M2 18 Q8 14 16 18 Q24 22 30 18 L30 24 L2 24 Z" fill="#3CACAE"/>
+        <path d="M2 20 Q8 16 16 20 Q24 24 30 20" stroke="#0F2A36" stroke-width="0.6" fill="none"/>
+        <ellipse cx="16" cy="11" rx="9" ry="2" fill="#E5C99A" stroke="#0F2A36" stroke-width="0.5"/>
+      </svg>
+      <div class="flex flex-col leading-none">
+        <span class="font-anton text-lg md:text-xl tracking-[0.04em] uppercase" style="color: #0F2A36; font-family: 'Anton', Impact, sans-serif;">Bord d'eau</span>
+        <span class="font-inter text-[10.5px] md:text-[11px] uppercase tracking-[0.18em] -mt-0.5" style="color: #3CACAE;">— école de surf</span>
+      </div>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-7 lg:gap-9 font-inter text-[12.5px] uppercase tracking-[0.15em] font-medium" aria-label="Navigation">
+      {navLinks.map((link) => (
+        <a href={link.href} class="transition-colors duration-300 hover:opacity-70" style="color: #0F2A36;">
+          {link.label}
+        </a>
+      ))}
+    </nav>
+
+    <a
+      href={`tel:${data.info.telephoneHref}`}
+      class="hidden md:inline-flex items-center justify-center h-10 px-5 font-anton text-[12.5px] uppercase tracking-[0.16em] rounded-full transition-opacity hover:opacity-90"
+      style="background-color: #3CACAE; color: #F4F8F7; font-family: 'Anton', Impact, sans-serif;"
+    >
+      Réserver session
+    </a>
+
+    <a
+      href={`tel:${data.info.telephoneHref}`}
+      class="md:hidden inline-flex items-center justify-center h-10 px-4 font-anton text-[12.5px] uppercase tracking-wider rounded-full"
+      style="background-color: #3CACAE; color: #F4F8F7; font-family: 'Anton', Impact, sans-serif;"
+      aria-label="Appeler"
+    >
+      Appeler
+    </a>
+  </div>
+</header>
+
+<style>
+  #surf-header {
+    background-color: rgb(244 248 247 / 0.95);
+  }
+  #surf-header[data-scrolled='true'] {
+    background-color: rgb(244 248 247 / 0.97);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    backdrop-filter: saturate(180%) blur(12px);
+    box-shadow: 0 1px 3px rgb(15 42 54 / 0.08);
+  }
+</style>
+
+<script>
+  const header = document.getElementById('surf-header');
+  if (header) {
+    const update = () => { header.dataset.scrolled = String(window.scrollY > 8); };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+  }
+</script>
