@@ -1,0 +1,35 @@
+---
+import Icon from '../ui/Icon.astro';
+
+/**
+ * Humain — bloc de réassurance court qui répond à l'objection
+ * "qui est derrière 9site4 ?". Pas de faux nom, pas de fausse photo,
+ * pas de faux témoignage. Volontairement sobre et compact pour ne pas
+ * rallonger la home.
+ */
+---
+
+<section class="relative px-6 py-12 md:py-16" aria-labelledby="humain-titre">
+  <div class="mx-auto max-w-3xl">
+    <div class="rounded-3xl bg-blanc-casse/[0.04] ring-1 ring-blanc-casse/12 p-6 md:p-8 flex flex-col sm:flex-row items-start sm:items-center gap-5">
+      <span class="flex w-12 h-12 shrink-0 rounded-2xl bg-bleu/20 text-bleu items-center justify-center" aria-hidden="true">
+        <Icon name="users" size={22} strokeWidth={1.75} />
+      </span>
+      <div class="flex-1 min-w-0">
+        <p class="font-roboto-mono text-[10px] uppercase tracking-[0.28em] text-blanc-casse/55 font-semibold">
+          Qui est derrière 9site4
+        </p>
+        <h2
+          id="humain-titre"
+          class="mt-1.5 font-sora font-semibold text-lg md:text-xl text-blanc-casse leading-snug"
+        >
+          Un interlocuteur unique basé à La Réunion.
+        </h2>
+        <p class="mt-2 text-sm md:text-base text-blanc-casse/70 leading-relaxed">
+          Derrière 9site4, un interlocuteur unique basé à La Réunion, qui vous
+          accompagne de la création à la mise en ligne.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
