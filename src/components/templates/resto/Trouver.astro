@@ -102,7 +102,7 @@ const waUrl = `https://wa.me/${data.info.whatsapp}?text=${encodeURIComponent(
           {data.services.map((s, i) => (
             <li class="scroll-reveal" style={`transition-delay: ${i * 60}ms`}>
               <div class="flex items-baseline gap-4">
-                <span class="font-bodoni italic font-bold text-resto-or tabular-nums" style="font-size: 22px; min-width: 2.25rem;">
+                <span class="font-bodoni italic font-bold text-resto-or tabular-nums leading-none" style="font-size: 32px; min-width: 2.75rem;">
                   {String(i + 1).padStart(2, '0')}
                 </span>
                 <div class="flex-1">
