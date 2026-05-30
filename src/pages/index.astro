@@ -1,27 +1,26 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/sections/Hero.astro';
+import Manifeste from '../components/sections/Manifeste.astro';
 import Douleur from '../components/sections/Douleur.astro';
 import FormulairesIntegres from '../components/sections/FormulairesIntegres.astro';
-import Manifeste from '../components/sections/Manifeste.astro';
-import ApercuRealisations from '../components/sections/ApercuRealisations.astro';
-import PourQui from '../components/sections/PourQui.astro';
-import CeQuOnVousDemande from '../components/sections/CeQuOnVousDemande.astro';
-import Humain from '../components/sections/Humain.astro';
+import Etapes7Jours from '../components/sections/Etapes7Jours.astro';
 import TarifsBref from '../components/sections/TarifsBref.astro';
+import VitrineExemples from '../components/sections/VitrineExemples.astro';
 import CTABand from '../components/sections/CTABand.astro';
 import { getSeo } from '../lib/seo';
 ---
 
 <BaseLayout seo={getSeo('home')}>
   <Hero />
-  <Douleur />
-  <FormulairesIntegres />
+  <VitrineExemples />
+  <div class="flex justify-center bg-black"><span class="block h-px w-24 bg-bleu/60" aria-hidden="true"></span></div>
   <Manifeste />
-  <ApercuRealisations />
-  <PourQui />
-  <CeQuOnVousDemande />
-  <Humain />
+  <FormulairesIntegres />
+  <div class="flex justify-center bg-black"><span class="block h-px w-24 bg-bleu/60" aria-hidden="true"></span></div>
+  <Douleur />
+  <Etapes7Jours />
+  <div class="flex justify-center bg-black"><span class="block h-px w-24 bg-bleu/60" aria-hidden="true"></span></div>
   <TarifsBref />
   <CTABand />
 </BaseLayout>
