@@ -1,7 +1,7 @@
 ---
+import data from '../../../data/templates/lagon.json';
 /**
- * Mini-preview Lagon Pressé — POP tropical éclatant.
- * Jaune mangue + rose pitaya + lime + turquoise, Bagel Fat One ronde.
+ * Mini-preview Le Lagon Frais — POP tropical éclatant.
  */
 ---
 
@@ -51,7 +51,7 @@
     <div class="col-span-5 flex items-center justify-center">
       <div class="relative w-16 h-16 rounded-full overflow-hidden ring-2 ring-lagon-charbon" style="transform: rotate(3deg);">
         <img
-          src="/images/lagon/mangue-passion.webp"
+          src={data.info.photoHero}
           alt=""
           class="w-full h-full object-cover"
           loading="lazy"
