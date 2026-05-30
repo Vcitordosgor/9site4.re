@@ -1,0 +1,41 @@
+---
+const images = [
+  { src: 'https://images.unsplash.com/photo-1583952735301-78f24a8c7a5b?q=80&w=900&auto=format&fit=crop', alt: 'Plateau d\'huiles et serums en cabine', span: 'md:row-span-2' },
+  { src: 'https://images.unsplash.com/photo-1570194065650-d99fb4bedf0a?q=80&w=900&auto=format&fit=crop', alt: 'Tisane de verveine sur la table d\'accueil', span: '' },
+  { src: 'https://images.unsplash.com/photo-1556228720-da4e85bcf2cd?q=80&w=900&auto=format&fit=crop', alt: 'Massage facial en cabine, mains expertes', span: '' },
+  { src: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=900&auto=format&fit=crop', alt: 'Pierres chaudes preparees pour le rituel', span: 'md:row-span-2' },
+  { src: 'https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?q=80&w=900&auto=format&fit=crop', alt: 'Detail nacre et fleurs sechees sur etagere', span: '' },
+  { src: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=900&auto=format&fit=crop', alt: 'Lumiere douce sur peignoir blanc', span: '' },
+];
+---
+
+<section class="bg-marlene-nacre py-20 md:py-28 relative">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+
+    <div class="text-center max-w-2xl mx-auto mb-12 md:mb-16">
+      <p class="font-marcellus uppercase tracking-[0.4em] text-[10px] md:text-[11px] text-marlene-champagne mb-4">— Carnet visuel —</p>
+      <h2 class="font-marcellus text-marlene-noir text-3xl md:text-5xl leading-tight">
+        L'institut, <em class="font-eb italic text-marlene-bordeaux">photographié</em>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-5 auto-rows-[180px] md:auto-rows-[220px]">
+      {images.map((img) => (
+        <figure class={`group overflow-hidden bg-marlene-sable ${img.span}`}>
+          <img
+            src={img.src}
+            alt={img.alt}
+            loading="lazy"
+            decoding="async"
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 grayscale-[15%] group-hover:grayscale-0"
+          />
+        </figure>
+      ))}
+    </div>
+
+    <p class="mt-8 text-center font-eb italic text-marlene-moka text-base md:text-lg">
+      — Cabine, plateau, mains. Le reste, en cabine. —
+    </p>
+
+  </div>
+</section>

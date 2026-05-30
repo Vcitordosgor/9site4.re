@@ -26,6 +26,10 @@ import Reservation from '../../components/templates/institut/Reservation.astro';
 import Institut from '../../components/templates/institut/Institut.astro';
 import CTAFinal from '../../components/templates/institut/CTAFinal.astro';
 import MarleneFooter from '../../components/templates/institut/MarleneFooter.astro';
+import Manifesto from '../../components/templates/institut/Manifesto.astro';
+import Galerie from '../../components/templates/institut/Galerie.astro';
+import Comparatif from '../../components/templates/institut/Comparatif.astro';
+import Faq from '../../components/templates/institut/Faq.astro';
 const businessLD = localBusinessSchema(marleneData);
 
 ---
@@ -47,15 +51,19 @@ const businessLD = localBusinessSchema(marleneData);
 
   <main id="top" class="bg-marlene-nacre text-marlene-noir font-mulish">
     <HeroEditorial />
+    <Manifesto />
     <RituelSignature />
     <PhotoCabine />
+    <Galerie />
     <CarteSoins />
+    <Comparatif />
     <Marques />
     <Bandeau />
     <CartesCadeaux />
     <Reservation />
     <Citation />
     <Institut />
+    <Faq />
     <CTAFinal />
   </main>
 

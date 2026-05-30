@@ -1,0 +1,63 @@
+---
+const sans = [
+  'Cabine surchauffée, musique d\'ambiance générique en fond.',
+  'Forfait poussé en sortie, produits empilés dans un sac kraft.',
+  'Soin chronométré au quart d\'heure près, esthéticienne pressée.',
+  'Marques achetées en gros sur catalogue, sans cohérence visible.',
+];
+
+const avec = [
+  'Lumière baissée d\'un cran, silence respecté du début à la fin.',
+  'Aucune revente poussée. Un produit conseillé, jamais deux.',
+  'Quatre-vingt-dix minutes calmes, pause prévue, pas de pression montre.',
+  'Six marques sélectionnées une par une, formulations claires affichées.',
+];
+---
+
+<section class="bg-marlene-sable py-20 md:py-28">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+
+    <div class="text-center max-w-2xl mx-auto mb-14 md:mb-20">
+      <p class="font-marcellus uppercase tracking-[0.4em] text-[10px] md:text-[11px] text-marlene-champagne mb-4">— Notre différence, en clair —</p>
+      <h2 class="font-marcellus text-marlene-noir text-3xl md:text-5xl leading-tight">
+        Deux instituts qui n'ont
+        <em class="font-eb italic text-marlene-bordeaux block md:inline">rien à voir.</em>
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6 md:gap-10">
+
+      <div class="bg-marlene-nacre border border-marlene-moka/20 p-7 md:p-10">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="inline-flex w-10 h-10 rounded-full border border-marlene-moka/40 items-center justify-center text-marlene-moka font-marcellus">×</span>
+          <p class="font-marcellus uppercase tracking-[0.3em] text-[10px] text-marlene-moka">Un institut lambda</p>
+        </div>
+        <ul class="space-y-4">
+          {sans.map((s) => (
+            <li class="flex items-start gap-3">
+              <span class="font-marcellus text-marlene-moka/60 mt-1 select-none" aria-hidden="true">—</span>
+              <p class="font-mulish text-marlene-moka/90 text-[15px] leading-relaxed">{s}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="bg-marlene-bordeaux text-marlene-nacre p-7 md:p-10 relative">
+        <div class="absolute top-4 right-4 text-marlene-champagne text-3xl font-eb italic" aria-hidden="true">❦</div>
+        <div class="flex items-center gap-3 mb-6">
+          <span class="inline-flex w-10 h-10 rounded-full bg-marlene-champagne text-marlene-bordeaux items-center justify-center font-marcellus">✓</span>
+          <p class="font-marcellus uppercase tracking-[0.3em] text-[10px] text-marlene-champagne">Maison Marléne</p>
+        </div>
+        <ul class="space-y-4">
+          {avec.map((a) => (
+            <li class="flex items-start gap-3">
+              <span class="font-marcellus text-marlene-champagne mt-1 select-none" aria-hidden="true">+</span>
+              <p class="font-mulish text-marlene-nacre text-[15px] leading-relaxed">{a}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>

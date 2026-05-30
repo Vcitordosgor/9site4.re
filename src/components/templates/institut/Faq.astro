@@ -1,0 +1,55 @@
+---
+const faq = [
+  {
+    q: 'Faut-il prévoir un temps de récupération après le Rituel Marléne ?',
+    r: 'Aucun. La peau est légèrement rosée pendant deux ou trois heures (vasodilatation du massage), puis tout rentre dans l\'ordre. Vous pouvez reprendre votre journée immédiatement, sans maquillage.',
+  },
+  {
+    q: 'Travaillez-vous avec des peaux sensibles ou réactives ?',
+    r: 'Oui, c\'est même notre quotidien. Diagnostic en début de soin, masques sur-mesure, aucune machine, pas de gommage abrasif. Trois marques de notre carte sont spécifiquement dédiées aux peaux fragiles.',
+  },
+  {
+    q: 'Recevez-vous les hommes ?',
+    r: 'Bien sûr. Un tiers de notre clientèle est masculine. Les protocoles sont adaptés (poils, sécrétions sébacées, sensibilité après rasage) et la cabine est mixte par défaut.',
+  },
+  {
+    q: 'Faites-vous des soins corps ou seulement du visage ?',
+    r: 'L\'institut est spécialisé visage et décolleté. Pour les soins corps, nous orientons vers deux confrères de confiance que nous connaissons depuis dix ans, dans le quartier.',
+  },
+  {
+    q: 'Comment fonctionne la carte cadeau ?',
+    r: 'Carte papier remise en boutique ou envoyée à votre adresse. Valable un an, transférable, remboursable si non utilisée. Montants libres à partir de 50 euros, ou soins spécifiques.',
+  },
+  {
+    q: 'Puis-je acheter vos produits sans prendre de soin ?',
+    r: 'Oui, sans aucune condition. Conseils gratuits en boutique du mardi au samedi, échantillons à tester pendant trois jours avant tout achat de produit complet.',
+  },
+];
+---
+
+<section class="bg-marlene-nacre py-20 md:py-28 relative">
+  <div class="max-w-3xl mx-auto px-6 md:px-10">
+
+    <div class="text-center mb-12 md:mb-16">
+      <p class="font-marcellus uppercase tracking-[0.4em] text-[10px] md:text-[11px] text-marlene-champagne mb-4">— Avant votre premier soin —</p>
+      <h2 class="font-marcellus text-marlene-noir text-3xl md:text-5xl leading-tight">
+        Questions
+        <em class="font-eb italic text-marlene-bordeaux">posées en cabine</em>
+      </h2>
+    </div>
+
+    <div class="space-y-2">
+      {faq.map((f) => (
+        <details class="group bg-marlene-nacre border-b border-marlene-moka/20 hover:border-marlene-bordeaux/60 transition-colors">
+          <summary class="cursor-pointer list-none flex items-start gap-5 py-5 md:py-7">
+            <span class="font-eb italic text-marlene-bordeaux text-3xl leading-none mt-0 transition-transform duration-300 group-open:rotate-45" aria-hidden="true">+</span>
+            <span class="flex-1 font-marcellus text-marlene-noir text-lg md:text-xl leading-snug">{f.q}</span>
+          </summary>
+          <div class="pb-6 md:pb-8 pl-12 pr-2">
+            <p class="font-mulish text-[14.5px] md:text-[15px] text-marlene-moka leading-relaxed">{f.r}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
