@@ -61,36 +61,86 @@ import data from '../../../data/templates/agapanthes.json';
       </div>
     </div>
 
-    <!-- Colonne photo droite (5) — composition circulaire -->
+    <!-- Colonne composition graphique droite (5) — herbier tropical SVG -->
     <div class="hero-photo lg:col-span-5 relative">
-      <!-- Photo principale CIRCULAIRE -->
-      <figure class="relative mx-auto max-w-[420px] lg:max-w-none">
-        <!-- Cercle décoratif sauge derrière, décalé -->
+      <figure class="relative mx-auto max-w-[420px] lg:max-w-none" aria-label="Composition botanique tropicale réunionnaise">
+        <!-- Cercle décoratif violet derrière, décalé -->
         <div class="hidden lg:block absolute -top-4 -left-4 w-full h-full rounded-full ring-1 ring-agap-violet/40 pointer-events-none" aria-hidden="true"></div>
 
-        <div class="relative overflow-hidden rounded-full border border-agap-violet/15" style="aspect-ratio: 1/1;">
-          <img
-            src={data.info.photoHero} srcset={`${(data.info.photoHero).replace(/\.webp$/, "-640.webp")} 640w, ${(data.info.photoHero).replace(/\.webp$/, "-1024.webp")} 1024w, ${data.info.photoHero} 1600w`} sizes="100vw"
-            alt={data.info.photoHeroAlt}
-            width="900"
-            height="900"
-            class="absolute inset-0 w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async">
+        <!-- Disque pastel lin/sauge avec composition botanique SVG -->
+        <div class="relative overflow-hidden rounded-full border border-agap-violet/15 bg-gradient-to-br from-agap-lin via-agap-lin to-agap-sauge/25" style="aspect-ratio: 1/1;">
+          <svg viewBox="0 0 400 400" class="absolute inset-0 w-full h-full" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+            <!-- Sol — terre rouge réunionnaise discrète -->
+            <ellipse cx="200" cy="370" rx="170" ry="22" class="fill-agap-rose/35" />
+            <!-- Palme (gauche) -->
+            <g class="text-agap-feuille" fill="currentColor">
+              <path d="M120 360 Q 118 280 90 210 Q 84 196 100 200 Q 122 210 130 250 Q 138 230 158 222 Q 152 248 138 270 Q 156 264 174 278 Q 156 286 138 290 Q 150 312 144 340 Q 132 322 124 304 Z" opacity="0.85"/>
+              <path d="M120 360 L 120 230" stroke="currentColor" stroke-width="2" fill="none" opacity="0.6"/>
+            </g>
+            <!-- Fougère (centre arrière) -->
+            <g class="text-agap-sauge" fill="currentColor" transform="translate(200 360)">
+              <path d="M0 0 Q -2 -60 -10 -120 Q -14 -150 -6 -170" stroke="currentColor" stroke-width="2.5" fill="none"/>
+              <g opacity="0.85">
+                <ellipse cx="-6" cy="-30" rx="14" ry="5" transform="rotate(-22 -6 -30)"/>
+                <ellipse cx="6" cy="-30" rx="14" ry="5" transform="rotate(22 6 -30)"/>
+                <ellipse cx="-7" cy="-55" rx="13" ry="4.5" transform="rotate(-22 -7 -55)"/>
+                <ellipse cx="7" cy="-55" rx="13" ry="4.5" transform="rotate(22 7 -55)"/>
+                <ellipse cx="-8" cy="-78" rx="11" ry="4" transform="rotate(-22 -8 -78)"/>
+                <ellipse cx="8" cy="-78" rx="11" ry="4" transform="rotate(22 8 -78)"/>
+                <ellipse cx="-9" cy="-100" rx="9" ry="3.5" transform="rotate(-22 -9 -100)"/>
+                <ellipse cx="9" cy="-100" rx="9" ry="3.5" transform="rotate(22 9 -100)"/>
+                <ellipse cx="-9" cy="-122" rx="7" ry="3" transform="rotate(-22 -9 -122)"/>
+                <ellipse cx="9" cy="-122" rx="7" ry="3" transform="rotate(22 9 -122)"/>
+                <ellipse cx="-8" cy="-142" rx="5" ry="2.5" transform="rotate(-22 -8 -142)"/>
+                <ellipse cx="8" cy="-142" rx="5" ry="2.5" transform="rotate(22 8 -142)"/>
+              </g>
+            </g>
+            <!-- Agapanthe (droite) — tige et ombelle violette -->
+            <g transform="translate(290 360)">
+              <line x1="0" y1="0" x2="-4" y2="-180" stroke="currentColor" class="text-agap-feuille" stroke-width="2.5" opacity="0.75"/>
+              <g transform="translate(-4 -180)" class="text-agap-violet" fill="currentColor">
+                <circle cx="0" cy="0" r="6" opacity="0.85"/>
+                <circle cx="-14" cy="-6" r="5.5" opacity="0.85"/>
+                <circle cx="14" cy="-6" r="5.5" opacity="0.85"/>
+                <circle cx="-9" cy="-18" r="5" opacity="0.85"/>
+                <circle cx="9" cy="-18" r="5" opacity="0.85"/>
+                <circle cx="0" cy="-22" r="5.5" opacity="0.85"/>
+                <circle cx="-18" cy="6" r="5" opacity="0.85"/>
+                <circle cx="18" cy="6" r="5" opacity="0.85"/>
+                <circle cx="-6" cy="10" r="5" opacity="0.85"/>
+                <circle cx="6" cy="10" r="5" opacity="0.85"/>
+              </g>
+              <!-- Longue feuille linéaire -->
+              <path d="M0 0 Q -20 -90 -10 -170" stroke="currentColor" class="text-agap-feuille" stroke-width="3" fill="none" opacity="0.55"/>
+              <path d="M0 0 Q 20 -90 12 -170" stroke="currentColor" class="text-agap-feuille" stroke-width="3" fill="none" opacity="0.55"/>
+            </g>
+            <!-- Petite feuille de monstera flottante en haut -->
+            <g transform="translate(110 110)" class="text-agap-feuille" fill="currentColor" opacity="0.55">
+              <path d="M0 0 Q 30 -10 50 10 Q 55 30 35 45 Q 10 45 -5 25 Z"/>
+              <circle cx="20" cy="15" r="4" fill="#f5f1e8"/>
+              <circle cx="32" cy="25" r="3.5" fill="#f5f1e8"/>
+            </g>
+          </svg>
         </div>
-
-        <!-- Petite photo fleur en collage, en bas à droite (cercle) -->
-        <figure class="absolute -bottom-4 -right-2 sm:-right-4 w-28 sm:w-36 lg:w-44 aspect-square rounded-full overflow-hidden border-4 border-agap-lin shadow-lg">
-          <img
-            src={data.info.photoFleur}
-            alt={data.info.photoFleurAlt}
-            loading="lazy"
-            decoding="async"
-            class="absolute inset-0 w-full h-full object-cover"
-          />
-        </figure>
 
         <!-- Petite étiquette manuscrite au-dessus -->
         <span class="absolute -top-3 left-4 sm:-left-3 inline-flex items-center px-3 h-8 bg-agap-lin border border-agap-violet/30 font-cormorant italic text-agap-violet text-sm" aria-hidden="true">
           ✦ La Réunion · 2011
+        </span>
+
+        <!-- Petite carte botanique en collage (cercle) — fleur d'agapanthe stylisée -->
+        <span class="absolute -bottom-4 -right-2 sm:-right-4 w-28 sm:w-36 lg:w-44 aspect-square rounded-full overflow-hidden border-4 border-agap-lin shadow-lg bg-agap-violet/15 flex items-center justify-center" aria-hidden="true">
+          <svg viewBox="0 0 100 100" class="w-3/4 h-3/4 text-agap-violet" fill="currentColor">
+            <g opacity="0.9">
+              <ellipse cx="50" cy="30" rx="9" ry="6"/>
+              <ellipse cx="36" cy="40" rx="9" ry="6"/>
+              <ellipse cx="64" cy="40" rx="9" ry="6"/>
+              <ellipse cx="42" cy="55" rx="9" ry="6"/>
+              <ellipse cx="58" cy="55" rx="9" ry="6"/>
+              <ellipse cx="50" cy="48" rx="9" ry="6"/>
+            </g>
+            <line x1="50" y1="60" x2="50" y2="92" stroke="currentColor" stroke-width="2.5" opacity="0.7"/>
+          </svg>
         </span>
       </figure>
     </div>
