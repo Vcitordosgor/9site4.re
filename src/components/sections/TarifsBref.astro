@@ -1,7 +1,6 @@
 ---
 import Button from '../ui/Button.astro';
 import Icon from '../ui/Icon.astro';
-import Badge from '../ui/Badge.astro';
 import siteConfig from '../../data/siteConfig.json';
 
 /**
@@ -33,17 +32,17 @@ const inclus = [
     <!-- Carte prix signature -->
     <div class="scroll-reveal mt-12 grid lg:grid-cols-5 gap-5 items-stretch">
       <!-- Prix central -->
-      <div class="lg:col-span-2 relative overflow-hidden rounded-3xl bg-[#0e1330] text-blanc-casse p-8 md:p-9 flex flex-col justify-center ring-2 ring-bleu/50 shadow-[0_8px_40px_-12px_rgba(145,166,255,0.45)]">
-        <p class="font-roboto-mono text-[11px] uppercase tracking-[0.28em] text-bleu font-semibold">À partir de</p>
+      <div class="lg:col-span-2 relative overflow-hidden rounded-3xl bg-bleu text-bleu-nuit p-8 md:p-9 flex flex-col justify-center shadow-[0_8px_40px_-12px_rgba(145,166,255,0.55)]">
+        <p class="font-roboto-mono text-[11px] uppercase tracking-[0.28em] text-bleu-nuit/65 font-semibold">À partir de</p>
         <p class="mt-2 flex items-baseline gap-1.5">
           <span class="font-sora font-bold text-5xl md:text-6xl leading-none" data-count="97.4" data-count-decimals="1" data-count-suffix="€">{siteConfig.pricing.monthly}</span>
-          <span class="text-lg text-blanc-casse/70">/mois</span>
+          <span class="text-lg text-bleu-nuit/70">/mois</span>
         </p>
-        <p class="relative mt-3 inline-flex items-center gap-2 text-sm text-blanc-casse/80">
-          <Icon name="info" size={15} strokeWidth={2} class="text-orange" />
+        <p class="relative mt-3 inline-flex items-center gap-2 text-sm text-bleu-nuit/75">
+          <Icon name="info" size={15} strokeWidth={2} class="text-bleu-nuit/70" />
           soit environ {siteConfig.pricing.daily}/jour
         </p>
-        <p class="relative mt-5 text-sm text-blanc-casse/70 leading-relaxed">
+        <p class="relative mt-5 text-sm text-bleu-nuit/70 leading-relaxed">
           Pour moins qu'un petit achat du quotidien par jour, votre site est créé,
           hébergé, sécurisé, maintenu et modifiable simplement.
         </p>
@@ -75,17 +74,17 @@ const inclus = [
         </p>
       </div>
 
-      <div class="flex items-center justify-between gap-4 bg-[#0e1330] text-blanc-casse rounded-2xl p-6 ring-2 ring-bleu/40 transition-all duration-300 ease-out-soft hover:-translate-y-0.5 hover:ring-bleu/60">
+      <div class="flex items-center justify-between gap-4 bg-bleu text-bleu-nuit rounded-2xl p-6 transition-all duration-300 ease-out-soft hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(145,166,255,0.45)]">
         <div>
           <div class="flex items-center gap-2">
-            <p class="text-sm font-semibold text-blanc-casse/70 uppercase tracking-wide">Annuel</p>
-            <Badge variant="primary" size="sm">≈ 2 mois offerts</Badge>
+            <p class="text-sm font-semibold text-bleu-nuit/70 uppercase tracking-wide">Annuel</p>
+            <span class="inline-flex items-center px-2 h-5 rounded-full bg-bleu-nuit text-white text-[10px] font-semibold">≈ 2 mois offerts</span>
           </div>
-          <p class="mt-1 text-sm text-blanc-casse/70">Plus économique sur l'année.</p>
+          <p class="mt-1 text-sm text-bleu-nuit/70">Plus économique sur l'année.</p>
         </div>
         <p class="flex items-baseline gap-1 shrink-0">
           <span class="font-sora font-bold text-3xl">{siteConfig.pricing.yearly}</span>
-          <span class="text-sm text-blanc-casse/60">/an</span>
+          <span class="text-sm text-bleu-nuit/65">/an</span>
         </p>
       </div>
     </div>
