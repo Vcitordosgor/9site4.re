@@ -1,0 +1,55 @@
+---
+const faq = [
+  {
+    q: 'Combien de temps faut-il prévoir au total pour un rituel signature ?',
+    r: 'Comptez deux heures porte à porte : 90 minutes de soin, plus l\'accueil, le diagnostic et le repos en tisanerie. Si vous êtes pressé, on déconseille — autant venir un autre jour.',
+  },
+  {
+    q: 'Peut-on venir à deux dans la même cabine ?',
+    r: 'Oui, notre cabine double permet le soin en duo (amis, couple, mère-fille). Réservation à 48h minimum, supplément de 40 euros pour la mise en place spécifique.',
+  },
+  {
+    q: 'Faut-il être à jeun ? Comment se préparer ?',
+    r: 'Pas à jeun, juste un repas léger 2h avant. Évitez le sport intensif le matin même et l\'alcool la veille. Buvez beaucoup d\'eau avant et après pour drainer.',
+  },
+  {
+    q: 'Acceptez-vous les personnes enceintes ?',
+    r: 'Oui, à partir du second trimestre, avec un protocole adapté (huiles sélectionnées, position latérale, pression douce). Diagnostic obligatoire en cabine avant le soin.',
+  },
+  {
+    q: 'Que se passe-t-il si je m\'endors pendant le soin ?',
+    r: 'C\'est l\'objectif. La praticienne ajuste sa pression, baisse encore la lumière et finit en silence complet. On vous réveille doucement à la fin, jamais brutalement.',
+  },
+  {
+    q: 'Comment offrir un soin en cadeau ?',
+    r: 'Carte cadeau papier remise en cabine ou envoyée à l\'adresse de votre choix. Valable un an, transférable, échangeable contre n\'importe quel soin de la carte. Montants libres à partir de 75 euros.',
+  },
+];
+---
+
+<section class="bg-spa-sable py-20 md:py-28">
+  <div class="max-w-3xl mx-auto px-6 md:px-10">
+
+    <div class="text-center mb-12 md:mb-16">
+      <p class="font-raleway uppercase tracking-[0.4em] text-[10px] md:text-[11px] text-spa-argile mb-4">— Avant de pousser la porte —</p>
+      <h2 class="font-lora text-spa-cacao text-3xl md:text-5xl leading-tight italic">
+        Questions chuchotées
+        <span class="not-italic font-lora text-spa-terracotta block">à l'accueil</span>
+      </h2>
+    </div>
+
+    <div class="space-y-3">
+      {faq.map((f) => (
+        <details class="group bg-spa-creme border border-spa-cacao/15 hover:border-spa-terracotta/60 transition-colors">
+          <summary class="cursor-pointer list-none flex items-start gap-5 p-5 md:p-7">
+            <span class="font-lora italic text-spa-terracotta text-3xl leading-none mt-0 transition-transform duration-300 group-open:rotate-45" aria-hidden="true">+</span>
+            <span class="flex-1 font-lora text-spa-cacao text-lg md:text-xl leading-snug">{f.q}</span>
+          </summary>
+          <div class="px-5 md:px-7 pb-6 md:pb-8 pl-14 md:pl-16">
+            <p class="font-raleway text-[14.5px] md:text-[15px] text-spa-cacao/85 leading-relaxed">{f.r}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

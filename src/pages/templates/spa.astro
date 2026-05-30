@@ -30,6 +30,10 @@ import Reservation from '../../components/templates/spa/Reservation.astro';
 import Trouver from '../../components/templates/spa/Trouver.astro';
 import CTAFinal from '../../components/templates/spa/CTAFinal.astro';
 import SpaFooter from '../../components/templates/spa/SpaFooter.astro';
+import Chiffres from '../../components/templates/spa/Chiffres.astro';
+import MotsCles from '../../components/templates/spa/MotsCles.astro';
+import Processus from '../../components/templates/spa/Processus.astro';
+import Faq from '../../components/templates/spa/Faq.astro';
 const businessLD = localBusinessSchema(spaData);
 
 ---
@@ -52,13 +56,17 @@ const businessLD = localBusinessSchema(spaData);
   <main id="top" class="bg-spa-creme text-spa-cacao font-raleway">
     <HeroFullBleed />
     <Manifesto />
+    <Chiffres />
     <Rituel />
+    <Processus />
     <PhotoRituel />
     <Soins />
+    <MotsCles />
     <Bandeau />
     <Cabines />
     <Citation />
     <Reservation />
+    <Faq />
     <Trouver />
     <CTAFinal />
   </main>

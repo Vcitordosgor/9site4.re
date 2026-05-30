@@ -1,0 +1,36 @@
+---
+const etapes = [
+  { num: '01', titre: 'Le seuil', duree: '5 min', texte: 'Vous laissez votre téléphone à l\'accueil. On vous remet un peignoir, une paire de chaussons, une infusion tiède.' },
+  { num: '02', titre: 'L\'écoute', duree: '10 min', texte: 'Diagnostic court avec votre praticienne, à voix basse. Tensions ? Sommeil ? Cycle ? Vous parlez si vous voulez.' },
+  { num: '03', titre: 'Le soin', duree: '60-90 min', texte: 'Cabine insonorisée, lumière baissée à votre demande. Huile chaude. Pierres. Vapeur. Le temps disparaît.' },
+  { num: '04', titre: 'Le repos', duree: '15 min', texte: 'Tisanerie privée, plaid en lin, fauteuil incliné. On ne vous bouscule pas. Vous repartez quand vous voulez.' },
+];
+---
+
+<section class="bg-spa-creme py-20 md:py-32 relative">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+
+    <div class="text-center max-w-2xl mx-auto mb-16 md:mb-24">
+      <p class="font-raleway uppercase tracking-[0.4em] text-[10px] md:text-[11px] text-spa-argile mb-4">— Le parcours d'un après-midi chez Elio —</p>
+      <h2 class="font-lora text-spa-cacao text-3xl md:text-5xl leading-tight italic">
+        Quatre temps,
+        <span class="not-italic font-lora text-spa-terracotta block">deux heures hors du monde.</span>
+      </h2>
+    </div>
+
+    <ol class="relative grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-0">
+      <div class="hidden md:block absolute top-12 left-[12%] right-[12%] h-px bg-spa-argile/30" aria-hidden="true"></div>
+
+      {etapes.map((e) => (
+        <li class="relative text-center md:px-4">
+          <div class="relative inline-flex items-center justify-center w-24 h-24 rounded-full bg-spa-creme border-2 border-spa-terracotta/50 hover:border-spa-terracotta hover:shadow-lg transition-all duration-300 mb-6">
+            <span class="font-lora italic text-spa-cacao text-3xl leading-none">{e.num}</span>
+          </div>
+          <p class="font-raleway uppercase tracking-[0.3em] text-[10px] text-spa-argile mb-2">{e.duree}</p>
+          <h3 class="font-lora text-spa-cacao text-2xl md:text-[26px] mb-3">{e.titre}</h3>
+          <p class="font-raleway text-[14.5px] text-spa-cacao/80 leading-relaxed max-w-xs mx-auto">{e.texte}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

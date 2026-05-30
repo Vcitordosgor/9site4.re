@@ -1,0 +1,40 @@
+---
+const mots = [
+  { mot: 'Silence', taille: 'clamp(60px,9vw,110px)', italic: true, color: 'text-spa-cacao' },
+  { mot: 'Tisane', taille: 'clamp(48px,7vw,90px)', italic: false, color: 'text-spa-terracotta' },
+  { mot: 'Argile', taille: 'clamp(54px,8vw,100px)', italic: true, color: 'text-spa-argile' },
+  { mot: 'Pierres chaudes', taille: 'clamp(48px,7vw,90px)', italic: false, color: 'text-spa-cacao' },
+  { mot: 'Vapeur', taille: 'clamp(52px,7.5vw,95px)', italic: true, color: 'text-spa-terracotta' },
+  { mot: 'Souffle', taille: 'clamp(60px,9vw,110px)', italic: true, color: 'text-spa-argile' },
+  { mot: 'Repos', taille: 'clamp(54px,8vw,100px)', italic: false, color: 'text-spa-cacao' },
+];
+---
+
+<section class="bg-spa-creme py-20 md:py-32 relative overflow-hidden">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+
+    <div class="text-center mb-14 md:mb-20">
+      <p class="font-raleway uppercase tracking-[0.4em] text-[10px] md:text-[11px] text-spa-argile mb-4">— Le vocabulaire de la maison —</p>
+      <h2 class="font-lora text-spa-cacao text-3xl md:text-5xl leading-tight italic">
+        Sept mots
+        <span class="not-italic font-lora text-spa-terracotta">qui suffisent</span>
+      </h2>
+    </div>
+
+    <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-2 md:gap-x-16 md:gap-y-4 leading-none">
+      {mots.map((m, i) => (
+        <span
+          class={`font-lora ${m.italic ? 'italic' : ''} ${m.color} ${i % 2 === 0 ? 'md:-translate-y-2' : 'md:translate-y-3'} transition-transform`}
+          style={`font-size:${m.taille};`}
+        >
+          {m.mot}
+          {i < mots.length - 1 && <span class="font-lora text-spa-cacao/30 mx-2 not-italic" aria-hidden="true">·</span>}
+        </span>
+      ))}
+    </div>
+
+    <p class="mt-14 text-center font-raleway uppercase tracking-[0.3em] text-[10px] md:text-[11px] text-spa-cacao/70">
+      — Rien d'autre, ou presque, ne vous est demandé.
+    </p>
+  </div>
+</section>
