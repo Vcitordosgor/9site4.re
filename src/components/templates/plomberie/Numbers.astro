@@ -1,0 +1,61 @@
+---
+/**
+ * Numbers — section chiffres clés en typo poster massive.
+ * 4 chiffres impressionnants en grid asymétrique.
+ */
+const stats = [
+  { value: '18', unit: 'ans', label: 'D\'expérience sur l\'île' },
+  { value: '+1200', unit: 'interv.', label: 'Réalisées depuis 2007' },
+  { value: '< 1h', unit: 'délai', label: 'Sur urgence dans le sud' },
+  { value: '4,9/5', unit: '124 avis', label: 'Note moyenne Google' },
+];
+---
+
+<section class="relative bg-bp-blanc py-20 md:py-28 px-6 md:px-10 border-y-2 border-bp-anthracite/10">
+  <div class="max-w-content mx-auto">
+    <header class="mb-14 md:mb-16">
+      <p class="scroll-reveal inline-flex items-center gap-3 text-[11px] sm:text-xs font-archivo font-bold uppercase tracking-[0.32em] text-bp-anthracite/70">
+        <span class="block w-8 h-[3px] bg-bp-jaune" aria-hidden="true"></span>
+        <span>En chiffres</span>
+      </p>
+      <h2 class="scroll-reveal mt-5 font-bebas uppercase text-bp-anthracite leading-[0.9] tracking-tight max-w-3xl" style="font-size: clamp(40px, 5.5vw, 72px);">
+        Vingt ans de chantier,<br/>
+        <span class="text-bp-anthracite/55">ça se compte.</span>
+      </h2>
+    </header>
+
+    <ul class="grid grid-cols-2 lg:grid-cols-12 gap-x-6 gap-y-12 items-end">
+      <li class="scroll-reveal lg:col-span-5 lg:col-start-1">
+        <span class="block font-bebas text-bp-anthracite leading-[0.82] tracking-tight tabular-nums" style="font-size: clamp(72px, 14vw, 180px);">
+          {stats[0].value}
+        </span>
+        <span class="mt-2 block font-archivo font-bold uppercase tracking-[0.25em] text-bp-jaune text-xs">{stats[0].unit}</span>
+        <p class="mt-3 font-archivo text-bp-anthracite/70 leading-snug" style="font-size: 15px;">{stats[0].label}</p>
+      </li>
+
+      <li class="scroll-reveal lg:col-span-4 lg:col-start-8 lg:translate-y-6" style="transition-delay: 80ms">
+        <span class="block font-bebas text-bp-jaune leading-[0.82] tracking-tight tabular-nums" style="font-size: clamp(58px, 10vw, 130px);">
+          {stats[1].value}
+        </span>
+        <span class="mt-2 block font-archivo font-bold uppercase tracking-[0.25em] text-bp-anthracite text-xs">{stats[1].unit}</span>
+        <p class="mt-3 font-archivo text-bp-anthracite/70 leading-snug" style="font-size: 15px;">{stats[1].label}</p>
+      </li>
+
+      <li class="scroll-reveal lg:col-span-4 lg:col-start-2 lg:-translate-y-4" style="transition-delay: 160ms">
+        <span class="block font-bebas text-bp-anthracite leading-[0.82] tracking-tight tabular-nums" style="font-size: clamp(58px, 10vw, 130px);">
+          {stats[2].value}
+        </span>
+        <span class="mt-2 block font-archivo font-bold uppercase tracking-[0.25em] text-bp-jaune text-xs">{stats[2].unit}</span>
+        <p class="mt-3 font-archivo text-bp-anthracite/70 leading-snug" style="font-size: 15px;">{stats[2].label}</p>
+      </li>
+
+      <li class="scroll-reveal lg:col-span-5 lg:col-start-7" style="transition-delay: 240ms">
+        <span class="block font-bebas text-bp-jaune leading-[0.82] tracking-tight tabular-nums" style="font-size: clamp(72px, 14vw, 180px);">
+          {stats[3].value}
+        </span>
+        <span class="mt-2 block font-archivo font-bold uppercase tracking-[0.25em] text-bp-anthracite text-xs">{stats[3].unit}</span>
+        <p class="mt-3 font-archivo text-bp-anthracite/70 leading-snug" style="font-size: 15px;">{stats[3].label}</p>
+      </li>
+    </ul>
+  </div>
+</section>
