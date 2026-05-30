@@ -2,12 +2,12 @@
   "info": {
     "nom": "Pizza Lé O",
     "tagline": "La Réunion, à l'italienne.",
-    "adresse": "12 rue de la Plage, 97460 Saint-Paul",
-    "telephone": "+262 692 00 00 00",
-    "telephoneHref": "+262692000000",
+    "adresse": "À La Réunion · adresse précise communiquée à la commande",
+    "telephone": "+262 692 12 34 56",
+    "telephoneHref": "+262692123456",
     "email": "contact@pizzaleo.re",
-    "whatsapp": "262692000000",
-    "whatsappDisplay": "+262 692 00 00 00",
+    "whatsapp": "262692123456",
+    "whatsappDisplay": "+262 692 12 34 56",
     "annee": 2018,
     "horaires": [
       { "jour": "Lundi", "ouvert": false, "label": "Fermé" },
@@ -24,11 +24,11 @@
     "eyebrow": "Notre cuisine",
     "titre": "La pizza napolitaine,",
     "titreItalique": "à La Réunion.",
-    "citation": "On a appris la pizza à Naples. On la fait à Saint-Paul.",
+    "citation": "On a appris la pizza à Naples. On la fait ici.",
     "attribution": "Marco & Léa, fondateurs",
     "corps": "Une pâte fermentée 48 heures qui rend la pizza plus digeste et plus parfumée. Un four à bois d'eucalyptus chauffé à 450°C qui donne ce bord soufflé inimitable. Et des produits choisis chez nos producteurs péi : tomates de Saint-Joseph, basilic des Hauts, mozzarella fior di latte affinée localement.",
-    "photo": "https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?w=900&q=80",
-    "photoAlt": "Pizza margherita au four à bois"
+    "photo": "https://images.unsplash.com/photo-1593504049359-74330189a345?w=900&q=80",
+    "photoAlt": "Pizzaiolo enfournant une pizza dans le four à bois"
   },
   "gallery": [
     { "src": "https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?w=900&q=80", "alt": "Pizza margherita posée sur une planche en bois" },
@@ -38,24 +38,8 @@
     { "src": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=900&q=80", "alt": "Plusieurs pizzas posées sur une grande table" },
     { "src": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=900&q=80", "alt": "Salle de restaurant italien chaleureuse" }
   ],
-  "testimonials": [
-    {
-      "auteur": "Élodie M.",
-      "lieu": "Saint-Paul",
-      "citation": "La pâte est incroyablement légère. Mon mari, qui digère mal le gluten d'habitude, n'a eu aucun problème. C'est devenu notre adresse du vendredi soir."
-    },
-    {
-      "auteur": "Jean-Marc R.",
-      "lieu": "Saint-Gilles",
-      "citation": "On a goûté beaucoup de pizzas dans l'île. Celle-ci a vraiment la signature napolitaine. Le bord soufflé, la mozza fondue parfaite, le basilic frais. Bravo."
-    },
-    {
-      "auteur": "Aurélie K.",
-      "lieu": "Le Port",
-      "citation": "La Créole avec le rougail saucisse est une dinguerie. C'est à la fois péi et italien, sans jamais en faire trop. Service impeccable et accueil chaleureux."
-    }
-  ],
-  "zones": ["Saint-Paul", "Saint-Gilles-les-Bains", "La Saline-les-Bains", "Le Port"],
+  "testimonials": [],
+  "zones": ["Zone Ouest", "Zone Nord", "Zone Sud", "Zone Est"],
   "horairesCommande": [
     "Dès que possible",
     "19h00",
@@ -93,7 +77,7 @@
     { "id": "creole",          "categorie": "speciales",  "nom": "Créole",          "description": "Tomate, mozzarella, rougail saucisse maison, oignons confits, coriandre.",            "prix": 16, "photo": "https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?w=600&q=80" },
     { "id": "bourbon",         "categorie": "speciales",  "nom": "Bourbon",         "description": "Crème, mozzarella, poulet mariné aux épices Bourbon, ananas Victoria.",               "prix": 16, "photo": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=600&q=80&sat=-20" },
     { "id": "volcanique",      "categorie": "speciales",  "nom": "Volcanique",      "description": "Tomate, mozzarella, chorizo, piment cabri, miel de letchi.",                          "prix": 16, "photo": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=80&hue=20" },
-    { "id": "saint-paul",      "categorie": "speciales",  "nom": "Saint-Paul",      "description": "Crème, mozzarella, thon, câpres, citron vert, roquette.",                              "prix": 16, "photo": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600&q=80&hue=180" },
+    { "id": "lagon",           "categorie": "speciales",  "nom": "Lagon",           "description": "Crème, mozzarella, thon, câpres, citron vert, roquette.",                              "prix": 16, "photo": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600&q=80&hue=180" },
 
     { "id": "tiramisu",        "categorie": "desserts",   "nom": "Tiramisù",                       "description": "Mascarpone, café arabica, biscuit imbibé, cacao amer.", "prix": 6, "photo": "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=600&q=80" },
     { "id": "panna-cotta",     "categorie": "desserts",   "nom": "Panna cotta vanille de Bourbon", "description": "Crème onctueuse, coulis de letchi.",                    "prix": 6, "photo": "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=600&q=80" },

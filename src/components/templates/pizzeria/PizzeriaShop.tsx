@@ -197,7 +197,7 @@ Mon téléphone : ${data.telephone}${noteLine}`;
             class={`group/btn inline-flex items-center gap-2 h-10 px-4 rounded-full text-[11px] font-semibold uppercase tracking-[0.2em] transition-all duration-200 cursor-pointer ring-1 active:scale-[0.97] ${
               isJustAdded
                 ? 'bg-pizza-charbon text-pizza-creme ring-pizza-charbon'
-                : 'bg-pizza-rouge text-pizza-creme ring-pizza-rouge hover:bg-[#8B1F2A] hover:ring-[#8B1F2A]'
+                : 'bg-transparent text-pizza-charbon ring-pizza-charbon/25 hover:bg-pizza-charbon hover:text-pizza-creme hover:ring-pizza-charbon'
             }`}
           >
             {isJustAdded ? (
@@ -431,7 +431,7 @@ Mon téléphone : ${data.telephone}${noteLine}`;
                     <label for="po-tel" class={labelBase}>Téléphone</label>
                     <input id="po-tel" name="telephone" type="tel" inputMode="tel" required autocomplete="tel"
                       class={`${inputBase} ${errors.telephone ? inputErr : inputOk}`}
-                      placeholder="0692 00 00 00"
+                      placeholder="0692 12 34 56"
                     />
                     {errors.telephone && <p role="alert" class={errClass}>{errors.telephone}</p>}
                   </div>
