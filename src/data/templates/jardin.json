@@ -36,7 +36,7 @@
   },
   "manifesto": "Une cuisine simple en apparence, exigeante dans le détail. On ne cherche pas à impressionner — on cherche à faire plaisir.",
   "chiffres": [
-    { "valeur": "1",     "label": "étoile au guide Michelin",      "depuis": "depuis 2019" },
+    { "valeur": "—",     "label": "Démo — votre distinction ici",   "depuis": "à personnaliser" },
     { "valeur": "2014",  "label": "année d'ouverture",              "depuis": "à La Réunion" },
     { "valeur": "42",    "label": "couverts par service",            "depuis": "intimité préservée" }
   ],
@@ -77,16 +77,16 @@
   "chef": {
     "nom": "Augustin Lambert",
     "titre": "Chef · propriétaire",
-    "bio": "Formé dans plusieurs maisons étoilées en France et en Asie, Augustin pose ses couteaux à La Réunion en 2014. Sa cuisine cherche le juste milieu entre la rigueur française et la générosité créole.",
+    "bio": "Formé dans plusieurs maisons exigeantes en France et en Asie, Augustin pose ses couteaux à La Réunion en 2014. Sa cuisine cherche le juste milieu entre la rigueur française et la générosité créole.",
     "signature": "Mon plat signature, c'est le filet de cabri du Tampon, juste rosé, avec un jus monté à la vanille de Bourbon. Un seul plat dit qui je suis."
   },
   "vins": [
-    { "id": "v1", "nom": "Sancerre blanc · Domaine Vacheron",   "annee": "2021", "region": "Loire",      "accord": "Tartare de thon, ravioles" },
-    { "id": "v2", "nom": "Chablis 1er cru · Vaillons",          "annee": "2020", "region": "Bourgogne",  "accord": "Carpaccio de bonite" },
-    { "id": "v3", "nom": "Châteauneuf-du-Pape · Beaucastel",    "annee": "2018", "region": "Rhône",      "accord": "Filet de cabri, plats sauce" },
-    { "id": "v4", "nom": "Hermitage rouge · Chave",             "annee": "2017", "region": "Rhône",      "accord": "Service spécial, sur demande" },
-    { "id": "v5", "nom": "Champagne Selosse · Substance",       "annee": "NV",   "region": "Champagne",  "accord": "Apéritif, fromages" },
-    { "id": "v6", "nom": "Rhum vieux de l'île · Cuvée traditionnelle", "annee": "12 ans", "region": "Réunion",  "accord": "Ananas rôti, fin de repas" }
+    { "id": "v1", "nom": "Sancerre blanc · domaine partenaire",         "annee": "2021", "region": "Loire",      "accord": "Tartare de thon, ravioles" },
+    { "id": "v2", "nom": "Chablis 1er cru",                              "annee": "2020", "region": "Bourgogne",  "accord": "Carpaccio de bonite" },
+    { "id": "v3", "nom": "Châteauneuf-du-Pape",                          "annee": "2018", "region": "Rhône",      "accord": "Filet de cabri, plats sauce" },
+    { "id": "v4", "nom": "Hermitage rouge",                              "annee": "2017", "region": "Rhône",      "accord": "Service spécial, sur demande" },
+    { "id": "v5", "nom": "Champagne brut · sélection maison",            "annee": "NV",   "region": "Champagne",  "accord": "Apéritif, fromages" },
+    { "id": "v6", "nom": "Rhum vieux de l'île · Cuvée traditionnelle",   "annee": "12 ans", "region": "Réunion",  "accord": "Ananas rôti, fin de repas" }
   ],
   "occasions": [
     { "id": "decouverte",  "label": "Découverte" },
