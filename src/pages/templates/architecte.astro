@@ -17,8 +17,10 @@ import mahatmaData from '../../data/templates/mahatma.json';
 import MahatmaHeader from '../../components/templates/architecte/MahatmaHeader.astro';
 import HeroProjet from '../../components/templates/architecte/HeroProjet.astro';
 import Atelier from '../../components/templates/architecte/Atelier.astro';
+import Citation from '../../components/templates/architecte/Citation.astro';
 import Projets from '../../components/templates/architecte/Projets.astro';
 import Methode from '../../components/templates/architecte/Methode.astro';
+import Bandeau from '../../components/templates/architecte/Bandeau.astro';
 import Honoraires from '../../components/templates/architecte/Honoraires.astro';
 import Distinctions from '../../components/templates/architecte/Distinctions.astro';
 import RendezVous from '../../components/templates/architecte/RendezVous.astro';
@@ -46,8 +48,10 @@ const businessLD = localBusinessSchema(mahatmaData);
   <main id="top" class="bg-mahatma-papier text-mahatma-encre font-atkinson">
     <HeroProjet />
     <Atelier />
+    <Citation />
     <Projets />
     <Methode />
+    <Bandeau />
     <Honoraires />
     <Distinctions />
     <RendezVous />
