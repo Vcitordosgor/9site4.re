@@ -1,0 +1,50 @@
+---
+const faq = [
+  {
+    q: 'Comment monter au gîte si je n\'ai pas de voiture ?',
+    r: 'On vient vous chercher au dernier arrêt de bus, gratuitement, sur réservation 48h à l\'avance. La route est sinueuse, mieux vaut éviter en saison cyclonique entre janvier et mars.',
+  },
+  {
+    q: 'Faites-vous le panier pique-nique pour la rando ?',
+    r: 'Oui, 12 euros par personne, à commander la veille avant 21h. Pain au levain, fromage des Hauts, œuf dur, fruits frais, gourde de thé péi remplie au départ.',
+  },
+  {
+    q: 'Quelle est la meilleure saison pour venir ?',
+    r: 'Avril-mai et septembre-novembre : ciel dégagé, températures fraîches le soir (8 à 12°C), sentiers secs. Évitez janvier-mars (pluies) et décembre (affluence vacances).',
+  },
+  {
+    q: 'Acceptez-vous les groupes et les week-ends randonnée ?',
+    r: 'Oui jusqu\'à 12 personnes en privatisation complète. Forfait week-end deux nuits + petit-déj + dîner table d\'hôte à partir de 95 euros par personne, sur devis.',
+  },
+  {
+    q: 'Le chauffage et l\'eau chaude sont-ils inclus ?',
+    r: 'Oui, sans supplément. Cheminée au salon avec bûches fournies, radiateurs dans chaque chambre. L\'eau chaude vient d\'un cumulus solaire — capacité largement suffisante.',
+  },
+];
+---
+
+<section class="bg-cap-papier py-20 md:py-28 relative">
+  <div class="max-w-3xl mx-auto px-6 md:px-10">
+
+    <div class="text-center mb-12 md:mb-16">
+      <p class="font-jetbrains text-[10px] uppercase tracking-[0.28em] text-cap-mousse mb-4">— Avant de réserver —</p>
+      <h2 class="font-crimson italic text-cap-charbon text-4xl md:text-5xl leading-tight">
+        Ce qu'on nous demande souvent.
+      </h2>
+    </div>
+
+    <div class="space-y-3">
+      {faq.map((f) => (
+        <details class="group bg-cap-papier border-2 border-cap-charbon/15 hover:border-cap-mousse/70 transition-colors">
+          <summary class="cursor-pointer list-none flex items-start gap-5 p-5 md:p-7">
+            <span class="font-crimson italic text-cap-mousse text-3xl leading-none mt-1 transition-transform duration-300 group-open:rotate-45" aria-hidden="true">+</span>
+            <span class="flex-1 font-bricolage font-semibold text-cap-charbon text-lg md:text-xl leading-snug">{f.q}</span>
+          </summary>
+          <div class="px-5 md:px-7 pb-6 md:pb-8 pl-14 md:pl-16">
+            <p class="font-crimson text-cap-charbon/85 text-[16.5px] leading-relaxed">{f.r}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

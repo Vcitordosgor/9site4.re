@@ -1,0 +1,43 @@
+---
+import data from '../../../data/templates/cap-anglais.json';
+
+const ans = new Date().getFullYear() - parseInt(data.info.annee);
+const chiffres = [
+  { gros: '1220', unite: 'm', petit: 'd\'altitude · cirque' },
+  { gros: ans, unite: 'ans', petit: 'd\'accueil sous le toit du Cap' },
+  { gros: '12', unite: 'pers', petit: 'capacité maxi · 4 chambres' },
+  { gros: '7', unite: 'sentiers', petit: 'GR balisés au départ de la cour' },
+];
+---
+
+<section class="bg-cap-charbon text-cap-papier py-20 md:py-32 relative overflow-hidden">
+
+  <svg class="absolute -left-32 -top-32 w-[500px] h-[500px] opacity-[0.10] pointer-events-none" viewBox="0 0 600 600" fill="none" stroke="#F1EBDB" stroke-width="0.6" aria-hidden="true">
+    <ellipse cx="300" cy="300" rx="280" ry="200" transform="rotate(20 300 300)"/>
+    <ellipse cx="300" cy="300" rx="240" ry="170" transform="rotate(18 300 300)"/>
+    <ellipse cx="305" cy="295" rx="200" ry="140" transform="rotate(15 305 295)"/>
+    <ellipse cx="315" cy="285" rx="120" ry="90" transform="rotate(10 315 285)"/>
+    <ellipse cx="320" cy="282" rx="80" ry="65"/>
+  </svg>
+
+  <div class="max-w-content mx-auto px-6 md:px-10 relative">
+
+    <div class="flex items-baseline justify-between font-jetbrains text-[10px] uppercase tracking-[0.28em] text-cap-papier/70 mb-12 md:mb-16 pb-3 border-b border-cap-papier/20">
+      <span>Carnet de gîtes péi · n°47</span>
+      <span class="hidden sm:inline">Repères du lieu</span>
+      <span>p. 04</span>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-y-14 md:gap-y-20 md:gap-x-8">
+      {chiffres.map((c, i) => (
+        <div class={`md:col-span-6 ${i === 1 ? 'md:translate-y-12' : ''} ${i === 2 ? 'md:-translate-y-6 md:text-right' : ''} ${i === 3 ? 'md:translate-y-8 md:text-right' : ''} ${i === 0 ? '' : ''}`}>
+          <p class="font-crimson italic text-cap-papier leading-[0.85] flex items-end gap-3" style="font-size:clamp(72px,14vw,150px);">
+            <span>{c.gros}</span>
+            <span class="font-jetbrains not-italic text-cap-pierre tracking-[0.2em] uppercase text-base md:text-xl mb-3 md:mb-5">{c.unite}</span>
+          </p>
+          <p class="mt-4 font-jetbrains text-[11px] uppercase tracking-[0.3em] text-cap-papier/75">— {c.petit}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
