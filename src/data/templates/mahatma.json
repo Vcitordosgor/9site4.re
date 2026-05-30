@@ -5,9 +5,9 @@
     "wordmark2": "Mahatma",
     "soustitre": "Architecture · Patrimoine · Espace public",
     "tagline": "Construire, c'est répondre à un lieu.",
-    "ville": "Saint-Pierre",
+    "ville": "La Réunion",
     "adresseLigne1": "5 rue du Père Laval",
-    "adresseLigne2": "97410 Saint-Pierre",
+    "adresseLigne2": "97410 La Réunion",
     "telephone": "0692 38 41 27",
     "telephoneHref": "+33692384127",
     "whatsapp": "33692384127",
@@ -20,14 +20,14 @@
   "heroProjet": {
     "nom": "Villa La Source",
     "annee": "2024",
-    "lieu": "Saint-Leu",
+    "lieu": "La Réunion",
     "typologie": "Maison individuelle",
     "surface": "280 m²",
     "description": "Maison familiale en bois local, ventilation traversante naturelle, toiture papang inversée. Pas de climatisation.",
     "photo": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1800&q=85"
   },
   "atelier": {
-    "intro": "L'Atelier Mahatma est une agence d'architecture installée à Saint-Pierre depuis 2014. Trois architectes, une vingtaine de projets actifs, des maîtrises d'ouvrage privées et publiques.",
+    "intro": "L'Atelier Mahatma est une agence d'architecture installée à La Réunion depuis 2014. Trois architectes, une vingtaine de projets actifs, des maîtrises d'ouvrage privées et publiques.",
     "paragraphes": [
       "Notre approche est simple : un projet d'architecture commence par l'écoute. Du site, du commanditaire, des contraintes climatiques tropicales propres à La Réunion. On ne reproduit pas, on adapte.",
       "Nous travaillons systématiquement avec des matériaux disponibles localement — bois péi, basalte, tôle laquée — et nous concevons pour un usage de plusieurs décennies. La durabilité commence par le détail technique.",
@@ -58,7 +58,7 @@
     {
       "nom": "Villa La Source",
       "annee": "2024",
-      "lieu": "Saint-Leu",
+      "lieu": "La Réunion",
       "typologie": "Maison individuelle · 280 m²",
       "statut": "Livré",
       "photo": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=80"
@@ -66,7 +66,7 @@
     {
       "nom": "Bureaux Volkanik",
       "annee": "2023",
-      "lieu": "Saint-Pierre",
+      "lieu": "La Réunion",
       "typologie": "Tertiaire · 600 m²",
       "statut": "Livré",
       "photo": "/images/architecte/bureaux.webp"
@@ -74,7 +74,7 @@
     {
       "nom": "Lotissement Les Îlets",
       "annee": "2023",
-      "lieu": "Le Tampon",
+      "lieu": "La Réunion",
       "typologie": "12 logements collectifs",
       "statut": "Livré",
       "photo": "/images/architecte/lotissement.webp"
@@ -82,7 +82,7 @@
     {
       "nom": "Maison Carrère",
       "annee": "2022",
-      "lieu": "Saint-Denis",
+      "lieu": "La Réunion",
       "typologie": "Restauration patrimoine",
       "statut": "Livré · primé",
       "photo": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=900&q=80"
@@ -90,7 +90,7 @@
     {
       "nom": "École primaire",
       "annee": "2022",
-      "lieu": "Bras-Panon",
+      "lieu": "La Réunion",
       "typologie": "Public · 1 200 m²",
       "statut": "Livré",
       "photo": "/images/architecte/ecole.webp"
@@ -98,7 +98,7 @@
     {
       "nom": "Maison 162",
       "annee": "2021",
-      "lieu": "Saint-Pierre",
+      "lieu": "La Réunion",
       "typologie": "Commerce · 80 m²",
       "statut": "Livré",
       "photo": "/images/architecte/magasin.webp"
@@ -106,7 +106,7 @@
     {
       "nom": "Bibliothèque Aurore",
       "annee": "2021",
-      "lieu": "Sainte-Marie",
+      "lieu": "La Réunion",
       "typologie": "Public · 950 m²",
       "statut": "Livré",
       "photo": "https://images.unsplash.com/photo-1568667256549-094345857637?w=900&q=80"
@@ -114,7 +114,7 @@
     {
       "nom": "Maison Tropic",
       "annee": "2020",
-      "lieu": "L'Étang-Salé",
+      "lieu": "La Réunion",
       "typologie": "Maison individuelle · 195 m²",
       "statut": "Livré",
       "photo": "https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?w=900&q=80"

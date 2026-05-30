@@ -4,7 +4,7 @@
     "wordmark": "Lucas Ferrier",
     "soustitre": "Consultant indépendant · Stratégie digitale",
     "tagline": "J'aide les entreprises à vraiment utiliser le digital.",
-    "ville": "Saint-Denis",
+    "ville": "La Réunion",
     "telephone": "0692 47 39 14",
     "telephoneHref": "+33692473914",
     "whatsapp": "33692473914",
@@ -179,7 +179,13 @@
     }
   ],
   "creneaux": [
-    { "duree": "30 min", "label": "Découverte" },
-    { "duree": "60 min", "label": "Cadrage" }
+    {
+      "duree": "30 min",
+      "label": "Découverte"
+    },
+    {
+      "duree": "60 min",
+      "label": "Cadrage"
+    }
   ]
 }

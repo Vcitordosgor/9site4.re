@@ -5,9 +5,9 @@
     "wordmark2": "Conduite",
     "soustitre": "Auto-école · Permis B & code en ligne",
     "tagline": "Ton permis. Sans stress.",
-    "ville": "Saint-Denis",
+    "ville": "La Réunion",
     "adresseLigne1": "47 boulevard Joffre",
-    "adresseLigne2": "97400 Saint-Denis",
+    "adresseLigne2": "97400 La Réunion",
     "telephone": "0692 14 73 28",
     "telephoneHref": "+33692147328",
     "whatsapp": "33692147328",
@@ -18,16 +18,48 @@
     "annee": "2013"
   },
   "stats": [
-    { "valeur": "87 %", "label": "réussite 1ʳᵉ tentative" },
-    { "valeur": "3 500+", "label": "permis délivrés" },
-    { "valeur": "12", "label": "ans d'expérience" },
-    { "valeur": "4,7/5", "label": "sur 412 avis Google" }
+    {
+      "valeur": "87 %",
+      "label": "réussite 1ʳᵉ tentative"
+    },
+    {
+      "valeur": "3 500+",
+      "label": "permis délivrés"
+    },
+    {
+      "valeur": "12",
+      "label": "ans d'expérience"
+    },
+    {
+      "valeur": "4,7/5",
+      "label": "sur 412 avis Google"
+    }
   ],
   "etapes": [
-    { "num": "01", "label": "Inscription", "valide": true, "duree": "30 min" },
-    { "num": "02", "label": "Code", "valide": true, "duree": "1 à 3 mois" },
-    { "num": "03", "label": "Conduite", "valide": false, "duree": "20 à 30 h" },
-    { "num": "04", "label": "Permis", "valide": false, "duree": "le grand jour" }
+    {
+      "num": "01",
+      "label": "Inscription",
+      "valide": true,
+      "duree": "30 min"
+    },
+    {
+      "num": "02",
+      "label": "Code",
+      "valide": true,
+      "duree": "1 à 3 mois"
+    },
+    {
+      "num": "03",
+      "label": "Conduite",
+      "valide": false,
+      "duree": "20 à 30 h"
+    },
+    {
+      "num": "04",
+      "label": "Permis",
+      "valide": false,
+      "duree": "le grand jour"
+    }
   ],
   "forfaits": [
     {
@@ -80,10 +112,22 @@
     "titre": "Le code en ligne, sans limites.",
     "description": "Tu te connectes quand tu veux, où tu veux. 4 000+ questions actualisées tous les mois. Tu gagnes des points pour chaque session terminée.",
     "stats": [
-      { "valeur": "4 000+", "label": "questions" },
-      { "valeur": "24/7", "label": "accès" },
-      { "valeur": "80 %", "label": "réussite code" },
-      { "valeur": "0 €", "label": "supplément" }
+      {
+        "valeur": "4 000+",
+        "label": "questions"
+      },
+      {
+        "valeur": "24/7",
+        "label": "accès"
+      },
+      {
+        "valeur": "80 %",
+        "label": "réussite code"
+      },
+      {
+        "valeur": "0 €",
+        "label": "supplément"
+      }
     ]
   },
   "parcours": [
@@ -199,8 +243,20 @@
     }
   ],
   "horaires": [
-    { "jour": "Lundi – Vendredi", "label": "08h – 19h", "ouvert": true },
-    { "jour": "Samedi", "label": "08h – 17h", "ouvert": true },
-    { "jour": "Dimanche", "label": "Fermé", "ouvert": false }
+    {
+      "jour": "Lundi – Vendredi",
+      "label": "08h – 19h",
+      "ouvert": true
+    },
+    {
+      "jour": "Samedi",
+      "label": "08h – 17h",
+      "ouvert": true
+    },
+    {
+      "jour": "Dimanche",
+      "label": "Fermé",
+      "ouvert": false
+    }
   ]
 }

@@ -3,12 +3,12 @@
     "nom": "Cabinet Verveine",
     "wordmark": "Verveine",
     "soustitre": "Ostéopathie · D.O.",
-    "praticienne": "Hélène Saint-Pierre",
-    "titre": "Hélène Saint-Pierre",
+    "praticienne": "Hélène La Réunion",
+    "titre": "Hélène La Réunion",
     "tagline": "L'ostéopathie, dans le calme et le détail.",
-    "ville": "Saint-Pierre",
+    "ville": "La Réunion",
     "adresseLigne1": "8 rue des Bons-Enfants",
-    "adresseLigne2": "97410 Saint-Pierre",
+    "adresseLigne2": "97410 La Réunion",
     "telephone": "0692 56 78 23",
     "telephoneHref": "+33692567823",
     "whatsapp": "33692567823",
@@ -44,14 +44,38 @@
     ]
   },
   "motifs": [
-    { "id": "lombaire", "label": "Douleurs lombaires & sciatiques" },
-    { "id": "cervical", "label": "Cervicalgies & maux de tête" },
-    { "id": "digestif", "label": "Troubles digestifs fonctionnels" },
-    { "id": "postpartum", "label": "Suivi post-partum & périnée" },
-    { "id": "sportif", "label": "Pathologies du sportif" },
-    { "id": "pediatrie", "label": "Nourrissons & enfants" },
-    { "id": "stress", "label": "Stress, sommeil, troubles du sommeil" },
-    { "id": "epaule", "label": "Épaules, tendinites, articulations" }
+    {
+      "id": "lombaire",
+      "label": "Douleurs lombaires & sciatiques"
+    },
+    {
+      "id": "cervical",
+      "label": "Cervicalgies & maux de tête"
+    },
+    {
+      "id": "digestif",
+      "label": "Troubles digestifs fonctionnels"
+    },
+    {
+      "id": "postpartum",
+      "label": "Suivi post-partum & périnée"
+    },
+    {
+      "id": "sportif",
+      "label": "Pathologies du sportif"
+    },
+    {
+      "id": "pediatrie",
+      "label": "Nourrissons & enfants"
+    },
+    {
+      "id": "stress",
+      "label": "Stress, sommeil, troubles du sommeil"
+    },
+    {
+      "id": "epaule",
+      "label": "Épaules, tendinites, articulations"
+    }
   ],
   "seance": {
     "duree": "45 min en moyenne",
@@ -83,30 +107,91 @@
     ]
   },
   "tarifs": [
-    { "label": "Consultation adulte", "prix": "60 €", "note": "45 min en moyenne" },
-    { "label": "Enfant (moins de 12 ans)", "prix": "50 €", "note": "30 min adapté" },
-    { "label": "Nourrisson (moins de 1 an)", "prix": "50 €", "note": "Approche crânio-sacrée" },
-    { "label": "Visite à domicile", "prix": "90 €", "note": "Sur l'agglomération de Saint-Pierre" }
+    {
+      "label": "Consultation adulte",
+      "prix": "60 €",
+      "note": "45 min en moyenne"
+    },
+    {
+      "label": "Enfant (moins de 12 ans)",
+      "prix": "50 €",
+      "note": "30 min adapté"
+    },
+    {
+      "label": "Nourrisson (moins de 1 an)",
+      "prix": "50 €",
+      "note": "Approche crânio-sacrée"
+    },
+    {
+      "label": "Visite à domicile",
+      "prix": "90 €",
+      "note": "Sur l'agglomération de l'île"
+    }
   ],
   "remboursement": "Cabinet conventionné Almerys. La majorité des mutuelles remboursent entre 30 € et 60 € par séance. Une facture détaillée vous est remise à chaque consultation.",
   "creneaux": [
-    { "heure": "09h00" },
-    { "heure": "11h00" },
-    { "heure": "14h00" },
-    { "heure": "16h00" }
+    {
+      "heure": "09h00"
+    },
+    {
+      "heure": "11h00"
+    },
+    {
+      "heure": "14h00"
+    },
+    {
+      "heure": "16h00"
+    }
   ],
   "horaires": [
-    { "jour": "Lundi", "label": "09h – 18h", "ouvert": true },
-    { "jour": "Mardi", "label": "09h – 18h", "ouvert": true },
-    { "jour": "Mercredi", "label": "09h – 12h", "ouvert": true },
-    { "jour": "Jeudi", "label": "09h – 18h", "ouvert": true },
-    { "jour": "Vendredi", "label": "09h – 16h", "ouvert": true },
-    { "jour": "Samedi", "label": "Sur RDV", "ouvert": false },
-    { "jour": "Dimanche", "label": "Fermé", "ouvert": false }
+    {
+      "jour": "Lundi",
+      "label": "09h – 18h",
+      "ouvert": true
+    },
+    {
+      "jour": "Mardi",
+      "label": "09h – 18h",
+      "ouvert": true
+    },
+    {
+      "jour": "Mercredi",
+      "label": "09h – 12h",
+      "ouvert": true
+    },
+    {
+      "jour": "Jeudi",
+      "label": "09h – 18h",
+      "ouvert": true
+    },
+    {
+      "jour": "Vendredi",
+      "label": "09h – 16h",
+      "ouvert": true
+    },
+    {
+      "jour": "Samedi",
+      "label": "Sur RDV",
+      "ouvert": false
+    },
+    {
+      "jour": "Dimanche",
+      "label": "Fermé",
+      "ouvert": false
+    }
   ],
   "acces": [
-    { "label": "À pied", "detail": "5 min depuis le centre-ville" },
-    { "label": "Voiture", "detail": "Parking gratuit rue des Bons-Enfants" },
-    { "label": "Transport", "detail": "Arrêt « Mairie » à 200 m" }
+    {
+      "label": "À pied",
+      "detail": "5 min depuis le centre-ville"
+    },
+    {
+      "label": "Voiture",
+      "detail": "Parking gratuit rue des Bons-Enfants"
+    },
+    {
+      "label": "Transport",
+      "detail": "Arrêt « Mairie » à 200 m"
+    }
   ]
 }

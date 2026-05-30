@@ -6,9 +6,9 @@
     "tagline": "L'art de prendre soin.",
     "fondatrice": "Marléne Hoarau-Dupré",
     "soustitre": "Institut de beauté & soins du visage",
-    "ville": "Saint-Gilles-les-Bains",
+    "ville": "La Réunion",
     "adresseLigne1": "4 boulevard Bonnier",
-    "adresseLigne2": "97434 Saint-Gilles-les-Bains",
+    "adresseLigne2": "97434 La Réunion",
     "telephone": "0692 91 26 47",
     "telephoneHref": "+33692912647",
     "whatsapp": "33692912647",
@@ -70,11 +70,31 @@
       "label": "Visage",
       "soustitre": "Soins éclat, hydratation, anti-âge",
       "soins": [
-        { "nom": "Soin éclat express", "duree": "45 min", "prix": "65 €" },
-        { "nom": "Soin hydratant intense", "duree": "60 min", "prix": "80 €" },
-        { "nom": "Soin anti-âge premium", "duree": "75 min", "prix": "110 €" },
-        { "nom": "Le Rituel Marléne", "duree": "90 min", "prix": "130 €" },
-        { "nom": "Microdermabrasion", "duree": "60 min", "prix": "95 €" }
+        {
+          "nom": "Soin éclat express",
+          "duree": "45 min",
+          "prix": "65 €"
+        },
+        {
+          "nom": "Soin hydratant intense",
+          "duree": "60 min",
+          "prix": "80 €"
+        },
+        {
+          "nom": "Soin anti-âge premium",
+          "duree": "75 min",
+          "prix": "110 €"
+        },
+        {
+          "nom": "Le Rituel Marléne",
+          "duree": "90 min",
+          "prix": "130 €"
+        },
+        {
+          "nom": "Microdermabrasion",
+          "duree": "60 min",
+          "prix": "95 €"
+        }
       ]
     },
     {
@@ -82,10 +102,26 @@
       "label": "Corps",
       "soustitre": "Massages, gommages, enveloppements",
       "soins": [
-        { "nom": "Massage relaxant", "duree": "60 min", "prix": "75 €" },
-        { "nom": "Massage signature lomi-lomi", "duree": "90 min", "prix": "110 €" },
-        { "nom": "Gommage corps complet", "duree": "45 min", "prix": "60 €" },
-        { "nom": "Enveloppement chocolat-vanille", "duree": "75 min", "prix": "95 €" }
+        {
+          "nom": "Massage relaxant",
+          "duree": "60 min",
+          "prix": "75 €"
+        },
+        {
+          "nom": "Massage signature lomi-lomi",
+          "duree": "90 min",
+          "prix": "110 €"
+        },
+        {
+          "nom": "Gommage corps complet",
+          "duree": "45 min",
+          "prix": "60 €"
+        },
+        {
+          "nom": "Enveloppement chocolat-vanille",
+          "duree": "75 min",
+          "prix": "95 €"
+        }
       ]
     },
     {
@@ -93,14 +129,46 @@
       "label": "Épilation",
       "soustitre": "Cire tiède, chaude, ou laser sucre",
       "soins": [
-        { "nom": "Sourcils dessinés", "duree": "20 min", "prix": "15 €" },
-        { "nom": "Lèvre supérieure", "duree": "10 min", "prix": "12 €" },
-        { "nom": "Aisselles", "duree": "15 min", "prix": "18 €" },
-        { "nom": "Maillot classique", "duree": "20 min", "prix": "20 €" },
-        { "nom": "Maillot brésilien / intégral", "duree": "30 min", "prix": "30 €" },
-        { "nom": "Demi-jambes", "duree": "25 min", "prix": "30 €" },
-        { "nom": "Jambes complètes", "duree": "45 min", "prix": "45 €" },
-        { "nom": "Forfait jambes + maillot brésilien", "duree": "1h", "prix": "60 €" }
+        {
+          "nom": "Sourcils dessinés",
+          "duree": "20 min",
+          "prix": "15 €"
+        },
+        {
+          "nom": "Lèvre supérieure",
+          "duree": "10 min",
+          "prix": "12 €"
+        },
+        {
+          "nom": "Aisselles",
+          "duree": "15 min",
+          "prix": "18 €"
+        },
+        {
+          "nom": "Maillot classique",
+          "duree": "20 min",
+          "prix": "20 €"
+        },
+        {
+          "nom": "Maillot brésilien / intégral",
+          "duree": "30 min",
+          "prix": "30 €"
+        },
+        {
+          "nom": "Demi-jambes",
+          "duree": "25 min",
+          "prix": "30 €"
+        },
+        {
+          "nom": "Jambes complètes",
+          "duree": "45 min",
+          "prix": "45 €"
+        },
+        {
+          "nom": "Forfait jambes + maillot brésilien",
+          "duree": "1h",
+          "prix": "60 €"
+        }
       ]
     },
     {
@@ -108,10 +176,26 @@
       "label": "Mains & Pieds",
       "soustitre": "Manucure, pédicure, vernis semi-permanent",
       "soins": [
-        { "nom": "Manucure express", "duree": "30 min", "prix": "25 €" },
-        { "nom": "Manucure spa", "duree": "45 min", "prix": "45 €" },
-        { "nom": "Pose vernis semi-permanent", "duree": "45 min", "prix": "35 €" },
-        { "nom": "Pédicure spa complète", "duree": "60 min", "prix": "55 €" }
+        {
+          "nom": "Manucure express",
+          "duree": "30 min",
+          "prix": "25 €"
+        },
+        {
+          "nom": "Manucure spa",
+          "duree": "45 min",
+          "prix": "45 €"
+        },
+        {
+          "nom": "Pose vernis semi-permanent",
+          "duree": "45 min",
+          "prix": "35 €"
+        },
+        {
+          "nom": "Pédicure spa complète",
+          "duree": "60 min",
+          "prix": "55 €"
+        }
       ]
     },
     {
@@ -119,10 +203,26 @@
       "label": "Forfaits",
       "soustitre": "Demi-journée, journée complète, mariée",
       "soins": [
-        { "nom": "Demi-journée détente (3h)", "duree": "3h", "prix": "180 €" },
-        { "nom": "Journée bien-être (5h)", "duree": "5h", "prix": "290 €" },
-        { "nom": "Forfait future maman", "duree": "2h", "prix": "130 €" },
-        { "nom": "Forfait mariée — soins préparation", "duree": "3h", "prix": "220 €" }
+        {
+          "nom": "Demi-journée détente (3h)",
+          "duree": "3h",
+          "prix": "180 €"
+        },
+        {
+          "nom": "Journée bien-être (5h)",
+          "duree": "5h",
+          "prix": "290 €"
+        },
+        {
+          "nom": "Forfait future maman",
+          "duree": "2h",
+          "prix": "130 €"
+        },
+        {
+          "nom": "Forfait mariée — soins préparation",
+          "duree": "3h",
+          "prix": "220 €"
+        }
       ]
     }
   ],
@@ -157,12 +257,40 @@
     }
   ],
   "horaires": [
-    { "jour": "Lundi", "label": "Fermé", "ouvert": false },
-    { "jour": "Mardi", "label": "10h – 19h", "ouvert": true },
-    { "jour": "Mercredi", "label": "10h – 19h", "ouvert": true },
-    { "jour": "Jeudi", "label": "10h – 21h", "ouvert": true },
-    { "jour": "Vendredi", "label": "10h – 19h", "ouvert": true },
-    { "jour": "Samedi", "label": "09h – 17h", "ouvert": true },
-    { "jour": "Dimanche", "label": "Fermé", "ouvert": false }
+    {
+      "jour": "Lundi",
+      "label": "Fermé",
+      "ouvert": false
+    },
+    {
+      "jour": "Mardi",
+      "label": "10h – 19h",
+      "ouvert": true
+    },
+    {
+      "jour": "Mercredi",
+      "label": "10h – 19h",
+      "ouvert": true
+    },
+    {
+      "jour": "Jeudi",
+      "label": "10h – 21h",
+      "ouvert": true
+    },
+    {
+      "jour": "Vendredi",
+      "label": "10h – 19h",
+      "ouvert": true
+    },
+    {
+      "jour": "Samedi",
+      "label": "09h – 17h",
+      "ouvert": true
+    },
+    {
+      "jour": "Dimanche",
+      "label": "Fermé",
+      "ouvert": false
+    }
   ]
 }

@@ -5,13 +5,13 @@
     "wordmark2": "agapanthes",
     "tagline": "L'art du jardin",
     "taglineItalic": "à la créole.",
-    "intro": "Atelier paysagiste à Saint-Leu. Création de jardins, entretien régulier, palette végétale 100% locale. Pour les particuliers, les copropriétés et les hôtels du sud-ouest de l'île.",
-    "adresse": "14 chemin des Avirons, 97436 Saint-Leu",
+    "intro": "Atelier paysagiste à La Réunion. Création de jardins, entretien régulier, palette végétale 100% locale. Pour les particuliers, les copropriétés et les hôtels du sud-ouest de l'île.",
+    "adresse": "14 chemin des Avirons, 97436 La Réunion",
     "telephone": "+262 692 00 00 00",
-    "telephoneHref": "+262692000000",
+    "telephoneHref": "+262692123456",
     "telephoneCompact": "0692 00 00 00",
     "email": "atelier@les-agapanthes.re",
-    "whatsapp": "262692000000",
+    "whatsapp": "262692123456",
     "whatsappDisplay": "+262 692 00 00 00",
     "annee": 2011,
     "siret": "532 671 904 00018",
@@ -235,16 +235,16 @@
     }
   ],
   "communes": [
-    "Saint-Leu",
-    "Saint-Paul",
-    "Le Port",
+    "La Réunion",
+    "La Réunion",
+    "La Réunion",
     "La Possession",
-    "Saint-Gilles",
-    "L'Étang-Salé",
+    "La Réunion",
+    "La Réunion",
     "Les Avirons",
-    "Saint-Pierre",
-    "Trois-Bassins",
-    "Cilaos"
+    "La Réunion",
+    "La Réunion",
+    "La Réunion"
   ],
   "typesIntervention": [
     {

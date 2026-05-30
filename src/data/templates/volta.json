@@ -4,9 +4,9 @@
     "sousTitre": "Électricité générale & mise aux normes",
     "tagline": "Votre électricité, entre de bonnes mains.",
     "description": "Depuis 2014, Volta intervient dans tout l'Est de l'île : installations neuves, dépannage 24h/24, mise aux normes NF C 15-100 et bornes IRVE.",
-    "adresse": "12 rue de Bourbon, Saint-André 97440",
+    "adresse": "12 rue de Bourbon, La Réunion 97440",
     "adresseLigne1": "12 rue de Bourbon",
-    "adresseLigne2": "97440 Saint-André",
+    "adresseLigne2": "97440 La Réunion",
     "telephone": "0692 44 55 66",
     "telephoneHref": "+33692445566",
     "whatsapp": "33692445566",
@@ -92,27 +92,27 @@
     {
       "src": "/images/electricien/tableau.webp",
       "alt": "Tableau électrique câblé proprement",
-      "label": "Tableau électrique — Saint-André"
+      "label": "Tableau électrique — La Réunion"
     },
     {
       "src": "/images/electricien/eclairage-interieur.webp",
       "alt": "Éclairage intérieur LED, suspensions et spots encastrés",
-      "label": "Éclairage intérieur — Saint-Pierre"
+      "label": "Éclairage intérieur — La Réunion"
     },
     {
       "src": "/images/electricien/eclairage-exterieur.webp",
       "alt": "Éclairage extérieur de façade et balisage de jardin",
-      "label": "Éclairage extérieur — Le Tampon"
+      "label": "Éclairage extérieur — La Réunion"
     },
     {
       "src": "/images/electricien/domotique.webp",
       "alt": "Interrupteurs domotiques et thermostat connecté",
-      "label": "Domotique — Saint-Denis"
+      "label": "Domotique — La Réunion"
     },
     {
       "src": "/images/electricien/irve.webp",
       "alt": "Borne de recharge véhicule électrique installée en extérieur",
-      "label": "Borne IRVE — Bras-Panon"
+      "label": "Borne IRVE — La Réunion"
     }
   ],
   "avis": [
@@ -136,12 +136,12 @@
     }
   ],
   "zones": [
-    "Saint-André",
-    "Sainte-Marie",
-    "Saint-Benoît",
-    "Bras-Panon",
-    "Salazie",
-    "Sainte-Suzanne",
-    "Saint-Denis Est"
+    "La Réunion",
+    "La Réunion",
+    "La Réunion",
+    "La Réunion",
+    "La Réunion",
+    "La Réunion",
+    "La Réunion Est"
   ]
 }

@@ -3,12 +3,12 @@
     "nom": "Concierge & Co",
     "wordmark1": "Concierge",
     "wordmark2": "& Co",
-    "soustitre": "Conciergerie privée · Saint-Gilles",
+    "soustitre": "Conciergerie privée · La Réunion",
     "tagline": "À votre disposition.",
     "fondatrice": "Charlotte Marchand",
-    "ville": "Saint-Gilles-les-Bains",
+    "ville": "La Réunion",
     "adresseLigne1": "16 boulevard du Front de Mer",
-    "adresseLigne2": "97434 Saint-Gilles-les-Bains",
+    "adresseLigne2": "97434 La Réunion",
     "telephone": "0692 56 12 84",
     "telephoneHref": "+33692561284",
     "whatsapp": "33692561284",
@@ -133,31 +133,43 @@
     {
       "initiales": "C. B.",
       "anciennete": "Cliente Premium · 2 ans",
-      "lieu": "Saint-Gilles",
+      "lieu": "La Réunion",
       "texte": "Charlotte gère ma vie quotidienne avec une discrétion exemplaire. Je ne sais plus comment je faisais avant. Sincèrement."
     },
     {
       "initiales": "A. D.",
       "anciennete": "Cliente Essentiel · 1 an",
-      "lieu": "Saint-Pierre",
+      "lieu": "La Réunion",
       "texte": "Trois services par mois suffisent largement. La récupération de mes colis et le pressing me libèrent un temps fou."
     },
     {
       "initiales": "M. P.",
       "anciennete": "Cliente Excellence · 6 mois",
-      "lieu": "Saint-Leu",
+      "lieu": "La Réunion",
       "texte": "Je vis entre Paris et la Réunion. Concierge & Co s'occupe de tout en mon absence : artisans, courrier, plantes. Précieux."
     },
     {
       "initiales": "F. G.",
       "anciennete": "Client Premium · 3 ans",
-      "lieu": "Saint-Denis",
+      "lieu": "La Réunion",
       "texte": "L'essentiel pour moi : la confidentialité. Aucune info ne fuite. Charlotte et son équipe sont d'une rigueur absolue."
     }
   ],
   "horaires": [
-    { "jour": "Lundi – Vendredi", "label": "08h – 20h", "ouvert": true },
-    { "jour": "Samedi", "label": "09h – 18h", "ouvert": true },
-    { "jour": "Dimanche", "label": "Sur demande Excellence", "ouvert": true }
+    {
+      "jour": "Lundi – Vendredi",
+      "label": "08h – 20h",
+      "ouvert": true
+    },
+    {
+      "jour": "Samedi",
+      "label": "09h – 18h",
+      "ouvert": true
+    },
+    {
+      "jour": "Dimanche",
+      "label": "Sur demande Excellence",
+      "ouvert": true
+    }
   ]
 }

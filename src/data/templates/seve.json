@@ -3,12 +3,12 @@
     "nom": "Sève & Sel",
     "wordmark1": "Sève",
     "wordmark2": "Sel",
-    "soustitre": "Wedding planner · Saint-Gilles-les-Bains",
+    "soustitre": "Wedding planner · La Réunion",
     "tagline": "L'océan vous marie.",
     "fondatrice": "Cléa Hoarau",
-    "ville": "Saint-Gilles-les-Bains",
+    "ville": "La Réunion",
     "adresseLigne1": "23 boulevard Roland Garros",
-    "adresseLigne2": "97434 Saint-Gilles-les-Bains",
+    "adresseLigne2": "97434 La Réunion",
     "telephone": "0692 51 87 26",
     "telephoneHref": "+33692518726",
     "whatsapp": "33692518726",
@@ -17,16 +17,16 @@
     "siret": "78901234500017",
     "annee": "2017",
     "photoHero": "/images/seve/hero.webp",
-    "photoHeroAlt": "Lagon turquoise de Saint-Leu, La Réunion — cadre idéal pour une cérémonie de mariage",
+    "photoHeroAlt": "Lagon turquoise de l'île, La Réunion — cadre idéal pour une cérémonie de mariage",
     "ceremonies2025": 47,
     "ceremoniesPrevues2026": 32
   },
-  "promesse": "Vous arrivez d'Auckland, de Lyon ou de Saint-Pierre. Vous voulez vous marier les pieds dans le sable, sous les filaos, devant un lagon turquoise. Mais vous ne connaissez personne ici, vous travaillez à l'autre bout du monde, et vous n'avez pas envie de vous occuper du fleuriste pendant 6 mois. C'est exactement ce que nous faisons : tout, pour vous, sur place — pour qu'il ne vous reste qu'à dire oui.",
+  "promesse": "Vous arrivez d'Auckland, de Lyon ou de l'île. Vous voulez vous marier les pieds dans le sable, sous les filaos, devant un lagon turquoise. Mais vous ne connaissez personne ici, vous travaillez à l'autre bout du monde, et vous n'avez pas envie de vous occuper du fleuriste pendant 6 mois. C'est exactement ce que nous faisons : tout, pour vous, sur place — pour qu'il ne vous reste qu'à dire oui.",
   "ceremonies": [
     {
       "id": "laique-plage",
       "titre": "Cérémonie laïque · pieds dans le sable",
-      "lieu": "Plages de l'Hermitage, Boucan Canot, La Saline-les-Bains",
+      "lieu": "Plages de l'Hermitage, Boucan Canot, La Réunion",
       "duree": "30 à 45 min",
       "invites": "2 à 80 personnes",
       "prix": "À partir de 2 400 €",
@@ -44,7 +44,7 @@
     {
       "id": "civile-jardin",
       "titre": "Cérémonie civile · jardin tropical",
-      "lieu": "Mairies de Saint-Gilles, Saint-Paul, Saint-Leu + jardin privatif",
+      "lieu": "Mairies de l'île, toute La Réunion + jardin privatif",
       "duree": "Civile 20 min · Cocktail 3h",
       "invites": "2 à 50 personnes",
       "prix": "À partir de 3 200 €",
@@ -92,7 +92,7 @@
       "photo": "/images/seve/boucan-canot.webp"
     },
     {
-      "nom": "Jardin de l'Eden (Saint-Leu)",
+      "nom": "Jardin de l'Eden (La Réunion)",
       "ambiance": "Jardin botanique privé, passerelles bois, palmiers tropicaux.",
       "moment": "Splendide en matinée (rosée + lumière douce)",
       "photo": "/images/seve/jardin-eden.webp"
@@ -107,7 +107,7 @@
   "fondatrice": {
     "nom": "Cléa Hoarau",
     "titre": "Fondatrice & coordinatrice",
-    "bio": "Cléa est née à Saint-Gilles-les-Bains. Après 8 ans à organiser des mariages destination en Polynésie et au Mexique, elle est rentrée à La Réunion en 2017 pour fonder Sève & Sel. Aujourd'hui elle accompagne 40 à 50 couples par an, dont 70% viennent de métropole, du Canada, ou de pays anglophones. Sa devise : « un mariage doit ressembler aux mariés, pas à un Pinterest. »",
+    "bio": "Cléa est née à La Réunion. Après 8 ans à organiser des mariages destination en Polynésie et au Mexique, elle est rentrée à La Réunion en 2017 pour fonder Sève & Sel. Aujourd'hui elle accompagne 40 à 50 couples par an, dont 70% viennent de métropole, du Canada, ou de pays anglophones. Sa devise : « un mariage doit ressembler aux mariés, pas à un Pinterest. »",
     "promesse": "Une seule interlocutrice du brief à la dernière chanson. Pas de sous-traitance opaque, pas d'intermédiaire qui s'évapore après le devis."
   },
   "couples": [
@@ -127,10 +127,10 @@
     },
     {
       "prenoms": "Léa & Inès",
-      "origine": "Saint-Denis → Jardin Eden",
+      "origine": "La Réunion → Jardin Eden",
       "date": "Août 2025",
       "etoiles": 5,
-      "texte": "Cérémonie civile au matin, cocktail au jardin l'après-midi, 32 invités. Cléa a négocié avec la mairie de Saint-Gilles pour qu'on se marie un mardi (toutes nos famille de métropole étaient en vacances). Le traiteur tapas péi : à pleurer."
+      "texte": "Cérémonie civile au matin, cocktail au jardin l'après-midi, 32 invités. Cléa a négocié avec la mairie de l'île pour qu'on se marie un mardi (toutes nos famille de métropole étaient en vacances). Le traiteur tapas péi : à pleurer."
     }
   ],
   "demarches": [

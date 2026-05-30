@@ -4,8 +4,8 @@
     "wordmark": "FOUDRE",
     "coach": "Marius Tanis",
     "tagline": "Ton corps mérite mieux que des excuses.",
-    "description": "Coach sportif certifié à Saint-Pierre. À domicile, sur la plage, ou en salle partenaire. On commence quand tu veux.",
-    "ville": "Saint-Pierre 974",
+    "description": "Coach sportif certifié à La Réunion. À domicile, sur la plage, ou en salle partenaire. On commence quand tu veux.",
+    "ville": "La Réunion",
     "telephone": "0692 12 34 56",
     "telephoneHref": "+33692123456",
     "whatsapp": "33692123456",
@@ -17,17 +17,44 @@
     "photoHero": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200&q=85"
   },
   "stats": [
-    { "valeur": "184", "label": "clients suivis" },
-    { "valeur": "1.2T", "label": "kg soulevés / an" },
-    { "valeur": "6", "label": "ans coach" }
+    {
+      "valeur": "184",
+      "label": "clients suivis"
+    },
+    {
+      "valeur": "1.2T",
+      "label": "kg soulevés / an"
+    },
+    {
+      "valeur": "6",
+      "label": "ans coach"
+    }
   ],
   "objectifs": [
-    { "id": "perte", "label": "Perdre du poids" },
-    { "id": "muscle", "label": "Prendre du muscle" },
-    { "id": "endurance", "label": "Courir 10 km" },
-    { "id": "postnatal", "label": "Post-grossesse" },
-    { "id": "confiance", "label": "Retrouver confiance" },
-    { "id": "performance", "label": "Aller plus loin" }
+    {
+      "id": "perte",
+      "label": "Perdre du poids"
+    },
+    {
+      "id": "muscle",
+      "label": "Prendre du muscle"
+    },
+    {
+      "id": "endurance",
+      "label": "Courir 10 km"
+    },
+    {
+      "id": "postnatal",
+      "label": "Post-grossesse"
+    },
+    {
+      "id": "confiance",
+      "label": "Retrouver confiance"
+    },
+    {
+      "id": "performance",
+      "label": "Aller plus loin"
+    }
   ],
   "programmes": [
     {
@@ -150,17 +177,29 @@
     {
       "id": "exterieur",
       "nom": "Plage / extérieur",
-      "description": "Saint-Pierre, Ravine Blanche, Étang-Salé. Au lever du jour de préférence."
+      "description": "La Réunion, Ravine Blanche, La Réunion. Au lever du jour de préférence."
     },
     {
       "id": "salle",
       "nom": "Salle partenaire",
-      "description": "Pour le programme FORGE. Salle équipée à Saint-Pierre, accès libre les jours de séance."
+      "description": "Pour le programme FORGE. Salle équipée à La Réunion, accès libre les jours de séance."
     }
   ],
   "planning": [
-    { "jour": "Lun – Ven", "label": "06h – 20h", "ouvert": true },
-    { "jour": "Samedi", "label": "07h – 13h", "ouvert": true },
-    { "jour": "Dimanche", "label": "Repos", "ouvert": false }
+    {
+      "jour": "Lun – Ven",
+      "label": "06h – 20h",
+      "ouvert": true
+    },
+    {
+      "jour": "Samedi",
+      "label": "07h – 13h",
+      "ouvert": true
+    },
+    {
+      "jour": "Dimanche",
+      "label": "Repos",
+      "ouvert": false
+    }
   ]
 }

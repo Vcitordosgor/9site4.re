@@ -3,12 +3,12 @@
     "nom": "Bleu Lagon Plongée",
     "wordmark": "Bleu Lagon",
     "wordmark2": "Plongée",
-    "soustitre": "Centre de plongée · Saint-Leu",
+    "soustitre": "Centre de plongée · La Réunion",
     "tagline": "Voir le lagon de l'intérieur.",
     "moniteur": "Antoine Roussel",
-    "ville": "Saint-Leu",
+    "ville": "La Réunion",
     "adresseLigne1": "Quai des Plongeurs · Pointe au Sel",
-    "adresseLigne2": "97436 Saint-Leu",
+    "adresseLigne2": "97436 La Réunion",
     "telephone": "0692 47 38 19",
     "telephoneHref": "+33692473819",
     "whatsapp": "33692473819",
@@ -18,15 +18,27 @@
     "agrement": "FFESSM E 974 0019 · PADI Resort #29017",
     "annee": "2014",
     "photoHero": "/images/bleulagon/hero.webp",
-    "photoHeroAlt": "Plongeur en apnée sur le récif corallien du lagon de Saint-Leu, La Réunion"
+    "photoHeroAlt": "Plongeur en apnée sur le récif corallien du lagon de La Réunion, La Réunion"
   },
   "stats": [
-    { "valeur": "11 ans", "label": "d'expérience" },
-    { "valeur": "1 800+", "label": "plongeurs accompagnés" },
-    { "valeur": "32 m", "label": "profondeur max enseignée" },
-    { "valeur": "5/5", "label": "412 avis Google" }
+    {
+      "valeur": "11 ans",
+      "label": "d'expérience"
+    },
+    {
+      "valeur": "1 800+",
+      "label": "plongeurs accompagnés"
+    },
+    {
+      "valeur": "32 m",
+      "label": "profondeur max enseignée"
+    },
+    {
+      "valeur": "5/5",
+      "label": "412 avis Google"
+    }
   ],
-  "promesse": "À Saint-Leu, on plonge sur la plus belle réserve marine de la Réunion : 19 km de côte protégée, 350 espèces de poissons, des tortues quasi tous les jours, des baleines de juin à octobre. On plonge en petit groupe (4 max), on prend le temps d'expliquer, on ne fait jamais redescendre quelqu'un qui n'est pas à l'aise.",
+  "promesse": "À La Réunion, on plonge sur la plus belle réserve marine de la Réunion : 19 km de côte protégée, 350 espèces de poissons, des tortues quasi tous les jours, des baleines de juin à octobre. On plonge en petit groupe (4 max), on prend le temps d'expliquer, on ne fait jamais redescendre quelqu'un qui n'est pas à l'aise.",
   "formules": [
     {
       "id": "bapteme",
@@ -57,7 +69,7 @@
         "Briefing sur la vie locale",
         "Bouteille + plombs inclus"
       ],
-      "description": "Vous avez votre niveau 1. On vous emmène sur les sites mythiques : la Pointe au Sel, le tombant de Saint-Leu, l'épave du Hai-Siang.",
+      "description": "Vous avez votre niveau 1. On vous emmène sur les sites mythiques : la Pointe au Sel, le tombant de La Réunion, l'épave du Hai-Siang.",
       "icone": "waves"
     },
     {
@@ -118,7 +130,7 @@
       "PADI Master Scuba Diver Trainer (2017)",
       "Formation biologie marine — Université de La Réunion (2019)"
     ],
-    "bio": "Originaire de l'île, Antoine plonge à Saint-Leu depuis 1998. Il a travaillé 5 ans en mer Rouge avant de revenir ouvrir Bleu Lagon en 2014. Aujourd'hui, il forme la majorité des moniteurs de la côte Ouest et collabore avec la Réserve Marine sur le suivi des tortues."
+    "bio": "Originaire de l'île, Antoine plonge à La Réunion depuis 1998. Il a travaillé 5 ans en mer Rouge avant de revenir ouvrir Bleu Lagon en 2014. Aujourd'hui, il forme la majorité des moniteurs de la côte Ouest et collabore avec la Réserve Marine sur le suivi des tortues."
   },
   "securite": [
     {
@@ -151,7 +163,7 @@
       "metier": "Plongeur N3 confirmé",
       "date": "Septembre 2025",
       "etoiles": 5,
-      "texte": "J'ai plongé en mer Rouge, aux Maldives, en Polynésie. Le tombant de Saint-Leu rivalise. Et le briefing d'Antoine sur la biologie locale était un vrai cours. À refaire."
+      "texte": "J'ai plongé en mer Rouge, aux Maldives, en Polynésie. Le tombant de La Réunion rivalise. Et le briefing d'Antoine sur la biologie locale était un vrai cours. À refaire."
     },
     {
       "prenom": "Karine",
@@ -163,12 +175,21 @@
   ],
   "infos": {
     "horaires": [
-      { "jour": "Mar — Ven", "creneaux": "8h · 10h30 · 14h" },
-      { "jour": "Sam — Dim", "creneaux": "7h30 · 10h · 13h30 · 16h" },
-      { "jour": "Lundi", "creneaux": "Fermé (jour de repos)" }
+      {
+        "jour": "Mar — Ven",
+        "creneaux": "8h · 10h30 · 14h"
+      },
+      {
+        "jour": "Sam — Dim",
+        "creneaux": "7h30 · 10h · 13h30 · 16h"
+      },
+      {
+        "jour": "Lundi",
+        "creneaux": "Fermé (jour de repos)"
+      }
     ],
     "saison": "Toute l'année. Eau 22°C en hiver austral, 27°C en été. Visibilité moyenne : 20 m.",
-    "acces": "RD11, juste après le port de Saint-Leu en venant du sud. Parking gratuit devant. Bus Citalis ligne ZE arrêt Pointe au Sel.",
+    "acces": "RD11, juste après le port de La Réunion en venant du sud. Parking gratuit devant. Bus Citalis ligne ZE arrêt Pointe au Sel.",
     "annulation": "Annulation gratuite jusqu'à 24h avant. Remboursement intégral si plongée annulée par nos soins (météo, mer agitée)."
   }
 }

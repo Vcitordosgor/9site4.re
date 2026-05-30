@@ -5,9 +5,9 @@
     "soustitre": "École de danse",
     "tagline": "Le rideau ne se lève qu'avec vous.",
     "fondatrice": "Camille Vermeille",
-    "ville": "Saint-Denis",
+    "ville": "La Réunion",
     "adresseLigne1": "14 rue de Paris",
-    "adresseLigne2": "97400 Saint-Denis",
+    "adresseLigne2": "97400 La Réunion",
     "telephone": "0692 84 21 67",
     "telephoneHref": "+33692842167",
     "whatsapp": "33692842167",
@@ -20,9 +20,18 @@
     "photoStudio": "https://images.unsplash.com/photo-1556394890-c874aac332b1?q=80&w=1600&auto=format&fit=crop"
   },
   "stats": [
-    { "valeur": "187", "label": "élèves cette saison" },
-    { "valeur": "36", "label": "spectacles donnés" },
-    { "valeur": "17", "label": "années d'existence" }
+    {
+      "valeur": "187",
+      "label": "élèves cette saison"
+    },
+    {
+      "valeur": "36",
+      "label": "spectacles donnés"
+    },
+    {
+      "valeur": "17",
+      "label": "années d'existence"
+    }
   ],
   "disciplines": [
     {
@@ -128,8 +137,20 @@
     }
   ],
   "horairesAccueil": [
-    { "jour": "Lundi – Vendredi", "label": "16h00 – 21h00", "ouvert": true },
-    { "jour": "Samedi", "label": "09h00 – 17h00", "ouvert": true },
-    { "jour": "Dimanche", "label": "Fermé", "ouvert": false }
+    {
+      "jour": "Lundi – Vendredi",
+      "label": "16h00 – 21h00",
+      "ouvert": true
+    },
+    {
+      "jour": "Samedi",
+      "label": "09h00 – 17h00",
+      "ouvert": true
+    },
+    {
+      "jour": "Dimanche",
+      "label": "Fermé",
+      "ouvert": false
+    }
   ]
 }

@@ -5,12 +5,12 @@
     "wordmark2": "& Associés",
     "soustitre": "Expertise comptable · Audit · Conseil",
     "tagline": "Votre comptabilité mérite un cabinet sérieux.",
-    "ville": "Saint-Denis",
+    "ville": "La Réunion",
     "adresseLigne1": "24 rue de l'Église",
-    "adresseLigne2": "97400 Saint-Denis",
+    "adresseLigne2": "97400 La Réunion",
     "telephone": "0262 21 47 89",
-    "telephoneHref": "+262262214789",
-    "whatsapp": "262692214789",
+    "telephoneHref": "+262692123456",
+    "whatsapp": "262692123456",
     "email": "contact@auberval-associes.re",
     "siret": "01234567800017",
     "agrement": "OEC 974-2018",
@@ -18,10 +18,22 @@
     "photoCabinet": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=85"
   },
   "stats": [
-    { "valeur": "200+", "label": "clients accompagnés" },
-    { "valeur": "12", "label": "collaborateurs" },
-    { "valeur": "4", "label": "associés" },
-    { "valeur": "16", "label": "années d'existence" }
+    {
+      "valeur": "200+",
+      "label": "clients accompagnés"
+    },
+    {
+      "valeur": "12",
+      "label": "collaborateurs"
+    },
+    {
+      "valeur": "4",
+      "label": "associés"
+    },
+    {
+      "valeur": "16",
+      "label": "années d'existence"
+    }
   ],
   "associes": [
     {
@@ -165,9 +177,25 @@
     }
   ],
   "horaires": [
-    { "jour": "Lundi – Jeudi", "label": "08h30 – 18h00", "ouvert": true },
-    { "jour": "Vendredi", "label": "08h30 – 17h00", "ouvert": true },
-    { "jour": "Samedi", "label": "Sur RDV", "ouvert": false },
-    { "jour": "Dimanche", "label": "Fermé", "ouvert": false }
+    {
+      "jour": "Lundi – Jeudi",
+      "label": "08h30 – 18h00",
+      "ouvert": true
+    },
+    {
+      "jour": "Vendredi",
+      "label": "08h30 – 17h00",
+      "ouvert": true
+    },
+    {
+      "jour": "Samedi",
+      "label": "Sur RDV",
+      "ouvert": false
+    },
+    {
+      "jour": "Dimanche",
+      "label": "Fermé",
+      "ouvert": false
+    }
   ]
 }

@@ -4,9 +4,9 @@
     "wordmark": "Camille Aubry",
     "soustitre": "Psychologue clinicienne",
     "tagline": "Le travail thérapeutique demande du temps. Le premier pas suffit.",
-    "ville": "Saint-Denis",
+    "ville": "La Réunion",
     "adresseLigne1": "6 rue de la Compagnie",
-    "adresseLigne2": "97400 Saint-Denis",
+    "adresseLigne2": "97400 La Réunion",
     "telephone": "0692 47 82 13",
     "telephoneHref": "+33692478213",
     "whatsapp": "33692478213",
@@ -86,11 +86,31 @@
     }
   ],
   "tarifs": [
-    { "label": "Consultation adulte", "duree": "55 min", "prix": "60 €" },
-    { "label": "Consultation adolescent", "duree": "45 min", "prix": "55 €" },
-    { "label": "Consultation couple", "duree": "1h15", "prix": "80 €" },
-    { "label": "Téléconsultation", "duree": "55 min", "prix": "55 €" },
-    { "label": "Première séance (réduite)", "duree": "55 min", "prix": "30 €" }
+    {
+      "label": "Consultation adulte",
+      "duree": "55 min",
+      "prix": "60 €"
+    },
+    {
+      "label": "Consultation adolescent",
+      "duree": "45 min",
+      "prix": "55 €"
+    },
+    {
+      "label": "Consultation couple",
+      "duree": "1h15",
+      "prix": "80 €"
+    },
+    {
+      "label": "Téléconsultation",
+      "duree": "55 min",
+      "prix": "55 €"
+    },
+    {
+      "label": "Première séance (réduite)",
+      "duree": "55 min",
+      "prix": "30 €"
+    }
   ],
   "noteTarif": "Les psychologues libéraux ne sont pas conventionnés Sécurité sociale, mais la majorité des mutuelles complémentaires remboursent partiellement les consultations. Une attestation vous est remise sur demande.",
   "premiere": [
@@ -146,12 +166,40 @@
     }
   ],
   "horaires": [
-    { "jour": "Lundi", "label": "09h – 19h", "ouvert": true },
-    { "jour": "Mardi", "label": "09h – 19h", "ouvert": true },
-    { "jour": "Mercredi", "label": "Formation continue", "ouvert": false },
-    { "jour": "Jeudi", "label": "09h – 19h", "ouvert": true },
-    { "jour": "Vendredi", "label": "09h – 17h", "ouvert": true },
-    { "jour": "Samedi", "label": "09h – 13h sur RDV", "ouvert": true },
-    { "jour": "Dimanche", "label": "Fermé", "ouvert": false }
+    {
+      "jour": "Lundi",
+      "label": "09h – 19h",
+      "ouvert": true
+    },
+    {
+      "jour": "Mardi",
+      "label": "09h – 19h",
+      "ouvert": true
+    },
+    {
+      "jour": "Mercredi",
+      "label": "Formation continue",
+      "ouvert": false
+    },
+    {
+      "jour": "Jeudi",
+      "label": "09h – 19h",
+      "ouvert": true
+    },
+    {
+      "jour": "Vendredi",
+      "label": "09h – 17h",
+      "ouvert": true
+    },
+    {
+      "jour": "Samedi",
+      "label": "09h – 13h sur RDV",
+      "ouvert": true
+    },
+    {
+      "jour": "Dimanche",
+      "label": "Fermé",
+      "ouvert": false
+    }
   ]
 }

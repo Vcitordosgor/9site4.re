@@ -6,9 +6,9 @@
     "tagline": "Le yoga, comme on respire.",
     "sousTitre": "Un studio à taille humaine, pour pratiquer en confiance.",
     "fondatrice": "Anjali Boyer",
-    "ville": "Saint-Gilles-les-Bains",
+    "ville": "La Réunion",
     "adresseLigne1": "27 chemin de l'Hermitage",
-    "adresseLigne2": "97434 Saint-Gilles-les-Bains",
+    "adresseLigne2": "97434 La Réunion",
     "telephone": "0692 73 45 89",
     "telephoneHref": "+33692734589",
     "whatsapp": "33692734589",
@@ -70,49 +70,128 @@
     {
       "jour": "Lundi",
       "creneaux": [
-        { "heure": "07h00", "duree": "1h30", "cours": "Hatha", "type": "doux", "prof": "Anjali" },
-        { "heure": "18h00", "duree": "1h30", "cours": "Vinyasa", "type": "dynamique", "prof": "Léo" }
+        {
+          "heure": "07h00",
+          "duree": "1h30",
+          "cours": "Hatha",
+          "type": "doux",
+          "prof": "Anjali"
+        },
+        {
+          "heure": "18h00",
+          "duree": "1h30",
+          "cours": "Vinyasa",
+          "type": "dynamique",
+          "prof": "Léo"
+        }
       ]
     },
     {
       "jour": "Mardi",
       "creneaux": [
-        { "heure": "09h00", "duree": "1h", "cours": "Yin", "type": "doux", "prof": "Anjali" },
-        { "heure": "18h00", "duree": "1h", "cours": "Pranayama", "type": "doux", "prof": "Mira" }
+        {
+          "heure": "09h00",
+          "duree": "1h",
+          "cours": "Yin",
+          "type": "doux",
+          "prof": "Anjali"
+        },
+        {
+          "heure": "18h00",
+          "duree": "1h",
+          "cours": "Pranayama",
+          "type": "doux",
+          "prof": "Mira"
+        }
       ]
     },
     {
       "jour": "Mercredi",
       "creneaux": [
-        { "heure": "07h00", "duree": "1h30", "cours": "Hatha", "type": "doux", "prof": "Anjali" },
-        { "heure": "18h00", "duree": "1h30", "cours": "Vinyasa", "type": "dynamique", "prof": "Léo" }
+        {
+          "heure": "07h00",
+          "duree": "1h30",
+          "cours": "Hatha",
+          "type": "doux",
+          "prof": "Anjali"
+        },
+        {
+          "heure": "18h00",
+          "duree": "1h30",
+          "cours": "Vinyasa",
+          "type": "dynamique",
+          "prof": "Léo"
+        }
       ]
     },
     {
       "jour": "Jeudi",
       "creneaux": [
-        { "heure": "09h00", "duree": "1h", "cours": "Yin", "type": "doux", "prof": "Anjali" },
-        { "heure": "18h00", "duree": "1h", "cours": "Pranayama", "type": "doux", "prof": "Mira" }
+        {
+          "heure": "09h00",
+          "duree": "1h",
+          "cours": "Yin",
+          "type": "doux",
+          "prof": "Anjali"
+        },
+        {
+          "heure": "18h00",
+          "duree": "1h",
+          "cours": "Pranayama",
+          "type": "doux",
+          "prof": "Mira"
+        }
       ]
     },
     {
       "jour": "Vendredi",
       "creneaux": [
-        { "heure": "07h00", "duree": "1h30", "cours": "Hatha", "type": "doux", "prof": "Anjali" },
-        { "heure": "18h00", "duree": "1h30", "cours": "Vinyasa Flow", "type": "dynamique", "prof": "Léo" }
+        {
+          "heure": "07h00",
+          "duree": "1h30",
+          "cours": "Hatha",
+          "type": "doux",
+          "prof": "Anjali"
+        },
+        {
+          "heure": "18h00",
+          "duree": "1h30",
+          "cours": "Vinyasa Flow",
+          "type": "dynamique",
+          "prof": "Léo"
+        }
       ]
     },
     {
       "jour": "Samedi",
       "creneaux": [
-        { "heure": "09h00", "duree": "1h30", "cours": "Vinyasa", "type": "dynamique", "prof": "Léo" },
-        { "heure": "11h00", "duree": "1h", "cours": "Yin", "type": "doux", "prof": "Anjali" }
+        {
+          "heure": "09h00",
+          "duree": "1h30",
+          "cours": "Vinyasa",
+          "type": "dynamique",
+          "prof": "Léo"
+        },
+        {
+          "heure": "11h00",
+          "duree": "1h",
+          "cours": "Yin",
+          "type": "doux",
+          "prof": "Anjali"
+        }
       ]
     },
     {
       "jour": "Dimanche",
       "creneaux": [
-        { "heure": "09h00", "duree": "1h", "cours": "Pranayama", "type": "doux", "prof": "Mira", "note": "Tarif libre" }
+        {
+          "heure": "09h00",
+          "duree": "1h",
+          "cours": "Pranayama",
+          "type": "doux",
+          "prof": "Mira",
+          "note": "Tarif libre"
+        }
       ]
     }
   ],
@@ -146,16 +225,52 @@
     }
   ],
   "tarifs": [
-    { "label": "Cours d'essai", "detail": "1ʳᵉ séance — bienvenue", "prix": "12 €" },
-    { "label": "Cours unique", "detail": "Sans engagement", "prix": "22 €" },
-    { "label": "Carnet 5 cours", "detail": "Validité 6 mois", "prix": "95 €" },
-    { "label": "Carnet 10 cours", "detail": "Validité 12 mois", "prix": "175 €" },
-    { "label": "Pass mensuel", "detail": "Cours illimités", "prix": "110 €" },
-    { "label": "Cours du dimanche", "detail": "Pranayama, tarif libre", "prix": "—" }
+    {
+      "label": "Cours d'essai",
+      "detail": "1ʳᵉ séance — bienvenue",
+      "prix": "12 €"
+    },
+    {
+      "label": "Cours unique",
+      "detail": "Sans engagement",
+      "prix": "22 €"
+    },
+    {
+      "label": "Carnet 5 cours",
+      "detail": "Validité 6 mois",
+      "prix": "95 €"
+    },
+    {
+      "label": "Carnet 10 cours",
+      "detail": "Validité 12 mois",
+      "prix": "175 €"
+    },
+    {
+      "label": "Pass mensuel",
+      "detail": "Cours illimités",
+      "prix": "110 €"
+    },
+    {
+      "label": "Cours du dimanche",
+      "detail": "Pranayama, tarif libre",
+      "prix": "—"
+    }
   ],
   "horairesStudio": [
-    { "jour": "Lundi – Vendredi", "label": "06h30 – 20h00", "ouvert": true },
-    { "jour": "Samedi", "label": "08h30 – 13h00", "ouvert": true },
-    { "jour": "Dimanche", "label": "08h30 – 11h00", "ouvert": true }
+    {
+      "jour": "Lundi – Vendredi",
+      "label": "06h30 – 20h00",
+      "ouvert": true
+    },
+    {
+      "jour": "Samedi",
+      "label": "08h30 – 13h00",
+      "ouvert": true
+    },
+    {
+      "jour": "Dimanche",
+      "label": "08h30 – 11h00",
+      "ouvert": true
+    }
   ]
 }

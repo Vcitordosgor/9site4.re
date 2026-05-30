@@ -3,28 +3,28 @@
     "nom": "Studio Latitude",
     "wordmark1": "Studio",
     "wordmark2": "Latitude",
-    "soustitre": "Photographie d'auteur · Saint-Denis",
+    "soustitre": "Photographie d'auteur · La Réunion",
     "tagline": "L'image juste, jamais l'image facile.",
     "fondateur": "Aurélien Maillot",
-    "ville": "Saint-Denis",
+    "ville": "La Réunion",
     "adresseLigne1": "8 rue Juliette Dodu",
-    "adresseLigne2": "97400 Saint-Denis",
+    "adresseLigne2": "97400 La Réunion",
     "telephone": "0262 21 84 30",
-    "telephoneHref": "+262262218430",
-    "whatsapp": "262692108374",
+    "telephoneHref": "+262692123456",
+    "whatsapp": "262692123456",
     "email": "studio@latitude-photo.re",
     "instagram": "@studio.latitude.re",
     "siret": "79234108100015",
     "annee": "2016",
     "photoHero": "https://images.unsplash.com/photo-1606983340126-99ab4feaa64a?w=1800&q=85",
-    "photoHeroAlt": "Photographe professionnel en studio avec appareil Leica argentique, Saint-Denis La Réunion",
+    "photoHeroAlt": "Photographe professionnel en studio avec appareil Leica argentique, La Réunion",
     "exif": {
       "appareil": "Leica M11 + Hasselblad 500CM",
       "objectifs": "Summicron 35/50/90 · Zeiss 80mm",
       "pellicules": "Kodak Portra 400 · Tri-X 400"
     }
   },
-  "promesse": "Studio Latitude, c'est Aurélien Maillot, photographe d'auteur installé à Saint-Denis depuis 2016. Argentique moyen format pour les portraits, numérique haut de gamme pour le reportage. Chaque image est tirée, retouchée et signée à la main. Pas de presets industriels.",
+  "promesse": "Studio Latitude, c'est Aurélien Maillot, photographe d'auteur installé à La Réunion depuis 2016. Argentique moyen format pour les portraits, numérique haut de gamme pour le reportage. Chaque image est tirée, retouchée et signée à la main. Pas de presets industriels.",
   "series": [
     {
       "id": "portraits-auteur",
@@ -34,8 +34,12 @@
       "duree": "2h studio + 5 tirages baryté",
       "prix": "À partir de 480 €",
       "tagline": "Le silence avant le clic.",
-      "description": "Séances en studio Saint-Denis, lumière continue tungstène + flash Profoto. Argentique 120mm Kodak Portra ou Tri-X selon le rendu. Vous repartez avec 5 tirages baryté 30×40 numérotés et signés.",
-      "moments": ["Portrait d'écrivain", "Portrait corporate auteur", "Portrait de famille NB"],
+      "description": "Séances en studio La Réunion, lumière continue tungstène + flash Profoto. Argentique 120mm Kodak Portra ou Tri-X selon le rendu. Vous repartez avec 5 tirages baryté 30×40 numérotés et signés.",
+      "moments": [
+        "Portrait d'écrivain",
+        "Portrait corporate auteur",
+        "Portrait de famille NB"
+      ],
       "livraison": "3 semaines · scan haute déf inclus"
     },
     {
@@ -47,7 +51,13 @@
       "prix": "À partir de 2 800 €",
       "tagline": "Le mariage qui se feuillette dans 30 ans.",
       "description": "Reportage discret du matin au soir. Couverture en mode magazine éditorial (pas de pose forcée, pas de drone, pas de Boomerang Insta). 2 boîtiers Leica + 1 Hasselblad pour les portraits clé. Album 30 pages relié main inclus.",
-      "moments": ["Préparatifs intimes", "Cérémonie", "Cocktail", "Soirée", "Album relié"],
+      "moments": [
+        "Préparatifs intimes",
+        "Cérémonie",
+        "Cocktail",
+        "Soirée",
+        "Album relié"
+      ],
       "livraison": "8 semaines · 350 photos retouchées + album"
     },
     {
@@ -59,7 +69,12 @@
       "prix": "Sur devis · 950 €/jour",
       "tagline": "L'œil est éditorial, pas publicitaire.",
       "description": "Couverture d'événements, portraits d'équipe en situation, reportage en immersion sur 1 à 5 jours. Production de séries longues (50-200 images) livrées en haute définition + sélection éditoriale.",
-      "moments": ["Festival musique", "Portraits d'équipe", "Inauguration", "Inside-the-business"],
+      "moments": [
+        "Festival musique",
+        "Portraits d'équipe",
+        "Inauguration",
+        "Inside-the-business"
+      ],
       "livraison": "10 jours · galerie cloud privée"
     },
     {
@@ -70,8 +85,13 @@
       "duree": "Édition limitée numérotée",
       "prix": "180 → 1 200 € selon format",
       "tagline": "L'image en 30 exemplaires, jamais 31.",
-      "description": "Tirages personnels d'Aurélien (séries Hauts-Réunionnais, Île-paysage, Le Volcan). Édition limitée à 30 exemplaires numérotés et signés au crayon graphite. Disponibles à l'atelier de Saint-Denis ou sur commande.",
-      "moments": ["Hauts-Réunionnais", "L'île-paysage", "Le Volcan", "Bras-Cabot la nuit"],
+      "description": "Tirages personnels d'Aurélien (séries Hauts-Réunionnais, Île-paysage, Le Volcan). Édition limitée à 30 exemplaires numérotés et signés au crayon graphite. Disponibles à l'atelier de l'île ou sur commande.",
+      "moments": [
+        "Hauts-Réunionnais",
+        "L'île-paysage",
+        "Le Volcan",
+        "Bras-Cabot la nuit"
+      ],
       "livraison": "Disponible immédiat ou 4 semaines"
     }
   ],
@@ -84,7 +104,7 @@
       "2023 · Cité Internationale des Arts, Paris — 'Hauts-Réunionnais'",
       "2022 · Réunion des Arts Plastiques — 'Le Volcan'",
       "2019 · Festival Photographique de Stella Matutina",
-      "2018 · Galerie Dell'Arte, Saint-Denis"
+      "2018 · Galerie Dell'Arte, La Réunion"
     ]
   },
   "demarches": [

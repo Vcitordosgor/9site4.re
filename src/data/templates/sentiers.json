@@ -3,9 +3,9 @@
     "nom": "Sentiers Croisés",
     "wordmark": "Sentiers Croisés",
     "tagline": "Le Maïdo n'attend que vous.",
-    "soustitre": "Guide indépendant · Mafate, Cilaos, Volcan",
+    "soustitre": "Guide indépendant · La Réunion, Volcan",
     "guide": "Théo Grondin",
-    "ville": "La Possession",
+    "ville": "La Réunion",
     "telephone": "0692 11 47 23",
     "telephoneHref": "+33692114723",
     "whatsapp": "33692114723",
@@ -16,21 +16,21 @@
     "photoGuide": "https://images.unsplash.com/photo-1552058544-f2b08422138a?w=900&q=85",
     "sortieDuJour": {
       "label": "Sortie du jour",
-      "titre": "Mafate",
+      "titre": "La Réunion",
       "date": "Demain · 4h30 départ"
     }
   },
   "carrousel": [
     {
       "src": "/images/sentiers/cilaos.webp",
-      "alt": "Vue panoramique sur le cirque de Cilaos depuis les hauteurs",
-      "lieu": "Cirque de Cilaos",
+      "alt": "Vue panoramique sur le cirque de l'île depuis les hauteurs",
+      "lieu": "Cirque de l'île",
       "altitude": "1 200 m"
     },
     {
       "src": "/images/sentiers/mafate-aerien.webp",
-      "alt": "Vue aerienne du cirque de Mafate",
-      "lieu": "Cirque de Mafate",
+      "alt": "Vue aerienne du cirque de l'île",
+      "lieu": "Cirque de l'île",
       "altitude": "1 200 m"
     },
     {
@@ -74,7 +74,7 @@
     {
       "id": "trois-salazes",
       "nom": "Les Trois Salazes",
-      "lieu": "Mafate",
+      "lieu": "La Réunion",
       "duree": "7h",
       "denivele": "+ 800 m",
       "niveau": 3,
@@ -84,19 +84,19 @@
     },
     {
       "id": "mafate",
-      "nom": "Mafate",
+      "nom": "La Réunion",
       "lieu": "Maïdo",
       "duree": "5h",
       "denivele": "+ 500 m",
       "niveau": 3,
       "prix": "65 €",
-      "description": "Départ à 4h pour voir le lever du soleil sur Mafate. Le moment le plus magique de l'île.",
+      "description": "Départ à 4h pour voir le lever du soleil sur La Réunion. Le moment le plus magique de l'île.",
       "photo": "/images/sentiers/mafate.webp"
     },
     {
       "id": "grand-benare",
       "nom": "Grand Bénare",
-      "lieu": "Cilaos",
+      "lieu": "La Réunion",
       "duree": "6h",
       "denivele": "+ 1100 m",
       "niveau": 4,
@@ -123,7 +123,7 @@
       "denivele": "+ 600 m",
       "niveau": 3,
       "prix": "85 €",
-      "description": "Traversée Pas de Bellecombe → cratère Dolomieu. Transport depuis Saint-Denis inclus.",
+      "description": "Traversée Pas de Bellecombe → cratère Dolomieu. Transport depuis La Réunion inclus.",
       "photo": "/images/sentiers/volcan.webp"
     },
     {
@@ -142,7 +142,7 @@
     {
       "date": "14 nov",
       "jour": "Vendredi",
-      "sortie": "Mafate",
+      "sortie": "La Réunion",
       "places": 3
     },
     {
@@ -172,7 +172,7 @@
     {
       "date": "02 déc",
       "jour": "Mardi",
-      "sortie": "Mafate",
+      "sortie": "La Réunion",
       "places": 5
     },
     {
@@ -191,7 +191,7 @@
   "temoignages": [
     {
       "prenom": "Léa",
-      "sortie": "Mafate",
+      "sortie": "La Réunion",
       "date": "Octobre 2025",
       "texte": "Sortie inoubliable. Lever de soleil au Maïdo, à 30 secondes près le moment parfait."
     },

@@ -5,19 +5,35 @@
     "wordmark2": "spa",
     "tagline": "L'art du geste,",
     "taglineItalic": "le souffle du temps.",
-    "intro": "Un sanctuaire sensoriel à Saint-Pierre. Massages, soins du visage, rituels signature aux essences de l'île. On prend le temps qu'il faut, pour vous.",
-    "adresse": "12 boulevard Hubert-Delisle, 97410 Saint-Pierre",
+    "intro": "Un sanctuaire sensoriel à La Réunion. Massages, soins du visage, rituels signature aux essences de l'île. On prend le temps qu'il faut, pour vous.",
+    "adresse": "12 boulevard Hubert-Delisle, 97410 La Réunion",
     "telephone": "+262 692 00 00 00",
-    "telephoneHref": "+262692000000",
+    "telephoneHref": "+262692123456",
     "email": "contact@elio-spa.re",
-    "whatsapp": "262692000000",
+    "whatsapp": "262692123456",
     "whatsappDisplay": "+262 692 00 00 00",
     "annee": 2017,
     "horaires": [
-      { "jour": "Lundi", "ouvert": false, "label": "Fermé" },
-      { "jour": "Mardi – Vendredi", "ouvert": true, "label": "10h – 20h" },
-      { "jour": "Samedi", "ouvert": true, "label": "9h – 19h" },
-      { "jour": "Dimanche", "ouvert": true, "label": "10h – 17h · sur réservation" }
+      {
+        "jour": "Lundi",
+        "ouvert": false,
+        "label": "Fermé"
+      },
+      {
+        "jour": "Mardi – Vendredi",
+        "ouvert": true,
+        "label": "10h – 20h"
+      },
+      {
+        "jour": "Samedi",
+        "ouvert": true,
+        "label": "9h – 19h"
+      },
+      {
+        "jour": "Dimanche",
+        "ouvert": true,
+        "label": "10h – 17h · sur réservation"
+      }
     ],
     "tags": [
       "Cabines insonorisées",
@@ -37,65 +53,208 @@
   },
   "manifesto": "Le luxe, ici, c'est le temps. Chaque soin commence par une pause, et finit par une autre.",
   "rituel": [
-    { "etape": "01", "titre": "Accueil",         "description": "On vous reçoit dans le salon-tisanerie. Un thé local, et on prend dix minutes pour parler de votre journée et de vos besoins." },
-    { "etape": "02", "titre": "Diagnostic",       "description": "Notre praticien identifie vos zones de tension, votre type de peau, vos préférences sensorielles. On adapte le soin sur-mesure." },
-    { "etape": "03", "titre": "Geste",            "description": "Le soin lui-même, dans une cabine insonorisée, à la lumière naturelle. Huiles tièdes, gestes lents, présence pleine." },
-    { "etape": "04", "titre": "Repos",            "description": "Vous restez le temps qu'il faut. Tisane, fruits frais, rien à faire. La sortie n'est jamais bousculée." }
+    {
+      "etape": "01",
+      "titre": "Accueil",
+      "description": "On vous reçoit dans le salon-tisanerie. Un thé local, et on prend dix minutes pour parler de votre journée et de vos besoins."
+    },
+    {
+      "etape": "02",
+      "titre": "Diagnostic",
+      "description": "Notre praticien identifie vos zones de tension, votre type de peau, vos préférences sensorielles. On adapte le soin sur-mesure."
+    },
+    {
+      "etape": "03",
+      "titre": "Geste",
+      "description": "Le soin lui-même, dans une cabine insonorisée, à la lumière naturelle. Huiles tièdes, gestes lents, présence pleine."
+    },
+    {
+      "etape": "04",
+      "titre": "Repos",
+      "description": "Vous restez le temps qu'il faut. Tisane, fruits frais, rien à faire. La sortie n'est jamais bousculée."
+    }
   ],
   "soins": {
     "massages": {
       "titre": "Massages",
       "sousTitre": "Pression, rythme et chaleur — adaptés à votre demande.",
       "items": [
-        { "id": "suedois",        "nom": "Massage suédois",            "description": "Massage tonique des muscles, soulage les tensions de la journée et relance la circulation.", "duree": "60 min", "prix": 85, "signature": false },
-        { "id": "lomi-lomi",      "nom": "Lomi Lomi · signature",      "description": "Voyage hawaïen aux longs mouvements enveloppants, à l'huile de monoï tiède. Le rituel maison.",   "duree": "90 min", "prix": 130, "signature": true },
-        { "id": "deep-tissue",    "nom": "Deep tissue",                "description": "Pressions profondes ciblées sur les zones contractées (dos, épaules, nuque).",                       "duree": "60 min", "prix": 95, "signature": false },
-        { "id": "pierres-chaudes","nom": "Pierres chaudes basaltiques","description": "Pierres volcaniques chauffées posées sur les chakras, relâche les tensions chroniques.",            "duree": "75 min", "prix": 110, "signature": false }
+        {
+          "id": "suedois",
+          "nom": "Massage suédois",
+          "description": "Massage tonique des muscles, soulage les tensions de la journée et relance la circulation.",
+          "duree": "60 min",
+          "prix": 85,
+          "signature": false
+        },
+        {
+          "id": "lomi-lomi",
+          "nom": "Lomi Lomi · signature",
+          "description": "Voyage hawaïen aux longs mouvements enveloppants, à l'huile de monoï tiède. Le rituel maison.",
+          "duree": "90 min",
+          "prix": 130,
+          "signature": true
+        },
+        {
+          "id": "deep-tissue",
+          "nom": "Deep tissue",
+          "description": "Pressions profondes ciblées sur les zones contractées (dos, épaules, nuque).",
+          "duree": "60 min",
+          "prix": 95,
+          "signature": false
+        },
+        {
+          "id": "pierres-chaudes",
+          "nom": "Pierres chaudes basaltiques",
+          "description": "Pierres volcaniques chauffées posées sur les chakras, relâche les tensions chroniques.",
+          "duree": "75 min",
+          "prix": 110,
+          "signature": false
+        }
       ]
     },
     "visage": {
       "titre": "Soins du visage",
       "sousTitre": "Plantes locales, peau apaisée, éclat retrouvé.",
       "items": [
-        { "id": "eclat-hibiscus", "nom": "Éclat hibiscus · signature", "description": "Soin signature à base de fleurs d'hibiscus de la Réunion. Gommage doux, masque éclat, modelage Kobido.", "duree": "75 min", "prix": 105, "signature": true },
-        { "id": "anti-age",       "nom": "Anti-âge raffermissant",     "description": "Sérum concentré, modelage liftant, masque collagène. Effet bonne mine durable.",                              "duree": "75 min", "prix": 115, "signature": false },
-        { "id": "hydratation",    "nom": "Hydratation profonde",       "description": "Pour peaux assoiffées : nettoyage, masque hydratant, sérum apaisant. Idéal après le soleil.",                "duree": "60 min", "prix": 85, "signature": false }
+        {
+          "id": "eclat-hibiscus",
+          "nom": "Éclat hibiscus · signature",
+          "description": "Soin signature à base de fleurs d'hibiscus de la Réunion. Gommage doux, masque éclat, modelage Kobido.",
+          "duree": "75 min",
+          "prix": 105,
+          "signature": true
+        },
+        {
+          "id": "anti-age",
+          "nom": "Anti-âge raffermissant",
+          "description": "Sérum concentré, modelage liftant, masque collagène. Effet bonne mine durable.",
+          "duree": "75 min",
+          "prix": 115,
+          "signature": false
+        },
+        {
+          "id": "hydratation",
+          "nom": "Hydratation profonde",
+          "description": "Pour peaux assoiffées : nettoyage, masque hydratant, sérum apaisant. Idéal après le soleil.",
+          "duree": "60 min",
+          "prix": 85,
+          "signature": false
+        }
       ]
     },
     "corps": {
       "titre": "Soins du corps",
       "sousTitre": "Gommer, nourrir, drainer — la peau qu'on retrouve.",
       "items": [
-        { "id": "gommage-volcanique", "nom": "Gommage volcanique · signature", "description": "Sable noir de Saint-Philippe, huile de coco bio. La peau est lisse et lumineuse.",       "duree": "45 min", "prix": 70, "signature": true },
-        { "id": "vanille",            "nom": "Enveloppement vanille de Bourbon", "description": "Cocon nourrissant à la vanille de Bourbon. Réparation profonde, parfum durable.",       "duree": "60 min", "prix": 90, "signature": false },
-        { "id": "drainage",           "nom": "Drainage lymphatique",            "description": "Pressions douces et rythmées pour relancer la circulation. Jambes légères.",          "duree": "60 min", "prix": 85, "signature": false }
+        {
+          "id": "gommage-volcanique",
+          "nom": "Gommage volcanique · signature",
+          "description": "Sable noir de l'île, huile de coco bio. La peau est lisse et lumineuse.",
+          "duree": "45 min",
+          "prix": 70,
+          "signature": true
+        },
+        {
+          "id": "vanille",
+          "nom": "Enveloppement vanille de Bourbon",
+          "description": "Cocon nourrissant à la vanille de Bourbon. Réparation profonde, parfum durable.",
+          "duree": "60 min",
+          "prix": 90,
+          "signature": false
+        },
+        {
+          "id": "drainage",
+          "nom": "Drainage lymphatique",
+          "description": "Pressions douces et rythmées pour relancer la circulation. Jambes légères.",
+          "duree": "60 min",
+          "prix": 85,
+          "signature": false
+        }
       ]
     },
     "forfaits": {
       "titre": "Forfaits & rituels",
       "sousTitre": "Un parcours complet — pour soi, ou en duo.",
       "items": [
-        { "id": "demi-journee", "nom": "Demi-journée Sérénité",   "description": "Gommage + massage signature + soin visage + tisanerie. Trois heures de pause complète.",          "duree": "3h",   "prix": 240, "signature": false },
-        { "id": "journee",      "nom": "Journée Évasion",         "description": "Tous nos soins phares en une journée, déjeuner léger inclus dans la tisanerie. Six heures hors du temps.", "duree": "6h",   "prix": 420, "signature": false },
-        { "id": "duo",          "nom": "Rituel duo · couple",     "description": "Cabine double, deux praticiens, soins synchronisés. Pour s'offrir un moment ensemble.",         "duree": "90 min", "prix": 250, "signature": false }
+        {
+          "id": "demi-journee",
+          "nom": "Demi-journée Sérénité",
+          "description": "Gommage + massage signature + soin visage + tisanerie. Trois heures de pause complète.",
+          "duree": "3h",
+          "prix": 240,
+          "signature": false
+        },
+        {
+          "id": "journee",
+          "nom": "Journée Évasion",
+          "description": "Tous nos soins phares en une journée, déjeuner léger inclus dans la tisanerie. Six heures hors du temps.",
+          "duree": "6h",
+          "prix": 420,
+          "signature": false
+        },
+        {
+          "id": "duo",
+          "nom": "Rituel duo · couple",
+          "description": "Cabine double, deux praticiens, soins synchronisés. Pour s'offrir un moment ensemble.",
+          "duree": "90 min",
+          "prix": 250,
+          "signature": false
+        }
       ]
     }
   },
   "creneaux": [
-    { "id": "matin",      "label": "Matin",       "horaire": "10h – 13h" },
-    { "id": "apres-midi", "label": "Après-midi",  "horaire": "14h – 17h" },
-    { "id": "soir",       "label": "Soirée",      "horaire": "17h – 20h" }
+    {
+      "id": "matin",
+      "label": "Matin",
+      "horaire": "10h – 13h"
+    },
+    {
+      "id": "apres-midi",
+      "label": "Après-midi",
+      "horaire": "14h – 17h"
+    },
+    {
+      "id": "soir",
+      "label": "Soirée",
+      "horaire": "17h – 20h"
+    }
   ],
   "intentions": [
-    { "id": "detente",   "label": "Détente" },
-    { "id": "tonus",     "label": "Tonus" },
-    { "id": "evasion",   "label": "Évasion" },
-    { "id": "decouverte","label": "Découverte" }
+    {
+      "id": "detente",
+      "label": "Détente"
+    },
+    {
+      "id": "tonus",
+      "label": "Tonus"
+    },
+    {
+      "id": "evasion",
+      "label": "Évasion"
+    },
+    {
+      "id": "decouverte",
+      "label": "Découverte"
+    }
   ],
   "engagements": [
-    { "titre": "Praticiens diplômés",     "description": "Toute notre équipe est diplômée d'État, formée aux techniques traditionnelles et modernes." },
-    { "titre": "Produits locaux & bio",   "description": "Vanille, hibiscus, sable noir, huiles essentielles : la Réunion en flacons." },
-    { "titre": "Cabines insonorisées",    "description": "Murs épais, lumière douce, musique discrète. Le silence comme matière première." },
-    { "titre": "Tisanerie offerte",       "description": "Avant et après chaque soin, un thé ou une infusion locale. Sans limite de temps." }
+    {
+      "titre": "Praticiens diplômés",
+      "description": "Toute notre équipe est diplômée d'État, formée aux techniques traditionnelles et modernes."
+    },
+    {
+      "titre": "Produits locaux & bio",
+      "description": "Vanille, hibiscus, sable noir, huiles essentielles : la Réunion en flacons."
+    },
+    {
+      "titre": "Cabines insonorisées",
+      "description": "Murs épais, lumière douce, musique discrète. Le silence comme matière première."
+    },
+    {
+      "titre": "Tisanerie offerte",
+      "description": "Avant et après chaque soin, un thé ou une infusion locale. Sans limite de temps."
+    }
   ]
 }

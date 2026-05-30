@@ -3,12 +3,12 @@
     "nom": "Doudou Service",
     "wordmark1": "Doudou",
     "wordmark2": "Service",
-    "soustitre": "Aide à domicile · Saint-André",
+    "soustitre": "Aide à domicile · La Réunion",
     "tagline": "Une présence quotidienne, à La Réunion.",
     "fondatrice": "Marie-Claire Robert",
-    "ville": "Saint-André",
+    "ville": "La Réunion",
     "adresseLigne1": "8 rue Lacaussade",
-    "adresseLigne2": "97440 Saint-André",
+    "adresseLigne2": "97440 La Réunion",
     "telephone": "0692 38 17 42",
     "telephoneHref": "+33692381742",
     "whatsapp": "33692381742",
@@ -86,11 +86,31 @@
   ],
   "tarifs": {
     "lignes": [
-      { "label": "Heure de jour (8h – 19h)", "prix": "23 €", "unite": "/ heure" },
-      { "label": "Heure de soir (19h – 22h)", "prix": "26 €", "unite": "/ heure" },
-      { "label": "Heure de nuit (22h – 8h)", "prix": "29 €", "unite": "/ heure" },
-      { "label": "Dimanche & jours fériés", "prix": "28 €", "unite": "/ heure" },
-      { "label": "Forfait 4 heures", "prix": "82 €", "unite": "remise volume" }
+      {
+        "label": "Heure de jour (8h – 19h)",
+        "prix": "23 €",
+        "unite": "/ heure"
+      },
+      {
+        "label": "Heure de soir (19h – 22h)",
+        "prix": "26 €",
+        "unite": "/ heure"
+      },
+      {
+        "label": "Heure de nuit (22h – 8h)",
+        "prix": "29 €",
+        "unite": "/ heure"
+      },
+      {
+        "label": "Dimanche & jours fériés",
+        "prix": "28 €",
+        "unite": "/ heure"
+      },
+      {
+        "label": "Forfait 4 heures",
+        "prix": "82 €",
+        "unite": "remise volume"
+      }
     ],
     "aides": [
       "APA (Allocation Personnalisée d'Autonomie) — prise en charge totale ou partielle selon GIR",
@@ -133,23 +153,35 @@
   "temoignages": [
     {
       "auteur": "Jean-Pierre, fils de Mme R.",
-      "lieu": "Saint-André",
+      "lieu": "La Réunion",
       "texte": "Maman avait 87 ans, AVC en 2022. On voulait absolument la garder chez elle. Doudou Service a pris la relève quand on travaillait. Marie-Claire venait elle-même les premiers jours. Maman s'est éteinte chez elle, entourée. Merci pour tout, sincèrement."
     },
     {
       "auteur": "Marlène, fille de M. P.",
-      "lieu": "Bras-Panon",
+      "lieu": "La Réunion",
       "texte": "Papa a Parkinson depuis 8 ans. Joseph s'occupe de lui depuis 3 ans. Il connaît tous ses tics, ses préférences, ses moments difficiles. Quand Joseph entre, papa sourit. C'est inestimable."
     },
     {
       "auteur": "Patrice, mari de Mme G.",
-      "lieu": "Sainte-Suzanne",
+      "lieu": "La Réunion",
       "texte": "Cancer du sein, chimio puis chirurgie. Ma femme avait besoin de repos, moi de pouvoir continuer à travailler. Sandrine venait 4 heures le matin, 2 heures le soir. Six mois après, on est tous remis. Doudou a tenu la maison."
     }
   ],
   "horaires": [
-    { "jour": "Lundi – Dimanche", "label": "07h – 22h", "ouvert": true },
-    { "jour": "Astreinte 24/24", "label": "Sur abonnement", "ouvert": true },
-    { "jour": "Bureau (RDV)", "label": "Lun–Ven · 09h–17h", "ouvert": true }
+    {
+      "jour": "Lundi – Dimanche",
+      "label": "07h – 22h",
+      "ouvert": true
+    },
+    {
+      "jour": "Astreinte 24/24",
+      "label": "Sur abonnement",
+      "ouvert": true
+    },
+    {
+      "jour": "Bureau (RDV)",
+      "label": "Lun–Ven · 09h–17h",
+      "ouvert": true
+    }
   ]
 }

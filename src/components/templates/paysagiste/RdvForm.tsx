@@ -338,7 +338,7 @@ export default function RdvForm({ typesIntervention, surfaces, frequences, whats
           <label for="agap-adresse" class={labelBase}>Adresse du jardin</label>
           <input id="agap-adresse" name="adresse" type="text" required autocomplete="street-address"
             class={`${inputBase} ${errors.adresse ? inputErr : inputOk}`}
-            placeholder="14 chemin des Cocotiers, 97436 Saint-Leu"
+            placeholder="14 chemin des Cocotiers, 97436 La Réunion"
             aria-invalid={errors.adresse ? 'true' : 'false'}
           />
           {errors.adresse && <p role="alert" class={errClass}>{errors.adresse}</p>}

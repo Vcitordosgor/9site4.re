@@ -5,20 +5,40 @@
     "wordmark2": "Dan",
     "tagline": "Le geste juste,",
     "taglineItalic": "la coupe qui révèle.",
-    "intro": "Meg & Dan, duo de coiffeurs à Saint-Gilles. Coupe, coloration, soin profond — un atelier pensé pour vos cheveux.",
-    "adresse": "8 rue des Filaos, 97434 Saint-Gilles-les-Bains",
+    "intro": "Meg & Dan, duo de coiffeurs à La Réunion. Coupe, coloration, soin profond — un atelier pensé pour vos cheveux.",
+    "adresse": "8 rue des Filaos, 97434 La Réunion",
     "telephone": "+262 692 00 00 00",
-    "telephoneHref": "+262692000000",
+    "telephoneHref": "+262692123456",
     "email": "contact@megetdan.re",
-    "whatsapp": "262692000000",
+    "whatsapp": "262692123456",
     "whatsappDisplay": "+262 692 00 00 00",
     "annee": 2019,
     "horaires": [
-      { "jour": "Lundi", "ouvert": false, "label": "Fermé" },
-      { "jour": "Mardi", "ouvert": true, "label": "9h – 18h · sans rendez-vous" },
-      { "jour": "Mercredi – Vendredi", "ouvert": true, "label": "9h – 19h" },
-      { "jour": "Samedi", "ouvert": true, "label": "8h30 – 17h" },
-      { "jour": "Dimanche", "ouvert": false, "label": "Fermé" }
+      {
+        "jour": "Lundi",
+        "ouvert": false,
+        "label": "Fermé"
+      },
+      {
+        "jour": "Mardi",
+        "ouvert": true,
+        "label": "9h – 18h · sans rendez-vous"
+      },
+      {
+        "jour": "Mercredi – Vendredi",
+        "ouvert": true,
+        "label": "9h – 19h"
+      },
+      {
+        "jour": "Samedi",
+        "ouvert": true,
+        "label": "8h30 – 17h"
+      },
+      {
+        "jour": "Dimanche",
+        "ouvert": false,
+        "label": "Fermé"
+      }
     ],
     "tags": [
       "Diagnostic offert",
@@ -35,57 +55,184 @@
     "coupe": {
       "titre": "Coupe & Coiffage",
       "items": [
-        { "id": "coupe-femme",   "nom": "Coupe femme",                "description": "Diagnostic, coupe et coiffage adaptés à votre visage et votre type de cheveux.", "prix": 45, "duree": "1h" },
-        { "id": "coupe-homme",   "nom": "Coupe homme",                "description": "Coupe précise aux ciseaux, finition tondeuse si souhaité.",                      "prix": 28, "duree": "30 min" },
-        { "id": "coupe-enfant",  "nom": "Coupe enfant — moins de 12 ans", "description": "Tout en douceur, dans un cadre rassurant.",                                  "prix": 18, "duree": "30 min" },
-        { "id": "brushing",      "nom": "Brushing seul",              "description": "Coiffage soigné après shampooing, lissage ou volumes.",                          "prix": 25, "duree": "30 min" }
+        {
+          "id": "coupe-femme",
+          "nom": "Coupe femme",
+          "description": "Diagnostic, coupe et coiffage adaptés à votre visage et votre type de cheveux.",
+          "prix": 45,
+          "duree": "1h"
+        },
+        {
+          "id": "coupe-homme",
+          "nom": "Coupe homme",
+          "description": "Coupe précise aux ciseaux, finition tondeuse si souhaité.",
+          "prix": 28,
+          "duree": "30 min"
+        },
+        {
+          "id": "coupe-enfant",
+          "nom": "Coupe enfant — moins de 12 ans",
+          "description": "Tout en douceur, dans un cadre rassurant.",
+          "prix": 18,
+          "duree": "30 min"
+        },
+        {
+          "id": "brushing",
+          "nom": "Brushing seul",
+          "description": "Coiffage soigné après shampooing, lissage ou volumes.",
+          "prix": 25,
+          "duree": "30 min"
+        }
       ]
     },
     "coloration": {
       "titre": "Coloration & Reflets",
       "items": [
-        { "id": "color-racines",   "nom": "Coloration racines",      "description": "Couleur d'oxydation appliquée sur les racines, tenue durable.", "prix": 55, "duree": "1h15" },
-        { "id": "color-integrale", "nom": "Coloration intégrale",    "description": "Couleur sur l'ensemble de la chevelure, formules respectueuses.", "prix": 75, "duree": "1h45" },
-        { "id": "balayage",        "nom": "Balayage · Mèches",       "description": "Effet soleil sur-mesure, dégradé naturel ou plus marqué.",        "prix": 95, "duree": "2h30" },
-        { "id": "patine",          "nom": "Patine — gloss",          "description": "Réveille les reflets, neutralise les tons orangés.",              "prix": 35, "duree": "45 min" }
+        {
+          "id": "color-racines",
+          "nom": "Coloration racines",
+          "description": "Couleur d'oxydation appliquée sur les racines, tenue durable.",
+          "prix": 55,
+          "duree": "1h15"
+        },
+        {
+          "id": "color-integrale",
+          "nom": "Coloration intégrale",
+          "description": "Couleur sur l'ensemble de la chevelure, formules respectueuses.",
+          "prix": 75,
+          "duree": "1h45"
+        },
+        {
+          "id": "balayage",
+          "nom": "Balayage · Mèches",
+          "description": "Effet soleil sur-mesure, dégradé naturel ou plus marqué.",
+          "prix": 95,
+          "duree": "2h30"
+        },
+        {
+          "id": "patine",
+          "nom": "Patine — gloss",
+          "description": "Réveille les reflets, neutralise les tons orangés.",
+          "prix": 35,
+          "duree": "45 min"
+        }
       ]
     },
     "soin": {
       "titre": "Soin & Réparation",
       "items": [
-        { "id": "soin-profond", "nom": "Soin profond",       "description": "Diagnostic capillaire, masque adapté, massage du cuir chevelu.", "prix": 35, "duree": "45 min" },
-        { "id": "olaplex",      "nom": "Soin Olaplex",       "description": "Reconstruction de la fibre après coloration ou agressions.",     "prix": 45, "duree": "1h" },
-        { "id": "lissage",      "nom": "Lissage brésilien",  "description": "Lissage progressif sans formol, durée 3 à 5 mois.",              "prix": 180, "duree": "3h" }
+        {
+          "id": "soin-profond",
+          "nom": "Soin profond",
+          "description": "Diagnostic capillaire, masque adapté, massage du cuir chevelu.",
+          "prix": 35,
+          "duree": "45 min"
+        },
+        {
+          "id": "olaplex",
+          "nom": "Soin Olaplex",
+          "description": "Reconstruction de la fibre après coloration ou agressions.",
+          "prix": 45,
+          "duree": "1h"
+        },
+        {
+          "id": "lissage",
+          "nom": "Lissage brésilien",
+          "description": "Lissage progressif sans formol, durée 3 à 5 mois.",
+          "prix": 180,
+          "duree": "3h"
+        }
       ]
     },
     "evenements": {
       "titre": "Coiffure événementielle",
       "items": [
-        { "id": "mariage",  "nom": "Coiffure mariage",  "description": "Essai inclus, déplacement possible sur l'île.", "prix": null, "duree": "Sur devis" },
-        { "id": "chignon",  "nom": "Chignon · Attaché", "description": "Pour soirée, gala, photo. Avec ou sans tresses.", "prix": 60, "duree": "1h" }
+        {
+          "id": "mariage",
+          "nom": "Coiffure mariage",
+          "description": "Essai inclus, déplacement possible sur l'île.",
+          "prix": null,
+          "duree": "Sur devis"
+        },
+        {
+          "id": "chignon",
+          "nom": "Chignon · Attaché",
+          "description": "Pour soirée, gala, photo. Avec ou sans tresses.",
+          "prix": 60,
+          "duree": "1h"
+        }
       ]
     }
   },
   "pourquoi": [
-    { "titre": "Diagnostic personnalisé",   "description": "Avant chaque rendez-vous, on prend 10 minutes pour comprendre vos cheveux, vos habitudes et vos envies.", "icon": "stethoscope" },
-    { "titre": "Conseils sans pression",    "description": "On vous propose, on vous explique, on vous laisse choisir. Aucune vente forcée.",                          "icon": "chat" },
-    { "titre": "Produits sélectionnés",     "description": "Marques engagées, formules respectueuses du cuir chevelu et de la fibre capillaire.",                       "icon": "leaf" },
-    { "titre": "Atelier soigné",            "description": "Lumière naturelle, café et thé offerts, ambiance calme. Le temps pour soi.",                                 "icon": "home" }
+    {
+      "titre": "Diagnostic personnalisé",
+      "description": "Avant chaque rendez-vous, on prend 10 minutes pour comprendre vos cheveux, vos habitudes et vos envies.",
+      "icon": "stethoscope"
+    },
+    {
+      "titre": "Conseils sans pression",
+      "description": "On vous propose, on vous explique, on vous laisse choisir. Aucune vente forcée.",
+      "icon": "chat"
+    },
+    {
+      "titre": "Produits sélectionnés",
+      "description": "Marques engagées, formules respectueuses du cuir chevelu et de la fibre capillaire.",
+      "icon": "leaf"
+    },
+    {
+      "titre": "Atelier soigné",
+      "description": "Lumière naturelle, café et thé offerts, ambiance calme. Le temps pour soi.",
+      "icon": "home"
+    }
   ],
   "reassurance": [
-    { "titre": "Rendez-vous rapide",  "description": "Réponse à votre demande sous 24h ouvrées." },
-    { "titre": "Conseils personnalisés", "description": "Diagnostic offert avant la coupe, sans engagement." },
-    { "titre": "Salon local",         "description": "Ouvert depuis 2019 à Saint-Gilles, on connaît nos habitués." },
-    { "titre": "Contact direct",      "description": "Téléphone, WhatsApp, email — vous choisissez." }
+    {
+      "titre": "Rendez-vous rapide",
+      "description": "Réponse à votre demande sous 24h ouvrées."
+    },
+    {
+      "titre": "Conseils personnalisés",
+      "description": "Diagnostic offert avant la coupe, sans engagement."
+    },
+    {
+      "titre": "Salon local",
+      "description": "Ouvert depuis 2019 à La Réunion, on connaît nos habitués."
+    },
+    {
+      "titre": "Contact direct",
+      "description": "Téléphone, WhatsApp, email — vous choisissez."
+    }
   ],
   "creneaux": [
-    { "id": "matin",       "label": "Matin",        "horaire": "9h – 12h" },
-    { "id": "apres-midi",  "label": "Après-midi",   "horaire": "14h – 17h" },
-    { "id": "fin-journee", "label": "Fin de journée", "horaire": "17h – 19h" }
+    {
+      "id": "matin",
+      "label": "Matin",
+      "horaire": "9h – 12h"
+    },
+    {
+      "id": "apres-midi",
+      "label": "Après-midi",
+      "horaire": "14h – 17h"
+    },
+    {
+      "id": "fin-journee",
+      "label": "Fin de journée",
+      "horaire": "17h – 19h"
+    }
   ],
   "longueurs": [
-    { "id": "courts",   "label": "Courts" },
-    { "id": "mi-longs", "label": "Mi-longs" },
-    { "id": "longs",    "label": "Longs" }
+    {
+      "id": "courts",
+      "label": "Courts"
+    },
+    {
+      "id": "mi-longs",
+      "label": "Mi-longs"
+    },
+    {
+      "id": "longs",
+      "label": "Longs"
+    }
   ]
 }
