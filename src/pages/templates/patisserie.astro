@@ -13,8 +13,10 @@ import vanilleData from '../../data/templates/vanille.json';
 import VanilleHeader from '../../components/templates/patisserie/VanilleHeader.astro';
 import HeroVanille from '../../components/templates/patisserie/HeroVanille.astro';
 import Specialites from '../../components/templates/patisserie/Specialites.astro';
+import Bandeau from '../../components/templates/patisserie/Bandeau.astro';
 import Saisons from '../../components/templates/patisserie/Saisons.astro';
 import Patissiere from '../../components/templates/patisserie/Patissiere.astro';
+import Citation from '../../components/templates/patisserie/Citation.astro';
 import Commandes from '../../components/templates/patisserie/Commandes.astro';
 import Avis from '../../components/templates/patisserie/Avis.astro';
 import Contact from '../../components/templates/patisserie/Contact.astro';
@@ -35,8 +37,10 @@ const businessLD = localBusinessSchema(vanilleData);
   <main class="bg-vanille-creme text-vanille-gousse font-karla">
     <HeroVanille />
     <Specialites />
+    <Bandeau />
     <Saisons />
     <Patissiere />
+    <Citation />
     <Commandes />
     <Avis />
     <Contact />

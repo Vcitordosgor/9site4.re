@@ -49,10 +49,15 @@ const today = new Date().toLocaleDateString('fr-FR', {
         </p>
 
         <!-- Wordmark XXL -->
-        <h1 class="font-yeseva text-vanille-gousse leading-[0.9]">
-          <span class="block text-5xl sm:text-6xl md:text-7xl lg:text-[88px]">La Vanille</span>
-          <span class="block font-italianno text-vanille-caramel text-5xl md:text-7xl lg:text-8xl leading-none mt-1">de Bel-Air</span>
+        <h1 class="font-yeseva text-vanille-gousse leading-[0.85]">
+          <span class="block" style="font-size:clamp(56px,11vw,128px);">La Vanille</span>
+          <span class="block font-italianno text-vanille-caramel leading-[0.9] mt-1" style="font-size:clamp(60px,12vw,144px);">de Bel-Air</span>
         </h1>
+
+        <!-- Tagline italique éditoriale -->
+        <p class="mt-4 md:mt-6 font-italianno text-vanille-caramel text-3xl md:text-5xl leading-none">
+          — pétrir, glacer, caraméliser —
+        </p>
 
         <!-- Filet ornemental -->
         <div class="flex items-center justify-center gap-3 my-6 md:my-8" aria-hidden="true">
