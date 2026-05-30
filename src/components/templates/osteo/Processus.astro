@@ -1,0 +1,36 @@
+---
+const etapes = [
+  { num: '01', titre: 'L\'anamnèse', duree: '15 min', texte: 'Vous racontez : la douleur, l\'histoire, les antécédents, les traitements en cours. Je note. Pas de jugement, pas d\'interprétation immédiate.' },
+  { num: '02', titre: 'Le diagnostic', duree: '10 min', texte: 'Tests de mobilité, observation posturale, palpation lente. Je vous explique ce que je vois, ce que je cherche, ce que je ne traiterai pas.' },
+  { num: '03', titre: 'Le traitement', duree: '25 min', texte: 'Techniques fonctionnelles, douces, jamais à haute vélocité sans accord préalable. Je m\'arrête si vous avez le moindre doute, à tout moment.' },
+  { num: '04', titre: 'Les conseils', duree: '10 min', texte: 'Trois ou quatre conseils précis pour les jours qui suivent. Reprise du sport, posture au travail, étirements. Pas d\'ordonnance vague.' },
+];
+---
+
+<section class="bg-verveine-creme py-20 md:py-32 relative">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+
+    <div class="text-center max-w-2xl mx-auto mb-16 md:mb-24">
+      <p class="font-public-sans uppercase tracking-[0.4em] text-[10px] md:text-[11px] text-verveine-sauge mb-4 font-medium">— Le déroulé d'une séance —</p>
+      <h2 class="font-cardo text-verveine-encre text-3xl md:text-5xl leading-tight">
+        Soixante minutes,
+        <em class="font-cardo italic text-verveine-beton block md:inline">quatre temps précis.</em>
+      </h2>
+    </div>
+
+    <ol class="relative grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-0">
+      <div class="hidden md:block absolute top-12 left-[12%] right-[12%] h-px bg-verveine-sauge/40" aria-hidden="true"></div>
+
+      {etapes.map((e) => (
+        <li class="relative text-center md:px-4">
+          <div class="relative inline-flex items-center justify-center w-24 h-24 rounded-full bg-verveine-creme border-2 border-verveine-sauge/60 hover:border-verveine-encre hover:shadow-md transition-all duration-300 mb-6">
+            <span class="font-cardo italic text-verveine-encre text-3xl leading-none">{e.num}</span>
+          </div>
+          <p class="font-public-sans uppercase tracking-[0.3em] text-[10px] text-verveine-sauge mb-2 font-medium">{e.duree}</p>
+          <h3 class="font-cardo text-verveine-encre text-2xl mb-3">{e.titre}</h3>
+          <p class="font-public-sans text-[14.5px] text-verveine-beton leading-relaxed max-w-xs mx-auto">{e.texte}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
