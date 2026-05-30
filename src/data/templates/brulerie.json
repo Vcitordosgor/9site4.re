@@ -1,0 +1,162 @@
+{
+  "info": {
+    "nom": "Brûlerie d'altitude",
+    "wordmark": "Brûlerie",
+    "wordmark2": "d'altitude",
+    "soustitre": "Café torréfié · La Réunion",
+    "tagline": "Café péi, torréfaction lente.",
+    "fondateur": "Olivier Cadet",
+    "ville": "La Réunion",
+    "adresseLigne1": "L'atelier de torréfaction",
+    "adresseLigne2": "À La Réunion",
+    "telephone": "0692 12 34 56",
+    "telephoneHref": "+262692123456",
+    "whatsapp": "262692123456",
+    "email": "atelier@bruleriealtitude.re",
+    "instagram": "@bruleriealtitude.974",
+    "siret": "84852031200019",
+    "annee": "2017",
+    "photoHero": "https://images.unsplash.com/photo-1559525839-d9acfd03c2f7?q=80&w=1600&auto=format&fit=crop",
+    "photoHeroAlt": "Sac de grains de café fraîchement torréfiés, La Réunion",
+    "ouvertureHebdo": "Mardi → samedi · 7h00 → 12h30 / 14h30 → 18h00",
+    "fermeture": "Dimanche · lundi"
+  },
+  "manifesto": "Sept ans qu'on torréfie chez Olivier. Sept ans qu'on cherche les meilleurs grains : les pointus bourbon de Bras-Panon, les arabicas des Hauts de l'île, et quelques sélections du continent voisin. Une seule machine, une Probat L12 de 1968 restaurée. Une seule règle : torréfaction lente, jamais brûlée. Le grain doit chanter sa propre note, pas celle du feu.",
+  "origines": [
+    {
+      "id": "bourbon-pointu",
+      "nom": "Bourbon Pointu",
+      "terroir": "Saint-Joseph (Sud sauvage)",
+      "altitude": "650 m",
+      "process": "Lavé",
+      "torrefaction": "Light medium",
+      "notes": "Bergamote, amande douce, citron vert",
+      "tagline": "Le café légendaire de l'île.",
+      "description": "Variété unique au monde, ramenée à la vie à La Réunion il y a vingt ans. Grain en forme de larme, parfum d'agrumes, faible caféine. Trois producteurs seulement sur l'île. On en torréfie 8 kg par mois maximum.",
+      "prix": "32 € · 250 g",
+      "fiche": "Carte de Saint-Joseph"
+    },
+    {
+      "id": "arabica-hauts",
+      "nom": "Arabica des Hauts",
+      "terroir": "Cilaos · Plaine des Cafres",
+      "altitude": "1200 m",
+      "process": "Naturel",
+      "torrefaction": "Medium",
+      "notes": "Chocolat noir, miel de letchi, finale longue",
+      "tagline": "Le café du quotidien.",
+      "description": "Sélection multi-parcelles des Hauts de l'île, séchage naturel sur lits surélevés. Tasse ronde, chocolatée, sans amertume. Notre grain le plus vendu en abonnement.",
+      "prix": "14 € · 250 g",
+      "fiche": "Carte de Cilaos"
+    },
+    {
+      "id": "ethiopie-yirgacheffe",
+      "nom": "Éthiopie Yirgacheffe G1",
+      "terroir": "Vallée de Yirgacheffe",
+      "altitude": "2100 m",
+      "process": "Lavé",
+      "torrefaction": "Light",
+      "notes": "Jasmin, citron, thé noir",
+      "tagline": "Notre seule importation lointaine.",
+      "description": "Café floral, presque délicat. Grain de petite taille, robe vert-jaune. À préparer en V60 ou Chemex pour préserver les notes. Une seule origine non-péi qu'on assume — pour la complémentarité.",
+      "prix": "18 € · 250 g",
+      "fiche": "Région d'Éthiopie"
+    },
+    {
+      "id": "blend-altitude",
+      "nom": "Blend Altitude (espresso)",
+      "terroir": "70% Hauts péi + 30% Brésil",
+      "altitude": "Mix",
+      "process": "Mix",
+      "torrefaction": "Medium-dark",
+      "notes": "Praliné, cacao, crema dense",
+      "tagline": "Notre assemblage espresso signature.",
+      "description": "Mélange étudié pour les machines espresso domestiques et professionnelles : 70% Arabica péi pour le corps, 30% Brésil naturel pour la crema. Torréfaction medium-dark, à utiliser dans les 4 semaines après torréfaction.",
+      "prix": "12 € · 250 g",
+      "fiche": "Assemblage maison"
+    }
+  ],
+  "methodes": [
+    {
+      "id": "v60",
+      "nom": "V60",
+      "duree": "3 min 30",
+      "ratio": "1:16",
+      "moutureLabel": "Mouture moyenne-fine",
+      "description": "Méthode douce japonaise, idéale pour les cafés clairs (Yirgacheffe, Bourbon Pointu). Met en valeur les notes florales et acides."
+    },
+    {
+      "id": "chemex",
+      "nom": "Chemex",
+      "duree": "5 min",
+      "ratio": "1:17",
+      "moutureLabel": "Mouture moyenne",
+      "description": "Filtre épais, extraction propre, sans huile. Pour cafés délicats à servir en pichet pour 2-4 personnes. Verre épais, très bel objet."
+    },
+    {
+      "id": "aeropress",
+      "nom": "Aeropress",
+      "duree": "1 min 30",
+      "ratio": "1:14",
+      "moutureLabel": "Mouture fine",
+      "description": "Méthode pression douce, voyage facile. Corps plus dense que filtre, tasse intermédiaire entre espresso et filtre. Très tolérante."
+    },
+    {
+      "id": "espresso",
+      "nom": "Espresso",
+      "duree": "27 s",
+      "ratio": "1:2",
+      "moutureLabel": "Mouture très fine",
+      "description": "Le standard italien : 18 g de mouture pour 36 g en tasse, en 27 secondes à 9 bars. Notre Blend Altitude est calibré pour ça."
+    }
+  ],
+  "atelier": {
+    "titre": "L'atelier",
+    "soustitre": "Une Probat L12 de 1968",
+    "texte": "La machine pèse 480 kg, elle a soixante-cinq ans. Olivier l'a chinée en 2017, restaurée pièce par pièce avec un mécanicien retraité de Renault à Saint-Pierre. Capacité : 12 kg par torréfaction, 18 minutes de cycle. Aucune électronique — un thermomètre à aiguille, un nez, un chronomètre. On grille à l'oreille (les craquements du grain) et à l'odorat (le seuil avant la brûlure).",
+    "stats": [
+      { "valeur": "Probat L12", "label": "Modèle machine" },
+      { "valeur": "1968", "label": "Année construction" },
+      { "valeur": "12 kg", "label": "Capacité torréfaction" },
+      { "valeur": "18 min", "label": "Cycle complet" }
+    ]
+  },
+  "abonnement": {
+    "titre": "Abonnement Brûlerie",
+    "tagline": "Du grain frais tous les 15 jours",
+    "texte": "On torréfie le matin même de l'expédition. Vous recevez 250 g d'un grain selon votre profil, choisi par Olivier dans la sélection du mois. Possibilité de demander une fiche dégustation détaillée et un guide d'extraction.",
+    "formules": [
+      {
+        "label": "Découverte",
+        "frequence": "Tous les 15 jours",
+        "format": "250 g · grain ou moulu au choix",
+        "prix": "14 €",
+        "details": "Sans engagement, expédition mardi pour réception jeudi. Fiche dégustation incluse."
+      },
+      {
+        "label": "Confirmé",
+        "frequence": "Tous les 15 jours",
+        "format": "500 g · 2 origines",
+        "prix": "26 €",
+        "details": "Une origine récurrente + une découverte. Idéal foyer 2-3 personnes. Conseils extraction inclus."
+      },
+      {
+        "label": "Pro café & resto",
+        "frequence": "Hebdomadaire",
+        "format": "1 kg minimum",
+        "prix": "Sur devis",
+        "details": "Tarif dégressif selon volume, livraison directe à La Réunion. Formation barista 4h offerte au démarrage."
+      }
+    ]
+  },
+  "carte": [
+    { "nom": "Espresso simple", "prix": "1,80 €", "tagline": "Le standard." },
+    { "nom": "Espresso double", "prix": "2,80 €", "tagline": "Pour les après-midi longs." },
+    { "nom": "Cappuccino", "prix": "3,50 €", "tagline": "Espresso double, mousse onctueuse." },
+    { "nom": "Flat white", "prix": "3,80 €", "tagline": "Lait micro-moussé, ratio café fort." },
+    { "nom": "Filtre du jour (V60 ou Chemex)", "prix": "4,50 €", "tagline": "Selon l'origine torréfiée hier." },
+    { "nom": "Tartine campagne · beurre AOP", "prix": "3,80 €", "tagline": "Pain au levain, beurre fermier." },
+    { "nom": "Brioche feuilletée", "prix": "4,20 €", "tagline": "Faite par notre voisin boulanger." },
+    { "nom": "Granola maison · yaourt fermier", "prix": "6,80 €", "tagline": "Avoine torréfiée à l'atelier, fruits secs." }
+  ]
+}

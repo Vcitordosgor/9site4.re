@@ -1,0 +1,54 @@
+---
+import data from '../../../data/templates/brulerie.json';
+---
+
+<section id="methodes" class="py-20 md:py-28 relative" style="background-color: #1A0F0A; color: #E8DDC7;">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+
+    <div class="max-w-2xl mb-14 md:mb-20">
+      <p class="font-dm-mono text-[10.5px] uppercase tracking-[0.4em] mb-4" style="color: #B57A4A;">— Méthodes d'extraction —</p>
+      <h2 class="font-plex-serif font-semibold leading-[0.95]" style="font-size: clamp(36px, 5vw, 56px); font-family: 'IBM Plex Serif', Georgia, serif;">
+        Quatre façons
+        <em class="block italic mt-2" style="color: #B57A4A; font-size: clamp(40px, 5.5vw, 60px);">
+          de tirer le grain.
+        </em>
+      </h2>
+      <p class="mt-5 font-dm-mono text-[13.5px] leading-relaxed" style="color: rgba(232, 221, 199, 0.78);">
+        Le café change radicalement selon la méthode. Voici les quatre qu'on pratique et qu'on enseigne.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+      {data.methodes.map((m, i) => (
+        <article class="p-6 md:p-7" style="background-color: rgba(232, 221, 199, 0.05); border: 1px solid rgba(181, 122, 74, 0.3);">
+          <p class="font-dm-mono text-[10px] uppercase tracking-[0.25em]" style="color: #B57A4A;">
+            [ Méthode {String(i + 1).padStart(2, '0')} ]
+          </p>
+          <h3 class="mt-2 font-plex-serif font-semibold text-2xl md:text-3xl leading-tight" style="font-family: 'IBM Plex Serif', Georgia, serif;">
+            {m.nom}
+          </h3>
+
+          <!-- Stats clés -->
+          <div class="mt-5 pt-4 border-t space-y-2 font-dm-mono text-[11.5px]" style="border-color: rgba(181, 122, 74, 0.25);">
+            <div class="flex justify-between gap-2">
+              <span style="color: rgba(232, 221, 199, 0.55);">Temps</span>
+              <span style="color: #E8DDC7;">{m.duree}</span>
+            </div>
+            <div class="flex justify-between gap-2">
+              <span style="color: rgba(232, 221, 199, 0.55);">Ratio</span>
+              <span style="color: #E8DDC7;">{m.ratio}</span>
+            </div>
+            <div class="flex justify-between gap-2">
+              <span style="color: rgba(232, 221, 199, 0.55);">Mouture</span>
+              <span class="text-right" style="color: #E8DDC7;">{m.moutureLabel}</span>
+            </div>
+          </div>
+
+          <p class="mt-5 font-plex-serif text-[14.5px] leading-relaxed" style="color: rgba(232, 221, 199, 0.85); font-family: 'IBM Plex Serif', Georgia, serif;">
+            {m.description}
+          </p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

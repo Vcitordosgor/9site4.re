@@ -1,0 +1,55 @@
+---
+const faq = [
+  {
+    q: 'Pourquoi le Bourbon Pointu est-il si cher ?',
+    r: 'Parce qu\'il est rare : seulement trois producteurs sur l\'île, un rendement faible (la plante produit peu), une cueillette à la main, lavage et séchage soignés. Sa caféine est naturellement basse (moitié d\'un arabica classique), c\'est ce qui le rend si délicat. Le prix reflète le travail réel, pas une rente.',
+  },
+  {
+    q: 'Vos cafés se conservent combien de temps ?',
+    r: 'Quatre semaines maximum après torréfaction pour profiter pleinement des arômes, dans un sac opaque hermétique à température ambiante. Surtout pas au frigo (humidité). Si vous achetez 500g et n\'en buvez pas vite, congelez la moitié dans un sac sous vide, c\'est mieux que de laisser vieillir.',
+  },
+  {
+    q: 'Vendez-vous du café moulu ou en grain ?',
+    r: 'Les deux. Mais on conseille fortement le grain. Le café perd 60% de ses arômes dans les 15 minutes après mouture. Un petit moulin à café électrique à 60 € change littéralement la vie. Si vous n\'avez pas, on moud à votre méthode (V60, espresso, filtre, French press) — précisez à la commande.',
+  },
+  {
+    q: 'Faites-vous des formations barista ?',
+    r: 'Oui — pour les pros (cafés, restos) inclus dans l\'abonnement pro, et pour les particuliers en sessions découverte de 2h, le samedi matin (35 € / personne, 4 personnes max). Au programme : mouture, dose, tassage, lecture du shot, latte art basique. Réservation par téléphone.',
+  },
+  {
+    q: 'D\'où viennent vos producteurs péi ?',
+    r: 'Le Bourbon Pointu vient de trois petites parcelles du Sud sauvage. L\'Arabica des Hauts vient d\'une coopérative de Cilaos et Plaine des Cafres. On les rencontre 4 fois par an, on visite les parcelles, on suit les récoltes. Le rendement local est bas, le prix d\'achat est élevé — c\'est pour ça qu\'on tient à ces filières.',
+  },
+  {
+    q: 'Livrez-vous toute l\'île ?',
+    r: 'Oui — livraison La Réunion en point relais sous 48h (5 € forfait). Livraison à domicile 7 € selon la zone. Au-dessus de 50 €, livraison offerte. Pour les pros (cafés/restos), tournée directe deux fois par semaine.',
+  },
+];
+---
+
+<section class="py-20 md:py-28 relative" style="background-color: #E8DDC7;">
+  <div class="max-w-3xl mx-auto px-6 md:px-10 relative">
+
+    <div class="text-center mb-12 md:mb-16">
+      <p class="font-dm-mono text-[10.5px] uppercase tracking-[0.4em] mb-4" style="color: #B57A4A;">— [ FAQ ] —</p>
+      <h2 class="font-plex-serif font-semibold leading-[0.95]" style="color: #1A0F0A; font-size: clamp(36px, 5vw, 56px); font-family: 'IBM Plex Serif', Georgia, serif;">
+        Questions
+        <em class="block italic mt-2" style="color: #B57A4A; font-size: clamp(40px, 5.5vw, 60px);">qu'on nous pose</em>
+      </h2>
+    </div>
+
+    <div class="space-y-3">
+      {faq.map((f) => (
+        <details class="group transition-colors" style="background-color: rgba(255, 255, 255, 0.65); border: 1px solid rgba(62, 42, 31, 0.2);">
+          <summary class="cursor-pointer list-none flex items-start gap-4 p-5 md:p-7">
+            <span class="font-dm-mono text-xl leading-none mt-0.5 transition-transform duration-300 group-open:rotate-45" style="color: #B57A4A;" aria-hidden="true">+</span>
+            <span class="flex-1 font-plex-serif font-semibold text-lg md:text-xl leading-snug" style="color: #1A0F0A; font-family: 'IBM Plex Serif', Georgia, serif;">{f.q}</span>
+          </summary>
+          <div class="px-5 md:px-7 pb-6 md:pb-8 pl-14 md:pl-16">
+            <p class="font-plex-serif text-[14.5px] md:text-[15px] leading-relaxed" style="color: rgba(26, 15, 10, 0.82); font-family: 'IBM Plex Serif', Georgia, serif;">{f.r}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
