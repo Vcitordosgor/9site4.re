@@ -17,12 +17,16 @@ import conciergeData from '../../data/templates/concierge.json';
 import ConciergeHeader from '../../components/templates/conciergerie/ConciergeHeader.astro';
 import HeroCarteBienvenue from '../../components/templates/conciergerie/HeroCarteBienvenue.astro';
 import Promesse from '../../components/templates/conciergerie/Promesse.astro';
+import Numbers from '../../components/templates/conciergerie/Numbers.astro';
 import Services from '../../components/templates/conciergerie/Services.astro';
 import Formules from '../../components/templates/conciergerie/Formules.astro';
 import CommentCaMarche from '../../components/templates/conciergerie/CommentCaMarche.astro';
+import Calligraphie from '../../components/templates/conciergerie/Calligraphie.astro';
 import Citation from '../../components/templates/conciergerie/Citation.astro';
 import Temoignages from '../../components/templates/conciergerie/Temoignages.astro';
+import Partenaires from '../../components/templates/conciergerie/Partenaires.astro';
 import Bandeau from '../../components/templates/conciergerie/Bandeau.astro';
+import Faq from '../../components/templates/conciergerie/Faq.astro';
 import Demande from '../../components/templates/conciergerie/Demande.astro';
 import CTAFinal from '../../components/templates/conciergerie/CTAFinal.astro';
 import ConciergeFooter from '../../components/templates/conciergerie/ConciergeFooter.astro';
@@ -48,12 +52,16 @@ const businessLD = localBusinessSchema(conciergeData);
   <main id="top" class="bg-concierge-champagne text-concierge-nuit font-hubot">
     <HeroCarteBienvenue />
     <Promesse />
+    <Numbers />
     <Services />
     <Formules />
     <CommentCaMarche />
+    <Calligraphie />
     <Citation />
     <Temoignages />
+    <Partenaires />
     <Bandeau />
+    <Faq />
     <Demande />
     <CTAFinal />
   </main>
