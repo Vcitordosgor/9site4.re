@@ -1,0 +1,50 @@
+---
+import data from '../../../data/templates/boost.json';
+const stats = data.stats;
+---
+
+<section class="bg-boost-jaune py-20 md:py-28 px-6 md:px-10 border-y-4 border-boost-noir relative overflow-hidden">
+
+  <div class="absolute inset-x-0 top-0 h-3 bg-boost-noir flex" aria-hidden="true">
+    {Array.from({ length: 24 }).map((_, i) => (
+      <span class:list={["flex-1 h-full", i % 2 === 0 ? 'bg-boost-jaune' : 'bg-boost-noir']}></span>
+    ))}
+  </div>
+
+  <div class="max-w-content mx-auto relative">
+
+    <header class="text-center mb-14">
+      <p class="font-geist-mono text-[11px] uppercase tracking-[0.32em] text-boost-noir/85 mb-3 inline-block bg-boost-noir/10 px-3 py-1.5 ring-2 ring-boost-noir">
+        ◯ Compteur kilomètres
+      </p>
+      <h2 class="font-funnel-display font-bold text-boost-noir leading-[0.92] uppercase" style="font-size: clamp(40px, 6vw, 72px);">
+        Boost, en chiffres.
+      </h2>
+    </header>
+
+    <ul class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+      {stats.map((s, i) => (
+        <li class="bg-boost-noir text-boost-jaune p-5 md:p-7 ring-4 ring-boost-noir text-center relative hover:rotate-[-1deg] transition-transform" style={`box-shadow: 6px 6px 0 0 rgba(15,15,17,1); transform: rotate(${i % 2 === 0 ? '-1deg' : '1deg'});`}>
+
+          <p class="absolute -top-3 -left-3 w-9 h-9 bg-boost-stop text-boost-jaune font-geist-mono text-xs font-bold rounded-full ring-2 ring-boost-noir flex items-center justify-center">
+            {String(i + 1).padStart(2, '0')}
+          </p>
+
+          <p class="font-funnel-display font-bold text-boost-jaune leading-[0.85] tabular-nums" style="font-size: clamp(56px, 10vw, 120px);">
+            {s.valeur}
+          </p>
+
+          <p class="mt-4 pt-3 border-t-2 border-boost-jaune/30 font-funnel-sans font-semibold text-boost-route text-[11.5px] md:text-sm uppercase tracking-[0.12em] leading-tight">
+            {s.label}
+          </p>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <div class="absolute inset-x-0 bottom-0 h-3 bg-boost-noir flex" aria-hidden="true">
+    {Array.from({ length: 24 }).map((_, i) => (
+      <span class:list={["flex-1 h-full", i % 2 === 0 ? 'bg-boost-jaune' : 'bg-boost-noir']}></span>
+    ))}
+  </div>
+</section>
