@@ -1,0 +1,46 @@
+---
+/**
+ * Numbers — chiffres clés service à la personne.
+ * 4 chiffres en grand sur fond crème.
+ */
+const stats = [
+  { value: '12', unit: 'ans', label: 'Service aux familles' },
+  { value: '38', unit: 'aidants', label: 'Formés et fidèles' },
+  { value: '180+', unit: 'familles', label: 'Accompagnées chaque mois' },
+  { value: '4,9/5', unit: 'satisfaction', label: 'Enquêtes annuelles' },
+];
+---
+
+<section class="relative bg-doudou-creme py-20 md:py-28 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="text-center max-w-2xl mx-auto mb-14 md:mb-16">
+      <p class="scroll-reveal text-xs font-nunito font-bold uppercase tracking-[0.32em] text-doudou-bleu">
+        En quelques chiffres
+      </p>
+      <h2 class="scroll-reveal mt-4 font-nunito font-extrabold text-doudou-encre leading-[1.05]" style="font-size: clamp(34px, 4.5vw, 54px);">
+        Une équipe humaine,<br/>
+        <span class="text-doudou-bleu">des chiffres clairs.</span>
+      </h2>
+    </header>
+
+    <ul class="grid grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-8 items-end">
+      {stats.map((s, i) => (
+        <li class="scroll-reveal text-center" style={`transition-delay: ${i * 80}ms`}>
+          <span
+            class="block font-nunito font-extrabold leading-[0.85] tabular-nums"
+            style={`font-size: clamp(56px, ${i % 2 === 0 ? 9 : 8}vw, ${i % 2 === 0 ? 140 : 120}px); color: ${i % 2 === 0 ? 'rgb(59 110 143)' : 'rgb(229 160 154)'};`}
+          >
+            {s.value}
+          </span>
+          <span class="mt-3 block font-be-vietnam font-semibold uppercase tracking-[0.22em] text-doudou-encre/80 text-xs">
+            {s.unit}
+          </span>
+          <p class="mt-2 font-be-vietnam text-doudou-encre/65 leading-snug max-w-[200px] mx-auto" style="font-size: 14px;">
+            {s.label}
+          </p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
