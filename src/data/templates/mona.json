@@ -40,21 +40,21 @@
     },
     {
       "question": "Le mot de la fin ?",
-      "reponse": "On ne change pas son alimentation en deux semaines, mais on peut commencer à se sentir mieux dès la première consultation. Mon rôle est de vous donner les bons outils, pas de vous imposer un cadre rigide."
+      "reponse": "On peut se sentir mieux dès la première consultation. Mon rôle est de vous donner les bons outils, pas un cadre rigide."
     }
   ],
   "piliers": [
     {
       "titre": "Écoute",
-      "description": "Avant de parler aliments, on parle de vous. Vos habitudes, votre rythme, vos contraintes, ce que vous aimez."
+      "description": "Avant de parler aliments, on parle de vous : habitudes, rythme, contraintes, plaisirs."
     },
     {
       "titre": "Équilibre",
-      "description": "Pas de diabolisation. Aucun aliment n'est interdit en soi. C'est la place qu'on lui donne qui compte."
+      "description": "Aucun aliment n'est interdit. C'est la place qu'on lui donne qui compte."
     },
     {
       "titre": "Progressivité",
-      "description": "On change une chose à la fois. La durabilité avant la performance — un changement tenu vaut dix résolutions abandonnées."
+      "description": "On change une chose à la fois. Un changement tenu vaut dix résolutions abandonnées."
     }
   ],
   "publics": [
@@ -100,7 +100,7 @@
       "num": "1",
       "titre": "Première consultation",
       "duree": "60 min",
-      "description": "Bilan complet : antécédents, mode de vie, journée alimentaire type. On prend le temps de tout poser."
+      "description": "Bilan complet : antécédents, mode de vie, journée alimentaire type."
     },
     {
       "num": "2",
