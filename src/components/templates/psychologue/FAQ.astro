@@ -1,0 +1,64 @@
+---
+const faqs = [
+  {
+    q: "Combien de séances faut-il pour aller mieux ?",
+    r: "Cela dépend. Certaines situations se dénouent en quelques rencontres, d'autres demandent plusieurs années. Nous évaluerons ensemble, à la fin de chaque trimestre, la pertinence de poursuivre. Rien n'est figé ni engagé.",
+  },
+  {
+    q: "Les séances sont-elles remboursées ?",
+    r: "Le dispositif Mon Soutien Psy permet 12 séances remboursées par an, sur prescription d'un médecin traitant. Hors dispositif, certaines mutuelles couvrent partiellement. Je remets une note d'honoraires pour chaque séance.",
+  },
+  {
+    q: "Quelle est la différence entre psychologue, psychiatre et psychothérapeute ?",
+    r: "Le psychologue (moi) a un Master 2 et un numéro ADELI, peut faire un suivi mais ne prescrit pas. Le psychiatre est médecin et peut prescrire. Le titre de psychothérapeute exige une formation spécifique reconnue par l'ARS.",
+  },
+  {
+    q: "La confidentialité est-elle absolue ?",
+    r: "Oui. Le secret professionnel est protégé par le Code de déontologie. Les seules exceptions légales concernent la mise en danger imminente d'autrui ou de soi-même. Pour les mineur·es, j'accueille avec une confidentialité garantie envers les parents.",
+  },
+  {
+    q: "Que se passe-t-il à la première séance ?",
+    r: "Vous parlez. J'écoute. Je pose quelques questions pour comprendre ce qui vous amène, votre histoire, vos attentes. À la fin de la séance, je vous dis si je pense pouvoir vous accompagner ; si non, je vous oriente vers un·e collègue.",
+  },
+];
+---
+
+<section class="bg-aubry-papier py-24 md:py-32 px-6 md:px-10 border-t border-aubry-encre/10">
+  <div class="max-w-content mx-auto">
+
+    <header class="text-center mb-14 max-w-3xl mx-auto">
+      <p class="font-ibm-plex-mono text-[10px] uppercase tracking-[0.32em] text-aubry-prune mb-4">
+        — Questions reçues —
+      </p>
+      <h2 class="font-libre-caslon text-aubry-encre text-4xl md:text-5xl leading-tight">
+        Cinq questions,<br/>
+        <em class="italic text-aubry-prune">avant un premier pas.</em>
+      </h2>
+    </header>
+
+    <ul class="max-w-3xl mx-auto border-t border-aubry-encre/15">
+      {faqs.map((f, i) => (
+        <li class="border-b border-aubry-encre/15">
+          <details class="group">
+            <summary class="flex gap-5 md:gap-7 py-7 cursor-pointer list-none items-baseline hover:bg-aubry-perle/50 transition-colors px-2 -mx-2">
+              <span class="font-libre-caslon italic text-aubry-rose text-2xl md:text-3xl shrink-0 tabular-nums">
+                {String(i + 1).padStart(2, '0')}.
+              </span>
+              <h3 class="flex-1 font-libre-caslon text-aubry-encre text-lg md:text-xl leading-snug">
+                {f.q}
+              </h3>
+              <span class="font-libre-caslon text-aubry-prune text-2xl md:text-3xl leading-none transition-transform group-open:rotate-45 inline-block shrink-0">
+                +
+              </span>
+            </summary>
+            <div class="pb-7 pl-12 md:pl-16 pr-6">
+              <p class="font-libre-caslon italic text-aubry-encre/85 text-[15.5px] md:text-base leading-[1.8]">
+                {f.r}
+              </p>
+            </div>
+          </details>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,39 @@
+---
+/**
+ * Marquee — bandeau défilant de mots-clés métier, style cartouche de plan.
+ */
+const mots = [
+  'BOIS PÉI', 'BASALTE', 'VENTILATION NATURELLE', 'TOITURE PAPANG',
+  'PATRIMOINE INSCRIT', 'BIOCLIMATIQUE', 'OSSATURE BOIS', 'MOELLON LAVE',
+  'LOGEMENT COLLECTIF', 'ESPACE PUBLIC', 'BARDAGE TÔLE LAQUÉE', 'ASSURÉ DÉCENNALE',
+];
+---
+
+<section aria-hidden="true" class="bg-mahatma-encre text-mahatma-papier border-y border-mahatma-cachet/40 overflow-hidden">
+  <div class="marquee-track flex gap-12 py-5 whitespace-nowrap font-fira-mono text-[11px] md:text-xs uppercase tracking-[0.32em]">
+    {[0,1,2].map(() => (
+      <span class="flex shrink-0 gap-12 items-center">
+        {mots.map((m) => (
+          <>
+            <span class="text-mahatma-papier">{m}</span>
+            <span class="text-mahatma-cachet">◯</span>
+          </>
+        ))}
+      </span>
+    ))}
+  </div>
+</section>
+
+<style>
+  .marquee-track {
+    animation: mahatma-marquee 48s linear infinite;
+    will-change: transform;
+  }
+  @keyframes mahatma-marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-33.3333%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track { animation: none; }
+  }
+</style>

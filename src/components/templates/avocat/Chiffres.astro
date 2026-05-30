@@ -1,0 +1,48 @@
+---
+import data from '../../../data/templates/roussin.json';
+
+const k = data.infosCles;
+const stats = [
+  { val: k.anneesActivite, sfx: 'ans', leg: "d'exercice à La Réunion · fondé en 2008" },
+  { val: k.associes, sfx: '', leg: "avocats associés au cabinet" },
+  { val: k.dossiersOuvertsAn, sfx: '', leg: "dossiers ouverts chaque année" },
+  { val: k.tauxAccordsAmiables, sfx: '%', leg: "résolus à l'amiable, sans audience" },
+];
+---
+
+<section class="bg-roussin-nuit text-roussin-velin py-20 md:py-28 px-6 md:px-10 relative overflow-hidden">
+
+  <div class="absolute inset-x-6 md:inset-x-10 inset-y-6 border border-roussin-or/30 pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute inset-x-8 md:inset-x-12 inset-y-8 border border-roussin-or/15 pointer-events-none" aria-hidden="true"></div>
+
+  <div class="max-w-content mx-auto relative">
+
+    <header class="text-center mb-16">
+      <p class="font-public-sans text-[11px] uppercase tracking-[0.4em] text-roussin-or mb-4">— Le cabinet en chiffres —</p>
+      <h2 class="font-eb-garamond text-roussin-velin text-4xl md:text-5xl leading-tight">
+        Dix-huit années,<br/>
+        <em class="italic text-roussin-laiton">en chiffres parlants.</em>
+      </h2>
+    </header>
+
+    <ul class="grid grid-cols-2 md:grid-cols-4 gap-y-12 md:gap-x-8 text-center">
+      {stats.map((s, i) => (
+        <li>
+          <p class="font-public-sans text-[10px] uppercase tracking-[0.32em] text-roussin-or mb-3">
+            № {String(i + 1).padStart(2, '0')}
+          </p>
+          <p class="font-eb-garamond text-roussin-velin tabular-nums leading-[0.9]" style="font-size: clamp(72px, 12vw, 140px);">
+            {s.val}<span class="italic text-roussin-laiton font-eb-garamond" style="font-size: 0.4em;">{s.sfx}</span>
+          </p>
+          <p class="mt-6 pt-5 border-t border-roussin-or/30 font-public-sans text-roussin-velin/85 text-[12.5px] md:text-sm leading-relaxed italic max-w-[200px] mx-auto">
+            {s.leg}
+          </p>
+        </li>
+      ))}
+    </ul>
+
+    <p class="mt-14 text-center font-eb-garamond italic text-roussin-laiton/75 text-sm md:text-base">
+      ∼ Données arrêtées au 31 décembre 2025 ∼
+    </p>
+  </div>
+</section>

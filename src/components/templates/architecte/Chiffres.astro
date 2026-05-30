@@ -1,0 +1,55 @@
+---
+/**
+ * Chiffres — bloc statistiques en très grande typo (clamp 64-160px),
+ * grid asymétrique, traités en cartouche numéroté.
+ */
+const stats = [
+  { val: '11', sfx: 'ans', leg: "d'agence à La Réunion · depuis 2014" },
+  { val: '47', sfx: 'projets', leg: 'livrés ou en chantier · privé & public' },
+  { val: '100', sfx: '%', leg: "des projets sous assurance décennale" },
+  { val: '4', sfx: 'prix', leg: 'mentions & lauréats régionaux 2021-2024' },
+];
+---
+
+<section class="bg-mahatma-papier border-t border-b border-mahatma-encre/15 py-20 md:py-28 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="grid grid-cols-12 gap-4 mb-12 md:mb-16">
+      <div class="col-span-12 md:col-span-3">
+        <p class="font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-cachet mb-4">
+          ▢ § II·5
+        </p>
+        <p class="font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-beton">
+          État de l'agence
+        </p>
+      </div>
+      <div class="col-span-12 md:col-span-9">
+        <p class="font-atkinson italic text-mahatma-beton text-base md:text-lg max-w-2xl leading-relaxed">
+          Une décennie de pratique, mesurée. Chiffres arrêtés au 1<sup>er</sup> janvier 2026.
+        </p>
+      </div>
+    </header>
+
+    <ul class="grid md:grid-cols-12 gap-y-12 md:gap-x-6">
+      {stats.map((s, i) => (
+        <li class:list={[
+          'group',
+          i === 0 && 'md:col-span-7',
+          i === 1 && 'md:col-span-5',
+          i === 2 && 'md:col-span-5 md:col-start-1',
+          i === 3 && 'md:col-span-7',
+        ]}>
+          <p class="font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-cachet mb-3">
+            ◯ /{String(i + 1).padStart(2, '0')}
+          </p>
+          <p class="font-schibsted font-bold text-mahatma-encre leading-[0.82] tabular-nums tracking-[-0.03em]" style="font-size: clamp(64px, 14vw, 160px);">
+            {s.val}<span class="font-light italic text-mahatma-cachet" style="font-size: 0.4em;">{s.sfx}</span>
+          </p>
+          <p class="mt-4 pt-4 border-t border-mahatma-encre/15 font-atkinson italic text-mahatma-encre/75 text-sm md:text-base max-w-sm">
+            {s.leg}
+          </p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

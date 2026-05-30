@@ -1,0 +1,64 @@
+---
+const faqs = [
+  {
+    q: "Faut-il être en forme avant de commencer ?",
+    r: "Non, surtout pas. Je travaille avec des gens qui n'ont jamais touché un haltère, comme avec des sportifs réguliers. La première séance est un bilan : on évalue ton niveau, tes douleurs s'il y en a, ton emploi du temps. Ensuite on construit.",
+  },
+  {
+    q: "Combien de séances par semaine pour voir des résultats ?",
+    r: "Deux séances par semaine, c'est le minimum efficace. Trois, c'est l'idéal. Première transformation visible vers la 6ᵉ semaine. Stabilisation au bout de 4 mois. Tu peux arrêter quand tu veux, sans engagement.",
+  },
+  {
+    q: "Tu te déplaces où ?",
+    r: "À domicile (si tu as 6 m² + des bouteilles d'eau), sur la plage, dans un parc, en salle partenaire. Je viens avec le matériel mobile (élastiques, kettlebells, TRX). Couverture toute l'île, déplacement inclus dans le tarif.",
+  },
+  {
+    q: "Et les régimes, tu fais ?",
+    r: "Je ne suis pas diététicien·ne, je ne prescris pas de régime. En revanche, je te donne les bases nutritionnelles solides (protéines, glucides, sommeil), et si besoin je te recommande une consœur diététicienne pour un plan personnalisé.",
+  },
+  {
+    q: "Les tarifs, ça donne quoi ?",
+    r: "Séance individuelle : 60 €. Forfait 10 séances : 540 € (54 €/séance). Forfait 20 séances : 1 000 € (50 €/séance). Tarif duo (2 personnes même séance) : 80 € (40 € chacun). Première séance d'essai à 30 €.",
+  },
+];
+---
+
+<section class="bg-coach-charbon py-24 md:py-32 px-6 md:px-10 border-t border-coach-blanc/10">
+  <div class="max-w-content mx-auto">
+
+    <header class="mb-14">
+      <p class="font-jetbrains-mono text-[11px] uppercase tracking-[0.32em] text-coach-lime mb-3">
+        // FAQ
+      </p>
+      <h2 class="font-big-shoulders font-black text-coach-blanc uppercase leading-[0.88] italic" style="font-size: clamp(48px, 8vw, 112px); font-style: italic;">
+        Tes questions.<br/>
+        <span class="text-coach-lime">Mes réponses.</span>
+      </h2>
+    </header>
+
+    <ul class="max-w-4xl space-y-3">
+      {faqs.map((f, i) => (
+        <li>
+          <details class="group bg-coach-graphite border-2 border-coach-blanc/10 hover:border-coach-lime transition-colors">
+            <summary class="flex gap-4 md:gap-5 p-5 md:p-6 cursor-pointer list-none items-baseline">
+              <span class="font-big-shoulders font-black text-coach-lime text-3xl md:text-4xl shrink-0 tabular-nums leading-none italic" style="font-style: italic;">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <h3 class="flex-1 font-big-shoulders font-black text-coach-blanc text-lg md:text-2xl uppercase leading-tight">
+                {f.q}
+              </h3>
+              <span class="w-9 h-9 bg-coach-lime text-coach-noir font-big-shoulders font-black text-xl flex items-center justify-center shrink-0 transition-transform group-open:rotate-45">
+                +
+              </span>
+            </summary>
+            <div class="px-5 md:px-6 pb-6 pl-16 md:pl-20">
+              <p class="font-barlow text-coach-gris text-[14.5px] md:text-base leading-[1.75]">
+                {f.r}
+              </p>
+            </div>
+          </details>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

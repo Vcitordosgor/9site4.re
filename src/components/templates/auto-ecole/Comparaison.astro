@@ -1,0 +1,64 @@
+---
+const classique = [
+  "Inscription papier, paperasse compliquée",
+  "Code en salle, horaires figés",
+  "Réservation heure conduite par téléphone",
+  "Forfait opaque, frais cachés",
+  "Pas de suivi des progrès",
+  "Présentation examen au compte-gouttes",
+];
+
+const boost = [
+  "Inscription en ligne en 8 minutes chrono",
+  "Code 24/7 sur ton mobile, illimité",
+  "Réservation heure conduite dans l'app",
+  "Forfait tout compris, prix annoncés",
+  "Tableau de bord progrès, objectifs clairs",
+  "Présentation examen dès que tu es prêt·e",
+];
+---
+
+<section class="bg-boost-route py-20 md:py-28 px-6 md:px-10 border-y-4 border-boost-noir">
+  <div class="max-w-content mx-auto">
+
+    <header class="text-center mb-14 max-w-3xl mx-auto">
+      <p class="inline-block bg-boost-noir text-boost-jaune px-4 py-2 font-geist-mono text-[11px] uppercase tracking-[0.25em] font-bold mb-5">
+        ◯ Match du jour
+      </p>
+      <h2 class="font-funnel-display font-bold text-boost-noir leading-[0.92] uppercase" style="font-size: clamp(40px, 6vw, 80px);">
+        Auto-école classique <span class="text-boost-stop">vs.</span> Boost.
+      </h2>
+    </header>
+
+    <div class="grid md:grid-cols-2 gap-6 md:gap-8">
+
+      <div class="bg-boost-noir/5 ring-4 ring-boost-noir p-6 md:p-8 relative">
+        <div class="absolute -top-4 left-6 bg-boost-stop text-boost-route px-3 py-1 font-funnel-display font-bold text-sm uppercase tracking-wide ring-2 ring-boost-noir">
+          ✗ L'ancienne école
+        </div>
+        <ul class="mt-6 space-y-4">
+          {classique.map((it) => (
+            <li class="flex gap-3 items-start font-funnel-sans text-boost-asphalte text-[14.5px] leading-relaxed">
+              <span class="font-funnel-display text-boost-stop font-bold text-xl leading-none shrink-0">✗</span>
+              <span>{it}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="bg-boost-jaune ring-4 ring-boost-noir p-6 md:p-8 relative" style="box-shadow: 8px 8px 0 0 rgba(15,15,17,1);">
+        <div class="absolute -top-4 left-6 bg-boost-feu text-boost-noir px-3 py-1 font-funnel-display font-bold text-sm uppercase tracking-wide ring-2 ring-boost-noir">
+          ✓ Avec Boost
+        </div>
+        <ul class="mt-6 space-y-4">
+          {boost.map((it) => (
+            <li class="flex gap-3 items-start font-funnel-sans font-medium text-boost-noir text-[14.5px] leading-relaxed">
+              <span class="font-funnel-display text-boost-feu font-bold text-xl leading-none shrink-0">✓</span>
+              <span>{it}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

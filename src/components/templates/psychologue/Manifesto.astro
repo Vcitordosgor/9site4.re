@@ -1,0 +1,39 @@
+---
+import data from '../../../data/templates/aubry.json';
+const para = data.incipit.paragraphe;
+const first = para.charAt(0);
+const rest = para.slice(1);
+---
+
+<section class="bg-aubry-papier py-28 md:py-40 px-6 md:px-10 border-y border-aubry-encre/10">
+
+  <div class="max-w-3xl mx-auto">
+
+    <div class="text-center mb-14">
+      <p class="font-ibm-plex-mono text-[10px] uppercase tracking-[0.32em] text-aubry-prune mb-3">
+        — Chapitre {data.incipit.chiffre} —
+      </p>
+      <p class="font-libre-caslon italic text-aubry-nuit text-2xl md:text-3xl leading-tight">
+        {data.incipit.titre}
+      </p>
+      <div class="mt-6 flex items-center justify-center gap-2">
+        <span class="block w-2 h-2 rounded-full bg-aubry-rose"></span>
+        <span class="block w-12 h-px bg-aubry-rose/60"></span>
+        <span class="block w-2 h-2 rounded-full bg-aubry-rose"></span>
+      </div>
+    </div>
+
+    <p class="font-libre-caslon text-aubry-encre text-xl md:text-[24px] leading-[1.7]">
+      <span class="float-left font-libre-caslon text-aubry-prune leading-[0.8] mr-4 mt-1.5 italic" style="font-size: clamp(96px, 14vw, 160px);">
+        {first}
+      </span>
+      {rest}
+    </p>
+
+    <div class="mt-12 text-center">
+      <p class="font-libre-caslon italic text-aubry-prune text-base md:text-lg">
+        ∼ Camille Aubry, psychologue clinicienne ∼
+      </p>
+    </div>
+  </div>
+</section>
