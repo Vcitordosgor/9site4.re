@@ -1,0 +1,23 @@
+---
+import data from '../../../data/templates/souffle.json';
+---
+
+<section aria-label="Cours d'essai" class="bg-yoga-ocre text-yoga-encre py-6 md:py-7">
+  <div class="max-w-content mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-8">
+    <div class="flex items-center gap-3">
+      <span class="font-dm-serif italic text-2xl md:text-3xl text-yoga-encre leading-none">Cours d'essai offert</span>
+      <span class="hidden md:inline font-lexend text-[11px] uppercase tracking-[0.3em] text-yoga-encre/75">débutant·e bienvenu·e</span>
+    </div>
+    <p class="font-spectral italic text-yoga-encre text-base md:text-lg text-center">
+      « On vient pour ralentir, pas pour performer. »
+    </p>
+    <a
+      href={`https://wa.me/${data.info.whatsapp}`}
+      target="_blank"
+      rel="noopener"
+      class="inline-flex items-center justify-center h-11 px-6 bg-yoga-encre text-yoga-creme font-lexend font-medium text-[11.5px] uppercase tracking-[0.22em] rounded-full hover:bg-yoga-mousse transition-colors"
+    >
+      Réserver un essai
+    </a>
+  </div>
+</section>
