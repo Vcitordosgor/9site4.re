@@ -1,0 +1,32 @@
+---
+const mots = ['DISCIPLINE', 'FOUDRE', 'PAS·DEMAIN', 'AUJOURD\'HUI', 'PROGRESSE', 'COMMENCE', 'TRANSPIRE', 'KIFFE', 'RÉPÈTE', 'CASSE·TOI·LES·CODES'];
+---
+
+<section aria-hidden="true" class="bg-coach-lime text-coach-noir overflow-hidden border-y-4 border-coach-noir">
+  <div class="marquee-track flex gap-8 py-4 whitespace-nowrap font-big-shoulders font-black text-3xl md:text-5xl uppercase tracking-tight italic" style="font-style: italic;">
+    {[0,1,2,3].map(() => (
+      <span class="flex shrink-0 gap-8 items-center">
+        {mots.map((m) => (
+          <>
+            <span>{m}</span>
+            <span class="text-coach-noir/60">/</span>
+          </>
+        ))}
+      </span>
+    ))}
+  </div>
+</section>
+
+<style>
+  .marquee-track {
+    animation: coach-marquee 36s linear infinite;
+    will-change: transform;
+  }
+  @keyframes coach-marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-25%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track { animation: none; }
+  }
+</style>
