@@ -47,7 +47,7 @@ import data from '../../../data/templates/notaire.json';
     </div>
 
     <div class="pt-6 border-t flex flex-col md:flex-row items-start md:items-center justify-between gap-3 font-inter text-[11px]" style="border-color: rgb(162 139 92 / 0.3); color: rgb(245 241 235 / 0.55);">
-      <p>© {data.info.annee}–2026 {data.info.nom} · SIRET {data.info.siret} · Chambre des notaires de La Réunion</p>
+      <p>© {data.info.annee}–2026 {data.info.nom} · SIRET …{data.info.siret.slice(-5)} · Chambre des notaires de La Réunion</p>
       <p class="font-cormorant italic text-base" style="color: #A28B5C;">— L'acte qui sécurise.</p>
     </div>
   </div>

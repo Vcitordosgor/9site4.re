@@ -58,6 +58,6 @@ const currentYear = new Date().getFullYear();
 
   <div class="max-w-content mx-auto mt-10 pt-6 border-t border-plongee-ecume/10 flex flex-wrap justify-between gap-3 font-jetbrains text-[10px] uppercase tracking-[0.22em] text-plongee-ecume/45">
     <span>© {currentYear} {data.info.nom}</span>
-    <span>SIRET {data.info.siret}</span>
+    <span>SIRET …{data.info.siret.slice(-5)}</span>
   </div>
 </footer>

@@ -45,7 +45,7 @@ const year = new Date().getFullYear();
     <div class="h-px bg-coach-blanc/10 mb-6"></div>
 
     <div class="flex flex-col-reverse md:flex-row md:items-center md:justify-between gap-3 font-jetbrains text-[10px] uppercase tracking-widest text-coach-blanc/40">
-      <p>© {year} {data.info.nom} · SIRET {data.info.siret}</p>
+      <p>© {year} {data.info.nom} · SIRET …{data.info.siret.slice(-5)}</p>
       <p>
         Site créé par
         <a href="/" class="text-coach-blanc/70 hover:text-coach-lime transition-colors">9site4</a>

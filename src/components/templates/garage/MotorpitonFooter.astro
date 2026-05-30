@@ -21,7 +21,7 @@ import data from '../../../data/templates/motorpiton.json';
           <span class="font-bebas text-piton-blanc text-3xl tracking-[0.05em]">MOTOR<span class="text-piton-feu">PITON</span></span>
         </div>
         <p class="mt-5 font-inter-tight text-piton-beton/75 text-[14px] leading-relaxed max-w-sm">
-          {data.info.tagline} — Garage mécanique multimarque au La Réunion depuis {data.info.annee}.
+          {data.info.tagline} — Garage mécanique multimarque à La Réunion depuis {data.info.annee}.
         </p>
       </div>
 
@@ -47,7 +47,7 @@ import data from '../../../data/templates/motorpiton.json';
     </div>
 
     <div class="pt-6 border-t border-piton-fonte/40 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 font-jetbrains text-[10.5px] uppercase tracking-[0.15em] text-piton-beton/60">
-      <p>© {data.info.annee}–2026 {data.info.nom} · SIRET {data.info.siret}</p>
+      <p>© {data.info.annee}–2026 {data.info.nom} · SIRET …{data.info.siret.slice(-5)}</p>
       <p class="text-piton-feu font-bebas text-base tracking-[0.08em]">▸ MÉCANIQUE HONNÊTE, DEVIS SANS DÉTOUR ▸</p>
     </div>
   </div>

@@ -37,7 +37,7 @@ const year = new Date().getFullYear();
     </p>
 
     <div class="flex flex-col-reverse md:flex-row md:items-center md:justify-between gap-3 font-geist-mono text-[10px] uppercase tracking-[0.22em] text-boost-route/45">
-      <p>© {year} {data.info.nom} · SIRET {data.info.siret}</p>
+      <p>© {year} {data.info.nom} · SIRET …{data.info.siret.slice(-5)}</p>
       <p>
         ▸ Site
         <a href="/" class="text-boost-jaune hover:text-boost-route transition-colors">9site4</a>
