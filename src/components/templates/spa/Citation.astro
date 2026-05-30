@@ -1,0 +1,29 @@
+---
+import data from '../../../data/templates/spa.json';
+---
+
+<section class="bg-spa-cacao text-spa-creme py-28 md:py-40 px-6 md:px-10 relative overflow-hidden">
+  <svg viewBox="0 0 800 200" class="absolute inset-x-0 bottom-0 w-full opacity-[0.08] pointer-events-none" aria-hidden="true">
+    <g fill="none" stroke="#C67B5C" stroke-width="0.8">
+      <path d="M0 100 Q200 60 400 100 T800 100" />
+      <path d="M0 130 Q200 90 400 130 T800 130" />
+      <path d="M0 160 Q200 120 400 160 T800 160" />
+    </g>
+  </svg>
+  <div class="max-w-4xl mx-auto relative text-center">
+    <p class="font-raleway text-[10px] uppercase tracking-[0.4em] text-spa-terracotta mb-10">
+      — souffle —
+    </p>
+    <blockquote class="font-lora italic text-spa-creme leading-[1.18]" style="font-size:clamp(28px,5vw,56px);">
+      Le geste s'apprend, le silence s'invite. Ici on ne fait pas plus — on fait juste.
+    </blockquote>
+    <div class="mt-12 flex items-center justify-center gap-4" aria-hidden="true">
+      <span class="block w-12 h-px bg-spa-terracotta"></span>
+      <span class="font-lora italic text-spa-terracotta text-xl">E.</span>
+      <span class="block w-12 h-px bg-spa-terracotta"></span>
+    </div>
+    <p class="mt-6 font-raleway text-[11px] uppercase tracking-[0.32em] text-spa-rose">
+      Elio spa · depuis {data.info.annee}
+    </p>
+  </div>
+</section>

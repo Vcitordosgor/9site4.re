@@ -1,0 +1,25 @@
+---
+import data from '../../../data/templates/salon.json';
+---
+
+<section class="bg-salon-noir text-salon-creme py-28 md:py-40 px-6 md:px-10 relative overflow-hidden">
+  <div class="absolute top-10 left-10 right-10 h-px bg-salon-vert-clair/50" aria-hidden="true"></div>
+  <div class="absolute bottom-10 left-10 right-10 h-px bg-salon-vert-clair/50" aria-hidden="true"></div>
+
+  <div class="max-w-4xl mx-auto relative text-center">
+    <p class="font-dm-sans text-[10px] uppercase tracking-[0.4em] text-salon-vert-clair mb-10">
+      — credo —
+    </p>
+    <blockquote class="font-fraunces italic text-salon-creme leading-[1.12]" style="font-size:clamp(28px,5vw,56px);">
+      Une coupe juste, c'est lire un visage avant de toucher aux ciseaux.
+    </blockquote>
+    <div class="mt-12 flex items-center justify-center gap-4" aria-hidden="true">
+      <span class="block w-14 h-px bg-salon-vert-clair"></span>
+      <span class="font-fraunces italic text-salon-vert-clair text-xl">M&amp;D</span>
+      <span class="block w-14 h-px bg-salon-vert-clair"></span>
+    </div>
+    <p class="mt-6 font-dm-sans text-[11px] uppercase tracking-[0.32em] text-salon-vert-clair">
+      Meg &amp; Dan · duo coiffeurs · depuis {data.info.annee}
+    </p>
+  </div>
+</section>

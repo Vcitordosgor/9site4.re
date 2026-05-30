@@ -1,0 +1,29 @@
+---
+import data from '../../../data/templates/vermeille.json';
+---
+
+<section class="bg-vermeille-velours text-vermeille-ivoire py-28 md:py-40 px-6 md:px-10 relative overflow-hidden">
+  <svg viewBox="0 0 800 400" class="absolute inset-0 w-full h-full opacity-[0.06] pointer-events-none" aria-hidden="true">
+    <g fill="none" stroke="#B8956A" stroke-width="0.6">
+      <path d="M0 200 Q200 100 400 200 T800 200" />
+      <path d="M0 230 Q200 130 400 230 T800 230" />
+      <path d="M0 260 Q200 160 400 260 T800 260" />
+    </g>
+  </svg>
+  <div class="max-w-4xl mx-auto relative text-center">
+    <p class="font-inter-tight text-[10px] uppercase tracking-[0.42em] text-vermeille-or mb-10">
+      — rideau —
+    </p>
+    <blockquote class="font-italiana text-vermeille-ivoire leading-[1.1]" style="font-size:clamp(28px,5vw,56px);">
+      « Danser, ce n'est pas remplir l'espace — c'est habiter le silence entre deux mesures. »
+    </blockquote>
+    <div class="mt-12 flex items-center justify-center gap-4" aria-hidden="true">
+      <span class="block w-16 h-px bg-vermeille-or"></span>
+      <span class="font-caveat text-vermeille-or text-2xl">V.</span>
+      <span class="block w-16 h-px bg-vermeille-or"></span>
+    </div>
+    <p class="mt-6 font-inter-tight text-[11px] uppercase tracking-[0.32em] text-vermeille-rose">
+      {data.info.fondatrice} · directrice · saison {data.info.saison}
+    </p>
+  </div>
+</section>

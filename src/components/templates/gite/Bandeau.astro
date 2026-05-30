@@ -1,0 +1,21 @@
+---
+import data from '../../../data/templates/cap-anglais.json';
+---
+
+<section aria-label="Réservation rapide" class="bg-cap-mousse text-cap-papier py-6 md:py-7">
+  <div class="max-w-content mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-8">
+    <div class="flex items-center gap-3">
+      <span class="font-jetbrains text-[10px] uppercase tracking-[0.32em] text-cap-papier/85">§ Réservation</span>
+      <span class="font-bricolage font-semibold text-cap-papier text-lg md:text-xl">Réponse sous 24h</span>
+    </div>
+    <p class="font-crimson-pro italic text-cap-papier/95 text-base md:text-lg text-center">
+      Animaux acceptés · Wi-Fi commun · Cheminée &amp; bois fournis
+    </p>
+    <a
+      href={`tel:${data.info.telephoneHref}`}
+      class="inline-flex items-center justify-center h-11 px-6 bg-cap-rouge text-cap-papier font-bricolage font-semibold text-sm hover:bg-cap-charbon transition-colors tabular-nums"
+    >
+      {data.info.telephone}
+    </a>
+  </div>
+</section>

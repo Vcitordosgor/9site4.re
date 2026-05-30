@@ -16,6 +16,9 @@ import vermeilleData from '../../data/templates/vermeille.json';
 import VermeilleHeader from '../../components/templates/danse/VermeilleHeader.astro';
 import HeroRideau from '../../components/templates/danse/HeroRideau.astro';
 import Disciplines from '../../components/templates/danse/Disciplines.astro';
+import PhotoStudio from '../../components/templates/danse/PhotoStudio.astro';
+import Bandeau from '../../components/templates/danse/Bandeau.astro';
+import Citation from '../../components/templates/danse/Citation.astro';
 import Stats from '../../components/templates/danse/Stats.astro';
 import Professeurs from '../../components/templates/danse/Professeurs.astro';
 import Spectacles from '../../components/templates/danse/Spectacles.astro';
@@ -45,8 +48,11 @@ const businessLD = localBusinessSchema(vermeilleData);
   <main id="top" class="bg-vermeille-ivoire text-vermeille-velours font-inter-tight">
     <HeroRideau />
     <Disciplines />
+    <PhotoStudio />
     <Stats />
+    <Bandeau />
     <Professeurs />
+    <Citation />
     <Spectacles />
     <Studio />
     <Inscription />

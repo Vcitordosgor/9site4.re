@@ -1,0 +1,29 @@
+---
+import data from '../../../data/templates/souffle.json';
+---
+
+<section class="bg-yoga-encre text-yoga-creme py-28 md:py-40 px-6 md:px-10 relative overflow-hidden">
+  <svg viewBox="0 0 600 200" class="absolute inset-x-0 top-0 w-full opacity-[0.08] pointer-events-none" aria-hidden="true">
+    <g fill="none" stroke="#C9885E" stroke-width="0.6" stroke-linecap="round">
+      <path d="M0 100 Q150 50 300 100 T600 100" />
+      <path d="M0 130 Q150 80 300 130 T600 130" />
+      <path d="M0 160 Q150 110 300 160 T600 160" />
+    </g>
+  </svg>
+  <div class="max-w-4xl mx-auto relative text-center">
+    <p class="font-lexend text-[10px] uppercase tracking-[0.42em] text-yoga-ocre mb-10">
+      — souffle —
+    </p>
+    <blockquote class="font-dm-serif italic text-yoga-creme leading-[1.12]" style="font-size:clamp(28px,5vw,56px);">
+      Pas un cours de plus. Un moment, posé là, où l'on n'attend rien de soi.
+    </blockquote>
+    <div class="mt-12 flex items-center justify-center gap-4" aria-hidden="true">
+      <span class="block w-12 h-px bg-yoga-ocre"></span>
+      <span class="font-dm-serif italic text-yoga-ocre text-xl">A.</span>
+      <span class="block w-12 h-px bg-yoga-ocre"></span>
+    </div>
+    <p class="mt-6 font-lexend text-[11px] uppercase tracking-[0.32em] text-yoga-pierre">
+      {data.info.fondatrice} · enseignante · depuis {data.info.annee}
+    </p>
+  </div>
+</section>

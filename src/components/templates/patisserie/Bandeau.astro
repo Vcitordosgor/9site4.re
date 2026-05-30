@@ -1,0 +1,21 @@
+---
+import data from '../../../data/templates/vanille.json';
+---
+
+<section aria-label="Information boutique" class="bg-vanille-caramel text-vanille-creme py-6 md:py-7">
+  <div class="max-w-content mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-8">
+    <div class="flex items-center gap-3">
+      <span class="font-italianno text-3xl md:text-4xl leading-none text-vanille-creme">Commandes 24h</span>
+      <span class="font-karla text-[10px] md:text-[11px] uppercase tracking-[0.3em] text-vanille-creme/85 hidden md:inline">— anticipez vos évènements</span>
+    </div>
+    <p class="font-karla text-[12px] md:text-[13px] uppercase tracking-[0.2em] text-vanille-creme/90 text-center">
+      Mariages · Communions · Pièces montées · Plateaux pro
+    </p>
+    <a
+      href={`tel:${data.info.telephoneHref}`}
+      class="inline-flex items-center justify-center h-11 px-6 bg-vanille-grain text-vanille-creme font-karla font-semibold text-[11.5px] uppercase tracking-[0.18em] rounded-full hover:bg-vanille-gousse transition-colors"
+    >
+      0692 12 34 56
+    </a>
+  </div>
+</section>
