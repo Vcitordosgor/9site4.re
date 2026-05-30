@@ -1,0 +1,52 @@
+---
+/**
+ * Marquee — bandeau défilant infini de mots-clés métier.
+ * Pure CSS, deux pistes pour effet continu.
+ */
+const mots = [
+  'Tableau électrique',
+  'Disjoncteur',
+  'NF C 15-100',
+  'Borne IRVE',
+  'Domotique',
+  'Mise à la terre',
+  'Câblage',
+  'Éclairage LED',
+  'Variateur',
+  'Différentiel',
+  'Bâtiment tertiaire',
+  'Villa neuve',
+];
+---
+
+<section aria-hidden="true" class="relative bg-volta-noir border-y border-volta-cyan/20 overflow-hidden">
+  <div class="volta-marquee flex items-center gap-12 py-7 whitespace-nowrap">
+    <div class="volta-marquee-track flex items-center gap-12 shrink-0">
+      {mots.map((m) => (
+        <span class="inline-flex items-center gap-12 font-syne font-medium uppercase tracking-[0.18em] text-volta-fumee/60" style="font-size: clamp(18px, 1.6vw, 22px);">
+          {m}
+          <span class="text-volta-cyan" aria-hidden="true">/</span>
+        </span>
+      ))}
+    </div>
+    <div class="volta-marquee-track flex items-center gap-12 shrink-0">
+      {mots.map((m) => (
+        <span class="inline-flex items-center gap-12 font-syne font-medium uppercase tracking-[0.18em] text-volta-fumee/60" style="font-size: clamp(18px, 1.6vw, 22px);">
+          {m}
+          <span class="text-volta-cyan" aria-hidden="true">/</span>
+        </span>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .volta-marquee-track { animation: volta-marquee-scroll 38s linear infinite; }
+  @keyframes volta-marquee-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-100%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .volta-marquee-track { animation: none; }
+  }
+</style>

@@ -18,12 +18,16 @@ import voltaData from '../../data/templates/volta.json';
 import VoltaHeader from '../../components/templates/electricien/VoltaHeader.astro';
 import HeroVolta from '../../components/templates/electricien/HeroVolta.astro';
 import Services from '../../components/templates/electricien/Services.astro';
+import Numbers from '../../components/templates/electricien/Numbers.astro';
 import Urgence from '../../components/templates/electricien/Urgence.astro';
 import Process from '../../components/templates/electricien/Process.astro';
 import Citation from '../../components/templates/electricien/Citation.astro';
 import Galerie from '../../components/templates/electricien/Galerie.astro';
+import Marquee from '../../components/templates/electricien/Marquee.astro';
+import Certifications from '../../components/templates/electricien/Certifications.astro';
 import Avis from '../../components/templates/electricien/Avis.astro';
 import Bandeau from '../../components/templates/electricien/Bandeau.astro';
+import Faq from '../../components/templates/electricien/Faq.astro';
 import Devis from '../../components/templates/electricien/Devis.astro';
 import Trouver from '../../components/templates/electricien/Trouver.astro';
 import CTAFinal from '../../components/templates/electricien/CTAFinal.astro';
@@ -49,13 +53,17 @@ const businessLD = localBusinessSchema(voltaData);
 
   <main id="top" class="bg-volta-noir text-volta-fumee font-space-grotesk">
     <HeroVolta />
+    <Numbers />
     <Services />
     <Urgence />
     <Process />
     <Citation />
     <Galerie />
+    <Marquee />
+    <Certifications />
     <Avis />
     <Bandeau />
+    <Faq />
     <Devis />
     <Trouver />
     <CTAFinal />

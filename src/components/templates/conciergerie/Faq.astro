@@ -1,0 +1,77 @@
+---
+/**
+ * Faq — questions clients conciergerie.
+ * Sobre, élégant, filets laiton.
+ */
+const faq = [
+  {
+    q: 'Quel pourcentage prélevez-vous sur les locations ?',
+    r: 'Notre commission est de 20 % du loyer net perçu, tout inclus : accueil voyageurs, ménage entre séjours, gestion plateformes, blanchisserie, dépannage. Aucun frais caché, facturation mensuelle détaillée.',
+  },
+  {
+    q: 'Vous occupez-vous de l\'optimisation des tarifs ?',
+    r: 'Oui. Nous suivons quotidiennement les prix de marché, événements locaux et saisonnalité pour ajuster vos tarifs. Vous gardez toujours le contrôle final via un tableau de bord en ligne.',
+  },
+  {
+    q: 'Que faites-vous en cas de dégradation ?',
+    r: 'Constat photo et écrit dans les 24 h, mise en cause via la caution Airbnb/Booking ou notre assurance partenaire. Réparation coordonnée par nos artisans dans la semaine, vous êtes tenu informé à chaque étape.',
+  },
+  {
+    q: 'Et si je veux occuper mon bien moi-même ?',
+    r: 'Bien sûr — bloquez les dates depuis votre espace, jusqu\'à 24 h avant l\'arrivée. Vous trouvez le logement propre, draps frais, panier de bienvenue offert si vous prévenez 48 h à l\'avance.',
+  },
+  {
+    q: 'Vos voyageurs sont-ils filtrés ?',
+    r: 'Nous validons chaque réservation manuellement : profil, motif du séjour, nombre exact d\'occupants. Nous refusons sans hésiter les profils douteux. Le calme du voisinage est non négociable.',
+  },
+];
+---
+
+<section id="faq" class="relative bg-concierge-champagne py-20 md:py-28 px-6 md:px-10">
+  <div class="max-w-3xl mx-auto">
+
+    <header class="text-center mb-12 md:mb-14">
+      <span class="scroll-reveal inline-block w-12 h-px bg-concierge-laiton" aria-hidden="true"></span>
+      <p class="scroll-reveal mt-4 text-xs font-hubot uppercase tracking-[0.4em] text-concierge-laiton">
+        Questions fréquentes
+      </p>
+      <h2 class="scroll-reveal mt-5 font-volkhov text-concierge-nuit leading-[1.1]" style="font-size: clamp(32px, 4.2vw, 48px);">
+        Ce que les propriétaires<br/>
+        <span class="italic text-concierge-laiton">nous demandent d'abord.</span>
+      </h2>
+    </header>
+
+    <ul class="divide-y divide-concierge-nuit/15 border-y border-concierge-nuit/15">
+      {faq.map((item, i) => (
+        <li class="scroll-reveal" style={`transition-delay: ${i * 50}ms`}>
+          <details class="group concierge-faq">
+            <summary class="flex items-start justify-between gap-6 py-7 cursor-pointer list-none">
+              <span class="font-volkhov text-concierge-nuit leading-snug" style="font-size: clamp(18px, 1.8vw, 22px);">
+                {item.q}
+              </span>
+              <span class="shrink-0 mt-1 inline-flex items-center justify-center w-9 h-9 border border-concierge-laiton/50 text-concierge-laiton transition-transform duration-300 group-open:rotate-45" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"/>
+                  <line x1="5" y1="12" x2="19" y2="12"/>
+                </svg>
+              </span>
+            </summary>
+            <div class="pb-8 pr-14">
+              <p class="font-hubot text-concierge-graphite leading-[1.7]" style="font-size: 15px;">
+                {item.r}
+              </p>
+            </div>
+          </details>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .concierge-faq summary::-webkit-details-marker { display: none; }
+  .concierge-faq summary:focus-visible {
+    outline: 2px solid rgb(184 151 88);
+    outline-offset: 4px;
+  }
+</style>

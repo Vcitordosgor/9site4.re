@@ -1,0 +1,65 @@
+---
+/**
+ * Numbers — chiffres clés électricien en typo Syne géante.
+ * Compte tabulaire, asymétrique, jaune cyan d'accent.
+ */
+const stats = [
+  { value: '10', unit: 'ans', label: 'Volta au La Réunion' },
+  { value: '450+', unit: 'chantiers', label: 'Villas, appartements et locaux' },
+  { value: '2h', unit: 'urgence', label: 'Délai moyen sur l\'Est' },
+  { value: '0', unit: 'sinistre', label: 'En 10 ans d\'activité' },
+];
+---
+
+<section class="relative bg-volta-acier text-volta-fumee py-20 md:py-28 px-6 md:px-10 overflow-hidden">
+  <div class="pointer-events-none absolute inset-0 opacity-[0.07]" aria-hidden="true"
+       style="background-image: linear-gradient(to right, rgb(6 212 245 / 0.3) 1px, transparent 1px), linear-gradient(to bottom, rgb(6 212 245 / 0.3) 1px, transparent 1px); background-size: 48px 48px;">
+  </div>
+
+  <div class="relative max-w-content mx-auto">
+    <header class="mb-12 md:mb-16">
+      <p class="scroll-reveal inline-flex items-center gap-3 text-[11px] sm:text-xs font-space-grotesk font-semibold uppercase tracking-[0.32em] text-volta-cyan">
+        <span class="block w-8 h-px bg-volta-cyan" aria-hidden="true"></span>
+        <span>Mesures concrètes</span>
+      </p>
+      <h2 class="scroll-reveal mt-4 font-syne font-bold text-volta-blanc leading-[0.95] tracking-tight max-w-3xl" style="font-size: clamp(36px, 5vw, 64px);">
+        Dix ans sous tension,<br/>
+        <span class="text-volta-cyan">aucun court-circuit.</span>
+      </h2>
+    </header>
+
+    <ul class="grid grid-cols-2 lg:grid-cols-12 gap-x-6 gap-y-12">
+      <li class="scroll-reveal lg:col-span-4">
+        <span class="block font-syne font-bold text-volta-blanc leading-[0.82] tracking-tighter tabular-nums" style="font-size: clamp(70px, 12vw, 160px);">
+          {stats[0].value}
+        </span>
+        <span class="mt-3 block font-space-grotesk uppercase tracking-[0.28em] text-volta-cyan text-[11px]">{stats[0].unit}</span>
+        <p class="mt-2 font-space-grotesk text-volta-fumee/70 leading-snug" style="font-size: 14.5px;">{stats[0].label}</p>
+      </li>
+
+      <li class="scroll-reveal lg:col-span-5 lg:col-start-6 lg:translate-y-8" style="transition-delay: 80ms">
+        <span class="block font-syne font-bold text-volta-cyan leading-[0.82] tracking-tighter tabular-nums" style="font-size: clamp(60px, 10vw, 140px);">
+          {stats[1].value}
+        </span>
+        <span class="mt-3 block font-space-grotesk uppercase tracking-[0.28em] text-volta-fumee/60 text-[11px]">{stats[1].unit}</span>
+        <p class="mt-2 font-space-grotesk text-volta-fumee/70 leading-snug" style="font-size: 14.5px;">{stats[1].label}</p>
+      </li>
+
+      <li class="scroll-reveal lg:col-span-3 lg:col-start-2" style="transition-delay: 160ms">
+        <span class="block font-syne font-bold text-volta-blanc leading-[0.82] tracking-tighter tabular-nums" style="font-size: clamp(56px, 9vw, 120px);">
+          {stats[2].value}
+        </span>
+        <span class="mt-3 block font-space-grotesk uppercase tracking-[0.28em] text-volta-cyan text-[11px]">{stats[2].unit}</span>
+        <p class="mt-2 font-space-grotesk text-volta-fumee/70 leading-snug" style="font-size: 14.5px;">{stats[2].label}</p>
+      </li>
+
+      <li class="scroll-reveal lg:col-span-6 lg:col-start-7" style="transition-delay: 240ms">
+        <span class="block font-syne font-bold text-volta-cyan leading-[0.82] tracking-tighter tabular-nums" style="font-size: clamp(70px, 12vw, 160px);">
+          {stats[3].value}
+        </span>
+        <span class="mt-3 block font-space-grotesk uppercase tracking-[0.28em] text-volta-fumee/60 text-[11px]">{stats[3].unit}</span>
+        <p class="mt-2 font-space-grotesk text-volta-fumee/70 leading-snug" style="font-size: 14.5px;">{stats[3].label}</p>
+      </li>
+    </ul>
+  </div>
+</section>

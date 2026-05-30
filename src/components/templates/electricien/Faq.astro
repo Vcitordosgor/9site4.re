@@ -1,0 +1,79 @@
+---
+/**
+ * Faq — 6 questions/réponses sobres en accordion HTML natif (details/summary).
+ * Pas de JS, focus AAA, animations CSS.
+ */
+const faq = [
+  {
+    q: 'Vous intervenez sous quel délai ?',
+    r: 'Pour une urgence (panne totale, fumée, étincelles), on est chez vous sous 2h dans tout l\'Est de l\'île. Pour une installation programmée, devis sous 48h et démarrage sous 7 à 10 jours.',
+  },
+  {
+    q: 'Le devis est-il vraiment gratuit ?',
+    r: 'Oui. Visite sur place, mesures, étude technique, chiffrage détaillé : tout est offert. Aucun engagement, vous comparez si vous voulez.',
+  },
+  {
+    q: 'Mon installation est de 1985, faut-il tout refaire ?',
+    r: 'Pas forcément. On commence par un diagnostic NF C 15-100 (60 €), qui liste les points non conformes. Beaucoup d\'installations peuvent être mises aux normes par étapes, en commençant par le tableau et la mise à la terre.',
+  },
+  {
+    q: 'Vous installez les bornes IRVE pour voiture électrique ?',
+    r: 'Oui — Volta est certifié IRVE niveau 1 et 2. On pose des bornes de 3,7 à 22 kW, marque libre, avec étude de puissance préalable et déclaration ENEDIS.',
+  },
+  {
+    q: 'Travaillez-vous le week-end ?',
+    r: 'Le samedi matin, oui (8h-12h) pour les chantiers en cours et les urgences. Le dimanche, uniquement urgences avec majoration de 50 %. On évite, mais on est là quand c\'est nécessaire.',
+  },
+  {
+    q: 'Acceptez-vous les paiements en plusieurs fois ?',
+    r: 'Sur les chantiers supérieurs à 1500 €, oui : 30 % à la signature, 40 % à mi-chantier, solde à la réception. Pas de frais, juste un échéancier écrit.',
+  },
+];
+---
+
+<section id="faq" class="relative bg-volta-noir text-volta-fumee py-20 md:py-28 px-6 md:px-10">
+  <div class="max-w-4xl mx-auto">
+
+    <header class="mb-12 md:mb-14">
+      <p class="scroll-reveal text-[11px] sm:text-xs font-space-grotesk font-semibold uppercase tracking-[0.32em] text-volta-cyan">
+        Questions fréquentes
+      </p>
+      <h2 class="scroll-reveal mt-4 font-syne font-bold text-volta-blanc leading-[0.95] tracking-tight" style="font-size: clamp(36px, 5vw, 60px);">
+        Tout ce qu'on vous<br/>répond au téléphone.
+      </h2>
+    </header>
+
+    <ul class="divide-y divide-volta-fumee/15 border-t border-b border-volta-fumee/15">
+      {faq.map((item, i) => (
+        <li class="scroll-reveal" style={`transition-delay: ${i * 50}ms`}>
+          <details class="group volta-faq">
+            <summary class="flex items-start justify-between gap-6 py-6 cursor-pointer list-none hover:text-volta-cyan transition-colors">
+              <span class="font-syne font-medium text-volta-blanc group-hover:text-volta-cyan transition-colors leading-snug" style="font-size: clamp(18px, 1.8vw, 22px);">
+                {item.q}
+              </span>
+              <span class="shrink-0 inline-flex items-center justify-center w-9 h-9 rounded-full border border-volta-fumee/30 text-volta-cyan transition-transform duration-300 group-open:rotate-45" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"/>
+                  <line x1="5" y1="12" x2="19" y2="12"/>
+                </svg>
+              </span>
+            </summary>
+            <div class="pb-7 pr-14">
+              <p class="font-space-grotesk text-volta-fumee/75 leading-[1.7]" style="font-size: 15.5px;">
+                {item.r}
+              </p>
+            </div>
+          </details>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .volta-faq summary::-webkit-details-marker { display: none; }
+  .volta-faq summary:focus-visible {
+    outline: 2px solid rgb(6 212 245);
+    outline-offset: 4px;
+  }
+</style>

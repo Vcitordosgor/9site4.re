@@ -1,0 +1,74 @@
+---
+/**
+ * Faq — questions randonneurs avant une excursion guidée.
+ */
+const faq = [
+  {
+    q: 'Quel niveau physique faut-il avoir ?',
+    r: 'Cela dépend de la sortie. Une balade contemplative (3 h, 200 m de dénivelé) convient à toute personne marchant régulièrement. Une grande course (8 h, 1500 m+) demande une pratique régulière de la marche en montagne. Chaque sortie est cotée 1 à 5, vous choisissez en connaissance.',
+  },
+  {
+    q: 'Que faut-il prendre dans son sac ?',
+    r: 'De l\'eau (1,5 L minimum), un en-cas salé et sucré, un coupe-vent imperméable, une polaire pour les hauts, une lampe frontale pour les départs avant l\'aube, de la crème solaire et un chapeau. Liste détaillée envoyée trois jours avant le départ.',
+  },
+  {
+    q: 'Vous annulez en cas de mauvais temps ?',
+    r: 'Toujours, sans hésiter. La sécurité prime sur l\'envie. Vous êtes prévenu la veille au soir au plus tard. Reportée à une date au choix, ou remboursée intégralement si aucune date ne convient.',
+  },
+  {
+    q: 'Petit groupe ou grand groupe ?',
+    r: 'Petits groupes uniquement : 4 à 8 personnes maximum selon la sortie. La rencontre prime sur le rendement. Au-delà, c\'est une autre activité.',
+  },
+  {
+    q: 'Êtes-vous assuré pour cette activité ?',
+    r: 'Oui — assurance professionnelle Allianz Pro spécifique encadrement randonnée et canyoning, couvrant pratiquants et tiers. Diplôme d\'État JEPS Spécialité Activités de Marche, en cours de validité. Attestations sur demande.',
+  },
+];
+---
+
+<section id="faq" class="relative bg-sentiers-brume text-sentiers-noir py-20 md:py-28 px-6 md:px-10">
+  <div class="max-w-3xl mx-auto">
+
+    <header class="mb-12 md:mb-14">
+      <p class="scroll-reveal font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-sentiers-terre">
+        Avant le départ
+      </p>
+      <h2 class="scroll-reveal mt-4 font-tinos text-sentiers-noir leading-[1.05]" style="font-size: clamp(32px, 4.2vw, 48px);">
+        Vos questions,<br/>
+        <span class="italic text-sentiers-lichen">avant qu'on chausse les bottes.</span>
+      </h2>
+    </header>
+
+    <ul class="border-y-2 border-sentiers-foret/20">
+      {faq.map((item, i) => (
+        <li class:list={["scroll-reveal", i > 0 ? 'border-t border-sentiers-foret/15' : '']} style={`transition-delay: ${i * 50}ms`}>
+          <details class="group sentiers-faq">
+            <summary class="flex items-start justify-between gap-6 py-6 cursor-pointer list-none">
+              <span class="font-tinos italic text-sentiers-noir leading-snug" style="font-size: clamp(19px, 1.9vw, 23px);">
+                {item.q}
+              </span>
+              <span class="shrink-0 mt-1 inline-flex items-center justify-center w-9 h-9 rounded-full border border-sentiers-foret/30 text-sentiers-lichen transition-transform duration-300 group-open:rotate-180" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"/>
+                </svg>
+              </span>
+            </summary>
+            <div class="pb-7 pr-14">
+              <p class="font-familjen text-sentiers-noir/75 leading-[1.7]" style="font-size: 15px;">
+                {item.r}
+              </p>
+            </div>
+          </details>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .sentiers-faq summary::-webkit-details-marker { display: none; }
+  .sentiers-faq summary:focus-visible {
+    outline: 2px solid rgb(184 90 61);
+    outline-offset: 4px;
+  }
+</style>

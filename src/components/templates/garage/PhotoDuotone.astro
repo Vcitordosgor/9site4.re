@@ -1,0 +1,33 @@
+---
+/**
+ * PhotoDuotone — image fine plein cadre avec filtre duotone orange/noir.
+ * Effet poster industriel, message court superposé.
+ */
+---
+
+<section aria-hidden="false" class="relative w-full overflow-hidden bg-piton-asphalte">
+  <div class="relative w-full aspect-[21/9] sm:aspect-[32/9]">
+    <img
+      src="https://images.unsplash.com/photo-1632823469850-1b7b1e8b7eb2?w=1800&q=80"
+      alt="Vue d'un atelier mécanique, voiture sur pont élévateur"
+      loading="lazy"
+      decoding="async"
+      class="absolute inset-0 w-full h-full object-cover"
+      style="filter: grayscale(100%) contrast(110%);"
+    />
+    <div class="absolute inset-0 mix-blend-multiply" aria-hidden="true" style="background: rgb(255 90 31);"></div>
+    <div class="absolute inset-0 mix-blend-screen" aria-hidden="true" style="background: rgb(15 16 20 / 0.55);"></div>
+
+    <div class="absolute inset-0 flex items-center justify-center px-6 text-center">
+      <div class="scroll-reveal max-w-2xl">
+        <p class="font-jetbrains-mono text-[10px] sm:text-xs uppercase tracking-[0.4em] text-piton-acide">
+          Atelier · La Réunion
+        </p>
+        <p class="mt-4 font-bebas uppercase text-piton-blanc leading-[0.95] tracking-tight" style="font-size: clamp(36px, 6vw, 80px);">
+          La voiture monte.<br/>
+          Le diagnostic suit.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

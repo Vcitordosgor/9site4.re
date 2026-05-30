@@ -1,0 +1,77 @@
+---
+/**
+ * Faq — questions fréquentes garage, accordion natif sobre.
+ */
+const faq = [
+  {
+    q: 'Vous prenez sans rendez-vous ?',
+    r: 'Oui pour les pannes immédiates et le contrôle visuel rapide. Pour une intervention plannifiée (vidange, freinage, embrayage), on préfère un RDV pour mobiliser le pont au bon moment.',
+  },
+  {
+    q: 'Vous travaillez sur quelles marques ?',
+    r: 'Toutes marques essence, diesel et hybride. On a la valise multimarque Bosch KTS. Pour Tesla et certaines hybrides récentes complexes, on oriente vers un atelier spécialisé.',
+  },
+  {
+    q: 'Pourquoi le devis avant intervention ?',
+    r: 'Parce qu\'on refuse de surprendre. Le devis liste les pièces, la durée et le coût. Vous validez par signature ou SMS. Si on découvre une casse cachée pendant le travail, on s\'arrête et on vous appelle avant.',
+  },
+  {
+    q: 'Garantie sur les réparations ?',
+    r: '12 mois pièces et main d\'œuvre sur tout ce qui sort de l\'atelier. La garantie constructeur des pièces est conservée. On vous remet l\'attestation avec la facture.',
+  },
+  {
+    q: 'Et si je n\'ai pas de quoi avancer ?',
+    r: 'Sur les chantiers supérieurs à 800 €, paiement en 3 fois sans frais via SumUp. Échéancier écrit. On accepte aussi les cartes bancaires et les chèques.',
+  },
+  {
+    q: 'Le véhicule de prêt, c\'est possible ?',
+    r: 'Oui sur les chantiers immobilisant plus de 24 h : une Clio ou une 208 vous est prêtée gratuitement (assurance comprise). Sur réservation à l\'avance.',
+  },
+];
+---
+
+<section id="faq" class="relative bg-piton-beton text-piton-asphalte py-20 md:py-28 px-6 md:px-10">
+  <div class="max-w-4xl mx-auto">
+
+    <header class="mb-12 md:mb-14">
+      <p class="scroll-reveal font-jetbrains-mono text-[11px] uppercase tracking-[0.32em] text-piton-feu">
+        FAQ · vos questions
+      </p>
+      <h2 class="scroll-reveal mt-4 font-bebas uppercase text-piton-asphalte leading-[0.95] tracking-tight" style="font-size: clamp(36px, 5vw, 60px);">
+        Ce qu'on nous demande<br/><span class="text-piton-feu">le plus souvent.</span>
+      </h2>
+    </header>
+
+    <ul class="border-y-2 border-piton-asphalte/15">
+      {faq.map((item, i) => (
+        <li class:list={["scroll-reveal", i > 0 ? 'border-t border-piton-asphalte/15' : '']} style={`transition-delay: ${i * 50}ms`}>
+          <details class="group piton-faq">
+            <summary class="flex items-start justify-between gap-6 py-6 cursor-pointer list-none">
+              <span class="font-bebas uppercase text-piton-asphalte leading-tight tracking-wide group-hover:text-piton-feu transition-colors" style="font-size: clamp(20px, 2vw, 26px);">
+                {item.q}
+              </span>
+              <span class="shrink-0 inline-flex items-center justify-center w-10 h-10 border-2 border-piton-asphalte text-piton-asphalte transition-all duration-300 group-open:bg-piton-feu group-open:border-piton-feu group-open:text-piton-blanc group-open:rotate-180" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"/>
+                </svg>
+              </span>
+            </summary>
+            <div class="pb-7 pr-14">
+              <p class="font-inter-tight text-piton-asphalte/75 leading-[1.7]" style="font-size: 15.5px;">
+                {item.r}
+              </p>
+            </div>
+          </details>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .piton-faq summary::-webkit-details-marker { display: none; }
+  .piton-faq summary:focus-visible {
+    outline: 2px solid rgb(255 90 31);
+    outline-offset: 4px;
+  }
+</style>

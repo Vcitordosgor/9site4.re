@@ -1,0 +1,52 @@
+---
+/**
+ * Certifications — diplômes guide et assurances.
+ * Diplôme JEPS, AMM, secourisme, assurance.
+ */
+const certifs = [
+  { code: 'BPJEPS', label: 'Activités de Marche', sub: 'Diplôme d\'État · à jour' },
+  { code: 'AMM', label: 'Accompagnateur Montagne', sub: 'Brevet d\'État spécialité' },
+  { code: 'PSC-1', label: 'Secourisme', sub: 'Recyclage annuel' },
+  { code: 'RC PRO', label: 'Allianz Pro', sub: 'Encadrement & participants' },
+];
+---
+
+<section class="relative bg-sentiers-foret text-sentiers-brume py-20 md:py-24 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="text-center max-w-xl mx-auto mb-12 md:mb-14">
+      <p class="scroll-reveal font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-sentiers-terre">
+        Diplômes & assurances
+      </p>
+      <h2 class="scroll-reveal mt-4 font-tinos text-sentiers-brume leading-[1.05]" style="font-size: clamp(28px, 3.8vw, 44px);">
+        Encadré dans les règles,<br/>
+        <span class="italic text-sentiers-soleil">en toute saison.</span>
+      </h2>
+    </header>
+
+    <ul class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+      {certifs.map((c, i) => (
+        <li
+          class="scroll-reveal group flex flex-col items-center text-center p-7 bg-sentiers-noir/40 backdrop-blur border border-sentiers-lichen/25 hover:border-sentiers-soleil hover:-translate-y-1 transition-all duration-300"
+          style={`transition-delay: ${i * 70}ms`}
+        >
+          <span class="inline-flex items-center justify-center w-14 h-14 rounded-full border-2 border-sentiers-lichen text-sentiers-soleil group-hover:bg-sentiers-soleil group-hover:text-sentiers-foret transition-colors">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="8" r="6"/>
+              <polyline points="8.21 13.89 7 22 12 19 17 22 15.79 13.88"/>
+            </svg>
+          </span>
+          <p class="mt-5 font-roboto-mono text-[10px] uppercase tracking-[0.3em] text-sentiers-terre">
+            {c.code}
+          </p>
+          <h3 class="mt-2 font-tinos italic font-bold text-sentiers-brume leading-tight" style="font-size: 18px;">
+            {c.label}
+          </h3>
+          <p class="mt-1.5 font-familjen text-sentiers-brume/55 text-xs">
+            {c.sub}
+          </p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

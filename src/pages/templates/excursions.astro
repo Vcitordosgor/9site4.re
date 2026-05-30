@@ -18,12 +18,16 @@ import sentiersData from '../../data/templates/sentiers.json';
 import SentiersHeader from '../../components/templates/excursions/SentiersHeader.astro';
 import HeroCarrousel from '../../components/templates/excursions/HeroCarrousel.astro';
 import LeGuide from '../../components/templates/excursions/LeGuide.astro';
+import Numbers from '../../components/templates/excursions/Numbers.astro';
 import Sorties from '../../components/templates/excursions/Sorties.astro';
+import SansAvecGuide from '../../components/templates/excursions/SansAvecGuide.astro';
 import CalendrierProchaines from '../../components/templates/excursions/CalendrierProchaines.astro';
 import Citation from '../../components/templates/excursions/Citation.astro';
 import Temoignages from '../../components/templates/excursions/Temoignages.astro';
 import Galerie from '../../components/templates/excursions/Galerie.astro';
+import Certifications from '../../components/templates/excursions/Certifications.astro';
 import Bandeau from '../../components/templates/excursions/Bandeau.astro';
+import Faq from '../../components/templates/excursions/Faq.astro';
 import Reservation from '../../components/templates/excursions/Reservation.astro';
 import CTAFinal from '../../components/templates/excursions/CTAFinal.astro';
 import SentiersFooter from '../../components/templates/excursions/SentiersFooter.astro';
@@ -49,12 +53,16 @@ const businessLD = localBusinessSchema(sentiersData);
   <main id="top" class="bg-sentiers-foret text-sentiers-brume font-familjen">
     <HeroCarrousel />
     <LeGuide />
+    <Numbers />
     <Sorties />
+    <SansAvecGuide />
     <CalendrierProchaines />
     <Citation />
     <Temoignages />
     <Galerie />
+    <Certifications />
     <Bandeau />
+    <Faq />
     <Reservation />
     <CTAFinal />
   </main>

@@ -1,0 +1,78 @@
+---
+/**
+ * Faq — questions famille / aide à domicile.
+ * Style chaleureux, accordion natif.
+ */
+const faq = [
+  {
+    q: 'Quels sont vos délais pour démarrer ?',
+    r: 'Sur une demande non urgente : entre 7 et 14 jours, le temps de la visite, de la signature du contrat et du choix de l\'aidante. Pour les urgences (sortie d\'hôpital, perte de mobilité brutale), on s\'organise sous 48h.',
+  },
+  {
+    q: 'Combien ça coûte vraiment, après aides ?',
+    r: 'L\'avantage fiscal (crédit d\'impôt 50 %) ramène le coût horaire net à environ 12 à 14 € après remboursement. Pour les personnes éligibles APA ou PCH, le reste à charge peut être quasi nul. On vous fait le calcul personnalisé en visite.',
+  },
+  {
+    q: 'L\'aidante reste-t-elle toujours la même ?',
+    r: 'Oui, c\'est notre priorité. Une seule personne référente, plus une remplaçante connue pour les vacances ou maladies. La continuité est essentielle au lien de confiance.',
+  },
+  {
+    q: 'Que faites-vous si la personne refuse l\'aide ?',
+    r: 'C\'est fréquent au début. On vient une première fois en visite courtoise, sans rien imposer. On commence souvent par des prestations légères (courses, conversation) avant l\'aide à la toilette. La patience fait partie du métier.',
+  },
+  {
+    q: 'Êtes-vous agréés et déclarés ?',
+    r: 'Oui, déclaration Services à la Personne n°SAP-XXXXX, agrément préfectoral pour les publics fragiles. Toutes nos aidantes sont salariées, formées et assurées. Vous recevez une attestation fiscale chaque année.',
+  },
+];
+---
+
+<section id="faq" class="relative bg-doudou-creme py-20 md:py-28 px-6 md:px-10">
+  <div class="max-w-3xl mx-auto">
+
+    <header class="mb-12 md:mb-14">
+      <p class="scroll-reveal text-xs font-nunito font-bold uppercase tracking-[0.32em] text-doudou-rose">
+        Vos questions
+      </p>
+      <h2 class="scroll-reveal mt-4 font-nunito font-extrabold text-doudou-encre leading-[1.05]" style="font-size: clamp(32px, 4vw, 48px);">
+        Ce qu'on vous répond<br/>
+        <span class="text-doudou-bleu">au téléphone.</span>
+      </h2>
+    </header>
+
+    <ul class="space-y-3">
+      {faq.map((item, i) => (
+        <li
+          class="scroll-reveal bg-doudou-ciel/15 rounded-2xl border border-doudou-bleu/20 hover:border-doudou-bleu/50 transition-colors overflow-hidden"
+          style={`transition-delay: ${i * 50}ms`}
+        >
+          <details class="group doudou-faq">
+            <summary class="flex items-start justify-between gap-4 p-6 cursor-pointer list-none">
+              <span class="font-nunito font-bold text-doudou-encre leading-snug" style="font-size: clamp(16px, 1.6vw, 18px);">
+                {item.q}
+              </span>
+              <span class="shrink-0 inline-flex items-center justify-center w-9 h-9 rounded-full bg-doudou-creme border border-doudou-bleu/30 text-doudou-bleu transition-transform duration-300 group-open:rotate-180" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"/>
+                </svg>
+              </span>
+            </summary>
+            <div class="px-6 pb-6 -mt-2">
+              <p class="font-be-vietnam text-doudou-encre/75 leading-[1.7]" style="font-size: 14.5px;">
+                {item.r}
+              </p>
+            </div>
+          </details>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .doudou-faq summary::-webkit-details-marker { display: none; }
+  .doudou-faq summary:focus-visible {
+    outline: 2px solid rgb(59 110 143);
+    outline-offset: 4px;
+  }
+</style>

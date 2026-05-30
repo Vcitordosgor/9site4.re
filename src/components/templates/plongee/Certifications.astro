@@ -1,0 +1,52 @@
+---
+/**
+ * Certifications — agréments officiels de plongée.
+ * FFESSM, PADI, SDI, Préfecture Maritime.
+ */
+const certifs = [
+  { code: 'FFESSM', label: 'Fédération Française', sub: 'École agréée n° 9740028' },
+  { code: 'PADI', label: 'Centre 5 étoiles', sub: 'Resort #S-39847' },
+  { code: 'SDI', label: 'Scuba Diving Int.', sub: 'Instruction multilingue' },
+  { code: 'PRÉF.', label: 'Préfecture Maritime', sub: 'Autorisation transport passagers' },
+];
+---
+
+<section class="relative bg-plongee-marine text-plongee-ecume py-20 md:py-24 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="text-center max-w-xl mx-auto mb-12 md:mb-14">
+      <p class="scroll-reveal font-jetbrains-mono text-[11px] uppercase tracking-[0.32em] text-plongee-corail">
+        Agréments officiels
+      </p>
+      <h2 class="scroll-reveal mt-4 font-space-grotesk font-bold text-plongee-ecume leading-[1] tracking-tight" style="font-size: clamp(28px, 3.8vw, 44px);">
+        Centre certifié<br/>
+        <span class="text-plongee-lagon">contrôlé chaque année.</span>
+      </h2>
+    </header>
+
+    <ul class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+      {certifs.map((c, i) => (
+        <li
+          class="scroll-reveal group flex flex-col items-center text-center p-7 bg-plongee-abysse rounded-2xl border border-plongee-lagon/20 hover:border-plongee-lagon hover:-translate-y-1 transition-all duration-300"
+          style={`transition-delay: ${i * 70}ms`}
+        >
+          <span class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-plongee-marine border-2 border-plongee-lagon/40 group-hover:bg-plongee-lagon group-hover:border-plongee-lagon transition-colors">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="text-plongee-lagon group-hover:text-plongee-abysse transition-colors" aria-hidden="true">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <polyline points="9 12 11 14 15 10"/>
+            </svg>
+          </span>
+          <p class="mt-5 font-jetbrains-mono text-[11px] uppercase tracking-[0.28em] text-plongee-corail">
+            {c.code}
+          </p>
+          <h3 class="mt-2 font-space-grotesk font-bold text-plongee-ecume leading-tight" style="font-size: 17px;">
+            {c.label}
+          </h3>
+          <p class="mt-1.5 font-inter text-plongee-ecume/55 text-xs">
+            {c.sub}
+          </p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

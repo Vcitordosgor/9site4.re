@@ -19,13 +19,17 @@ import doudouData from '../../data/templates/doudou.json';
 import DoudouHeader from '../../components/templates/aide-domicile/DoudouHeader.astro';
 import HeroFamiliale from '../../components/templates/aide-domicile/HeroFamiliale.astro';
 import Engagements from '../../components/templates/aide-domicile/Engagements.astro';
+import Numbers from '../../components/templates/aide-domicile/Numbers.astro';
 import Services from '../../components/templates/aide-domicile/Services.astro';
+import Process from '../../components/templates/aide-domicile/Process.astro';
 import PourQui from '../../components/templates/aide-domicile/PourQui.astro';
 import TarifsFinancement from '../../components/templates/aide-domicile/TarifsFinancement.astro';
+import Agrements from '../../components/templates/aide-domicile/Agrements.astro';
 import Bandeau from '../../components/templates/aide-domicile/Bandeau.astro';
 import Aidants from '../../components/templates/aide-domicile/Aidants.astro';
 import Temoignages from '../../components/templates/aide-domicile/Temoignages.astro';
 import Citation from '../../components/templates/aide-domicile/Citation.astro';
+import Faq from '../../components/templates/aide-domicile/Faq.astro';
 import Demande from '../../components/templates/aide-domicile/Demande.astro';
 import CTAFinal from '../../components/templates/aide-domicile/CTAFinal.astro';
 import DoudouFooter from '../../components/templates/aide-domicile/DoudouFooter.astro';
@@ -51,13 +55,17 @@ const businessLD = localBusinessSchema(doudouData);
   <main id="top" class="bg-doudou-creme text-doudou-encre font-be-vietnam">
     <HeroFamiliale />
     <Engagements />
+    <Numbers />
     <Services />
+    <Process />
     <PourQui />
     <TarifsFinancement />
+    <Agrements />
     <Bandeau />
     <Aidants />
     <Temoignages />
     <Citation />
+    <Faq />
     <Demande />
     <CTAFinal />
   </main>

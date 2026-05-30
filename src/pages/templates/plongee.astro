@@ -16,11 +16,15 @@ import bleulagonData from '../../data/templates/bleulagon.json';
 import BleuLagonHeader from '../../components/templates/plongee/BleuLagonHeader.astro';
 import HeroPlongee from '../../components/templates/plongee/HeroPlongee.astro';
 import Formules from '../../components/templates/plongee/Formules.astro';
+import Process from '../../components/templates/plongee/Process.astro';
 import LeMoniteur from '../../components/templates/plongee/LeMoniteur.astro';
+import Galerie from '../../components/templates/plongee/Galerie.astro';
 import Citation from '../../components/templates/plongee/Citation.astro';
 import Securite from '../../components/templates/plongee/Securite.astro';
+import Certifications from '../../components/templates/plongee/Certifications.astro';
 import Bandeau from '../../components/templates/plongee/Bandeau.astro';
 import Avis from '../../components/templates/plongee/Avis.astro';
+import Faq from '../../components/templates/plongee/Faq.astro';
 import Contact from '../../components/templates/plongee/Contact.astro';
 import BleuLagonFooter from '../../components/templates/plongee/BleuLagonFooter.astro';
 const businessLD = localBusinessSchema(bleulagonData);
@@ -45,11 +49,15 @@ const businessLD = localBusinessSchema(bleulagonData);
   <main class="bg-plongee-ecume text-plongee-marine font-inter">
     <HeroPlongee />
     <Formules />
+    <Process />
     <LeMoniteur />
+    <Galerie />
     <Citation />
     <Securite />
+    <Certifications />
     <Bandeau />
     <Avis />
+    <Faq />
     <Contact />
   </main>
 
