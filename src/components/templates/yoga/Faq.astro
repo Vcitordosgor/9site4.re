@@ -1,0 +1,55 @@
+---
+const faq = [
+  {
+    q: 'Je n\'ai jamais pratiqué — est-ce vraiment pour moi ?',
+    r: 'Oui, surtout. Quasiment la moitié de nos élèves commencent ici, sans aucune expérience. Anjali propose systématiquement des variantes adaptées au corps présent, jamais à un corps idéal.',
+  },
+  {
+    q: 'Je ne suis pas souple du tout. Est-ce un problème ?',
+    r: 'Aucun. La souplesse, c\'est une conséquence — pas un prérequis. Vous pouvez avoir les jambes raides, le dos crispé, les épaules nouées : on commence d\'où vous êtes, ce jour-là.',
+  },
+  {
+    q: 'Faut-il acheter du matériel pour commencer ?',
+    r: 'Non. Tapis, briques, sangles, coussins et plaids sont prêtés gratuitement. Si vous décidez de continuer, on conseille un tapis personnel après deux à trois mois de pratique.',
+  },
+  {
+    q: 'Quelle pratique choisir pour commencer ?',
+    r: 'Hatha si vous voulez comprendre les bases lentement. Yin si vous êtes épuisé·e et avez besoin de relâcher. Évitez le Vinyasa au tout premier cours — venez le découvrir une fois que les fondations sont posées.',
+  },
+  {
+    q: 'Combien de séances par semaine faut-il prévoir ?',
+    r: 'Pour ressentir un changement réel : deux séances hebdomadaires pendant trois mois. Une séance par semaine fonctionne très bien comme entretien régulier. Au-delà de trois, on conseille d\'alterner les pratiques.',
+  },
+  {
+    q: 'Acceptez-vous les femmes enceintes ?',
+    r: 'Oui, à partir du deuxième trimestre avec accord du médecin, en cours Hatha ou Yin uniquement. Anjali est formée au yoga prénatal et adapte chaque posture en cours.',
+  },
+];
+---
+
+<section class="bg-yoga-papier py-20 md:py-28">
+  <div class="max-w-3xl mx-auto px-6 md:px-10">
+
+    <div class="text-center mb-12 md:mb-16">
+      <p class="font-lexend uppercase tracking-[0.4em] text-[10px] md:text-[11px] text-yoga-ocre mb-4 font-light">— Avant de poser le tapis —</p>
+      <h2 class="font-dm-serif text-yoga-encre text-3xl md:text-5xl leading-tight">
+        Questions
+        <em class="font-dm-serif italic text-yoga-ocre">qu'on nous pose souvent</em>
+      </h2>
+    </div>
+
+    <div class="space-y-2">
+      {faq.map((f) => (
+        <details class="group border-b border-yoga-encre/15 hover:border-yoga-ocre transition-colors">
+          <summary class="cursor-pointer list-none flex items-start gap-5 py-5 md:py-7">
+            <span class="font-dm-serif italic text-yoga-ocre text-3xl leading-none mt-0 transition-transform duration-300 group-open:rotate-45" aria-hidden="true">+</span>
+            <span class="flex-1 font-dm-serif text-yoga-encre text-lg md:text-xl leading-snug">{f.q}</span>
+          </summary>
+          <div class="pb-6 md:pb-8 pl-12 pr-2">
+            <p class="font-spectral text-[15px] md:text-[16px] text-yoga-encre/85 leading-relaxed">{f.r}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
