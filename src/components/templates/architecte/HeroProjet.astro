@@ -27,7 +27,7 @@ import data from '../../../data/templates/mahatma.json';
       <img
         src={data.heroProjet.photo} srcset={`${(data.heroProjet.photo).replace(/\.webp$/, "-640.webp")} 640w, ${(data.heroProjet.photo).replace(/\.webp$/, "-1024.webp")} 1024w, ${data.heroProjet.photo} 1600w`} sizes="100vw"
         alt={`${data.heroProjet.nom}, ${data.heroProjet.lieu}`}
-        class="w-full h-full object-cover grayscale" loading="eager" fetchpriority="high" decoding="async">
+        class="w-full h-full object-cover grayscale hero-vivant" loading="eager" fetchpriority="high" decoding="async">
       <!-- Cachet rouge en surimpression -->
       <div class="absolute top-4 right-4 md:top-8 md:right-8 border-2 border-mahatma-cachet text-mahatma-cachet px-3 py-1.5 font-fira-mono text-[10px] uppercase tracking-[0.22em] bg-mahatma-papier/90 transform rotate-[-3deg]">
         ◯ Récent · {data.heroProjet.annee}
@@ -126,3 +126,18 @@ import data from '../../../data/templates/mahatma.json';
     </div>
   </div>
 </section>
+
+<style>
+  @keyframes hero-vivant {
+    from { transform: scale(1.06); }
+    to   { transform: scale(1); }
+  }
+  .hero-vivant {
+    transform-origin: center;
+    animation: hero-vivant 2400ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    will-change: transform;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-vivant { animation: none !important; transform: none !important; }
+  }
+</style>

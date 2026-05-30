@@ -156,7 +156,7 @@ import data from '../../../data/templates/seve.json';
     <img
       src={data.info.photoHero} srcset={`${(data.info.photoHero).replace(/\.webp$/, "-640.webp")} 640w, ${(data.info.photoHero).replace(/\.webp$/, "-1024.webp")} 1024w, ${data.info.photoHero} 1600w`} sizes="100vw"
       alt={data.info.photoHeroAlt}
-      class="absolute inset-0 w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async">
+      class="absolute inset-0 w-full h-full object-cover hero-vivant" loading="eager" fetchpriority="high" decoding="async">
     <!-- Voile ivoire en haut pour fondu doux avec le hero -->
     <div class="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-seve-ivoire to-transparent" aria-hidden="true"></div>
     <!-- Voile marine en bas pour lisibilité de la signature -->
@@ -175,3 +175,18 @@ import data from '../../../data/templates/seve.json';
     </div>
   </div>
 </section>
+
+<style>
+  @keyframes hero-vivant {
+    from { transform: scale(1.06); }
+    to   { transform: scale(1); }
+  }
+  .hero-vivant {
+    transform-origin: center;
+    animation: hero-vivant 2400ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    will-change: transform;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-vivant { animation: none !important; transform: none !important; }
+  }
+</style>

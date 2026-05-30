@@ -15,7 +15,7 @@ import data from '../../../data/templates/vermeille.json';
     <img
       src={data.info.photoHero} srcset={`${(data.info.photoHero).replace(/\.webp$/, "-640.webp")} 640w, ${(data.info.photoHero).replace(/\.webp$/, "-1024.webp")} 1024w, ${data.info.photoHero} 1600w`} sizes="100vw"
       alt=""
-      class="w-full h-full object-cover object-center grayscale opacity-40" loading="eager" fetchpriority="high" decoding="async">
+      class="w-full h-full object-cover object-center grayscale opacity-40 hero-vivant" loading="eager" fetchpriority="high" decoding="async">
     <div class="absolute inset-0 bg-gradient-to-b from-vermeille-velours/85 via-vermeille-velours/55 to-vermeille-velours"></div>
   </div>
 
@@ -144,5 +144,18 @@ import data from '../../../data/templates/vermeille.json';
       #rideau-right { transform: translateX(101%);  animation: none; }
       .ticket-stamp { opacity: 1; animation: none; transform: rotate(-6deg); }
     }
-  </style>
+  
+  @keyframes hero-vivant {
+    from { transform: scale(1.06); }
+    to   { transform: scale(1); }
+  }
+  .hero-vivant {
+    transform-origin: center;
+    animation: hero-vivant 2400ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    will-change: transform;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-vivant { animation: none !important; transform: none !important; }
+  }
+</style>
 </section>
