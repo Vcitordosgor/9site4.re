@@ -1,0 +1,28 @@
+---
+import data from '../../../data/templates/roussin.json';
+---
+
+<section class="bg-roussin-papier border-y border-roussin-or/40 py-24 md:py-36 px-6 md:px-10 relative">
+  <div class="absolute inset-x-0 top-3 h-px bg-roussin-or/50" aria-hidden="true"></div>
+  <div class="absolute inset-x-0 bottom-3 h-px bg-roussin-or/50" aria-hidden="true"></div>
+
+  <div class="max-w-5xl mx-auto text-center">
+    <p class="font-public-sans text-[10.5px] uppercase tracking-[0.32em] text-roussin-or mb-8">
+      — Principe de la maison —
+    </p>
+    <span aria-hidden="true" class="block font-eb-garamond text-roussin-or leading-none mb-2 select-none" style="font-size: clamp(80px, 14vw, 200px);">
+      &ldquo;
+    </span>
+    <blockquote class="font-eb-garamond italic text-roussin-nuit leading-[1.2] tracking-tight" style="font-size: clamp(32px, 4.2vw, 52px);">
+      Un dossier bien instruit gagne <span class="text-roussin-bordeaux">deux fois</span> : devant le juge, et dans l'esprit du client.
+    </blockquote>
+    <div class="flex items-center justify-center gap-3 mt-10" aria-hidden="true">
+      <span class="block w-12 h-px bg-roussin-or"></span>
+      <span class="text-roussin-or text-base">⚖</span>
+      <span class="block w-12 h-px bg-roussin-or"></span>
+    </div>
+    <p class="mt-4 font-public-sans text-[11px] uppercase tracking-[0.28em] text-roussin-nuit/70">
+      {data.info.fondateur} · {data.info.annee}
+    </p>
+  </div>
+</section>

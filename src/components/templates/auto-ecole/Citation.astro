@@ -1,0 +1,29 @@
+---
+import data from '../../../data/templates/boost.json';
+---
+
+<section class="bg-boost-noir text-boost-route py-28 md:py-40 px-6 md:px-10 relative overflow-hidden">
+  <div class="absolute top-8 left-8 w-16 h-16 border-4 border-boost-jaune rotate-45" aria-hidden="true"></div>
+  <div class="absolute bottom-8 right-8 w-20 h-20 rounded-full border-4 border-boost-acier" aria-hidden="true"></div>
+
+  <div class="relative max-w-5xl mx-auto">
+    <p class="inline-flex items-center gap-2 font-geist-mono text-[11px] uppercase tracking-[0.18em] text-boost-jaune font-medium mb-6 bg-boost-jaune/15 px-3 py-1.5 rounded-full">
+      <span class="w-1.5 h-1.5 rounded-full bg-boost-jaune"></span>
+      ✦ Notre conviction
+    </p>
+    <span aria-hidden="true" class="block font-funnel-display font-bold text-boost-jaune leading-none mb-3 select-none" style="font-size: clamp(96px, 16vw, 200px);">
+      &ldquo;
+    </span>
+    <blockquote class="font-funnel-display font-light italic text-boost-route leading-[1.1] tracking-tight" style="font-size: clamp(32px, 4.6vw, 56px);">
+      Un permis, ce n'est pas un examen à passer — c'est une <span class="text-boost-jaune font-bold not-italic">liberté</span> qu'on prend, pour la vie.
+    </blockquote>
+    <footer class="mt-10 pt-5 border-t border-boost-route/20 flex flex-wrap items-baseline justify-between gap-3">
+      <p class="font-geist-mono text-[11px] uppercase tracking-[0.22em] text-boost-route/70">
+        L'équipe pédagogique
+      </p>
+      <p class="font-geist-mono text-[11px] uppercase tracking-[0.22em] text-boost-jaune">
+        {data.info.wordmark} · depuis {data.info.annee}
+      </p>
+    </footer>
+  </div>
+</section>

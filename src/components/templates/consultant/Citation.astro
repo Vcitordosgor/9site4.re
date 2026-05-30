@@ -1,0 +1,28 @@
+---
+import data from '../../../data/templates/lucas.json';
+---
+
+<section class="bg-lucas-noir text-lucas-blanc border-y border-lucas-vert/15 py-28 md:py-40 px-6 md:px-10 relative overflow-hidden">
+  <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-lucas-vert/40 to-transparent" aria-hidden="true"></div>
+  <div class="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-lucas-vert/40 to-transparent" aria-hidden="true"></div>
+
+  <div class="max-w-5xl mx-auto">
+    <p class="font-space-mono text-[11px] tracking-tight text-lucas-vert mb-6">
+      ▶ # cat /etc/principes.md
+    </p>
+    <span aria-hidden="true" class="block font-instrument italic text-lucas-vert/40 leading-none mb-3 select-none" style="font-size: clamp(100px, 16vw, 220px);">
+      &ldquo;
+    </span>
+    <blockquote class="font-instrument italic text-lucas-blanc leading-[1.15]" style="font-size: clamp(34px, 4.6vw, 56px);">
+      Une mission utile, c'est celle dont vous mesurez l'impact <span class="text-lucas-vert not-italic font-normal">six mois après</span> ma sortie — pas le jour de la livraison.
+    </blockquote>
+    <footer class="mt-12 pt-5 border-t border-lucas-encre/40 flex flex-wrap items-baseline justify-between gap-3">
+      <p class="font-space-mono text-[11px] tracking-tight text-lucas-encre">
+        <span class="text-lucas-vert">$</span> echo "{data.info.wordmark}"
+      </p>
+      <p class="font-space-mono text-[11px] tracking-tight text-lucas-perle">
+        principe #01 · v.2026
+      </p>
+    </footer>
+  </div>
+</section>
