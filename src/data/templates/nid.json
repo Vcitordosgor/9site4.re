@@ -55,45 +55,77 @@
     {
       "nom": "Anaïs Beaufort",
       "role": "Directrice & EJE",
-      "diplome": "Éducatrice de Jeunes Enfants · DE 2014",
-      "anciennete": "10 ans expérience petite enfance",
-      "bio": "Anaïs a ouvert Le Nid en 2017 après six ans en multi-accueil collectif. Diplômée EJE et formée Montessori 0-3 ans, elle assure la direction pédagogique et reste sur le terrain.",
+      "diplome": "",
+      "anciennete": "",
+      "bio": "",
       "photo": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=600&auto=format&fit=crop"
     },
     {
       "nom": "Solène Lépine",
       "role": "Auxiliaire de puériculture",
-      "diplome": "DEAP 2018 · Formation IBCLC allaitement",
-      "anciennete": "6 ans expérience",
-      "bio": "Solène est référente bébés (0-12 mois). Elle accompagne particulièrement les transitions allaitement et la diversification alimentaire. Formée au portage physiologique.",
+      "diplome": "",
+      "anciennete": "",
+      "bio": "",
       "photo": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=600&auto=format&fit=crop"
     },
     {
       "nom": "Léna Robert",
       "role": "Auxiliaire de puériculture",
-      "diplome": "DEAP 2020 · Formation signes Makaton",
-      "anciennete": "4 ans expérience",
-      "bio": "Léna est référente moyens-grands (12-36 mois). Elle anime les ateliers d'éveil sensoriel et signe Makaton, et coordonne la transition vers l'école maternelle.",
+      "diplome": "",
+      "anciennete": "",
+      "bio": "",
       "photo": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=600&auto=format&fit=crop"
     },
     {
       "nom": "Marie-Jo Vidot",
       "role": "Cuisinière & lingère",
-      "diplome": "CAP Cuisine · Hygiène HACCP",
-      "anciennete": "15 ans en collectivité",
-      "bio": "Marie-Jo prépare le repas et le goûter sur place chaque jour, avec des produits frais et de saison. Linge changé quotidiennement, sans détergent agressif.",
+      "diplome": "",
+      "anciennete": "",
+      "bio": "",
       "photo": "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=600&auto=format&fit=crop"
     }
   ],
   "journee": [
-    { "horaire": "7h00 → 9h00", "moment": "Arrivée & câlins", "detail": "Accueil échelonné, doudou en main, lecture libre. Transmissions matinales avec les parents." },
-    { "horaire": "9h00 → 10h00", "moment": "Activité libre", "detail": "Plateaux Montessori, motricité libre, lecture. Bébés au tapis d'éveil." },
-    { "horaire": "10h00 → 11h00", "moment": "Jardin & extérieur", "detail": "Sortie quotidienne, par groupes d'âges. Jardinage, jeux d'eau, observation." },
-    { "horaire": "11h15 → 12h00", "moment": "Repas", "detail": "Repas en petits groupes, sans contrainte de tout finir. Verre et assiette adaptés." },
-    { "horaire": "12h00 → 14h30", "moment": "Sieste", "detail": "Endormissement individualisé, doudou et rituel. Réveil libre sans bruit." },
-    { "horaire": "14h30 → 15h30", "moment": "Réveil & goûter", "detail": "Goûter dès le réveil, jamais collectif imposé. Fruits frais et laitages." },
-    { "horaire": "15h30 → 17h30", "moment": "Atelier ou jardin", "detail": "Peinture, pâte à modeler, contes, motricité — selon l'envie du groupe." },
-    { "horaire": "17h30 → 19h00", "moment": "Départ échelonné", "detail": "Transmissions du soir, derniers jeux calmes, attente des parents au calme." }
+    {
+      "horaire": "7h00 → 9h00",
+      "moment": "Arrivée & câlins",
+      "detail": "Accueil échelonné, doudou en main, lecture libre. Transmissions matinales avec les parents."
+    },
+    {
+      "horaire": "9h00 → 10h00",
+      "moment": "Activité libre",
+      "detail": "Plateaux Montessori, motricité libre, lecture. Bébés au tapis d'éveil."
+    },
+    {
+      "horaire": "10h00 → 11h00",
+      "moment": "Jardin & extérieur",
+      "detail": "Sortie quotidienne, par groupes d'âges. Jardinage, jeux d'eau, observation."
+    },
+    {
+      "horaire": "11h15 → 12h00",
+      "moment": "Repas",
+      "detail": "Repas en petits groupes, sans contrainte de tout finir. Verre et assiette adaptés."
+    },
+    {
+      "horaire": "12h00 → 14h30",
+      "moment": "Sieste",
+      "detail": "Endormissement individualisé, doudou et rituel. Réveil libre sans bruit."
+    },
+    {
+      "horaire": "14h30 → 15h30",
+      "moment": "Réveil & goûter",
+      "detail": "Goûter dès le réveil, jamais collectif imposé. Fruits frais et laitages."
+    },
+    {
+      "horaire": "15h30 → 17h30",
+      "moment": "Atelier ou jardin",
+      "detail": "Peinture, pâte à modeler, contes, motricité — selon l'envie du groupe."
+    },
+    {
+      "horaire": "17h30 → 19h00",
+      "moment": "Départ échelonné",
+      "detail": "Transmissions du soir, derniers jeux calmes, attente des parents au calme."
+    }
   ],
   "locaux": [
     {
@@ -136,10 +168,30 @@
     }
   ],
   "tarifs": [
-    { "type": "Place régulière", "duree": "5 jours/semaine", "indication": "Selon barème CAF — quotient familial", "detail": "Reste à charge moyen : 250 à 480 €/mois selon revenus" },
-    { "type": "Mi-temps", "duree": "2 à 3 jours/semaine", "indication": "Tarif CAF prorata", "detail": "Idéal congé parental partiel" },
-    { "type": "Occasionnel", "duree": "À la demi-journée", "indication": "8,50 €/heure", "detail": "Sous réserve de places disponibles, prévenir 48h avant" },
-    { "type": "Repas inclus", "duree": "Repas + goûter compris", "indication": "Sans supplément", "detail": "Produits frais, plan alimentaire validé pédiatre" }
+    {
+      "type": "Place régulière",
+      "duree": "5 jours/semaine",
+      "indication": "Selon barème CAF — quotient familial",
+      "detail": "Reste à charge moyen : 250 à 480 €/mois selon revenus"
+    },
+    {
+      "type": "Mi-temps",
+      "duree": "2 à 3 jours/semaine",
+      "indication": "Tarif CAF prorata",
+      "detail": "Idéal congé parental partiel"
+    },
+    {
+      "type": "Occasionnel",
+      "duree": "À la demi-journée",
+      "indication": "8,50 €/heure",
+      "detail": "Sous réserve de places disponibles, prévenir 48h avant"
+    },
+    {
+      "type": "Repas inclus",
+      "duree": "Repas + goûter compris",
+      "indication": "Sans supplément",
+      "detail": "Produits frais, plan alimentaire validé pédiatre"
+    }
   ],
   "faq": [
     {

@@ -61,34 +61,58 @@
       "nom": "Léo Carvalho",
       "role": "Tatoueur résident · Fondateur",
       "specialite": "Blackwork, dotwork, large pieces",
-      "bio": "Tatoue depuis 2009. Formation chez un encreur lisboète, puis tour des conventions européennes pendant cinq ans avant d'ouvrir Encre Volcan. Spécialiste des manches complètes et des pièces dos.",
-      "anciennete": "10 ans de métier",
+      "bio": "",
+      "anciennete": "",
       "photo": "https://images.unsplash.com/photo-1622495966505-72e2fac6f586?q=80&w=600&auto=format&fit=crop"
     },
     {
       "nom": "Sami Houareau",
       "role": "Tatoueur résident",
       "specialite": "Lettering, gothique, traditional",
-      "bio": "Calligraphe de formation, tatoue depuis 2014. Le seul de l'atelier qui dessine encore tous ses lettrages au pinceau sumi avant numérisation. Patient, méticuleux, jamais pressé.",
-      "anciennete": "7 ans de métier",
+      "bio": "",
+      "anciennete": "",
       "photo": "https://images.unsplash.com/photo-1521252659862-eec69941b071?q=80&w=600&auto=format&fit=crop"
     },
     {
       "nom": "Mira Almeida",
       "role": "Tatoueuse résidente",
       "specialite": "Botanique, fine line, micro-réalisme",
-      "bio": "Illustratrice botanique pour éditions naturalistes pendant six ans, reconvertie en tatouage en 2019. Travaille à la planche d'herbier sur flore endémique péi. Petites pièces et avant-bras.",
-      "anciennete": "5 ans de métier",
+      "bio": "",
+      "anciennete": "",
       "photo": "https://images.unsplash.com/photo-1599842057874-37393e9342df?q=80&w=600&auto=format&fit=crop"
     }
   ],
   "flash": [
-    { "ref": "EV-082", "style": "Old school", "prix": "95 €" },
-    { "ref": "EV-091", "style": "Dotwork", "prix": "120 €" },
-    { "ref": "EV-104", "style": "Floral", "prix": "140 €" },
-    { "ref": "EV-115", "style": "Lettering", "prix": "110 €" },
-    { "ref": "EV-127", "style": "Blackwork", "prix": "160 €" },
-    { "ref": "EV-133", "style": "Fine line", "prix": "85 €" }
+    {
+      "ref": "EV-082",
+      "style": "Old school",
+      "prix": "95 €"
+    },
+    {
+      "ref": "EV-091",
+      "style": "Dotwork",
+      "prix": "120 €"
+    },
+    {
+      "ref": "EV-104",
+      "style": "Floral",
+      "prix": "140 €"
+    },
+    {
+      "ref": "EV-115",
+      "style": "Lettering",
+      "prix": "110 €"
+    },
+    {
+      "ref": "EV-127",
+      "style": "Blackwork",
+      "prix": "160 €"
+    },
+    {
+      "ref": "EV-133",
+      "style": "Fine line",
+      "prix": "85 €"
+    }
   ],
   "process": [
     {
@@ -131,11 +155,31 @@
     }
   ],
   "tarification": [
-    { "categorie": "Flash sheet", "prix": "85 → 160 €", "detail": "Forfait, motif déjà dessiné" },
-    { "categorie": "Petite pièce (< 8cm)", "prix": "120 → 220 €", "detail": "1h à 1h30, lignes simples" },
-    { "categorie": "Pièce moyenne (8 → 20 cm)", "prix": "300 → 600 €", "detail": "2 à 4h, ombrage léger" },
-    { "categorie": "Grande pièce (manche, dos)", "prix": "Sur devis", "detail": "Multi-séances, à partir de 1 200 €" },
-    { "categorie": "Tarif horaire", "prix": "110 €/h", "detail": "Au-delà de 3h sur projet custom" }
+    {
+      "categorie": "Flash sheet",
+      "prix": "85 → 160 €",
+      "detail": "Forfait, motif déjà dessiné"
+    },
+    {
+      "categorie": "Petite pièce (< 8cm)",
+      "prix": "120 → 220 €",
+      "detail": "1h à 1h30, lignes simples"
+    },
+    {
+      "categorie": "Pièce moyenne (8 → 20 cm)",
+      "prix": "300 → 600 €",
+      "detail": "2 à 4h, ombrage léger"
+    },
+    {
+      "categorie": "Grande pièce (manche, dos)",
+      "prix": "Sur devis",
+      "detail": "Multi-séances, à partir de 1 200 €"
+    },
+    {
+      "categorie": "Tarif horaire",
+      "prix": "110 €/h",
+      "detail": "Au-delà de 3h sur projet custom"
+    }
   ],
   "faq": [
     {
