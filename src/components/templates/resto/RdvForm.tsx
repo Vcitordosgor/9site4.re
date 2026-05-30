@@ -236,7 +236,7 @@ export default function RdvForm({ occasions, creneaux, whatsapp, restoNom }: Pro
             <label for="resto-tel" class={labelBase}>Téléphone</label>
             <input id="resto-tel" name="telephone" type="tel" inputMode="tel" required autocomplete="tel"
               class={`${inputBase} ${errors.telephone ? inputErr : inputOk}`}
-              placeholder="0692 00 00 00"
+              placeholder="0692 12 34 56"
               aria-invalid={errors.telephone ? 'true' : 'false'}
             />
             {errors.telephone && <p role="alert" class={errClass}>{errors.telephone}</p>}
