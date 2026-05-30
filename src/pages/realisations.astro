@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import RealisationCard from '../components/realisations/RealisationCard.astro';
+import Icon from '../components/ui/Icon.astro';
 import FiltersBar from '../components/realisations/FiltersBar.tsx';
 import CTABand from '../components/sections/CTABand.astro';
 import realisations from '../data/realisations.json';
@@ -19,9 +20,11 @@ const categoriesWithCount = categories.map((c) => ({
 }));
 
 // 3 exemples vedettes (métiers variés) mis en avant avant la grille complète
-const featuredCats = ['restaurants', 'artisans', 'beaute'];
-const featured = featuredCats
-  .map((cat) => realisations.find((r) => r.categorie === cat))
+// Sélection post passe qualité : boulangerie (gourmand), studio audio (pro/créatif),
+// plongée (tourisme/expérientiel) — 3 univers visuels et métiers très différents.
+const featuredSlugs = ['boulangerie-artisanale', 'studio-audio', 'plongee'];
+const featured = featuredSlugs
+  .map((slug) => realisations.find((r) => r.slug === slug))
   .filter(Boolean) as typeof realisations;
 ---
 
@@ -32,16 +35,17 @@ const featured = featuredCats
       <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-[40rem] h-[40rem] halo-mix opacity-50"></div>
     </div>
     <div class="mx-auto max-w-3xl text-center">
-      <p class="inline-flex items-center px-3 py-1.5 rounded-full bg-bleu text-white text-xs font-semibold uppercase tracking-wide">
-        Exemples métiers
+      <p class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-bleu text-white text-xs font-semibold uppercase tracking-wide">
+        <span class="block w-1.5 h-1.5 rounded-full bg-white/90 animate-pulse"></span>
+        {realisations.length} démos métiers
       </p>
       <h1 class="mt-4 text-4xl md:text-6xl font-sora font-bold text-bleu-nuit text-balance leading-tight">
         Un aperçu de ce qu'on peut créer pour vous.
       </h1>
       <p class="mt-6 text-lg md:text-xl text-bleu-nuit/70 leading-relaxed">
-        Ces exemples sont des démonstrations créées par 9site4 pour vous aider à
-        vous projeter. Chaque site client est ensuite adapté à son activité, ses
-        contenus et ses objectifs.
+        Ces exemples sont des <strong class="font-semibold text-bleu-nuit">démonstrations conçues par 9site4</strong>{' '}
+        pour vous aider à vous projeter. Chaque site client est ensuite adapté à
+        son activité, ses contenus et ses objectifs.
       </p>
     </div>
   </section>
@@ -50,38 +54,64 @@ const featured = featuredCats
   <section class="relative px-6 pb-4 md:pb-8" aria-labelledby="vedettes-titre">
     <div class="mx-auto max-w-content">
       <h2 id="vedettes-titre" class="sr-only">Exemples mis en avant</h2>
+      <div class="mb-4 flex items-center gap-2">
+        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-orange/15 text-orange text-[10.5px] font-bold uppercase tracking-[0.18em]">
+          <Icon name="sparkle" size={11} strokeWidth={2.5} />
+          Coups de cœur
+        </span>
+        <span class="text-xs text-bleu-nuit/55 font-roboto-mono uppercase tracking-wider">3 démos repérées</span>
+      </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         {featured.map((r) => (
-          <a
-            href={r.previewUrl}
-            class="group relative flex flex-col rounded-3xl overflow-hidden ring-1 ring-bleu-nuit/10 bg-blanc-casse shadow-card transition-all duration-300 ease-out-soft hover:-translate-y-1 hover:shadow-card-hover"
-          >
-            <div class="relative aspect-[4/3] overflow-hidden">
-              <img
-                src={r.thumbnail}
-                alt={`Exemple de site — ${r.nom}`}
-                class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-                loading="lazy"
-                decoding="async"
-              />
-              <span class="absolute top-3 left-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-orange text-white text-[10px] font-bold uppercase tracking-wide">
-                Démo métier
-              </span>
-            </div>
+          <article class="group relative flex flex-col rounded-3xl overflow-hidden ring-1 ring-bleu-nuit/10 bg-blanc-casse shadow-card transition-all duration-300 ease-out-soft hover:-translate-y-1 hover:shadow-card-hover hover:ring-bleu/40">
+            <a
+              href={r.previewUrl}
+              target="_blank"
+              rel="noopener"
+              class="block relative overflow-hidden bg-bleu-nuit"
+              aria-label={`Voir la démo ${r.nom}`}
+            >
+              <div class="flex items-center gap-1.5 px-3 py-2 bg-bleu-nuit/95" aria-hidden="true">
+                <span class="block w-2.5 h-2.5 rounded-full bg-[#FF5F57]"></span>
+                <span class="block w-2.5 h-2.5 rounded-full bg-[#FEBC2E]"></span>
+                <span class="block w-2.5 h-2.5 rounded-full bg-[#28C840]"></span>
+              </div>
+              <div class="relative aspect-[4/3] md:aspect-[4/5] overflow-hidden bg-blanc-casse">
+                <img
+                  src={r.thumbnail}
+                  alt={`Exemple de site — ${r.nom}`}
+                  class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span class="absolute top-3 left-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-orange text-white text-[10px] font-bold uppercase tracking-wide shadow-md">
+                  Démo métier
+                </span>
+                <div class="absolute inset-0 flex items-end justify-center pb-5 bg-gradient-to-t from-bleu-nuit/70 via-bleu-nuit/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <span class="inline-flex items-center gap-2 h-11 px-5 rounded-full bg-bleu text-white font-semibold text-sm shadow-[0_0_24px_rgba(145,166,255,0.6)]">
+                    Voir la démo
+                    <Icon name="arrow-right" size={16} strokeWidth={2.5} />
+                  </span>
+                </div>
+              </div>
+            </a>
             <div class="flex flex-col flex-1 p-6">
               <p class="font-sora font-semibold text-lg text-bleu-nuit">{r.nom}</p>
               <p class="mt-1 text-sm text-bleu-nuit/65 leading-relaxed">{r.sousTitre}</p>
-              <div class="mt-4 flex items-center justify-between">
-                <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-bleu/20 text-bleu-nuit text-xs font-semibold">
+              <div class="mt-5 pt-4 border-t border-bleu-nuit/10 flex items-center justify-between gap-3">
+                <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-bleu/15 text-bleu-nuit text-xs font-semibold">
                   Module : {r.moduleInclus}
                 </span>
-                <span class="inline-flex items-center gap-1 text-sm font-semibold text-bleu-nuit group-hover:text-orange transition-colors">
-                  Voir la démo
-                  <span aria-hidden="true" class="transition-transform duration-300 group-hover:translate-x-0.5">→</span>
-                </span>
+                <a
+                  href="/contact"
+                  class="inline-flex items-center gap-1.5 text-sm font-semibold text-bleu-nuit/70 hover:text-bleu transition-colors"
+                >
+                  Je veux celui-ci
+                  <Icon name="arrow-right" size={14} strokeWidth={2.5} />
+                </a>
               </div>
             </div>
-          </a>
+          </article>
         ))}
       </div>
     </div>
