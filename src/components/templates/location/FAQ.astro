@@ -1,0 +1,64 @@
+---
+const faqs = [
+  {
+    q: "Quelle est la durée minimum de séjour ?",
+    r: "Quatre nuits en haute saison (juillet-août, vacances scolaires zone A), deux nuits le reste de l'année. Pour les longs séjours (3 semaines et plus), tarif dégressif sur demande directe.",
+  },
+  {
+    q: "L'arrivée et le départ se font à quelle heure ?",
+    r: "Arrivée à partir de 16h, départ avant 10h. Les hôtes vous accueillent sur place pour la remise des clés et un tour du propriétaire de 20 minutes. Possibilité d'arrivée tardive sur demande.",
+  },
+  {
+    q: "La villa est-elle adaptée aux enfants en bas âge ?",
+    r: "Oui. Lit parapluie, chaise haute, micro-ondes, plaque de bain : tout est inclus sur demande. La piscine est sécurisée par une barrière conforme aux normes. Plage à 5 minutes à pied, sans route à traverser.",
+  },
+  {
+    q: "Y a-t-il un service de ménage ?",
+    r: "Le ménage de fin de séjour est inclus dans le tarif. Pour les séjours de plus d'une semaine, un ménage intermédiaire est offert. Service de blanchisserie sur demande, à la pièce.",
+  },
+  {
+    q: "Acceptez-vous les animaux de compagnie ?",
+    r: "Petits chiens calmes acceptés (jusqu'à 10 kg), sous réserve de notre accord préalable et d'un supplément de 35 € (ménage renforcé). Pas de chats ni d'animaux exotiques. Espace clos pour leur sécurité.",
+  },
+];
+---
+
+<section class="bg-lazuli-casse py-24 md:py-32 px-6 md:px-10 border-t border-lazuli-marine/15">
+  <div class="max-w-content mx-auto">
+
+    <header class="text-center mb-14 max-w-3xl mx-auto">
+      <p class="font-geist text-[11px] uppercase tracking-[0.32em] text-lazuli-terracotta mb-4">
+        ✦ Avant de réserver
+      </p>
+      <h2 class="text-lazuli-marine leading-tight" style="font-family: 'Yeseva One', serif; font-size: clamp(36px, 5vw, 60px);">
+        Cinq questions,<br/>
+        <span class="italic text-lazuli-terracotta" style="font-family: 'Italianno', cursive; font-size: 1.5em;">souvent posées.</span>
+      </h2>
+    </header>
+
+    <ul class="max-w-3xl mx-auto border-t border-lazuli-marine/20">
+      {faqs.map((f, i) => (
+        <li class="border-b border-lazuli-marine/15">
+          <details class="group">
+            <summary class="flex gap-5 md:gap-7 py-7 cursor-pointer list-none items-baseline hover:bg-lazuli-sable/30 transition-colors px-2 -mx-2">
+              <span class="text-lazuli-terracotta text-3xl md:text-4xl shrink-0 tabular-nums leading-none" style="font-family: 'Italianno', cursive;">
+                {String(i + 1).padStart(2, '0')}.
+              </span>
+              <h3 class="flex-1 text-lazuli-marine text-lg md:text-xl leading-snug" style="font-family: 'Yeseva One', serif;">
+                {f.q}
+              </h3>
+              <span class="text-lazuli-terracotta text-2xl md:text-3xl leading-none transition-transform group-open:rotate-45 inline-block shrink-0" style="font-family: 'Yeseva One', serif;">
+                +
+              </span>
+            </summary>
+            <div class="pb-7 pl-12 md:pl-16 pr-6">
+              <p class="font-geist text-lazuli-marine/85 text-[14.5px] md:text-base leading-[1.8]">
+                {f.r}
+              </p>
+            </div>
+          </details>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
