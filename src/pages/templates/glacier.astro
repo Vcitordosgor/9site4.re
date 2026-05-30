@@ -26,7 +26,7 @@ import Footer from '../../components/templates/glacier/Footer.astro';
 const businessLD = localBusinessSchema(sorbetData, 'FoodEstablishment');
 ---
 
-<BaseLayout seo={getSeo('templatePatisserie' as any)} bare={true}>
+<BaseLayout seo={getSeo('templateGlacier')} bare={true}>
   <Fragment slot="head">
     {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin />

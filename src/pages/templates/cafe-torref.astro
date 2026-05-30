@@ -19,7 +19,7 @@ import Footer from '../../components/templates/cafe-torref/Footer.astro';
 const businessLD = localBusinessSchema(brulerieData, 'CafeOrCoffeeShop');
 ---
 
-<BaseLayout seo={getSeo('templatePatisserie' as any)} bare={true}>
+<BaseLayout seo={getSeo('templateCafeTorref')} bare={true}>
   <Fragment slot="head">
     {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
     <link rel="preconnect" href="https://fonts.googleapis.com" />

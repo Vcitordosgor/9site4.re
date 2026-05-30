@@ -348,6 +348,65 @@ export default {
         'roussin-laiton':   '#C9A96E',  // laiton clair — accents dorés
         'roussin-bordeaux': '#7A1F2A',  // bordeaux Ordre des avocats — sceau, accent
         'roussin-blanc':    '#FFFEF7',  // blanc cassé crème
+
+        // ===== New templates batch 1 =====
+        // Palette boulangerie (template /templates/boulangerie — Le Pain Levé)
+        'pain-mie':     '#F5EBD5',
+        'pain-croute':  '#7A4A2A',
+        'pain-charbon': '#1A1614',
+        'pain-or':      '#C89B3C',
+        // Palette glacier (template /templates/glacier — Sorbet Péi)
+        'sorbet-mangue':        '#FFB347',
+        'sorbet-letchi':        '#FF6F91',
+        'sorbet-vert':          '#A8D5BA',
+        'sorbet-creme':         '#FFF8E7',
+        'sorbet-cacao':         '#3D2817',
+        'sorbet-jaune':         '#FFD93D',
+        'sorbet-mangue-clair':  '#FFE4B8',
+        'sorbet-letchi-clair':  '#FFD9E1',
+        // Palette café torréfacteur (template /templates/cafe-torref — Brûlerie d'altitude)
+        'torref-creme':   '#E8DDC7',
+        'torref-cafe':    '#3E2A1F',
+        'torref-charbon': '#1A0F0A',
+        'torref-cuivre':  '#B57A4A',
+        // Palette surf (template /templates/surf — Bord d'eau)
+        'surf-azur':  '#3CACAE',
+        'surf-ecume': '#F4F8F7',
+        'surf-sable': '#E5C99A',
+        'surf-nuit':  '#0F2A36',
+        // Palette fleuriste (template /templates/fleuriste — Frangipane)
+        'flora-poudre':  '#F4E6E0',
+        'flora-feuille': '#5C7448',
+        'flora-charbon': '#2A2520',
+        'flora-ocre':    '#C49B62',
+
+        // ===== New templates batch 2 =====
+        // Palette tatoueur (template /templates/tatoueur — Encre Volcan)
+        'tatoo-noir':  '#0A0A0A',
+        'tatoo-rouge': '#A11920',
+        'tatoo-creme': '#EEE6D8',
+        'tatoo-encre': '#1F1A18',
+        // Palette naturopathe (template /templates/naturopathe — Source)
+        'source-eau':     '#E4F0EE',
+        'source-mousse':  '#5D7C68',
+        'source-charbon': '#1F2926',
+        'source-amande':  '#D3C29C',
+        // Palette micro-crèche (template /templates/creche — Le Nid)
+        'nid-jaune':   '#F8D77E',
+        'nid-rose':    '#F5C4C4',
+        'nid-bleu':    '#A8C9E4',
+        'nid-creme':   '#FFF8EE',
+        'nid-charbon': '#2E2A26',
+        // Palette notaire (template /templates/notaire — Étude Notariale & Associés)
+        'notaire-marbre':   '#F5F1EB',
+        'notaire-noir':     '#1A1715',
+        'notaire-or':       '#A28B5C',
+        'notaire-bordeaux': '#5C2A2A',
+        // Palette studio audio (template /templates/studio-audio — Onde)
+        'onde-noir':   '#0D0D14',
+        'onde-violet': '#7C3AED',
+        'onde-cyan':   '#22D3EE',
+        'onde-creme':  '#F5F4F8',
       },
       fontFamily: {
         sora: ['Sora', 'system-ui', 'sans-serif'],

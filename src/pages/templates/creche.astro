@@ -7,6 +7,7 @@ import '@fontsource/caveat/latin-400.css';
 import '@fontsource/caveat/latin-500.css';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getSeo } from '../../lib/seo';
 import { localBusinessSchema } from "../../lib/businessSchema";
 import nidData from '../../data/templates/nid.json';
 
@@ -24,17 +25,9 @@ import NidFooter from '../../components/templates/creche/NidFooter.astro';
 
 const businessLD = localBusinessSchema(nidData);
 
-const localSeo = {
-  title: 'Le Nid — Micro-crèche à La Réunion | Template 9site4',
-  description: 'Aperçu du template "Micro-crèche" proposé par 9site4 : pédagogie Montessori, équipe diplômée, journée type, locaux, sécurité, tarifs CAF. Site fictif de démonstration.',
-  canonical: '/templates/creche',
-  ogImage: '/og-image.png',
-  ogImageAlt: 'Le Nid — Micro-crèche à La Réunion',
-  noindex: true,
-};
 ---
 
-<BaseLayout seo={localSeo} bare={true}>
+<BaseLayout seo={getSeo('templateCreche')} bare={true}>
   <Fragment slot="head">
     {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin />

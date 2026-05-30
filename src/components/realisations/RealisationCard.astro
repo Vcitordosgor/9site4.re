@@ -34,6 +34,16 @@ import PreviewPatisserie from './previews/PreviewPatisserie.astro';
 import PreviewGarage from './previews/PreviewGarage.astro';
 import PreviewPhotographe from './previews/PreviewPhotographe.astro';
 import PreviewAvocat from './previews/PreviewAvocat.astro';
+import PreviewBoulangerie from './previews/PreviewBoulangerie.astro';
+import PreviewGlacier from './previews/PreviewGlacier.astro';
+import PreviewCafeTorref from './previews/PreviewCafeTorref.astro';
+import PreviewSurf from './previews/PreviewSurf.astro';
+import PreviewFleuriste from './previews/PreviewFleuriste.astro';
+import PreviewTatoueur from './previews/PreviewTatoueur.astro';
+import PreviewNaturopathe from './previews/PreviewNaturopathe.astro';
+import PreviewCreche from './previews/PreviewCreche.astro';
+import PreviewNotaire from './previews/PreviewNotaire.astro';
+import PreviewStudioAudio from './previews/PreviewStudioAudio.astro';
 
 /**
  * RealisationCard — chaque carte affiche un VRAI mini-preview du template
@@ -94,6 +104,16 @@ const previewMap: Record<string, any> = {
   'garage-mecanique':                 PreviewGarage,
   'photographe-auteur':               PreviewPhotographe,
   'avocat-cabinet':                   PreviewAvocat,
+  'boulangerie-artisanale':           PreviewBoulangerie,
+  'glacier-artisanal':                PreviewGlacier,
+  'cafe-torrefaction':                PreviewCafeTorref,
+  'ecole-de-surf':                    PreviewSurf,
+  'fleuriste-atelier':                PreviewFleuriste,
+  'studio-de-tatouage':               PreviewTatoueur,
+  'naturopathe':                      PreviewNaturopathe,
+  'micro-creche':                     PreviewCreche,
+  'etude-notariale':                  PreviewNotaire,
+  'studio-audio':                     PreviewStudioAudio,
 };
 
 const Preview = previewMap[realisation.slug] ?? null;

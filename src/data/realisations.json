@@ -298,5 +298,105 @@
     "slug": "avocat-cabinet",
     "previewUrl": "/templates/avocat",
     "thumbnail": "https://images.unsplash.com/photo-1505664194779-8beaceb93744?w=900&q=80"
+  },
+  {
+    "id": 31,
+    "nom": "Boulangerie artisanale",
+    "categorie": "restaurants-et-snacks",
+    "sousTitre": "Levain naturel et viennoiseries maison",
+    "moduleInclus": "Commande",
+    "slug": "boulangerie-artisanale",
+    "previewUrl": "/templates/boulangerie",
+    "thumbnail": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=900&q=80"
+  },
+  {
+    "id": 32,
+    "nom": "Glacier artisanal",
+    "categorie": "restaurants-et-snacks",
+    "sousTitre": "Sorbets fruits péi et crèmes glacées",
+    "moduleInclus": "Commande",
+    "slug": "glacier-artisanal",
+    "previewUrl": "/templates/glacier",
+    "thumbnail": "https://images.unsplash.com/photo-1501443762994-82bd5dace89a?w=900&q=80"
+  },
+  {
+    "id": 33,
+    "nom": "Café & torréfaction",
+    "categorie": "restaurants-et-snacks",
+    "sousTitre": "Brûlerie artisanale, abonnement grains",
+    "moduleInclus": "Commande",
+    "slug": "cafe-torrefaction",
+    "previewUrl": "/templates/cafe-torref",
+    "thumbnail": "https://images.unsplash.com/photo-1559525839-d9acfd03c2f7?w=900&q=80"
+  },
+  {
+    "id": 34,
+    "nom": "École de surf",
+    "categorie": "tourisme-et-loisirs",
+    "sousTitre": "Initiation, perfectionnement, stages",
+    "moduleInclus": "Réservation",
+    "slug": "ecole-de-surf",
+    "previewUrl": "/templates/surf",
+    "thumbnail": "https://images.unsplash.com/photo-1502680390469-be75c86b636f?w=900&q=80"
+  },
+  {
+    "id": 35,
+    "nom": "Fleuriste atelier",
+    "categorie": "commerces-et-services",
+    "sousTitre": "Bouquets, mariages, événementiel floral",
+    "moduleInclus": "Devis",
+    "slug": "fleuriste-atelier",
+    "previewUrl": "/templates/fleuriste",
+    "thumbnail": "https://images.unsplash.com/photo-1494973367193-3f1f0a4cdcbe?w=900&q=80"
+  },
+  {
+    "id": 36,
+    "nom": "Studio de tatouage",
+    "categorie": "beaute",
+    "sousTitre": "Styles signature, flash sheet et réservation de consultation",
+    "moduleInclus": "Réservation",
+    "slug": "studio-de-tatouage",
+    "previewUrl": "/templates/tatoueur",
+    "thumbnail": "https://images.unsplash.com/photo-1565058379802-bbe93b2f703a?w=900&q=80"
+  },
+  {
+    "id": 37,
+    "nom": "Naturopathe",
+    "categorie": "sante",
+    "sousTitre": "Méthode, parcours, conseils et rendez-vous en ligne",
+    "moduleInclus": "Rendez-vous",
+    "slug": "naturopathe",
+    "previewUrl": "/templates/naturopathe",
+    "thumbnail": "https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=900&q=80"
+  },
+  {
+    "id": 38,
+    "nom": "Micro-crèche",
+    "categorie": "particuliers",
+    "sousTitre": "Pédagogie, équipe, journée type et inscription",
+    "moduleInclus": "Inscription",
+    "slug": "micro-creche",
+    "previewUrl": "/templates/creche",
+    "thumbnail": "https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=900&q=80"
+  },
+  {
+    "id": 39,
+    "nom": "Étude notariale",
+    "categorie": "pro",
+    "sousTitre": "Domaines, notaires, frais transparents et prise de rendez-vous",
+    "moduleInclus": "Rendez-vous",
+    "slug": "etude-notariale",
+    "previewUrl": "/templates/notaire",
+    "thumbnail": "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=900&q=80"
+  },
+  {
+    "id": 40,
+    "nom": "Studio d'enregistrement",
+    "categorie": "pro",
+    "sousTitre": "Services, équipement, tarifs et réservation de session",
+    "moduleInclus": "Réservation",
+    "slug": "studio-audio",
+    "previewUrl": "/templates/studio-audio",
+    "thumbnail": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=900&q=80"
   }
 ]

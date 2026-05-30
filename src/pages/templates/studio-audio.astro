@@ -7,6 +7,7 @@ import '@fontsource/jetbrains-mono/latin-500.css';
 import '@fontsource/jetbrains-mono/latin-600.css';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getSeo } from '../../lib/seo';
 import { localBusinessSchema } from "../../lib/businessSchema";
 import ondeData from '../../data/templates/onde.json';
 
@@ -24,17 +25,9 @@ import OndeFooter from '../../components/templates/studio-audio/OndeFooter.astro
 
 const businessLD = localBusinessSchema(ondeData);
 
-const localSeo = {
-  title: 'Onde — Studio d\'enregistrement à La Réunion | Template 9site4',
-  description: 'Aperçu du template "Studio audio" proposé par 9site4 : enregistrement, mixage, mastering, production, équipement, ingénieurs, tarifs. Site fictif de démonstration.',
-  canonical: '/templates/studio-audio',
-  ogImage: '/og-image.png',
-  ogImageAlt: 'Onde — Studio d\'enregistrement à La Réunion',
-  noindex: true,
-};
 ---
 
-<BaseLayout seo={localSeo} bare={true}>
+<BaseLayout seo={getSeo('templateStudioAudio')} bare={true}>
   <Fragment slot="head">
     {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin />

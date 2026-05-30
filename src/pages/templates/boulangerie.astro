@@ -25,7 +25,7 @@ import Footer from '../../components/templates/boulangerie/Footer.astro';
 const businessLD = localBusinessSchema(painleveData, 'Bakery');
 ---
 
-<BaseLayout seo={getSeo('templatePatisserie' as any)} bare={true}>
+<BaseLayout seo={getSeo('templateBoulangerie')} bare={true}>
   <Fragment slot="head">
     {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin />

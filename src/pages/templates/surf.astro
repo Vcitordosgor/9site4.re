@@ -22,7 +22,7 @@ import Footer from '../../components/templates/surf/Footer.astro';
 const businessLD = localBusinessSchema(borddeauData, 'SportsActivityLocation');
 ---
 
-<BaseLayout seo={getSeo('templatePlongee' as any)} bare={true}>
+<BaseLayout seo={getSeo('templateSurf')} bare={true}>
   <Fragment slot="head">
     {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
     <link rel="preconnect" href="https://fonts.googleapis.com" />

@@ -58,7 +58,17 @@ type PageKey =
   | 'templatePatisserie'
   | 'templateGarage'
   | 'templatePhotographe'
-  | 'templateAvocat';
+  | 'templateAvocat'
+  | 'templateBoulangerie'
+  | 'templateGlacier'
+  | 'templateCafeTorref'
+  | 'templateSurf'
+  | 'templateFleuriste'
+  | 'templateTatoueur'
+  | 'templateNaturopathe'
+  | 'templateCreche'
+  | 'templateNotaire'
+  | 'templateStudioAudio';
 
 const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'> & { noindex?: boolean; ogImage?: string; ogImageAlt?: string }> = {
   home: {
@@ -306,10 +316,80 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
     noindex: true,
   },
   templateAvocat: {
-    title: 'Étude Roussin — Cabinet d\'avocats à Saint-Pierre (Réunion) | Template 9site4',
+    title: 'Étude Roussin — Cabinet d\'avocats à La Réunion | Template 9site4',
     description:
       'Aperçu du template "Cabinet d\'avocats" proposé par 9site4 : domaines d\'intervention (famille, affaires, travail, immobilier), associés, démarche, honoraires transparents. Site fictif de démonstration.',
     canonical: '/templates/avocat',
+    noindex: true,
+  },
+  templateBoulangerie: {
+    title: 'Le Pain Levé — Boulangerie au levain à La Réunion | Template 9site4',
+    description:
+      'Aperçu du template "Boulangerie artisanale" proposé par 9site4 : carte de pains au levain, calendrier de cuisson, processus du fournil, viennoiseries pur beurre. Site fictif de démonstration.',
+    canonical: '/templates/boulangerie',
+    noindex: true,
+  },
+  templateGlacier: {
+    title: 'Sorbet Péi — Glacier artisanal à La Réunion | Template 9site4',
+    description:
+      'Aperçu du template "Glacier artisanal" proposé par 9site4 : sorbets fruits péi, tournée du camion glacé, privatisation événementiel. Site fictif de démonstration.',
+    canonical: '/templates/glacier',
+    noindex: true,
+  },
+  templateCafeTorref: {
+    title: 'Brûlerie d\'altitude — Café torréfié à La Réunion | Template 9site4',
+    description:
+      'Aperçu du template "Café et torréfaction" proposé par 9site4 : origines péi, méthodes d\'extraction, abonnement grains frais. Site fictif de démonstration.',
+    canonical: '/templates/cafe-torref',
+    noindex: true,
+  },
+  templateSurf: {
+    title: 'Bord d\'eau — École de surf à La Réunion | Template 9site4',
+    description:
+      'Aperçu du template "École de surf" proposé par 9site4 : formules initiation et perfectionnement, spots étudiés, lecture marée et matériel sécurité. Site fictif de démonstration.',
+    canonical: '/templates/surf',
+    noindex: true,
+  },
+  templateFleuriste: {
+    title: 'Frangipane — Atelier floral à La Réunion | Template 9site4',
+    description:
+      'Aperçu du template "Atelier floral" proposé par 9site4 : compositions de saison, mariages et événementiel, abonnement bureau. Site fictif de démonstration.',
+    canonical: '/templates/fleuriste',
+    noindex: true,
+  },
+  templateTatoueur: {
+    title: 'Encre Volcan — Studio de tatouage à La Réunion | Template 9site4',
+    description:
+      'Aperçu du template "Studio de tatouage" proposé par 9site4 : quatre styles signature (blackwork, lettering, floral, old-school), équipe de trois encreurs résidents, flash sheet, process et tarification. Site fictif de démonstration.',
+    canonical: '/templates/tatoueur',
+    noindex: true,
+  },
+  templateNaturopathe: {
+    title: 'Source — Naturopathie à La Réunion | Template 9site4',
+    description:
+      'Aperçu du template "Naturopathe" proposé par 9site4 : approche (fatigue, sommeil, digestion, stress), méthode en 4 étapes, parcours certifié FENA, cabinet, tarifs et conseils. Site fictif de démonstration.',
+    canonical: '/templates/naturopathe',
+    noindex: true,
+  },
+  templateCreche: {
+    title: 'Le Nid — Micro-crèche à La Réunion | Template 9site4',
+    description:
+      'Aperçu du template "Micro-crèche" proposé par 9site4 : pédagogie Montessori, équipe diplômée, journée type 7h-19h, locaux et jardin, sécurité PMI et tarifs CAF. Site fictif de démonstration.',
+    canonical: '/templates/creche',
+    noindex: true,
+  },
+  templateNotaire: {
+    title: 'Étude Notariale & Associés — Notaires à La Réunion | Template 9site4',
+    description:
+      'Aperçu du template "Étude notariale" proposé par 9site4 : quatre domaines (famille, succession, immobilier, sociétés), notaires associés, méthode, frais transparents et documents à apporter. Site fictif de démonstration.',
+    canonical: '/templates/notaire',
+    noindex: true,
+  },
+  templateStudioAudio: {
+    title: 'Onde — Studio d\'enregistrement à La Réunion | Template 9site4',
+    description:
+      'Aperçu du template "Studio audio" proposé par 9site4 : enregistrement, mixage, mastering streaming, production musicale, équipement SSL/Pro Tools et ingénieurs résidents. Site fictif de démonstration.',
+    canonical: '/templates/studio-audio',
     noindex: true,
   },
 };
