@@ -5,13 +5,13 @@
     "wordmark2": "perdu",
     "tagline": "Cuisine du marché,",
     "taglineItalic": "tables sous les filaos.",
-    "intro": "Restaurant gastronomique au cœur de Saint-Denis. Carte du jour, produits locaux, cave à vins choisie. Une parenthèse végétale, une cuisine à la pointe.",
-    "adresse": "8 rue de Paris, 97400 Saint-Denis",
-    "telephone": "+262 692 00 00 00",
-    "telephoneHref": "+262692000000",
+    "intro": "Restaurant gastronomique péi. Carte du jour, produits locaux, cave à vins choisie. Une parenthèse végétale, une cuisine à la pointe.",
+    "adresse": "À La Réunion · adresse précise communiquée à la réservation",
+    "telephone": "+262 692 12 34 56",
+    "telephoneHref": "+262692123456",
     "email": "reservation@lejardinperdu.re",
-    "whatsapp": "262692000000",
-    "whatsappDisplay": "+262 692 00 00 00",
+    "whatsapp": "262692123456",
+    "whatsappDisplay": "+262 692 12 34 56",
     "annee": 2014,
     "horaires": [
       { "jour": "Lundi", "ouvert": false, "label": "Fermé" },
@@ -37,7 +37,7 @@
   "manifesto": "Une cuisine simple en apparence, exigeante dans le détail. On ne cherche pas à impressionner — on cherche à faire plaisir.",
   "chiffres": [
     { "valeur": "1",     "label": "étoile au guide Michelin",      "depuis": "depuis 2019" },
-    { "valeur": "2014",  "label": "année d'ouverture",              "depuis": "à Saint-Denis" },
+    { "valeur": "2014",  "label": "année d'ouverture",              "depuis": "à La Réunion" },
     { "valeur": "42",    "label": "couverts par service",            "depuis": "intimité préservée" }
   ],
   "carte": {
@@ -77,7 +77,7 @@
   "chef": {
     "nom": "Augustin Lambert",
     "titre": "Chef · propriétaire",
-    "bio": "Formé chez Anne-Sophie Pic à Valence puis chez Manish Mehrotra à New Delhi, Augustin pose ses couteaux à Saint-Denis en 2014. Sa cuisine cherche le juste milieu entre la rigueur française et la générosité créole.",
+    "bio": "Formé dans plusieurs maisons étoilées en France et en Asie, Augustin pose ses couteaux à La Réunion en 2014. Sa cuisine cherche le juste milieu entre la rigueur française et la générosité créole.",
     "signature": "Mon plat signature, c'est le filet de cabri du Tampon, juste rosé, avec un jus monté à la vanille de Bourbon. Un seul plat dit qui je suis."
   },
   "vins": [
@@ -86,7 +86,7 @@
     { "id": "v3", "nom": "Châteauneuf-du-Pape · Beaucastel",    "annee": "2018", "region": "Rhône",      "accord": "Filet de cabri, plats sauce" },
     { "id": "v4", "nom": "Hermitage rouge · Chave",             "annee": "2017", "region": "Rhône",      "accord": "Service spécial, sur demande" },
     { "id": "v5", "nom": "Champagne Selosse · Substance",       "annee": "NV",   "region": "Champagne",  "accord": "Apéritif, fromages" },
-    { "id": "v6", "nom": "Rhum vieux Savanna · Lontan",         "annee": "12 ans", "region": "Réunion",  "accord": "Ananas rôti, fin de repas" }
+    { "id": "v6", "nom": "Rhum vieux de l'île · Cuvée traditionnelle", "annee": "12 ans", "region": "Réunion",  "accord": "Ananas rôti, fin de repas" }
   ],
   "occasions": [
     { "id": "decouverte",  "label": "Découverte" },
