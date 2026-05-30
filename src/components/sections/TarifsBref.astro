@@ -51,7 +51,10 @@ const inclus = [
       <!-- Inclusions en bento -->
       <div class="lg:col-span-3 grid grid-cols-2 sm:grid-cols-3 gap-3">
         {inclus.map((item) => (
-          <div class="flex flex-col rounded-2xl bg-blanc-casse ring-1 ring-bleu-nuit/10 p-4 transition-all duration-300 ease-out-soft hover:-translate-y-0.5 hover:shadow-card-hover hover:ring-bleu-nuit/15">
+          <div class="relative flex flex-col rounded-2xl bg-blanc-casse ring-1 ring-bleu-nuit/10 p-4 transition-all duration-300 ease-out-soft hover:-translate-y-0.5 hover:shadow-card-hover hover:ring-bleu-nuit/15">
+            <span class="absolute top-3 right-3 flex w-5 h-5 rounded-full bg-bleu text-white items-center justify-center" aria-hidden="true">
+              <Icon name="check" size={11} strokeWidth={3} />
+            </span>
             <span class="flex w-10 h-10 rounded-xl bg-bleu/20 text-bleu-nuit items-center justify-center">
               <Icon name={item.icon} size={18} strokeWidth={1.75} />
             </span>
