@@ -1,0 +1,30 @@
+---
+import data from '../../../data/templates/source.json';
+---
+
+<section class="py-20 md:py-28" style="background-color: #FFFFFF;">
+  <div class="max-w-3xl mx-auto px-6 md:px-10">
+
+    <div class="text-center mb-12 md:mb-16">
+      <p class="font-manrope text-[11px] uppercase tracking-[0.35em] mb-4" style="color: #5D7C68;">— Questions fréquentes —</p>
+      <h2 class="font-lora text-4xl md:text-5xl leading-tight" style="color: #1F2926;">
+        Avant de prendre
+        <em class="italic" style="color: #5D7C68;">rendez-vous.</em>
+      </h2>
+    </div>
+
+    <div class="space-y-3">
+      {data.faq.map((f) => (
+        <details class="group rounded-xl border-2 transition-colors" style="background-color: #FFFFFF; border-color: rgb(228 240 238 / 1);" onmouseover="this.style.borderColor='#5D7C68';" onmouseout="this.style.borderColor='rgb(228 240 238 / 1)';">
+          <summary class="cursor-pointer list-none flex items-start gap-4 p-5 md:p-7">
+            <span class="font-lora italic text-2xl leading-none mt-0.5 transition-transform duration-300 group-open:rotate-45" style="color: #5D7C68;" aria-hidden="true">+</span>
+            <span class="flex-1 font-lora text-lg md:text-xl leading-snug" style="color: #1F2926;">{f.q}</span>
+          </summary>
+          <div class="px-5 md:px-7 pb-6 md:pb-8 pl-14 md:pl-16">
+            <p class="font-manrope text-[14px] leading-relaxed" style="color: rgb(31 41 38 / 0.78);">{f.r}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

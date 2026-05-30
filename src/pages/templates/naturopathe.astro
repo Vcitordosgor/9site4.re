@@ -1,0 +1,59 @@
+---
+import '@fontsource/lora/latin-400.css';
+import '@fontsource/lora/latin-400-italic.css';
+import '@fontsource/lora/latin-500.css';
+import '@fontsource/manrope/latin-400.css';
+import '@fontsource/manrope/latin-500.css';
+import '@fontsource/manrope/latin-600.css';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { localBusinessSchema } from "../../lib/businessSchema";
+import sourceData from '../../data/templates/source.json';
+
+import SourceHeader from '../../components/templates/naturopathe/SourceHeader.astro';
+import HeroSource from '../../components/templates/naturopathe/HeroSource.astro';
+import PourQui from '../../components/templates/naturopathe/PourQui.astro';
+import Methode from '../../components/templates/naturopathe/Methode.astro';
+import Formations from '../../components/templates/naturopathe/Formations.astro';
+import Cabinet from '../../components/templates/naturopathe/Cabinet.astro';
+import Tarifs from '../../components/templates/naturopathe/Tarifs.astro';
+import Conseils from '../../components/templates/naturopathe/Conseils.astro';
+import Faq from '../../components/templates/naturopathe/Faq.astro';
+import Contact from '../../components/templates/naturopathe/Contact.astro';
+import SourceFooter from '../../components/templates/naturopathe/SourceFooter.astro';
+
+const businessLD = localBusinessSchema(sourceData);
+
+const localSeo = {
+  title: 'Source — Naturopathie à La Réunion | Template 9site4',
+  description: 'Aperçu du template "Naturopathe" proposé par 9site4 : approche, méthode, parcours, cabinet, tarifs, conseils. Site fictif de démonstration.',
+  canonical: '/templates/naturopathe',
+  ogImage: '/og-image.png',
+  ogImageAlt: 'Source — Naturopathie à La Réunion',
+  noindex: true,
+};
+---
+
+<BaseLayout seo={localSeo} bare={true}>
+  <Fragment slot="head">
+    {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <link rel="preload" as="image" href={sourceData.info.photoHero} fetchpriority="high" />
+  </Fragment>
+
+  <SourceHeader />
+
+  <main style="background-color: #FFFFFF;">
+    <HeroSource />
+    <PourQui />
+    <Methode />
+    <Formations />
+    <Cabinet />
+    <Tarifs />
+    <Conseils />
+    <Faq />
+    <Contact />
+  </main>
+
+  <SourceFooter />
+</BaseLayout>
