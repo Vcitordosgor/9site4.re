@@ -1,0 +1,29 @@
+---
+import data from '../../../data/templates/aubry.json';
+---
+
+<section class="bg-aubry-prune text-aubry-perle">
+  <div class="max-w-content mx-auto px-6 md:px-10 py-12 md:py-16">
+    <div class="grid md:grid-cols-12 gap-6 items-center">
+      <div class="md:col-span-8">
+        <p class="font-plex-mono text-[10px] uppercase tracking-[0.32em] text-aubry-rose mb-3">
+          — Consultations
+        </p>
+        <p class="font-caslon text-aubry-perle leading-[1.1]" style="font-size: clamp(26px, 3.4vw, 44px);">
+          Téléconsultations possibles, <span class="italic text-aubry-rose">en visio</span> ou par téléphone — pour la même qualité d'écoute.
+        </p>
+      </div>
+      <div class="md:col-span-4 md:text-right">
+        <a
+          href="#rendez-vous"
+          class="inline-flex items-center justify-center h-12 px-7 bg-aubry-perle text-aubry-encre font-albert font-medium text-[13px] hover:bg-aubry-rose hover:text-aubry-encre transition-colors"
+        >
+          Prendre rendez-vous
+        </a>
+        <p class="mt-3 font-plex-mono text-[10px] uppercase tracking-[0.28em] text-aubry-rose">
+          {data.info.telephone}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

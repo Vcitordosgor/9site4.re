@@ -1,0 +1,29 @@
+---
+import data from '../../../data/templates/aubry.json';
+---
+
+<section class="bg-aubry-papier border-y border-aubry-rose/30 py-28 md:py-44 px-6 md:px-10 relative overflow-hidden">
+  <p class="absolute -top-12 -left-6 md:-left-12 font-caslon italic text-aubry-rose/20 leading-none select-none pointer-events-none" style="font-size: clamp(200px, 36vw, 480px);" aria-hidden="true">
+    &ldquo;
+  </p>
+
+  <div class="relative max-w-4xl mx-auto">
+    <p class="font-plex-mono text-[10px] uppercase tracking-[0.32em] text-aubry-prune mb-8">
+      — p. III · en marge
+    </p>
+    <blockquote class="font-caslon italic text-aubry-encre leading-[1.25]" style="font-size: clamp(30px, 4.4vw, 54px);">
+      Ce qui vous a amené ici n'est pas un symptôme à corriger. C'est une question qui demande qu'on lui <span class="text-aubry-prune not-italic font-normal">laisse le temps</span> de devenir une réponse.
+    </blockquote>
+    <footer class="mt-12 flex items-baseline gap-4">
+      <span class="block w-12 h-px bg-aubry-prune" aria-hidden="true"></span>
+      <div>
+        <p class="font-caslon text-aubry-encre text-base">
+          {data.info.nom}
+        </p>
+        <p class="font-plex-mono text-[10px] uppercase tracking-[0.28em] text-aubry-prune mt-1">
+          {data.info.soustitre} · ADELI {data.info.adeli}
+        </p>
+      </div>
+    </footer>
+  </div>
+</section>
