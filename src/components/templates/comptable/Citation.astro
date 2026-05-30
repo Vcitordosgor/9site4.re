@@ -1,0 +1,29 @@
+---
+import data from '../../../data/templates/auberval.json';
+---
+
+<section class="bg-auberval-feutre border-y border-auberval-marine/15 py-28 md:py-40 px-6 md:px-10 relative overflow-hidden">
+  <div class="absolute inset-0 pointer-events-none opacity-60" aria-hidden="true"
+       style="background-image: repeating-linear-gradient(90deg, transparent 0, transparent 35px, rgba(167,138,79,0.05) 35px, rgba(167,138,79,0.05) 36px);">
+  </div>
+
+  <div class="relative max-w-5xl mx-auto">
+    <p class="font-dm-mono text-[10px] uppercase tracking-[0.32em] text-auberval-or mb-6">
+      ✦ Note d'auteur
+    </p>
+    <span aria-hidden="true" class="block font-source-serif italic text-auberval-or/40 leading-none mb-2 select-none" style="font-size: clamp(96px, 16vw, 220px);">
+      &ldquo;
+    </span>
+    <blockquote class="font-source-serif italic text-auberval-marine leading-[1.18]" style="font-size: clamp(32px, 4.4vw, 56px);">
+      Un bilan, c'est d'abord un récit chiffré. Notre métier consiste à le rendre <span class="text-auberval-or not-italic font-light">lisible, défendable et juste</span>.
+    </blockquote>
+    <footer class="mt-10 pt-5 border-t border-auberval-or/40 flex flex-wrap items-baseline justify-between gap-3">
+      <p class="font-plex-sans text-[11px] uppercase tracking-[0.28em] text-auberval-encre/70">
+        — Direction du cabinet
+      </p>
+      <p class="font-dm-mono text-[10px] uppercase tracking-[0.28em] text-auberval-marine">
+        Auberval · {data.info.annee}
+      </p>
+    </footer>
+  </div>
+</section>
