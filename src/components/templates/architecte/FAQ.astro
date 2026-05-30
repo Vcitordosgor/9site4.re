@@ -1,0 +1,74 @@
+---
+/**
+ * FAQ — accordion sobre, mise en page grille typographique cartouche.
+ */
+const faqs = [
+  {
+    q: 'À quel moment doit-on solliciter un architecte ?',
+    r: "Le plus tôt possible. Idéalement avant l'achat du terrain : une étude de faisabilité (1 500 à 3 500 € HT) sécurise votre acquisition en validant le potentiel constructible, l'orientation et les contraintes réglementaires.",
+  },
+  {
+    q: 'Le recours à un architecte est-il obligatoire ?',
+    r: "Au-delà de 150 m² de surface de plancher pour un particulier, oui. Pour une SCI, une SARL ou tout projet professionnel, le seuil tombe à 0 m². L'inscription au tableau de l'Ordre est obligatoire.",
+  },
+  {
+    q: 'Comment se calculent vos honoraires ?',
+    r: "En pourcentage du coût travaux HT, selon la mission. Mission complète : 10 à 12 %. Restauration patrimoniale : jusqu'à 15 %. Mission partielle : 5 à 9 %. Étude de faisabilité au forfait. Devis signé avant tout engagement.",
+  },
+  {
+    q: "Travaillez-vous en zones réglementées (PPR, sites inscrits) ?",
+    r: "Oui, régulièrement. L'agence a une pratique courante des dossiers en zone bleue PPR, en site inscrit aux Monuments Historiques, et des co-instructions avec l'ABF lorsque requis.",
+  },
+  {
+    q: 'Quels matériaux privilégiez-vous ?',
+    r: "Bois péi (tamarin, cryptoméria) en ossature et bardage, basalte local en soubassement, moellons de lave, tôle laquée. Béton sobrement utilisé. Toujours en cohérence avec le climat tropical humide.",
+  },
+];
+---
+
+<section class="bg-mahatma-papier py-24 md:py-32 px-6 md:px-10 border-t border-mahatma-encre/15">
+  <div class="max-w-content mx-auto">
+
+    <header class="grid grid-cols-12 gap-4 mb-14 md:mb-16">
+      <div class="col-span-12 md:col-span-3">
+        <p class="font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-cachet mb-4">
+          ▢ § VI·bis
+        </p>
+        <p class="font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-beton">
+          Questions fréquentes
+        </p>
+      </div>
+      <div class="col-span-12 md:col-span-9">
+        <h2 class="font-schibsted font-bold text-mahatma-encre leading-[0.95] tracking-tight uppercase" style="font-size: clamp(36px, 5vw, 64px);">
+          Cinq questions,<br/><span class="font-light italic">avant la rencontre.</span>
+        </h2>
+      </div>
+    </header>
+
+    <ul class="border-t border-mahatma-encre/30">
+      {faqs.map((f, i) => (
+        <li class="border-b border-mahatma-encre/15">
+          <details class="group">
+            <summary class="grid grid-cols-12 gap-4 md:gap-6 py-6 md:py-8 cursor-pointer list-none items-baseline hover:bg-mahatma-blanc transition-colors px-2 -mx-2">
+              <span class="col-span-2 md:col-span-1 font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-cachet">
+                Q/{String(i + 1).padStart(2, '0')}
+              </span>
+              <h3 class="col-span-8 md:col-span-10 font-schibsted font-bold text-mahatma-encre text-lg md:text-2xl uppercase tracking-tight leading-tight">
+                {f.q}
+              </h3>
+              <span class="col-span-2 md:col-span-1 text-right font-schibsted font-light text-mahatma-cachet text-2xl md:text-3xl leading-none transition-transform group-open:rotate-45 inline-block">
+                +
+              </span>
+            </summary>
+            <div class="grid grid-cols-12 gap-4 md:gap-6 pb-7 md:pb-9 px-2 -mx-2">
+              <div class="hidden md:block md:col-span-1"></div>
+              <p class="col-span-12 md:col-span-10 font-atkinson text-mahatma-encre/80 text-base md:text-lg leading-[1.75] italic">
+                {f.r}
+              </p>
+            </div>
+          </details>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

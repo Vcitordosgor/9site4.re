@@ -1,0 +1,48 @@
+---
+/**
+ * Partenaires — bandeau "Ils nous font confiance" en wordmarks
+ * typographiques sobres (pas de logos tiers), traité comme un cartouche.
+ */
+const partenaires = [
+  { nom: 'CAUE 974', sub: 'Conseil arch.' },
+  { nom: 'BIO·BÂT', sub: 'Bureau études' },
+  { nom: 'PÉI·BOIS', sub: 'Coopérative' },
+  { nom: 'SOCOTEC', sub: 'Contrôle tech.' },
+  { nom: 'EPF·OI', sub: 'Foncier' },
+  { nom: 'ARTPLAN', sub: 'Topographe' },
+];
+---
+
+<section class="bg-mahatma-papier py-16 md:py-20 px-6 md:px-10 border-t border-mahatma-encre/15">
+  <div class="max-w-content mx-auto">
+
+    <div class="grid grid-cols-12 gap-4 mb-10">
+      <div class="col-span-12 md:col-span-3">
+        <p class="font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-cachet mb-2">
+          ▢ § III·bis
+        </p>
+        <p class="font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-beton">
+          Partenaires & maîtres d'œuvre associés
+        </p>
+      </div>
+      <div class="col-span-12 md:col-span-9">
+        <p class="font-atkinson italic text-mahatma-beton text-sm md:text-base max-w-2xl leading-relaxed">
+          Bureaux d'études, contrôleurs techniques et coopératives matériau avec lesquels l'agence travaille régulièrement.
+        </p>
+      </div>
+    </div>
+
+    <ul class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-px bg-mahatma-encre/15 border border-mahatma-encre/15">
+      {partenaires.map((p) => (
+        <li class="bg-mahatma-papier px-4 py-7 text-center hover:bg-mahatma-blanc transition-colors">
+          <p class="font-schibsted font-bold text-mahatma-encre text-lg md:text-xl uppercase tracking-[0.04em] leading-none">
+            {p.nom}
+          </p>
+          <p class="mt-3 font-fira-mono text-[9px] uppercase tracking-[0.22em] text-mahatma-beton">
+            ◯ {p.sub}
+          </p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
