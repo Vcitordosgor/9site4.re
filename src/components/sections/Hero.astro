@@ -35,11 +35,17 @@ import siteConfig from '../../data/siteConfig.json';
 
   <!-- Contenu centré -->
   <div class="relative z-10 mx-auto max-w-4xl px-6 py-28 text-center text-blanc-casse">
+    {/* Ancien H1 (avant homepage-conversion-v2) :
+        "Votre site pro, prêt en 7 jours." */}
     <h1 class="hero-rise hero-rise-2 font-sora font-bold text-balance leading-[1.08] text-[clamp(2.25rem,4vw+1rem,4rem)] tracking-tight">
-      Votre site pro,
-      <br class="hidden sm:block" />
-      prêt en 7 jours.
+      Votre site pro à La Réunion, prêt en 7 jours, géré pour recevoir vos demandes.
     </h1>
+
+    <p class="hero-rise hero-rise-3 mt-6 mx-auto max-w-2xl text-base md:text-lg text-blanc-casse/80 leading-relaxed">
+      9site4 crée et gère votre site vitrine : design, hébergement, maintenance,
+      modifications simples et formulaire métier inclus pour recevoir des demandes
+      plus claires. Vous envoyez vos infos, on met votre activité en ligne.
+    </p>
 
     <div class="hero-rise hero-rise-4 mt-10 flex justify-center">
       <a
@@ -50,8 +56,8 @@ import siteConfig from '../../data/siteConfig.json';
       </a>
     </div>
 
-    <p class="hero-rise hero-rise-5 mt-6 text-base text-blanc-casse/85">
-      Géré pour vous · Sans frais de création · {siteConfig.pricing.monthly}/mois
+    <p class="hero-rise hero-rise-5 mt-6 text-sm md:text-base text-blanc-casse/80">
+      {siteConfig.pricing.monthly}/mois (≈ {siteConfig.pricing.daily}/jour) · Sans frais de création · Sans engagement · Fait à La Réunion
     </p>
   </div>
 
