@@ -1,20 +1,16 @@
 ---
 import Icon from '../ui/Icon.astro';
-import { inclusions } from '../../lib/inclusions';
 
 /**
- * Manifeste — section "Pourquoi 9site4" : 3 piliers + récap inclusions
- * (fusion de Promesse + Offre).
+ * Manifeste — affirmation éditoriale centrée + 3 piliers (sans photo).
+ * Une idée forte, soutenue par 3 preuves de méthode. 100% charte.
  */
 
 const piliers = [
-  { icon: 'monitor', titre: 'On crée', texte: 'Un site clair, mobile, adapté à votre métier.' },
-  { icon: 'shield-check', titre: 'On gère', texte: 'Hébergement, sécurité, maintenance et modifications simples.' },
-  { icon: 'mail', titre: 'On qualifie vos demandes', texte: 'Un formulaire métier pour recevoir des demandes complètes, pas des messages flous.' },
+  { icon: 'monitor', titre: 'On crée', texte: 'Un site clair, adapté à votre métier.' },
+  { icon: 'shield-check', titre: 'On gère', texte: 'Hébergement, sécurité, maintenance, modifications.' },
+  { icon: 'mail', titre: 'On vous amène des demandes', texte: 'Un formulaire qui transforme vos visiteurs en clients.' },
 ];
-
-// Récap court des inclusions (issu de Offre fusionné)
-const inclus = inclusions.map((i) => i.titre);
 ---
 
 <section class="relative px-6 py-16 md:py-24" aria-labelledby="manifeste-titre">
@@ -49,20 +45,5 @@ const inclus = inclusions.map((i) => i.titre);
         <p class="mt-2 text-sm text-bleu-nuit/65 group-hover:text-white/90 leading-relaxed transition-colors duration-300">{p.texte}</p>
       </div>
     ))}
-  </div>
-
-  <!-- Récap inclusions (fusion ancienne section Offre) -->
-  <div class="scroll-reveal mx-auto max-w-5xl mt-10 md:mt-12 px-4">
-    <p class="text-center font-roboto-mono text-[10px] uppercase tracking-[0.28em] text-blanc-casse/55 font-semibold mb-5">
-      Tout est inclus dans l'abonnement
-    </p>
-    <ul class="flex flex-wrap justify-center gap-2">
-      {inclus.map((label) => (
-        <li class="inline-flex items-center gap-1.5 h-8 px-3 rounded-full bg-blanc-casse/[0.08] ring-1 ring-blanc-casse/15 text-xs font-medium text-blanc-casse/85">
-          <Icon name="check" size={12} strokeWidth={2.5} class="text-bleu" />
-          {label}
-        </li>
-      ))}
-    </ul>
   </div>
 </section>
