@@ -8,9 +8,9 @@
     "ville": "La Réunion",
     "adresseLigne1": "47 boulevard Joffre",
     "adresseLigne2": "97400 La Réunion",
-    "telephone": "0692 14 73 28",
-    "telephoneHref": "+33692147328",
-    "whatsapp": "33692147328",
+    "telephone": "0692 12 34 56",
+    "telephoneHref": "+262692123456",
+    "whatsapp": "262692123456",
     "email": "salut@boost-conduite.re",
     "instagram": "@boost.conduite",
     "siret": "55667788900017",
@@ -31,8 +31,8 @@
       "label": "ans d'expérience"
     },
     {
-      "valeur": "4,7/5",
-      "label": "sur 412 avis Google"
+      "valeur": "★★★★★",
+      "label": "vos vrais retours élèves ici"
     }
   ],
   "etapes": [

@@ -6,9 +6,9 @@
     "soustitre": "Guide indépendant · La Réunion, Volcan",
     "guide": "Théo Grondin",
     "ville": "La Réunion",
-    "telephone": "0692 11 47 23",
-    "telephoneHref": "+33692114723",
-    "whatsapp": "33692114723",
+    "telephone": "0692 12 34 56",
+    "telephoneHref": "+262692123456",
+    "whatsapp": "262692123456",
     "email": "theo@sentiers-croises.re",
     "instagram": "@sentiers.croises",
     "siret": "78901234400017",
@@ -66,8 +66,8 @@
       "label": "itinéraires connus"
     },
     {
-      "valeur": "5/5",
-      "label": "234 avis Google"
+      "valeur": "★★★★★",
+      "label": "vos vrais retours clients apparaîtront ici"
     }
   ],
   "sorties": [
