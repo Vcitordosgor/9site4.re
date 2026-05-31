@@ -15,9 +15,9 @@
     "instagram": "@villa.lazuli",
     "siret": "000 000 000 00000",
     "annee": "2019",
-    "photoHero": "/images/location/hero.webp",
+    "photoHero": "/images/location/extra-1.webp",
     "photoHeroAlt": "Villa Lazuli, vue d ensemble avec piscine et terrasse",
-    "photoSticker": "/images/location/vue.webp",
+    "photoSticker": "/images/location/extra-2.webp",
     "photoStickerAlt": "Vue du lagon depuis la terrasse de la villa"
   },
   "stats": [
@@ -45,52 +45,40 @@
   ],
   "visite": [
     {
-      "id": "salon",
-      "titre": "Le salon",
-      "description": "Grand canapé d'angle, vue piscine, bibliothèque garnie. La pièce centrale.",
-      "photo": "/images/location/salon.webp"
+      "id": "vue-1",
+      "titre": "Vue d'ensemble",
+      "description": "L'extérieur de la villa, posée à flanc de coteau au-dessus du lagon.",
+      "photo": "/images/location/extra-1.webp"
     },
     {
-      "id": "cuisine",
-      "titre": "La cuisine",
-      "description": "Entièrement équipée, îlot central, lave-vaisselle, four et plaque induction.",
-      "photo": "/images/location/cuisine.webp"
+      "id": "vue-2",
+      "titre": "Le lagon",
+      "description": "Vue dégagée sur l'océan depuis la terrasse et les chambres côté mer.",
+      "photo": "/images/location/extra-2.webp"
     },
     {
-      "id": "chambre",
-      "titre": "Chambre principale",
-      "description": "Lit king size 180×200, dressing, vue lagon au lever du soleil.",
-      "photo": "/images/location/chambre.webp"
+      "id": "vue-3",
+      "titre": "Espace de vie",
+      "description": "Pièces lumineuses, ouvertes sur l'extérieur, pensées pour les familles.",
+      "photo": "/images/location/extra-3.webp"
     },
     {
-      "id": "terrasse",
-      "titre": "La terrasse",
-      "description": "Couverte, salon de jardin pour 8 personnes, barbecue à gaz, brumisateur.",
-      "photo": "/images/location/terrasse.webp"
+      "id": "vue-4",
+      "titre": "Terrasse & jardin",
+      "description": "Terrasse couverte, jardin clos, sans aucun voisin direct.",
+      "photo": "/images/location/extra-4.webp"
     },
     {
-      "id": "piscine",
-      "titre": "La piscine",
-      "description": "Privée, chauffée, 8 × 4 m. Profondeur progressive. Transats et parasol.",
-      "photo": "/images/location/piscine.webp"
+      "id": "vue-5",
+      "titre": "Confort intérieur",
+      "description": "Quatre chambres, cuisine équipée, jusqu'à huit voyageurs.",
+      "photo": "/images/location/extra-5.webp"
     },
     {
-      "id": "vue",
-      "titre": "La vue",
-      "description": "Le lagon de l'île, depuis la terrasse et les chambres côté mer.",
-      "photo": "/images/location/vue.webp"
-    },
-    {
-      "id": "sdb",
-      "titre": "Salle de bain",
-      "description": "Douche italienne, double vasque, marbre, baignoire séparée dans la suite.",
-      "photo": "/images/location/sdb.webp"
-    },
-    {
-      "id": "exterieur",
-      "titre": "Vue extérieure",
-      "description": "Architecture créole revisitée, toits en bardeaux, palmiers et frangipaniers.",
-      "photo": "/images/location/exterieur.webp"
+      "id": "vue-6",
+      "titre": "Détente",
+      "description": "Piscine privée chauffée, transats, brumisateur sur la terrasse.",
+      "photo": "/images/location/extra-6.webp"
     }
   ],
   "equipements": {

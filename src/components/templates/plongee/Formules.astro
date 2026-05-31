@@ -19,6 +19,20 @@ const iconMap: Record<string, string> = {
 <section id="formules" class="bg-plongee-ecume py-24 md:py-36 px-6 md:px-10">
   <div class="max-w-content mx-auto">
 
+    <!-- Carrousel photos profondeur -->
+    <div class="mb-14 md:mb-20 -mx-6 md:-mx-10">
+      <div class="flex gap-3 overflow-x-auto snap-x snap-mandatory scroll-smooth px-6 md:px-10 pb-3" style="scrollbar-width: thin;">
+        {[1,2,3,4,5,6,7,8].map((n) => (
+          <img
+            src={`/images/plongee/extra-${n}.webp`}
+            alt={`Plongée — profondeur ${n}`}
+            class="snap-start shrink-0 w-[80%] sm:w-[55%] md:w-[40%] lg:w-[30%] aspect-[4/3] object-cover rounded-2xl"
+            loading="lazy"
+          />
+        ))}
+      </div>
+    </div>
+
     <header class="mb-14 md:mb-20 max-w-3xl">
       <p class="font-jetbrains text-[10px] uppercase tracking-[0.32em] text-plongee-corail font-medium mb-5">
         ▼ 5 formules · de baptême au passage de niveau

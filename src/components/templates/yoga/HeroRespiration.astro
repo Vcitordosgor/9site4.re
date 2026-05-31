@@ -36,13 +36,13 @@ import data from '../../../data/templates/souffle.json';
     </p>
 
     <!-- Cercle de respiration animé (CSS pure, accessible : prefers-reduced-motion désactive) -->
-    <div class="mt-20 md:mt-24 flex flex-col items-center gap-6" aria-hidden="true">
-      <div class="breath-orbit relative w-32 h-32 md:w-40 md:h-40 flex items-center justify-center">
+    <div class="mt-20 md:mt-24 flex flex-col items-center gap-8" aria-hidden="true">
+      <div class="breath-orbit relative w-[min(80vw,560px)] h-[min(80vw,560px)] md:w-[min(70vw,640px)] md:h-[min(70vw,640px)] flex items-center justify-center">
         <span class="absolute inset-0 rounded-full border border-yoga-ocre/30 breath-ring-1"></span>
         <span class="absolute inset-0 rounded-full breath-orb"></span>
-        <span class="relative font-spectral italic text-yoga-encre/50 text-sm" id="breath-label">inspirer</span>
+        <span class="relative font-spectral italic text-yoga-encre/70 text-2xl md:text-4xl" id="breath-label">inspirer</span>
       </div>
-      <p class="font-lexend text-[10px] uppercase tracking-[0.3em] text-yoga-pierre">
+      <p class="font-lexend text-[11px] uppercase tracking-[0.3em] text-yoga-pierre">
         6 secondes · 6 secondes
       </p>
     </div>
