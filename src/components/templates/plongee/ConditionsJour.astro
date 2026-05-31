@@ -1,0 +1,150 @@
+---
+/**
+ * ConditionsJour — Signature moment "Wow" pour /templates/plongee.
+ *
+ * Widget "Conditions du lagon aujourd'hui" qui rassure les futurs plongeurs
+ * et donne un sentiment de transparence radicale. Affiche profondeur, viz,
+ * température eau, houle, courant + statut "On plonge / On reporte" avec
+ * animations CSS douces (vagues SVG, jauges qui s'éveillent au scroll).
+ *
+ * Pas de JS externe : valeurs statiques cohérentes (mises à jour côté data).
+ * Anim respecte prefers-reduced-motion.
+ */
+import data from '../../../data/templates/bleulagon.json';
+
+// Valeurs "conditions du jour" — type "aujourd'hui à Saint-Leu".
+// Statiques mais réalistes pour ouest Réunion en bonne période.
+const conditions = {
+  statut: 'GO',                  // GO / NO-GO
+  message: 'On plonge ce matin. Lagon plat, eau claire.',
+  metrics: [
+    { key: 'viz',  label: 'Visibilité',     value: 22, unit: 'm',  scale: 30,  good: 'high' },
+    { key: 'temp', label: 'Température eau', value: 26, unit: '°C', scale: 30,  good: 'high' },
+    { key: 'prof', label: 'Profondeur site', value: 12, unit: 'm',  scale: 40,  good: 'mid'  },
+    { key: 'houle',label: 'Houle',           value: 0.4,unit: 'm',  scale: 2,   good: 'low'  },
+    { key: 'cour', label: 'Courant',         value: 1,  unit: '/5', scale: 5,   good: 'low'  },
+    { key: 'vent', label: 'Vent',            value: 8,  unit: 'kt', scale: 25,  good: 'low'  },
+  ],
+};
+---
+
+<section id="conditions" class="bg-plongee-abysse text-plongee-ecume py-24 md:py-36 px-6 md:px-10 overflow-hidden relative">
+
+  <!-- Vagues décoratives en arrière-plan -->
+  <svg aria-hidden="true" class="cond-waves absolute inset-x-0 bottom-0 w-full h-32 md:h-48 text-plongee-lagon/10" viewBox="0 0 1440 200" preserveAspectRatio="none">
+    <path d="M0,100 C240,160 480,40 720,100 C960,160 1200,40 1440,100 L1440,200 L0,200 Z" fill="currentColor"/>
+    <path d="M0,120 C240,60 480,180 720,120 C960,60 1200,180 1440,120 L1440,200 L0,200 Z" fill="currentColor" opacity="0.5"/>
+  </svg>
+
+  <div class="max-w-content mx-auto relative">
+
+    <header class="mb-12 md:mb-16 max-w-3xl scroll-reveal">
+      <p class="font-jetbrains text-[10px] uppercase tracking-[0.32em] text-plongee-corail font-medium mb-5">
+        ◉ En direct du quai · {data.info.ville}
+      </p>
+      <h2 class="font-space-grotesk font-bold text-plongee-ecume leading-[1.0]" style="font-size: clamp(40px, 6vw, 72px);">
+        Conditions du lagon
+        <span class="block italic font-light text-plongee-lagon">aujourd'hui.</span>
+      </h2>
+      <p class="mt-6 font-inter text-plongee-ecume/70 text-base md:text-lg max-w-xl leading-relaxed">
+        On affiche les vraies données. Si on doit reporter, on le dit. Sécurité avant tout.
+      </p>
+    </header>
+
+    <!-- Bandeau statut GO / NO-GO -->
+    <div class="scroll-reveal mb-10 md:mb-12 inline-flex items-center gap-4 bg-plongee-lagon/15 border border-plongee-lagon/40 rounded-2xl px-6 py-4">
+      <span class="cond-dot relative flex w-3 h-3" aria-hidden="true">
+        <span class="absolute inset-0 rounded-full bg-plongee-lagon opacity-75 cond-ping"></span>
+        <span class="relative rounded-full bg-plongee-lagon w-3 h-3"></span>
+      </span>
+      <div>
+        <p class="font-jetbrains text-[10px] uppercase tracking-[0.28em] text-plongee-lagon font-semibold">
+          Statut · {conditions.statut === 'GO' ? 'On plonge' : 'Reporté'}
+        </p>
+        <p class="font-inter text-plongee-ecume text-sm md:text-base mt-1">
+          {conditions.message}
+        </p>
+      </div>
+    </div>
+
+    <!-- Grille des métriques -->
+    <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
+      {conditions.metrics.map((m, i) => {
+        const pct = Math.min(100, Math.round((m.value / m.scale) * 100));
+        return (
+          <li class="scroll-reveal cond-card group bg-plongee-marine/60 backdrop-blur-sm ring-1 ring-plongee-lagon/15 rounded-2xl p-6 md:p-7 transition-all hover:ring-plongee-lagon/40" style={`--i:${i}`}>
+            <div class="flex items-baseline justify-between mb-4">
+              <p class="font-jetbrains text-[10px] uppercase tracking-[0.28em] text-plongee-ecume/55 font-medium">
+                {m.label}
+              </p>
+              <span class="font-jetbrains text-[10px] text-plongee-lagon/70 tabular-nums">{pct}%</span>
+            </div>
+            <p class="font-space-grotesk font-bold text-plongee-ecume text-5xl md:text-6xl leading-none tabular-nums">
+              {m.value}<span class="text-2xl md:text-3xl text-plongee-ecume/55 ml-1 font-light">{m.unit}</span>
+            </p>
+            <div class="cond-gauge mt-5 h-1 rounded-full bg-plongee-abysse/60 overflow-hidden">
+              <span class="cond-gauge-fill block h-full bg-gradient-to-r from-plongee-lagon to-plongee-corail rounded-full origin-left" style={`--pct:${pct}%`}></span>
+            </div>
+          </li>
+        );
+      })}
+    </ul>
+
+    <p class="scroll-reveal mt-10 md:mt-12 font-jetbrains text-[10px] uppercase tracking-[0.28em] text-plongee-ecume/40">
+      Mise à jour manuelle chaque matin par Antoine, depuis le quai. Pas de bot.
+    </p>
+
+  </div>
+</section>
+
+<style>
+  .cond-card {
+    transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 300ms ease;
+  }
+  .cond-card:hover {
+    transform: translateY(-3px);
+  }
+
+  /* Jauge qui se remplit à l'apparition */
+  .cond-gauge-fill {
+    width: var(--pct);
+    transform: scaleX(0);
+    transition: transform 1200ms cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: calc(var(--i, 0) * 80ms + 200ms);
+  }
+  .scroll-reveal.is-visible .cond-gauge-fill {
+    transform: scaleX(1);
+  }
+
+  /* Vagues qui oscillent doucement */
+  .cond-waves {
+    animation: cond-wave-drift 14s ease-in-out infinite alternate;
+  }
+  @keyframes cond-wave-drift {
+    from { transform: translateX(-20px); }
+    to   { transform: translateX(20px); }
+  }
+
+  /* Pulse du statut GO */
+  .cond-ping {
+    animation: cond-ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+  @keyframes cond-ping {
+    0%   { transform: scale(1);   opacity: 0.75; }
+    75%, 100% { transform: scale(2.4); opacity: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cond-card,
+    .cond-gauge-fill,
+    .cond-waves,
+    .cond-ping {
+      animation: none !important;
+      transition: none !important;
+      transform: none !important;
+    }
+    .cond-gauge-fill {
+      transform: scaleX(1) !important;
+    }
+  }
+</style>

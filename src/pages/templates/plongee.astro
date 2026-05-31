@@ -15,6 +15,7 @@ import bleulagonData from '../../data/templates/bleulagon.json';
 
 import BleuLagonHeader from '../../components/templates/plongee/BleuLagonHeader.astro';
 import HeroPlongee from '../../components/templates/plongee/HeroPlongee.astro';
+import ConditionsJour from '../../components/templates/plongee/ConditionsJour.astro';
 import Formules from '../../components/templates/plongee/Formules.astro';
 import Process from '../../components/templates/plongee/Process.astro';
 import LeMoniteur from '../../components/templates/plongee/LeMoniteur.astro';
@@ -48,6 +49,7 @@ const businessLD = localBusinessSchema(bleulagonData, 'SportsActivityLocation');
 
   <main class="bg-plongee-ecume text-plongee-marine font-inter">
     <HeroPlongee />
+    <ConditionsJour />
     <Formules />
     <Process />
     <LeMoniteur />
