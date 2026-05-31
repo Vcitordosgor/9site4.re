@@ -3,8 +3,8 @@
     "nom": "Cabinet Verveine",
     "wordmark": "Verveine",
     "soustitre": "Ostéopathie · D.O.",
-    "praticienne": "Hélène La Réunion",
-    "titre": "Hélène La Réunion",
+    "praticienne": "Hélène",
+    "titre": "Hélène, ostéopathe D.O.",
     "tagline": "L'ostéopathie, dans le calme et le détail.",
     "ville": "La Réunion",
     "adresseLigne1": "8 rue des Bons-Enfants",
@@ -14,16 +14,16 @@
     "whatsapp": "262692123456",
     "email": "contact@cabinet-verveine.re",
     "siret": "12345678900017",
-    "adeli": "974 1 0234 5",
-    "rof": "ROF n°4521",
+    "adeli": "Numéro ADELI sur demande",
+    "rof": "Inscrite au Registre des Ostéopathes de France",
     "annee": "2014",
     "photoPraticienne": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&q=85",
     "photoCabinet": "https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?w=1200&q=85"
   },
   "diplomes": [
-    "Diplôme d'Ostéopathie — CEESO Paris, 2009",
-    "DU Ostéopathie pédiatrique — Faculté de médecine de Marseille, 2014",
-    "DU Ostéopathie périnatale — Université de Bordeaux, 2017",
+    "Diplôme d'Ostéopathie (D.O.) — école agréée, 2009",
+    "Formation continue en ostéopathie pédiatrique",
+    "Formation continue en ostéopathie périnatale",
     "Membre du Registre des Ostéopathes de France"
   ],
   "approche": {
@@ -128,7 +128,7 @@
       "note": "Sur l'agglomération de l'île"
     }
   ],
-  "remboursement": "Cabinet conventionné Almerys. La majorité des mutuelles remboursent entre 30 € et 60 € par séance. Une facture détaillée vous est remise à chaque consultation.",
+  "remboursement": "La majorité des mutuelles remboursent tout ou partie de la séance d'ostéopathie. Une facture détaillée vous est remise à chaque consultation.",
   "creneaux": [
     {
       "heure": "09h00"
