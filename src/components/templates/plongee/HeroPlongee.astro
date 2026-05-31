@@ -42,10 +42,10 @@ const baleinesSaison = month >= 5 && month <= 9; // juin → octobre
       <div class="inline-flex flex-wrap items-center gap-x-4 gap-y-1.5 px-4 py-2 rounded-full bg-plongee-abysse/55 backdrop-blur-sm ring-1 ring-plongee-ecume/15">
         <span class="flex items-center gap-1.5 font-jetbrains text-[10px] uppercase tracking-[0.22em] text-plongee-corail">
           <span class="block w-1.5 h-1.5 rounded-full bg-plongee-corail" aria-hidden="true"></span>
-          Conditions du jour · La Réunion
+          {baleinesSaison ? 'Saison baleines · en cours' : 'Eaux chaudes · conditions favorables'}
         </span>
         <span class="font-jetbrains text-[11px] tabular-nums text-plongee-ecume/85">
-          Eau 25°C · Visi 22 m · Houle 0,4 m · UV 9
+          {baleinesSaison ? 'Juin → octobre · sorties baleines à bord' : 'Réserve marine · sorties matin & après-midi'}
         </span>
       </div>
     </div>
@@ -105,12 +105,12 @@ const baleinesSaison = month >= 5 && month <= 9; // juin → octobre
           <p class="font-space-grotesk font-bold text-plongee-ecume text-2xl md:text-3xl tabular-nums leading-none">32 m</p>
         </li>
         <li class="bg-plongee-abysse/65 px-5 py-4">
-          <p class="font-jetbrains text-[9px] uppercase tracking-[0.22em] text-plongee-lagon mb-1.5">Espèces observables</p>
-          <p class="font-space-grotesk font-bold text-plongee-ecume text-2xl md:text-3xl tabular-nums leading-none">350+</p>
+          <p class="font-jetbrains text-[9px] uppercase tracking-[0.22em] text-plongee-lagon mb-1.5">Encadrement</p>
+          <p class="font-space-grotesk font-bold text-plongee-ecume text-2xl md:text-3xl leading-none">FFESSM</p>
         </li>
         <li class="bg-plongee-abysse/65 px-5 py-4">
-          <p class="font-jetbrains text-[9px] uppercase tracking-[0.22em] text-plongee-lagon mb-1.5">Plongeurs accompagnés</p>
-          <p class="font-space-grotesk font-bold text-plongee-ecume text-2xl md:text-3xl tabular-nums leading-none">1 800</p>
+          <p class="font-jetbrains text-[9px] uppercase tracking-[0.22em] text-plongee-lagon mb-1.5">Petit groupe</p>
+          <p class="font-space-grotesk font-bold text-plongee-ecume text-2xl md:text-3xl leading-none">Max 6</p>
         </li>
         <li class="bg-plongee-abysse/65 px-5 py-4">
           <p class="font-jetbrains text-[9px] uppercase tracking-[0.22em] text-plongee-lagon mb-1.5">Saison baleines</p>

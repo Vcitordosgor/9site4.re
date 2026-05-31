@@ -39,17 +39,15 @@ import data from '../../../data/templates/concierge.json';
         <span class="block h-px w-16 bg-gradient-to-l from-concierge-laiton/60 to-concierge-laiton"></span>
       </div>
 
-      <!-- Compteur 'Heures rendues à nos clients' — métrique signature concierge -->
+      <!-- Promesse signature — temps retrouvé -->
       <figure class="mb-10">
         <figcaption class="flex items-center gap-2 font-hubot text-[10px] uppercase tracking-[0.32em] text-concierge-laiton mb-2">
           <span aria-hidden="true">✦</span>
-          <span>Heures rendues à nos clients · 2025</span>
+          <span>Notre promesse</span>
         </figcaption>
-        <p class="font-volkhov font-bold text-concierge-nuit leading-none tabular-nums" style="font-size: clamp(38px, 5vw, 56px);">
-          2 847 h
-        </p>
-        <p class="mt-2 font-volkhov italic text-concierge-graphite text-base md:text-lg">
-          Soit 119 jours retrouvés.
+        <p class="font-volkhov italic font-medium text-concierge-nuit leading-[1.15]" style="font-size: clamp(24px, 3vw, 32px);">
+          On s'occupe de tout ce qui prend du temps.<br/>
+          <span class="text-concierge-laiton">Vous retrouvez le vôtre.</span>
         </p>
       </figure>
 
@@ -60,7 +58,7 @@ import data from '../../../data/templates/concierge.json';
           class="inline-flex items-center justify-center h-13 px-9 bg-concierge-nuit text-concierge-champagne font-hubot text-sm uppercase tracking-[0.18em] font-medium hover:bg-concierge-encre transition-colors duration-500"
           style="height: 52px;"
         >
-          Découvrir nos services
+          Demander un premier échange
         </a>
         <a
           href={`tel:${data.info.telephoneHref}`}

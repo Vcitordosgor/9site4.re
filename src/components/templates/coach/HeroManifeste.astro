@@ -71,19 +71,23 @@ import data from '../../../data/templates/foudre.json';
         </div>
       </div>
 
-      <!-- Stats stackées sous la photo (desktop) / horizontales (mobile) -->
-      <div class="mt-6 lg:max-w-[420px] lg:ml-auto grid grid-cols-3 lg:grid-cols-1 gap-4 lg:gap-3 lg:divide-y lg:divide-coach-blanc/10">
-        {data.stats.map((s, i) => (
-          <div class:list={['flex lg:items-baseline lg:justify-between flex-col lg:flex-row', i > 0 ? 'lg:pt-3' : '']}>
-            <span class="font-big-shoulders font-black text-coach-lime text-3xl md:text-4xl lg:text-5xl leading-none tabular-nums" data-counter={s.valeur}>
-              {s.valeur}
+      <!-- Piliers du coaching — qualitatif, à ton rythme -->
+      <ul class="mt-6 lg:max-w-[420px] lg:ml-auto grid grid-cols-3 lg:grid-cols-1 gap-4 lg:gap-0 lg:divide-y lg:divide-coach-blanc/10">
+        {[
+          { mot: 'À ton rythme', label: 'progression douce, sans pression' },
+          { mot: 'Sur-mesure', label: 'programme adapté à ton corps' },
+          { mot: 'Certifié', label: 'BPJEPS AF, premiers secours PSC1' },
+        ].map((s, i) => (
+          <li class:list={['flex lg:items-baseline lg:justify-between flex-col lg:flex-row', i > 0 ? 'lg:pt-3' : '', 'lg:pb-3']}>
+            <span class="font-big-shoulders font-black uppercase text-coach-lime text-2xl md:text-3xl lg:text-3xl leading-none">
+              {s.mot}
             </span>
-            <span class="mt-1 lg:mt-0 font-jetbrains text-[10px] md:text-[11px] uppercase tracking-[0.18em] text-coach-gris lg:text-right">
+            <span class="mt-1 lg:mt-0 lg:ml-3 font-jetbrains text-[10px] md:text-[11px] uppercase tracking-[0.18em] text-coach-gris lg:text-right">
               {s.label}
             </span>
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
 
   </div>
@@ -98,13 +102,13 @@ import data from '../../../data/templates/foudre.json';
       </span>
       <ul class="flex items-center gap-x-5 md:gap-x-8 font-jetbrains text-[11px] md:text-[12px] text-coach-blanc/85 whitespace-nowrap">
         {[
-          { jour: 'LUN', wod: 'squat 5×5' },
-          { jour: 'MAR', wod: 'hiit 30 min' },
-          { jour: 'MER', wod: 'repos' },
-          { jour: 'JEU', wod: 'push & pull' },
-          { jour: 'VEN', wod: 'cardio sprint' },
+          { jour: 'LUN', wod: 'renfo doux' },
+          { jour: 'MAR', wod: 'cardio mesuré' },
+          { jour: 'MER', wod: 'récupération' },
+          { jour: 'JEU', wod: 'gainage & posture' },
+          { jour: 'VEN', wod: 'plein-air' },
           { jour: 'SAM', wod: 'mobilité' },
-          { jour: 'DIM', wod: 'off' },
+          { jour: 'DIM', wod: 'repos' },
         ].map((d) => (
           <li class="flex items-baseline gap-1.5">
             <span class="text-coach-lime font-bold">{d.jour}</span>

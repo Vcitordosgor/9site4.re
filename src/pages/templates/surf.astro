@@ -45,4 +45,32 @@ const businessLD = localBusinessSchema(borddeauData, 'SportsActivityLocation');
   </main>
 
   <Footer />
+
+  <!-- Sticky CTA mobile : WhatsApp réservation -->
+  <a
+    id="surf-sticky-cta"
+    href={`https://wa.me/${borddeauData.info.whatsapp}?text=${encodeURIComponent('Bonjour, je voudrais réserver une session de surf.')}`}
+    target="_blank"
+    rel="noopener"
+    data-visible="false"
+    aria-label="Réserver une session sur WhatsApp"
+    class="md:hidden fixed bottom-4 inset-x-4 z-40 inline-flex items-center justify-center gap-2 h-14 px-6 text-sm font-semibold uppercase tracking-[0.18em] rounded-full transition-all duration-300 ease-out data-[visible=false]:opacity-0 data-[visible=false]:translate-y-4 data-[visible=false]:pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0"
+    style="background-color: #3CACAE; color: #F4F8F7; font-family: 'Anton', Impact, sans-serif;"
+  >
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.92 0-2.65-1.03-5.14-2.91-7.01z"/>
+    </svg>
+    <span>Réserver ma session</span>
+  </a>
+
+  <script>
+    const surfSticky = document.getElementById('surf-sticky-cta');
+    if (surfSticky) {
+      const updateSurfSticky = () => {
+        surfSticky.dataset.visible = String(window.scrollY > 520);
+      };
+      updateSurfSticky();
+      window.addEventListener('scroll', updateSurfSticky, { passive: true });
+    }
+  </script>
 </BaseLayout>
