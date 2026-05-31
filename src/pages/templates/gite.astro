@@ -56,13 +56,26 @@ const businessLD = localBusinessSchema(capData, 'LodgingBusiness');
   <main id="top" class="bg-cap-papier text-cap-charbon font-bricolage">
     <HeroTopoGuide />
     <FicheTechnique />
+    <Calendrier />
     <Chiffres />
     <Chambres />
+
+    <!-- Notre différence : fusion Comparatif + Labels -->
+    <section id="difference" aria-label="Notre différence" class="bg-cap-papier">
+      <div class="max-w-content mx-auto px-6 md:px-10 pt-16 md:pt-20">
+        <div class="text-center max-w-2xl mx-auto">
+          <p class="font-jetbrains text-[10px] uppercase tracking-[0.28em] text-cap-mousse mb-4">— Notre différence —</p>
+          <h2 class="font-crimson italic text-cap-charbon text-4xl md:text-5xl leading-tight">
+            Ce qui change tout, du premier briefing au dernier petit-déj.
+          </h2>
+        </div>
+      </div>
+      <Comparatif />
+      <Labels />
+    </section>
+
     <PhotoPanorama />
-    <Comparatif />
-    <Calendrier />
     <Alentours />
-    <Labels />
     <Bandeau />
     <Reservation />
     <MotHote />

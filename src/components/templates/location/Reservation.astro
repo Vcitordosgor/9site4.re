@@ -26,6 +26,36 @@ const waBase = `https://wa.me/${data.info.whatsapp}`;
       <p class="mt-4 font-geist text-lazuli-marine/70 text-base">
         4 questions, prix calculé automatiquement selon la saison.
       </p>
+
+      <!-- Boutons OTA : Airbnb / Booking -->
+      <div class="mt-7">
+        <p class="font-geist text-[10.5px] uppercase tracking-[0.25em] text-lazuli-marine/55 mb-3">
+          Vous préférez réserver via une plateforme ?
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-3">
+          <a
+            href="https://www.airbnb.fr/"
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            class="inline-flex items-center gap-2 h-11 px-5 rounded-full bg-white ring-1 ring-lazuli-marine/15 hover:ring-lazuli-terracotta hover:text-lazuli-terracotta transition-colors font-geist font-medium text-sm text-lazuli-marine"
+          >
+            <svg width="18" height="18" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 1.5c-1.7 0-3.1 1-3.9 2.4L2.8 22c-1.7 3.5.8 7.6 4.7 7.6 1.6 0 3.1-.7 4.1-1.9l4.4-5.3 4.4 5.3c1 1.2 2.5 1.9 4.1 1.9 3.9 0 6.4-4.1 4.7-7.6L19.9 3.9C19.1 2.5 17.7 1.5 16 1.5z"/></svg>
+            <span>Réserver sur Airbnb</span>
+          </a>
+          <a
+            href="https://www.booking.com/"
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            class="inline-flex items-center gap-2 h-11 px-5 rounded-full bg-white ring-1 ring-lazuli-marine/15 hover:ring-lazuli-lagon hover:text-lazuli-lagon transition-colors font-geist font-medium text-sm text-lazuli-marine"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="11"/><text x="12" y="16" text-anchor="middle" font-size="11" font-weight="700" fill="#fff" font-family="sans-serif">B</text></svg>
+            <span>Réserver sur Booking</span>
+          </a>
+        </div>
+        <p class="mt-3 font-geist text-[11px] text-lazuli-marine/55">
+          ou continuez ci-dessous pour une demande directe (réponse plus rapide, sans commission).
+        </p>
+      </div>
     </header>
 
     <div class="grid lg:grid-cols-12 gap-8 items-start">

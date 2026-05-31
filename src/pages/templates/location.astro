@@ -15,6 +15,7 @@ import lazuliData from '../../data/templates/lazuli.json';
 import LazuliHeader from '../../components/templates/location/LazuliHeader.astro';
 import HeroMagazine from '../../components/templates/location/HeroMagazine.astro';
 import Pitch from '../../components/templates/location/Pitch.astro';
+import Disponibilite from '../../components/templates/location/Disponibilite.astro';
 import Chiffres from '../../components/templates/location/Chiffres.astro';
 import VisiteGuidee from '../../components/templates/location/VisiteGuidee.astro';
 import Citation from '../../components/templates/location/Citation.astro';
@@ -52,6 +53,7 @@ const businessLD = localBusinessSchema(lazuliData, 'LodgingBusiness');
   <main id="top" class="bg-lazuli-casse text-lazuli-marine font-geist">
     <HeroMagazine />
     <Pitch />
+    <Disponibilite />
     <Chiffres />
     <VisiteGuidee />
     <Citation />

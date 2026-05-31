@@ -23,6 +23,28 @@ import data from '../../../data/templates/encrevolcan.json';
     </div>
 
     <ol class="space-y-px" style="background-color: rgb(238 230 216 / 0.12);">
+
+      <!-- Étape 00 — Premier contact (enrichissement) -->
+      <li class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 p-7 md:p-12 items-start" style="background-color: #0A0A0A;">
+        <div class="md:col-span-3">
+          <p class="font-cardo italic leading-none" style="color: #A11920; font-size: clamp(56px, 7vw, 96px);">
+            00
+          </p>
+        </div>
+        <div class="md:col-span-9 md:pl-8 md:border-l" style="border-color: rgb(238 230 216 / 0.2);">
+          <h3 class="font-cardo text-2xl md:text-3xl leading-tight">
+            Premier contact
+          </h3>
+          <p class="mt-4 font-mono text-[13px] md:text-[14px] leading-relaxed max-w-2xl" style="color: rgb(238 230 216 / 0.75);">
+            Vous décrivez votre projet par WhatsApp ou formulaire en quelques lignes. Réponse sous 48h ouvrées avec une première orientation : faisabilité, fourchette tarifaire, disponibilités.
+          </p>
+          <ul class="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-2 font-mono text-[12px]" style="color: rgb(238 230 216 / 0.7);">
+            <li class="flex items-start gap-2"><span style="color: #A11920;">✦</span> Consultation gratuite 30 min en atelier ou visio</li>
+            <li class="flex items-start gap-2"><span style="color: #A11920;">✦</span> Acompte 30% à la signature pour bloquer la date</li>
+          </ul>
+        </div>
+      </li>
+
       {data.process.map((p) => (
         <li class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 p-7 md:p-12 items-start" style="background-color: #0A0A0A;">
           <div class="md:col-span-3">

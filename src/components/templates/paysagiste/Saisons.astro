@@ -72,5 +72,49 @@ const colorMap: Record<string, { bg: string; text: string; ring: string; pill: s
         );
       })}
     </ul>
+
+    <!-- Frise annuelle mois par mois -->
+    <div class="scroll-reveal mt-16 md:mt-20">
+      <p class="text-center text-xs font-outfit font-medium uppercase tracking-[0.32em] text-agap-violet mb-8">
+        Frise annuelle · mois par mois
+      </p>
+
+      <ol class="hidden md:grid grid-cols-12 gap-px bg-agap-feuille/10 border border-agap-feuille/10 rounded-sm overflow-hidden">
+        {[
+          { m: 'Jan', t: 'Taille fruitiers' },
+          { m: 'Fév', t: 'Taille fruitiers' },
+          { m: 'Mar', t: 'Taille fruitiers' },
+          { m: 'Avr', t: 'Plantation' },
+          { m: 'Mai', t: 'Plantation' },
+          { m: 'Juin', t: 'Plantation' },
+          { m: 'Juil', t: 'Arrosage maîtrisé' },
+          { m: 'Août', t: 'Arrosage maîtrisé' },
+          { m: 'Sept', t: 'Semis & boutures' },
+          { m: 'Oct', t: 'Semis & boutures' },
+          { m: 'Nov', t: 'Élagage & paillage' },
+          { m: 'Déc', t: 'Élagage & paillage' },
+        ].map((x) => (
+          <li class="bg-agap-lin px-2 py-4 text-center">
+            <p class="font-outfit font-semibold text-[11px] uppercase tracking-[0.18em] text-agap-violet">{x.m}</p>
+            <p class="mt-2 font-cormorant italic text-agap-feuille/85 text-sm leading-tight">{x.t}</p>
+          </li>
+        ))}
+      </ol>
+
+      <ol class="md:hidden divide-y divide-agap-feuille/10 bg-agap-lin border border-agap-feuille/10">
+        {[
+          { mois: 'Jan – Mars', t: 'Taille des fruitiers, nettoyage des massifs' },
+          { mois: 'Avril – Juin', t: 'Plantation, mise en place des terrasses' },
+          { mois: 'Juil – Août', t: 'Arrosage maîtrisé, paillage, ombre' },
+          { mois: 'Sept – Oct', t: 'Semis, boutures, divisions de touffes' },
+          { mois: 'Nov – Déc', t: 'Élagage, paillage, préparation saison sèche' },
+        ].map((x) => (
+          <li class="flex items-baseline gap-4 px-5 py-4">
+            <span class="font-outfit font-semibold text-[11px] uppercase tracking-[0.18em] text-agap-violet flex-shrink-0 w-28">{x.mois}</span>
+            <span class="font-cormorant italic text-agap-feuille/85">{x.t}</span>
+          </li>
+        ))}
+      </ol>
+    </div>
   </div>
 </section>

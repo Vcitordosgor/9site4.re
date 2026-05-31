@@ -6,6 +6,21 @@
  * Couleur des créneaux : ocre clair (dynamique) vs mousse claire (doux).
  */
 import data from '../../../data/templates/souffle.json';
+
+// Niveau dérivé du nom du cours — pastille couleur dans le planning.
+function niveauFor(cours: string): { label: string; classe: string } {
+  const c = cours.toLowerCase();
+  if (c.includes('ashtanga') || c.includes('avancé') || c.includes('power')) {
+    return { label: 'Avancé', classe: 'bg-yoga-ocre text-yoga-creme' };
+  }
+  if (c.includes('vinyasa') || c.includes('intermédiaire')) {
+    return { label: 'Intermédiaire', classe: 'bg-yoga-ocre/35 text-yoga-encre' };
+  }
+  if (c.includes('hatha') || c.includes('débutant')) {
+    return { label: 'Débutant', classe: 'bg-yoga-mousse/35 text-yoga-encre' };
+  }
+  return { label: 'Tous niveaux', classe: 'bg-yoga-pierre/15 text-yoga-encre' };
+}
 ---
 
 <section id="planning" class="bg-yoga-creme py-24 md:py-36 px-6 md:px-10">
@@ -57,6 +72,9 @@ import data from '../../../data/templates/souffle.json';
                   <p class="font-dm-serif text-yoga-encre text-base leading-tight group-hover:text-current">
                     {c.cours}
                   </p>
+                  <span class:list={['mt-1.5 inline-flex items-center px-2 py-0.5 text-[9px] uppercase tracking-[0.2em] font-medium rounded-full', niveauFor(c.cours).classe]}>
+                    {niveauFor(c.cours).label}
+                  </span>
                   <p class="mt-1.5 font-spectral italic text-yoga-encre/55 text-xs group-hover:text-current">
                     {c.prof}
                   </p>
@@ -73,8 +91,8 @@ import data from '../../../data/templates/souffle.json';
       </div>
     </div>
 
-    <!-- Légende -->
-    <div class="mt-8 flex flex-wrap items-center justify-center gap-6 font-lexend text-[10px] uppercase tracking-[0.25em] text-yoga-pierre">
+    <!-- Légende intensité + niveau -->
+    <div class="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 font-lexend text-[10px] uppercase tracking-[0.25em] text-yoga-pierre">
       <span class="flex items-center gap-2">
         <span class="block w-3 h-3 bg-yoga-ocre/30 border-l-2 border-yoga-ocre"></span>
         Pratiques dynamiques
@@ -82,6 +100,23 @@ import data from '../../../data/templates/souffle.json';
       <span class="flex items-center gap-2">
         <span class="block w-3 h-3 bg-yoga-mousse/20 border-l-2 border-yoga-mousse"></span>
         Pratiques douces
+      </span>
+      <span class="hidden md:inline-block w-px h-4 bg-yoga-pierre/30" aria-hidden="true"></span>
+      <span class="flex items-center gap-2">
+        <span class="inline-block w-3 h-3 rounded-full bg-yoga-mousse/35"></span>
+        Débutant
+      </span>
+      <span class="flex items-center gap-2">
+        <span class="inline-block w-3 h-3 rounded-full bg-yoga-ocre/35"></span>
+        Intermédiaire
+      </span>
+      <span class="flex items-center gap-2">
+        <span class="inline-block w-3 h-3 rounded-full bg-yoga-ocre"></span>
+        Avancé
+      </span>
+      <span class="flex items-center gap-2">
+        <span class="inline-block w-3 h-3 rounded-full bg-yoga-pierre/30"></span>
+        Tous niveaux
       </span>
     </div>
 

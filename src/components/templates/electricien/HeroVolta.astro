@@ -86,7 +86,18 @@ import data from '../../../data/templates/volta.json';
           class="inline-flex items-center justify-center px-8 text-sm font-space-grotesk font-semibold uppercase tracking-[0.18em] rounded-sm bg-volta-cyan text-volta-noir hover:bg-volta-blanc transition-colors"
           style="height: 52px;"
         >
-          Devis électricité · sous 24h
+          Demander un devis
+        </a>
+        <a
+          href="#devis"
+          class="inline-flex items-center justify-center gap-2 px-8 text-sm font-space-grotesk font-semibold uppercase tracking-[0.18em] rounded-sm bg-transparent text-volta-cyan border border-volta-cyan hover:bg-volta-cyan hover:text-volta-noir transition-colors"
+          style="height: 52px;"
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="9"/>
+            <polyline points="12 7 12 12 15 14"/>
+          </svg>
+          Devis sous 24h
         </a>
         <a
           href={`tel:${data.info.telephoneHref}`}

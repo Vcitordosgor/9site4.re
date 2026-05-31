@@ -49,6 +49,37 @@ const icons: Record<string, string> = {
       ))}
     </div>
 
+    <!-- Motifs concrets : pastilles cliquables (anchors vers tarifs/contact) -->
+    <div class="mt-14 md:mt-16">
+      <p class="text-center font-manrope text-[11px] uppercase tracking-[0.32em] mb-6" style="color: #5D7C68;">
+        Motifs fréquents au cabinet
+      </p>
+      <ul class="flex flex-wrap justify-center gap-2.5 md:gap-3 max-w-3xl mx-auto">
+        {[
+          { label: 'Sommeil & nuits hachées', href: '#tarifs' },
+          { label: 'Digestion & inconforts', href: '#tarifs' },
+          { label: 'Stress & charge mentale', href: '#tarifs' },
+          { label: 'Immunité & saisons', href: '#tarifs' },
+          { label: 'Fatigue chronique', href: '#tarifs' },
+          { label: 'Périménopause', href: '#tarifs' },
+          { label: 'Hygiène de vie globale', href: '#tarifs' },
+          { label: 'Cycle féminin', href: '#tarifs' },
+        ].map((m) => (
+          <li>
+            <a
+              href={m.href}
+              class="inline-flex items-center px-4 py-2 rounded-full text-[13px] font-manrope font-medium transition-colors"
+              style="background-color: #FFFFFF; color: #1F2926; border: 1px solid rgb(93 124 104 / 0.25);"
+              onmouseover="this.style.backgroundColor='#5D7C68'; this.style.color='#FFFFFF';"
+              onmouseout="this.style.backgroundColor='#FFFFFF'; this.style.color='#1F2926';"
+            >
+              {m.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
     <!-- Note bas : ce que ce n'est pas -->
     <div class="mt-14 md:mt-16 max-w-2xl mx-auto px-6 py-5 rounded-xl border-l-4" style="background-color: rgb(228 240 238 / 0.5); border-color: #D3C29C;">
       <p class="font-manrope text-[13px] leading-relaxed" style="color: rgb(31 41 38 / 0.78);">

@@ -12,6 +12,7 @@ import borddeauData from '../../data/templates/borddeau.json';
 import Header from '../../components/templates/surf/Header.astro';
 import HeroVague from '../../components/templates/surf/HeroVague.astro';
 import Formules from '../../components/templates/surf/Formules.astro';
+import Moniteur from '../../components/templates/surf/Moniteur.astro';
 import Spots from '../../components/templates/surf/Spots.astro';
 import Maree from '../../components/templates/surf/Maree.astro';
 import Materiel from '../../components/templates/surf/Materiel.astro';
@@ -37,6 +38,7 @@ const businessLD = localBusinessSchema(borddeauData, 'SportsActivityLocation');
   <main class="font-inter" style="background-color: #F4F8F7; color: #0F2A36;">
     <HeroVague />
     <Formules />
+    <Moniteur />
     <Spots />
     <Maree />
     <Materiel />

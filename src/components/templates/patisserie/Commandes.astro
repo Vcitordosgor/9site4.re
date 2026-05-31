@@ -24,5 +24,35 @@ import data from '../../../data/templates/vanille.json';
         </article>
       ))}
     </div>
+
+    <!-- Délai de précommande & retrait -->
+    <div class="mt-16 md:mt-20">
+      <header class="text-center max-w-xl mx-auto mb-10">
+        <p class="font-karla text-[11px] uppercase tracking-[0.4em] text-vanille-caramel mb-3">— Précommande &amp; retrait —</p>
+        <h3 class="font-yeseva text-vanille-gousse text-2xl md:text-3xl leading-tight">
+          De la commande
+          <em class="font-italianno text-vanille-caramel text-4xl md:text-5xl not-italic">au plaisir.</em>
+        </h3>
+      </header>
+
+      <ol class="relative grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-0">
+        <!-- ligne horizontale desktop -->
+        <span class="hidden md:block absolute top-7 left-[16%] right-[16%] h-px bg-vanille-caramel/40" aria-hidden="true"></span>
+
+        {[
+          { jour: 'J − 3', titre: 'Commande', texte: 'Vous envoyez votre demande : pièce, parfum, nombre de parts.' },
+          { jour: 'J − 1', titre: 'Confirmation', texte: 'On revient vers vous avec le prix, l\'heure de retrait, le récap.' },
+          { jour: 'Jour J', titre: 'Retrait 10 h → 18 h', texte: 'Votre gâteau vous attend, frais, prêt à savourer.' },
+        ].map((s) => (
+          <li class="relative text-center md:px-4">
+            <span class="relative inline-flex items-center justify-center w-14 h-14 mx-auto rounded-full bg-vanille-caramel text-vanille-creme font-yeseva text-base ring-4 ring-vanille-creme z-10">
+              {s.jour}
+            </span>
+            <h4 class="mt-5 font-yeseva text-vanille-gousse text-lg md:text-xl">{s.titre}</h4>
+            <p class="mt-2 font-karla text-sm text-vanille-gousse/80 leading-relaxed max-w-[18rem] mx-auto">{s.texte}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
   </div>
 </section>

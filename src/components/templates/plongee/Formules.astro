@@ -100,5 +100,49 @@ const iconMap: Record<string, string> = {
         </li>
       ))}
     </ul>
+
+    <!-- Tableau niveaux PADI / CMAS + prérequis -->
+    <div class="mt-16 md:mt-20 bg-plongee-abysse text-plongee-ecume rounded-2xl ring-1 ring-plongee-marine/40 overflow-hidden">
+      <div class="px-6 md:px-8 py-5 border-b border-plongee-ecume/10">
+        <p class="font-jetbrains text-[10px] uppercase tracking-[0.32em] text-plongee-corail font-medium">▼ Niveaux PADI / CMAS · prérequis</p>
+        <h3 class="mt-2 font-space-grotesk font-bold text-plongee-ecume text-2xl md:text-3xl leading-tight">
+          Quel niveau pour quelle sortie ?
+        </h3>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left font-inter text-sm min-w-[640px]">
+          <thead>
+            <tr class="border-b border-plongee-ecume/10">
+              <th class="px-5 md:px-8 py-4 font-jetbrains text-[10px] uppercase tracking-[0.22em] text-plongee-lagon font-medium">Formule</th>
+              <th class="px-5 py-4 font-jetbrains text-[10px] uppercase tracking-[0.22em] text-plongee-lagon font-medium">Âge mini</th>
+              <th class="px-5 py-4 font-jetbrains text-[10px] uppercase tracking-[0.22em] text-plongee-lagon font-medium">Certif. requise</th>
+              <th class="px-5 md:px-8 py-4 font-jetbrains text-[10px] uppercase tracking-[0.22em] text-plongee-lagon font-medium">Profondeur max</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-plongee-ecume/10">
+            {[
+              { f: 'Baptême',                   age: '8 ans',  certif: 'Aucune',                       prof: '6 m' },
+              { f: 'PADI Scuba Diver',          age: '10 ans', certif: 'Aucune',                       prof: '12 m' },
+              { f: 'PADI Open Water (N1 CMAS)', age: '10 ans', certif: 'Aucune',                       prof: '18 m' },
+              { f: 'Exploration N2 CMAS',       age: '12 ans', certif: 'Open Water ou N1',             prof: '20 – 40 m' },
+              { f: 'Advanced Open Water',       age: '12 ans', certif: 'Open Water ou équivalent',     prof: '30 m' },
+              { f: 'Rescue Diver',              age: '12 ans', certif: 'Advanced + EFR ≤ 24 mois',     prof: '30 m' },
+            ].map((r) => (
+              <tr>
+                <td class="px-5 md:px-8 py-4 font-space-grotesk font-semibold text-plongee-ecume">{r.f}</td>
+                <td class="px-5 py-4 text-plongee-ecume/80 tabular-nums">{r.age}</td>
+                <td class="px-5 py-4 text-plongee-ecume/80">{r.certif}</td>
+                <td class="px-5 md:px-8 py-4 text-plongee-corail font-semibold tabular-nums">{r.prof}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <p class="px-6 md:px-8 py-5 border-t border-plongee-ecume/10 font-inter italic text-plongee-ecume/70 text-sm">
+        Certificat médical de non contre-indication à la plongée demandé à partir de 12 ans pour toute formation. Cours conformes aux standards fédéraux FFESSM et PADI.
+      </p>
+    </div>
   </div>
 </section>

@@ -1,0 +1,98 @@
+---
+/**
+ * Planning — grille hebdomadaire visuelle (lundi → samedi × créneaux),
+ * croisée avec les disciplines proposées par l'école.
+ *
+ * Donnée locale (le JSON ne contient pas le planning). Horaires génériques.
+ */
+
+const jours = ['Lun.', 'Mar.', 'Mer.', 'Jeu.', 'Ven.', 'Sam.'];
+
+// Couleur par discipline (cohérente palette vermeille)
+const couleurs: Record<string, string> = {
+  Classique: 'bg-vermeille-bordeaux/15 text-vermeille-bordeaux border-vermeille-bordeaux/40',
+  Contemporain: 'bg-vermeille-velours/15 text-vermeille-velours border-vermeille-velours/40',
+  Jazz: 'bg-vermeille-or/25 text-vermeille-velours border-vermeille-or/60',
+  'Hip-hop': 'bg-vermeille-velours/10 text-vermeille-velours border-vermeille-velours/30',
+  'Modern jazz': 'bg-vermeille-bordeaux/10 text-vermeille-bordeaux border-vermeille-bordeaux/30',
+};
+
+type Creneau = { jour: string; heure: string; disc: string; niveau: string };
+
+const creneaux: Creneau[] = [
+  { jour: 'Lun.', heure: '17h00', disc: 'Classique', niveau: 'Enfants' },
+  { jour: 'Lun.', heure: '18h30', disc: 'Contemporain', niveau: 'Ados' },
+  { jour: 'Lun.', heure: '20h00', disc: 'Jazz', niveau: 'Adultes' },
+  { jour: 'Mar.', heure: '17h00', disc: 'Hip-hop', niveau: 'Enfants' },
+  { jour: 'Mar.', heure: '18h30', disc: 'Classique', niveau: 'Ados' },
+  { jour: 'Mar.', heure: '20h00', disc: 'Modern jazz', niveau: 'Adultes' },
+  { jour: 'Mer.', heure: '10h00', disc: 'Classique', niveau: 'Éveil 4-6 ans' },
+  { jour: 'Mer.', heure: '14h00', disc: 'Hip-hop', niveau: 'Ados' },
+  { jour: 'Mer.', heure: '17h00', disc: 'Contemporain', niveau: 'Enfants' },
+  { jour: 'Jeu.', heure: '17h00', disc: 'Jazz', niveau: 'Ados' },
+  { jour: 'Jeu.', heure: '18h30', disc: 'Classique', niveau: 'Adultes' },
+  { jour: 'Jeu.', heure: '20h00', disc: 'Contemporain', niveau: 'Adultes' },
+  { jour: 'Ven.', heure: '17h00', disc: 'Modern jazz', niveau: 'Ados' },
+  { jour: 'Ven.', heure: '19h00', disc: 'Hip-hop', niveau: 'Adultes' },
+  { jour: 'Sam.', heure: '10h00', disc: 'Classique', niveau: 'Tous niveaux' },
+  { jour: 'Sam.', heure: '11h30', disc: 'Contemporain', niveau: 'Ados' },
+];
+---
+
+<section id="planning" class="bg-vermeille-ivoire py-20 md:py-28 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="text-center max-w-2xl mx-auto mb-12 md:mb-16">
+      <p class="text-xs uppercase tracking-[0.4em] text-vermeille-bordeaux font-inter-tight font-medium">
+        La semaine au studio
+      </p>
+      <h2 class="mt-4 font-italiana text-vermeille-velours leading-[1.1]" style="font-size: clamp(32px, 5vw, 52px);">
+        Planning hebdomadaire
+      </h2>
+      <p class="mt-5 text-vermeille-velours/75 font-inter-tight leading-relaxed">
+        Du lundi au samedi, tous niveaux et tous âges. Les créneaux marqués
+        sont récurrents toute la saison.
+      </p>
+    </header>
+
+    <!-- Grille desktop : 6 colonnes jours -->
+    <div class="hidden md:grid grid-cols-6 gap-3">
+      {jours.map((j) => (
+        <div>
+          <p class="text-center font-italiana text-vermeille-bordeaux text-lg pb-3 border-b border-vermeille-velours/15">
+            {j}
+          </p>
+          <ul class="mt-3 space-y-2">
+            {creneaux.filter(c => c.jour === j).map((c) => (
+              <li class={`border rounded-sm px-3 py-2.5 ${couleurs[c.disc] || 'border-vermeille-velours/20 text-vermeille-velours'}`}>
+                <p class="text-[10px] uppercase tracking-[0.2em] font-medium opacity-80">{c.heure}</p>
+                <p class="mt-1 font-italiana text-base leading-tight">{c.disc}</p>
+                <p class="mt-0.5 text-[11px] opacity-75">{c.niveau}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <!-- Vue mobile : empilée par jour -->
+    <div class="md:hidden space-y-6">
+      {jours.map((j) => (
+        <div>
+          <p class="font-italiana text-vermeille-bordeaux text-xl pb-2 border-b border-vermeille-velours/15">
+            {j}
+          </p>
+          <ul class="mt-3 space-y-2">
+            {creneaux.filter(c => c.jour === j).map((c) => (
+              <li class={`border rounded-sm px-3 py-2 flex items-baseline gap-3 ${couleurs[c.disc] || 'border-vermeille-velours/20 text-vermeille-velours'}`}>
+                <span class="text-[10px] uppercase tracking-[0.2em] font-medium tabular-nums shrink-0">{c.heure}</span>
+                <span class="font-italiana text-base flex-1">{c.disc}</span>
+                <span class="text-[11px] opacity-75 shrink-0">{c.niveau}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,77 @@
+---
+/**
+ * Hydro — Hammam / Sauna / Piscine.
+ * Section dédiée aux espaces hydro, séparée des Cabines.
+ * Photos full-bleed pour donner l'échelle des installations.
+ */
+
+const espaces = [
+  {
+    nom: 'Hammam',
+    note: 'Vapeur d’eucalyptus à 45°C',
+    desc: 'Voûte traditionnelle en zellige, banquette tiède, brumes parfumées toutes les vingt minutes.',
+    img: 'https://images.unsplash.com/photo-1591343395082-e120087004b4?q=80&w=1600&auto=format&fit=crop',
+    alt: 'Hammam en zellige, vapeur douce et lumière chaude',
+  },
+  {
+    nom: 'Sauna',
+    note: 'Cabine cèdre rouge, 80°C',
+    desc: 'Bois massif et galets noirs, lumière ambrée. Pour les sessions courtes et toniques avant la piscine.',
+    img: 'https://images.unsplash.com/photo-1554108572-8a3a3e62e3e6?q=80&w=1600&auto=format&fit=crop',
+    alt: 'Cabine de sauna en cèdre, ambiance chaleureuse',
+  },
+  {
+    nom: 'Piscine',
+    note: 'Bassin tempéré 30°C',
+    desc: 'Long bassin intérieur, cascade de nuque, banquettes immergées. Ouvert sur le patio planté.',
+    img: 'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?q=80&w=1600&auto=format&fit=crop',
+    alt: 'Piscine intérieure tempérée, eau calme et bois clair',
+  },
+];
+---
+
+<section id="hydro" class="bg-spa-creme py-24 md:py-36 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="text-center max-w-2xl mx-auto mb-14 md:mb-20">
+      <p class="text-xs sm:text-sm uppercase tracking-[0.4em] text-spa-argile font-raleway font-medium">
+        Espaces hydro
+      </p>
+      <h2 class="mt-5 font-lora text-spa-cacao leading-[1.1]" style="font-size: clamp(32px, 5vw, 52px);">
+        Hammam, sauna,
+        <span class="italic font-normal text-spa-argile">piscine tempérée.</span>
+      </h2>
+      <p class="mt-6 text-spa-cacao/70 font-raleway leading-[1.8]">
+        Un parcours d’eau et de vapeur à enchaîner dans l’ordre que vous voulez.
+        Accessible avant chaque soin, et inclus dans les pass journée.
+      </p>
+    </header>
+
+    <div class="space-y-8 md:space-y-12">
+      {espaces.map((e, i) => (
+        <article class={`grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-10 items-center ${i % 2 === 1 ? 'lg:[direction:rtl]' : ''}`}>
+          <figure class="lg:col-span-8 relative overflow-hidden rounded-sm" style="aspect-ratio: 16/9;">
+            <img
+              src={e.img}
+              alt={e.alt}
+              loading="lazy"
+              decoding="async"
+              class="absolute inset-0 w-full h-full object-cover"
+            />
+          </figure>
+          <div class="lg:col-span-4 [direction:ltr]">
+            <p class="text-xs uppercase tracking-[0.3em] text-spa-argile font-raleway font-medium">
+              {e.note}
+            </p>
+            <h3 class="mt-3 font-lora text-spa-cacao text-3xl md:text-4xl">
+              {e.nom}
+            </h3>
+            <p class="mt-4 text-spa-cacao/75 font-raleway leading-[1.8]">
+              {e.desc}
+            </p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

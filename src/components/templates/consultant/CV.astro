@@ -1,36 +1,101 @@
 ---
+/**
+ * CV — preview visuelle stylisée (carte représentant un CV) + bouton download.
+ */
 import data from '../../../data/templates/lucas.json';
 ---
 
 <section id="cv" class="bg-lucas-anthracite py-20 md:py-28 px-6 md:px-10">
-  <div class="max-w-4xl mx-auto">
+  <div class="max-w-5xl mx-auto">
 
-    <div class="bg-lucas-noir border border-lucas-encre/30 p-8 md:p-12 grid lg:grid-cols-12 gap-8 items-center">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
 
-      <div class="lg:col-span-8">
-        <p class="font-space-mono text-[11px] tracking-tight text-lucas-vert mb-3">
-          ▶ # download · 0.4 MB · pdf
-        </p>
-        <h2 class="font-instrument italic text-lucas-blanc leading-[1.1]" style="font-size: clamp(28px, 3.5vw, 44px);">
-          Mon CV en PDF.
-        </h2>
-        <p class="mt-4 font-hanken text-lucas-perle/75 text-base leading-relaxed">
-          Détail des missions, références, formations, parcours. Mise à jour le 15 janvier 2026.
+      <!-- Preview visuelle stylisée du CV (carte) -->
+      <div class="lg:col-span-5">
+        <div class="relative max-w-[320px] mx-auto">
+          <!-- ombre portée -->
+          <div class="absolute inset-0 translate-x-3 translate-y-3 bg-lucas-noir/60" aria-hidden="true"></div>
+
+          <article class="relative bg-lucas-perle text-lucas-noir aspect-[1/1.414] p-6 flex flex-col" aria-hidden="true">
+            <header class="border-b border-lucas-noir/30 pb-3">
+              <p class="font-instrument italic text-lucas-noir text-2xl leading-none">Curriculum Vitae</p>
+              <p class="mt-1 font-space-mono text-[9px] tracking-[0.2em] uppercase text-lucas-noir/60">v · 2026 · janvier</p>
+            </header>
+
+            <section class="mt-4">
+              <p class="font-space-mono text-[8px] tracking-[0.25em] uppercase text-lucas-noir/60">Expérience</p>
+              <div class="mt-2 space-y-1.5">
+                <div class="h-1.5 w-[85%] bg-lucas-noir/70"></div>
+                <div class="h-1 w-[70%] bg-lucas-noir/30"></div>
+                <div class="h-1 w-[60%] bg-lucas-noir/30"></div>
+              </div>
+              <div class="mt-3 space-y-1.5">
+                <div class="h-1.5 w-[75%] bg-lucas-noir/70"></div>
+                <div class="h-1 w-[65%] bg-lucas-noir/30"></div>
+                <div class="h-1 w-[55%] bg-lucas-noir/30"></div>
+              </div>
+            </section>
+
+            <section class="mt-4">
+              <p class="font-space-mono text-[8px] tracking-[0.25em] uppercase text-lucas-noir/60">Compétences</p>
+              <div class="mt-2 grid grid-cols-3 gap-1.5">
+                {Array.from({ length: 6 }).map(() => (
+                  <div class="h-3 bg-lucas-noir/15 border border-lucas-noir/40"></div>
+                ))}
+              </div>
+            </section>
+
+            <section class="mt-4">
+              <p class="font-space-mono text-[8px] tracking-[0.25em] uppercase text-lucas-noir/60">Formation</p>
+              <div class="mt-2 space-y-1.5">
+                <div class="h-1 w-[80%] bg-lucas-noir/30"></div>
+                <div class="h-1 w-[55%] bg-lucas-noir/30"></div>
+              </div>
+            </section>
+
+            <footer class="mt-auto pt-3 border-t border-lucas-noir/30 flex items-center justify-between">
+              <span class="font-space-mono text-[8px] tracking-[0.2em] uppercase text-lucas-noir/60">page 1 / 2</span>
+              <span class="font-instrument italic text-lucas-noir text-sm">— signé.</span>
+            </footer>
+          </article>
+        </div>
+        <p class="mt-4 text-center font-space-mono text-[10px] tracking-[0.2em] uppercase text-lucas-encre">
+          aperçu · non contractuel
         </p>
       </div>
 
-      <div class="lg:col-span-4 lg:text-right">
-        <a
-          href="#"
-          onclick="event.preventDefault(); alert('Démo : le CV serait téléchargé ici.');"
-          class="inline-flex items-center gap-3 h-12 px-6 bg-lucas-vert text-lucas-noir font-hanken font-semibold text-sm hover:bg-lucas-blanc transition-colors"
-        >
-          <span class="font-space-mono">↓</span>
-          Télécharger
-        </a>
-        <p class="mt-3 font-space-mono text-[11px] text-lucas-encre">
-          lucas-ferrier-cv-2026.pdf
+      <!-- Bloc texte + download -->
+      <div class="lg:col-span-7 bg-lucas-noir border border-lucas-encre/30 p-8 md:p-10">
+        <p class="font-space-mono text-[11px] tracking-tight text-lucas-vert mb-3">
+          ▶ # download · 0.4 MB · pdf
         </p>
+        <h2 class="font-instrument italic text-lucas-blanc leading-[1.05]" style="font-size: clamp(32px, 4vw, 52px);">
+          Mon CV en PDF.
+        </h2>
+        <p class="mt-4 font-hanken text-lucas-perle/80 text-base md:text-lg leading-relaxed">
+          Détail des missions, références, formations, parcours complet. Mise à jour le 15 janvier 2026.
+        </p>
+
+        <ul class="mt-6 grid grid-cols-2 gap-x-6 gap-y-2 font-hanken text-sm text-lucas-perle/85">
+          <li class="flex items-center gap-2"><span class="text-lucas-vert font-space-mono">›</span> 12 ans d'expérience</li>
+          <li class="flex items-center gap-2"><span class="text-lucas-vert font-space-mono">›</span> 40+ missions</li>
+          <li class="flex items-center gap-2"><span class="text-lucas-vert font-space-mono">›</span> Références sur demande</li>
+          <li class="flex items-center gap-2"><span class="text-lucas-vert font-space-mono">›</span> 2 pages, lecture 5 min</li>
+        </ul>
+
+        <div class="mt-8 flex flex-wrap items-center gap-5">
+          <a
+            href="/cv-demo.pdf"
+            download
+            class="inline-flex items-center gap-3 h-12 px-6 bg-lucas-vert text-lucas-noir font-hanken font-semibold text-sm hover:bg-lucas-blanc transition-colors"
+          >
+            <span class="font-space-mono">↓</span>
+            Télécharger mon CV (PDF)
+          </a>
+          <p class="font-space-mono text-[11px] text-lucas-encre">
+            lucas-ferrier-cv-2026.pdf
+          </p>
+        </div>
       </div>
     </div>
   </div>

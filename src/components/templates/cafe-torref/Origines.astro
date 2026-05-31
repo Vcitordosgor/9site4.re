@@ -51,6 +51,58 @@ import data from '../../../data/templates/brulerie.json';
                 <span>{o.torrefaction}</span>
               </div>
             </div>
+
+            <!-- Profil aromatique : mini radar SVG -->
+            {(() => {
+              // Valeurs déterministes selon l'index (0-5)
+              const profils = [
+                { acid: 4, corps: 3, amer: 2, sucre: 4 },
+                { acid: 3, corps: 4, amer: 3, sucre: 3 },
+                { acid: 2, corps: 5, amer: 4, sucre: 3 },
+                { acid: 5, corps: 2, amer: 2, sucre: 5 },
+                { acid: 3, corps: 4, amer: 3, sucre: 4 },
+              ];
+              const p = profils[i % profils.length];
+              const cx = 60, cy = 60, R = 42;
+              // 4 axes : 12h, 3h, 6h, 9h → acidité, corps, amertume, sucre
+              const pts = [
+                { v: p.acid, ang: -Math.PI / 2 },
+                { v: p.corps, ang: 0 },
+                { v: p.amer, ang: Math.PI / 2 },
+                { v: p.sucre, ang: Math.PI },
+              ];
+              const coords = pts.map((pt) => {
+                const r = (pt.v / 5) * R;
+                return [cx + r * Math.cos(pt.ang), cy + r * Math.sin(pt.ang)];
+              });
+              const polyPts = coords.map((c) => `${c[0].toFixed(1)},${c[1].toFixed(1)}`).join(' ');
+              return (
+                <div class="mt-4 pt-4" style="border-top: 1px solid rgba(62, 42, 31, 0.15);">
+                  <p class="font-dm-mono text-[9.5px] uppercase tracking-[0.3em] mb-2" style="color: #B57A4A;">Profil aromatique</p>
+                  <svg viewBox="0 0 120 120" class="w-full max-w-[140px] mx-auto" role="img" aria-label={`Profil aromatique ${o.nom}`}>
+                    {/* Grille concentrique */}
+                    {[1, 2, 3, 4, 5].map((lvl) => (
+                      <polygon
+                        points={`${cx},${cy - (lvl/5)*R} ${cx + (lvl/5)*R},${cy} ${cx},${cy + (lvl/5)*R} ${cx - (lvl/5)*R},${cy}`}
+                        fill="none"
+                        stroke="rgba(26,15,10,0.18)"
+                        stroke-width="0.6"
+                      />
+                    ))}
+                    {/* Axes */}
+                    <line x1={cx} y1={cy - R} x2={cx} y2={cy + R} stroke="rgba(26,15,10,0.25)" stroke-width="0.6" />
+                    <line x1={cx - R} y1={cy} x2={cx + R} y2={cy} stroke="rgba(26,15,10,0.25)" stroke-width="0.6" />
+                    {/* Polygone profil */}
+                    <polygon points={polyPts} fill="rgba(181,122,74,0.35)" stroke="#B57A4A" stroke-width="1.5" stroke-linejoin="round" />
+                    {/* Labels */}
+                    <text x={cx} y={cy - R - 4} text-anchor="middle" font-size="7" fill="#1A0F0A" font-family="monospace">ACID.</text>
+                    <text x={cx + R + 4} y={cy + 2} text-anchor="start" font-size="7" fill="#1A0F0A" font-family="monospace">CORPS</text>
+                    <text x={cx} y={cy + R + 9} text-anchor="middle" font-size="7" fill="#1A0F0A" font-family="monospace">AMER.</text>
+                    <text x={cx - R - 4} y={cy + 2} text-anchor="end" font-size="7" fill="#1A0F0A" font-family="monospace">SUCRE</text>
+                  </svg>
+                </div>
+              );
+            })()}
           </div>
 
           <!-- Texte principal -->

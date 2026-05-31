@@ -1,0 +1,73 @@
+---
+/**
+ * Quand — section pédagogique "Quand faire appel à un architecte ?".
+ * Trois cas-clés : seuil légal 150 m², extension, rénovation lourde.
+ */
+const cas = [
+  {
+    code: '01',
+    titre: 'Au-delà de 150 m²',
+    accroche: 'Le recours à l\'architecte est obligatoire',
+    detail:
+      'Pour toute construction neuve dont la surface de plancher dépasse 150 m², la loi impose la signature d\'un architecte inscrit à l\'Ordre. Sans elle, le permis de construire est refusé.',
+  },
+  {
+    code: '02',
+    titre: 'Extension significative',
+    accroche: 'Si le total dépasse 150 m² après travaux',
+    detail:
+      'Une extension d\'une maison existante qui porte la surface globale au-delà du seuil légal entre dans le même cadre. Mieux vaut anticiper dès la phase esquisse pour fluidifier la procédure.',
+  },
+  {
+    code: '03',
+    titre: 'Rénovation lourde',
+    accroche: 'Reprises de structure, ouvertures, surélévation',
+    detail:
+      'Dès qu\'on touche au gros œuvre, à la charpente ou à la distribution des espaces, l\'architecte sécurise le projet : faisabilité, dossier réglementaire, suivi de chantier et coordination des artisans.',
+  },
+];
+---
+
+<section id="quand" class="bg-mahatma-papier py-24 md:py-32 px-6 md:px-10 border-t border-mahatma-encre/10">
+  <div class="max-w-content mx-auto">
+
+    <header class="grid grid-cols-12 gap-4 mb-12 md:mb-16">
+      <div class="col-span-12 md:col-span-3">
+        <p class="font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-cachet mb-4">
+          ▢ § II·b
+        </p>
+        <p class="font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-beton">
+          Cadre légal · Repères
+        </p>
+      </div>
+      <div class="col-span-12 md:col-span-9">
+        <h2 class="font-schibsted font-bold text-mahatma-encre leading-[0.95] tracking-tight uppercase" style="font-size: clamp(36px, 5vw, 64px);">
+          Quand faire appel<br/>à un architecte ?
+        </h2>
+        <p class="mt-6 font-atkinson italic text-mahatma-beton text-base md:text-lg max-w-2xl">
+          Trois situations dans lesquelles notre intervention n'est pas seulement utile, mais souvent indispensable.
+        </p>
+      </div>
+    </header>
+
+    <ul class="grid md:grid-cols-3 gap-px bg-mahatma-encre/15">
+      {cas.map((c) => (
+        <li class="bg-mahatma-papier p-8 md:p-10 flex flex-col">
+          <p class="font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-cachet tabular-nums">
+            /{c.code}
+          </p>
+          <h3 class="mt-4 font-schibsted font-bold text-mahatma-encre uppercase tracking-tight leading-tight text-xl md:text-2xl">
+            {c.titre}
+          </h3>
+          <p class="mt-2 font-atkinson italic text-mahatma-cachet text-sm">
+            {c.accroche}
+          </p>
+          <p class="mt-5 pt-5 border-t border-mahatma-encre/15 font-atkinson text-mahatma-encre/80 text-sm leading-relaxed">
+            {c.detail}
+          </p>
+        </li>
+      ))}
+    </ul>
+
+  </div>
+</section>

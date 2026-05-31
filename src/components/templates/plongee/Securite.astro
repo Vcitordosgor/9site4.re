@@ -55,5 +55,38 @@ const pictos: Record<number, { paths: string[]; }> = {
         </li>
       ))}
     </ul>
+
+    <!-- Widget conditions actuelles -->
+    <div class="mt-14 md:mt-16 bg-plongee-abysse text-plongee-ecume rounded-2xl ring-1 ring-plongee-marine/40 p-7 md:p-8">
+      <div class="flex items-center justify-between flex-wrap gap-3 mb-6">
+        <div class="flex items-center gap-3">
+          <span class="relative flex h-2.5 w-2.5" aria-hidden="true">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-plongee-corail opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-plongee-corail"></span>
+          </span>
+          <p class="font-jetbrains text-[10px] uppercase tracking-[0.32em] text-plongee-corail font-medium">▼ Conditions actuelles · site du jour</p>
+        </div>
+        <p class="font-jetbrains text-[10px] uppercase tracking-[0.22em] text-plongee-ecume/55">Bulletin du matin</p>
+      </div>
+
+      <ul class="grid grid-cols-2 md:grid-cols-4 gap-px bg-plongee-marine/40 rounded-xl overflow-hidden">
+        {[
+          { l: 'Visibilité', v: '18 m', sub: 'Très bonne' },
+          { l: 'Houle', v: '0,8 m', sub: 'Plate' },
+          { l: 'Température eau', v: '26 °C', sub: 'Shorty 3 mm' },
+          { l: 'Courant', v: 'Faible', sub: 'Site protégé' },
+        ].map((c) => (
+          <li class="bg-plongee-abysse p-5">
+            <p class="font-jetbrains text-[10px] uppercase tracking-[0.22em] text-plongee-lagon mb-2">{c.l}</p>
+            <p class="font-space-grotesk font-bold text-plongee-ecume text-2xl md:text-3xl leading-none tabular-nums">{c.v}</p>
+            <p class="mt-2 font-inter text-xs text-plongee-ecume/65">{c.sub}</p>
+          </li>
+        ))}
+      </ul>
+
+      <p class="mt-5 font-inter italic text-plongee-ecume/70 text-sm">
+        Conditions indicatives — la décision de mise à l'eau revient au directeur de plongée, après briefing sur site.
+      </p>
+    </div>
   </div>
 </section>

@@ -1,0 +1,53 @@
+---
+/**
+ * Outils — intégrations & écosystème logiciel du cabinet.
+ * Logos textuels uniquement (pas d'images de marque).
+ */
+const outils = [
+  { nom: 'Pennylane',  cat: 'Comptabilité collaborative' },
+  { nom: 'Qonto',      cat: 'Banque pro & catégorisation' },
+  { nom: 'Stripe',     cat: 'Encaissements en ligne' },
+  { nom: 'Sellsy',     cat: 'CRM & facturation' },
+  { nom: 'Cegid',      cat: 'Production comptable' },
+  { nom: 'Silae',      cat: 'Paie & social' },
+];
+---
+
+<section id="outils" class="bg-auberval-blanc py-24 md:py-32 px-6 md:px-10 border-t border-auberval-marine/10">
+  <div class="max-w-content mx-auto">
+
+    <header class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-12 md:mb-16">
+      <div class="md:col-span-5">
+        <p class="font-plex-sans text-[10px] uppercase tracking-[0.32em] text-auberval-or font-semibold mb-5">
+          ✦ Outils & intégrations
+        </p>
+        <h2 class="font-source-serif text-auberval-marine leading-[1.05]" style="font-size: clamp(34px, 4.6vw, 56px);">
+          Un écosystème<br/>
+          <span class="italic text-auberval-or">connecté à vos flux.</span>
+        </h2>
+      </div>
+      <div class="md:col-span-7 self-end">
+        <p class="font-plex-sans text-[15px] text-auberval-marine/80 leading-relaxed max-w-xl">
+          Nous travaillons avec les solutions du marché que vous utilisez déjà — ou nous vous accompagnons dans leur mise en place. Synchronisation bancaire, dématérialisation et tableaux de bord en temps réel.
+        </p>
+      </div>
+    </header>
+
+    <ul class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-px bg-auberval-marine/15 border border-auberval-marine/15">
+      {outils.map((o) => (
+        <li class="bg-auberval-blanc p-6 flex flex-col items-start min-h-[130px]">
+          <span class="font-source-serif text-auberval-marine text-2xl leading-none tracking-tight">
+            {o.nom}
+          </span>
+          <span class="mt-auto pt-4 font-dm-mono text-[10px] uppercase tracking-[0.2em] text-auberval-or">
+            {o.cat}
+          </span>
+        </li>
+      ))}
+    </ul>
+
+    <p class="mt-8 font-plex-sans italic text-auberval-encre/65 text-sm leading-relaxed max-w-2xl">
+      Marques citées à titre d'exemple. Le cabinet reste indépendant et préconise la solution la plus adaptée à votre contexte.
+    </p>
+  </div>
+</section>

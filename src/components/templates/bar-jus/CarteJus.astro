@@ -90,5 +90,48 @@ import data from '../../../data/templates/lagon.json';
         </li>
       ))}
     </ul>
+
+    <!-- Vertus & ingrédients (tableau) -->
+    <div class="mt-20 md:mt-28">
+      <header class="mb-8 max-w-2xl">
+        <p class="font-onest text-[11px] uppercase tracking-[0.32em] font-bold text-lagon-charbon mb-3">
+          ★ VERTUS &amp; INGRÉDIENTS ★
+        </p>
+        <h3 class="font-bagel text-lagon-charbon leading-[0.95]" style="font-size: clamp(32px, 4.5vw, 56px);">
+          CE QU'IL Y A
+          <span class="text-lagon-pitaya">DEDANS.</span>
+        </h3>
+      </header>
+
+      <div class="bg-lagon-coco ring-4 ring-lagon-charbon overflow-x-auto">
+        <table class="w-full text-left text-sm md:text-base">
+          <thead class="bg-lagon-charbon text-lagon-coco font-bagel">
+            <tr>
+              <th scope="col" class="px-4 py-3 tracking-wide">JUS</th>
+              <th scope="col" class="px-4 py-3 tracking-wide">INGRÉDIENTS</th>
+              <th scope="col" class="px-4 py-3 tracking-wide">BIENFAIT</th>
+              <th scope="col" class="px-4 py-3 tracking-wide text-right tabular-nums">KCAL</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y-2 divide-lagon-charbon/15">
+            {data.jus.map((j, i) => {
+              const bienfaits = ['Énergie matinale', 'Détox & digestion', 'Boost immunité', 'Anti-fatigue', 'Hydratation', 'Récupération sport', 'Anti-oxydant', 'Vitalité'];
+              const kcals = [95, 78, 88, 110, 65, 120, 92, 105];
+              return (
+                <tr class="hover:bg-lagon-mangue/30 transition-colors">
+                  <th scope="row" class="px-4 py-3 font-bagel text-lagon-charbon align-top whitespace-nowrap">{j.nom}</th>
+                  <td class="px-4 py-3 font-onest text-lagon-charbon/80 align-top">{j.ingredients}</td>
+                  <td class="px-4 py-3 font-onest text-lagon-charbon/80 align-top">{bienfaits[i % bienfaits.length]}</td>
+                  <td class="px-4 py-3 font-bagel text-lagon-pitaya text-right tabular-nums align-top">{kcals[i % kcals.length]}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-3 font-architects text-lagon-charbon/70 text-base">
+        * valeurs indicatives pour un verre de 33 cl
+      </p>
+    </div>
   </div>
 </section>

@@ -42,6 +42,48 @@ import data from '../../../data/templates/onde.json';
       ))}
     </div>
 
+    <!-- Tableau matériel pro détaillé (génériques, sans marques) -->
+    <div class="mt-16 md:mt-20">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 items-end mb-8">
+        <div class="md:col-span-7">
+          <p class="font-jetbrains text-[11px] uppercase tracking-[0.35em] mb-3" style="color: #7C3AED;">// MATÉRIEL · DÉTAIL</p>
+          <h3 class="font-space-grotesk font-bold text-3xl md:text-4xl leading-tight">
+            Le détail<span style="color: #7C3AED;">,</span> poste par poste.
+          </h3>
+        </div>
+        <div class="md:col-span-5">
+          <p class="font-jetbrains text-[12.5px] leading-relaxed" style="color: rgb(13 13 20 / 0.75);">
+            {'>'} Inventaire complet du studio, par familles, en spécifications génériques.
+          </p>
+        </div>
+      </div>
+
+      <div class="border" style="border-color: rgb(13 13 20 / 0.18);">
+        {[
+          { poste: 'Console', detail: 'Console large format 48 pistes, sommation analogique, automation moteur, patchbay TT 192 points' },
+          { poste: 'Convertisseurs', detail: 'AD/DA 32 canaux 24-bit / 192 kHz, horloge maître externe stabilisée OCXO' },
+          { poste: 'Micros statiques', detail: 'Condensateurs grande membrane (paire stéréo), petite membrane appairés, capsule tube vintage-style' },
+          { poste: 'Micros dynamiques', detail: 'Dynamiques large et petite membrane pour batterie, broadcast voix-off, instruments amplifiés' },
+          { poste: 'Préamplis', detail: '8 préamplis à transformateur classe A · 4 préamplis à lampe · 8 préamplis transparents discret' },
+          { poste: 'Compression / EQ', detail: 'Compresseurs opto, VCA et FET en rack 19" · égaliseurs Pultec-style et paramétriques 4 bandes' },
+          { poste: 'Monitors near-field', detail: 'Monitoring near-field actif haut de gamme + sub calibré, écoutes secondaires alternatives' },
+          { poste: 'Casques de référence', detail: '6 casques fermés de référence pour tracking + 2 casques ouverts pour mixage' },
+          { poste: 'Acoustique', detail: 'Cabine traitée RT60 < 0.3s · diffuseurs Schroeder · pièges à basses · vitrage 2 verres' },
+          { poste: 'Suite logicielle', detail: 'DAW pro multi-pistes, suites de plugins analogiques modélisés, instruments virtuels orchestraux et synthés' },
+          { poste: 'Sauvegarde', detail: 'NAS RAID6 redondé · backup cloud chiffré quotidien · archivage projets sur 10 ans' },
+        ].map((row, i) => (
+          <div class={`grid grid-cols-1 md:grid-cols-12 gap-3 px-5 md:px-7 py-4 md:py-5 ${i > 0 ? 'border-t' : ''}`} style="border-color: rgb(13 13 20 / 0.12);">
+            <div class="md:col-span-4">
+              <p class="font-space-grotesk font-bold text-base md:text-lg" style="color: #0D0D14;">{row.poste}</p>
+            </div>
+            <div class="md:col-span-8">
+              <p class="font-jetbrains text-[12.5px] leading-relaxed" style="color: rgb(13 13 20 / 0.78);">{row.detail}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
     <!-- Bandeau note -->
     <div class="mt-12 md:mt-14 px-6 md:px-8 py-5 md:py-6 flex items-start gap-4 border-l-4" style="background-color: rgb(124 58 237 / 0.05); border-color: #7C3AED;">
       <p style="color: #22D3EE;" class="font-jetbrains text-lg">{'>'}</p>

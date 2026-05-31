@@ -50,5 +50,56 @@ import data from '../../../data/templates/brulerie.json';
         </article>
       ))}
     </div>
+
+    <!-- Matrice grains x méthodes : quelle méthode pour quel grain ? -->
+    <div class="mt-16 md:mt-20">
+      <div class="max-w-2xl mb-8">
+        <p class="font-dm-mono text-[10.5px] uppercase tracking-[0.4em] mb-3" style="color: #B57A4A;">— Le bon match —</p>
+        <h3 class="font-plex-serif font-semibold leading-tight" style="font-size: clamp(26px, 3.4vw, 38px); font-family: 'IBM Plex Serif', Georgia, serif;">
+          Quelle méthode
+          <em class="italic" style="color: #B57A4A;">pour quel grain&nbsp;?</em>
+        </h3>
+      </div>
+
+      <div class="overflow-x-auto" style="border: 1px solid rgba(181,122,74,0.3);">
+        <table class="w-full text-left font-dm-mono text-[12.5px]" style="background-color: rgba(232,221,199,0.04);">
+          <thead>
+            <tr style="background-color: rgba(181,122,74,0.18); color: #E8DDC7;">
+              <th scope="col" class="px-4 py-3 font-semibold uppercase tracking-[0.2em] text-[10.5px]">Grain</th>
+              <th scope="col" class="px-4 py-3 font-semibold uppercase tracking-[0.2em] text-[10.5px] text-center">Espresso</th>
+              <th scope="col" class="px-4 py-3 font-semibold uppercase tracking-[0.2em] text-[10.5px] text-center">V60</th>
+              <th scope="col" class="px-4 py-3 font-semibold uppercase tracking-[0.2em] text-[10.5px] text-center">Piston</th>
+            </tr>
+          </thead>
+          <tbody style="color: rgba(232,221,199,0.85);">
+            {[
+              { grain: 'Robusta péi · torréf. foncée', e: 3, v: 1, p: 2 },
+              { grain: 'Arabica péi · torréf. ambrée', e: 3, v: 3, p: 2 },
+              { grain: 'Bourbon pointu · torréf. claire', e: 2, v: 3, p: 3 },
+              { grain: 'Éthiopie altitude · torréf. claire', e: 1, v: 3, p: 2 },
+            ].map((row, i) => {
+              const dot = (n: number) => (
+                <span class="inline-flex items-center gap-0.5" aria-label={`${n} sur 3`}>
+                  {[1,2,3].map((k) => (
+                    <span class="inline-block w-2 h-2 rounded-full" style={`background-color: ${k <= n ? '#B57A4A' : 'rgba(181,122,74,0.2)'};`}></span>
+                  ))}
+                </span>
+              );
+              return (
+                <tr style={i > 0 ? 'border-top: 1px solid rgba(181,122,74,0.18);' : ''}>
+                  <th scope="row" class="px-4 py-3 font-plex-serif font-semibold text-[14px]" style="color: #E8DDC7; font-family: 'IBM Plex Serif', Georgia, serif;">{row.grain}</th>
+                  <td class="px-4 py-3 text-center">{dot(row.e)}</td>
+                  <td class="px-4 py-3 text-center">{dot(row.v)}</td>
+                  <td class="px-4 py-3 text-center">{dot(row.p)}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-4 font-dm-mono text-[11px]" style="color: rgba(232,221,199,0.6);">
+        ● ● ● parfait · ● ● convient · ● à éviter
+      </p>
+    </div>
   </div>
 </section>

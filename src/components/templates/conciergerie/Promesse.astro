@@ -28,4 +28,34 @@ import data from '../../../data/templates/concierge.json';
       Fondatrice · {data.info.wordmark1} {data.info.wordmark2}
     </p>
   </div>
+
+  <!-- Tableau comparatif gestion seul vs avec nous -->
+  <div class="mt-20 md:mt-24 max-w-content mx-auto">
+    <p class="text-center font-hubot text-[10px] uppercase tracking-[0.4em] text-concierge-laiton font-medium mb-8">
+      ✦ Gestion seul vs avec nous ✦
+    </p>
+    <div class="border border-concierge-laiton/30 bg-concierge-champagne/30 max-w-3xl mx-auto">
+      <div class="grid grid-cols-[1.2fr_1fr_1fr] divide-x divide-concierge-laiton/20 border-b border-concierge-laiton/20">
+        <div class="px-4 md:px-6 py-4"></div>
+        <div class="px-4 md:px-6 py-4 text-center font-hubot text-[10px] uppercase tracking-[0.22em] text-concierge-graphite font-semibold">Gestion seul</div>
+        <div class="px-4 md:px-6 py-4 text-center font-hubot text-[10px] uppercase tracking-[0.22em] text-concierge-nuit font-semibold">Avec nous</div>
+      </div>
+      {[
+        { l: "Taux d'occupation moyen", a: '55 %', b: '78 %' },
+        { l: 'Prix moyen / nuitée', a: '95 €', b: '135 €' },
+        { l: 'Temps de gestion / mois', a: '15 – 25 h', b: '0 h' },
+        { l: 'Note voyageurs', a: '4,3 / 5', b: '4,8 / 5' },
+        { l: 'Réactivité aux messages', a: '4 – 8 h', b: 'sous 30 min' },
+      ].map((r, i) => (
+        <div class:list={['grid grid-cols-[1.2fr_1fr_1fr] divide-x divide-concierge-laiton/20', i > 0 ? 'border-t border-concierge-laiton/20' : '']}>
+          <div class="px-4 md:px-6 py-4 font-volkhov italic text-concierge-nuit text-sm md:text-base">{r.l}</div>
+          <div class="px-4 md:px-6 py-4 text-center font-hubot text-concierge-graphite tabular-nums">{r.a}</div>
+          <div class="px-4 md:px-6 py-4 text-center font-hubot font-semibold text-concierge-nuit tabular-nums">{r.b}</div>
+        </div>
+      ))}
+    </div>
+    <p class="mt-5 text-center font-volkhov italic text-concierge-graphite text-sm max-w-xl mx-auto">
+      Valeurs moyennes observées sur le secteur de la location courte durée. Variables selon localisation, saison et qualité du bien.
+    </p>
+  </div>
 </section>

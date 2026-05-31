@@ -75,6 +75,37 @@ const businessLD = localBusinessSchema(jardinData, 'Restaurant');
     <LeChef />
     <Cave />
     <Ambiance />
+
+    <!-- Bande Allergènes & régimes -->
+    <section aria-label="Allergènes et régimes" class="bg-resto-blanc-casse border-y border-resto-bleu-encre/10 py-8 px-6">
+      <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-center gap-x-10 gap-y-4 text-center">
+        <p class="font-manrope text-[11px] uppercase tracking-[0.32em] text-resto-bleu-roi font-semibold">
+          Allergènes &amp; régimes
+        </p>
+        <ul class="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 font-manrope text-sm text-resto-bleu-encre/80">
+          <li class="inline-flex items-center gap-2">
+            <span aria-hidden="true" class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-resto-or/15 text-resto-or text-xs font-bold">SG</span>
+            <span>Sans gluten</span>
+          </li>
+          <li class="inline-flex items-center gap-2">
+            <span aria-hidden="true" class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-resto-or/15 text-resto-or text-xs font-bold">V</span>
+            <span>Végétarien</span>
+          </li>
+          <li class="inline-flex items-center gap-2">
+            <span aria-hidden="true" class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-resto-or/15 text-resto-or text-xs font-bold">SL</span>
+            <span>Sans lactose</span>
+          </li>
+          <li class="inline-flex items-center gap-2">
+            <span aria-hidden="true" class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-resto-or/15 text-resto-or text-xs font-bold">H</span>
+            <span>Halal sur demande</span>
+          </li>
+        </ul>
+      </div>
+      <p class="mt-4 text-center font-bodoni italic text-xs text-resto-bleu-encre/55">
+        Précisez votre régime à la réservation — la carte s'adapte.
+      </p>
+    </section>
+
     <Reservation />
     <Trouver />
     <CTAFinal />

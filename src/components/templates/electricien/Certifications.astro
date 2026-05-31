@@ -59,5 +59,49 @@ const certifs = [
         </li>
       ))}
     </ul>
+
+    <!-- Checklist conformité NF C 15-100 + Consuel -->
+    <div class="scroll-reveal mt-12 grid lg:grid-cols-2 gap-4">
+      {[
+        {
+          titre: 'Checklist NF C 15-100',
+          items: [
+            'Mise à la terre vérifiée et mesurée',
+            'Disjoncteur différentiel 30 mA par circuit',
+            'Sections de câbles adaptées (1,5 / 2,5 / 6 mm²)',
+            'Nombre minimum de prises par pièce respecté',
+            'Volumes salle de bain (0 / 1 / 2) sécurisés',
+            'Tableau étiqueté, repéré et accessible',
+          ],
+        },
+        {
+          titre: 'Dossier Consuel',
+          items: [
+            'Attestation de conformité visée Consuel',
+            'Schéma du tableau électrique fourni',
+            'Photos avant / après archivées',
+            'Rendez-vous de contrôle pris pour vous',
+            'Mise en service Enedis coordonnée',
+          ],
+        },
+      ].map((bloc, b) => (
+        <div class="bg-volta-noir border border-volta-fumee/10 p-7" style={`transition-delay: ${b * 80}ms`}>
+          <h3 class="font-syne font-semibold text-volta-blanc text-lg mb-5 flex items-center gap-3">
+            <span class="inline-block w-2 h-2 bg-volta-cyan" aria-hidden="true"></span>
+            {bloc.titre}
+          </h3>
+          <ul class="space-y-3">
+            {bloc.items.map((it) => (
+              <li class="flex items-start gap-3 font-space-grotesk text-sm text-volta-fumee/85 leading-snug">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" class="text-volta-cyan flex-shrink-0 mt-0.5" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                <span>{it}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
   </div>
 </section>

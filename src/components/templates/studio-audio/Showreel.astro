@@ -1,0 +1,101 @@
+---
+/**
+ * Showreel — extraits audio mock avec waveform SVG + bouton play (UI uniquement, pas de fichier).
+ */
+const extraits = [
+  { titre: 'Mix album folk', sous: 'Voix-guitare + cordes', duree: '03:42', tag: 'Mix' },
+  { titre: 'Voix-off documentaire', sous: 'Captation + montage', duree: '01:08', tag: 'Voix' },
+  { titre: 'Sound design pub', sous: 'Branding sonore 30s', duree: '00:30', tag: 'Design' },
+  { titre: 'Mastering EP rap', sous: 'Loudness streaming', duree: '02:54', tag: 'Master' },
+];
+
+// Génération d'une waveform pseudo-aléatoire mais déterministe par seed
+const wave = (seed: number, n = 48) => {
+  const out: number[] = [];
+  let x = seed;
+  for (let i = 0; i < n; i++) {
+    x = (x * 9301 + 49297) % 233280;
+    const v = (x / 233280) * 0.85 + 0.15;
+    out.push(v);
+  }
+  return out;
+};
+---
+
+<section id="showreel" class="py-20 md:py-28" style="background-color: #0D0D14; color: #F5F4F8;">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-14 items-end mb-14">
+      <div class="md:col-span-7">
+        <p class="font-jetbrains text-[11px] uppercase tracking-[0.35em] mb-4" style="color: #22D3EE;">// SHOWREEL</p>
+        <h2 class="font-space-grotesk font-bold text-4xl md:text-6xl leading-[0.95]">
+          Quatre extraits<span style="color: #7C3AED;">,</span><br/>
+          quatre univers.
+        </h2>
+      </div>
+      <div class="md:col-span-5">
+        <p class="font-jetbrains text-[12.5px] leading-relaxed" style="color: rgb(245 244 248 / 0.75);">
+          {'>'} Échantillons de productions réalisées récemment.
+          Lecture sur demande après échange — droits cession contrôlés.
+        </p>
+      </div>
+    </div>
+
+    <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+      {extraits.map((e, i) => {
+        const w = wave(i * 17 + 3);
+        return (
+          <li class="p-5 md:p-6 border" style="background-color: rgb(245 244 248 / 0.03); border-color: rgb(245 244 248 / 0.12);">
+            <div class="flex items-start justify-between gap-4">
+              <div class="min-w-0">
+                <p class="font-jetbrains text-[10px] uppercase tracking-[0.25em]" style="color: #22D3EE;">// {e.tag}</p>
+                <h3 class="mt-1 font-space-grotesk font-bold text-xl md:text-2xl leading-tight">{e.titre}</h3>
+                <p class="mt-1 font-jetbrains text-[12px]" style="color: rgb(245 244 248 / 0.65);">{e.sous}</p>
+              </div>
+              <span class="font-jetbrains text-[12px] tabular-nums shrink-0" style="color: rgb(245 244 248 / 0.6);">{e.duree}</span>
+            </div>
+
+            <!-- Player mock -->
+            <div class="mt-5 flex items-center gap-4">
+              <button
+                type="button"
+                aria-label={`Lecture · ${e.titre}`}
+                class="w-11 h-11 shrink-0 inline-flex items-center justify-center transition-colors"
+                style="background-color: #7C3AED; color: #F5F4F8;"
+                onmouseover="this.style.backgroundColor='#22D3EE'; this.style.color='#0D0D14';"
+                onmouseout="this.style.backgroundColor='#7C3AED'; this.style.color='#F5F4F8';"
+              >
+                <span class="font-jetbrains text-sm" aria-hidden="true">▶</span>
+              </button>
+
+              <!-- Waveform SVG -->
+              <svg viewBox="0 0 240 40" class="flex-1 h-10" aria-hidden="true" preserveAspectRatio="none">
+                {w.map((v, idx) => {
+                  const h = v * 36;
+                  const y = (40 - h) / 2;
+                  const x = idx * (240 / w.length);
+                  const isPlayed = idx < w.length * 0.3;
+                  return (
+                    <rect
+                      x={x}
+                      y={y}
+                      width={(240 / w.length) - 1.5}
+                      height={h}
+                      fill={isPlayed ? '#22D3EE' : 'rgba(245,244,248,0.32)'}
+                    />
+                  );
+                })}
+              </svg>
+
+              <span class="font-jetbrains text-[10px] tabular-nums shrink-0" style="color: rgb(245 244 248 / 0.5);">— · —</span>
+            </div>
+          </li>
+        );
+      })}
+    </ul>
+
+    <p class="mt-8 font-jetbrains text-[11px] uppercase tracking-[0.25em]" style="color: rgb(245 244 248 / 0.5);">
+      {'>'} Showreel complet sur demande · NDA possible
+    </p>
+  </div>
+</section>

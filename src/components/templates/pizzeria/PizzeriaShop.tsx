@@ -44,7 +44,7 @@ const phoneRegex = /^[+]?[\d\s().-]{8,20}$/;
 export default function PizzeriaShop({ info, menu, items, zones, horairesCommande }: Props) {
   const [cart, setCart] = useState<Record<string, number>>({});
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [type, setType] = useState<'emporter' | 'livraison'>('emporter');
+  const [type, setType] = useState<'surplace' | 'emporter' | 'livraison'>('emporter');
   const categoryKeys = Object.keys(menu);
   const [activeFilter, setActiveFilter] = useState<string>('all');
   const [pulseCart, setPulseCart] = useState(false);
@@ -134,7 +134,8 @@ export default function PizzeriaShop({ info, menu, items, zones, horairesCommand
     }
 
     const lignesMsg = lines.map((l) => `- ${l.qty}× ${l.item.nom}`).join('\n');
-    const adresseLine = data.type === 'livraison' ? `Adresse : ${data.adresse}, ${data.zone}` : 'Type : À emporter';
+    const typeLabel = data.type === 'livraison' ? 'Livraison' : data.type === 'surplace' ? 'Sur place' : 'À emporter';
+    const adresseLine = data.type === 'livraison' ? `Adresse : ${data.adresse}, ${data.zone}` : `Type : ${typeLabel}`;
     const noteLine = data.note ? `\n\nNote : ${data.note}` : '';
 
     const message = `Bonjour ${info.nom} 🍕
@@ -142,7 +143,7 @@ export default function PizzeriaShop({ info, menu, items, zones, horairesCommand
 Je voudrais commander :
 ${lignesMsg}
 
-${data.type === 'livraison' ? 'Type : Livraison' : 'Type : À emporter'}
+Type : ${typeLabel}
 ${data.type === 'livraison' ? adresseLine : ''}
 Heure souhaitée : ${data.heure}
 Total estimé : ${total}€
@@ -240,6 +241,37 @@ Mon téléphone : ${data.telephone}${noteLine}`;
          ============================================================ */}
       <section id="carte" class="relative bg-white px-6 md:px-10 py-24 md:py-32">
         <div class="max-w-content mx-auto">
+
+          {/* Segmented Sur place / Emporter / Livraison */}
+          <div class="scroll-reveal mb-12 max-w-xl mx-auto">
+            <p class="text-center text-xs font-semibold uppercase tracking-[0.25em] text-pizza-charbon/55 mb-3">
+              Comment souhaitez-vous déguster ?
+            </p>
+            <div role="group" aria-label="Mode de consommation" class="grid grid-cols-3 gap-1 p-1 bg-pizza-creme/60 rounded-full ring-1 ring-pizza-charbon/10">
+              {[
+                { v: 'surplace', l: 'Sur place' },
+                { v: 'emporter', l: 'À emporter' },
+                { v: 'livraison', l: 'Livraison' },
+              ].map((opt) => {
+                const isSel = type === opt.v;
+                return (
+                  <button
+                    key={opt.v}
+                    type="button"
+                    onClick={() => setType(opt.v as 'surplace' | 'emporter' | 'livraison')}
+                    aria-pressed={isSel}
+                    class={`h-10 px-3 rounded-full text-xs sm:text-sm font-semibold uppercase tracking-[0.12em] transition-all cursor-pointer ${
+                      isSel
+                        ? 'bg-pizza-charbon text-pizza-creme'
+                        : 'text-pizza-charbon/65 hover:text-pizza-charbon'
+                    }`}
+                  >
+                    {opt.l}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
 
           {/* Header section */}
           <header class="text-center max-w-2xl mx-auto mb-16">
@@ -440,8 +472,9 @@ Mon téléphone : ${data.telephone}${noteLine}`;
                 {/* Type : à emporter / livraison — radios sobres */}
                 <fieldset>
                   <legend class={labelBase}>Type de commande</legend>
-                  <div class="grid grid-cols-2 gap-3">
+                  <div class="grid grid-cols-3 gap-3">
                     {[
+                      { v: 'surplace', l: 'Sur place' },
                       { v: 'emporter', l: 'À emporter' },
                       { v: 'livraison', l: 'Livraison' },
                     ].map((opt) => {
@@ -449,7 +482,7 @@ Mon téléphone : ${data.telephone}${noteLine}`;
                       return (
                         <label
                           key={opt.v}
-                          class={`relative flex items-center justify-center h-14 rounded-sm text-sm font-semibold cursor-pointer transition-all ${
+                          class={`relative flex items-center justify-center h-14 rounded-sm text-xs sm:text-sm font-semibold cursor-pointer transition-all text-center px-2 ${
                             isSel
                               ? 'bg-pizza-rouge/8 text-pizza-rouge ring-2 ring-pizza-rouge'
                               : 'bg-white text-pizza-charbon ring-1 ring-pizza-charbon/15 hover:ring-pizza-charbon/30'
@@ -460,11 +493,11 @@ Mon téléphone : ${data.telephone}${noteLine}`;
                             name="type"
                             value={opt.v}
                             checked={isSel}
-                            onChange={() => setType(opt.v as 'emporter' | 'livraison')}
+                            onChange={() => setType(opt.v as 'surplace' | 'emporter' | 'livraison')}
                             required
                             class="sr-only"
                           />
-                          <span class="uppercase tracking-[0.15em]">{opt.l}</span>
+                          <span class="uppercase tracking-[0.12em] leading-tight">{opt.l}</span>
                         </label>
                       );
                     })}
