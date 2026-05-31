@@ -201,7 +201,7 @@ export default function RdvForm({ typesIntervention, surfaces, frequences, whats
 
   // ============== FORMULAIRE ==============
   // Style line-bottom violette + focus halo doux (différent des autres)
-  const inputBase = 'w-full h-12 px-1 text-base font-outfit text-agap-feuille bg-transparent border-0 border-b transition-colors duration-200 placeholder:text-agap-feuille/35 focus:outline-none';
+  const inputBase = 'w-full h-12 px-1 text-base font-outfit text-agap-feuille bg-transparent border-0 border-b transition-colors duration-200 placeholder:text-agap-feuille/60 focus:outline-none';
   const inputOk   = 'border-agap-feuille/20 focus:border-agap-violet';
   const inputErr  = 'border-agap-violet';
   const labelBase = 'block text-[10px] font-outfit font-semibold uppercase tracking-[0.32em] text-agap-violet mb-2';

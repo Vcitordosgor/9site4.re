@@ -220,7 +220,7 @@ export default function RdvForm({ prestations, longueurs, creneaux, whatsapp, sa
   }
 
   // ============== FORMULAIRE ==============
-  const inputBase = 'w-full h-12 px-4 text-base font-dm-sans text-salon-noir bg-salon-blanc rounded-sm ring-1 transition-all duration-200 placeholder:text-salon-noir/35';
+  const inputBase = 'w-full h-12 px-4 text-base font-dm-sans text-salon-noir bg-salon-blanc rounded-sm ring-1 transition-all duration-200 placeholder:text-salon-noir/60';
   const inputOk   = 'ring-salon-noir/15 focus:ring-2 focus:ring-salon-vert';
   const inputErr  = 'ring-2 ring-salon-vert focus:ring-salon-vert';
   const labelBase = 'block text-xs font-semibold uppercase tracking-[0.18em] text-salon-noir/75 mb-2';
