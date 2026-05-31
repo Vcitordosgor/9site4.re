@@ -2,27 +2,50 @@
 import data from '../../../data/templates/painleve.json';
 const nav = [
   { href: '#manifeste', label: 'Manifeste' },
-  { href: '#carte', label: 'Carte' },
-  { href: '#calendrier', label: 'Fournées' },
-  { href: '#trouver', label: 'Où nous trouver' },
+  { href: '#carte',     label: 'Les pains' },
+  { href: '#fournee',   label: 'Une fournée' },
+  { href: '#abonnement',label: 'Abonnement' },
+  { href: '#trouver',   label: 'Où trouver' },
 ];
 ---
-<header id="bl-header" data-scrolled="false" class="sticky top-0 z-50 transition-all duration-500 border-b"
-  style="background:rgba(245,235,213,0.96); border-color:rgba(26,22,20,0.15);">
+<header id="bl-header" data-scrolled="false"
+  class="fixed top-0 inset-x-0 z-50 transition-all duration-500 ease-out border-b"
+  style="background:rgba(245,235,213,0); border-color:rgba(26,22,20,0);">
   <div class="max-w-content mx-auto px-6 md:px-10 h-16 md:h-20 flex items-center justify-between gap-6">
     <a href="#top" class="flex items-baseline gap-3" aria-label="Le Pain Levé">
-      <svg viewBox="0 0 32 32" class="w-8 h-8" aria-hidden="true"><path d="M6 18 Q10 8 16 8 Q22 8 26 18 Q24 22 16 22 Q8 22 6 18 Z" fill="#C89B3C"/><path d="M10 16 L14 18 M16 14 L20 18" stroke="#1A1614" stroke-width="0.8" fill="none"/></svg>
-      <div class="font-crimson-pro italic text-xl md:text-2xl" style="color:#1A1614;">Le Pain Levé</div>
+      <svg viewBox="0 0 32 32" class="w-8 h-8" aria-hidden="true">
+        <path d="M5 19 Q8 9 16 8 Q24 9 27 19 Q24 23 16 23 Q8 23 5 19 Z" fill="#C89B3C"/>
+        <path d="M9 17 L13 19 M15 15 L19 19 M21 16 L24 18" stroke="#1A1614" stroke-width="0.7" fill="none" stroke-linecap="round"/>
+      </svg>
+      <div class="font-crimson-pro italic text-xl md:text-2xl" id="bl-wm">Le Pain Levé</div>
     </a>
-    <nav class="hidden md:flex items-center gap-7 text-[12px] uppercase tracking-[0.20em] font-medium" aria-label="Navigation">
-      {nav.map(n => <a href={n.href} class="hover:opacity-60 transition-opacity" style="color:#1A1614;">{n.label}</a>)}
+    <nav class="hidden lg:flex items-center gap-7 text-[12px] uppercase tracking-[0.20em] font-medium" aria-label="Navigation" id="bl-nav">
+      {nav.map(n => <a href={n.href} class="hover:opacity-60 transition-opacity">{n.label}</a>)}
     </nav>
-    <a href="#precommande" class="hidden md:inline-flex items-center h-10 px-5 text-[12px] uppercase tracking-[0.16em] font-semibold transition-colors"
-       style="background:#1A1614; color:#F5EBD5;">Précommander</a>
-    <a href={`tel:${data.info.telephoneHref}`} class="md:hidden inline-flex items-center h-10 px-4 text-[11px] uppercase tracking-wider font-semibold" style="background:#1A1614; color:#F5EBD5;">Appeler</a>
+    <a href="#abonnement" id="bl-cta" class="hidden md:inline-flex items-center h-10 px-5 text-[12px] uppercase tracking-[0.16em] font-semibold transition-colors rounded-full">
+      Précommander
+    </a>
+    <a href={`tel:${data.info.telephoneHref}`} class="md:hidden inline-flex items-center h-10 px-4 text-[11px] uppercase tracking-wider font-semibold rounded-full" style="background:#1A1614; color:#F5EBD5;">Appeler</a>
   </div>
 </header>
-<script>
-  const h = document.getElementById('bl-header');
-  if (h) { const u = () => { h.dataset.scrolled = String(window.scrollY > 8); }; u(); window.addEventListener('scroll', u, { passive: true }); }
+<script is:inline>
+  (() => {
+    const h = document.getElementById('bl-header');
+    const wm = document.getElementById('bl-wm');
+    const nav = document.getElementById('bl-nav');
+    const cta = document.getElementById('bl-cta');
+    if (!h || !wm || !nav || !cta) return;
+    const upd = () => {
+      const s = window.scrollY > 40;
+      h.dataset.scrolled = String(s);
+      h.style.background = s ? 'rgba(245,235,213,0.96)' : 'rgba(26,22,20,0)';
+      h.style.borderColor = s ? 'rgba(26,22,20,0.15)' : 'rgba(0,0,0,0)';
+      h.style.backdropFilter = s ? 'blur(12px) saturate(180%)' : 'none';
+      wm.style.color = s ? '#1A1614' : '#F5EBD5';
+      nav.style.color = s ? '#1A1614' : '#F5EBD5';
+      cta.style.background = s ? '#1A1614' : '#C89B3C';
+      cta.style.color = s ? '#F5EBD5' : '#1A1614';
+    };
+    upd(); window.addEventListener('scroll', upd, { passive: true });
+  })();
 </script>
