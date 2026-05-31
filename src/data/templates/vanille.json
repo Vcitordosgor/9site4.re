@@ -1,27 +1,27 @@
 {
   "info": {
-    "nom": "La Vanille de Bel-Air",
+    "nom": "La Vanille de Bourbon",
     "wordmark": "La Vanille",
-    "wordmark2": "de Bel-Air",
+    "wordmark2": "de Bourbon",
     "soustitre": "Pâtisserie créole · La Réunion",
     "tagline": "Le sucre, la vanille, le geste.",
-    "fondatrice": "Stéphanie Payet",
+    "fondatrice": "Stéphanie P.",
     "ville": "La Réunion",
-    "adresseLigne1": "12 chemin de Bel-Air",
-    "adresseLigne2": "97440 La Réunion",
+    "adresseLigne1": "La boutique",
+    "adresseLigne2": "À La Réunion",
     "telephone": "0692 12 34 56",
     "telephoneHref": "+262692123456",
     "whatsapp": "262692123456",
-    "email": "bonjour@vanille-bel-air.re",
-    "instagram": "@vanille.belair",
-    "siret": "85412034500021",
+    "email": "bonjour@vanille-bourbon.re",
+    "instagram": "@vanille.bourbon",
+    "siret": "",
     "annee": "2009",
     "photoHero": "https://plus.unsplash.com/premium_photo-1669253517115-f7835ea01de3?q=80&w=1400&auto=format&fit=crop",
-    "photoHeroAlt": "Gâteau pâtissier glacé à la vanille avec gousses fraîches sur table en bois, La Vanille de Bel-Air, La Réunion",
+    "photoHeroAlt": "Gâteau pâtissier glacé à la vanille avec gousses fraîches sur table en bois, La Réunion",
     "ouvertureHebdo": "Mardi → dimanche · 6h30-13h / 15h-19h",
     "fermeture": "Lundi"
   },
-  "promesse": "À Bel-Air depuis 2009, on pétrit, on glace, on caramélise. La vanille bourbon vient de l'île, le rhum arrangé de chez Gerry, les œufs des pondeuses de Madame Hoarau à La Réunion. Tout est fait le matin même, à la main, dans la cuisine au fond de la boutique.",
+  "promesse": "Depuis 2009, on pétrit, on glace, on caramélise. Vanille bourbon de l'île, rhum arrangé péi, œufs plein air. Tout est fait le matin même, à la main, dans la cuisine au fond de la boutique.",
   "specialites": [
     {
       "id": "gateau-patate",
@@ -29,7 +29,7 @@
       "categorie": "Pâtisserie créole",
       "prix": "3,80 € · part",
       "tagline": "Patate douce, lait de coco, vanille.",
-      "description": "Gâteau humide à base de patate douce blanche râpée, lait de coco frais, vanille fendue, et une pincée de muscade. Recette de la grand-mère de Stéphanie, inchangée depuis 1972.",
+      "description": "Gâteau humide à base de patate douce blanche râpée, lait de coco frais, vanille fendue, et une pincée de muscade. Recette de famille transmise par la grand-mère de Stéphanie.",
       "details": "Préparation : 45 min · Cuisson : 1h15 · Conservation : 4 jours",
       "epice": "vanille"
     },
@@ -92,35 +92,34 @@
     }
   ],
   "patissiere": {
-    "nom": "Stéphanie Payet",
+    "nom": "Stéphanie P.",
     "titre": "Pâtissière & fondatrice",
-    "bio": "Stéphanie a appris la pâtisserie chez sa grand-mère, puis passé son CAP en lycée hôtelier. Après 6 ans dans de grandes maisons parisiennes, elle est rentrée à La Réunion en 2009 pour ouvrir La Vanille de Bel-Air. Elle pétrit elle-même les pâtes feuilletées chaque matin à 4h30.",
-    "credo": "« Une viennoiserie réussie, c'est trois choses : du beurre, du temps, et personne qui te bouscule à 5h du matin. »",
+    "bio": "Stéphanie a appris la pâtisserie auprès de sa grand-mère, puis passé son CAP. Après quelques années en maison classique, elle est rentrée à La Réunion en 2009 pour ouvrir la boutique. Elle pétrit elle-même les pâtes feuilletées chaque matin.",
+    "credo": "« Une viennoiserie réussie, c'est trois choses : du beurre, du temps, et un peu de calme à 5h du matin. »",
     "certif": [
-      "CAP Pâtisserie 2003",
-      "BTM Pâtisserie 2007",
-      "Passage en grande maison parisienne",
-      "Maître Restaurateur 2018"
+      "CAP Pâtisserie",
+      "Formation pâtisserie classique",
+      "Exemples de distinctions professionnelles"
     ]
   },
   "avis": [
     {
-      "prenom": "Marie-Claire",
+      "prenom": "M.",
       "ville": "La Réunion",
       "etoiles": 5,
-      "texte": "Je viens chaque samedi depuis 12 ans. Le gâteau patate de Stéphanie a le goût de l'enfance. Le mille-feuille vanille, j'ai encore jamais trouvé mieux à La Réunion."
+      "texte": "Le gâteau patate a vraiment le goût de l'enfance. Le mille-feuille vanille est top."
     },
     {
-      "prenom": "Jean-Luc",
+      "prenom": "J.",
       "ville": "La Réunion",
       "etoiles": 5,
-      "texte": "Mariage de ma fille en novembre, pièce montée 80 personnes : Stéphanie a livré le matin même, à 9h, fraîche du four. Tout le monde a réclamé la recette du macatia coco. Service impeccable."
+      "texte": "Pièce montée livrée fraîche le matin même. Service impeccable, recettes au top."
     },
     {
-      "prenom": "Sophie & David",
+      "prenom": "S. & D.",
       "ville": "La Réunion",
       "etoiles": 5,
-      "texte": "On commande nos entremets tous les anniversaires depuis 2018. La saveur letchi-vanille de leur tarte de saison est une dinguerie. On fait 1h de route, ça vaut le coup."
+      "texte": "On commande les entremets pour chaque anniversaire. La tarte letchi-vanille de saison vaut le détour."
     }
   ],
   "commandes": [
@@ -142,7 +141,7 @@
     {
       "etape": "04",
       "titre": "Livraison Est & Nord",
-      "texte": "Livraison gratuite La Réunion et La Réunion. La Réunion : forfait 25 €. À partir de 15 €/dépôt-vente local."
+      "texte": "Livraison gratuite à proximité de la boutique. Au-delà : forfait 25 €. Dépôts-vente locaux à partir de 15 €."
     }
   ]
 }

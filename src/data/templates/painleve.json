@@ -5,7 +5,7 @@
     "wordmark2": "Levé",
     "soustitre": "Boulangerie au levain · La Réunion",
     "tagline": "Farine, eau, sel, temps.",
-    "fondateur": "Mathieu Hoarau",
+    "fondateur": "Mathieu H.",
     "ville": "La Réunion",
     "adresseLigne1": "Le fournil — À La Réunion",
     "adresseLigne2": "Précisé à la commande",
@@ -14,7 +14,7 @@
     "whatsapp": "262692123456",
     "email": "fournil@painleve.re",
     "instagram": "@painleve.974",
-    "siret": "84512033500017",
+    "siret": "",
     "annee": "2018",
     "photoHero": "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=1600&auto=format&fit=crop",
     "photoHeroAlt": "Pain de campagne au levain au four à bois, mie alvéolée, croûte dorée, La Réunion",
@@ -22,12 +22,12 @@
     "fermeture": "Dimanche · lundi · mardi",
     "rythme": "Une fournée par jour, 6h du matin"
   },
-  "manifesto": "Une seule farine bio T80 du moulin de Saint-Joseph. Un levain mère né d'une grappe de raisin péi, nourri tous les jours depuis 2018. Une fermentation longue, 18 à 24 heures à température douce, qui donne à la mie son grain humide et son acidité fruitée. Du sel de Salins-les-Bains. De l'eau. Pas de levure de boulanger, pas d'améliorants, pas de raccourci.",
+  "manifesto": "Une seule farine bio T80, d'un moulin péi. Un levain mère né d'une grappe de raisin local, nourri tous les jours depuis 2018. Une fermentation longue, 18 à 24 heures à température douce, qui donne à la mie son grain humide et son acidité fruitée. Du sel marin, de l'eau. Pas de levure de boulanger, pas d'améliorants, pas de raccourci.",
   "fournisseurs": [
-    "Farine bio T80 — Moulin de Saint-Joseph",
-    "Beurre fermier AOP Charentes-Poitou",
-    "Sel marin Salins-les-Bains",
-    "Œufs plein air poule rousse — Madame Hoarau"
+    "Farine bio T80 — moulin péi",
+    "Beurre fermier AOP",
+    "Sel marin de l'île",
+    "Œufs plein air — élevage local"
   ],
   "four": {
     "titre": "Notre four à sole tournante",
