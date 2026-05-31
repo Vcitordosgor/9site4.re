@@ -14,11 +14,14 @@ import encreData from '../../data/templates/encrevolcan.json';
 import EncreHeader from '../../components/templates/tatoueur/EncreHeader.astro';
 import HeroEncre from '../../components/templates/tatoueur/HeroEncre.astro';
 import Styles from '../../components/templates/tatoueur/Styles.astro';
+import Portfolio from '../../components/templates/tatoueur/Portfolio.astro';
 import Artistes from '../../components/templates/tatoueur/Artistes.astro';
 import Flash from '../../components/templates/tatoueur/Flash.astro';
 import Process from '../../components/templates/tatoueur/Process.astro';
+import Soin from '../../components/templates/tatoueur/Soin.astro';
 import Hygiene from '../../components/templates/tatoueur/Hygiene.astro';
 import Tarifs from '../../components/templates/tatoueur/Tarifs.astro';
+import Temoignages from '../../components/templates/tatoueur/Temoignages.astro';
 import Faq from '../../components/templates/tatoueur/Faq.astro';
 import Contact from '../../components/templates/tatoueur/Contact.astro';
 import EncreFooter from '../../components/templates/tatoueur/EncreFooter.astro';
@@ -37,11 +40,14 @@ const businessLD = localBusinessSchema(encreData, 'HealthAndBeautyBusiness');
   <main style="background-color: #0A0A0A;">
     <HeroEncre />
     <Styles />
+    <Portfolio />
     <Artistes />
     <Flash />
     <Process />
+    <Soin />
     <Hygiene />
     <Tarifs />
+    <Temoignages />
     <Faq />
     <Contact />
   </main>

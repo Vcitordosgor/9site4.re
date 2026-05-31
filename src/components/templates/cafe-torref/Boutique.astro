@@ -1,0 +1,44 @@
+---
+import data from '../../../data/templates/brulerie.json';
+---
+<section id="boutique" class="py-24 md:py-32" style="background:#E8DDC7;">
+  <div class="max-w-content mx-auto px-6 md:px-10 grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
+    <div class="order-2 md:order-1">
+      <div class="text-[10px] uppercase tracking-[0.32em] mb-3" style="font-family:'DM Mono',monospace; color:#B57A4A;">Boutique & atelier</div>
+      <h2 class="font-instrument text-5xl md:text-6xl leading-tight" style="color:#1A0F0A;">Venez sentir <em class="italic">le grain.</em></h2>
+      <p class="mt-6 text-[16px] leading-relaxed" style="color:#3A2418;">
+        L'atelier est ouvert au public les jours de torréfaction. Vous repartez avec un sachet daté, et — si Olivier a deux minutes — un café filtre offert à la dégustation.
+      </p>
+      <dl class="mt-8 divide-y" style="border-color:rgba(26,15,10,0.18); font-family:'DM Mono',monospace;">
+        <div class="py-4 grid grid-cols-[140px_1fr] gap-4">
+          <dt class="text-[10px] uppercase tracking-[0.28em]" style="color:#B57A4A;">Adresse</dt>
+          <dd class="text-[14px]" style="color:#1A0F0A;">{data.info.adresseLigne1}<br/><span style="color:#7A5C3F;">{data.info.adresseLigne2}</span></dd>
+        </div>
+        <div class="py-4 grid grid-cols-[140px_1fr] gap-4" style="border-color:rgba(26,15,10,0.18);">
+          <dt class="text-[10px] uppercase tracking-[0.28em]" style="color:#B57A4A;">Ouverture</dt>
+          <dd class="text-[14px]" style="color:#1A0F0A;">{data.info.ouvertureHebdo}</dd>
+        </div>
+        <div class="py-4 grid grid-cols-[140px_1fr] gap-4" style="border-color:rgba(26,15,10,0.18);">
+          <dt class="text-[10px] uppercase tracking-[0.28em]" style="color:#B57A4A;">Fermeture</dt>
+          <dd class="text-[14px]" style="color:#1A0F0A;">{data.info.fermeture}</dd>
+        </div>
+        <div class="py-4 grid grid-cols-[140px_1fr] gap-4" style="border-color:rgba(26,15,10,0.18);">
+          <dt class="text-[10px] uppercase tracking-[0.28em]" style="color:#B57A4A;">Contact</dt>
+          <dd class="text-[14px]" style="color:#1A0F0A;"><a href={`tel:${data.info.telephoneHref}`} class="underline-offset-4 hover:underline">{data.info.telephone}</a> · <a href={`mailto:${data.info.email}`} class="underline-offset-4 hover:underline">{data.info.email}</a></dd>
+        </div>
+      </dl>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href={`tel:${data.info.telephoneHref}`} class="inline-flex items-center h-12 px-6 text-[11px] uppercase tracking-[0.22em] font-semibold" style="font-family:'DM Mono',monospace; background:#1A0F0A; color:#E8DDC7;">Appeler l'atelier</a>
+        <a href="#abonnement" class="inline-flex items-center h-12 px-6 text-[11px] uppercase tracking-[0.22em] font-semibold border" style="font-family:'DM Mono',monospace; border-color:#1A0F0A; color:#1A0F0A;">S'abonner</a>
+      </div>
+    </div>
+    <div class="order-1 md:order-2 relative">
+      <div class="overflow-hidden" style="background:#1A0F0A;">
+        <img src="/images/cafe-torref/extra-6.webp" alt="Atelier de torréfaction artisanal à La Réunion" class="w-full aspect-[5/6] object-cover" loading="lazy"/>
+      </div>
+      <div class="absolute top-4 left-4 px-3 py-2 text-[10px] uppercase tracking-[0.24em]" style="font-family:'DM Mono',monospace; background:#E8DDC7; color:#1A0F0A;">
+        Atelier · Probat L12 · 1968
+      </div>
+    </div>
+  </div>
+</section>

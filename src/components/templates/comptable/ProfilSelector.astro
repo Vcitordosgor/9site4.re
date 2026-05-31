@@ -1,0 +1,182 @@
+---
+/**
+ * ProfilSelector — signature feature : sélection d'un profil entreprise
+ * révélant un pack tarifaire adapté via :has() (sans JS).
+ */
+const profils = [
+  {
+    id: 'indep',
+    label: 'Indépendant',
+    sub: 'Micro · BNC · auto-entrepreneur',
+    pack: 'Pack Indépendant',
+    budget: '69 €',
+    cadence: '/ mois HT',
+    features: [
+      'Bilan annuel & liasse fiscale',
+      'Déclaration revenus pro (2042-C-PRO)',
+      'Suivi TVA si applicable',
+      '1 rendez-vous annuel de bilan',
+      'Réponses mail sous 48 h',
+    ],
+    horsPack: ['Paie', 'Audit légal'],
+  },
+  {
+    id: 'tpe',
+    label: 'TPE · 1-9 salariés',
+    sub: 'SARL · SAS · EURL',
+    pack: 'Pack TPE',
+    budget: '189 €',
+    cadence: '/ mois HT',
+    featured: true,
+    features: [
+      'Tenue comptable trimestrielle',
+      'Bilan, liasse fiscale, télédéclarations',
+      'TVA mensuelle ou trimestrielle',
+      'Paie incluse · jusqu\'à 3 bulletins / mois',
+      '4 rendez-vous de pilotage / an',
+      'Hotline juridique & sociale',
+    ],
+    horsPack: ['Bulletins > 3 / mois (38 € le bulletin)'],
+  },
+  {
+    id: 'pme',
+    label: 'PME · 10-49',
+    sub: 'Multi-établissements',
+    pack: 'Pack PME',
+    budget: 'Sur devis',
+    cadence: 'dès 480 € / mois',
+    features: [
+      'Comptabilité mensuelle pilotée',
+      'Tableau de bord & reporting trimestriel',
+      'Audit interne & contrôle de gestion',
+      'Paie complète, DSN, conventions collectives',
+      'Conseil fiscal & juridique permanent',
+      'Référent unique côté cabinet',
+    ],
+    horsPack: ['Commissariat aux comptes (lot séparé)'],
+  },
+  {
+    id: 'asso',
+    label: 'Association',
+    sub: 'Loi 1901 · ESS',
+    pack: 'Pack Association',
+    budget: '95 €',
+    cadence: '/ mois HT',
+    features: [
+      'Comptabilité associative spécifique',
+      'Bilan annuel & compte de résultat',
+      'Reçus fiscaux 60 / 200 CGI',
+      'Suivi subventions & conventions',
+      '1 AG accompagnée / an',
+    ],
+    horsPack: ['Paie (sur devis selon convention)'],
+  },
+  {
+    id: 'sci',
+    label: 'SCI familiale',
+    sub: 'IR ou IS',
+    pack: 'Pack SCI',
+    budget: '49 €',
+    cadence: '/ mois HT',
+    features: [
+      'Tenue comptable SCI IS ou IR',
+      'Déclaration 2072 ou liasse IS',
+      'Calcul plus-values immobilières',
+      'Optimisation arbitrage IR / IS',
+      '1 point patrimonial annuel',
+    ],
+    horsPack: ['Création de SCI : 950 € forfait'],
+  },
+];
+---
+<section id="profils" class="bg-auberval-marine text-auberval-feutre py-24 md:py-32 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+    <header class="grid md:grid-cols-12 gap-8 mb-12 md:mb-16">
+      <div class="md:col-span-6">
+        <p class="font-plex-sans text-[10px] uppercase tracking-[0.32em] text-auberval-or font-semibold mb-5">
+          ✦ Sur-mesure · sélecteur de profil
+        </p>
+        <h2 class="font-source-serif leading-[0.98]" style="font-size: clamp(36px, 5vw, 68px);">
+          Sélectionnez<br/><span class="italic text-auberval-or font-light">votre structure.</span>
+        </h2>
+      </div>
+      <div class="md:col-span-6 self-end">
+        <p class="font-plex-sans text-[15px] leading-relaxed text-auberval-feutre/80 max-w-xl">
+          Cinq profils. Cinq tarifications transparentes. Choisissez votre structure ci-dessous, le pack adapté se révèle en dessous.
+        </p>
+      </div>
+    </header>
+
+    <div class="profil-root">
+      <!-- Radio cards -->
+      <div role="radiogroup" aria-label="Profil entreprise" class="grid grid-cols-2 md:grid-cols-5 gap-px bg-auberval-or/20 border border-auberval-or/20 mb-px">
+        {profils.map((p, i) => (
+          <label class="profil-card relative bg-auberval-marine p-5 md:p-6 cursor-pointer transition-colors duration-200 hover:bg-auberval-marine/70">
+            <input type="radio" name="profil" value={p.id} class="sr-only peer" checked={i === 1}/>
+            <div class="font-dm-mono text-[9px] uppercase tracking-[0.28em] text-auberval-or mb-2">0{i + 1}</div>
+            <div class="font-source-serif text-xl md:text-2xl leading-tight mb-1">{p.label}</div>
+            <div class="font-plex-sans text-[11px] text-auberval-feutre/55 uppercase tracking-[0.16em]">{p.sub}</div>
+            <span class="profil-dot absolute top-4 right-4 w-3 h-3 border border-auberval-or/60 rounded-full"></span>
+          </label>
+        ))}
+      </div>
+
+      <!-- Panels -->
+      <div class="relative">
+        {profils.map(p => (
+          <article data-profil={p.id} class={`profil-panel bg-auberval-feutre text-auberval-marine p-8 md:p-12 grid md:grid-cols-12 gap-8 md:gap-12 ${p.featured ? 'profil-featured' : ''}`}>
+            <div class="md:col-span-5">
+              <div class="font-dm-mono text-[10px] uppercase tracking-[0.28em] text-auberval-or mb-3">{p.pack}</div>
+              <div class="flex items-baseline gap-3 mb-2">
+                <span class="font-source-serif text-6xl md:text-7xl leading-none">{p.budget}</span>
+                {p.budget !== 'Sur devis' && <span class="font-dm-mono text-[11px] uppercase tracking-[0.22em] text-auberval-encre/65">{p.cadence}</span>}
+              </div>
+              {p.budget === 'Sur devis' && <div class="font-dm-mono text-[11px] uppercase tracking-[0.22em] text-auberval-encre/65 mb-1">{p.cadence}</div>}
+              <p class="mt-6 font-plex-sans text-[14.5px] leading-relaxed text-auberval-encre/85 max-w-sm">Forfait fixe annoncé. Aucune facture annexe sans devis préalable signé.</p>
+              <a href="#rendez-vous" class="mt-7 inline-flex items-center h-12 px-6 bg-auberval-marine text-auberval-feutre font-plex-sans font-medium text-[13px]">Demander un devis pour ce profil →</a>
+            </div>
+            <div class="md:col-span-7">
+              <div class="font-dm-mono text-[10px] uppercase tracking-[0.28em] text-auberval-or mb-4">Inclus dans le pack</div>
+              <ul class="space-y-3 mb-7">
+                {p.features.map(f => (
+                  <li class="flex gap-3 items-start font-plex-sans text-[14.5px] leading-relaxed">
+                    <svg viewBox="0 0 16 16" class="w-4 h-4 mt-1 shrink-0 text-auberval-or" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8 L7 12 L13 4"/></svg>
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+              <div class="pt-5 border-t border-auberval-marine/20">
+                <div class="font-dm-mono text-[10px] uppercase tracking-[0.28em] text-auberval-encre/55 mb-2">Hors pack</div>
+                <ul class="font-plex-sans text-[13px] leading-relaxed text-auberval-encre/70 space-y-1">
+                  {p.horsPack.map(h => <li>· {h}</li>)}
+                </ul>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* hide all panels, show only the one matching the checked radio via :has() */
+  .profil-panel { display: none; }
+  .profil-root:has(input[value="indep"]:checked) .profil-panel[data-profil="indep"],
+  .profil-root:has(input[value="tpe"]:checked)   .profil-panel[data-profil="tpe"],
+  .profil-root:has(input[value="pme"]:checked)   .profil-panel[data-profil="pme"],
+  .profil-root:has(input[value="asso"]:checked)  .profil-panel[data-profil="asso"],
+  .profil-root:has(input[value="sci"]:checked)   .profil-panel[data-profil="sci"]   { display: grid; }
+
+  .profil-card:has(input:checked) {
+    background: #B89758;
+    color: #1B3A5C;
+  }
+  .profil-card:has(input:checked) .profil-dot {
+    background: #1B3A5C;
+    border-color: #1B3A5C;
+  }
+  .profil-card:has(input:checked) [class*="text-auberval-or"] { color: #1B3A5C; }
+  .profil-card:has(input:checked) [class*="text-auberval-feutre"] { color: #1B3A5C; }
+  .profil-card:focus-within { outline: 2px solid #B89758; outline-offset: 2px; z-index: 1; }
+</style>
