@@ -33,6 +33,26 @@ const businessLD = localBusinessSchema(brulerieData, 'CafeOrCoffeeShop');
 
   <main class="font-dm-mono" style="background-color: #E8DDC7; color: #1A0F0A;">
     <HeroSac />
+
+    <!-- Bandeau notes de dégustation défilant -->
+    <div class="py-4 overflow-hidden border-y" style="background-color:#1A0F0A;color:#E8DDC7;border-color:rgba(181,122,74,0.4);" aria-hidden="true">
+      <div class="flex gap-12 whitespace-nowrap" style="animation: cafe-marquee 44s linear infinite; width: max-content;">
+        {Array.from({ length: 2 }).map(() => (
+          <div class="flex gap-12 items-center" style="font-family:'IBM Plex Serif',Georgia,serif;font-style:italic;font-size:24px;">
+            <span>Notes de cacao</span><span style="color:#B57A4A;">·</span>
+            <span>Caramel & noisette</span><span style="color:#B57A4A;">·</span>
+            <span>Torréfaction lente</span><span style="color:#B57A4A;">·</span>
+            <span>Grain frais 48h</span><span style="color:#B57A4A;">·</span>
+            <span>Origines uniques</span><span style="color:#B57A4A;">·</span>
+          </div>
+        ))}
+      </div>
+    </div>
+    <style>
+      @keyframes cafe-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+      @media (prefers-reduced-motion: reduce) { [style*="cafe-marquee"] { animation: none !important; } }
+    </style>
+
     <Origines />
     <Methodes />
     <Atelier />
@@ -41,4 +61,33 @@ const businessLD = localBusinessSchema(brulerieData, 'CafeOrCoffeeShop');
   </main>
 
   <Footer />
+
+  <!-- Sticky bottom CTA mobile-only -->
+  <a
+    id="cafe-sticky-cta"
+    href="#abonnement"
+    data-visible="false"
+    class="md:hidden fixed bottom-4 inset-x-4 z-40 inline-flex items-center justify-center h-14 px-6 text-[12px] font-semibold uppercase tracking-[0.22em] font-dm-mono rounded-none transition-all duration-300 ease-out data-[visible=false]:opacity-0 data-[visible=false]:translate-y-4 data-[visible=false]:pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0"
+    style="background-color:#1A0F0A;color:#E8DDC7;box-shadow: 0 12px 32px rgb(26 15 10 / 0.45);"
+  >
+    S'abonner · 14€/15j
+  </a>
+  <script>
+    const sticky = document.getElementById('cafe-sticky-cta');
+    const target = document.getElementById('abonnement');
+    if (sticky) {
+      const update = () => {
+        const past = window.scrollY > 480;
+        let inSection = false;
+        if (target) {
+          const r = target.getBoundingClientRect();
+          inSection = r.top < window.innerHeight && r.bottom > 80;
+        }
+        sticky.dataset.visible = String(past && !inSection);
+      };
+      update();
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update, { passive: true });
+    }
+  </script>
 </BaseLayout>
