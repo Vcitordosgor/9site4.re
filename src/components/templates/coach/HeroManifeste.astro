@@ -61,7 +61,7 @@ import data from '../../../data/templates/foudre.json';
         <img
           src={data.info.photoHero} srcset={`${(data.info.photoHero).replace(/\.webp$/, "-640.webp")} 640w, ${(data.info.photoHero).replace(/\.webp$/, "-1024.webp")} 1024w, ${data.info.photoHero} 1600w`} sizes="100vw"
           alt=""
-          class="w-full h-full object-cover object-center grayscale contrast-110 hero-vivant" loading="eager" fetchpriority="high" decoding="async">
+          class="w-full h-full object-cover object-center grayscale contrast-110 hero-vivant" width="1600" height="900" loading="eager" fetchpriority="high" decoding="async">
         <!-- Overlay lime en bas -->
         <div class="absolute bottom-0 left-0 right-0 h-1 bg-coach-lime"></div>
         <!-- Étiquette coach -->

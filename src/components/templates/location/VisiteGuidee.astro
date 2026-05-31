@@ -26,7 +26,7 @@ import data from '../../../data/templates/lazuli.json';
       <!-- Photo active -->
       <div class="lg:col-span-8">
         <div class="relative aspect-[4/3] overflow-hidden bg-lazuli-marine/60">
-          <img id="visite-img" src={data.visite[0].photo} alt={data.visite[0].titre} class="w-full h-full object-cover transition-opacity duration-500" />
+          <img id="visite-img" src={data.visite[0].photo} alt={data.visite[0].titre} width="800" height="600" loading="lazy" decoding="async" class="w-full h-full object-cover transition-opacity duration-500" />
         </div>
         <!-- Caption sous photo -->
         <div class="mt-5 flex items-baseline justify-between gap-4">
@@ -64,7 +64,7 @@ import data from '../../../data/templates/lazuli.json';
               ]}
               aria-label={`Voir ${v.titre}`}
             >
-              <img src={v.photo} alt={v.titre} loading="lazy" class="w-full h-full object-cover" />
+              <img src={v.photo} alt={v.titre} width="200" height="150" loading="lazy" decoding="async" class="w-full h-full object-cover" />
             </button>
           </li>
         ))}

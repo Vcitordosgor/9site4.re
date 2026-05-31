@@ -133,7 +133,7 @@ const today = new Date().toLocaleDateString('fr-FR', {
         <img
           src={data.info.photoHero} srcset={`${(data.info.photoHero).replace(/\.webp$/, "-640.webp")} 640w, ${(data.info.photoHero).replace(/\.webp$/, "-1024.webp")} 1024w, ${data.info.photoHero} 1600w`} sizes="100vw"
           alt={data.info.photoHeroAlt}
-          class="w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async">
+          class="w-full h-full object-cover" width="1600" height="900" loading="eager" fetchpriority="high" decoding="async">
       </div>
       <p class="mt-3 text-center font-yeseva italic text-vanille-caramel text-base md:text-lg">
         — Pétri à 4h30 ce matin par Stéphanie —
