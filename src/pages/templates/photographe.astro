@@ -35,8 +35,7 @@ const businessLD = localBusinessSchema(data, 'ProfessionalService');
 <BaseLayout seo={getSeo('templatePhotographe')} bare={true}>
   <Fragment slot="head">
     {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
-    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
-    <link rel="preload" as="image" href="/images/latitude/runner.webp" fetchpriority="high" />
+<link rel="preload" as="image" href="/images/latitude/runner.webp" fetchpriority="high" />
   </Fragment>
 
   <LatitudeHeader />
