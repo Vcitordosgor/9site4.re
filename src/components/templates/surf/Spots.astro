@@ -1,62 +1,24 @@
 ---
-import data from '../../../data/templates/borddeau.json';
+const spots = [
+  { nom: 'SAINT-GILLES', niveau: 'Débutant → confirmé', vague: 'Beach break', desc: 'Notre spot principal pour les initiations. Fond de sable, vague mousseuse, lagune protégée. Conditions stables.', photo: '/images/surf/extra-5.webp' },
+  { nom: 'BOUCAN-CANOT', niveau: 'Intermédiaire → confirmé', vague: 'Reef break', desc: 'Pour les sessions perfectionnement. Vague plus creuse, lecture nécessaire. On sort par groupes de 4 max.', photo: '/images/surf/extra-6.webp' },
+];
 ---
-
-<section id="spots" class="py-20 md:py-28 relative overflow-hidden" style="background-color: #0F2A36; color: #F4F8F7;">
-
-  <!-- Vague décorative -->
-  <svg viewBox="0 0 1200 80" class="absolute top-0 left-0 w-full opacity-30" aria-hidden="true">
-    <path d="M0 40 Q300 10 600 40 Q900 70 1200 40 L1200 0 L0 0 Z" fill="#3CACAE"/>
-  </svg>
-
-  <div class="max-w-content mx-auto px-6 md:px-10 relative">
-
-    <div class="max-w-2xl mb-14 md:mb-20 mt-8">
-      <p class="font-inter text-[11px] uppercase tracking-[0.45em] mb-4" style="color: #3CACAE;">— Nos spots —</p>
-      <h2 class="font-anton uppercase leading-[0.92]" style="font-size: clamp(40px, 6vw, 80px); font-family: 'Anton', Impact, sans-serif;">
-        Quatre vagues,<br />
-        <span style="color: #E5C99A;">quatre niveaux.</span>
-      </h2>
-      <p class="mt-5 font-inter text-[15px] leading-relaxed" style="color: rgba(244, 248, 247, 0.78);">
-        L'école travaille quatre spots, choisis selon votre niveau et la marée du jour. Pas le même profil de vague d'un endroit à l'autre.
-      </p>
+<section id="spots" class="py-24 md:py-32" style="background:#F4F8F7;">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+    <div class="mb-14 max-w-2xl">
+      <div class="text-[11px] uppercase tracking-[0.32em] mb-3 font-bold" style="color:#FF6B5A;">Nos spots</div>
+      <h2 class="font-bebas text-6xl md:text-7xl leading-[0.9]" style="color:#0F2A36;">DEUX SPOTS.<br/><span style="color:#3CACAE;">PAS PLUS.</span></h2>
+      <p class="mt-4 text-base" style="color:#3A4A56;">Pourquoi deux ? Parce qu'on les connaît par cœur. La sécurité, ça passe par la maîtrise du terrain.</p>
     </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
-      {data.spots.map((s, i) => (
-        <article class="p-7 md:p-9" style="background-color: rgba(244, 248, 247, 0.05); border: 1px solid rgba(60, 172, 174, 0.3);">
-
-          <div class="flex items-baseline justify-between gap-4 mb-3">
-            <p class="font-anton text-xl uppercase tracking-wider" style="color: #3CACAE; font-family: 'Anton', Impact, sans-serif;">
-              Spot n°{String(i + 1).padStart(2, '0')}
-            </p>
-            <span class="px-2.5 py-1 font-anton text-[10px] uppercase tracking-[0.18em] rounded-full" style="background-color: #E5C99A; color: #0F2A36; font-family: 'Anton', Impact, sans-serif;">
-              {s.niveau}
-            </span>
-          </div>
-
-          <h3 class="font-anton uppercase leading-tight" style="font-size: clamp(28px, 3.5vw, 38px); font-family: 'Anton', Impact, sans-serif;">
-            {s.nom}
-          </h3>
-
-          <p class="mt-4 font-inter text-[14.5px] leading-relaxed" style="color: rgba(244, 248, 247, 0.82);">
-            {s.description}
-          </p>
-
-          <!-- Fiche technique vague -->
-          <div class="mt-6 pt-5 border-t grid grid-cols-3 gap-3" style="border-color: rgba(60, 172, 174, 0.25);">
-            <div>
-              <p class="font-inter text-[9.5px] uppercase tracking-[0.22em] mb-1" style="color: #3CACAE;">Vague</p>
-              <p class="font-anton text-base leading-tight" style="font-family: 'Anton', Impact, sans-serif;">{s.vague}</p>
-            </div>
-            <div>
-              <p class="font-inter text-[9.5px] uppercase tracking-[0.22em] mb-1" style="color: #3CACAE;">Fond</p>
-              <p class="font-anton text-base leading-tight" style="font-family: 'Anton', Impact, sans-serif;">{s.fond}</p>
-            </div>
-            <div>
-              <p class="font-inter text-[9.5px] uppercase tracking-[0.22em] mb-1" style="color: #3CACAE;">Marée</p>
-              <p class="font-anton text-base leading-tight" style="font-family: 'Anton', Impact, sans-serif;">{s.marée}</p>
-            </div>
+    <div class="grid md:grid-cols-2 gap-6">
+      {spots.map(s => (
+        <article class="relative overflow-hidden group">
+          <div class="aspect-[4/3]"><img src={s.photo} alt={s.nom} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy"/></div>
+          <div class="absolute inset-0 flex flex-col justify-end p-7 md:p-8" style="background:linear-gradient(180deg, rgba(15,42,54,0.0) 40%, rgba(15,42,54,0.85) 100%);">
+            <div class="text-[11px] uppercase tracking-[0.32em] mb-2 font-bold" style="color:#FF6B5A;">{s.vague} · {s.niveau}</div>
+            <h3 class="font-bebas text-5xl leading-none mb-2" style="color:#F4F8F7;">{s.nom}</h3>
+            <p class="text-[14px] leading-relaxed" style="color:#D8E0E0;">{s.desc}</p>
           </div>
         </article>
       ))}

@@ -1,16 +1,16 @@
 ---
+import '@fontsource/bebas-neue/latin-400.css';
 import '@fontsource/inter/latin-400.css';
 import '@fontsource/inter/latin-500.css';
 import '@fontsource/inter/latin-600.css';
-import '@fontsource/inter/latin-400-italic.css';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSeo } from '../../lib/seo';
-import { localBusinessSchema } from '../../lib/businessSchema';
-import borddeauData from '../../data/templates/borddeau.json';
+import { localBusinessSchema } from "../../lib/businessSchema";
+import data from '../../data/templates/borddeau.json';
 
 import Header from '../../components/templates/surf/Header.astro';
-import HeroVague from '../../components/templates/surf/HeroVague.astro';
+import Hero from '../../components/templates/surf/HeroVague.astro';
 import Formules from '../../components/templates/surf/Formules.astro';
 import Moniteur from '../../components/templates/surf/Moniteur.astro';
 import Spots from '../../components/templates/surf/Spots.astro';
@@ -20,22 +20,16 @@ import Process from '../../components/templates/surf/Process.astro';
 import Faq from '../../components/templates/surf/Faq.astro';
 import Footer from '../../components/templates/surf/Footer.astro';
 
-const businessLD = localBusinessSchema(borddeauData, 'SportsActivityLocation');
+const businessLD = localBusinessSchema(data, 'SportsActivityLocation');
 ---
-
 <BaseLayout seo={getSeo('templateSurf')} bare={true}>
   <Fragment slot="head">
     {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet" />
-    <link rel="preload" as="image" href={borddeauData.info.photoHero} fetchpriority="high" />
+    <link rel="preload" as="image" href="/images/surf/hero.webp" fetchpriority="high" />
   </Fragment>
-
   <Header />
-
-  <main class="font-inter" style="background-color: #F4F8F7; color: #0F2A36;">
-    <HeroVague />
+  <main id="top" style="background:#F4F8F7; color:#0F2A36; font-family:Inter,system-ui,sans-serif;">
+    <Hero />
     <Formules />
     <Moniteur />
     <Spots />
@@ -44,34 +38,5 @@ const businessLD = localBusinessSchema(borddeauData, 'SportsActivityLocation');
     <Process />
     <Faq />
   </main>
-
   <Footer />
-
-  <!-- Sticky CTA mobile : WhatsApp réservation -->
-  <a
-    id="surf-sticky-cta"
-    href={`https://wa.me/${borddeauData.info.whatsapp}?text=${encodeURIComponent('Bonjour, je voudrais réserver une session de surf.')}`}
-    target="_blank"
-    rel="noopener"
-    data-visible="false"
-    aria-label="Réserver une session sur WhatsApp"
-    class="md:hidden fixed bottom-4 inset-x-4 z-40 inline-flex items-center justify-center gap-2 h-14 px-6 text-sm font-semibold uppercase tracking-[0.18em] rounded-full transition-all duration-300 ease-out data-[visible=false]:opacity-0 data-[visible=false]:translate-y-4 data-[visible=false]:pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0"
-    style="background-color: #3CACAE; color: #F4F8F7; font-family: 'Anton', Impact, sans-serif;"
-  >
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.92 0-2.65-1.03-5.14-2.91-7.01z"/>
-    </svg>
-    <span>Réserver ma session</span>
-  </a>
-
-  <script>
-    const surfSticky = document.getElementById('surf-sticky-cta');
-    if (surfSticky) {
-      const updateSurfSticky = () => {
-        surfSticky.dataset.visible = String(window.scrollY > 520);
-      };
-      updateSurfSticky();
-      window.addEventListener('scroll', updateSurfSticky, { passive: true });
-    }
-  </script>
 </BaseLayout>
