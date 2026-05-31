@@ -8,14 +8,54 @@ import data from '../../../data/templates/mona.json';
 
 <section id="top" class="relative bg-mona-creme overflow-hidden">
 
-  <!-- Photo top-shot pleine largeur -->
-  <div class="relative aspect-[16/10] md:aspect-[16/9] lg:aspect-[21/9] overflow-hidden">
-    <img
-      src={data.info.photoHero} srcset={`${(data.info.photoHero).replace(/\.webp$/, "-640.webp")} 640w, ${(data.info.photoHero).replace(/\.webp$/, "-1024.webp")} 1024w, ${data.info.photoHero} 1600w`} sizes="100vw"
-      alt="Table garnie de légumes frais et de plats équilibrés"
-      class="w-full h-full object-cover hero-vivant" loading="eager" fetchpriority="high" decoding="async">
-    <!-- Voile sombre pour lisibilité du texte -->
-    <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(62,42,30,0.35) 0%, rgba(62,42,30,0.1) 35%, rgba(62,42,30,0.55) 100%);"></div>
+  <!-- Top-shot CSS : nappe motif pois + composition picto végétal -->
+  <div class="relative aspect-[16/10] md:aspect-[16/9] lg:aspect-[21/9] overflow-hidden bg-mona-vert-fonce hero-vivant">
+    <!-- Nappe à pois -->
+    <div class="absolute inset-0 pointer-events-none opacity-[0.18]" aria-hidden="true"
+         style="background-image: radial-gradient(circle, #F4ECD8 1.5px, transparent 2px); background-size: 28px 28px;"></div>
+
+    <!-- Picto végétal grand format : assiette + légumes SVG -->
+    <svg viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" class="absolute inset-0 w-full h-full" aria-hidden="true">
+      <!-- Cercle assiette -->
+      <circle cx="600" cy="320" r="240" fill="#F4ECD8" fill-opacity="0.08" stroke="#F4ECD8" stroke-opacity="0.35" stroke-width="2"/>
+      <circle cx="600" cy="320" r="210" fill="none" stroke="#F4ECD8" stroke-opacity="0.2" stroke-width="1" stroke-dasharray="3 4"/>
+      <!-- Tomate -->
+      <g transform="translate(500 260)">
+        <circle r="42" fill="#AA5032"/>
+        <path d="M-8 -38 Q0 -50 10 -38 L6 -34 L0 -42 L-6 -34 Z" fill="#3D5E32"/>
+      </g>
+      <!-- Citron -->
+      <g transform="translate(710 280)">
+        <ellipse rx="36" ry="28" fill="#E8B84B"/>
+        <ellipse rx="32" ry="24" fill="none" stroke="#3E2A1E" stroke-opacity="0.2" stroke-width="0.8"/>
+      </g>
+      <!-- Avocat coupé -->
+      <g transform="translate(610 410)">
+        <ellipse rx="48" ry="36" fill="#7A8F4D"/>
+        <ellipse rx="40" ry="28" fill="#C9D8A7" fill-opacity="0.85"/>
+        <circle r="12" fill="#5C3B1F"/>
+      </g>
+      <!-- Brocoli -->
+      <g transform="translate(450 380)">
+        <circle cx="-12" cy="-6" r="14" fill="#3D5E32"/>
+        <circle cx="6" cy="-10" r="12" fill="#4A6B3D"/>
+        <circle cx="0" cy="6" r="13" fill="#5C7A45"/>
+        <rect x="-4" y="10" width="8" height="14" fill="#E8DFC8"/>
+      </g>
+      <!-- Carotte -->
+      <g transform="translate(740 410) rotate(20)">
+        <path d="M-6 -28 L6 -28 L10 24 L-10 24 Z" fill="#D9763B"/>
+        <path d="M-8 -28 Q-4 -42 0 -36 Q4 -42 8 -28 Z" fill="#3D5E32"/>
+      </g>
+      <!-- Couverts simplifiés -->
+      <g stroke="#F4ECD8" stroke-opacity="0.4" stroke-width="3" stroke-linecap="round" fill="none">
+        <line x1="280" y1="200" x2="280" y2="460"/>
+        <line x1="920" y1="200" x2="920" y2="460"/>
+      </g>
+    </svg>
+
+    <!-- Voile pour lisibilité texte -->
+    <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(62,42,30,0.35) 0%, rgba(62,42,30,0.05) 35%, rgba(62,42,30,0.65) 100%);"></div>
 
     <!-- Annotation manuscrite en surimpression -->
     <p class="absolute top-24 md:top-32 right-6 md:right-12 font-reenie text-mona-creme text-3xl md:text-5xl rotate-[-4deg] drop-shadow-lg" aria-hidden="true">
