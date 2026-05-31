@@ -1,26 +1,52 @@
 ---
+/**
+ * Galerie — fusion de Polaroids + PhotoMarche.
+ * Une grande photo full-bleed marché + trois polaroids carnet de bord.
+ */
+
 const polaroids = [
   {
     src: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=900&q=85',
-    leg: "Marché du samedi · brèdes péi & fruits frais",
+    leg: 'Marché du samedi · brèdes péi & fruits frais',
     rot: '-rotate-3',
   },
   {
     src: 'https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=900&q=85',
-    leg: "Assiette type · légumes locaux, féculents, protéines",
+    leg: 'Assiette type · légumes locaux, féculents, protéines',
     rot: 'rotate-2',
   },
   {
     src: 'https://images.unsplash.com/photo-1543362906-acfc16c67564?w=900&q=85',
-    leg: "Carnet de bord · partagé en consultation",
+    leg: 'Carnet de bord · partagé en consultation',
     rot: '-rotate-2',
   },
 ];
 ---
 
-<section class="bg-mona-creme py-20 md:py-28 px-6 md:px-10 relative overflow-hidden">
-  <div class="max-w-content mx-auto">
+<section class="bg-mona-creme">
 
+  <!-- Bande full-bleed marché -->
+  <figure class="relative aspect-[21/9] overflow-hidden bg-mona-cacao">
+    <img
+      src="https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=1800&q=85"
+      alt="Étal de marché coloré de fruits et légumes frais"
+      class="w-full h-full object-cover"
+      loading="lazy"
+      decoding="async"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-mona-cacao/60 via-mona-cacao/10 to-transparent"></div>
+    <figcaption class="absolute bottom-6 md:bottom-12 left-6 md:left-12 right-6 md:right-12 max-w-2xl">
+      <p class="font-reenie text-mona-terracotta text-3xl md:text-4xl mb-2 rotate-[-3deg]">
+        au marché du samedi
+      </p>
+      <p class="font-newsreader italic text-mona-creme leading-[1.1]" style="font-size: clamp(24px, 3.4vw, 42px);">
+        On commence dans votre assiette, pas sur la balance.
+      </p>
+    </figcaption>
+  </figure>
+
+  <!-- Polaroids carnet de bord -->
+  <div class="py-20 md:py-28 px-6 md:px-10 max-w-content mx-auto">
     <header class="text-center mb-14 max-w-2xl mx-auto">
       <p class="font-jakarta text-[11px] uppercase tracking-[0.3em] text-mona-terracotta font-semibold mb-3">
         ❀ Carnet de bord
@@ -32,7 +58,7 @@ const polaroids = [
 
     <ul class="grid sm:grid-cols-2 md:grid-cols-3 gap-y-16 md:gap-x-8 justify-items-center">
       {polaroids.map((p) => (
-        <li class:list={["group inline-block transform transition-transform hover:rotate-0 hover:scale-105", p.rot]}>
+        <li class:list={['group inline-block transform transition-transform hover:rotate-0 hover:scale-105', p.rot]}>
           <figure class="bg-mona-creme p-3 pb-12 shadow-[0_18px_36px_rgba(62,42,30,0.22)] ring-1 ring-mona-cacao/8 relative">
             <img
               src={p.src}
