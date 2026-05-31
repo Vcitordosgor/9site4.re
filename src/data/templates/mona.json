@@ -16,8 +16,8 @@
     "adeli": "Numéro ADELI sur demande",
     "annee": "2015",
     "photoHero": "/images/dieteticienne/hero.webp",
-    "photoMona": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=900&q=85",
-    "photoCabinet": "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1200&q=85"
+    "photoMona": "/images/dieteticienne/extra-1.webp",
+    "photoCabinet": "/images/dieteticienne/extra-2.webp"
   },
   "diplomes": [
     "BTS Diététique (2010)",
@@ -74,7 +74,7 @@
       "id": "grossesse",
       "label": "Grossesse & post-partum",
       "description": "Couvrir les besoins essentiels sans excès, avant et après la naissance.",
-      "photo": "https://images.unsplash.com/photo-1547592180-85f173990554?w=500&q=80"
+      "photo": "/images/dieteticienne/extra-3.webp"
     },
     {
       "id": "enfant",
@@ -92,7 +92,7 @@
       "id": "digestion",
       "label": "Troubles digestifs",
       "description": "Identifier les déclencheurs, soulager les inconforts du quotidien.",
-      "photo": "https://images.unsplash.com/photo-1473893604213-3df9c15cf066?w=500&q=80"
+      "photo": "/images/dieteticienne/extra-4.webp"
     }
   ],
   "etapes": [
@@ -127,7 +127,7 @@
         "1 plan alimentaire écrit",
         "1 fiche conseils personnalisée"
       ],
-      "photo": "https://images.unsplash.com/photo-1543339308-43e59d6b73a6?w=500&q=80"
+      "photo": "/images/dieteticienne/extra-5.webp"
     },
     {
       "id": "trois-mois",
@@ -141,7 +141,7 @@
         "Plan personnalisé évolutif",
         "Réponses WhatsApp entre séances"
       ],
-      "photo": "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=500&q=80",
+      "photo": "/images/dieteticienne/extra-6.webp",
       "populaire": true
     },
     {
@@ -157,7 +157,7 @@
         "Bilan mi-parcours et bilan final",
         "Disponibilité WhatsApp"
       ],
-      "photo": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&q=80"
+      "photo": "/images/dieteticienne/hero.webp"
     }
   ],
   "recettes": [
