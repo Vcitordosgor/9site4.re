@@ -40,7 +40,7 @@ const year = new Date().getFullYear();
     </div>
 
     <div class="flex flex-col-reverse md:flex-row md:items-center md:justify-between gap-3 text-xs uppercase tracking-[0.25em] text-agap-lin/70 font-outfit">
-      <p>© {year} {data.info.nom} · SIRET {data.info.siret}</p>
+      <p>© {year} {data.info.nom} · SIRET …{data.info.siret.slice(-5)}</p>
       <p>
         Site créé par
         <a href="/" class="font-semibold text-agap-lin hover:text-agap-rose transition-colors">9site4</a>

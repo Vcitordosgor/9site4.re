@@ -43,7 +43,7 @@ const year = new Date().getFullYear();
     </div>
 
     <div class="flex flex-col-reverse md:flex-row md:items-center md:justify-between gap-3 font-lexend text-[10px] uppercase tracking-[0.25em] text-yoga-encre/45">
-      <p>© {year} {data.info.nom} · SIRET {data.info.siret}</p>
+      <p>© {year} {data.info.nom} · SIRET …{data.info.siret.slice(-5)}</p>
       <p>
         Site créé par
         <a href="/" class="text-yoga-encre/70 hover:text-yoga-ocre transition-colors font-normal">9site4</a>

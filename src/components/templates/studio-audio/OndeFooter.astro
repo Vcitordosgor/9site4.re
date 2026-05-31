@@ -50,7 +50,7 @@ import data from '../../../data/templates/onde.json';
     </div>
 
     <div class="pt-6 border-t flex flex-col md:flex-row items-start md:items-center justify-between gap-3 font-jetbrains text-[10.5px] uppercase tracking-[0.18em]" style="border-color: rgb(124 58 237 / 0.3); color: rgb(245 244 248 / 0.5);">
-      <p>© {data.info.annee}–2026 {data.info.nom} · SIRET {data.info.siret}</p>
+      <p>© {data.info.annee}–2026 {data.info.nom} · SIRET …{data.info.siret.slice(-5)}</p>
       <p class="normal-case tracking-normal text-base font-space-grotesk italic" style="color: #22D3EE;">— Capter. Sculpter. Diffuser.</p>
     </div>
   </div>

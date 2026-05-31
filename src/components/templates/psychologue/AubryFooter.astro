@@ -38,7 +38,7 @@ const year = new Date().getFullYear();
     <div class="h-px mb-6 bg-gradient-to-r from-transparent via-aubry-rose/40 to-transparent" aria-hidden="true"></div>
 
     <div class="flex flex-col-reverse md:flex-row md:items-center md:justify-between gap-3 font-plex-mono text-[10px] uppercase tracking-[0.28em] text-aubry-encre/50">
-      <p>© {year} Cabinet {data.info.wordmark} · ADELI {data.info.adeli} · SIRET {data.info.siret}</p>
+      <p>© {year} Cabinet {data.info.wordmark} · ADELI {data.info.adeli} · SIRET …{data.info.siret.slice(-5)}</p>
       <p>
         Site créé par
         <a href="/" class="text-aubry-encre/70 hover:text-aubry-encre transition-colors">9site4</a>

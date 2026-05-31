@@ -66,4 +66,30 @@ const businessLD = localBusinessSchema(seveData);
   </main>
 
   <SeveFooter />
+
+  <!-- Sticky CTA mobile -->
+  <a
+    id="wedding-sticky-cta"
+    href="#contact"
+    data-visible="false"
+    class="md:hidden fixed bottom-4 inset-x-4 z-40 inline-flex items-center justify-center h-13 px-6 font-outfit text-[12px] font-semibold uppercase tracking-[0.2em] rounded-full bg-seve-marine text-seve-ivoire transition-all duration-300 ease-out data-[visible=false]:opacity-0 data-[visible=false]:translate-y-4 data-[visible=false]:pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0"
+    style="height: 52px; box-shadow: 0 10px 28px rgb(28 40 60 / 0.30);"
+  >
+    Premier appel — gratuit
+  </a>
+  <script>
+    const stickyW = document.getElementById('wedding-sticky-cta');
+    const contactW = document.getElementById('contact');
+    if (stickyW && contactW) {
+      const upd = () => {
+        const rect = contactW.getBoundingClientRect();
+        const inContact = rect.top < window.innerHeight && rect.bottom > 80;
+        const past = window.scrollY > 520;
+        stickyW.dataset.visible = String(past && !inContact);
+      };
+      upd();
+      window.addEventListener('scroll', upd, { passive: true });
+      window.addEventListener('resize', upd, { passive: true });
+    }
+  </script>
 </BaseLayout>

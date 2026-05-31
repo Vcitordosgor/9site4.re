@@ -62,27 +62,51 @@
   "equipement": [
     {
       "categorie": "Console",
-      "items": ["SSL AWS 948 — 48 canaux", "Neve 8816 Summing Mixer", "Avid Pro Tools HDX 64 i/o"]
+      "items": [
+        "Console analogique 48 canaux",
+        "Summing mixer 16 entrées",
+        "DAW pro · 64 entrées/sorties"
+      ]
     },
     {
       "categorie": "Micros",
-      "items": ["Neumann U87 Ai · paire stéréo", "AKG C414 XLS · paire", "Shure SM7B · Royer R-121"]
+      "items": [
+        "Cardioïdes grand-diaphragme · paire stéréo",
+        "Statiques large-membrane · paire",
+        "Dynamiques voix · rubans guitares"
+      ]
     },
     {
       "categorie": "Préampli",
-      "items": ["Neve 1073 DPD · 4 canaux", "API 3124+ · 4 canaux", "Universal Audio Apollo X16"]
+      "items": [
+        "Préamplis classe A · 4 canaux",
+        "Préamplis discrets · 4 canaux",
+        "Interface convertisseurs studio · 16 i/o"
+      ]
     },
     {
       "categorie": "Monitoring",
-      "items": ["Genelec 1031A paire principale", "Yamaha NS-10 référence", "Audeze LCD-X mastering"]
+      "items": [
+        "Monitors actifs near-field · paire principale",
+        "Monitors référence vintage",
+        "Casque mastering planaire"
+      ]
     },
     {
       "categorie": "Plugins",
-      "items": ["UAD Bundle Complete (160+)", "FabFilter Pro Q3, L2, C2", "Soundtoys, iZotope RX10, Ozone 11"]
+      "items": [
+        "UAD Bundle Complete (160+)",
+        "FabFilter Pro Q3, L2, C2",
+        "Soundtoys, iZotope RX10, Ozone 11"
+      ]
     },
     {
       "categorie": "Outboard",
-      "items": ["Tube-Tech CL1B compresseur", "Manley Massive Passive EQ", "Bricasti M7 réverbération"]
+      "items": [
+        "Tube-Tech CL1B compresseur",
+        "Manley Massive Passive EQ",
+        "Bricasti M7 réverbération"
+      ]
     }
   ],
   "ingenieurs": [
@@ -90,18 +114,18 @@
       "nom": "Théo Marchand",
       "role": "Ingé son résident · Fondateur",
       "specialite": "Mixage électronique · Mastering",
-      "diplome": "SAE Institute Paris · 2014",
-      "anciennete": "12 ans expérience",
-      "bio": "Théo a ouvert Onde en 2018 après quatre ans à Studio Davout (Paris). Spécialisé mixage électronique et mastering streaming. Travaillé pour labels indépendants pop et techno.",
+      "diplome": "",
+      "anciennete": "",
+      "bio": "",
       "photo": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop"
     },
     {
       "nom": "Lila Bertrand",
       "role": "Ingé son résidente",
       "specialite": "Prise de son · Production jazz",
-      "diplome": "ENS Louis-Lumière · 2017",
-      "anciennete": "8 ans expérience",
-      "bio": "Lila a rejoint Onde en 2021. Formation Louis-Lumière, deux saisons assistante à La Buissonne (Pernes-les-Fontaines). Référente captation acoustique : jazz, classique, voix.",
+      "diplome": "",
+      "anciennete": "",
+      "bio": "",
       "photo": "https://images.unsplash.com/photo-1573497019418-b400bb3ab074?q=80&w=600&auto=format&fit=crop"
     }
   ],
@@ -128,20 +152,62 @@
     }
   ],
   "clients": [
-    { "genre": "Pop · variété française", "nombre": 47 },
-    { "genre": "Rap · trap · drill", "nombre": 38 },
-    { "genre": "Électro · techno · house", "nombre": 52 },
-    { "genre": "Jazz · world · acoustique", "nombre": 24 },
-    { "genre": "Voix off · podcast · pub", "nombre": 65 },
-    { "genre": "Post-production audiovisuelle", "nombre": 19 }
+    {
+      "genre": "Pop · variété française",
+      "nombre": 47
+    },
+    {
+      "genre": "Rap · trap · drill",
+      "nombre": 38
+    },
+    {
+      "genre": "Électro · techno · house",
+      "nombre": 52
+    },
+    {
+      "genre": "Jazz · world · acoustique",
+      "nombre": 24
+    },
+    {
+      "genre": "Voix off · podcast · pub",
+      "nombre": 65
+    },
+    {
+      "genre": "Post-production audiovisuelle",
+      "nombre": 19
+    }
   ],
   "tarifs": [
-    { "type": "Demi-journée recording", "duree": "4h ingé inclus", "prix": "180 €" },
-    { "type": "Journée recording", "duree": "8h ingé inclus", "prix": "350 €" },
-    { "type": "Mixage standard", "duree": "Délai 5 jours", "prix": "180 €/titre" },
-    { "type": "Mastering streaming", "duree": "Délai 3 jours", "prix": "90 €/titre" },
-    { "type": "Forfait EP 5 titres", "duree": "Mix + master", "prix": "1 100 €" },
-    { "type": "Forfait album 10 titres", "duree": "Mix + master", "prix": "2 100 €" }
+    {
+      "type": "Demi-journée recording",
+      "duree": "4h ingé inclus",
+      "prix": "180 €"
+    },
+    {
+      "type": "Journée recording",
+      "duree": "8h ingé inclus",
+      "prix": "350 €"
+    },
+    {
+      "type": "Mixage standard",
+      "duree": "Délai 5 jours",
+      "prix": "180 €/titre"
+    },
+    {
+      "type": "Mastering streaming",
+      "duree": "Délai 3 jours",
+      "prix": "90 €/titre"
+    },
+    {
+      "type": "Forfait EP 5 titres",
+      "duree": "Mix + master",
+      "prix": "1 100 €"
+    },
+    {
+      "type": "Forfait album 10 titres",
+      "duree": "Mix + master",
+      "prix": "2 100 €"
+    }
   ],
   "faq": [
     {

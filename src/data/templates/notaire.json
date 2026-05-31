@@ -29,7 +29,13 @@
       "nom": "Droit de la famille",
       "tagline": "Mariage, PACS, divorce, donation.",
       "description": "Contrat de mariage, séparation de biens, PACS, donation entre époux, divorce par consentement mutuel. Médiation familiale agréée pour les situations sensibles. Confidentialité absolue.",
-      "actes": ["Contrat de mariage", "Convention PACS", "Donation entre époux", "Changement régime matrimonial", "Divorce par consentement"]
+      "actes": [
+        "Contrat de mariage",
+        "Convention PACS",
+        "Donation entre époux",
+        "Changement régime matrimonial",
+        "Divorce par consentement"
+      ]
     },
     {
       "id": "succession",
@@ -37,7 +43,13 @@
       "nom": "Succession & transmission",
       "tagline": "Anticipation, ouverture, partage.",
       "description": "Anticipation successorale, ouverture de succession, partage d'indivision, testament authentique. Accompagnement humain dans les moments difficiles, jamais de précipitation imposée.",
-      "actes": ["Testament authentique", "Ouverture de succession", "Inventaire successoral", "Acte de notoriété", "Partage amiable"]
+      "actes": [
+        "Testament authentique",
+        "Ouverture de succession",
+        "Inventaire successoral",
+        "Acte de notoriété",
+        "Partage amiable"
+      ]
     },
     {
       "id": "immobilier",
@@ -45,7 +57,13 @@
       "nom": "Immobilier",
       "tagline": "Vente, achat, prêt, copropriété.",
       "description": "Compromis et acte définitif de vente, prêt immobilier, état des lieux, copropriété, viager. Vérifications urbanisme exhaustives, délais respectés, accompagnement bancaire en lien direct.",
-      "actes": ["Compromis de vente", "Acte authentique de vente", "Prêt immobilier", "Servitude & mitoyenneté", "Vente en viager"]
+      "actes": [
+        "Compromis de vente",
+        "Acte authentique de vente",
+        "Prêt immobilier",
+        "Servitude & mitoyenneté",
+        "Vente en viager"
+      ]
     },
     {
       "id": "entreprise",
@@ -53,7 +71,13 @@
       "nom": "Droit des sociétés",
       "tagline": "Création, cession, holding.",
       "description": "Création de société (SARL, SAS, SCI), cession de parts, holding patrimoniale, pacte d'associés. Suivi long terme, conseil fiscal en coordination avec votre expert-comptable.",
-      "actes": ["Statuts de société", "Cession de parts sociales", "Pacte d'associés", "Création SCI", "Apport en société"]
+      "actes": [
+        "Statuts de société",
+        "Cession de parts sociales",
+        "Pacte d'associés",
+        "Création SCI",
+        "Apport en société"
+      ]
     }
   ],
   "notaires": [
@@ -61,27 +85,27 @@
       "nom": "Maître Patricia Lefèvre",
       "role": "Notaire associée · Présidente",
       "specialite": "Droit de la famille & succession",
-      "diplome": "DSN 1996 · Médiation familiale 2008",
-      "anciennete": "27 ans d'exercice",
-      "bio": "Patricia a fondé l'étude en 1998. Diplôme supérieur du notariat, médiation familiale, spécialisation succession internationale. Préside la commission Famille du Conseil régional du notariat.",
+      "diplome": "",
+      "anciennete": "",
+      "bio": "",
       "photo": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=600&auto=format&fit=crop"
     },
     {
       "nom": "Maître Antoine Riberol",
       "role": "Notaire associé",
       "specialite": "Immobilier & urbanisme",
-      "diplome": "DSN 2003 · DU Droit de l'urbanisme",
-      "anciennete": "21 ans d'exercice",
-      "bio": "Antoine a rejoint l'étude en 2008 et est devenu associé en 2014. Compétences pointues en droit immobilier, urbanisme et copropriété. Suit également les SCI patrimoniales.",
+      "diplome": "",
+      "anciennete": "",
+      "bio": "",
       "photo": "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=600&auto=format&fit=crop"
     },
     {
       "nom": "Maître Camille Verdier",
       "role": "Notaire associée",
       "specialite": "Droit des sociétés & fiscalité",
-      "diplome": "DSN 2010 · M2 Droit fiscal",
-      "anciennete": "14 ans d'exercice",
-      "bio": "Camille est associée depuis 2019. Double formation droit notarial et fiscalité. Référente entreprises, structures patrimoniales et opérations de transmission familiale d'entreprise.",
+      "diplome": "",
+      "anciennete": "",
+      "bio": "",
       "photo": "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=600&auto=format&fit=crop"
     }
   ],
@@ -108,10 +132,26 @@
     }
   ],
   "frais": [
-    { "categorie": "Émoluments tarifés", "exemple": "Vente immobilière, succession", "indication": "Tarif réglementé Décret 2016" },
-    { "categorie": "Émoluments libres", "exemple": "Conseil, négociation", "indication": "Devis préalable obligatoire" },
-    { "categorie": "Droits & taxes", "exemple": "Droits d'enregistrement, TVA", "indication": "Reversés au Trésor Public" },
-    { "categorie": "Débours", "exemple": "Cadastre, état civil, urbanisme", "indication": "Frais externes refacturés à l'euro près" }
+    {
+      "categorie": "Émoluments tarifés",
+      "exemple": "Vente immobilière, succession",
+      "indication": "Tarif réglementé Décret 2016"
+    },
+    {
+      "categorie": "Émoluments libres",
+      "exemple": "Conseil, négociation",
+      "indication": "Devis préalable obligatoire"
+    },
+    {
+      "categorie": "Droits & taxes",
+      "exemple": "Droits d'enregistrement, TVA",
+      "indication": "Reversés au Trésor Public"
+    },
+    {
+      "categorie": "Débours",
+      "exemple": "Cadastre, état civil, urbanisme",
+      "indication": "Frais externes refacturés à l'euro près"
+    }
   ],
   "documents": [
     {

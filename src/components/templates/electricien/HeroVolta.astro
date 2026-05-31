@@ -4,34 +4,45 @@ import data from '../../../data/templates/volta.json';
 
 <section id="top" class="relative min-h-dvh flex items-center bg-volta-noir overflow-hidden">
 
-  <!-- Photo hero en overlay sombre -->
+  <!-- Fond graphique : dégradé sombre + composition tableau électrique SVG -->
   <div class="absolute inset-0" aria-hidden="true">
-    <img
-      src={data.info.photoHero} srcset={`${(data.info.photoHero).replace(/\.webp$/, "-640.webp")} 640w, ${(data.info.photoHero).replace(/\.webp$/, "-1024.webp")} 1024w, ${data.info.photoHero} 1600w`} sizes="100vw"
-      alt=""
-      class="w-full h-full object-cover object-center hero-vivant" loading="eager" fetchpriority="high" decoding="async">
-    <div class="absolute inset-0" style="background: linear-gradient(110deg, rgb(15 17 21 / 0.92) 0%, rgb(15 17 21 / 0.75) 55%, rgb(15 17 21 / 0.60) 100%);"></div>
-  </div>
+    <div class="absolute inset-0" style="background: radial-gradient(120% 80% at 80% 20%, rgb(6 212 245 / 0.10) 0%, transparent 60%), linear-gradient(180deg, rgb(15 17 21) 0%, rgb(22 26 32) 100%);"></div>
 
-  <!-- Ornement circuit : lignes SVG décoratives -->
-  <svg
-    class="absolute right-0 top-0 h-full w-1/2 opacity-[0.04] hidden lg:block"
-    viewBox="0 0 400 800"
-    fill="none"
-    stroke="#06D4F5"
-    stroke-width="1"
-    aria-hidden="true"
-  >
-    <path d="M400 100 H300 V200 H200 V350 H320 V450 H200 V600 H350 V700"/>
-    <path d="M400 250 H260 V150 H160 V300 H80 V480 H200 V580 H100 V680"/>
-    <path d="M400 400 H280 V500 H180 V620 H300 V720"/>
-    <circle cx="300" cy="200" r="4" fill="#06D4F5"/>
-    <circle cx="200" cy="350" r="4" fill="#06D4F5"/>
-    <circle cx="200" cy="600" r="4" fill="#06D4F5"/>
-    <circle cx="260" cy="150" r="3" fill="#06D4F5"/>
-    <circle cx="180" cy="500" r="3" fill="#06D4F5"/>
-    <circle cx="280" cy="500" r="3" fill="#06D4F5"/>
-  </svg>
+    <!-- Schéma tableau électrique (visible desktop, masqué mobile) -->
+    <svg class="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 h-[88%] w-auto opacity-[0.22] hero-vivant"
+         viewBox="0 0 360 480" fill="none" aria-hidden="true">
+      <!-- Coffret -->
+      <rect x="20" y="20" width="320" height="440" rx="6" stroke="#06D4F5" stroke-width="1.5" fill="rgb(6 212 245 / 0.03)"/>
+      <rect x="36" y="36" width="288" height="40" stroke="#06D4F5" stroke-width="1" opacity="0.6"/>
+      <text x="50" y="62" fill="#06D4F5" font-family="monospace" font-size="14" opacity="0.9">NF C 15-100</text>
+      <!-- Rails DIN + disjoncteurs -->
+      {[100, 170, 240, 310, 380].map((y) => (
+        <g>
+          <line x1="36" y1={y} x2="324" y2={y} stroke="#06D4F5" stroke-width="0.6" opacity="0.45"/>
+          {[50, 90, 130, 170, 210, 250, 290].map((x) => (
+            <g>
+              <rect x={x} y={y - 22} width="28" height="44" stroke="#06D4F5" stroke-width="1" fill="rgb(6 212 245 / 0.05)"/>
+              <line x1={x + 14} y1={y - 16} x2={x + 14} y2={y - 8} stroke="#06D4F5" stroke-width="1.2"/>
+              <circle cx={x + 14} cy={y - 4} r="1.5" fill="#06D4F5"/>
+            </g>
+          ))}
+        </g>
+      ))}
+      <!-- Câbles sortants -->
+      <path d="M180 460 V 478" stroke="#C97A40" stroke-width="2" opacity="0.7"/>
+      <path d="M120 460 V 472 H 60 V 478" stroke="#C97A40" stroke-width="2" opacity="0.5" fill="none"/>
+      <path d="M240 460 V 472 H 300 V 478" stroke="#C97A40" stroke-width="2" opacity="0.5" fill="none"/>
+    </svg>
+
+    <!-- Ornement circuit gauche, léger -->
+    <svg class="absolute left-0 bottom-0 h-1/2 w-1/3 opacity-[0.06] hidden lg:block"
+         viewBox="0 0 300 600" fill="none" stroke="#06D4F5" stroke-width="1" aria-hidden="true">
+      <path d="M0 100 H120 V220 H40 V360 H180 V480 H80 V600"/>
+      <circle cx="120" cy="220" r="3" fill="#06D4F5"/>
+      <circle cx="180" cy="360" r="3" fill="#06D4F5"/>
+      <circle cx="80" cy="480" r="3" fill="#06D4F5"/>
+    </svg>
+  </div>
 
   <div class="relative max-w-content mx-auto px-6 md:px-10 pt-32 pb-20 md:pt-40 md:pb-28 w-full">
     <div class="max-w-2xl">
@@ -43,7 +54,7 @@ import data from '../../../data/templates/volta.json';
           <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-volta-cyan"></span>
         </span>
         <span class="font-space-grotesk text-xs font-semibold uppercase tracking-[0.28em] text-volta-cyan">
-          {data.urgence.label} · 7j/7
+          {data.urgence.label} · 7j/7 · Sud Réunion
         </span>
       </div>
 
@@ -75,7 +86,7 @@ import data from '../../../data/templates/volta.json';
           class="inline-flex items-center justify-center px-8 text-sm font-space-grotesk font-semibold uppercase tracking-[0.18em] rounded-sm bg-volta-cyan text-volta-noir hover:bg-volta-blanc transition-colors"
           style="height: 52px;"
         >
-          Demander un devis
+          Devis électricité · sous 24h
         </a>
         <a
           href={`tel:${data.info.telephoneHref}`}
@@ -94,9 +105,9 @@ import data from '../../../data/templates/volta.json';
     <!-- Stats flottantes -->
     <div class="mt-16 md:mt-20 grid grid-cols-3 gap-6 md:gap-10 max-w-lg border-t border-volta-fumee/10 pt-10">
       {[
-        { val: '10+', label: 'ans d\'expérience' },
-        { val: '7', label: 'communes desservies' },
-        { val: '2h', label: 'délai urgence' },
+        { val: 'NF C', label: 'norme 15-100 respectée' },
+        { val: '10 ans', label: 'garantie décennale' },
+        { val: '24h', label: 'devis envoyé' },
       ].map(({ val, label }) => (
         <div>
           <p class="font-syne font-bold text-volta-cyan" style="font-size: clamp(28px, 3.5vw, 40px);">{val}</p>

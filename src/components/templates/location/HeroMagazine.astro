@@ -55,17 +55,17 @@ import data from '../../../data/templates/lazuli.json';
     <!-- Eyebrow + Italianno wordmark -->
     <div class="mb-6 flex items-baseline gap-3">
       <span class="font-geist text-[11px] uppercase tracking-[0.4em] text-lazuli-coco font-semibold">
-        ★ {data.info.note} · {data.info.nbAvis} avis vérifiés
+        ★★★★★ · vos vrais retours voyageurs ici
       </span>
     </div>
 
-    <!-- Mini-extrait d'avis vérifié (preuve sociale magazine) -->
+    <!-- Exemple de bloc témoignage -->
     <figure class="mb-8 max-w-md pl-4 border-l border-lazuli-coco/40">
       <blockquote class="font-yeseva italic text-lazuli-casse leading-snug text-base md:text-lg">
-        « L'eau est si claire qu'on voit les poissons depuis la chambre. »
+        « Vos vrais retours voyageurs s'afficheront ici. »
       </blockquote>
       <figcaption class="mt-2 font-geist text-[10px] uppercase tracking-[0.32em] text-lazuli-coco/85">
-        — Camille · Août 2025
+        — Exemple de bloc témoignage
       </figcaption>
     </figure>
 
@@ -73,13 +73,21 @@ import data from '../../../data/templates/lazuli.json';
       Villa
     </p>
 
-    <h1 class="font-yeseva text-lazuli-casse leading-[0.9]" style="font-size: clamp(72px, 14vw, 240px);">
+    <h1 class="font-yeseva text-lazuli-casse leading-[0.88]" style="font-size: clamp(80px, 15vw, 260px);">
       {data.info.wordmark}
     </h1>
 
     <p class="mt-6 font-geist text-lazuli-casse/85 text-lg md:text-2xl max-w-xl leading-relaxed">
-      {data.info.tagline} Une location 4 chambres face au lagon de La Réunion, pour 8 personnes maximum.
+      {data.info.tagline} <em class="not-italic text-lazuli-coco">Quatre chambres</em> face au lagon, pour 8 personnes maximum.
     </p>
+
+    <!-- Trust badges sobres -->
+    <ul class="mt-6 flex flex-wrap gap-2" aria-label="Engagements">
+      <li class="inline-flex items-center gap-1.5 bg-lazuli-marine/60 backdrop-blur-sm border border-lazuli-casse/15 rounded-full px-3 py-1.5 font-geist text-[11px] uppercase tracking-[0.16em] text-lazuli-casse/90">Lagon à 50 m</li>
+      <li class="inline-flex items-center gap-1.5 bg-lazuli-marine/60 backdrop-blur-sm border border-lazuli-casse/15 rounded-full px-3 py-1.5 font-geist text-[11px] uppercase tracking-[0.16em] text-lazuli-casse/90">Piscine privée</li>
+      <li class="inline-flex items-center gap-1.5 bg-lazuli-marine/60 backdrop-blur-sm border border-lazuli-casse/15 rounded-full px-3 py-1.5 font-geist text-[11px] uppercase tracking-[0.16em] text-lazuli-casse/90">Ménage inclus</li>
+      <li class="inline-flex items-center gap-1.5 bg-lazuli-marine/60 backdrop-blur-sm border border-lazuli-casse/15 rounded-full px-3 py-1.5 font-geist text-[11px] uppercase tracking-[0.16em] text-lazuli-casse/90">Caution réduite</li>
+    </ul>
 
     <!-- Stats sticker en bas -->
     <ul class="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl">
@@ -102,7 +110,7 @@ import data from '../../../data/templates/lazuli.json';
         class="inline-flex items-center justify-center h-13 px-8 bg-lazuli-terracotta text-lazuli-casse font-geist font-medium text-base rounded-full hover:bg-lazuli-casse hover:text-lazuli-marine transition-colors"
         style="height: 52px;"
       >
-        Réserver maintenant
+        Réserver la villa
       </a>
       <a
         href="#visite"

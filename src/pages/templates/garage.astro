@@ -52,4 +52,29 @@ import MotorpitonFooter from '../../components/templates/garage/MotorpitonFooter
   </main>
 
   <MotorpitonFooter />
+
+  <!-- Sticky CTA mobile : appel atelier direct -->
+  <a
+    id="mp-sticky-call"
+    href={`tel:${data.info.telephoneHref}`}
+    data-visible="false"
+    aria-label="Appeler l'atelier Motor Piton"
+    class="md:hidden fixed bottom-4 inset-x-4 z-40 inline-flex items-center justify-center gap-2 h-14 px-6 font-bebas text-lg tracking-[0.08em] bg-piton-feu text-piton-asphalte border-2 border-piton-asphalte transition-all duration-300 ease-out data-[visible=false]:opacity-0 data-[visible=false]:translate-y-4 data-[visible=false]:pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0"
+  >
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+    </svg>
+    <span>Appeler l'atelier</span>
+  </a>
+
+  <script>
+    const mpSticky = document.getElementById('mp-sticky-call');
+    if (mpSticky) {
+      const updateMpSticky = () => {
+        mpSticky.dataset.visible = String(window.scrollY > 480);
+      };
+      updateMpSticky();
+      window.addEventListener('scroll', updateMpSticky, { passive: true });
+    }
+  </script>
 </BaseLayout>

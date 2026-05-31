@@ -48,7 +48,7 @@ import data from '../../../data/templates/sorbetpei.json';
     </div>
 
     <div class="pt-6 border-t flex flex-col md:flex-row items-start md:items-center justify-between gap-3 font-dm-sans text-[11px]" style="border-color: rgba(255, 179, 71, 0.3); color: rgba(255, 248, 231, 0.65);">
-      <p>© {data.info.annee}–2026 {data.info.nom} · SIRET {data.info.siret}</p>
+      <p>© {data.info.annee}–2026 {data.info.nom} · SIRET …{data.info.siret.slice(-5)}</p>
       <p class="font-fraunces italic text-2xl leading-none" style="color: #FFB347;">{data.info.tagline}</p>
     </div>
   </div>

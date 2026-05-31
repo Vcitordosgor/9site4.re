@@ -30,7 +30,7 @@ const year = new Date().getFullYear();
     <div class="h-px bg-mona-creme/15 mb-6"></div>
 
     <div class="flex flex-col-reverse md:flex-row md:items-center md:justify-between gap-3 font-jakarta text-[10px] uppercase tracking-[0.25em] text-mona-creme/45">
-      <p>© {year} {data.info.nom} · SIRET {data.info.siret} · ADELI {data.info.adeli}</p>
+      <p>© {year} {data.info.nom} · SIRET …{data.info.siret.slice(-5)} · ADELI {data.info.adeli}</p>
       <p>
         Site créé par
         <a href="/" class="text-mona-creme/70 hover:text-mona-vert transition-colors">9site4</a>

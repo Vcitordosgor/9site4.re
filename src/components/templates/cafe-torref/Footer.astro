@@ -45,7 +45,7 @@ import data from '../../../data/templates/brulerie.json';
     </div>
 
     <div class="pt-6 border-t flex flex-col md:flex-row items-start md:items-center justify-between gap-3 font-dm-mono text-[10.5px] uppercase tracking-wider" style="border-color: rgba(181, 122, 74, 0.3); color: rgba(232, 221, 199, 0.65);">
-      <p>© {data.info.annee}–2026 {data.info.nom} · SIRET {data.info.siret}</p>
+      <p>© {data.info.annee}–2026 {data.info.nom} · SIRET …{data.info.siret.slice(-5)}</p>
       <p class="font-plex-serif italic text-xl tracking-normal normal-case" style="color: #B57A4A; font-family: 'IBM Plex Serif', Georgia, serif;">{data.info.tagline}</p>
     </div>
   </div>

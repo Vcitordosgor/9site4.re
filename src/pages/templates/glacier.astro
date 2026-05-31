@@ -37,6 +37,27 @@ const businessLD = localBusinessSchema(sorbetData, 'FoodEstablishment');
 
   <main class="font-dm-sans" style="background-color: #FFF8E7; color: #3D2817;">
     <HeroPop />
+
+    <!-- Bandeau parfums défilant -->
+    <div class="py-4 overflow-hidden border-y" style="background-color:#FF6F91;color:#FFF8E7;border-color:#3D2817;" aria-hidden="true">
+      <div class="flex gap-12 whitespace-nowrap" style="animation: glac-marquee 36s linear infinite; width: max-content;">
+        {Array.from({ length: 2 }).map(() => (
+          <div class="flex gap-12 items-center font-fraunces italic" style="font-size:28px;">
+            <span>Mangue Carotte</span><span>✿</span>
+            <span>Letchi-Gingembre</span><span>✿</span>
+            <span>Vanille Bourbon</span><span>✿</span>
+            <span>Coco Frais</span><span>✿</span>
+            <span>Ananas Victoria</span><span>✿</span>
+            <span>Passion-Citron Vert</span><span>✿</span>
+          </div>
+        ))}
+      </div>
+    </div>
+    <style>
+      @keyframes glac-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+      @media (prefers-reduced-motion: reduce) { [style*="glac-marquee"] { animation: none !important; } }
+    </style>
+
     <Parfums />
     <Moment />
     <Processus />
@@ -46,4 +67,33 @@ const businessLD = localBusinessSchema(sorbetData, 'FoodEstablishment');
   </main>
 
   <Footer />
+
+  <!-- Sticky bottom CTA mobile-only -->
+  <a
+    id="glac-sticky-cta"
+    href="#tournee"
+    data-visible="false"
+    class="md:hidden fixed bottom-4 inset-x-4 z-40 inline-flex items-center justify-center h-14 px-6 text-[12px] font-semibold uppercase tracking-[0.22em] font-dm-sans rounded-full transition-all duration-300 ease-out data-[visible=false]:opacity-0 data-[visible=false]:translate-y-4 data-[visible=false]:pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0"
+    style="background-color:#FF6F91;color:#FFF8E7;box-shadow: 0 12px 32px rgb(255 111 145 / 0.45);"
+  >
+    Où trouver le glacier
+  </a>
+  <script>
+    const sticky = document.getElementById('glac-sticky-cta');
+    const target = document.getElementById('tournee');
+    if (sticky) {
+      const update = () => {
+        const past = window.scrollY > 480;
+        let inSection = false;
+        if (target) {
+          const r = target.getBoundingClientRect();
+          inSection = r.top < window.innerHeight && r.bottom > 80;
+        }
+        sticky.dataset.visible = String(past && !inSection);
+      };
+      update();
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update, { passive: true });
+    }
+  </script>
 </BaseLayout>

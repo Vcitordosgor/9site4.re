@@ -9,9 +9,9 @@
     "ville": "La Réunion",
     "adresseLigne1": "27 chemin de l'Hermitage",
     "adresseLigne2": "97434 La Réunion",
-    "telephone": "0692 73 45 89",
-    "telephoneHref": "+33692734589",
-    "whatsapp": "33692734589",
+    "telephone": "0692 12 34 56",
+    "telephoneHref": "+262692123456",
+    "whatsapp": "262692123456",
     "email": "hello@souffle-studio.re",
     "instagram": "@souffle.studio",
     "siret": "89012345600017",
@@ -201,7 +201,7 @@
       "prenom": "Anjali",
       "nom": "Boyer",
       "role": "Hatha · Yin · Fondatrice",
-      "bio": "Formée à Mysore en 2014, enseigne depuis huit ans à La Réunion. A ouvert Souffle en 2017 pour proposer une pratique exigeante mais sans dogme.",
+      "bio": "",
       "photo": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80",
       "rotation": "-2deg"
     },
@@ -210,7 +210,7 @@
       "prenom": "Léo",
       "nom": "Hoarau",
       "role": "Vinyasa Flow",
-      "bio": "Ancien danseur contemporain, Léo enseigne un Vinyasa fluide et créatif. Ses cours puisent autant dans le mouvement que dans la tradition.",
+      "bio": "",
       "photo": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&q=80",
       "rotation": "1.5deg"
     },
@@ -219,7 +219,7 @@
       "prenom": "Mira",
       "nom": "Sambou",
       "role": "Pranayama · Méditation",
-      "bio": "Mira a vécu deux ans en ashram dans le Tamil Nadu. Elle guide aujourd'hui les séances de souffle et de méditation avec une simplicité rare.",
+      "bio": "",
       "photo": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=600&q=80",
       "rotation": "-1deg"
     }

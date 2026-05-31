@@ -44,7 +44,7 @@ import data from '../../../data/templates/vanille.json';
     </div>
 
     <div class="pt-6 border-t border-vanille-caramel/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 font-karla text-[11px] text-vanille-creme/65">
-      <p>© {data.info.annee}–2026 {data.info.nom} · SIRET {data.info.siret}</p>
+      <p>© {data.info.annee}–2026 {data.info.nom} · SIRET …{data.info.siret.slice(-5)}</p>
       <p class="font-italianno text-vanille-caramel text-2xl leading-none">Le sucre, la vanille, le geste.</p>
     </div>
   </div>

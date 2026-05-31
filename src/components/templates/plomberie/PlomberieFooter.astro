@@ -16,7 +16,7 @@ const year = new Date().getFullYear();
           {data.info.adresse}
         </p>
         <p class="mt-1 font-archivo text-bp-blanc/45 text-xs uppercase tracking-[0.2em]">
-          SIRET {data.info.siret} · depuis {data.info.annee}
+          SIRET …{data.info.siret.slice(-5)} · depuis {data.info.annee}
         </p>
       </div>
 

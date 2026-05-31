@@ -55,4 +55,33 @@ const businessLD = localBusinessSchema(vanilleData);
   </main>
 
   <VanilleFooter />
+
+  <!-- Sticky bottom CTA mobile-only -->
+  <a
+    id="vanille-sticky-cta"
+    href="#commandes"
+    data-visible="false"
+    class="md:hidden fixed bottom-4 inset-x-4 z-40 inline-flex items-center justify-center h-14 px-6 text-[12px] font-semibold uppercase tracking-[0.22em] font-karla rounded-full bg-vanille-gousse text-vanille-creme transition-all duration-300 ease-out data-[visible=false]:opacity-0 data-[visible=false]:translate-y-4 data-[visible=false]:pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0"
+    style="box-shadow: 0 12px 32px rgb(76 38 18 / 0.35);"
+  >
+    Commander un gâteau
+  </a>
+  <script>
+    const sticky = document.getElementById('vanille-sticky-cta');
+    const target = document.getElementById('commandes') || document.getElementById('contact');
+    if (sticky) {
+      const update = () => {
+        const past = window.scrollY > 480;
+        let inSection = false;
+        if (target) {
+          const r = target.getBoundingClientRect();
+          inSection = r.top < window.innerHeight && r.bottom > 80;
+        }
+        sticky.dataset.visible = String(past && !inSection);
+      };
+      update();
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update, { passive: true });
+    }
+  </script>
 </BaseLayout>

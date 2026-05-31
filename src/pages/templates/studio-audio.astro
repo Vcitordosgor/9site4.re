@@ -49,4 +49,30 @@ const businessLD = localBusinessSchema(ondeData);
   </main>
 
   <OndeFooter />
+
+  <a
+    id="onde-sticky-cta"
+    href="#contact"
+    data-visible="false"
+    class="md:hidden fixed bottom-5 inset-x-5 z-40 inline-flex items-center justify-center h-12 font-jetbrains font-semibold text-xs uppercase tracking-[0.2em] transition-all duration-300 data-[visible=false]:opacity-0 data-[visible=false]:translate-y-4 data-[visible=false]:pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0"
+    style="background-color: #7C3AED; color: #F5F4F8; box-shadow: 0 12px 28px rgba(124,58,237,0.55);"
+  >
+    Réserver une session →
+  </a>
+
+  <script>
+    const sticky = document.getElementById('onde-sticky-cta');
+    const contact = document.getElementById('contact');
+    if (sticky && contact) {
+      const update = () => {
+        const rect = contact.getBoundingClientRect();
+        const inSection = rect.top < window.innerHeight && rect.bottom > 80;
+        const scrolledPastHero = window.scrollY > 600;
+        sticky.dataset.visible = String(scrolledPastHero && !inSection);
+      };
+      update();
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update, { passive: true });
+    }
+  </script>
 </BaseLayout>

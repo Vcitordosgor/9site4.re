@@ -62,4 +62,30 @@ const businessLD = localBusinessSchema(bleulagonData);
   </main>
 
   <BleuLagonFooter />
+
+  <!-- Sticky CTA mobile : réservation baptême -->
+  <a
+    id="bl-sticky-cta"
+    href="#formules"
+    data-visible="false"
+    aria-label="Réserver mon baptême de plongée"
+    class="md:hidden fixed bottom-4 inset-x-4 z-40 inline-flex items-center justify-center gap-2 h-14 px-6 text-sm font-inter font-semibold uppercase tracking-[0.18em] rounded-full transition-all duration-300 ease-out bg-plongee-corail text-plongee-ecume data-[visible=false]:opacity-0 data-[visible=false]:translate-y-4 data-[visible=false]:pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0"
+    style="box-shadow: 0 12px 32px rgba(255,122,92,0.45);"
+  >
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+      <path d="M5 12h14M14 5l7 7-7 7"/>
+    </svg>
+    <span>Réserver mon baptême</span>
+  </a>
+
+  <script>
+    const blSticky = document.getElementById('bl-sticky-cta');
+    if (blSticky) {
+      const updateBlSticky = () => {
+        blSticky.dataset.visible = String(window.scrollY > 520);
+      };
+      updateBlSticky();
+      window.addEventListener('scroll', updateBlSticky, { passive: true });
+    }
+  </script>
 </BaseLayout>

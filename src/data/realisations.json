@@ -302,7 +302,7 @@
   {
     "id": 31,
     "nom": "Boulangerie artisanale",
-    "categorie": "restaurants-et-snacks",
+    "categorie": "restaurants",
     "sousTitre": "Levain naturel et viennoiseries maison",
     "moduleInclus": "Commande",
     "slug": "boulangerie-artisanale",
@@ -312,7 +312,7 @@
   {
     "id": 32,
     "nom": "Glacier artisanal",
-    "categorie": "restaurants-et-snacks",
+    "categorie": "restaurants",
     "sousTitre": "Sorbets fruits péi et crèmes glacées",
     "moduleInclus": "Commande",
     "slug": "glacier-artisanal",
@@ -322,7 +322,7 @@
   {
     "id": 33,
     "nom": "Café & torréfaction",
-    "categorie": "restaurants-et-snacks",
+    "categorie": "restaurants",
     "sousTitre": "Brûlerie artisanale, abonnement grains",
     "moduleInclus": "Commande",
     "slug": "cafe-torrefaction",
@@ -332,7 +332,7 @@
   {
     "id": 34,
     "nom": "École de surf",
-    "categorie": "tourisme-et-loisirs",
+    "categorie": "tourisme",
     "sousTitre": "Initiation, perfectionnement, stages",
     "moduleInclus": "Réservation",
     "slug": "ecole-de-surf",
@@ -342,7 +342,7 @@
   {
     "id": 35,
     "nom": "Fleuriste atelier",
-    "categorie": "commerces-et-services",
+    "categorie": "particuliers",
     "sousTitre": "Bouquets, mariages, événementiel floral",
     "moduleInclus": "Devis",
     "slug": "fleuriste-atelier",
