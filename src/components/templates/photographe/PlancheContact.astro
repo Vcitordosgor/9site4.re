@@ -1,0 +1,151 @@
+---
+/**
+ * PlancheContact — Signature moment "Wow" pour /templates/photographe.
+ *
+ * Planche-contact argentique style chambre noire : pellicule 12 vues avec
+ * perforations Kodak, marquages exif, tampons rouge "SELECT". Au survol /
+ * focus, l'image s'éclaire et l'EXIF s'affiche. Identité Studio Latitude
+ * (papier baryté, rouge safelight).
+ */
+
+const frames = [
+  { src: '/images/latitude/runner-640.webp',   alt: 'Portrait sportif',  exif: 'f/2 · 1/250 · 400', frame: '12', select: true  },
+  { src: '/images/latitude/plat-640.webp',     alt: 'Nature morte',      exif: 'f/4 · 1/125 · 400', frame: '13', select: false },
+  { src: '/images/latitude/salon-640.webp',    alt: 'Intérieur salon',   exif: 'f/2.8 · 1/500 · 200', frame: '14', select: false },
+  { src: '/images/latitude/portrait-640.webp', alt: 'Portrait studio',   exif: 'f/5.6 · 1/60 · 400', frame: '15', select: true  },
+  { src: '/images/latitude/runner-640.webp',   alt: 'Portrait sportif',  exif: 'f/2.8 · 1/200 · 400', frame: '16', select: false },
+  { src: '/images/latitude/plat-640.webp',     alt: 'Nature morte',      exif: 'f/5.6 · 1/60 · 200', frame: '17', select: false },
+  { src: '/images/latitude/portrait-640.webp', alt: 'Portrait studio',   exif: 'f/4 · 1/125 · 400', frame: '18', select: false },
+  { src: '/images/latitude/salon-640.webp',    alt: 'Intérieur salon',   exif: 'f/2 · 1/250 · 800', frame: '19', select: true  },
+  { src: '/images/latitude/plat-640.webp',     alt: 'Nature morte',      exif: 'f/2.8 · 1/500 · 200', frame: '20', select: false },
+  { src: '/images/latitude/runner-640.webp',   alt: 'Portrait sportif',  exif: 'f/4 · 1/250 · 400', frame: '21', select: false },
+  { src: '/images/latitude/salon-640.webp',    alt: 'Intérieur salon',   exif: 'f/5.6 · 1/30 · 800', frame: '22', select: false },
+  { src: '/images/latitude/portrait-640.webp', alt: 'Portrait studio',   exif: 'f/2 · 1/125 · 400', frame: '23', select: true  },
+];
+---
+
+<section id="planche" class="bg-latitude-noir text-latitude-blanc py-24 md:py-36 px-6 md:px-10 overflow-hidden">
+  <div class="max-w-content mx-auto">
+
+    <header class="mb-12 md:mb-16 max-w-3xl scroll-reveal">
+      <p class="font-hanken text-[10px] uppercase tracking-[0.36em] text-latitude-labo font-medium mb-5">
+        ◉ Planche contact · 120 / Tri-X 400
+      </p>
+      <h2 class="font-dm-serif-display text-latitude-blanc leading-[0.95]" style="font-size: clamp(44px, 7.5vw, 96px);">
+        On ne livre pas
+        <span class="block italic font-light text-latitude-creme">toutes les images.</span>
+      </h2>
+      <p class="mt-6 font-hanken text-latitude-blanc/65 text-base md:text-lg max-w-xl leading-relaxed">
+        Vous voyez la pellicule entière. On vous explique nos choix. Vous gardez le droit de regard.
+      </p>
+    </header>
+
+    <!-- Planche contact -->
+    <div class="scroll-reveal relative">
+      <div class="planche-strip relative bg-latitude-charbon ring-1 ring-latitude-cendre/40 px-2 md:px-4 py-3 md:py-5">
+
+        <!-- Perforations Kodak en haut -->
+        <div class="planche-perfs flex justify-between items-center mb-2 px-1" aria-hidden="true">
+          {Array.from({length: 24}).map(() => <span class="block w-2.5 h-3 bg-latitude-noir rounded-[1px]"></span>)}
+        </div>
+
+        <!-- Grille 4 colonnes -->
+        <ul class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-1.5 md:gap-2">
+          {frames.map((f) => (
+            <li class={`planche-frame group relative aspect-[4/3] overflow-hidden bg-latitude-noir ${f.select ? 'is-select' : ''}`}>
+              <img
+                src={f.src}
+                alt={f.alt}
+                loading="lazy"
+                decoding="async"
+                class="planche-img absolute inset-0 w-full h-full object-cover"
+              />
+              <!-- Filtre safelight -->
+              <span class="planche-mask absolute inset-0 bg-latitude-noir/30 mix-blend-multiply pointer-events-none"></span>
+
+              <!-- Repère frame -->
+              <span class="absolute top-1 left-1.5 font-mono text-[9px] text-latitude-creme/80 bg-latitude-noir/60 px-1 py-0.5">
+                ▸ {f.frame}
+              </span>
+
+              <!-- Tampon SELECT -->
+              {f.select && (
+                <span class="planche-stamp absolute -top-1 -right-1 rotate-12 font-mono text-[9px] tracking-[0.18em] uppercase text-latitude-labo border border-latitude-labo px-1.5 py-0.5 bg-latitude-noir/70">
+                  ◯ select
+                </span>
+              )}
+
+              <!-- EXIF au survol/focus -->
+              <span class="planche-exif absolute bottom-0 inset-x-0 px-2 py-1.5 bg-latitude-noir/80 backdrop-blur-sm font-mono text-[10px] text-latitude-blanc/90 tabular-nums">
+                {f.exif}
+              </span>
+            </li>
+          ))}
+        </ul>
+
+        <!-- Perforations bas -->
+        <div class="planche-perfs flex justify-between items-center mt-2 px-1" aria-hidden="true">
+          {Array.from({length: 24}).map(() => <span class="block w-2.5 h-3 bg-latitude-noir rounded-[1px]"></span>)}
+        </div>
+
+        <!-- Marquage pellicule bas -->
+        <p class="mt-3 font-mono text-[10px] uppercase tracking-[0.32em] text-latitude-cendre/80 text-center">
+          KODAK TRI-X 400 · 120 · STUDIO LATITUDE · ROLL 027
+        </p>
+      </div>
+    </div>
+
+    <p class="scroll-reveal mt-8 font-mono text-[10px] uppercase tracking-[0.28em] text-latitude-blanc/40 max-w-xl">
+      → 4 vues marquées « select ». Vous choisissez les tirages finaux dans cette présélection.
+    </p>
+  </div>
+</section>
+
+<style>
+  /* Image en N&B safelight, retour couleur au focus */
+  .planche-img {
+    filter: grayscale(1) contrast(1.1) brightness(0.8);
+    transition: filter 400ms ease, transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .planche-frame:hover .planche-img,
+  .planche-frame:focus-within .planche-img {
+    filter: grayscale(0.3) contrast(1.05) brightness(1);
+    transform: scale(1.04);
+  }
+  .planche-mask {
+    transition: opacity 400ms ease;
+  }
+  .planche-frame:hover .planche-mask,
+  .planche-frame:focus-within .planche-mask {
+    opacity: 0;
+  }
+
+  /* EXIF apparaît au survol */
+  .planche-exif {
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 300ms ease, transform 300ms ease;
+  }
+  .planche-frame:hover .planche-exif,
+  .planche-frame:focus-within .planche-exif {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Frame "select" : bord rouge subtil */
+  .planche-frame.is-select {
+    box-shadow: inset 0 0 0 2px #C0392B;
+  }
+
+  /* Tampon select : faible rotation pour effet manuel */
+  .planche-stamp {
+    transform-origin: center;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .planche-img, .planche-exif, .planche-mask {
+      transition: none !important;
+      transform: none !important;
+    }
+  }
+</style>
