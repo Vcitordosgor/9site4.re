@@ -1,0 +1,75 @@
+---
+/**
+ * Abonnement — box hebdomadaire de jus pressés.
+ * 3 formules, esthétique pop carte postale.
+ */
+const formules = [
+  { id: 'mini', nom: 'BOX MINI', sousTitre: '3 jus / semaine', prix: '18€', detail: 'Le pack découverte. Idéal pour goûter à nos signatures.', badge: null },
+  { id: 'classic', nom: 'BOX CLASSIC', sousTitre: '6 jus / semaine', prix: '32€', detail: 'Notre box phare. Une routine bien-être à la maison.', badge: 'STAR' },
+  { id: 'detox', nom: 'BOX DÉTOX', sousTitre: '9 jus / semaine', prix: '45€', detail: 'Cure complète. Livraison 2 fois par semaine pour la fraîcheur.', badge: 'NOUVEAU' },
+];
+---
+
+<section id="abonnement" class="bg-lagon-coco py-20 md:py-32 px-5 md:px-8 relative overflow-hidden">
+
+  <!-- Annotation arrière-plan -->
+  <p class="absolute top-12 left-6 md:left-12 font-architects text-lagon-charbon text-3xl md:text-4xl -rotate-3 opacity-90" aria-hidden="true">
+    livré frais chez toi ↓
+  </p>
+
+  <div class="max-w-content mx-auto">
+    <header class="mb-14 md:mb-20 max-w-2xl">
+      <p class="font-onest text-[11px] uppercase tracking-[0.32em] font-bold text-lagon-pitaya mb-4">
+        ★ LA BOX DE LA SEMAINE ★
+      </p>
+      <h2 class="font-bagel text-lagon-charbon leading-[0.9]" style="font-size: clamp(48px, 8vw, 120px);">
+        ABONNE-TOI,<br/>
+        <span class="text-lagon-pitaya">ON PRESSE.</span>
+      </h2>
+      <p class="mt-6 font-onest text-lagon-charbon/85 text-lg max-w-md font-medium">
+        Tes jus préférés livrés chaque semaine, dans des bouteilles en verre consignées. Sans engagement, on s'arrête quand tu veux.
+      </p>
+    </header>
+
+    <ul class="grid md:grid-cols-3 gap-5 md:gap-7">
+      {formules.map((f, i) => (
+        <li class:list={[
+          'relative bg-lagon-mangue ring-4 ring-lagon-charbon p-6 md:p-8 transition-transform duration-300 hover:-translate-y-1',
+          i === 1 ? 'md:-rotate-1' : i === 2 ? 'md:rotate-1' : '',
+        ]}>
+          {f.badge && (
+            <span class:list={[
+              'absolute -top-3 right-4 inline-flex items-center px-3 py-1 font-bagel text-xs tracking-wide rounded-full ring-2 ring-lagon-charbon',
+              f.badge === 'STAR' ? 'bg-lagon-coco text-lagon-charbon' : 'bg-lagon-pitaya text-lagon-blanc',
+            ]}>
+              {f.badge === 'STAR' ? '★ ' + f.badge : f.badge}
+            </span>
+          )}
+          <p class="font-architects text-lagon-charbon/70 text-lg">{f.sousTitre}</p>
+          <h3 class="mt-1 font-bagel text-lagon-charbon leading-tight" style="font-size: clamp(28px, 3.5vw, 36px);">
+            {f.nom}
+          </h3>
+          <p class="mt-4 font-onest text-lagon-charbon/80 text-sm leading-relaxed">
+            {f.detail}
+          </p>
+          <div class="mt-6 pt-5 border-t-2 border-lagon-charbon/20 flex items-baseline justify-between gap-2">
+            <span class="font-bagel text-lagon-pitaya tabular-nums" style="font-size: 38px; line-height: 1;">
+              {f.prix}
+            </span>
+            <span class="font-architects text-lagon-charbon/70 text-base">/ semaine</span>
+          </div>
+          <a
+            href="#commander"
+            class="mt-5 inline-flex items-center justify-center w-full h-12 bg-lagon-charbon text-lagon-coco font-bagel text-sm tracking-wide rounded-full hover:bg-lagon-pitaya transition-colors"
+          >
+            JE M'ABONNE →
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <p class="mt-10 font-architects text-lagon-charbon text-xl text-center">
+      Livraison Saint-Denis, Saint-Paul, Saint-Pierre · sans engagement
+    </p>
+  </div>
+</section>
