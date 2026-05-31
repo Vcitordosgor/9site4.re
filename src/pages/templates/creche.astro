@@ -49,4 +49,30 @@ const businessLD = localBusinessSchema(nidData);
   </main>
 
   <NidFooter />
+
+  <a
+    id="nid-sticky-cta"
+    href="#contact"
+    data-visible="false"
+    class="md:hidden fixed bottom-5 inset-x-5 z-40 inline-flex items-center justify-center h-12 font-nunito font-bold text-sm rounded-full transition-all duration-300 data-[visible=false]:opacity-0 data-[visible=false]:translate-y-4 data-[visible=false]:pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0"
+    style="background-color: #F8D77E; color: #2E2A26; box-shadow: 0 12px 28px rgba(46,42,38,0.20);"
+  >
+    Inscrire mon enfant →
+  </a>
+
+  <script>
+    const sticky = document.getElementById('nid-sticky-cta');
+    const contact = document.getElementById('contact');
+    if (sticky && contact) {
+      const update = () => {
+        const rect = contact.getBoundingClientRect();
+        const inSection = rect.top < window.innerHeight && rect.bottom > 80;
+        const scrolledPastHero = window.scrollY > 600;
+        sticky.dataset.visible = String(scrolledPastHero && !inSection);
+      };
+      update();
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update, { passive: true });
+    }
+  </script>
 </BaseLayout>
