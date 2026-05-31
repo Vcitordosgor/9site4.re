@@ -1,0 +1,70 @@
+---
+/**
+ * Calendrier — week-ends encore disponibles 2026-2027.
+ * Vue calendrier annuelle stylisée, claire et lisible.
+ */
+const annees = [
+  {
+    annee: 2026,
+    saisons: [
+      { nom: 'Printemps austral · sept-nov', dispos: ['Sam 5 sept', 'Sam 19 sept', 'Sam 10 oct', 'Sam 24 oct', 'Sam 7 nov'] },
+      { nom: 'Été · déc-fév 27', dispos: ['Sam 12 déc', 'Sam 9 jan 27', 'Sam 30 jan 27'] },
+    ],
+  },
+  {
+    annee: 2027,
+    saisons: [
+      { nom: 'Hiver austral · mai-août', dispos: ['Sam 8 mai', 'Sam 22 mai', 'Sam 12 juin', 'Sam 3 juil', 'Sam 24 juil', 'Sam 14 août'] },
+      { nom: 'Printemps · sept-nov', dispos: ['Sam 4 sept', 'Sam 25 sept', 'Sam 16 oct', 'Sam 6 nov', 'Sam 20 nov'] },
+    ],
+  },
+];
+---
+
+<section id="calendrier" class="bg-seve-ivoire py-24 md:py-32 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="text-center max-w-2xl mx-auto mb-14 md:mb-20">
+      <p class="font-outfit text-[11px] uppercase tracking-[0.42em] text-seve-or mb-4">— Disponibilités —</p>
+      <h2 class="font-cormorant text-seve-marine leading-[1.05]" style="font-size: clamp(36px, 5.5vw, 60px);">
+        Dates encore libres
+        <em class="block font-italianno text-seve-or mt-2" style="font-size: clamp(48px, 6.5vw, 80px); line-height: 0.9;">
+          2026 — 2027
+        </em>
+      </h2>
+      <p class="mt-5 font-outfit text-seve-marine/75 text-base md:text-lg leading-relaxed">
+        On accompagne 12 mariages par an, pas plus. Voici les week-ends encore disponibles.
+      </p>
+    </header>
+
+    <div class="grid md:grid-cols-2 gap-10 md:gap-14">
+      {annees.map((a) => (
+        <div>
+          <h3 class="font-cormorant text-seve-marine text-3xl md:text-4xl border-b border-seve-or/40 pb-3 mb-7">
+            {a.annee}
+          </h3>
+          <div class="space-y-7">
+            {a.saisons.map((s) => (
+              <div>
+                <p class="font-outfit text-[10.5px] uppercase tracking-[0.32em] text-seve-or mb-3">{s.nom}</p>
+                <ul class="flex flex-wrap gap-2">
+                  {s.dispos.map((d) => (
+                    <li>
+                      <span class="inline-flex items-center h-9 px-4 rounded-full bg-white ring-1 ring-seve-marine/15 font-outfit text-sm text-seve-marine">
+                        {d}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <p class="mt-14 text-center font-italianno text-seve-marine/80 text-2xl md:text-3xl">
+      Une date vous parle ? <a href="#contact" class="underline decoration-seve-or decoration-2 underline-offset-4 hover:text-seve-or transition-colors">Réservons un appel.</a>
+    </p>
+  </div>
+</section>
