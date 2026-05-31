@@ -1,0 +1,39 @@
+---
+import data from '../../../data/templates/mona.json';
+const info = data.info;
+const qa = data.presentation;
+---
+
+<section id="praticienne" class="py-20 md:py-28" style="background-color: #FFFFFF;">
+  <div class="max-w-content mx-auto px-5 md:px-10">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 items-start">
+
+      <div class="md:col-span-5 md:sticky md:top-28">
+        <div class="aspect-[3/4] overflow-hidden rounded-3xl">
+          <img src={info.photoMona} alt={`${info.nom}, diététicienne D.E.`} loading="lazy" class="w-full h-full object-cover" />
+        </div>
+        <div class="mt-6 flex flex-wrap gap-2">
+          {data.diplomes.slice(0, 3).map((d) => (
+            <span class="inline-flex items-center font-dm-sans text-[11.5px] px-3 py-1.5 rounded-full" style="background-color: #F4EFE6; color: #2D3823;">{d}</span>
+          ))}
+        </div>
+      </div>
+
+      <div class="md:col-span-7">
+        <p class="font-dm-sans text-[11px] uppercase tracking-[0.3em] mb-4" style="color: #6B7F5C;">— La praticienne —</p>
+        <h2 class="font-fraunces leading-[1.04]" style="color: #2D3823; font-size: clamp(34px, 5vw, 56px);">
+          {info.nom}, <em class="italic" style="color: #C56A4D;">diététicienne D.E.</em>
+        </h2>
+
+        <div class="mt-10 space-y-7">
+          {qa.map((item) => (
+            <div>
+              <p class="font-fraunces italic text-lg md:text-xl mb-2" style="color: #6B7F5C;">— {item.question}</p>
+              <p class="font-dm-sans text-[15px] leading-relaxed" style="color: rgba(45,56,35,0.82);">{item.reponse}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,47 @@
+---
+import data from '../../../data/templates/mona.json';
+---
+
+<section id="tarifs" class="py-20 md:py-28" style="background-color: #F4EFE6;">
+  <div class="max-w-content mx-auto px-5 md:px-10">
+
+    <div class="max-w-3xl mb-14 md:mb-16">
+      <p class="font-dm-sans text-[11px] uppercase tracking-[0.3em] mb-4" style="color: #6B7F5C;">— Programmes —</p>
+      <h2 class="font-fraunces leading-[1.04]" style="color: #2D3823; font-size: clamp(34px, 5vw, 56px);">
+        Trois formats, <em class="italic" style="color: #C56A4D;">selon votre projet.</em>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
+      {data.programmes.map((p) => (
+        <article class="relative flex flex-col rounded-3xl overflow-hidden" style={`background-color: ${p.populaire ? '#2D3823' : '#FFFFFF'}; color: ${p.populaire ? '#F4EFE6' : '#2D3823'};`}>
+          {p.populaire && (
+            <span class="absolute top-5 right-5 inline-flex items-center font-dm-sans text-[10px] uppercase tracking-[0.22em] px-3 py-1 rounded-full" style="background-color: #C56A4D; color: #F4EFE6;">Le + demandé</span>
+          )}
+          <div class="aspect-[16/9] overflow-hidden">
+            <img src={p.photo} alt={p.label} loading="lazy" class="w-full h-full object-cover" />
+          </div>
+          <div class="p-7 flex flex-col gap-3 flex-1">
+            <h3 class="font-fraunces text-2xl">{p.label}</h3>
+            <p class={`font-dm-sans text-[11px] uppercase tracking-[0.2em] ${p.populaire ? 'opacity-70' : ''}`} style={p.populaire ? '' : 'color: #6B7F5C;'}>{p.duree}</p>
+            <p class={`font-dm-sans text-[14px] leading-relaxed ${p.populaire ? 'opacity-80' : ''}`} style={p.populaire ? '' : 'color: rgba(45,56,35,0.72);'}>{p.description}</p>
+
+            <ul class="mt-3 space-y-2 font-dm-sans text-[13.5px]">
+              {p.inclus.map((i) => (
+                <li class="flex items-start gap-2">
+                  <svg viewBox="0 0 24 24" fill="none" stroke={p.populaire ? '#C56A4D' : '#6B7F5C'} stroke-width="2" class="w-4 h-4 mt-0.5 shrink-0"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span class={p.populaire ? 'opacity-90' : ''} style={p.populaire ? '' : 'color: rgba(45,56,35,0.85);'}>{i}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div class="mt-auto pt-5 border-t flex items-baseline justify-between" style={`border-color: ${p.populaire ? 'rgba(244,239,230,0.18)' : 'rgba(45,56,35,0.10)'};`}>
+              <span class="font-fraunces text-4xl" style={p.populaire ? 'color: #F4EFE6;' : 'color: #C56A4D;'}>{p.prix}</span>
+              <a href="#rendez-vous" class="inline-flex items-center gap-1 font-dm-sans text-[12.5px] font-medium" style={p.populaire ? 'color: #C56A4D;' : 'color: #2D3823;'}>Réserver →</a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
