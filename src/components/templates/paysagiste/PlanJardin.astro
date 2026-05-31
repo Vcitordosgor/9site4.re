@@ -1,0 +1,87 @@
+---
+import data from '../../../data/templates/agapanthes.json';
+const zones = data.zones;
+---
+<section id="plan" class="relative bg-agap-pierre/40 text-agap-feuille py-24 lg:py-36 overflow-hidden">
+  <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+    <div class="grid lg:grid-cols-12 gap-12 mb-16">
+      <div class="lg:col-span-6">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="inline-block w-10 h-px bg-agap-violet"></span>
+          <span class="font-manrope text-[11px] uppercase tracking-[0.32em] text-agap-feuille/60">01 — Plan de jardin</span>
+        </div>
+        <h2 class="font-cormorant font-light text-[clamp(2.5rem,5vw,4.5rem)] leading-[1] tracking-tight">
+          Quatre zones,<br/><em class="italic text-agap-violet">une seule respiration.</em>
+        </h2>
+      </div>
+      <div class="lg:col-span-5 lg:col-start-8 flex items-end">
+        <p class="font-manrope text-base lg:text-lg leading-relaxed text-agap-feuille/70">
+          Cliquez sur un point du plan : nous vous montrons la zone correspondante, sa palette végétale et ses inspirations.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid lg:grid-cols-12 gap-10 items-start">
+      <!-- SVG plan -->
+      <div class="lg:col-span-7 relative aspect-[5/4] rounded-3xl overflow-hidden bg-agap-lin border border-agap-feuille/10">
+        <svg class="absolute inset-0 w-full h-full" viewBox="0 0 500 400" aria-hidden="true">
+          <!-- Maison -->
+          <rect x="200" y="80" width="100" height="70" fill="#D8D8D2" stroke="#5C7058" stroke-width="1"/>
+          <text x="250" y="120" text-anchor="middle" font-family="Cormorant Garamond" font-style="italic" font-size="14" fill="#3D2E5E">Maison</text>
+          <!-- Allée -->
+          <path d="M50,200 Q150,180 200,150" stroke="#C68C3C" stroke-width="2" fill="none" stroke-dasharray="4 3" opacity="0.6"/>
+          <!-- Piscine -->
+          <rect x="320" y="100" width="140" height="60" rx="10" fill="#9DAB8E" opacity="0.3" stroke="#9DAB8E"/>
+          <!-- Potager -->
+          <rect x="120" y="240" width="120" height="100" rx="6" fill="#6B5B95" opacity="0.12" stroke="#6B5B95" stroke-dasharray="3 3"/>
+          <!-- Terrasse -->
+          <rect x="320" y="240" width="140" height="100" rx="6" fill="#C68C3C" opacity="0.15" stroke="#C68C3C"/>
+          <!-- Végétation -->
+          <circle cx="80" cy="80" r="22" fill="#5C7058" opacity="0.4"/>
+          <circle cx="430" cy="60" r="18" fill="#5C7058" opacity="0.4"/>
+          <circle cx="60" cy="350" r="20" fill="#5C7058" opacity="0.4"/>
+          <circle cx="470" cy="370" r="24" fill="#5C7058" opacity="0.4"/>
+        </svg>
+        {zones.map((z, i) => (
+          <button type="button" data-zone={z.id} class="absolute -translate-x-1/2 -translate-y-1/2 group" style={`left:${z.x}%; top:${z.y}%;`} aria-label={z.nom}>
+            <span class="block w-5 h-5 rounded-full bg-agap-violet ring-4 ring-agap-violet/30 group-hover:ring-8 group-[.is-active]:bg-agap-lin group-[.is-active]:ring-agap-violet transition-all"></span>
+            <span class="absolute top-7 left-1/2 -translate-x-1/2 whitespace-nowrap font-manrope text-[10px] uppercase tracking-[0.22em] text-agap-lin bg-agap-violet-fonce/90 px-2 py-1 rounded backdrop-blur-sm">{String(i+1).padStart(2,'0')} · {z.nom}</span>
+          </button>
+        ))}
+        <div class="absolute top-4 left-4 font-manrope text-[10px] uppercase tracking-[0.3em] text-agap-feuille/50">Plan paysager · échelle libre</div>
+      </div>
+
+      <!-- Détail zone -->
+      <div class="lg:col-span-5">
+        {zones.map((z, i) => (
+          <article data-zone-card={z.id} class={`mb-4 group relative overflow-hidden rounded-2xl border border-agap-feuille/10 bg-agap-lin transition-all ${i === 0 ? 'is-active' : ''}`}>
+            <button type="button" data-toggle-zone={z.id} class="w-full text-left p-5 lg:p-6 flex items-center gap-5">
+              <span class="font-cormorant text-3xl italic text-agap-violet leading-none flex-shrink-0">{String(i+1).padStart(2,'0')}</span>
+              <div class="flex-1">
+                <h3 class="font-cormorant text-2xl text-agap-feuille">{z.nom}</h3>
+                <p class="mt-2 font-manrope text-sm leading-relaxed text-agap-feuille/65">{z.description}</p>
+              </div>
+            </button>
+            <div class="hidden group-[.is-active]:block px-5 lg:px-6 pb-6">
+              <div class="aspect-[4/3] rounded-xl overflow-hidden bg-agap-pierre">
+                <img src={z.photo} alt={z.nom} loading="lazy" class="w-full h-full object-cover"/>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  const buttons = document.querySelectorAll('[data-zone]');
+  const cards = document.querySelectorAll('[data-zone-card]');
+  const toggles = document.querySelectorAll('[data-toggle-zone]');
+  const activate = (id: string | undefined) => {
+    if (!id) return;
+    buttons.forEach(b => b.classList.toggle('is-active', (b as HTMLElement).dataset.zone === id));
+    cards.forEach(c => c.classList.toggle('is-active', (c as HTMLElement).dataset.zoneCard === id));
+  };
+  buttons.forEach(b => b.addEventListener('click', () => activate((b as HTMLElement).dataset.zone)));
+  toggles.forEach(t => t.addEventListener('click', () => activate((t as HTMLElement).dataset.toggleZone)));
+</script>
