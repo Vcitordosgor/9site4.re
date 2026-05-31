@@ -18,7 +18,7 @@ const baleinesSaison = month >= 5 && month <= 9; // juin → octobre
   <img
     src={data.info.photoHero} srcset={`${(data.info.photoHero).replace(/\.webp$/, "-640.webp")} 640w, ${(data.info.photoHero).replace(/\.webp$/, "-1024.webp")} 1024w, ${data.info.photoHero} 1600w`} sizes="100vw"
     alt={data.info.photoHeroAlt}
-    class="absolute inset-0 w-full h-full object-cover hero-vivant" loading="eager" fetchpriority="high" decoding="async">
+    class="absolute inset-0 w-full h-full object-cover hero-vivant" width="1600" height="900" loading="eager" fetchpriority="high" decoding="async">
 
   <!-- Overlay gradient profond : dégradé du clair au plus sombre vers le bas -->
   <div class="absolute inset-0" aria-hidden="true"
@@ -127,7 +127,7 @@ const baleinesSaison = month >= 5 && month <= 9; // juin → octobre
   <!-- Indicateur de scroll en bas (style technique plongée) -->
   <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1 text-plongee-ecume/55" aria-hidden="true">
     <span class="font-jetbrains text-[9px] uppercase tracking-[0.32em]">Descendre</span>
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="animate-bounce" style="animation-duration: 2.5s">
+    <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="animate-bounce" style="animation-duration: 2.5s">
       <path d="M12 5v14M5 12l7 7 7-7"/>
     </svg>
   </div>

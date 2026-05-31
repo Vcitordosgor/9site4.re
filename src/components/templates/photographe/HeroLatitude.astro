@@ -131,7 +131,7 @@ const vignettes = [
                 <img
                   src={v.src} srcset={`${(v.src).replace(/\.webp$/, "-640.webp")} 640w, ${(v.src).replace(/\.webp$/, "-1024.webp")} 1024w, ${v.src} 1600w`} sizes="100vw"
                   alt=""
-                  class="w-full h-full object-cover transition-all duration-500 group-hover:grayscale-0 group-hover:scale-[1.02]" loading="eager" fetchpriority="high" decoding="async">
+                  class="w-full h-full object-cover transition-all duration-500 group-hover:grayscale-0 group-hover:scale-[1.02]" width="1600" height="900" loading="eager" fetchpriority="high" decoding="async">
               </div>
               <figcaption class="absolute top-1.5 left-1.5 right-1.5 flex items-center justify-between font-hanken text-[8.5px] uppercase tracking-[0.15em] text-latitude-blanc">
                 <span class="bg-latitude-noir/80 px-1.5 py-0.5">▸ {v.frame}</span>

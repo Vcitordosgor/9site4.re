@@ -206,7 +206,7 @@ export default function RdvForm({ soins, intentions, creneaux, whatsapp, spaNom 
 
   // ============== FORMULAIRE ==============
   // Style underline-only (différent du salon qui utilise des box ring)
-  const inputBase = 'w-full h-12 px-1 text-base font-raleway text-spa-creme bg-transparent border-0 border-b transition-colors duration-200 placeholder:text-spa-creme/35 focus:outline-none';
+  const inputBase = 'w-full h-12 px-1 text-base font-raleway text-spa-creme bg-transparent border-0 border-b transition-colors duration-200 placeholder:text-spa-creme/60 focus:outline-none';
   const inputOk   = 'border-spa-creme/25 focus:border-spa-terracotta';
   const inputErr  = 'border-spa-terracotta';
   const labelBase = 'block text-[10px] font-semibold uppercase tracking-[0.3em] text-spa-creme/70 font-raleway mb-2';

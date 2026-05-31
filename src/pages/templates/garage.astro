@@ -10,6 +10,7 @@ import '@fontsource/italianno/latin-400.css';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSeo } from '../../lib/seo';
+import { localBusinessSchema } from '../../lib/businessSchema';
 import data from '../../data/templates/motorpiton.json';
 
 import MotorpitonHeader from '../../components/templates/garage/MotorpitonHeader.astro';
@@ -26,10 +27,13 @@ import Bandeau from '../../components/templates/garage/Bandeau.astro';
 import Faq from '../../components/templates/garage/Faq.astro';
 import Contact from '../../components/templates/garage/Contact.astro';
 import MotorpitonFooter from '../../components/templates/garage/MotorpitonFooter.astro';
+
+const businessLD = localBusinessSchema(data, 'AutoRepair');
 ---
 
 <BaseLayout seo={getSeo('templateGarage')} bare={true}>
   <Fragment slot="head">
+    {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
     <link rel="preload" as="image" href={data.info.photoHero} fetchpriority="high" />
   </Fragment>

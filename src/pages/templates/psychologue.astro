@@ -12,6 +12,8 @@ import '@fontsource/ibm-plex-mono/latin-500.css';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSeo } from '../../lib/seo';
+import { localBusinessSchema } from '../../lib/businessSchema';
+import aubryData from '../../data/templates/aubry.json';
 
 import AubryHeader from '../../components/templates/psychologue/AubryHeader.astro';
 import HeroLivre from '../../components/templates/psychologue/HeroLivre.astro';
@@ -32,9 +34,14 @@ import RendezVous from '../../components/templates/psychologue/RendezVous.astro'
 import Adresse from '../../components/templates/psychologue/Adresse.astro';
 import CTAFinal from '../../components/templates/psychologue/CTAFinal.astro';
 import AubryFooter from '../../components/templates/psychologue/AubryFooter.astro';
+
+const businessLD = localBusinessSchema(aubryData, 'MedicalBusiness');
 ---
 
 <BaseLayout seo={getSeo('templatePsy')} bare={true}>
+  <Fragment slot="head">
+    {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
+  </Fragment>
 
   <AubryHeader />
 

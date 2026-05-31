@@ -196,7 +196,7 @@ export default function RdvForm({ occasions, creneaux, whatsapp, restoNom }: Pro
 
   // ============== FORMULAIRE ==============
   // Style border-bottom only (différent salon box ring, spa underline crème)
-  const inputBase = 'w-full h-12 px-1 text-base font-manrope text-resto-bleu-encre bg-transparent border-0 border-b transition-colors duration-200 placeholder:text-resto-bleu-encre/35 focus:outline-none';
+  const inputBase = 'w-full h-12 px-1 text-base font-manrope text-resto-bleu-encre bg-transparent border-0 border-b transition-colors duration-200 placeholder:text-resto-bleu-encre/60 focus:outline-none';
   const inputOk   = 'border-resto-bleu-encre/25 focus:border-resto-bleu-roi';
   const inputErr  = 'border-resto-bleu-roi';
   const labelBase = 'block text-[10px] font-semibold uppercase tracking-[0.32em] text-resto-bleu-roi font-manrope mb-2';
