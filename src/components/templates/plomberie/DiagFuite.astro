@@ -1,0 +1,138 @@
+---
+/**
+ * DiagFuite — Signature moment "Wow" pour /templates/plomberie.
+ *
+ * "Comment on trouve votre fuite" en 3 étapes visuelles : écoute → caméra →
+ * réparation. SVG inline avec gouttes animées + tuyau qui se révèle.
+ * Rassure le client paniqué : on sait ce qu'on fait, voici la méthode.
+ */
+
+const etapes = [
+  {
+    num: '01',
+    titre: 'Écoute & repérage',
+    duree: '≈ 20 min',
+    texte: 'Vannes coupées, mise en pression, écoute acoustique au sol et au mur. On localise sans casser.',
+  },
+  {
+    num: '02',
+    titre: 'Caméra & confirmation',
+    duree: '≈ 30 min',
+    texte: 'Caméra endoscopique dans les tuyaux. On vous montre la fuite sur écran avant de toucher quoi que ce soit.',
+  },
+  {
+    num: '03',
+    titre: 'Devis & réparation',
+    duree: 'Sur le champ',
+    texte: 'Tarif annoncé, accord signé, on intervient. Test sous pression à la fin, et on remet en eau ensemble.',
+  },
+];
+---
+
+<section id="diag-fuite" class="bg-bp-anthracite text-bp-ciment py-24 md:py-32 px-6 md:px-10 overflow-hidden relative">
+
+  <div class="max-w-content mx-auto">
+
+    <header class="mb-14 md:mb-20 max-w-3xl scroll-reveal">
+      <p class="font-archivo font-bold text-[11px] uppercase tracking-[0.28em] text-bp-jaune mb-5">
+        Méthode Bernard · Recherche de fuite
+      </p>
+      <h2 class="font-bebas-neue text-bp-ciment leading-[0.92]" style="font-size: clamp(48px, 8vw, 96px); letter-spacing: 0.01em;">
+        Trouver la fuite
+        <span class="block text-bp-jaune">sans casser le mur.</span>
+      </h2>
+      <p class="mt-6 font-archivo text-bp-ciment/70 text-base md:text-lg max-w-xl leading-relaxed">
+        On ne perce pas pour voir. On écoute, on filme, on vous montre. Vous décidez.
+      </p>
+    </header>
+
+    <!-- Schéma tuyau animé -->
+    <div class="scroll-reveal mb-14 md:mb-16">
+      <svg viewBox="0 0 1000 140" class="diag-fuite-svg w-full h-auto" role="img" aria-label="Tuyau avec point de fuite localisé">
+        <!-- Tuyau extérieur -->
+        <rect x="0" y="50" width="1000" height="40" fill="none" stroke="#E8E6E1" stroke-width="2" opacity="0.25"/>
+        <!-- Tuyau intérieur révélé -->
+        <rect x="0" y="50" width="1000" height="40" fill="#2E3340" opacity="0.5"/>
+        <!-- Trait d'eau qui s'écoule -->
+        <line class="diag-fuite-flow" x1="0" y1="70" x2="1000" y2="70" stroke="#FFC72C" stroke-width="2" stroke-dasharray="10 8" opacity="0.7"/>
+        <!-- Point de fuite (au tiers) -->
+        <g class="diag-fuite-leak">
+          <circle cx="340" cy="70" r="6" fill="#E53935"/>
+          <circle cx="340" cy="70" r="14" fill="#E53935" class="diag-fuite-leak-halo"/>
+          <!-- Gouttes -->
+          <circle class="diag-drop diag-drop-1" cx="340" cy="95" r="2.5" fill="#E53935"/>
+          <circle class="diag-drop diag-drop-2" cx="340" cy="95" r="2" fill="#E53935"/>
+          <circle class="diag-drop diag-drop-3" cx="340" cy="95" r="2.2" fill="#E53935"/>
+        </g>
+        <!-- Marqueur -->
+        <line x1="340" y1="20" x2="340" y2="50" stroke="#FFC72C" stroke-width="1.5" stroke-dasharray="3 3"/>
+        <text x="340" y="14" text-anchor="middle" fill="#FFC72C" class="font-archivo" font-size="11" font-weight="700">FUITE · 1.40 m</text>
+      </svg>
+    </div>
+
+    <!-- 3 étapes -->
+    <ol class="grid md:grid-cols-3 gap-5 md:gap-6">
+      {etapes.map((e, i) => (
+        <li class="scroll-reveal relative bg-bp-acier border-2 border-bp-acier hover:border-bp-jaune transition-colors p-7 md:p-8" style={`--i:${i}`}>
+          <div class="flex items-center justify-between mb-6">
+            <span class="font-bebas-neue text-bp-jaune text-5xl leading-none">{e.num}</span>
+            <span class="font-archivo font-bold text-[10px] uppercase tracking-[0.22em] text-bp-ciment/50">
+              {e.duree}
+            </span>
+          </div>
+          <h3 class="font-archivo font-bold text-bp-ciment text-xl md:text-2xl uppercase tracking-tight leading-tight">
+            {e.titre}
+          </h3>
+          <p class="mt-4 font-archivo text-bp-ciment/70 text-sm md:text-base leading-relaxed">
+            {e.texte}
+          </p>
+        </li>
+      ))}
+    </ol>
+
+  </div>
+</section>
+
+<style>
+  /* Halo qui pulse autour de la fuite */
+  .diag-fuite-leak-halo {
+    transform-origin: 340px 70px;
+    transform-box: view-box;
+    animation: diag-fuite-pulse 2.4s ease-out infinite;
+  }
+  @keyframes diag-fuite-pulse {
+    0%   { opacity: 0.5; transform: scale(0.6); }
+    80%  { opacity: 0;   transform: scale(2.4); }
+    100% { opacity: 0;   transform: scale(2.4); }
+  }
+
+  /* Gouttes qui tombent en cascade */
+  .diag-drop {
+    transform-box: view-box;
+    transform-origin: center;
+    animation: diag-drop-fall 1.8s cubic-bezier(0.55, 0, 0.65, 1) infinite;
+  }
+  .diag-drop-1 { animation-delay: 0s; }
+  .diag-drop-2 { animation-delay: 0.6s; }
+  .diag-drop-3 { animation-delay: 1.2s; }
+  @keyframes diag-drop-fall {
+    0%   { transform: translate(0, 0) scale(1); opacity: 0; }
+    15%  { opacity: 1; }
+    100% { transform: translate(0, 50px) scale(0.4); opacity: 0; }
+  }
+
+  /* Flow eau */
+  .diag-fuite-flow {
+    stroke-dashoffset: 0;
+    animation: diag-flow 1.6s linear infinite;
+  }
+  @keyframes diag-flow {
+    to { stroke-dashoffset: -36; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .diag-fuite-leak-halo, .diag-drop, .diag-fuite-flow {
+      animation: none !important;
+    }
+  }
+</style>
