@@ -20,8 +20,10 @@ import AubervalHeader from '../../components/templates/comptable/AubervalHeader.
 import HeroRapportAnnuel from '../../components/templates/comptable/HeroRapportAnnuel.astro';
 import Associes from '../../components/templates/comptable/Associes.astro';
 import Domaines from '../../components/templates/comptable/Domaines.astro';
+import ProfilSelector from '../../components/templates/comptable/ProfilSelector.astro';
 import Process from '../../components/templates/comptable/Process.astro';
 import Outils from '../../components/templates/comptable/Outils.astro';
+import CasConcrets from '../../components/templates/comptable/CasConcrets.astro';
 import Honoraires from '../../components/templates/comptable/Honoraires.astro';
 import Agrements from '../../components/templates/comptable/Agrements.astro';
 import FAQ from '../../components/templates/comptable/FAQ.astro';
@@ -43,8 +45,10 @@ const businessLD = localBusinessSchema(aubervalData, 'AccountingService');
     <HeroRapportAnnuel />
     <Associes />
     <Domaines />
+    <ProfilSelector />
     <Process />
     <Outils />
+    <CasConcrets />
     <Honoraires />
     <Agrements />
     <FAQ />
