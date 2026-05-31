@@ -15,7 +15,8 @@
     "annee": "2014",
     "certification": "Électricien qualifié",
     "wordmark": "Volta",
-    "photoHero": "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1600&q=80"
+    "photoHero": "/images/electricien/hero.webp",
+    "photoIntervention": "/images/electricien/intervention.webp"
   },
   "horaires": [
     {
