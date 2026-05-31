@@ -11,14 +11,8 @@ import data from '../../../data/templates/bleulagon.json';
 
     <!-- Colonne avatar graphique -->
     <div class="lg:col-span-5">
-      <div class="relative aspect-[4/5] max-w-md mx-auto rounded-2xl overflow-hidden bg-plongee-abysse">
-        <img
-          src="https://images.unsplash.com/photo-1570367364062-4ab01ebf0954?q=80&w=900&auto=format&fit=crop"
-          alt={`Portrait d'${data.moniteur.nom}, moniteur de plongée`}
-          loading="lazy"
-          decoding="async"
-          class="absolute inset-0 w-full h-full object-cover"
-        />
+      <div class="relative aspect-[4/5] max-w-md mx-auto rounded-2xl overflow-hidden bg-plongee-abysse flex items-center justify-center" role="img" aria-label={`Portrait stylisé d'${data.moniteur.nom}, moniteur de plongée`}>
+        <span class="font-space-grotesk font-bold text-plongee-lagon select-none" style="font-size: clamp(140px, 26vw, 240px); line-height: 1;">{data.moniteur.nom.charAt(0).toUpperCase()}</span>
         <!-- Étiquette identité bas -->
         <div class="absolute bottom-4 left-4 right-4 bg-plongee-abysse/85 backdrop-blur-sm px-4 py-3 rounded-xl ring-1 ring-plongee-ecume/15">
           <p class="font-jetbrains text-[10px] uppercase tracking-[0.22em] text-plongee-corail mb-0.5">
