@@ -5,7 +5,7 @@
     "wordmark2": "atelier floral",
     "soustitre": "Fleuriste éditorial · La Réunion",
     "tagline": "Composer comme on écrit.",
-    "fondatrice": "Inès Cazeneuve",
+    "fondatrice": "La fondatrice",
     "ville": "La Réunion",
     "adresseLigne1": "L'atelier — sur rendez-vous",
     "adresseLigne2": "À La Réunion",
@@ -14,7 +14,7 @@
     "whatsapp": "262692123456",
     "email": "atelier@frangipane.re",
     "instagram": "@frangipane.974",
-    "siret": "85412034500032",
+    "siret": "",
     "annee": "2019",
     "photoHero": "https://images.unsplash.com/photo-1494973367193-3f1f0a4cdcbe?q=80&w=1600&auto=format&fit=crop",
     "photoHeroAlt": "Bouquet pastel d'inspiration éditoriale, pivoines et eucalyptus, La Réunion",
@@ -23,9 +23,9 @@
   },
   "manifesto": "On compose avec ce que la saison donne. Pas de fleurs forcées hors-saison, pas de tulipes en mars qui viennent de l'autre bout du monde. À La Réunion, on a la chance d'avoir un microclimat permanent : pivoines créoles, anthuriums, orchidées, frangipaniers, bougainvilliers, fougères des Hauts. Et quelques importations qu'on assume : roses anciennes, eucalyptus, branches mortes graphiques. Tout est arrangé à la main, en pensant l'objet comme un dessin.",
   "fondatrice": {
-    "nom": "Inès Cazeneuve",
+    "nom": "L'atelier Frangipane",
     "titre": "Fleuriste éditoriale & fondatrice",
-    "bio": "Diplômée de l'École Pratique des Métiers Floristes de Paris, Inès a travaillé six ans chez deux grandes maisons parisiennes avant de rentrer ouvrir l'atelier Frangipane en 2019. Style éditorial, formes asymétriques, palettes éteintes. Spécialisée mariage et événementiel haut de gamme.",
+    "bio": "L'atelier Frangipane est installé à La Réunion depuis 2019. Style éditorial, formes asymétriques, palettes éteintes. Spécialisé mariage et événementiel.",
     "credo": "« Un bouquet doit raconter une saison, pas reproduire un mood-board. »",
     "certif": [
       "CAP Fleuriste 2009",
@@ -86,7 +86,7 @@
       "nom": "Compositions deuil",
       "tagline": "Sobriété, justesse, respect.",
       "prix": "Dès 75 €",
-      "description": "Gerbe, raquette, coussin de pétales. Inès reçoit les familles en atelier ou par téléphone pour discuter de la justesse de l'hommage. Préparation 24h, livraison directe au lieu de cérémonie.",
+      "description": "Gerbe, raquette, coussin de pétales. Nous recevons les familles en atelier ou par téléphone pour discuter de la justesse de l'hommage. Préparation 24h, livraison directe au lieu de cérémonie.",
       "details": "Livraison cérémonie incluse · Réception confidentielle"
     }
   ],
@@ -113,7 +113,7 @@
   "mariage": {
     "titre": "Mariage & cérémonie",
     "soustitre": "Quatre mois avant, idéalement",
-    "texte": "Un mariage floral réussi se prépare bien en amont. Inès reçoit le couple en atelier (RDV 1h offert) pour comprendre l'ambiance, la palette, le lieu, l'organisation. Suit une maquette photo dans les 15 jours, puis deux ajustements maximum. Démontage et nettoyage inclus le lendemain de la cérémonie.",
+    "texte": "Un mariage floral réussi se prépare bien en amont. On reçoit le couple en atelier (RDV 1h offert) pour comprendre l'ambiance, la palette, le lieu, l'organisation. Suit une maquette photo dans les 15 jours, puis deux ajustements maximum. Démontage et nettoyage inclus le lendemain de la cérémonie.",
     "etapes": [
       { "label": "M-4", "titre": "Premier rendez-vous", "texte": "1h en atelier, ambiance, lieu, palette, première estimation budgétaire." },
       { "label": "M-3", "titre": "Devis & maquette", "texte": "Devis détaillé + maquette photo des 3 pièces majeures. 2 ajustements gratuits." },
@@ -156,7 +156,7 @@
   "atelier": {
     "titre": "Visiter l'atelier",
     "tagline": "Sur rendez-vous uniquement",
-    "texte": "L'atelier n'est pas une boutique grand public. C'est un espace de travail où Inès compose, où elle reçoit ses clients mariage et événementiel, où elle conserve la chambre froide et les vases anciens. Visite sur RDV uniquement : pour discuter d'un projet, pour récupérer une commande, pour les ateliers découverte mensuels."
+    "texte": "L'atelier n'est pas une boutique grand public. C'est un espace de travail où l'on compose, où l'on reçoit les clients mariage et événementiel, où sont conservés la chambre froide et les vases anciens. Visite sur RDV uniquement : pour discuter d'un projet, pour récupérer une commande, pour les ateliers découverte."
   },
   "ateliers": [
     {

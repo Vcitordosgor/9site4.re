@@ -6,28 +6,28 @@
     "soustitre": "Auto-école · Permis B & code en ligne",
     "tagline": "Ton permis. Sans stress.",
     "ville": "La Réunion",
-    "adresseLigne1": "47 boulevard Joffre",
-    "adresseLigne2": "97400 La Réunion",
-    "telephone": "0692 14 73 28",
-    "telephoneHref": "+33692147328",
-    "whatsapp": "33692147328",
+    "adresseLigne1": "Auto-école",
+    "adresseLigne2": "La Réunion",
+    "telephone": "0692 12 34 56",
+    "telephoneHref": "+262692123456",
+    "whatsapp": "262692123456",
     "email": "salut@boost-conduite.re",
     "instagram": "@boost.conduite",
-    "siret": "55667788900017",
-    "agrement": "Agrément préfectoral E 14 974 0247 0",
+    "siret": "",
+    "agrement": "Auto-école agréée",
     "annee": "2013"
   },
   "stats": [
     {
-      "valeur": "87 %",
-      "label": "réussite 1ʳᵉ tentative"
+      "valeur": "BVA & BVM",
+      "label": "boîtes disponibles"
     },
     {
-      "valeur": "3 500+",
-      "label": "permis délivrés"
+      "valeur": "Code +",
+      "label": "conduite + examen"
     },
     {
-      "valeur": "12",
+      "valeur": "10+",
       "label": "ans d'expérience"
     },
     {
@@ -165,81 +165,67 @@
       "num": "06",
       "panneau": "fin-route",
       "titre": "Examen pratique",
-      "description": "Le grand jour. Ton moniteur t'accompagne. 87 % de réussite à la 1ʳᵉ."
+      "description": "Le grand jour. Ton moniteur t'accompagne pour mettre toutes les chances de ton côté."
     }
   ],
   "moniteurs": [
     {
-      "prenom": "Anaïs",
+      "prenom": "A.",
       "specialite": "Coach anti-stress",
-      "experience": "10 ans",
-      "trait": "Très patiente · examen blanc systématique",
-      "photo": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=500&q=80"
+      "experience": "Expérimentée",
+      "trait": "Très patiente, examen blanc systématique",
+      "photo": ""
     },
     {
-      "prenom": "Marc",
+      "prenom": "M.",
       "specialite": "Conduite éco & autoroute",
-      "experience": "15 ans",
-      "trait": "Calme, technique, fan de mécanique",
-      "photo": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&q=80"
+      "experience": "Expérimenté",
+      "trait": "Calme et technique",
+      "photo": ""
     },
     {
-      "prenom": "Sofia",
+      "prenom": "S.",
       "specialite": "Boîte automatique",
-      "experience": "7 ans",
+      "experience": "Expérimentée",
       "trait": "Pédagogue, rigoureuse sur le code",
-      "photo": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=500&q=80"
+      "photo": ""
     },
     {
-      "prenom": "Yann",
+      "prenom": "Y.",
       "specialite": "Conduite supervisée 15-17 ans",
-      "experience": "8 ans",
+      "experience": "Expérimenté",
       "trait": "Bienveillant avec les plus jeunes",
-      "photo": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=500&q=80"
+      "photo": ""
     }
   ],
   "avis": [
     {
-      "prenom": "Léa",
-      "age": 19,
-      "duree": "4 mois",
+      "prenom": "Une élève",
+      "age": "",
+      "duree": "",
       "etoiles": 5,
-      "texte": "Anaïs au top, j'avais peur en conduite et c'est passé tout seul. Permis du premier coup."
+      "texte": "J'avais peur en conduite et c'est passé tout seul. Très rassurant."
     },
     {
-      "prenom": "Yohan",
-      "age": 24,
-      "duree": "6 semaines",
+      "prenom": "Un élève",
+      "age": "",
+      "duree": "",
       "etoiles": 5,
-      "texte": "Forfait accéléré, j'ai mon permis en 1 mois et demi. Marc est un super moniteur."
+      "texte": "Forfait clair, équipe disponible, code et conduite bien articulés."
     },
     {
-      "prenom": "Inès",
-      "age": 17,
-      "duree": "5 mois",
+      "prenom": "Une élève",
+      "age": "",
+      "duree": "",
       "etoiles": 5,
-      "texte": "Première année conduite supervisée avec Yann. Bienveillant, jamais grondé."
+      "texte": "Conduite supervisée bienveillante, on prend le temps."
     },
     {
-      "prenom": "Karim",
-      "age": 32,
-      "duree": "3 mois",
+      "prenom": "Un élève",
+      "age": "",
+      "duree": "",
       "etoiles": 5,
-      "texte": "J'avais raté 3 fois ailleurs. Sofia a tout repris depuis le début. Validé."
-    },
-    {
-      "prenom": "Mélanie",
-      "age": 21,
-      "duree": "5 mois",
-      "etoiles": 5,
-      "texte": "Code en ligne hyper bien fait, j'ai pu réviser depuis le bus pour aller au boulot."
-    },
-    {
-      "prenom": "Thomas",
-      "age": 18,
-      "duree": "4 mois",
-      "etoiles": 4,
-      "texte": "Bonne école, salle de cours top, parking pas évident parfois mais c'est tout."
+      "texte": "Reprise depuis le début après plusieurs échecs ailleurs. Pédagogie efficace."
     }
   ],
   "horaires": [
