@@ -1,83 +1,44 @@
 ---
-import data from '../../../data/templates/borddeau.json';
+const jours = [
+  { jour: 'LUN', date: '10', mar: '06:42 / 18:54', taille: '1.4m', periode: '11s', vent: '12kt', cond: 'OK' },
+  { jour: 'MAR', date: '11', mar: '07:28 / 19:40', taille: '1.6m', periode: '12s', vent: '8kt', cond: 'BON' },
+  { jour: 'MER', date: '12', mar: '08:14 / 20:26', taille: '1.8m', periode: '13s', vent: '6kt', cond: 'EXC' },
+  { jour: 'JEU', date: '13', mar: '09:00 / 21:12', taille: '2.0m', periode: '14s', vent: '10kt', cond: 'EXC' },
+  { jour: 'VEN', date: '14', mar: '09:46 / 21:58', taille: '1.7m', periode: '12s', vent: '14kt', cond: 'BON' },
+  { jour: 'SAM', date: '15', mar: '10:32 / 22:44', taille: '1.3m', periode: '10s', vent: '18kt', cond: 'OK' },
+  { jour: 'DIM', date: '16', mar: '11:18 / 23:30', taille: '1.0m', periode: '8s', vent: '22kt', cond: 'PETIT' },
+];
+const colorCond = { 'EXC': '#3CACAE', 'BON': '#E5C99A', 'OK': '#F4F8F7', 'PETIT': '#FF6B5A' };
 ---
-
-<section id="maree" class="py-20 md:py-28 relative" style="background-color: #E5C99A;">
+<section id="maree" class="py-24 md:py-32" style="background:#0F2A36; color:#F4F8F7;">
   <div class="max-w-content mx-auto px-6 md:px-10">
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-14 items-start">
-
-      <div class="md:col-span-5">
-        <p class="font-inter text-[11px] uppercase tracking-[0.45em] mb-4" style="color: #0F2A36;">— Marée & sécurité —</p>
-        <h2 class="font-anton uppercase leading-[0.92]" style="color: #0F2A36; font-size: clamp(36px, 5vw, 60px); font-family: 'Anton', Impact, sans-serif;">
-          {data.maree.titre}<br />
-          <span style="color: #3CACAE;">{data.maree.soustitre}</span>
-        </h2>
-        <p class="mt-6 font-inter text-[15.5px] leading-relaxed" style="color: rgba(15, 42, 54, 0.85);">
-          {data.maree.texte}
-        </p>
-      </div>
-
-      <div class="md:col-span-7">
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {data.maree.infos.map((info) => (
-            <div class="p-6" style="background-color: #F4F8F7; border-left: 3px solid #3CACAE;">
-              <p class="font-inter text-[10.5px] uppercase tracking-[0.25em] mb-2" style="color: #3CACAE;">
-                {info.label}
-              </p>
-              <p class="font-anton text-xl leading-tight uppercase" style="color: #0F2A36; font-family: 'Anton', Impact, sans-serif;">
-                {info.valeur}
-              </p>
-            </div>
+    <div class="mb-10 max-w-2xl">
+      <div class="text-[11px] uppercase tracking-[0.32em] mb-3 font-bold" style="color:#FF6B5A;">Météo & marée</div>
+      <h2 class="font-bebas text-5xl md:text-6xl leading-[0.9]">LA SEMAINE<br/>EN UN COUP D'ŒIL.</h2>
+    </div>
+    <div class="overflow-x-auto">
+      <table class="min-w-full text-left" style="border-collapse:collapse;">
+        <thead>
+          <tr class="text-[10px] uppercase tracking-[0.28em] font-bold" style="color:#3CACAE;">
+            <th class="py-3 px-3">JOUR</th><th class="py-3 px-3">DATE</th><th class="py-3 px-3">PLEINE / BASSE</th>
+            <th class="py-3 px-3">HOULE</th><th class="py-3 px-3">PÉRIODE</th><th class="py-3 px-3">VENT</th><th class="py-3 px-3 text-right">COND.</th>
+          </tr>
+        </thead>
+        <tbody>
+          {jours.map(j => (
+            <tr style="border-top:1px solid rgba(244,248,247,0.15);">
+              <td class="py-4 px-3 font-bebas text-2xl">{j.jour}</td>
+              <td class="py-4 px-3 font-bebas text-2xl" style="color:#3CACAE;">{j.date}</td>
+              <td class="py-4 px-3 font-mono text-sm" style="font-family:monospace; color:#D8E0E0;">{j.mar}</td>
+              <td class="py-4 px-3 font-bebas text-xl">{j.taille}</td>
+              <td class="py-4 px-3 font-bebas text-xl">{j.periode}</td>
+              <td class="py-4 px-3 font-bebas text-xl">{j.vent}</td>
+              <td class="py-4 px-3 text-right"><span class="inline-block px-3 py-1 text-[11px] uppercase tracking-[0.22em] font-bold" style={`background:${colorCond[j.cond]}; color:#0F2A36;`}>{j.cond}</span></td>
+            </tr>
           ))}
-        </div>
-
-        <!-- Encart sécurité -->
-        <div class="mt-6 p-7" style="background-color: #0F2A36; color: #F4F8F7;">
-          <p class="font-inter text-[10.5px] uppercase tracking-[0.3em] mb-3" style="color: #E5C99A;">Engagement sécurité</p>
-          <p class="font-anton text-2xl md:text-3xl leading-snug uppercase" style="font-family: 'Anton', Impact, sans-serif;">
-            On ne sort jamais l'élève si la mer ne le permet pas.
-          </p>
-          <p class="mt-3 font-inter text-[14px] leading-relaxed" style="color: rgba(244, 248, 247, 0.85);">
-            Annulation et remboursement intégral en cas de conditions dangereuses. La sécurité passe avant l'apprentissage, toujours.
-          </p>
-        </div>
-      </div>
+        </tbody>
+      </table>
     </div>
-
-    <!-- Widget Conditions live (mock visuel statique) -->
-    <div class="mt-12 md:mt-16 p-6 md:p-8" style="background-color: #0F2A36; color: #F4F8F7; border-left: 4px solid #3CACAE;">
-      <div class="flex items-center justify-between flex-wrap gap-3 mb-6">
-        <div class="flex items-center gap-3">
-          <span class="relative flex h-2.5 w-2.5" aria-hidden="true">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style="background-color: #3CACAE;"></span>
-            <span class="relative inline-flex rounded-full h-2.5 w-2.5" style="background-color: #3CACAE;"></span>
-          </span>
-          <p class="font-inter text-[11px] uppercase tracking-[0.3em] font-semibold" style="color: #E5C99A;">Conditions live · spot Saint-Leu</p>
-        </div>
-        <p class="font-inter text-[11px] uppercase tracking-[0.25em]" style="color: rgba(244, 248, 247, 0.55);">Mise à jour il y a 12 min</p>
-      </div>
-
-      <ul class="grid grid-cols-2 md:grid-cols-4 gap-px" style="background-color: rgba(60, 172, 174, 0.25);">
-        {[
-          { l: 'Houle', v: '1,2 m', sub: 'WSW · période 12s', icon: '<path d="M2 14c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M2 18c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/>' },
-          { l: 'Vent', v: '15 kt', sub: 'Side-shore E', icon: '<path d="M4 12h12a3 3 0 1 0-3-3"/><path d="M2 16h16a3 3 0 1 1-3 3"/>' },
-          { l: 'Marée', v: 'Montante', sub: 'Pleine à 14h32', icon: '<path d="M12 2v20"/><polyline points="6 8 12 2 18 8"/>' },
-          { l: 'Eau', v: '26 °C', sub: 'Lycra recommandé', icon: '<path d="M12 2.5C8 8 5 12 5 16a7 7 0 0 0 14 0c0-4-3-8-7-13.5z"/>' },
-        ].map((c) => (
-          <li class="p-5" style="background-color: #0F2A36;">
-            <div class="flex items-center gap-2 mb-3" style="color: #3CACAE;">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={c.icon} />
-              <span class="font-inter text-[10px] uppercase tracking-[0.28em] font-semibold">{c.l}</span>
-            </div>
-            <p class="font-anton text-2xl md:text-3xl leading-none uppercase" style="font-family: 'Anton', Impact, sans-serif; color: #F4F8F7;">{c.v}</p>
-            <p class="mt-2 font-inter text-xs" style="color: rgba(244, 248, 247, 0.6);">{c.sub}</p>
-          </li>
-        ))}
-      </ul>
-
-      <p class="mt-5 font-inter italic text-[13px]" style="color: rgba(244, 248, 247, 0.65);">
-        Conditions indicatives — la décision de sortie revient toujours au moniteur sur place.
-      </p>
-    </div>
+    <p class="mt-6 text-[12px] uppercase tracking-[0.22em] font-bold" style="color:#3CACAE;">— Mise à jour quotidienne · données SHOM + windguru</p>
   </div>
 </section>

@@ -1,53 +1,23 @@
 ---
 import data from '../../../data/templates/borddeau.json';
+const year = new Date().getFullYear();
 ---
-
-<footer style="background-color: #0F2A36; color: #F4F8F7;">
-  <div class="max-w-content mx-auto px-6 md:px-10 py-14 md:py-16">
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-10 mb-12">
-
-      <div class="md:col-span-5">
-        <div class="flex items-center gap-3">
-          <svg viewBox="0 0 32 32" class="w-10 h-10" aria-hidden="true">
-            <path d="M2 18 Q8 14 16 18 Q24 22 30 18 L30 24 L2 24 Z" fill="#3CACAE"/>
-            <ellipse cx="16" cy="11" rx="9" ry="2" fill="#E5C99A" stroke="#F4F8F7" stroke-width="0.5"/>
-          </svg>
-          <div class="leading-none">
-            <p class="font-anton text-2xl uppercase" style="font-family: 'Anton', Impact, sans-serif;">Bord d'eau</p>
-            <p class="font-inter text-[10.5px] uppercase tracking-[0.18em] mt-1" style="color: #3CACAE;">— école de surf</p>
-          </div>
-        </div>
-        <p class="mt-5 font-inter text-[14px] leading-relaxed max-w-sm" style="color: rgba(244, 248, 247, 0.8);">
-          {data.info.tagline} — École de surf BEES diplômée à La Réunion depuis {data.info.annee}.
-        </p>
-      </div>
-
-      <div class="md:col-span-3">
-        <p class="font-inter text-[10px] uppercase tracking-[0.3em] mb-3" style="color: #E5C99A;">Cours</p>
-        <ul class="space-y-2 font-inter text-[13.5px]">
-          <li><a href="#formules" class="transition-colors hover:opacity-80">Formules</a></li>
-          <li><a href="#spots" class="transition-colors hover:opacity-80">Spots</a></li>
-          <li><a href="#maree" class="transition-colors hover:opacity-80">Marée</a></li>
-          <li><a href="#materiel" class="transition-colors hover:opacity-80">Sécurité</a></li>
-          <li><a href="#process" class="transition-colors hover:opacity-80">Première session</a></li>
-        </ul>
-      </div>
-
-      <div class="md:col-span-4">
-        <p class="font-inter text-[10px] uppercase tracking-[0.3em] mb-3" style="color: #E5C99A;">L'école</p>
-        <ul class="space-y-2 font-inter text-[13.5px]">
-          <li>{data.info.adresseLigne1}</li>
-          <li>{data.info.adresseLigne2}</li>
-          <li><a href={`tel:${data.info.telephoneHref}`} class="transition-colors hover:opacity-80">{data.info.telephone}</a></li>
-          <li><a href={`mailto:${data.info.email}`} class="transition-colors hover:opacity-80 break-all">{data.info.email}</a></li>
-          <li style="color: rgba(244, 248, 247, 0.7);">Instagram {data.info.instagram}</li>
-        </ul>
-      </div>
+<footer id="contact" class="py-14" style="background:#0F2A36; color:#F4F8F7; border-top:1px solid rgba(244,248,247,0.10);">
+  <div class="max-w-content mx-auto px-6 md:px-10 grid md:grid-cols-3 gap-8">
+    <div>
+      <div class="font-bebas text-4xl">BORD D'EAU</div>
+      <p class="text-[11px] uppercase tracking-[0.28em] mt-1 font-bold" style="color:#FF6B5A;">ÉCOLE DE SURF · RÉUNION</p>
     </div>
-
-    <div class="pt-6 border-t flex flex-col md:flex-row items-start md:items-center justify-between gap-3 font-inter text-[11px]" style="border-color: rgba(229, 201, 154, 0.3); color: rgba(244, 248, 247, 0.65);">
-      <p>© {data.info.annee}–2026 {data.info.nom} · SIRET …{data.info.siret.slice(-5)}</p>
-      <p class="font-anton text-xl uppercase tracking-wider" style="color: #E5C99A; font-family: 'Anton', Impact, sans-serif;">{data.info.tagline}</p>
+    <div class="text-[14px]" style="color:#D8E0E0;">
+      <div class="font-bebas text-xl mb-2" style="color:#3CACAE;">CONTACT</div>
+      <a href={`tel:${data.info.telephoneHref}`}>{data.info.telephone}</a><br/>
+      <a href={`mailto:${data.info.email}`}>{data.info.email}</a><br/>
+      Cabane plage · côte ouest
+    </div>
+    <div class="text-[14px]" style="color:#D8E0E0;">
+      <div class="font-bebas text-xl mb-2" style="color:#3CACAE;">SESSIONS</div>
+      Tous les jours · selon mer<br/>2 créneaux matin · 2 après-midi<br/>Sur réservation · 24h à l'avance
     </div>
   </div>
+  <div class="max-w-content mx-auto px-6 md:px-10 mt-10 pt-5 border-t text-[10px] uppercase tracking-[0.28em] font-bold" style="border-color:rgba(244,248,247,0.10); color:#5A7080;">© {year} BORD D'EAU — DÉMONSTRATION 9SITE4</div>
 </footer>

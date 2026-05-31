@@ -1,142 +1,54 @@
 ---
 import data from '../../../data/templates/concierge.json';
-const waBase = `https://wa.me/${data.info.whatsapp}`;
 ---
-
-<section id="demande" class="bg-concierge-blanc py-24 md:py-36 px-6 md:px-10">
-  <div class="max-w-3xl mx-auto">
-
-    <header class="text-center mb-14">
-      <p class="font-hubot text-[10px] uppercase tracking-[0.4em] text-concierge-laiton mb-6 font-medium">
-        ✦ Demande de service ✦
-      </p>
-      <h2 class="font-volkhov text-concierge-nuit leading-[1.05]" style="font-size: clamp(36px, 5vw, 60px);">
-        Premier contact,
-        <span class="italic text-concierge-laiton">simple et discret.</span>
-      </h2>
-    </header>
-
-    <form id="concierge-form" class="bg-concierge-champagne p-7 md:p-10 border border-concierge-laiton/30 space-y-6" novalidate>
-
-      <p class="font-pinyon text-concierge-laiton text-3xl rotate-[-1deg] mb-2 leading-none">
-        Merci de prendre contact.
-      </p>
-
-      <!-- Service souhaité -->
-      <div>
-        <label for="cc-service" class="block font-hubot text-[10px] uppercase tracking-[0.32em] text-concierge-laiton font-medium mb-2">
-          Service souhaité
-        </label>
-        <select
-          id="cc-service"
-          name="service"
-          required
-          class="w-full h-12 px-4 bg-concierge-blanc border border-concierge-graphite/25 focus:border-concierge-laiton font-volkhov text-concierge-nuit text-base outline-none transition-colors cursor-pointer"
-        >
-          <option value="">— Sélectionner —</option>
-          {data.services.map((s) => <option value={s.titre}>{s.titre}</option>)}
-          <option value="formule">Renseignements sur les formules</option>
-          <option value="autre">Autre / À discuter</option>
-        </select>
-      </div>
-
-      <!-- Formule envisagée -->
-      <div>
-        <label for="cc-formule" class="block font-hubot text-[10px] uppercase tracking-[0.32em] text-concierge-laiton font-medium mb-2">
-          Formule envisagée
-        </label>
-        <div class="grid sm:grid-cols-3 gap-2">
-          {data.formules.map((f, i) => (
-            <label class="cursor-pointer">
-              <input type="radio" name="formule" value={f.label} class="peer sr-only" checked={i === 1} />
-              <span class="block px-4 py-3 bg-concierge-blanc border border-concierge-graphite/25 peer-checked:border-concierge-laiton peer-checked:bg-concierge-laiton/10 font-volkhov text-concierge-nuit text-sm transition-colors text-center">
-                {f.label} · {f.prix} €
-              </span>
-            </label>
-          ))}
-        </div>
-      </div>
-
-      <!-- Coordonnées -->
-      <div class="grid sm:grid-cols-2 gap-5">
-        <div>
-          <label for="cc-nom" class="block font-hubot text-[10px] uppercase tracking-[0.32em] text-concierge-laiton font-medium mb-2">
-            Nom & prénom
-          </label>
-          <input
-            id="cc-nom"
-            name="nom"
-            type="text"
-            required
-            autocomplete="name"
-            class="w-full h-12 px-4 bg-concierge-blanc border border-concierge-graphite/25 focus:border-concierge-laiton font-volkhov text-concierge-nuit text-base outline-none transition-colors"
-          />
-        </div>
-        <div>
-          <label for="cc-tel" class="block font-hubot text-[10px] uppercase tracking-[0.32em] text-concierge-laiton font-medium mb-2">
-            Téléphone
-          </label>
-          <input
-            id="cc-tel"
-            name="telephone"
-            type="tel"
-            required
-            autocomplete="tel"
-            class="w-full h-12 px-4 bg-concierge-blanc border border-concierge-graphite/25 focus:border-concierge-laiton font-volkhov text-concierge-nuit text-base outline-none transition-colors tabular-nums"
-          />
-        </div>
-      </div>
-
-      <div>
-        <label for="cc-message" class="block font-hubot text-[10px] uppercase tracking-[0.32em] text-concierge-laiton font-medium mb-2">
-          Précisions <span class="lowercase italic font-volkhov text-concierge-graphite/55 normal-case">(facultatif)</span>
-        </label>
-        <textarea
-          id="cc-message"
-          name="message"
-          rows="3"
-          placeholder="Contexte, besoins particuliers, attentes…"
-          class="w-full px-4 py-3 bg-concierge-blanc border border-concierge-graphite/25 focus:border-concierge-laiton font-volkhov text-concierge-nuit text-base placeholder:text-concierge-graphite/45 outline-none transition-colors resize-none"
-        ></textarea>
-      </div>
-
-      <!-- Submit -->
-      <div class="text-center pt-4 border-t border-concierge-laiton/30">
-        <button
-          type="submit"
-          class="inline-flex items-center justify-center h-13 px-9 bg-concierge-nuit text-concierge-champagne font-hubot text-sm uppercase tracking-[0.18em] font-medium hover:bg-concierge-encre transition-colors duration-500"
-          style="height: 52px;"
-        >
-          Envoyer la demande
-        </button>
-        <p class="mt-4 font-volkhov italic text-concierge-graphite/65 text-sm">
-          Réponse personnelle sous 4 heures, en heures ouvrées.
+<section id="contact" class="py-20 md:py-28" style="background:#0F1B2E; color:#F7F4EE;">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+    <div class="grid md:grid-cols-5 gap-12 lg:gap-20">
+      <div class="md:col-span-2">
+        <div class="text-[11px] uppercase tracking-[0.28em] mb-4" style="color:#B89758;">Contact</div>
+        <h2 class="font-cormorant text-4xl md:text-5xl leading-tight mb-6">
+          Parlons de votre <em class="italic" style="color:#B89758;">bien.</em>
+        </h2>
+        <p class="text-[15px] leading-relaxed mb-8" style="color:#D8D2C0;">
+          Premier échange téléphonique de 20 minutes pour comprendre votre situation, puis visite sur place gratuite si pertinent. Réponse sous 48h.
         </p>
+        <ul class="space-y-3 text-[15px]" style="color:#F7F4EE;">
+          <li><span class="text-[11px] uppercase tracking-[0.22em] block" style="color:#B89758;">Téléphone</span><a href={`tel:${data.info.telephoneHref}`}>{data.info.telephone}</a></li>
+          <li><span class="text-[11px] uppercase tracking-[0.22em] block" style="color:#B89758;">Email</span><a href={`mailto:${data.info.email}`}>{data.info.email}</a></li>
+          <li><span class="text-[11px] uppercase tracking-[0.22em] block" style="color:#B89758;">Zone</span>La Réunion · côte ouest et sud</li>
+          <li><span class="text-[11px] uppercase tracking-[0.22em] block" style="color:#B89758;">Horaires</span>Lundi → samedi · 8h – 20h</li>
+        </ul>
       </div>
-    </form>
+      <form class="md:col-span-3 grid gap-4" onsubmit="event.preventDefault(); alert('Démonstration — formulaire non actif.');">
+        <div class="grid md:grid-cols-2 gap-4">
+          <label class="block">
+            <span class="text-[11px] uppercase tracking-[0.22em] block mb-2" style="color:#B89758;">Nom</span>
+            <input required type="text" class="w-full h-12 px-4 bg-transparent border" style="border-color:rgba(247,244,238,0.30); color:#F7F4EE;"/>
+          </label>
+          <label class="block">
+            <span class="text-[11px] uppercase tracking-[0.22em] block mb-2" style="color:#B89758;">Téléphone</span>
+            <input required type="tel" class="w-full h-12 px-4 bg-transparent border" style="border-color:rgba(247,244,238,0.30); color:#F7F4EE;"/>
+          </label>
+        </div>
+        <label class="block">
+          <span class="text-[11px] uppercase tracking-[0.22em] block mb-2" style="color:#B89758;">Email</span>
+          <input required type="email" class="w-full h-12 px-4 bg-transparent border" style="border-color:rgba(247,244,238,0.30); color:#F7F4EE;"/>
+        </label>
+        <label class="block">
+          <span class="text-[11px] uppercase tracking-[0.22em] block mb-2" style="color:#B89758;">Type de demande</span>
+          <select class="w-full h-12 px-4 bg-transparent border" style="border-color:rgba(247,244,238,0.30); color:#F7F4EE;">
+            <option style="color:#0F1B2E;">Propriétaire — confier mon bien</option>
+            <option style="color:#0F1B2E;">Voyageur — préparer mon séjour</option>
+            <option style="color:#0F1B2E;">Autre</option>
+          </select>
+        </label>
+        <label class="block">
+          <span class="text-[11px] uppercase tracking-[0.22em] block mb-2" style="color:#B89758;">Votre message</span>
+          <textarea rows="5" class="w-full px-4 py-3 bg-transparent border" style="border-color:rgba(247,244,238,0.30); color:#F7F4EE;"></textarea>
+        </label>
+        <button class="mt-2 h-12 text-[12px] uppercase tracking-[0.22em] font-semibold transition-colors"
+                style="background:#B89758; color:#0F1B2E;">Envoyer ma demande</button>
+      </form>
+    </div>
   </div>
 </section>
-
-<script define:vars={{ waBase }}>
-  const form = document.getElementById('concierge-form');
-  if (form) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const fd = new FormData(form);
-      const service = fd.get('service') || '';
-      const formule = fd.get('formule') || '';
-      const nom = fd.get('nom') || '';
-      const tel = fd.get('telephone') || '';
-      const message = fd.get('message') || '';
-      const text = [
-        'Bonjour, je souhaite vous contacter pour une demande de service.',
-        service ? `Service : ${service}` : '',
-        formule ? `Formule : ${formule}` : '',
-        nom ? `Nom : ${nom}` : '',
-        tel ? `Tél : ${tel}` : '',
-        message ? `Précisions : ${message}` : '',
-      ].filter(Boolean).join('\n');
-      window.open(`${waBase}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
-    });
-  }
-</script>

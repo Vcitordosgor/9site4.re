@@ -4,15 +4,16 @@ import '@fontsource/crimson-pro/latin-500.css';
 import '@fontsource/crimson-pro/latin-600.css';
 import '@fontsource/crimson-pro/latin-400-italic.css';
 import '@fontsource/caveat/latin-400.css';
-import '@fontsource/caveat/latin-500.css';
+import '@fontsource/inter/latin-400.css';
+import '@fontsource/inter/latin-500.css';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSeo } from '../../lib/seo';
-import { localBusinessSchema } from '../../lib/businessSchema';
-import painleveData from '../../data/templates/painleve.json';
+import { localBusinessSchema } from "../../lib/businessSchema";
+import data from '../../data/templates/painleve.json';
 
 import Header from '../../components/templates/boulangerie/Header.astro';
-import HeroKraft from '../../components/templates/boulangerie/HeroKraft.astro';
+import Hero from '../../components/templates/boulangerie/HeroKraft.astro';
 import Manifesto from '../../components/templates/boulangerie/Manifesto.astro';
 import Four from '../../components/templates/boulangerie/Four.astro';
 import Levain from '../../components/templates/boulangerie/Levain.astro';
@@ -23,39 +24,18 @@ import Trouver from '../../components/templates/boulangerie/Trouver.astro';
 import Faq from '../../components/templates/boulangerie/Faq.astro';
 import Footer from '../../components/templates/boulangerie/Footer.astro';
 
-const businessLD = localBusinessSchema(painleveData, 'Bakery');
+const businessLD = localBusinessSchema(data, 'Bakery');
 ---
 
 <BaseLayout seo={getSeo('templateBoulangerie')} bare={true}>
   <Fragment slot="head">
     {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
-    <link rel="preload" as="image" href={painleveData.info.photoHero} fetchpriority="high" />
+    <link rel="preload" as="image" href="/images/boulangerie/hero.webp" fetchpriority="high" />
   </Fragment>
 
   <Header />
-
-  <main class="font-crimson-pro" style="background-color: #F5EBD5; color: #1A1614;">
-    <HeroKraft />
-
-    <!-- Bandeau signature : levain · farines bio · cuisson sole · pétrissage main -->
-    <div class="py-4 overflow-hidden border-y" style="background-color:#1A1614;color:#F5EBD5;border-color:rgba(200,155,60,0.35);" aria-hidden="true">
-      <div class="flex gap-12 whitespace-nowrap" style="animation: boul-marquee 42s linear infinite; width: max-content;">
-        {Array.from({ length: 2 }).map(() => (
-          <div class="flex gap-12 items-center font-caveat" style="font-size:28px;">
-            <span>Levain naturel</span><span style="color:#C89B3C;">·</span>
-            <span>Farines bio T80</span><span style="color:#C89B3C;">·</span>
-            <span>Pétrissage main</span><span style="color:#C89B3C;">·</span>
-            <span>Cuisson sur sole</span><span style="color:#C89B3C;">·</span>
-            <span>Pain du jour</span><span style="color:#C89B3C;">·</span>
-          </div>
-        ))}
-      </div>
-    </div>
-    <style>
-      @keyframes boul-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-      @media (prefers-reduced-motion: reduce) { [style*="boul-marquee"] { animation: none !important; } }
-    </style>
-
+  <main id="top" style="background:#F5EBD5; color:#1A1614; font-family:'Crimson Pro',Georgia,serif;">
+    <Hero />
     <Manifesto />
     <Four />
     <Levain />
@@ -65,35 +45,5 @@ const businessLD = localBusinessSchema(painleveData, 'Bakery');
     <Trouver />
     <Faq />
   </main>
-
   <Footer />
-
-  <!-- Sticky bottom CTA mobile-only -->
-  <a
-    id="boul-sticky-cta"
-    href="#calendrier"
-    data-visible="false"
-    class="md:hidden fixed bottom-4 inset-x-4 z-40 inline-flex items-center justify-center h-14 px-6 text-[12px] font-semibold uppercase tracking-[0.22em] font-crimson-pro rounded-full transition-all duration-300 ease-out data-[visible=false]:opacity-0 data-[visible=false]:translate-y-4 data-[visible=false]:pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0"
-    style="background-color:#1A1614;color:#F5EBD5;box-shadow: 0 12px 32px rgb(26 22 20 / 0.45);"
-  >
-    Réserver mes pains
-  </a>
-  <script>
-    const sticky = document.getElementById('boul-sticky-cta');
-    const target = document.getElementById('calendrier') || document.getElementById('trouver');
-    if (sticky) {
-      const update = () => {
-        const past = window.scrollY > 480;
-        let inSection = false;
-        if (target) {
-          const r = target.getBoundingClientRect();
-          inSection = r.top < window.innerHeight && r.bottom > 80;
-        }
-        sticky.dataset.visible = String(past && !inSection);
-      };
-      update();
-      window.addEventListener('scroll', update, { passive: true });
-      window.addEventListener('resize', update, { passive: true });
-    }
-  </script>
 </BaseLayout>

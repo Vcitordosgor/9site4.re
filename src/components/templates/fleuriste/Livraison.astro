@@ -1,54 +1,41 @@
 ---
-/**
- * Livraison — zones desservies & délais.
- * Tarifs et zones indicatifs ; à confirmer à la commande.
- */
-
+import data from '../../../data/templates/frangipane.json';
 const zones = [
-  { nom: 'Centre-ville', delai: '2 h', tarif: '6€', detail: 'Du mardi au samedi, jusqu’à 17h.' },
-  { nom: 'Communes limitrophes', delai: '½ journée', tarif: '12€', detail: 'Créneaux matin ou après-midi.' },
-  { nom: 'Reste du département', delai: 'J+1', tarif: '18€', detail: 'Livraison le lendemain ouvré.' },
-  { nom: 'Hors département', delai: 'sur devis', tarif: '—', detail: 'Études au cas par cas, partenaires locaux.' },
+  { zone: 'Atelier (retrait)', delai: 'Le jour même', prix: 'Gratuit' },
+  { zone: 'Côte ouest', delai: '2h', prix: '8€' },
+  { zone: 'Saint-Denis & Nord', delai: '2-3h', prix: '12€' },
+  { zone: 'Sud & Est', delai: '24h', prix: '15€' },
+  { zone: 'Hauts', delai: '24h', prix: '20€' },
 ];
 ---
-
-<section id="livraison" class="py-20 md:py-28" style="background-color: #F4E6E0;">
-  <div class="max-w-content mx-auto px-6 md:px-10">
-
-    <header class="max-w-2xl mb-10 md:mb-14">
-      <p class="font-jakarta text-[11px] uppercase tracking-[0.45em] mb-4" style="color: #C49B62;">
-        — Livraison —
+<section id="livraison" class="py-24 md:py-32" style="background:#FBF3EE;">
+  <div class="max-w-content mx-auto px-6 md:px-10 grid md:grid-cols-2 gap-12 lg:gap-20">
+    <div>
+      <p class="font-cormorant italic text-2xl mb-2" style="color:#5C7448;">livraison —</p>
+      <h2 class="font-cormorant text-5xl md:text-6xl leading-tight mb-6" style="color:#2A2520;">Partout sur <em class="italic" style="color:#C49B62;">l'île.</em></h2>
+      <p class="text-lg leading-relaxed mb-5" style="color:#5A4F45;">
+        Nous livrons à La Réunion 6 jours sur 7. Commande passée avant 11h : livraison le jour même sur la côte ouest. Hors zone ou hors créneau : devis express.
       </p>
-      <h2 class="font-cormorant leading-[1.05]" style="font-size: clamp(34px, 5vw, 56px); color: #2A2520;">
-        Zones desservies
-        <em class="italic" style="color: #5C7448;">& délais.</em>
-      </h2>
-      <p class="mt-5 font-jakarta text-[15px] leading-relaxed" style="color: rgba(42, 37, 32, 0.78);">
-        Livraison à vélo ou en utilitaire selon la distance. Bouquets
-        préparés le jour même, fleurs en eau jusqu’au départ.
-      </p>
-    </header>
-
-    <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px" style="background-color: rgba(42, 37, 32, 0.12);">
-      {zones.map((z) => (
-        <li class="p-7 flex flex-col" style="background-color: #F4E6E0;">
-          <p class="font-jakarta text-[10px] uppercase tracking-[0.3em]" style="color: #C49B62;">{z.delai}</p>
-          <h3 class="mt-3 font-cormorant leading-tight" style="font-size: clamp(24px, 3vw, 30px); color: #2A2520;">
-            {z.nom}
-          </h3>
-          <p class="mt-3 font-jakarta text-[13px] leading-relaxed flex-1" style="color: rgba(42, 37, 32, 0.75);">
-            {z.detail}
-          </p>
-          <p class="mt-5 font-cormorant tabular-nums" style="font-size: clamp(22px, 2.4vw, 28px); color: #5C7448;">
-            {z.tarif}
-          </p>
-        </li>
-      ))}
-    </ul>
-
-    <p class="mt-6 font-jakarta text-[12px] italic leading-relaxed" style="color: rgba(42, 37, 32, 0.65);">
-      Tarifs indicatifs, à confirmer à la commande selon le créneau choisi.
-      Pour une livraison express en moins d’1h, demandez-nous directement.
-    </p>
+      <div class="flex flex-wrap gap-3">
+        <a href={`tel:${data.info.telephoneHref}`} class="inline-flex items-center h-12 px-7 text-[12px] uppercase tracking-[0.22em] font-semibold" style="background:#2A2520; color:#FBF3EE;">Appeler · {data.info.telephone}</a>
+        <a href={`mailto:${data.info.email}`} class="inline-flex items-center h-12 px-7 text-[12px] uppercase tracking-[0.22em] font-semibold border" style="border-color:#2A2520; color:#2A2520;">Email</a>
+      </div>
+    </div>
+    <table class="w-full text-left">
+      <thead>
+        <tr class="text-[11px] uppercase tracking-[0.22em]" style="color:#5C7448;">
+          <th class="py-3">Zone</th><th class="py-3">Délai</th><th class="py-3 text-right">Tarif</th>
+        </tr>
+      </thead>
+      <tbody style="color:#2A2520;">
+        {zones.map(z => (
+          <tr class="border-t" style="border-color:rgba(42,37,32,0.15);">
+            <td class="py-4 font-cormorant italic text-xl">{z.zone}</td>
+            <td class="py-4 text-[14px]">{z.delai}</td>
+            <td class="py-4 text-right font-cormorant text-xl" style="color:#C49B62;">{z.prix}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   </div>
 </section>

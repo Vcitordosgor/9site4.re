@@ -1,40 +1,29 @@
 ---
-/**
- * Services — 8 services présentés en menu d'hôtel.
- * Format liste à puces dorées, pas de cards photo.
- */
-import data from '../../../data/templates/concierge.json';
+const services = [
+  { num: '01', titre: 'Check-in & check-out', texte: 'Accueil personnalisé des voyageurs 7j/7, remise des clés, état des lieux photographique, kit de bienvenue. Disponibilité jusqu\'à 22h.' },
+  { num: '02', titre: 'Ménage hôtelier', texte: 'Équipe interne formée aux standards de l\'hôtellerie. Linge fourni, dressing impeccable, contrôle qualité après chaque rotation.' },
+  { num: '03', titre: 'Maintenance technique', texte: 'Réseau d\'artisans partenaires : plomberie, climatisation, piscine, jardin. Interventions tracées, devis transparents.' },
+  { num: '04', titre: 'Accueil multilingue', texte: 'Français, anglais, allemand. Recommandations sur-mesure restaurants, excursions, transferts aéroport.' },
+];
 ---
-
-<section id="services" class="bg-concierge-champagne py-24 md:py-36 px-6 md:px-10">
-  <div class="max-w-content mx-auto">
-
-    <header class="text-center mb-16 md:mb-20 max-w-2xl mx-auto">
-      <p class="font-hubot text-[10px] uppercase tracking-[0.4em] text-concierge-laiton mb-6 font-medium">
-        ✦ Nos services ✦
-      </p>
-      <h2 class="font-volkhov text-concierge-nuit leading-[1.05]" style="font-size: clamp(36px, 5vw, 64px);">
-        Huit prestations,
-        <span class="block italic text-concierge-laiton">à composer librement.</span>
+<section id="services" class="py-20 md:py-28" style="background:#F7F4EE;">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+    <div class="mb-14 md:mb-20 max-w-2xl">
+      <div class="text-[11px] uppercase tracking-[0.28em] mb-4" style="color:#7A6A4E;">Nos services</div>
+      <h2 class="font-cormorant text-4xl md:text-5xl leading-tight" style="color:#0F1B2E;">
+        Quatre métiers, <em class="italic">un seul interlocuteur.</em>
       </h2>
-    </header>
-
-    <!-- Grid 2x4 services -->
-    <ul class="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12 md:gap-y-14">
-      {data.services.map((s, i) => (
-        <li>
-          <p class="font-hubot text-[10px] uppercase tracking-[0.32em] text-concierge-laiton mb-3 font-medium">
-            ✦ {String(i + 1).padStart(2, '0')}
-          </p>
-          <h3 class="font-volkhov text-concierge-nuit text-xl md:text-2xl leading-tight mb-3">
-            {s.titre}
-          </h3>
-          <p class="font-hubot text-concierge-graphite text-sm leading-[1.75]">
-            {s.description}
-          </p>
-          <span class="block mt-4 h-px w-12 bg-concierge-laiton/40" aria-hidden="true"></span>
-        </li>
+    </div>
+    <div class="grid md:grid-cols-2 gap-px" style="background:rgba(15,27,46,0.10);">
+      {services.map(s => (
+        <article class="p-8 md:p-10" style="background:#F7F4EE;">
+          <div class="flex items-baseline gap-5 mb-4">
+            <span class="font-cormorant italic text-3xl" style="color:#7A6A4E;">{s.num}</span>
+            <h3 class="font-cormorant text-2xl md:text-3xl" style="color:#0F1B2E;">{s.titre}</h3>
+          </div>
+          <p class="text-[15px] leading-relaxed" style="color:#3D4453;">{s.texte}</p>
+        </article>
       ))}
-    </ul>
+    </div>
   </div>
 </section>

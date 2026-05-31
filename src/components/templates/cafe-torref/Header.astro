@@ -1,81 +1,27 @@
 ---
 import data from '../../../data/templates/brulerie.json';
-
-const navLinks = [
+const nav = [
   { href: '#origines', label: 'Origines' },
-  { href: '#methodes', label: 'Méthodes' },
-  { href: '#atelier', label: 'L\'atelier' },
+  { href: '#methodes', label: 'Torréfaction' },
+  { href: '#atelier', label: 'Atelier' },
   { href: '#abonnement', label: 'Abonnement' },
 ];
 ---
-
-<header
-  id="brulerie-header"
-  data-scrolled="false"
-  class="sticky top-0 z-50 transition-[background-color,backdrop-filter,box-shadow] duration-500"
-  style="border-bottom: 1px solid rgba(62, 42, 31, 0.10);"
->
+<header id="cf-header" data-scrolled="false" class="sticky top-0 z-50 transition-all duration-500 border-b"
+  style="background:rgba(232,221,199,0.96); border-color:rgba(26,15,10,0.15);">
   <div class="max-w-content mx-auto px-6 md:px-10 h-16 md:h-20 flex items-center justify-between gap-6">
-
-    <a href="#top" class="flex items-center gap-3 group" aria-label="Brûlerie d'altitude — accueil">
-      <!-- Picto grain café -->
-      <svg viewBox="0 0 32 32" class="w-7 h-7" style="color: #3E2A1F;" aria-hidden="true">
-        <ellipse cx="16" cy="16" rx="9" ry="11" fill="currentColor" />
-        <path d="M16 5 Q16 16 16 27" stroke="#E8DDC7" stroke-width="1" fill="none"/>
-      </svg>
-      <div class="flex flex-col leading-none">
-        <span class="font-plex-serif font-semibold text-base md:text-lg" style="color: #1A0F0A; font-family: 'IBM Plex Serif', Georgia, serif;">Brûlerie d'altitude</span>
-        <span class="font-dm-mono text-[10px] md:text-[11px] uppercase tracking-[0.2em] -mt-0.5" style="color: #B57A4A;">— torréfaction péi</span>
-      </div>
+    <a href="#top" class="flex items-baseline gap-2" aria-label="Brûlerie d'altitude">
+      <svg viewBox="0 0 28 28" class="w-7 h-7" aria-hidden="true"><ellipse cx="14" cy="14" rx="6" ry="9" fill="#3E2A1F"/><path d="M14 5 Q14 14 14 23" stroke="#B57A4A" stroke-width="0.8" fill="none"/></svg>
+      <span class="font-instrument italic text-xl md:text-2xl" style="color:#1A0F0A;">Brûlerie d'altitude</span>
     </a>
-
-    <nav class="hidden md:flex items-center gap-7 lg:gap-9 font-dm-mono text-[11.5px] uppercase tracking-[0.15em]" aria-label="Navigation">
-      {navLinks.map((link) => (
-        <a href={link.href} class="transition-colors duration-300 hover:opacity-70" style="color: #1A0F0A;">
-          {link.label}
-        </a>
-      ))}
+    <nav class="hidden md:flex items-center gap-7 font-mono uppercase text-[11px] tracking-[0.16em]" style="font-family:'DM Mono',monospace; color:#1A0F0A;" aria-label="Navigation">
+      {nav.map(n => <a href={n.href} class="hover:opacity-60 transition-opacity">{n.label}</a>)}
     </nav>
-
-    <a
-      href={`tel:${data.info.telephoneHref}`}
-      class="hidden md:inline-flex items-center justify-center h-10 px-5 font-dm-mono font-semibold text-[11.5px] uppercase tracking-[0.16em] rounded-none transition-opacity hover:opacity-90"
-      style="background-color: #1A0F0A; color: #E8DDC7;"
-    >
-      [ abonnement ]
-    </a>
-
-    <a
-      href={`tel:${data.info.telephoneHref}`}
-      class="md:hidden inline-flex items-center justify-center h-11 px-4 font-dm-mono font-semibold text-[11.5px] uppercase tracking-wider"
-      style="background-color: #1A0F0A; color: #E8DDC7;"
-      aria-label="Appeler"
-    >
-      Appel
-    </a>
+    <a href="#abonnement" class="hidden md:inline-flex items-center h-10 px-5 text-[11px] uppercase tracking-[0.16em] font-semibold transition-colors" style="font-family:'DM Mono',monospace; background:#1A0F0A; color:#E8DDC7;">S'abonner</a>
+    <a href={`tel:${data.info.telephoneHref}`} class="md:hidden inline-flex items-center h-10 px-4 text-[11px] uppercase tracking-wider font-semibold" style="font-family:'DM Mono',monospace; background:#1A0F0A; color:#E8DDC7;">Appeler</a>
   </div>
 </header>
-
-<style>
-  #brulerie-header {
-    background-color: rgb(232 221 199 / 0.96);
-  }
-  #brulerie-header[data-scrolled='true'] {
-    background-color: rgb(232 221 199 / 0.97);
-    -webkit-backdrop-filter: saturate(180%) blur(12px);
-    backdrop-filter: saturate(180%) blur(12px);
-    box-shadow: 0 1px 3px rgb(62 42 31 / 0.08);
-  }
-  .font-plex-serif {
-    font-family: 'IBM Plex Serif', Georgia, serif;
-  }
-</style>
-
 <script>
-  const header = document.getElementById('brulerie-header');
-  if (header) {
-    const update = () => { header.dataset.scrolled = String(window.scrollY > 8); };
-    update();
-    window.addEventListener('scroll', update, { passive: true });
-  }
+  const h = document.getElementById('cf-header');
+  if (h) { const u = () => { h.dataset.scrolled = String(window.scrollY > 8); }; u(); window.addEventListener('scroll', u, { passive: true }); }
 </script>

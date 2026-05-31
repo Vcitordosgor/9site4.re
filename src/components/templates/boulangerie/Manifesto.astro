@@ -1,17 +1,34 @@
 ---
-import data from '../../../data/templates/painleve.json';
+const principes = [
+  { num: 'I', titre: 'Pétrissage main', texte: 'Trente minutes par fournée. Le pétrin électrique chauffe la pâte ; la main l\'écoute. C\'est plus long, c\'est meilleur.' },
+  { num: 'II', titre: 'Fermentation longue', texte: '24 à 36 heures de pousse au frais. Le gluten se transforme, les arômes se développent, la digestion devient légère.' },
+  { num: 'III', titre: 'Levain seulement', texte: 'Aucune levure boulangère industrielle. Notre chef de levain a 7 ans — il vit dans un pot, et il décide du goût.' },
+  { num: 'IV', titre: 'Farines locales', texte: 'Farine de blé bio bourbon, sarrasin péi, maïs grillé du Tampon. Moulin sur pierre, traçable au sac.' },
+];
 ---
-
-<section class="py-20 md:py-28 relative" style="background-color: #C89B3C;">
-  <div class="max-w-4xl mx-auto px-6 md:px-10 text-center">
-    <p class="font-crimson-pro text-[11px] uppercase tracking-[0.45em] mb-6" style="color: rgba(26, 22, 20, 0.75);">— Le manifeste du fournil —</p>
-    <p class="font-crimson-pro font-medium italic leading-[1.4]" style="color: #1A1614; font-size: clamp(22px, 3vw, 32px);">
-      « {data.manifesto} »
-    </p>
-    <div class="mt-8 flex items-center justify-center gap-4">
-      <span class="block w-12 h-px" style="background-color: rgba(26, 22, 20, 0.4);"></span>
-      <span class="font-caveat text-2xl" style="color: #1A1614;">{data.info.fondateur}</span>
-      <span class="block w-12 h-px" style="background-color: rgba(26, 22, 20, 0.4);"></span>
+<section id="manifeste" class="py-24 md:py-32" style="background:#F5EBD5;">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+    <div class="grid md:grid-cols-2 gap-12 lg:gap-20">
+      <div class="md:sticky md:top-28 self-start">
+        <p class="font-caveat text-2xl mb-2" style="color:#7A5C28;">notre manifeste —</p>
+        <h2 class="font-crimson-pro text-5xl md:text-6xl leading-[1.05]" style="color:#1A1614;">
+          Quatre principes, <em class="italic" style="color:#C89B3C;">aucun raccourci.</em>
+        </h2>
+        <p class="mt-6 text-lg leading-relaxed" style="color:#3A3128;">
+          Nous faisons du pain comme on le faisait avant la levure industrielle. Plus de temps, plus de soin, moins de quantité. C'est volontaire.
+        </p>
+      </div>
+      <ul class="space-y-px" style="background:rgba(26,22,20,0.12);">
+        {principes.map(p => (
+          <li class="p-7 md:p-8" style="background:#F5EBD5;">
+            <div class="flex items-baseline gap-5 mb-2">
+              <span class="font-crimson-pro italic text-4xl" style="color:#C89B3C;">{p.num}</span>
+              <h3 class="font-crimson-pro text-2xl" style="color:#1A1614;">{p.titre}</h3>
+            </div>
+            <p class="text-[15px] leading-relaxed pl-12" style="color:#3A3128;">{p.texte}</p>
+          </li>
+        ))}
+      </ul>
     </div>
   </div>
 </section>

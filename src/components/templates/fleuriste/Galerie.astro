@@ -1,32 +1,23 @@
 ---
-import data from '../../../data/templates/frangipane.json';
+const photos = [
+  '/images/fleuriste/extra-1.webp',
+  '/images/fleuriste/bouquet.webp',
+  '/images/fleuriste/extra-3.webp',
+  '/images/fleuriste/extra-4.webp',
+  '/images/fleuriste/extra-5.webp',
+  '/images/fleuriste/extra-6.webp',
+];
 ---
-
-<section id="galerie" class="py-20 md:py-28 relative" style="background-color: #2A2520; color: #F4E6E0;">
+<section class="py-24 md:py-32" style="background:#5C7448; color:#FBF3EE;">
   <div class="max-w-content mx-auto px-6 md:px-10">
-
-    <div class="text-center max-w-2xl mx-auto mb-14 md:mb-20">
-      <p class="font-jakarta text-[11px] uppercase tracking-[0.45em] mb-4" style="color: #C49B62;">— Galerie —</p>
-      <h2 class="font-cormorant leading-[0.95]" style="font-size: clamp(40px, 6vw, 72px); font-weight: 400;">
-        Quelques compositions
-        <em class="block italic mt-1" style="color: #C49B62;">de l'atelier.</em>
-      </h2>
+    <div class="mb-12 max-w-2xl">
+      <p class="font-cormorant italic text-2xl mb-2" style="color:#F4E6E0;">notre galerie —</p>
+      <h2 class="font-cormorant text-5xl md:text-6xl leading-tight">Quelques compositions <em class="italic" style="color:#F4E6E0;">récentes.</em></h2>
     </div>
-
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-      {data.galerie.map((g, i) => (
-        <figure class={`relative overflow-hidden group ${i === 0 || i === 3 ? 'md:row-span-2 md:aspect-[3/4]' : 'aspect-square'}`}>
-          <img
-            src={g.src}
-            alt={g.alt}
-            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            loading="lazy"
-            decoding="async"
-          />
-          <!-- Overlay tag -->
-          <div class="absolute top-3 left-3 px-2.5 py-1 font-jakarta text-[9.5px] uppercase tracking-[0.2em] font-semibold rounded-full" style="background-color: rgba(42, 37, 32, 0.75); color: #C49B62; backdrop-filter: blur(4px);">
-            {g.tag}
-          </div>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+      {photos.map((p, i) => (
+        <figure class={`overflow-hidden ${i === 0 || i === 4 ? 'md:row-span-2' : ''}`}>
+          <img src={p} alt="" class={`w-full object-cover transition-transform duration-700 hover:scale-105 ${i === 0 || i === 4 ? 'h-full min-h-[480px]' : 'aspect-square'}`} loading="lazy"/>
         </figure>
       ))}
     </div>
