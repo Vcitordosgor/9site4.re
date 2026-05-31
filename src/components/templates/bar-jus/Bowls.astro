@@ -44,14 +44,13 @@ import data from '../../../data/templates/lagon.json';
             'lg:col-span-5 relative',
             i % 2 === 1 ? 'lg:order-2' : '',
           ]}>
-            <div class="relative aspect-square max-w-md mx-auto rounded-full overflow-hidden ring-8 ring-lagon-charbon" style={`transform: rotate(${i % 2 === 0 ? -3 : 3}deg);`}>
+            <div class="relative aspect-[4/5] max-w-md mx-auto rounded-[2.5rem] overflow-hidden ring-4 ring-lagon-charbon bg-lagon-creme" style={`transform: rotate(${i % 2 === 0 ? -2 : 2}deg);`}>
               <img
                 src={b.photo}
                 alt={b.alt ?? b.nom}
                 loading="lazy"
                 decoding="async"
-                class="w-full h-full object-cover"
-                style="object-position: center 40%;"
+                class="w-full h-full object-cover object-center"
               />
             </div>
             <!-- Sticker numéro -->
