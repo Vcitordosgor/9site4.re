@@ -13,18 +13,18 @@
     "whatsapp": "262692123456",
     "email": "agence@atelier-mahatma.re",
     "instagram": "@atelier.mahatma",
-    "siret": "11223344500017",
+    "siret": "000 000 000 00000",
     "ordre": "Inscrit au Conseil régional de l'Ordre des architectes — La Réunion",
     "annee": "2014"
   },
   "heroProjet": {
-    "nom": "Villa La Source",
+    "nom": "Maison tropicale",
     "annee": "2024",
     "lieu": "La Réunion",
     "typologie": "Maison individuelle",
-    "surface": "280 m²",
-    "description": "Maison familiale en bois local, ventilation traversante naturelle, toiture papang inversée. Pas de climatisation.",
-    "photo": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1800&q=85"
+    "surface": "Surface généreuse",
+    "description": "Maison familiale en bois local, ventilation traversante naturelle, toiture inspirée du papang. Pensée pour se passer de climatisation.",
+    "photo": "/images/architecte/ecole.webp"
   },
   "atelier": {
     "intro": "L'Atelier Mahatma est une agence d'architecture installée à La Réunion depuis 2014. Trois architectes, une vingtaine de projets actifs, des maîtrises d'ouvrage privées et publiques.",
@@ -56,18 +56,18 @@
   },
   "projets": [
     {
-      "nom": "Villa La Source",
+      "nom": "Maison tropicale",
       "annee": "2024",
       "lieu": "La Réunion",
-      "typologie": "Maison individuelle · 280 m²",
+      "typologie": "Maison individuelle · ventilation naturelle, bois local",
       "statut": "Livré",
-      "photo": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=80"
+      "photo": "/images/architecte/ecole.webp"
     },
     {
       "nom": "Bureaux Volkanik",
       "annee": "2023",
       "lieu": "La Réunion",
-      "typologie": "Tertiaire · 600 m²",
+      "typologie": "Tertiaire · confort d'été passif",
       "statut": "Livré",
       "photo": "/images/architecte/bureaux.webp"
     },
@@ -75,49 +75,9 @@
       "nom": "Lotissement Les Îlets",
       "annee": "2023",
       "lieu": "La Réunion",
-      "typologie": "12 logements collectifs",
+      "typologie": "Logements collectifs · trame compacte",
       "statut": "Livré",
       "photo": "/images/architecte/lotissement.webp"
-    },
-    {
-      "nom": "Maison Carrère",
-      "annee": "2022",
-      "lieu": "La Réunion",
-      "typologie": "Restauration patrimoine",
-      "statut": "Livré · primé",
-      "photo": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=900&q=80"
-    },
-    {
-      "nom": "École primaire",
-      "annee": "2022",
-      "lieu": "La Réunion",
-      "typologie": "Public · 1 200 m²",
-      "statut": "Livré",
-      "photo": "/images/architecte/ecole.webp"
-    },
-    {
-      "nom": "Maison 162",
-      "annee": "2021",
-      "lieu": "La Réunion",
-      "typologie": "Commerce · 80 m²",
-      "statut": "Livré",
-      "photo": "/images/architecte/magasin.webp"
-    },
-    {
-      "nom": "Bibliothèque Aurore",
-      "annee": "2021",
-      "lieu": "La Réunion",
-      "typologie": "Public · 950 m²",
-      "statut": "Livré",
-      "photo": "https://images.unsplash.com/photo-1568667256549-094345857637?w=900&q=80"
-    },
-    {
-      "nom": "Maison Tropic",
-      "annee": "2020",
-      "lieu": "La Réunion",
-      "typologie": "Maison individuelle · 195 m²",
-      "statut": "Livré",
-      "photo": "https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?w=900&q=80"
     }
   ],
   "phases": [
@@ -175,31 +135,24 @@
   "distinctions": [
     {
       "annee": "2024",
-      "prix": "Équerre d'Argent",
+      "prix": "Concours régional d'architecture",
       "categorie": "Maisons individuelles",
       "statut": "Finaliste",
-      "projet": "Villa La Source"
+      "projet": "Maison tropicale"
     },
     {
       "annee": "2023",
-      "prix": "Réunion Architecture Award",
-      "categorie": "Tertiaire",
+      "prix": "Trophée tertiaire bas carbone",
+      "categorie": "Bureaux & ateliers",
       "statut": "Lauréat",
-      "projet": "Bureaux Volcanic"
+      "projet": "Bureaux Volkanik"
     },
     {
       "annee": "2022",
-      "prix": "Prix Patrimoine Océan Indien",
+      "prix": "Mention patrimoine bâti",
       "categorie": "Restauration",
-      "statut": "Mention spéciale",
-      "projet": "Maison Carrère"
-    },
-    {
-      "annee": "2021",
-      "prix": "Initiative Bois Réunion",
-      "categorie": "Maison ossature bois",
-      "statut": "Lauréat",
-      "projet": "Maison Tropic"
+      "statut": "Mention",
+      "projet": "Atelier d'architecture"
     }
   ],
   "horaires": [
