@@ -1,0 +1,59 @@
+---
+/**
+ * Moniteur — fiche présentation : avatar CSS, brevet, parcours.
+ * Pas de photo réelle. Pas de nom personnel — rôle générique.
+ */
+---
+
+<section id="moniteur" class="py-20 md:py-28 relative" style="background-color: #F4F8F7;">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-14 items-center">
+
+      <!-- Avatar CSS -->
+      <div class="md:col-span-4 flex justify-center md:justify-start">
+        <div class="relative w-56 h-56 md:w-64 md:h-64" style="background-color: #3CACAE;" aria-hidden="true">
+          <!-- forme vague décorative dans le portrait -->
+          <svg viewBox="0 0 200 200" class="absolute inset-0 w-full h-full">
+            <circle cx="100" cy="80" r="34" fill="#E5C99A"/>
+            <path d="M40 130 Q70 110 100 130 T160 130 V200 H40 Z" fill="#0F2A36"/>
+            <path d="M30 165 Q60 150 100 165 T180 165" stroke="#F4F8F7" stroke-width="3" fill="none" opacity="0.4"/>
+            <path d="M30 180 Q60 168 100 180 T180 180" stroke="#F4F8F7" stroke-width="3" fill="none" opacity="0.25"/>
+          </svg>
+          <span class="absolute -bottom-3 -right-3 px-3 py-2 font-anton text-xs uppercase tracking-[0.15em]" style="background-color: #0F2A36; color: #E5C99A; font-family: 'Anton', Impact, sans-serif;">
+            BE / BPJEPS
+          </span>
+        </div>
+      </div>
+
+      <!-- Texte -->
+      <div class="md:col-span-8">
+        <p class="font-inter text-[11px] uppercase tracking-[0.45em] mb-4" style="color: #3CACAE;">— Le moniteur —</p>
+        <h2 class="font-anton uppercase leading-[0.92]" style="color: #0F2A36; font-size: clamp(36px, 5.5vw, 64px); font-family: 'Anton', Impact, sans-serif;">
+          QUINZE ANS DE MER,
+          <span class="block" style="color: #3CACAE;">UNE SEULE OBSESSION : LA TIENNE.</span>
+        </h2>
+        <p class="mt-6 font-inter text-[15.5px] leading-relaxed" style="color: rgba(15, 42, 54, 0.85);">
+          Diplômé d'État BE Surf / BPJEPS Activités Nautiques, le moniteur enseigne depuis plus de quinze saisons sur les spots de l'île. Formé aux premiers secours en milieu aquatique (PSE1 + recyclage annuel).
+        </p>
+
+        <ul class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {[
+            { l: 'Brevet d\'État', v: 'BE Surf' },
+            { l: 'Diplôme jeunesse', v: 'BPJEPS APT' },
+            { l: 'Secourisme', v: 'PSE1 à jour' },
+          ].map((x) => (
+            <li class="p-5" style="background-color: #E5C99A; border-left: 3px solid #0F2A36;">
+              <p class="font-inter text-[10.5px] uppercase tracking-[0.25em] mb-2" style="color: #0F2A36;">{x.l}</p>
+              <p class="font-anton text-xl leading-tight uppercase" style="color: #0F2A36; font-family: 'Anton', Impact, sans-serif;">{x.v}</p>
+            </li>
+          ))}
+        </ul>
+
+        <p class="mt-6 font-inter italic text-[14px]" style="color: rgba(15, 42, 54, 0.7);">
+          Cours en français, anglais et créole réunionnais. Groupes limités à 6 élèves maximum pour rester en sécurité, toujours.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
