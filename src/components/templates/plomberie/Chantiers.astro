@@ -1,0 +1,46 @@
+---
+/**
+ * Chantiers — galerie de photos de chantiers récents.
+ * Remplace l'ancienne section avant/après.
+ */
+const photos = [
+  { src: '/images/plomberie/extra-1.webp', alt: 'Intervention plomberie chez un client', span: 'md:col-span-2 md:row-span-2' },
+  { src: '/images/plomberie/extra-2.webp', alt: 'Installation sanitaire réalisée par Bernard' },
+  { src: '/images/plomberie/extra-3.webp', alt: 'Travaux de tuyauterie en cours' },
+  { src: '/images/plomberie/extra-4.webp', alt: 'Robinetterie neuve installée' },
+  { src: '/images/plomberie/extra-5.webp', alt: 'Chauffe-eau remplacé chez un particulier' },
+  { src: '/images/plomberie/extra-6.webp', alt: 'Détail de raccordement plomberie' },
+  { src: '/images/plomberie/extra-7.webp', alt: 'Salle de bain rénovée par Bernard' },
+  { src: '/images/plomberie/extra-8.webp', alt: 'Atelier de l\'artisan plombier' },
+];
+---
+
+<section id="chantiers" class="relative bg-bp-ciment py-20 md:py-28 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="mb-14 md:mb-16 max-w-3xl">
+      <p class="inline-flex items-center gap-3 text-[11px] sm:text-xs font-archivo font-bold uppercase tracking-[0.32em] text-bp-anthracite/70">
+        <span class="block w-8 h-[3px] bg-bp-jaune" aria-hidden="true"></span>
+        <span>Chantiers récents</span>
+      </p>
+      <h2 class="mt-5 font-bebas uppercase text-bp-anthracite leading-[0.95] tracking-tight" style="font-size: clamp(40px, 6vw, 80px);">
+        Le travail<br/>
+        <span class="text-bp-anthracite/60">parle de lui-même.</span>
+      </h2>
+    </header>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 auto-rows-[180px] md:auto-rows-[220px]">
+      {photos.map((p) => (
+        <figure class:list={['relative overflow-hidden bg-bp-anthracite/5 border-2 border-bp-anthracite', p.span]}>
+          <img
+            src={p.src}
+            alt={p.alt}
+            loading="lazy"
+            decoding="async"
+            class="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+          />
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>
