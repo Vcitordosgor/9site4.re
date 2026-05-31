@@ -31,6 +31,7 @@ import LatitudeFooter from '../../components/templates/photographe/LatitudeFoote
 <BaseLayout seo={getSeo('templatePhotographe')} bare={true}>
   <Fragment slot="head">
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <link rel="preload" as="image" href="/images/latitude/runner.webp" fetchpriority="high" />
   </Fragment>
 
   <LatitudeHeader />
