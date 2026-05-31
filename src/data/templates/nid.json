@@ -15,8 +15,8 @@
     "instagram": "@le.nid.creche",
     "siret": "",
     "annee": "2017",
-    "photoHero": "https://images.unsplash.com/photo-1587654780291-39c9404d746b?q=80&w=1600&auto=format&fit=crop",
-    "photoHeroAlt": "Enfants jouant avec des crayons de couleur et des jouets en bois — micro-crèche Le Nid, La Réunion",
+    "photoHero": "/images/creche/hero.webp",
+    "photoHeroAlt": "Jouet d'éveil en bois sur table colorée, micro-crèche Le Nid — La Réunion",
     "ouvertureHebdo": "Lundi → vendredi · 7h-19h",
     "fermeture": "Week-end et jours fériés"
   },
@@ -130,23 +130,13 @@
   "locaux": [
     {
       "espace": "Salle de vie principale",
-      "description": "Lumineuse, plein sud. Tapis d'éveil, étagères basses, coin lecture en igloo.",
-      "photo": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=800&auto=format&fit=crop"
+      "description": "Lumineuse, plein sud. Tables basses, chevalet d'expression, étagères matériel Montessori, panneaux acoustiques ronds au plafond pour atténuer le bruit.",
+      "photo": "/images/creche/salle-vie.webp"
     },
     {
-      "espace": "Dortoir individualisé",
-      "description": "Six lits à barreaux nominatifs, lumière douce, lit bébé apart pour les moins de 12 mois.",
-      "photo": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      "espace": "Salle de change & soins",
-      "description": "Plan de change Mauricienne, baignoires bébés, espace transmission parents.",
-      "photo": "https://images.unsplash.com/photo-1551601651-bc60f254d532?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      "espace": "Jardin clôturé 80m²",
-      "description": "Plantation potagère adaptée, bac à sable, structure de motricité bois.",
-      "photo": "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?q=80&w=800&auto=format&fit=crop"
+      "espace": "Coin jeux libres",
+      "description": "Jouets en bois, figurines naturelles, jeux de construction posés au sol sur tapis épais. L'enfant choisit son activité, l'adulte observe et propose.",
+      "photo": "/images/creche/coin-jouets.webp"
     }
   ],
   "securite": [
