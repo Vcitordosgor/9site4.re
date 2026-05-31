@@ -1,0 +1,61 @@
+---
+import data from '../../../data/templates/mona.json';
+const info = data.info;
+---
+
+<section id="top" class="relative" style="background-color: #F4EFE6;">
+  <div class="max-w-content mx-auto px-5 md:px-10 pt-12 md:pt-20 pb-16 md:pb-24">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+
+      <div class="lg:col-span-6">
+        <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full mb-7" style="background-color: rgba(107,127,92,0.12);">
+          <span class="block w-1.5 h-1.5 rounded-full" style="background-color: #6B7F5C;"></span>
+          <span class="font-dm-sans text-[11px] uppercase tracking-[0.22em]" style="color: #2D3823;">Bilan nutritionnel · La Réunion</span>
+        </div>
+
+        <h1 class="font-fraunces leading-[1.02]" style="color: #2D3823; font-size: clamp(42px, 6.2vw, 80px); font-variation-settings: 'opsz' 144;">
+          Manger mieux,<br/>
+          <em class="italic" style="color: #C56A4D;">sans se priver.</em>
+        </h1>
+
+        <p class="mt-7 font-dm-sans text-[15.5px] leading-relaxed max-w-xl" style="color: rgba(45,56,35,0.78);">
+          Diététicienne diplômée d'État depuis {info.annee}. Bilans personnalisés, plans réalistes,
+          accompagnement à votre rythme. Aucun interdit alimentaire — juste un meilleur équilibre.
+        </p>
+
+        <div class="mt-8 flex flex-col sm:flex-row gap-3">
+          <a href="#rendez-vous" class="inline-flex items-center justify-center h-12 px-7 font-dm-sans font-medium text-[13.5px] rounded-full transition-colors" style="background-color: #2D3823; color: #F4EFE6;">
+            Première consultation
+          </a>
+          <a href="#accompagnements" class="inline-flex items-center justify-center h-12 px-7 font-dm-sans font-medium text-[13.5px] rounded-full border transition-colors" style="border-color: rgba(45,56,35,0.30); color: #2D3823;">
+            Découvrir l'approche
+          </a>
+        </div>
+
+        <div class="mt-10 grid grid-cols-3 gap-5 max-w-md">
+          <div>
+            <p class="font-fraunces text-3xl italic" style="color: #6B7F5C;">{info.annee}</p>
+            <p class="mt-1 font-dm-sans text-[10.5px] uppercase tracking-wider" style="color: rgba(45,56,35,0.6);">Installée depuis</p>
+          </div>
+          <div>
+            <p class="font-fraunces text-3xl italic" style="color: #6B7F5C;">60′</p>
+            <p class="mt-1 font-dm-sans text-[10.5px] uppercase tracking-wider" style="color: rgba(45,56,35,0.6);">Première séance</p>
+          </div>
+          <div>
+            <p class="font-fraunces text-3xl italic" style="color: #6B7F5C;">D.E.</p>
+            <p class="mt-1 font-dm-sans text-[10.5px] uppercase tracking-wider" style="color: rgba(45,56,35,0.6);">Diplôme d'État</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-6 relative">
+        <div class="relative aspect-[5/6] overflow-hidden rounded-tl-[120px] rounded-br-[120px]">
+          <img src={info.photoHero} alt="Diététicienne nutritionniste — consultation à La Réunion" loading="eager" fetchpriority="high" class="w-full h-full object-cover" />
+        </div>
+        <div class="hidden md:flex absolute -top-4 -right-4 w-28 h-28 rounded-full items-center justify-center text-center" style="background-color: #C56A4D; color: #F4EFE6;">
+          <p class="font-fraunces italic text-sm leading-tight px-3">Bilan<br/>offert<br/>sur demande</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

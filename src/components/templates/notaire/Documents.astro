@@ -1,251 +1,34 @@
 ---
-/**
- * Documents — checklist par type d'acte, sous forme de tabs vanilla JS.
- */
-const tabs = [
-  {
-    id: 'vente',
-    label: 'Vente immobilière',
-    intro: 'Acquéreur ou vendeur : voici les pièces nécessaires pour préparer la signature de l\'acte authentique.',
-    cols: [
-      {
-        titre: 'Identité & situation',
-        items: [
-          'Pièce d\'identité en cours de validité',
-          'Livret de famille (si concerné)',
-          'Contrat de mariage ou convention PACS',
-          'Justificatif de domicile (moins de 3 mois)',
-          'Coordonnées bancaires (IBAN)',
-        ],
-      },
-      {
-        titre: 'Bien immobilier',
-        items: [
-          'Titre de propriété précédent',
-          'Dernier avis de taxe foncière',
-          'Diagnostics techniques (DPE, amiante, plomb, etc.)',
-          'Règlement de copropriété et état descriptif de division',
-          '3 derniers procès-verbaux d\'assemblée générale',
-          'Carnet d\'entretien et appels de charges récents',
-        ],
-      },
-      {
-        titre: 'Financement',
-        items: [
-          'Offre de prêt définitive (acquéreur)',
-          'Attestation de fonds propres',
-          'Justificatif d\'origine des fonds (loi Sapin II)',
-          'Compromis de vente signé',
-        ],
-      },
-    ],
-  },
-  {
-    id: 'succession',
-    label: 'Succession',
-    intro: 'Suite à un décès, l\'ouverture du dossier nécessite plusieurs pièces d\'état civil et patrimoniales.',
-    cols: [
-      {
-        titre: 'État civil du défunt',
-        items: [
-          'Acte de décès (original)',
-          'Livret de famille',
-          'Acte de naissance du défunt',
-          'Acte de mariage et contrat de mariage le cas échéant',
-          'Jugement de divorce s\'il y a lieu',
-        ],
-      },
-      {
-        titre: 'Héritiers',
-        items: [
-          'Pièce d\'identité de chaque héritier',
-          'Livret de famille des héritiers',
-          'Justificatif de domicile récent',
-          'Coordonnées bancaires de chaque héritier',
-        ],
-      },
-      {
-        titre: 'Patrimoine',
-        items: [
-          'Titres de propriété immobiliers',
-          'Derniers avis d\'imposition (3 ans)',
-          'Relevés bancaires et livrets d\'épargne',
-          'Contrats d\'assurance-vie (avec bénéficiaires)',
-          'Carte grise des véhicules',
-          'Liste des dettes connues (crédits, factures)',
-        ],
-      },
-    ],
-  },
-  {
-    id: 'donation',
-    label: 'Donation',
-    intro: 'Donation simple, donation-partage ou donation entre époux : préparer le rendez-vous en amont.',
-    cols: [
-      {
-        titre: 'Donateur',
-        items: [
-          'Pièce d\'identité en cours de validité',
-          'Livret de famille',
-          'Contrat de mariage ou convention PACS',
-          'Justificatif de domicile récent',
-          'Avis d\'imposition de l\'année',
-        ],
-      },
-      {
-        titre: 'Donataire(s)',
-        items: [
-          'Pièce d\'identité de chaque bénéficiaire',
-          'Livret de famille',
-          'Coordonnées et situation matrimoniale',
-        ],
-      },
-      {
-        titre: 'Bien donné',
-        items: [
-          'Titre de propriété (immeuble)',
-          'Évaluation récente du bien',
-          'Relevés bancaires (somme d\'argent)',
-          'Justificatif d\'origine des fonds',
-          'Historique des donations antérieures (rapports)',
-        ],
-      },
-    ],
-  },
-  {
-    id: 'pacs',
-    label: 'PACS',
-    intro: 'Convention de PACS reçue chez le notaire : un dossier simple mais quelques pièces obligatoires.',
-    cols: [
-      {
-        titre: 'Identité',
-        items: [
-          'Pièce d\'identité en cours de validité (chaque partenaire)',
-          'Acte de naissance avec filiation (moins de 3 mois)',
-          'Justificatif de domicile commun',
-        ],
-      },
-      {
-        titre: 'Situation',
-        items: [
-          'Attestation sur l\'honneur de non-parenté',
-          'Attestation sur l\'honneur de résidence commune',
-          'Jugement de divorce ou acte de décès si déjà engagé',
-        ],
-      },
-      {
-        titre: 'Régime patrimonial',
-        items: [
-          'Choix du régime : séparation ou indivision',
-          'Inventaire des biens personnels',
-          'Coordonnées bancaires',
-          'Projet de convention (le notaire la rédige)',
-        ],
-      },
-    ],
-  },
-];
+import data from '../../../data/templates/notaire.json';
 ---
 
 <section id="documents" class="py-20 md:py-28" style="background-color: #F5F1EB;">
-  <div class="max-w-content mx-auto px-6 md:px-10">
-
-    <div class="text-center max-w-2xl mx-auto mb-12 md:mb-16">
-      <p class="font-inter text-[11px] uppercase tracking-[0.4em] mb-4" style="color: #A28B5C;">— Préparer son dossier —</p>
-      <h2 class="font-cormorant text-4xl md:text-6xl leading-[0.95]" style="color: #1A1715;">
-        Documents
-        <em class="italic" style="color: #A28B5C;">à apporter.</em>
+  <div class="max-w-content mx-auto px-5 md:px-10">
+    <div class="max-w-3xl mb-14">
+      <p class="font-inter text-[11px] uppercase tracking-[0.38em] mb-4" style="color: #A28B5C;">— Documents à fournir —</p>
+      <h2 class="font-cormorant leading-[1.02]" style="color: #1A1715; font-size: clamp(34px, 5vw, 58px);">
+        Préparer <em class="italic" style="color: #A28B5C;">son dossier.</em>
       </h2>
-      <p class="mt-5 font-inter text-[14.5px] leading-relaxed" style="color: rgb(26 23 21 / 0.78);">
-        Liste indicative selon le type d'acte. Un collaborateur vous confirme
-        la liste exacte par mail avant votre rendez-vous.
+      <p class="mt-5 font-inter text-[14.5px] leading-relaxed" style="color: rgba(26,23,21,0.72);">
+        Liste des pièces les plus courantes. Une fiche personnalisée vous est remise au premier rendez-vous selon votre dossier.
       </p>
     </div>
 
-    <!-- Tabs -->
-    <div data-doc-tabs class="max-w-5xl mx-auto">
-      <div role="tablist" aria-label="Type d'acte" class="flex flex-wrap gap-1 border-b-2" style="border-color: #1A1715;">
-        {tabs.map((t, i) => (
-          <button
-            type="button"
-            role="tab"
-            id={`doc-tab-${t.id}`}
-            aria-controls={`doc-panel-${t.id}`}
-            aria-selected={i === 0 ? 'true' : 'false'}
-            data-doc-tab={t.id}
-            class="px-5 md:px-7 py-3.5 font-cormorant text-lg md:text-xl leading-none transition-colors border-2 border-b-0 -mb-px"
-            style={i === 0
-              ? 'background-color: #1A1715; color: #F5F1EB; border-color: #1A1715;'
-              : 'background-color: #F5F1EB; color: #1A1715; border-color: rgba(26,23,21,0.18);'}
-          >
-            {t.label}
-          </button>
-        ))}
-      </div>
-
-      {tabs.map((t, i) => (
-        <div
-          role="tabpanel"
-          id={`doc-panel-${t.id}`}
-          aria-labelledby={`doc-tab-${t.id}`}
-          data-doc-panel={t.id}
-          hidden={i !== 0}
-          class="p-7 md:p-10 border-2 border-t-0"
-          style="background-color: #FFFFFF; border-color: #1A1715;"
-        >
-          <p class="font-cormorant italic text-xl md:text-2xl leading-snug mb-8 max-w-3xl" style="color: rgb(26 23 21 / 0.85);">
-            {t.intro}
-          </p>
-
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            {t.cols.map((c, j) => (
-              <div>
-                <p class="font-cormorant italic text-3xl leading-none mb-2" style="color: #A28B5C;">
-                  0{j + 1}
-                </p>
-                <h3 class="font-cormorant text-xl md:text-2xl leading-tight mb-4" style="color: #1A1715;">
-                  {c.titre}
-                </h3>
-                <ul class="space-y-3 pt-4 border-t" style="border-color: rgba(26,23,21,0.12);">
-                  {c.items.map((item) => (
-                    <li class="flex items-start gap-3 font-inter text-[13px] leading-snug" style="color: rgb(26 23 21 / 0.78);">
-                      <svg viewBox="0 0 24 24" class="shrink-0 w-4 h-4 mt-0.5" style="color: #A28B5C;" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-                        <path d="M5 12l5 5L20 7" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {data.documents.map((d, i) => (
+        <article class="p-7 md:p-8 flex flex-col gap-4" style="background-color: #FFFFFF;">
+          <p class="font-cormorant italic text-4xl leading-none" style="color: #A28B5C;">{String(i+1).padStart(2,'0')}</p>
+          <h3 class="font-cormorant text-2xl" style="color: #1A1715;">{d.categorie}</h3>
+          <ul class="space-y-2.5 font-inter text-[13.5px]" style="color: rgba(26,23,21,0.78);">
+            {d.items.map((it) => (
+              <li class="flex items-start gap-2.5">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#A28B5C" stroke-width="1.8" class="w-4 h-4 mt-0.5 shrink-0"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>{it}</span>
+              </li>
             ))}
-          </div>
-        </div>
+          </ul>
+        </article>
       ))}
     </div>
   </div>
 </section>
-
-<script>
-  const root = document.querySelector('[data-doc-tabs]');
-  if (root) {
-    const tabs = root.querySelectorAll('[data-doc-tab]');
-    const panels = root.querySelectorAll('[data-doc-panel]');
-    tabs.forEach((tab) => {
-      tab.addEventListener('click', () => {
-        const id = (tab as HTMLElement).dataset.docTab;
-        tabs.forEach((t) => {
-          const active = (t as HTMLElement).dataset.docTab === id;
-          t.setAttribute('aria-selected', String(active));
-          (t as HTMLElement).style.backgroundColor = active ? '#1A1715' : '#F5F1EB';
-          (t as HTMLElement).style.color = active ? '#F5F1EB' : '#1A1715';
-          (t as HTMLElement).style.borderColor = active ? '#1A1715' : 'rgba(26,23,21,0.18)';
-        });
-        panels.forEach((p) => {
-          const show = (p as HTMLElement).dataset.docPanel === id;
-          if (show) p.removeAttribute('hidden');
-          else p.setAttribute('hidden', '');
-        });
-      });
-    });
-  }
-</script>

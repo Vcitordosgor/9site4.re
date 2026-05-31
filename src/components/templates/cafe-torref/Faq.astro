@@ -1,55 +1,28 @@
 ---
-const faq = [
-  {
-    q: 'Pourquoi le Bourbon Pointu est-il si cher ?',
-    r: 'Parce qu\'il est rare : seulement trois producteurs sur l\'île, un rendement faible (la plante produit peu), une cueillette à la main, lavage et séchage soignés. Sa caféine est naturellement basse (moitié d\'un arabica classique), c\'est ce qui le rend si délicat. Le prix reflète le travail réel, pas une rente.',
-  },
-  {
-    q: 'Vos cafés se conservent combien de temps ?',
-    r: 'Quatre semaines maximum après torréfaction pour profiter pleinement des arômes, dans un sac opaque hermétique à température ambiante. Surtout pas au frigo (humidité). Si vous achetez 500g et n\'en buvez pas vite, congelez la moitié dans un sac sous vide, c\'est mieux que de laisser vieillir.',
-  },
-  {
-    q: 'Vendez-vous du café moulu ou en grain ?',
-    r: 'Les deux. Mais on conseille fortement le grain. Le café perd 60% de ses arômes dans les 15 minutes après mouture. Un petit moulin à café électrique à 60 € change littéralement la vie. Si vous n\'avez pas, on moud à votre méthode (V60, espresso, filtre, French press) — précisez à la commande.',
-  },
-  {
-    q: 'Faites-vous des formations barista ?',
-    r: 'Oui — pour les pros (cafés, restos) inclus dans l\'abonnement pro, et pour les particuliers en sessions découverte de 2h, le samedi matin (35 € / personne, 4 personnes max). Au programme : mouture, dose, tassage, lecture du shot, latte art basique. Réservation par téléphone.',
-  },
-  {
-    q: 'D\'où viennent vos producteurs péi ?',
-    r: 'Le Bourbon Pointu vient de petites parcelles du Sud sauvage. L\'Arabica des Hauts vient d\'une coopérative péi des Hauts de l\'île. On les rencontre plusieurs fois par an, on visite les parcelles, on suit les récoltes. Le rendement local est bas, le prix d\'achat est élevé — c\'est pour ça qu\'on tient à ces filières.',
-  },
-  {
-    q: 'Livrez-vous toute l\'île ?',
-    r: 'Oui — livraison La Réunion en point relais sous 48h (5 € forfait). Livraison à domicile 7 € selon la zone. Au-dessus de 50 €, livraison offerte. Pour les pros (cafés/restos), tournée directe deux fois par semaine.',
-  },
+import data from '../../../data/templates/brulerie.json';
+const faqs = [
+  { q: 'Pourquoi pas du café péi ?', r: 'Le Bourbon Pointu de Réunion est un café d\'exception qu\'on n\'a pas encore les volumes pour intégrer. On y travaille avec un producteur des Hauts pour 2027.' },
+  { q: 'Grains ou moulu ?', r: 'Les deux. La mouture est faite à votre commande, ajustée à votre méthode (filtre, espresso, italienne…). À consommer dans les 14 jours pour le moulu.' },
+  { q: 'Combien de temps se conserve un café torréfié ?', r: 'Optimal entre J+5 et J+45 après torréfaction (en grains, sac valvé fermé). On vend uniquement dans cette fenêtre — chaque sac est daté.' },
+  { q: 'Peut-on venir à la brûlerie ?', r: 'Oui, sur RDV pour les visites individuelles, ou pendant les ateliers. La torréfaction se fait le lundi et le jeudi.' },
+  { q: 'Vous fournissez les pros ?', r: 'Restaurants, hôtels, bureaux : oui. Tarifs dégressifs à partir de 5kg/mois. Demande par mail.' },
 ];
 ---
-
-<section class="py-20 md:py-28 relative" style="background-color: #E8DDC7;">
-  <div class="max-w-3xl mx-auto px-6 md:px-10 relative">
-
-    <div class="text-center mb-12 md:mb-16">
-      <p class="font-dm-mono text-[10.5px] uppercase tracking-[0.4em] mb-4" style="color: #B57A4A;">— [ FAQ ] —</p>
-      <h2 class="font-plex-serif font-semibold leading-[0.95]" style="color: #1A0F0A; font-size: clamp(36px, 5vw, 56px); font-family: 'IBM Plex Serif', Georgia, serif;">
-        Questions
-        <em class="block italic mt-2" style="color: #B57A4A; font-size: clamp(40px, 5.5vw, 60px);">qu'on nous pose</em>
-      </h2>
-    </div>
-
-    <div class="space-y-3">
-      {faq.map((f) => (
-        <details class="group transition-colors" style="background-color: rgba(255, 255, 255, 0.65); border: 1px solid rgba(62, 42, 31, 0.2);">
-          <summary class="cursor-pointer list-none flex items-start gap-4 p-5 md:p-7">
-            <span class="font-dm-mono text-xl leading-none mt-0.5 transition-transform duration-300 group-open:rotate-45" style="color: #B57A4A;" aria-hidden="true">+</span>
-            <span class="flex-1 font-plex-serif font-semibold text-lg md:text-xl leading-snug" style="color: #1A0F0A; font-family: 'IBM Plex Serif', Georgia, serif;">{f.q}</span>
+<section class="py-24 md:py-32" style="background:#E8DDC7;">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+    <div class="text-[10px] uppercase tracking-[0.32em] mb-3" style="font-family:'DM Mono',monospace; color:#B57A4A;">FAQ</div>
+    <h2 class="font-instrument text-5xl md:text-6xl leading-tight mb-12" style="color:#1A0F0A;">Questions <em class="italic">fréquentes.</em></h2>
+    <div class="max-w-3xl divide-y" style="border-color:rgba(26,15,10,0.20);">
+      {faqs.map(f => (
+        <details class="group py-6">
+          <summary class="cursor-pointer flex justify-between gap-4 font-instrument text-xl md:text-2xl" style="color:#1A0F0A;">
+            {f.q}<span class="font-instrument italic text-2xl transition-transform group-open:rotate-45" style="color:#B57A4A;">+</span>
           </summary>
-          <div class="px-5 md:px-7 pb-6 md:pb-8 pl-14 md:pl-16">
-            <p class="font-plex-serif text-[14.5px] md:text-[15px] leading-relaxed" style="color: rgba(26, 15, 10, 0.82); font-family: 'IBM Plex Serif', Georgia, serif;">{f.r}</p>
-          </div>
+          <p class="mt-3 text-[15px] leading-relaxed" style="color:#3A2418;">{f.r}</p>
         </details>
       ))}
     </div>
+    <p class="mt-10 text-[14px]" style="font-family:'DM Mono',monospace; color:#3A2418;">— Une autre question ? <a href={`mailto:${data.info.email}`} class="underline">{data.info.email}</a></p>
   </div>
 </section>
+<style>details + details { border-top:1px solid rgba(26,15,10,0.20); }</style>

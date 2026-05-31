@@ -1,96 +1,46 @@
 ---
-import '@fontsource/volkhov/latin-400.css';
-import '@fontsource/volkhov/latin-700.css';
-import '@fontsource/volkhov/latin-400-italic.css';
-import '@fontsource/volkhov/latin-700-italic.css';
-import '@fontsource/hubot-sans/latin-400.css';
-import '@fontsource/hubot-sans/latin-500.css';
-import '@fontsource/hubot-sans/latin-600.css';
-import '@fontsource/hubot-sans/latin-400-italic.css';
-import '@fontsource/pinyon-script/latin-400.css';
+import '@fontsource/inter/latin-400.css';
+import '@fontsource/inter/latin-500.css';
+import '@fontsource/inter/latin-600.css';
+import '@fontsource/cormorant-garamond/latin-400.css';
+import '@fontsource/cormorant-garamond/latin-400-italic.css';
+import '@fontsource/cormorant-garamond/latin-500.css';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSeo } from '../../lib/seo';
 import { localBusinessSchema } from "../../lib/businessSchema";
-import conciergeData from '../../data/templates/concierge.json';
+import data from '../../data/templates/concierge.json';
 
-import ConciergeHeader from '../../components/templates/conciergerie/ConciergeHeader.astro';
-import HeroCarteBienvenue from '../../components/templates/conciergerie/HeroCarteBienvenue.astro';
-import Promesse from '../../components/templates/conciergerie/Promesse.astro';
-import Numbers from '../../components/templates/conciergerie/Numbers.astro';
+import Header from '../../components/templates/conciergerie/ConciergeHeader.astro';
+import Hero from '../../components/templates/conciergerie/HeroCarteBienvenue.astro';
 import Services from '../../components/templates/conciergerie/Services.astro';
-import Formules from '../../components/templates/conciergerie/Formules.astro';
-import Calculateur from '../../components/templates/conciergerie/Calculateur.astro';
-import CommentCaMarche from '../../components/templates/conciergerie/CommentCaMarche.astro';
-import Calligraphie from '../../components/templates/conciergerie/Calligraphie.astro';
-import Citation from '../../components/templates/conciergerie/Citation.astro';
+import Proprietaires from '../../components/templates/conciergerie/Promesse.astro';
+import Tarification from '../../components/templates/conciergerie/Formules.astro';
 import Temoignages from '../../components/templates/conciergerie/Temoignages.astro';
-import Partenaires from '../../components/templates/conciergerie/Partenaires.astro';
-import Bandeau from '../../components/templates/conciergerie/Bandeau.astro';
-import Faq from '../../components/templates/conciergerie/Faq.astro';
-import Demande from '../../components/templates/conciergerie/Demande.astro';
-import CTAFinal from '../../components/templates/conciergerie/CTAFinal.astro';
-import ConciergeFooter from '../../components/templates/conciergerie/ConciergeFooter.astro';
-const businessLD = localBusinessSchema(conciergeData, 'LocalBusiness');
+import Zone from '../../components/templates/conciergerie/Bandeau.astro';
+import Contact from '../../components/templates/conciergerie/Demande.astro';
+import Footer from '../../components/templates/conciergerie/ConciergeFooter.astro';
 
+const businessLD = localBusinessSchema(data, 'LocalBusiness');
 ---
 
 <BaseLayout seo={getSeo('templateConciergerie')} bare={true}>
   <Fragment slot="head">
     {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
-<link
-      rel="preload"
-      as="image"
-      href={conciergeData.info.photoHero}
-      fetchpriority="high"
-    />
+    <link rel="preload" as="image" href="/images/conciergerie/extra-1.webp" fetchpriority="high" />
   </Fragment>
 
-  <ConciergeHeader />
+  <Header />
 
-  <main id="top" class="bg-concierge-champagne text-concierge-nuit font-hubot">
-    <HeroCarteBienvenue />
-    <Promesse />
-    <Numbers />
+  <main id="top" style="background:#F7F4EE; color:#0F1B2E; font-family:Inter,system-ui,sans-serif;">
+    <Hero />
     <Services />
-    <Formules />
-    <Calculateur />
-    <CommentCaMarche />
-    <Calligraphie />
-    <Citation />
+    <Proprietaires />
+    <Tarification />
     <Temoignages />
-    <Partenaires />
-    <Bandeau />
-    <Faq />
-    <Demande />
-    <CTAFinal />
+    <Zone />
+    <Contact />
   </main>
 
-  <ConciergeFooter />
-
-  <a
-    id="concierge-sticky-cta"
-    href="#demande"
-    data-visible="false"
-    class="md:hidden fixed bottom-5 inset-x-5 z-40 inline-flex items-center justify-center h-13 bg-concierge-nuit text-concierge-champagne font-hubot text-sm uppercase tracking-[0.18em] font-medium transition-all duration-500 data-[visible=false]:opacity-0 data-[visible=false]:translate-y-4 data-[visible=false]:pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0"
-    style="height: 52px; box-shadow: 0 12px 28px rgba(15,39,66,0.30);"
-  >
-    Nous contacter
-  </a>
-
-  <script>
-    const sticky = document.getElementById('concierge-sticky-cta');
-    const demande = document.getElementById('demande');
-    if (sticky && demande) {
-      const update = () => {
-        const rect = demande.getBoundingClientRect();
-        const inSection = rect.top < window.innerHeight && rect.bottom > 80;
-        const scrolledPastHero = window.scrollY > 600;
-        sticky.dataset.visible = String(scrolledPastHero && !inSection);
-      };
-      update();
-      window.addEventListener('scroll', update, { passive: true });
-      window.addEventListener('resize', update, { passive: true });
-    }
-  </script>
+  <Footer />
 </BaseLayout>

@@ -1,44 +1,25 @@
 ---
-/**
- * Process — déroulé d'une séance photo, du brief à la livraison.
- * 4 étapes, ton éditorial photographique.
- */
-const steps = [
-  { num: '01', titre: 'Rencontre', desc: 'Un café, une heure. On parle de ce que vous voulez raconter, du lieu, des gens. Sans appareil.' },
-  { num: '02', titre: 'Repérage', desc: 'Visite du lieu si nécessaire, analyse de la lumière, choix des heures de prise de vue. Test d\'un cadre.' },
-  { num: '03', titre: 'Prise de vue', desc: 'Discrète, attentive, jamais directive. Je laisse les choses arriver, je décide à la dernière seconde.' },
-  { num: '04', titre: 'Édition & remise', desc: 'Sélection rigoureuse, retouches mesurées en chambre claire numérique. Livraison sous 14 jours, fichiers haute définition.' },
+const etapes = [
+  { num: '01', titre: 'Brief', texte: 'Appel ou café. On parle de vous, du contexte, du livrable. Repérage du lieu si nécessaire.' },
+  { num: '02', titre: 'Shoot', texte: 'Séance d\'1 à 6 heures selon la formule. Direction douce, beaucoup d\'écoute, jamais de pose figée.' },
+  { num: '03', titre: 'Retouche', texte: 'Tri éditorial sous 7 jours. Retouche couleur fine, sans filtre — au plus près de la lumière du moment.' },
+  { num: '04', titre: 'Livraison', texte: 'Galerie privée en ligne sous 4 semaines max. Tirages baryté livrés sous 6 semaines (option).' },
 ];
 ---
-
-<section class="relative bg-latitude-charbon text-latitude-blanc py-20 md:py-28 px-6 md:px-10">
-  <div class="max-w-content mx-auto">
-
-    <header class="mb-14 md:mb-16 max-w-3xl">
-      <p class="scroll-reveal text-xs font-hanken uppercase tracking-[0.35em] text-latitude-or">
-        Comment je travaille
-      </p>
-      <h2 class="scroll-reveal mt-4 font-dm-serif text-latitude-blanc leading-[1.05]" style="font-size: clamp(36px, 5vw, 64px);">
-        Quatre temps,<br/><span class="italic">une seule image juste.</span>
-      </h2>
-    </header>
-
-    <ol class="grid md:grid-cols-4 gap-x-6 gap-y-12 relative">
-      <span class="hidden md:block absolute top-9 left-0 right-0 h-px bg-latitude-or/30" aria-hidden="true"></span>
-
-      {steps.map((s, i) => (
-        <li class="scroll-reveal relative" style={`transition-delay: ${i * 80}ms`}>
-          <span class="relative z-10 inline-flex items-center justify-center w-18 h-18 rounded-full bg-latitude-charbon border-2 border-latitude-or font-dm-serif italic text-latitude-or" style="width: 72px; height: 72px; font-size: 28px;">
-            {s.num}
-          </span>
-          <h3 class="mt-6 font-dm-serif text-latitude-blanc leading-tight" style="font-size: clamp(22px, 2.4vw, 28px);">
-            {s.titre}
-          </h3>
-          <p class="mt-3 font-hanken text-latitude-blanc/70 leading-[1.7] max-w-[260px]" style="font-size: 14.5px;">
-            {s.desc}
-          </p>
-        </li>
+<section id="methode" class="py-24 md:py-32" style="background:#F2EBDD;">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+    <div class="mb-14 max-w-2xl">
+      <div class="text-[10px] uppercase tracking-[0.32em] mb-3" style="color:#6E6A60;">Méthode</div>
+      <h2 class="font-fraunces text-5xl md:text-6xl leading-tight" style="color:#0A0A0B;">Du brief <em class="italic">à la livraison.</em></h2>
+    </div>
+    <div class="grid md:grid-cols-4 gap-px" style="background:rgba(10,10,11,0.15);">
+      {etapes.map(e => (
+        <div class="p-8" style="background:#F2EBDD;">
+          <div class="font-fraunces italic text-6xl mb-4" style="color:#B89766;">{e.num}</div>
+          <h3 class="font-fraunces text-2xl mb-3" style="color:#0A0A0B;">{e.titre}</h3>
+          <p class="text-[14px] leading-relaxed" style="color:#3A3A3D;">{e.texte}</p>
+        </div>
       ))}
-    </ol>
+    </div>
   </div>
 </section>

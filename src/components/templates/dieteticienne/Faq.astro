@@ -1,0 +1,36 @@
+---
+const faqs = [
+  { q: "Faut-il une ordonnance pour vous consulter ?", r: "Non. La diététicienne est en accès direct. Une ordonnance peut être utile si votre médecin a identifié un motif précis (diabète, cholestérol, allergies), mais ce n'est pas obligatoire." },
+  { q: "Les consultations sont-elles remboursées ?", r: "Pas par la Sécurité sociale (sauf maladies prises en charge à 100% sur prescription). Beaucoup de mutuelles proposent un forfait diététique annuel — vérifiez auprès de la vôtre. Facture détaillée fournie." },
+  { q: "Allez-vous me donner un régime à suivre ?", r: "Non, jamais. Je travaille à partir de votre quotidien réel, de vos goûts et de vos contraintes. On ajuste, on remplace, on ré-organise — mais on n'impose pas un cadre qui ne tiendra pas." },
+  { q: "Combien de temps avant de voir des résultats ?", r: "Les premiers effets (digestion, énergie, sommeil) se sentent souvent dès 2-3 semaines. Une perte de poids durable se mesure à 3 mois minimum, jamais sur une semaine." },
+  { q: "Suivez-vous les femmes enceintes ?", r: "Oui, pendant et après la grossesse. Apports en folates, fer, oméga 3, gestion des nausées, retour progressif à l'équilibre post-partum, allaitement." },
+  { q: "Peut-on consulter à distance ?", r: "Oui, en téléconsultation le samedi matin. Pratique pour les suivis. La première séance reste de préférence en présentiel pour bien cadrer l'accompagnement." },
+];
+---
+
+<section id="faq" class="py-20 md:py-28" style="background-color: #FFFFFF;">
+  <div class="max-w-content mx-auto px-5 md:px-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+
+      <div class="lg:col-span-4">
+        <p class="font-dm-sans text-[11px] uppercase tracking-[0.3em] mb-4" style="color: #6B7F5C;">— Questions fréquentes —</p>
+        <h2 class="font-fraunces leading-[1.04] lg:sticky lg:top-28" style="color: #2D3823; font-size: clamp(34px, 4.5vw, 56px);">
+          On vous <em class="italic" style="color: #C56A4D;">répond.</em>
+        </h2>
+      </div>
+
+      <div class="lg:col-span-8">
+        {faqs.map((f, i) => (
+          <details class="group border-b py-5" style="border-color: rgba(45,56,35,0.12);" open={i === 0}>
+            <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4">
+              <span class="font-fraunces text-xl md:text-2xl pr-4" style="color: #2D3823;">{f.q}</span>
+              <span class="font-dm-sans text-2xl shrink-0 transition-transform group-open:rotate-45" style="color: #C56A4D;">+</span>
+            </summary>
+            <p class="mt-4 font-dm-sans text-[14.5px] leading-relaxed" style="color: rgba(45,56,35,0.78);">{f.r}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

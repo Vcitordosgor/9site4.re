@@ -1,53 +1,27 @@
 ---
-const faq = [
-  {
-    q: 'On vit à l\'étranger, peut-on vraiment tout organiser à distance ?',
-    r: 'C\'est 70% de nos couples. Visios mensuelles, dossier WeTransfer partagé, repérage filmé pour vous, choix validés en ligne. Vous n\'arrivez à l\'île que dix jours avant la cérémonie.',
-  },
-  {
-    q: 'Quel budget faut-il prévoir pour un mariage clé en main ?',
-    r: 'Cérémonie intime à deux : 1 100 euros. Laïque plage 40 invités : autour de 12 000 euros tout compris. Civile + cocktail jardin 60 personnes : 18 à 25 000 euros. Devis détaillé sous 7 jours après le premier appel.',
-  },
-  {
-    q: 'Le mariage civil à l\'étranger est-il valable en France ?',
-    r: 'Oui, mais uniquement si l\'un des deux conjoints est domicilié dans la commune où il est célébré, ou réside dans l\'île depuis plus d\'un mois. On constitue le dossier de bans pour vous.',
-  },
-  {
-    q: 'Que se passe-t-il en cas de cyclone ou pluie le jour-J ?',
-    r: 'On bascule sur un lieu de repli couvert pré-réservé pour chaque cérémonie extérieure. Annoncé 48h avant selon Météo France. Aucune cérémonie n\'a été annulée en huit saisons.',
-  },
-  {
-    q: 'Travaillez-vous avec une équipe fixe ou freelance ?',
-    r: 'Six prestataires de cœur sélectionnés depuis 2018 : un officiant, deux fleuristes, un traiteur, un photographe, un DJ. Vous rencontrez chacun en visio avant signature.',
-  },
-  {
-    q: 'Combien de mois à l\'avance faut-il vous contacter ?',
-    r: 'Idéalement 9 à 12 mois pour la haute saison (avril-juin, septembre-novembre). 5 mois minimum pour les autres périodes. Cérémonies intimes à deux : 6 semaines suffisent.',
-  },
+const faqs = [
+  { q: 'À quel moment vous contacter ?', r: 'Idéalement 9 à 14 mois avant la date souhaitée. Pour les cérémonies intimes ou last-minute, on peut faire plus court — appelez-nous, on vous dira honnêtement si c\'est tenable.' },
+  { q: 'Vous occupez-vous des démarches civiles ?', r: 'Non. Le mariage civil reste à votre charge en mairie de votre domicile (ou de votre lieu de résidence depuis 40 jours). Nous proposons une cérémonie laïque, symbolique, à La Réunion.' },
+  { q: 'On vit à l\'étranger — c\'est possible ?', r: 'Évidemment. La moitié de nos couples vit ailleurs. Tout se gère en visio, on vous prépare votre arrivée et on s\'occupe de chaque détail.' },
+  { q: 'Vous travaillez avec quels prestataires ?', r: 'Une trentaine de prestataires réunionnais soigneusement choisis : photographes, traiteurs, fleuristes, DJ. Aucune commission cachée — on est rémunérées par vous, pas par eux.' },
+  { q: 'Quel est votre budget moyen ?', r: 'Nos couples investissent en moyenne 18 000 € à 28 000 € pour 40 à 80 invités, hors honoraires. Nous adaptons toujours à votre enveloppe.' },
+  { q: 'Plan B en cas de pluie ?', r: 'Toujours prévu. Chaque lieu extérieur a son alternative couverte, communiquée 48h avant. On respecte le ciel réunionnais — il a son mot à dire.' },
 ];
 ---
-
-<section class="bg-seve-creme py-20 md:py-28 relative">
-  <div class="max-w-3xl mx-auto px-6 md:px-10">
-
-    <div class="text-center mb-12 md:mb-16">
-      <p class="font-outfit text-[11px] uppercase tracking-[0.4em] text-seve-or mb-4">— Les questions qui reviennent —</p>
-      <h2 class="font-cormorant text-seve-marine text-4xl md:text-5xl leading-tight">
-        Avant de
-        <em class="font-italianno text-seve-corail text-5xl md:text-6xl not-italic">décrocher le téléphone</em>
-      </h2>
+<section class="py-24 md:py-32" style="background:#F4ECDC;">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+    <div class="mb-12 max-w-2xl">
+      <div class="font-caveat text-2xl mb-2" style="color:#8AA288;">Vos questions</div>
+      <h2 class="font-cormorant text-4xl md:text-5xl" style="color:#3A352D;">FAQ couples.</h2>
     </div>
-
-    <div class="space-y-3">
-      {faq.map((f) => (
-        <details class="group bg-seve-ivoire border border-seve-marine/15 hover:border-seve-corail/70 transition-colors">
-          <summary class="cursor-pointer list-none flex items-start gap-5 p-5 md:p-7">
-            <span class="font-italianno text-seve-corail text-4xl leading-none mt-0 transition-transform duration-300 group-open:rotate-45" aria-hidden="true">+</span>
-            <span class="flex-1 font-cormorant text-seve-marine text-lg md:text-xl leading-snug">{f.q}</span>
+    <div class="grid md:grid-cols-2 gap-px max-w-5xl" style="background:rgba(58,53,45,0.15);">
+      {faqs.map(f => (
+        <details class="p-6 md:p-7 group" style="background:#F4ECDC;">
+          <summary class="cursor-pointer flex justify-between gap-4 font-cormorant text-xl" style="color:#3A352D;">
+            {f.q}
+            <span class="font-cormorant text-2xl transition-transform group-open:rotate-45" style="color:#CC6B49;">+</span>
           </summary>
-          <div class="px-5 md:px-7 pb-6 md:pb-8 pl-16">
-            <p class="font-outfit text-[14.5px] md:text-[15px] text-seve-marine/85 leading-relaxed">{f.r}</p>
-          </div>
+          <p class="mt-3 text-[14px] leading-relaxed" style="color:#5A5045;">{f.r}</p>
         </details>
       ))}
     </div>

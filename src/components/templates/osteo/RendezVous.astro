@@ -1,214 +1,76 @@
 ---
-/**
- * RendezVous — formulaire avec mini calendrier date-picker custom.
- * 7 prochains jours en grid horizontal, chaque jour cliquable.
- * Click jour → révèle 4 créneaux. Click créneau → date+time mémorisés.
- * Puis champs nom/tél/motif → WhatsApp. Format proche de Doctolib mais minimal.
- */
 import data from '../../../data/templates/verveine.json';
-const waBase = `https://wa.me/${data.info.whatsapp}`;
+const info = data.info;
 ---
 
-<section id="rendez-vous" class="bg-verveine-papier py-24 md:py-36 px-6 md:px-10">
-  <div class="max-w-3xl mx-auto">
+<section id="rendez-vous" class="py-20 md:py-28" style="background-color: #1F3A44; color: #F7F4EE;">
+  <div class="max-w-content mx-auto px-5 md:px-10">
 
-    <!-- Header -->
-    <header class="text-center mb-14 md:mb-16">
-      <p class="font-karla text-[10px] uppercase tracking-[0.32em] text-verveine-beton mb-6">
-        Prendre rendez-vous
-      </p>
-      <h2 class="font-cardo text-verveine-encre leading-[1.1]" style="font-size: clamp(34px, 5vw, 56px);">
-        Choisissez votre créneau.
-      </h2>
-      <p class="mt-5 font-cardo italic text-verveine-beton text-base md:text-lg leading-relaxed max-w-md mx-auto">
-        Le formulaire ouvre WhatsApp avec votre demande pré-remplie. Confirmation par téléphone sous quelques heures.
-      </p>
-    </header>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
 
-    <form id="rdv-form" class="bg-verveine-creme border border-verveine-encre/15 p-6 md:p-10" novalidate>
-
-      <!-- Étape 1 : choix du jour -->
-      <fieldset class="mb-9">
-        <legend class="font-karla text-[10px] uppercase tracking-[0.28em] text-verveine-sauge pb-3 border-b border-verveine-encre/15 w-full mb-5">
-          Étape 1 — Le jour
-        </legend>
-
-        <div id="jour-grid" class="grid grid-cols-7 gap-1.5 md:gap-2"></div>
-        <p class="mt-4 font-cardo italic text-verveine-beton text-sm">
-          Sélectionnez parmi les 7 prochains jours.
+      <div class="lg:col-span-5">
+        <p class="font-inter text-[11px] uppercase tracking-[0.35em] mb-4" style="color: #C9B79A;">— Rendez-vous —</p>
+        <h2 class="font-cormorant leading-[1.04]" style="font-size: clamp(34px, 5vw, 58px);">
+          Réserver un <em class="italic" style="color: #C9B79A;">créneau.</em>
+        </h2>
+        <p class="mt-6 font-inter text-[15px] leading-relaxed" style="color: rgba(247,244,238,0.78);">
+          Premier rendez-vous ? Prévoyez 5 minutes d'avance pour la fiche d'admission. Apportez vos derniers examens et prescriptions si pertinents.
         </p>
-      </fieldset>
 
-      <!-- Étape 2 : créneau (apparaît après sélection jour) -->
-      <fieldset id="creneau-fieldset" class="mb-9 hidden">
-        <legend class="font-karla text-[10px] uppercase tracking-[0.28em] text-verveine-sauge pb-3 border-b border-verveine-encre/15 w-full mb-5">
-          Étape 2 — L'heure
-        </legend>
-
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
-          {data.creneaux.map((c) => (
-            <button
-              type="button"
-              data-heure={c.heure}
-              class="creneau-btn h-12 border border-verveine-encre/25 bg-verveine-creme font-cardo text-verveine-encre text-lg tabular-nums hover:border-verveine-encre hover:bg-verveine-encre hover:text-verveine-creme transition-colors data-[selected=true]:bg-verveine-encre data-[selected=true]:text-verveine-creme data-[selected=true]:border-verveine-encre"
-            >
-              {c.heure}
-            </button>
-          ))}
-        </div>
-      </fieldset>
-
-      <!-- Étape 3 : coordonnées + motif -->
-      <fieldset id="coord-fieldset" class="mb-7 hidden">
-        <legend class="font-karla text-[10px] uppercase tracking-[0.28em] text-verveine-sauge pb-3 border-b border-verveine-encre/15 w-full mb-5">
-          Étape 3 — Vos coordonnées
-        </legend>
-
-        <div class="grid sm:grid-cols-2 gap-5 mb-5">
-          <div>
-            <label for="rdv-nom" class="block font-karla text-[10px] uppercase tracking-[0.25em] text-verveine-beton mb-1.5">Nom complet</label>
-            <input
-              id="rdv-nom"
-              name="nom"
-              type="text"
-              required
-              autocomplete="name"
-              class="w-full h-11 px-3 bg-verveine-creme border border-verveine-encre/25 focus:border-verveine-encre font-cardo text-verveine-encre text-base outline-none transition-colors"
-            />
+        <dl class="mt-10 space-y-5 font-inter text-[13.5px]">
+          <div class="flex items-start gap-4">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#C9B79A" stroke-width="1.8" class="w-5 h-5 mt-0.5 shrink-0"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div>
+              <dt style="color: rgba(247,244,238,0.6);" class="text-[11px] uppercase tracking-wider mb-1">Horaires</dt>
+              <dd>Lun–Ven · 09h–18h<br/>Mercredi matin · Samedi sur rdv</dd>
+            </div>
           </div>
-          <div>
-            <label for="rdv-tel" class="block font-karla text-[10px] uppercase tracking-[0.25em] text-verveine-beton mb-1.5">Téléphone</label>
-            <input
-              id="rdv-tel"
-              name="telephone"
-              type="tel"
-              required
-              autocomplete="tel"
-              class="w-full h-11 px-3 bg-verveine-creme border border-verveine-encre/25 focus:border-verveine-encre font-cardo text-verveine-encre text-base outline-none transition-colors tabular-nums"
-            />
+          <div class="flex items-start gap-4">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#C9B79A" stroke-width="1.8" class="w-5 h-5 mt-0.5 shrink-0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div>
+              <dt style="color: rgba(247,244,238,0.6);" class="text-[11px] uppercase tracking-wider mb-1">Téléphone</dt>
+              <dd><a href={`tel:${info.telephoneHref}`} class="hover:text-[#C9B79A] transition-colors">{info.telephone}</a></dd>
+            </div>
           </div>
-        </div>
-
-        <div class="mb-5">
-          <label for="rdv-motif" class="block font-karla text-[10px] uppercase tracking-[0.25em] text-verveine-beton mb-1.5">Motif principal</label>
-          <select
-            id="rdv-motif"
-            name="motif"
-            class="w-full h-11 px-3 bg-verveine-creme border border-verveine-encre/25 focus:border-verveine-encre font-cardo text-verveine-encre text-base outline-none cursor-pointer"
-          >
-            <option value="">— Choisir un motif —</option>
-            {data.motifs.map((m) => <option value={m.label}>{m.label}</option>)}
-            <option value="autre">Autre / À discuter</option>
-          </select>
-        </div>
-
-        <div>
-          <label for="rdv-message" class="block font-karla text-[10px] uppercase tracking-[0.25em] text-verveine-beton mb-1.5">Préciser (facultatif)</label>
-          <textarea
-            id="rdv-message"
-            name="message"
-            rows="3"
-            placeholder="Antécédents, ce qui vous gêne, depuis quand…"
-            class="w-full px-3 py-2 bg-verveine-creme border border-verveine-encre/25 focus:border-verveine-encre font-cardo text-verveine-encre text-base outline-none transition-colors resize-none"
-          ></textarea>
-        </div>
-      </fieldset>
-
-      <!-- Submit -->
-      <div id="submit-row" class="hidden">
-        <div class="flex items-center justify-between gap-4 pt-6 border-t border-verveine-encre/15">
-          <p class="font-cardo italic text-verveine-beton text-sm">
-            Récapitulatif : <span id="recap-line" class="text-verveine-encre"></span>
-          </p>
-          <button
-            type="submit"
-            class="inline-flex items-center justify-center h-12 px-7 bg-verveine-encre text-verveine-creme font-public-sans text-sm font-medium hover:bg-verveine-beton transition-colors shrink-0"
-          >
-            Envoyer
-          </button>
-        </div>
+          <div class="flex items-start gap-4">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#C9B79A" stroke-width="1.8" class="w-5 h-5 mt-0.5 shrink-0"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <div>
+              <dt style="color: rgba(247,244,238,0.6);" class="text-[11px] uppercase tracking-wider mb-1">Email</dt>
+              <dd><a href={`mailto:${info.email}`} class="hover:text-[#C9B79A] transition-colors">{info.email}</a></dd>
+            </div>
+          </div>
+        </dl>
       </div>
-    </form>
 
-    <!-- Note tél fallback -->
-    <p class="mt-8 text-center font-cardo italic text-verveine-beton text-sm">
-      Vous pouvez aussi <a href={`tel:${data.info.telephoneHref}`} class="text-verveine-encre underline underline-offset-4 decoration-verveine-sauge hover:decoration-verveine-encre tabular-nums">appeler directement le {data.info.telephone}</a>.
-    </p>
+      <form class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4" onsubmit="event.preventDefault(); alert('Démo — formulaire non actif sur ce template.');">
+        <label class="flex flex-col gap-2 sm:col-span-1">
+          <span class="font-inter text-[11px] uppercase tracking-[0.2em]" style="color: rgba(247,244,238,0.7);">Nom</span>
+          <input type="text" required class="h-12 px-4 font-inter text-[14px] outline-none border" style="background-color: rgba(247,244,238,0.06); color: #F7F4EE; border-color: rgba(247,244,238,0.2);" />
+        </label>
+        <label class="flex flex-col gap-2 sm:col-span-1">
+          <span class="font-inter text-[11px] uppercase tracking-[0.2em]" style="color: rgba(247,244,238,0.7);">Prénom</span>
+          <input type="text" required class="h-12 px-4 font-inter text-[14px] outline-none border" style="background-color: rgba(247,244,238,0.06); color: #F7F4EE; border-color: rgba(247,244,238,0.2);" />
+        </label>
+        <label class="flex flex-col gap-2 sm:col-span-1">
+          <span class="font-inter text-[11px] uppercase tracking-[0.2em]" style="color: rgba(247,244,238,0.7);">Téléphone</span>
+          <input type="tel" required class="h-12 px-4 font-inter text-[14px] outline-none border" style="background-color: rgba(247,244,238,0.06); color: #F7F4EE; border-color: rgba(247,244,238,0.2);" />
+        </label>
+        <label class="flex flex-col gap-2 sm:col-span-1">
+          <span class="font-inter text-[11px] uppercase tracking-[0.2em]" style="color: rgba(247,244,238,0.7);">Email</span>
+          <input type="email" required class="h-12 px-4 font-inter text-[14px] outline-none border" style="background-color: rgba(247,244,238,0.06); color: #F7F4EE; border-color: rgba(247,244,238,0.2);" />
+        </label>
+        <label class="flex flex-col gap-2 sm:col-span-2">
+          <span class="font-inter text-[11px] uppercase tracking-[0.2em]" style="color: rgba(247,244,238,0.7);">Motif de consultation (facultatif)</span>
+          <textarea rows="5" class="px-4 py-3 font-inter text-[14px] outline-none border resize-none" style="background-color: rgba(247,244,238,0.06); color: #F7F4EE; border-color: rgba(247,244,238,0.2);"></textarea>
+        </label>
+        <button type="submit" class="sm:col-span-2 inline-flex items-center justify-center h-12 font-inter font-medium text-[12px] uppercase tracking-[0.25em] transition-colors" style="background-color: #C9B79A; color: #1F3A44;">
+          Demander un rendez-vous
+        </button>
+        <p class="sm:col-span-2 font-inter italic text-[11.5px]" style="color: rgba(247,244,238,0.55);">
+          Confidentialité absolue. Réponse sous 24 h ouvrées.
+        </p>
+      </form>
+
+    </div>
   </div>
 </section>
-
-<script define:vars={{ waBase }}>
-  // Génère les 7 prochains jours
-  const jours = ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'];
-  const mois = ['jan', 'fév', 'mar', 'avr', 'mai', 'jui', 'jui', 'aoû', 'sep', 'oct', 'nov', 'déc'];
-  const grid = document.getElementById('jour-grid');
-  const today = new Date();
-  let selectedJour = null;
-  let selectedHeure = null;
-
-  if (grid) {
-    for (let i = 0; i < 7; i++) {
-      const d = new Date(today);
-      d.setDate(today.getDate() + i);
-      const isWeekend = d.getDay() === 0; // Dimanche fermé
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.disabled = isWeekend;
-      btn.dataset.date = `${jours[d.getDay()]} ${d.getDate()} ${mois[d.getMonth()]}`;
-      btn.dataset.iso = d.toISOString().slice(0, 10);
-      btn.className = 'jour-btn flex flex-col items-center justify-center h-20 border border-verveine-encre/20 bg-verveine-creme font-cardo text-verveine-encre transition-colors disabled:opacity-30 disabled:cursor-not-allowed enabled:hover:border-verveine-encre enabled:hover:bg-verveine-encre enabled:hover:text-verveine-creme data-[selected=true]:bg-verveine-encre data-[selected=true]:text-verveine-creme data-[selected=true]:border-verveine-encre';
-      btn.innerHTML = `
-        <span class="font-karla text-[9px] uppercase tracking-[0.22em] mb-1">${jours[d.getDay()]}</span>
-        <span class="text-2xl tabular-nums leading-none">${d.getDate()}</span>
-        <span class="font-karla text-[9px] uppercase mt-1 opacity-70">${mois[d.getMonth()]}</span>
-      `;
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.jour-btn').forEach(b => b.dataset.selected = 'false');
-        btn.dataset.selected = 'true';
-        selectedJour = btn.dataset.date;
-        document.getElementById('creneau-fieldset')?.classList.remove('hidden');
-        updateRecap();
-      });
-      grid.appendChild(btn);
-    }
-  }
-
-  document.querySelectorAll('.creneau-btn').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.creneau-btn').forEach(b => b.dataset.selected = 'false');
-      btn.dataset.selected = 'true';
-      selectedHeure = btn.dataset.heure;
-      document.getElementById('coord-fieldset')?.classList.remove('hidden');
-      document.getElementById('submit-row')?.classList.remove('hidden');
-      updateRecap();
-    });
-  });
-
-  function updateRecap() {
-    const recap = document.getElementById('recap-line');
-    if (recap && selectedJour) {
-      recap.textContent = `${selectedJour}${selectedHeure ? ' à ' + selectedHeure : ''}`;
-    }
-  }
-
-  const form = document.getElementById('rdv-form');
-  if (form) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const fd = new FormData(form);
-      const nom = fd.get('nom') || '';
-      const tel = fd.get('telephone') || '';
-      const motif = fd.get('motif') || '';
-      const message = fd.get('message') || '';
-      const text = [
-        'Bonjour Cabinet Verveine, je souhaite un rendez-vous.',
-        selectedJour && selectedHeure ? `Créneau : ${selectedJour} à ${selectedHeure}` : '',
-        nom ? `Nom : ${nom}` : '',
-        tel ? `Tél : ${tel}` : '',
-        motif ? `Motif : ${motif}` : '',
-        message ? `Précisions : ${message}` : '',
-      ].filter(Boolean).join('\n');
-      window.open(`${waBase}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
-    });
-  }
-</script>

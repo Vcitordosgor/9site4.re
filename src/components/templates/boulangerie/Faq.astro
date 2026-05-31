@@ -1,55 +1,26 @@
 ---
-const faq = [
-  {
-    q: 'Peut-on réserver son pain ?',
-    r: 'Oui, et c\'est recommandé. La fournée part vite : vers 11h30 il ne reste souvent plus grand-chose. Réservez par WhatsApp jusqu\'à la veille 18h, vous récupérez votre pain à l\'heure que vous voulez le matin.',
-  },
-  {
-    q: 'Le pain au levain, c\'est plus digeste ?',
-    r: 'Oui — la fermentation longue (18 à 24h) prédigère les protéines du blé, dont le gluten. La mie est plus acide, ce qui ralentit l\'indice glycémique. Beaucoup de personnes intolérantes au pain industriel digèrent très bien le pain au levain.',
-  },
-  {
-    q: 'Pourquoi pas de levure de boulanger ?',
-    r: 'Parce que la levure va trop vite : 2h de pousse, pas de fermentation, peu de goût. Le levain mère met 18 à 24h, mais il apporte des arômes complexes, une mie alvéolée et une conservation longue (5 à 7 jours sans frigo, sous torchon).',
-  },
-  {
-    q: 'Comment conserver son pain ?',
-    r: 'Pas au frigo (jamais). Sous un torchon de coton, dans une boîte à pain non hermétique ou dans un sac kraft. Le pain de campagne tient 5 jours, le seigle 7. Pour le rafraîchir : 8 minutes au four à 160°C.',
-  },
-  {
-    q: 'Faites-vous de la livraison ?',
-    r: 'Non, on ne livre pas. Le pain au levain a besoin d\'être manipulé peu, et le fournil tourne à plein. En revanche, deux ou trois épiceries locales relaient notre pain : on indique les points de vente sur Instagram.',
-  },
-  {
-    q: 'Acceptez-vous les commandes de grosses quantités ?',
-    r: 'Oui, pour les restaurants, mariages, brunchs. À commander minimum 5 jours à l\'avance par téléphone. On peut produire jusqu\'à 60 miches en une fournée. Plus, il faut deux jours.',
-  },
+const faqs = [
+  { q: 'Pourquoi le pain au levain est-il plus cher ?', r: 'Trente heures de fermentation, pétrissage main, levain à entretenir deux fois par jour, four au bois. On vend en moins grande quantité, on vit du juste prix.' },
+  { q: 'Le pain au levain est-il digeste pour les intolérants au gluten ?', r: 'La fermentation longue dégrade une partie du gluten et facilite la digestion, mais ne remplace pas un avis médical pour les cœliaques. Le sarrasin pur est sans gluten.' },
+  { q: 'Combien de temps le pain se conserve ?', r: 'La tradition : 3-4 jours. La miche : jusqu\'à 7 jours, emballée dans un torchon. Le pain au levain ne moisit pas, il sèche — toastez la fin.' },
+  { q: 'Faites-vous des pâtisseries ?', r: 'Uniquement la brioche au beurre, le samedi. Pas de viennoiseries du commerce, pas de gâteaux — on garde notre énergie pour le pain.' },
+  { q: 'Acceptez-vous les CB ?', r: 'Oui, à partir de 5€. Espèces toujours bienvenues. Pas de tickets restaurants à ce jour.' },
 ];
 ---
-
-<section class="py-20 md:py-28 relative" style="background-color: rgba(122, 74, 42, 0.05);">
-  <div class="max-w-3xl mx-auto px-6 md:px-10 relative">
-
-    <div class="text-center mb-12 md:mb-16">
-      <p class="font-crimson-pro text-[11px] uppercase tracking-[0.45em] mb-4" style="color: #7A4A2A;">— Avant de pousser la porte —</p>
-      <h2 class="font-crimson-pro font-semibold leading-[0.95]" style="color: #1A1614; font-size: clamp(36px, 5vw, 56px);">
-        Questions
-        <em class="block font-caveat not-italic mt-2" style="color: #C89B3C; font-size: clamp(44px, 6vw, 64px);">qu'on nous pose</em>
-      </h2>
-    </div>
-
-    <div class="space-y-3">
-      {faq.map((f) => (
-        <details class="group transition-colors" style="background-color: rgba(255, 255, 255, 0.65); border: 1px solid rgba(122, 74, 42, 0.25);">
-          <summary class="cursor-pointer list-none flex items-start gap-4 p-5 md:p-7">
-            <span class="font-caveat text-3xl leading-none mt-0 transition-transform duration-300 group-open:rotate-45" style="color: #C89B3C;" aria-hidden="true">+</span>
-            <span class="flex-1 font-crimson-pro font-semibold text-lg md:text-xl leading-snug" style="color: #1A1614;">{f.q}</span>
+<section class="py-24 md:py-32" style="background:#EADBB7;">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+    <p class="font-caveat text-2xl mb-2" style="color:#7A5C28;">on vous répond —</p>
+    <h2 class="font-crimson-pro text-5xl md:text-6xl leading-tight mb-12" style="color:#1A1614;">Questions <em class="italic" style="color:#C89B3C;">fréquentes.</em></h2>
+    <div class="max-w-3xl divide-y" style="border-color:rgba(26,22,20,0.20);">
+      {faqs.map(f => (
+        <details class="group py-6">
+          <summary class="cursor-pointer flex justify-between gap-4 font-crimson-pro text-xl md:text-2xl" style="color:#1A1614;">
+            {f.q}<span class="font-crimson-pro text-2xl transition-transform group-open:rotate-45" style="color:#C89B3C;">+</span>
           </summary>
-          <div class="px-5 md:px-7 pb-6 md:pb-8 pl-14 md:pl-16">
-            <p class="font-crimson-pro text-[14.5px] md:text-[15px] leading-relaxed" style="color: rgba(26, 22, 20, 0.8);">{f.r}</p>
-          </div>
+          <p class="mt-3 text-[15px] leading-relaxed" style="color:#3A3128;">{f.r}</p>
         </details>
       ))}
     </div>
   </div>
 </section>
+<style>details + details { border-top:1px solid rgba(26,22,20,0.20); }</style>

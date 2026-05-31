@@ -1,53 +1,34 @@
 ---
-import data from '../../../data/templates/sorbetpei.json';
+const tournee = [
+  { jour: 'Mercredi', lieu: 'Marché de l\'ouest', horaire: '15h → 19h', zone: 'Côte ouest' },
+  { jour: 'Jeudi', lieu: 'Front de mer ouest', horaire: '16h → 20h', zone: 'Côte ouest' },
+  { jour: 'Vendredi', lieu: 'Sentier littoral sud', horaire: '15h → 19h', zone: 'Sud sauvage' },
+  { jour: 'Samedi', lieu: 'Marché bio sud', horaire: '9h → 13h', zone: 'Sud' },
+  { jour: 'Samedi soir', lieu: 'Place du village est', horaire: '17h → 21h', zone: 'Est' },
+  { jour: 'Dimanche', lieu: 'Pique-nique des Hauts', horaire: '11h → 17h', zone: 'Plaines' },
+];
 ---
-
-<section id="tournee" class="py-20 md:py-28 relative overflow-hidden" style="background-color: #FFB347;">
+<section id="tournee" class="py-24 md:py-32" style="background:#3D2817; color:#FFF6E2;">
   <div class="max-w-content mx-auto px-6 md:px-10">
-
-    <div class="text-center max-w-2xl mx-auto mb-14 md:mb-16">
-      <p class="font-dm-sans text-[11px] uppercase tracking-[0.45em] mb-4" style="color: #3D2817;">— Le camion glacé —</p>
-      <h2 class="font-fraunces font-semibold leading-[0.95]" style="color: #3D2817; font-size: clamp(36px, 5vw, 56px);">
-        Tournée
-        <em class="block font-fraunces italic mt-2" style="color: #FFF8E7; font-size: clamp(44px, 6vw, 64px);">de la semaine</em>
-      </h2>
-      <p class="mt-5 font-dm-sans text-[15px] leading-relaxed" style="color: rgba(61, 40, 23, 0.78);">
-        Le programme peut bouger en cas de pluie ou de panne — vérifier Instagram avant de venir.
-      </p>
-    </div>
-
-    <div class="max-w-5xl mx-auto">
-      <!-- Grille hebdomadaire : carte par jour avec zone localisée -->
-      <ul class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-5">
-        {data.tournee.map((j) => {
-          const lieu = j.lieu || '';
-          const zoneShort = lieu.split(/[·•,–-]/)[0].trim();
-          const zoneSub = lieu.replace(zoneShort, '').replace(/^[\s·•,–-]+/, '').trim();
-          return (
-            <li class="relative flex flex-col p-5 md:p-6 transition-transform hover:-translate-y-1" style="background-color: #FFF8E7; border: 2px solid #3D2817; border-radius: 24px;">
-              <p class="font-fraunces italic text-2xl leading-none" style="color: #FF6F91;">{j.jour}</p>
-              <div class="mt-4">
-                <p class="font-dm-sans text-[10px] uppercase tracking-[0.3em]" style="color: rgba(61,40,23,0.55);">Zone</p>
-                <p class="mt-1 font-fraunces font-semibold text-lg md:text-xl leading-tight" style="color: #3D2817;">{zoneShort || lieu}</p>
-                {zoneSub && (
-                  <p class="mt-1 font-dm-sans text-[13px] leading-snug" style="color: rgba(61,40,23,0.75);">{zoneSub}</p>
-                )}
-              </div>
-              <div class="mt-4 pt-3" style="border-top: 1px solid rgba(61,40,23,0.18);">
-                <p class="font-dm-sans text-[10px] uppercase tracking-[0.3em]" style="color: rgba(61,40,23,0.55);">Horaire</p>
-                <p class="mt-1 font-dm-sans font-semibold text-[14px]" style="color: #3D2817;">{j.horaire}</p>
-              </div>
-              <span aria-hidden="true" class="absolute top-4 right-4 inline-flex w-7 h-7 items-center justify-center rounded-full" style="background-color: #FFB347; border: 2px solid #3D2817;">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3D2817" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-7-7.58-7-13a7 7 0 0 1 14 0c0 5.42-7 13-7 13z"/><circle cx="12" cy="9" r="2.5"/></svg>
-              </span>
-            </li>
-          );
-        })}
+    <div class="grid md:grid-cols-3 gap-12 lg:gap-16">
+      <div>
+        <p class="font-fraunces italic text-2xl mb-2" style="color:#FFD93D;">le camion glacé —</p>
+        <h2 class="font-fraunces text-4xl md:text-5xl leading-tight mb-5">La tournée <em class="italic" style="color:#FFD93D;">de la semaine.</em></h2>
+        <p class="text-lg leading-relaxed" style="color:#E8DFC9;">
+          Notre camion sillonne l'île toute l'année. Suivez-nous sur Instagram pour les imprévus, les ruptures de stock et les fournées limitées (letchi en saison).
+        </p>
+        <img src="/images/glacier/extra-10.webp" alt="Camion glacier" class="mt-8 w-full h-56 object-cover" style="border-radius:24px;" loading="lazy"/>
+      </div>
+      <ul class="md:col-span-2 grid sm:grid-cols-2 gap-4">
+        {tournee.map(t => (
+          <li class="p-6" style="background:#FFD93D; color:#3D2817; border-radius:20px;">
+            <div class="text-[11px] uppercase tracking-[0.28em] font-bold mb-2" style="color:#FF6F91;">{t.zone}</div>
+            <div class="font-fraunces text-2xl mb-1">{t.jour}</div>
+            <div class="font-fraunces italic text-lg">{t.lieu}</div>
+            <div class="mt-2 text-[14px] font-semibold">{t.horaire}</div>
+          </li>
+        ))}
       </ul>
-
-      <p class="mt-8 text-center font-fraunces italic text-lg md:text-xl" style="color: #3D2817;">
-        — Le lundi et mardi, le camion lave les bacs et turbine les nouveaux parfums —
-      </p>
     </div>
   </div>
 </section>

@@ -1,0 +1,65 @@
+---
+import data from '../../../data/templates/source.json';
+const info = data.info;
+---
+
+<section id="rendez-vous" class="py-20 md:py-28" style="background-color: #FFFFFF;">
+  <div class="max-w-content mx-auto px-5 md:px-10">
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+
+      <div class="lg:col-span-5">
+        <p class="font-manrope text-[11px] uppercase tracking-[0.35em] mb-4" style="color: #B5613F;">— Rendez-vous —</p>
+        <h2 class="font-cormorant leading-[1.02]" style="color: #2E3826; font-size: clamp(34px, 5vw, 58px);">
+          Écrire <em class="italic" style="color: #B5613F;">d'abord.</em>
+        </h2>
+        <p class="mt-6 font-manrope text-[15px] leading-relaxed" style="color: rgba(46,56,38,0.78);">
+          Un email ou un message court suffit. Je vous propose un créneau sous 48 h ouvrées et une courte fiche préparatoire pour notre premier échange.
+        </p>
+
+        <ul class="mt-10 space-y-5 font-manrope text-[14px]" style="color: #2E3826;">
+          <li class="pb-4 border-b" style="border-color: rgba(46,56,38,0.10);">
+            <p class="text-[11px] uppercase tracking-[0.22em] mb-1" style="color: #B5613F;">Téléphone</p>
+            <a href={`tel:${info.telephoneHref}`} class="font-cormorant text-2xl" style="color: #2E3826;">{info.telephone}</a>
+          </li>
+          <li class="pb-4 border-b" style="border-color: rgba(46,56,38,0.10);">
+            <p class="text-[11px] uppercase tracking-[0.22em] mb-1" style="color: #B5613F;">Email</p>
+            <a href={`mailto:${info.email}`} class="hover:opacity-70">{info.email}</a>
+          </li>
+          <li>
+            <p class="text-[11px] uppercase tracking-[0.22em] mb-1" style="color: #B5613F;">Cabinet</p>
+            <p>{info.adresseLigne1}<br/>{info.adresseLigne2}</p>
+          </li>
+        </ul>
+      </div>
+
+      <form class="lg:col-span-7 p-8 md:p-10 grid grid-cols-1 sm:grid-cols-2 gap-4" style="background-color: #F1ECE0;" onsubmit="event.preventDefault(); alert('Démo — formulaire non actif.');">
+        <label class="sm:col-span-1 flex flex-col gap-2">
+          <span class="font-manrope text-[11px] uppercase tracking-[0.22em]" style="color: #4F5D43;">Prénom</span>
+          <input type="text" required class="h-12 px-4 font-manrope text-[14px] outline-none border bg-white" style="border-color: rgba(46,56,38,0.20); color: #2E3826;" />
+        </label>
+        <label class="sm:col-span-1 flex flex-col gap-2">
+          <span class="font-manrope text-[11px] uppercase tracking-[0.22em]" style="color: #4F5D43;">Email</span>
+          <input type="email" required class="h-12 px-4 font-manrope text-[14px] outline-none border bg-white" style="border-color: rgba(46,56,38,0.20); color: #2E3826;" />
+        </label>
+        <label class="sm:col-span-2 flex flex-col gap-2">
+          <span class="font-manrope text-[11px] uppercase tracking-[0.22em]" style="color: #4F5D43;">Sujet</span>
+          <select class="h-12 px-4 font-manrope text-[14px] outline-none border bg-white" style="border-color: rgba(46,56,38,0.20); color: #2E3826;">
+            <option>Fatigue chronique</option>
+            <option>Sommeil & insomnies</option>
+            <option>Digestion & ventre</option>
+            <option>Stress & anxiété</option>
+            <option>Autre</option>
+          </select>
+        </label>
+        <label class="sm:col-span-2 flex flex-col gap-2">
+          <span class="font-manrope text-[11px] uppercase tracking-[0.22em]" style="color: #4F5D43;">Quelques mots (facultatif)</span>
+          <textarea rows="5" class="px-4 py-3 font-manrope text-[14px] outline-none border bg-white resize-none" style="border-color: rgba(46,56,38,0.20); color: #2E3826;"></textarea>
+        </label>
+        <button type="submit" class="sm:col-span-2 inline-flex items-center justify-center h-12 font-manrope font-medium text-[12px] uppercase tracking-[0.22em] transition-colors" style="background-color: #2E3826; color: #F1ECE0;">
+          Envoyer un mot
+        </button>
+      </form>
+    </div>
+  </div>
+</section>

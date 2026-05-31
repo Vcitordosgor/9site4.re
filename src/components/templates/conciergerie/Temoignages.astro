@@ -1,45 +1,27 @@
 ---
-import data from '../../../data/templates/concierge.json';
+const items = [
+  { txt: 'Trois ans que je ne mets plus les pieds dans ma villa entre deux locataires. Tout est tenu, tout est propre, je reçois mon relevé le 1er du mois.', who: 'Propriétaire villa, ouest' },
+  { txt: 'Nous sommes arrivés à 23h avec deux enfants endormis. Tout était prêt, frigo rempli, climatisation lancée. C\'était précisément la promesse.', who: 'Voyageurs, séjour familial' },
+  { txt: 'Discrétion absolue, jamais une plainte de voisinage, jamais un dégât non signalé sous 24h. C\'est exactement ce que j\'attendais.', who: 'Propriétaire investisseur' },
+  { txt: 'Recommandations restaurants impeccables, réservations gérées sans nous. On a vraiment senti que tout était pensé pour nous.', who: 'Voyageurs en lune de miel' },
+];
 ---
-
-<section id="temoignages" class="bg-concierge-champagne py-24 md:py-32 px-6 md:px-10">
-  <div class="max-w-content mx-auto">
-
-    <header class="text-center mb-14 md:mb-16 max-w-2xl mx-auto">
-      <p class="font-hubot text-[10px] uppercase tracking-[0.4em] text-concierge-laiton mb-6 font-medium">
-        ✦ Témoignages ✦
-      </p>
-      <h2 class="font-volkhov text-concierge-nuit leading-[1.05]" style="font-size: clamp(36px, 5vw, 60px);">
-        Quelques mots,
-        <span class="italic text-concierge-laiton">sous initiales.</span>
+<section class="py-20 md:py-28" style="background:#EDE6D6;">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+    <div class="mb-12 max-w-2xl">
+      <div class="text-[11px] uppercase tracking-[0.28em] mb-4" style="color:#7A6A4E;">Ce qu'ils en disent</div>
+      <h2 class="font-cormorant text-4xl md:text-5xl leading-tight" style="color:#0F1B2E;">
+        Quelques retours, <em class="italic">anonymisés.</em>
       </h2>
-      <p class="mt-5 font-volkhov italic text-concierge-graphite text-base md:text-lg leading-relaxed">
-        Pour respecter la discrétion de nos clients, ils sont identifiés par leurs initiales et leur ville.
-      </p>
-    </header>
-
-    <ul class="grid md:grid-cols-2 gap-5">
-      {data.temoignages.map((t) => (
-        <li class="bg-concierge-blanc p-7 md:p-9 border border-concierge-laiton/30">
-
-          <div class="flex items-baseline justify-between gap-4 mb-5 pb-5 border-b border-concierge-laiton/30">
-            <p class="font-volkhov italic text-concierge-nuit text-2xl tabular-nums leading-none">
-              {t.initiales}
-            </p>
-            <p class="font-hubot text-[10px] uppercase tracking-[0.28em] text-concierge-laiton">
-              ✦ {t.lieu}
-            </p>
-          </div>
-
-          <blockquote class="font-volkhov italic text-concierge-graphite text-base md:text-lg leading-[1.85] mb-5">
-            « {t.texte} »
-          </blockquote>
-
-          <p class="font-hubot text-[10px] uppercase tracking-[0.28em] text-concierge-graphite/65">
-            ↳ {t.anciennete}
-          </p>
-        </li>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6">
+      {items.map(i => (
+        <figure class="p-8 md:p-10" style="background:#F7F4EE;">
+          <div class="font-cormorant text-6xl leading-none mb-2" style="color:#B89758;">"</div>
+          <blockquote class="font-cormorant italic text-xl md:text-2xl leading-snug mb-6" style="color:#0F1B2E;">{i.txt}</blockquote>
+          <figcaption class="text-[11px] uppercase tracking-[0.22em]" style="color:#7A6A4E;">— {i.who}</figcaption>
+        </figure>
       ))}
-    </ul>
+    </div>
   </div>
 </section>

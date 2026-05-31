@@ -32,26 +32,26 @@
         "label": "Repos"
       }
     ],
-    "photoHero": "/images/paysagiste/hero.webp",
-    "photoHeroAlt": "Jardin tropical luxuriant avec allée serpentine bordée de palmiers nains",
-    "photoApproche": "/images/paysagiste/approche.webp",
-    "photoApprocheAlt": "Paysagiste taillant une haie au cisaillon, geste artisanal",
-    "photoEquipe": "/images/paysagiste/equipe.webp",
-    "photoEquipeAlt": "Jardinier au chapeau arrosant un massif fleuri tropical",
-    "photoFleur": "/images/paysagiste/approche.webp",
-    "photoFleurAlt": "Fleur d'agapanthe bleu-violet",
-    "photoFeuille": "/images/paysagiste/equipe.webp",
-    "photoFeuilleAlt": "Feuille tropicale en gros plan",
-    "photoGalerie1": "/images/paysagiste/galerie-1.webp",
-    "photoGalerie1Alt": "Jardin tropical avec pergola, pelouse et massifs fleuris",
-    "photoGalerie2": "/images/paysagiste/galerie-2.webp",
-    "photoGalerie2Alt": "Jardin sec tropical, plantes grasses adaptees au climat reunionnais",
-    "photoGalerie3": "/images/paysagiste/galerie-3.webp",
-    "photoGalerie3Alt": "Allee bordee de feuillages tropicaux et de plantes fleuries",
-    "photoGalerie4": "/images/paysagiste/galerie-4.webp",
-    "photoGalerie4Alt": "Jardin contemporain avec graminees tropicales et dalles",
-    "photoGalerie5": "/images/paysagiste/galerie-5.webp",
-    "photoGalerie5Alt": "Allee tropicale luxuriante avec palmiers et bromeliads"
+    "photoHero": "/images/paysagiste/extra-1.webp",
+    "photoHeroAlt": "Jardin paysager récemment aménagé",
+    "photoApproche": "/images/paysagiste/extra-2.webp",
+    "photoApprocheAlt": "Paysagiste au travail dans un jardin tropical",
+    "photoEquipe": "/images/paysagiste/extra-3.webp",
+    "photoEquipeAlt": "Équipe de jardiniers en intervention",
+    "photoFleur": "/images/paysagiste/extra-4.webp",
+    "photoFleurAlt": "Détail végétal d'un jardin tropical",
+    "photoFeuille": "/images/paysagiste/extra-5.webp",
+    "photoFeuilleAlt": "Feuillage luxuriant en gros plan",
+    "photoGalerie1": "/images/paysagiste/extra-6.webp",
+    "photoGalerie1Alt": "Aménagement paysager réalisé par l'atelier",
+    "photoGalerie2": "/images/paysagiste/extra-7.webp",
+    "photoGalerie2Alt": "Massif fleuri créé sur mesure",
+    "photoGalerie3": "/images/paysagiste/extra-8.webp",
+    "photoGalerie3Alt": "Allée végétalisée chez un client",
+    "photoGalerie4": "/images/paysagiste/extra-2.webp",
+    "photoGalerie4Alt": "Jardin contemporain entretenu par l'équipe",
+    "photoGalerie5": "/images/paysagiste/extra-6.webp",
+    "photoGalerie5Alt": "Composition végétale tropicale"
   },
   "manifesto": "On dessine un jardin comme on écrit un poème. Avec des silences, des respirations, et des plantes qu'on connaît par cœur.",
   "valeurs": [
@@ -216,8 +216,8 @@
       "role": "Paysagiste · gérante",
       "experience": "Formée paysagiste",
       "bio": "",
-      "photo": "/images/paysagiste/fleur-1.webp",
-      "photoAlt": "Tournesol epanoui"
+      "photo": "/images/paysagiste/extra-3.webp",
+      "photoAlt": "Portrait de Claire, paysagiste"
     },
     {
       "id": "leo",
@@ -225,8 +225,8 @@
       "role": "Jardinier · chef d'équipe",
       "experience": "8 ans à l'atelier",
       "bio": "",
-      "photo": "/images/paysagiste/fleur-2.webp",
-      "photoAlt": "Orchidee blanche en fleur"
+      "photo": "/images/paysagiste/extra-4.webp",
+      "photoAlt": "Portrait de Léo, jardinier"
     },
     {
       "id": "amelie",
@@ -234,8 +234,8 @@
       "role": "Élagueuse grimpeuse",
       "experience": "Certificat de spécialisation",
       "bio": "",
-      "photo": "/images/paysagiste/fleur-3.webp",
-      "photoAlt": "Pivoine rose en pleine floraison"
+      "photo": "/images/paysagiste/extra-5.webp",
+      "photoAlt": "Portrait d'Amélie, élagueuse"
     }
   ],
   "communes": [

@@ -1,0 +1,70 @@
+---
+import data from '../../../data/templates/verveine.json';
+const info = data.info;
+---
+
+<section id="top" class="relative overflow-hidden" style="background-color: #F7F4EE;">
+  <div class="max-w-content mx-auto px-5 md:px-10 pt-12 md:pt-20 pb-16 md:pb-24">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+
+      <div class="lg:col-span-6 order-2 lg:order-1">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="block w-8 h-px" style="background-color: #C9B79A;"></span>
+          <p class="font-inter text-[11px] uppercase tracking-[0.35em]" style="color: #1F3A44;">
+            Cabinet d'ostéopathie · La Réunion
+          </p>
+        </div>
+
+        <h1 class="font-cormorant leading-[1.02]" style="color: #1F3A44; font-size: clamp(40px, 6vw, 76px);">
+          Une médecine manuelle <em class="italic" style="color: #C9B79A;">pensée pour vous.</em>
+        </h1>
+
+        <p class="mt-7 font-inter text-[15px] md:text-[16px] leading-relaxed max-w-xl" style="color: rgba(31,58,68,0.78);">
+          Ostéopathe D.O. depuis {info.annee}. Consultations adultes, sportifs, femmes enceintes,
+          nourrissons. Techniques douces, écoute attentive, suivi mesuré.
+        </p>
+
+        <div class="mt-9 flex flex-col sm:flex-row gap-3">
+          <a href="#rendez-vous" class="inline-flex items-center justify-center h-12 px-7 font-inter font-medium text-[13px] tracking-wider transition-colors" style="background-color: #1F3A44; color: #F7F4EE;">
+            Prendre rendez-vous
+          </a>
+          <a href="#expertise" class="inline-flex items-center justify-center h-12 px-7 font-inter font-medium text-[13px] tracking-wider border transition-colors" style="border-color: #1F3A44; color: #1F3A44;">
+            Zones traitées
+          </a>
+        </div>
+
+        <dl class="mt-10 pt-8 border-t grid grid-cols-3 gap-4" style="border-color: rgba(31,58,68,0.15);">
+          <div>
+            <dt class="font-inter text-[10px] uppercase tracking-[0.2em]" style="color: rgba(31,58,68,0.55);">Inscrite</dt>
+            <dd class="mt-1 font-cormorant text-xl" style="color: #1F3A44;">ROF</dd>
+          </div>
+          <div>
+            <dt class="font-inter text-[10px] uppercase tracking-[0.2em]" style="color: rgba(31,58,68,0.55);">Séance</dt>
+            <dd class="mt-1 font-cormorant text-xl" style="color: #1F3A44;">45 min</dd>
+          </div>
+          <div>
+            <dt class="font-inter text-[10px] uppercase tracking-[0.2em]" style="color: rgba(31,58,68,0.55);">Depuis</dt>
+            <dd class="mt-1 font-cormorant text-xl" style="color: #1F3A44;">{info.annee}</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="lg:col-span-6 order-1 lg:order-2 relative">
+        <div class="relative aspect-[4/5] overflow-hidden">
+          <img
+            src="/images/osteo/extra-1.webp"
+            alt="Cabinet d'ostéopathie — espace calme et professionnel à La Réunion"
+            class="w-full h-full object-cover"
+            loading="eager"
+            fetchpriority="high"
+          />
+          <div class="absolute inset-0 pointer-events-none" style="background: linear-gradient(180deg, transparent 60%, rgba(31,58,68,0.18) 100%);"></div>
+        </div>
+        <div class="hidden md:block absolute -bottom-6 -left-6 px-5 py-4 max-w-[220px]" style="background-color: #1F3A44; color: #F7F4EE;">
+          <p class="font-inter text-[10px] uppercase tracking-[0.25em]" style="color: #C9B79A;">Note clinique</p>
+          <p class="mt-1 font-cormorant italic text-lg leading-snug">« Soigner sans précipitation. »</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

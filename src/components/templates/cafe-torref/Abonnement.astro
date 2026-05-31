@@ -1,63 +1,27 @@
 ---
-import data from '../../../data/templates/brulerie.json';
 ---
-
-<section id="abonnement" class="py-20 md:py-28 relative" style="background-color: rgba(181, 122, 74, 0.12);">
-  <div class="max-w-content mx-auto px-6 md:px-10">
-
-    <div class="text-center max-w-2xl mx-auto mb-14 md:mb-20">
-      <p class="font-dm-mono text-[10.5px] uppercase tracking-[0.4em] mb-4" style="color: #B57A4A;">— [ Abonnement ] —</p>
-      <h2 class="font-plex-serif font-semibold leading-[0.95]" style="color: #1A0F0A; font-size: clamp(36px, 5vw, 56px); font-family: 'IBM Plex Serif', Georgia, serif;">
-        {data.abonnement.titre}
-        <em class="block italic mt-2" style="color: #B57A4A; font-size: clamp(40px, 5.5vw, 60px);">{data.abonnement.tagline}</em>
+<section id="abonnement" class="py-24 md:py-32" style="background:#B57A4A; color:#1A0F0A;">
+  <div class="max-w-content mx-auto px-6 md:px-10 grid md:grid-cols-2 gap-12 items-center">
+    <div>
+      <div class="text-[10px] uppercase tracking-[0.32em] mb-3" style="font-family:'DM Mono',monospace; color:#1A0F0A;">L'abonnement café</div>
+      <h2 class="font-instrument text-5xl md:text-6xl leading-tight">
+        <em class="italic">250g de café frais,</em><br/>tous les 15 jours,<br/>chez vous.
       </h2>
-      <p class="mt-5 font-plex-serif text-[15px] leading-relaxed" style="color: rgba(26, 15, 10, 0.82); font-family: 'IBM Plex Serif', Georgia, serif;">
-        {data.abonnement.texte}
-      </p>
+      <div class="mt-8 flex items-baseline gap-4">
+        <span class="font-instrument text-7xl">14€</span>
+        <span class="font-mono text-[12px] uppercase tracking-[0.22em]" style="font-family:'DM Mono',monospace;">/ envoi</span>
+      </div>
+      <p class="mt-5 text-lg leading-relaxed max-w-md">Livraison toute l'île. Annulation 1 clic. Premier envoi à la commande, suivants programmés.</p>
     </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 max-w-6xl mx-auto">
-      {data.abonnement.formules.map((f, i) => (
-        <article class={`p-7 md:p-9 flex flex-col ${i === 1 ? 'md:scale-[1.03]' : ''}`} style={`background-color: ${i === 1 ? '#1A0F0A' : 'rgba(255, 255, 255, 0.7)'}; color: ${i === 1 ? '#E8DDC7' : '#1A0F0A'}; border: 1px solid ${i === 1 ? '#1A0F0A' : 'rgba(62, 42, 31, 0.2)'};`}>
-          <p class="font-dm-mono text-[10px] uppercase tracking-[0.3em]" style={`color: ${i === 1 ? '#B57A4A' : '#B57A4A'};`}>
-            [ Formule {String(i + 1).padStart(2, '0')} ]
-          </p>
-          <h3 class="mt-2 font-plex-serif font-semibold text-2xl md:text-[28px] leading-tight" style="font-family: 'IBM Plex Serif', Georgia, serif;">
-            {f.label}
-          </h3>
-          <p class="mt-1.5 font-plex-serif italic text-lg leading-snug" style={`color: ${i === 1 ? '#B57A4A' : '#B57A4A'}; font-family: 'IBM Plex Serif', Georgia, serif;`}>
-            {f.frequence}
-          </p>
-
-          <div class="mt-6 pt-5 border-t" style={`border-color: ${i === 1 ? 'rgba(181, 122, 74, 0.3)' : 'rgba(62, 42, 31, 0.2)'};`}>
-            <p class="font-dm-mono text-[10px] uppercase tracking-[0.25em] mb-2" style={`color: ${i === 1 ? '#B57A4A' : '#B57A4A'};`}>Format</p>
-            <p class="font-plex-serif text-[14px] leading-snug" style="font-family: 'IBM Plex Serif', Georgia, serif;">
-              {f.format}
-            </p>
-          </div>
-
-          <div class="mt-4">
-            <p class="font-dm-mono text-[10px] uppercase tracking-[0.25em] mb-1" style={`color: ${i === 1 ? '#B57A4A' : '#B57A4A'};`}>Tarif</p>
-            <p class="font-plex-serif font-semibold text-3xl md:text-4xl leading-tight" style="font-family: 'IBM Plex Serif', Georgia, serif;">
-              {f.prix}
-            </p>
-          </div>
-
-          <p class="mt-5 font-plex-serif text-[14px] leading-relaxed flex-1" style={`color: ${i === 1 ? 'rgba(232, 221, 199, 0.78)' : 'rgba(26, 15, 10, 0.78)'}; font-family: 'IBM Plex Serif', Georgia, serif;`}>
-            {f.details}
-          </p>
-
-          <a
-            href={`https://wa.me/${data.info.whatsapp}?text=${encodeURIComponent('Bonjour, je souhaite m\'abonner — formule ' + f.label + '.')}`}
-            target="_blank"
-            rel="noopener"
-            class="mt-6 inline-flex items-center justify-center h-12 px-6 font-dm-mono font-semibold text-[11.5px] uppercase tracking-[0.18em]"
-            style={`background-color: ${i === 1 ? '#B57A4A' : '#1A0F0A'}; color: ${i === 1 ? '#1A0F0A' : '#E8DDC7'};`}
-          >
-            [ s'abonner ]
-          </a>
-        </article>
-      ))}
+    <div class="p-8 md:p-10" style="background:#1A0F0A; color:#E8DDC7;">
+      <div class="text-[10px] uppercase tracking-[0.32em] mb-5" style="font-family:'DM Mono',monospace; color:#B57A4A;">Ce que vous recevez</div>
+      <ul class="space-y-4 text-[15px]">
+        <li class="flex gap-4"><span class="font-instrument italic text-2xl" style="color:#B57A4A;">·</span><span><strong class="font-instrument text-xl">250g de grains</strong> ou moulu (au choix), torréfiés J-3 max.</span></li>
+        <li class="flex gap-4"><span class="font-instrument italic text-2xl" style="color:#B57A4A;">·</span><span><strong class="font-instrument text-xl">Origine surprise</strong> tournante — Éthiopie, Brésil, Colombie, Vietnam.</span></li>
+        <li class="flex gap-4"><span class="font-instrument italic text-2xl" style="color:#B57A4A;">·</span><span><strong class="font-instrument text-xl">Fiche de dégustation</strong> avec notes, ratios filtre & espresso conseillés.</span></li>
+        <li class="flex gap-4"><span class="font-instrument italic text-2xl" style="color:#B57A4A;">·</span><span><strong class="font-instrument text-xl">Livraison incluse</strong> partout sur l'île (Réunion).</span></li>
+      </ul>
+      <a href="#contact" class="mt-8 inline-flex items-center h-12 px-7 text-[11px] uppercase tracking-[0.22em] font-semibold" style="font-family:'DM Mono',monospace; background:#B57A4A; color:#1A0F0A;">S'abonner — 14€</a>
     </div>
   </div>
 </section>

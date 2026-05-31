@@ -1,72 +1,59 @@
 ---
 import '@fontsource/cormorant-garamond/latin-400.css';
-import '@fontsource/cormorant-garamond/latin-500.css';
 import '@fontsource/cormorant-garamond/latin-400-italic.css';
-import '@fontsource/cormorant-garamond/latin-500-italic.css';
-import '@fontsource/plus-jakarta-sans/latin-400.css';
-import '@fontsource/plus-jakarta-sans/latin-500.css';
-import '@fontsource/plus-jakarta-sans/latin-600.css';
+import '@fontsource/cormorant-garamond/latin-500.css';
+import '@fontsource/cormorant-garamond/latin-600.css';
+import '@fontsource/inter/latin-400.css';
+import '@fontsource/inter/latin-500.css';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSeo } from '../../lib/seo';
-import { localBusinessSchema } from '../../lib/businessSchema';
-import frangipaneData from '../../data/templates/frangipane.json';
+import { localBusinessSchema } from "../../lib/businessSchema";
+import data from '../../data/templates/frangipane.json';
 
 import Header from '../../components/templates/fleuriste/Header.astro';
-import HeroPoudre from '../../components/templates/fleuriste/HeroPoudre.astro';
-import Compositions from '../../components/templates/fleuriste/Compositions.astro';
+import Hero from '../../components/templates/fleuriste/HeroPoudre.astro';
+import Petales from '../../components/templates/fleuriste/Compositions.astro';
+import Atelier from '../../components/templates/fleuriste/Atelier.astro';
 import Saison from '../../components/templates/fleuriste/Saison.astro';
 import Livraison from '../../components/templates/fleuriste/Livraison.astro';
-import Mariage from '../../components/templates/fleuriste/Mariage.astro';
 import Galerie from '../../components/templates/fleuriste/Galerie.astro';
-import Atelier from '../../components/templates/fleuriste/Atelier.astro';
 import Faq from '../../components/templates/fleuriste/Faq.astro';
-import Footer from '../../components/templates/fleuriste/Footer.astro';
 
-const businessLD = localBusinessSchema(frangipaneData, 'Florist');
+const businessLD = localBusinessSchema(data, 'Florist');
 ---
-
 <BaseLayout seo={getSeo('templateFleuriste')} bare={true}>
   <Fragment slot="head">
     {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
-<link rel="preload" as="image" href={frangipaneData.info.photoHero} fetchpriority="high" />
+    <link rel="preload" as="image" href="/images/fleuriste/hero.webp" fetchpriority="high" />
   </Fragment>
-
   <Header />
-
-  <main class="font-jakarta" style="background-color: #F4E6E0; color: #2A2520;">
-    <HeroPoudre />
-    <Compositions />
-    <Livraison />
-    <Saison />
-    <Mariage />
-    <Galerie />
+  <main id="top" style="background:#FBF3EE; color:#2A2520; font-family:Inter,system-ui,sans-serif;">
+    <Hero />
+    <Petales />
     <Atelier />
+    <Saison />
+    <Galerie />
+    <Livraison />
     <Faq />
   </main>
-
-  <Footer />
-
-  <!-- Sticky CTA mobile : commander un bouquet -->
-  <a
-    id="fr-sticky-cta"
-    href="#compositions"
-    data-visible="false"
-    aria-label="Commander un bouquet à l'atelier"
-    class="md:hidden fixed bottom-4 inset-x-4 z-40 inline-flex items-center justify-center gap-2 h-14 px-6 font-jakarta font-semibold text-[12.5px] uppercase tracking-[0.2em] rounded-full transition-all duration-300 ease-out data-[visible=false]:opacity-0 data-[visible=false]:translate-y-4 data-[visible=false]:pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0"
-    style="background-color: #2A2520; color: #F4E6E0; box-shadow: 0 12px 32px rgba(42,37,32,0.35);"
-  >
-    <span>Commander un bouquet</span>
-  </a>
-
-  <script>
-    const frSticky = document.getElementById('fr-sticky-cta');
-    if (frSticky) {
-      const updateFrSticky = () => {
-        frSticky.dataset.visible = String(window.scrollY > 520);
-      };
-      updateFrSticky();
-      window.addEventListener('scroll', updateFrSticky, { passive: true });
-    }
-  </script>
+  <footer id="contact" class="py-14" style="background:#2A2520; color:#FBF3EE;">
+    <div class="max-w-content mx-auto px-6 md:px-10 grid md:grid-cols-3 gap-8">
+      <div>
+        <div class="font-cormorant italic text-3xl">Frangipane</div>
+        <p class="text-[11px] uppercase tracking-[0.28em] mt-1" style="color:#C49B62;">Atelier floral · Réunion</p>
+      </div>
+      <div class="text-[14px]" style="color:#E4D8CB;">
+        <div class="text-[11px] uppercase tracking-[0.28em] mb-2" style="color:#C49B62;">Contact</div>
+        <a href={`tel:${data.info.telephoneHref}`}>{data.info.telephone}</a><br/>
+        <a href={`mailto:${data.info.email}`}>{data.info.email}</a><br/>
+        Atelier · La Réunion
+      </div>
+      <div class="text-[14px]" style="color:#E4D8CB;">
+        <div class="text-[11px] uppercase tracking-[0.28em] mb-2" style="color:#C49B62;">Atelier ouvert</div>
+        Mardi → samedi · 10h-18h<br/>Commandes par téléphone<br/>Mariage / deuil : 7j/7
+      </div>
+    </div>
+    <div class="max-w-content mx-auto px-6 md:px-10 mt-10 pt-5 border-t text-[10px] uppercase tracking-[0.28em]" style="border-color:rgba(251,243,238,0.15); color:#7A6A5C;">© {new Date().getFullYear()} Frangipane — Démonstration 9site4</div>
+  </footer>
 </BaseLayout>

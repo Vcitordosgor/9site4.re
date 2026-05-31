@@ -1,0 +1,34 @@
+---
+import data from '../../../data/templates/verveine.json';
+const info = data.info;
+---
+
+<header
+  class="sticky top-0 z-40 backdrop-blur-md border-b"
+  style="background-color: rgba(247,244,238,0.92); border-color: rgba(31,58,68,0.10);"
+>
+  <div class="max-w-content mx-auto px-5 md:px-10 h-16 md:h-20 flex items-center justify-between">
+    <a href="#top" class="flex items-baseline gap-2 group">
+      <span class="font-cormorant text-2xl md:text-3xl leading-none" style="color: #1F3A44;">{info.wordmark}</span>
+      <span class="hidden md:inline font-inter text-[10px] uppercase tracking-[0.3em]" style="color: rgba(31,58,68,0.55);">Ostéopathie D.O.</span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-7 font-inter text-[12px] uppercase tracking-[0.18em]" style="color: rgba(31,58,68,0.78);">
+      <a href="#approche" class="hover:text-[#1F3A44] transition-colors">Approche</a>
+      <a href="#expertise" class="hover:text-[#1F3A44] transition-colors">Expertise</a>
+      <a href="#praticienne" class="hover:text-[#1F3A44] transition-colors">Praticienne</a>
+      <a href="#tarifs" class="hover:text-[#1F3A44] transition-colors">Tarifs</a>
+      <a href="#rendez-vous" class="hover:text-[#1F3A44] transition-colors">Rendez-vous</a>
+    </nav>
+
+    <a
+      href={`tel:${info.telephoneHref}`}
+      class="inline-flex items-center gap-2 font-inter font-medium text-[12px] md:text-[13px] h-10 md:h-11 px-4 md:px-5 rounded-full transition-colors"
+      style="background-color: #1F3A44; color: #F7F4EE;"
+    >
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="hidden sm:inline">{info.telephone}</span>
+      <span class="sm:hidden">Appeler</span>
+    </a>
+  </div>
+</header>
