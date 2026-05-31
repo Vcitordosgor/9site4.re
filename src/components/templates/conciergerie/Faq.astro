@@ -1,77 +1,36 @@
 ---
-/**
- * Faq — questions clients conciergerie.
- * Sobre, élégant, filets laiton.
- */
 const faq = [
-  {
-    q: 'Quel pourcentage prélevez-vous sur les locations ?',
-    r: 'Notre commission est de 20 % du loyer net perçu, tout inclus : accueil voyageurs, ménage entre séjours, gestion plateformes, blanchisserie, dépannage. Aucun frais caché, facturation mensuelle détaillée.',
-  },
-  {
-    q: 'Vous occupez-vous de l\'optimisation des tarifs ?',
-    r: 'Oui. Nous suivons quotidiennement les prix de marché, événements locaux et saisonnalité pour ajuster vos tarifs. Vous gardez toujours le contrôle final via un tableau de bord en ligne.',
-  },
-  {
-    q: 'Que faites-vous en cas de dégradation ?',
-    r: 'Constat photo et écrit dans les 24 h, mise en cause via la caution Airbnb/Booking ou notre assurance partenaire. Réparation coordonnée par nos artisans dans la semaine, vous êtes tenu informé à chaque étape.',
-  },
-  {
-    q: 'Et si je veux occuper mon bien moi-même ?',
-    r: 'Bien sûr — bloquez les dates depuis votre espace, jusqu\'à 24 h avant l\'arrivée. Vous trouvez le logement propre, draps frais, panier de bienvenue offert si vous prévenez 48 h à l\'avance.',
-  },
-  {
-    q: 'Vos voyageurs sont-ils filtrés ?',
-    r: 'Nous validons chaque réservation manuellement : profil, motif du séjour, nombre exact d\'occupants. Nous refusons sans hésiter les profils douteux. Le calme du voisinage est non négociable.',
-  },
+  ["Quel est le délai pour mettre mon bien en marché ?", "Entre 7 et 14 jours après la visite : reportage photo, rédaction et mise en ligne multi-plateformes, calage tarifaire. Vous validez tout avant publication."],
+  ["Combien puis-je espérer gagner en plus ?", "Nous chiffrons un revenu cible dans les sept jours suivant l'audit, basé sur des données réelles de biens comparables que nous gérons. En moyenne, +38 % vs la gestion en direct."],
+  ["Suis-je engagé sur une durée ?", "Aucun engagement de durée. Vous pouvez nous quitter avec un préavis de deux mois, le temps d'honorer les réservations déjà confirmées."],
+  ["Quels travaux ou ajustements proposez-vous ?", "L'audit inclut une liste hiérarchisée de recommandations (gratuites à mettre en œuvre, ou nécessitant un budget) qui maximisent revenu et note voyageur."],
+  ["Qui paie les charges (eau, électricité, internet) ?", "Vous, comme avant. Notre commission ne couvre que la gestion. Nous avançons les petits frais (kit d'accueil, consommables) et vous les refacturons en fin de mois."],
+  ["Et si un voyageur dégrade le bien ?", "Caution prélevée à la réservation. Constat et gestion sinistre par nos soins, en lien avec votre assurance propriétaire non-occupant (recommandée)."],
 ];
 ---
-
-<section id="faq" class="relative bg-concierge-champagne py-20 md:py-28 px-6 md:px-10">
-  <div class="max-w-3xl mx-auto">
-
-    <header class="text-center mb-12 md:mb-14">
-      <span class="scroll-reveal inline-block w-12 h-px bg-concierge-laiton" aria-hidden="true"></span>
-      <p class="scroll-reveal mt-4 text-xs font-hubot uppercase tracking-[0.4em] text-concierge-laiton">
-        Questions fréquentes
-      </p>
-      <h2 class="scroll-reveal mt-5 font-volkhov text-concierge-nuit leading-[1.1]" style="font-size: clamp(32px, 4.2vw, 48px);">
-        Ce que les propriétaires<br/>
-        <span class="italic text-concierge-laiton">nous demandent d'abord.</span>
+<section class="relative bg-concierge-champagne text-concierge-encre py-24 md:py-32">
+  <div class="max-w-content mx-auto px-6 md:px-12 grid lg:grid-cols-12 gap-12">
+    <div class="lg:col-span-4">
+      <p class="font-inter text-[11px] uppercase tracking-[0.45em] text-concierge-bordeaux mb-4">§ FAQ propriétaires</p>
+      <h2 class="font-cormorant italic leading-[0.95] tracking-tight sticky top-28" style="font-size: clamp(48px, 6vw, 92px);">
+        Ce qu'on<br/>nous demande<br/>en visite.
       </h2>
-    </header>
-
-    <ul class="divide-y divide-concierge-nuit/15 border-y border-concierge-nuit/15">
-      {faq.map((item, i) => (
-        <li class="scroll-reveal" style={`transition-delay: ${i * 50}ms`}>
-          <details class="group concierge-faq">
-            <summary class="flex items-start justify-between gap-6 py-7 cursor-pointer list-none">
-              <span class="font-volkhov text-concierge-nuit leading-snug" style="font-size: clamp(18px, 1.8vw, 22px);">
-                {item.q}
-              </span>
-              <span class="shrink-0 mt-1 inline-flex items-center justify-center w-9 h-9 border border-concierge-laiton/50 text-concierge-laiton transition-transform duration-300 group-open:rotate-45" aria-hidden="true">
-                <svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="12" y1="5" x2="12" y2="19"/>
-                  <line x1="5" y1="12" x2="19" y2="12"/>
-                </svg>
-              </span>
+    </div>
+    <ul class="lg:col-span-8 divide-y divide-concierge-laiton/30 border-y border-concierge-laiton/30">
+      {faq.map((q, i) => (
+        <li>
+          <details class="group">
+            <summary class="cursor-pointer py-6 flex items-start justify-between gap-6 list-none">
+              <div class="flex gap-5 items-start">
+                <span class="font-cormorant italic text-concierge-bordeaux text-xl mt-1 shrink-0">{String(i+1).padStart(2,'0')}.</span>
+                <span class="font-cormorant italic text-concierge-encre text-xl md:text-2xl leading-tight">{q[0]}</span>
+              </div>
+              <span class="font-cormorant italic text-concierge-laiton text-3xl leading-none mt-1 transition-transform group-open:rotate-45 shrink-0">+</span>
             </summary>
-            <div class="pb-8 pr-14">
-              <p class="font-hubot text-concierge-graphite leading-[1.7]" style="font-size: 15px;">
-                {item.r}
-              </p>
-            </div>
+            <p class="pb-7 pl-10 font-inter text-concierge-graphite leading-relaxed max-w-3xl">{q[1]}</p>
           </details>
         </li>
       ))}
     </ul>
   </div>
 </section>
-
-<style>
-  .concierge-faq summary::-webkit-details-marker { display: none; }
-  .concierge-faq summary:focus-visible {
-    outline: 2px solid rgb(184 151 88);
-    outline-offset: 4px;
-  }
-</style>
