@@ -1,150 +1,92 @@
 ---
-import data from '../../../data/templates/doudou.json';
-const waBase = `https://wa.me/${data.info.whatsapp}`;
+const situations = ['Personne âgée', 'Convalescence', 'Sortie d’hôpital', 'Famille relais', 'Autre'];
 ---
+<section id="contact" class="relative bg-[#F8F0E3] py-24 md:py-32 overflow-hidden">
+  <div aria-hidden="true" class="absolute -top-40 -left-40 w-[500px] h-[500px] rounded-full bg-[#6B7F5C]/12 blur-3xl"></div>
+  <div class="relative max-w-content mx-auto px-6 md:px-10">
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-16">
 
-<section id="demande" class="bg-doudou-bleu text-doudou-creme py-20 md:py-28 px-6 md:px-10 relative overflow-hidden">
+      <div class="lg:col-span-5" data-reveal>
+        <p class="text-[#6B7F5C] text-[12px] uppercase tracking-[0.24em] mb-4">— Prendre contact</p>
+        <h2 class="text-[#3D2A1E] leading-[0.95]" style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(44px,6vw,72px);">
+          Parlez-nous de <em class="text-[#C4674C]">votre situation.</em>
+        </h2>
+        <p class="mt-6 text-[#3D2A1E]/75 text-[17px] leading-[1.6] max-w-md">
+          Pas de formulaire-usine. Quatre questions, on vous rappelle dans la journée — du lundi au dimanche, 7h–22h.
+        </p>
 
-  <!-- Formes décoratives douces -->
-  <div class="absolute -top-40 -right-40 w-[400px] h-[400px] rounded-full bg-doudou-rose/30 pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full bg-doudou-soleil/20 pointer-events-none" aria-hidden="true"></div>
-
-  <div class="relative max-w-3xl mx-auto">
-
-    <header class="text-center mb-12">
-      <p class="font-homemade text-doudou-soleil text-4xl mb-4 leading-none rotate-[-1deg]">
-        on prend rendez-vous ?
-      </p>
-      <h2 class="font-nunito font-bold text-doudou-creme leading-[1.05]" style="font-size: clamp(34px, 5vw, 60px);">
-        Visite à domicile,<br/>
-        <span class="text-doudou-soleil">complètement gratuite.</span>
-      </h2>
-      <p class="mt-5 font-be-vietnam text-doudou-creme/85 text-base md:text-lg max-w-xl mx-auto leading-relaxed">
-        Un de nos aidants se déplace chez vous, à votre rythme. Bilan complet, conseil sur les aides, devis. Sans engagement.
-      </p>
-    </header>
-
-    <form id="doudou-form" class="bg-doudou-creme text-doudou-encre p-6 md:p-8 rounded-3xl space-y-5" novalidate>
-
-      <p class="font-homemade text-doudou-rose text-3xl rotate-[-1deg] leading-none">
-        Bonjour ! On vous écoute :
-      </p>
-
-      <!-- Pour qui -->
-      <div>
-        <label for="dd-pour" class="block font-nunito font-bold text-doudou-encre text-sm mb-2">
-          ♡ Cette aide est pour…
-        </label>
-        <select
-          id="dd-pour"
-          name="pour"
-          required
-          class="w-full h-12 px-4 bg-doudou-soleil/20 border-2 border-doudou-encre/15 focus:border-doudou-bleu rounded-2xl font-be-vietnam text-doudou-encre text-base outline-none transition-colors cursor-pointer"
-        >
-          <option value="">— Sélectionner —</option>
-          <option value="parent-age">Mon parent âgé(e)</option>
-          <option value="conjoint">Mon conjoint(e)</option>
-          <option value="moi">Moi-même</option>
-          <option value="proche">Un proche dépendant</option>
-          <option value="post-hospi">Sortie d'hospitalisation</option>
-          <option value="autre">Autre situation</option>
-        </select>
-      </div>
-
-      <!-- Coordonnées -->
-      <div class="grid sm:grid-cols-2 gap-4">
-        <div>
-          <label for="dd-prenom" class="block font-nunito font-bold text-doudou-encre text-sm mb-2">
-            ♡ Votre prénom
-          </label>
-          <input
-            id="dd-prenom"
-            name="prenom"
-            type="text"
-            required
-            autocomplete="given-name"
-            class="w-full h-12 px-4 bg-doudou-soleil/20 border-2 border-doudou-encre/15 focus:border-doudou-bleu rounded-2xl font-be-vietnam text-doudou-encre text-base outline-none transition-colors"
-          />
-        </div>
-        <div>
-          <label for="dd-tel" class="block font-nunito font-bold text-doudou-encre text-sm mb-2">
-            ♡ Votre téléphone
-          </label>
-          <input
-            id="dd-tel"
-            name="telephone"
-            type="tel"
-            required
-            autocomplete="tel"
-            placeholder="0692 xx xx xx"
-            class="w-full h-12 px-4 bg-doudou-soleil/20 border-2 border-doudou-encre/15 focus:border-doudou-bleu rounded-2xl font-be-vietnam text-doudou-encre text-base outline-none transition-colors tabular-nums"
-          />
+        <div class="mt-10 space-y-4">
+          <div class="flex items-start gap-4 p-4 rounded-2xl bg-white ring-1 ring-[#3D2A1E]/10">
+            <span class="w-10 h-10 rounded-full bg-[#C4674C]/15 text-[#C4674C] grid place-items-center shrink-0">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </span>
+            <div>
+              <p class="text-[11px] uppercase tracking-[0.18em] text-[#3D2A1E]/55 mb-1">Téléphone</p>
+              <a href="tel:+262692123456" class="text-[#3D2A1E] font-medium text-[17px] tabular-nums">0692 12 34 56</a>
+            </div>
+          </div>
+          <div class="flex items-start gap-4 p-4 rounded-2xl bg-white ring-1 ring-[#3D2A1E]/10">
+            <span class="w-10 h-10 rounded-full bg-[#6B7F5C]/15 text-[#6B7F5C] grid place-items-center shrink-0">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4zM4 4l8 8 8-8"/></svg>
+            </span>
+            <div>
+              <p class="text-[11px] uppercase tracking-[0.18em] text-[#3D2A1E]/55 mb-1">Email</p>
+              <a href="mailto:bonjour@doudou-service.re" class="text-[#3D2A1E] font-medium text-[15px]">bonjour@doudou-service.re</a>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Commune -->
-      <div>
-        <label for="dd-commune" class="block font-nunito font-bold text-doudou-encre text-sm mb-2">
-          ♡ Votre commune
+      <form class="lg:col-span-7 bg-white rounded-[28px] p-8 md:p-12 ring-1 ring-[#3D2A1E]/10" style="box-shadow:0 30px 80px -30px rgba(61,42,30,0.15);" data-reveal>
+        <p class="text-[11px] uppercase tracking-[0.22em] text-[#6B7F5C] mb-2">Étape 1 sur 4</p>
+        <h3 class="text-[#3D2A1E] text-[28px] mb-7" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;">Pour qui cherchez-vous de l’aide ?</h3>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-8">
+          {situations.map((s) => (
+            <label class="cursor-pointer">
+              <input type="radio" name="situation" value={s} class="peer sr-only" />
+              <span class="block text-[14px] text-center py-3 px-3 rounded-2xl ring-1 ring-[#3D2A1E]/15 text-[#3D2A1E]/80 hover:ring-[#C4674C] hover:text-[#C4674C] peer-checked:bg-[#3D2A1E] peer-checked:text-[#F8F0E3] peer-checked:ring-[#3D2A1E] transition-all">{s}</span>
+            </label>
+          ))}
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-5 mb-5">
+          <label class="block">
+            <span class="block text-[12px] uppercase tracking-[0.14em] text-[#3D2A1E]/60 mb-2">Ville</span>
+            <input type="text" placeholder="Saint-Pierre, Le Tampon…" class="w-full h-12 px-4 rounded-xl bg-[#F8F0E3]/60 ring-1 ring-[#3D2A1E]/15 focus:ring-[#C4674C] focus:bg-white outline-none text-[15px] transition-all" />
+          </label>
+          <label class="block">
+            <span class="block text-[12px] uppercase tracking-[0.14em] text-[#3D2A1E]/60 mb-2">Début souhaité</span>
+            <select class="w-full h-12 px-4 rounded-xl bg-[#F8F0E3]/60 ring-1 ring-[#3D2A1E]/15 focus:ring-[#C4674C] focus:bg-white outline-none text-[15px] transition-all">
+              <option>Urgent (sous 48h)</option>
+              <option>Sous deux semaines</option>
+              <option>Dans un mois</option>
+              <option>Je me renseigne</option>
+            </select>
+          </label>
+        </div>
+
+        <label class="block mb-5">
+          <span class="block text-[12px] uppercase tracking-[0.14em] text-[#3D2A1E]/60 mb-2">Quelques mots sur la situation</span>
+          <textarea rows="4" placeholder="Maman, 82 ans, vit seule, sortie d’hôpital la semaine prochaine…" class="w-full p-4 rounded-xl bg-[#F8F0E3]/60 ring-1 ring-[#3D2A1E]/15 focus:ring-[#C4674C] focus:bg-white outline-none text-[15px] transition-all resize-none"></textarea>
         </label>
-        <input
-          id="dd-commune"
-          name="commune"
-          type="text"
-          placeholder="Ex. La Réunion…"
-          class="w-full h-12 px-4 bg-doudou-soleil/20 border-2 border-doudou-encre/15 focus:border-doudou-bleu rounded-2xl font-be-vietnam text-doudou-encre text-base outline-none transition-colors"
-        />
-      </div>
 
-      <!-- Message -->
-      <div>
-        <label for="dd-message" class="block font-nunito font-bold text-doudou-encre text-sm mb-2">
-          ♡ Quelques mots <span class="font-normal text-doudou-encre/60">(facultatif)</span>
-        </label>
-        <textarea
-          id="dd-message"
-          name="message"
-          rows="3"
-          placeholder="L'âge de la personne, son état de santé, ce qui pourrait nous aider à comprendre…"
-          class="w-full px-4 py-3 bg-doudou-soleil/20 border-2 border-doudou-encre/15 focus:border-doudou-bleu rounded-2xl font-be-vietnam text-doudou-encre text-base placeholder:text-doudou-encre/45 outline-none transition-colors resize-none"
-        ></textarea>
-      </div>
+        <div class="grid sm:grid-cols-2 gap-5 mb-7">
+          <label class="block">
+            <span class="block text-[12px] uppercase tracking-[0.14em] text-[#3D2A1E]/60 mb-2">Prénom</span>
+            <input type="text" class="w-full h-12 px-4 rounded-xl bg-[#F8F0E3]/60 ring-1 ring-[#3D2A1E]/15 focus:ring-[#C4674C] focus:bg-white outline-none text-[15px] transition-all" />
+          </label>
+          <label class="block">
+            <span class="block text-[12px] uppercase tracking-[0.14em] text-[#3D2A1E]/60 mb-2">Téléphone</span>
+            <input type="tel" placeholder="0692…" class="w-full h-12 px-4 rounded-xl bg-[#F8F0E3]/60 ring-1 ring-[#3D2A1E]/15 focus:ring-[#C4674C] focus:bg-white outline-none text-[15px] transition-all tabular-nums" />
+          </label>
+        </div>
 
-      <!-- Submit -->
-      <button
-        type="submit"
-        class="w-full inline-flex items-center justify-center gap-2 h-14 bg-doudou-rose text-doudou-creme font-nunito font-bold text-base rounded-full hover:bg-doudou-encre transition-colors"
-      >
-        ♡ Demander la visite gratuite
-      </button>
-
-      <p class="font-be-vietnam italic text-doudou-encre/60 text-sm text-center">
-        On vous rappelle dans la journée pour fixer un créneau qui vous arrange.
-      </p>
-    </form>
+        <button type="submit" class="w-full h-[54px] rounded-full bg-[#3D2A1E] text-[#F8F0E3] text-[15px] font-medium hover:bg-[#C4674C] transition-colors">
+          Demander qu’on me rappelle
+        </button>
+        <p class="text-[12px] text-[#3D2A1E]/55 text-center mt-4">Rappel dans la journée. Aucune information transmise à un tiers.</p>
+      </form>
+    </div>
   </div>
 </section>
-
-<script define:vars={{ waBase }}>
-  const form = document.getElementById('doudou-form');
-  if (form) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const fd = new FormData(form);
-      const pour = fd.get('pour') || '';
-      const prenom = fd.get('prenom') || '';
-      const tel = fd.get('telephone') || '';
-      const commune = fd.get('commune') || '';
-      const message = fd.get('message') || '';
-      const text = [
-        'Bonjour Doudou Service, je souhaite une visite à domicile gratuite.',
-        prenom ? `Prénom : ${prenom}` : '',
-        tel ? `Tél : ${tel}` : '',
-        pour ? `Pour : ${pour}` : '',
-        commune ? `Commune : ${commune}` : '',
-        message ? `Précisions : ${message}` : '',
-      ].filter(Boolean).join('\n');
-      window.open(`${waBase}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
-    });
-  }
-</script>

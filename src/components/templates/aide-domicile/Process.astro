@@ -1,46 +1,44 @@
 ---
-/**
- * Process — de l'appel à la première visite.
- * 4 étapes douces, ton chaleureux.
- */
 const steps = [
-  { num: '01', titre: 'Votre appel', desc: 'Vous parlez à un humain, jamais à un robot. On écoute le besoin, sans jugement, sans vente forcée.' },
-  { num: '02', titre: 'Visite à domicile', desc: 'Gratuite, sans engagement. On rencontre la personne aidée, on regarde le lieu, on évalue ensemble.' },
-  { num: '03', titre: 'Mise en place', desc: 'On choisit l\'aidante avec vous (caractère, disponibilité, langues parlées). Période d\'essai d\'une semaine.' },
-  { num: '04', titre: 'Suivi régulier', desc: 'Point téléphonique chaque mois, visite coordinatrice tous les 3 mois. Ajustements possibles à tout moment.' },
+  { n: '01', titre: 'Premier appel', duree: '15 min, gratuit', texte: 'Vous appelez, vous racontez. Pas de jargon, pas de formulaire interminable. On comprend votre situation, on vous dit franchement si on peut aider.' },
+  { n: '02', titre: 'Visite à domicile', duree: 'Sous 48h', texte: 'On vient chez vous, avec un proche si vous voulez. On regarde l’appartement, on rencontre la personne aidée, on écoute ce qui compte pour elle.' },
+  { n: '03', titre: 'Matching aidant', duree: '24h', texte: 'On choisit ensemble l’aidant qui correspond — personnalité, expérience, dispos. Pas de roulement subi : c’est lui (ou elle), et c’est tout.' },
+  { n: '04', titre: 'Mise en route', duree: 'Première semaine', texte: 'Début progressif. Le carnet de liaison s’ouvre, les habitudes se posent. On est joignables à tout moment.' },
+  { n: '05', titre: 'Suivi régulier', duree: 'Tous les mois', texte: 'Un point téléphonique avec la famille. On ajuste, on écoute les retours, on célèbre ce qui va bien.' },
 ];
 ---
-
-<section id="comment-ca-marche" class="relative bg-doudou-ciel/30 py-20 md:py-28 px-6 md:px-10 border-y-2 border-doudou-bleu/15">
-  <div class="max-w-content mx-auto">
-
-    <header class="text-center max-w-2xl mx-auto mb-14 md:mb-16">
-      <p class="scroll-reveal text-xs font-nunito font-bold uppercase tracking-[0.32em] text-doudou-bleu">
-        Comment ça se passe
-      </p>
-      <h2 class="scroll-reveal mt-4 font-nunito font-extrabold text-doudou-encre leading-[1.05]" style="font-size: clamp(34px, 4.5vw, 54px);">
-        De votre appel<br/>
-        <span class="text-doudou-rose">à la première visite.</span>
+<section id="process" class="bg-[#F8F0E3] py-24 md:py-32">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+    <div class="max-w-3xl mb-16" data-reveal>
+      <p class="text-[#6B7F5C] text-[12px] uppercase tracking-[0.24em] mb-4">— Comment ça se passe</p>
+      <h2 class="text-[#3D2A1E] leading-[0.95]" style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(44px,6.5vw,84px);">
+        Cinq étapes,<br/><em class="text-[#C4674C]">aucun piège.</em>
       </h2>
-    </header>
+      <p class="mt-6 text-[#3D2A1E]/75 text-[17px] leading-[1.6]">
+        De l’appel à la routine installée, on prend le temps qu’il faut. Pas de contrat à vie, pas de service-usine.
+      </p>
+    </div>
 
-    <ol class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+    <div class="space-y-3">
       {steps.map((s, i) => (
-        <li
-          class="scroll-reveal group relative p-7 bg-doudou-creme rounded-3xl border-2 border-doudou-bleu/15 hover:border-doudou-bleu hover:-translate-y-1 transition-all duration-300"
-          style={`transition-delay: ${i * 80}ms; box-shadow: 0 4px 12px rgba(59,110,143,0.05);`}
-        >
-          <span class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-doudou-bleu text-doudou-creme font-nunito font-extrabold text-lg group-hover:bg-doudou-rose transition-colors">
-            {s.num}
-          </span>
-          <h3 class="mt-5 font-nunito font-extrabold text-doudou-encre leading-tight" style="font-size: 22px;">
-            {s.titre}
-          </h3>
-          <p class="mt-3 font-be-vietnam text-doudou-encre/70 leading-[1.65]" style="font-size: 14.5px;">
-            {s.desc}
-          </p>
-        </li>
+        <details class="group bg-white rounded-[20px] ring-1 ring-[#3D2A1E]/10 overflow-hidden hover:ring-[#C4674C]/30 transition-all" open={i === 0}>
+          <summary class="cursor-pointer list-none flex items-center gap-6 px-6 md:px-8 py-6 md:py-7">
+            <span class="text-[#C4674C] text-[40px] md:text-[56px] leading-none tabular-nums" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;">{s.n}</span>
+            <div class="flex-1">
+              <h3 class="text-[#3D2A1E] text-[22px] md:text-[28px] leading-tight" style="font-family:'Cormorant Garamond',serif;font-weight:500;">{s.titre}</h3>
+              <p class="text-[12px] uppercase tracking-[0.16em] text-[#6B7F5C] mt-1">{s.duree}</p>
+            </div>
+            <span class="w-10 h-10 rounded-full ring-1 ring-[#3D2A1E]/15 grid place-items-center transition-transform group-open:rotate-45">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3D2A1E" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+            </span>
+          </summary>
+          <div class="px-6 md:px-8 pb-7 -mt-2">
+            <div class="pl-0 md:pl-[80px] max-w-2xl">
+              <p class="text-[#3D2A1E]/80 text-[16px] leading-[1.65]">{s.texte}</p>
+            </div>
+          </div>
+        </details>
       ))}
-    </ol>
+    </div>
   </div>
 </section>

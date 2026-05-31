@@ -1,0 +1,69 @@
+---
+const chapters = [
+  { n: 'I', titre: 'Le brief', img: '/images/wedding/extra-2.webp', texte: 'Premier appel découverte. On parle de votre histoire, de votre rêve, du budget réaliste. Pas de jargon. Si on n’est pas faits pour travailler ensemble, je vous oriente — sans regret.', moment: '30 min · visioconférence ou café' },
+  { n: 'II', titre: 'Les préparatifs', img: '/images/wedding/extra-3.webp', texte: 'Six à douze mois de coordination. Lieu, fleuriste, traiteur, photographe, DJ, papeterie. Une seule interlocutrice — moi. Vous validez par mail, je négocie chaque devis ligne par ligne.', moment: '6 — 12 mois · suivi par e-mail' },
+  { n: 'III', titre: 'La veille', img: '/images/wedding/extra-4.webp', texte: 'Répétition rapide sur le lieu. Briefing des prestataires, vérification de chaque détail. Vous, vous dînez tranquille avec vos proches — c’est ma journée la plus chargée, et ce n’est pas la vôtre.', moment: 'J-1 · présence sur le lieu' },
+  { n: 'IV', titre: 'Le jour-J', img: '/images/wedding/extra-5.webp', texte: 'Je suis sur place de l’arrivée des prestataires (souvent 6h du matin) au dernier départ. Vous, vous profitez de chaque seconde. Si quoi que ce soit dérape, vous ne le saurez jamais.', moment: 'Jour-J · 6h → 02h' },
+];
+---
+<section id="histoire" class="relative bg-[#3A352D] text-[#FAF4EA] overflow-hidden">
+  <div class="max-w-content mx-auto px-6 md:px-10 pt-28 md:pt-40 pb-12">
+    <div class="grid md:grid-cols-12 gap-10 items-end mb-16">
+      <div class="md:col-span-7" data-reveal>
+        <p class="text-[#CC6B49] text-[11px] tracking-[0.32em] uppercase mb-6 flex items-center gap-3">
+          <span class="w-10 h-px bg-[#CC6B49]"></span> Signature · Notre histoire en quatre chapitres
+        </p>
+        <h2 class="leading-[0.92]" style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(48px,8vw,112px);">
+          Du premier <em class="text-[#CC6B49]">oui</em>,<br/>
+          à la dernière danse.
+        </h2>
+      </div>
+      <p class="md:col-span-4 md:col-start-9 text-[#FAF4EA]/70 text-[16px] leading-[1.7]">
+        Quatre chapitres, douze mois de complicité, une journée inoubliable. Voici comment se déroule, concrètement, un mariage avec nous.
+      </p>
+    </div>
+  </div>
+
+  <div id="hist-track" class="flex gap-6 md:gap-8 overflow-x-auto snap-x snap-mandatory pb-20 px-6 md:px-10" style="scrollbar-width:none;">
+    {chapters.map((c, i) => (
+      <article class="snap-center shrink-0 w-[80vw] md:w-[640px] max-w-[720px]">
+        <div class="grid md:grid-cols-12 gap-6 md:gap-8 items-end">
+          <div class="md:col-span-7 relative aspect-[4/5] rounded-[28px] overflow-hidden ring-1 ring-[#FAF4EA]/10">
+            <img src={c.img} alt={c.titre} class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#3A352D]/40 to-transparent"></div>
+            <span class="absolute top-6 left-6 text-[#FAF4EA] leading-none" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;font-size:120px;">{c.n}</span>
+          </div>
+          <div class="md:col-span-5">
+            <p class="text-[#CC6B49] text-[11px] tracking-[0.24em] uppercase mb-3">Chapitre {String(i + 1).padStart(2, '0')} / 04</p>
+            <h3 class="leading-[1.05] mb-5" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;font-size:clamp(40px,5vw,64px);">{c.titre}</h3>
+            <p class="text-[#FAF4EA]/80 text-[15px] leading-[1.7] mb-5">{c.texte}</p>
+            <p class="text-[12px] tracking-[0.2em] uppercase text-[#FAF4EA]/55">{c.moment}</p>
+          </div>
+        </div>
+      </article>
+    ))}
+  </div>
+
+  <div class="max-w-content mx-auto px-6 md:px-10 pb-24 flex items-center justify-between flex-wrap gap-4">
+    <p class="text-[#FAF4EA]/65 text-[13px] tracking-[0.18em] uppercase">— Faites défiler horizontalement</p>
+    <div class="flex items-center gap-3">
+      <button id="h-prev" aria-label="Précédent" class="w-12 h-12 rounded-full ring-1 ring-[#FAF4EA]/25 hover:bg-[#CC6B49] hover:ring-[#CC6B49] transition-all grid place-items-center">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      </button>
+      <button id="h-next" aria-label="Suivant" class="w-12 h-12 rounded-full ring-1 ring-[#FAF4EA]/25 hover:bg-[#CC6B49] hover:ring-[#CC6B49] transition-all grid place-items-center">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+<script>
+  const t = document.getElementById('hist-track');
+  const p = document.getElementById('h-prev');
+  const n = document.getElementById('h-next');
+  if (t && p && n) {
+    const step = () => t.clientWidth * 0.7;
+    p.addEventListener('click', () => t.scrollBy({ left: -step(), behavior: 'smooth' }));
+    n.addEventListener('click', () => t.scrollBy({ left: step(), behavior: 'smooth' }));
+  }
+</script>
+<style>#hist-track::-webkit-scrollbar{display:none}</style>

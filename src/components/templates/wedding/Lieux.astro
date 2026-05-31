@@ -1,23 +1,38 @@
 ---
-const photos = [
-  { src: '/images/wedding/extra-3.webp', label: 'Les voeux' },
-  { src: '/images/wedding/extra-5.webp', label: 'Le décor' },
-  { src: '/images/wedding/extra-7.webp', label: 'Le banquet' },
-  { src: '/images/wedding/extra-8.webp', label: 'L\'instant' },
+const lieux = [
+  { nom: 'La plage du lagon', desc: 'Sable doux, filaos, eau turquoise. Au coucher du soleil, l’océan s’embrase.', moment: 'Cérémonie laïque · 17h–19h' },
+  { nom: 'Le jardin botanique', desc: 'Allées d’ombre, palmiers centenaires, fontaines anciennes. Un écrin verdoyant et frais.', moment: 'Cocktail · matinée ou fin d’après-midi' },
+  { nom: 'Le domaine sucrier', desc: 'Cheminée d’usine en pierre, plantation, table d’hôtes. L’élégance de l’héritage créole.', moment: 'Dîner & soirée · 30 à 80 invités' },
+  { nom: 'La falaise marine', desc: 'Vue plongeante sur l’océan, ciel sans bâti, mariage minéral. Pour les couples audacieux.', moment: 'Cérémonie intime · à deux ou jusqu’à 20 invités' },
+  { nom: 'La chapelle des hauts', desc: 'Pierre volcanique, lumière douce, silence des cimes. Pour une cérémonie spirituelle.', moment: 'Cérémonie civile ou religieuse' },
 ];
 ---
-<section id="univers" class="py-24 md:py-32" style="background:#3A352D; color:#FAF4EA;">
+<section class="bg-[#FAF4EA] py-28 md:py-40">
   <div class="max-w-content mx-auto px-6 md:px-10">
-    <div class="mb-16 max-w-2xl">
-      <div class="font-caveat text-2xl mb-2" style="color:#F4D7C5;">Notre univers</div>
-      <h2 class="font-cormorant text-4xl md:text-5xl">Quelques images, <em class="italic" style="color:#F4D7C5;">quelques instants.</em></h2>
+    <div class="grid md:grid-cols-12 gap-10 mb-16">
+      <div class="md:col-span-6" data-reveal>
+        <p class="text-[#8AA288] text-[11px] tracking-[0.32em] uppercase mb-6 flex items-center gap-3">
+          <span class="w-10 h-px bg-[#8AA288]"></span> Tomber amoureux d’un lieu
+        </p>
+        <h2 class="text-[#3A352D] leading-[0.92]" style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(52px,8vw,112px);">
+          Cinq <em class="text-[#CC6B49]">décors</em>,<br/>mille variations.
+        </h2>
+      </div>
+      <p class="md:col-span-5 md:col-start-8 self-end text-[#3A352D]/70 text-[16px] leading-[1.7]">
+        Nous repérons, négocions et sécurisons. Vous, vous choisissez celui qui vous ressemble — ou un autre, parmi nos lieux confidentiels.
+      </p>
     </div>
-    <div class="grid md:grid-cols-4 gap-4">
-      {photos.map((p, i) => (
-        <figure class={`overflow-hidden ${i === 0 || i === 3 ? 'md:row-span-2 md:aspect-[3/5]' : 'aspect-square'}`}>
-          <img src={p.src} alt={p.label} class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" loading="lazy"/>
-        </figure>
+
+    <div class="space-y-4">
+      {lieux.map((l, i) => (
+        <article class="group grid md:grid-cols-12 gap-6 md:gap-10 items-center py-8 border-t border-[#3A352D]/12 hover:bg-[#FAF4EA] transition-colors">
+          <p class="md:col-span-1 text-[#CC6B49] tabular-nums text-[22px]" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;">{String(i + 1).padStart(2, '0')}</p>
+          <h3 class="md:col-span-4 text-[#3A352D] text-[32px] md:text-[44px] leading-[1] group-hover:text-[#CC6B49] transition-colors" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;">{l.nom}</h3>
+          <p class="md:col-span-4 text-[#3A352D]/75 text-[15px] leading-[1.6]">{l.desc}</p>
+          <p class="md:col-span-3 text-[11px] tracking-[0.2em] uppercase text-[#8AA288]">{l.moment}</p>
+        </article>
       ))}
+      <div class="border-t border-[#3A352D]/12"></div>
     </div>
   </div>
 </section>

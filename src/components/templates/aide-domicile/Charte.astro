@@ -1,0 +1,34 @@
+---
+const promesses = [
+  { n: 'I', t: 'Toujours le même visage', d: 'Votre aidant ne change pas en cours de route. Quand il est absent, son remplaçant est présenté en personne.' },
+  { n: 'II', t: 'Le temps réel', d: 'Pas de minutage à la seconde. On reste le temps qu’il faut, on facture honnêtement.' },
+  { n: 'III', t: 'Transparence écrite', d: 'Carnet de liaison au domicile, lisible à tout moment par la famille. Rien ne se cache.' },
+  { n: 'IV', t: 'Écoute, vraiment', d: 'Avant d’agir, on observe. Les habitudes d’une vie ne se réinventent pas en trois jours.' },
+  { n: 'V', t: 'Joignables', d: 'Une ligne directe famille, répondue par un humain, du lundi au dimanche, 7h–22h.' },
+  { n: 'VI', t: 'Le respect', d: 'La maison reste la maison. On entre, on s’adapte, on ne juge pas, on ne réorganise rien sans accord.' },
+];
+---
+<section class="relative bg-[#3D2A1E] text-[#F8F0E3] py-24 md:py-32 overflow-hidden">
+  <div aria-hidden="true" class="absolute inset-0 opacity-[0.06]" style="background-image:radial-gradient(circle at 20% 30%, #F8F0E3 1px, transparent 1px), radial-gradient(circle at 80% 70%, #F8F0E3 1px, transparent 1px); background-size:60px 60px;"></div>
+  <div class="relative max-w-content mx-auto px-6 md:px-10">
+    <div class="text-center max-w-3xl mx-auto mb-16" data-reveal>
+      <p class="text-[#C4674C] text-[12px] uppercase tracking-[0.24em] mb-4">— Notre charte</p>
+      <h2 class="leading-[0.95]" style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(44px,6.5vw,84px);">
+        Six <em class="text-[#C4674C]">promesses</em>, par écrit.
+      </h2>
+      <p class="mt-6 text-[#F8F0E3]/70 text-[17px] leading-[1.6]">
+        Affichées chez chaque famille. Signées par chaque aidant. Tenues, tous les jours.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12">
+      {promesses.map((p) => (
+        <div class="relative" data-reveal>
+          <span class="text-[#C4674C] text-[64px] leading-none block mb-4" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;">{p.n}</span>
+          <h3 class="text-[#F8F0E3] text-[24px] mb-3" style="font-family:'Cormorant Garamond',serif;font-weight:500;">{p.t}</h3>
+          <p class="text-[#F8F0E3]/70 text-[15px] leading-[1.65]">{p.d}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

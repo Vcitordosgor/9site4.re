@@ -1,0 +1,37 @@
+---
+import data from '../../../data/templates/seve.json';
+---
+<section id="promesse" class="bg-[#FAF4EA] py-28 md:py-40">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+    <div class="max-w-5xl mx-auto text-center" data-reveal>
+      <p class="text-[#8AA288] text-[11px] tracking-[0.32em] uppercase mb-6 flex items-center justify-center gap-3">
+        <span class="w-10 h-px bg-[#8AA288]"></span>
+        La promesse
+        <span class="w-10 h-px bg-[#8AA288]"></span>
+      </p>
+      <h2 class="text-[#3A352D] leading-[0.95] tracking-[-0.02em] mb-10" style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(56px,9vw,128px);">
+        Tout, pour vous,<br/>
+        <em class="text-[#CC6B49]" style="font-style:italic;">sur place.</em>
+      </h2>
+      <p class="text-[#3A352D]/75 text-[18px] md:text-[20px] leading-[1.7] max-w-3xl mx-auto">
+        {data.promesse}
+      </p>
+      <p class="mt-12 text-[#CC6B49] inline-block rotate-[-2deg]" style="font-family:'Caveat',cursive;font-size:34px;line-height:1;">
+        Une seule interlocutrice, du brief à la dernière chanson.
+      </p>
+    </div>
+
+    <div class="mt-20 grid sm:grid-cols-3 gap-px bg-[#3A352D]/10 rounded-3xl overflow-hidden ring-1 ring-[#3A352D]/10">
+      {[
+        { n: '+ 60', l: 'mariages célébrés' },
+        { n: '12', l: 'lieux iconiques' },
+        { n: '100 %', l: 'sur-mesure' },
+      ].map((s) => (
+        <div class="bg-[#FAF4EA] p-10 text-center">
+          <p class="text-[#CC6B49] leading-none mb-3" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;font-size:clamp(56px,7vw,80px);">{s.n}</p>
+          <p class="text-[#3A352D]/65 text-[12px] tracking-[0.22em] uppercase">{s.l}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
