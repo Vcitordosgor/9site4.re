@@ -7,6 +7,22 @@
 import data from '../../../data/templates/marlene.json';
 
 const romains = ['I', 'II', 'III', 'IV', 'V'];
+
+// Effet ressenti par catégorie (mot-clé court, pastille)
+const effetParCategorie: Record<string, string> = {
+  visage: 'Coup d’éclat',
+  corps: 'Détente profonde',
+  beauté: 'Regard sublimé',
+  mains: 'Mains soignées',
+  forfaits: 'Pause complète',
+};
+function effetFor(label: string): string {
+  const k = label.toLowerCase();
+  for (const key of Object.keys(effetParCategorie)) {
+    if (k.includes(key)) return effetParCategorie[key];
+  }
+  return 'Effet immédiat';
+}
 ---
 
 <section id="carte" class="bg-marlene-nacre py-24 md:py-36 px-6 md:px-10">
@@ -28,7 +44,7 @@ const romains = ['I', 'II', 'III', 'IV', 'V'];
     <!-- Accordéons par catégorie -->
     <ul class="border-t border-marlene-noir/15">
       {data.categories.map((cat, i) => (
-        <li class="border-b border-marlene-noir/15">
+        <li class="border-b border-marlene-noir/15" data-effet={effetFor(cat.label)}>
           <details class="group" open={i === 0}>
             <summary class="cursor-pointer list-none flex items-baseline gap-4 md:gap-6 py-7 md:py-8 hover:bg-marlene-sable/40 transition-colors duration-500 px-2">
 
@@ -58,15 +74,20 @@ const romains = ['I', 'II', 'III', 'IV', 'V'];
             <div class="pb-9 pl-2 md:pl-14 pr-2">
               <ul class="space-y-4">
                 {cat.soins.map((s) => (
-                  <li class="flex items-baseline gap-3 group/soin">
+                  <li class="flex flex-wrap items-baseline gap-x-3 gap-y-2 group/soin">
                     <span class="font-eb-garamond italic text-marlene-noir text-base md:text-lg shrink-0">
                       {s.nom}
                     </span>
-                    <span class="font-mulish text-[10px] uppercase tracking-[0.22em] text-marlene-moka shrink-0 tabular-nums">
+                    <!-- Pastille 1 : durée -->
+                    <span class="inline-flex items-center font-mulish text-[10px] uppercase tracking-[0.22em] text-marlene-moka shrink-0 tabular-nums border border-marlene-noir/15 rounded-full px-2 py-0.5 bg-marlene-nacre">
                       {s.duree}
                     </span>
+                    <!-- Pastille 2 : effet ressenti -->
+                    <span class="inline-flex items-center font-mulish text-[10px] uppercase tracking-[0.22em] text-marlene-bordeaux shrink-0 border border-marlene-bordeaux/30 rounded-full px-2 py-0.5 bg-marlene-bordeaux/5">
+                      {effetFor(cat.label)}
+                    </span>
                     <!-- Dotted leader -->
-                    <span class="flex-1 mt-2 border-b border-dotted border-marlene-noir/30" aria-hidden="true"></span>
+                    <span class="flex-1 mt-2 border-b border-dotted border-marlene-noir/30 min-w-[2rem]" aria-hidden="true"></span>
                     <!-- Prix -->
                     <span class="font-marcellus text-marlene-bordeaux text-base md:text-lg tabular-nums shrink-0">
                       {s.prix}
