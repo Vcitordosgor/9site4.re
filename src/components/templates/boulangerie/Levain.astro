@@ -1,38 +1,62 @@
 ---
-const etapes = [
-  { num: '1.', titre: 'Rafraîchi', heure: '06h', texte: 'Le chef de levain reçoit sa farine et son eau. Il triple de volume en 6 heures.' },
-  { num: '2.', titre: 'Frasage', heure: '12h', texte: 'Eau + farine + levain. Repos d\'autolyse — la pâte se détend, le gluten s\'organise.' },
-  { num: '3.', titre: 'Pétrissage', heure: '13h', texte: 'À la main, lent et long. On ajoute le sel en fin de course.' },
-  { num: '4.', titre: 'Pointage', heure: '14h-18h', texte: 'Première pousse à température ambiante. Trois rabats successifs pour structurer la pâte.' },
-  { num: '5.', titre: 'Apprêt au froid', heure: '20h → +20h', texte: 'Mise en banneton, retour au froid 4°C pendant la nuit et la matinée. C\'est ici que le goût se forme.' },
-  { num: '6.', titre: 'Cuisson', heure: 'le lendemain', texte: 'Coup de lame, enfournement, 50 minutes à 280°C tombants. Sortie : croûte chantante.' },
+/**
+ * Signature WOAW : "Une fournée, 6 étapes" — timeline verticale alternée
+ * avec heure réelle, photos et descriptions sensorielles.
+ */
+import data from '../../../data/templates/painleve.json';
+const photos = [
+  '/images/boulangerie/extra-1.webp',
+  '/images/boulangerie/extra-2.webp',
+  '/images/boulangerie/extra-3.webp',
+  '/images/boulangerie/extra-4.webp',
+  '/images/boulangerie/extra-5.webp',
+  '/images/boulangerie/hero.webp',
 ];
 ---
-<section class="py-24 md:py-32" style="background:#EADBB7;">
-  <div class="max-w-content mx-auto px-6 md:px-10">
-    <div class="grid md:grid-cols-3 gap-12 lg:gap-16">
-      <div>
-        <p class="font-caveat text-2xl mb-2" style="color:#7A5C28;">le levain naturel —</p>
-        <h2 class="font-crimson-pro text-4xl md:text-5xl leading-tight mb-6" style="color:#1A1614;">
-          Sept ans <em class="italic" style="color:#C89B3C;">d'âge.</em>
-        </h2>
-        <p class="text-lg leading-relaxed" style="color:#3A3128;">
-          Notre levain est un être vivant. Il est né d'une farine et d'un peu d'eau, il y a 7 ans. Il habite un pot, il est nourri matin et soir, il décide du goût de chaque pain.
-        </p>
-        <p class="mt-4 text-lg leading-relaxed" style="color:#3A3128;">Voici sa journée, et celle de la pâte qu'il fait lever.</p>
-      </div>
-      <ol class="md:col-span-2 grid sm:grid-cols-2 gap-x-8 gap-y-6">
-        {etapes.map(e => (
-          <li class="border-l-2 pl-5" style="border-color:#C89B3C;">
-            <div class="flex items-baseline gap-3 mb-1">
-              <span class="font-crimson-pro italic text-2xl" style="color:#C89B3C;">{e.num}</span>
-              <span class="font-crimson-pro text-xl" style="color:#1A1614;">{e.titre}</span>
-              <span class="ml-auto text-[11px] uppercase tracking-[0.22em]" style="color:#7A5C28;">{e.heure}</span>
-            </div>
-            <p class="text-[14px] leading-relaxed" style="color:#3A3128;">{e.texte}</p>
-          </li>
-        ))}
-      </ol>
+<section id="fournee" class="relative py-28 md:py-40 overflow-hidden" style="background:#1A1614; color:#F5EBD5;">
+  <svg class="absolute inset-0 w-full h-full opacity-[0.05] pointer-events-none" aria-hidden="true">
+    <filter id="four-grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2"/></filter>
+    <rect width="100%" height="100%" filter="url(#four-grain)" fill="#F5EBD5"/>
+  </svg>
+
+  <div class="max-w-content mx-auto px-6 md:px-12 relative">
+    <div class="max-w-3xl mb-16 md:mb-24">
+      <p class="font-caveat text-2xl md:text-3xl mb-3" style="color:#C89B3C;">— le rythme du fournil</p>
+      <h2 class="font-crimson-pro leading-[0.95] tracking-[-0.01em]" style="font-size:clamp(40px,6vw,84px); color:#F5EBD5;">
+        Une fournée,
+        <span class="block italic" style="color:#C89B3C; font-size:clamp(54px,7.6vw,108px);">six gestes.</span>
+      </h2>
+      <p class="mt-6 text-base md:text-lg leading-relaxed max-w-xl" style="color:#E0D2B5;">
+        Du rafraîchi du levain à 6 h jusqu'au défournement le lendemain, voici ce qui se passe dans la nuit. Vingt-six heures de patience, soixante secondes à lire.
+      </p>
     </div>
+
+    <ol class="relative max-w-5xl mx-auto">
+      <span class="absolute left-7 md:left-1/2 top-2 bottom-2 w-px md:-translate-x-1/2" style="background:linear-gradient(180deg, transparent, #C89B3C 8%, #C89B3C 92%, transparent);" aria-hidden="true"></span>
+      {data.levain.etapes.map((e, i) => {
+        const left = i % 2 === 0;
+        return (
+          <li class="relative grid md:grid-cols-2 gap-6 md:gap-10 mb-14 md:mb-20 last:mb-0">
+            <span class="absolute left-7 md:left-1/2 top-6 w-4 h-4 rounded-full md:-translate-x-1/2 ring-4 ring-[#1A1614]" style="background:#C89B3C;"></span>
+
+            <div class={`pl-16 md:pl-0 ${left ? 'md:order-1 md:pr-12' : 'md:order-2 md:pl-12'}`}>
+              <div class="aspect-[5/4] overflow-hidden">
+                <img src={photos[i % photos.length]} alt={`Étape ${e.label} — ${e.titre}`}
+                     class="w-full h-full object-cover transition-transform duration-700 hover:scale-[1.04]"
+                     loading="lazy" />
+              </div>
+            </div>
+
+            <div class={`pl-16 md:pl-0 ${left ? 'md:order-2 md:pl-12 md:text-left' : 'md:order-1 md:pr-12 md:text-right'}`}>
+              <p class="font-crimson-pro text-3xl md:text-4xl leading-none" style="color:#C89B3C;">{e.label}</p>
+              <h3 class="mt-3 font-crimson-pro text-2xl md:text-3xl leading-tight" style="color:#F5EBD5;">
+                <span class="italic" style="color:#C89B3C;">{String(i + 1).padStart(2, '0')}.</span> {e.titre}
+              </h3>
+              <p class={`mt-4 text-[15px] leading-relaxed max-w-md ${!left ? 'md:ml-auto' : ''}`} style="color:#E0D2B5;">{e.texte}</p>
+            </div>
+          </li>
+        );
+      })}
+    </ol>
   </div>
 </section>

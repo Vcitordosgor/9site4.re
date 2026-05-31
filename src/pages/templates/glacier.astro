@@ -3,9 +3,12 @@ import '@fontsource/fraunces/latin-400.css';
 import '@fontsource/fraunces/latin-500.css';
 import '@fontsource/fraunces/latin-600.css';
 import '@fontsource/fraunces/latin-400-italic.css';
+import '@fontsource/fraunces/latin-500-italic.css';
+import '@fontsource/caveat/latin-400.css';
 import '@fontsource/dm-sans/latin-400.css';
 import '@fontsource/dm-sans/latin-500.css';
 import '@fontsource/dm-sans/latin-600.css';
+import '@fontsource/dm-sans/latin-700.css';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSeo } from '../../lib/seo';
@@ -30,7 +33,7 @@ const businessLD = localBusinessSchema(data, 'FoodEstablishment');
     <link rel="preload" as="image" href="/images/glacier/hero.webp" fetchpriority="high" />
   </Fragment>
   <Header />
-  <main id="top" style="background:#FFF6E2; color:#3D2817; font-family:'DM Sans',system-ui,sans-serif;">
+  <main style="background:#FFF6E2; color:#3D2817; font-family:'DM Sans',system-ui,sans-serif;">
     <Hero />
     <Parfums />
     <Moment />
@@ -40,4 +43,23 @@ const businessLD = localBusinessSchema(data, 'FoodEstablishment');
     <Faq />
   </main>
   <Footer />
+
+  <a id="gl-sticky" href="#tournee" data-visible="false"
+     class="md:hidden fixed bottom-4 inset-x-4 z-40 inline-flex items-center justify-center h-14 px-6 text-[12px] font-bold uppercase tracking-[0.22em] rounded-full transition-all duration-300 ease-out data-[visible=false]:opacity-0 data-[visible=false]:translate-y-4 data-[visible=false]:pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0"
+     style="background:#FF6F91; color:#FFF6E2; box-shadow:0 12px 32px rgba(255,111,145,0.4);">
+     Où croiser le camion
+  </a>
+  <script>
+    const s = document.getElementById('gl-sticky');
+    const t = document.getElementById('tournee') || document.getElementById('contact');
+    if (s) {
+      const u = () => {
+        const past = window.scrollY > 480;
+        let inSec = false;
+        if (t) { const r = t.getBoundingClientRect(); inSec = r.top < window.innerHeight && r.bottom > 80; }
+        s.dataset.visible = String(past && !inSec);
+      };
+      u(); window.addEventListener('scroll', u, { passive: true }); window.addEventListener('resize', u, { passive: true });
+    }
+  </script>
 </BaseLayout>

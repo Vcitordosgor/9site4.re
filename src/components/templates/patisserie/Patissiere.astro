@@ -1,56 +1,64 @@
 ---
+/**
+ * "Notre pâtissière" — portrait + citation italique manuscrite +
+ * parcours en 3 dates clés.
+ */
 import data from '../../../data/templates/vanille.json';
----
 
-<section id="patissiere" class="bg-vanille-grain py-20 md:py-28 relative overflow-hidden">
-  <!-- Texture -->
-  <svg class="absolute inset-0 w-full h-full opacity-[0.04]" aria-hidden="true">
+const dates = [
+  { annee: '2003', titre: 'CAP Pâtisserie', texte: "Stéphanie obtient son CAP Pâtisserie après deux ans en alternance dans une maison classique." },
+  { annee: '2005-2009', titre: 'Apprentissage à Paris', texte: "Quatre années en pâtisserie classique parisienne : feuilletage, entremets, glaces. Elle apprend la rigueur des grands gestes." },
+  { annee: data.info.annee, titre: "Ouverture à La Réunion", texte: `Retour sur l'île. Elle ouvre la boutique avec une seule idée en tête : marier la pâtisserie française aux fruits péi de son enfance.` },
+];
+---
+<section id="patissiere" class="bg-vanille-papier py-24 md:py-36 relative overflow-hidden">
+  <svg class="absolute inset-0 w-full h-full opacity-[0.04] pointer-events-none" aria-hidden="true">
     <filter id="grain-pat"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2"/></filter>
     <rect width="100%" height="100%" filter="url(#grain-pat)"/>
   </svg>
 
-  <div class="max-w-content mx-auto px-6 md:px-10 relative">
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-14 items-center">
-
-      <!-- Portrait Stéphanie -->
-      <div class="md:col-span-5">
-        <div class="relative aspect-[4/5] overflow-hidden border-[3px] border-double border-vanille-caramel" role="img" aria-label={`Portrait de ${data.patissiere.nom}, pâtissière`}>
-          <img src="/images/patisserie/extra-1.webp" alt={`Portrait de ${data.patissiere.nom}, pâtissière`} class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
-          <div class="absolute top-5 left-1/2 -translate-x-1/2 font-karla text-[10px] uppercase tracking-[0.3em] text-vanille-creme bg-vanille-grain/70 px-3 py-1">— La Pâtissière —</div>
-          <div class="absolute bottom-5 left-1/2 -translate-x-1/2 text-center bg-vanille-grain/70 px-4 py-2">
-            <p class="font-yeseva text-vanille-creme text-2xl leading-tight">Stéphanie</p>
-            <p class="font-karla text-[10px] uppercase tracking-[0.2em] text-vanille-caramel mt-1">La Réunion · {data.info.annee}</p>
+  <div class="max-w-content mx-auto px-6 md:px-12 relative">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+      <div class="lg:col-span-5">
+        <div class="relative">
+          <img src="/images/patisserie/extra-1.webp" alt={`Portrait de ${data.patissiere.nom}, pâtissière`} class="w-full aspect-[4/5] object-cover" loading="lazy" width="900" height="1125" />
+          <!-- Cachet manuscrit rotation -->
+          <div class="absolute -top-6 -right-6 md:-top-8 md:-right-8 w-28 h-28 md:w-36 md:h-36 rounded-full flex items-center justify-center text-center -rotate-12 bg-vanille-creme border-2 border-vanille-caramel/80">
+            <span class="font-italianno text-vanille-caramel text-2xl md:text-3xl leading-tight px-2">
+              Stéphanie<br/>{data.info.annee}
+            </span>
           </div>
         </div>
       </div>
 
-      <!-- Texte -->
-      <div class="md:col-span-7">
-        <p class="font-karla text-[11px] uppercase tracking-[0.4em] text-vanille-caramel mb-4">— Portrait —</p>
-        <h2 class="font-yeseva text-vanille-creme text-4xl md:text-5xl leading-tight">
-          {data.patissiere.nom}
-        </h2>
-        <p class="font-italianno text-vanille-caramel text-3xl md:text-4xl mt-2 leading-none">
-          {data.patissiere.titre}
+      <div class="lg:col-span-7">
+        <p class="font-karla text-[11px] uppercase tracking-[0.4em] text-vanille-caramel mb-4 flex items-center gap-3">
+          <span class="block w-8 h-px bg-vanille-caramel"></span>
+          La pâtissière
         </p>
+        <h2 class="font-yeseva text-vanille-gousse leading-[0.95]" style="font-size:clamp(40px,5.6vw,76px);">
+          Stéphanie,
+          <span class="block italic font-italianno text-vanille-caramel" style="font-size:clamp(52px,7.4vw,100px);">{data.patissiere.titre.toLowerCase()}.</span>
+        </h2>
 
-        <p class="mt-7 font-karla text-[15px] md:text-base text-vanille-creme/85 leading-relaxed">
+        <p class="mt-7 font-karla text-[15.5px] md:text-[16.5px] text-vanille-gousse/85 leading-relaxed max-w-2xl">
           {data.patissiere.bio}
         </p>
 
-        <blockquote class="mt-7 border-l-2 border-vanille-caramel pl-5 font-yeseva italic text-xl md:text-2xl text-vanille-creme leading-snug">
+        <blockquote class="mt-8 pl-6 border-l-2 border-vanille-caramel font-caveat text-vanille-caramel text-3xl md:text-4xl leading-snug max-w-2xl">
           {data.patissiere.credo}
         </blockquote>
 
-        <!-- Diplômes -->
-        <div class="mt-8 pt-6 border-t border-vanille-caramel/30 grid grid-cols-2 gap-3">
-          {data.patissiere.certif.map((c) => (
-            <div class="flex gap-2 items-start">
-              <span class="text-vanille-caramel mt-1" aria-hidden="true">✦</span>
-              <span class="font-karla text-[12.5px] text-vanille-creme/85 leading-snug">{c}</span>
-            </div>
+        <!-- Parcours 3 dates -->
+        <ol class="mt-10 pt-8 border-t border-vanille-gousse/20 grid grid-cols-1 md:grid-cols-3 gap-7">
+          {dates.map((d) => (
+            <li>
+              <p class="font-yeseva text-vanille-caramel text-2xl md:text-3xl leading-none">{d.annee}</p>
+              <p class="mt-2 font-yeseva text-vanille-gousse text-base md:text-lg leading-tight">{d.titre}</p>
+              <p class="mt-2 font-karla text-[13px] text-vanille-gousse/75 leading-relaxed">{d.texte}</p>
+            </li>
           ))}
-        </div>
+        </ol>
       </div>
     </div>
   </div>
