@@ -22,12 +22,46 @@ import data from '../../../data/templates/mahatma.json';
       <span class="col-span-3 text-right">{new Date().getFullYear()}</span>
     </div>
 
-    <!-- Grande photo projet emblématique -->
-    <figure class="relative aspect-[16/10] mb-8 overflow-hidden bg-mahatma-charbon">
-      <img
-        src={data.heroProjet.photo} srcset={`${(data.heroProjet.photo).replace(/\.webp$/, "-640.webp")} 640w, ${(data.heroProjet.photo).replace(/\.webp$/, "-1024.webp")} 1024w, ${data.heroProjet.photo} 1600w`} sizes="100vw"
-        alt={`${data.heroProjet.nom}, ${data.heroProjet.lieu}`}
-        class="w-full h-full object-cover grayscale hero-vivant" loading="eager" fetchpriority="high" decoding="async">
+    <!-- Plan d'architecte CSS (axonométrie + cotations) -->
+    <figure class="relative aspect-[16/10] mb-8 overflow-hidden bg-mahatma-papier ring-1 ring-mahatma-encre/30 hero-vivant">
+      <!-- Grille millimétrée -->
+      <div class="absolute inset-0 pointer-events-none opacity-[0.18]" aria-hidden="true"
+           style="background-image: linear-gradient(to right, #0A0A0C 1px, transparent 1px), linear-gradient(to bottom, #0A0A0C 1px, transparent 1px); background-size: 24px 24px;"></div>
+      <div class="absolute inset-0 pointer-events-none opacity-[0.35]" aria-hidden="true"
+           style="background-image: linear-gradient(to right, #0A0A0C 1px, transparent 1px), linear-gradient(to bottom, #0A0A0C 1px, transparent 1px); background-size: 120px 120px;"></div>
+
+      <!-- Plan axonométrique SVG -->
+      <svg viewBox="0 0 800 500" class="absolute inset-0 w-full h-full" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+        <g stroke="#0A0A0C" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+          <!-- Volume principal (axonométrie) -->
+          <polygon points="220,220 520,220 600,160 300,160" stroke-width="1.5" fill="#0A0A0C" fill-opacity="0.04"/>
+          <polygon points="520,220 520,360 600,300 600,160" stroke-width="1.5" fill="#0A0A0C" fill-opacity="0.08"/>
+          <polygon points="220,220 220,360 520,360 520,220" stroke-width="1.5" fill="#0A0A0C" fill-opacity="0.02"/>
+          <!-- Annexe -->
+          <polygon points="100,300 220,300 220,380 100,380" stroke-width="1.2" fill="#0A0A0C" fill-opacity="0.03"/>
+          <polygon points="220,300 220,380 260,355 260,275" stroke-width="1.2" fill="#0A0A0C" fill-opacity="0.06"/>
+          <polygon points="100,300 220,300 260,275 140,275" stroke-width="1.2" fill="#0A0A0C" fill-opacity="0.02"/>
+          <!-- Ouvertures -->
+          <rect x="260" y="260" width="40" height="60" stroke-width="1"/>
+          <rect x="340" y="260" width="40" height="60" stroke-width="1"/>
+          <rect x="420" y="260" width="40" height="60" stroke-width="1"/>
+          <!-- Toiture détail -->
+          <line x1="220" y1="220" x2="300" y2="160" stroke-width="0.8" stroke-dasharray="4 3"/>
+          <line x1="520" y1="220" x2="600" y2="160" stroke-width="0.8" stroke-dasharray="4 3"/>
+          <!-- Cotations horizontales -->
+          <line x1="220" y1="410" x2="520" y2="410" stroke-width="0.6"/>
+          <line x1="220" y1="405" x2="220" y2="415" stroke-width="0.6"/>
+          <line x1="520" y1="405" x2="520" y2="415" stroke-width="0.6"/>
+          <!-- Axes -->
+          <line x1="60" y1="220" x2="700" y2="220" stroke-width="0.4" stroke-dasharray="2 4" opacity="0.5"/>
+          <line x1="370" y1="80" x2="370" y2="460" stroke-width="0.4" stroke-dasharray="2 4" opacity="0.5"/>
+        </g>
+        <!-- Cotation text -->
+        <text x="370" y="430" text-anchor="middle" font-family="ui-monospace, monospace" font-size="11" fill="#6B6863" letter-spacing="2">12,40 m</text>
+        <text x="80" y="225" font-family="ui-monospace, monospace" font-size="10" fill="#6B6863" letter-spacing="2">A</text>
+        <text x="365" y="76" font-family="ui-monospace, monospace" font-size="10" fill="#6B6863" letter-spacing="2">1</text>
+      </svg>
+
       <!-- Cachet rouge en surimpression -->
       <div class="absolute top-4 right-4 md:top-8 md:right-8 border-2 border-mahatma-cachet text-mahatma-cachet px-3 py-1.5 font-fira-mono text-[10px] uppercase tracking-[0.22em] bg-mahatma-papier/90 transform rotate-[-3deg]">
         ◯ Récent · {data.heroProjet.annee}
