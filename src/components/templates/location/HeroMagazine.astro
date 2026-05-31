@@ -1,138 +1,58 @@
 ---
 /**
- * HeroMagazine — couverture de magazine de maison.
- * Photo paysage villa + océan, titre Yeseva One ample en surimpression
- * + sous-titre Italianno cursive. Sticker "Disponible à partir de" à droite.
+ * HeroMagazine — full-bleed extra-1 + overlay + titre italique géant bas-gauche.
  */
 import data from '../../../data/templates/lazuli.json';
 ---
-
-<section id="top" class="relative min-h-[100svh] bg-lazuli-marine text-lazuli-casse overflow-hidden">
-
-  <!-- Photo plein écran -->
-  <div class="absolute inset-0">
-    <img
-      src={data.info.photoHero} srcset={`${(data.info.photoHero).replace(/\.webp$/, "-640.webp")} 640w, ${(data.info.photoHero).replace(/\.webp$/, "-1024.webp")} 1024w, ${data.info.photoHero} 1600w`} sizes="100vw"
-      alt={data.info.photoHeroAlt ?? "Villa Lazuli, vue extérieure avec piscine"}
-      class="w-full h-full object-cover hero-vivant" width="1600" height="900" loading="eager" fetchpriority="high" decoding="async">
-    <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(27,45,58,0.4) 0%, rgba(27,45,58,0.15) 35%, rgba(27,45,58,0.85) 100%);" aria-hidden="true"></div>
+<section id="top" class="relative min-h-[100svh] overflow-hidden bg-lazuli-marine text-white">
+  <!-- Photo full-bleed -->
+  <div class="absolute inset-0" aria-hidden="true">
+    <img src={data.info.photoHero} alt={data.info.photoHeroAlt} class="w-full h-full object-cover" width="1600" height="900" loading="eager" fetchpriority="high" decoding="async" />
+    <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(15,76,117,0.25) 0%, rgba(15,76,117,0.10) 35%, rgba(27,45,58,0.85) 100%);"></div>
+    <div class="absolute inset-0" style="background: linear-gradient(90deg, rgba(27,45,58,0.55) 0%, transparent 45%);"></div>
   </div>
 
-  <!-- Marqueur lieu La Réunion (haut-gauche) — clarifie que la villa est à La Réunion -->
-  <div class="absolute top-24 md:top-32 left-6 md:left-10 z-10 inline-flex items-center gap-2 bg-lazuli-marine/45 backdrop-blur-sm ring-1 ring-lazuli-casse/15 px-3 py-1.5 rounded-full">
-    <span class="text-lazuli-coco text-[10px]" aria-hidden="true">📍</span>
-    <span class="font-geist text-[10px] uppercase tracking-[0.28em] text-lazuli-casse font-semibold">
-      La Réunion · 2ᵉ ligne lagon · 974
-    </span>
+  <!-- Top : wordmark editorial -->
+  <div class="relative max-w-content mx-auto px-6 md:px-12 pt-32 md:pt-36">
+    <div class="flex items-center gap-5 text-lazuli-sable font-geist text-[11px] uppercase tracking-[0.45em]">
+      <span class="block w-12 h-px bg-lazuli-sable/60"></span>
+      <span>Saison {new Date().getFullYear()} · {data.info.ville}</span>
+    </div>
   </div>
 
-  <!-- Sticker disponibilité en haut droite (masqué <sm pour éviter le chevauchement avec le badge "La Réunion") -->
-  <div class="hidden sm:block absolute top-24 right-6 md:top-32 md:right-10 z-10 max-w-[260px]">
-    <div class="bg-lazuli-casse text-lazuli-marine p-5 rounded-sm" style="box-shadow: 0 16px 40px rgba(27,45,58,0.30);">
-      <div class="relative aspect-[4/3] mb-4 overflow-hidden">
-        <img
-          src={data.info.photoSticker}
-          alt=""
-          loading="lazy"
-          class="w-full h-full object-cover"
-        />
+  <!-- Bottom-left : titre + sous-titre -->
+  <div class="relative max-w-content mx-auto px-6 md:px-12 pb-16 md:pb-24 mt-auto">
+    <div class="min-h-[58svh] flex flex-col justify-end">
+      <p class="font-geist text-lazuli-sable text-sm md:text-base mb-3 uppercase tracking-[0.4em]">— Bord de mer —</p>
+      <h1 class="font-cormorant italic text-white leading-[0.92] tracking-tight" style="font-size: clamp(72px, 13vw, 200px);">
+        Villa<br/><em>Lazuli.</em>
+      </h1>
+      <div class="mt-8 max-w-xl flex flex-col gap-5">
+        <p class="font-cormorant italic text-lazuli-sable text-2xl md:text-3xl leading-snug">
+          « {data.info.tagline} »
+        </p>
+        <p class="font-geist text-white/80 leading-relaxed text-base md:text-lg max-w-md">
+          {data.info.hotes} — vos hôtes, à 200 m de la villa. Présents si vous le souhaitez, discrets si vous préférez.
+        </p>
+        <div class="flex flex-wrap items-center gap-3 mt-2">
+          <a href="#reservation" class="inline-flex items-center gap-3 h-12 px-7 bg-lazuli-terracotta text-white rounded-full font-geist text-sm tracking-wider hover:bg-lazuli-lagon transition-colors">
+            Réserver mon séjour <span aria-hidden="true">→</span>
+          </a>
+          <a href="#galerie" class="inline-flex items-center gap-3 h-12 px-6 ring-1 ring-white/40 text-white rounded-full font-geist text-xs uppercase tracking-[0.25em] hover:bg-white/10 transition-colors">
+            Voir la villa
+          </a>
+        </div>
       </div>
-      <p class="font-geist text-[10px] uppercase tracking-[0.28em] text-lazuli-lagon mb-2 font-semibold">
-        ✦ Disponible
-      </p>
-      <p class="font-yeseva text-lazuli-marine text-lg leading-tight mb-3">
-        À partir du<br/>15 novembre.
-      </p>
-      <a href="#reservation" class="inline-flex items-center gap-1.5 font-geist font-medium text-lazuli-terracotta text-xs uppercase tracking-wider hover:text-lazuli-marine transition-colors">
-        Voir les disponibilités →
-      </a>
     </div>
   </div>
 
-  <!-- Contenu principal -->
-  <div class="relative z-10 max-w-content mx-auto px-6 md:px-10 min-h-[100svh] flex flex-col justify-end pb-20 md:pb-28 pt-32">
-
-    <!-- Eyebrow + Italianno wordmark -->
-    <div class="mb-6 flex items-baseline gap-3">
-      <span class="font-geist text-[11px] uppercase tracking-[0.4em] text-lazuli-coco font-semibold">
-        ★★★★★ · vos vrais retours voyageurs ici
-      </span>
-    </div>
-
-    <!-- Exemple de bloc témoignage -->
-    <figure class="mb-8 max-w-md pl-4 border-l border-lazuli-coco/40">
-      <blockquote class="font-yeseva italic text-lazuli-casse leading-snug text-base md:text-lg">
-        « Vos vrais retours voyageurs s'afficheront ici. »
-      </blockquote>
-      <figcaption class="mt-2 font-geist text-[10px] uppercase tracking-[0.32em] text-lazuli-coco/85">
-        — Exemple de bloc témoignage
-      </figcaption>
-    </figure>
-
-    <p class="font-italianno text-lazuli-coco text-5xl md:text-7xl leading-none mb-2">
-      Villa
-    </p>
-
-    <h1 class="font-yeseva text-lazuli-casse leading-[0.88]" style="font-size: clamp(80px, 15vw, 260px);">
-      {data.info.wordmark}
-    </h1>
-
-    <p class="mt-6 font-geist text-lazuli-casse/85 text-lg md:text-2xl max-w-xl leading-relaxed">
-      {data.info.tagline} <em class="not-italic text-lazuli-coco">Quatre chambres</em> face au lagon, pour 8 personnes maximum.
-    </p>
-
-    <!-- Trust badges sobres -->
-    <ul class="mt-6 flex flex-wrap gap-2" aria-label="Engagements">
-      <li class="inline-flex items-center gap-1.5 bg-lazuli-marine/60 backdrop-blur-sm border border-lazuli-casse/15 rounded-full px-3 py-1.5 font-geist text-[11px] uppercase tracking-[0.16em] text-lazuli-casse/90">Lagon à 50 m</li>
-      <li class="inline-flex items-center gap-1.5 bg-lazuli-marine/60 backdrop-blur-sm border border-lazuli-casse/15 rounded-full px-3 py-1.5 font-geist text-[11px] uppercase tracking-[0.16em] text-lazuli-casse/90">Piscine privée</li>
-      <li class="inline-flex items-center gap-1.5 bg-lazuli-marine/60 backdrop-blur-sm border border-lazuli-casse/15 rounded-full px-3 py-1.5 font-geist text-[11px] uppercase tracking-[0.16em] text-lazuli-casse/90">Ménage inclus</li>
-      <li class="inline-flex items-center gap-1.5 bg-lazuli-marine/60 backdrop-blur-sm border border-lazuli-casse/15 rounded-full px-3 py-1.5 font-geist text-[11px] uppercase tracking-[0.16em] text-lazuli-casse/90">Caution réduite</li>
-    </ul>
-
-    <!-- Stats sticker en bas -->
-    <ul class="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl">
-      {data.stats.map((s) => (
-        <li class="bg-lazuli-marine/60 backdrop-blur-sm border border-lazuli-casse/15 px-5 py-4 rounded-sm">
-          <p class="font-yeseva text-lazuli-coco text-2xl md:text-3xl leading-none tabular-nums">
-            {s.valeur}
-          </p>
-          <p class="mt-2 font-geist text-[10px] uppercase tracking-[0.18em] text-lazuli-casse/70">
-            {s.label}
-          </p>
-        </li>
-      ))}
-    </ul>
-
-    <!-- CTAs -->
-    <div class="mt-10 flex flex-wrap items-center gap-4">
-      <a
-        href="#reservation"
-        class="inline-flex items-center justify-center h-13 px-8 bg-lazuli-terracotta text-lazuli-casse font-geist font-medium text-base rounded-full hover:bg-lazuli-casse hover:text-lazuli-marine transition-colors"
-        style="height: 52px;"
-      >
-        Réserver la villa
-      </a>
-      <a
-        href="#visite"
-        class="inline-flex items-center font-geist text-lazuli-casse text-base underline underline-offset-4 decoration-lazuli-coco/60 hover:decoration-lazuli-coco transition-colors"
-      >
-        Visiter la villa
-      </a>
-    </div>
+  <!-- Stats coin bas-droit -->
+  <div class="absolute bottom-12 right-6 md:right-12 hidden md:flex flex-col items-end gap-3 text-right">
+    {data.stats.slice(0,3).map(s => (
+      <div class="text-white">
+        <p class="font-cormorant italic leading-none" style="font-size: clamp(40px,4.5vw,72px);">{s.valeur}</p>
+        <p class="font-geist text-[10px] uppercase tracking-[0.3em] text-lazuli-sable">{s.label}</p>
+      </div>
+    ))}
   </div>
 </section>
-
-<style>
-  @keyframes hero-vivant {
-    from { transform: scale(1.06); }
-    to   { transform: scale(1); }
-  }
-  .hero-vivant {
-    transform-origin: center;
-    animation: hero-vivant 2400ms cubic-bezier(0.22, 1, 0.36, 1) both;
-    will-change: transform;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .hero-vivant { animation: none !important; transform: none !important; }
-  }
-</style>

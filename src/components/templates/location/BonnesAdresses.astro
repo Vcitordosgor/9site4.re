@@ -1,43 +1,62 @@
 ---
 /**
- * BonnesAdresses — 4 lieux à proximité format magazine "Bonnes adresses".
+ * BonnesAdresses (Le quartier) — map-like SVG avec 5 points.
  */
 import data from '../../../data/templates/lazuli.json';
+const points = [
+  { x: 200, y: 220, label: 'La villa', main: true, distance: '0 m' },
+  { x: 130, y: 290, label: 'Plage du Lagon', distance: '200 m · 3 min' },
+  { x: 320, y: 180, label: 'Le Bocal Bleu', distance: '350 m · 5 min' },
+  { x: 380, y: 280, label: 'Pacific Surf', distance: '500 m · 7 min' },
+  { x: 100, y: 130, label: 'Pointe Aigrettes', distance: '800 m · 10 min' },
+  { x: 290, y: 320, label: 'Boulangerie', distance: '450 m · 6 min' },
+];
 ---
-
-<section class="bg-lazuli-marine text-lazuli-casse py-24 md:py-32 px-6 md:px-10">
-  <div class="max-w-content mx-auto">
-
-    <header class="text-center mb-14 md:mb-16 max-w-2xl mx-auto">
-      <p class="font-geist text-[10px] uppercase tracking-[0.32em] text-lazuli-coco font-semibold mb-5">
-        ✦ Aux alentours
-      </p>
-      <h2 class="font-yeseva text-lazuli-casse leading-[1.05]" style="font-size: clamp(36px, 5vw, 64px);">
-        Nos
-        <span class="font-italianno text-lazuli-coco normal-case">bonnes adresses.</span>
+<section class="relative bg-lazuli-casse text-lazuli-marine py-24 md:py-32">
+  <div class="max-w-content mx-auto px-6 md:px-12">
+    <div class="mb-14 max-w-3xl">
+      <p class="font-geist text-[11px] uppercase tracking-[0.45em] text-lazuli-terracotta mb-4">§ Le quartier</p>
+      <h2 class="font-cormorant italic leading-[0.95] tracking-tight" style="font-size: clamp(48px,7vw,96px);">
+        Tout, à pied.
       </h2>
-      <p class="mt-5 font-geist text-lazuli-casse/75 text-base leading-relaxed">
-        Tout ce qu'on conseille à nos voyageurs, à pied depuis la villa.
-      </p>
-    </header>
+    </div>
 
-    <ul class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-      {data.alentours.map((a, i) => (
-        <li class="bg-lazuli-marine/60 backdrop-blur-sm border border-lazuli-casse/15 p-6 hover:border-lazuli-coco transition-colors">
-          <p class="font-geist text-[10px] uppercase tracking-[0.28em] text-lazuli-coco font-semibold mb-2">
-            #{String(i + 1).padStart(2, '0')} — {a.distance}
-          </p>
-          <h3 class="font-yeseva text-lazuli-casse text-2xl leading-tight mb-2">
-            {a.nom}
-          </h3>
-          <p class="font-italianno text-lazuli-coco text-2xl leading-snug mb-4">
-            {a.type}
-          </p>
-          <p class="pt-3 border-t border-lazuli-casse/10 font-geist text-[11px] uppercase tracking-[0.22em] text-lazuli-casse/55">
-            ↳ {a.duree}
-          </p>
-        </li>
-      ))}
-    </ul>
+    <div class="grid lg:grid-cols-12 gap-10">
+      <!-- carte SVG -->
+      <div class="lg:col-span-7">
+        <div class="relative aspect-[4/3] bg-lazuli-marine/5 ring-1 ring-lazuli-sable/40 overflow-hidden">
+          <svg viewBox="0 0 500 380" class="w-full h-full">
+            <!-- mer -->
+            <path d="M0 280 Q120 260 240 290 Q380 310 500 280 L500 380 L0 380 Z" fill="#3A7188" opacity="0.25"/>
+            <text x="80" y="360" font-family="Cormorant Garamond" font-style="italic" font-size="18" fill="#3A7188">Océan Indien</text>
+            <!-- routes -->
+            <path d="M0 220 L500 220" stroke="#1B2D3A" stroke-width="1.2" stroke-dasharray="5 4" opacity="0.4"/>
+            <path d="M200 0 L200 380" stroke="#1B2D3A" stroke-width="1.2" stroke-dasharray="5 4" opacity="0.4"/>
+            <!-- points -->
+            {points.map((p, i) => (
+              <g>
+                <circle cx={p.x} cy={p.y} r={p.main ? 12 : 7} fill={p.main ? '#A85B3F' : '#E6CC8A'} stroke="#1B2D3A" stroke-width="1.5"/>
+                {p.main && <circle cx={p.x} cy={p.y} r="22" fill="none" stroke="#A85B3F" stroke-width="1" opacity="0.5"/>}
+                <text x={p.x + 16} y={p.y + 5} font-family="Geist Sans" font-size="11" fill="#1B2D3A">{i+1}</text>
+              </g>
+            ))}
+            <text x="450" y="30" text-anchor="end" font-family="Geist Sans" font-size="9" fill="#1B2D3A" opacity="0.5">N ↑</text>
+          </svg>
+        </div>
+      </div>
+
+      <!-- liste -->
+      <ol class="lg:col-span-5 space-y-px bg-lazuli-sable/40">
+        {points.map((p, i) => (
+          <li class={`px-5 py-4 flex gap-5 items-baseline ${p.main ? 'bg-lazuli-terracotta text-white' : 'bg-lazuli-casse'}`}>
+            <span class={`font-cormorant italic text-2xl shrink-0 ${p.main ? 'text-white' : 'text-lazuli-terracotta'}`}>{String(i+1).padStart(2,'0')}</span>
+            <div class="flex-1">
+              <p class={`font-cormorant italic text-xl ${p.main ? 'text-white' : 'text-lazuli-marine'}`}>{p.label}</p>
+              <p class={`font-geist text-xs ${p.main ? 'text-white/80' : 'text-lazuli-marine/60'}`}>{p.distance}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
   </div>
 </section>

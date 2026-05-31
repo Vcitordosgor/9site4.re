@@ -1,61 +1,33 @@
 ---
-const faqs = [
-  {
-    q: "Quelle est la durée minimum de séjour ?",
-    r: "Quatre nuits en haute saison (juillet-août, vacances scolaires zone A), deux nuits le reste de l'année. Pour les longs séjours (3 semaines et plus), tarif dégressif sur demande directe.",
-  },
-  {
-    q: "L'arrivée et le départ se font à quelle heure ?",
-    r: "Arrivée à partir de 16h, départ avant 10h. Les hôtes vous accueillent sur place pour la remise des clés et un tour du propriétaire de 20 minutes. Possibilité d'arrivée tardive sur demande.",
-  },
-  {
-    q: "La villa est-elle adaptée aux enfants en bas âge ?",
-    r: "Oui. Lit parapluie, chaise haute, micro-ondes, plaque de bain : tout est inclus sur demande. La piscine est sécurisée par une barrière conforme aux normes. Plage à 5 minutes à pied, sans route à traverser.",
-  },
-  {
-    q: "Y a-t-il un service de ménage ?",
-    r: "Le ménage de fin de séjour est inclus dans le tarif. Pour les séjours de plus d'une semaine, un ménage intermédiaire est offert. Service de blanchisserie sur demande, à la pièce.",
-  },
-  {
-    q: "Acceptez-vous les animaux de compagnie ?",
-    r: "Petits chiens calmes acceptés (jusqu'à 10 kg), sous réserve de notre accord préalable et d'un supplément de 35 € (ménage renforcé). Pas de chats ni d'animaux exotiques. Espace clos pour leur sécurité.",
-  },
+const faq = [
+  ["Comment se passe l'arrivée ?", "Accueil personnalisé entre 16h et 19h, sur place. Visite de la villa, remise des clés et carte du quartier. Stéphane ou Marina vous reçoit, jamais une boîte à clés impersonnelle."],
+  ["Y a-t-il un séjour minimum ?", "Trois nuits en basse et moyenne saison, sept nuits en haute saison, quatorze nuits sur la période fêtes de fin d'année."],
+  ["Quelle est la politique d'annulation ?", "Annulation gratuite jusqu'à 30 jours avant l'arrivée. Au-delà, premier acompte non remboursable. Sinistre majeur étudié au cas par cas."],
+  ["Les animaux sont-ils acceptés ?", "Oui, un chien moyen calme est accepté sur demande, sans supplément. Pas de chat (allergies hôtes voisins)."],
+  ["Y a-t-il du wifi correct pour télétravailler ?", "Fibre 600 Mbps symétrique, couverture intégrale villa + terrasse. Idéal télétravail ou visios."],
+  ["Peut-on louer du matériel de plage ?", "Oui : surf, paddle, palmes/masque, transats déportés. Tarifs préférentiels chez Pacific Surf, à 500 m."],
 ];
 ---
-
-<section class="bg-lazuli-casse py-24 md:py-32 px-6 md:px-10 border-t border-lazuli-marine/15">
-  <div class="max-w-content mx-auto">
-
-    <header class="text-center mb-14 max-w-3xl mx-auto">
-      <p class="font-geist text-[11px] uppercase tracking-[0.32em] text-lazuli-terracotta mb-4">
-        ✦ Avant de réserver
-      </p>
-      <h2 class="text-lazuli-marine leading-tight" style="font-family: 'Yeseva One', serif; font-size: clamp(36px, 5vw, 60px);">
-        Cinq questions,<br/>
-        <span class="italic text-lazuli-terracotta" style="font-family: 'Italianno', cursive; font-size: 1.5em;">souvent posées.</span>
+<section class="relative bg-lazuli-casse text-lazuli-marine py-24 md:py-32">
+  <div class="max-w-content mx-auto px-6 md:px-12 grid lg:grid-cols-12 gap-12">
+    <div class="lg:col-span-4">
+      <p class="font-geist text-[11px] uppercase tracking-[0.45em] text-lazuli-terracotta mb-4">§ FAQ</p>
+      <h2 class="font-cormorant italic leading-[0.95] tracking-tight sticky top-28" style="font-size: clamp(48px, 6vw, 92px);">
+        Avant de<br/>réserver.
       </h2>
-    </header>
-
-    <ul class="max-w-3xl mx-auto border-t border-lazuli-marine/20">
-      {faqs.map((f, i) => (
-        <li class="border-b border-lazuli-marine/15">
+    </div>
+    <ul class="lg:col-span-8 divide-y divide-lazuli-sable/50 border-y border-lazuli-sable/50">
+      {faq.map((q, i) => (
+        <li>
           <details class="group">
-            <summary class="flex gap-5 md:gap-7 py-7 cursor-pointer list-none items-baseline hover:bg-lazuli-sable/30 transition-colors px-2 -mx-2">
-              <span class="text-lazuli-terracotta text-3xl md:text-4xl shrink-0 tabular-nums leading-none" style="font-family: 'Italianno', cursive;">
-                {String(i + 1).padStart(2, '0')}.
-              </span>
-              <h3 class="flex-1 text-lazuli-marine text-lg md:text-xl leading-snug" style="font-family: 'Yeseva One', serif;">
-                {f.q}
-              </h3>
-              <span class="text-lazuli-terracotta text-2xl md:text-3xl leading-none transition-transform group-open:rotate-45 inline-block shrink-0" style="font-family: 'Yeseva One', serif;">
-                +
-              </span>
+            <summary class="cursor-pointer py-6 flex items-start justify-between gap-6 list-none">
+              <div class="flex gap-5 items-start">
+                <span class="font-cormorant italic text-lazuli-terracotta text-xl mt-1 shrink-0">{String(i+1).padStart(2,'0')}.</span>
+                <span class="font-cormorant italic text-lazuli-marine text-xl md:text-2xl leading-tight">{q[0]}</span>
+              </div>
+              <span class="font-cormorant italic text-lazuli-lagon text-3xl leading-none mt-1 transition-transform group-open:rotate-45 shrink-0">+</span>
             </summary>
-            <div class="pb-7 pl-12 md:pl-16 pr-6">
-              <p class="font-geist text-lazuli-marine/85 text-[14.5px] md:text-base leading-[1.8]">
-                {f.r}
-              </p>
-            </div>
+            <p class="pb-7 pl-10 font-geist text-lazuli-marine/75 leading-relaxed max-w-3xl">{q[1]}</p>
           </details>
         </li>
       ))}
