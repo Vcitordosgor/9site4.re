@@ -40,16 +40,16 @@
       "Produits naturels & locaux",
       "Espace tisanerie inclus"
     ],
-    "photoHero": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=1400&q=85",
-    "photoHeroAlt": "Mains versant de l'huile chaude pour un massage",
-    "photoCabine1": "https://plus.unsplash.com/premium_photo-1723867490491-10519f8ed969?q=80&w=1200&auto=format&fit=crop",
-    "photoCabine1Alt": "Cabine de massage signature, ambiance cocooning et zen",
-    "photoCabine2": "https://images.unsplash.com/photo-1583417267826-aebc4d1542e1?q=80&w=1200&auto=format&fit=crop",
-    "photoCabine2Alt": "Détail spa, ambiance détente et naturelle",
-    "photoCabine3": "https://images.unsplash.com/photo-1603077864615-538e955d1ad1?q=80&w=900&auto=format&fit=crop",
-    "photoCabine3Alt": "Univers spa, soin et bien-être",
-    "photoCabine4": "https://images.unsplash.com/photo-1696841212541-449ca29397cc?q=80&w=1200&auto=format&fit=crop",
-    "photoCabine4Alt": "Tisanerie ouverte sur le jardin, petite terrasse zen"
+    "photoHero": "/images/spa/hero.webp",
+    "photoHeroAlt": "Plateau d'accueil spa tropical, serviettes roulées et fleurs de frangipanier",
+    "photoCabine1": "/images/spa/cabine.webp",
+    "photoCabine1Alt": "Huiles de massage en cabine, ambiance bois clair",
+    "photoCabine2": "/images/spa/ambiance.webp",
+    "photoCabine2Alt": "Salon d'attente boho, fauteuils en rotin et pampas",
+    "photoCabine3": "/images/spa/detail.webp",
+    "photoCabine3Alt": "Brûle-parfum et serviettes pliées, détail spa",
+    "photoCabine4": "/images/spa/piscine.webp",
+    "photoCabine4Alt": "Bassin de relaxation, mur tadelakt et lanternes"
   },
   "manifesto": "Le luxe, ici, c'est le temps. Chaque soin commence par une pause, et finit par une autre.",
   "rituel": [
