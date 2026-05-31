@@ -17,21 +17,15 @@ import mahatmaData from '../../data/templates/mahatma.json';
 import MahatmaHeader from '../../components/templates/architecte/MahatmaHeader.astro';
 import HeroProjet from '../../components/templates/architecte/HeroProjet.astro';
 import Atelier from '../../components/templates/architecte/Atelier.astro';
-import Quand from '../../components/templates/architecte/Quand.astro';
-import Chiffres from '../../components/templates/architecte/Chiffres.astro';
-import Marquee from '../../components/templates/architecte/Marquee.astro';
-import Citation from '../../components/templates/architecte/Citation.astro';
 import Projets from '../../components/templates/architecte/Projets.astro';
-import Partenaires from '../../components/templates/architecte/Partenaires.astro';
 import Methode from '../../components/templates/architecte/Methode.astro';
-import Bandeau from '../../components/templates/architecte/Bandeau.astro';
+import PlanCalques from '../../components/templates/architecte/PlanCalques.astro';
 import Honoraires from '../../components/templates/architecte/Honoraires.astro';
 import Distinctions from '../../components/templates/architecte/Distinctions.astro';
-import FAQ from '../../components/templates/architecte/FAQ.astro';
 import RendezVous from '../../components/templates/architecte/RendezVous.astro';
 import CTAFinal from '../../components/templates/architecte/CTAFinal.astro';
 import MahatmaFooter from '../../components/templates/architecte/MahatmaFooter.astro';
-const businessLD = localBusinessSchema(mahatmaData, 'ProfessionalService');
+const businessLD = localBusinessSchema(mahatmaData);
 
 ---
 
@@ -53,17 +47,11 @@ const businessLD = localBusinessSchema(mahatmaData, 'ProfessionalService');
   <main id="top" class="bg-mahatma-papier text-mahatma-encre font-atkinson">
     <HeroProjet />
     <Atelier />
-    <Quand />
-    <Chiffres />
-    <Citation />
-    <Marquee />
     <Projets />
-    <Partenaires />
     <Methode />
-    <Bandeau />
+    <PlanCalques />
     <Honoraires />
     <Distinctions />
-    <FAQ />
     <RendezVous />
     <CTAFinal />
   </main>
