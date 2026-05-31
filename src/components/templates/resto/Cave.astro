@@ -24,12 +24,31 @@ import data from '../../../data/templates/jardin.json';
         <span class="italic text-resto-bleu-roi">le bon moment.</span>
       </h2>
       <p class="scroll-reveal mt-6 font-manrope text-resto-bleu-encre/70 leading-relaxed">
-        Une cave d'auteur de plus de 200 références. Notre sommelier
-        compose chaque accord — voici quelques flacons emblématiques.
+        Une cave courte, choisie pour accompagner la carte. Notre sommelier
+        compose chaque accord — quelques flacons emblématiques.
       </p>
       <!-- Filet or décoratif sous l'intro -->
       <span class="scroll-reveal block mx-auto mt-10 h-px w-16 bg-resto-or" aria-hidden="true"></span>
     </header>
+
+    <!-- Photo sommelier au service -->
+    <figure class="scroll-reveal relative mb-16 md:mb-24 max-w-5xl mx-auto">
+      <div class="relative overflow-hidden rounded-sm" style="aspect-ratio: 21/9;">
+        <img
+          src="/images/resto/vin.webp"
+          alt="Sommelier servant un verre de vin rouge à table"
+          width="1800"
+          height="771"
+          loading="lazy"
+          decoding="async"
+          class="absolute inset-0 w-full h-full object-cover"
+        />
+        <span class="absolute inset-0 ring-1 ring-resto-or/20 pointer-events-none" aria-hidden="true"></span>
+      </div>
+      <figcaption class="mt-4 text-center font-bodoni italic text-sm text-resto-bleu-encre/55">
+        Au verre, à la bouteille — accord composé pour chaque table.
+      </figcaption>
+    </figure>
 
     <!-- Liste vins en 2 colonnes desktop -->
     <ul class="grid md:grid-cols-2 gap-x-12 lg:gap-x-20 gap-y-12 max-w-5xl mx-auto">
