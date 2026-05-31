@@ -15,6 +15,7 @@ import data from '../../data/templates/motorpiton.json';
 
 import MotorpitonHeader from '../../components/templates/garage/MotorpitonHeader.astro';
 import HeroMotorpiton from '../../components/templates/garage/HeroMotorpiton.astro';
+import Diagnostic from '../../components/templates/garage/Diagnostic.astro';
 import Interventions from '../../components/templates/garage/Interventions.astro';
 import Marques from '../../components/templates/garage/Marques.astro';
 import Process from '../../components/templates/garage/Process.astro';
@@ -43,6 +44,7 @@ const businessLD = localBusinessSchema(data, 'AutoRepair');
 
   <main class="bg-piton-asphalte text-piton-beton font-inter-tight">
     <HeroMotorpiton />
+    <Diagnostic />
     <Interventions />
     <Marques />
     <Process />

@@ -1,0 +1,285 @@
+---
+/**
+ * Diagnostic — Signature moment "Wow" pour /templates/garage.
+ *
+ * Scan diagnostic d'une voiture vue de profil (SVG inline) avec les 5 zones
+ * de contrôle qui s'éclairent une à une. Mimétisme d'un OBD/diag pro.
+ *
+ * Interaction : tabs (radio + :checked CSS pur — pas de JS). Au scroll, ligne
+ * de scan qui passe sur la voiture. Respecte prefers-reduced-motion.
+ */
+
+const zones = [
+  {
+    id: 'freins',
+    label: 'Freins',
+    code: '01',
+    cx: 92, cy: 132,
+    metric: 'Plaquettes : 6.2 mm',
+    status: 'OK',
+    detail: 'Plaquettes avant + arrière contrôlées, liquide DOT4 testé, disques mesurés au pied à coulisse.',
+  },
+  {
+    id: 'moteur',
+    label: 'Moteur',
+    code: '02',
+    cx: 230, cy: 90,
+    metric: 'Compression 4 cyl.',
+    status: 'OK',
+    detail: 'Compression mesurée cylindre par cylindre, niveau et état huile, lecture valise OBD II complète.',
+  },
+  {
+    id: 'suspension',
+    label: 'Suspension',
+    code: '03',
+    cx: 320, cy: 132,
+    metric: 'Amortisseurs testés',
+    status: 'À surveiller',
+    detail: 'Amortisseurs sur banc, silentblocs et rotules vérifiés. Reste de la marge avant remplacement.',
+  },
+  {
+    id: 'pneus',
+    label: 'Pneus',
+    code: '04',
+    cx: 92, cy: 175,
+    metric: 'Profondeur 4.1 mm',
+    status: 'OK',
+    detail: 'Profondeur sculpture aux 4 roues, pression à froid, usure relevée et équilibrage si besoin.',
+  },
+  {
+    id: 'electrique',
+    label: 'Électrique',
+    code: '05',
+    cx: 175, cy: 75,
+    metric: 'Batterie 12.6 V',
+    status: 'OK',
+    detail: 'Tension batterie sous charge, alternateur, démarreur, faisceau et tous les codes défauts lus.',
+  },
+];
+
+const defaultId = 'freins';
+---
+
+<section id="diagnostic" class="bg-piton-asphalte text-piton-beton py-24 md:py-36 px-6 md:px-10 overflow-hidden relative">
+
+  <div class="max-w-content mx-auto">
+
+    <header class="mb-12 md:mb-16 max-w-3xl scroll-reveal">
+      <p class="font-jetbrains text-[10px] uppercase tracking-[0.32em] text-piton-feu font-medium mb-5">
+        ◉ Diagnostic atelier · 5 points de contrôle
+      </p>
+      <h1 class="font-bebas-neue text-piton-beton leading-[0.95]" style="font-size: clamp(48px, 8vw, 96px); letter-spacing: 0.01em;">
+        On scanne la voiture
+        <span class="block text-piton-feu">avant de la toucher.</span>
+      </h1>
+      <p class="mt-6 font-inter-tight text-piton-beton/70 text-base md:text-lg max-w-xl leading-relaxed">
+        Un diag complet à l'arrivée. Aucune intervention sans vous avoir montré, expliqué, et chiffré.
+      </p>
+    </header>
+
+    <div class="diag-wrap grid lg:grid-cols-5 gap-10 lg:gap-14 items-start scroll-reveal">
+
+      <!-- Voiture SVG + zones cliquables -->
+      <div class="lg:col-span-3">
+        <div class="diag-stage relative rounded-3xl bg-piton-acier/70 ring-1 ring-piton-fonte/40 p-6 md:p-10 overflow-hidden">
+
+          <!-- Ligne de scan -->
+          <span class="diag-scan absolute inset-y-6 w-px bg-gradient-to-b from-transparent via-piton-acide to-transparent pointer-events-none" aria-hidden="true"></span>
+
+          <!-- Grille technique en arrière-plan -->
+          <svg aria-hidden="true" class="absolute inset-0 w-full h-full opacity-[0.07] text-piton-beton" viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice">
+            {Array.from({length: 11}).map((_, i) => <line x1={i*40} y1="0" x2={i*40} y2="240" stroke="currentColor" stroke-width="0.5"/>)}
+            {Array.from({length: 7}).map((_, i) => <line x1="0" y1={i*40} x2="400" y2={i*40} stroke="currentColor" stroke-width="0.5"/>)}
+          </svg>
+
+          <!-- Radios cachés -->
+          {zones.map((z) => (
+            <input type="radio" name="diag-zone" id={`diag-${z.id}`} class="diag-radio sr-only peer/{z.id}" checked={z.id === defaultId} />
+          ))}
+
+          <!-- SVG voiture -->
+          <svg viewBox="0 0 400 240" class="relative w-full h-auto" role="img" aria-label="Voiture de profil avec 5 zones de diagnostic">
+            <!-- Carrosserie -->
+            <path d="M40,160 L80,120 L130,90 L260,90 L300,120 L360,130 L370,160 L370,180 L40,180 Z"
+                  fill="none" stroke="currentColor" class="text-piton-beton/30" stroke-width="1.5"/>
+            <!-- Toit/vitres -->
+            <path d="M130,90 L160,60 L240,60 L260,90 Z M165,65 L195,90 M225,65 L255,90"
+                  fill="none" stroke="currentColor" class="text-piton-beton/20" stroke-width="1"/>
+            <!-- Roues -->
+            <circle cx="92" cy="180" r="22" fill="none" stroke="currentColor" class="text-piton-beton/35" stroke-width="2"/>
+            <circle cx="92" cy="180" r="10" fill="none" stroke="currentColor" class="text-piton-beton/20" stroke-width="1"/>
+            <circle cx="308" cy="180" r="22" fill="none" stroke="currentColor" class="text-piton-beton/35" stroke-width="2"/>
+            <circle cx="308" cy="180" r="10" fill="none" stroke="currentColor" class="text-piton-beton/20" stroke-width="1"/>
+
+            <!-- Zones cliquables (labels par-dessus) -->
+            {zones.map((z) => (
+              <g class={`diag-zone diag-zone-${z.id}`}>
+                <circle cx={z.cx} cy={z.cy} r="18" class="diag-halo" fill="currentColor" opacity="0.0"/>
+                <circle cx={z.cx} cy={z.cy} r="9" class="diag-pin" fill="currentColor" opacity="0.5"/>
+                <circle cx={z.cx} cy={z.cy} r="3" fill="#FAFAF8"/>
+                <text x={z.cx} y={z.cy - 24} text-anchor="middle" class="diag-code font-jetbrains" font-size="9" fill="currentColor" opacity="0.6">{z.code}</text>
+              </g>
+            ))}
+          </svg>
+
+          <!-- Tabs visibles -->
+          <div class="mt-6 flex flex-wrap gap-2">
+            {zones.map((z) => (
+              <label for={`diag-${z.id}`} class={`diag-tab cursor-pointer inline-flex items-center gap-2 px-4 py-2 rounded-full ring-1 ring-piton-fonte/50 bg-piton-asphalte/40 text-piton-beton/70 font-jetbrains text-[11px] uppercase tracking-wider transition-colors hover:text-piton-feu hover:ring-piton-feu/50 min-h-[44px]`} data-zone={z.id}>
+                <span class="text-piton-feu">{z.code}</span>
+                <span>{z.label}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Panneau détail -->
+      <div class="lg:col-span-2 diag-panel relative">
+        {zones.map((z) => (
+          <article class={`diag-detail diag-detail-${z.id} rounded-2xl bg-piton-acier ring-1 ring-piton-fonte/40 p-7 md:p-8`} data-zone={z.id}>
+            <p class="font-jetbrains text-[10px] uppercase tracking-[0.28em] text-piton-feu/80 font-medium">
+              Zone {z.code} · {z.status === 'OK' ? 'Conforme' : 'À surveiller'}
+            </p>
+            <h3 class="mt-3 font-bebas-neue text-piton-beton leading-none" style="font-size: clamp(36px, 4vw, 56px);">
+              {z.label}
+            </h3>
+            <p class="mt-3 font-jetbrains text-piton-acide text-sm tabular-nums">
+              {z.metric}
+            </p>
+            <p class="mt-5 font-inter-tight text-piton-beton/70 text-sm md:text-base leading-relaxed">
+              {z.detail}
+            </p>
+            <div class="mt-6 flex items-center gap-3 pt-5 border-t border-piton-fonte/40">
+              <span class={`inline-flex w-2 h-2 rounded-full ${z.status === 'OK' ? 'bg-piton-acide' : 'bg-piton-feu'}`}></span>
+              <span class="font-jetbrains text-[10px] uppercase tracking-[0.24em] text-piton-beton/60">
+                {z.status === 'OK' ? 'Aucun remplacement nécessaire' : 'Devis transparent proposé'}
+              </span>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* Panneau detail : empilés, seul l'actif visible */
+  .diag-panel { display: grid; }
+  .diag-detail {
+    grid-area: 1 / 1;
+    opacity: 0;
+    transform: translateY(8px);
+    pointer-events: none;
+    transition: opacity 350ms ease, transform 350ms ease;
+  }
+  .diag-zone .diag-pin,
+  .diag-zone .diag-halo,
+  .diag-zone .diag-code {
+    transition: opacity 250ms ease, r 250ms ease;
+    color: currentColor;
+  }
+  .diag-zone { color: #E8E5DD; }
+
+  /* Defaults — toutes les zones grisées */
+  .diag-zone .diag-pin { opacity: 0.35; }
+  .diag-zone .diag-code { opacity: 0.4; }
+
+  /* Sélection via :checked + ~ */
+  /* Freins */
+  #diag-freins:checked ~ svg .diag-zone-freins .diag-pin,
+  #diag-freins:checked ~ svg .diag-zone-freins .diag-halo,
+  #diag-freins:checked ~ svg .diag-zone-freins .diag-code,
+  #diag-moteur:checked ~ svg .diag-zone-moteur .diag-pin,
+  #diag-moteur:checked ~ svg .diag-zone-moteur .diag-halo,
+  #diag-moteur:checked ~ svg .diag-zone-moteur .diag-code,
+  #diag-suspension:checked ~ svg .diag-zone-suspension .diag-pin,
+  #diag-suspension:checked ~ svg .diag-zone-suspension .diag-halo,
+  #diag-suspension:checked ~ svg .diag-zone-suspension .diag-code,
+  #diag-pneus:checked ~ svg .diag-zone-pneus .diag-pin,
+  #diag-pneus:checked ~ svg .diag-zone-pneus .diag-halo,
+  #diag-pneus:checked ~ svg .diag-zone-pneus .diag-code,
+  #diag-electrique:checked ~ svg .diag-zone-electrique .diag-pin,
+  #diag-electrique:checked ~ svg .diag-zone-electrique .diag-halo,
+  #diag-electrique:checked ~ svg .diag-zone-electrique .diag-code {
+    color: #FF5A1F;
+  }
+  #diag-freins:checked ~ svg .diag-zone-freins .diag-pin,
+  #diag-moteur:checked ~ svg .diag-zone-moteur .diag-pin,
+  #diag-suspension:checked ~ svg .diag-zone-suspension .diag-pin,
+  #diag-pneus:checked ~ svg .diag-zone-pneus .diag-pin,
+  #diag-electrique:checked ~ svg .diag-zone-electrique .diag-pin {
+    opacity: 1;
+  }
+  #diag-freins:checked ~ svg .diag-zone-freins .diag-halo,
+  #diag-moteur:checked ~ svg .diag-zone-moteur .diag-halo,
+  #diag-suspension:checked ~ svg .diag-zone-suspension .diag-halo,
+  #diag-pneus:checked ~ svg .diag-zone-pneus .diag-halo,
+  #diag-electrique:checked ~ svg .diag-zone-electrique .diag-halo {
+    opacity: 0.25;
+    animation: diag-pulse 2.2s ease-out infinite;
+  }
+  #diag-freins:checked ~ svg .diag-zone-freins .diag-code,
+  #diag-moteur:checked ~ svg .diag-zone-moteur .diag-code,
+  #diag-suspension:checked ~ svg .diag-zone-suspension .diag-code,
+  #diag-pneus:checked ~ svg .diag-zone-pneus .diag-code,
+  #diag-electrique:checked ~ svg .diag-zone-electrique .diag-code {
+    opacity: 1;
+  }
+
+  /* Tab active */
+  .diag-stage:has(#diag-freins:checked) .diag-tab[data-zone="freins"],
+  .diag-stage:has(#diag-moteur:checked) .diag-tab[data-zone="moteur"],
+  .diag-stage:has(#diag-suspension:checked) .diag-tab[data-zone="suspension"],
+  .diag-stage:has(#diag-pneus:checked) .diag-tab[data-zone="pneus"],
+  .diag-stage:has(#diag-electrique:checked) .diag-tab[data-zone="electrique"] {
+    background: #FF5A1F;
+    color: #0F1014;
+    border-color: #FF5A1F;
+  }
+
+  /* Detail panneau actif — via :has() sur le wrapper */
+  .diag-wrap:has(#diag-freins:checked) .diag-detail[data-zone="freins"],
+  .diag-wrap:has(#diag-moteur:checked) .diag-detail[data-zone="moteur"],
+  .diag-wrap:has(#diag-suspension:checked) .diag-detail[data-zone="suspension"],
+  .diag-wrap:has(#diag-pneus:checked) .diag-detail[data-zone="pneus"],
+  .diag-wrap:has(#diag-electrique:checked) .diag-detail[data-zone="electrique"] {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  @keyframes diag-pulse {
+    0%   { opacity: 0.35; transform: scale(1); transform-origin: center; }
+    70%  { opacity: 0;    transform: scale(2.2); }
+    100% { opacity: 0;    transform: scale(2.2); }
+  }
+
+  /* Ligne de scan qui traverse au reveal */
+  .diag-scan {
+    left: 0;
+    opacity: 0;
+  }
+  .scroll-reveal.is-visible .diag-scan {
+    opacity: 1;
+    animation: diag-scan-move 3s cubic-bezier(0.4, 0, 0.2, 1) 400ms 1;
+  }
+  @keyframes diag-scan-move {
+    0%   { left: 0;    opacity: 0; }
+    10%  { opacity: 1; }
+    90%  { opacity: 1; }
+    100% { left: 100%; opacity: 0; }
+  }
+
+  /* Halo pulse origin fix */
+  .diag-zone .diag-halo { transform-box: fill-box; transform-origin: center; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .diag-detail, .diag-zone .diag-pin, .diag-zone .diag-halo, .diag-zone .diag-code, .diag-scan {
+      transition: none !important;
+      animation: none !important;
+    }
+    .diag-scan { display: none; }
+  }
+</style>
