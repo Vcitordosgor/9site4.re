@@ -1,0 +1,131 @@
+---
+/**
+ * Calculateur — frais de notaire ancien / neuf (formule simplifiée vanilla JS).
+ * Formule indicative : ancien ~8% du prix, neuf ~3% du prix.
+ */
+---
+
+<section id="calculateur" class="py-20 md:py-28" style="background-color: #FFFFFF;">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-14 items-end mb-12">
+      <div class="md:col-span-7">
+        <p class="font-inter text-[11px] uppercase tracking-[0.4em] mb-4" style="color: #A28B5C;">— Estimation —</p>
+        <h2 class="font-cormorant text-4xl md:text-6xl leading-[0.95]" style="color: #1A1715;">
+          Simulez vos
+          <em class="italic" style="color: #A28B5C;">frais de notaire.</em>
+        </h2>
+      </div>
+      <div class="md:col-span-5">
+        <p class="font-inter text-[14.5px] leading-relaxed" style="color: rgb(26 23 21 / 0.78);">
+          Estimation indicative basée sur les barèmes en vigueur. Le détail exact dépend de la nature du bien, de la commune et de votre situation.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-px border-2" style="background-color: rgba(26,23,21,0.1); border-color: #1A1715;">
+
+      <!-- Inputs -->
+      <form data-calc class="lg:col-span-6 p-7 md:p-10 flex flex-col gap-6" style="background-color: #F5F1EB;" onsubmit="event.preventDefault();">
+        <div>
+          <label for="calc-prix" class="block font-cormorant text-xl md:text-2xl mb-2" style="color: #1A1715;">
+            Prix d'achat du bien
+          </label>
+          <div class="relative">
+            <input
+              type="number"
+              id="calc-prix"
+              name="prix"
+              min="10000"
+              step="1000"
+              value="250000"
+              class="w-full h-14 px-4 pr-12 font-cormorant text-2xl border-2 outline-none focus:border-[#A28B5C]"
+              style="background-color: #FFFFFF; color: #1A1715; border-color: #1A1715;"
+              placeholder="250 000"
+            />
+            <span class="absolute right-4 top-1/2 -translate-y-1/2 font-cormorant text-2xl" style="color: #A28B5C;">€</span>
+          </div>
+        </div>
+
+        <div>
+          <p class="block font-cormorant text-xl md:text-2xl mb-3" style="color: #1A1715;">
+            Type de bien
+          </p>
+          <div role="radiogroup" class="grid grid-cols-2 gap-3">
+            <label class="cursor-pointer">
+              <input type="radio" name="type" value="ancien" class="peer sr-only" checked />
+              <span class="block px-5 py-4 border-2 font-cormorant text-lg text-center transition-colors peer-checked:bg-[#1A1715] peer-checked:text-[#F5F1EB]" style="background-color: #FFFFFF; color: #1A1715; border-color: #1A1715;">
+                Ancien
+                <span class="block font-inter text-[11px] uppercase tracking-wider mt-1 opacity-70">~ 8 %</span>
+              </span>
+            </label>
+            <label class="cursor-pointer">
+              <input type="radio" name="type" value="neuf" class="peer sr-only" />
+              <span class="block px-5 py-4 border-2 font-cormorant text-lg text-center transition-colors peer-checked:bg-[#1A1715] peer-checked:text-[#F5F1EB]" style="background-color: #FFFFFF; color: #1A1715; border-color: #1A1715;">
+                Neuf / VEFA
+                <span class="block font-inter text-[11px] uppercase tracking-wider mt-1 opacity-70">~ 3 %</span>
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <p class="font-inter italic text-[12px] leading-relaxed" style="color: rgb(26 23 21 / 0.6);">
+          Le calcul se met à jour automatiquement. Aucune donnée n'est transmise.
+        </p>
+      </form>
+
+      <!-- Result -->
+      <div class="lg:col-span-6 p-7 md:p-10 flex flex-col justify-center" style="background-color: #1A1715; color: #F5F1EB;">
+        <p class="font-inter text-[11px] uppercase tracking-[0.4em]" style="color: #A28B5C;">— Estimation des frais —</p>
+
+        <p class="mt-5 font-cormorant italic text-xl" style="color: rgba(245,241,235,0.7);">
+          Total des frais de notaire
+        </p>
+        <p class="mt-2 font-cormorant leading-none" style="color: #F5F1EB; font-size: clamp(48px, 7vw, 80px);">
+          <span data-calc-total>20 000</span> <span class="text-3xl md:text-4xl" style="color: #A28B5C;">€</span>
+        </p>
+
+        <dl class="mt-8 pt-6 border-t space-y-2.5 font-inter text-[13px]" style="border-color: rgba(245,241,235,0.2);">
+          <div class="flex justify-between"><dt class="opacity-75">Taux appliqué</dt><dd class="font-medium"><span data-calc-taux>8</span> %</dd></div>
+          <div class="flex justify-between"><dt class="opacity-75">Prix net vendeur</dt><dd class="font-medium tabular-nums"><span data-calc-prix>250 000</span> €</dd></div>
+          <div class="flex justify-between"><dt class="opacity-75">Coût d'acquisition global</dt><dd class="font-medium tabular-nums"><span data-calc-cout>270 000</span> €</dd></div>
+        </dl>
+
+        <p class="mt-6 font-inter italic text-[12px] leading-relaxed" style="color: rgba(245,241,235,0.6);">
+          Cette estimation regroupe droits, émoluments et débours. Pour un chiffrage précis, prenez rendez-vous.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const form = document.querySelector('[data-calc]');
+      if (!form) return;
+      const prix = form.querySelector('#calc-prix') as HTMLInputElement;
+      const radios = form.querySelectorAll<HTMLInputElement>('input[name="type"]');
+      const outTotal = document.querySelector('[data-calc-total]');
+      const outTaux  = document.querySelector('[data-calc-taux]');
+      const outPrix  = document.querySelector('[data-calc-prix]');
+      const outCout  = document.querySelector('[data-calc-cout]');
+
+      const fmt = (n: number) => Math.round(n).toLocaleString('fr-FR').replace(/ /g, ' ');
+
+      const update = () => {
+        const p = Math.max(0, Number(prix.value) || 0);
+        const checked = Array.from(radios).find((r) => r.checked);
+        const type = checked ? checked.value : 'ancien';
+        const taux = type === 'neuf' ? 0.03 : 0.08;
+        const total = p * taux;
+        if (outTotal) outTotal.textContent = fmt(total);
+        if (outTaux)  outTaux.textContent  = type === 'neuf' ? '3' : '8';
+        if (outPrix)  outPrix.textContent  = fmt(p);
+        if (outCout)  outCout.textContent  = fmt(p + total);
+      };
+
+      prix.addEventListener('input', update);
+      radios.forEach((r) => r.addEventListener('change', update));
+      update();
+    })();
+  </script>
+</section>
