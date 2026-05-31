@@ -11,9 +11,9 @@
     "telephoneHref": "+262692123456",
     "whatsapp": "262692123456",
     "email": "contact@volta-electricien.re",
-    "siret": "45678901200017",
+    "siret": "SIRET sur demande",
     "annee": "2014",
-    "certification": "RGE Qualifelec",
+    "certification": "Électricien qualifié",
     "wordmark": "Volta",
     "photoHero": "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1600&q=80"
   },
@@ -63,7 +63,7 @@
     {
       "id": "irve",
       "titre": "Borne IRVE",
-      "description": "Installation certifiée IRVE pour véhicule électrique ou hybride rechargeable. Aide Prime Advenir."
+      "description": "Installation pour véhicule électrique ou hybride rechargeable. Aides à l'installation possibles."
     },
     {
       "id": "clim",
@@ -85,7 +85,7 @@
     {
       "num": "03",
       "titre": "Intervention & contrôle",
-      "description": "Nos électriciens certifiés réalisent les travaux proprement, puis on valide ensemble la conformité."
+      "description": "Nos électriciens réalisent les travaux proprement, puis on valide ensemble la conformité."
     }
   ],
   "galerie": [
