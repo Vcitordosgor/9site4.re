@@ -63,33 +63,33 @@
     {
       "categorie": "Console",
       "items": [
-        "SSL AWS 948 — 48 canaux",
-        "Neve 8816 Summing Mixer",
-        "Avid Pro Tools HDX 64 i/o"
+        "Console analogique 48 canaux",
+        "Summing mixer 16 entrées",
+        "DAW pro · 64 entrées/sorties"
       ]
     },
     {
       "categorie": "Micros",
       "items": [
-        "Neumann U87 Ai · paire stéréo",
-        "AKG C414 XLS · paire",
-        "Shure SM7B · Royer R-121"
+        "Cardioïdes grand-diaphragme · paire stéréo",
+        "Statiques large-membrane · paire",
+        "Dynamiques voix · rubans guitares"
       ]
     },
     {
       "categorie": "Préampli",
       "items": [
-        "Neve 1073 DPD · 4 canaux",
-        "API 3124+ · 4 canaux",
-        "Universal Audio Apollo X16"
+        "Préamplis classe A · 4 canaux",
+        "Préamplis discrets · 4 canaux",
+        "Interface convertisseurs studio · 16 i/o"
       ]
     },
     {
       "categorie": "Monitoring",
       "items": [
-        "Genelec 1031A paire principale",
-        "Yamaha NS-10 référence",
-        "Audeze LCD-X mastering"
+        "Monitors actifs near-field · paire principale",
+        "Monitors référence vintage",
+        "Casque mastering planaire"
       ]
     },
     {
