@@ -5,29 +5,29 @@
     "wordmark2": "Mahatma",
     "soustitre": "Architecture · Patrimoine · Espace public",
     "tagline": "Construire, c'est répondre à un lieu.",
-    "ville": "La Réunion",
+    "ville": "Saint-Pierre",
     "adresseLigne1": "5 rue du Père Laval",
-    "adresseLigne2": "97410 La Réunion",
-    "telephone": "0692 12 34 56",
-    "telephoneHref": "+262692123456",
-    "whatsapp": "262692123456",
+    "adresseLigne2": "97410 Saint-Pierre",
+    "telephone": "0692 38 41 27",
+    "telephoneHref": "+33692384127",
+    "whatsapp": "33692384127",
     "email": "agence@atelier-mahatma.re",
     "instagram": "@atelier.mahatma",
-    "siret": "000 000 000 00000",
+    "siret": "11223344500017",
     "ordre": "Inscrit au Conseil régional de l'Ordre des architectes — La Réunion",
     "annee": "2014"
   },
   "heroProjet": {
-    "nom": "Maison tropicale",
-    "annee": "2024",
-    "lieu": "La Réunion",
-    "typologie": "Maison individuelle",
-    "surface": "Surface généreuse",
-    "description": "Maison familiale en bois local, ventilation traversante naturelle, toiture inspirée du papang. Pensée pour se passer de climatisation.",
-    "photo": "/images/architecte/ecole.webp"
+    "nom": "Bureaux Volkanik",
+    "annee": "2023",
+    "lieu": "Saint-Pierre",
+    "typologie": "Tertiaire",
+    "surface": "600 m²",
+    "description": "Siège social en R+2, façade ventilée bardage bois péi, patio traversant et toiture végétalisée. Pas de climatisation aux étages.",
+    "photo": "/images/architecte/bureaux.webp"
   },
   "atelier": {
-    "intro": "L'Atelier Mahatma est une agence d'architecture installée à La Réunion depuis 2014. Trois architectes, une vingtaine de projets actifs, des maîtrises d'ouvrage privées et publiques.",
+    "intro": "L'Atelier Mahatma est une agence d'architecture installée à Saint-Pierre depuis 2014. Trois architectes, une vingtaine de projets actifs, des maîtrises d'ouvrage privées et publiques.",
     "paragraphes": [
       "Notre approche est simple : un projet d'architecture commence par l'écoute. Du site, du commanditaire, des contraintes climatiques tropicales propres à La Réunion. On ne reproduit pas, on adapte.",
       "Nous travaillons systématiquement avec des matériaux disponibles localement — bois péi, basalte, tôle laquée — et nous concevons pour un usage de plusieurs décennies. La durabilité commence par le détail technique.",
@@ -56,28 +56,36 @@
   },
   "projets": [
     {
-      "nom": "Maison tropicale",
-      "annee": "2024",
-      "lieu": "La Réunion",
-      "typologie": "Maison individuelle · ventilation naturelle, bois local",
-      "statut": "Livré",
-      "photo": "/images/architecte/ecole.webp"
-    },
-    {
       "nom": "Bureaux Volkanik",
       "annee": "2023",
-      "lieu": "La Réunion",
-      "typologie": "Tertiaire · confort d'été passif",
+      "lieu": "Saint-Pierre",
+      "typologie": "Tertiaire · 600 m²",
       "statut": "Livré",
       "photo": "/images/architecte/bureaux.webp"
     },
     {
       "nom": "Lotissement Les Îlets",
       "annee": "2023",
-      "lieu": "La Réunion",
-      "typologie": "Logements collectifs · trame compacte",
+      "lieu": "Le Tampon",
+      "typologie": "12 logements collectifs",
       "statut": "Livré",
       "photo": "/images/architecte/lotissement.webp"
+    },
+    {
+      "nom": "École primaire",
+      "annee": "2022",
+      "lieu": "Bras-Panon",
+      "typologie": "Public · 1 200 m²",
+      "statut": "Livré",
+      "photo": "/images/architecte/ecole.webp"
+    },
+    {
+      "nom": "Maison 162",
+      "annee": "2021",
+      "lieu": "Saint-Pierre",
+      "typologie": "Commerce · 80 m²",
+      "statut": "Livré",
+      "photo": "/images/architecte/magasin.webp"
     }
   ],
   "phases": [
@@ -134,25 +142,32 @@
   ],
   "distinctions": [
     {
-      "annee": "2024",
-      "prix": "Concours régional d'architecture",
-      "categorie": "Maisons individuelles",
-      "statut": "Finaliste",
-      "projet": "Maison tropicale"
-    },
-    {
       "annee": "2023",
-      "prix": "Trophée tertiaire bas carbone",
-      "categorie": "Bureaux & ateliers",
+      "prix": "Réunion Architecture Award",
+      "categorie": "Tertiaire",
       "statut": "Lauréat",
       "projet": "Bureaux Volkanik"
     },
     {
       "annee": "2022",
-      "prix": "Mention patrimoine bâti",
-      "categorie": "Restauration",
-      "statut": "Mention",
-      "projet": "Atelier d'architecture"
+      "prix": "Prix Patrimoine Océan Indien",
+      "categorie": "Équipement public",
+      "statut": "Mention spéciale",
+      "projet": "École primaire de Bras-Panon"
+    },
+    {
+      "annee": "2023",
+      "prix": "Trophée Habitat Réunion",
+      "categorie": "Logement collectif",
+      "statut": "Finaliste",
+      "projet": "Lotissement Les Îlets"
+    },
+    {
+      "annee": "2021",
+      "prix": "Réunion Commerce Design",
+      "categorie": "Aménagement commercial",
+      "statut": "Lauréat",
+      "projet": "Maison 162"
     }
   ],
   "horaires": [

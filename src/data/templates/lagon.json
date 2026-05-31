@@ -1,22 +1,23 @@
 {
   "info": {
-    "nom": "Le Lagon Frais",
-    "wordmark": "Le Lagon",
-    "wordmark2": "Frais",
+    "nom": "Lagon Pressé",
+    "wordmark": "Lagon",
+    "wordmark2": "Pressé",
     "tagline": "Tout ce qui pousse, on le presse.",
     "soustitre": "Bar à jus pressés & smoothie bowls",
     "fondatrice": "Lola Hoarau",
-    "ville": "La Réunion",
-    "adresseLigne1": "Bord de mer",
-    "adresseLigne2": "À La Réunion",
-    "telephone": "0692 12 34 56",
-    "telephoneHref": "+262692123456",
-    "whatsapp": "262692123456",
+    "ville": "Saint-Pierre",
+    "adresseLigne1": "14 Boulevard Hubert-Delisle",
+    "adresseLigne2": "97410 Saint-Pierre",
+    "telephone": "0692 67 14 38",
+    "telephoneHref": "+33692671438",
+    "whatsapp": "33692671438",
     "email": "salut@lagon-presse.re",
     "instagram": "@lagonpresse.974",
     "siret": "45678901100017",
     "annee": "2021",
-    "photoHero": "/images/lagon/hero.webp"
+    "photoHero": "/images/lagon/mangue-passion.webp",
+    "photoBar": "/images/lagon/bowl-tropical.webp"
   },
   "marquee": [
     "Jus pressé · 5€",
@@ -35,7 +36,7 @@
     {
       "id": "local",
       "titre": "100 % péi",
-      "description": "Mangues péi, ananas Victoria, fruits de la passion de l'île."
+      "description": "Mangues de Saint-Joseph, ananas Victoria, fruits de la passion de l'Hermitage."
     },
     {
       "id": "zero",

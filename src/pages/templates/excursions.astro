@@ -39,8 +39,6 @@ const businessLD = localBusinessSchema(sentiersData, 'SportsActivityLocation');
 <BaseLayout seo={getSeo('templateExcursions')} bare={true}>
   <Fragment slot="head">
     {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
-    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
-    <link rel="dns-prefetch" href="https://images.unsplash.com" />
     <link
       rel="preload"
       as="image"

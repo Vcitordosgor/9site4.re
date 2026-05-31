@@ -2,26 +2,24 @@
   "info": {
     "nom": "Le Cap Anglais",
     "wordmark": "Le Cap Anglais",
-    "soustitre": "Gîte de cirque · La Réunion",
+    "soustitre": "Gîte de cirque · Cilaos",
     "tagline": "Le sommet vous attend.",
     "hote": "Jean-Marie Hoarau",
-    "ville": "La Réunion",
+    "ville": "Cilaos",
     "adresseLigne1": "47 chemin du Bras Sec",
-    "adresseLigne2": "97413 La Réunion · Cirque",
+    "adresseLigne2": "97413 Cilaos · Cirque",
     "altitude": "1 220 m",
     "gpsLat": "−21.1373",
     "gpsLon": "55.4711",
-    "telephone": "0692 12 34 56",
-    "telephoneHref": "+262692123456",
-    "whatsapp": "262692123456",
+    "telephone": "0692 73 56 18",
+    "telephoneHref": "+33692735618",
+    "whatsapp": "33692735618",
     "email": "contact@le-cap-anglais.re",
-    "siret": "000 000 000 00000",
+    "siret": "67890123300017",
     "annee": "2008",
     "classification": 4,
     "photoHero": "/images/gite/hero-cilaos.webp",
-    "photoHeroAlt": "Vue panoramique du cirque de l'île a La Reunion",
-    "photoExterieur": "https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=1200&q=85",
-    "photoExterieurAlt": "Vue extérieure du gîte, façade nord côté Bras-Sec"
+    "photoHeroAlt": "Vue panoramique du cirque de Cilaos a La Reunion"
   },
   "fiche": [
     {
@@ -106,7 +104,7 @@
       "denivele": "+ 600 m",
       "niveau": 3,
       "depart": "1h en voiture depuis le gîte",
-      "description": "Vue spectaculaire sur La Réunion au lever du soleil. Départ recommandé à 4h."
+      "description": "Vue spectaculaire sur Mafate au lever du soleil. Départ recommandé à 4h."
     },
     {
       "nom": "Cascade Bras Rouge",
@@ -114,7 +112,7 @@
       "denivele": "+ 350 m",
       "niveau": 2,
       "depart": "Au départ du gîte",
-      "description": "Cascade emblématique de l'île. Baignade autorisée. Sentier ombragé."
+      "description": "Cascade emblématique de Cilaos. Baignade autorisée. Sentier ombragé."
     },
     {
       "nom": "Le Bénare",
@@ -125,7 +123,7 @@
       "description": "Sommet à 2 896 m. Pour marcheurs aguerris uniquement. Casse-croûte fourni sur demande."
     },
     {
-      "nom": "Tour de l'île pédagogique",
+      "nom": "Tour de Cilaos pédagogique",
       "duree": "3h boucle",
       "denivele": "+ 200 m",
       "niveau": 1,
@@ -204,11 +202,11 @@
       "On accueille 12 personnes maximum, ce qui veut dire qu'on apprend les prénoms. On reçoit beaucoup de randonneurs, mais aussi des familles, des couples qui veulent décrocher, des artistes en résidence. Chacun trouve son rythme.",
       "Le matin, je propose de vous accompagner sur les sentiers les moins évidents — gratuitement, juste pour le plaisir. Demandez-moi la veille si l'envie vous prend."
     ],
-    "signature": "— Jean-Marie, La Réunion · 2008–aujourd'hui"
+    "signature": "— Jean-Marie, Cilaos · 2008–aujourd'hui"
   },
   "acces": {
-    "voiture": "La Réunion → La Réunion par la N5. Compter 1h30, route en lacets (400 virages). Dernier carrefour à droite après l'Office de Tourisme.",
-    "transport": "Bus Car Jaune ligne S1 depuis La Réunion · arrêt « La Réunion centre-ville ». 15 min à pied jusqu'au gîte.",
+    "voiture": "Saint-Pierre → Cilaos par la N5. Compter 1h30, route en lacets (400 virages). Dernier carrefour à droite après l'Office de Tourisme.",
+    "transport": "Bus Car Jaune ligne S1 depuis Saint-Pierre · arrêt « Cilaos centre-ville ». 15 min à pied jusqu'au gîte.",
     "code": "Code d'accès portail communiqué la veille de l'arrivée par SMS.",
     "parking": "5 places gratuites couvertes."
   }

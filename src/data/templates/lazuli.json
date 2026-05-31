@@ -5,20 +5,22 @@
     "soustitre": "Location saisonnière · bord de mer",
     "tagline": "Une villa, une vue, un lagon.",
     "hotes": "Stéphane & Marina Hoarau",
-    "ville": "La Réunion",
+    "ville": "Saint-Leu",
     "adresseLigne1": "12 chemin du Lagon",
-    "adresseLigne2": "97436 La Réunion",
-    "telephone": "0692 12 34 56",
-    "telephoneHref": "+262692123456",
-    "whatsapp": "262692123456",
+    "adresseLigne2": "97436 Saint-Leu",
+    "telephone": "0692 67 28 31",
+    "telephoneHref": "+33692672831",
+    "whatsapp": "33692672831",
     "email": "hello@villa-lazuli.re",
     "instagram": "@villa.lazuli",
-    "siret": "000 000 000 00000",
+    "siret": "89012345500017",
     "annee": "2019",
     "photoHero": "/images/location/hero.webp",
     "photoHeroAlt": "Villa Lazuli, vue d ensemble avec piscine et terrasse",
-    "photoSticker": "/images/location/vue.webp",
-    "photoStickerAlt": "Vue du lagon depuis la terrasse de la villa"
+    "photoSticker": "/images/location/piscine.webp",
+    "photoStickerAlt": "Piscine de la villa au coucher du soleil",
+    "note": "4,8/5",
+    "nbAvis": 87
   },
   "stats": [
     {
@@ -39,7 +41,7 @@
     }
   ],
   "pitch": [
-    "Posée à flanc de coteau juste au-dessus du lagon de l'île, la villa offre une vue dégagée sur l'océan, accessible à pied à la plage en cinq minutes. Quatre chambres, une grande terrasse couverte, une cuisine entièrement équipée.",
+    "Posée à flanc de coteau juste au-dessus du lagon de Saint-Leu, la villa offre une vue dégagée sur l'océan, accessible à pied à la plage en cinq minutes. Quatre chambres, une grande terrasse couverte, une cuisine entièrement équipée.",
     "Pensée pour les familles ou les groupes d'amis qui cherchent un vrai cocon. Aucun voisin direct, jardin clos, parking pour trois voitures. Le calme, mais le centre-ville à dix minutes à pied.",
     "Stéphane et Marina, les propriétaires, vivent à 200 m. Ils sont disponibles pour accueillir, recommander, dépanner — sans jamais s'imposer. Les retours parlent souvent d'eux."
   ],
@@ -77,7 +79,7 @@
     {
       "id": "vue",
       "titre": "La vue",
-      "description": "Le lagon de l'île, depuis la terrasse et les chambres côté mer.",
+      "description": "Le lagon de Saint-Leu, depuis la terrasse et les chambres côté mer.",
       "photo": "/images/location/vue.webp"
     },
     {
@@ -97,7 +99,7 @@
     "interieur": [
       "WiFi fibre haut débit",
       "Climatisation toutes pièces",
-      "TV 4K + plateformes de streaming",
+      "TV 4K + Netflix",
       "Lave-linge & sèche-linge",
       "Lave-vaisselle",
       "Four & plaque induction",
