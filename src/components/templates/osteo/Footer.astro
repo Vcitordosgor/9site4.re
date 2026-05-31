@@ -1,0 +1,39 @@
+---
+import data from '../../../data/templates/verveine.json';
+const info = data.info;
+---
+
+<footer style="background-color: #1F3A44; color: #F7F4EE;">
+  <div class="max-w-content mx-auto px-5 md:px-10 py-14 md:py-20">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
+
+      <div class="md:col-span-5">
+        <p class="font-cormorant text-4xl" style="color: #F7F4EE;">{info.wordmark}</p>
+        <p class="mt-2 font-inter text-[11px] uppercase tracking-[0.3em]" style="color: #C9B79A;">{info.soustitre}</p>
+        <p class="mt-6 font-cormorant italic text-xl leading-snug max-w-md" style="color: rgba(247,244,238,0.85);">
+          « {info.tagline} »
+        </p>
+      </div>
+
+      <div class="md:col-span-3">
+        <p class="font-inter text-[10.5px] uppercase tracking-[0.3em] mb-4" style="color: #C9B79A;">Cabinet</p>
+        <p class="font-inter text-[13.5px] leading-relaxed" style="color: rgba(247,244,238,0.85);">
+          {info.adresseLigne1}<br/>{info.adresseLigne2}
+        </p>
+      </div>
+
+      <div class="md:col-span-4">
+        <p class="font-inter text-[10.5px] uppercase tracking-[0.3em] mb-4" style="color: #C9B79A;">Contact</p>
+        <ul class="font-inter text-[13.5px] space-y-2" style="color: rgba(247,244,238,0.85);">
+          <li><a href={`tel:${info.telephoneHref}`} class="hover:text-[#C9B79A]">{info.telephone}</a></li>
+          <li><a href={`mailto:${info.email}`} class="hover:text-[#C9B79A]">{info.email}</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-14 pt-6 border-t flex flex-col md:flex-row gap-3 justify-between font-inter text-[11px]" style="border-color: rgba(247,244,238,0.15); color: rgba(247,244,238,0.55);">
+      <p>© {new Date().getFullYear()} {info.nom} — Démo 9site4 (fictif).</p>
+      <p>{info.rof} · ADELI sur demande.</p>
+    </div>
+  </div>
+</footer>
