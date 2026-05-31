@@ -75,11 +75,12 @@ import data from '../../../data/templates/concierge.json';
     <div class="lg:col-span-5">
       <div class="relative aspect-[3/4] max-w-md mx-auto bg-concierge-blanc overflow-hidden">
         <img
-          src={data.info.photoHero} srcset={`${(data.info.photoHero).replace(/\.webp$/, "-640.webp")} 640w, ${(data.info.photoHero).replace(/\.webp$/, "-1024.webp")} 1024w, ${data.info.photoHero} 1600w`} sizes="100vw"
+          src={data.info.photoHero}
+          sizes="(min-width: 1024px) 40vw, 90vw"
           alt="Détail de bienvenue Concierge & Co"
-          class="w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async">
+          class="w-full h-full object-cover" style="object-position: center 40%;" loading="eager" fetchpriority="high" decoding="async">
         <!-- Cadre laiton intérieur -->
-        <div class="absolute inset-3 border border-concierge-laiton/40" aria-hidden="true"></div>
+        <div class="absolute inset-3 border border-concierge-laiton/40 pointer-events-none" aria-hidden="true"></div>
         <!-- Étiquette manuscrite en bas -->
         <div class="absolute bottom-6 left-6 right-6 bg-concierge-champagne/95 px-4 py-3">
           <p class="font-pinyon text-concierge-laiton text-3xl leading-none">à votre service</p>

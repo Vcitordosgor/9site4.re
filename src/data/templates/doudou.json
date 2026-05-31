@@ -102,32 +102,28 @@
   },
   "aidants": [
     {
-      "prenom": "Maguy",
-      "diplome": "Auxiliaire de vie",
-      "experience": "12 ans",
-      "specialite": "Personnes âgées dépendantes",
-      "photo": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&q=85"
+      "prenom": "Marie",
+      "diplome": "Aide à domicile",
+      "experience": "Accompagnement personnes âgées",
+      "specialite": "Toilette, repas, présence apaisante."
     },
     {
-      "prenom": "Linda",
-      "diplome": "DEAES",
-      "experience": "8 ans",
-      "specialite": "Anglais courant · Sortie d'hospi",
-      "photo": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=85"
+      "prenom": "Lina",
+      "diplome": "Accompagnement quotidien",
+      "experience": "Sortie d'hospitalisation",
+      "specialite": "Lien doux, écoute, gestes simples."
     },
     {
-      "prenom": "Joseph",
-      "diplome": "DEAES",
-      "experience": "6 ans",
-      "specialite": "Maladie d'Alzheimer & démences",
-      "photo": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&q=85"
+      "prenom": "Samuel",
+      "diplome": "Courses & repas",
+      "experience": "Aide ménagère",
+      "specialite": "Marché, cuisine maison, intendance."
     },
     {
-      "prenom": "Sandrine",
-      "diplome": "DEAES",
-      "experience": "5 ans",
-      "specialite": "Post-opératoire & rééducation",
-      "photo": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=600&q=85"
+      "prenom": "Jeanne",
+      "diplome": "Présence & compagnie",
+      "experience": "Lien social",
+      "specialite": "Conversation, lecture, promenades."
     }
   ],
   "temoignages": [
