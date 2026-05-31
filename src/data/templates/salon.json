@@ -45,9 +45,9 @@
       "Salon mixte, tous types de cheveux",
       "Sans rendez-vous le mardi"
     ],
-    "photoHero": "/images/salon/hero.webp",
+    "photoHero": "/images/salon/hero.png",
     "photoHeroAlt": "Intérieur du salon Meg & Dan avec vue sur les montagnes",
-    "photoSalon": "/images/salon/ambiance.webp",
+    "photoSalon": "/images/salon/ambiance.png",
     "photoSalonAlt": "Ambiance feutrée du salon Meg & Dan, fauteuils noirs et marbre"
   },
   "manifesto": "On prend le temps de comprendre vos cheveux avant de prendre les ciseaux.",
