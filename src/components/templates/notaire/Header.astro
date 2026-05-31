@@ -1,0 +1,26 @@
+---
+import data from '../../../data/templates/notaire.json';
+const info = data.info;
+---
+
+<header class="sticky top-0 z-40 backdrop-blur-md" style="background-color: rgba(245,241,235,0.94); border-bottom: 1px solid rgba(26,23,21,0.10);">
+  <div class="max-w-content mx-auto px-5 md:px-10 h-16 md:h-20 flex items-center justify-between">
+    <a href="#top" class="flex items-baseline gap-2">
+      <span class="font-cormorant text-xl md:text-2xl" style="color: #1A1715;">{info.wordmark}</span>
+      <span class="font-cormorant italic text-xl md:text-2xl" style="color: #A28B5C;">{info.wordmark2}</span>
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-7 font-inter text-[12px] uppercase tracking-[0.18em]" style="color: rgba(26,23,21,0.78);">
+      <a href="#domaines" class="hover:text-[#1A1715]">Domaines</a>
+      <a href="#notaires" class="hover:text-[#1A1715]">L'étude</a>
+      <a href="#methode" class="hover:text-[#1A1715]">Méthode</a>
+      <a href="#frais" class="hover:text-[#1A1715]">Frais</a>
+      <a href="#calculateur" class="hover:text-[#1A1715]">Simulateur</a>
+      <a href="#contact" class="hover:text-[#1A1715]">Contact</a>
+    </nav>
+
+    <a href="#contact" class="inline-flex items-center gap-2 font-inter font-semibold text-[11.5px] uppercase tracking-[0.18em] h-10 md:h-11 px-4 md:px-5 transition-colors" style="background-color: #1A1715; color: #F5F1EB;">
+      Premier RDV offert
+    </a>
+  </div>
+</header>

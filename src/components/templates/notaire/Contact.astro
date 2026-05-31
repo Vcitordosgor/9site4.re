@@ -1,0 +1,77 @@
+---
+import data from '../../../data/templates/notaire.json';
+const info = data.info;
+---
+
+<section id="contact" class="py-20 md:py-28" style="background-color: #F5F1EB;">
+  <div class="max-w-content mx-auto px-5 md:px-10">
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+
+      <div class="lg:col-span-5">
+        <p class="font-inter text-[11px] uppercase tracking-[0.38em] mb-4" style="color: #A28B5C;">— Prendre rendez-vous —</p>
+        <h2 class="font-cormorant leading-[1.02]" style="color: #1A1715; font-size: clamp(34px, 5vw, 58px);">
+          Le premier rendez-vous <em class="italic" style="color: #A28B5C;">est offert.</em>
+        </h2>
+        <p class="mt-6 font-inter text-[15px] leading-relaxed" style="color: rgba(26,23,21,0.78);">
+          30 à 60 minutes d'écoute. Présentation de votre situation, des options possibles, du calendrier prévisionnel. Sans engagement.
+        </p>
+
+        <dl class="mt-10 space-y-5 font-inter text-[14px]" style="color: #1A1715;">
+          <div class="pb-4 border-b" style="border-color: rgba(26,23,21,0.12);">
+            <dt class="text-[11px] uppercase tracking-[0.22em] mb-1" style="color: #A28B5C;">Téléphone</dt>
+            <dd><a href={`tel:${info.telephoneHref}`} class="font-cormorant text-2xl" style="color: #1A1715;">{info.telephone}</a></dd>
+          </div>
+          <div class="pb-4 border-b" style="border-color: rgba(26,23,21,0.12);">
+            <dt class="text-[11px] uppercase tracking-[0.22em] mb-1" style="color: #A28B5C;">Email</dt>
+            <dd><a href={`mailto:${info.email}`} class="hover:opacity-70 break-all">{info.email}</a></dd>
+          </div>
+          <div>
+            <dt class="text-[11px] uppercase tracking-[0.22em] mb-1" style="color: #A28B5C;">Office</dt>
+            <dd>{info.adresseLigne1}<br/>{info.adresseLigne2}</dd>
+            <dd class="mt-2 font-cormorant italic" style="color: rgba(26,23,21,0.7);">{info.ouvertureHebdo}<br/>{info.fermeture}</dd>
+          </div>
+        </dl>
+      </div>
+
+      <form class="lg:col-span-7 p-7 md:p-10 grid grid-cols-1 sm:grid-cols-2 gap-4 border-2" style="background-color: #FFFFFF; border-color: #1A1715;" onsubmit="event.preventDefault(); alert('Démo — formulaire non actif.');">
+        <label class="sm:col-span-1 flex flex-col gap-2">
+          <span class="font-inter text-[11px] uppercase tracking-[0.22em]" style="color: #A28B5C;">Nom</span>
+          <input type="text" required class="h-12 px-4 font-cormorant text-lg outline-none border-2" style="border-color: rgba(26,23,21,0.18); color: #1A1715;" />
+        </label>
+        <label class="sm:col-span-1 flex flex-col gap-2">
+          <span class="font-inter text-[11px] uppercase tracking-[0.22em]" style="color: #A28B5C;">Prénom</span>
+          <input type="text" required class="h-12 px-4 font-cormorant text-lg outline-none border-2" style="border-color: rgba(26,23,21,0.18); color: #1A1715;" />
+        </label>
+        <label class="sm:col-span-1 flex flex-col gap-2">
+          <span class="font-inter text-[11px] uppercase tracking-[0.22em]" style="color: #A28B5C;">Email</span>
+          <input type="email" required class="h-12 px-4 font-cormorant text-lg outline-none border-2" style="border-color: rgba(26,23,21,0.18); color: #1A1715;" />
+        </label>
+        <label class="sm:col-span-1 flex flex-col gap-2">
+          <span class="font-inter text-[11px] uppercase tracking-[0.22em]" style="color: #A28B5C;">Téléphone</span>
+          <input type="tel" required class="h-12 px-4 font-cormorant text-lg outline-none border-2" style="border-color: rgba(26,23,21,0.18); color: #1A1715;" />
+        </label>
+        <label class="sm:col-span-2 flex flex-col gap-2">
+          <span class="font-inter text-[11px] uppercase tracking-[0.22em]" style="color: #A28B5C;">Domaine concerné</span>
+          <select class="h-12 px-4 font-cormorant text-lg outline-none border-2" style="border-color: rgba(26,23,21,0.18); color: #1A1715;">
+            <option>Immobilier</option>
+            <option>Famille (PACS, mariage, divorce)</option>
+            <option>Succession & transmission</option>
+            <option>Droit des sociétés</option>
+            <option>Autre</option>
+          </select>
+        </label>
+        <label class="sm:col-span-2 flex flex-col gap-2">
+          <span class="font-inter text-[11px] uppercase tracking-[0.22em]" style="color: #A28B5C;">Précisions (facultatif)</span>
+          <textarea rows="4" class="px-4 py-3 font-inter text-[14px] outline-none border-2 resize-none" style="border-color: rgba(26,23,21,0.18); color: #1A1715;"></textarea>
+        </label>
+        <button type="submit" class="sm:col-span-2 h-12 font-inter font-semibold text-[12px] uppercase tracking-[0.22em] transition-colors" style="background-color: #1A1715; color: #F5F1EB;">
+          Demander le premier rendez-vous
+        </button>
+        <p class="sm:col-span-2 font-inter italic text-[11.5px]" style="color: rgba(26,23,21,0.6);">
+          Confidentialité absolue. Secret professionnel garanti. Réponse sous 48 h ouvrées.
+        </p>
+      </form>
+    </div>
+  </div>
+</section>

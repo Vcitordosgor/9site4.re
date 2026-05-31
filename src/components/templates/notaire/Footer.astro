@@ -1,0 +1,35 @@
+---
+import data from '../../../data/templates/notaire.json';
+const info = data.info;
+---
+
+<footer style="background-color: #1A1715; color: #F5F1EB;">
+  <div class="max-w-content mx-auto px-5 md:px-10 py-14 md:py-20">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
+      <div class="md:col-span-6">
+        <p class="font-cormorant text-4xl">{info.wordmark} <em class="italic" style="color: #A28B5C;">{info.wordmark2}</em></p>
+        <p class="mt-2 font-inter text-[11px] uppercase tracking-[0.3em]" style="color: #A28B5C;">{info.soustitre}</p>
+        <p class="mt-6 font-cormorant italic text-xl max-w-md leading-snug" style="color: rgba(245,241,235,0.85);">
+          « {info.tagline} »
+        </p>
+      </div>
+      <div class="md:col-span-3">
+        <p class="font-inter text-[10.5px] uppercase tracking-[0.3em] mb-3" style="color: #A28B5C;">Office</p>
+        <p class="font-inter text-[13.5px] leading-relaxed" style="color: rgba(245,241,235,0.82);">
+          {info.adresseLigne1}<br/>{info.adresseLigne2}<br/>{info.ouvertureHebdo}<br/>{info.fermeture}
+        </p>
+      </div>
+      <div class="md:col-span-3">
+        <p class="font-inter text-[10.5px] uppercase tracking-[0.3em] mb-3" style="color: #A28B5C;">Contact</p>
+        <ul class="font-inter text-[13.5px] space-y-2" style="color: rgba(245,241,235,0.82);">
+          <li><a href={`tel:${info.telephoneHref}`} class="hover:text-[#A28B5C]">{info.telephone}</a></li>
+          <li><a href={`mailto:${info.email}`} class="hover:text-[#A28B5C]">{info.email}</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-14 pt-6 border-t flex flex-col md:flex-row gap-3 justify-between font-inter text-[11px]" style="border-color: rgba(245,241,235,0.18); color: rgba(245,241,235,0.55);">
+      <p>© {new Date().getFullYear()} {info.nom} — Démo 9site4 (fictif).</p>
+      <p>Office notarial · Foi publique · République française.</p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,64 @@
+---
+import data from '../../../data/templates/notaire.json';
+const info = data.info;
+---
+
+<section id="top" class="relative overflow-hidden" style="background-color: #F5F1EB;">
+  <div class="max-w-content mx-auto px-5 md:px-10 pt-12 md:pt-20 pb-16 md:pb-24">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+
+      <div class="lg:col-span-7">
+        <div class="flex items-center gap-4 mb-6">
+          <span class="block w-10 h-px" style="background-color: #A28B5C;"></span>
+          <p class="font-inter text-[10.5px] uppercase tracking-[0.38em]" style="color: #A28B5C;">Office notarial · La Réunion · depuis {info.annee}</p>
+        </div>
+
+        <h1 class="font-cormorant leading-[0.96]" style="color: #1A1715; font-size: clamp(48px, 8.5vw, 116px);">
+          <span class="block font-light">Étude Notariale</span>
+          <span class="block italic mt-1" style="color: #A28B5C;">& Associés.</span>
+        </h1>
+
+        <p class="mt-8 font-cormorant italic max-w-2xl leading-snug" style="color: rgba(26,23,21,0.85); font-size: clamp(20px, 2.4vw, 28px);">
+          « {info.tagline} »
+        </p>
+
+        <p class="mt-6 font-inter text-[15px] leading-relaxed max-w-xl" style="color: rgba(26,23,21,0.72);">
+          {data.promesse}
+        </p>
+
+        <div class="mt-9 flex flex-col sm:flex-row gap-3">
+          <a href="#contact" class="inline-flex items-center justify-center h-12 px-8 font-inter font-semibold text-[12px] uppercase tracking-[0.2em] transition-colors" style="background-color: #1A1715; color: #F5F1EB;">
+            Premier rendez-vous offert
+          </a>
+          <a href="#domaines" class="inline-flex items-center justify-center h-12 px-8 font-inter font-semibold text-[12px] uppercase tracking-[0.2em] border-2 transition-colors" style="border-color: #1A1715; color: #1A1715;">
+            Nos domaines
+          </a>
+        </div>
+
+        <dl class="mt-12 pt-8 border-t grid grid-cols-3 gap-4 max-w-md" style="border-color: rgba(26,23,21,0.18);">
+          <div>
+            <dt class="font-inter text-[10px] uppercase tracking-[0.22em]" style="color: rgba(26,23,21,0.55);">Ans d'office</dt>
+            <dd class="mt-1 font-cormorant italic text-3xl" style="color: #A28B5C;">{new Date().getFullYear() - Number(info.annee)}</dd>
+          </div>
+          <div>
+            <dt class="font-inter text-[10px] uppercase tracking-[0.22em]" style="color: rgba(26,23,21,0.55);">Notaires</dt>
+            <dd class="mt-1 font-cormorant italic text-3xl" style="color: #A28B5C;">3</dd>
+          </div>
+          <div>
+            <dt class="font-inter text-[10px] uppercase tracking-[0.22em]" style="color: rgba(26,23,21,0.55);">Collaborateurs</dt>
+            <dd class="mt-1 font-cormorant italic text-3xl" style="color: #A28B5C;">12</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="lg:col-span-5">
+        <div class="relative aspect-[3/4] overflow-hidden">
+          <img src={info.photoHero} alt={info.photoHeroAlt} loading="eager" fetchpriority="high" class="w-full h-full object-cover" />
+          <div class="absolute inset-x-0 bottom-0 p-6" style="background: linear-gradient(180deg, transparent, rgba(26,23,21,0.85));">
+            <p class="font-cormorant italic text-xl text-[#F5F1EB]">— Foi publique. République française.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

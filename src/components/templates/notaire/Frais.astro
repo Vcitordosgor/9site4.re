@@ -1,0 +1,33 @@
+---
+import data from '../../../data/templates/notaire.json';
+---
+
+<section id="frais" class="py-20 md:py-28" style="background-color: #1A1715; color: #F5F1EB;">
+  <div class="max-w-content mx-auto px-5 md:px-10">
+    <div class="max-w-3xl mb-14">
+      <p class="font-inter text-[11px] uppercase tracking-[0.38em] mb-4" style="color: #A28B5C;">— Frais & honoraires —</p>
+      <h2 class="font-cormorant leading-[1.02]" style="font-size: clamp(34px, 5vw, 58px);">
+        Quatre lignes <em class="italic" style="color: #A28B5C;">à comprendre.</em>
+      </h2>
+      <p class="mt-6 font-inter text-[14.5px] leading-relaxed" style="color: rgba(245,241,235,0.75);">
+        « Frais de notaire » est un raccourci trompeur — sur 100 €, environ 20 € rémunèrent l'office, le reste va à l'État ou aux fournisseurs.
+      </p>
+    </div>
+
+    <div class="border" style="border-color: rgba(245,241,235,0.18);">
+      {data.frais.map((f, i) => (
+        <div class={`grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-6 px-6 md:px-8 py-6 md:py-7 items-center ${i < data.frais.length - 1 ? 'border-b' : ''}`} style="border-color: rgba(245,241,235,0.12);">
+          <div class="md:col-span-4">
+            <p class="font-cormorant text-xl md:text-2xl">{f.categorie}</p>
+          </div>
+          <div class="md:col-span-4">
+            <p class="font-inter text-[13.5px]" style="color: rgba(245,241,235,0.75);">{f.exemple}</p>
+          </div>
+          <div class="md:col-span-4 md:text-right">
+            <p class="font-cormorant italic text-base md:text-lg" style="color: #A28B5C;">{f.indication}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
