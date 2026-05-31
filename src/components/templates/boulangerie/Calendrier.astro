@@ -42,6 +42,23 @@ import data from '../../../data/templates/painleve.json';
       <p class="mt-6 text-center font-caveat text-xl md:text-2xl" style="color: #7A4A2A;">
         — Réservation des pains par WhatsApp jusqu'à la veille 18h —
       </p>
+
+      <!-- Heures de sortie du four -->
+      <div class="mt-12 md:mt-14">
+        <p class="text-center font-crimson-pro text-[11px] uppercase tracking-[0.45em] mb-5" style="color: #7A4A2A;">— Heures de sortie du four —</p>
+        <ul class="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
+          {[
+            { quoi: 'Pain au levain', heures: '7 h & 16 h' },
+            { quoi: 'Croissants', heures: '6 h 30' },
+            { quoi: 'Brioche', heures: '8 h' },
+          ].map((s) => (
+            <li class="text-center px-4 py-5" style="background-color: rgba(255,255,255,0.7); border: 1px solid rgba(122, 74, 42, 0.25);">
+              <p class="font-caveat text-2xl md:text-3xl leading-none" style="color: #C89B3C;">{s.heures}</p>
+              <p class="mt-2 font-crimson-pro text-[14px] uppercase tracking-[0.18em]" style="color: #1A1614;">{s.quoi}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   </div>
 </section>
