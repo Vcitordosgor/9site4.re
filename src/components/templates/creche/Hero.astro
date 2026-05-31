@@ -1,0 +1,63 @@
+---
+import data from '../../../data/templates/nid.json';
+const info = data.info;
+---
+
+<section id="top" class="relative overflow-hidden" style="background-color: #FDF7F0;">
+  <!-- Soft blob backgrounds -->
+  <div class="absolute -top-20 -right-20 w-96 h-96 rounded-full pointer-events-none" style="background-color: rgba(252,218,137,0.35); filter: blur(40px);"></div>
+  <div class="absolute -bottom-20 -left-20 w-96 h-96 rounded-full pointer-events-none" style="background-color: rgba(228,182,182,0.35); filter: blur(40px);"></div>
+
+  <div class="max-w-content mx-auto px-5 md:px-10 pt-12 md:pt-20 pb-16 md:pb-24 relative">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+      <div class="lg:col-span-6">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-7" style="background-color: rgba(228,182,182,0.30);">
+          <span class="block w-1.5 h-1.5 rounded-full" style="background-color: #C18888;"></span>
+          <span class="font-dm-sans text-[11.5px] font-medium uppercase tracking-[0.18em]" style="color: #5C3D3D;">Micro-crèche · La Réunion · {info.annee}</span>
+        </div>
+
+        <h1 class="font-nunito font-extrabold leading-[1.05]" style="color: #5C3D3D; font-size: clamp(46px, 7vw, 88px);">
+          Un <span style="color: #C18888;">nid</span> pour grandir<br/>
+          <span style="color: #B89441;">à son rythme.</span>
+        </h1>
+
+        <p class="mt-7 font-dm-sans text-[16px] leading-relaxed max-w-xl" style="color: rgba(92,61,61,0.78);">
+          Petite capacité, équipe diplômée en permanence, jardin tous les jours, sieste sur mesure. Une crèche pensée comme une maison — pas comme un dortoir collectif.
+        </p>
+
+        <div class="mt-9 flex flex-col sm:flex-row gap-3">
+          <a href="#inscription" class="inline-flex items-center justify-center h-12 px-7 font-dm-sans font-semibold text-[14px] rounded-full transition-transform hover:scale-105" style="background-color: #5C3D3D; color: #FDF7F0;">
+            Visiter le nid →
+          </a>
+          <a href="#journee" class="inline-flex items-center justify-center h-12 px-7 font-dm-sans font-semibold text-[14px] rounded-full border-2 transition-colors" style="border-color: #5C3D3D; color: #5C3D3D;">
+            Une journée type
+          </a>
+        </div>
+
+        <div class="mt-10 grid grid-cols-3 gap-4 max-w-md">
+          <div class="text-center sm:text-left">
+            <p class="font-nunito font-bold text-3xl" style="color: #C18888;">7h-19h</p>
+            <p class="mt-1 font-dm-sans text-[11px]" style="color: rgba(92,61,61,0.65);">Lun → Ven</p>
+          </div>
+          <div class="text-center sm:text-left">
+            <p class="font-nunito font-bold text-3xl" style="color: #B89441;">10</p>
+            <p class="mt-1 font-dm-sans text-[11px]" style="color: rgba(92,61,61,0.65);">enfants max</p>
+          </div>
+          <div class="text-center sm:text-left">
+            <p class="font-nunito font-bold text-3xl" style="color: #6B7F5C;">CAF</p>
+            <p class="mt-1 font-dm-sans text-[11px]" style="color: rgba(92,61,61,0.65);">barème en vigueur</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-6 relative">
+        <div class="relative aspect-[4/5] overflow-hidden rounded-[80px]">
+          <img src={info.photoHero} alt={info.photoHeroAlt} loading="eager" fetchpriority="high" class="w-full h-full object-cover" />
+        </div>
+        <div class="hidden md:block absolute -bottom-6 -right-6 max-w-[200px] p-5 rounded-3xl shadow-lg" style="background-color: #FCDA89; color: #5C3D3D;">
+          <p class="font-nunito font-bold text-sm">Sieste libre, doudou en main 💛</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

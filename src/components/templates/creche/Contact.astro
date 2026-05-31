@@ -1,0 +1,28 @@
+---
+import data from '../../../data/templates/nid.json';
+const info = data.info;
+---
+
+<section id="contact" class="py-20 md:py-28" style="background-color: #FCDA89;">
+  <div class="max-w-content mx-auto px-5 md:px-10 text-center">
+    <p class="font-dm-sans text-[11.5px] font-semibold uppercase tracking-[0.28em] mb-4" style="color: #8C6A1A;">— Trouver le Nid —</p>
+    <h2 class="font-nunito font-extrabold leading-[1.05]" style="color: #5C3D3D; font-size: clamp(36px, 6vw, 78px);">
+      « {info.tagline} »
+    </h2>
+
+    <div class="mt-12 inline-grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto">
+      <a href={`tel:${info.telephoneHref}`} class="p-7 rounded-[32px] text-left transition-transform hover:scale-105" style="background-color: #FDF7F0;">
+        <p class="font-dm-sans text-[11px] font-semibold uppercase tracking-[0.22em] mb-2" style="color: #C18888;">Téléphone</p>
+        <p class="font-nunito font-bold text-xl" style="color: #5C3D3D;">{info.telephone}</p>
+      </a>
+      <a href={`mailto:${info.email}`} class="p-7 rounded-[32px] text-left transition-transform hover:scale-105" style="background-color: #E4B6B6;">
+        <p class="font-dm-sans text-[11px] font-semibold uppercase tracking-[0.22em] mb-2" style="color: #8B4848;">Email</p>
+        <p class="font-nunito font-bold text-lg break-words" style="color: #5C3D3D;">{info.email}</p>
+      </a>
+      <div class="p-7 rounded-[32px] text-left" style="background-color: #FDF7F0;">
+        <p class="font-dm-sans text-[11px] font-semibold uppercase tracking-[0.22em] mb-2" style="color: #C18888;">Horaires</p>
+        <p class="font-nunito font-bold text-base" style="color: #5C3D3D;">{info.ouvertureHebdo}</p>
+      </div>
+    </div>
+  </div>
+</section>

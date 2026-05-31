@@ -1,0 +1,34 @@
+---
+import data from '../../../data/templates/nid.json';
+const info = data.info;
+---
+
+<footer style="background-color: #5C3D3D; color: #FDF7F0;">
+  <div class="max-w-content mx-auto px-5 md:px-10 py-14 md:py-20">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
+      <div class="md:col-span-6">
+        <p class="font-nunito font-extrabold text-4xl">{info.wordmark}</p>
+        <p class="mt-2 font-dm-sans text-[11px] uppercase tracking-[0.28em]" style="color: #E4B6B6;">{info.soustitre}</p>
+        <p class="mt-6 font-dm-sans text-[14px] leading-relaxed max-w-md" style="color: rgba(253,247,240,0.82);">
+          {data.promesse}
+        </p>
+      </div>
+      <div class="md:col-span-3">
+        <p class="font-dm-sans text-[10.5px] uppercase tracking-[0.28em] mb-3" style="color: #FCDA89;">Adresse</p>
+        <p class="font-dm-sans text-[13.5px] leading-relaxed" style="color: rgba(253,247,240,0.82);">{info.adresseLigne1}<br/>{info.adresseLigne2}</p>
+      </div>
+      <div class="md:col-span-3">
+        <p class="font-dm-sans text-[10.5px] uppercase tracking-[0.28em] mb-3" style="color: #FCDA89;">Contact</p>
+        <ul class="font-dm-sans text-[13.5px] space-y-2" style="color: rgba(253,247,240,0.82);">
+          <li><a href={`tel:${info.telephoneHref}`} class="hover:text-[#FCDA89]">{info.telephone}</a></li>
+          <li><a href={`mailto:${info.email}`} class="hover:text-[#FCDA89]">{info.email}</a></li>
+          {info.instagram && <li><a href={`https://instagram.com/${info.instagram.replace('@','')}`} class="hover:text-[#FCDA89]">{info.instagram}</a></li>}
+        </ul>
+      </div>
+    </div>
+    <div class="mt-14 pt-6 border-t flex flex-col md:flex-row gap-3 justify-between font-dm-sans text-[11px]" style="border-color: rgba(253,247,240,0.18); color: rgba(253,247,240,0.6);">
+      <p>© {new Date().getFullYear()} {info.nom} — Démo 9site4 (fictif).</p>
+      <p>Micro-crèche conforme à la réglementation en vigueur.</p>
+    </div>
+  </div>
+</footer>

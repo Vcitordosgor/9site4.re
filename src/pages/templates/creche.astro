@@ -1,0 +1,49 @@
+---
+import '@fontsource/nunito/latin-400.css';
+import '@fontsource/nunito/latin-600.css';
+import '@fontsource/nunito/latin-700.css';
+import '@fontsource/nunito/latin-800.css';
+import '@fontsource/dm-sans/latin-400.css';
+import '@fontsource/dm-sans/latin-500.css';
+import '@fontsource/dm-sans/latin-600.css';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getSeo } from '../../lib/seo';
+import { localBusinessSchema } from '../../lib/businessSchema';
+import data from '../../data/templates/nid.json';
+
+import Header from '../../components/templates/creche/Header.astro';
+import Hero from '../../components/templates/creche/Hero.astro';
+import Journee from '../../components/templates/creche/Journee.astro';
+import Equipe from '../../components/templates/creche/Equipe.astro';
+import Pedagogie from '../../components/templates/creche/Pedagogie.astro';
+import Locaux from '../../components/templates/creche/Locaux.astro';
+import Inscription from '../../components/templates/creche/Inscription.astro';
+import Faq from '../../components/templates/creche/Faq.astro';
+import Contact from '../../components/templates/creche/Contact.astro';
+import Footer from '../../components/templates/creche/Footer.astro';
+
+const businessLD = localBusinessSchema(data, 'ChildCare');
+---
+
+<BaseLayout seo={getSeo('templateCreche')} bare={true}>
+  <Fragment slot="head">
+    {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
+    <link rel="preload" as="image" href={data.info.photoHero} fetchpriority="high" />
+  </Fragment>
+
+  <Header />
+
+  <main style="background-color: #FDF7F0;">
+    <Hero />
+    <Journee />
+    <Equipe />
+    <Pedagogie />
+    <Locaux />
+    <Inscription />
+    <Faq />
+    <Contact />
+  </main>
+
+  <Footer />
+</BaseLayout>

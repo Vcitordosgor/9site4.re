@@ -1,0 +1,27 @@
+---
+import data from '../../../data/templates/nid.json';
+---
+
+<section id="faq" class="py-20 md:py-28" style="background-color: #FDF7F0;">
+  <div class="max-w-content mx-auto px-5 md:px-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+      <div class="lg:col-span-4">
+        <p class="font-dm-sans text-[11.5px] font-semibold uppercase tracking-[0.28em] mb-4" style="color: #C18888;">— Questions parents —</p>
+        <h2 class="font-nunito font-extrabold leading-[1.05] lg:sticky lg:top-28" style="color: #5C3D3D; font-size: clamp(32px, 4.5vw, 50px);">
+          Vous vous <span style="color: #B89441;">demandez ?</span>
+        </h2>
+      </div>
+      <div class="lg:col-span-8">
+        {data.faq.map((f, i) => (
+          <details class="group border-b py-5" style="border-color: rgba(228,182,182,0.35);" open={i === 0}>
+            <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4">
+              <span class="font-nunito font-bold text-lg md:text-xl pr-4" style="color: #5C3D3D;">{f.q}</span>
+              <span class="font-nunito font-bold text-2xl shrink-0 transition-transform group-open:rotate-45" style="color: #C18888;">+</span>
+            </summary>
+            <p class="mt-4 font-dm-sans text-[14.5px] leading-relaxed" style="color: rgba(92,61,61,0.78);">{f.r}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

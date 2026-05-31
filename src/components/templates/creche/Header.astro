@@ -1,0 +1,30 @@
+---
+import data from '../../../data/templates/nid.json';
+const info = data.info;
+---
+
+<header class="sticky top-0 z-40 backdrop-blur-md" style="background-color: rgba(253,247,240,0.92); border-bottom: 1px solid rgba(208,164,164,0.20);">
+  <div class="max-w-content mx-auto px-5 md:px-10 h-16 md:h-20 flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-3">
+      <svg viewBox="0 0 32 32" class="w-8 h-8" aria-hidden="true">
+        <circle cx="16" cy="16" r="14" fill="#FCDA89"/>
+        <path d="M10 18 C 10 14, 22 14, 22 18 C 22 22, 10 22, 10 18 Z" fill="#E4B6B6"/>
+        <circle cx="13" cy="14" r="1.4" fill="#5C3D3D"/>
+        <circle cx="19" cy="14" r="1.4" fill="#5C3D3D"/>
+      </svg>
+      <span class="font-nunito font-bold text-xl md:text-2xl" style="color: #5C3D3D;">{info.wordmark}</span>
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-7 font-dm-sans text-[13px] font-medium" style="color: #5C3D3D;">
+      <a href="#journee" class="hover:opacity-70">Journée type</a>
+      <a href="#pedagogie" class="hover:opacity-70">Pédagogie</a>
+      <a href="#equipe" class="hover:opacity-70">Équipe</a>
+      <a href="#locaux" class="hover:opacity-70">Locaux</a>
+      <a href="#inscription" class="hover:opacity-70">Inscription</a>
+    </nav>
+
+    <a href="#inscription" class="inline-flex items-center gap-2 font-dm-sans font-semibold text-[12.5px] h-10 md:h-11 px-5 rounded-full transition-transform hover:scale-105" style="background-color: #E4B6B6; color: #5C3D3D;">
+      Visiter le nid
+    </a>
+  </div>
+</header>
