@@ -20,7 +20,7 @@
     "ouvertureHebdo": "Lundi → vendredi · 9h-19h · Samedi matin",
     "fermeture": "Dimanche"
   },
-  "promesse": "Cabinet de naturopathie ouvert depuis 2019. Approche fondée sur l'alimentation, le sommeil, le mouvement et la gestion du stress. Accompagnement individuel, sans recette miracle ni complément complément. On part de votre quotidien, on ajuste à petits pas.",
+  "promesse": "Cabinet de naturopathie ouvert depuis 2019. Approche fondée sur l'alimentation, le sommeil, le mouvement et la gestion du stress. Accompagnement individuel, sans recette miracle. On part de votre quotidien, on ajuste à petits pas — toujours en complément du suivi médical.",
   "publics": [
     {
       "id": "fatigue",
@@ -76,23 +76,23 @@
   "formations": [
     {
       "annee": "2018",
-      "intitule": "Praticienne en naturopathie · FENA",
-      "ecole": "Cenatho Daniel Kieffer · 1 200 heures de formation"
+      "intitule": "Praticienne en naturopathie",
+      "ecole": "École agréée · 1 200 heures de formation"
     },
     {
       "annee": "2019",
       "intitule": "Spécialisation micronutrition",
-      "ecole": "IEDM · Institut Européen de Diététique et Micronutrition"
+      "ecole": "Formation continue"
     },
     {
       "annee": "2021",
       "intitule": "Sommeil & chronobiologie",
-      "ecole": "Institut National du Sommeil et de la Vigilance · 60h"
+      "ecole": "Formation continue · 60h"
     },
     {
       "annee": "2023",
       "intitule": "Approche cognitive du stress",
-      "ecole": "Université Paris Cité · DU Médecines complémentaires · 80h"
+      "ecole": "Formation continue · 80h"
     }
   ],
   "cabinet": [

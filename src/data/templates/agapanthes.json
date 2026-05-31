@@ -14,7 +14,7 @@
     "whatsapp": "262692123456",
     "whatsappDisplay": "+262 692 00 00 00",
     "annee": 2011,
-    "siret": "532 671 904 00018",
+    "siret": "SIRET sur demande",
     "horaires": [
       {
         "jour": "Lundi – Vendredi",
@@ -39,13 +39,13 @@
     "photoFeuille": "https://images.unsplash.com/photo-1437002827914-ec03c8e7e3a5?w=600&q=85",
     "photoFeuilleAlt": "Feuille tropicale en gros plan",
     "photoGalerie1": "/images/paysagiste/galerie-1.webp",
-    "photoGalerie1Alt": "Jardin paysage avec pergola, pelouse et massifs fleuris",
+    "photoGalerie1Alt": "Jardin tropical avec pergola, pelouse et massifs fleuris",
     "photoGalerie2": "/images/paysagiste/galerie-2.webp",
-    "photoGalerie2Alt": "Jardin sec avec cactus, agaves et succulentes",
+    "photoGalerie2Alt": "Jardin sec tropical, plantes grasses adaptees au climat reunionnais",
     "photoGalerie3": "/images/paysagiste/galerie-3.webp",
-    "photoGalerie3Alt": "Allee fleurie d'un jardin de cottage avec rosiers grimpants",
+    "photoGalerie3Alt": "Allee bordee de feuillages tropicaux et de plantes fleuries",
     "photoGalerie4": "/images/paysagiste/galerie-4.webp",
-    "photoGalerie4Alt": "Jardin contemporain mineral avec graminees et dalles",
+    "photoGalerie4Alt": "Jardin contemporain avec graminees tropicales et dalles",
     "photoGalerie5": "/images/paysagiste/galerie-5.webp",
     "photoGalerie5Alt": "Allee tropicale luxuriante avec palmiers et bromeliads"
   },
@@ -210,7 +210,7 @@
       "id": "claire",
       "nom": "Claire Hoarau",
       "role": "Paysagiste · gérante",
-      "experience": "DPLG 2008",
+      "experience": "Formée paysagiste",
       "bio": "",
       "photo": "/images/paysagiste/fleur-1.webp",
       "photoAlt": "Tournesol epanoui"
