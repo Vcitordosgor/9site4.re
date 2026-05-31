@@ -1,0 +1,223 @@
+---
+/**
+ * PlanJardin — Signature moment "Wow" pour /templates/paysagiste.
+ *
+ * Plan de jardin vue du dessus avec 5 zones végétales cliquables. Au survol
+ * ou focus, la zone s'éclaire et un panneau détail apparaît. Esthétique
+ * "Carnet du paysagiste" : trait fin, couleurs feutrées, typo sérif.
+ * CSS pur + :checked + :has().
+ */
+
+const zones = [
+  {
+    id: 'terrasse',
+    label: 'Terrasse',
+    surface: '22 m²',
+    plantes: 'Jasmin, lavande, oranger',
+    detail: 'Bois exotique huilé + jardinière intégrée. Parfumé en soirée, ombragé l\'après-midi par une pergola lattée.',
+  },
+  {
+    id: 'massif',
+    label: 'Massif d\'agapanthes',
+    surface: '14 m²',
+    plantes: 'Agapanthes, gauras, graminées',
+    detail: 'La signature de la maison : massif persistant qui fleurit de novembre à mars en violet et blanc. Peu d\'entretien.',
+  },
+  {
+    id: 'verger',
+    label: 'Verger créole',
+    surface: '38 m²',
+    plantes: 'Manguier, letchi, citron vert',
+    detail: 'Trois fruitiers d\'ombre adaptés au climat de l\'ouest. Taille raisonnée chaque hiver pour garder une silhouette nette.',
+  },
+  {
+    id: 'potager',
+    label: 'Potager surélevé',
+    surface: '8 m²',
+    plantes: 'Brèdes, piments, herbes',
+    detail: 'Bacs surélevés à hauteur de hanche. Brèdes mafane, piments cabri, basilic. Récolte sans se baisser.',
+  },
+  {
+    id: 'bassin',
+    label: 'Point d\'eau',
+    surface: '4 m²',
+    plantes: 'Nymphéas, papyrus',
+    detail: 'Petit bassin filtré, nymphéas tropicaux et papyrus. Fraîcheur visuelle et chant de l\'eau à l\'entrée.',
+  },
+];
+
+const defaultId = 'massif';
+---
+
+<section id="plan-jardin" class="bg-agap-lin text-agap-feuille py-24 md:py-36 px-6 md:px-10 relative">
+
+  <div class="max-w-content mx-auto">
+
+    <header class="mb-12 md:mb-16 max-w-3xl scroll-reveal">
+      <p class="font-outfit text-[10px] uppercase tracking-[0.36em] text-agap-violet font-medium mb-5">
+        ◦ Plan type · Jardin ouest 90 m²
+      </p>
+      <h2 class="font-cormorant-garamond text-agap-feuille leading-[0.95]" style="font-size: clamp(44px, 7vw, 88px);">
+        Un jardin pensé
+        <span class="block italic font-light text-agap-violet">zone par zone.</span>
+      </h2>
+      <p class="mt-6 font-outfit text-agap-feuille/70 text-base md:text-lg max-w-xl leading-relaxed">
+        On dessine. Vous lisez le plan, vous comprenez ce qu'on va faire pousser, et où. Pas de surprise.
+      </p>
+    </header>
+
+    <div class="jardin-wrap grid lg:grid-cols-5 gap-10 lg:gap-14 items-start scroll-reveal">
+
+      <!-- Plan SVG -->
+      <div class="lg:col-span-3">
+        <div class="jardin-plan relative rounded-2xl bg-agap-pierre/40 ring-1 ring-agap-sauge/30 p-5 md:p-8">
+
+          {zones.map((z) => (
+            <input type="radio" name="jardin-zone" id={`jardin-${z.id}`} class="sr-only" checked={z.id === defaultId} />
+          ))}
+
+          <svg viewBox="0 0 400 280" class="w-full h-auto jardin-svg" role="img" aria-label="Plan de jardin avec zones végétales">
+            <!-- Cadre maison -->
+            <rect x="10" y="10" width="380" height="260" fill="#F4F2EC" stroke="#5C7058" stroke-width="1" stroke-dasharray="4 3" opacity="0.4"/>
+            <!-- Maison (en haut) -->
+            <rect x="40" y="20" width="160" height="50" fill="#D8D8D2" stroke="#5C7058" stroke-width="1.2"/>
+            <text x="120" y="50" text-anchor="middle" class="font-outfit" font-size="10" fill="#5C7058" letter-spacing="2">MAISON</text>
+
+            <!-- Allée -->
+            <path d="M120,70 L120,260" stroke="#D8D8D2" stroke-width="14" stroke-linecap="square"/>
+
+            <!-- Zone terrasse -->
+            <g class="jardin-zone jardin-zone-terrasse" data-zone="terrasse">
+              <rect x="210" y="20" width="170" height="60" rx="3" fill="#E8D4D9" opacity="0.55" class="jardin-fill"/>
+              <text x="295" y="55" text-anchor="middle" class="font-cormorant-garamond" font-size="13" fill="#3D2E5E" font-style="italic">terrasse</text>
+            </g>
+
+            <!-- Zone massif -->
+            <g class="jardin-zone jardin-zone-massif" data-zone="massif">
+              <ellipse cx="60" cy="130" rx="40" ry="32" fill="#6B5B95" opacity="0.55" class="jardin-fill"/>
+              <text x="60" y="134" text-anchor="middle" class="font-cormorant-garamond" font-size="11" fill="#F4F2EC" font-style="italic">agapanthes</text>
+            </g>
+
+            <!-- Zone verger -->
+            <g class="jardin-zone jardin-zone-verger" data-zone="verger">
+              <path d="M210,90 L380,90 L380,200 L210,200 Z" fill="#9DAB8E" opacity="0.55" class="jardin-fill"/>
+              <circle cx="245" cy="120" r="12" fill="#5C7058" opacity="0.7"/>
+              <circle cx="305" cy="115" r="14" fill="#5C7058" opacity="0.7"/>
+              <circle cx="350" cy="160" r="11" fill="#5C7058" opacity="0.7"/>
+              <circle cx="265" cy="175" r="10" fill="#5C7058" opacity="0.7"/>
+              <text x="295" y="148" text-anchor="middle" class="font-cormorant-garamond" font-size="13" fill="#1F2618" font-style="italic">verger</text>
+            </g>
+
+            <!-- Zone potager -->
+            <g class="jardin-zone jardin-zone-potager" data-zone="potager">
+              <rect x="20" y="190" width="80" height="60" rx="2" fill="#9DAB8E" opacity="0.5" class="jardin-fill"/>
+              <line x1="20" y1="210" x2="100" y2="210" stroke="#5C7058" stroke-width="0.6" opacity="0.6"/>
+              <line x1="20" y1="225" x2="100" y2="225" stroke="#5C7058" stroke-width="0.6" opacity="0.6"/>
+              <line x1="20" y1="240" x2="100" y2="240" stroke="#5C7058" stroke-width="0.6" opacity="0.6"/>
+              <text x="60" y="265" text-anchor="middle" class="font-cormorant-garamond" font-size="11" fill="#1F2618" font-style="italic">potager</text>
+            </g>
+
+            <!-- Zone bassin -->
+            <g class="jardin-zone jardin-zone-bassin" data-zone="bassin">
+              <ellipse cx="320" cy="235" rx="36" ry="18" fill="#6B5B95" opacity="0.4" class="jardin-fill"/>
+              <ellipse cx="320" cy="235" rx="26" ry="11" fill="#6B5B95" opacity="0.6"/>
+              <text x="320" y="238" text-anchor="middle" class="font-cormorant-garamond" font-size="11" fill="#F4F2EC" font-style="italic">bassin</text>
+            </g>
+
+            <!-- Boussole -->
+            <g transform="translate(370, 250)">
+              <circle r="14" fill="#F4F2EC" stroke="#5C7058" stroke-width="0.8"/>
+              <path d="M0,-10 L3,0 L0,3 L-3,0 Z" fill="#6B5B95"/>
+              <text y="-18" text-anchor="middle" font-size="8" fill="#5C7058">N</text>
+            </g>
+          </svg>
+
+          <!-- Boutons zones (labels au-dessus radios) -->
+          <div class="mt-5 flex flex-wrap gap-2">
+            {zones.map((z) => (
+              <label for={`jardin-${z.id}`} class="jardin-tab cursor-pointer inline-flex items-center px-4 py-2 rounded-full ring-1 ring-agap-sauge/40 text-agap-feuille/70 font-outfit text-[11px] uppercase tracking-[0.2em] transition-colors hover:text-agap-violet hover:ring-agap-violet/50 min-h-[44px]" data-zone={z.id}>
+                {z.label}
+              </label>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Panneau détail -->
+      <div class="lg:col-span-2 jardin-panel relative">
+        {zones.map((z) => (
+          <article class="jardin-detail rounded-2xl bg-agap-lin ring-1 ring-agap-sauge/30 p-7 md:p-8" data-zone={z.id}>
+            <p class="font-outfit text-[10px] uppercase tracking-[0.32em] text-agap-violet font-medium">
+              Zone · {z.surface}
+            </p>
+            <h3 class="mt-3 font-cormorant-garamond text-agap-feuille leading-tight" style="font-size: clamp(32px, 4vw, 48px);">
+              {z.label}
+            </h3>
+            <p class="mt-4 font-cormorant-garamond italic text-agap-sauge-fonce text-lg leading-snug">
+              {z.plantes}
+            </p>
+            <p class="mt-5 font-outfit text-agap-feuille/75 text-sm md:text-base leading-relaxed">
+              {z.detail}
+            </p>
+          </article>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* Zones par défaut : fill atténué */
+  .jardin-fill {
+    transition: opacity 350ms ease, transform 350ms ease;
+    transform-origin: center;
+    transform-box: fill-box;
+  }
+  .jardin-zone .jardin-fill { opacity: 0.45; }
+
+  /* Zone sélectionnée — éclatée */
+  .jardin-plan:has(#jardin-terrasse:checked) .jardin-zone-terrasse .jardin-fill,
+  .jardin-plan:has(#jardin-massif:checked) .jardin-zone-massif .jardin-fill,
+  .jardin-plan:has(#jardin-verger:checked) .jardin-zone-verger .jardin-fill,
+  .jardin-plan:has(#jardin-potager:checked) .jardin-zone-potager .jardin-fill,
+  .jardin-plan:has(#jardin-bassin:checked) .jardin-zone-bassin .jardin-fill {
+    opacity: 0.95;
+  }
+
+  /* Tab active */
+  .jardin-plan:has(#jardin-terrasse:checked) .jardin-tab[data-zone="terrasse"],
+  .jardin-plan:has(#jardin-massif:checked) .jardin-tab[data-zone="massif"],
+  .jardin-plan:has(#jardin-verger:checked) .jardin-tab[data-zone="verger"],
+  .jardin-plan:has(#jardin-potager:checked) .jardin-tab[data-zone="potager"],
+  .jardin-plan:has(#jardin-bassin:checked) .jardin-tab[data-zone="bassin"] {
+    background: #6B5B95;
+    color: #F4F2EC;
+    border-color: #6B5B95;
+  }
+
+  /* Panneau detail */
+  .jardin-panel { display: grid; }
+  .jardin-detail {
+    grid-area: 1 / 1;
+    opacity: 0;
+    transform: translateY(8px);
+    pointer-events: none;
+    transition: opacity 350ms ease, transform 350ms ease;
+  }
+  .jardin-wrap:has(#jardin-terrasse:checked) .jardin-detail[data-zone="terrasse"],
+  .jardin-wrap:has(#jardin-massif:checked) .jardin-detail[data-zone="massif"],
+  .jardin-wrap:has(#jardin-verger:checked) .jardin-detail[data-zone="verger"],
+  .jardin-wrap:has(#jardin-potager:checked) .jardin-detail[data-zone="potager"],
+  .jardin-wrap:has(#jardin-bassin:checked) .jardin-detail[data-zone="bassin"] {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .jardin-fill, .jardin-detail {
+      transition: none !important;
+    }
+  }
+</style>
