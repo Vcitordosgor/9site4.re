@@ -13,7 +13,7 @@
     "instagram": "@sentiers.croises",
     "siret": "000 000 000 00000",
     "annee": "2013",
-    "photoGuide": "https://images.unsplash.com/photo-1552058544-f2b08422138a?w=900&q=85",
+    "photoGuide": "/images/sentiers/plaine.webp",
     "sortieDuJour": {
       "label": "Sortie du jour",
       "titre": "La Réunion",
@@ -23,27 +23,27 @@
   "carrousel": [
     {
       "src": "/images/sentiers/cilaos.webp",
-      "alt": "Vue panoramique sur le cirque de l'île depuis les hauteurs",
+      "alt": "Crêtes vertes et brume sur les hauteurs du cirque, La Réunion",
       "lieu": "Cirque de l'île",
       "altitude": "1 200 m"
     },
     {
       "src": "/images/sentiers/mafate-aerien.webp",
-      "alt": "Vue aerienne du cirque de l'île",
+      "alt": "Vue plongeante sur les remparts nuageux du cirque",
       "lieu": "Cirque de l'île",
       "altitude": "1 200 m"
     },
     {
       "src": "/images/sentiers/cascade.webp",
-      "alt": "Cascade et bassin de baignade",
+      "alt": "Cascade en pleine forêt tropicale, La Réunion",
       "lieu": "Cascade Niagara",
       "altitude": "25 m"
     },
     {
-      "src": "/images/sentiers/plaine.webp",
-      "alt": "Plaine herbeuse face a l ocean",
-      "lieu": "Cap Mechant",
-      "altitude": "200 m"
+      "src": "/images/sentiers/volcan.webp",
+      "alt": "Cratère Formica Léo sur la plaine du Piton de la Fournaise",
+      "lieu": "Piton de la Fournaise",
+      "altitude": "2 350 m"
     }
   ],
   "diplomes": [

@@ -16,8 +16,8 @@
     "instagram": "@borddeau.974",
     "siret": "000 000 000 00000",
     "annee": "2015",
-    "photoHero": "https://images.unsplash.com/photo-1502680390469-be75c86b636f?q=80&w=1600&auto=format&fit=crop",
-    "photoHeroAlt": "Vague océanique azur avec surfeur en silhouette au coucher du soleil, La Réunion",
+    "photoHero": "/images/surf/hero.webp",
+    "photoHeroAlt": "Surfeurs prenant la vague à la lumière dorée du coucher du soleil, La Réunion",
     "ouvertureHebdo": "Mardi → dimanche · 7h00 → 18h00",
     "fermeture": "Lundi"
   },
