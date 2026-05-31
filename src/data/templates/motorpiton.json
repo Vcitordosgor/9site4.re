@@ -16,8 +16,10 @@
     "siret": "SIRET sur demande",
     "annee": "2014",
     "horaires": "Lundi → vendredi · 7h30 → 17h30 / Samedi 8h → 12h",
-    "photoHero": "https://images.unsplash.com/photo-1486006920555-c77dcf18193c?w=1800&q=85",
-    "photoHeroAlt": "Atelier mécanique à La Réunion, voiture sur pont élévateur, mécanicien en bleu de travail",
+    "photoHero": "/images/garage/hero.webp",
+    "photoHeroAlt": "Mécanicien penché sous le capot d'une voiture, atelier authentique",
+    "photoAtelier": "/images/garage/atelier.webp",
+    "photoAtelierAlt": "Atelier mécanique, outils rangés et mécanicien au travail",
     "agreements": [
       "Partenariat centre de contrôle technique",
       "Outillage diagnostic multimarque",
