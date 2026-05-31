@@ -115,280 +115,280 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
   templatePizzeria: {
     title: 'Pizza Lé O — Pizzeria à Saint-Paul (Réunion) | Template 9site4',
     description:
-      'Aperçu du template "Pizzeria" proposé par 9site4 : menu, panier, commande WhatsApp. Site fictif de démonstration.',
+      'Pizza Lé O (fictif) — pâte 72h, feu de bois, commande WhatsApp. Démo 9site4 : votre site pizzeria sera adapté à votre carte et votre identité.',
     canonical: '/templates/pizzeria',
     noindex: true,
   },
   templateSalon: {
     title: 'Meg & Dan — Salon de coiffure à Saint-Gilles (Réunion) | Template 9site4',
     description:
-      'Aperçu du template "Salon de coiffure" proposé par 9site4 : prestations, prise de rendez-vous, infos pratiques. Site fictif de démonstration.',
+      'Meg & Dan (fictif) — coupes signature, coloration végétale, prise de RDV en ligne. Démo 9site4 : votre site salon sera adapté à votre univers.',
     canonical: '/templates/salon',
     noindex: true,
   },
   templateSpa: {
     title: 'Elio spa — Spa & massages à Saint-Pierre (Réunion) | Template 9site4',
     description:
-      'Aperçu du template "Spa massage" proposé par 9site4 : rituels signature, soins du visage et du corps, réservation directe. Site fictif de démonstration.',
+      'Elio Spa (fictif) — rituels signature, soins visage et corps, réservation directe. Démo 9site4 : votre site spa sera adapté à votre carte de soins.',
     canonical: '/templates/spa',
     noindex: true,
   },
   templateResto: {
     title: 'Le jardin perdu — Restaurant gastronomique à Saint-Denis (Réunion) | Template 9site4',
     description:
-      'Aperçu du template "Restaurant" proposé par 9site4 : carte du chef, menus, cave à vins, réservation en ligne. Site fictif de démonstration.',
+      'Le Jardin Perdu (fictif) — cuisine de saison, cave engagée, réservation en ligne. Démo 9site4 : votre site restaurant sera adapté à votre carte.',
     canonical: '/templates/resto',
     noindex: true,
   },
   templatePlomberie: {
     title: 'Bernard Plomberie — Plombier au Tampon (Réunion) | Template 9site4',
     description:
-      'Aperçu du template "Plomberie" proposé par 9site4 : services, tarifs transparents, demande d\'intervention en ligne. Site fictif de démonstration.',
+      'Bernard Plomberie (fictif) — dépannage 24h, tarifs transparents, devis en ligne. Démo 9site4 : votre site plomberie sera adapté à vos prestations.',
     canonical: '/templates/plomberie',
     noindex: true,
   },
   templatePaysagiste: {
     title: 'Les agapanthes — Paysagiste à Saint-Leu (Réunion) | Template 9site4',
     description:
-      'Aperçu du template "Paysagiste" proposé par 9site4 : création de jardins, entretien, plantes locales, devis en ligne. Site fictif de démonstration.',
+      'Les Agapanthes (fictif) — création de jardins, entretien, plantes péi, devis en ligne. Démo 9site4 : votre site paysagiste sera adapté à vos chantiers.',
     canonical: '/templates/paysagiste',
     noindex: true,
   },
   templateElectricien: {
     title: 'Volta — Électricien à Saint-André (Réunion) | Template 9site4',
     description:
-      'Aperçu du template "Électricité générale" proposé par 9site4 : services, dépannage 24h/24, borne IRVE, devis en ligne. Site fictif de démonstration.',
+      'Volta (fictif) — dépannage 24h/24, mise aux normes, borne IRVE, devis express. Démo 9site4 : votre site électricien sera adapté à votre activité.',
     canonical: '/templates/electricien',
     noindex: true,
   },
   templateCoach: {
     title: 'Foudre Coaching — Coach sportif à Saint-Pierre (Réunion) | Template 9site4',
     description:
-      'Aperçu du template "Coach sportif" proposé par 9site4 : programmes, transformations, séance d\'essai, planning à domicile / plage / salle. Site fictif de démonstration.',
+      'Foudre Coaching (fictif) — programmes sur-mesure, séance d\'essai offerte, domicile/plage/salle. Démo 9site4 : votre site coach sera adapté à votre méthode.',
     canonical: '/templates/coach',
     noindex: true,
   },
   templateYoga: {
     title: 'Souffle Studio — Studio de yoga à Saint-Gilles (Réunion) | Template 9site4',
     description:
-      'Aperçu du template "Studio de yoga" proposé par 9site4 : pratiques, planning, enseignants, tarifs et réservation en ligne. Site fictif de démonstration.',
+      'Souffle Studio (fictif) — pratiques douces et dynamiques, planning en ligne, cours d\'essai. Démo 9site4 : votre site yoga sera adapté à votre studio.',
     canonical: '/templates/yoga',
     noindex: true,
   },
   templateDanse: {
     title: 'Vermeille — École de danse à Saint-Denis (Réunion) | Template 9site4',
     description:
-      'Aperçu du template "École de danse" proposé par 9site4 : disciplines, professeurs, spectacles, planning et inscription en ligne. Site fictif de démonstration.',
+      'Vermeille (fictif) — toutes disciplines, professeurs diplômés, inscription en ligne. Démo 9site4 : votre site école de danse sera adapté à vos cours.',
     canonical: '/templates/danse',
     noindex: true,
   },
   templateOsteo: {
     title: 'Cabinet Verveine — Ostéopathe à Saint-Pierre (Réunion) | Template 9site4',
     description:
-      'Aperçu du template "Cabinet d\'ostéopathie" proposé par 9site4 : approche, motifs de consultation, déroulé d\'une séance, tarifs et prise de rendez-vous. Site fictif de démonstration.',
+      'Cabinet Verveine (fictif) — approche douce, RDV en ligne, tarifs clairs. Démo 9site4 : votre site ostéopathe sera adapté à votre pratique.',
     canonical: '/templates/osteo',
     noindex: true,
   },
   templateDieteticienne: {
     title: 'Mona Levray — Diététicienne nutritionniste au Tampon (Réunion) | Template 9site4',
     description:
-      'Aperçu du template "Diététicienne" proposé par 9site4 : approche, programmes, recettes, témoignages et rendez-vous en ligne. Site fictif de démonstration.',
+      'Mona Levray (fictif) — bilans personnalisés, programmes sans interdits, RDV en ligne. Démo 9site4 : votre site diététicienne sera adapté à votre approche.',
     canonical: '/templates/dieteticienne',
     noindex: true,
   },
   templatePsy: {
     title: 'Camille Aubry — Psychologue clinicienne à Saint-Denis (Réunion) | Template 9site4',
     description:
-      'Aperçu du template "Psychologue" proposé par 9site4 : approche, cadre déontologique, modalités et prise de rendez-vous confidentielle. Site fictif de démonstration.',
+      'Camille Aubry (fictif) — écoute confidentielle, cadre déontologique, prise de RDV discrète. Démo 9site4 : votre site psy sera adapté à votre pratique.',
     canonical: '/templates/psychologue',
     noindex: true,
   },
   templateBarJus: {
     title: 'Lagon Pressé — Bar à jus tropical à Saint-Pierre (Réunion) | Template 9site4',
     description:
-      'Aperçu du template "Bar à jus tropical" proposé par 9site4 : carte des jus pressés, smoothie bowls, événements, commande WhatsApp. Site fictif de démonstration.',
+      'Lagon Pressé (fictif) — jus pressés du jour, smoothie bowls, commande WhatsApp. Démo 9site4 : votre site bar à jus sera adapté à votre carte.',
     canonical: '/templates/bar-jus',
     noindex: true,
   },
   templateInstitut: {
     title: 'Maison Marléne — Institut de beauté à Saint-Gilles (Réunion) | Template 9site4',
     description:
-      'Aperçu du template "Institut de beauté" proposé par 9site4 : carte des soins, rituel signature, marques partenaires, cartes cadeaux et réservation. Site fictif de démonstration.',
+      'Maison Marléne (fictif) — soins signature, marques expertes, cartes cadeaux, réservation. Démo 9site4 : votre site institut sera adapté à vos prestations.',
     canonical: '/templates/institut',
     noindex: true,
   },
   templateGite: {
     title: 'Le Cap Anglais — Gîte de cirque à Cilaos (Réunion) | Template 9site4',
     description:
-      'Aperçu du template "Gîte de montagne" proposé par 9site4 : fiche gîte, chambres, calendrier de disponibilités, randonnées et réservation en ligne. Site fictif de démonstration.',
+      'Le Cap Anglais (fictif) — gîte authentique à Cilaos, calendrier en direct, réservation. Démo 9site4 : votre site gîte sera adapté à votre hébergement.',
     canonical: '/templates/gite',
     noindex: true,
   },
   templateExcursions: {
     title: 'Sentiers Croisés — Guide de randonnée à Mafate (Réunion) | Template 9site4',
     description:
-      'Aperçu du template "Excursions randonnée" proposé par 9site4 : sorties guidées, calendrier des prochaines dates, témoignages, galerie et réservation. Site fictif de démonstration.',
+      'Sentiers Croisés (fictif) — sorties guidées Mafate, dates ouvertes, réservation simple. Démo 9site4 : votre site guide sera adapté à vos circuits.',
     canonical: '/templates/excursions',
     noindex: true,
   },
   templateLocation: {
     title: 'Villa Lazuli — Location bord de mer à Saint-Leu (Réunion) | Template 9site4',
     description:
-      'Aperçu du template "Location saisonnière bord de mer" proposé par 9site4 : visite virtuelle, équipements, tarifs par saison, disponibilités et réservation. Site fictif de démonstration.',
+      'Villa Lazuli (fictif) — vue lagon, équipements premium, disponibilités en direct. Démo 9site4 : votre site location sera adapté à votre bien.',
     canonical: '/templates/location',
     noindex: true,
   },
   templateConsultant: {
     title: 'Lucas Ferrier — Consultant stratégie digitale à Saint-Denis (Réunion) | Template 9site4',
     description:
-      'Aperçu du template "Consultant" proposé par 9site4 : portfolio personnel, missions case studies, compétences, tarifs et prise de rendez-vous. Site fictif de démonstration.',
+      'Lucas Ferrier (fictif) — case studies, expertise digitale, RDV diagnostic gratuit. Démo 9site4 : votre site consultant sera adapté à votre offre.',
     canonical: '/templates/consultant',
     noindex: true,
   },
   templateComptable: {
     title: 'Cabinet Auberval & Associés — Expertise comptable à Saint-Denis (Réunion) | Template 9site4',
     description:
-      'Aperçu du template "Cabinet comptable" proposé par 9site4 : associés, domaines d\'expertise, honoraires, témoignages clients et rendez-vous. Site fictif de démonstration.',
+      'Auberval & Associés (fictif) — expertise comptable, fiscalité, social, honoraires clairs. Démo 9site4 : votre site cabinet sera adapté à vos services.',
     canonical: '/templates/comptable',
     noindex: true,
   },
   templateArchitecte: {
     title: 'Atelier Mahatma — Architecte à Saint-Pierre (Réunion) | Template 9site4',
     description:
-      'Aperçu du template "Architecte" proposé par 9site4 : portfolio de projets, méthode, honoraires, distinctions et rendez-vous. Site fictif de démonstration.',
+      'Atelier Mahatma (fictif) — portfolio de projets, méthode claire, premier RDV. Démo 9site4 : votre site architecte sera adapté à votre style.',
     canonical: '/templates/architecte',
     noindex: true,
   },
   templateAutoEcole: {
     title: 'Boost Conduite — Auto-école à Saint-Denis (Réunion) | Template 9site4',
     description:
-      'Aperçu du template "Auto-école" proposé par 9site4 : forfaits permis, code en ligne, équipe pédagogique, témoignages et inscription. Site fictif de démonstration.',
+      'Boost Conduite (fictif) — forfaits permis B, code en ligne 24/7, moniteurs dédiés. Démo 9site4 : votre site auto-école sera adapté à vos forfaits.',
     canonical: '/templates/auto-ecole',
     noindex: true,
   },
   templateConciergerie: {
     title: 'Concierge & Co — Conciergerie privée à Saint-Gilles (Réunion) | Template 9site4',
     description:
-      'Aperçu du template "Conciergerie" proposé par 9site4 : services à la personne, formules d\'abonnement, témoignages clients et demande de service. Site fictif de démonstration.',
+      'Concierge & Co (fictif) — services à la personne, formules d\'abonnement, intervention rapide. Démo 9site4 : votre site conciergerie sera adapté à vos prestations.',
     canonical: '/templates/conciergerie',
     noindex: true,
   },
   templateAideDomicile: {
     title: 'Doudou Service — Aide à domicile à Saint-André (Réunion) | Template 9site4',
     description:
-      'Aperçu du template "Aide à domicile" proposé par 9site4 : services à la personne, équipe, tarifs APA/PCH, témoignages familles. Site fictif de démonstration.',
+      'Doudou Service (fictif) — aide à domicile, APA/PCH, équipe formée, devis gratuit. Démo 9site4 : votre site aide à domicile sera adapté à votre structure.',
     canonical: '/templates/aide-domicile',
     noindex: true,
   },
   templatePlongee: {
     title: 'Bleu Lagon Plongée — Centre de plongée à Saint-Leu (Réunion) | Template 9site4',
     description:
-      'Aperçu du template "Centre de plongée" proposé par 9site4 : formules baptême et exploration, dashboard de plongée, sécurité, sortie baleines. Site fictif de démonstration.',
+      'Bleu Lagon (fictif) — baptême, exploration, sortie baleines, sécurité totale. Démo 9site4 : votre site centre de plongée sera adapté à vos sorties.',
     canonical: '/templates/plongee',
     noindex: true,
   },
   templateWedding: {
     title: 'Sève & Sel — Wedding planner à Saint-Gilles-les-Bains (Réunion) | Template 9site4',
     description:
-      'Aperçu du template "Wedding planner" proposé par 9site4 : cérémonies plage, civiles et intimes, lieux iconiques de La Réunion, démarches sur-mesure. Site fictif de démonstration.',
+      'Sève & Sel (fictif) — cérémonies plage, lieux iconiques 974, sur-mesure intégral. Démo 9site4 : votre site wedding planner sera adapté à votre univers.',
     canonical: '/templates/wedding',
     noindex: true,
   },
   templatePatisserie: {
     title: 'La Vanille de Bel-Air — Pâtisserie créole à Saint-André (Réunion) | Template 9site4',
     description:
-      'Aperçu du template "Pâtisserie créole" proposé par 9site4 : carte du jour, calendrier des fruits de saison, commandes spéciales, mariages et événements. Site fictif de démonstration.',
+      'La Vanille de Bel-Air (fictif) — pâtisseries créoles, fruits péi, commandes mariages et événements. Démo 9site4 : votre site pâtisserie sera adapté à votre carte.',
     canonical: '/templates/patisserie',
     noindex: true,
   },
   templateGarage: {
     title: 'Atelier Motorpiton — Garage mécanique au Tampon (Réunion) | Template 9site4',
     description:
-      'Aperçu du template "Garage mécanique" proposé par 9site4 : interventions chiffrées, fiche bordereau atelier, équipe, engagements, devis 24h. Site fictif de démonstration.',
+      'Atelier Motorpiton (fictif) — interventions chiffrées, équipe certifiée, devis 24h. Démo 9site4 : votre site garage sera adapté à vos services.',
     canonical: '/templates/garage',
     noindex: true,
   },
   templatePhotographe: {
     title: 'Studio Latitude — Photographe d\'auteur à Saint-Denis (Réunion) | Template 9site4',
     description:
-      'Aperçu du template "Photographe d\'auteur" proposé par 9site4 : portraits argentiques, mariage éditorial, reportage, tirages d\'art numérotés. Site fictif de démonstration.',
+      'Studio Latitude (fictif) — portraits, mariage éditorial, reportage, tirages numérotés. Démo 9site4 : votre site photographe sera adapté à votre style.',
     canonical: '/templates/photographe',
     noindex: true,
   },
   templateAvocat: {
     title: 'Étude Roussin — Cabinet d\'avocats à La Réunion | Template 9site4',
     description:
-      'Aperçu du template "Cabinet d\'avocats" proposé par 9site4 : domaines d\'intervention (famille, affaires, travail, immobilier), associés, démarche, honoraires transparents. Site fictif de démonstration.',
+      'Étude Roussin (fictif) — famille, affaires, travail, immobilier, honoraires transparents. Démo 9site4 : votre site avocat sera adapté à vos domaines.',
     canonical: '/templates/avocat',
     noindex: true,
   },
   templateBoulangerie: {
     title: 'Le Pain Levé — Boulangerie au levain à La Réunion | Template 9site4',
     description:
-      'Aperçu du template "Boulangerie artisanale" proposé par 9site4 : carte de pains au levain, calendrier de cuisson, processus du fournil, viennoiseries pur beurre. Site fictif de démonstration.',
+      'Le Pain Levé (fictif) — pains au levain, viennoiseries pur beurre, calendrier de cuisson. Démo 9site4 : votre site boulangerie sera adapté à votre fournil.',
     canonical: '/templates/boulangerie',
     noindex: true,
   },
   templateGlacier: {
     title: 'Sorbet Péi — Glacier artisanal à La Réunion | Template 9site4',
     description:
-      'Aperçu du template "Glacier artisanal" proposé par 9site4 : sorbets fruits péi, tournée du camion glacé, privatisation événementiel. Site fictif de démonstration.',
+      'Sorbet Péi (fictif) — sorbets fruits péi, tournée du camion glacé, privatisation. Démo 9site4 : votre site glacier sera adapté à vos parfums.',
     canonical: '/templates/glacier',
     noindex: true,
   },
   templateCafeTorref: {
     title: 'Brûlerie d\'altitude — Café torréfié à La Réunion | Template 9site4',
     description:
-      'Aperçu du template "Café et torréfaction" proposé par 9site4 : origines péi, méthodes d\'extraction, abonnement grains frais. Site fictif de démonstration.',
+      'Brûlerie d\'Altitude (fictif) — origines péi, méthodes douces, abonnement grains frais. Démo 9site4 : votre site torréfacteur sera adapté à vos cafés.',
     canonical: '/templates/cafe-torref',
     noindex: true,
   },
   templateSurf: {
     title: 'Bord d\'eau — École de surf à La Réunion | Template 9site4',
     description:
-      'Aperçu du template "École de surf" proposé par 9site4 : formules initiation et perfectionnement, spots étudiés, lecture marée et matériel sécurité. Site fictif de démonstration.',
+      'Bord d\'Eau (fictif) — initiation et perfectionnement, spots sûrs, matériel inclus. Démo 9site4 : votre site école de surf sera adapté à vos cours.',
     canonical: '/templates/surf',
     noindex: true,
   },
   templateFleuriste: {
     title: 'Frangipane — Atelier floral à La Réunion | Template 9site4',
     description:
-      'Aperçu du template "Atelier floral" proposé par 9site4 : compositions de saison, mariages et événementiel, abonnement bureau. Site fictif de démonstration.',
+      'Frangipane (fictif) — compositions de saison, mariage et événementiel, abonnement bureau. Démo 9site4 : votre site fleuriste sera adapté à votre atelier.',
     canonical: '/templates/fleuriste',
     noindex: true,
   },
   templateTatoueur: {
     title: 'Encre Volcan — Studio de tatouage à La Réunion | Template 9site4',
     description:
-      'Aperçu du template "Studio de tatouage" proposé par 9site4 : quatre styles signature (blackwork, lettering, floral, old-school), équipe de trois encreurs résidents, flash sheet, process et tarification. Site fictif de démonstration.',
+      'Encre Volcan (fictif) — blackwork, lettering, floral, old-school, 3 encreurs résidents. Démo 9site4 : votre site studio de tatouage sera adapté à vos styles.',
     canonical: '/templates/tatoueur',
     noindex: true,
   },
   templateNaturopathe: {
     title: 'Source — Naturopathie à La Réunion | Template 9site4',
     description:
-      'Aperçu du template "Naturopathe" proposé par 9site4 : approche (fatigue, sommeil, digestion, stress), méthode en 4 étapes, parcours certifié FENA, cabinet, tarifs et conseils. Site fictif de démonstration.',
+      'Source (fictif) — fatigue, sommeil, digestion, stress, méthode FENA en 4 étapes. Démo 9site4 : votre site naturopathe sera adapté à votre approche.',
     canonical: '/templates/naturopathe',
     noindex: true,
   },
   templateCreche: {
     title: 'Le Nid — Micro-crèche à La Réunion | Template 9site4',
     description:
-      'Aperçu du template "Micro-crèche" proposé par 9site4 : pédagogie Montessori, équipe diplômée, journée type 7h-19h, locaux et jardin, sécurité PMI et tarifs CAF. Site fictif de démonstration.',
+      'Le Nid (fictif) — pédagogie Montessori, équipe diplômée, 7h-19h, jardin sécurisé. Démo 9site4 : votre site micro-crèche sera adapté à votre projet.',
     canonical: '/templates/creche',
     noindex: true,
   },
   templateNotaire: {
     title: 'Étude Notariale & Associés — Notaires à La Réunion | Template 9site4',
     description:
-      'Aperçu du template "Étude notariale" proposé par 9site4 : quatre domaines (famille, succession, immobilier, sociétés), notaires associés, méthode, frais transparents et documents à apporter. Site fictif de démonstration.',
+      'Étude Notariale (fictif) — famille, succession, immobilier, sociétés, frais transparents. Démo 9site4 : votre site notaire sera adapté à vos domaines.',
     canonical: '/templates/notaire',
     noindex: true,
   },
   templateStudioAudio: {
     title: 'Onde — Studio d\'enregistrement à La Réunion | Template 9site4',
     description:
-      'Aperçu du template "Studio audio" proposé par 9site4 : enregistrement, mixage, mastering streaming, production musicale, équipement SSL/Pro Tools et ingénieurs résidents. Site fictif de démonstration.',
+      'Onde (fictif) — enregistrement, mixage, mastering streaming, SSL/Pro Tools, ingés résidents. Démo 9site4 : votre site studio sera adapté à vos prestations.',
     canonical: '/templates/studio-audio',
     noindex: true,
   },
