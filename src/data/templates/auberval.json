@@ -44,7 +44,7 @@
       "titre": "Expert-comptable",
       "specialite": "TPE/PME · Conseil de gestion",
       "memberOEC": "Membre OEC inscrit",
-      "photo": "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=85"
+      "photo": "/images/comptable/extra-1.webp"
     },
     {
       "id": "hoarau-lebon",
@@ -53,7 +53,7 @@
       "titre": "Commissaire aux comptes",
       "specialite": "Audit légal · Audit contractuel",
       "memberOEC": "CNCC inscrite",
-      "photo": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=85"
+      "photo": "/images/comptable/extra-2.webp"
     },
     {
       "id": "pradel",
@@ -62,7 +62,7 @@
       "titre": "Expert-comptable",
       "specialite": "Conseil fiscal · Patrimoine",
       "memberOEC": "Membre OEC inscrit",
-      "photo": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&q=85"
+      "photo": "/images/comptable/hero.webp"
     },
     {
       "id": "sinima",
@@ -71,7 +71,7 @@
       "titre": "Expert-comptable",
       "specialite": "Création & startup · Levées de fonds",
       "memberOEC": "Membre OEC inscrite",
-      "photo": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&q=85"
+      "photo": "/images/comptable/local.webp"
     }
   ],
   "domaines": [
