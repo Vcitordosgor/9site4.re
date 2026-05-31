@@ -118,32 +118,32 @@
   },
   "aidants": [
     {
-      "prenom": "M.",
+      "prenom": "Marie",
       "diplome": "Auxiliaire de vie",
       "experience": "Expérimentée",
       "specialite": "Accompagnement au quotidien",
-      "photo": ""
+      "photo": "/images/aide-domicile/extra-1.webp"
     },
     {
-      "prenom": "L.",
+      "prenom": "Lina",
       "diplome": "Aidante à domicile",
       "experience": "Expérimentée",
       "specialite": "Sortie d'hospitalisation",
-      "photo": ""
+      "photo": "/images/aide-domicile/extra-2.webp"
     },
     {
-      "prenom": "J.",
+      "prenom": "Samuel",
       "diplome": "Aidant à domicile",
       "experience": "Expérimenté",
       "specialite": "Accompagnement & présence",
-      "photo": ""
+      "photo": "/images/aide-domicile/extra-3.webp"
     },
     {
-      "prenom": "S.",
+      "prenom": "Jeanne",
       "diplome": "Aidante à domicile",
       "experience": "Expérimentée",
       "specialite": "Soutien après opération",
-      "photo": ""
+      "photo": "/images/aide-domicile/extra-4.webp"
     }
   ],
   "temoignages": [
