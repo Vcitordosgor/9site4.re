@@ -1,73 +1,55 @@
 ---
-import data from '../../../data/templates/seve.json';
+const formules = [
+  {
+    titre: 'Le jour J',
+    sous: 'Coordination 24h',
+    prix: 'à partir de 1 800 €',
+    photo: '/images/wedding/extra-2.webp',
+    desc: 'Vous avez tout préparé. Nous orchestrons la journée pour que vous ne portiez plus rien.',
+    inclus: ['Coordination prestataires J-1', 'Régie le jour J (10h)', 'Gestion timing & imprévus', 'Démontage final'],
+  },
+  {
+    titre: 'Le mois complet',
+    sous: 'Wedding planning intégral',
+    prix: 'à partir de 4 200 €',
+    photo: '/images/wedding/extra-4.webp',
+    desc: 'Notre formule signature. Nous prenons tout en main, du sourcing à la dernière flûte rangée.',
+    inclus: ['Conception du mariage', 'Sélection complète des prestataires', 'Suivi de A à Z (12 mois)', 'Coordination J-1 et jour J'],
+    populaire: true,
+  },
+  {
+    titre: 'L\'intime',
+    sous: 'Cérémonie 12 invités max.',
+    prix: 'à partir de 2 400 €',
+    photo: '/images/wedding/extra-6.webp',
+    desc: 'Une mini-cérémonie laïque, un dîner privé, vos parents et témoins. Rien de plus, rien de moins.',
+    inclus: ['Lieu confidentiel', 'Officiant·e laïque', 'Bouquet + boutonnière', 'Photographe 4h'],
+  },
+];
 ---
-
-<section id="ceremonies" class="bg-seve-ivoire py-20 md:py-28">
+<section id="formules" class="py-24 md:py-32" style="background:#F4ECDC;">
   <div class="max-w-content mx-auto px-6 md:px-10">
-
-    <div class="text-center max-w-2xl mx-auto mb-14 md:mb-20">
-      <p class="font-outfit text-[11px] uppercase tracking-[0.3em] text-seve-or mb-4">— Nos cérémonies —</p>
-      <h2 class="font-cormorant text-4xl md:text-5xl text-seve-marine leading-tight">
-        Trois manières de se dire <em class="font-italianno text-seve-corail text-5xl md:text-6xl not-italic">oui</em>
-      </h2>
-      <p class="mt-5 font-outfit text-sm md:text-base text-seve-marine/75 leading-relaxed">
-        Cérémonie laïque pieds nus, civile en jardin botanique, ou intime à deux.<br class="hidden md:block" />
-        Chaque formule est entièrement personnalisable.
-      </p>
+    <div class="mb-16 max-w-2xl">
+      <div class="font-caveat text-2xl mb-2" style="color:#8AA288;">Trois manières de dire oui</div>
+      <h2 class="font-cormorant text-4xl md:text-5xl" style="color:#3A352D;">Formules sur-mesure.</h2>
     </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-      {data.ceremonies.map((c, i) => (
-        <article class="group relative bg-white border border-seve-or/20 rounded-sm p-7 md:p-8 flex flex-col hover:border-seve-or/60 transition-colors duration-500">
-          <!-- Numéro romain en filigrane -->
-          <div class="absolute top-5 right-6 font-cormorant italic text-seve-or/30 text-2xl">
-            {['I', 'II', 'III'][i]}
+    <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+      {formules.map(f => (
+        <article class="flex flex-col" style={`background:${f.populaire ? '#3A352D' : '#FAF4EA'}; color:${f.populaire ? '#FAF4EA' : '#3A352D'};`}>
+          <div class="aspect-[4/5] overflow-hidden">
+            <img src={f.photo} alt={f.titre} class="w-full h-full object-cover" loading="lazy"/>
           </div>
-
-          <p class="font-outfit text-[10px] uppercase tracking-[0.25em] text-seve-corail mb-4">
-            {c.duree}
-          </p>
-          <h3 class="font-cormorant text-2xl md:text-[26px] text-seve-marine leading-tight">
-            {c.titre}
-          </h3>
-          <p class="font-italianno text-seve-or text-2xl mt-1">{c.tagline}</p>
-
-          <div class="mt-5 pt-5 border-t border-seve-or/20 space-y-2 font-outfit text-[12px] text-seve-marine/75">
-            <div class="flex justify-between gap-3">
-              <span class="uppercase tracking-wider text-seve-marine/50">Lieu</span>
-              <span class="text-right">{c.lieu}</span>
-            </div>
-            <div class="flex justify-between gap-3">
-              <span class="uppercase tracking-wider text-seve-marine/50">Invités</span>
-              <span>{c.invites}</span>
-            </div>
-          </div>
-
-          <ul class="mt-5 space-y-2.5 flex-1">
-            {c.inclus.map((item) => (
-              <li class="flex gap-2.5 font-outfit text-[13px] text-seve-marine/85 leading-relaxed">
-                <span class="text-seve-or shrink-0 mt-0.5">✦</span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-
-          <div class="mt-6 pt-5 border-t border-seve-or/20">
-            <p class="font-outfit text-[11px] uppercase tracking-wider text-seve-marine/50 mb-1">Idéal pour</p>
-            <p class="font-outfit text-[12px] italic text-seve-marine/70 leading-relaxed">{c.ideal}</p>
-          </div>
-
-          <div class="mt-6 flex items-end justify-between gap-3">
-            <div>
-              <p class="font-outfit text-[10px] uppercase tracking-wider text-seve-marine/50">Tarif</p>
-              <p class="font-cormorant text-2xl text-seve-marine">{c.prix}</p>
-            </div>
-            <a
-              href="#contact"
-              class="inline-flex items-center justify-center h-10 px-4 bg-seve-marine text-seve-ivoire font-outfit font-semibold text-[11px] uppercase tracking-[0.18em] rounded-full hover:bg-seve-corail transition-colors duration-300"
-            >
-              Demander
-            </a>
+          <div class="p-7 md:p-8 flex flex-col flex-grow">
+            {f.populaire && <div class="font-caveat text-lg mb-1" style="color:#CC6B49;">notre cœur ❤</div>}
+            <h3 class="font-cormorant text-3xl mb-1">{f.titre}</h3>
+            <div class="text-[12px] uppercase tracking-[0.22em] mb-4" style={`color:${f.populaire ? '#F4D7C5' : '#8AA288'};`}>{f.sous}</div>
+            <p class="text-[14px] leading-relaxed mb-5" style={`color:${f.populaire ? '#E8DCC9' : '#5A5045'};`}>{f.desc}</p>
+            <ul class="space-y-2 text-[14px] mb-6 flex-grow">
+              {f.inclus.map(i => <li class="flex gap-2"><span style="color:#CC6B49;">·</span>{i}</li>)}
+            </ul>
+            <div class="font-cormorant italic text-lg mb-4">{f.prix}</div>
+            <a href="#contact" class="inline-flex items-center justify-center h-11 text-[11px] uppercase tracking-[0.22em] font-semibold transition-colors"
+               style={f.populaire ? 'background:#CC6B49; color:#FAF4EA;' : 'background:#3A352D; color:#FAF4EA;'}>Demander un devis</a>
           </div>
         </article>
       ))}

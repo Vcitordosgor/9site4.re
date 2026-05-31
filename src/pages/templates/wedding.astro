@@ -1,159 +1,51 @@
 ---
-import '@fontsource/italianno/latin-400.css';
 import '@fontsource/cormorant-garamond/latin-400.css';
 import '@fontsource/cormorant-garamond/latin-400-italic.css';
 import '@fontsource/cormorant-garamond/latin-500.css';
 import '@fontsource/cormorant-garamond/latin-600.css';
-import '@fontsource/outfit/latin-400.css';
-import '@fontsource/outfit/latin-500.css';
-import '@fontsource/outfit/latin-600.css';
+import '@fontsource/caveat/latin-400.css';
+import '@fontsource/inter/latin-400.css';
+import '@fontsource/inter/latin-500.css';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSeo } from '../../lib/seo';
 import { localBusinessSchema } from "../../lib/businessSchema";
-import seveData from '../../data/templates/seve.json';
+import data from '../../data/templates/seve.json';
 
-import SeveHeader from '../../components/templates/wedding/SeveHeader.astro';
-import HeroSeve from '../../components/templates/wedding/HeroSeve.astro';
-import Ceremonies from '../../components/templates/wedding/Ceremonies.astro';
-import Lieux from '../../components/templates/wedding/Lieux.astro';
-import PhotoPanorama from '../../components/templates/wedding/PhotoPanorama.astro';
-import Bandeau from '../../components/templates/wedding/Bandeau.astro';
-import Citation from '../../components/templates/wedding/Citation.astro';
-import Fondatrice from '../../components/templates/wedding/Fondatrice.astro';
-import Demarches from '../../components/templates/wedding/Demarches.astro';
+import Header from '../../components/templates/wedding/SeveHeader.astro';
+import Hero from '../../components/templates/wedding/HeroSeve.astro';
+import Promesse from '../../components/templates/wedding/Citation.astro';
+import Formules from '../../components/templates/wedding/Ceremonies.astro';
+import Methode from '../../components/templates/wedding/Demarches.astro';
+import Univers from '../../components/templates/wedding/Lieux.astro';
 import Couples from '../../components/templates/wedding/Couples.astro';
-import Contact from '../../components/templates/wedding/Contact.astro';
-import SeveFooter from '../../components/templates/wedding/SeveFooter.astro';
-import Chiffres from '../../components/templates/wedding/Chiffres.astro';
-import Calligraphie from '../../components/templates/wedding/Calligraphie.astro';
-import Processus from '../../components/templates/wedding/Processus.astro';
+import RDV from '../../components/templates/wedding/Calendrier.astro';
 import Faq from '../../components/templates/wedding/Faq.astro';
-import Calendrier from '../../components/templates/wedding/Calendrier.astro';
-const businessLD = localBusinessSchema(seveData, 'LocalBusiness');
+import Contact from '../../components/templates/wedding/Contact.astro';
+import Footer from '../../components/templates/wedding/SeveFooter.astro';
 
+const businessLD = localBusinessSchema(data, 'LocalBusiness');
 ---
 
 <BaseLayout seo={getSeo('templateWedding')} bare={true}>
   <Fragment slot="head">
     {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
-<link
-      rel="preload"
-      as="image"
-      href={seveData.info.photoHero}
-      fetchpriority="high"
-    />
+    <link rel="preload" as="image" href="/images/wedding/extra-1.webp" fetchpriority="high" />
   </Fragment>
 
-  <SeveHeader />
+  <Header />
 
-  <main class="bg-seve-ivoire text-seve-marine font-outfit">
-    <HeroSeve />
-    <Ceremonies />
-    <Chiffres />
-    <Lieux />
-    <PhotoPanorama />
-    <Processus />
-    <Fondatrice />
-    <Bandeau />
-    <Demarches />
-
-    <!-- Budget indicatif -->
-    <section id="budget" aria-label="Budget indicatif" class="bg-white py-24 md:py-32 px-6 md:px-10">
-      <div class="max-w-content mx-auto">
-        <header class="text-center max-w-2xl mx-auto mb-14 md:mb-16">
-          <p class="font-outfit text-[11px] uppercase tracking-[0.42em] text-seve-or mb-4">— Budget indicatif —</p>
-          <h2 class="font-cormorant text-seve-marine leading-[1.05]" style="font-size: clamp(36px, 5.5vw, 60px);">
-            Trois manières
-            <em class="block font-italianno text-seve-or mt-2" style="font-size: clamp(48px, 6.5vw, 80px); line-height: 0.9;">
-              de travailler ensemble.
-            </em>
-          </h2>
-          <p class="mt-5 font-outfit text-seve-marine/75 leading-relaxed">
-            Des fourchettes claires pour vous projeter. Le devis final dépend du nombre d'invités, du lieu et des prestataires choisis.
-          </p>
-        </header>
-
-        <div class="grid md:grid-cols-3 gap-6 md:gap-7">
-          {[
-            { nom: 'Coordination J-J', prix: '3 500€', sous: 'à partir de', pitch: 'Vous avez tout préparé : on prend le relais le jour J pour orchestrer prestataires et timing.', items: ['Brief complet avec vous (3 réunions)', 'Coordination prestataires J-J', 'Gestion du timing & imprévus'] },
-            { nom: 'Demi-organisation', prix: '5 800€', sous: 'à partir de', pitch: 'On vous accompagne sur les choix structurants et on coordonne le jour J.', items: ['Sélection lieu & 3 prestataires clés', 'Suivi planning 6 mois', 'Coordination J-J incluse'], highlight: true },
-            { nom: 'Full planning', prix: '8 500€', sous: 'à partir de', pitch: 'De la première idée au lendemain de la fête, on s\'occupe de tout, avec vous.', items: ['Conception & direction artistique', 'Sélection complète prestataires', 'Suivi 12 mois + coordination J-J'] },
-          ].map((f) => (
-            <article class={`relative p-8 md:p-9 rounded-sm flex flex-col ${f.highlight ? 'bg-seve-marine text-seve-ivoire ring-2 ring-seve-or' : 'bg-seve-ivoire ring-1 ring-seve-marine/15'}`}>
-              {f.highlight && (
-                <span class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 h-7 inline-flex items-center text-[10px] font-outfit font-bold uppercase tracking-[0.22em] bg-seve-or text-seve-marine rounded-full whitespace-nowrap">
-                  Le plus choisi
-                </span>
-              )}
-              <p class={`font-outfit text-[10px] uppercase tracking-[0.32em] font-semibold ${f.highlight ? 'text-seve-or' : 'text-seve-or'}`}>
-                Formule
-              </p>
-              <h3 class={`mt-3 font-cormorant leading-tight ${f.highlight ? 'text-seve-ivoire' : 'text-seve-marine'}`} style="font-size: clamp(26px, 2.8vw, 32px);">
-                {f.nom}
-              </h3>
-              <p class={`mt-4 font-outfit text-sm leading-relaxed flex-1 ${f.highlight ? 'text-seve-ivoire/85' : 'text-seve-marine/75'}`}>
-                {f.pitch}
-              </p>
-              <div class={`mt-6 pt-5 border-t ${f.highlight ? 'border-seve-ivoire/20' : 'border-seve-marine/10'} flex items-baseline gap-2`}>
-                <span class={`font-outfit text-[11px] uppercase tracking-[0.2em] ${f.highlight ? 'text-seve-ivoire/65' : 'text-seve-marine/55'}`}>
-                  {f.sous}
-                </span>
-                <span class={`ml-auto font-cormorant font-semibold tabular-nums ${f.highlight ? 'text-seve-or' : 'text-seve-marine'}`} style="font-size: 36px; line-height: 1;">
-                  {f.prix}
-                </span>
-              </div>
-              <ul class="mt-5 space-y-2">
-                {f.items.map((it) => (
-                  <li class={`flex items-start gap-2 text-sm ${f.highlight ? 'text-seve-ivoire/90' : 'text-seve-marine/85'}`}>
-                    <span aria-hidden="true" class={`mt-1.5 inline-block w-1.5 h-1.5 rounded-full shrink-0 ${f.highlight ? 'bg-seve-or' : 'bg-seve-or'}`}></span>
-                    <span>{it}</span>
-                  </li>
-                ))}
-              </ul>
-            </article>
-          ))}
-        </div>
-
-        <p class="mt-10 text-center font-italianno text-seve-marine/75 text-2xl">
-          Devis sur-mesure après notre premier appel — gratuit, sans engagement.
-        </p>
-      </div>
-    </section>
-
-    <Citation />
-    <Calligraphie />
+  <main id="top" style="background:#FAF4EA; color:#3A352D; font-family:Inter,system-ui,sans-serif;">
+    <Hero />
+    <Promesse />
+    <Formules />
+    <Methode />
+    <Univers />
     <Couples />
+    <RDV />
     <Faq />
-    <Calendrier />
     <Contact />
   </main>
 
-  <SeveFooter />
-
-  <!-- Sticky CTA mobile -->
-  <a
-    id="wedding-sticky-cta"
-    href="#contact"
-    data-visible="false"
-    class="md:hidden fixed bottom-4 inset-x-4 z-40 inline-flex items-center justify-center h-13 px-6 font-outfit text-[12px] font-semibold uppercase tracking-[0.2em] rounded-full bg-seve-marine text-seve-ivoire transition-all duration-300 ease-out data-[visible=false]:opacity-0 data-[visible=false]:translate-y-4 data-[visible=false]:pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0"
-    style="height: 52px; box-shadow: 0 10px 28px rgb(28 40 60 / 0.30);"
-  >
-    Premier appel — gratuit
-  </a>
-  <script>
-    const stickyW = document.getElementById('wedding-sticky-cta');
-    const contactW = document.getElementById('contact');
-    if (stickyW && contactW) {
-      const upd = () => {
-        const rect = contactW.getBoundingClientRect();
-        const inContact = rect.top < window.innerHeight && rect.bottom > 80;
-        const past = window.scrollY > 520;
-        stickyW.dataset.visible = String(past && !inContact);
-      };
-      upd();
-      window.addEventListener('scroll', upd, { passive: true });
-      window.addEventListener('resize', upd, { passive: true });
-    }
-  </script>
+  <Footer />
 </BaseLayout>
