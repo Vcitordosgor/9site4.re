@@ -1,0 +1,27 @@
+---
+import data from '../../../data/templates/source.json';
+---
+
+<section id="faq" class="py-20 md:py-28" style="background-color: #F1ECE0;">
+  <div class="max-w-content mx-auto px-5 md:px-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+      <div class="lg:col-span-4">
+        <p class="font-manrope text-[11px] uppercase tracking-[0.35em] mb-4" style="color: #B5613F;">— Questions —</p>
+        <h2 class="font-cormorant leading-[1.02] lg:sticky lg:top-28" style="color: #2E3826; font-size: clamp(34px, 4.5vw, 52px);">
+          Avant de <em class="italic">commencer.</em>
+        </h2>
+      </div>
+      <div class="lg:col-span-8">
+        {data.faq.map((f, i) => (
+          <details class="group border-b py-5" style="border-color: rgba(79,93,67,0.18);" open={i === 0}>
+            <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4">
+              <span class="font-cormorant text-xl md:text-2xl pr-4" style="color: #2E3826;">{f.q}</span>
+              <span class="font-cormorant text-2xl shrink-0 transition-transform group-open:rotate-45" style="color: #B5613F;">+</span>
+            </summary>
+            <p class="mt-4 font-manrope text-[14.5px] leading-relaxed" style="color: rgba(46,56,38,0.78);">{f.r}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

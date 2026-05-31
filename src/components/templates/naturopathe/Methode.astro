@@ -1,0 +1,31 @@
+---
+import data from '../../../data/templates/source.json';
+---
+
+<section id="methode" class="py-20 md:py-28" style="background-color: #2E3826; color: #F1ECE0;">
+  <div class="max-w-content mx-auto px-5 md:px-10">
+
+    <div class="max-w-3xl mb-14 md:mb-20">
+      <p class="font-manrope text-[11px] uppercase tracking-[0.35em] mb-4" style="color: #B5613F;">— Méthode —</p>
+      <h2 class="font-cormorant leading-[1.02]" style="font-size: clamp(34px, 5vw, 58px);">
+        Le bilan, <em class="italic" style="color: #B5613F;">puis le temps.</em>
+      </h2>
+    </div>
+
+    <ol class="space-y-10 md:space-y-14">
+      {data.methode.map((m) => (
+        <li class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 border-b pb-10 md:pb-14" style="border-color: rgba(241,236,224,0.15);">
+          <div class="md:col-span-2">
+            <span class="font-cormorant italic text-6xl md:text-7xl leading-none" style="color: #B5613F;">{m.etape}</span>
+          </div>
+          <div class="md:col-span-4">
+            <h3 class="font-cormorant text-2xl md:text-3xl">{m.titre}</h3>
+          </div>
+          <div class="md:col-span-6">
+            <p class="font-manrope text-[15px] leading-relaxed" style="color: rgba(241,236,224,0.85);">{m.texte}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

@@ -1,0 +1,51 @@
+---
+import '@fontsource/cormorant-garamond/latin-400.css';
+import '@fontsource/cormorant-garamond/latin-400-italic.css';
+import '@fontsource/cormorant-garamond/latin-500.css';
+import '@fontsource/cormorant-garamond/latin-600.css';
+import '@fontsource/manrope/latin-400.css';
+import '@fontsource/manrope/latin-500.css';
+import '@fontsource/manrope/latin-600.css';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getSeo } from '../../lib/seo';
+import { localBusinessSchema } from '../../lib/businessSchema';
+import data from '../../data/templates/source.json';
+
+import Header from '../../components/templates/naturopathe/Header.astro';
+import Hero from '../../components/templates/naturopathe/Hero.astro';
+import Philosophie from '../../components/templates/naturopathe/Philosophie.astro';
+import Accompagnements from '../../components/templates/naturopathe/Accompagnements.astro';
+import Methode from '../../components/templates/naturopathe/Methode.astro';
+import Praticienne from '../../components/templates/naturopathe/Praticienne.astro';
+import Tarifs from '../../components/templates/naturopathe/Tarifs.astro';
+import RendezVous from '../../components/templates/naturopathe/RendezVous.astro';
+import Faq from '../../components/templates/naturopathe/Faq.astro';
+import Contact from '../../components/templates/naturopathe/Contact.astro';
+import Footer from '../../components/templates/naturopathe/Footer.astro';
+
+const businessLD = localBusinessSchema(data, 'HealthAndBeautyBusiness');
+---
+
+<BaseLayout seo={getSeo('templateNaturopathe')} bare={true}>
+  <Fragment slot="head">
+    {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
+    <link rel="preload" as="image" href={data.info.photoHero} fetchpriority="high" />
+  </Fragment>
+
+  <Header />
+
+  <main style="background-color: #F1ECE0;">
+    <Hero />
+    <Philosophie />
+    <Accompagnements />
+    <Methode />
+    <Praticienne />
+    <Tarifs />
+    <RendezVous />
+    <Faq />
+    <Contact />
+  </main>
+
+  <Footer />
+</BaseLayout>

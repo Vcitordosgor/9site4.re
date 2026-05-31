@@ -1,0 +1,35 @@
+---
+import data from '../../../data/templates/source.json';
+---
+
+<section id="tarifs" class="py-20 md:py-28" style="background-color: #F1ECE0;">
+  <div class="max-w-content mx-auto px-5 md:px-10">
+    <div class="max-w-3xl mb-14">
+      <p class="font-manrope text-[11px] uppercase tracking-[0.35em] mb-4" style="color: #B5613F;">— Tarifs —</p>
+      <h2 class="font-cormorant leading-[1.02]" style="color: #2E3826; font-size: clamp(34px, 5vw, 58px);">
+        Transparents, <em class="italic">dès le premier mail.</em>
+      </h2>
+    </div>
+
+    <div class="border" style="border-color: rgba(79,93,67,0.20);">
+      {data.tarifs.map((t, i) => (
+        <div class={`grid grid-cols-1 md:grid-cols-12 gap-4 px-6 md:px-8 py-6 md:py-7 items-center ${i < data.tarifs.length - 1 ? 'border-b' : ''}`} style="border-color: rgba(79,93,67,0.15); background-color: #FFFFFF;">
+          <div class="md:col-span-5">
+            <p class="font-cormorant text-xl md:text-2xl" style="color: #2E3826;">{t.categorie}</p>
+            <p class="font-manrope text-[12px] uppercase tracking-[0.22em] mt-1" style="color: #4F5D43;">{t.duree}</p>
+          </div>
+          <div class="md:col-span-5">
+            <p class="font-manrope text-[13.5px] leading-relaxed" style="color: rgba(46,56,38,0.75);">{t.detail}</p>
+          </div>
+          <div class="md:col-span-2 md:text-right">
+            <p class="font-cormorant text-3xl md:text-4xl" style="color: #B5613F;">{t.prix}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <p class="mt-6 font-manrope italic text-[12px]" style="color: rgba(46,56,38,0.65);">
+      Règlement à la séance. Facture détaillée fournie pour votre mutuelle (forfait médecines douces).
+    </p>
+  </div>
+</section>
