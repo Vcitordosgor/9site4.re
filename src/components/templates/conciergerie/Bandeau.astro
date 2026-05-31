@@ -1,30 +1,37 @@
 ---
-/**
- * Bandeau — bandeau laiton/champagne, 3 promesses de service signature.
- */
+const zones = [
+  { nom: 'Côte ouest', detail: 'Saint-Paul, Saint-Gilles, La Saline, L\'Hermitage, Boucan-Canot' },
+  { nom: 'Sud sauvage', detail: 'Saint-Pierre, Saint-Joseph, Petite-Île, Manapany' },
+  { nom: 'Hauts', detail: 'Cilaos, Plaine-des-Cafres, Tampon (interventions ponctuelles)' },
+  { nom: 'Est & Nord', detail: 'Sur étude — minimum 3 nuits' },
+];
 ---
-
-<section class="relative bg-concierge-laiton text-concierge-nuit py-12 md:py-16 px-6 md:px-10 overflow-hidden">
-  <div class="relative max-w-content mx-auto">
-    <ul class="grid sm:grid-cols-3 gap-0 divide-y sm:divide-y-0 sm:divide-x divide-concierge-nuit/25">
-      <li class="scroll-reveal flex flex-col items-start sm:items-center text-left sm:text-center px-4 py-5 sm:py-2">
-        <span class="font-volkhov font-bold text-concierge-nuit leading-none italic" style="font-size: clamp(36px, 4.6vw, 54px);">Sur mesure</span>
-        <p class="mt-2 font-hubot font-medium uppercase tracking-[0.22em] text-concierge-nuit/75 text-[11px]">
-          Aucune formule rigide
+<section id="zone" class="py-20 md:py-28" style="background:#F7F4EE;">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+    <div class="grid md:grid-cols-2 gap-12 lg:gap-20 items-start">
+      <div>
+        <div class="text-[11px] uppercase tracking-[0.28em] mb-4" style="color:#7A6A4E;">Zone d'intervention</div>
+        <h2 class="font-cormorant text-4xl md:text-5xl leading-tight mb-6" style="color:#0F1B2E;">
+          Île entière, <em class="italic">priorité ouest et sud.</em>
+        </h2>
+        <p class="text-[15px] leading-relaxed mb-8" style="color:#3D4453;">
+          Notre équipe est basée sur la côte ouest. Nous intervenons quotidiennement sur l'ensemble du littoral ouest et sud. Pour les hauts et l'est, nous étudions chaque dossier au cas par cas.
         </p>
-      </li>
-      <li class="scroll-reveal flex flex-col items-start sm:items-center text-left sm:text-center px-4 py-5 sm:py-2" style="transition-delay: 80ms">
-        <span class="font-volkhov font-bold text-concierge-nuit leading-none italic" style="font-size: clamp(36px, 4.6vw, 54px);">2h</span>
-        <p class="mt-2 font-hubot font-medium uppercase tracking-[0.22em] text-concierge-nuit/75 text-[11px]">
-          Réponse moyenne en journée
-        </p>
-      </li>
-      <li class="scroll-reveal flex flex-col items-start sm:items-center text-left sm:text-center px-4 py-5 sm:py-2" style="transition-delay: 160ms">
-        <span class="font-volkhov font-bold text-concierge-nuit leading-none italic" style="font-size: clamp(36px, 4.6vw, 54px);">NDA signé</span>
-        <p class="mt-2 font-hubot font-medium uppercase tracking-[0.22em] text-concierge-nuit/75 text-[11px]">
-          Accord de confidentialité à chaque mission
-        </p>
-      </li>
-    </ul>
+        <div class="overflow-hidden border" style="border-color:rgba(15,27,46,0.15);">
+          <img src="/images/conciergerie/extra-3.webp" alt="Vue sur la côte de La Réunion" class="w-full h-72 object-cover" loading="lazy"/>
+        </div>
+      </div>
+      <ul class="space-y-px" style="background:rgba(15,27,46,0.10);">
+        {zones.map(z => (
+          <li class="p-6 md:p-7" style="background:#F7F4EE;">
+            <div class="flex items-baseline justify-between gap-4 mb-1">
+              <h3 class="font-cormorant text-2xl" style="color:#0F1B2E;">{z.nom}</h3>
+              <span class="text-[10px] uppercase tracking-[0.28em]" style="color:#B89758;">Réunion</span>
+            </div>
+            <p class="text-[14px]" style="color:#3D4453;">{z.detail}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
   </div>
 </section>
