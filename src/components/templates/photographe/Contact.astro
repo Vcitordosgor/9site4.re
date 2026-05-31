@@ -1,73 +1,30 @@
 ---
 import data from '../../../data/templates/latitude.json';
-const wa = `https://wa.me/${data.info.whatsapp}?text=${encodeURIComponent("Bonjour, je voudrais discuter d'un projet photo.")}`;
 ---
-
-<section id="contact" class="bg-latitude-noir text-latitude-blanc py-20 md:py-28">
-  <div class="max-w-content mx-auto px-6 md:px-10">
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-14">
-
-      <div class="md:col-span-7">
-        <p class="font-hanken text-[11px] uppercase tracking-[0.4em] text-latitude-or mb-4">✦ Premier échange</p>
-        <h2 class="font-dm-serif text-latitude-blanc text-5xl md:text-6xl leading-[0.95] tracking-tight">
-          Parlons de<br/>
-          <span class="italic text-latitude-or">votre image.</span>
-        </h2>
-        <p class="mt-6 font-hanken text-[15px] text-latitude-blanc/80 leading-relaxed max-w-xl">
-          Décrivez le projet en quelques lignes (et si vous avez des images de référence, partagez-les). Je reviens sous 48h avec une note d'intention et un devis.
-        </p>
-
-        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <a href={`tel:${data.info.telephoneHref}`} class="group block p-5 bg-latitude-charbon border border-latitude-cendre hover:border-latitude-or transition-colors">
-            <span class="font-hanken text-[10px] uppercase tracking-[0.25em] text-latitude-or">Téléphone</span>
-            <p class="mt-1 font-dm-serif text-2xl text-latitude-blanc group-hover:text-latitude-or transition-colors">{data.info.telephone}</p>
-          </a>
-          <a href={`mailto:${data.info.email}`} class="group block p-5 bg-latitude-charbon border border-latitude-cendre hover:border-latitude-or transition-colors">
-            <span class="font-hanken text-[10px] uppercase tracking-[0.25em] text-latitude-or">Email</span>
-            <p class="mt-1 font-dm-serif text-lg text-latitude-blanc group-hover:text-latitude-or transition-colors break-all">{data.info.email}</p>
-          </a>
-        </div>
-
-        <div class="mt-5">
-          <a href={wa} target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 h-12 px-6 bg-latitude-labo text-latitude-blanc font-hanken font-semibold text-[12px] uppercase tracking-[0.2em] hover:opacity-90 transition-opacity">
-            ✦ WhatsApp · réponse studio sous 24h
-          </a>
-        </div>
-      </div>
-
-      <div class="md:col-span-5">
-        <div class="bg-latitude-charbon border border-latitude-or/40 p-6 md:p-7 h-full flex flex-col">
-          <div class="flex items-center justify-between pb-4 mb-4 border-b border-latitude-cendre/60">
-            <p class="font-caveat text-latitude-or text-2xl leading-none">— Le studio</p>
-            <p class="font-hanken text-[10px] uppercase tracking-wider text-latitude-blanc/50">La Réunion</p>
-          </div>
-
-          <p class="font-dm-serif text-latitude-blanc text-2xl leading-tight">{data.info.adresseLigne1}</p>
-          <p class="font-dm-serif text-latitude-blanc text-2xl leading-tight">{data.info.adresseLigne2}</p>
-
-          <div class="mt-6 pt-5 border-t border-latitude-cendre/60 space-y-2 font-hanken text-[13px]">
-            <div class="flex justify-between gap-3">
-              <span class="text-[10px] uppercase tracking-wider text-latitude-or">Studio (sur RDV)</span>
-              <span class="text-latitude-blanc">Mardi → samedi</span>
-            </div>
-            <div class="flex justify-between gap-3">
-              <span class="text-[10px] uppercase tracking-wider text-latitude-or">Reportage extérieur</span>
-              <span class="text-latitude-blanc">7j/7 sur calage</span>
-            </div>
-            <div class="flex justify-between gap-3">
-              <span class="text-[10px] uppercase tracking-wider text-latitude-or">Instagram</span>
-              <span class="text-latitude-blanc">{data.info.instagram}</span>
-            </div>
-          </div>
-
-          <div class="mt-auto pt-7">
-            <p class="font-hanken text-[10px] uppercase tracking-[0.25em] text-latitude-or mb-2">Tirages d'art</p>
-            <p class="font-instrument italic text-latitude-blanc text-lg leading-snug">
-              {data.infosCles.tiragesEditesAn} tirages baryté édités par an · numérotés et signés au crayon graphite.
-            </p>
-          </div>
-        </div>
-      </div>
+<section id="contact" class="py-24 md:py-32" style="background:#FAF7F0;">
+  <div class="max-w-content mx-auto px-6 md:px-10 grid md:grid-cols-2 gap-16 lg:gap-24">
+    <div>
+      <div class="text-[10px] uppercase tracking-[0.32em] mb-3" style="color:#6E6A60;">Contact</div>
+      <h2 class="font-fraunces text-5xl md:text-6xl leading-tight mb-8" style="color:#0A0A0B;">Écrivez-moi.</h2>
+      <ul class="space-y-5" style="color:#0A0A0B;">
+        <li><div class="text-[10px] uppercase tracking-[0.28em]" style="color:#B89766;">Téléphone</div><a class="font-fraunces text-2xl" href={`tel:${data.info.telephoneHref}`}>{data.info.telephone}</a></li>
+        <li><div class="text-[10px] uppercase tracking-[0.28em]" style="color:#B89766;">Email</div><a class="font-fraunces text-2xl" href={`mailto:${data.info.email}`}>{data.info.email}</a></li>
+        <li><div class="text-[10px] uppercase tracking-[0.28em]" style="color:#B89766;">Studio</div><span class="font-fraunces text-2xl">Saint-Denis, La Réunion</span></li>
+        <li><div class="text-[10px] uppercase tracking-[0.28em]" style="color:#B89766;">Sur RDV</div><span class="text-[15px]">Lundi → samedi · 9h-19h</span></li>
+      </ul>
     </div>
+    <form class="grid gap-4" onsubmit="event.preventDefault(); alert('Démonstration — formulaire non actif.');">
+      <label><span class="text-[11px] uppercase tracking-[0.22em] block mb-2" style="color:#6E6A60;">Votre nom</span>
+        <input required type="text" class="w-full h-12 px-4 bg-transparent border" style="border-color:rgba(10,10,11,0.30);"/></label>
+      <label><span class="text-[11px] uppercase tracking-[0.22em] block mb-2" style="color:#6E6A60;">Email</span>
+        <input required type="email" class="w-full h-12 px-4 bg-transparent border" style="border-color:rgba(10,10,11,0.30);"/></label>
+      <label><span class="text-[11px] uppercase tracking-[0.22em] block mb-2" style="color:#6E6A60;">Type de séance</span>
+        <select class="w-full h-12 px-4 bg-transparent border" style="border-color:rgba(10,10,11,0.30);">
+          <option>Portrait</option><option>Couple / Famille</option><option>Lifestyle marque</option><option>Mariage</option>
+        </select></label>
+      <label><span class="text-[11px] uppercase tracking-[0.22em] block mb-2" style="color:#6E6A60;">Message</span>
+        <textarea rows="5" class="w-full px-4 py-3 bg-transparent border" style="border-color:rgba(10,10,11,0.30);"></textarea></label>
+      <button class="mt-2 h-12 text-[12px] uppercase tracking-[0.22em] font-semibold" style="background:#0A0A0B; color:#FAF7F0;">Envoyer</button>
+    </form>
   </div>
 </section>

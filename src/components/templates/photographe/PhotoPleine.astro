@@ -1,25 +1,35 @@
 ---
-/**
- * PhotoPleine — section image plein cadre 21/9 sous Series.
- */
+const photos = [
+  '/images/photographe/extra-6.webp',
+  '/images/photographe/extra-7.webp',
+  '/images/photographe/extra-8.webp',
+  '/images/photographe/extra-9.webp',
+  '/images/photographe/extra-10.webp',
+  '/images/photographe/extra-11.webp',
+  '/images/photographe/extra-12.webp',
+  '/images/photographe/extra-13.webp',
+  '/images/photographe/extra-14.webp',
+  '/images/photographe/extra-15.webp',
+];
 ---
-
-<section class="relative bg-latitude-noir px-0 py-0">
-  <figure class="relative w-full overflow-hidden bg-latitude-charbon" style="aspect-ratio: 21/9;">
-    <img
-      src="/images/photographe/extra-1.webp"
-      alt="Détail argentique, planche-contact en lumière rasante"
-      loading="lazy"
-      decoding="async"
-      class="absolute inset-0 w-full h-full object-cover"
-    />
-    <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(15,15,15,0.10) 0%, rgba(15,15,15,0.55) 100%);"></div>
-
-    <figcaption class="absolute bottom-5 md:bottom-10 left-6 md:left-12 right-6 md:right-12 flex items-baseline gap-3 text-latitude-blanc">
-      <span class="block w-10 h-px bg-latitude-or flex-shrink-0" aria-hidden="true"></span>
-      <p class="font-instrument italic" style="font-size: clamp(15px, 1.5vw, 20px);">
-        Hors-cadre — un détail trouvé avant le déclic.
-      </p>
-    </figcaption>
-  </figure>
+<section id="portfolio" class="py-24 md:py-32" style="background:#0A0A0B;">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+    <div class="mb-16 max-w-2xl">
+      <div class="text-[10px] uppercase tracking-[0.32em] mb-3" style="color:#B89766;">Portfolio</div>
+      <h2 class="font-fraunces text-5xl md:text-6xl leading-tight" style="color:#FAF7F0;">Quelques planches, <em class="italic">choisies.</em></h2>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 auto-rows-[140px] md:auto-rows-[180px]">
+      <figure class="col-span-2 row-span-2 overflow-hidden"><img src={photos[0]} alt="" class="w-full h-full object-cover" loading="lazy"/></figure>
+      <figure class="overflow-hidden"><img src={photos[1]} alt="" class="w-full h-full object-cover" loading="lazy"/></figure>
+      <figure class="overflow-hidden"><img src={photos[2]} alt="" class="w-full h-full object-cover" loading="lazy"/></figure>
+      <figure class="overflow-hidden row-span-2"><img src={photos[3]} alt="" class="w-full h-full object-cover" loading="lazy"/></figure>
+      <figure class="overflow-hidden"><img src={photos[4]} alt="" class="w-full h-full object-cover" loading="lazy"/></figure>
+      <figure class="overflow-hidden col-span-2 row-span-2"><img src={photos[5]} alt="" class="w-full h-full object-cover" loading="lazy"/></figure>
+      <figure class="overflow-hidden"><img src={photos[6]} alt="" class="w-full h-full object-cover" loading="lazy"/></figure>
+      <figure class="overflow-hidden"><img src={photos[7]} alt="" class="w-full h-full object-cover" loading="lazy"/></figure>
+      <figure class="overflow-hidden row-span-2"><img src={photos[8]} alt="" class="w-full h-full object-cover" loading="lazy"/></figure>
+      <figure class="overflow-hidden col-span-2"><img src={photos[9]} alt="" class="w-full h-full object-cover" loading="lazy"/></figure>
+    </div>
+    <p class="mt-10 text-[12px] uppercase tracking-[0.28em]" style="color:#B89766;">— Tirages numérotés disponibles sur demande</p>
+  </div>
 </section>

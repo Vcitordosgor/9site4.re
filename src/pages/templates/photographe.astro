@@ -1,86 +1,46 @@
 ---
-import '@fontsource/dm-serif-display/latin-400.css';
-import '@fontsource/dm-serif-display/latin-400-italic.css';
-import '@fontsource/instrument-serif/latin-400.css';
-import '@fontsource/instrument-serif/latin-400-italic.css';
-import '@fontsource/hanken-grotesk/latin-400.css';
-import '@fontsource/hanken-grotesk/latin-500.css';
-import '@fontsource/hanken-grotesk/latin-600.css';
-import '@fontsource/caveat/latin-400.css';
+import '@fontsource/fraunces/latin-400.css';
+import '@fontsource/fraunces/latin-500.css';
+import '@fontsource/fraunces/latin-600.css';
+import '@fontsource/fraunces/latin-400-italic.css';
+import '@fontsource/inter/latin-400.css';
+import '@fontsource/inter/latin-500.css';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSeo } from '../../lib/seo';
-import { localBusinessSchema } from '../../lib/businessSchema';
+import { localBusinessSchema } from "../../lib/businessSchema";
 import data from '../../data/templates/latitude.json';
 
-import LatitudeHeader from '../../components/templates/photographe/LatitudeHeader.astro';
-import HeroLatitude from '../../components/templates/photographe/HeroLatitude.astro';
-import Series from '../../components/templates/photographe/Series.astro';
-import Polaroid from '../../components/templates/photographe/Polaroid.astro';
-import PhotoPleine from '../../components/templates/photographe/PhotoPleine.astro';
-import Numbers from '../../components/templates/photographe/Numbers.astro';
-import Auteur from '../../components/templates/photographe/Auteur.astro';
-import Process from '../../components/templates/photographe/Process.astro';
-import Forfaits from '../../components/templates/photographe/Forfaits.astro';
-import Demarche from '../../components/templates/photographe/Demarche.astro';
-import Citation from '../../components/templates/photographe/Citation.astro';
-import Avis from '../../components/templates/photographe/Avis.astro';
+import Header from '../../components/templates/photographe/LatitudeHeader.astro';
+import Hero from '../../components/templates/photographe/HeroLatitude.astro';
+import Seances from '../../components/templates/photographe/Series.astro';
+import Portfolio from '../../components/templates/photographe/PhotoPleine.astro';
+import Methode from '../../components/templates/photographe/Process.astro';
+import Tarifs from '../../components/templates/photographe/Forfaits.astro';
+import RDV from '../../components/templates/photographe/Demarche.astro';
 import Faq from '../../components/templates/photographe/Faq.astro';
 import Contact from '../../components/templates/photographe/Contact.astro';
-import LatitudeFooter from '../../components/templates/photographe/LatitudeFooter.astro';
+import Footer from '../../components/templates/photographe/LatitudeFooter.astro';
 
-const businessLD = localBusinessSchema(data, 'ProfessionalService');
+const businessLD = localBusinessSchema(data, 'LocalBusiness');
 ---
 
 <BaseLayout seo={getSeo('templatePhotographe')} bare={true}>
   <Fragment slot="head">
     {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
-<link rel="preload" as="image" href="/images/latitude/runner.webp" fetchpriority="high" />
+    <link rel="preload" as="image" href="/images/photographe/extra-1.webp" fetchpriority="high" />
   </Fragment>
 
-  <LatitudeHeader />
-
-  <main class="bg-latitude-noir text-latitude-blanc font-hanken">
-    <HeroLatitude />
-    <Series />
-    <Polaroid />
-    <PhotoPleine />
-    <Numbers />
-    <Auteur />
-    <Process />
-    <Forfaits />
-    <Demarche />
-    <Citation />
-    <Avis />
+  <Header />
+  <main id="top" style="background:#FAF7F0; color:#0A0A0B; font-family:Inter,system-ui,sans-serif;">
+    <Hero />
+    <Seances />
+    <Portfolio />
+    <Methode />
+    <Tarifs />
+    <RDV />
     <Faq />
     <Contact />
   </main>
-
-  <LatitudeFooter />
-
-  <a
-    id="latitude-sticky-cta"
-    href="#contact"
-    data-visible="false"
-    class="md:hidden fixed bottom-5 inset-x-5 z-40 inline-flex items-center justify-center h-12 bg-latitude-blanc text-latitude-noir font-hanken font-semibold text-xs uppercase tracking-[0.2em] transition-all duration-300 data-[visible=false]:opacity-0 data-[visible=false]:translate-y-4 data-[visible=false]:pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0"
-    style="box-shadow: 0 12px 28px rgba(0,0,0,0.45);"
-  >
-    Réserver une séance →
-  </a>
-
-  <script>
-    const sticky = document.getElementById('latitude-sticky-cta');
-    const contact = document.getElementById('contact');
-    if (sticky && contact) {
-      const update = () => {
-        const rect = contact.getBoundingClientRect();
-        const inSection = rect.top < window.innerHeight && rect.bottom > 80;
-        const scrolledPastHero = window.scrollY > 600;
-        sticky.dataset.visible = String(scrolledPastHero && !inSection);
-      };
-      update();
-      window.addEventListener('scroll', update, { passive: true });
-      window.addEventListener('resize', update, { passive: true });
-    }
-  </script>
+  <Footer />
 </BaseLayout>
