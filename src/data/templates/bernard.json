@@ -38,10 +38,10 @@
         "urgence": true
       }
     ],
-    "photoBernard": "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=900&q=85",
+    "photoBernard": "/images/plomberie/hero.webp",
     "photoBernardAlt": "Bernard, plombier, dans son atelier",
-    "photoVan": "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=900&q=85",
-    "photoVanAlt": "Camionnette d'intervention équipée",
+    "photoVan": "/images/plomberie/intervention.webp",
+    "photoVanAlt": "Intervention plomberie : raccord à la main",
     "photoAvant1": "/images/plomberie/sdb-avant.webp",
     "photoApres1": "/images/plomberie/sdb-apres.webp",
     "photoAvant2": "/images/plomberie/cuisine-avant.webp",
