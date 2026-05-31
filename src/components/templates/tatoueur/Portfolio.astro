@@ -1,0 +1,103 @@
+---
+/**
+ * Portfolio — bento immersif filtrable par style via CSS :has() (no JS).
+ */
+const works = [
+  { src: '/images/tatoueur/extra-1.webp',  style: 'realiste',    legend: 'Portrait · épaule', size: 'lg' },
+  { src: '/images/tatoueur/extra-2.webp',  style: 'fineline',    legend: 'Botanique · avant-bras', size: 'sm' },
+  { src: '/images/tatoueur/extra-3.webp',  style: 'dotwork',     legend: 'Mandala · dos', size: 'md' },
+  { src: '/images/tatoueur/extra-4.webp',  style: 'traditional', legend: 'Anchor · bras', size: 'sm' },
+  { src: '/images/tatoueur/extra-5.webp',  style: 'lettering',   legend: 'Manuscrit · côte', size: 'sm' },
+  { src: '/images/tatoueur/extra-6.webp',  style: 'realiste',    legend: 'Œil photoréaliste', size: 'md' },
+  { src: '/images/tatoueur/extra-7.webp',  style: 'fineline',    legend: 'Trait fin · cheville', size: 'sm' },
+  { src: '/images/tatoueur/extra-8.webp',  style: 'dotwork',     legend: 'Géométrie pointillée', size: 'lg' },
+  { src: '/images/tatoueur/extra-9.webp',  style: 'traditional', legend: 'Old school · main', size: 'sm' },
+  { src: '/images/tatoueur/extra-10.webp', style: 'lettering',   legend: 'Citation · clavicule', size: 'md' },
+  { src: '/images/tatoueur/extra-11.webp', style: 'realiste',    legend: 'Animalier · cuisse', size: 'sm' },
+];
+const filters = [
+  { id: 'all',         label: 'Tous',         n: works.length },
+  { id: 'realiste',    label: 'Réaliste',     n: works.filter(w => w.style === 'realiste').length },
+  { id: 'fineline',    label: 'Fineline',     n: works.filter(w => w.style === 'fineline').length },
+  { id: 'dotwork',     label: 'Dotwork',      n: works.filter(w => w.style === 'dotwork').length },
+  { id: 'traditional', label: 'Traditional',  n: works.filter(w => w.style === 'traditional').length },
+  { id: 'lettering',   label: 'Lettering',    n: works.filter(w => w.style === 'lettering').length },
+];
+---
+<section id="portfolio" class="relative py-20 md:py-28" style="background:#0A0A0A; color:#EEE6D8;">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-10 md:mb-14 items-end">
+      <div class="md:col-span-7">
+        <p class="font-mono text-[11px] uppercase tracking-[0.4em] mb-4" style="color:#A11920;">— Portfolio</p>
+        <h2 class="font-cardo text-4xl md:text-6xl leading-[0.95]">
+          Onze pièces,<br/><em class="italic" style="color:#A11920;">cinq écritures.</em>
+        </h2>
+      </div>
+      <div class="md:col-span-5">
+        <p class="font-cardo italic text-lg leading-relaxed" style="color:rgb(238 230 216 / 0.78);">
+          Sélection 2024–2026. Filtrez par style pour voir le geste qui vous parle — chaque pièce racontée en une légende.
+        </p>
+      </div>
+    </div>
+
+    <div class="portfolio-root">
+      <!-- Filter bar -->
+      <div role="radiogroup" aria-label="Filtrer par style" class="flex flex-wrap gap-2 mb-8">
+        {filters.map((f, i) => (
+          <label class="filter-chip cursor-pointer inline-flex items-center gap-2 px-4 h-10 border transition-colors duration-200"
+            style="font-family: 'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; border-color:rgb(238 230 216 / 0.25); color:#EEE6D8;">
+            <input type="radio" name="pfilter" value={f.id} class="sr-only peer" checked={i === 0}/>
+            <span>{f.label}</span>
+            <span class="opacity-60">· {f.n}</span>
+          </label>
+        ))}
+      </div>
+
+      <!-- Bento grid -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 auto-rows-[150px] md:auto-rows-[200px]">
+        {works.map(w => (
+          <figure
+            data-style={w.style}
+            class={`portfolio-item group relative overflow-hidden border transition-all duration-500 ${w.size === 'lg' ? 'md:col-span-2 md:row-span-2' : w.size === 'md' ? 'md:row-span-2' : ''}`}
+            style="border-color: rgb(238 230 216 / 0.10);"
+          >
+            <img src={w.src} alt={w.legend} loading="lazy" decoding="async"
+              class="absolute inset-0 w-full h-full object-cover grayscale-[0.4] transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105"/>
+            <div class="absolute inset-0" style="background:linear-gradient(180deg, rgba(10,10,10,0) 50%, rgba(10,10,10,0.85) 100%);"></div>
+            <figcaption class="absolute inset-x-0 bottom-0 p-3 flex items-end justify-between gap-2">
+              <span class="font-cardo italic text-sm md:text-base leading-tight" style="color:#EEE6D8;">{w.legend}</span>
+              <span class="px-2 py-1 text-[9px] uppercase tracking-[0.2em]" style="font-family:'JetBrains Mono',monospace; background:#A11920; color:#EEE6D8;">{w.style}</span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+
+      <p class="mt-8 font-mono text-[11px] uppercase tracking-[0.22em]" style="color: rgb(238 230 216 / 0.5);">
+        ✦ Nouveaux tatouages publiés chaque semaine sur Instagram ✦
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Active filter chip */
+  .filter-chip:has(input:checked) {
+    background: #A11920;
+    color: #EEE6D8;
+    border-color: #A11920;
+  }
+  .filter-chip:focus-within { outline: 2px solid #A11920; outline-offset: 2px; }
+
+  /* Filter logic */
+  .portfolio-root:has(input[value="realiste"]:checked)    .portfolio-item:not([data-style="realiste"]),
+  .portfolio-root:has(input[value="fineline"]:checked)    .portfolio-item:not([data-style="fineline"]),
+  .portfolio-root:has(input[value="dotwork"]:checked)     .portfolio-item:not([data-style="dotwork"]),
+  .portfolio-root:has(input[value="traditional"]:checked) .portfolio-item:not([data-style="traditional"]),
+  .portfolio-root:has(input[value="lettering"]:checked)   .portfolio-item:not([data-style="lettering"]) {
+    opacity: 0.10;
+    filter: grayscale(1) blur(2px);
+    pointer-events: none;
+    transform: scale(0.97);
+  }
+</style>
