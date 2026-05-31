@@ -19,14 +19,32 @@ import data from '../../../data/templates/salon.json';
         <!-- Filet vert décoratif derrière (desktop only) -->
         <div class="hidden lg:block absolute -top-4 -left-4 right-8 bottom-8 ring-1 ring-salon-vert-clair/40 rounded-sm pointer-events-none" aria-hidden="true"></div>
 
-        <div class="relative overflow-hidden rounded-sm" style="aspect-ratio: 4/5;">
-          <img
-            src={data.info.photoHero} srcset={`${(data.info.photoHero).replace(/\.webp$/, "-640.webp")} 640w, ${(data.info.photoHero).replace(/\.webp$/, "-1024.webp")} 1024w, ${data.info.photoHero} 1600w`} sizes="100vw"
-            alt={data.info.photoHeroAlt}
-            width="900"
-            height="1125"
-            class="absolute inset-0 w-full h-full object-cover"
-            style="box-shadow: 0 16px 48px rgb(10 10 10 / 0.18);" loading="eager" fetchpriority="high" decoding="async">
+        <div class="relative overflow-hidden rounded-sm bg-salon-vert" style="aspect-ratio: 4/5; box-shadow: 0 16px 48px rgb(10 10 10 / 0.18);">
+          <!-- Trame oblique subtile -->
+          <div class="absolute inset-0 pointer-events-none opacity-[0.10]" aria-hidden="true"
+               style="background-image: repeating-linear-gradient(45deg, #F7F5F0 0 1px, transparent 1px 14px);"></div>
+
+          <!-- Typo monumentale empilée -->
+          <div class="absolute inset-0 flex flex-col items-center justify-center px-4 text-center">
+            <p class="font-fraunces italic text-salon-blanc leading-[0.85]" style="font-size: clamp(80px, 22vw, 180px);">Coupe</p>
+            <p class="font-fraunces font-bold text-salon-blanc/30 leading-[0.85] -mt-2" style="font-size: clamp(58px, 16vw, 132px);">Couleur</p>
+            <p class="font-fraunces italic text-salon-vert-clair leading-[0.85] -mt-1" style="font-size: clamp(48px, 13vw, 108px);">Soin.</p>
+          </div>
+
+          <!-- Ciseaux SVG décoratif coin haut droit -->
+          <svg viewBox="0 0 60 60" class="absolute top-5 right-5 w-10 h-10 text-salon-vert-clair/70" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
+            <circle cx="14" cy="42" r="6"/>
+            <circle cx="14" cy="14" r="6"/>
+            <line x1="20" y1="38" x2="52" y2="6"/>
+            <line x1="20" y1="18" x2="52" y2="50"/>
+          </svg>
+
+          <!-- Filet bas signature -->
+          <div class="absolute bottom-5 left-6 right-6 flex items-center justify-between text-salon-blanc/70 font-fraunces italic text-xs uppercase tracking-[0.3em]">
+            <span>Studio</span>
+            <span class="h-px flex-1 mx-3 bg-salon-blanc/30" aria-hidden="true"></span>
+            <span>{data.info.annee ?? '2014'}</span>
+          </div>
         </div>
       </div>
     </figure>
