@@ -15,7 +15,8 @@
     "siret": "000 000 000 00000",
     "agrement": "OEC 974-2018",
     "annee": "2009",
-    "photoCabinet": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=85"
+    "photoCabinet": "/images/comptable/hero.webp",
+    "photoLocal": "/images/comptable/local.webp"
   },
   "stats": [
     {
