@@ -5,7 +5,7 @@
     "wordmark2": "Volcan",
     "soustitre": "Studio de tatouage · La Réunion",
     "tagline": "L'encre, l'aiguille, la main qui ne tremble pas.",
-    "fondateur": "Léo Carvalho",
+    "fondateur": "Léo",
     "ville": "La Réunion",
     "adresseLigne1": "Atelier intra-muros",
     "adresseLigne2": "La Réunion",
@@ -58,28 +58,22 @@
   ],
   "artistes": [
     {
-      "nom": "Léo Carvalho",
+      "nom": "Léo",
+      "initiales": "L",
       "role": "Tatoueur résident · Fondateur",
-      "specialite": "Blackwork, dotwork, large pieces",
-      "bio": "",
-      "anciennete": "",
-      "photo": "https://images.unsplash.com/photo-1622495966505-72e2fac6f586?q=80&w=600&auto=format&fit=crop"
+      "specialite": "Blackwork, dotwork, large pieces"
     },
     {
-      "nom": "Sami Houareau",
+      "nom": "Sami",
+      "initiales": "S",
       "role": "Tatoueur résident",
-      "specialite": "Lettering, gothique, traditional",
-      "bio": "",
-      "anciennete": "",
-      "photo": "https://images.unsplash.com/photo-1521252659862-eec69941b071?q=80&w=600&auto=format&fit=crop"
+      "specialite": "Lettering, gothique, traditional"
     },
     {
-      "nom": "Mira Almeida",
+      "nom": "Mira",
+      "initiales": "M",
       "role": "Tatoueuse résidente",
-      "specialite": "Botanique, fine line, micro-réalisme",
-      "bio": "",
-      "anciennete": "",
-      "photo": "https://images.unsplash.com/photo-1599842057874-37393e9342df?q=80&w=600&auto=format&fit=crop"
+      "specialite": "Botanique, fine line, micro-réalisme"
     }
   ],
   "flash": [
@@ -133,7 +127,7 @@
     {
       "etape": "04",
       "titre": "Cicatrisation & retouches",
-      "texte": "Saniderm posé 5 jours. Soin Bepanthen 3 semaines. Une retouche gratuite est incluse dans le tarif si nécessaire, à 6 semaines minimum après la séance."
+      "texte": "Film cicatrisant posé 5 jours, crème réparatrice pendant 3 semaines. Une retouche gratuite est incluse dans le tarif si nécessaire, à 6 semaines minimum après la séance."
     }
   ],
   "hygiene": [
@@ -143,15 +137,15 @@
     },
     {
       "titre": "Aiguilles à usage unique",
-      "texte": "Cartouches Cheyenne ou Stigma, déballées devant vous. Ouverture stérile, élimination immédiate dans collecteur DASRI agréé."
+      "texte": "Cartouches professionnelles déballées devant vous. Ouverture stérile, élimination immédiate dans collecteur DASRI agréé."
     },
     {
       "titre": "Encres dermatologiques",
-      "texte": "Eternal Ink, World Famous, Quantum Pro. Conformes REACH 2022, certifiées sans nickel ni métaux lourds. Lots tracés sur la fiche de séance."
+      "texte": "Encres professionnelles conformes à la réglementation européenne, sans nickel ni métaux lourds. Lots tracés sur la fiche de séance."
     },
     {
       "titre": "Formation hygiène",
-      "texte": "Tous les artistes ont passé la formation hygiène & salubrité (21h) prévue par l'Arrêté du 12 décembre 2008. Diplômes affichés à l'accueil."
+      "texte": "Tous les artistes ont suivi la formation hygiène & salubrité réglementaire. Attestations affichées à l'accueil."
     }
   ],
   "tarification": [

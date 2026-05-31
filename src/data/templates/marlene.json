@@ -21,8 +21,8 @@
     "photoInstitut": "https://images.unsplash.com/photo-1632345031435-8727f6897d53?q=80&w=1400&auto=format&fit=crop"
   },
   "pitch": {
-    "intro": "Depuis douze ans, l'institut accueille femmes et hommes qui souhaitent prendre du temps pour eux. Petits gestes, grands soins — sans précipitation, sans bavardage inutile.",
-    "essence": "Une maison à taille humaine, deux esthéticiennes formées en Europe, et des produits choisis un par un.",
+    "intro": "Un institut à taille humaine, pour prendre du temps pour soi. Petits gestes, grands soins — sans précipitation.",
+    "essence": "Deux esthéticiennes attentives, des produits choisis avec soin, une cabine calme.",
     "promesse": "Notre engagement : aucun forfait poussé, aucun produit revendu sans nécessité. Vous repartez avec ce dont vous avez besoin — rien d'autre."
   },
   "rituel": {
@@ -227,12 +227,12 @@
     }
   ],
   "marques": [
-    "Sothys Paris",
-    "Cinq Mondes",
-    "Maria Galland",
-    "SkinCeuticals",
-    "OPI",
-    "Caudalie"
+    "Cosmétique naturelle française",
+    "Huiles essentielles bio",
+    "Soins végétaux",
+    "Vernis sans toluène",
+    "Sérums dermo-cosmétiques",
+    "Gammes professionnelles"
   ],
   "cartes": [
     {
