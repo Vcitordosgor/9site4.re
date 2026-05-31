@@ -31,8 +31,7 @@ const businessLD = localBusinessSchema(sourceData, 'MedicalBusiness');
 <BaseLayout seo={getSeo('templateNaturopathe')} bare={true}>
   <Fragment slot="head">
     {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
-    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
-    <link rel="preload" as="image" href={sourceData.info.photoHero} fetchpriority="high" />
+<link rel="preload" as="image" href={sourceData.info.photoHero} fetchpriority="high" />
   </Fragment>
 
   <SourceHeader />

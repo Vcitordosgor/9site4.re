@@ -99,17 +99,17 @@
     {
       "titre": "Espace d'accueil",
       "texte": "Pièce lumineuse, lin et bois clair, fauteuils bas. Tisanes maison, eau filtrée. Aucun écran, pas de musique.",
-      "photo": "https://images.unsplash.com/photo-1532303174432-450d3b3f5dd3?q=80&w=800&auto=format&fit=crop"
+      "photo": "/images/naturopathe/extra-1.webp"
     },
     {
       "titre": "Salle de consultation",
       "texte": "Bureau ouvert sur jardin, sans cloison froide. Mesures simples (poids, tension, tour de taille) si pertinent.",
-      "photo": "https://images.unsplash.com/photo-1604881991720-f91add269bed?q=80&w=800&auto=format&fit=crop"
+      "photo": "/images/naturopathe/extra-2.webp"
     },
     {
       "titre": "Coin lecture",
       "texte": "Bibliothèque ouverte au public en attendant. Ouvrages références : nutrition, sommeil, gestion du stress, mycologie.",
-      "photo": "https://images.unsplash.com/photo-1568667256549-094345857637?q=80&w=800&auto=format&fit=crop"
+      "photo": "/images/naturopathe/extra-3.webp"
     }
   ],
   "tarifs": [
