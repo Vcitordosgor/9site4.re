@@ -1,0 +1,131 @@
+---
+/**
+ * Carte — carte stylisée de La Réunion (SVG inline) avec marqueurs RDV.
+ * Pas de lib externe. Forme schématique de l'île + pastilles points de départ.
+ */
+const points = [
+  { id: 'mafate', x: 38, y: 38, label: 'Cirque de Mafate · Col des Boeufs' },
+  { id: 'salazie', x: 56, y: 30, label: 'Cirque de Salazie · Hell-Bourg' },
+  { id: 'cilaos', x: 44, y: 56, label: 'Cirque de Cilaos · Bras Sec' },
+  { id: 'volcan', x: 70, y: 58, label: 'Volcan · Pas de Bellecombe' },
+  { id: 'piton', x: 60, y: 38, label: 'Piton des Neiges · Bloc' },
+  { id: 'mare', x: 80, y: 36, label: 'Plaine des Palmistes · La Mare' },
+];
+---
+
+<section id="carte" class="bg-sentiers-foret text-sentiers-brume py-24 md:py-32 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="mb-12 md:mb-16 max-w-2xl">
+      <p class="font-roboto-mono text-[10px] uppercase tracking-[0.32em] text-sentiers-soleil mb-4">
+        ▲ Points de rendez-vous
+      </p>
+      <h2 class="font-tinos italic text-sentiers-brume leading-[1.05]" style="font-size: clamp(36px, 5.5vw, 64px);">
+        On se retrouve où ?<br/>
+        <span class="not-italic font-familjen font-medium text-sentiers-soleil">six lieux de départ.</span>
+      </h2>
+      <p class="mt-5 font-familjen text-sentiers-brume/75 leading-relaxed">
+        Survolez ou tapez un marqueur pour découvrir le point de rendez-vous précis communiqué après réservation.
+      </p>
+    </header>
+
+    <div class="grid lg:grid-cols-[1.4fr_1fr] gap-8 md:gap-12 items-center">
+
+      <!-- Carte SVG stylisée -->
+      <figure class="relative bg-sentiers-noir/40 ring-1 ring-sentiers-brume/10 rounded-2xl p-4 md:p-6 overflow-hidden" aria-labelledby="carte-titre">
+        <svg viewBox="0 0 100 80" class="w-full h-auto block" role="img" aria-labelledby="carte-titre" preserveAspectRatio="xMidYMid meet">
+          <title id="carte-titre">Carte stylisée de l'île de La Réunion</title>
+
+          <!-- Forme schématique île (ellipse arrondie) -->
+          <defs>
+            <pattern id="grid" width="6" height="6" patternUnits="userSpaceOnUse">
+              <path d="M 6 0 L 0 0 0 6" fill="none" stroke="rgb(207 191 166 / 0.06)" stroke-width="0.3"/>
+            </pattern>
+          </defs>
+          <rect x="0" y="0" width="100" height="80" fill="url(#grid)"/>
+
+          <!-- Contour île -->
+          <path d="M 22 38
+                   C 18 26, 30 14, 46 12
+                   C 60 10, 78 16, 86 28
+                   C 92 38, 90 54, 80 64
+                   C 70 72, 50 74, 36 68
+                   C 24 62, 20 50, 22 38 Z"
+                fill="rgb(28 41 35 / 0.85)" stroke="rgb(212 122 78 / 0.9)" stroke-width="0.6"/>
+
+          <!-- Reliefs (lignes de niveau schématiques) -->
+          <g fill="none" stroke="rgb(207 191 166 / 0.18)" stroke-width="0.4">
+            <ellipse cx="55" cy="40" rx="22" ry="16"/>
+            <ellipse cx="55" cy="40" rx="14" ry="10"/>
+            <ellipse cx="55" cy="40" rx="7"  ry="5"/>
+          </g>
+
+          <!-- Marqueurs -->
+          {points.map((p) => (
+            <g class="carte-pin" data-pin={p.id} tabindex="0" role="button" aria-label={p.label}>
+              <circle cx={p.x} cy={p.y} r="3.5" fill="rgb(212 122 78)" opacity="0.35"/>
+              <circle cx={p.x} cy={p.y} r="1.6" fill="rgb(232 195 95)"/>
+            </g>
+          ))}
+
+          <!-- Rose des vents -->
+          <g transform="translate(92 8)" stroke="rgb(207 191 166 / 0.5)" stroke-width="0.4" fill="none">
+            <circle r="3"/>
+            <path d="M0 -3 L0 3 M-3 0 L3 0"/>
+            <text x="0" y="-4.2" text-anchor="middle" font-size="2.2" fill="rgb(207 191 166 / 0.6)" font-family="monospace">N</text>
+          </g>
+        </svg>
+        <figcaption class="mt-3 font-roboto-mono text-[10px] uppercase tracking-[0.22em] text-sentiers-brume/45 text-center">
+          Schéma indicatif — pas à l'échelle
+        </figcaption>
+      </figure>
+
+      <!-- Liste points -->
+      <ol class="space-y-2">
+        {points.map((p, i) => (
+          <li>
+            <button
+              type="button"
+              data-target={p.id}
+              class="carte-item w-full text-left flex items-center gap-4 px-4 py-3 bg-sentiers-noir/30 hover:bg-sentiers-terre/15 ring-1 ring-transparent hover:ring-sentiers-terre/40 transition-colors rounded-lg"
+            >
+              <span class="flex-shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-full bg-sentiers-terre/20 text-sentiers-soleil font-roboto-mono text-xs tabular-nums">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <span class="font-familjen text-sm text-sentiers-brume leading-snug">{p.label}</span>
+            </button>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </div>
+
+  <style>
+    .carte-pin { cursor: pointer; }
+    .carte-pin circle:last-child { transition: r 0.2s ease, fill 0.2s ease; }
+    .carte-pin:hover circle:last-child,
+    .carte-pin:focus circle:last-child,
+    .carte-pin.is-active circle:last-child { r: 2.4; fill: rgb(212 122 78); }
+    .carte-item.is-active { background-color: rgb(212 122 78 / 0.15); }
+  </style>
+
+  <script is:inline>
+    (function () {
+      const pins = document.querySelectorAll('.carte-pin');
+      const items = document.querySelectorAll('.carte-item');
+      function activate(id) {
+        pins.forEach((p) => p.classList.toggle('is-active', p.getAttribute('data-pin') === id));
+        items.forEach((it) => it.classList.toggle('is-active', it.getAttribute('data-target') === id));
+      }
+      pins.forEach((p) => {
+        p.addEventListener('mouseenter', () => activate(p.getAttribute('data-pin')));
+        p.addEventListener('focus', () => activate(p.getAttribute('data-pin')));
+      });
+      items.forEach((it) => {
+        it.addEventListener('mouseenter', () => activate(it.getAttribute('data-target')));
+        it.addEventListener('focus', () => activate(it.getAttribute('data-target')));
+        it.addEventListener('click', () => activate(it.getAttribute('data-target')));
+      });
+    })();
+  </script>
+</section>

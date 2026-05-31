@@ -20,9 +20,9 @@ import data from '../../../data/templates/sentiers.json';
     </header>
 
     <!-- Filtres niveau (chips) -->
-    <div class="flex flex-wrap items-center gap-2 mb-10">
+    <div class="flex flex-wrap items-center gap-2 mb-3">
       <span class="font-roboto-mono text-[10px] uppercase tracking-[0.22em] text-sentiers-foret/65 mr-2">
-        Filtrer par niveau →
+        Niveau →
       </span>
       {[
         { val: 'all', label: 'Tous' },
@@ -36,6 +36,53 @@ import data from '../../../data/templates/sentiers.json';
           class:list={[
             'filter-chip inline-flex items-center h-9 px-4 font-familjen text-[13px] font-medium border transition-colors',
             i === 0 ? 'bg-sentiers-foret text-sentiers-brume border-sentiers-foret active' : 'bg-transparent text-sentiers-foret border-sentiers-foret/25 hover:border-sentiers-foret',
+          ]}
+        >
+          {f.label}
+        </button>
+      ))}
+    </div>
+
+    <!-- Filtres durée (visuels) -->
+    <div class="flex flex-wrap items-center gap-2 mb-3">
+      <span class="font-roboto-mono text-[10px] uppercase tracking-[0.22em] text-sentiers-foret/65 mr-2">
+        Durée →
+      </span>
+      {[
+        { val: 'all', label: 'Toutes' },
+        { val: 'demi', label: '½ journée' },
+        { val: 'jour', label: 'Journée' },
+        { val: 'multi', label: 'Plusieurs jours' },
+      ].map((f, i) => (
+        <button
+          type="button"
+          data-duree={f.val}
+          class:list={[
+            'duree-chip inline-flex items-center h-9 px-4 font-familjen text-[13px] font-medium border transition-colors',
+            i === 0 ? 'bg-sentiers-terre text-sentiers-brume border-sentiers-terre active' : 'bg-transparent text-sentiers-foret border-sentiers-foret/25 hover:border-sentiers-terre',
+          ]}
+        >
+          {f.label}
+        </button>
+      ))}
+    </div>
+
+    <!-- Filtres famille (visuels) -->
+    <div class="flex flex-wrap items-center gap-2 mb-10">
+      <span class="font-roboto-mono text-[10px] uppercase tracking-[0.22em] text-sentiers-foret/65 mr-2">
+        Public →
+      </span>
+      {[
+        { val: 'all', label: 'Tout public' },
+        { val: 'famille', label: '✿ Famille-friendly' },
+        { val: 'sportif', label: '▲ Sportifs' },
+      ].map((f, i) => (
+        <button
+          type="button"
+          data-public={f.val}
+          class:list={[
+            'public-chip inline-flex items-center h-9 px-4 font-familjen text-[13px] font-medium border transition-colors',
+            i === 0 ? 'bg-sentiers-soleil text-sentiers-foret border-sentiers-soleil active' : 'bg-transparent text-sentiers-foret border-sentiers-foret/25 hover:border-sentiers-soleil',
           ]}
         >
           {f.label}
