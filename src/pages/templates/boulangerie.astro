@@ -36,6 +36,26 @@ const businessLD = localBusinessSchema(painleveData, 'Bakery');
 
   <main class="font-crimson-pro" style="background-color: #F5EBD5; color: #1A1614;">
     <HeroKraft />
+
+    <!-- Bandeau signature : levain · farines bio · cuisson sole · pétrissage main -->
+    <div class="py-4 overflow-hidden border-y" style="background-color:#1A1614;color:#F5EBD5;border-color:rgba(200,155,60,0.35);" aria-hidden="true">
+      <div class="flex gap-12 whitespace-nowrap" style="animation: boul-marquee 42s linear infinite; width: max-content;">
+        {Array.from({ length: 2 }).map(() => (
+          <div class="flex gap-12 items-center font-caveat" style="font-size:28px;">
+            <span>Levain naturel</span><span style="color:#C89B3C;">·</span>
+            <span>Farines bio T80</span><span style="color:#C89B3C;">·</span>
+            <span>Pétrissage main</span><span style="color:#C89B3C;">·</span>
+            <span>Cuisson sur sole</span><span style="color:#C89B3C;">·</span>
+            <span>Pain du jour</span><span style="color:#C89B3C;">·</span>
+          </div>
+        ))}
+      </div>
+    </div>
+    <style>
+      @keyframes boul-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+      @media (prefers-reduced-motion: reduce) { [style*="boul-marquee"] { animation: none !important; } }
+    </style>
+
     <Manifesto />
     <Four />
     <Levain />
@@ -46,4 +66,33 @@ const businessLD = localBusinessSchema(painleveData, 'Bakery');
   </main>
 
   <Footer />
+
+  <!-- Sticky bottom CTA mobile-only -->
+  <a
+    id="boul-sticky-cta"
+    href="#calendrier"
+    data-visible="false"
+    class="md:hidden fixed bottom-4 inset-x-4 z-40 inline-flex items-center justify-center h-14 px-6 text-[12px] font-semibold uppercase tracking-[0.22em] font-crimson-pro rounded-full transition-all duration-300 ease-out data-[visible=false]:opacity-0 data-[visible=false]:translate-y-4 data-[visible=false]:pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0"
+    style="background-color:#1A1614;color:#F5EBD5;box-shadow: 0 12px 32px rgb(26 22 20 / 0.45);"
+  >
+    Réserver mes pains
+  </a>
+  <script>
+    const sticky = document.getElementById('boul-sticky-cta');
+    const target = document.getElementById('calendrier') || document.getElementById('trouver');
+    if (sticky) {
+      const update = () => {
+        const past = window.scrollY > 480;
+        let inSection = false;
+        if (target) {
+          const r = target.getBoundingClientRect();
+          inSection = r.top < window.innerHeight && r.bottom > 80;
+        }
+        sticky.dataset.visible = String(past && !inSection);
+      };
+      update();
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update, { passive: true });
+    }
+  </script>
 </BaseLayout>
