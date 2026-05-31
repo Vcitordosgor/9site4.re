@@ -14,6 +14,7 @@ import frangipaneData from '../../data/templates/frangipane.json';
 
 import Header from '../../components/templates/fleuriste/Header.astro';
 import HeroPoudre from '../../components/templates/fleuriste/HeroPoudre.astro';
+import Petales from '../../components/templates/fleuriste/Petales.astro';
 import Compositions from '../../components/templates/fleuriste/Compositions.astro';
 import Saison from '../../components/templates/fleuriste/Saison.astro';
 import Livraison from '../../components/templates/fleuriste/Livraison.astro';
@@ -37,6 +38,7 @@ const businessLD = localBusinessSchema(frangipaneData, 'Florist');
 
   <main class="font-jakarta" style="background-color: #F4E6E0; color: #2A2520;">
     <HeroPoudre />
+    <Petales />
     <Compositions />
     <Livraison />
     <Saison />

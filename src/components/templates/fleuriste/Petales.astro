@@ -1,0 +1,155 @@
+---
+/**
+ * Petales — signature visuelle Frangipane.
+ * Fleur SVG centrale, chaque pétale = une catégorie (radio CSS + :has() pour switch).
+ * Interaction pure CSS (pas de JS), respecte prefers-reduced-motion.
+ */
+
+const petales = [
+  { id: 'bouquets',    label: 'Bouquets',     emoji: '✿', titre: 'Bouquets du jour',          texte: 'Composés le matin selon les arrivages. Roses péi, eucalyptus, anthuriums, fleurs de saison. À partir de 25€.', cta: 'Commander un bouquet' },
+  { id: 'mariage',     label: 'Mariage',      emoji: '❀', titre: 'Mariage & événement',       texte: 'Bouquet de mariée, boutonnières, décoration lieu, voiture, table. Devis personnalisé après un premier appel.', cta: 'Discuter de notre mariage' },
+  { id: 'deuil',       label: 'Deuil',        emoji: '✾', titre: 'Hommage & deuil',           texte: 'Coussins, gerbes, couronnes. Service rapide, livraison directe au lieu de cérémonie. Accompagnement sobre.', cta: 'Demander un hommage' },
+  { id: 'abonnement',  label: 'Abonnement',   emoji: '✼', titre: 'Abonnement fleurs',         texte: 'Un bouquet livré chaque semaine ou tous les 15 jours, à la maison ou au bureau. À partir de 18€/livraison.', cta: 'Choisir mon abonnement' },
+  { id: 'atelier',     label: 'Atelier',      emoji: '❁', titre: 'Atelier composition',       texte: 'Apprenez à composer un bouquet rond, une couronne ou un centre de table. Sessions en petit groupe, 2h.', cta: 'Réserver un atelier' },
+  { id: 'livraison',   label: 'Livraison',    emoji: '✽', titre: 'Livraison à La Réunion',    texte: 'Livraison J+1 sur toute l\'île, J même jour selon zone. Horaires précis communiqués au moment de la commande.', cta: 'Voir les zones de livraison' },
+];
+---
+
+<section id="petales" aria-labelledby="petales-titre" class="petales-section py-20 md:py-32" style="background-color: #FDF6F0;">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+
+    <header class="text-center max-w-2xl mx-auto mb-12 md:mb-16">
+      <p class="font-jakarta uppercase tracking-[0.32em] text-[10.5px] mb-4" style="color: #C49B62;">
+        ❀ Naviguer pétale par pétale
+      </p>
+      <h2 id="petales-titre" class="font-cormorant font-medium leading-[1.05]" style="font-size: clamp(34px, 5.5vw, 60px); color: #2A2520;">
+        Chaque pétale,
+        <span class="italic block" style="color: #5C7448;">une demande.</span>
+      </h2>
+    </header>
+
+    <!-- Radios cachés (un par pétale) -->
+    {petales.map((p, i) => (
+      <input type="radio" name="petale" id={`petale-${p.id}`} class="petale-radio sr-only" checked={i === 0} />
+    ))}
+
+    <div class="petales-stage relative grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+
+      <!-- Fleur centrale SVG, chaque pétale = un label cliquable -->
+      <div class="lg:col-span-6 flex justify-center items-center">
+        <div class="petales-flower relative w-full max-w-md aspect-square">
+          <svg viewBox="0 0 400 400" class="absolute inset-0 w-full h-full" aria-hidden="true">
+            <!-- Cœur de la fleur -->
+            <circle cx="200" cy="200" r="40" fill="#C49B62"/>
+            <circle cx="200" cy="200" r="22" fill="#2A2520"/>
+
+            <!-- Lignes décoratives entre cœur et pétales -->
+            {petales.map((_, i) => {
+              const angle = (i * 60 - 90) * Math.PI / 180;
+              const x = 200 + Math.cos(angle) * 50;
+              const y = 200 + Math.sin(angle) * 50;
+              const xe = 200 + Math.cos(angle) * 120;
+              const ye = 200 + Math.sin(angle) * 120;
+              return <line x1={x} y1={y} x2={xe} y2={ye} stroke="#C49B62" stroke-width="0.5" opacity="0.4"/>;
+            })}
+          </svg>
+
+          <!-- 6 pétales labels positionnés en hexagone -->
+          {petales.map((p, i) => {
+            const angle = (i * 60 - 90) * Math.PI / 180;
+            const radius = 36; // % du parent
+            const cx = 50 + Math.cos(angle) * radius;
+            const cy = 50 + Math.sin(angle) * radius;
+            return (
+              <label
+                for={`petale-${p.id}`}
+                class={`petale-label petale-${p.id} absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer group`}
+                style={`left: ${cx}%; top: ${cy}%;`}
+                aria-label={`Voir ${p.label}`}
+              >
+                <span class="petale-bubble flex flex-col items-center justify-center w-20 h-20 md:w-24 md:h-24 rounded-full transition-all duration-500" style="background-color: #F4E6E0;">
+                  <span class="text-2xl md:text-3xl leading-none mb-1" style="color: #C49B62;">{p.emoji}</span>
+                  <span class="font-cormorant italic text-[12px] md:text-[13px]" style="color: #2A2520;">{p.label}</span>
+                </span>
+              </label>
+            );
+          })}
+        </div>
+      </div>
+
+      <!-- Panneau détail -->
+      <div class="lg:col-span-6">
+        {petales.map((p) => (
+          <div class={`petale-panel petale-panel-${p.id}`}>
+            <p class="font-cormorant italic text-2xl mb-2" style="color: #C49B62;">{p.emoji}</p>
+            <h3 class="font-cormorant font-medium leading-tight mb-4" style="font-size: clamp(28px, 3.5vw, 40px); color: #2A2520;">
+              {p.titre}
+            </h3>
+            <p class="font-jakarta text-base md:text-lg leading-relaxed max-w-md" style="color: rgb(42 37 32 / 0.78);">
+              {p.texte}
+            </p>
+            <a
+              href="#contact"
+              class="inline-flex items-center gap-2 mt-7 h-12 px-7 rounded-full font-jakarta font-semibold text-[13px] tracking-wide transition-colors duration-300"
+              style="background-color: #2A2520; color: #F4E6E0;"
+              onmouseover="this.style.backgroundColor='#5C7448'"
+              onmouseout="this.style.backgroundColor='#2A2520'"
+            >
+              {p.cta}
+              <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <style is:global>
+    /* Cache tous les panneaux par défaut */
+    .petale-panel { display: none; }
+
+    /* Quand un radio est checked, affiche le panneau correspondant */
+    .petales-section:has(#petale-bouquets:checked)   .petale-panel-bouquets   { display: block; }
+    .petales-section:has(#petale-mariage:checked)    .petale-panel-mariage    { display: block; }
+    .petales-section:has(#petale-deuil:checked)      .petale-panel-deuil      { display: block; }
+    .petales-section:has(#petale-abonnement:checked) .petale-panel-abonnement { display: block; }
+    .petales-section:has(#petale-atelier:checked)    .petale-panel-atelier    { display: block; }
+    .petales-section:has(#petale-livraison:checked)  .petale-panel-livraison  { display: block; }
+
+    /* Highlight pétale actif */
+    .petales-section:has(#petale-bouquets:checked)   .petale-bouquets   .petale-bubble,
+    .petales-section:has(#petale-mariage:checked)    .petale-mariage    .petale-bubble,
+    .petales-section:has(#petale-deuil:checked)      .petale-deuil      .petale-bubble,
+    .petales-section:has(#petale-abonnement:checked) .petale-abonnement .petale-bubble,
+    .petales-section:has(#petale-atelier:checked)    .petale-atelier    .petale-bubble,
+    .petales-section:has(#petale-livraison:checked)  .petale-livraison  .petale-bubble {
+      background-color: #C49B62;
+      transform: scale(1.12);
+      box-shadow: 0 12px 32px rgba(196, 155, 98, 0.4);
+    }
+    .petales-section:has(#petale-bouquets:checked)   .petale-bouquets   .petale-bubble span:last-child,
+    .petales-section:has(#petale-mariage:checked)    .petale-mariage    .petale-bubble span:last-child,
+    .petales-section:has(#petale-deuil:checked)      .petale-deuil      .petale-bubble span:last-child,
+    .petales-section:has(#petale-abonnement:checked) .petale-abonnement .petale-bubble span:last-child,
+    .petales-section:has(#petale-atelier:checked)    .petale-atelier    .petale-bubble span:last-child,
+    .petales-section:has(#petale-livraison:checked)  .petale-livraison  .petale-bubble span:last-child {
+      color: #FDF6F0;
+    }
+
+    /* Hover état pour pétales non sélectionnés */
+    .petale-label:hover .petale-bubble {
+      transform: scale(1.05);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .petale-bubble { transition: none !important; }
+    }
+
+    /* Focus a11y */
+    .petale-radio:focus-visible + * + * + * + * + * + * .petale-label .petale-bubble,
+    .petale-label:focus-within .petale-bubble {
+      outline: 2px solid #5C7448;
+      outline-offset: 4px;
+    }
+  </style>
+</section>

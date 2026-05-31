@@ -82,15 +82,15 @@ import data from '../../../data/templates/source.json';
             fetchpriority="high"
             decoding="async"
           />
-        </div>
-        <!-- Citation flottante -->
-        <div class="absolute -bottom-4 left-4 md:left-8 max-w-xs px-5 py-4 shadow-lg" style="background-color: #FFFFFF;">
-          <p class="font-lora italic text-base md:text-lg leading-snug" style="color: #1F2926;">
-            « On ralentit pour aller plus loin. »
-          </p>
-          <p class="mt-2 font-manrope text-[10px] uppercase tracking-[0.22em]" style="color: #5D7C68;">
-            — Camille Hoarau
-          </p>
+          <!-- Citation intégrée dans l'image, plus de bug de superposition -->
+          <div class="absolute bottom-0 inset-x-0 p-5 md:p-6 backdrop-blur-sm" style="background: linear-gradient(180deg, transparent 0%, rgb(31 41 38 / 0.85) 60%);">
+            <p class="font-lora italic text-base md:text-lg leading-snug text-white">
+              « On ralentit pour aller plus loin. »
+            </p>
+            <p class="mt-2 font-manrope text-[10px] uppercase tracking-[0.22em] text-white/70">
+              — L'accompagnement Source
+            </p>
+          </div>
         </div>
       </div>
     </div>
