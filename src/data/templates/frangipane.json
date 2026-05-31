@@ -16,8 +16,8 @@
     "instagram": "@frangipane.974",
     "siret": "",
     "annee": "2019",
-    "photoHero": "https://images.unsplash.com/photo-1494973367193-3f1f0a4cdcbe?q=80&w=1600&auto=format&fit=crop",
-    "photoHeroAlt": "Bouquet pastel d'inspiration éditoriale, pivoines et eucalyptus, La Réunion",
+    "photoHero": "/images/fleuriste/hero.webp",
+    "photoHeroAlt": "Composition florale en atelier, Frangipane — La Réunion",
     "ouvertureHebdo": "Mardi → samedi · 10h00 → 13h00 / 15h00 → 19h00",
     "fermeture": "Dimanche · lundi"
   },
@@ -123,34 +123,19 @@
   },
   "galerie": [
     {
-      "src": "https://images.unsplash.com/photo-1487530811176-3780de880c2d?q=80&w=900&auto=format&fit=crop",
-      "alt": "Composition florale asymétrique blanc cassé sur table dressée",
-      "tag": "Mariage"
-    },
-    {
-      "src": "https://images.unsplash.com/photo-1561181286-d3fee7d55364?q=80&w=900&auto=format&fit=crop",
-      "alt": "Bouquet de pivoines roses poudrées et eucalyptus",
+      "src": "/images/fleuriste/bouquet.webp",
+      "alt": "Mains composant un bouquet de gerberas, roses et lisianthus",
       "tag": "Bouquet"
     },
     {
-      "src": "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?q=80&w=900&auto=format&fit=crop",
-      "alt": "Arche fleurie pour cérémonie de mariage en bord de mer",
-      "tag": "Mariage"
+      "src": "/images/fleuriste/vitrine.webp",
+      "alt": "Vitrine atelier avec seaux zinc de lys, tulipes, œillets et gypsophile",
+      "tag": "Atelier"
     },
     {
-      "src": "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?q=80&w=900&auto=format&fit=crop",
-      "alt": "Composition de plantes vertes dans pots céramique artisanale",
-      "tag": "Plantes"
-    },
-    {
-      "src": "https://images.unsplash.com/photo-1455659817273-f96807779a8a?q=80&w=900&auto=format&fit=crop",
-      "alt": "Bouquet rond éditorial bouquet de mariée tons crème",
+      "src": "/images/fleuriste/etal.webp",
+      "alt": "Étal de bouquets prêts à emporter, roses rouges et fleurs de saison",
       "tag": "Bouquet"
-    },
-    {
-      "src": "https://images.unsplash.com/photo-1490750967868-88aa4486c946?q=80&w=900&auto=format&fit=crop",
-      "alt": "Composition graphique anthurium et bois flotté",
-      "tag": "Éditorial"
     }
   ],
   "atelier": {
