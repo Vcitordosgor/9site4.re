@@ -3,71 +3,41 @@ import data from '../../../data/templates/notaire.json';
 ---
 
 <section id="domaines" class="py-20 md:py-28" style="background-color: #FFFFFF;">
-  <div class="max-w-content mx-auto px-6 md:px-10">
+  <div class="max-w-content mx-auto px-5 md:px-10">
 
-    <div class="text-center max-w-2xl mx-auto mb-14 md:mb-20">
-      <p class="font-inter text-[11px] uppercase tracking-[0.4em] mb-4" style="color: #A28B5C;">— Nos domaines —</p>
-      <h2 class="font-cormorant text-4xl md:text-6xl leading-[0.95]" style="color: #1A1715;">
-        Quatre piliers,
-        <em class="italic" style="color: #A28B5C;">une expertise complète.</em>
-      </h2>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 mb-14 md:mb-20 items-end">
+      <div class="lg:col-span-7">
+        <p class="font-inter text-[11px] uppercase tracking-[0.38em] mb-4" style="color: #A28B5C;">— Domaines d'intervention —</p>
+        <h2 class="font-cormorant leading-[1.02]" style="color: #1A1715; font-size: clamp(34px, 5vw, 58px);">
+          Quatre expertises, <em class="italic" style="color: #A28B5C;">un seul interlocuteur.</em>
+        </h2>
+      </div>
+      <div class="lg:col-span-5">
+        <p class="font-inter text-[14.5px] leading-relaxed" style="color: rgba(26,23,21,0.72);">
+          L'office regroupe les compétences principales du droit civil et des affaires. Un notaire référent vous est désigné dès le premier rendez-vous.
+        </p>
+      </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-px" style="background-color: rgba(26, 23, 21, 0.15);">
-      {data.domaines.map((d) => (
-        <article class="p-8 md:p-10 transition-all" style="background-color: #FFFFFF;">
-
-          <div class="flex items-start gap-5 mb-6">
-            <div class="shrink-0 w-14 h-14 rounded-full flex items-center justify-center border-2" style="border-color: #A28B5C;">
-              <svg viewBox="0 0 24 24" class="w-7 h-7" style="color: #A28B5C;" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
-                {d.icon === 'users' && (
-                  <>
-                    <circle cx="9" cy="7" r="4" />
-                    <path d="M3 21v-2a4 4 0 014-4h4a4 4 0 014 4v2M16 3.13a4 4 0 010 7.75M21 21v-2a4 4 0 00-3-3.87" stroke-linecap="round"/>
-                  </>
-                )}
-                {d.icon === 'scroll' && (
-                  <path d="M8 21h12a2 2 0 002-2v-2H10v2a2 2 0 11-4 0V5a2 2 0 00-4 0v3h4M19 17V5a2 2 0 00-2-2H4" stroke-linecap="round" stroke-linejoin="round"/>
-                )}
-                {d.icon === 'home' && (
-                  <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2zM9 22V12h6v10" stroke-linecap="round" stroke-linejoin="round"/>
-                )}
-                {d.icon === 'briefcase' && (
-                  <>
-                    <rect x="2" y="7" width="20" height="14" rx="2"/>
-                    <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16" stroke-linecap="round"/>
-                  </>
-                )}
-              </svg>
-            </div>
-            <div class="flex-1">
-              <h3 class="font-cormorant text-3xl md:text-4xl leading-tight" style="color: #1A1715;">
-                {d.nom}
-              </h3>
-              <p class="mt-1 font-cormorant italic text-lg md:text-xl" style="color: #A28B5C;">
-                {d.tagline}
-              </p>
-            </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-px" style="background-color: rgba(26,23,21,0.12);">
+      {data.domaines.map((d, i) => (
+        <article id={d.id} class="p-8 md:p-10 flex flex-col gap-5" style="background-color: #FFFFFF;">
+          <div class="flex items-baseline justify-between">
+            <span class="font-cormorant italic text-5xl leading-none" style="color: #A28B5C;">{String(i+1).padStart(2,'0')}</span>
+            <span class="font-inter text-[10px] uppercase tracking-[0.22em]" style="color: rgba(26,23,21,0.5);">Domaine {String(i+1).padStart(2,'0')} / 04</span>
           </div>
+          <h3 class="font-cormorant text-3xl md:text-4xl leading-tight" style="color: #1A1715;">{d.nom}</h3>
+          <p class="font-cormorant italic text-lg" style="color: #A28B5C;">{d.tagline}</p>
+          <p class="font-inter text-[14px] leading-relaxed" style="color: rgba(26,23,21,0.78);">{d.description}</p>
 
-          <p class="font-inter text-[13.5px] leading-relaxed" style="color: rgb(26 23 21 / 0.78);">
-            {d.description}
-          </p>
-
-          <!-- Liste actes -->
-          <div class="mt-6 pt-5 border-t" style="border-color: rgba(26, 23, 21, 0.12);">
-            <p class="font-inter text-[10px] uppercase tracking-[0.22em] mb-3" style="color: #A28B5C;">
-              ✦ Actes principaux
-            </p>
-            <ul class="grid grid-cols-1 gap-1.5">
-              {d.actes.map((a) => (
-                <li class="font-inter text-[12.5px] flex items-baseline gap-2" style="color: rgb(26 23 21 / 0.78);">
-                  <span style="color: #A28B5C;">·</span>
-                  {a}
-                </li>
-              ))}
-            </ul>
-          </div>
+          <ul class="mt-2 pt-5 border-t grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-2 font-inter text-[13px]" style="border-color: rgba(26,23,21,0.12); color: rgba(26,23,21,0.78);">
+            {d.actes.map((a) => (
+              <li class="flex items-start gap-2">
+                <span class="mt-2 block w-1 h-1 shrink-0" style="background-color: #A28B5C;"></span>
+                <span>{a}</span>
+              </li>
+            ))}
+          </ul>
         </article>
       ))}
     </div>

@@ -1,0 +1,28 @@
+---
+import data from '../../../data/templates/source.json';
+const info = data.info;
+---
+
+<header class="sticky top-0 z-40 backdrop-blur-md border-b" style="background-color: rgba(241,236,224,0.92); border-color: rgba(79,93,67,0.15);">
+  <div class="max-w-content mx-auto px-5 md:px-10 h-16 md:h-20 flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-3">
+      <svg viewBox="0 0 32 32" class="w-7 h-7 md:w-8 md:h-8" aria-hidden="true">
+        <path d="M16 4 C 10 8, 8 14, 12 22 C 14 26, 18 26, 20 22 C 24 14, 22 8, 16 4 Z" fill="none" stroke="#4F5D43" stroke-width="1.4" stroke-linejoin="round"/>
+        <path d="M16 12 L16 26" stroke="#4F5D43" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+      <span class="font-cormorant text-2xl md:text-[28px] leading-none italic" style="color: #2E3826;">{info.wordmark}</span>
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-7 font-manrope text-[12.5px]" style="color: #2E3826;">
+      <a href="#philosophie" class="hover:opacity-70">Philosophie</a>
+      <a href="#accompagnements" class="hover:opacity-70">Accompagnements</a>
+      <a href="#methode" class="hover:opacity-70">Méthode</a>
+      <a href="#praticienne" class="hover:opacity-70">Praticienne</a>
+      <a href="#tarifs" class="hover:opacity-70">Tarifs</a>
+    </nav>
+
+    <a href="#rendez-vous" class="inline-flex items-center gap-2 font-manrope font-medium text-[12px] md:text-[13px] h-10 md:h-11 px-4 md:px-5 transition-colors" style="background-color: #4F5D43; color: #F1ECE0;">
+      Premier rendez-vous
+    </a>
+  </div>
+</header>

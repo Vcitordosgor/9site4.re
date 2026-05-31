@@ -2,30 +2,29 @@
 import data from '../../../data/templates/notaire.json';
 ---
 
-<section id="methode" class="py-20 md:py-28" style="background-color: #1A1715; color: #F5F1EB;">
-  <div class="max-w-content mx-auto px-6 md:px-10">
+<section id="methode" class="py-20 md:py-28" style="background-color: #FFFFFF;">
+  <div class="max-w-content mx-auto px-5 md:px-10">
 
-    <div class="max-w-2xl mb-14 md:mb-20">
-      <p class="font-inter text-[11px] uppercase tracking-[0.4em] mb-4" style="color: #A28B5C;">— Notre méthode —</p>
-      <h2 class="font-cormorant text-4xl md:text-6xl leading-[0.95]">
-        Quatre étapes,
-        <em class="italic block" style="color: #A28B5C;">une rigueur constante.</em>
-      </h2>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 mb-14 md:mb-20 items-end">
+      <div class="lg:col-span-7">
+        <p class="font-inter text-[11px] uppercase tracking-[0.38em] mb-4" style="color: #A28B5C;">— Méthode —</p>
+        <h2 class="font-cormorant leading-[1.02]" style="color: #1A1715; font-size: clamp(34px, 5vw, 58px);">
+          Du premier mot <em class="italic" style="color: #A28B5C;">à la signature.</em>
+        </h2>
+      </div>
+      <div class="lg:col-span-5">
+        <p class="font-inter text-[14.5px] leading-relaxed" style="color: rgba(26,23,21,0.72);">
+          Quatre étapes formalisées. Vous savez à tout instant où en est votre dossier, qui le pilote, quels sont les délais et les coûts à venir.
+        </p>
+      </div>
     </div>
 
-    <ol class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px" style="background-color: rgb(245 241 235 / 0.18);">
+    <ol class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px" style="background-color: rgba(26,23,21,0.12);">
       {data.methode.map((m) => (
-        <li class="p-7 md:p-9" style="background-color: #1A1715;">
-          <p class="font-cormorant italic leading-none" style="color: #A28B5C; font-size: clamp(48px, 5vw, 72px);">
-            {m.etape}
-          </p>
-          <div class="mt-6 mb-5 w-12 h-px" style="background-color: #A28B5C;" aria-hidden="true"></div>
-          <h3 class="font-cormorant text-2xl md:text-3xl leading-tight">
-            {m.titre}
-          </h3>
-          <p class="mt-4 font-inter text-[13px] leading-relaxed" style="color: rgb(245 241 235 / 0.7);">
-            {m.texte}
-          </p>
+        <li class="p-7 md:p-8 flex flex-col gap-4" style="background-color: #F5F1EB;">
+          <span class="font-cormorant italic text-6xl leading-none" style="color: #A28B5C;">{m.etape}</span>
+          <h3 class="font-cormorant text-2xl md:text-3xl" style="color: #1A1715;">{m.titre}</h3>
+          <p class="font-inter text-[13.5px] leading-relaxed" style="color: rgba(26,23,21,0.78);">{m.texte}</p>
         </li>
       ))}
     </ol>

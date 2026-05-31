@@ -3,77 +3,47 @@ import '@fontsource/nunito/latin-400.css';
 import '@fontsource/nunito/latin-600.css';
 import '@fontsource/nunito/latin-700.css';
 import '@fontsource/nunito/latin-800.css';
-import '@fontsource/caveat/latin-400.css';
-import '@fontsource/caveat/latin-500.css';
+import '@fontsource/dm-sans/latin-400.css';
+import '@fontsource/dm-sans/latin-500.css';
+import '@fontsource/dm-sans/latin-600.css';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSeo } from '../../lib/seo';
-import { localBusinessSchema } from "../../lib/businessSchema";
-import nidData from '../../data/templates/nid.json';
+import { localBusinessSchema } from '../../lib/businessSchema';
+import data from '../../data/templates/nid.json';
 
-import NidHeader from '../../components/templates/creche/NidHeader.astro';
-import HeroNid from '../../components/templates/creche/HeroNid.astro';
-import Pedagogie from '../../components/templates/creche/Pedagogie.astro';
-import Equipe from '../../components/templates/creche/Equipe.astro';
+import Header from '../../components/templates/creche/Header.astro';
+import Hero from '../../components/templates/creche/Hero.astro';
 import Journee from '../../components/templates/creche/Journee.astro';
+import Equipe from '../../components/templates/creche/Equipe.astro';
+import Pedagogie from '../../components/templates/creche/Pedagogie.astro';
 import Locaux from '../../components/templates/creche/Locaux.astro';
-import Securite from '../../components/templates/creche/Securite.astro';
-import Tarifs from '../../components/templates/creche/Tarifs.astro';
-import Disponibilites from '../../components/templates/creche/Disponibilites.astro';
+import Inscription from '../../components/templates/creche/Inscription.astro';
 import Faq from '../../components/templates/creche/Faq.astro';
 import Contact from '../../components/templates/creche/Contact.astro';
-import NidFooter from '../../components/templates/creche/NidFooter.astro';
+import Footer from '../../components/templates/creche/Footer.astro';
 
-const businessLD = localBusinessSchema(nidData, 'ChildCare');
-
+const businessLD = localBusinessSchema(data, 'ChildCare');
 ---
 
 <BaseLayout seo={getSeo('templateCreche')} bare={true}>
   <Fragment slot="head">
     {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
-<link rel="preload" as="image" href={nidData.info.photoHero} fetchpriority="high" />
+    <link rel="preload" as="image" href={data.info.photoHero} fetchpriority="high" />
   </Fragment>
 
-  <NidHeader />
+  <Header />
 
-  <main style="background-color: #FFFFFF;">
-    <HeroNid />
-    <Pedagogie />
-    <Equipe />
+  <main style="background-color: #FDF7F0;">
+    <Hero />
     <Journee />
+    <Equipe />
+    <Pedagogie />
     <Locaux />
-    <Securite />
-    <Tarifs />
-    <Disponibilites />
+    <Inscription />
     <Faq />
     <Contact />
   </main>
 
-  <NidFooter />
-
-  <a
-    id="nid-sticky-cta"
-    href="#contact"
-    data-visible="false"
-    class="md:hidden fixed bottom-5 inset-x-5 z-40 inline-flex items-center justify-center h-12 font-nunito font-bold text-sm rounded-full transition-all duration-300 data-[visible=false]:opacity-0 data-[visible=false]:translate-y-4 data-[visible=false]:pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0"
-    style="background-color: #F8D77E; color: #2E2A26; box-shadow: 0 12px 28px rgba(46,42,38,0.20);"
-  >
-    Inscrire mon enfant →
-  </a>
-
-  <script>
-    const sticky = document.getElementById('nid-sticky-cta');
-    const contact = document.getElementById('contact');
-    if (sticky && contact) {
-      const update = () => {
-        const rect = contact.getBoundingClientRect();
-        const inSection = rect.top < window.innerHeight && rect.bottom > 80;
-        const scrolledPastHero = window.scrollY > 600;
-        sticky.dataset.visible = String(scrolledPastHero && !inSection);
-      };
-      update();
-      window.addEventListener('scroll', update, { passive: true });
-      window.addEventListener('resize', update, { passive: true });
-    }
-  </script>
+  <Footer />
 </BaseLayout>

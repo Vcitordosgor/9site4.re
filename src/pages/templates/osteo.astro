@@ -1,100 +1,49 @@
 ---
-import '@fontsource/cardo/latin-400.css';
-import '@fontsource/cardo/latin-400-italic.css';
-import '@fontsource/cardo/latin-700.css';
-import '@fontsource/public-sans/latin-300.css';
-import '@fontsource/public-sans/latin-400.css';
-import '@fontsource/public-sans/latin-500.css';
-import '@fontsource/public-sans/latin-600.css';
-import '@fontsource/karla/latin-400.css';
-import '@fontsource/karla/latin-500.css';
-import '@fontsource/karla/latin-600.css';
+import '@fontsource/cormorant-garamond/latin-400.css';
+import '@fontsource/cormorant-garamond/latin-400-italic.css';
+import '@fontsource/cormorant-garamond/latin-500.css';
+import '@fontsource/cormorant-garamond/latin-600.css';
+import '@fontsource/inter/latin-400.css';
+import '@fontsource/inter/latin-500.css';
+import '@fontsource/inter/latin-600.css';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSeo } from '../../lib/seo';
-import { localBusinessSchema } from "../../lib/businessSchema";
-import verveineData from '../../data/templates/verveine.json';
+import { localBusinessSchema } from '../../lib/businessSchema';
+import data from '../../data/templates/verveine.json';
 
-import VerveineHeader from '../../components/templates/osteo/VerveineHeader.astro';
-import HeroFiche from '../../components/templates/osteo/HeroFiche.astro';
+import Header from '../../components/templates/osteo/Header.astro';
+import Hero from '../../components/templates/osteo/Hero.astro';
 import Approche from '../../components/templates/osteo/Approche.astro';
-import Motifs from '../../components/templates/osteo/Motifs.astro';
-import PhotoCabinet from '../../components/templates/osteo/PhotoCabinet.astro';
-import Bandeau from '../../components/templates/osteo/Bandeau.astro';
-import Citation from '../../components/templates/osteo/Citation.astro';
-import Seance from '../../components/templates/osteo/Seance.astro';
+import Expertise from '../../components/templates/osteo/Expertise.astro';
+import Praticienne from '../../components/templates/osteo/Praticienne.astro';
 import Tarifs from '../../components/templates/osteo/Tarifs.astro';
-import Mutuelle from '../../components/templates/osteo/Mutuelle.astro';
 import RendezVous from '../../components/templates/osteo/RendezVous.astro';
-import Trouver from '../../components/templates/osteo/Trouver.astro';
-import CTAFinal from '../../components/templates/osteo/CTAFinal.astro';
-import VerveineFooter from '../../components/templates/osteo/VerveineFooter.astro';
-import Chiffres from '../../components/templates/osteo/Chiffres.astro';
-import Manifeste from '../../components/templates/osteo/Manifeste.astro';
-import Processus from '../../components/templates/osteo/Processus.astro';
 import Faq from '../../components/templates/osteo/Faq.astro';
-const businessLD = localBusinessSchema(verveineData, 'MedicalBusiness');
+import Contact from '../../components/templates/osteo/Contact.astro';
+import Footer from '../../components/templates/osteo/Footer.astro';
 
+const businessLD = localBusinessSchema(data, 'MedicalBusiness');
 ---
 
 <BaseLayout seo={getSeo('templateOsteo')} bare={true}>
   <Fragment slot="head">
     {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
-<link
-      rel="preload"
-      as="image"
-      href={verveineData.info.photoPraticienne}
-      fetchpriority="high"
-    />
+    <link rel="preload" as="image" href="/images/osteo/extra-1.webp" fetchpriority="high" />
   </Fragment>
 
-  <VerveineHeader />
+  <Header />
 
-  <main id="top" class="bg-verveine-creme text-verveine-encre font-public-sans">
-    <HeroFiche />
+  <main style="background-color: #F7F4EE;">
+    <Hero />
     <Approche />
-    <Chiffres />
-    <Motifs />
-    <PhotoCabinet />
-    <Manifeste />
-    <Bandeau />
-    <Seance />
-    <Processus />
-    <Citation />
+    <Expertise />
+    <Praticienne />
     <Tarifs />
-    <Mutuelle />
     <RendezVous />
     <Faq />
-    <Trouver />
-    <CTAFinal />
+    <Contact />
   </main>
 
-  <VerveineFooter />
-
-  <!-- Sticky CTA mobile : rectangle bordé encre (vs pill bordeaux danse, ocre yoga, lime brut coach) -->
-  <a
-    id="verveine-sticky-cta"
-    href="#rendez-vous"
-    data-visible="false"
-    class="md:hidden fixed bottom-5 inset-x-5 z-40 inline-flex items-center justify-center h-12 bg-verveine-encre text-verveine-creme font-public-sans text-sm font-medium transition-all duration-300 data-[visible=false]:opacity-0 data-[visible=false]:translate-y-4 data-[visible=false]:pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0"
-    style="box-shadow: 0 8px 24px rgba(28,28,26,0.20);"
-  >
-    Prendre rendez-vous
-  </a>
-
-  <script>
-    const sticky = document.getElementById('verveine-sticky-cta');
-    const rdv = document.getElementById('rendez-vous');
-    if (sticky && rdv) {
-      const update = () => {
-        const rect = rdv.getBoundingClientRect();
-        const inRdv = rect.top < window.innerHeight && rect.bottom > 80;
-        const scrolledPastHero = window.scrollY > 500;
-        sticky.dataset.visible = String(scrolledPastHero && !inRdv);
-      };
-      update();
-      window.addEventListener('scroll', update, { passive: true });
-      window.addEventListener('resize', update, { passive: true });
-    }
-  </script>
+  <Footer />
 </BaseLayout>
