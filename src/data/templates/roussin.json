@@ -7,14 +7,14 @@
     "tagline": "Le droit, sans la posture.",
     "deviseLatine": "Audi alteram partem",
     "deviseTraduction": "Entendre la partie adverse",
-    "fondateur": "Maître Olivier Roussin",
+    "fondateur": "L'avocat fondateur",
     "ville": "La Réunion",
-    "adresseLigne1": "27 rue Marius et Ary Leblond",
-    "adresseLigne2": "97410 La Réunion",
+    "adresseLigne1": "La Réunion",
+    "adresseLigne2": "",
     "telephone": "0692 12 34 56",
     "telephoneHref": "+262692123456",
     "email": "contact@etude-roussin.re",
-    "siret": "78912045600014",
+    "siret": "",
     "annee": "2008",
     "ordreBarreau": "Barreau de La Réunion",
     "horaires": "Lundi → vendredi · 8h30 → 12h30 / 14h → 18h"
@@ -35,7 +35,7 @@
         "Médiation familiale conventionnelle"
       ],
       "tarif": "Consultation 90 € · forfaits transparents",
-      "responsable": "Me Olivier Roussin"
+      "responsable": "Avocat associé"
     },
     {
       "id": "droit-affaires",
@@ -51,7 +51,7 @@
         "Audit juridique annuel PME"
       ],
       "tarif": "Forfait audit 1 800 € HT · honoraires sur devis",
-      "responsable": "Me Sandrine Hoarau"
+      "responsable": "Avocate associée"
     },
     {
       "id": "droit-travail",
@@ -67,7 +67,7 @@
         "Conseil RH PME (règlement intérieur, contrats)"
       ],
       "tarif": "1ère consultation 60 € · barème détaillé",
-      "responsable": "Me Olivier Roussin & Me Karim Aly"
+      "responsable": "Équipe d'associés"
     },
     {
       "id": "droit-immobilier",
@@ -83,45 +83,45 @@
         "Servitudes, mitoyenneté, bornage"
       ],
       "tarif": "Consultation 90 € · suivi sur devis",
-      "responsable": "Me Karim Aly"
+      "responsable": "Avocat associé"
     }
   ],
   "associes": [
     {
-      "prenom": "Olivier",
-      "nom": "Roussin",
+      "prenom": "O.",
+      "nom": "R.",
       "titre": "Avocat associé fondateur",
       "barreau": "Barreau de La Réunion",
       "specialite": "Droit de la famille · droit du travail",
       "annees": ""
     },
     {
-      "prenom": "Sandrine",
-      "nom": "Hoarau",
+      "prenom": "S.",
+      "nom": "H.",
       "titre": "Avocate associée",
       "barreau": "Barreau de La Réunion",
-      "specialite": "Droit des affaires · droit fiscal",
+      "specialite": "Droit des affaires",
       "annees": ""
     },
     {
-      "prenom": "Karim",
-      "nom": "Aly",
+      "prenom": "K.",
+      "nom": "A.",
       "titre": "Avocat associé",
       "barreau": "Barreau de La Réunion",
-      "specialite": "Droit immobilier · droit du travail",
+      "specialite": "Droit immobilier",
       "annees": ""
     }
   ],
   "fondateur": {
-    "nom": "Maître Olivier Roussin",
+    "nom": "L'avocat fondateur",
     "titre": "Avocat associé fondateur",
-    "bio": "Olivier Roussin est inscrit au Barreau de l'île depuis 2007. Diplômé du CRFPA d'Aix-en-Provence (2006) après une maîtrise de droit privé à La Réunion. Il a fondé l'Étude Roussin en 2008 avec la conviction qu'un cabinet de proximité, transparent sur ses honoraires, avait sa place dans le sud de l'île.",
+    "bio": "L'Étude a été fondée en 2008 à La Réunion avec la conviction qu'un cabinet de proximité, transparent sur ses honoraires, a sa place sur l'île.",
     "credo": "« Notre métier, ce n'est pas de promettre une victoire. C'est de vous expliquer ce qui peut, ce qui ne peut pas, et combien ça coûte. »",
     "engagements": [
-      "Bâtonnier suppléant 2019-2021",
-      "Chargé d'enseignement Université de La Réunion (Procédure civile)",
-      "Médiateur certifié CMAP",
-      "Aide juridictionnelle acceptée"
+      "Approche médiation privilégiée",
+      "Aide juridictionnelle acceptée",
+      "Honoraires écrits avant tout démarrage",
+      "Rendu de compte régulier"
     ]
   },
   "demarches": [
@@ -150,29 +150,29 @@
     {
       "prenom": "Madame B.",
       "ville": "La Réunion",
-      "domaine": "Divorce",
+      "domaine": "Droit de la famille",
       "etoiles": 5,
-      "texte": "Maître Roussin a accompagné mon divorce avec une grande humanité. Il m'a déconseillée de partir au contentieux, ce qui m'a fait économiser 6 000 € et 18 mois. Acte d'avocats signé en 8 semaines. Je le recommande à mes amies."
+      "texte": "Accompagnement avec une grande humanité. On m'a expliqué clairement les options et orienté vers la solution la plus raisonnable. Honoraires annoncés à l'avance."
     },
     {
-      "prenom": "M. P., dirigeant SARL",
+      "prenom": "M. P.",
       "ville": "La Réunion",
       "domaine": "Droit des affaires",
       "etoiles": 5,
-      "texte": "Audit juridique annuel par Me Hoarau depuis 2020 pour ma société (12 salariés, BTP). Chaque année, elle identifie 2-3 risques que nous corrigeons à froid. Forfait 1 800 €, ROI évident. Je leur ai aussi confié un contentieux commercial gagné en 1ère instance."
+      "texte": "Audit juridique annuel pour ma société. Identifications de risques, conseils concrets. Travail sérieux et lisible."
     },
     {
       "prenom": "Mlle T.",
       "ville": "La Réunion",
-      "domaine": "Prud'hommes",
+      "domaine": "Droit du travail",
       "etoiles": 5,
-      "texte": "Licenciement abusif, j'avais peur du coût. Me Aly a accepté un honoraire 'résultat' (5% des indemnités obtenues). 9 mois plus tard, 22 000 € d'indemnités. Pas un centime déboursé d'avance. Très professionnel."
+      "texte": "Licenciement difficile à gérer, j'avais peur du coût. Tout a été expliqué en amont. Très professionnel et à l'écoute."
     }
   ],
   "infosCles": {
-    "anneesActivite": "18",
+    "anneesActivite": "15+",
     "associes": "3",
-    "dossiersOuvertsAn": "240",
-    "tauxAccordsAmiables": "62"
+    "dossiersOuvertsAn": "—",
+    "tauxAccordsAmiables": "—"
   }
 }

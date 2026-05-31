@@ -5,7 +5,7 @@
     "wordmark2": "& Associés",
     "soustitre": "Office notarial · La Réunion",
     "tagline": "L'acte qui sécurise. La parole qui rassure.",
-    "fondateur": "Maître Patricia Lefèvre",
+    "fondateur": "Le notaire fondateur",
     "ville": "La Réunion",
     "adresseLigne1": "Office notarial",
     "adresseLigne2": "La Réunion",
@@ -14,7 +14,7 @@
     "whatsapp": "262692123456",
     "email": "etude@notariale-associes.re",
     "instagram": "@etude.notariale",
-    "siret": "78921045300017",
+    "siret": "",
     "annee": "1998",
     "photoHero": "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=1600&auto=format&fit=crop",
     "photoHeroAlt": "Bureau d'étude notariale, livres reliés et écritoire en bois noble — Étude Notariale & Associés, La Réunion",
@@ -82,31 +82,31 @@
   ],
   "notaires": [
     {
-      "nom": "Maître Patricia Lefèvre",
-      "role": "Notaire associée · Présidente",
+      "nom": "P. L.",
+      "role": "Notaire associé(e)",
       "specialite": "Droit de la famille & succession",
       "diplome": "",
       "anciennete": "",
       "bio": "",
-      "photo": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=600&auto=format&fit=crop"
+      "photo": ""
     },
     {
-      "nom": "Maître Antoine Riberol",
-      "role": "Notaire associé",
+      "nom": "A. R.",
+      "role": "Notaire associé(e)",
       "specialite": "Immobilier & urbanisme",
       "diplome": "",
       "anciennete": "",
       "bio": "",
-      "photo": "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=600&auto=format&fit=crop"
+      "photo": ""
     },
     {
-      "nom": "Maître Camille Verdier",
-      "role": "Notaire associée",
-      "specialite": "Droit des sociétés & fiscalité",
+      "nom": "C. V.",
+      "role": "Notaire associé(e)",
+      "specialite": "Droit des sociétés",
       "diplome": "",
       "anciennete": "",
       "bio": "",
-      "photo": "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=600&auto=format&fit=crop"
+      "photo": ""
     }
   ],
   "methode": [

@@ -5,21 +5,21 @@
     "wordmark2": "Sel",
     "soustitre": "Wedding planner · La Réunion",
     "tagline": "L'océan vous marie.",
-    "fondatrice": "Cléa Hoarau",
+    "fondatrice": "La fondatrice",
     "ville": "La Réunion",
-    "adresseLigne1": "23 boulevard Roland Garros",
-    "adresseLigne2": "97434 La Réunion",
+    "adresseLigne1": "Sur rendez-vous",
+    "adresseLigne2": "La Réunion",
     "telephone": "0692 12 34 56",
     "telephoneHref": "+262692123456",
     "whatsapp": "262692123456",
     "email": "bonjour@seve-et-sel.re",
     "instagram": "@seve.et.sel",
-    "siret": "78901234500017",
+    "siret": "",
     "annee": "2017",
     "photoHero": "/images/seve/hero.webp",
     "photoHeroAlt": "Lagon turquoise de l'île, La Réunion — cadre idéal pour une cérémonie de mariage",
-    "ceremonies2025": 47,
-    "ceremoniesPrevues2026": 32
+    "ceremonies2025": null,
+    "ceremoniesPrevues2026": null
   },
   "promesse": "Vous arrivez d'Auckland, de Lyon ou de l'île. Vous voulez vous marier les pieds dans le sable, sous les filaos, devant un lagon turquoise. Mais vous ne connaissez personne ici, vous travaillez à l'autre bout du monde, et vous n'avez pas envie de vous occuper du fleuriste pendant 6 mois. C'est exactement ce que nous faisons : tout, pour vous, sur place — pour qu'il ne vous reste qu'à dire oui.",
   "ceremonies": [
@@ -105,10 +105,10 @@
     }
   ],
   "fondatrice": {
-    "nom": "Cléa Hoarau",
-    "titre": "Fondatrice & coordinatrice",
-    "bio": "Cléa est née à La Réunion. Après 8 ans à organiser des mariages destination en Polynésie et au Mexique, elle est rentrée à La Réunion en 2017 pour fonder Sève & Sel. Aujourd'hui elle accompagne 40 à 50 couples par an, dont 70% viennent de métropole, du Canada, ou de pays anglophones. Sa devise : « un mariage doit ressembler aux mariés, pas à un Pinterest. »",
-    "promesse": "Une seule interlocutrice du brief à la dernière chanson. Pas de sous-traitance opaque, pas d'intermédiaire qui s'évapore après le devis."
+    "nom": "L'équipe Sève & Sel",
+    "titre": "Wedding planner à La Réunion",
+    "bio": "Sève & Sel accompagne les couples qui veulent se marier à La Réunion, qu'ils viennent de l'île ou d'ailleurs. Approche sur mesure, anglais parlé, devis ligne par ligne, pas de sous-traitance opaque. Devise : « un mariage doit ressembler aux mariés, pas à un Pinterest. »",
+    "promesse": "Une seule interlocutrice du brief à la dernière chanson. Pas d'intermédiaire qui s'évapore après le devis."
   },
   "couples": [
     {
@@ -116,21 +116,21 @@
       "origine": "Lyon → Hermitage",
       "date": "Octobre 2025",
       "etoiles": 5,
-      "texte": "On voulait un mariage 'pieds nus' à La Réunion, mais on travaillait tous les deux 70h par semaine à Lyon. Cléa a TOUT géré pendant 9 mois. Le jour J, on a juste eu à se présenter. La cérémonie au coucher du soleil, le lagon orange, les invités en larmes : exactement ce qu'on imaginait — en mille fois mieux."
+      "texte": "On voulait un mariage 'pieds nus' à La Réunion, mais on travaillait tous les deux beaucoup en métropole. L'équipe a TOUT géré pendant 9 mois. Le jour J, on a juste eu à se présenter. La cérémonie au coucher du soleil, le lagon orange, les invités émus : exactement ce qu'on imaginait — en mille fois mieux."
     },
     {
       "prenoms": "Aroha & Kenji",
       "origine": "Auckland → Boucan Canot",
       "date": "Mai 2025",
       "etoiles": 5,
-      "texte": "Cérémonie bilingue maori-français-anglais sur Boucan Canot. Cléa parle anglais couramment et a coordonné nos 3 cultures sans jamais perdre le sens. Mes parents ont passé leur première semaine à La Réunion, ils en parlent toujours."
+      "texte": "Cérémonie bilingue, plusieurs cultures à coordonner. L'équipe parle anglais couramment et a tenu le sens du début à la fin. Mes parents en parlent toujours."
     },
     {
       "prenoms": "Léa & Inès",
       "origine": "La Réunion → Jardin Eden",
       "date": "Août 2025",
       "etoiles": 5,
-      "texte": "Cérémonie civile au matin, cocktail au jardin l'après-midi, 32 invités. Cléa a négocié avec la mairie de l'île pour qu'on se marie un mardi (toutes nos famille de métropole étaient en vacances). Le traiteur tapas péi : à pleurer."
+      "texte": "Cérémonie civile au matin, cocktail au jardin l'après-midi, en petit comité. L'équipe a coordonné chaque détail avec les prestataires locaux. Le traiteur tapas péi : à pleurer."
     }
   ],
   "demarches": [

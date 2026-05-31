@@ -5,16 +5,16 @@
     "wordmark2": "Latitude",
     "soustitre": "Photographie d'auteur · La Réunion",
     "tagline": "L'image juste, jamais l'image facile.",
-    "fondateur": "Aurélien Maillot",
+    "fondateur": "Le photographe",
     "ville": "La Réunion",
-    "adresseLigne1": "8 rue Juliette Dodu",
-    "adresseLigne2": "97400 La Réunion",
+    "adresseLigne1": "Studio",
+    "adresseLigne2": "La Réunion",
     "telephone": "0692 12 34 56",
     "telephoneHref": "+262692123456",
     "whatsapp": "262692123456",
     "email": "studio@latitude-photo.re",
     "instagram": "@studio.latitude.re",
-    "siret": "79234108100015",
+    "siret": "",
     "annee": "2016",
     "photoHero": "https://images.unsplash.com/photo-1606983340126-99ab4feaa64a?w=1800&q=85",
     "photoHeroAlt": "Photographe professionnel en studio avec appareil Leica argentique, La Réunion",
@@ -24,7 +24,7 @@
       "pellicules": "Kodak Portra 400 · Tri-X 400"
     }
   },
-  "promesse": "Studio Latitude, c'est Aurélien Maillot, photographe d'auteur installé à La Réunion depuis 2016. Argentique moyen format pour les portraits, numérique haut de gamme pour le reportage. Chaque image est tirée, retouchée et signée à la main. Pas de presets industriels.",
+  "promesse": "Studio Latitude est un studio de photographie d'auteur installé à La Réunion depuis 2016. Argentique moyen format pour les portraits, numérique haut de gamme pour le reportage. Chaque image est tirée, retouchée et signée à la main. Pas de presets industriels.",
   "series": [
     {
       "id": "portraits-auteur",
@@ -85,7 +85,7 @@
       "duree": "Édition limitée numérotée",
       "prix": "180 → 1 200 € selon format",
       "tagline": "L'image en 30 exemplaires, jamais 31.",
-      "description": "Tirages personnels d'Aurélien (séries Hauts-Réunionnais, Île-paysage, Le Volcan). Édition limitée à 30 exemplaires numérotés et signés au crayon graphite. Disponibles à l'atelier de l'île ou sur commande.",
+      "description": "Tirages personnels (séries Hauts-Réunionnais, Île-paysage, Le Volcan). Édition limitée numérotée et signée à la main. Disponibles à l'atelier ou sur commande.",
       "moments": [
         "Hauts-Réunionnais",
         "L'île-paysage",
@@ -96,15 +96,15 @@
     }
   ],
   "fondateur": {
-    "nom": "Aurélien Maillot",
-    "titre": "Photographe d'auteur",
-    "bio": "Aurélien est né au Port en 1984. Études à l'École Nationale Supérieure de la Photographie d'Arles (2007-2010), puis 6 ans à Marseille comme assistant studio. Retour à La Réunion en 2016 pour fonder Studio Latitude. Son travail personnel a été exposé à la Réunion des Arts Plastiques (2019, 2022) et à la Cité Internationale des Arts (Paris, 2023).",
+    "nom": "Studio Latitude",
+    "titre": "Photographie d'auteur",
+    "bio": "Studio Latitude est installé à La Réunion depuis 2016. Pratique argentique moyen format pour les portraits, numérique haut de gamme pour le reportage. Chaque image est tirée, retouchée et signée à la main. Pas de presets industriels.",
     "credo": "« La meilleure image, c'est celle qu'on n'a pas honte de montrer dans 20 ans. »",
     "expositions": [
-      "2023 · Cité Internationale des Arts, Paris — 'Hauts-Réunionnais'",
-      "2022 · Réunion des Arts Plastiques — 'Le Volcan'",
-      "2019 · Festival Photographique de Stella Matutina",
-      "2018 · Galerie Dell'Arte, La Réunion"
+      "Travail personnel régulièrement exposé à La Réunion",
+      "Tirages limités numérotés à la main",
+      "Approche d'auteur, pas d'image facile",
+      "Pratique argentique + numérique"
     ]
   },
   "demarches": [
@@ -131,22 +131,22 @@
   ],
   "avis": [
     {
-      "prenom": "Camille",
-      "metier": "Écrivaine",
+      "prenom": "Une cliente",
+      "metier": "Portrait d'auteur",
       "etoiles": 5,
-      "texte": "Aurélien a fait mes portraits pour la couverture de mon roman. Il a passé 30 minutes à parler avant de toucher l'appareil. Le résultat : la photo de moi la plus juste qu'on m'ait jamais faite."
+      "texte": "Du temps passé à parler avant de toucher l'appareil. Le résultat : un portrait juste, qu'on garde."
     },
     {
-      "prenom": "Léa & Mathis",
-      "metier": "Mariés · 2024",
+      "prenom": "Un couple",
+      "metier": "Reportage mariage",
       "etoiles": 5,
-      "texte": "On voulait un photographe qui ne fasse pas le clown au mariage. On a eu un photographe-auteur qui a livré un album de 30 pages qu'on ressort à chaque visite. Pas une pose forcée. Travail magistral."
+      "texte": "On voulait un photographe discret et d'auteur. Album magnifique, pas une pose forcée, travail sérieux."
     },
     {
-      "prenom": "Région Réunion",
-      "metier": "Direction culture",
+      "prenom": "Un client institutionnel",
+      "metier": "Reportage événementiel",
       "etoiles": 5,
-      "texte": "Couverture du Festival Sakifo pendant 4 jours. Aurélien sait disparaître et capter des moments inaccessibles aux autres photographes. Bibliothèque de 800 images livrées : utilisable sur tous nos supports."
+      "texte": "Couverture d'événement professionnelle, présence discrète, livrables utilisables sur tous nos supports."
     }
   ],
   "infosCles": {

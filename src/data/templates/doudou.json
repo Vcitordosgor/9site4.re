@@ -5,16 +5,16 @@
     "wordmark2": "Service",
     "soustitre": "Aide à domicile · La Réunion",
     "tagline": "Une présence quotidienne, à La Réunion.",
-    "fondatrice": "Marie-Claire Robert",
+    "fondatrice": "Marie-Claire",
     "ville": "La Réunion",
-    "adresseLigne1": "8 rue Lacaussade",
-    "adresseLigne2": "97440 La Réunion",
+    "adresseLigne1": "La Réunion",
+    "adresseLigne2": "",
     "telephone": "0692 12 34 56",
     "telephoneHref": "+262692123456",
     "whatsapp": "262692123456",
     "email": "bonjour@doudou-service.re",
-    "siret": "44556677800017",
-    "agrement": "Agréé Conseil Départemental 974 · SAP 2010 7461",
+    "siret": "",
+    "agrement": "Service d'aide à domicile · La Réunion",
     "annee": "2010",
     "photoHero": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=1600&q=85"
   },
@@ -22,66 +22,66 @@
     {
       "icone": "maison",
       "titre": "Proximité",
-      "texte": "On habite tous dans le même quartier. Vos aidants ne sont jamais à plus de 15 minutes en voiture."
+      "texte": "Des aidants qui interviennent près de chez vous, pour limiter les trajets et garder un vrai lien."
     },
     {
       "icone": "coeur",
       "titre": "Écoute",
-      "texte": "Une seule règle : on prend le temps. Pas de minutage à la seconde, pas de pression chrono."
+      "texte": "On prend le temps. Pas de minutage à la seconde, pas de pression chrono."
     },
     {
       "icone": "diplome",
       "titre": "Formation",
-      "texte": "Tous diplômés DEAES ou auxiliaire de vie. Formation continue annuelle obligatoire."
+      "texte": "Une équipe formée à l'accompagnement à domicile, avec mises à jour régulières."
     },
     {
       "icone": "main",
       "titre": "Suivi familial",
-      "texte": "Un appel mensuel à la famille pour faire le point. Carnet de liaison partagé en continu."
+      "texte": "Un point régulier avec la famille. Carnet de liaison partagé au domicile."
     }
   ],
   "services": [
     {
       "titre": "Toilette & habillage",
-      "texte": "Avec respect et patience, dans le cadre intime du domicile. Préservation absolue de la dignité."
+      "texte": "Avec respect et patience, dans le cadre intime du domicile. Préservation de la dignité."
     },
     {
       "titre": "Préparation des repas",
-      "texte": "Cuisine adaptée aux régimes médicaux, repas créoles maison sur demande, aide à la prise."
+      "texte": "Cuisine adaptée, repas créoles maison sur demande, aide à la prise."
     },
     {
       "titre": "Courses & démarches",
-      "texte": "Liste avec vous, courses au plus près, retrait pharmacie, démarches administratives simples."
+      "texte": "Liste avec vous, courses au plus près, retrait pharmacie, démarches simples."
     },
     {
-      "titre": "Accompagnement médical",
-      "texte": "Trajets RDV médicaux, consultations, dialyse, kiné. Présence en salle si demandée."
+      "titre": "Accompagnement extérieur",
+      "texte": "Trajets rendez-vous, sorties, présence si demandée."
     },
     {
       "titre": "Ménage léger",
-      "texte": "Entretien courant du logement, linge, vaisselle. On garde le foyer propre sans tout chambouler."
+      "texte": "Entretien courant du logement, linge, vaisselle."
     },
     {
       "titre": "Présence & lien social",
-      "texte": "Lecture, jeux de société, conversation, sortie au jardin. Parce que la solitude pèse."
+      "texte": "Lecture, conversation, jeux, sortie au jardin. Parce que la solitude pèse."
     }
   ],
   "publics": [
     {
-      "titre": "Personnes âgées dépendantes",
-      "texte": "Maintien à domicile en GIR 1 à 4. Coordination avec médecin traitant et SSIAD si besoin."
+      "titre": "Personnes âgées",
+      "texte": "Maintien à domicile, coordination avec les intervenants habituels si besoin."
     },
     {
       "titre": "Situation de handicap",
-      "texte": "PCH ou MTP. Adaptation totale au handicap moteur, sensoriel ou psychique."
+      "texte": "Adaptation au handicap moteur, sensoriel ou psychique."
     },
     {
       "titre": "Sortie d'hospitalisation",
-      "texte": "Post-opératoire, post-AVC, retour de réa. Accompagnement temporaire ou prolongé."
+      "texte": "Accompagnement temporaire ou prolongé après un retour à domicile."
     },
     {
       "titre": "Aidants familiaux",
-      "texte": "Vous épuisez. On prend le relais quelques heures, quelques jours, le temps qu'il faut."
+      "texte": "On prend le relais quelques heures, quelques jours, le temps qu'il faut."
     }
   ],
   "tarifs": {
@@ -97,11 +97,6 @@
         "unite": "/ heure"
       },
       {
-        "label": "Heure de nuit (22h – 8h)",
-        "prix": "29 €",
-        "unite": "/ heure"
-      },
-      {
         "label": "Dimanche & jours fériés",
         "prix": "28 €",
         "unite": "/ heure"
@@ -113,58 +108,58 @@
       }
     ],
     "aides": [
-      "APA (Allocation Personnalisée d'Autonomie) — prise en charge totale ou partielle selon GIR",
-      "PCH (Prestation de Compensation du Handicap)",
-      "Crédit d'impôt 50 % pour les particuliers employeurs",
-      "Mutuelles santé qui remboursent partiellement (à vérifier avec votre contrat)",
-      "Caisses de retraite ARRCO/AGIRC (selon dossier)"
+      "APA (Allocation Personnalisée d'Autonomie) — selon situation",
+      "PCH (Prestation de Compensation du Handicap) — selon situation",
+      "Crédit d'impôt services à la personne — selon situation",
+      "Mutuelles santé — à vérifier avec votre contrat",
+      "Caisses de retraite — selon dossier"
     ]
   },
   "aidants": [
     {
-      "prenom": "Maguy",
+      "prenom": "M.",
       "diplome": "Auxiliaire de vie",
-      "experience": "12 ans",
-      "specialite": "Personnes âgées dépendantes",
-      "photo": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&q=85"
+      "experience": "Expérimentée",
+      "specialite": "Accompagnement au quotidien",
+      "photo": ""
     },
     {
-      "prenom": "Linda",
-      "diplome": "DEAES",
-      "experience": "8 ans",
-      "specialite": "Anglais courant · Sortie d'hospi",
-      "photo": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=85"
+      "prenom": "L.",
+      "diplome": "Aidante à domicile",
+      "experience": "Expérimentée",
+      "specialite": "Sortie d'hospitalisation",
+      "photo": ""
     },
     {
-      "prenom": "Joseph",
-      "diplome": "DEAES",
-      "experience": "6 ans",
-      "specialite": "Maladie d'Alzheimer & démences",
-      "photo": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&q=85"
+      "prenom": "J.",
+      "diplome": "Aidant à domicile",
+      "experience": "Expérimenté",
+      "specialite": "Accompagnement & présence",
+      "photo": ""
     },
     {
-      "prenom": "Sandrine",
-      "diplome": "DEAES",
-      "experience": "5 ans",
-      "specialite": "Post-opératoire & rééducation",
-      "photo": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=600&q=85"
+      "prenom": "S.",
+      "diplome": "Aidante à domicile",
+      "experience": "Expérimentée",
+      "specialite": "Soutien après opération",
+      "photo": ""
     }
   ],
   "temoignages": [
     {
-      "auteur": "Jean-Pierre, fils de Mme R.",
+      "auteur": "Une fille d'aidée",
       "lieu": "La Réunion",
-      "texte": "Maman avait 87 ans, AVC en 2022. On voulait absolument la garder chez elle. Doudou Service a pris la relève quand on travaillait. Marie-Claire venait elle-même les premiers jours. Maman s'est éteinte chez elle, entourée. Merci pour tout, sincèrement."
+      "texte": "On voulait garder maman chez elle. Doudou Service a pris le relais quand on travaillait. Une vraie présence, une vraie écoute. Merci."
     },
     {
-      "auteur": "Marlène, fille de M. P.",
+      "auteur": "Un fils d'aidé",
       "lieu": "La Réunion",
-      "texte": "Papa a Parkinson depuis 8 ans. Joseph s'occupe de lui depuis 3 ans. Il connaît tous ses tics, ses préférences, ses moments difficiles. Quand Joseph entre, papa sourit. C'est inestimable."
+      "texte": "Mon père est suivi depuis plusieurs années. La même équipe, qui le connaît, qui prend le temps. C'est inestimable."
     },
     {
-      "auteur": "Patrice, mari de Mme G.",
+      "auteur": "Un mari aidant",
       "lieu": "La Réunion",
-      "texte": "Cancer du sein, chimio puis chirurgie. Ma femme avait besoin de repos, moi de pouvoir continuer à travailler. Sandrine venait 4 heures le matin, 2 heures le soir. Six mois après, on est tous remis. Doudou a tenu la maison."
+      "texte": "Ma femme avait besoin d'être accompagnée, moi de pouvoir continuer à travailler. Doudou a tenu la maison."
     }
   ],
   "horaires": [

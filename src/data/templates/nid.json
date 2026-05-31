@@ -4,7 +4,7 @@
     "wordmark": "Le Nid",
     "soustitre": "Micro-crèche · La Réunion",
     "tagline": "Un nid pour grandir à son rythme.",
-    "directrice": "Anaïs Beaufort",
+    "directrice": "La directrice",
     "ville": "La Réunion",
     "adresseLigne1": "Micro-crèche du quartier",
     "adresseLigne2": "La Réunion",
@@ -13,14 +13,14 @@
     "whatsapp": "262692123456",
     "email": "bonjour@le-nid.re",
     "instagram": "@le.nid.creche",
-    "siret": "85276432900015",
+    "siret": "",
     "annee": "2017",
     "photoHero": "https://images.unsplash.com/photo-1587654780291-39c9404d746b?q=80&w=1600&auto=format&fit=crop",
     "photoHeroAlt": "Enfants jouant avec des crayons de couleur et des jouets en bois — micro-crèche Le Nid, La Réunion",
     "ouvertureHebdo": "Lundi → vendredi · 7h-19h",
     "fermeture": "Week-end et jours fériés"
   },
-  "promesse": "Micro-crèche agréée PMI, ouverte depuis 2017 à La Réunion. Dix berceaux maximum, trois professionnelles diplômées en permanence. Inspiration Montessori, matériel naturel, rythme respecté.",
+  "promesse": "Micro-crèche à La Réunion, ouverte depuis 2017. Petite capacité d'accueil, équipe diplômée en permanence. Inspiration Montessori, matériel naturel, rythme respecté.",
   "pedagogie": [
     {
       "id": "montessori",
@@ -53,36 +53,36 @@
   ],
   "equipe": [
     {
-      "nom": "Anaïs Beaufort",
+      "nom": "A.",
       "role": "Directrice & EJE",
       "diplome": "",
       "anciennete": "",
       "bio": "",
-      "photo": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=600&auto=format&fit=crop"
+      "photo": ""
     },
     {
-      "nom": "Solène Lépine",
+      "nom": "S.",
       "role": "Auxiliaire de puériculture",
       "diplome": "",
       "anciennete": "",
       "bio": "",
-      "photo": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=600&auto=format&fit=crop"
+      "photo": ""
     },
     {
-      "nom": "Léna Robert",
+      "nom": "L.",
       "role": "Auxiliaire de puériculture",
       "diplome": "",
       "anciennete": "",
       "bio": "",
-      "photo": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=600&auto=format&fit=crop"
+      "photo": ""
     },
     {
-      "nom": "Marie-Jo Vidot",
+      "nom": "M.",
       "role": "Cuisinière & lingère",
       "diplome": "",
       "anciennete": "",
       "bio": "",
-      "photo": "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=600&auto=format&fit=crop"
+      "photo": ""
     }
   ],
   "journee": [
@@ -151,20 +151,20 @@
   ],
   "securite": [
     {
-      "titre": "Encadrement PMI",
-      "texte": "Agrément Protection Maternelle et Infantile renouvelé. Visite annuelle, dossiers à jour, registre des entrées sorties."
+      "titre": "Cadre réglementaire",
+      "texte": "Micro-crèche conforme à la réglementation en vigueur. Suivi des dossiers, registre tenu à jour."
     },
     {
-      "titre": "Taux d'encadrement renforcé",
-      "texte": "1 adulte pour 5 enfants quel que soit l'horaire. Toujours 3 professionnelles diplômées en présence simultanée."
+      "titre": "Encadrement attentif",
+      "texte": "Petits effectifs, équipe diplômée présente en continu. Une référente par enfant."
     },
     {
-      "titre": "Hygiène alimentaire HACCP",
-      "texte": "Cuisine sur place, traçabilité des matières premières, plats témoins conservés 5 jours. Marie-Jo formée HACCP."
+      "titre": "Hygiène alimentaire",
+      "texte": "Cuisine sur place, traçabilité des produits, plats témoins conservés. Personnel formé."
     },
     {
-      "titre": "Médecin référent",
-      "texte": "Suivi médical par un pédiatre référent. Protocoles écrits pour fièvre, varicelle, allergies. Pharmacie sous clé."
+      "titre": "Suivi médical",
+      "texte": "Coordination avec votre pédiatre. Protocoles écrits pour fièvre, allergies. Pharmacie sous clé."
     }
   ],
   "tarifs": [
@@ -172,7 +172,7 @@
       "type": "Place régulière",
       "duree": "5 jours/semaine",
       "indication": "Selon barème CAF — quotient familial",
-      "detail": "Reste à charge moyen : 250 à 480 €/mois selon revenus"
+      "detail": "Reste à charge selon votre situation et vos revenus"
     },
     {
       "type": "Mi-temps",
@@ -208,7 +208,7 @@
     },
     {
       "q": "Acceptez-vous l'allaitement maternel ?",
-      "r": "Bien sûr. Vous pouvez venir allaiter sur place dans notre espace dédié, ou nous fournir des biberons de lait maternel conservés au frigo. Solène est formée IBCLC."
+      "r": "Bien sûr. Vous pouvez venir allaiter sur place dans notre espace dédié, ou nous fournir des biberons de lait maternel conservés au frigo selon les recommandations en vigueur."
     },
     {
       "q": "Comment se passent les transmissions ?",
