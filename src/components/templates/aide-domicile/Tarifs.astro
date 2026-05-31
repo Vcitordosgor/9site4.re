@@ -1,0 +1,75 @@
+---
+const formules = [
+  {
+    nom: 'Quelques heures', sous: 'À la carte', prix: '23', unite: '€ / heure',
+    apres: '11,50 € après crédit d’impôt',
+    desc: 'Pour un coup de main régulier ou occasionnel — 2 à 8 heures par semaine.',
+    inclus: ['Ménage léger', 'Courses & pharmacie', 'Préparation repas', 'Accompagnement RDV'],
+    cta: 'Demander un devis', featured: false,
+  },
+  {
+    nom: 'Régulier', sous: 'Le plus choisi', prix: '21', unite: '€ / heure',
+    apres: '10,50 € après crédit d’impôt',
+    desc: 'Présence quotidienne, même aidant, mêmes horaires — 10 à 25 heures par semaine.',
+    inclus: ['Tout « Quelques heures »', 'Aide toilette & habillage', 'Lien social & lecture', 'Carnet de liaison', 'Coordination famille'],
+    cta: 'Commencer', featured: true,
+  },
+  {
+    nom: 'Présence renforcée', sous: 'Maintien intensif', prix: 'sur', unite: 'mesure',
+    apres: 'CESU + APA + mutuelle',
+    desc: 'Pour les situations complexes — sortie d’hôpital, fin de vie, perte d’autonomie.',
+    inclus: ['Tout « Régulier »', 'Astreinte 24/24', 'Coordination médicale', 'Plusieurs aidants en relais', 'Bilan mensuel'],
+    cta: 'Nous appeler', featured: false,
+  },
+];
+---
+<section id="tarifs" class="relative bg-[#F8F0E3] py-24 md:py-32 overflow-hidden">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+    <div class="text-center max-w-2xl mx-auto mb-16" data-reveal>
+      <p class="text-[#6B7F5C] text-[12px] uppercase tracking-[0.24em] mb-4">— Tarifs transparents</p>
+      <h2 class="text-[#3D2A1E] leading-[0.95]" style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(44px,6.5vw,84px);">
+        Trois formules,<br/><em class="text-[#C4674C]">zéro surprise.</em>
+      </h2>
+      <p class="mt-6 text-[#3D2A1E]/75 text-[17px] leading-[1.6]">
+        Tous nos services ouvrent droit au <strong class="text-[#3D2A1E]">crédit d’impôt 50 %</strong>. Vous payez la moitié, vraiment.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-5">
+      {formules.map((f) => (
+        <article class:list={[
+          'relative rounded-[28px] p-8 md:p-10 transition-all hover:-translate-y-1',
+          f.featured ? 'bg-[#3D2A1E] text-[#F8F0E3] ring-1 ring-[#3D2A1E]' : 'bg-white text-[#3D2A1E] ring-1 ring-[#3D2A1E]/10'
+        ]} style={f.featured ? 'box-shadow:0 30px 70px -25px rgba(61,42,30,0.4);' : ''} data-reveal>
+          {f.featured && (
+            <span class="absolute -top-3 left-8 bg-[#C4674C] text-[#F8F0E3] text-[11px] uppercase tracking-[0.18em] px-3 py-1.5 rounded-full">Le plus choisi</span>
+          )}
+          <p class:list={['text-[12px] uppercase tracking-[0.2em] mb-3', f.featured ? 'text-[#C4674C]' : 'text-[#6B7F5C]']}>{f.sous}</p>
+          <h3 class="text-[40px] leading-none mb-6" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;">{f.nom}</h3>
+          <div class="flex items-baseline gap-2 mb-2">
+            <span class="text-[64px] leading-none" style="font-family:'Cormorant Garamond',serif;font-weight:500;">{f.prix}</span>
+            <span class={f.featured ? 'text-[#F8F0E3]/65 text-[15px]' : 'text-[#3D2A1E]/55 text-[15px]'}>{f.unite}</span>
+          </div>
+          <p class:list={['text-[13px] mb-6 inline-block px-3 py-1 rounded-full', f.featured ? 'bg-[#C4674C]/20 text-[#F8F0E3]' : 'bg-[#6B7F5C]/15 text-[#6B7F5C]']}>{f.apres}</p>
+          <p class:list={['text-[14px] leading-[1.6] mb-7 min-h-[80px]', f.featured ? 'text-[#F8F0E3]/80' : 'text-[#3D2A1E]/70']}>{f.desc}</p>
+          <ul class="space-y-3 mb-8">
+            {f.inclus.map((line) => (
+              <li class="flex items-start gap-3 text-[14px]">
+                <svg class="shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={f.featured ? '#C4674C' : '#6B7F5C'} stroke-width="2"><path d="M5 12l5 5 9-12"/></svg>
+                <span class={f.featured ? 'text-[#F8F0E3]/90' : 'text-[#3D2A1E]/80'}>{line}</span>
+              </li>
+            ))}
+          </ul>
+          <a href="#contact" class:list={[
+            'inline-flex items-center justify-center w-full h-12 rounded-full text-[14px] font-medium transition-colors',
+            f.featured ? 'bg-[#C4674C] text-[#F8F0E3] hover:bg-[#F8F0E3] hover:text-[#3D2A1E]' : 'bg-[#3D2A1E] text-[#F8F0E3] hover:bg-[#C4674C]'
+          ]}>{f.cta}</a>
+        </article>
+      ))}
+    </div>
+
+    <div class="mt-10 text-center text-[13px] text-[#3D2A1E]/55">
+      Soir, dimanches et fériés majorés selon convention collective. Aides APA, PCH, mutuelle, caisse de retraite — nous vous accompagnons dans le dossier.
+    </div>
+  </div>
+</section>

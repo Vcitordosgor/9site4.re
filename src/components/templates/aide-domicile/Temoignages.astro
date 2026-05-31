@@ -1,48 +1,35 @@
 ---
-import data from '../../../data/templates/doudou.json';
+const t = [
+  { initiales: 'M. & C.', lieu: 'Le Tampon', situation: 'fille d’une mère de 84 ans', texte: 'On voulait garder maman chez elle. Ça faisait deux ans qu’on jonglait, mon frère et moi, entre nos boulots et ses repas. La première visite, l’aidante a parlé créole avec maman — et maman a souri. Depuis, c’est une autre vie pour tout le monde.' },
+  { initiales: 'P. G.', lieu: 'Saint-Pierre', situation: 'mari d’une épouse en convalescence', texte: 'Ma femme rentrait de l’hôpital, j’étais perdu. En 48h, ils étaient là. Marie connaissait déjà le matériel médical, le kiné, même le voisin du dessus. J’ai pu retourner travailler sans culpabiliser.' },
+  { initiales: 'A. R.', lieu: 'Saint-Denis', situation: 'fils d’un père Alzheimer', texte: 'Papa ne reconnaît plus grand monde. Mais il reconnaît Samuel. Quand on entend ça, on sait qu’on a fait le bon choix. Le carnet de liaison nous tient au courant chaque jour, c’est inestimable.' },
+];
 ---
-
-<section class="bg-doudou-creme py-20 md:py-28 px-6 md:px-10">
-  <div class="max-w-content mx-auto">
-
-    <header class="text-center mb-14 md:mb-16 max-w-2xl mx-auto">
-      <p class="font-homemade text-doudou-rose text-3xl mb-3 leading-none rotate-[-1deg]">
-        merci à eux
+<section class="relative bg-white py-24 md:py-32 overflow-hidden">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+    <div class="grid md:grid-cols-12 gap-10 mb-16">
+      <div class="md:col-span-6" data-reveal>
+        <p class="text-[#6B7F5C] text-[12px] uppercase tracking-[0.24em] mb-4">— Ils nous racontent</p>
+        <h2 class="text-[#3D2A1E] leading-[0.95]" style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(44px,6.5vw,84px);">
+          Trois familles,<br/><em class="text-[#C4674C]">trois histoires.</em>
+        </h2>
+      </div>
+      <p class="md:col-span-5 md:col-start-8 self-end text-[#3D2A1E]/70 text-[15px] leading-[1.65]">
+        Témoignages anonymisés par respect pour les familles. Sur demande, nous pouvons vous mettre en relation avec un proche d’un aidé, qui acceptera d’en parler de vive voix.
       </p>
-      <h2 class="font-nunito font-bold text-doudou-encre leading-[1.1]" style="font-size: clamp(32px, 5vw, 56px);">
-        Ce que les familles<br/>
-        <span class="text-doudou-bleu">nous ont écrit.</span>
-      </h2>
-    </header>
+    </div>
 
-    <ul class="grid lg:grid-cols-3 gap-5">
-      {data.temoignages.map((t, i) => (
-        <li class:list={[
-          'p-7 md:p-8 rounded-3xl',
-          i === 0 ? 'bg-doudou-rose/15' : i === 1 ? 'bg-doudou-soleil/30' : 'bg-doudou-ciel/40',
-        ]}>
-
-          <!-- Coeur -->
-          <p class="font-homemade text-doudou-rose text-3xl mb-5 leading-none">
-            ♡
-          </p>
-
-          <!-- Citation longue -->
-          <blockquote class="font-be-vietnam text-doudou-encre/85 text-[15px] leading-[1.85] mb-6">
-            « {t.texte} »
-          </blockquote>
-
-          <!-- Auteur -->
-          <footer class="pt-5 border-t border-doudou-encre/15">
-            <p class="font-nunito font-bold text-doudou-bleu text-base">
-              — {t.auteur}
-            </p>
-            <p class="mt-1 font-be-vietnam text-[11px] uppercase tracking-wider text-doudou-encre/55">
-              {t.lieu}
-            </p>
-          </footer>
-        </li>
+    <div class="grid md:grid-cols-3 gap-6">
+      {t.map((item) => (
+        <article class="relative bg-[#F8F0E3] rounded-[28px] p-8 md:p-10 ring-1 ring-[#3D2A1E]/10" data-reveal>
+          <span class="absolute -top-5 left-8 w-14 h-14 rounded-full bg-[#C4674C] text-[#F8F0E3] grid place-items-center text-[28px] leading-none" style="font-family:'Cormorant Garamond',serif;font-style:italic;">“</span>
+          <p class="text-[#3D2A1E] text-[19px] md:text-[20px] leading-[1.5] mt-2" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;">{item.texte}</p>
+          <div class="mt-8 pt-6 border-t border-[#3D2A1E]/15">
+            <p class="text-[#3D2A1E] font-medium text-[14px]">{item.initiales}</p>
+            <p class="text-[#3D2A1E]/60 text-[12px] mt-0.5">{item.situation} · {item.lieu}</p>
+          </div>
+        </article>
       ))}
-    </ul>
+    </div>
   </div>
 </section>

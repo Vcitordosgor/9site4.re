@@ -1,69 +1,45 @@
 ---
 import data from '../../../data/templates/doudou.json';
-
-// Avatars graphiques (substitut aux portraits Unsplash stock recyclés
-// sur d'autres templates). Cycle de 4 couleurs douces palette Doudou.
-const avatarVariants = [
-  'bg-doudou-rose text-doudou-creme',
-  'bg-doudou-bleu text-doudou-creme',
-  'bg-doudou-soleil text-doudou-encre',
-  'bg-doudou-bourgeon text-doudou-creme',
+const phrases = [
+  'On ne soigne pas, on accompagne. Et ça change tout.',
+  'J’aime quand on me raconte les vieilles histoires.',
+  'La patience, c’est le plus beau des métiers.',
+  'Le sourire qu’on laisse en partant, voilà la paye.',
 ];
+const years = ['12 ans', '7 ans', '5 ans', '9 ans'];
 ---
-
-<section id="aidants" class="bg-doudou-ciel/40 py-20 md:py-28 px-6 md:px-10">
-  <div class="max-w-content mx-auto">
-
-    <header class="text-center mb-14 md:mb-16 max-w-2xl mx-auto">
-      <p class="font-homemade text-doudou-rose text-3xl mb-3 leading-none">
-        notre équipe
+<section id="equipe" class="relative bg-[#6B7F5C]/12 py-24 md:py-32 overflow-hidden">
+  <div aria-hidden="true" class="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-[#6B7F5C]/15 blur-3xl -translate-y-1/3 translate-x-1/3"></div>
+  <div class="relative max-w-content mx-auto px-6 md:px-10">
+    <div class="flex items-end justify-between flex-wrap gap-6 mb-14">
+      <div data-reveal>
+        <p class="text-[#6B7F5C] text-[12px] uppercase tracking-[0.24em] mb-4">— Notre équipe</p>
+        <h2 class="text-[#3D2A1E] leading-[0.95]" style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(44px,6.5vw,84px);">
+          Quatre <em class="text-[#C4674C]">visages</em>, une même attention.
+        </h2>
+      </div>
+      <p class="max-w-md text-[#3D2A1E]/75 text-[15px] leading-[1.65]">
+        Tous nos aidants sont formés, mutuellisés, sourient pour de vrai. Une fois choisi, votre aidant ne change pas — la confiance, ça se bâtit.
       </p>
-      <h2 class="font-nunito font-bold text-doudou-encre leading-[1.1]" style="font-size: clamp(32px, 5vw, 56px);">
-        Quatre aidants,<br/>
-        <span class="text-doudou-bleu">une même attention.</span>
-      </h2>
-    </header>
+    </div>
 
-    <ul class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-      {data.aidants.map((a, i) => (
-        <li>
-          <article class="bg-doudou-creme p-6 rounded-3xl text-center group hover:bg-doudou-blanc transition-colors h-full flex flex-col">
-
-            <!-- Avatar graphique : cercle pastel + ♡ + initiale Nunito -->
-            <div
-              class:list={[
-                'relative w-32 h-32 mx-auto mb-5 rounded-full overflow-hidden ring-4 ring-doudou-rose/40 group-hover:ring-doudou-rose transition-all flex items-center justify-center',
-                avatarVariants[i % avatarVariants.length],
-              ]}
-              role="img"
-              aria-label={`Avatar de ${a.prenom}`}
-            >
-              <span
-                class="font-nunito font-bold leading-none select-none"
-                style="font-size: 56px;"
-                aria-hidden="true"
-              >
-                {a.prenom.charAt(0)}
-              </span>
-              <!-- Mini-cœur bas-droite (signal aide à la personne) -->
-              <span class="absolute bottom-2 right-2 w-5 h-5 rounded-full bg-doudou-creme/95 flex items-center justify-center text-doudou-rose text-[10px] leading-none" aria-hidden="true">
-                ♥
-              </span>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {data.aidants.map((a, idx) => (
+        <article class="group" data-reveal>
+          <div class="relative aspect-[4/5] rounded-[24px] overflow-hidden ring-1 ring-[#3D2A1E]/10 mb-5">
+            <img src={a.photo} alt={a.prenom} class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-[1.04]" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#3D2A1E]/40 via-transparent to-transparent"></div>
+            <div class="absolute top-4 left-4 bg-[#F8F0E3]/95 rounded-full px-3 py-1.5">
+              <span class="text-[11px] text-[#3D2A1E] font-medium tracking-[0.08em]">{years[idx]} · expérience</span>
             </div>
-
-            <p class="font-homemade text-doudou-bleu text-3xl leading-none mb-1">
-              {a.prenom}
-            </p>
-            <p class="font-be-vietnam text-[10px] uppercase tracking-[0.18em] font-semibold text-doudou-rose mb-3">
-              ✓ {a.diplome} · {a.experience}
-            </p>
-
-            <p class="font-be-vietnam text-doudou-encre/85 text-sm leading-relaxed mt-auto pt-4 border-t border-doudou-encre/10">
-              {a.specialite}
-            </p>
-          </article>
-        </li>
+          </div>
+          <h3 class="text-[#3D2A1E] text-[32px] leading-none mb-1" style="font-family:'Cormorant Garamond',serif;font-weight:500;">{a.prenom}</h3>
+          <p class="text-[12px] uppercase tracking-[0.16em] text-[#C4674C] mb-3">{a.specialite}</p>
+          <p class="text-[#3D2A1E]/75 rotate-[-1deg] inline-block" style="font-family:'Caveat',cursive;font-size:22px;line-height:1.35;">
+            « {phrases[idx]} »
+          </p>
+        </article>
       ))}
-    </ul>
+    </div>
   </div>
 </section>
