@@ -1,0 +1,48 @@
+---
+const nav = [
+  { href: '#promesse', label: 'Promesse' },
+  { href: '#histoire', label: 'Notre histoire' },
+  { href: '#formules', label: 'Formules' },
+  { href: '#univers', label: 'Univers' },
+  { href: '#couples', label: 'Couples' },
+  { href: '#contact', label: 'Rencontre' },
+];
+---
+<header
+  id="wed-header"
+  data-scrolled="false"
+  class="fixed top-0 inset-x-0 z-50 transition-all duration-500 data-[scrolled=false]:bg-transparent data-[scrolled=true]:bg-[#FAF4EA]/95 data-[scrolled=true]:backdrop-blur-md data-[scrolled=true]:shadow-[0_4px_24px_rgba(58,53,45,0.08)]"
+  style="font-family:'Inter',system-ui,sans-serif;"
+>
+  <div class="max-w-content mx-auto px-6 md:px-10 h-[80px] flex items-center justify-between">
+    <a href="#top" class="flex items-baseline gap-2 group">
+      <span data-light class="text-[34px] leading-none text-[#3A352D] transition-colors" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;">Sève</span>
+      <span data-light class="text-[11px] tracking-[0.28em] uppercase text-[#CC6B49] transition-colors">Wedding</span>
+    </a>
+    <nav class="hidden lg:flex items-center gap-9 text-[13px]">
+      {nav.map((n) => (
+        <a href={n.href} data-light class="text-[#3A352D]/80 hover:text-[#CC6B49] transition-colors">{n.label}</a>
+      ))}
+    </nav>
+    <a href="#contact" class="inline-flex items-center h-10 px-5 rounded-full bg-[#3A352D] text-[#FAF4EA] text-[12px] tracking-[0.14em] uppercase hover:bg-[#CC6B49] transition-colors">
+      RDV découverte
+    </a>
+  </div>
+</header>
+<script>
+  const h = document.getElementById('wed-header');
+  const lights = document.querySelectorAll('[data-light]');
+  if (h) {
+    const upd = () => {
+      const scrolled = window.scrollY > 60;
+      h.dataset.scrolled = String(scrolled);
+      lights.forEach((el) => {
+        const e = el as HTMLElement;
+        if (scrolled) e.style.color = '';
+        else if (e.textContent && /[A-Z]{3,}/.test(e.textContent)) e.style.color = '#FAF4EA';
+        else e.style.color = '#FAF4EA';
+      });
+    };
+    upd(); window.addEventListener('scroll', upd, { passive: true });
+  }
+</script>
