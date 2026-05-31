@@ -16,7 +16,8 @@
     "siret": "",
     "agrement": "Service d'aide à domicile · La Réunion",
     "annee": "2010",
-    "photoHero": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=1600&q=85"
+    "photoHero": "/images/aide-domicile/hero.webp",
+    "photoEquipe": "/images/aide-domicile/equipe.webp"
   },
   "engagements": [
     {
