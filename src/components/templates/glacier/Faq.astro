@@ -1,55 +1,27 @@
 ---
-const faq = [
-  {
-    q: 'Où puis-je trouver le camion aujourd\'hui ?',
-    r: 'Sur la section "Tournée" plus haut — programme hebdomadaire. Le programme peut bouger en cas de pluie ou de panne, donc le mieux est de vérifier la story Instagram chaque matin. Si rien n\'est posté, on tourne comme prévu.',
-  },
-  {
-    q: 'Vendez-vous des bacs à emporter ?',
-    r: 'Oui — bacs de 500 ml (12 €) et 1 litre (22 €). À demander directement au camion, dans la limite du stock disponible. Conservation 1 semaine au congélateur sans perte de qualité.',
-  },
-  {
-    q: 'Pourquoi vos glaces ont une couleur moins flashy que celles du supermarché ?',
-    r: 'Parce qu\'on n\'ajoute aucun colorant. La mangue Carotte est orange-pâle, la goyave rose-saumon, le letchi presque blanc. Les couleurs vives des glaces industrielles viennent de colorants. Nos couleurs viennent du fruit, point.',
-  },
-  {
-    q: 'Vos sorbets sont-ils vegan ?',
-    r: 'Oui — sorbets uniquement à base de fruit, eau, sucre roux, jus de citron. Aucun produit animal. En revanche, nos crèmes glacées (vanille, chocolat) contiennent lait entier et œufs.',
-  },
-  {
-    q: 'Vendez-vous en pâtisserie ou en restaurant ?',
-    r: 'Pas encore en pâtisserie classique. En revanche, on fournit en édition limitée trois restaurants partenaires à La Réunion — ils proposent un dessert "Sorbet Péi" en saison. La liste tourne sur Instagram.',
-  },
-  {
-    q: 'Peut-on visiter l\'atelier de turbinage ?',
-    r: 'Sur demande et par groupe de 4 personnes max, le mardi après-midi uniquement (jour de production). 1 heure de visite + dégustation des 3 parfums turbinés ce jour-là. Tarif 15 € / personne, sur réservation WhatsApp.',
-  },
+import data from '../../../data/templates/sorbetpei.json';
+const faqs = [
+  { q: 'Vous travaillez sans lait ?', r: 'Les sorbets, oui. Les glaces (vanille, coco) contiennent de la crème entière. Toutes nos préparations véganes sont signalées.' },
+  { q: 'Vos parfums sont saisonniers ?', r: 'Le letchi novembre-janvier, l\'ananas avril-juillet. Mangue, vanille, coco, fruit de la passion toute l\'année.' },
+  { q: 'Sans sucre ?', r: 'Sucre canne bio dosé au minimum (12-14%). Nous ne proposons pas de version 0 sucre — le sorbet a besoin de sucre pour son glaçage.' },
+  { q: 'Peut-on commander pour une fête à la maison ?', r: 'Oui, à partir de 3L (≈30 personnes). Livraison côte ouest et sud. Commande 72h à l\'avance.' },
+  { q: 'Allergènes ?', r: 'Aucun œuf, aucun gluten. Glaces traditionnelles contiennent lait. Liste détaillée disponible sur demande, traçabilité complète.' },
 ];
 ---
-
-<section class="py-20 md:py-28 relative" style="background-color: #FFD9E1;">
-  <div class="max-w-3xl mx-auto px-6 md:px-10 relative">
-
-    <div class="text-center mb-12 md:mb-16">
-      <p class="font-dm-sans text-[11px] uppercase tracking-[0.45em] mb-4" style="color: #FF6F91;">— Avant d'attaquer ton cône —</p>
-      <h2 class="font-fraunces font-semibold leading-[0.95]" style="color: #3D2817; font-size: clamp(36px, 5vw, 56px);">
-        Questions
-        <em class="block font-fraunces italic mt-2" style="color: #FF6F91; font-size: clamp(44px, 6vw, 64px);">qu'on nous pose</em>
-      </h2>
-    </div>
-
-    <div class="space-y-3">
-      {faq.map((f) => (
-        <details class="group transition-colors" style="background-color: #FFF8E7; border: 2px solid #3D2817; border-radius: 20px; overflow: hidden;">
-          <summary class="cursor-pointer list-none flex items-start gap-4 p-5 md:p-7">
-            <span class="font-fraunces italic text-3xl leading-none transition-transform duration-300 group-open:rotate-45" style="color: #FF6F91;" aria-hidden="true">+</span>
-            <span class="flex-1 font-fraunces font-semibold text-lg md:text-xl leading-snug" style="color: #3D2817;">{f.q}</span>
+<section class="py-24 md:py-32" style="background:#FFF6E2;">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+    <p class="font-fraunces italic text-2xl mb-2" style="color:#FF6F91;">vos questions —</p>
+    <h2 class="font-fraunces text-5xl md:text-6xl leading-tight mb-12" style="color:#3D2817;">FAQ <em class="italic">glacée.</em></h2>
+    <div class="grid md:grid-cols-2 gap-5">
+      {faqs.map(f => (
+        <details class="group p-6 transition-all" style="background:#FFD93D; color:#3D2817; border-radius:20px;">
+          <summary class="cursor-pointer flex justify-between gap-4 font-fraunces text-xl">
+            {f.q}<span class="font-fraunces text-2xl transition-transform group-open:rotate-45">+</span>
           </summary>
-          <div class="px-5 md:px-7 pb-6 md:pb-8 pl-14 md:pl-16">
-            <p class="font-dm-sans text-[14.5px] md:text-[15px] leading-relaxed" style="color: rgba(61, 40, 23, 0.82);">{f.r}</p>
-          </div>
+          <p class="mt-3 text-[14px] leading-relaxed">{f.r}</p>
         </details>
       ))}
     </div>
+    <p class="mt-10 text-base" style="color:#3D2817;">Une autre question ? <a href={`mailto:${data.info.email}`} class="underline font-semibold">{data.info.email}</a></p>
   </div>
 </section>

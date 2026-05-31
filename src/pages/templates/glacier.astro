@@ -3,18 +3,17 @@ import '@fontsource/fraunces/latin-400.css';
 import '@fontsource/fraunces/latin-500.css';
 import '@fontsource/fraunces/latin-600.css';
 import '@fontsource/fraunces/latin-400-italic.css';
-import '@fontsource/fraunces/latin-500-italic.css';
 import '@fontsource/dm-sans/latin-400.css';
 import '@fontsource/dm-sans/latin-500.css';
 import '@fontsource/dm-sans/latin-600.css';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSeo } from '../../lib/seo';
-import { localBusinessSchema } from '../../lib/businessSchema';
-import sorbetData from '../../data/templates/sorbetpei.json';
+import { localBusinessSchema } from "../../lib/businessSchema";
+import data from '../../data/templates/sorbetpei.json';
 
 import Header from '../../components/templates/glacier/Header.astro';
-import HeroPop from '../../components/templates/glacier/HeroPop.astro';
+import Hero from '../../components/templates/glacier/HeroPop.astro';
 import Parfums from '../../components/templates/glacier/Parfums.astro';
 import Moment from '../../components/templates/glacier/Moment.astro';
 import Processus from '../../components/templates/glacier/Processus.astro';
@@ -23,40 +22,16 @@ import Privatisation from '../../components/templates/glacier/Privatisation.astr
 import Faq from '../../components/templates/glacier/Faq.astro';
 import Footer from '../../components/templates/glacier/Footer.astro';
 
-const businessLD = localBusinessSchema(sorbetData, 'FoodEstablishment');
+const businessLD = localBusinessSchema(data, 'FoodEstablishment');
 ---
-
 <BaseLayout seo={getSeo('templateGlacier')} bare={true}>
   <Fragment slot="head">
     {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
-    <link rel="preload" as="image" href={sorbetData.info.photoHero} fetchpriority="high" />
+    <link rel="preload" as="image" href="/images/glacier/hero.webp" fetchpriority="high" />
   </Fragment>
-
   <Header />
-
-  <main class="font-dm-sans" style="background-color: #FFF8E7; color: #3D2817;">
-    <HeroPop />
-
-    <!-- Bandeau parfums défilant -->
-    <div class="py-4 overflow-hidden border-y" style="background-color:#FF6F91;color:#FFF8E7;border-color:#3D2817;" aria-hidden="true">
-      <div class="flex gap-12 whitespace-nowrap" style="animation: glac-marquee 36s linear infinite; width: max-content;">
-        {Array.from({ length: 2 }).map(() => (
-          <div class="flex gap-12 items-center font-fraunces italic" style="font-size:28px;">
-            <span>Mangue Carotte</span><span>✿</span>
-            <span>Letchi-Gingembre</span><span>✿</span>
-            <span>Vanille Bourbon</span><span>✿</span>
-            <span>Coco Frais</span><span>✿</span>
-            <span>Ananas Victoria</span><span>✿</span>
-            <span>Passion-Citron Vert</span><span>✿</span>
-          </div>
-        ))}
-      </div>
-    </div>
-    <style>
-      @keyframes glac-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-      @media (prefers-reduced-motion: reduce) { [style*="glac-marquee"] { animation: none !important; } }
-    </style>
-
+  <main id="top" style="background:#FFF6E2; color:#3D2817; font-family:'DM Sans',system-ui,sans-serif;">
+    <Hero />
     <Parfums />
     <Moment />
     <Processus />
@@ -64,35 +39,5 @@ const businessLD = localBusinessSchema(sorbetData, 'FoodEstablishment');
     <Privatisation />
     <Faq />
   </main>
-
   <Footer />
-
-  <!-- Sticky bottom CTA mobile-only -->
-  <a
-    id="glac-sticky-cta"
-    href="#tournee"
-    data-visible="false"
-    class="md:hidden fixed bottom-4 inset-x-4 z-40 inline-flex items-center justify-center h-14 px-6 text-[12px] font-semibold uppercase tracking-[0.22em] font-dm-sans rounded-full transition-all duration-300 ease-out data-[visible=false]:opacity-0 data-[visible=false]:translate-y-4 data-[visible=false]:pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0"
-    style="background-color:#FF6F91;color:#FFF8E7;box-shadow: 0 12px 32px rgb(255 111 145 / 0.45);"
-  >
-    Où trouver le glacier
-  </a>
-  <script>
-    const sticky = document.getElementById('glac-sticky-cta');
-    const target = document.getElementById('tournee');
-    if (sticky) {
-      const update = () => {
-        const past = window.scrollY > 480;
-        let inSection = false;
-        if (target) {
-          const r = target.getBoundingClientRect();
-          inSection = r.top < window.innerHeight && r.bottom > 80;
-        }
-        sticky.dataset.visible = String(past && !inSection);
-      };
-      update();
-      window.addEventListener('scroll', update, { passive: true });
-      window.addEventListener('resize', update, { passive: true });
-    }
-  </script>
 </BaseLayout>
