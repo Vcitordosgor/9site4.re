@@ -19,9 +19,7 @@
     "annee": "2008",
     "classification": 4,
     "photoHero": "/images/gite/hero-cilaos.webp",
-    "photoHeroAlt": "Vue panoramique du cirque de Cilaos a La Reunion",
-    "photoExterieur": "https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=1200&q=85",
-    "photoExterieurAlt": "Vue extérieure du gîte, façade nord côté Bras-Sec"
+    "photoHeroAlt": "Vue panoramique du cirque de Cilaos a La Reunion"
   },
   "fiche": [
     {

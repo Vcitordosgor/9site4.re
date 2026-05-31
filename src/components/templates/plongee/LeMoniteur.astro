@@ -12,13 +12,17 @@ import data from '../../../data/templates/bleulagon.json';
     <!-- Colonne avatar graphique -->
     <div class="lg:col-span-5">
       <div class="relative aspect-[4/5] max-w-md mx-auto rounded-2xl overflow-hidden bg-plongee-abysse">
-        <img
-          src="https://images.unsplash.com/photo-1570367364062-4ab01ebf0954?q=80&w=900&auto=format&fit=crop"
-          alt={`Portrait d'${data.moniteur.nom}, moniteur de plongée`}
-          loading="lazy"
-          decoding="async"
-          class="absolute inset-0 w-full h-full object-cover"
-        />
+        <!-- Composition graphique (pas de photo stock) -->
+        <div
+          class="absolute inset-0"
+          style="background: radial-gradient(120% 80% at 30% 20%, rgba(56,189,248,0.35) 0%, rgba(2,6,23,0) 55%), radial-gradient(90% 60% at 80% 100%, rgba(244,114,182,0.18) 0%, rgba(2,6,23,0) 60%), linear-gradient(160deg, #0b1f3a 0%, #04111f 100%);"
+          aria-hidden="true"
+        ></div>
+        <div class="absolute inset-0 flex items-center justify-center" aria-hidden="true">
+          <span class="font-space-grotesk font-bold text-plongee-ecume/85 text-[120px] leading-none tracking-tight">
+            {data.moniteur.nom.split(' ').map(p => p[0]).join('').slice(0,2)}
+          </span>
+        </div>
         <!-- Étiquette identité bas -->
         <div class="absolute bottom-4 left-4 right-4 bg-plongee-abysse/85 backdrop-blur-sm px-4 py-3 rounded-xl ring-1 ring-plongee-ecume/15">
           <p class="font-jetbrains text-[10px] uppercase tracking-[0.22em] text-plongee-corail mb-0.5">
