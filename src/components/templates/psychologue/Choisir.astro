@@ -1,0 +1,88 @@
+---
+/**
+ * Choisir — section éducative : différences entre psychothérapeute,
+ * psychologue et psychiatre. Trois cards avec rôles, formation, prescription.
+ */
+
+const professions = [
+  {
+    nom: 'Psychothérapeute',
+    formation: 'Formation longue en psychothérapie (titre protégé, inscription ARS).',
+    role: 'Accompagne la souffrance psychique par la parole, selon une ou plusieurs approches (psychanalytique, TCC, systémique…).',
+    prescrit: false,
+    remb: 'Non remboursé par la Sécu (mutuelles partielles).',
+  },
+  {
+    nom: 'Psychologue',
+    formation: 'Master universitaire en psychologie (titre protégé, n° ADELI).',
+    role: 'Évalue, diagnostique et accompagne. Pratique des bilans et des suivis.',
+    prescrit: false,
+    remb: 'Dispositif « Mon soutien psy » : 12 séances/an remboursées sur orientation.',
+    highlight: true,
+  },
+  {
+    nom: 'Psychiatre',
+    formation: 'Médecin spécialisé en psychiatrie (10 ans d’études).',
+    role: 'Diagnostique les troubles mentaux et peut hospitaliser. Reçoit aussi en consultation.',
+    prescrit: true,
+    remb: 'Remboursé par la Sécurité sociale (secteur 1).',
+  },
+];
+---
+
+<section id="choisir" class="bg-aubry-papier py-24 md:py-32 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="max-w-2xl mb-12 md:mb-16">
+      <p class="font-plex-mono text-[10px] uppercase tracking-[0.32em] text-aubry-prune mb-5">
+        Pour s’y retrouver
+      </p>
+      <h2 class="font-caslon text-aubry-encre leading-[1.05]" style="font-size: clamp(34px, 5vw, 56px);">
+        Psy, psychologue, psychiatre :
+        <span class="italic text-aubry-prune">qui consulter ?</span>
+      </h2>
+      <p class="mt-5 font-caslon italic text-aubry-encre/75 text-lg leading-relaxed">
+        Trois métiers différents, souvent confondus. Voici en quoi ils se distinguent —
+        pour vous aider à choisir la bonne porte d’entrée.
+      </p>
+    </header>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      {professions.map((p) => (
+        <article class={`p-7 md:p-8 border ${p.highlight ? 'border-aubry-prune bg-aubry-prune/[0.06]' : 'border-aubry-encre/15 bg-white/50'}`}>
+          {p.highlight && (
+            <p class="font-plex-mono text-[10px] uppercase tracking-[0.28em] text-aubry-prune mb-4">
+              ← Le cabinet
+            </p>
+          )}
+          <h3 class="font-caslon text-aubry-encre text-2xl md:text-3xl leading-tight">
+            {p.nom}
+          </h3>
+          <dl class="mt-5 space-y-4 text-sm font-albert text-aubry-encre/85 leading-relaxed">
+            <div>
+              <dt class="font-plex-mono text-[10px] uppercase tracking-[0.22em] text-aubry-prune mb-1">Formation</dt>
+              <dd>{p.formation}</dd>
+            </div>
+            <div>
+              <dt class="font-plex-mono text-[10px] uppercase tracking-[0.22em] text-aubry-prune mb-1">Rôle</dt>
+              <dd>{p.role}</dd>
+            </div>
+            <div>
+              <dt class="font-plex-mono text-[10px] uppercase tracking-[0.22em] text-aubry-prune mb-1">Médicaments</dt>
+              <dd>{p.prescrit ? 'Peut prescrire.' : 'Ne prescrit pas de médicaments.'}</dd>
+            </div>
+            <div>
+              <dt class="font-plex-mono text-[10px] uppercase tracking-[0.22em] text-aubry-prune mb-1">Remboursement</dt>
+              <dd>{p.remb}</dd>
+            </div>
+          </dl>
+        </article>
+      ))}
+    </div>
+
+    <p class="mt-10 max-w-2xl font-caslon italic text-aubry-encre/70 text-base leading-relaxed">
+      En cas de doute, un médecin traitant peut vous orienter. Et si l’on n’est pas
+      la bonne personne pour vous accompagner, on vous le dira franchement.
+    </p>
+  </div>
+</section>
