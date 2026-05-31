@@ -1,0 +1,50 @@
+---
+const methodes = [
+  { id: 'v60', nom: 'V60', dose: '15 g', eau: '250 ml', temps: '3:30', mouture: 'Moyenne', desc: 'Filtre japonais à cône. Pour cafés clairs.', icon: 'v60' },
+  { id: 'chemex', nom: 'Chemex', dose: '30 g', eau: '500 ml', temps: '5:00', mouture: 'Moyenne', desc: 'Filtre épais. Tasse propre, 2-4 pers.', icon: 'chemex' },
+  { id: 'aero', nom: 'Aeropress', dose: '17 g', eau: '230 ml', temps: '1:30', mouture: 'Fine', desc: 'Pression douce, voyage facile.', icon: 'aero' },
+  { id: 'moka', nom: 'Moka italienne', dose: '20 g', eau: '300 ml', temps: '4:00', mouture: 'Fine', desc: 'Classique cafetière à pression vapeur.', icon: 'moka' },
+  { id: 'espresso', nom: 'Espresso', dose: '18 g', eau: '36 g', temps: '0:27', mouture: 'Très fine', desc: 'Standard SCA, 9 bars, 93°C.', icon: 'espresso' },
+];
+---
+<section id="preparation" class="py-24 md:py-32" style="background:#E8DDC7;">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+    <div class="mb-14 max-w-2xl">
+      <div class="text-[10px] uppercase tracking-[0.32em] mb-3" style="font-family:'DM Mono',monospace; color:#B57A4A;">Méthodes de préparation</div>
+      <h2 class="font-instrument text-5xl md:text-6xl leading-tight" style="color:#1A0F0A;">Cinq façons <em class="italic">d'extraire un grain.</em></h2>
+      <p class="mt-5 text-[16px] leading-relaxed" style="color:#3A2418;">Ratios, doses, temps — la mémoire technique de l'atelier, recopiée pour vous. Chaque méthode mérite son grain : on vous conseille au sachet.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-px" style="background:rgba(26,15,10,0.18);">
+      {methodes.map(m => (
+        <article class="group p-6 transition-colors duration-300 hover:bg-[#1A0F0A]/[0.03]" style="background:#E8DDC7;">
+          <div class="aspect-square mb-5 flex items-center justify-center" style="background:rgba(181,122,74,0.10);">
+            {m.icon === 'v60' && (
+              <svg viewBox="0 0 64 64" class="w-16 h-16" fill="none" stroke="#1A0F0A" stroke-width="1.5"><path d="M16 14 L48 14 L36 50 L28 50 Z"/><path d="M22 14 L22 50 M42 14 L42 50" stroke-width="0.7"/></svg>
+            )}
+            {m.icon === 'chemex' && (
+              <svg viewBox="0 0 64 64" class="w-16 h-16" fill="none" stroke="#1A0F0A" stroke-width="1.5"><path d="M22 10 L42 10 L42 22 L48 28 L40 54 L24 54 L16 28 L22 22 Z"/><path d="M22 22 L42 22" stroke-width="0.7"/><rect x="26" y="26" width="12" height="6" stroke-width="0.7"/></svg>
+            )}
+            {m.icon === 'aero' && (
+              <svg viewBox="0 0 64 64" class="w-16 h-16" fill="none" stroke="#1A0F0A" stroke-width="1.5"><rect x="22" y="10" width="20" height="34" rx="1"/><path d="M22 18 L42 18 M22 38 L42 38" stroke-width="0.7"/><path d="M26 44 L26 54 L38 54 L38 44"/></svg>
+            )}
+            {m.icon === 'moka' && (
+              <svg viewBox="0 0 64 64" class="w-16 h-16" fill="none" stroke="#1A0F0A" stroke-width="1.5"><path d="M20 32 L20 50 L44 50 L44 32"/><path d="M22 32 L42 32 L40 18 L24 18 Z"/><circle cx="32" cy="14" r="3"/><path d="M44 36 L50 36 L50 44 L44 44" /></svg>
+            )}
+            {m.icon === 'espresso' && (
+              <svg viewBox="0 0 64 64" class="w-16 h-16" fill="none" stroke="#1A0F0A" stroke-width="1.5"><rect x="14" y="14" width="36" height="22"/><path d="M28 36 L28 44 L36 44 L36 36" /><path d="M22 44 L42 44 L42 50 L22 50 Z"/><path d="M32 8 L32 14 M28 10 L28 14 M36 10 L36 14" stroke-width="0.7"/></svg>
+            )}
+          </div>
+          <h3 class="font-instrument text-2xl mb-3" style="color:#1A0F0A;">{m.nom}</h3>
+          <dl class="text-[12px] space-y-1 mb-4" style="font-family:'DM Mono',monospace; color:#3A2418;">
+            <div class="flex justify-between"><dt style="color:#7A5C3F;">Dose</dt><dd>{m.dose}</dd></div>
+            <div class="flex justify-between"><dt style="color:#7A5C3F;">Eau</dt><dd>{m.eau}</dd></div>
+            <div class="flex justify-between"><dt style="color:#7A5C3F;">Temps</dt><dd>{m.temps}</dd></div>
+            <div class="flex justify-between"><dt style="color:#7A5C3F;">Mouture</dt><dd>{m.mouture}</dd></div>
+          </dl>
+          <p class="text-[13px] leading-relaxed" style="color:#3A2418;">{m.desc}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
