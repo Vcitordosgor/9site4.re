@@ -23,7 +23,7 @@ import Faq from '../../components/templates/tatoueur/Faq.astro';
 import Contact from '../../components/templates/tatoueur/Contact.astro';
 import EncreFooter from '../../components/templates/tatoueur/EncreFooter.astro';
 
-const businessLD = localBusinessSchema(encreData);
+const businessLD = localBusinessSchema(encreData, 'HealthAndBeautyBusiness');
 ---
 
 <BaseLayout seo={getSeo('templateTatoueur')} bare={true}>

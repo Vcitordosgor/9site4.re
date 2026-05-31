@@ -8,6 +8,8 @@ import '@fontsource/public-sans/latin-600.css';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSeo } from '../../lib/seo';
+import { localBusinessSchema } from '../../lib/businessSchema';
+import roussinData from '../../data/templates/roussin.json';
 
 import RoussinHeader from '../../components/templates/avocat/RoussinHeader.astro';
 import HeroRoussin from '../../components/templates/avocat/HeroRoussin.astro';
@@ -24,9 +26,14 @@ import Bandeau from '../../components/templates/avocat/Bandeau.astro';
 import FAQ from '../../components/templates/avocat/FAQ.astro';
 import Contact from '../../components/templates/avocat/Contact.astro';
 import RoussinFooter from '../../components/templates/avocat/RoussinFooter.astro';
+
+const businessLD = localBusinessSchema(roussinData, 'LegalService');
 ---
 
 <BaseLayout seo={getSeo('templateAvocat')} bare={true}>
+  <Fragment slot="head">
+    {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
+  </Fragment>
   <RoussinHeader />
 
   <main class="bg-roussin-velin text-roussin-nuit font-public-sans">

@@ -16,10 +16,14 @@ import Manifesto from '../../components/templates/pizzeria/Manifesto.astro';
 import FindUs from '../../components/templates/pizzeria/FindUs.astro';
 import PizzeriaShop from '../../components/templates/pizzeria/PizzeriaShop.tsx';
 import data from '../../data/templates/pizzeria.json';
+import { localBusinessSchema } from '../../lib/businessSchema';
+
+const businessLD = localBusinessSchema(data, 'Restaurant');
 ---
 
 <BaseLayout seo={getSeo('templatePizzeria')} bare={true}>
   <Fragment slot="head">
+    {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
     <link rel="dns-prefetch" href="https://images.unsplash.com" />
     <link

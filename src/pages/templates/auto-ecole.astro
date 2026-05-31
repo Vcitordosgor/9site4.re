@@ -13,6 +13,8 @@ import '@fontsource/geist-mono/latin-500.css';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSeo } from '../../lib/seo';
+import { localBusinessSchema } from '../../lib/businessSchema';
+import boostData from '../../data/templates/boost.json';
 
 import BoostHeader from '../../components/templates/auto-ecole/BoostHeader.astro';
 import HeroChecklist from '../../components/templates/auto-ecole/HeroChecklist.astro';
@@ -31,9 +33,14 @@ import FAQ from '../../components/templates/auto-ecole/FAQ.astro';
 import Inscription from '../../components/templates/auto-ecole/Inscription.astro';
 import CTAFinal from '../../components/templates/auto-ecole/CTAFinal.astro';
 import BoostFooter from '../../components/templates/auto-ecole/BoostFooter.astro';
+
+const businessLD = localBusinessSchema(boostData, 'EducationalOrganization');
 ---
 
 <BaseLayout seo={getSeo('templateAutoEcole')} bare={true}>
+  <Fragment slot="head">
+    {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
+  </Fragment>
 
   <BoostHeader />
 
