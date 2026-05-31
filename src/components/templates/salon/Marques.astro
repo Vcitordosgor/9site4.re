@@ -1,48 +1,36 @@
 ---
-const marques = [
-  'Davines · Italie',
-  'Olaplex · Californie',
-  'Christophe Robin',
-  'Phyto · Paris',
-  'René Furterer',
-  'Kérastase · France',
-  'Schwarzkopf Pro',
-  'Wella Professionals',
-];
-
+/**
+ * Marques — anciens noms de marques réelles supprimés.
+ * Remplacé par un manifeste produit factuel et 4 critères de sélection.
+ */
 const filieres = [
   { label: 'Sans sulfates', value: '100%' },
   { label: 'Sans silicones', value: '85%' },
-  { label: 'Filière courte', value: '6 marques' },
-  { label: 'Engagement éco', value: 'B-Corp' },
+  { label: 'Filière courte', value: 'Privilégiée' },
+  { label: 'Vegan friendly', value: 'Sur demande' },
 ];
 ---
 
-<section class="bg-salon-vert text-salon-blanc py-20 md:py-28 relative">
+<section aria-labelledby="produits-titre" class="bg-salon-vert text-salon-blanc py-20 md:py-28 relative">
   <div class="max-w-content mx-auto px-6 md:px-10">
 
-    <div class="text-center max-w-2xl mx-auto mb-14 md:mb-18">
-      <p class="font-dm-sans uppercase tracking-[0.4em] text-[10px] md:text-[11px] text-salon-blanc/80 mb-4">— Les marques sur les étagères —</p>
-      <h2 class="font-fraunces text-salon-blanc text-3xl md:text-5xl leading-tight">
-        Choisies une par une,
+    <div class="text-center max-w-2xl mx-auto mb-14 md:mb-16">
+      <p class="scroll-reveal font-dm-sans uppercase tracking-[0.4em] text-[10px] md:text-[11px] text-salon-blanc/80 mb-4">— Les produits sur les étagères —</p>
+      <h2 id="produits-titre" class="scroll-reveal font-fraunces text-salon-blanc text-3xl md:text-5xl leading-tight">
+        Choisis un par un,
         <em class="font-fraunces italic block md:inline">pas un catalogue grossiste.</em>
       </h2>
+      <p class="scroll-reveal mt-6 text-salon-blanc/80 leading-relaxed max-w-xl mx-auto">
+        On travaille avec une poignée de marques pro, sélectionnées pour leur tenue, leur respect du cuir chevelu et leur transparence d'ingrédients.
+      </p>
     </div>
 
-    <ul class="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-4 md:gap-y-6 mb-16 md:mb-20">
-      {marques.map((m) => (
-        <li class="text-center font-fraunces italic text-lg md:text-xl text-salon-blanc/90 hover:text-salon-blanc transition-colors py-3 border-b border-salon-blanc/15">
-          {m}
-        </li>
-      ))}
-    </ul>
-
     <div class="border-t border-salon-blanc/20 pt-10">
-      <p class="text-center font-dm-sans uppercase tracking-[0.3em] text-[10px] text-salon-blanc/70 mb-8">— Critères de sélection —</p>
+      <p class="scroll-reveal text-center font-dm-sans uppercase tracking-[0.3em] text-[10px] text-salon-blanc/70 mb-8">— Critères de sélection —</p>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10">
         {filieres.map((f) => (
-          <div class="text-center">
-            <p class="font-fraunces text-salon-blanc text-3xl md:text-4xl mb-2">{f.value}</p>
+          <div class="scroll-reveal text-center">
+            <p class="font-fraunces text-salon-blanc text-2xl md:text-3xl mb-2 leading-tight">{f.value}</p>
             <p class="font-dm-sans uppercase tracking-[0.18em] text-[10px] text-salon-blanc/80">{f.label}</p>
           </div>
         ))}
