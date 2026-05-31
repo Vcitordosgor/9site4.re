@@ -1,64 +1,30 @@
 ---
-import data from '../../../data/templates/painleve.json';
+const jours = [
+  { j: 'Lundi', fournees: ['Fermé'], cls: true },
+  { j: 'Mardi', fournees: ['7h00 · Tradition + sarrasin', '12h00 · Tradition + complet', '17h00 · Miche campagne'] },
+  { j: 'Mercredi', fournees: ['7h00 · Tradition + seigle', '12h00 · Tradition + complet', '17h00 · Sarrasin'] },
+  { j: 'Jeudi', fournees: ['7h00 · Tradition + miche', '12h00 · Tradition + sarrasin', '17h00 · Complet'] },
+  { j: 'Vendredi', fournees: ['7h00 · Tradition + brioche', '12h00 · Tradition + miche', '17h00 · Seigle'] },
+  { j: 'Samedi', fournees: ['7h00 · Tout', '12h00 · Tout', '17h00 · Selon stock'] },
+  { j: 'Dimanche', fournees: ['7h00 · Tradition + brioche', '11h00 · Miche + complet'] },
+];
 ---
-
-<section id="calendrier" class="py-20 md:py-28 relative overflow-hidden" style="background-color: #F5EBD5;">
+<section id="calendrier" class="py-24 md:py-32" style="background:#F5EBD5;">
   <div class="max-w-content mx-auto px-6 md:px-10">
-
-    <div class="text-center max-w-2xl mx-auto mb-14 md:mb-16">
-      <p class="font-crimson-pro text-[11px] uppercase tracking-[0.45em] mb-4" style="color: #7A4A2A;">— Une fournée par jour —</p>
-      <h2 class="font-crimson-pro font-semibold leading-[0.95]" style="color: #1A1614; font-size: clamp(36px, 5vw, 56px);">
-        Calendrier
-        <em class="block font-caveat not-italic mt-2" style="color: #C89B3C; font-size: clamp(44px, 6vw, 64px);">de cuisson</em>
-      </h2>
-      <p class="mt-5 font-crimson-pro text-[15px] leading-relaxed" style="color: rgba(26, 22, 20, 0.78);">
-        Le four chauffe quatre matins par semaine. Le reste, on prépare, on nourrit le levain, on se repose.
-      </p>
+    <div class="mb-14 max-w-2xl">
+      <p class="font-caveat text-2xl mb-2" style="color:#7A5C28;">le calendrier —</p>
+      <h2 class="font-crimson-pro text-5xl md:text-6xl leading-tight" style="color:#1A1614;">Les fournées <em class="italic" style="color:#C89B3C;">de la semaine.</em></h2>
     </div>
-
-    <div class="max-w-4xl mx-auto">
-      <div class="overflow-hidden" style="border: 2px solid #1A1614;">
-        {data.calendrier.map((j, i) => (
-          <div class={`grid grid-cols-12 gap-3 px-5 md:px-8 py-5 md:py-6 items-center ${i % 2 === 0 ? '' : ''}`} style={`background-color: ${i % 2 === 0 ? 'rgba(255,255,255,0.55)' : 'rgba(255,255,255,0.85)'}; ${i > 0 ? 'border-top: 1px solid rgba(122, 74, 42, 0.2);' : ''}`}>
-            <div class="col-span-3 md:col-span-2">
-              <p class="font-caveat text-2xl md:text-3xl leading-none" style="color: #7A4A2A;">
-                {j.jour}
-              </p>
-            </div>
-            <div class="col-span-6 md:col-span-7">
-              <p class="font-crimson-pro text-[13.5px] md:text-[15px] leading-snug" style="color: #1A1614;">
-                {j.fournee}
-              </p>
-            </div>
-            <div class="col-span-3 md:col-span-3 text-right">
-              <p class={`font-crimson-pro text-[12px] md:text-[13px] uppercase tracking-[0.18em] ${j.ouverture === 'Fermé' ? 'opacity-50' : 'font-semibold'}`} style="color: #1A1614;">
-                {j.ouverture}
-              </p>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <p class="mt-6 text-center font-caveat text-xl md:text-2xl" style="color: #7A4A2A;">
-        — Réservation des pains par WhatsApp jusqu'à la veille 18h —
-      </p>
-
-      <!-- Heures de sortie du four -->
-      <div class="mt-12 md:mt-14">
-        <p class="text-center font-crimson-pro text-[11px] uppercase tracking-[0.45em] mb-5" style="color: #7A4A2A;">— Heures de sortie du four —</p>
-        <ul class="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
-          {[
-            { quoi: 'Pain au levain', heures: '7 h & 16 h' },
-            { quoi: 'Croissants', heures: '6 h 30' },
-            { quoi: 'Brioche', heures: '8 h' },
-          ].map((s) => (
-            <li class="text-center px-4 py-5" style="background-color: rgba(255,255,255,0.7); border: 1px solid rgba(122, 74, 42, 0.25);">
-              <p class="font-caveat text-2xl md:text-3xl leading-none" style="color: #C89B3C;">{s.heures}</p>
-              <p class="mt-2 font-crimson-pro text-[14px] uppercase tracking-[0.18em]" style="color: #1A1614;">{s.quoi}</p>
-            </li>
-          ))}
-        </ul>
-      </div>
+    <div class="grid md:grid-cols-7 gap-px" style="background:rgba(26,22,20,0.15);">
+      {jours.map(d => (
+        <div class="p-5 min-h-[160px]" style={`background:${d.cls ? '#EADBB7' : '#F5EBD5'};`}>
+          <div class="text-[11px] uppercase tracking-[0.22em] mb-3 font-semibold" style={`color:${d.cls ? '#7A5C28' : '#1A1614'};`}>{d.j}</div>
+          <ul class="space-y-1.5 text-[12px]" style="color:#3A3128;">
+            {d.fournees.map(f => <li class="leading-tight">{f}</li>)}
+          </ul>
+        </div>
+      ))}
     </div>
+    <p class="mt-6 text-[12px] uppercase tracking-[0.22em]" style="color:#7A5C28;">— Les fournées s'arrêtent à épuisement. Précommandez pour être sûr·e.</p>
   </div>
 </section>

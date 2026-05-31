@@ -1,59 +1,25 @@
 ---
 import data from '../../../data/templates/painleve.json';
-const whatsapp = data.info?.whatsapp || '';
-const nom = data.info?.nom || 'la boulangerie';
-const exempleMessage = `Bonjour ${nom}, je souhaite réserver pour vendredi 7 h :
-- 1 pain au levain (1 kg)
-- 4 croissants
-- 1 brioche tressée
-
-Merci !`;
-const wa = whatsapp ? `https://wa.me/${whatsapp}?text=${encodeURIComponent(exempleMessage)}` : '#';
 ---
-
-<section id="precommande" class="py-20 md:py-28 relative overflow-hidden" style="background-color: #1A1614; color: #F5EBD5;">
-  <div class="max-w-content mx-auto px-6 md:px-10">
-
-    <div class="text-center max-w-2xl mx-auto mb-12 md:mb-14">
-      <p class="font-crimson-pro text-[11px] uppercase tracking-[0.45em] mb-4" style="color: #C89B3C;">— Précommande WhatsApp —</p>
-      <h2 class="font-crimson-pro font-semibold leading-[0.95]" style="font-size: clamp(36px, 5vw, 56px);">
-        Réservez votre pain
-        <em class="block font-caveat not-italic mt-2" style="color: #C89B3C; font-size: clamp(44px, 6vw, 64px);">en un message.</em>
-      </h2>
-      <p class="mt-5 font-crimson-pro text-[15px] leading-relaxed" style="color: rgba(245, 235, 213, 0.85);">
-        On manque souvent à 11 h. Une précommande la veille, et votre fournée vous attend.
+<section id="precommande" class="py-24 md:py-28" style="background:#C89B3C; color:#1A1614;">
+  <div class="max-w-content mx-auto px-6 md:px-10 grid md:grid-cols-2 gap-12 items-center">
+    <div>
+      <p class="font-caveat text-3xl mb-2">on garde votre pain —</p>
+      <h2 class="font-crimson-pro text-4xl md:text-5xl leading-tight">Précommandez <em class="italic">la veille.</em></h2>
+      <p class="mt-5 text-lg leading-relaxed">
+        Nos fournées partent vite. Pour être sûr·e d'avoir votre miche, votre brioche ou votre pain du dimanche, réservez par WhatsApp avant 18h la veille — on le met de côté chaud, à votre nom.
       </p>
+      <ul class="mt-6 space-y-2 text-[15px]">
+        <li>· Aucun acompte</li>
+        <li>· Retrait à la fournée choisie</li>
+        <li>· Si vous ne venez pas, on revend — pas de souci</li>
+      </ul>
     </div>
-
-    <div class="grid md:grid-cols-5 gap-8 md:gap-10 items-center max-w-4xl mx-auto">
-
-      <!-- Bulle exemple message -->
-      <div class="md:col-span-3">
-        <p class="font-caveat text-xl mb-3" style="color: #C89B3C;">Exemple de message ↓</p>
-        <div class="p-5 md:p-6 rounded-2xl" style="background-color: #F5EBD5; color: #1A1614; box-shadow: 0 8px 24px rgba(0,0,0,0.25);">
-          <p class="font-crimson-pro text-[14.5px] leading-relaxed whitespace-pre-line">{exempleMessage}</p>
-        </div>
-      </div>
-
-      <!-- CTA -->
-      <div class="md:col-span-2 text-center md:text-left">
-        <p class="font-caveat text-xl mb-4" style="color: rgba(245,235,213,0.8);">Cliquez, envoyez, on confirme.</p>
-        <a
-          href={wa}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center justify-center gap-3 h-14 px-7 rounded-full font-crimson-pro font-semibold text-[14px] uppercase tracking-[0.18em] transition-transform hover:-translate-y-0.5"
-          style="background-color: #C89B3C; color: #1A1614;"
-        >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.92 0-2.65-1.03-5.14-2.91-7.01z"/>
-          </svg>
-          <span>Envoyer sur WhatsApp</span>
-        </a>
-        <p class="mt-4 font-crimson-pro text-[12px]" style="color: rgba(245,235,213,0.6);">
-          Réponse sous 2 h en journée.
-        </p>
-      </div>
+    <div class="flex flex-col gap-3">
+      <a href={`https://wa.me/${data.info.whatsapp}`} class="inline-flex items-center justify-center h-14 px-7 text-[12px] uppercase tracking-[0.22em] font-semibold transition-colors"
+         style="background:#1A1614; color:#C89B3C;">WhatsApp · précommander</a>
+      <a href={`tel:${data.info.telephoneHref}`} class="inline-flex items-center justify-center h-14 px-7 text-[12px] uppercase tracking-[0.22em] font-semibold border"
+         style="border-color:#1A1614; color:#1A1614;">Appeler la fournil</a>
     </div>
   </div>
 </section>
