@@ -1,27 +1,40 @@
 ---
 import data from '../../../data/templates/sorbetpei.json';
 const faqs = [
-  { q: 'Vous travaillez sans lait ?', r: 'Les sorbets, oui. Les glaces (vanille, coco) contiennent de la crème entière. Toutes nos préparations véganes sont signalées.' },
-  { q: 'Vos parfums sont saisonniers ?', r: 'Le letchi novembre-janvier, l\'ananas avril-juillet. Mangue, vanille, coco, fruit de la passion toute l\'année.' },
-  { q: 'Sans sucre ?', r: 'Sucre canne bio dosé au minimum (12-14%). Nous ne proposons pas de version 0 sucre — le sorbet a besoin de sucre pour son glaçage.' },
-  { q: 'Peut-on commander pour une fête à la maison ?', r: 'Oui, à partir de 3L (≈30 personnes). Livraison côte ouest et sud. Commande 72h à l\'avance.' },
-  { q: 'Allergènes ?', r: 'Aucun œuf, aucun gluten. Glaces traditionnelles contiennent lait. Liste détaillée disponible sur demande, traçabilité complète.' },
+  { q: "Vos sorbets sont-ils vegan ?", r: "Les sorbets péi (mangue, letchi, ananas, goyave, fruit de la passion) sont 100 % vegan : eau, fruit, sucre roux, citron vert. Les crèmes glacées (vanille bourbon, chocolat) contiennent du lait entier et des jaunes d'œufs bio." },
+  { q: "D'où viennent vos fruits ?", r: "De producteurs péi rencontrés en 2021. Mangue Carotte des Hauts, letchis Kwaï Mi du Sud, ananas Victoria, vanille de l'Est. Liste complète et noms des fermes affichés sur le camion à chaque tournée." },
+  { q: "Conservez-vous les bacs ?", r: "Bac de 500 ml en congélateur domestique : 3 semaines à -18°C. Au-delà, les arômes des fruits frais commencent à passer — un sorbet péi est meilleur dans les 10 jours." },
+  { q: "Y a-t-il des intolérances à signaler ?", r: "Pas de gluten dans nos préparations. Sorbets : aucun produit laitier. Glaces : lait + œufs. Pour les allergies aux fruits exotiques (latex, mangue, kiwi), demandez la composition exacte avant achat." },
+  { q: "Pourquoi pas de sucre 0 ?", r: "Le sucre roux (12 % seulement) joue un rôle physique dans la texture du sorbet : sans lui, le sorbet devient un bloc dur impossible à servir. On préfère une vraie cuillerée gourmande à une promesse marketing." },
+  { q: "On peut commander des bacs pour fête à la maison ?", r: "Oui. À partir de 3 bacs (1,5 L, ≈ 30 personnes), avec 72 h de préavis. Livraison gratuite côte ouest et sud. Au-delà, forfait 25 €." },
 ];
 ---
-<section class="py-24 md:py-32" style="background:#FFF6E2;">
-  <div class="max-w-content mx-auto px-6 md:px-10">
-    <p class="font-fraunces italic text-2xl mb-2" style="color:#FF6F91;">vos questions —</p>
-    <h2 class="font-fraunces text-5xl md:text-6xl leading-tight mb-12" style="color:#3D2817;">FAQ <em class="italic">glacée.</em></h2>
-    <div class="grid md:grid-cols-2 gap-5">
+<section class="relative py-24 md:py-36" style="background:#FFF6E2;">
+  <div class="max-w-content mx-auto px-6 md:px-12">
+    <div class="max-w-3xl mb-14">
+      <p class="text-[11px] uppercase tracking-[0.42em] mb-3 font-bold flex items-center gap-3" style="color:#FF6F91;">
+        <span class="block w-10 h-px" style="background:#FF6F91;"></span>
+        Vos questions
+      </p>
+      <h2 class="font-fraunces leading-[0.92] tracking-[-0.015em]" style="font-size:clamp(40px,5.6vw,76px); color:#3D2817;">
+        Avant de croquer
+        <span class="block italic" style="color:#FF6F91; font-size:clamp(54px,7.4vw,100px);">la première boule.</span>
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-4 md:gap-5">
       {faqs.map(f => (
-        <details class="group p-6 transition-all" style="background:#FFD93D; color:#3D2817; border-radius:20px;">
-          <summary class="cursor-pointer flex justify-between gap-4 font-fraunces text-xl">
-            {f.q}<span class="font-fraunces text-2xl transition-transform group-open:rotate-45">+</span>
+        <details class="group p-6 md:p-7 rounded-[24px] transition-all" style="background:#FFD93D; color:#3D2817;">
+          <summary class="cursor-pointer flex justify-between gap-4 font-fraunces text-xl md:text-2xl leading-tight">
+            <span class="flex-1">{f.q}</span>
+            <span class="font-fraunces text-3xl leading-none transition-transform group-open:rotate-45" style="color:#FF6F91;">+</span>
           </summary>
-          <p class="mt-3 text-[14px] leading-relaxed">{f.r}</p>
+          <p class="mt-3 text-[14px] leading-relaxed" style="font-family:'DM Sans',system-ui,sans-serif;">{f.r}</p>
         </details>
       ))}
     </div>
-    <p class="mt-10 text-base" style="color:#3D2817;">Une autre question ? <a href={`mailto:${data.info.email}`} class="underline font-semibold">{data.info.email}</a></p>
+    <p class="mt-10 text-base" style="font-family:'DM Sans',system-ui,sans-serif; color:#3D2817;">
+      Une autre question ? <a href={`mailto:${data.info.email}`} class="underline font-bold" style="color:#FF6F91;">{data.info.email}</a>
+    </p>
   </div>
 </section>

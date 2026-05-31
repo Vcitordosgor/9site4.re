@@ -1,34 +1,97 @@
 ---
 import data from '../../../data/templates/sorbetpei.json';
-const formules = [
-  { titre: 'Mariage / Cérémonie', prix: 'à partir de 380€', desc: '2 parfums au choix, 3h sur place, service à la cuillère, jusqu\'à 80 invités.' },
-  { titre: 'Anniversaire enfant', prix: 'à partir de 220€', desc: '2 parfums, 2h sur place, cornets enfants jusqu\'à 30 invités, animation possible.' },
-  { titre: 'Événement pro', prix: 'sur devis', desc: 'Pot d\'accueil, lancement produit, séminaire — 3 parfums, signalétique personnalisable.' },
-];
+
+const formules = data.prive.map((p, i) => ({
+  ...p,
+  bg: ['#FFE4B8', '#FFD9E1', '#FFF3B8'][i] ?? '#FFE4B8',
+  accent: ['#FFB347', '#FF6F91', '#FFD93D'][i] ?? '#FFB347',
+  photo: ['/images/glacier/extra-11.webp', '/images/glacier/extra-12.webp', '/images/glacier/extra-8.webp'][i],
+}));
 ---
-<section id="privatisation" class="py-24 md:py-28" style="background:#FFB347;">
-  <div class="max-w-content mx-auto px-6 md:px-10">
-    <div class="grid md:grid-cols-2 gap-12 mb-12 items-end">
-      <div>
-        <p class="font-fraunces italic text-2xl mb-2" style="color:#3D2817;">privatisation —</p>
-        <h2 class="font-fraunces text-5xl md:text-6xl leading-tight" style="color:#3D2817;">Le camion <em class="italic" style="color:#FFF6E2;">pour vous.</em></h2>
+<section id="prive" class="relative py-24 md:py-36" style="background:#FFB347;">
+  <div class="max-w-content mx-auto px-6 md:px-12">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14 md:mb-20">
+      <div class="max-w-3xl">
+        <p class="text-[11px] uppercase tracking-[0.42em] mb-3 font-bold flex items-center gap-3" style="color:#3D2817;">
+          <span class="block w-10 h-px" style="background:#3D2817;"></span>
+          Privatisation
+        </p>
+        <h2 class="font-fraunces leading-[0.92] tracking-[-0.015em]" style="font-size:clamp(40px,6vw,84px); color:#3D2817;">
+          Le camion,
+          <span class="block italic" style="color:#FFF6E2; font-size:clamp(54px,7.8vw,108px);">pour votre événement.</span>
+        </h2>
       </div>
-      <p class="text-lg leading-relaxed" style="color:#3D2817;">
-        Mariages, anniversaires, lancements de marque. On débarque le camion, on sert les invités, on remballe. Une présence solaire pour vos moments importants.
+      <p class="max-w-md text-base leading-relaxed" style="font-family:'DM Sans',system-ui,sans-serif; color:#3D2817;">
+        On débarque, on installe le bar à glaces, on sert vos invités, on remballe. Une présence solaire qui change un peu des bouchées sucrées.
       </p>
     </div>
-    <div class="grid md:grid-cols-3 gap-5 mb-10">
-      {formules.map(f => (
-        <article class="p-7" style="background:#FFF6E2; color:#3D2817; border-radius:24px;">
-          <h3 class="font-fraunces text-2xl mb-3">{f.titre}</h3>
-          <div class="font-fraunces italic text-xl mb-3" style="color:#FF6F91;">{f.prix}</div>
-          <p class="text-[14px] leading-relaxed">{f.desc}</p>
-        </article>
+
+    <ul class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
+      {formules.map((f, i) => (
+        <li class="group relative rounded-[28px] overflow-hidden flex flex-col transition-all duration-500 hover:-translate-y-1" style={`background:${f.bg}; color:#3D2817;`}>
+          <div class="relative overflow-hidden aspect-[5/4]">
+            <img src={f.photo} alt={f.titre} class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.05]" loading="lazy" />
+            <span class="absolute top-4 left-4 inline-flex items-center px-3 py-1 rounded-full text-[10px] uppercase tracking-[0.22em] font-bold" style={`background:${f.accent}; color:#3D2817;`}>
+              Formule {String(i + 1).padStart(2, '0')}
+            </span>
+          </div>
+          <div class="p-7 flex-1 flex flex-col">
+            <h3 class="font-fraunces text-2xl md:text-3xl leading-tight">{f.titre}</h3>
+            <p class="mt-1 font-fraunces italic text-xl leading-tight" style={`color:${f.accent === '#FFD93D' ? '#FF6F91' : f.accent};`}>— {f.tagline}</p>
+            <p class="mt-4 text-[14px] leading-relaxed flex-1" style="font-family:'DM Sans',system-ui,sans-serif;">{f.details}</p>
+            <p class="mt-5 text-[11.5px] uppercase tracking-[0.22em] font-bold" style="color:#5C3A1E; font-family:'DM Sans',system-ui,sans-serif;">— Réservation {f.minimum}</p>
+          </div>
+        </li>
       ))}
+    </ul>
+
+    <!-- Atelier kids -->
+    <div class="mt-16 md:mt-20 grid lg:grid-cols-12 gap-8 items-center p-8 md:p-12 rounded-[32px]" style="background:#3D2817; color:#FFF6E2;">
+      <div class="lg:col-span-6">
+        <p class="text-[11px] uppercase tracking-[0.42em] mb-3 font-bold" style="color:#FFD93D;">— Atelier kids · mercredi après-midi</p>
+        <h3 class="font-fraunces italic leading-[0.95]" style="font-size:clamp(34px,4.8vw,64px);">
+          Les enfants
+          <span class="block" style="color:#FFD93D;">turbinent eux-mêmes.</span>
+        </h3>
+        <p class="mt-5 text-base leading-relaxed max-w-lg" style="font-family:'DM Sans',system-ui,sans-serif; color:#E8DFC9;">
+          Un mercredi par mois, six enfants (7-12 ans) accompagnés d'un parent. On pèle, on mixe, on tourne la turbine, on goûte. 90 minutes, un bac par binôme à emporter.
+        </p>
+        <ul class="mt-7 grid grid-cols-2 gap-3 text-[13px]" style="font-family:'DM Sans',system-ui,sans-serif; color:#E8DFC9;">
+          <li class="flex gap-2"><span style="color:#FFD93D;">✦</span>1er mercredi du mois · 14 h</li>
+          <li class="flex gap-2"><span style="color:#FFD93D;">✦</span>6 binômes maximum</li>
+          <li class="flex gap-2"><span style="color:#FFD93D;">✦</span>32 € par binôme</li>
+          <li class="flex gap-2"><span style="color:#FFD93D;">✦</span>1 bac 500 ml offert</li>
+        </ul>
+      </div>
+      <div class="lg:col-span-6 grid grid-cols-2 gap-3">
+        <img src="/images/glacier/extra-9.webp" alt="Atelier enfants — mains qui versent la pulpe dans la turbine" class="rounded-[24px] aspect-square object-cover" loading="lazy" />
+        <img src="/images/glacier/extra-11.webp" alt="Cornets à la sortie de l'atelier" class="rounded-[24px] aspect-square object-cover mt-8" loading="lazy" />
+      </div>
     </div>
-    <div class="flex flex-wrap gap-3">
-      <a href={`mailto:${data.info.email}`} class="inline-flex items-center h-13 px-7 text-[12px] uppercase tracking-[0.22em] font-bold" style="background:#3D2817; color:#FFD93D; border-radius:999px; height:52px;">Demander un devis</a>
-      <a href={`https://wa.me/${data.info.whatsapp}`} class="inline-flex items-center h-13 px-7 text-[12px] uppercase tracking-[0.22em] font-bold border-2" style="border-color:#3D2817; color:#3D2817; border-radius:999px; height:52px;">WhatsApp</a>
+
+    <!-- Portrait Léna -->
+    <div class="mt-16 md:mt-20 grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+      <div class="lg:col-span-5">
+        <div class="relative">
+          <img src="/images/glacier/extra-12.webp" alt={`Portrait de ${data.info.fondatrice}, glacière`} class="w-full aspect-[4/5] object-cover rounded-[28px]" loading="lazy" />
+          <div class="absolute -bottom-5 -right-5 md:-right-8 w-32 h-32 md:w-36 md:h-36 rounded-full flex items-center justify-center text-center -rotate-12 shadow-[0_18px_44px_-12px_rgba(0,0,0,0.25)]" style="background:#FFD93D; color:#3D2817;">
+            <span class="font-fraunces italic text-2xl leading-tight px-2">Léna<br/>{data.info.annee}</span>
+          </div>
+        </div>
+      </div>
+      <div class="lg:col-span-7">
+        <p class="text-[11px] uppercase tracking-[0.42em] mb-3 font-bold" style="color:#3D2817;">— la glacière</p>
+        <h3 class="font-fraunces leading-[0.95]" style="font-size:clamp(36px,5vw,68px); color:#3D2817;">
+          Léna B.,
+          <span class="block italic" style="color:#FF6F91; font-size:clamp(46px,6.6vw,90px);">la dame du camion.</span>
+        </h3>
+        <p class="mt-6 text-base md:text-lg leading-relaxed max-w-2xl" style="font-family:'DM Sans',system-ui,sans-serif; color:#3D2817;">
+          Léna a démarré le camion en 2021 après dix ans en cuisine de restaurant. Frustrée de voir les fruits péi finir en sirop industriel, elle a investi dans une turbine, un camion d'occase, et le tour était joué. Aujourd'hui, elle parcourt 220 km par semaine.
+        </p>
+        <blockquote class="mt-7 font-fraunces italic text-2xl md:text-3xl leading-snug border-l-2 pl-5 max-w-xl" style="border-color:#FF6F91; color:#3D2817;">
+          “Une mangue Carotte des Hauts ne mérite pas un sirop industriel. Elle mérite mieux.”
+        </blockquote>
+      </div>
     </div>
   </div>
 </section>
