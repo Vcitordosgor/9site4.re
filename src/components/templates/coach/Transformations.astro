@@ -37,6 +37,22 @@ const avatarText = ['text-coach-noir', 'text-coach-blanc', 'text-coach-noir', 't
             </div>
           </div>
 
+          <!-- Bloc Avant / Après explicite (jauge visuelle stylisée) -->
+          <div class="grid grid-cols-2 gap-px bg-coach-blanc/10 mb-4">
+            <div class="bg-coach-noir p-3">
+              <p class="font-jetbrains text-[9px] uppercase tracking-[0.22em] text-coach-gris mb-1">AVANT</p>
+              <div class="flex items-end justify-center h-14 bg-coach-graphite/40 ring-1 ring-coach-blanc/5">
+                <span class="block w-7 bg-coach-gris/40" style="height: 35%;"></span>
+              </div>
+            </div>
+            <div class="bg-coach-noir p-3">
+              <p class="font-jetbrains text-[9px] uppercase tracking-[0.22em] text-coach-lime mb-1">APRÈS</p>
+              <div class="flex items-end justify-center h-14 bg-coach-graphite/40 ring-1 ring-coach-lime/30">
+                <span class="block w-7 bg-coach-lime" style="height: 90%;"></span>
+              </div>
+            </div>
+          </div>
+
           <!-- Chiffre clé géant -->
           <p class="font-big-shoulders font-black text-coach-lime leading-none mb-4 tabular-nums" style="font-size: clamp(40px, 5vw, 56px);">
             {t.chiffre}
