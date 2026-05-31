@@ -1,0 +1,158 @@
+---
+/**
+ * Tableau — Signature moment "Wow" pour /templates/electricien.
+ *
+ * Tableau électrique digital stylisé : disjoncteurs alignés, voyants qui
+ * s'allument en cascade au scroll, mini affichage type "bus de données".
+ * Concept Volta = digital instrumentation. 100% SVG + CSS.
+ */
+
+const modules = [
+  { label: 'Différentiel 30 mA', state: 'on',  amp: '40A',  zone: 'Général' },
+  { label: 'Cuisine — prises',   state: 'on',  amp: '20A',  zone: 'C1' },
+  { label: 'Salle de bain',      state: 'on',  amp: '20A',  zone: 'C2' },
+  { label: 'Volets roulants',    state: 'on',  amp: '16A',  zone: 'C3' },
+  { label: 'Climatisation',      state: 'on',  amp: '32A',  zone: 'C4' },
+  { label: 'Plaque induction',   state: 'on',  amp: '32A',  zone: 'C5' },
+  { label: 'Bornes IRVE',        state: 'on',  amp: '16A',  zone: 'C6' },
+  { label: 'Photovoltaïque',     state: 'on',  amp: '20A',  zone: 'PV' },
+  { label: 'Réserve',            state: 'off', amp: '—',    zone: 'R1' },
+];
+---
+
+<section id="tableau" class="bg-volta-acier text-volta-fumee py-24 md:py-36 px-6 md:px-10 overflow-hidden relative">
+  <div class="max-w-content mx-auto">
+
+    <header class="mb-12 md:mb-16 max-w-3xl scroll-reveal">
+      <p class="font-space-grotesk text-[10px] uppercase tracking-[0.36em] text-volta-cyan font-medium mb-5">
+        ◉ Tableau type · Mise aux normes NFC 15-100
+      </p>
+      <h2 class="font-syne font-bold text-volta-fumee leading-[0.95]" style="font-size: clamp(40px, 6.5vw, 80px);">
+        Un tableau propre,
+        <span class="block text-volta-cyan">étiqueté, sécurisé.</span>
+      </h2>
+      <p class="mt-6 font-space-grotesk text-volta-fumee/70 text-base md:text-lg max-w-xl leading-relaxed">
+        Chaque circuit identifié, chaque disjoncteur dimensionné. Vous savez quoi couper en cas de pépin.
+      </p>
+    </header>
+
+    <div class="scroll-reveal grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+
+      <!-- Tableau -->
+      <div class="lg:col-span-7">
+        <div class="tableau-frame relative rounded-xl bg-volta-noir border border-volta-fumee/15 p-5 md:p-7">
+
+          <!-- Top bar (peigne d'alim) -->
+          <div class="flex items-center justify-between pb-4 mb-5 border-b border-volta-fumee/10">
+            <p class="font-space-grotesk font-medium text-[11px] uppercase tracking-[0.28em] text-volta-fumee/55">
+              VOLTA · Tableau type T4
+            </p>
+            <span class="tableau-power inline-flex items-center gap-2 font-space-grotesk text-[10px] uppercase tracking-[0.28em] text-volta-cyan">
+              <span class="w-1.5 h-1.5 rounded-full bg-volta-cyan tableau-blink"></span>
+              230 V — 50 Hz
+            </span>
+          </div>
+
+          <!-- Rangée modules -->
+          <ul class="grid grid-cols-3 sm:grid-cols-3 gap-2 md:gap-3">
+            {modules.map((m, i) => (
+              <li class={`tableau-mod relative rounded-md bg-volta-acier/70 ring-1 ring-volta-fumee/10 p-3 md:p-3.5 ${m.state === 'on' ? 'is-on' : 'is-off'}`} style={`--i:${i}`}>
+                <div class="flex items-center justify-between mb-2">
+                  <span class="font-space-grotesk font-mono text-[9px] text-volta-fumee/45 uppercase tracking-wider">{m.zone}</span>
+                  <span class="tableau-led w-2 h-2 rounded-full"></span>
+                </div>
+                <!-- Levier disjoncteur -->
+                <span class="tableau-switch block w-5 h-7 mx-auto rounded-sm bg-volta-fumee/15 relative">
+                  <span class="tableau-toggle absolute left-1/2 -translate-x-1/2 w-3 h-3 rounded-sm bg-volta-fumee/70"></span>
+                </span>
+                <p class="mt-2 font-space-grotesk text-[10px] text-volta-fumee/70 leading-tight text-center">{m.amp}</p>
+              </li>
+            ))}
+          </ul>
+
+          <!-- Bus data -->
+          <div class="mt-5 pt-4 border-t border-volta-fumee/10 flex items-center justify-between font-space-grotesk text-[9px] uppercase tracking-[0.24em] text-volta-fumee/40">
+            <span>Conformité <span class="text-volta-cyan/80">NFC 15-100</span></span>
+            <span>Consuel <span class="text-volta-cyan/80">OK</span></span>
+            <span>IP <span class="text-volta-cyan/80">30</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Légende -->
+      <div class="lg:col-span-5 space-y-5">
+        {modules.slice(0, 5).map((m, i) => (
+          <div class="flex items-start gap-4">
+            <span class="tableau-legend-led w-2 h-2 rounded-full bg-volta-cyan mt-2 flex-shrink-0" style={`animation-delay:${i*120}ms`}></span>
+            <div class="flex-1">
+              <div class="flex items-baseline justify-between gap-3">
+                <p class="font-syne font-semibold text-volta-fumee text-base">{m.label}</p>
+                <span class="font-space-grotesk text-[10px] uppercase tracking-[0.24em] text-volta-cyan/70 tabular-nums">{m.amp}</span>
+              </div>
+              <p class="font-space-grotesk text-volta-fumee/55 text-xs mt-1 uppercase tracking-wider">Zone {m.zone}</p>
+            </div>
+          </div>
+        ))}
+        <p class="font-space-grotesk text-volta-fumee/50 text-xs italic pt-3 border-t border-volta-fumee/10">
+          + 4 circuits dédiés (volets, induction, IRVE, photovoltaïque). Tout est étiqueté.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Tableau LED + toggle */
+  .tableau-mod.is-on .tableau-led {
+    background: #06D4F5;
+    box-shadow: 0 0 8px rgba(6, 212, 245, 0.6);
+    opacity: 0;
+    animation: tableau-led-on 600ms ease forwards;
+    animation-delay: calc(var(--i, 0) * 80ms + 200ms);
+  }
+  .tableau-mod.is-off .tableau-led {
+    background: #454850;
+  }
+  .tableau-mod.is-on .tableau-toggle {
+    background: #06D4F5;
+    bottom: 4px;
+    top: auto;
+    box-shadow: 0 0 6px rgba(6, 212, 245, 0.4);
+  }
+  .tableau-mod.is-off .tableau-toggle {
+    top: 4px;
+    background: #7E7C75;
+  }
+  .tableau-toggle {
+    transition: top 400ms cubic-bezier(0.22, 1, 0.36, 1), bottom 400ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* Power LED clignote subtil */
+  .tableau-blink {
+    animation: tableau-blink 1.8s ease-in-out infinite;
+  }
+  @keyframes tableau-blink {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0.35; }
+  }
+
+  /* LEDs légende */
+  .tableau-legend-led {
+    box-shadow: 0 0 6px rgba(6, 212, 245, 0.5);
+    animation: tableau-blink 2.4s ease-in-out infinite;
+  }
+
+  @keyframes tableau-led-on {
+    from { opacity: 0; transform: scale(0.5); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tableau-mod.is-on .tableau-led, .tableau-blink, .tableau-toggle, .tableau-legend-led {
+      animation: none !important;
+      transition: none !important;
+      opacity: 1 !important;
+    }
+  }
+</style>
