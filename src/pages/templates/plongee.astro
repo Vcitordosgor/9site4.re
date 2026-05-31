@@ -1,7 +1,9 @@
 ---
-import '@fontsource/space-grotesk/latin-400.css';
-import '@fontsource/space-grotesk/latin-500.css';
-import '@fontsource/space-grotesk/latin-700.css';
+import '@fontsource/fraunces/latin-300.css';
+import '@fontsource/fraunces/latin-400.css';
+import '@fontsource/fraunces/latin-500.css';
+import '@fontsource/fraunces/latin-300-italic.css';
+import '@fontsource/fraunces/latin-400-italic.css';
 import '@fontsource/inter/latin-400.css';
 import '@fontsource/inter/latin-500.css';
 import '@fontsource/inter/latin-600.css';
@@ -11,63 +13,57 @@ import '@fontsource/jetbrains-mono/latin-500.css';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSeo } from '../../lib/seo';
 import { localBusinessSchema } from "../../lib/businessSchema";
-import bleulagonData from '../../data/templates/bleulagon.json';
+import plongeeData from '../../data/templates/plongee.json';
 
 import BleuLagonHeader from '../../components/templates/plongee/BleuLagonHeader.astro';
 import HeroPlongee from '../../components/templates/plongee/HeroPlongee.astro';
+import Profondeurs from '../../components/templates/plongee/Profondeurs.astro';
 import Formules from '../../components/templates/plongee/Formules.astro';
-import Process from '../../components/templates/plongee/Process.astro';
+import Journee from '../../components/templates/plongee/Journee.astro';
 import LeMoniteur from '../../components/templates/plongee/LeMoniteur.astro';
 import Galerie from '../../components/templates/plongee/Galerie.astro';
-import Citation from '../../components/templates/plongee/Citation.astro';
-import Securite from '../../components/templates/plongee/Securite.astro';
-import Certifications from '../../components/templates/plongee/Certifications.astro';
+import Spots from '../../components/templates/plongee/Spots.astro';
 import Bandeau from '../../components/templates/plongee/Bandeau.astro';
-import Avis from '../../components/templates/plongee/Avis.astro';
+import Securite from '../../components/templates/plongee/Securite.astro';
+import Citation from '../../components/templates/plongee/Citation.astro';
 import Faq from '../../components/templates/plongee/Faq.astro';
 import Contact from '../../components/templates/plongee/Contact.astro';
 import BleuLagonFooter from '../../components/templates/plongee/BleuLagonFooter.astro';
-const businessLD = localBusinessSchema(bleulagonData, 'SportsActivityLocation');
 
+const businessLD = localBusinessSchema(plongeeData, 'SportsActivityLocation');
 ---
 
 <BaseLayout seo={getSeo('templatePlongee')} bare={true}>
   <Fragment slot="head">
     {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
-<link
-      rel="preload"
-      as="image"
-      href={bleulagonData.info.photoHero}
-      fetchpriority="high"
-    />
+    <link rel="preload" as="image" href={plongeeData.info.photoHero} fetchpriority="high" />
   </Fragment>
 
   <BleuLagonHeader />
 
-  <main class="bg-plongee-ecume text-plongee-marine font-inter">
+  <main class="bg-plongee-ecume text-plongee-charbon font-inter">
     <HeroPlongee />
+    <Profondeurs />
     <Formules />
-    <Process />
+    <Journee />
     <LeMoniteur />
     <Galerie />
-    <Citation />
-    <Securite />
-    <Certifications />
+    <Spots />
     <Bandeau />
-    <Avis />
+    <Securite />
+    <Citation />
     <Faq />
     <Contact />
   </main>
 
   <BleuLagonFooter />
 
-  <!-- Sticky CTA mobile : réservation baptême -->
   <a
     id="bl-sticky-cta"
-    href="#formules"
+    href="#contact"
     data-visible="false"
     aria-label="Réserver mon baptême de plongée"
-    class="md:hidden fixed bottom-4 inset-x-4 z-40 inline-flex items-center justify-center gap-2 h-14 px-6 text-sm font-inter font-semibold uppercase tracking-[0.18em] rounded-full transition-all duration-300 ease-out bg-plongee-corail text-plongee-ecume data-[visible=false]:opacity-0 data-[visible=false]:translate-y-4 data-[visible=false]:pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0"
+    class="md:hidden fixed bottom-4 inset-x-4 z-40 inline-flex items-center justify-center gap-2 h-14 px-6 text-xs font-inter font-semibold uppercase tracking-[0.22em] rounded-full transition-all duration-300 ease-out bg-plongee-corail text-plongee-ecume data-[visible=false]:opacity-0 data-[visible=false]:translate-y-4 data-[visible=false]:pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0"
     style="box-shadow: 0 12px 32px rgba(255,122,92,0.45);"
   >
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">

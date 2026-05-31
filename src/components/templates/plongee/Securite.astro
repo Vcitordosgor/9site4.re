@@ -1,92 +1,27 @@
 ---
-/**
- * Securite — 4 engagements en grid 2x2.
- * Pas de bullet generic : chaque engagement a un picto SVG inline + titre + texte.
- */
-import data from '../../../data/templates/bleulagon.json';
-
-const pictos: Record<number, { paths: string[]; }> = {
-  0: {
-    // Outil / clé pour 'Matériel pro révisé'
-    paths: ['M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z'],
-  },
-  1: {
-    // Petits groupes (3 pers)
-    paths: ['M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2', 'M8.5 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z', 'M22 21v-2a4 4 0 0 0-3-3.87', 'M16 3.13a4 4 0 0 1 0 7.75'],
-  },
-  2: {
-    // Cœur main (sans pression / bienveillance)
-    paths: ['M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z'],
-  },
-  3: {
-    // Feuille / corail (Réserve Marine)
-    paths: ['M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z', 'M2 21c0-3 1.85-5.36 5.08-6'],
-  },
-};
+import data from '../../../data/templates/plongee.json';
+const items = data.securite;
 ---
-
-<section id="securite" class="bg-plongee-ecume py-24 md:py-36 px-6 md:px-10">
-  <div class="max-w-content mx-auto">
-
-    <header class="mb-14 md:mb-16 max-w-3xl">
-      <p class="font-jetbrains text-[10px] uppercase tracking-[0.32em] text-plongee-corail font-medium mb-5">
-        ▼ Pourquoi nous · 4 engagements
-      </p>
-      <h2 class="font-space-grotesk font-bold text-plongee-abysse leading-[1.0]" style="font-size: clamp(40px, 6vw, 72px);">
-        On plonge sérieusement,
-        <span class="block italic font-light text-plongee-lagon">jamais bêtement.</span>
-      </h2>
-    </header>
-
-    <ul class="grid sm:grid-cols-2 gap-5 md:gap-6">
-      {data.securite.map((s, i) => (
-        <li class="bg-plongee-abysse text-plongee-ecume rounded-2xl p-7 md:p-8 ring-1 ring-plongee-marine/40 hover:ring-plongee-lagon transition-all">
-          <span class="flex w-12 h-12 rounded-xl bg-plongee-lagon/15 text-plongee-lagon items-center justify-center mb-5">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              {pictos[i].paths.map((d) => <path d={d} />)}
-            </svg>
-          </span>
-          <h3 class="font-space-grotesk font-bold text-plongee-ecume text-xl leading-snug">
-            {s.titre}
-          </h3>
-          <p class="mt-3 font-inter text-plongee-ecume/75 text-sm leading-relaxed">
-            {s.texte}
-          </p>
-        </li>
-      ))}
-    </ul>
-
-    <!-- Widget conditions actuelles -->
-    <div class="mt-14 md:mt-16 bg-plongee-abysse text-plongee-ecume rounded-2xl ring-1 ring-plongee-marine/40 p-7 md:p-8">
-      <div class="flex items-center justify-between flex-wrap gap-3 mb-6">
-        <div class="flex items-center gap-3">
-          <span class="relative flex h-2.5 w-2.5" aria-hidden="true">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-plongee-corail opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-plongee-corail"></span>
-          </span>
-          <p class="font-jetbrains text-[10px] uppercase tracking-[0.32em] text-plongee-corail font-medium">▼ Conditions actuelles · site du jour</p>
+<section class="relative bg-plongee-ecume text-plongee-charbon py-24 lg:py-36">
+  <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+    <div class="grid lg:grid-cols-12 gap-12">
+      <div class="lg:col-span-5">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="inline-block w-10 h-px bg-plongee-corail"></span>
+          <span class="font-jetbrains-mono text-[11px] uppercase tracking-[0.32em] text-plongee-charbon/60">07 — Sécurité</span>
         </div>
-        <p class="font-jetbrains text-[10px] uppercase tracking-[0.22em] text-plongee-ecume/55">Bulletin du matin</p>
+        <h2 class="font-fraunces font-light text-[clamp(2.5rem,5vw,4.5rem)] leading-[0.98] tracking-tight">
+          La sécurité,<br/><em class="italic text-plongee-lagon">avant tout.</em>
+        </h2>
       </div>
-
-      <ul class="grid grid-cols-2 md:grid-cols-4 gap-px bg-plongee-marine/40 rounded-xl overflow-hidden">
-        {[
-          { l: 'Visibilité', v: '18 m', sub: 'Très bonne' },
-          { l: 'Houle', v: '0,8 m', sub: 'Plate' },
-          { l: 'Température eau', v: '26 °C', sub: 'Shorty 3 mm' },
-          { l: 'Courant', v: 'Faible', sub: 'Site protégé' },
-        ].map((c) => (
-          <li class="bg-plongee-abysse p-5">
-            <p class="font-jetbrains text-[10px] uppercase tracking-[0.22em] text-plongee-lagon mb-2">{c.l}</p>
-            <p class="font-space-grotesk font-bold text-plongee-ecume text-2xl md:text-3xl leading-none tabular-nums">{c.v}</p>
-            <p class="mt-2 font-inter text-xs text-plongee-ecume/65">{c.sub}</p>
-          </li>
+      <div class="lg:col-span-7 grid sm:grid-cols-2 gap-4">
+        {items.map(it => (
+          <div class="p-6 rounded-2xl bg-plongee-sable/40 border border-plongee-charbon/10">
+            <h3 class="font-fraunces text-xl text-plongee-marine">{it.titre}</h3>
+            <p class="mt-3 font-inter text-sm leading-relaxed text-plongee-charbon/70">{it.texte}</p>
+          </div>
         ))}
-      </ul>
-
-      <p class="mt-5 font-inter italic text-plongee-ecume/70 text-sm">
-        Conditions indicatives — la décision de mise à l'eau revient au directeur de plongée, après briefing sur site.
-      </p>
+      </div>
     </div>
   </div>
 </section>

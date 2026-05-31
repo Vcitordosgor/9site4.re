@@ -1,50 +1,43 @@
 ---
 import data from '../../../data/templates/agapanthes.json';
+const info = data.info;
 const year = new Date().getFullYear();
 ---
+<footer class="relative bg-agap-feuille text-agap-lin overflow-hidden">
+  <div class="max-w-[1400px] mx-auto px-6 lg:px-12 py-16 lg:py-24 grid lg:grid-cols-12 gap-10">
+    <div class="lg:col-span-5">
+      <a href="#top" class="flex items-baseline gap-2 font-cormorant">
+        <span class="text-3xl font-light italic">{info.wordmark1}</span>
+        <span class="text-3xl">{info.wordmark2}</span>
+      </a>
+      <p class="mt-6 font-manrope text-sm text-agap-lin/65 max-w-sm leading-relaxed">{info.soustitre} · depuis {info.annee}. Jardins tropicaux pensés pour durer.</p>
+      <div class="mt-8 font-cormorant italic text-xl text-agap-rose leading-snug max-w-xs">« Plante un arbre dont tu ne verras pas l'ombre. »</div>
+    </div>
 
-<footer class="bg-agap-feuille text-agap-lin/85 py-12 px-6 md:px-10 border-t border-agap-violet/30">
-  <div class="max-w-content mx-auto">
-    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-      <div>
-        <p class="flex items-baseline gap-2 leading-none">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-agap-violet -mb-0.5" aria-hidden="true">
-            <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/>
-          </svg>
-          <span class="font-cormorant italic text-agap-lin text-2xl">{data.info.wordmark1}</span>
-          <span class="font-cormorant italic font-semibold text-agap-rose text-2xl">{data.info.wordmark2}</span>
-        </p>
-        <p class="mt-3 font-cormorant italic text-agap-lin/65 text-sm">
-          La Réunion · depuis {data.info.annee}
-        </p>
-      </div>
-
-      <ul class="flex flex-col md:flex-row md:items-center gap-2 md:gap-8 text-sm font-outfit">
-        <li>
-          <a href={`tel:${data.info.telephoneHref}`} class="hover:text-agap-rose transition-colors tabular-nums">
-            {data.info.telephone}
-          </a>
-        </li>
-        <li class="hidden md:inline-flex w-1 h-1 rounded-full bg-agap-violet/45" aria-hidden="true"></li>
-        <li>
-          <a href={`mailto:${data.info.email}`} class="hover:text-agap-rose transition-colors">
-            {data.info.email}
-          </a>
-        </li>
+    <div class="lg:col-span-3">
+      <div class="font-manrope text-[10px] uppercase tracking-[0.3em] text-agap-rose mb-4">Contact</div>
+      <ul class="space-y-2 font-manrope text-sm text-agap-lin/80">
+        <li>{info.adresseLigne1}</li>
+        <li>{info.adresseLigne2}</li>
+        <li><a href={`tel:${info.telephoneHref}`} class="hover:text-agap-rose">{info.telephone}</a></li>
+        <li><a href={`mailto:${info.email}`} class="hover:text-agap-rose">{info.email}</a></li>
       </ul>
     </div>
 
-    <!-- Filet violet séparateur -->
-    <div class="mt-10 mb-6 h-px" aria-hidden="true"
-         style="background: linear-gradient(to right, transparent, rgb(107 91 149 / 0.4) 30%, rgb(107 91 149 / 0.4) 70%, transparent);">
+    <div class="lg:col-span-4">
+      <div class="font-manrope text-[10px] uppercase tracking-[0.3em] text-agap-rose mb-4">Horaires</div>
+      <ul class="space-y-2 font-manrope text-sm text-agap-lin/80">
+        {info.horaires.map(h => (
+          <li class="flex justify-between gap-4 border-b border-agap-lin/10 py-1">
+            <span>{h.jour}</span>
+            <span class={h.ouvert ? 'text-agap-rose' : 'text-agap-lin/40'}>{h.label}</span>
+          </li>
+        ))}
+      </ul>
     </div>
+  </div>
 
-    <div class="flex flex-col-reverse md:flex-row md:items-center md:justify-between gap-3 text-xs uppercase tracking-[0.25em] text-agap-lin/70 font-outfit">
-      <p>© {year} {data.info.nom} · SIRET …{data.info.siret.slice(-5)}</p>
-      <p>
-        Site créé par
-        <a href="/" class="font-semibold text-agap-lin hover:text-agap-rose transition-colors">9site4</a>
-      </p>
-    </div>
+  <div class="border-t border-agap-lin/10 py-6 text-center font-manrope text-[10px] uppercase tracking-[0.3em] text-agap-lin/40">
+    © {year} {info.nom} · Atelier paysagiste · La Réunion
   </div>
 </footer>

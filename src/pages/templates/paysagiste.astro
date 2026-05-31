@@ -2,18 +2,14 @@
 import '@fontsource/cormorant-garamond/latin-300.css';
 import '@fontsource/cormorant-garamond/latin-400.css';
 import '@fontsource/cormorant-garamond/latin-500.css';
-import '@fontsource/cormorant-garamond/latin-600.css';
-import '@fontsource/cormorant-garamond/latin-700.css';
 import '@fontsource/cormorant-garamond/latin-300-italic.css';
 import '@fontsource/cormorant-garamond/latin-400-italic.css';
 import '@fontsource/cormorant-garamond/latin-500-italic.css';
-import '@fontsource/cormorant-garamond/latin-600-italic.css';
-import '@fontsource/cormorant-garamond/latin-700-italic.css';
-import '@fontsource/outfit/latin-300.css';
-import '@fontsource/outfit/latin-400.css';
-import '@fontsource/outfit/latin-500.css';
-import '@fontsource/outfit/latin-600.css';
-import '@fontsource/outfit/latin-700.css';
+import '@fontsource/manrope/latin-300.css';
+import '@fontsource/manrope/latin-400.css';
+import '@fontsource/manrope/latin-500.css';
+import '@fontsource/manrope/latin-600.css';
+import '@fontsource/manrope/latin-700.css';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSeo } from '../../lib/seo';
@@ -22,75 +18,58 @@ import agapData from '../../data/templates/agapanthes.json';
 
 import PaysagisteHeader from '../../components/templates/paysagiste/PaysagisteHeader.astro';
 import HeroBotanique from '../../components/templates/paysagiste/HeroBotanique.astro';
-import Approche from '../../components/templates/paysagiste/Approche.astro';
 import Manifeste from '../../components/templates/paysagiste/Manifeste.astro';
+import PlanJardin from '../../components/templates/paysagiste/PlanJardin.astro';
 import Saisons from '../../components/templates/paysagiste/Saisons.astro';
-import Services from '../../components/templates/paysagiste/Services.astro';
-import Process from '../../components/templates/paysagiste/Process.astro';
-import Plantes from '../../components/templates/paysagiste/Plantes.astro';
-import PhotoPanorama from '../../components/templates/paysagiste/PhotoPanorama.astro';
 import Galerie from '../../components/templates/paysagiste/Galerie.astro';
-import Pepinieres from '../../components/templates/paysagiste/Pepinieres.astro';
-import Citation from '../../components/templates/paysagiste/Citation.astro';
+import Plantes from '../../components/templates/paysagiste/Plantes.astro';
+import Process from '../../components/templates/paysagiste/Process.astro';
 import Equipe from '../../components/templates/paysagiste/Equipe.astro';
-import Faq from '../../components/templates/paysagiste/Faq.astro';
 import Fourchettes from '../../components/templates/paysagiste/Fourchettes.astro';
 import Devis from '../../components/templates/paysagiste/Devis.astro';
-import Trouver from '../../components/templates/paysagiste/Trouver.astro';
-import CTAFinal from '../../components/templates/paysagiste/CTAFinal.astro';
+import Faq from '../../components/templates/paysagiste/Faq.astro';
+import Citation from '../../components/templates/paysagiste/Citation.astro';
 import PaysagisteFooter from '../../components/templates/paysagiste/PaysagisteFooter.astro';
-const businessLD = localBusinessSchema(agapData, 'LocalBusiness');
 
+const businessLD = localBusinessSchema(agapData, 'LocalBusiness');
 ---
 
 <BaseLayout seo={getSeo('templatePaysagiste')} bare={true}>
   <Fragment slot="head">
     {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
-<link
-      rel="preload"
-      as="image"
-      href={agapData.info.photoHero}
-      fetchpriority="high"
-    />
+    <link rel="preload" as="image" href={agapData.info.photoHero} fetchpriority="high" />
   </Fragment>
 
   <PaysagisteHeader />
 
-  <main id="top" class="bg-agap-lin text-agap-feuille font-outfit">
+  <main id="top" class="bg-agap-lin text-agap-feuille font-manrope">
     <HeroBotanique />
-    <Approche />
     <Manifeste />
+    <PlanJardin />
     <Saisons />
-    <Services />
-    <Process />
-    <Plantes />
-    <PhotoPanorama />
     <Galerie />
-    <Pepinieres />
-    <Citation />
+    <Plantes />
+    <Process />
     <Equipe />
-    <Faq />
     <Fourchettes />
+    <Citation />
     <Devis />
-    <Trouver />
-    <CTAFinal />
+    <Faq />
   </main>
 
   <PaysagisteFooter />
 
-  <!-- Sticky bottom CTA mobile : "Devis gratuit" violet -->
   <a
     id="agap-sticky-cta"
     href="#devis"
     data-visible="false"
-    class="md:hidden fixed bottom-4 inset-x-4 z-40 inline-flex items-center justify-center h-14 px-6 text-sm font-outfit font-semibold uppercase tracking-[0.2em] rounded-full bg-agap-violet text-agap-lin transition-all duration-300 ease-out data-[visible=false]:opacity-0 data-[visible=false]:translate-y-4 data-[visible=false]:pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0"
+    class="md:hidden fixed bottom-4 inset-x-4 z-40 inline-flex items-center justify-center h-14 px-6 text-xs font-manrope font-semibold uppercase tracking-[0.22em] rounded-full bg-agap-violet text-agap-lin transition-all duration-300 ease-out data-[visible=false]:opacity-0 data-[visible=false]:translate-y-4 data-[visible=false]:pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0"
     style="box-shadow: 0 12px 32px rgb(107 91 149 / 0.40);"
   >
     Demander un devis
   </a>
 
   <script>
-    /* Sticky CTA mobile : visible après scroll du hero, caché en section Devis */
     const sticky = document.getElementById('agap-sticky-cta');
     const devis = document.getElementById('devis');
     if (sticky && devis) {

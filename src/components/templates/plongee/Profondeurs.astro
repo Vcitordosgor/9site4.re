@@ -1,0 +1,77 @@
+---
+import data from '../../../data/templates/plongee.json';
+const profondeurs = data.profondeurs;
+---
+<section id="profondeurs" class="relative bg-plongee-ecume text-plongee-charbon py-24 lg:py-36 overflow-hidden">
+  <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+    <div class="grid lg:grid-cols-12 gap-12 mb-20">
+      <div class="lg:col-span-5">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="inline-block w-10 h-px bg-plongee-corail"></span>
+          <span class="font-jetbrains-mono text-[11px] uppercase tracking-[0.32em] text-plongee-charbon/60">01 — Choisir la profondeur</span>
+        </div>
+        <h2 class="font-fraunces font-light text-[clamp(2.5rem,5vw,4.5rem)] leading-[1] tracking-tight">
+          De <em class="italic text-plongee-lagon">−5</em> à <em class="italic text-plongee-lagon">−40 m</em>,<br/>
+          choisissez<br/>votre voyage.
+        </h2>
+      </div>
+      <div class="lg:col-span-6 lg:col-start-7 flex items-end">
+        <p class="font-inter text-base lg:text-lg leading-relaxed text-plongee-charbon/70 max-w-md">
+          Chaque palier raconte une autre Réunion sous-marine. Faites défiler la timeline, choisissez le cran qui vous correspond — du baptême doux au tombant vertige.
+        </p>
+      </div>
+    </div>
+
+    <!-- Timeline verticale interactive -->
+    <div class="relative grid lg:grid-cols-12 gap-12 lg:gap-16">
+      <!-- Échelle de profondeur sticky -->
+      <aside class="lg:col-span-3 hidden lg:block">
+        <div class="sticky top-32">
+          <div class="relative border-l border-plongee-charbon/15 pl-8 py-2">
+            <div class="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-plongee-lagon via-plongee-marine to-plongee-abysse" style="left: -1px;"></div>
+            {profondeurs.map((p, i) => (
+              <a href={`#prof-${p.id}`} class="block py-6 group" data-prof-link={p.id}>
+                <span class="absolute -left-[7px] mt-2 w-3.5 h-3.5 rounded-full bg-plongee-ecume border-2 border-plongee-marine group-[.is-active]:bg-plongee-corail group-[.is-active]:border-plongee-corail transition-colors"></span>
+                <div class="font-jetbrains-mono text-xs uppercase tracking-[0.2em] text-plongee-charbon/50">Palier {i+1}</div>
+                <div class="font-fraunces text-3xl text-plongee-marine mt-1">{p.profondeur}</div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </aside>
+
+      <!-- Cards -->
+      <div class="lg:col-span-9 space-y-20 lg:space-y-32">
+        {profondeurs.map((p, i) => (
+          <article id={`prof-${p.id}`} class="grid md:grid-cols-5 gap-8 group scroll-mt-32" data-prof-card={p.id}>
+            <div class="md:col-span-3 relative aspect-[4/3] rounded-2xl overflow-hidden bg-plongee-marine">
+              <img src={p.photo} alt={p.photoAlt} loading="lazy" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"/>
+              <div class="absolute top-4 left-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-plongee-abysse/80 text-plongee-ecume font-jetbrains-mono text-[10px] uppercase tracking-[0.25em] backdrop-blur-sm">
+                <span class="w-1.5 h-1.5 rounded-full bg-plongee-corail"></span> {p.duree}
+              </div>
+              <div class="absolute bottom-4 right-4 font-fraunces text-6xl lg:text-7xl text-plongee-ecume drop-shadow-lg italic">{p.profondeur}</div>
+            </div>
+            <div class="md:col-span-2 flex flex-col justify-center">
+              <div class="font-jetbrains-mono text-xs uppercase tracking-[0.25em] text-plongee-corail">Palier {String(i+1).padStart(2,'0')}</div>
+              <h3 class="mt-3 font-fraunces text-3xl lg:text-4xl text-plongee-charbon leading-tight">{p.titre}</h3>
+              <p class="mt-4 font-inter text-sm lg:text-base leading-relaxed text-plongee-charbon/70">{p.description}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  const cards = document.querySelectorAll('[data-prof-card]');
+  const links = document.querySelectorAll('[data-prof-link]');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const id = (e.target as HTMLElement).dataset.profCard;
+        links.forEach(l => l.classList.toggle('is-active', (l as HTMLElement).dataset.profLink === id));
+      }
+    });
+  }, { rootMargin: '-45% 0px -45% 0px' });
+  cards.forEach(c => io.observe(c));
+</script>

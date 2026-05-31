@@ -1,66 +1,38 @@
 ---
-/**
- * Galerie — masonry sous-marine, photos aspects variés.
- * Hover scale, ambiance plongée.
- */
-const photos = [
-  {
-    src: '/images/plongee/extra-1.webp',
-    alt: 'Tortue de mer nageant au-dessus d\'un récif corallien',
-    span: 'sm:row-span-2',
-  },
-  {
-    src: '/images/plongee/extra-2.webp',
-    alt: 'Banc de poissons argentés en formation serrée',
-    span: '',
-  },
-  {
-    src: '/images/plongee/extra-3.webp',
-    alt: 'Plongeur en silhouette devant la lumière de surface',
-    span: 'sm:row-span-2',
-  },
-  {
-    src: '/images/plongee/extra-4.webp',
-    alt: 'Corail mou orange et bleu sur fond sableux',
-    span: '',
-  },
-  {
-    src: '/images/plongee/extra-5.webp',
-    alt: 'Bouteille de plongée et matériel sur un ponton',
-    span: '',
-  },
-];
+import data from '../../../data/templates/plongee.json';
+const g = data.galerie;
 ---
-
-<section class="relative bg-plongee-ecume py-20 md:py-28 px-6 md:px-10">
-  <div class="max-w-content mx-auto">
-
-    <header class="mb-14 md:mb-16 max-w-2xl">
-      <p class="scroll-reveal font-jetbrains-mono text-[11px] uppercase tracking-[0.32em] text-plongee-corail">
-        Galerie sous-marine
-      </p>
-      <h2 class="scroll-reveal mt-4 font-space-grotesk font-bold text-plongee-marine leading-[1] tracking-tight" style="font-size: clamp(30px, 4.2vw, 48px);">
-        Ce que vous verrez<br/>
-        <span class="text-plongee-lagon">à dix mètres sous l'écume.</span>
+<section class="relative bg-plongee-abysse text-plongee-ecume py-24 lg:py-36 overflow-hidden">
+  <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+    <div class="mb-12">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="inline-block w-10 h-px bg-plongee-corail"></span>
+        <span class="font-jetbrains-mono text-[11px] uppercase tracking-[0.32em] text-plongee-ecume/60">05 — Galerie</span>
+      </div>
+      <h2 class="font-fraunces font-light text-[clamp(2.5rem,5vw,4.5rem)] leading-[0.98]">
+        Sous la surface,<br/><em class="italic text-plongee-lagon">tout change.</em>
       </h2>
-    </header>
+    </div>
 
-    <ul class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:auto-rows-[180px]">
-      {photos.map((p, i) => (
-        <li
-          class:list={['scroll-reveal relative overflow-hidden rounded-2xl bg-plongee-marine', p.span]}
-          style={`transition-delay: ${i * 60}ms`}
-        >
-          <img
-            src={p.src}
-            alt={p.alt}
-            loading="lazy"
-            decoding="async"
-            class="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-          />
-          <span class="pointer-events-none absolute inset-0 ring-1 ring-inset ring-plongee-ecume/20 rounded-2xl" aria-hidden="true"></span>
-        </li>
-      ))}
-    </ul>
+    <div class="grid grid-cols-6 grid-rows-[180px_180px_180px_180px] lg:grid-rows-[220px_220px_220px] gap-3 lg:gap-4">
+      <figure class="group col-span-3 row-span-2 relative rounded-2xl overflow-hidden">
+        <img src={g[0]} alt="Plongée" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-110"/>
+      </figure>
+      <figure class="group col-span-3 lg:col-span-2 relative rounded-2xl overflow-hidden">
+        <img src={g[1]} alt="Plongée" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-110"/>
+      </figure>
+      <figure class="group col-span-3 lg:col-span-1 relative rounded-2xl overflow-hidden">
+        <img src={g[2]} alt="Plongée" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-110"/>
+      </figure>
+      <figure class="group col-span-2 lg:col-span-1 relative rounded-2xl overflow-hidden">
+        <img src={g[3]} alt="Plongée" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-110"/>
+      </figure>
+      <figure class="group col-span-2 relative rounded-2xl overflow-hidden">
+        <img src={g[4]} alt="Plongée" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-110"/>
+      </figure>
+      <figure class="group col-span-6 lg:col-span-3 relative rounded-2xl overflow-hidden">
+        <img src={g[5]} alt="Plongée" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-110"/>
+      </figure>
+    </div>
   </div>
 </section>

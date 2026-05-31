@@ -1,46 +1,34 @@
 ---
-/**
- * Process — 5 étapes de la création paysagère.
- * Style botanique : sauge + violet, numéros calligraphiés.
- */
-const steps = [
-  { num: 'I', titre: 'Première visite', desc: 'Sur le terrain, à n\'importe quelle heure. On regarde la lumière, le vent, le sol. On vous écoute parler du lieu.' },
-  { num: 'II', titre: 'Esquisse à la main', desc: 'Quelques jours plus tard, une planche dessinée : grandes lignes, ambiances, intuitions. Pas encore d\'arbres précis.' },
-  { num: 'III', titre: 'Choix botanique', desc: 'Plantes endémiques d\'abord, exotiques compatibles ensuite. On valide ensemble palette, hauteurs, saisons de floraison.' },
-  { num: 'IV', titre: 'Plantation', desc: 'Travaux du sol, irrigation, mise en terre des sujets. Calendrier respecté, suivi photo hebdomadaire.' },
-  { num: 'V', titre: 'Accompagnement', desc: 'Premières trois années suivies : taille, fertilisation, ajustements. Le jardin trouve son rythme.' },
-];
+import data from '../../../data/templates/agapanthes.json';
+const steps = data.process;
 ---
-
-<section id="processus" class="relative bg-agap-pierre/40 py-20 md:py-28 px-6 md:px-10 border-y border-agap-sauge-fonce/20">
-  <div class="max-w-content mx-auto">
-
-    <header class="text-center max-w-2xl mx-auto mb-14 md:mb-16">
-      <p class="scroll-reveal text-xs font-outfit font-medium uppercase tracking-[0.32em] text-agap-violet">
-        Notre méthode
-      </p>
-      <h2 class="scroll-reveal mt-4 font-cormorant text-agap-feuille leading-[1.05]" style="font-size: clamp(36px, 5vw, 60px);">
-        Cinq saisons,<br/>
-        <span class="italic font-medium text-agap-violet">cinq gestes.</span>
+<section class="relative bg-agap-pierre/30 text-agap-feuille py-24 lg:py-36">
+  <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+    <div class="mb-16 max-w-2xl">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="inline-block w-10 h-px bg-agap-violet"></span>
+        <span class="font-manrope text-[11px] uppercase tracking-[0.32em] text-agap-feuille/60">05 — Méthode</span>
+      </div>
+      <h2 class="font-cormorant font-light text-[clamp(2.5rem,5vw,4.5rem)] leading-[1]">
+        Cinq étapes,<br/><em class="italic text-agap-violet">de la conversation au jardin.</em>
       </h2>
-    </header>
+    </div>
 
-    <ol class="grid md:grid-cols-5 gap-x-6 gap-y-12 relative">
-      <span class="hidden md:block absolute top-12 left-12 right-12 h-px bg-agap-sauge-fonce/30" aria-hidden="true"></span>
-
-      {steps.map((s, i) => (
-        <li class="scroll-reveal relative flex flex-col items-center text-center" style={`transition-delay: ${i * 80}ms`}>
-          <span class="relative z-10 inline-flex items-center justify-center w-24 h-24 rounded-full bg-agap-lin border-2 border-agap-violet font-cormorant italic font-semibold text-agap-violet" style="font-size: 38px;">
-            {s.num}
-          </span>
-          <h3 class="mt-6 font-cormorant font-medium text-agap-feuille leading-tight" style="font-size: 24px;">
-            {s.titre}
-          </h3>
-          <p class="mt-3 font-outfit text-agap-feuille/70 leading-[1.65] max-w-xs" style="font-size: 14.5px;">
-            {s.desc}
-          </p>
-        </li>
-      ))}
-    </ol>
+    <div class="relative">
+      <!-- Ligne timeline -->
+      <div class="hidden lg:block absolute top-12 left-0 right-0 h-px bg-agap-feuille/15"></div>
+      <ol class="grid md:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-4">
+        {steps.map((st, i) => (
+          <li class="relative">
+            <div class="hidden lg:block absolute top-12 left-0 w-4 h-4 rounded-full bg-agap-violet ring-4 ring-agap-lin"></div>
+            <div class="lg:pt-24">
+              <div class="font-cormorant text-5xl italic text-agap-violet leading-none">{st.n}</div>
+              <h3 class="mt-3 font-cormorant text-2xl text-agap-feuille">{st.titre}</h3>
+              <p class="mt-3 font-manrope text-sm leading-relaxed text-agap-feuille/65">{st.texte}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
   </div>
 </section>

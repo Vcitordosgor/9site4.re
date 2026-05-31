@@ -1,149 +1,70 @@
 ---
-/**
- * HeroPlongee — photo full-bleed sous-marine + dashboard data type 'tableau de plongée'.
- * Touche unique : pas de carrousel (excursions a déjà), pas de split (autres).
- * Layout : photo immersive + overlay gradient + texte centré-gauche en bas
- * + grille data dashboard (profondeur, vis, temp eau, saison baleines).
- */
-import data from '../../../data/templates/bleulagon.json';
-
-const today = new Date();
-const month = today.getMonth(); // 0 = janvier
-const baleinesSaison = month >= 5 && month <= 9; // juin → octobre
+import data from '../../../data/templates/plongee.json';
+const info = data.info;
+const stats = data.stats;
 ---
-
-<section id="top" class="relative min-h-dvh bg-plongee-abysse text-plongee-ecume overflow-hidden">
-
-  <!-- Photo plein écran sous-marine -->
-  <img
-    src={data.info.photoHero} srcset={`${(data.info.photoHero).replace(/\.webp$/, "-640.webp")} 640w, ${(data.info.photoHero).replace(/\.webp$/, "-1024.webp")} 1024w, ${data.info.photoHero} 1600w`} sizes="100vw"
-    alt={data.info.photoHeroAlt}
-    class="absolute inset-0 w-full h-full object-cover hero-vivant" width="1600" height="900" loading="eager" fetchpriority="high" decoding="async">
-
-  <!-- Overlay gradient profond : dégradé du clair au plus sombre vers le bas -->
-  <div class="absolute inset-0" aria-hidden="true"
-       style="background: linear-gradient(180deg, rgba(10,35,66,0.40) 0%, rgba(10,35,66,0.20) 30%, rgba(10,35,66,0.65) 70%, rgba(10,35,66,0.95) 100%);">
+<section id="top" class="relative min-h-screen w-full overflow-hidden bg-plongee-abysse text-plongee-ecume">
+  <div class="absolute inset-0">
+    <img src={info.photoHero} alt={info.photoHeroAlt} class="w-full h-full object-cover scale-105 motion-safe:animate-[hero-zoom_3s_ease-out_forwards]" fetchpriority="high" />
+    <div class="absolute inset-0 bg-gradient-to-b from-plongee-abysse/70 via-plongee-abysse/45 to-plongee-abysse"></div>
   </div>
 
-  <!-- Caustiques ondulantes (texture de lumière sous-marine, SVG très subtil) -->
-  <svg class="absolute inset-0 w-full h-full opacity-[0.08] pointer-events-none mix-blend-screen" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <svg class="absolute inset-0 w-full h-full mix-blend-overlay opacity-30 pointer-events-none" aria-hidden="true" preserveAspectRatio="none" viewBox="0 0 1440 900">
     <defs>
-      <filter id="caustic" x="-50%" y="-50%" width="200%" height="200%">
-        <feTurbulence type="fractalNoise" baseFrequency="0.01 0.02" numOctaves="2" seed="3"/>
-        <feColorMatrix values="0 0 0 0 0.25  0 0 0 0 0.66  0 0 0 0 0.84  0 0 0 1 0"/>
-      </filter>
+      <radialGradient id="bl-caustic" cx="50%" cy="0%" r="80%">
+        <stop offset="0%" stop-color="#5BC0BE" stop-opacity="0.7"/>
+        <stop offset="100%" stop-color="#0A2342" stop-opacity="0"/>
+      </radialGradient>
     </defs>
-    <rect width="800" height="600" filter="url(#caustic)"/>
+    <ellipse cx="720" cy="0" rx="720" ry="380" fill="url(#bl-caustic)"/>
   </svg>
 
-  <!-- Mini-bandeau 'Conditions du jour' en haut, façon dashboard plongeur -->
-  <div class="relative z-10 px-6 md:px-10 pt-24 md:pt-28">
-    <div class="max-w-content mx-auto">
-      <div class="inline-flex flex-wrap items-center gap-x-4 gap-y-1.5 px-4 py-2 rounded-full bg-plongee-abysse/55 backdrop-blur-sm ring-1 ring-plongee-ecume/15">
-        <span class="flex items-center gap-1.5 font-jetbrains text-[10px] uppercase tracking-[0.22em] text-plongee-corail">
-          <span class="block w-1.5 h-1.5 rounded-full bg-plongee-corail" aria-hidden="true"></span>
-          {baleinesSaison ? 'Saison baleines · en cours' : 'Eaux chaudes · conditions favorables'}
-        </span>
-        <span class="font-jetbrains text-[11px] tabular-nums text-plongee-ecume/85">
-          {baleinesSaison ? 'Juin → octobre · sorties baleines à bord' : 'Réserve marine · sorties matin & après-midi'}
-        </span>
-      </div>
+  <svg class="absolute -bottom-1 inset-x-0 w-full text-plongee-ecume" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,60 C240,120 480,0 720,40 C960,80 1200,30 1440,60 L1440,120 L0,120 Z" fill="currentColor" opacity="0.95"/>
+  </svg>
+
+  <div class="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12 pt-32 lg:pt-40 pb-40 lg:pb-48 min-h-screen flex flex-col justify-center">
+    <div class="flex items-center gap-3 mb-8 motion-safe:animate-[hero-rise_900ms_ease-out_both]">
+      <span class="inline-block w-10 h-px bg-plongee-corail"></span>
+      <span class="font-inter text-[11px] uppercase tracking-[0.32em] text-plongee-ecume/70">{info.soustitre}</span>
+    </div>
+
+    <h1 class="font-fraunces font-light text-[clamp(3rem,9vw,8.5rem)] leading-[0.95] tracking-tight max-w-5xl motion-safe:animate-[hero-rise_1.1s_ease-out_120ms_both]">
+      {info.tagline}<br/>
+      <em class="italic text-plongee-lagon">{info.taglineItalic}</em>
+    </h1>
+
+    <p class="mt-10 max-w-xl text-base lg:text-lg leading-relaxed text-plongee-ecume/85 font-inter motion-safe:animate-[hero-rise_1.2s_ease-out_240ms_both]">
+      {data.promesse}
+    </p>
+
+    <div class="mt-10 flex flex-wrap gap-4 motion-safe:animate-[hero-rise_1.3s_ease-out_360ms_both]">
+      <a href="#formules" class="inline-flex items-center gap-3 h-14 px-8 rounded-full bg-plongee-corail text-plongee-ecume text-xs font-inter font-semibold uppercase tracking-[0.22em] hover:scale-[1.03] transition-transform">
+        Réserver une plongée
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M14 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#profondeurs" class="inline-flex items-center gap-3 h-14 px-8 rounded-full border border-plongee-ecume/30 text-plongee-ecume text-xs font-inter uppercase tracking-[0.22em] hover:bg-plongee-ecume/10 transition-colors">
+        Choisir ma profondeur
+      </a>
+    </div>
+
+    <div class="mt-20 grid grid-cols-2 lg:grid-cols-4 gap-px bg-plongee-ecume/10 border border-plongee-ecume/10 rounded-2xl overflow-hidden backdrop-blur-sm motion-safe:animate-[hero-rise_1.4s_ease-out_500ms_both]">
+      {stats.map(s => (
+        <div class="bg-plongee-abysse/40 px-5 py-6">
+          <div class="font-fraunces text-2xl lg:text-3xl text-plongee-lagon">{s.valeur}</div>
+          <div class="font-inter text-[11px] uppercase tracking-[0.2em] mt-2 text-plongee-ecume/60">{s.label}</div>
+        </div>
+      ))}
     </div>
   </div>
 
-  <!-- Contenu hero principal en bas -->
-  <div class="relative z-10 px-6 md:px-10 pb-12 md:pb-16 absolute inset-x-0 bottom-0">
-    <div class="max-w-content mx-auto">
-
-      <!-- Eyebrow agrément + année -->
-      <p class="font-jetbrains text-[11px] uppercase tracking-[0.32em] text-plongee-lagon mb-5 flex items-center gap-2 flex-wrap">
-        <span aria-hidden="true">▼</span>
-        <span>{data.info.agrement}</span>
-        <span class="text-plongee-ecume/40" aria-hidden="true">·</span>
-        <span>Depuis {data.info.annee}</span>
-      </p>
-
-      <!-- Titre principal -->
-      <p class="font-inter italic text-plongee-ecume/65 mb-4 max-w-md" style="font-size: clamp(15px, 1.4vw, 17px);">
-        L'eau n'a pas de mots, elle a des paliers.
-      </p>
-
-      <h1 class="font-space-grotesk font-bold text-plongee-ecume leading-[0.88] tracking-tight max-w-5xl" style="font-size: clamp(60px, 11vw, 160px);">
-        Voir le lagon
-        <span class="block italic font-light text-plongee-lagon">de l'intérieur.</span>
-      </h1>
-
-      <!-- Sous-titre court -->
-      <p class="mt-6 font-inter text-plongee-ecume/85 text-lg md:text-xl leading-relaxed max-w-2xl">
-        Centre de plongée FFESSM &amp; PADI à La Réunion, dans la plus belle réserve marine de l'île. Du baptême à la formation, en petit groupe.
-      </p>
-
-      <!-- CTAs -->
-      <div class="mt-10 flex flex-wrap items-center gap-4">
-        <a
-          href="#formules"
-          class="inline-flex items-center justify-center h-13 px-8 bg-plongee-corail text-plongee-ecume font-inter font-semibold text-base rounded-full hover:bg-plongee-ecume hover:text-plongee-abysse transition-colors duration-300"
-          style="height: 52px; box-shadow: 0 12px 32px rgba(255,122,92,0.35);"
-        >
-          Réserver mon baptême
-          <svg class="ml-2" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
-            <path d="M5 12h14M14 5l7 7-7 7"/>
-          </svg>
-        </a>
-        <a
-          href="#formules"
-          class="font-inter font-semibold text-plongee-lagon hover:text-plongee-ecume text-base underline underline-offset-[6px] decoration-plongee-lagon/50 hover:decoration-plongee-ecume transition-colors"
-        >
-          Voir toutes les sorties
-        </a>
-      </div>
-
-      <!-- Dashboard 'tableau de plongée' : 4 stats avec data style instrument -->
-      <ul class="mt-12 md:mt-14 grid grid-cols-2 md:grid-cols-4 gap-px bg-plongee-ecume/10 rounded-2xl overflow-hidden ring-1 ring-plongee-ecume/15 backdrop-blur-sm max-w-3xl">
-        <li class="bg-plongee-abysse/65 px-5 py-4">
-          <p class="font-jetbrains text-[9px] uppercase tracking-[0.22em] text-plongee-lagon mb-1.5">Profondeur max enseignée</p>
-          <p class="font-space-grotesk font-bold text-plongee-ecume text-2xl md:text-3xl tabular-nums leading-none">32 m</p>
-        </li>
-        <li class="bg-plongee-abysse/65 px-5 py-4">
-          <p class="font-jetbrains text-[9px] uppercase tracking-[0.22em] text-plongee-lagon mb-1.5">Encadrement</p>
-          <p class="font-space-grotesk font-bold text-plongee-ecume text-2xl md:text-3xl leading-none">FFESSM</p>
-        </li>
-        <li class="bg-plongee-abysse/65 px-5 py-4">
-          <p class="font-jetbrains text-[9px] uppercase tracking-[0.22em] text-plongee-lagon mb-1.5">Petit groupe</p>
-          <p class="font-space-grotesk font-bold text-plongee-ecume text-2xl md:text-3xl leading-none">Max 6</p>
-        </li>
-        <li class="bg-plongee-abysse/65 px-5 py-4">
-          <p class="font-jetbrains text-[9px] uppercase tracking-[0.22em] text-plongee-lagon mb-1.5">Saison baleines</p>
-          <p class="font-space-grotesk font-bold leading-none flex items-baseline gap-1.5">
-            <span class={`text-2xl md:text-3xl ${baleinesSaison ? 'text-plongee-corail' : 'text-plongee-ecume/55'}`}>
-              {baleinesSaison ? 'EN COURS' : 'JUIN → OCT'}
-            </span>
-          </p>
-        </li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- Indicateur de scroll en bas (style technique plongée) -->
-  <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1 text-plongee-ecume/55" aria-hidden="true">
-    <span class="font-jetbrains text-[9px] uppercase tracking-[0.32em]">Descendre</span>
-    <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="animate-bounce" style="animation-duration: 2.5s">
-      <path d="M12 5v14M5 12l7 7 7-7"/>
-    </svg>
+  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 motion-safe:animate-[float_3s_ease-in-out_infinite]">
+    <span class="font-jetbrains-mono text-[10px] uppercase tracking-[0.4em] text-plongee-ecume/60">Plonger</span>
+    <span class="block w-px h-12 bg-plongee-ecume/40"></span>
   </div>
 </section>
-
 <style>
-  @keyframes hero-vivant {
-    from { transform: scale(1.06); }
-    to   { transform: scale(1); }
-  }
-  .hero-vivant {
-    transform-origin: center;
-    animation: hero-vivant 2400ms cubic-bezier(0.22, 1, 0.36, 1) both;
-    will-change: transform;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .hero-vivant { animation: none !important; transform: none !important; }
-  }
+  @keyframes hero-rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes hero-zoom { from { transform: scale(1.12); } to { transform: scale(1.04); } }
+  @keyframes float { 0%,100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, 8px); } }
 </style>

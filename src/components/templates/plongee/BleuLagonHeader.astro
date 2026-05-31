@@ -1,79 +1,55 @@
 ---
-/**
- * BleuLagonHeader — header sticky transparent qui devient opaque au scroll.
- * Identité plongée : wordmark + bouton baptême en accent corail.
- */
-import data from '../../../data/templates/bleulagon.json';
-
+import data from '../../../data/templates/plongee.json';
+const info = data.info;
 const navLinks = [
+  { href: '#profondeurs', label: 'Profondeurs' },
   { href: '#formules', label: 'Formules' },
+  { href: '#journee', label: 'Une journée' },
   { href: '#moniteur', label: 'Le moniteur' },
-  { href: '#securite', label: 'Sécurité' },
-  { href: '#contact', label: 'Contact' },
+  { href: '#contact', label: 'Réserver' },
 ];
 ---
-
-<header
-  id="bleulagon-header"
-  data-scrolled="false"
-  class="sticky top-0 z-50 transition-[background-color,backdrop-filter,box-shadow,border-color] duration-300 ease-out border-b border-transparent"
->
-  <div class="max-w-content mx-auto px-6 md:px-10 h-16 md:h-20 flex items-center justify-between gap-6">
-    <a href="#top" class="flex items-baseline gap-1.5 group" aria-label="Bleu Lagon Plongée — accueil">
-      <span class="font-space-grotesk font-bold text-plongee-abysse text-base md:text-lg tracking-tight">
-        Bleu&nbsp;Lagon
-      </span>
-      <span class="font-space-grotesk font-light text-plongee-lagon text-base md:text-lg tracking-tight">
-        Plongée
-      </span>
-      <span class="text-plongee-corail text-[10px] ml-1" aria-hidden="true">●</span>
+<header id="bl-header" class="fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-out" data-scrolled="false">
+  <div class="absolute inset-0 bg-plongee-abysse/0 backdrop-blur-0 transition-all duration-500" id="bl-bg"></div>
+  <div class="relative max-w-[1400px] mx-auto px-6 lg:px-12 h-16 lg:h-20 flex items-center justify-between">
+    <a href="#top" class="flex items-baseline gap-1 text-plongee-ecume font-fraunces leading-none">
+      <span class="text-xl lg:text-2xl tracking-tight">{info.wordmark1}</span>
+      <span class="text-xl lg:text-2xl italic tracking-tight text-plongee-lagon">{info.wordmark2}</span>
+      <span class="hidden lg:inline text-[10px] uppercase tracking-[0.3em] ml-2 opacity-60">{info.wordmark3}</span>
     </a>
-
-    <nav class="hidden md:flex items-center gap-7 lg:gap-9 font-inter text-[13px] font-medium" aria-label="Navigation">
-      {navLinks.map((link) => (
-        <a
-          href={link.href}
-          class="text-plongee-marine/85 hover:text-plongee-abysse transition-colors duration-200"
-        >
-          {link.label}
-        </a>
-      ))}
+    <nav class="hidden lg:flex items-center gap-8 font-inter text-[12px] uppercase tracking-[0.2em] text-plongee-ecume/80">
+      {navLinks.map(l => <a href={l.href} class="hover:text-plongee-corail transition-colors">{l.label}</a>)}
     </nav>
-
-    <a
-      href="#formules"
-      class="hidden md:inline-flex items-center justify-center h-10 px-5 bg-plongee-corail text-plongee-ecume font-inter font-semibold text-sm rounded-full hover:bg-plongee-abysse transition-colors duration-300"
-    >
+    <a href={`tel:${info.telephoneHref}`} class="hidden md:inline-flex items-center gap-2 h-10 px-5 rounded-full bg-plongee-corail text-plongee-ecume text-[11px] font-inter font-semibold uppercase tracking-[0.22em] hover:scale-[1.03] transition-transform">
       Réserver
     </a>
-
-    <a
-      href={`tel:${data.info.telephoneHref}`}
-      class="md:hidden inline-flex items-center justify-center h-11 px-4 bg-plongee-corail text-plongee-ecume font-inter font-semibold text-sm rounded-full"
-      aria-label="Appeler le centre"
-    >
-      ☎ Appeler
-    </a>
+    <button id="bl-burger" class="lg:hidden flex flex-col gap-1.5 w-9 h-9 items-center justify-center text-plongee-ecume" aria-label="Menu">
+      <span class="block w-5 h-px bg-current"></span>
+      <span class="block w-5 h-px bg-current"></span>
+      <span class="block w-5 h-px bg-current"></span>
+    </button>
+  </div>
+  <div id="bl-mobile" class="lg:hidden hidden bg-plongee-abysse text-plongee-ecume border-t border-plongee-ecume/10">
+    <nav class="flex flex-col px-6 py-6 gap-4 font-inter text-sm uppercase tracking-[0.2em]">
+      {navLinks.map(l => <a href={l.href} class="py-2 border-b border-plongee-ecume/10">{l.label}</a>)}
+    </nav>
   </div>
 </header>
-
-<style>
-  #bleulagon-header[data-scrolled='true'] {
-    background-color: rgb(240 247 251 / 0.92);
-    -webkit-backdrop-filter: saturate(180%) blur(12px);
-    backdrop-filter: saturate(180%) blur(12px);
-    box-shadow: 0 1px 3px rgb(10 35 66 / 0.06);
-    border-bottom-color: rgb(10 35 66 / 0.08);
-  }
-</style>
-
 <script>
-  const header = document.getElementById('bleulagon-header');
-  if (header) {
-    const update = () => {
-      header.dataset.scrolled = String(window.scrollY > 8);
-    };
-    update();
-    window.addEventListener('scroll', update, { passive: true });
-  }
+  const header = document.getElementById('bl-header');
+  const bg = document.getElementById('bl-bg');
+  const onScroll = () => {
+    const sc = window.scrollY > 40;
+    header?.setAttribute('data-scrolled', String(sc));
+    if (bg) {
+      bg.classList.toggle('bg-plongee-abysse/85', sc);
+      bg.classList.toggle('backdrop-blur-md', sc);
+    }
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  const burger = document.getElementById('bl-burger');
+  const mob = document.getElementById('bl-mobile');
+  burger?.addEventListener('click', () => mob?.classList.toggle('hidden'));
+  mob?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mob?.classList.add('hidden')));
 </script>

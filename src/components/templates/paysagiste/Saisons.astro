@@ -1,120 +1,36 @@
 ---
-/**
- * Saisons — 4 cards saisonnières avec actions par saison.
- * Layout : grille 2x2 mobile, 4 cols desktop.
- * Chaque saison a sa couleur d'accent (violet, rose, sauge).
- *
- * Section UNIQUE : aucun autre template n'a de planning saisonnier.
- */
 import data from '../../../data/templates/agapanthes.json';
-
-// Map couleur saison → classes Tailwind
-const colorMap: Record<string, { bg: string; text: string; ring: string; pill: string }> = {
-  violet: { bg: 'bg-agap-violet/10',    text: 'text-agap-violet',      ring: 'ring-agap-violet/30',      pill: 'bg-agap-violet text-agap-lin' },
-  rose:   { bg: 'bg-agap-rose/40',      text: 'text-agap-violet-fonce',ring: 'ring-agap-violet/20',      pill: 'bg-agap-violet-fonce text-agap-lin' },
-  sauge:  { bg: 'bg-agap-sauge/25',     text: 'text-agap-sauge-fonce', ring: 'ring-agap-sauge-fonce/30', pill: 'bg-agap-sauge-fonce text-agap-lin' },
-};
+const saisons = data.saisons;
 ---
-
-<section id="saisons" class="relative bg-agap-pierre/40 py-20 md:py-32 px-6 md:px-10">
-  <div class="max-w-content mx-auto">
-
-    <header class="text-center max-w-3xl mx-auto mb-14 md:mb-20">
-      <p class="scroll-reveal flex items-center justify-center gap-3 text-xs font-outfit font-medium uppercase tracking-[0.32em] text-agap-violet">
-        <span class="block w-8 h-px bg-agap-violet" aria-hidden="true"></span>
-        <span>Au fil des saisons</span>
-        <span class="block w-8 h-px bg-agap-violet" aria-hidden="true"></span>
-      </p>
-      <h2 class="scroll-reveal mt-5 font-cormorant text-agap-feuille leading-[1.05]" style="font-size: clamp(36px, 5.5vw, 60px);">
-        Le jardin se pense
-        <span class="block italic font-medium text-agap-violet">en cycles.</span>
+<section id="saisons" class="relative bg-agap-lin text-agap-feuille py-24 lg:py-36">
+  <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+    <div class="mb-16 max-w-2xl">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="inline-block w-10 h-px bg-agap-violet"></span>
+        <span class="font-manrope text-[11px] uppercase tracking-[0.32em] text-agap-feuille/60">02 — Quatre saisons péi</span>
+      </div>
+      <h2 class="font-cormorant font-light text-[clamp(2.5rem,5vw,4.5rem)] leading-[1]">
+        Le jardin change<br/><em class="italic text-agap-violet">d'humeur quatre fois par an.</em>
       </h2>
-      <p class="scroll-reveal mt-6 font-outfit text-agap-feuille/70 leading-[1.7]">
-        À La Réunion, les saisons s'inversent. Voici notre calendrier
-        d'intervention au fil de l'année australe.
-      </p>
-    </header>
+    </div>
 
-    <!-- 4 saisons en grille -->
-    <ul class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
-      {data.saisons.map((s, i) => {
-        const c = colorMap[s.couleur] || colorMap.violet;
-        return (
-          <li class="scroll-reveal flex flex-col bg-agap-lin border border-agap-feuille/10 hover:border-agap-violet/40 transition-colors p-7 md:p-8" style={`transition-delay: ${i * 60}ms`}>
-            <!-- Pill saison numérotée -->
-            <div class="flex items-baseline justify-between gap-3">
-              <span class="font-cormorant italic font-bold text-agap-feuille/30 tabular-nums" style="font-size: 28px;">
-                {String(i + 1).padStart(2, '0')}
-              </span>
-              <span class:list={['inline-flex items-center px-3 h-7 rounded-full text-[10px] font-outfit font-semibold uppercase tracking-[0.22em]', c.pill]}>
-                {s.mois}
-              </span>
-            </div>
-
-            <h3 class="mt-5 font-cormorant italic text-agap-feuille leading-tight" style="font-size: 28px;">
-              {s.nom}
-            </h3>
-
-            <p class="mt-3 font-outfit text-sm text-agap-feuille/70 leading-[1.7]">
-              {s.description}
-            </p>
-
-            <!-- Actions par saison en liste -->
-            <ul class="mt-6 pt-5 border-t border-agap-feuille/10 space-y-2 mt-auto">
-              {s.actions.map((a) => (
-                <li class:list={['flex items-baseline gap-2.5 font-outfit text-sm', c.text]}>
-                  <span class:list={['flex-shrink-0 w-1.5 h-1.5 rounded-full mt-1.5', c.text.replace('text-', 'bg-')]} aria-hidden="true"></span>
-                  <span>{a}</span>
-                </li>
-              ))}
-            </ul>
-          </li>
-        );
-      })}
-    </ul>
-
-    <!-- Frise annuelle mois par mois -->
-    <div class="scroll-reveal mt-16 md:mt-20">
-      <p class="text-center text-xs font-outfit font-medium uppercase tracking-[0.32em] text-agap-violet mb-8">
-        Frise annuelle · mois par mois
-      </p>
-
-      <ol class="hidden md:grid grid-cols-12 gap-px bg-agap-feuille/10 border border-agap-feuille/10 rounded-sm overflow-hidden">
-        {[
-          { m: 'Jan', t: 'Taille fruitiers' },
-          { m: 'Fév', t: 'Taille fruitiers' },
-          { m: 'Mar', t: 'Taille fruitiers' },
-          { m: 'Avr', t: 'Plantation' },
-          { m: 'Mai', t: 'Plantation' },
-          { m: 'Juin', t: 'Plantation' },
-          { m: 'Juil', t: 'Arrosage maîtrisé' },
-          { m: 'Août', t: 'Arrosage maîtrisé' },
-          { m: 'Sept', t: 'Semis & boutures' },
-          { m: 'Oct', t: 'Semis & boutures' },
-          { m: 'Nov', t: 'Élagage & paillage' },
-          { m: 'Déc', t: 'Élagage & paillage' },
-        ].map((x) => (
-          <li class="bg-agap-lin px-2 py-4 text-center">
-            <p class="font-outfit font-semibold text-[11px] uppercase tracking-[0.18em] text-agap-violet">{x.m}</p>
-            <p class="mt-2 font-cormorant italic text-agap-feuille/85 text-sm leading-tight">{x.t}</p>
-          </li>
-        ))}
-      </ol>
-
-      <ol class="md:hidden divide-y divide-agap-feuille/10 bg-agap-lin border border-agap-feuille/10">
-        {[
-          { mois: 'Jan – Mars', t: 'Taille des fruitiers, nettoyage des massifs' },
-          { mois: 'Avril – Juin', t: 'Plantation, mise en place des terrasses' },
-          { mois: 'Juil – Août', t: 'Arrosage maîtrisé, paillage, ombre' },
-          { mois: 'Sept – Oct', t: 'Semis, boutures, divisions de touffes' },
-          { mois: 'Nov – Déc', t: 'Élagage, paillage, préparation saison sèche' },
-        ].map((x) => (
-          <li class="flex items-baseline gap-4 px-5 py-4">
-            <span class="font-outfit font-semibold text-[11px] uppercase tracking-[0.18em] text-agap-violet flex-shrink-0 w-28">{x.mois}</span>
-            <span class="font-cormorant italic text-agap-feuille/85">{x.t}</span>
-          </li>
-        ))}
-      </ol>
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+      {saisons.map((s, i) => (
+        <article class="group relative p-7 rounded-3xl border border-agap-feuille/10 bg-agap-pierre/30 hover:bg-agap-lin hover:border-agap-violet/40 transition-all duration-500 hover:-translate-y-1">
+          <div class="flex items-center justify-between mb-6">
+            <span class="font-manrope text-[10px] uppercase tracking-[0.3em] text-agap-feuille/50">0{i+1}</span>
+            <span class="w-3 h-3 rounded-full" style={`background-color:${s.color}`}></span>
+          </div>
+          <h3 class="font-cormorant text-3xl text-agap-feuille">{s.nom}</h3>
+          <div class="mt-1 font-manrope text-[11px] uppercase tracking-[0.25em]" style={`color:${s.color}`}>{s.mois}</div>
+          <p class="mt-5 font-manrope text-sm leading-relaxed text-agap-feuille/70">{s.description}</p>
+          <ul class="mt-6 space-y-2 font-manrope text-xs text-agap-feuille/70">
+            {s.actions.map(a => (
+              <li class="flex gap-2"><span class="mt-1.5 w-1 h-1 rounded-full" style={`background-color:${s.color}`}></span>{a}</li>
+            ))}
+          </ul>
+        </article>
+      ))}
     </div>
   </div>
 </section>
