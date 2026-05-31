@@ -1,37 +1,61 @@
 ---
-const zones = [
-  { nom: 'Côte ouest', detail: 'Saint-Paul, Saint-Gilles, La Saline, L\'Hermitage, Boucan-Canot' },
-  { nom: 'Sud sauvage', detail: 'Saint-Pierre, Saint-Joseph, Petite-Île, Manapany' },
-  { nom: 'Hauts', detail: 'Cilaos, Plaine-des-Cafres, Tampon (interventions ponctuelles)' },
-  { nom: 'Est & Nord', detail: 'Sur étude — minimum 3 nuits' },
-];
+/**
+ * Bandeau — Zone d'intervention : carte Réunion SVG stylisée avec 5 zones colorées.
+ */
+import data from '../../../data/templates/concierge.json';
 ---
-<section id="zone" class="py-20 md:py-28" style="background:#F7F4EE;">
-  <div class="max-w-content mx-auto px-6 md:px-10">
-    <div class="grid md:grid-cols-2 gap-12 lg:gap-20 items-start">
-      <div>
-        <div class="text-[11px] uppercase tracking-[0.28em] mb-4" style="color:#7A6A4E;">Zone d'intervention</div>
-        <h2 class="font-cormorant text-4xl md:text-5xl leading-tight mb-6" style="color:#0F1B2E;">
-          Île entière, <em class="italic">priorité ouest et sud.</em>
-        </h2>
-        <p class="text-[15px] leading-relaxed mb-8" style="color:#3D4453;">
-          Notre équipe est basée sur la côte ouest. Nous intervenons quotidiennement sur l'ensemble du littoral ouest et sud. Pour les hauts et l'est, nous étudions chaque dossier au cas par cas.
-        </p>
-        <div class="overflow-hidden border" style="border-color:rgba(15,27,46,0.15);">
-          <img src="/images/conciergerie/extra-3.webp" alt="Vue sur la côte de La Réunion" class="w-full h-72 object-cover" loading="lazy"/>
-        </div>
-      </div>
-      <ul class="space-y-px" style="background:rgba(15,27,46,0.10);">
-        {zones.map(z => (
-          <li class="p-6 md:p-7" style="background:#F7F4EE;">
-            <div class="flex items-baseline justify-between gap-4 mb-1">
-              <h3 class="font-cormorant text-2xl" style="color:#0F1B2E;">{z.nom}</h3>
-              <span class="text-[10px] uppercase tracking-[0.28em]" style="color:#B89758;">Réunion</span>
+<section id="zones" class="relative bg-concierge-champagne text-concierge-encre py-24 md:py-32 overflow-hidden">
+  <div class="max-w-content mx-auto px-6 md:px-12 grid lg:grid-cols-12 gap-10">
+    <div class="lg:col-span-5">
+      <p class="font-inter text-[11px] uppercase tracking-[0.45em] text-concierge-bordeaux mb-4">§ Zone d'intervention</p>
+      <h2 class="font-cormorant italic leading-[0.95] tracking-tight" style="font-size: clamp(48px, 7vw, 96px);">
+        Toute l'île,<br/>cinq territoires.
+      </h2>
+      <p class="mt-6 font-inter text-concierge-graphite leading-relaxed max-w-md">
+        Nous intervenons sur l'ensemble de La Réunion, avec une logistique segmentée par micro-région pour des temps d'intervention courts.
+      </p>
+
+      <ul class="mt-10 space-y-3">
+        {data.zones.map(z => (
+          <li class="flex items-center gap-4 group cursor-default">
+            <span class="w-3 h-3 rounded-full shrink-0" style={`background:${z.color}`}></span>
+            <div class="flex-1 border-b border-concierge-laiton/30 pb-2 flex items-baseline justify-between gap-3">
+              <span class="font-cormorant italic text-xl text-concierge-nuit">{z.nom}</span>
+              <span class="font-inter text-xs text-concierge-graphite">{z.villes}</span>
             </div>
-            <p class="text-[14px]" style="color:#3D4453;">{z.detail}</p>
           </li>
         ))}
       </ul>
+    </div>
+
+    <!-- Carte Réunion SVG stylisée -->
+    <div class="lg:col-span-7">
+      <div class="relative aspect-square bg-concierge-nuit/[0.04] ring-1 ring-concierge-laiton/30 p-8">
+        <svg viewBox="0 0 400 400" class="w-full h-full" aria-label="Carte stylisée de La Réunion">
+          <!-- forme île simplifiée -->
+          <g>
+            <!-- Nord -->
+            <path d="M200 60 Q280 70 320 130 L300 150 L260 140 L200 145 Q180 110 200 60Z" fill="#0E1B2C" opacity="0.85"/>
+            <!-- Est -->
+            <path d="M320 130 Q360 200 340 280 L300 290 L290 230 L300 150Z" fill="#3D3D3F" opacity="0.85"/>
+            <!-- Sud -->
+            <path d="M340 280 Q300 340 220 350 L180 320 L250 290 L300 290Z" fill="#C66B45" opacity="0.85"/>
+            <!-- Hauts (centre) -->
+            <path d="M260 140 L300 150 L290 230 L250 290 L180 320 L160 250 L200 145Z" fill="#5A1F2A" opacity="0.85"/>
+            <!-- Ouest -->
+            <path d="M200 145 L160 250 L180 320 L130 310 Q70 270 80 200 Q100 130 200 60 Q180 110 200 145Z" fill="#B89758" opacity="0.85"/>
+          </g>
+          <!-- légendes pointées -->
+          <g font-family="Cormorant Garamond" font-style="italic" font-size="13" fill="#0E1B2C">
+            <text x="130" y="200" text-anchor="middle">Ouest</text>
+            <text x="260" y="100" text-anchor="middle" fill="#F5EFDF">Nord</text>
+            <text x="240" y="220" text-anchor="middle" fill="#F5EFDF">Hauts</text>
+            <text x="330" y="220" text-anchor="middle" fill="#F5EFDF">Est</text>
+            <text x="260" y="330" text-anchor="middle" fill="#F5EFDF">Sud</text>
+          </g>
+          <text x="380" y="380" text-anchor="end" font-family="Inter" font-size="9" fill="#0E1B2C" opacity="0.5">N ↑ — schématique</text>
+        </svg>
+      </div>
     </div>
   </div>
 </section>

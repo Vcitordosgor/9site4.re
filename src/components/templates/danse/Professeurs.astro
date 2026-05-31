@@ -1,55 +1,41 @@
 ---
 /**
- * Professeurs — liste éditoriale type programme de gala.
- * Chiffres romains, noms en italiana énormes, rôle en italique, bio courte.
- * Layout : liste verticale alternée (numéro à gauche, contenu à droite).
- * PAS une grille de cards photos.
+ * Professeurs — 4 portraits initials XXL (pas de fakes photos).
  */
 import data from '../../../data/templates/vermeille.json';
+const tints = ['#7A1A2A','#B8956A','#2A1F22','#E8C4C0'];
 ---
 
-<section id="professeurs" class="bg-vermeille-ivoire py-24 md:py-36 px-6 md:px-10">
-  <div class="max-w-3xl mx-auto">
-
-    <!-- Header -->
-    <header class="mb-16 md:mb-20 text-center">
-      <p class="font-inter-tight text-[10px] uppercase tracking-[0.4em] text-vermeille-bordeaux mb-6">
-        Programme
+<section class="relative bg-vermeille-ivoire text-vermeille-velours py-24 md:py-32">
+  <div class="max-w-content mx-auto px-6 md:px-12">
+    <div class="mb-14 md:mb-20 flex items-baseline justify-between flex-wrap gap-6">
+      <div>
+        <p class="font-inter-tight text-[10px] uppercase tracking-[0.5em] text-vermeille-or mb-4">§ V — L'équipe</p>
+        <h2 class="font-italiana italic leading-[0.95] tracking-tight" style="font-size: clamp(48px, 7vw, 104px);">
+          Quatre professeur·e·s.
+        </h2>
+      </div>
+      <p class="font-inter-tight text-sm md:text-base text-vermeille-velours/65 max-w-sm leading-relaxed">
+        Une équipe choisie pour la pédagogie autant que pour la scène. Chacun·e enseigne deux disciplines au plus, pour rester juste.
       </p>
-      <h2 class="font-italiana text-vermeille-velours leading-[1.0]" style="font-size: clamp(40px, 5.5vw, 72px);">
-        Le corps
-        <span class="block italic text-vermeille-bordeaux">enseignant.</span>
-      </h2>
-    </header>
+    </div>
 
-    <!-- Liste éditoriale -->
-    <ul class="space-y-12 md:space-y-16">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-vermeille-or/30">
       {data.professeurs.map((p, i) => (
-        <li class="grid grid-cols-12 gap-3 md:gap-6 items-start group">
-
-          <!-- Numéro romain géant -->
-          <span class="col-span-2 md:col-span-1 font-italiana italic text-vermeille-or text-3xl md:text-5xl leading-none pt-2 select-none">
-            {p.numero}
-          </span>
-
-          <!-- Contenu -->
-          <div class="col-span-10 md:col-span-11">
-            <h3 class="font-italiana text-vermeille-velours leading-[1.0]" style="font-size: clamp(30px, 4.5vw, 56px);">
-              {p.prenom} <span class="italic text-vermeille-bordeaux">{p.nom}</span>
-            </h3>
-            <p class="mt-3 font-inter-tight text-[10px] uppercase tracking-[0.3em] text-vermeille-bordeaux">
-              {p.role}
-            </p>
-            <p class="mt-5 font-inter-tight text-vermeille-velours/70 text-[15px] leading-[1.75] max-w-xl">
-              {p.bio}
-            </p>
-
-            <!-- Filet bas qui s'étend au hover -->
-            <span class="mt-6 block h-px w-16 bg-vermeille-or/50 group-hover:w-32 transition-all duration-700"></span>
+        <article class="bg-vermeille-ivoire p-7 md:p-9 flex flex-col group">
+          <!-- Initiales XXL -->
+          <div class="relative aspect-square overflow-hidden mb-6" style={`background:${tints[i]}; color:${i===3 ? '#7A1A2A' : '#F8F0E5'};`}>
+            <span class="absolute inset-0 flex items-center justify-center font-italiana italic leading-none transition-transform duration-700 group-hover:scale-110" style="font-size: clamp(96px,14vw,160px);">
+              {p.prenom[0]}{p.nom[0]}
+            </span>
+            <span class="absolute top-3 left-4 font-inter-tight text-[10px] uppercase tracking-[0.3em] opacity-70">Prof. {p.numero}</span>
+            <span class="absolute bottom-3 right-4 font-italiana italic text-sm opacity-80">— danse</span>
           </div>
-        </li>
+          <p class="font-italiana text-vermeille-velours text-2xl leading-tight">{p.prenom}<br/><em>{p.nom}</em></p>
+          <p class="mt-2 font-inter-tight text-xs uppercase tracking-[0.25em] text-vermeille-bordeaux">{p.role}</p>
+          <p class="mt-4 font-inter-tight text-sm text-vermeille-velours/70 leading-relaxed">{p.bio}</p>
+        </article>
       ))}
-    </ul>
-
+    </div>
   </div>
 </section>

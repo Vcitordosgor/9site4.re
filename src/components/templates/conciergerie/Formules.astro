@@ -1,61 +1,40 @@
 ---
-const formules = [
-  {
-    label: 'Conciergerie ponctuelle',
-    prix: '8%',
-    base: 'du loyer perçu',
-    desc: 'Pour les propriétaires souhaitant tester ou louer occasionnellement.',
-    inclus: ['Check-in / check-out', 'Ménage après séjour', 'Linge fourni', 'Reporting simple'],
-  },
-  {
-    label: 'Conciergerie complète',
-    prix: '18%',
-    base: 'du loyer perçu',
-    desc: 'La majorité de nos propriétaires. Aucune intervention de votre part.',
-    inclus: ['Tout l\'essentiel', 'Multi-plateformes', 'Maintenance préventive', 'Reporting mensuel', 'Photos pro 1×/an'],
-    populaire: true,
-  },
-  {
-    label: 'Sur-mesure',
-    prix: 'Devis',
-    base: 'sur étude',
-    desc: 'Propriétés multiples, demande hors-norme, accueil VIP.',
-    inclus: ['Tout le complet', 'Coordination équipes', 'Achat & livraison personnalisés', 'Gardiennage permanent'],
-  },
-];
+import data from '../../../data/templates/concierge.json';
 ---
-<section id="tarification" class="py-20 md:py-28" style="background:#F7F4EE;">
-  <div class="max-w-content mx-auto px-6 md:px-10">
-    <div class="mb-14 max-w-2xl">
-      <div class="text-[11px] uppercase tracking-[0.28em] mb-4" style="color:#7A6A4E;">Tarification transparente</div>
-      <h2 class="font-cormorant text-4xl md:text-5xl leading-tight" style="color:#0F1B2E;">
-        Trois formules, <em class="italic">aucun coût caché.</em>
+<section id="formules" class="relative bg-concierge-champagne text-concierge-encre py-24 md:py-32">
+  <div class="max-w-content mx-auto px-6 md:px-12">
+    <div class="text-center mb-14 max-w-3xl mx-auto">
+      <p class="font-inter text-[11px] uppercase tracking-[0.45em] text-concierge-bordeaux mb-4">§ Tarifs transparents</p>
+      <h2 class="font-cormorant italic leading-[0.95] tracking-tight" style="font-size: clamp(48px, 8vw, 116px);">
+        Sans frais cachés.<br/>Jamais.
       </h2>
-      <p class="mt-5 text-[15px] leading-relaxed" style="color:#3D4453;">
-        Notre commission est prélevée sur le loyer effectivement perçu. Pas d'engagement annuel, résiliation libre avec préavis de 30 jours.
-      </p>
     </div>
-    <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
-      {formules.map(f => (
-        <article class="p-8 md:p-10 flex flex-col" style={`background:${f.populaire ? '#0F1B2E' : '#FFFFFF'}; color:${f.populaire ? '#F7F4EE' : '#0F1B2E'};`}>
-          {f.populaire && <div class="text-[10px] uppercase tracking-[0.32em] mb-5" style="color:#B89758;">Recommandé</div>}
-          <h3 class="font-cormorant text-2xl mb-3">{f.label}</h3>
-          <div class="flex items-baseline gap-2 mb-4">
-            <span class="font-cormorant text-5xl">{f.prix}</span>
-            <span class="text-[12px] uppercase tracking-[0.16em]" style={`color:${f.populaire ? '#B89758' : '#7A6A4E'};`}>{f.base}</span>
-          </div>
-          <p class="text-[14px] leading-relaxed mb-6" style={`color:${f.populaire ? '#D8D2C0' : '#3D4453'};`}>{f.desc}</p>
-          <ul class="space-y-2 text-[14px] mb-8 flex-grow">
+
+    <div class="grid lg:grid-cols-3 gap-px bg-concierge-laiton/40">
+      {data.formules.map(f => (
+        <article class={`relative p-8 md:p-10 flex flex-col ${f.populaire ? 'bg-concierge-nuit text-white' : 'bg-concierge-champagne text-concierge-encre'}`}>
+          {f.populaire && <span class="absolute -top-3 left-8 px-3 py-1 bg-concierge-laiton text-concierge-nuit font-inter text-[10px] uppercase tracking-[0.3em]">le plus pris</span>}
+          <p class={`font-inter text-[11px] uppercase tracking-[0.35em] mb-3 ${f.populaire ? 'text-concierge-laiton' : 'text-concierge-bordeaux'}`}>{f.label}</p>
+          <p class="font-cormorant italic leading-none" style="font-size: clamp(72px,9vw,120px);">{f.prix}</p>
+          <p class={`mt-2 font-inter text-xs ${f.populaire ? 'text-white/65' : 'text-concierge-graphite'}`}>{f.frequence}</p>
+          <p class={`mt-5 font-cormorant italic text-base md:text-lg leading-relaxed ${f.populaire ? 'text-white/85' : 'text-concierge-graphite'}`}>{f.description}</p>
+
+          <ul class="mt-7 space-y-3 font-inter text-sm border-t pt-6 flex-1" style="border-color: rgba(184,151,88,0.30);">
             {f.inclus.map(i => (
-              <li class="flex gap-2"><span style={`color:${f.populaire ? '#B89758' : '#7A6A4E'};`}>—</span>{i}</li>
+              <li class="flex gap-3 items-start">
+                <svg class={`w-4 h-4 mt-0.5 shrink-0 ${f.populaire ? 'text-concierge-laiton' : 'text-concierge-bordeaux'}`} viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                <span>{i}</span>
+              </li>
             ))}
           </ul>
-          <a href="#contact" class="inline-flex items-center justify-center h-11 px-5 text-[12px] uppercase tracking-[0.18em] font-semibold border transition-colors"
-             style={f.populaire ? 'background:#B89758; color:#0F1B2E; border-color:#B89758;' : 'border-color:#0F1B2E; color:#0F1B2E;'}>
-            Choisir cette formule
+          <a href="#contact" class={`mt-8 inline-flex items-center justify-between h-12 px-5 font-inter text-xs uppercase tracking-[0.25em] ${f.populaire ? 'bg-concierge-laiton text-concierge-nuit' : 'bg-concierge-bordeaux text-white'}`}>
+            Choisir {f.label} <span aria-hidden="true">→</span>
           </a>
         </article>
       ))}
     </div>
+    <p class="mt-6 text-center font-inter text-xs text-concierge-graphite italic">
+      Commission prélevée uniquement sur les nuits réellement louées. Aucune mise en service, aucun frais de dossier.
+    </p>
   </div>
 </section>

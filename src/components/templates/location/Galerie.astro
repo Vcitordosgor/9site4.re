@@ -1,48 +1,42 @@
 ---
+/**
+ * Galerie — bento asymétrique 5 photos avec hover-zoom.
+ */
 const photos = [
-  { src: '/images/location/extra-1.webp', alt: 'Vue d ensemble de la villa', wide: false },
-  { src: '/images/location/extra-2.webp', alt: 'Vue sur le lagon', wide: true },
-  { src: '/images/location/extra-3.webp', alt: 'Espace de vie lumineux', wide: false },
-  { src: '/images/location/extra-4.webp', alt: 'Terrasse et jardin', wide: false },
-  { src: '/images/location/extra-5.webp', alt: 'Confort intérieur', wide: true },
-  { src: '/images/location/extra-6.webp', alt: 'Détente et piscine', wide: false },
+  { src: '/images/location/extra-1.webp', alt: 'Vue d ensemble de la villa', area: 'main' },
+  { src: '/images/location/extra-2.webp', alt: 'Vue lagon depuis terrasse', area: 'a' },
+  { src: '/images/location/extra-3.webp', alt: 'Espaces de vie', area: 'b' },
+  { src: '/images/location/extra-4.webp', alt: 'Terrasse et jardin', area: 'c' },
+  { src: '/images/location/extra-6.webp', alt: 'Piscine privée', area: 'd' },
 ];
 ---
+<section id="galerie" class="relative bg-lazuli-marine text-lazuli-casse py-24 md:py-32">
+  <div class="max-w-content mx-auto px-6 md:px-12">
+    <div class="mb-12 flex items-baseline justify-between flex-wrap gap-4">
+      <div>
+        <p class="font-geist text-[11px] uppercase tracking-[0.45em] text-lazuli-sable mb-4">§ Galerie</p>
+        <h2 class="font-cormorant italic leading-[0.95]" style="font-size: clamp(48px,7vw,96px);">
+          Cinq vues,<br/>cinq saisons.
+        </h2>
+      </div>
+      <p class="font-geist text-sm text-white/65 max-w-sm">Photos prises au fil des derniers séjours. Aucune retouche d'ambiance.</p>
+    </div>
 
-<section class="bg-lazuli-casse py-20 md:py-28 px-6 md:px-10">
-  <div class="max-w-content mx-auto">
-
-    <header class="text-center mb-12 max-w-2xl mx-auto">
-      <p class="font-geist text-[11px] uppercase tracking-[0.32em] text-lazuli-terracotta mb-3">
-        ✦ Galerie · 06 vues
-      </p>
-      <h2 class="text-lazuli-marine leading-tight" style="font-family: 'Yeseva One', serif; font-size: clamp(36px, 5vw, 60px);">
-        Quelques images,<br/>
-        <span class="italic text-lazuli-terracotta" style="font-family: 'Italianno', cursive; font-size: 1.4em;">par la fenêtre.</span>
-      </h2>
-    </header>
-
-    <ul class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 auto-rows-[180px] md:auto-rows-[240px]">
-      {photos.map((p, i) => (
-        <li class:list={[
-          'overflow-hidden ring-1 ring-lazuli-marine/15 group relative',
-          p.wide ? 'col-span-2 md:col-span-2' : 'col-span-1',
-          i === 0 && 'md:row-span-2',
-        ]}>
-          <img
-            src={p.src}
-            alt={p.alt}
-            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-            loading="lazy"
-            decoding="async"
-          />
-          <div class="absolute inset-0 bg-lazuli-marine/0 group-hover:bg-lazuli-marine/40 transition-colors flex items-end p-4">
-            <p class="font-geist italic text-lazuli-casse text-sm md:text-base opacity-0 group-hover:opacity-100 transition-opacity">
-              {p.alt}
-            </p>
-          </div>
-        </li>
-      ))}
-    </ul>
+    <div class="grid grid-cols-12 grid-rows-2 gap-3 md:gap-4 aspect-[16/10] min-h-[520px]">
+      <a href={photos[0].src} class="col-span-12 md:col-span-7 row-span-2 relative overflow-hidden group ring-1 ring-lazuli-sable/20">
+        <img src={photos[0].src} alt={photos[0].alt} class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async" />
+        <div class="absolute inset-0 bg-lazuli-marine/0 group-hover:bg-lazuli-marine/15 transition-colors"></div>
+        <span class="absolute bottom-5 left-5 font-cormorant italic text-white text-3xl md:text-4xl">La villa,<br/>face au lagon.</span>
+      </a>
+      <a href={photos[1].src} class="col-span-6 md:col-span-5 relative overflow-hidden group ring-1 ring-lazuli-sable/20">
+        <img src={photos[1].src} alt={photos[1].alt} class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async" />
+      </a>
+      <a href={photos[2].src} class="col-span-3 md:col-span-2 relative overflow-hidden group ring-1 ring-lazuli-sable/20">
+        <img src={photos[2].src} alt={photos[2].alt} class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async" />
+      </a>
+      <a href={photos[3].src} class="col-span-3 md:col-span-3 relative overflow-hidden group ring-1 ring-lazuli-sable/20">
+        <img src={photos[3].src} alt={photos[3].alt} class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async" />
+      </a>
+    </div>
   </div>
 </section>

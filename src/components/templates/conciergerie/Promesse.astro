@@ -1,54 +1,56 @@
 ---
-const proprio = [
-  'Rendement locatif optimisé sans gestion quotidienne',
-  'Reporting mensuel : occupation, revenus, interventions',
-  'Maintenance préventive et inventaire annuel',
-  'Photographies professionnelles et rédaction des annonces',
-  'Gestion calendrier multi-plateformes (Airbnb, Booking, Abritel)',
-  'Encaissement, fiscalité de la location meublée accompagnée',
-];
-const loc = [
-  'Accueil 7j/7 jusqu\'à 22h, transferts aéroport sur demande',
-  'Maison prête : linge frais, climatisation lancée, courses d\'arrivée',
-  'Recommandations confidentielles : tables, spots, prestataires',
-  'Ligne directe WhatsApp pendant tout le séjour',
-  'Coordination événements privés (chef à domicile, massage)',
-  'Service voiturier et chauffeur partenaire',
+/**
+ * Promesse (Propriétaires vs Voyageurs) — 2 colonnes avec chiffres.
+ */
+const blocs = [
+  {
+    label: 'Aux propriétaires',
+    titre: 'Plus de revenu,\nzéro charge mentale.',
+    items: [
+      ['+38 %', "Revenu locatif moyen vs gestion en direct."],
+      ['0 h', "Temps passé chaque semaine sur la gestion."],
+      ['16 biens', "Plafond délibéré du portefeuille annuel."],
+      ['4,9 / 5', "Note voyageur moyenne, tous biens confondus."],
+    ],
+    ton: 'light',
+  },
+  {
+    label: 'Aux voyageurs',
+    titre: 'Plus d\'attention,\nzéro mauvaise surprise.',
+    items: [
+      ['24h/24', "Accueil personnalisé, à toute heure, multilingue."],
+      ['100 %', "Biens visités et vérifiés par nous, jamais photo seule."],
+      ['< 1h', "Délai moyen de réponse WhatsApp pendant le séjour."],
+      ['3 langues', "FR, EN, ES couramment. DE sur demande."],
+    ],
+    ton: 'dark',
+  },
 ];
 ---
-<section id="proprietaires" class="py-20 md:py-28" style="background:#0F1B2E;">
-  <div class="max-w-content mx-auto px-6 md:px-10">
+<section class="relative bg-concierge-champagne text-concierge-encre py-24 md:py-32">
+  <div class="max-w-content mx-auto px-6 md:px-12">
     <div class="mb-14 max-w-3xl">
-      <div class="text-[11px] uppercase tracking-[0.28em] mb-4" style="color:#B89758;">Pour qui ?</div>
-      <h2 class="font-cormorant text-4xl md:text-5xl leading-tight" style="color:#F7F4EE;">
-        Deux promesses distinctes, <em class="italic" style="color:#B89758;">un même standard.</em>
+      <p class="font-inter text-[11px] uppercase tracking-[0.45em] text-concierge-bordeaux mb-4">§ Promesse</p>
+      <h2 class="font-cormorant italic leading-[0.95] tracking-tight" style="font-size: clamp(48px, 8vw, 116px);">
+        Deux côtés<br/>du même bien.
       </h2>
     </div>
-    <div class="grid md:grid-cols-2 gap-px" style="background:rgba(247,244,238,0.10);">
-      <div class="p-8 md:p-12" style="background:#0F1B2E;">
-        <div class="text-[11px] uppercase tracking-[0.28em] mb-5" style="color:#B89758;">Propriétaire</div>
-        <h3 class="font-cormorant text-3xl mb-6" style="color:#F7F4EE;">Vous confiez votre bien.</h3>
-        <ul class="space-y-3 text-[15px] leading-relaxed" style="color:#D8D2C0;">
-          {proprio.map(t => (
-            <li class="flex gap-3">
-              <span class="mt-2 w-1 h-1 rounded-full flex-shrink-0" style="background:#B89758;"></span>
-              <span>{t}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div class="p-8 md:p-12" style="background:#0F1B2E;">
-        <div class="text-[11px] uppercase tracking-[0.28em] mb-5" style="color:#B89758;">Locataire / Voyageur</div>
-        <h3 class="font-cormorant text-3xl mb-6" style="color:#F7F4EE;">Vous arrivez en vacances.</h3>
-        <ul class="space-y-3 text-[15px] leading-relaxed" style="color:#D8D2C0;">
-          {loc.map(t => (
-            <li class="flex gap-3">
-              <span class="mt-2 w-1 h-1 rounded-full flex-shrink-0" style="background:#B89758;"></span>
-              <span>{t}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
+
+    <div class="grid lg:grid-cols-2 gap-px bg-concierge-laiton/40">
+      {blocs.map(b => (
+        <div class={`p-8 md:p-12 ${b.ton === 'dark' ? 'bg-concierge-nuit text-white' : 'bg-concierge-champagne'}`}>
+          <p class={`font-inter text-[11px] uppercase tracking-[0.4em] mb-3 ${b.ton === 'dark' ? 'text-concierge-laiton' : 'text-concierge-bordeaux'}`}>{b.label}</p>
+          <h3 class="font-cormorant italic leading-[0.95] whitespace-pre-line" style="font-size: clamp(36px,5vw,64px);">{b.titre}</h3>
+          <ul class="mt-8 grid grid-cols-2 gap-px bg-current/15">
+            {b.items.map(([v, d]) => (
+              <li class={`p-5 ${b.ton === 'dark' ? 'bg-concierge-nuit' : 'bg-concierge-champagne'}`}>
+                <p class="font-cormorant italic leading-none" style="font-size: clamp(36px,5vw,56px);">{v}</p>
+                <p class={`mt-2 font-inter text-xs leading-relaxed ${b.ton === 'dark' ? 'text-white/65' : 'text-concierge-graphite'}`}>{d}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
     </div>
   </div>
 </section>

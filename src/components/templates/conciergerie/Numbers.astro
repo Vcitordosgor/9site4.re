@@ -1,47 +1,51 @@
 ---
 /**
- * Numbers — chiffres clés conciergerie en typo élégante.
- * Filets laiton, ambiance hôtelière haut de gamme.
+ * Numbers — galerie 6 villas bento asymétrique.
  */
-const stats = [
-  { value: '24/7', unit: 'astreinte', label: 'Une voix, à toute heure, pour vous et vos voyageurs' },
-  { value: '·', unit: 'discrétion', label: 'Aucun détail ne quitte la maison' },
-  { value: '·', unit: 'confiance', label: 'Une équipe restreinte, choisie une à une' },
-  { value: '·', unit: 'sur-mesure', label: 'Chaque maison, chaque famille, ses propres rituels' },
+const photos = [
+  { src: '/images/conciergerie/extra-1.webp', span: 'big',  legende: 'Villa Mahatma · Saint-Gilles' },
+  { src: '/images/conciergerie/extra-2.webp', span: 'med',  legende: 'Lodge Cap Méchant · Saint-Joseph' },
+  { src: '/images/conciergerie/extra-3.webp', span: 'small',legende: 'Bungalow Hermitage' },
+  { src: '/images/conciergerie/extra-4.webp', span: 'med',  legende: 'Case créole · Cilaos' },
+  { src: '/images/conciergerie/extra-5.webp', span: 'small',legende: 'Suite Bord-de-Mer · Saint-Leu' },
+  { src: '/images/conciergerie/extra-6.webp', span: 'small',legende: 'Villa Plaine des Cafres' },
 ];
 ---
-
-<section class="relative bg-concierge-champagne py-20 md:py-28 px-6 md:px-10 border-y border-concierge-laiton/30">
-  <div class="max-w-content mx-auto">
-
-    <header class="text-center max-w-2xl mx-auto mb-14 md:mb-16">
-      <span class="scroll-reveal inline-block w-12 h-px bg-concierge-laiton" aria-hidden="true"></span>
-      <p class="scroll-reveal mt-4 text-xs font-hubot uppercase tracking-[0.4em] text-concierge-laiton">
-        En quelques chiffres
-      </p>
-      <h2 class="scroll-reveal mt-5 font-volkhov text-concierge-nuit leading-[1.1]" style="font-size: clamp(34px, 4.8vw, 56px);">
-        L'excellence,<br/>
-        <span class="italic text-concierge-laiton">en mesures précises.</span>
+<section id="villas" class="relative bg-concierge-champagne text-concierge-encre py-24 md:py-32">
+  <div class="max-w-content mx-auto px-6 md:px-12 mb-12 flex items-baseline justify-between flex-wrap gap-4">
+    <div>
+      <p class="font-inter text-[11px] uppercase tracking-[0.45em] text-concierge-bordeaux mb-4">§ Nos villas</p>
+      <h2 class="font-cormorant italic leading-[0.95] tracking-tight" style="font-size: clamp(48px, 8vw, 116px);">
+        Seize biens,<br/>une signature.
       </h2>
-    </header>
+    </div>
+    <p class="font-inter text-sm text-concierge-graphite max-w-sm leading-relaxed">
+      Du studio premium à la villa de cinq chambres avec piscine. Toutes nos références sont visitables sur audit.
+    </p>
+  </div>
 
-    <ul class="grid grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-8 items-end">
-      {stats.map((s, i) => (
-        <li class="scroll-reveal text-center" style={`transition-delay: ${i * 80}ms`}>
-          <span class="relative inline-block">
-            <span class="block font-volkhov font-bold text-concierge-nuit leading-[0.85] tabular-nums" style="font-size: clamp(60px, 9vw, 130px);">
-              {s.value}
-            </span>
-            <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-12 h-px bg-concierge-laiton" aria-hidden="true"></span>
-          </span>
-          <span class="mt-6 block font-hubot uppercase tracking-[0.28em] text-concierge-laiton text-[11px]">
-            {s.unit}
-          </span>
-          <p class="mt-2 font-volkhov italic text-concierge-graphite leading-snug max-w-[200px] mx-auto" style="font-size: 15px;">
-            {s.label}
-          </p>
-        </li>
-      ))}
-    </ul>
+  <div class="max-w-content mx-auto px-6 md:px-12">
+    <div class="grid grid-cols-12 grid-rows-3 gap-3 md:gap-4 aspect-[16/12] min-h-[640px]">
+      <a class="col-span-12 md:col-span-7 row-span-2 relative overflow-hidden group ring-1 ring-concierge-laiton/30">
+        <img src={photos[0].src} alt={photos[0].legende} class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async"/>
+        <div class="absolute inset-0" style="background: linear-gradient(180deg, transparent 50%, rgba(14,27,44,0.7) 100%);"></div>
+        <span class="absolute bottom-5 left-5 font-cormorant italic text-white text-2xl md:text-3xl">{photos[0].legende}</span>
+      </a>
+      <a class="col-span-6 md:col-span-5 relative overflow-hidden group ring-1 ring-concierge-laiton/30">
+        <img src={photos[1].src} alt={photos[1].legende} class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async"/>
+      </a>
+      <a class="col-span-6 md:col-span-5 relative overflow-hidden group ring-1 ring-concierge-laiton/30">
+        <img src={photos[2].src} alt={photos[2].legende} class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async"/>
+      </a>
+      <a class="col-span-12 md:col-span-4 relative overflow-hidden group ring-1 ring-concierge-laiton/30">
+        <img src={photos[3].src} alt={photos[3].legende} class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async"/>
+      </a>
+      <a class="col-span-6 md:col-span-4 relative overflow-hidden group ring-1 ring-concierge-laiton/30">
+        <img src={photos[4].src} alt={photos[4].legende} class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async"/>
+      </a>
+      <a class="col-span-6 md:col-span-4 relative overflow-hidden group ring-1 ring-concierge-laiton/30">
+        <img src={photos[5].src} alt={photos[5].legende} class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async"/>
+      </a>
+    </div>
   </div>
 </section>

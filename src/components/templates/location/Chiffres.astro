@@ -1,44 +1,13 @@
 ---
-const stats = [
-  { val: '120', sfx: 'm²', leg: "habitables sur deux niveaux" },
-  { val: '4', sfx: 'ch.', leg: "dont une suite parentale" },
-  { val: '5', sfx: 'min', leg: "à pied de la plage du lagon" },
-  { val: '8', sfx: '★', leg: "voyageurs confortablement" },
-];
+import data from '../../../data/templates/lazuli.json';
 ---
-
-<section class="bg-lazuli-marine text-lazuli-casse py-20 md:py-28 px-6 md:px-10 relative overflow-hidden">
-
-  <div class="absolute inset-0 pointer-events-none opacity-[0.06]" aria-hidden="true"
-       style="background-image: radial-gradient(circle at 20% 30%, #E5D4A8 0%, transparent 40%), radial-gradient(circle at 80% 70%, #3A7188 0%, transparent 45%);">
-  </div>
-
-  <div class="max-w-content mx-auto relative">
-
-    <header class="text-center mb-14 max-w-2xl mx-auto">
-      <p class="font-geist text-[11px] uppercase tracking-[0.32em] text-lazuli-sable mb-3">
-        ✦ L'essentiel
-      </p>
-      <h2 class="text-lazuli-casse leading-[1.05]" style="font-family: 'Yeseva One', serif; font-size: clamp(36px, 5vw, 60px);">
-        Quatre chiffres,<br/>
-        <span class="italic text-lazuli-sable" style="font-family: 'Italianno', cursive; font-size: 1.4em;">à retenir.</span>
-      </h2>
-    </header>
-
-    <ul class="grid grid-cols-2 md:grid-cols-4 gap-y-12 md:gap-x-8 text-center">
-      {stats.map((s, i) => (
-        <li>
-          <p class="font-geist text-[10px] uppercase tracking-[0.32em] text-lazuli-lagon mb-3">
-            № {String(i + 1).padStart(2, '0')}
-          </p>
-          <p class="text-lazuli-casse tabular-nums leading-[0.85]" style="font-family: 'Yeseva One', serif; font-size: clamp(72px, 13vw, 140px);">
-            {s.val}<span class="text-lazuli-sable" style="font-family: 'Italianno', cursive; font-size: 0.5em;">{s.sfx}</span>
-          </p>
-          <p class="mt-6 pt-5 border-t border-lazuli-sable/30 font-geist text-lazuli-casse/85 text-[12.5px] md:text-sm leading-relaxed max-w-[200px] mx-auto italic">
-            {s.leg}
-          </p>
-        </li>
-      ))}
-    </ul>
+<section class="relative bg-lazuli-terracotta text-white py-16 md:py-24">
+  <div class="max-w-content mx-auto px-6 md:px-12 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-px">
+    {data.stats.map((s, i) => (
+      <div class={`px-2 md:px-8 py-4 ${i > 0 ? 'md:border-l border-white/25' : ''}`}>
+        <p class="font-cormorant leading-none" style="font-size: clamp(64px,8vw,112px);">{s.valeur}</p>
+        <p class="mt-2 font-geist text-[10px] uppercase tracking-[0.35em] text-white/85">{s.label}</p>
+      </div>
+    ))}
   </div>
 </section>
