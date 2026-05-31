@@ -33,7 +33,11 @@
       }
     ],
     "photoHero": "/images/paysagiste/hero.webp",
-    "photoHeroAlt": "Composition botanique tropicale reunionnaise : palme, fougere, agapanthe",
+    "photoHeroAlt": "Jardin tropical luxuriant avec allée serpentine bordée de palmiers nains",
+    "photoApproche": "/images/paysagiste/approche.webp",
+    "photoApprocheAlt": "Paysagiste taillant une haie au cisaillon, geste artisanal",
+    "photoEquipe": "/images/paysagiste/equipe.webp",
+    "photoEquipeAlt": "Jardinier au chapeau arrosant un massif fleuri tropical",
     "photoFleur": "https://images.unsplash.com/photo-1502209524164-acea936639a2?w=600&q=85",
     "photoFleurAlt": "Fleur d'agapanthe bleu-violet",
     "photoFeuille": "https://images.unsplash.com/photo-1437002827914-ec03c8e7e3a5?w=600&q=85",
