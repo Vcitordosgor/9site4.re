@@ -1,52 +1,23 @@
 ---
 import data from '../../../data/templates/brulerie.json';
+const year = new Date().getFullYear();
 ---
-
-<footer style="background-color: #1A0F0A; color: #E8DDC7;">
-  <div class="max-w-content mx-auto px-6 md:px-10 py-14 md:py-16">
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-10 mb-12">
-
-      <div class="md:col-span-5">
-        <div class="flex items-center gap-3">
-          <svg viewBox="0 0 32 32" class="w-9 h-9" style="color: #B57A4A;" aria-hidden="true">
-            <ellipse cx="16" cy="16" rx="9" ry="11" fill="currentColor" />
-            <path d="M16 5 Q16 16 16 27" stroke="#1A0F0A" stroke-width="1" fill="none"/>
-          </svg>
-          <div class="leading-none">
-            <p class="font-plex-serif font-semibold text-xl" style="font-family: 'IBM Plex Serif', Georgia, serif;">Brûlerie d'altitude</p>
-            <p class="font-dm-mono text-[10px] uppercase tracking-[0.2em] mt-1" style="color: #B57A4A;">— torréfaction péi</p>
-          </div>
-        </div>
-        <p class="mt-5 font-plex-serif text-[14px] leading-relaxed max-w-sm" style="color: rgba(232, 221, 199, 0.78); font-family: 'IBM Plex Serif', Georgia, serif;">
-          {data.info.tagline} — Brûlerie artisanale à La Réunion depuis {data.info.annee}.
-        </p>
-      </div>
-
-      <div class="md:col-span-3">
-        <p class="font-dm-mono text-[10px] uppercase tracking-[0.3em] mb-3" style="color: #B57A4A;">[ Catalogue ]</p>
-        <ul class="space-y-2 font-dm-mono text-[12.5px]">
-          <li><a href="#origines" class="transition-colors hover:opacity-80">Origines</a></li>
-          <li><a href="#methodes" class="transition-colors hover:opacity-80">Méthodes</a></li>
-          <li><a href="#atelier" class="transition-colors hover:opacity-80">L'atelier</a></li>
-          <li><a href="#abonnement" class="transition-colors hover:opacity-80">Abonnement</a></li>
-        </ul>
-      </div>
-
-      <div class="md:col-span-4">
-        <p class="font-dm-mono text-[10px] uppercase tracking-[0.3em] mb-3" style="color: #B57A4A;">[ Contact ]</p>
-        <ul class="space-y-2 font-dm-mono text-[12.5px]">
-          <li>{data.info.adresseLigne1}</li>
-          <li>{data.info.adresseLigne2}</li>
-          <li><a href={`tel:${data.info.telephoneHref}`} class="transition-colors hover:opacity-80">{data.info.telephone}</a></li>
-          <li><a href={`mailto:${data.info.email}`} class="transition-colors hover:opacity-80 break-all">{data.info.email}</a></li>
-          <li style="color: rgba(232, 221, 199, 0.7);">Instagram {data.info.instagram}</li>
-        </ul>
-      </div>
+<footer id="contact" class="py-14" style="background:#1A0F0A; color:#E8DDC7;">
+  <div class="max-w-content mx-auto px-6 md:px-10 grid md:grid-cols-3 gap-8">
+    <div>
+      <div class="font-instrument italic text-3xl">Brûlerie d'altitude</div>
+      <p class="mt-1 text-[11px] uppercase tracking-[0.28em]" style="font-family:'DM Mono',monospace; color:#B57A4A;">Torréfaction artisanale · Réunion</p>
     </div>
-
-    <div class="pt-6 border-t flex flex-col md:flex-row items-start md:items-center justify-between gap-3 font-dm-mono text-[10.5px] uppercase tracking-wider" style="border-color: rgba(181, 122, 74, 0.3); color: rgba(232, 221, 199, 0.65);">
-      <p>© {data.info.annee}–2026 {data.info.nom} · SIRET …{data.info.siret.slice(-5)}</p>
-      <p class="font-plex-serif italic text-xl tracking-normal normal-case" style="color: #B57A4A; font-family: 'IBM Plex Serif', Georgia, serif;">{data.info.tagline}</p>
+    <div class="text-[14px]" style="color:#D8C9A8; font-family:'DM Mono',monospace;">
+      <div class="text-[10px] uppercase tracking-[0.28em] mb-2" style="color:#B57A4A;">CONTACT</div>
+      <a href={`tel:${data.info.telephoneHref}`}>{data.info.telephone}</a><br/>
+      <a href={`mailto:${data.info.email}`}>{data.info.email}</a><br/>
+      Brûlerie · La Réunion
+    </div>
+    <div class="text-[14px]" style="color:#D8C9A8; font-family:'DM Mono',monospace;">
+      <div class="text-[10px] uppercase tracking-[0.28em] mb-2" style="color:#B57A4A;">HORAIRES</div>
+      Lundi · torréfaction<br/>Jeudi · torréfaction<br/>Mercredi/Vendredi · vente 9h-13h<br/>Samedi · ateliers
     </div>
   </div>
+  <div class="max-w-content mx-auto px-6 md:px-10 mt-10 pt-5 border-t text-[10px] uppercase tracking-[0.28em]" style="font-family:'DM Mono',monospace; border-color:rgba(232,221,199,0.15); color:#7A5C3F;">© {year} Brûlerie d'altitude — Démonstration 9site4</div>
 </footer>
