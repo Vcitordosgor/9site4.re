@@ -1,53 +1,46 @@
 ---
+/**
+ * VermeilleHeader — header transparent → ivoire au scroll.
+ */
 import data from '../../../data/templates/vermeille.json';
 ---
 
 <header
   id="vermeille-header"
+  class="fixed inset-x-0 top-0 z-50 transition-all duration-500"
   data-scrolled="false"
-  class="fixed top-0 inset-x-0 z-50 transition-all duration-700 data-[scrolled=false]:bg-transparent data-[scrolled=true]:bg-vermeille-velours/95 data-[scrolled=true]:backdrop-blur-sm"
 >
-  <div class="max-w-content mx-auto px-6 md:px-10 h-16 flex items-center justify-between">
-
-    <!-- Wordmark : Italiana avec ornement -->
-    <a href="#top" class="flex items-baseline gap-2 group" aria-label="Vermeille — accueil">
-      <span class="font-italiana text-vermeille-ivoire text-2xl tracking-wide leading-none group-hover:text-vermeille-rose transition-colors duration-500">
-        {data.info.wordmark}
-      </span>
-      <span class="text-vermeille-or text-xs leading-none" aria-hidden="true">✦</span>
+  <div class="absolute inset-0 bg-vermeille-ivoire/0 backdrop-blur-0 transition-all duration-500 [[data-scrolled=true]_&]:bg-vermeille-ivoire/95 [[data-scrolled=true]_&]:backdrop-blur-md [[data-scrolled=true]_&]:border-b [[data-scrolled=true]_&]:border-vermeille-or/20"></div>
+  <div class="relative max-w-content mx-auto px-6 md:px-12 h-20 flex items-center justify-between">
+    <a href="#top" class="flex items-baseline gap-3 group">
+      <span class="font-italiana text-vermeille-ivoire [[data-scrolled=true]_&]:text-vermeille-velours text-2xl md:text-3xl tracking-wide transition-colors duration-500">{data.info.wordmark}</span>
+      <span class="hidden md:inline font-inter-tight text-[10px] uppercase tracking-[0.4em] text-vermeille-or transition-colors duration-500">{data.info.soustitre}</span>
     </a>
-
-    <!-- Nav éditoriale -->
-    <nav class="hidden md:flex items-center gap-8 font-inter-tight text-[12px] uppercase tracking-[0.18em] font-light" aria-label="Navigation">
-      <a href="#disciplines" class="text-vermeille-ivoire/65 hover:text-vermeille-rose transition-colors duration-500">Disciplines</a>
-      <a href="#professeurs" class="text-vermeille-ivoire/65 hover:text-vermeille-rose transition-colors duration-500">Professeurs</a>
-      <a href="#spectacles" class="text-vermeille-ivoire/65 hover:text-vermeille-rose transition-colors duration-500">Saison</a>
-      <a href="#studio" class="text-vermeille-ivoire/65 hover:text-vermeille-rose transition-colors duration-500">Studio</a>
+    <nav class="hidden md:flex items-center gap-9 font-inter-tight text-[12px] uppercase tracking-[0.28em]">
+      {[
+        ['#disciplines','Disciplines'],
+        ['#planning','Planning'],
+        ['#studio','Studio'],
+        ['#tarifs','Tarifs'],
+        ['#inscription','Inscription'],
+      ].map(([href,label]) => (
+        <a href={href} class="text-vermeille-ivoire [[data-scrolled=true]_&]:text-vermeille-velours hover:text-vermeille-or transition-colors">{label}</a>
+      ))}
     </nav>
-
-    <!-- CTA bordeaux -->
-    <a
-      href="#inscription"
-      class="hidden md:inline-flex items-center h-9 px-5 bg-vermeille-bordeaux text-vermeille-ivoire font-italiana text-sm tracking-wide hover:bg-vermeille-bordeaux/85 transition-colors duration-500"
-    >
+    <a href="#inscription" class="hidden md:inline-flex items-center gap-2 h-11 px-5 bg-vermeille-bordeaux text-vermeille-ivoire font-italiana tracking-wide hover:bg-vermeille-velours transition-colors">
       S'inscrire
+      <span aria-hidden="true" class="text-vermeille-or">→</span>
     </a>
-
-    <!-- Mobile : lien souligné -->
-    <a
-      href="#inscription"
-      class="md:hidden font-italiana text-vermeille-rose text-sm underline underline-offset-4 decoration-vermeille-or/40"
-    >
-      S'inscrire
-    </a>
+    <a href="#inscription" class="md:hidden inline-flex items-center gap-2 h-10 px-4 bg-vermeille-bordeaux text-vermeille-ivoire font-italiana text-sm">Inscription</a>
   </div>
 </header>
 
-<script>
-  const header = document.getElementById('vermeille-header');
-  if (header) {
-    const update = () => { header.dataset.scrolled = String(window.scrollY > 60); };
-    update();
-    window.addEventListener('scroll', update, { passive: true });
-  }
+<script is:inline>
+  (() => {
+    const h = document.getElementById('vermeille-header');
+    if (!h) return;
+    const onScroll = () => { h.dataset.scrolled = String(window.scrollY > 60); };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  })();
 </script>

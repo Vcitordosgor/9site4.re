@@ -1,55 +1,37 @@
 ---
 const faq = [
-  {
-    q: 'À partir de quel âge peut-on s\'inscrire ?',
-    r: 'Éveil dès 4 ans (45 minutes hebdomadaires), initiation dès 6 ans, cours technique à partir de 8 ans. Pour les adultes, accueil dès le débutant complet, aucune limite d\'âge.',
-  },
-  {
-    q: 'Faut-il déjà avoir fait de la danse pour s\'inscrire ?',
-    r: 'Non. Chaque discipline a son cours débutant absolu. Le professeur évalue votre niveau au cours d\'essai et oriente vers le groupe le plus adapté à votre rythme.',
-  },
-  {
-    q: 'Quel équipement faut-il acheter pour commencer ?',
-    r: 'Pour le cours d\'essai : tenue souple, cheveux attachés, pieds nus. Pour la suite : chaussons spécifiques selon la discipline (entre 25 et 60 euros), tenue de danse souple.',
-  },
-  {
-    q: 'Le spectacle de fin d\'année est-il obligatoire ?',
-    r: 'Non, jamais. Près de 80% des élèves choisissent d\'y participer mais ce n\'est pas une condition. Coût supplémentaire de 90 euros si vous participez (couvre costume, location théâtre, captation vidéo).',
-  },
-  {
-    q: 'Peut-on essayer plusieurs disciplines avant de choisir ?',
-    r: 'Oui, jusqu\'à trois cours d\'essai gratuits dans trois disciplines différentes pendant les deux premières semaines de septembre. Aucun engagement.',
-  },
-  {
-    q: 'Y a-t-il des bourses ou aides au financement ?',
-    r: 'Oui. Pass Culture pour les 15-25 ans, conventions avec la mairie et le département pour les familles modestes, paiement en trois fois sans frais ouvert à tous.',
-  },
+  ['À partir de quel âge peut-on s\'inscrire ?', "Le classique commence à 6 ans, le jazz à 8 ans, le hip-hop à 10 ans, le contemporain et le modern à partir de 12 ans. Aucune limite haute — nous accueillons des élèves jusqu'à 77 ans."],
+  ['Peut-on essayer avant de s\'engager ?', "Oui, le cours d'essai est offert pour toute discipline. Sans aucune obligation d'inscription derrière. Réservez via le formulaire ou par téléphone."],
+  ['Quel tenue prévoir pour le premier cours ?', "Une tenue souple suffit. Les tenues techniques (justaucorps classique, sneakers hip-hop, etc.) ne sont demandées qu'après quelques semaines, pour s'adapter au rythme de l'élève."],
+  ['Comment se déroule le gala de fin d\'année ?', "Le gala se tient en juin, en salle de spectacle louée pour l'occasion. Deux représentations (samedi soir et dimanche après-midi). Tous les élèves passent, des plus jeunes aux plus avancés."],
+  ['Y a-t-il des cours pour adultes complets débutants ?', "Oui. Le classique adulte du samedi matin et le contemporain du lundi soir sont ouverts aux adultes n'ayant jamais dansé. Ambiance bienveillante, progression à votre rythme."],
+  ['Que se passe-t-il pendant les vacances scolaires ?', "Le studio reste ouvert pour des stages thématiques (1 à 3 jours) sur inscription. Les cours hebdomadaires s'arrêtent."],
 ];
 ---
 
-<section class="bg-vermeille-ivoire py-20 md:py-28">
-  <div class="max-w-3xl mx-auto px-6 md:px-10">
-
-    <div class="text-center mb-12 md:mb-16">
-      <p class="font-inter-tight uppercase tracking-[0.4em] text-[10px] md:text-[11px] text-vermeille-bordeaux mb-4">— Avant l'inscription —</p>
-      <h2 class="font-italiana text-vermeille-velours text-4xl md:text-6xl leading-tight">
-        Questions
-        <span class="text-vermeille-bordeaux">qu'on entend chaque rentrée</span>
+<section class="relative bg-vermeille-ivoire text-vermeille-velours py-24 md:py-32">
+  <div class="max-w-content mx-auto px-6 md:px-12 grid lg:grid-cols-12 gap-12">
+    <div class="lg:col-span-4">
+      <p class="font-inter-tight text-[10px] uppercase tracking-[0.5em] text-vermeille-or mb-4">§ VIII — Questions</p>
+      <h2 class="font-italiana italic leading-[0.95] tracking-tight sticky top-28" style="font-size: clamp(48px, 6vw, 92px);">
+        Tout ce<br/>qu'on nous<br/>demande.
       </h2>
     </div>
-
-    <div class="space-y-2">
-      {faq.map((f) => (
-        <details class="group border-b border-vermeille-velours/15 hover:border-vermeille-bordeaux transition-colors">
-          <summary class="cursor-pointer list-none flex items-start gap-5 py-5 md:py-7">
-            <span class="font-italiana text-vermeille-bordeaux text-3xl leading-none mt-0 transition-transform duration-300 group-open:rotate-45" aria-hidden="true">+</span>
-            <span class="flex-1 font-italiana text-vermeille-velours text-lg md:text-xl leading-snug">{f.q}</span>
-          </summary>
-          <div class="pb-6 md:pb-8 pl-12 pr-2">
-            <p class="font-inter-tight text-[14.5px] md:text-[15px] text-vermeille-velours/85 leading-relaxed">{f.r}</p>
-          </div>
-        </details>
+    <ul class="lg:col-span-8 divide-y divide-vermeille-or/25 border-y border-vermeille-or/25">
+      {faq.map((q, i) => (
+        <li>
+          <details class="group">
+            <summary class="cursor-pointer py-6 flex items-start justify-between gap-6 list-none">
+              <div class="flex gap-5 items-start">
+                <span class="font-italiana italic text-vermeille-or text-xl mt-1 shrink-0">{String(i+1).padStart(2,'0')}.</span>
+                <span class="font-italiana italic text-vermeille-velours text-xl md:text-2xl leading-tight">{q[0]}</span>
+              </div>
+              <span class="font-italiana italic text-vermeille-bordeaux text-3xl leading-none mt-1 transition-transform group-open:rotate-45 shrink-0">+</span>
+            </summary>
+            <p class="pb-7 pl-10 font-inter-tight text-vermeille-velours/75 leading-relaxed max-w-3xl">{q[1]}</p>
+          </details>
+        </li>
       ))}
-    </div>
+    </ul>
   </div>
 </section>
