@@ -1,40 +1,96 @@
 ---
+/**
+ * "Pour vos événements" — 4 formules sur mesure + délai 72h,
+ * suivi du calendrier précommande 7 jours.
+ */
 import data from '../../../data/templates/vanille.json';
 
-const ans = new Date().getFullYear() - parseInt(data.info.annee);
-const chiffres = [
-  { gros: ans + ' ans', petit: 'à pétrir chaque matin à 4h30' },
-  { gros: '42', petit: 'mille-feuilles au four ce matin' },
-  { gros: '6h30', petit: 'ouverture boutique, du mardi au dimanche' },
-  { gros: '3 gousses', petit: 'de vanille bourbon par mille-feuille' },
+const formules = [
+  { titre: 'Anniversaire', taille: 'De 6 à 30 parts', delai: '72 h', tarif: 'À partir de 32 €', detail: 'Entremets parfumé, layer cake créole, choux décorés. Choix de saveur péi.' },
+  { titre: 'Mariage',      taille: '30 à 200 parts', delai: '4 semaines', tarif: 'Sur devis', detail: 'Pièce montée choux, wedding cake étages, plateau viennoiseries pour brunch.' },
+  { titre: 'Brunch maison',taille: '8 à 25 personnes', delai: '72 h', tarif: 'À partir de 85 €', detail: 'Plateau viennoiseries assorties, mini-pâtisseries individuelles, confitures maison.' },
+  { titre: 'Soirée pro',   taille: '40 à 150 personnes', delai: '1 semaine', tarif: 'Sur devis', detail: 'Mignardises sucrées-salées, bouchées vanille, dressage et livraison sur site.' },
 ];
+
+// Calendrier précommande — 7 jours dynamique
+const jours = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
+const today = new Date();
+const list = Array.from({ length: 7 }, (_, i) => {
+  const d = new Date(today); d.setDate(today.getDate() + i);
+  const jname = jours[(d.getDay() + 6) % 7];
+  const closed = jname === 'Lundi';
+  return {
+    nom: jname,
+    num: d.getDate(),
+    mois: d.toLocaleDateString('fr-FR', { month: 'short' }),
+    closed,
+    creneau: closed ? '— fermé —' : (jname === 'Samedi' || jname === 'Dimanche' ? '6 h 30 → 12 h' : '6 h 30 → 13 h / 15 h → 19 h'),
+    dispo: closed ? null : Math.max(2, 6 - (i % 5)),
+  };
+});
 ---
-
-<section class="bg-vanille-papier py-20 md:py-32 relative overflow-hidden">
-  <svg class="absolute inset-0 w-full h-full opacity-[0.05] pointer-events-none" aria-hidden="true">
-    <filter id="vanille-grain-num"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2"/></filter>
-    <rect width="100%" height="100%" filter="url(#vanille-grain-num)"/>
-  </svg>
-
-  <div class="max-w-content mx-auto px-6 md:px-10 relative">
-    <div class="text-center mb-14 md:mb-20">
-      <p class="font-karla text-[11px] uppercase tracking-[0.4em] text-vanille-caramel mb-4">— Maison La Vanille en chiffres —</p>
-      <h2 class="font-yeseva text-vanille-gousse text-3xl md:text-5xl leading-tight">
-        Une boutique, <em class="font-italianno text-vanille-caramel text-5xl md:text-6xl not-italic">quatre repères</em>.
+<section id="evenements" class="bg-vanille-creme py-24 md:py-36 relative">
+  <div class="max-w-content mx-auto px-6 md:px-12 relative">
+    <div class="max-w-3xl mb-14 md:mb-20">
+      <p class="font-karla text-[11px] uppercase tracking-[0.4em] text-vanille-caramel mb-4 flex items-center gap-3">
+        <span class="block w-8 h-px bg-vanille-caramel"></span>
+        Pour vos événements
+      </p>
+      <h2 class="font-yeseva text-vanille-gousse leading-[0.95]" style="font-size:clamp(40px,6vw,84px);">
+        Sur mesure,
+        <span class="block italic font-italianno text-vanille-caramel" style="font-size:clamp(54px,8vw,108px);">à partir de 72 h.</span>
       </h2>
+      <p class="mt-6 font-karla text-[15px] text-vanille-gousse/80 leading-relaxed max-w-xl">
+        Une pièce composée pour votre date. Choisissez l'occasion, le nombre de parts, la saveur. On revient sous 48 h avec un devis et un croquis.
+      </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-y-12 md:gap-y-20 md:gap-x-8">
-      {chiffres.map((c, i) => (
-        <div class={`md:col-span-6 ${i === 1 ? 'md:translate-y-10' : ''} ${i === 2 ? 'md:-translate-y-6' : ''} ${i === 3 ? 'md:translate-y-4' : ''} text-center md:text-left`}>
-          <p class="font-yeseva text-vanille-gousse leading-[0.85] tracking-tight" style="font-size:clamp(60px,12vw,140px);">
-            {c.gros}
-          </p>
-          <p class="mt-3 md:mt-5 font-italianno text-vanille-caramel text-3xl md:text-4xl leading-tight max-w-md mx-auto md:mx-0">
-            {c.petit}
-          </p>
-        </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
+      {formules.map((f, i) => (
+        <article class="group relative bg-vanille-blanc border border-vanille-gousse/15 p-7 hover:border-vanille-caramel/60 transition-colors">
+          <span class="font-yeseva text-vanille-caramel/30 text-7xl leading-none italic absolute top-3 right-4" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+          <h3 class="font-yeseva text-vanille-gousse text-xl md:text-2xl leading-tight">{f.titre}</h3>
+          <p class="mt-1 font-italianno text-vanille-caramel text-xl leading-none">{f.taille}</p>
+          <p class="mt-4 font-karla text-[13.5px] text-vanille-gousse/85 leading-relaxed">{f.detail}</p>
+          <dl class="mt-5 pt-5 border-t border-vanille-gousse/20 space-y-2 font-karla text-[12px]">
+            <div class="flex justify-between"><dt class="uppercase tracking-[0.18em] text-vanille-caramel">Délai</dt><dd class="text-vanille-gousse font-medium">{f.delai}</dd></div>
+            <div class="flex justify-between"><dt class="uppercase tracking-[0.18em] text-vanille-caramel">Tarif</dt><dd class="text-vanille-gousse font-medium">{f.tarif}</dd></div>
+          </dl>
+        </article>
       ))}
+    </div>
+
+    <!-- Calendrier précommande -->
+    <div class="mt-24 md:mt-32">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
+        <div>
+          <p class="font-karla text-[11px] uppercase tracking-[0.4em] text-vanille-caramel mb-3 flex items-center gap-3">
+            <span class="block w-8 h-px bg-vanille-caramel"></span>
+            Calendrier précommande
+          </p>
+          <h3 class="font-yeseva text-vanille-gousse text-3xl md:text-5xl leading-tight">
+            Sept jours, <span class="italic font-italianno text-vanille-caramel">à retirer en boutique.</span>
+          </h3>
+        </div>
+        <a href={`https://wa.me/${data.info.whatsapp}`} target="_blank" rel="noopener"
+           class="self-start md:self-auto inline-flex items-center gap-2 h-12 px-6 rounded-full bg-vanille-gousse text-vanille-creme font-karla font-semibold text-[12px] uppercase tracking-[0.2em] hover:bg-vanille-caramel transition-colors">
+          Réserver un créneau
+          <svg viewBox="0 0 24 24" width="14" height="14"><path d="M5 12h14m0 0l-5-5m5 5l-5 5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3">
+        {list.map((d) => (
+          <div class={`relative bg-vanille-blanc border ${d.closed ? 'border-vanille-gousse/10 opacity-60' : 'border-vanille-gousse/20 hover:border-vanille-caramel/60'} p-4 transition-colors`}>
+            <p class="font-karla text-[10px] uppercase tracking-[0.25em] text-vanille-caramel">{d.nom}</p>
+            <p class="font-yeseva text-vanille-gousse text-3xl leading-none mt-1">{d.num}<span class="font-karla text-xs uppercase tracking-wider text-vanille-gousse/60 ml-1">{d.mois.replace('.', '')}</span></p>
+            <p class="mt-3 font-karla text-[11px] text-vanille-gousse/75 leading-snug">{d.creneau}</p>
+            {d.dispo !== null && (
+              <p class="mt-3 font-karla text-[10px] uppercase tracking-[0.18em] text-vanille-pandan">{d.dispo} créneaux libres</p>
+            )}
+          </div>
+        ))}
+      </div>
     </div>
   </div>
 </section>

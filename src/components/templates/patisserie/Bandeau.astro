@@ -1,21 +1,57 @@
 ---
-import data from '../../../data/templates/vanille.json';
+/**
+ * "Le geste" — section éditoriale 2 colonnes, photo grande gauche +
+ * texte droite décrivant un geste signature (laminage / pochage / glaçage).
+ */
+const gestes = [
+  { num: '01', titre: 'Le laminage', texte: "On replie le beurre dans la pâte, on tourne au rouleau, on remet au froid. Six fois. Aucun raccourci, aucune machine. C'est cette patience-là qui donne au mille-feuille ses 729 couches." },
+  { num: '02', titre: 'Le pochage',  texte: "La crème pâtissière infusée 24 h aux gousses fendues. Elle est dressée à la poche en spirales nettes, juste avant le service. Une poche, deux mains, zéro reprise." },
+  { num: '03', titre: 'Le glaçage',  texte: "Sucre glace tamisé à la minute, à travers une petite passette. Pas de fondant industriel, pas de couleur tirée d'un bidon. La blancheur vient de la lumière du matin." },
+];
 ---
+<section aria-label="Le geste signature" class="bg-vanille-grain text-vanille-creme py-24 md:py-36 relative overflow-hidden">
+  <svg class="absolute inset-0 w-full h-full opacity-[0.06] pointer-events-none" aria-hidden="true">
+    <filter id="grain-geste"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2"/></filter>
+    <rect width="100%" height="100%" filter="url(#grain-geste)"/>
+  </svg>
 
-<section aria-label="Information boutique" class="bg-vanille-caramel text-vanille-creme py-6 md:py-7">
-  <div class="max-w-content mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-8">
-    <div class="flex items-center gap-3">
-      <span class="font-italianno text-3xl md:text-4xl leading-none text-vanille-creme">Commandes 24h</span>
-      <span class="font-karla text-[10px] md:text-[11px] uppercase tracking-[0.3em] text-vanille-creme/85 hidden md:inline">— anticipez vos évènements</span>
+  <div class="max-w-content mx-auto px-6 md:px-12 relative">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+      <div class="lg:col-span-7 order-2 lg:order-1">
+        <div class="relative">
+          <img src="/images/patisserie/extra-5.webp"
+               alt="Le geste de la pâtissière, mains au travail sur la pâte feuilletée"
+               class="w-full aspect-[5/6] object-cover" loading="lazy" width="1000" height="1200" />
+          <!-- Petit cartouche caveat -->
+          <div class="absolute -bottom-5 -right-5 md:bottom-8 md:-right-10 max-w-[14rem] bg-vanille-creme text-vanille-grain p-5 rotate-2 shadow-[0_18px_44px_-12px_rgba(0,0,0,0.45)]">
+            <p class="font-caveat text-vanille-caramel text-3xl leading-tight">— le geste fait le goût</p>
+            <p class="mt-1 font-karla text-[11px] uppercase tracking-[0.3em] text-vanille-grain/70">Stéphanie · à 5 h 12</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-5 order-1 lg:order-2">
+        <p class="font-karla text-[11px] uppercase tracking-[0.4em] text-vanille-caramel mb-4 flex items-center gap-3">
+          <span class="block w-8 h-px bg-vanille-caramel"></span>
+          Le geste
+        </p>
+        <h2 class="font-yeseva text-vanille-creme leading-[0.95]" style="font-size:clamp(40px,5.6vw,76px);">
+          Trois gestes
+          <span class="block italic font-italianno text-vanille-caramel" style="font-size:clamp(50px,7vw,96px);">qu'on ne délègue pas.</span>
+        </h2>
+
+        <ol class="mt-10 space-y-7">
+          {gestes.map((g) => (
+            <li class="grid grid-cols-[auto_1fr] gap-5 items-start">
+              <span class="font-yeseva text-vanille-caramel text-4xl leading-none">{g.num}</span>
+              <div>
+                <h3 class="font-yeseva italic text-vanille-creme text-xl md:text-2xl leading-tight">{g.titre}</h3>
+                <p class="mt-2 font-karla text-[14.5px] text-vanille-creme/80 leading-relaxed">{g.texte}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
     </div>
-    <p class="font-karla text-[12px] md:text-[13px] uppercase tracking-[0.2em] text-vanille-creme/90 text-center">
-      Mariages · Communions · Pièces montées · Plateaux pro
-    </p>
-    <a
-      href={`tel:${data.info.telephoneHref}`}
-      class="inline-flex items-center justify-center h-11 px-6 bg-vanille-grain text-vanille-creme font-karla font-semibold text-[11.5px] uppercase tracking-[0.18em] rounded-full hover:bg-vanille-gousse transition-colors"
-    >
-      0692 12 34 56
-    </a>
   </div>
 </section>
