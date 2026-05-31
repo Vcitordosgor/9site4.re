@@ -46,10 +46,10 @@
     "titre": "La pizza napolitaine,",
     "titreItalique": "à La Réunion.",
     "citation": "On a appris la pizza à Naples. On la fait ici.",
-    "attribution": "Marco & Léa, fondateurs",
-    "corps": "Une pâte fermentée 48 heures qui rend la pizza plus digeste et plus parfumée. Un four à bois d'eucalyptus chauffé à 450°C qui donne ce bord soufflé inimitable. Et des produits choisis chez nos producteurs péi : tomates de Saint-Joseph, basilic des Hauts, mozzarella fior di latte affinée localement.",
-    "photo": "https://images.unsplash.com/photo-1593504049359-74330189a345?w=900&q=80",
-    "photoAlt": "Pizzaiolo enfournant une pizza dans le four à bois"
+    "attribution": "M. & L., fondateurs",
+    "corps": "Une pâte fermentée 48 heures qui rend la pizza plus digeste et plus parfumée. Un four à bois chauffé à 450°C qui donne ce bord soufflé inimitable. Et des produits choisis chez nos producteurs péi : tomates fraîches, basilic des hauts, mozzarella fior di latte affinée localement.",
+    "photo": "/images/pizzeria/cuisine.webp",
+    "photoAlt": "Pizza fraîchement sortie du four, fromage filant à la vapeur"
   },
   "gallery": [
     {

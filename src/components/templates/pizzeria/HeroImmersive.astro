@@ -8,25 +8,20 @@ import data from '../../../data/templates/pizzeria.json';
 ---
 
 <section class="relative w-full h-dvh min-h-[640px] max-h-[900px] overflow-hidden bg-pizza-charbon text-pizza-creme">
-  <!-- Photo plein écran (couverture) — responsive avec srcset pour LCP rapide -->
+  <!-- Photo plein écran (couverture) — margherita éditoriale, cadrage moins agressif -->
   <img
-    src="https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?w=1280&q=80&fm=webp"
-    srcset="
-      https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?w=640&q=75&fm=webp 640w,
-      https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?w=1024&q=78&fm=webp 1024w,
-      https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?w=1600&q=80&fm=webp 1600w
-    "
+    src="/images/pizzeria/hero.webp"
     sizes="100vw"
-    alt="Pizza margherita au four à bois"
+    alt="Pizza margherita gros plan, basilic frais et mozzarella fior di latte"
     width="1600"
-    height="1067"
-    class="absolute inset-0 w-full h-full object-cover scale-[1.02]" loading="eager" fetchpriority="high" decoding="async">
+    height="900"
+    class="absolute inset-0 w-full h-full object-cover scale-[1.04]" loading="eager" fetchpriority="high" decoding="async">
 
-  <!-- Overlay : gradient sombre bottom + vignette latérale -->
+  <!-- Overlay : gradient sombre plus profond pour lisibilité éditoriale -->
   <div class="absolute inset-0 pointer-events-none" aria-hidden="true"
        style="background:
-         linear-gradient(180deg, rgb(28 26 23 / 0.35) 0%, rgb(28 26 23 / 0) 30%, rgb(28 26 23 / 0) 50%, rgb(28 26 23 / 0.85) 100%),
-         linear-gradient(90deg, rgb(28 26 23 / 0.35) 0%, transparent 40%);">
+         linear-gradient(180deg, rgb(28 26 23 / 0.55) 0%, rgb(28 26 23 / 0.12) 30%, rgb(28 26 23 / 0.10) 50%, rgb(28 26 23 / 0.92) 100%),
+         linear-gradient(90deg, rgb(28 26 23 / 0.55) 0%, transparent 50%);">
   </div>
 
   <!-- Contenu : aligné en bas-gauche style éditorial -->
