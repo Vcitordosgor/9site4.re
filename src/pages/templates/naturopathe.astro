@@ -49,4 +49,30 @@ const businessLD = localBusinessSchema(sourceData);
   </main>
 
   <SourceFooter />
+
+  <!-- Sticky CTA mobile -->
+  <a
+    id="naturo-sticky-cta"
+    href="#contact"
+    data-visible="false"
+    class="md:hidden fixed bottom-4 inset-x-4 z-40 inline-flex items-center justify-center h-13 px-6 font-manrope text-[13px] font-semibold tracking-wide rounded-full transition-all duration-300 ease-out data-[visible=false]:opacity-0 data-[visible=false]:translate-y-4 data-[visible=false]:pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0"
+    style="height: 52px; background-color: #5D7C68; color: #FFFFFF; box-shadow: 0 10px 28px rgb(31 41 38 / 0.30);"
+  >
+    Prendre RDV première séance
+  </a>
+  <script>
+    const stickyN = document.getElementById('naturo-sticky-cta');
+    const contactN = document.getElementById('contact');
+    if (stickyN && contactN) {
+      const upd = () => {
+        const rect = contactN.getBoundingClientRect();
+        const inContact = rect.top < window.innerHeight && rect.bottom > 80;
+        const past = window.scrollY > 480;
+        stickyN.dataset.visible = String(past && !inContact);
+      };
+      upd();
+      window.addEventListener('scroll', upd, { passive: true });
+      window.addEventListener('resize', upd, { passive: true });
+    }
+  </script>
 </BaseLayout>
