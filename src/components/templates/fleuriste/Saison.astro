@@ -1,100 +1,27 @@
 ---
-import data from '../../../data/templates/frangipane.json';
+const saisons = [
+  { mois: 'Jan-Mar', titre: 'Été austral', fleurs: ['Anthurium', 'Héliconia péi', 'Bougainvillier', 'Hibiscus', 'Frangipane'] },
+  { mois: 'Avr-Juin', titre: 'Automne doux', fleurs: ['Rose locale', 'Strelitzia', 'Orchidée vanda', 'Gerbera', 'Eucalyptus'] },
+  { mois: 'Juil-Sep', titre: 'Hiver austral', fleurs: ['Renoncule', 'Anémone', 'Pivoine import', 'Lisianthus', 'Branchage sec'] },
+  { mois: 'Oct-Déc', titre: 'Printemps', fleurs: ['Pivoine locale', 'Hortensia', 'Dahlia', 'Tournesol', 'Branche fleurie'] },
+];
 ---
-
-<section id="saison" class="py-20 md:py-28 relative" style="background-color: #5C7448; color: #F4E6E0;">
+<section id="saison" class="py-24 md:py-32" style="background:#FBF3EE;">
   <div class="max-w-content mx-auto px-6 md:px-10">
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-14 items-start">
-
-      <div class="md:col-span-5">
-        <p class="font-jakarta text-[11px] uppercase tracking-[0.45em] mb-4" style="color: #C49B62;">— {data.saison.label} —</p>
-        <h2 class="font-cormorant leading-[0.95]" style="font-size: clamp(40px, 6vw, 72px); font-weight: 400;">
-          {data.saison.titre}
-          <em class="block italic text-xl md:text-2xl mt-3 normal-case" style="color: #C49B62; font-size: clamp(20px, 2.5vw, 26px);">
-            {data.saison.mois}
-          </em>
-        </h2>
-
-        <p class="mt-7 font-cormorant italic leading-snug" style="font-size: clamp(20px, 2.5vw, 28px); color: rgba(244, 230, 224, 0.92);">
-          {data.saison.ambiance}.
-        </p>
-
-        <p class="mt-6 font-jakarta text-[15px] leading-relaxed" style="color: rgba(244, 230, 224, 0.82);">
-          {data.saison.texte}
-        </p>
-      </div>
-
-      <div class="md:col-span-7">
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-6">
-
-          <div class="p-7" style="background-color: rgba(244, 230, 224, 0.08); border: 1px solid rgba(196, 155, 98, 0.3);">
-            <p class="font-jakarta text-[10.5px] uppercase tracking-[0.3em] mb-4" style="color: #C49B62;">Fleurs du moment</p>
-            <ul class="space-y-3">
-              {data.saison.fleurs.map((f) => (
-                <li class="flex items-start gap-2.5 font-cormorant text-[16.5px] leading-snug" style="color: #F4E6E0;">
-                  <span class="mt-1.5 inline-block w-1.5 h-1.5 rounded-full flex-shrink-0" style="background-color: #C49B62;"></span>
-                  <span>{f}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div class="p-7" style="background-color: rgba(244, 230, 224, 0.08); border: 1px solid rgba(196, 155, 98, 0.3);">
-            <p class="font-jakarta text-[10.5px] uppercase tracking-[0.3em] mb-4" style="color: #C49B62;">Feuillages structurants</p>
-            <ul class="space-y-3">
-              {data.saison.feuillages.map((f) => (
-                <li class="flex items-start gap-2.5 font-cormorant text-[16.5px] leading-snug" style="color: #F4E6E0;">
-                  <span class="mt-1.5 inline-block w-1.5 h-1.5 rounded-full flex-shrink-0" style="background-color: #C49B62;"></span>
-                  <span>{f}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        <!-- Manifeste -->
-        <div class="mt-6 p-7" style="background-color: #2A2520;">
-          <p class="font-cormorant italic leading-snug" style="font-size: clamp(20px, 2.5vw, 28px); color: #C49B62;">
-            « {data.manifesto.split('.')[0]}. »
-          </p>
-          <p class="mt-3 font-jakarta text-[11px] uppercase tracking-[0.25em]" style="color: rgba(244, 230, 224, 0.7);">
-            — Manifeste de l'atelier
-          </p>
-        </div>
-      </div>
+    <div class="mb-12 max-w-2xl">
+      <p class="font-cormorant italic text-2xl mb-2" style="color:#5C7448;">au fil de l'année —</p>
+      <h2 class="font-cormorant text-5xl md:text-6xl leading-tight" style="color:#2A2520;">Calendrier <em class="italic" style="color:#C49B62;">saisonnier.</em></h2>
     </div>
-
-    <!-- Calendrier événements floraux : frise rappels + précommande -->
-    <div class="mt-16 md:mt-20 pt-10 border-t" style="border-color: rgba(196, 155, 98, 0.3);">
-      <p class="font-jakarta text-[11px] uppercase tracking-[0.4em] mb-6" style="color: #C49B62;">
-        — Évènements floraux —
-      </p>
-      <h3 class="font-cormorant leading-tight mb-8" style="font-size: clamp(28px, 3.5vw, 40px); color: #F4E6E0;">
-        Anticipez les grands rendez-vous,
-        <em class="italic" style="color: #C49B62;">précommandez votre bouquet.</em>
-      </h3>
-
-      <ol class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-px" style="background-color: rgba(196, 155, 98, 0.25);">
-        {[
-          { mois: 'Févr.', nom: 'Saint-Valentin', date: '14 février' },
-          { mois: 'Mars', nom: 'Fête des grands-mères', date: '1er dimanche' },
-          { mois: 'Mai', nom: 'Fête des mères', date: 'Dernier dimanche' },
-          { mois: 'Juin', nom: 'Fête des pères', date: '3e dimanche' },
-          { mois: 'Nov.', nom: 'Toussaint', date: '1er novembre' },
-          { mois: 'Déc.', nom: 'Fêtes de fin d’année', date: 'Tout le mois' },
-        ].map((e) => (
-          <li class="p-5 text-center" style="background-color: #5C7448;">
-            <p class="font-jakarta text-[10px] uppercase tracking-[0.3em]" style="color: #C49B62;">{e.mois}</p>
-            <p class="mt-2 font-cormorant text-lg leading-tight" style="color: #F4E6E0;">{e.nom}</p>
-            <p class="mt-1.5 font-jakarta text-[11px]" style="color: rgba(244, 230, 224, 0.65);">{e.date}</p>
-          </li>
-        ))}
-      </ol>
-
-      <p class="mt-6 font-jakarta text-[13px] italic leading-relaxed" style="color: rgba(244, 230, 224, 0.8);">
-        Précommande conseillée au moins 5 jours avant chaque date.
-        Une simple visite à l’atelier ou un appel suffit.
-      </p>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      {saisons.map(s => (
+        <article class="p-6 border-2" style="background:#F4E6E0; border-color:#C49B62; border-radius:8px;">
+          <div class="text-[11px] uppercase tracking-[0.28em] mb-2" style="color:#5C7448;">{s.mois}</div>
+          <h3 class="font-cormorant text-2xl mb-4" style="color:#2A2520;">{s.titre}</h3>
+          <ul class="space-y-1.5 text-[14px]" style="color:#5A4F45;">
+            {s.fleurs.map(f => <li class="flex items-baseline gap-2"><span class="w-1 h-1 rounded-full" style="background:#C49B62;"></span><em class="font-cormorant italic text-lg" style="color:#2A2520;">{f}</em></li>)}
+          </ul>
+        </article>
+      ))}
     </div>
   </div>
 </section>

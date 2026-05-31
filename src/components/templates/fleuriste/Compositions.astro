@@ -1,65 +1,114 @@
 ---
-import data from '../../../data/templates/frangipane.json';
+const petales = [
+  { id: 'bouquet', label: 'Bouquet', angle: 0, titre: 'Bouquet du moment', soustitre: 'À partir de 28€', desc: 'Composition libre selon la cueillette et l\'arrivage. Trois tailles : tendre (28€), généreux (45€), opulent (75€).', photo: '/images/fleuriste/extra-1.webp', color: '#F4E6E0' },
+  { id: 'mariage', label: 'Mariage', angle: 60, titre: 'Cérémonie de mariage', soustitre: 'Sur devis · 6 mois en amont', desc: 'Bouquet de mariée, boutonnières, arches, décor de table, pétales pour les invités. Création unique, rendez-vous d\'inspiration offert.', photo: '/images/fleuriste/extra-2.webp', color: '#E8D5BE' },
+  { id: 'deuil', label: 'Deuil', angle: 120, titre: 'Compositions de deuil', soustitre: 'À partir de 65€ · livraison 24h', desc: 'Gerbes, coussins, raquettes. Réalisées avec délicatesse et discrétion. Livraison directement au lieu de cérémonie.', photo: '/images/fleuriste/extra-3.webp', color: '#D8E0CB' },
+  { id: 'event', label: 'Événementiel', angle: 180, titre: 'Décor événementiel', soustitre: 'Anniversaires · lancements · dîners', desc: 'Centre de table, suspensions, arches de bienvenue, décor de scène. Installation et démontage inclus.', photo: '/images/fleuriste/extra-4.webp', color: '#F5E2D5' },
+  { id: 'abo', label: 'Abonnement', angle: 240, titre: 'Abonnement bureau', soustitre: '85€ / livraison · hebdo ou quinzaine', desc: 'Une composition fraîche, livrée chez vous ou au bureau, selon votre cadence. Vase prêté, fleurs reprises la fois suivante.', photo: '/images/fleuriste/extra-5.webp', color: '#E8E4D0' },
+  { id: 'plante', label: 'Plante', angle: 300, titre: 'Plantes vertes', soustitre: 'À partir de 18€', desc: 'Sélection de plantes adaptées au climat de l\'île. Conseil d\'entretien à l\'achat, rempotage offert dans nos cache-pots.', photo: '/images/fleuriste/extra-6.webp', color: '#D8E0CB' },
+];
 ---
-
-<section id="compositions" class="py-20 md:py-28 relative" style="background-color: #F4E6E0;">
+<section id="petales" class="py-24 md:py-32 overflow-hidden" style="background:#FBF3EE;">
   <div class="max-w-content mx-auto px-6 md:px-10">
-
-    <div class="max-w-2xl mb-14 md:mb-20">
-      <p class="font-jakarta text-[11px] uppercase tracking-[0.45em] mb-4" style="color: #C49B62;">— Le catalogue —</p>
-      <h2 class="font-cormorant leading-[0.95]" style="color: #2A2520; font-size: clamp(40px, 6vw, 72px); font-weight: 400;">
-        Six familles
-        <em class="block italic mt-1" style="color: #5C7448;">de compositions.</em>
-      </h2>
-      <p class="mt-5 font-jakarta text-[15px] leading-relaxed" style="color: rgba(42, 37, 32, 0.78);">
-        Du bouquet de la semaine au mariage complet. Chaque composition est unique — les fleurs varient selon la saison et l'arrivage.
-      </p>
+    <div class="mb-12 max-w-2xl">
+      <p class="font-cormorant italic text-2xl md:text-3xl mb-2" style="color:#5C7448;">six pétales —</p>
+      <h2 class="font-cormorant text-5xl md:text-6xl leading-tight" style="color:#2A2520;">Choisissez <em class="italic" style="color:#C49B62;">une offre.</em></h2>
+      <p class="mt-3 text-base" style="color:#5A4F45;">Cliquez sur un pétale pour découvrir la composition correspondante.</p>
     </div>
 
-    <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-7">
-      {data.compositions.map((c, i) => (
-        <li class="group p-7 md:p-9 transition-colors" style="background-color: #FFFFFF; border: 1px solid rgba(196, 155, 98, 0.35);">
-          <div class="flex items-baseline justify-between gap-3 mb-3">
-            <p class="font-jakarta text-[10px] uppercase tracking-[0.3em]" style="color: #C49B62;">
-              {c.categorie}
-            </p>
-            <p class="font-cormorant italic text-base" style="color: rgba(42, 37, 32, 0.4);">
-              n°{String(i + 1).padStart(2, '0')}
-            </p>
-          </div>
-
-          <h3 class="font-cormorant text-2xl md:text-[28px] leading-tight" style="color: #2A2520; font-weight: 400;">
-            {c.nom}
-          </h3>
-          <p class="mt-1.5 font-cormorant italic text-xl md:text-2xl leading-snug" style="color: #5C7448;">
-            {c.tagline}
-          </p>
-
-          <p class="mt-5 font-jakarta text-[14px] leading-relaxed" style="color: rgba(42, 37, 32, 0.82);">
-            {c.description}
-          </p>
-
-          <p class="mt-4 pt-4 border-t font-jakarta text-[11px] uppercase tracking-[0.18em]" style="color: #C49B62; border-color: rgba(196, 155, 98, 0.25);">
-            ⟡ {c.details}
-          </p>
-
-          <div class="mt-5 flex items-baseline justify-between gap-3 pt-4 border-t" style="border-color: rgba(196, 155, 98, 0.25);">
-            <div>
-              <p class="font-jakarta text-[10px] uppercase tracking-[0.2em]" style="color: #C49B62;">Tarif</p>
-              <p class="font-cormorant italic text-2xl leading-tight" style="color: #2A2520;">{c.prix}</p>
-            </div>
-            <a
-              href={`https://wa.me/${data.info.whatsapp}?text=${encodeURIComponent('Bonjour, je voudrais en savoir plus sur : ' + c.nom + '.')}`}
-              target="_blank"
-              rel="noopener"
-              class="inline-flex items-center justify-center h-10 px-4 font-jakarta font-semibold text-[11px] uppercase tracking-[0.18em] rounded-full transition-opacity hover:opacity-90"
-              style="background-color: #2A2520; color: #F4E6E0;"
-            >
-              Demander
-            </a>
-          </div>
-        </li>
+    {/* Hidden radio inputs for CSS-only tabs */}
+    <div class="petal-nav">
+      {petales.map((p, i) => (
+        <input type="radio" name="petal" id={`petal-${p.id}`} class="petal-radio" checked={i === 0} />
       ))}
-    </ul>
+
+      <div class="grid lg:grid-cols-[1fr_1.2fr] gap-10 lg:gap-16 items-center">
+        {/* The flower SVG */}
+        <div class="relative aspect-square max-w-md mx-auto w-full">
+          <svg viewBox="-100 -100 200 200" class="w-full h-full" aria-hidden="true">
+            {petales.map(p => (
+              <g transform={`rotate(${p.angle})`}>
+                <ellipse cx="0" cy="-50" rx="32" ry="46" fill={p.color} stroke="#C49B62" stroke-width="0.8" opacity="0.95"/>
+              </g>
+            ))}
+            <circle r="22" fill="#C49B62"/>
+            <circle r="22" fill="#2A2520" opacity="0.15"/>
+            <text y="6" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="14" fill="#FBF3EE">Frangipane</text>
+          </svg>
+          {/* Label overlay buttons — positioned in front of each petal */}
+          {petales.map(p => {
+            const rad = (p.angle - 90) * Math.PI / 180;
+            const x = Math.cos(rad) * 50;
+            const y = Math.sin(rad) * 50;
+            return (
+              <label
+                for={`petal-${p.id}`}
+                class={`petal-label petal-label-${p.id}`}
+                style={`left:calc(50% + ${x}%); top:calc(50% + ${y}%);`}
+              >
+                <span class="petal-tag font-cormorant italic">{p.label}</span>
+              </label>
+            );
+          })}
+        </div>
+
+        {/* The content panel(s) */}
+        <div class="relative">
+          {petales.map(p => (
+            <article class={`petal-content petal-content-${p.id}`}>
+              <div class="text-[11px] uppercase tracking-[0.32em] mb-3" style="color:#5C7448;">{p.label}</div>
+              <h3 class="font-cormorant text-4xl md:text-5xl leading-tight mb-2" style="color:#2A2520;">{p.titre}</h3>
+              <div class="font-cormorant italic text-xl mb-5" style="color:#C49B62;">{p.soustitre}</div>
+              <div class="aspect-[5/4] overflow-hidden mb-5">
+                <img src={p.photo} alt={p.titre} class="w-full h-full object-cover" loading="lazy"/>
+              </div>
+              <p class="text-base leading-relaxed mb-6" style="color:#5A4F45;">{p.desc}</p>
+              <a href="#contact" class="inline-flex items-center h-12 px-7 text-[12px] uppercase tracking-[0.22em] font-semibold" style="background:#2A2520; color:#FBF3EE;">Commander cette offre</a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
   </div>
 </section>
+
+<style>
+  .petal-nav .petal-radio { position: absolute; opacity: 0; pointer-events: none; }
+  .petal-label {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    z-index: 5;
+  }
+  .petal-tag {
+    display: inline-block;
+    padding: 4px 10px;
+    background: #FBF3EE;
+    color: #2A2520;
+    border: 1px solid #C49B62;
+    border-radius: 999px;
+    font-size: 13px;
+    line-height: 1;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+  }
+  .petal-label:hover .petal-tag { background: #C49B62; color: #FBF3EE; transform: scale(1.05); }
+  .petal-content { display: none; }
+  /* Default first one shows (no :checked match needed) */
+  .petal-nav:has(#petal-bouquet:checked) .petal-content-bouquet,
+  .petal-nav:has(#petal-mariage:checked) .petal-content-mariage,
+  .petal-nav:has(#petal-deuil:checked) .petal-content-deuil,
+  .petal-nav:has(#petal-event:checked) .petal-content-event,
+  .petal-nav:has(#petal-abo:checked) .petal-content-abo,
+  .petal-nav:has(#petal-plante:checked) .petal-content-plante { display: block; animation: petalFade 0.45s ease both; }
+
+  .petal-nav:has(#petal-bouquet:checked) .petal-label-bouquet .petal-tag,
+  .petal-nav:has(#petal-mariage:checked) .petal-label-mariage .petal-tag,
+  .petal-nav:has(#petal-deuil:checked) .petal-label-deuil .petal-tag,
+  .petal-nav:has(#petal-event:checked) .petal-label-event .petal-tag,
+  .petal-nav:has(#petal-abo:checked) .petal-label-abo .petal-tag,
+  .petal-nav:has(#petal-plante:checked) .petal-label-plante .petal-tag {
+    background: #2A2520; color: #FBF3EE; border-color: #2A2520;
+  }
+  @keyframes petalFade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+</style>
