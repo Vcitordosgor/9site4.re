@@ -171,6 +171,10 @@ const moduleColor = moduleColors[realisation.moduleInclus] ?? 'orange';
         <div class="absolute inset-0 transition-transform duration-700 ease-out-soft group-hover/preview:scale-[1.03]">
           <Preview />
         </div>
+        <!-- Badge "Démo métier" : signale clairement un exemple, pas un vrai client -->
+        <span class="absolute top-3 left-3 z-10 inline-flex items-center px-2.5 py-1 rounded-full bg-orange text-white text-[10px] font-bold uppercase tracking-wide shadow-md pointer-events-none">
+          Démo métier
+        </span>
         <!-- Overlay au hover avec pill "Voir la démo" -->
         <div class="absolute inset-0 flex items-center justify-center bg-bleu-nuit/55 opacity-0 group-hover/preview:opacity-100 transition-opacity duration-300">
           <span class="inline-flex items-center gap-2 h-11 px-5 rounded-full bg-bleu text-white font-semibold text-sm shadow-[0_0_24px_rgba(145,166,255,0.6)]">
