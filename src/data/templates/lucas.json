@@ -10,7 +10,7 @@
     "whatsapp": "262692123456",
     "email": "lucas@ferrier.work",
     "linkedin": "lucas-ferrier-974",
-    "siret": "98765432100017",
+    "siret": "000 000 000 00000",
     "annee": "2017",
     "experience": 8,
     "disponibilite": "Disponible début 2026",
@@ -39,10 +39,10 @@
       "client": "PME industrie · 50p",
       "duree": "9 mois",
       "annee": "2024",
-      "contexte": "Site corporate obsolète depuis 7 ans, aucun trafic SEO, équipe commerciale en démarchage à froid à 100%.",
-      "livrable": "Refonte complète Webflow, restructuration éditoriale, formation rédactionnelle interne (4 sessions).",
-      "resultat": "× 12 sur le trafic organique en 9 mois. 22 leads qualifiés / mois entrants au lieu de 0.",
-      "metrique": "× 12 trafic"
+      "contexte": "Site corporate vieillissant, peu de trafic naturel, équipe commerciale en démarchage à froid.",
+      "livrable": "Refonte du site, restructuration éditoriale, formation rédactionnelle interne.",
+      "resultat": "Forte progression du trafic organique sur la durée, flux régulier de demandes entrantes.",
+      "metrique": "Trafic en hausse"
     },
     {
       "id": "cabinet",
@@ -50,29 +50,29 @@
       "duree": "6 mois",
       "annee": "2024",
       "contexte": "Aucun pipeline commercial inbound. Croissance dépendante des recommandations.",
-      "livrable": "Stack acquisition complet (HubSpot + Notion + n8n), 12 contenus piliers, séquences email outbound.",
-      "resultat": "38 MQL / mois en moyenne après 6 mois. Time-to-deal raccourci de 4 mois à 6 semaines.",
-      "metrique": "38 MQL/mois"
+      "livrable": "Stack acquisition (CRM + base éditoriale + automatisations), contenus piliers, séquences e-mail.",
+      "resultat": "Flux de leads qualifiés stabilisé chaque mois, cycle de vente sensiblement raccourci.",
+      "metrique": "Pipeline régulier"
     },
     {
       "id": "esn",
       "client": "ESN · 200p",
       "duree": "4 mois",
       "annee": "2023",
-      "contexte": "Data dispersée dans 8 outils (Salesforce, Zendesk, GA, Mixpanel, etc.). Décisions basées sur l'intuition.",
-      "livrable": "Audit data, consolidation GA4 + Looker, 6 dashboards opérationnels (commercial, support, prod, RH).",
-      "resultat": "Décisions hebdomadaires basées sur la donnée. Réduction de 40% du temps passé en reporting manuel.",
-      "metrique": "− 40 % reporting"
+      "contexte": "Données dispersées dans plusieurs outils. Décisions prises essentiellement à l'intuition.",
+      "livrable": "Audit data, consolidation des sources, dashboards opérationnels (commercial, support, prod, RH).",
+      "resultat": "Décisions hebdomadaires appuyées sur la donnée. Temps de reporting nettement réduit.",
+      "metrique": "Reporting allégé"
     },
     {
       "id": "retail",
       "client": "Marque retail péi · 8p",
       "duree": "4 mois",
       "annee": "2023",
-      "contexte": "Site WooCommerce ancien, taux de conversion 0,8 %, panier moyen en chute libre.",
-      "livrable": "Migration vers Shopify, refonte UX du tunnel d'achat, A/B test continu sur 12 hypothèses.",
-      "resultat": "+ 47 % sur le taux de conversion en 4 mois. Panier moyen + 18 €.",
-      "metrique": "+ 47 % conversion"
+      "contexte": "Site e-commerce ancien, taux de conversion faible, panier moyen en baisse.",
+      "livrable": "Migration vers une plateforme moderne, refonte UX du tunnel d'achat, tests A/B en continu.",
+      "resultat": "Taux de conversion sensiblement amélioré sur quelques mois, panier moyen en hausse.",
+      "metrique": "Conversion en hausse"
     }
   ],
   "competences": {
@@ -91,22 +91,22 @@
       "titre": "Exécution",
       "items": [
         "SEO technique & on-page",
-        "SEA Google / LinkedIn",
-        "Content production",
-        "Email marketing",
-        "Paid social",
+        "Régie publicitaire (search & social)",
+        "Production de contenu",
+        "E-mail marketing",
+        "Acquisition payante",
         "Marketing automation"
       ]
     },
     "outils": {
       "titre": "Outils",
       "items": [
-        "GA4 + Looker Studio",
-        "Webflow / Shopify",
-        "Notion / Linear",
-        "HubSpot / Pipedrive",
-        "n8n / Make",
-        "Hotjar / SQL"
+        "Analytics & dashboards",
+        "CMS & e-commerce",
+        "Gestion projet & docs",
+        "CRM & pipelines",
+        "Automatisation no-code",
+        "Heatmaps & requêtes SQL"
       ]
     }
   },

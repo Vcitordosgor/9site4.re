@@ -12,7 +12,7 @@
     "telephoneHref": "+262692123456",
     "whatsapp": "262692123456",
     "email": "contact@auberval-associes.re",
-    "siret": "01234567800017",
+    "siret": "000 000 000 00000",
     "agrement": "OEC 974-2018",
     "annee": "2009",
     "photoCabinet": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=85"
@@ -154,26 +154,20 @@
     {
       "initiales": "J.D.",
       "fonction": "Dirigeant TPE BTP",
-      "anciennete": "Client depuis 8 ans",
-      "texte": "Patrick Auberval suit notre dossier depuis 2017. Bilan toujours rendu en avance, conseil clair en période d'investissement, jamais une surprise sur les honoraires."
+      "anciennete": "Exemple · TPE bâtiment",
+      "texte": "Bilan rendu en avance, conseil clair en période d'investissement, jamais de surprise sur les honoraires."
     },
     {
       "initiales": "M.L.",
-      "fonction": "Fondateur startup tech",
-      "anciennete": "Client depuis 3 ans",
-      "texte": "Aurélie Sinima nous a accompagnés sur la levée de seed et le pacte d'associés. Nuance et rigueur. Sans elle, on aurait signé le mauvais cadre."
-    },
-    {
-      "initiales": "P.R.",
-      "fonction": "Gérant PME industrie",
-      "anciennete": "Client depuis 6 ans",
-      "texte": "Le bilan est rendu avant le 31 mars chaque année, sans relance de notre part. Marina a même anticipé un redressement URSSAF en 2023."
+      "fonction": "Fondateur start-up",
+      "anciennete": "Exemple · jeune entreprise",
+      "texte": "Accompagnement sur la levée et le pacte d'associés. Nuance et rigueur, sans jamais nous pousser dans le mauvais cadre."
     },
     {
       "initiales": "S.G.",
       "fonction": "Directrice association",
-      "anciennete": "Cliente depuis 2 ans",
-      "texte": "Marina Hoarau-Lebon a rendu l'audit annuel en 4 semaines au lieu de 8. Précision exemplaire. Notre commissaire aux comptes recommandé."
+      "anciennete": "Exemple · association",
+      "texte": "Audit annuel rendu rapidement, précision exemplaire et disponibilité quand il faut décider vite."
     }
   ],
   "horaires": [
