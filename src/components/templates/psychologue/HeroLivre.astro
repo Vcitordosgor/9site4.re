@@ -43,7 +43,7 @@ import data from '../../../data/templates/aubry.json';
         </p>
 
         <!-- Titre incipit -->
-        <h1 class="font-caslon text-aubry-encre leading-[1.05] max-w-2xl" style="font-size: clamp(36px, 5.5vw, 72px);">
+        <h1 class="font-caslon text-aubry-encre leading-[1.02] max-w-2xl" style="font-size: clamp(48px, 7.5vw, 112px);">
           {data.incipit.titre}
         </h1>
 
@@ -63,7 +63,7 @@ import data from '../../../data/templates/aubry.json';
             href="#rendez-vous"
             class="inline-flex items-center h-12 px-7 bg-aubry-encre text-aubry-perle font-albert text-sm font-medium hover:bg-aubry-prune transition-colors duration-500"
           >
-            Prendre rendez-vous
+            Demander une consultation
           </a>
           <a
             href={`tel:${data.info.telephoneHref}`}
@@ -72,6 +72,9 @@ import data from '../../../data/templates/aubry.json';
             {data.info.telephone}
           </a>
         </div>
+        <p class="mt-5 font-caslon italic text-aubry-prune/85 text-sm md:text-base max-w-md">
+          Premier échange téléphonique de 15 minutes, sans engagement.
+        </p>
       </div>
 
       <!-- Colonne droite : carte praticienne style fiche d'éditeur -->
