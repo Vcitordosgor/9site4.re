@@ -1,0 +1,183 @@
+{
+  "info": {
+    "nom": "Bleu Lagon Plongée",
+    "wordmark1": "Bleu",
+    "wordmark2": "Lagon",
+    "wordmark3": "Plongée",
+    "soustitre": "Centre de plongée · La Réunion",
+    "tagline": "Voir le lagon",
+    "taglineItalic": "de l'intérieur.",
+    "ville": "La Réunion",
+    "adresse": "Quai des Plongeurs · côte ouest",
+    "adresseLigne1": "Quai des Plongeurs · côte ouest",
+    "adresseLigne2": "97400 La Réunion",
+    "telephone": "0692 12 34 56",
+    "telephoneHref": "+262692123456",
+    "whatsapp": "262692123456",
+    "email": "bonjour@bleu-lagon-plongee.re",
+    "instagram": "@bleulagon.plongee",
+    "annee": 2014,
+    "agrement": "Club affilié fédération · Centre PADI",
+    "photoHero": "/images/plongee/extra-1.webp",
+    "photoHeroAlt": "Plongeur descend le long du tombant corallien dans le lagon de La Réunion",
+    "horaires": [
+      { "jour": "Mardi – Vendredi", "ouvert": true, "label": "8h – 17h" },
+      { "jour": "Samedi – Dimanche", "ouvert": true, "label": "7h – 18h" },
+      { "jour": "Lundi", "ouvert": false, "label": "Repos" }
+    ]
+  },
+  "stats": [
+    { "valeur": "12 ans", "label": "d'expérience encadrement" },
+    { "valeur": "1 500+", "label": "plongées guidées" },
+    { "valeur": "4 max", "label": "plongeurs par moniteur" },
+    { "valeur": "27°C", "label": "eau en été austral" }
+  ],
+  "promesse": "À La Réunion, on plonge sur l'une des plus belles réserves marines de l'océan Indien. Petit groupe, gros respect du récif, et le temps qu'il faut pour vous mettre à l'aise.",
+  "profondeurs": [
+    {
+      "id": "p5",
+      "profondeur": "−5 m",
+      "titre": "La surface du lagon",
+      "description": "Première bulle. Le sable blanc renvoie la lumière, les poissons-perroquets passent à votre niveau. C'est ici que démarre chaque baptême.",
+      "photo": "/images/plongee/extra-2.webp",
+      "photoAlt": "Plongeur en surface dans le lagon turquoise",
+      "duree": "Baptême · 25 min"
+    },
+    {
+      "id": "p12",
+      "profondeur": "−12 m",
+      "titre": "Le jardin de corail",
+      "description": "Les coraux durs s'épanouissent. Tortue verte fréquente, raies pastenagues, bancs de carangues. La visibilité dépasse souvent 25 m.",
+      "photo": "/images/plongee/extra-3.webp",
+      "photoAlt": "Jardin corallien coloré à 12 mètres de profondeur",
+      "duree": "Exploration · 40 min"
+    },
+    {
+      "id": "p20",
+      "profondeur": "−20 m",
+      "titre": "Le tombant",
+      "description": "La pente s'incline vers le bleu profond. C'est le territoire des barracudas, des thons et parfois des requins pointes blanches, parfaitement inoffensifs.",
+      "photo": "/images/plongee/extra-4.webp",
+      "photoAlt": "Tombant sous-marin avec gorgones et poissons pélagiques",
+      "duree": "Niveau 1 · 35 min"
+    },
+    {
+      "id": "p30",
+      "profondeur": "−30 m",
+      "titre": "L'épave",
+      "description": "Une coque de chalutier posée droite sur le sable, colonisée par les gorgones. Plongée technique réservée aux brevetés N2 et plus.",
+      "photo": "/images/plongee/extra-5.webp",
+      "photoAlt": "Épave colonisée par la vie marine à 30 mètres",
+      "duree": "Niveau 2 · 25 min"
+    },
+    {
+      "id": "p40",
+      "profondeur": "−40 m",
+      "titre": "Les grandes ombres",
+      "description": "Le territoire des plongeurs confirmés. Les couleurs s'estompent, les formes deviennent immenses. À ne tenter qu'avec un brevet N3 et un moniteur instructeur.",
+      "photo": "/images/plongee/extra-6.webp",
+      "photoAlt": "Plongée profonde dans le bleu",
+      "duree": "Niveau 3 · 20 min"
+    }
+  ],
+  "formules": [
+    {
+      "id": "bapteme",
+      "titre": "Baptême découverte",
+      "duree": "2h sur place · 25 min sous l'eau",
+      "profondeur": "6 m max",
+      "prix": "97,4€",
+      "niveau": "Débutant total",
+      "inclus": [
+        "Briefing 30 min en surface",
+        "Matériel complet fourni",
+        "Encadrement 1 moniteur pour 2 max",
+        "Photos sous-marines offertes"
+      ],
+      "description": "Vous n'avez jamais plongé ? Aucun pré-requis sportif, juste savoir nager et avoir 8 ans révolus."
+    },
+    {
+      "id": "exploration",
+      "titre": "Plongée exploration",
+      "duree": "Demi-journée · 45 min sous l'eau",
+      "profondeur": "20 m max",
+      "prix": "97,4€",
+      "niveau": "PADI Open Water ou équiv.",
+      "inclus": [
+        "Sortie sur tombant ou épave",
+        "Petit groupe — 4 plongeurs max",
+        "Briefing sur la vie locale",
+        "Bouteille + plombs inclus"
+      ],
+      "description": "Vous avez votre niveau 1. On vous emmène sur les sites mythiques de la côte ouest."
+    },
+    {
+      "id": "passage",
+      "titre": "Passage niveau 1",
+      "duree": "4 jours · 5 plongées",
+      "profondeur": "18 m",
+      "prix": "97,4€",
+      "niveau": "Débutant motivé",
+      "inclus": [
+        "Théorie e-learning PADI",
+        "5 plongées encadrées",
+        "Brevet international à vie",
+        "Carte PADI fournie"
+      ],
+      "description": "En 4 jours vous devenez plongeur autonome. Brevet reconnu dans le monde entier."
+    }
+  ],
+  "journee": [
+    { "heure": "06h30", "titre": "Accueil quai", "texte": "Café-jus, paperasse réduite, mise à l'aise." },
+    { "heure": "07h15", "titre": "Briefing", "texte": "Site du jour, signaux, palmage, sécurité." },
+    { "heure": "08h00", "titre": "Mise à l'eau", "texte": "Bascule arrière, −5 m, on respire." },
+    { "heure": "09h30", "titre": "Pause surface", "texte": "Thé, fruits, on raconte ce qu'on a vu." },
+    { "heure": "11h00", "titre": "Seconde plongée", "texte": "Site différent, profondeur adaptée." },
+    { "heure": "12h30", "titre": "Débrief", "texte": "Photos, espèces identifiées, retour au quai." }
+  ],
+  "spots": [
+    { "id": "pointe", "nom": "La Pointe au Sel", "type": "Tombant · −5 à −30 m", "description": "Le spot signature : tortues quasi quotidiennes, gorgones, visibilité excellente." , "x": 22, "y": 38 },
+    { "id": "epave",  "nom": "L'épave du Hai-Siang", "type": "Épave · −22 m", "description": "Chalutier posé droit sur le sable. Réservé brevetés N1 confirmés et au-delà.", "x": 58, "y": 62 },
+    { "id": "jardin", "nom": "Le Jardin corallien", "type": "Récif · −5 à −12 m", "description": "Coraux durs, bancs de poissons-perroquets, raies. Spot baptême.", "x": 78, "y": 30 }
+  ],
+  "moniteur": {
+    "nom": "Antoine Roussel",
+    "titre": "Moniteur fédéral 2e degré · Instructeur PADI",
+    "photo": "/images/plongee/extra-7.webp",
+    "photoAlt": "Portrait du moniteur Antoine sur le quai",
+    "diplomes": [
+      "BPJEPS Plongée subaquatique",
+      "Moniteur Fédéral 2e degré",
+      "PADI Master Scuba Diver Trainer",
+      "Formation biologie marine"
+    ],
+    "bio": "Originaire de l'île, Antoine plonge à La Réunion depuis l'adolescence. Cinq ans en mer Rouge, puis retour pour ouvrir Bleu Lagon en 2014. Aujourd'hui, il forme la majorité des moniteurs de la côte ouest."
+  },
+  "galerie": [
+    "/images/plongee/extra-2.webp",
+    "/images/plongee/extra-3.webp",
+    "/images/plongee/extra-4.webp",
+    "/images/plongee/extra-5.webp",
+    "/images/plongee/extra-8.webp",
+    "/images/plongee/extra-9.webp"
+  ],
+  "securite": [
+    { "titre": "Matériel pro révisé", "texte": "Détendeurs et bouteilles révisés deux fois par an en atelier agréé. Combinaisons 5 mm." },
+    { "titre": "4 plongeurs max", "texte": "On plafonne strictement à 4 par moniteur. Sécurité, confort, expérience." },
+    { "titre": "Sans pression", "texte": "Si à 6 mètres vous voulez remonter, on remonte. Pas de jugement." },
+    { "titre": "Charte Réserve Marine", "texte": "Pas de palmage sur le corail, pas de touche d'animaux, mouillages dédiés." }
+  ],
+  "scientifique": [
+    { "label": "Visibilité", "valeur": "20 m" },
+    { "label": "Température", "valeur": "26°C" },
+    { "label": "Qualité eau", "valeur": "A+" },
+    { "label": "Houle", "valeur": "0.8 m" }
+  ],
+  "faq": [
+    { "q": "Faut-il savoir nager ?", "r": "Oui, savoir nager 25 m sans difficulté est requis. Pas besoin d'être sportif, juste à l'aise dans l'eau." },
+    { "q": "À partir de quel âge ?", "r": "Baptême dès 8 ans accompagné. Brevet PADI Open Water à partir de 10 ans. Pas d'âge maximum tant que vous êtes en forme." },
+    { "q": "Annulation possible ?", "r": "Gratuite jusqu'à 24h avant. En cas de mer agitée nous annulons et remboursons intégralement." },
+    { "q": "Quel matériel apporter ?", "r": "Maillot, serviette, crème solaire reef-safe. Tout le reste est fourni." },
+    { "q": "Quand voir des baleines ?", "r": "De juin à octobre. Sortie snorkeling dédiée, jamais en plongée. Pas garanti, c'est l'océan qui décide." }
+  ]
+}
