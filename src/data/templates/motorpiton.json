@@ -13,15 +13,15 @@
     "telephoneHref": "+262692123456",
     "whatsapp": "262692123456",
     "email": "atelier@motorpiton.re",
-    "siret": "82301548700019",
+    "siret": "SIRET sur demande",
     "annee": "2014",
     "horaires": "Lundi → vendredi · 7h30 → 17h30 / Samedi 8h → 12h",
     "photoHero": "https://images.unsplash.com/photo-1486006920555-c77dcf18193c?w=1800&q=85",
     "photoHeroAlt": "Atelier mécanique à La Réunion, voiture sur pont élévateur, mécanicien en bleu de travail",
     "agreements": [
-      "Centre de Contrôle Technique partenaire",
-      "Bosch Car Service Partner",
-      "Agréé toutes assurances"
+      "Partenariat centre de contrôle technique",
+      "Outillage diagnostic multimarque",
+      "Travail avec toutes assurances"
     ]
   },
   "promesse": "Au La Réunion depuis 2014. Mickaël et son équipe de 4 mécaniciens diagnostiquent, réparent et entretiennent toutes marques. Devis détaillé avant chaque intervention, photos des pièces remplacées, garantie 12 mois pièces et main d'œuvre.",
@@ -33,11 +33,10 @@
       "duree": "30 min",
       "prix": "39 €",
       "tagline": "On lit la voiture, on vous explique.",
-      "description": "Lecture des codes défaut sur valise multimarque (Bosch KTS), test des capteurs principaux, analyse OBD-II en direct. Rapport imprimé remis avec préconisation chiffrée.",
+      "description": "Lecture des codes défaut sur valise multimarque, test des capteurs principaux, analyse en direct. Rapport imprimé remis avec préconisation chiffrée.",
       "outils": [
-        "Bosch KTS 990",
-        "Launch X-431",
-        "Scope 4 voies"
+        "Valise diagnostic multimarque",
+        "Outils de mesure électronique"
       ],
       "marques": "Toutes marques essence/diesel/hybride"
     },
@@ -48,7 +47,7 @@
       "duree": "1h",
       "prix": "à partir de 89 €",
       "tagline": "Huile constructeur, jamais de générique.",
-      "description": "Vidange huile moteur (Total Quartz / Mobil 1 selon préco), remplacement filtre à huile + filtre à air, contrôle des niveaux liquide de frein/refroidissement/lave-glace, mise à zéro indicateur d'entretien.",
+      "description": "Vidange huile moteur selon préconisation constructeur, remplacement filtre à huile + filtre à air, contrôle des niveaux, mise à zéro indicateur d'entretien.",
       "outils": [
         "Pont 4 colonnes",
         "Pompe huile pneumatique"
@@ -62,7 +61,7 @@
       "duree": "1h30 par essieu",
       "prix": "à partir de 195 € / essieu",
       "tagline": "On contrôle l'épaisseur, vous décidez.",
-      "description": "Mesure micro-mètre des plaquettes et des disques avant intervention, photos remises au client. Si seules les plaquettes sont à faire, on ne touche pas aux disques. Pose de plaquettes Brembo / TRW / Ferodo (au choix).",
+      "description": "Mesure précise des plaquettes et des disques avant intervention, photos remises au client. Si seules les plaquettes sont à faire, on ne touche pas aux disques. Pose de plaquettes de qualité d'origine.",
       "outils": [
         "Pied à coulisse digital",
         "Banc de freinage"
@@ -93,9 +92,9 @@
       "description": "Remplacement kit distribution complet (courroie, galets, tendeur) + pompe à eau systématique. Remplacement liquide de refroidissement et purge. Remise contrôle 30 jours / 1 000 km.",
       "outils": [
         "Outils calage spécifiques",
-        "Coffret distribution Facom"
+        "Coffret distribution professionnel"
       ],
-      "marques": "Renault, Peugeot, Citroën, Dacia, VW, Hyundai, Toyota"
+      "marques": "Toutes marques courantes"
     },
     {
       "id": "ct",
@@ -106,7 +105,7 @@
       "tagline": "Vous repartez avec la macaron OK.",
       "description": "Reprise des défauts contrôle technique : feux, géométrie, freinage, suspension, échappement, pollution. Devis détaillé poste par poste. Présentation à la contre-visite incluse (nous y allons).",
       "outils": [
-        "Banc géo 3D Hunter",
+        "Banc géométrie 3D",
         "Banc pollution diesel/essence"
       ],
       "marques": "Toutes marques"
@@ -141,7 +140,7 @@
   "fondateur": {
     "nom": "Mickaël Hoarau",
     "titre": "Chef d'atelier & fondateur",
-    "bio": "Mickaël a passé son CAP mécanique à La Plaine-des-Cafres en 2002. 12 ans chez Renault La Réunion comme technicien expert avant de monter Motorpiton en 2014. Il déteste l'arnaque, il adore expliquer ce qu'il fait. Mickaël est CQP Réparation Carrosserie Peinture et Bosch Diesel Specialist.",
+    "bio": "Mickaël a passé son CAP mécanique en 2002. Une dizaine d'années en concession comme technicien avant de monter Motorpiton en 2014. Il déteste l'arnaque, il adore expliquer ce qu'il fait. Spécialiste diesel et carrosserie-peinture.",
     "credo": "« Si je peux pas l'expliquer en 2 minutes au client, c'est que j'ai pas compris moi-même. »"
   },
   "engagements": [
@@ -179,20 +178,20 @@
       "ville": "La Réunion",
       "vehicule": "Renault Captur · 2020",
       "etoiles": 5,
-      "texte": "Contre-visite passée du premier coup, prix 30% en dessous du concessionnaire pour un kit distribution. Ils m'ont prêté une voiture pendant la journée. Je recommande à tout La Réunion."
+      "texte": "Contre-visite passée du premier coup, devis plus raisonnable que celui du concessionnaire pour un kit distribution. Ils m'ont prêté une voiture pendant la journée. Je recommande."
     },
     {
       "prenom": "Yann",
       "ville": "La Réunion",
       "vehicule": "Toyota Hilux · 2015",
       "etoiles": 5,
-      "texte": "Diagnostic électronique en 30 min, ils ont trouvé un capteur ABS pour 78 € quand le concess voulait me changer toute la centrale (1 200 €). Probité totale. Bravo."
+      "texte": "Diagnostic électronique en 30 min, ils ont trouvé un capteur ABS quand le concess voulait me changer toute la centrale. Probité totale. Bravo."
     }
   ],
   "infosCles": {
-    "interventionsParAn": "1 900",
-    "satisfactionGoogle": "4.9",
-    "avisGoogle": "247",
-    "anneesActivite": "12"
+    "interventionsParAn": "Plusieurs centaines",
+    "satisfactionGoogle": "Très satisfaits",
+    "avisGoogle": "Avis vérifiables",
+    "anneesActivite": "10+"
   }
 }

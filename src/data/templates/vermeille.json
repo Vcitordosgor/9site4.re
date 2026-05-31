@@ -13,7 +13,7 @@
     "whatsapp": "262692123456",
     "email": "contact@vermeille-danse.re",
     "instagram": "@vermeille.danse",
-    "siret": "90123456700017",
+    "siret": "SIRET sur demande",
     "annee": "2008",
     "saison": "2025—2026",
     "photoHero": "https://images.unsplash.com/photo-1547153760-18fc86324498?w=1600&q=85",
@@ -86,28 +86,28 @@
       "prenom": "Camille",
       "nom": "Vermeille",
       "role": "Classique · direction artistique",
-      "bio": "Ancienne du Corps de Ballet de l'Opéra de Paris. Fonde Vermeille en 2008 après un retour à La Réunion."
+      "bio": "Formée en école de ballet en métropole. Fonde Vermeille en 2008."
     },
     {
       "numero": "II.",
       "prenom": "Élise",
       "nom": "Marquant",
       "role": "Contemporain",
-      "bio": "Diplômée du CNSMD de Lyon. A dansé six ans avec la Compagnie Käfig. Pédagogue rigoureuse et sensible."
+      "bio": "Diplômée en danse contemporaine. Plusieurs années de scène. Pédagogue rigoureuse et sensible."
     },
     {
       "numero": "III.",
       "prenom": "Yann",
       "nom": "Latour",
       "role": "Hip-hop · Modern jazz",
-      "bio": "Membre fondateur du collectif réunionnais Krew 974. Anime aussi des battles à l'échelle de l'océan Indien."
+      "bio": "Issu de la scène hip-hop réunionnaise. Anime également des battles dans l'océan Indien."
     },
     {
       "numero": "IV.",
       "prenom": "Sofia",
       "nom": "Réval",
       "role": "Jazz",
-      "bio": "Artiste interprète, formée à l'École de Marseille. Chorégraphe pour plusieurs galas de l'école depuis 2019."
+      "bio": "Artiste interprète. Chorégraphe pour plusieurs galas de l'école."
     }
   ],
   "spectacles": [
@@ -133,7 +133,7 @@
       "mois": "Juin",
       "date": "13 juin 2026",
       "titre": "Gala annuel",
-      "description": "Théâtre du Grand Marché. Tous niveaux confondus, deux représentations."
+      "description": "En salle de spectacle. Tous niveaux confondus, deux représentations."
     }
   ],
   "horairesAccueil": [
