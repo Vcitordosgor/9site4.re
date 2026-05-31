@@ -29,8 +29,7 @@ const businessLD = localBusinessSchema(frangipaneData, 'Florist');
 <BaseLayout seo={getSeo('templateFleuriste')} bare={true}>
   <Fragment slot="head">
     {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
-    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
-    <link rel="preload" as="image" href={frangipaneData.info.photoHero} fetchpriority="high" />
+<link rel="preload" as="image" href={frangipaneData.info.photoHero} fetchpriority="high" />
   </Fragment>
 
   <Header />
