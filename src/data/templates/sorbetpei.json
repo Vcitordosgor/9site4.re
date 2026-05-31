@@ -5,7 +5,7 @@
     "wordmark2": "Péi",
     "soustitre": "Glacier artisanal · La Réunion",
     "tagline": "Tous les fruits péi, en cône.",
-    "fondatrice": "Léna Bègue",
+    "fondatrice": "Léna B.",
     "ville": "La Réunion",
     "adresseLigne1": "Camion glacé itinérant",
     "adresseLigne2": "Tournée hebdomadaire La Réunion",
@@ -14,14 +14,14 @@
     "whatsapp": "262692123456",
     "email": "salut@sorbetpei.re",
     "instagram": "@sorbetpei.974",
-    "siret": "85213045700013",
+    "siret": "",
     "annee": "2021",
     "photoHero": "https://images.unsplash.com/photo-1501443762994-82bd5dace89a?q=80&w=1600&auto=format&fit=crop",
     "photoHeroAlt": "Cône de glace artisanal au sorbet mangue avec fruits frais, La Réunion",
     "ouvertureHebdo": "Mercredi → dimanche · 14h00 → 20h00",
     "fermeture": "Lundi · mardi"
   },
-  "promesse": "On part chercher les fruits chez les producteurs péi, on les ramène le matin, on turbine l'après-midi. Une mangue Carotte récoltée à La Plaine ne devrait pas devenir un sirop industriel — elle mérite mieux. Voilà pourquoi Léna a démarré ce camion en 2021.",
+  "promesse": "On part chercher les fruits chez les producteurs péi, on les ramène le matin, on turbine l'après-midi. Une mangue Carotte récoltée sur les Hauts ne devrait pas devenir un sirop industriel — elle mérite mieux. Voilà pourquoi Léna a démarré ce camion en 2021.",
   "parfumsPhares": [
     {
       "id": "mangue-carotte",
@@ -88,7 +88,7 @@
     {
       "label": "Cette semaine",
       "parfum": "Letchi · pic de saison",
-      "texte": "On rentre 12 kg de letchis Kwaï Mi tous les mardis matin chez Robert. À turbiner immédiatement, fenêtre de 48h max après cueillette."
+      "texte": "On rentre 12 kg de letchis Kwaï Mi tous les mardis matin chez notre producteur péi. À turbiner immédiatement, fenêtre de 48h max après cueillette."
     },
     {
       "label": "Le mois prochain",
@@ -105,7 +105,7 @@
     {
       "etape": "01",
       "titre": "Marché producteurs",
-      "texte": "Mardi matin tôt, Léna passe chez les producteurs : mangues à La Plaine, letchis chez Robert, vanille à Bras-Panon. On ne prend que ce qui est mûr à point."
+      "texte": "Mardi matin tôt, Léna passe chez les producteurs péi : mangues des Hauts, letchis du Sud, vanille de l'Est. On ne prend que ce qui est mûr à point."
     },
     {
       "etape": "02",

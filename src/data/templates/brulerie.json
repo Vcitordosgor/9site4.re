@@ -5,7 +5,7 @@
     "wordmark2": "d'altitude",
     "soustitre": "Café torréfié · La Réunion",
     "tagline": "Café péi, torréfaction lente.",
-    "fondateur": "Olivier Cadet",
+    "fondateur": "Olivier C.",
     "ville": "La Réunion",
     "adresseLigne1": "L'atelier de torréfaction",
     "adresseLigne2": "À La Réunion",
@@ -14,19 +14,19 @@
     "whatsapp": "262692123456",
     "email": "atelier@bruleriealtitude.re",
     "instagram": "@bruleriealtitude.974",
-    "siret": "84852031200019",
+    "siret": "",
     "annee": "2017",
     "photoHero": "https://images.unsplash.com/photo-1559525839-d9acfd03c2f7?q=80&w=1600&auto=format&fit=crop",
     "photoHeroAlt": "Sac de grains de café fraîchement torréfiés, La Réunion",
     "ouvertureHebdo": "Mardi → samedi · 7h00 → 12h30 / 14h30 → 18h00",
     "fermeture": "Dimanche · lundi"
   },
-  "manifesto": "Sept ans qu'on torréfie chez Olivier. Sept ans qu'on cherche les meilleurs grains : les pointus bourbon de Bras-Panon, les arabicas des Hauts de l'île, et quelques sélections du continent voisin. Une seule machine, une Probat L12 de 1968 restaurée. Une seule règle : torréfaction lente, jamais brûlée. Le grain doit chanter sa propre note, pas celle du feu.",
+  "manifesto": "Sept ans qu'on torréfie chez Olivier. Sept ans qu'on cherche les meilleurs grains : les bourbon pointu péi, les arabicas des Hauts de l'île, et quelques sélections du continent voisin. Une seule machine de torréfaction restaurée. Une seule règle : torréfaction lente, jamais brûlée. Le grain doit chanter sa propre note, pas celle du feu.",
   "origines": [
     {
       "id": "bourbon-pointu",
       "nom": "Bourbon Pointu",
-      "terroir": "Saint-Joseph (Sud sauvage)",
+      "terroir": "Sud sauvage de l'île",
       "altitude": "650 m",
       "process": "Lavé",
       "torrefaction": "Light medium",
@@ -34,12 +34,12 @@
       "tagline": "Le café légendaire de l'île.",
       "description": "Variété unique au monde, ramenée à la vie à La Réunion il y a vingt ans. Grain en forme de larme, parfum d'agrumes, faible caféine. Trois producteurs seulement sur l'île. On en torréfie 8 kg par mois maximum.",
       "prix": "32 € · 250 g",
-      "fiche": "Carte de Saint-Joseph"
+      "fiche": "Sud sauvage péi"
     },
     {
       "id": "arabica-hauts",
       "nom": "Arabica des Hauts",
-      "terroir": "Cilaos · Plaine des Cafres",
+      "terroir": "Hauts de l'île",
       "altitude": "1200 m",
       "process": "Naturel",
       "torrefaction": "Medium",
@@ -47,7 +47,7 @@
       "tagline": "Le café du quotidien.",
       "description": "Sélection multi-parcelles des Hauts de l'île, séchage naturel sur lits surélevés. Tasse ronde, chocolatée, sans amertume. Notre grain le plus vendu en abonnement.",
       "prix": "14 € · 250 g",
-      "fiche": "Carte de Cilaos"
+      "fiche": "Hauts de l'île"
     },
     {
       "id": "ethiopie-yirgacheffe",
@@ -113,7 +113,7 @@
   "atelier": {
     "titre": "L'atelier",
     "soustitre": "Une Probat L12 de 1968",
-    "texte": "La machine pèse 480 kg, elle a soixante-cinq ans. Olivier l'a chinée en 2017, restaurée pièce par pièce avec un mécanicien retraité de Renault à Saint-Pierre. Capacité : 12 kg par torréfaction, 18 minutes de cycle. Aucune électronique — un thermomètre à aiguille, un nez, un chronomètre. On grille à l'oreille (les craquements du grain) et à l'odorat (le seuil avant la brûlure).",
+    "texte": "La machine pèse 480 kg, elle a plus de soixante ans. Olivier l'a chinée en 2017, restaurée pièce par pièce avec un mécanicien péi. Capacité : 12 kg par torréfaction, 18 minutes de cycle. Aucune électronique — un thermomètre à aiguille, un nez, un chronomètre. On grille à l'oreille (les craquements du grain) et à l'odorat (le seuil avant la brûlure).",
     "stats": [
       { "valeur": "Probat L12", "label": "Modèle machine" },
       { "valeur": "1968", "label": "Année construction" },
