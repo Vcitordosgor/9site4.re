@@ -36,6 +36,26 @@ import data from '../../data/templates/pizzeria.json';
 
   <main id="top" class="bg-pizza-creme text-pizza-charbon font-inter">
     <HeroImmersive />
+
+    <!-- Marquee bandeau signature : pâte 72h · feu de bois · mozzarella di bufala -->
+    <div class="bg-pizza-rouge text-pizza-creme py-4 overflow-hidden border-y border-pizza-dore/30" aria-hidden="true">
+      <div class="flex gap-12 whitespace-nowrap" style="animation: pizza-marquee 38s linear infinite; width: max-content;">
+        {Array.from({ length: 2 }).map(() => (
+          <div class="flex gap-12 items-center font-playfair italic text-2xl md:text-3xl">
+            <span>Pâte fermentée 72 h</span><span class="text-pizza-dore">·</span>
+            <span>Cuisson au feu de bois</span><span class="text-pizza-dore">·</span>
+            <span>Farines bio</span><span class="text-pizza-dore">·</span>
+            <span>Mozzarella fior di latte</span><span class="text-pizza-dore">·</span>
+            <span>Tomates San Marzano</span><span class="text-pizza-dore">·</span>
+          </div>
+        ))}
+      </div>
+    </div>
+    <style>
+      @keyframes pizza-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+      @media (prefers-reduced-motion: reduce) { [style*="pizza-marquee"] { animation: none !important; } }
+    </style>
+
     <StatBanner />
     <Manifesto />
 
@@ -53,4 +73,34 @@ import data from '../../data/templates/pizzeria.json';
   </main>
 
   <PizzeriaFooter />
+
+  <!-- Sticky bottom CTA mobile-only -->
+  <a
+    id="pizza-sticky-cta"
+    href="#commander"
+    data-visible="false"
+    class="md:hidden fixed bottom-4 inset-x-4 z-40 inline-flex items-center justify-center h-14 px-6 text-sm font-semibold uppercase tracking-[0.2em] font-inter rounded-full bg-pizza-rouge text-pizza-creme transition-all duration-300 ease-out data-[visible=false]:opacity-0 data-[visible=false]:translate-y-4 data-[visible=false]:pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0"
+    style="box-shadow: 0 12px 32px rgb(168 37 50 / 0.45);"
+  >
+    Commander une pizza
+  </a>
+
+  <script>
+    const sticky = document.getElementById('pizza-sticky-cta');
+    const commander = document.getElementById('commander');
+    if (sticky) {
+      const updateSticky = () => {
+        const scrolledPastHero = window.scrollY > 480;
+        let inCommander = false;
+        if (commander) {
+          const rect = commander.getBoundingClientRect();
+          inCommander = rect.top < window.innerHeight && rect.bottom > 80;
+        }
+        sticky.dataset.visible = String(scrolledPastHero && !inCommander);
+      };
+      updateSticky();
+      window.addEventListener('scroll', updateSticky, { passive: true });
+      window.addEventListener('resize', updateSticky, { passive: true });
+    }
+  </script>
 </BaseLayout>
