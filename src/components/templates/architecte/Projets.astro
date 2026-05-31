@@ -4,6 +4,18 @@
  * Photos B&W carrées, métadonnées en mono, statut.
  */
 import data from '../../../data/templates/mahatma.json';
+
+// Fiches enrichies (mini-études de cas) par index projet — données génériques.
+const fiches = [
+  { surface: '280 m²',  budget: '650 – 850 k€', duree: '14 mois', contrainte: 'Pente forte, ravine voisine' },
+  { surface: '180 m²',  budget: '380 – 480 k€', duree: '10 mois', contrainte: 'Orientation tropicale, alizés' },
+  { surface: '420 m²',  budget: '900 k€ – 1,2 M€', duree: '18 mois', contrainte: 'Site classé, accès chantier' },
+  { surface: '95 m²',   budget: '180 – 230 k€', duree: '7 mois',  contrainte: 'Extension d\'existant patrimonial' },
+  { surface: '320 m²',  budget: '700 – 900 k€', duree: '15 mois', contrainte: 'Zonage PLU restrictif' },
+  { surface: '210 m²',  budget: '450 – 580 k€', duree: '11 mois', contrainte: 'Vue mer, vis-à-vis à filtrer' },
+  { surface: '160 m²',  budget: '320 – 410 k€', duree: '9 mois',  contrainte: 'Rénovation lourde structure bois' },
+  { surface: '540 m²',  budget: '1,2 – 1,6 M€', duree: '22 mois', contrainte: 'ERP, normes accessibilité PMR' },
+];
 ---
 
 <section id="projets" class="bg-mahatma-papier py-24 md:py-32 px-6 md:px-10">
@@ -62,6 +74,27 @@ import data from '../../../data/templates/mahatma.json';
             <p class="mt-3 pt-2 border-t border-mahatma-encre/15 font-fira-mono text-[10px] uppercase tracking-[0.18em] text-mahatma-cachet">
               ▸ {p.statut}
             </p>
+
+            {fiches[i] && (
+              <dl class="mt-3 grid grid-cols-2 gap-x-3 gap-y-1.5 font-fira-mono text-[10px] uppercase tracking-[0.18em] tabular-nums">
+                <div>
+                  <dt class="text-mahatma-beton">Surface</dt>
+                  <dd class="text-mahatma-encre font-medium normal-case tracking-normal font-atkinson text-xs">{fiches[i].surface}</dd>
+                </div>
+                <div>
+                  <dt class="text-mahatma-beton">Budget</dt>
+                  <dd class="text-mahatma-encre font-medium normal-case tracking-normal font-atkinson text-xs">{fiches[i].budget}</dd>
+                </div>
+                <div>
+                  <dt class="text-mahatma-beton">Durée</dt>
+                  <dd class="text-mahatma-encre font-medium normal-case tracking-normal font-atkinson text-xs">{fiches[i].duree}</dd>
+                </div>
+                <div>
+                  <dt class="text-mahatma-beton">Contrainte</dt>
+                  <dd class="text-mahatma-encre font-medium normal-case tracking-normal font-atkinson text-xs">{fiches[i].contrainte}</dd>
+                </div>
+              </dl>
+            )}
           </article>
         </li>
       ))}
