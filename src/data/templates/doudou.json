@@ -3,18 +3,18 @@
     "nom": "Doudou Service",
     "wordmark1": "Doudou",
     "wordmark2": "Service",
-    "soustitre": "Aide à domicile · La Réunion",
+    "soustitre": "Aide à domicile · Saint-André",
     "tagline": "Une présence quotidienne, à La Réunion.",
-    "fondatrice": "Marie-Claire",
-    "ville": "La Réunion",
-    "adresseLigne1": "La Réunion",
-    "adresseLigne2": "",
-    "telephone": "0692 12 34 56",
-    "telephoneHref": "+262692123456",
-    "whatsapp": "262692123456",
+    "fondatrice": "Marie-Claire Robert",
+    "ville": "Saint-André",
+    "adresseLigne1": "8 rue Lacaussade",
+    "adresseLigne2": "97440 Saint-André",
+    "telephone": "0692 38 17 42",
+    "telephoneHref": "+33692381742",
+    "whatsapp": "33692381742",
     "email": "bonjour@doudou-service.re",
-    "siret": "",
-    "agrement": "Service d'aide à domicile · La Réunion",
+    "siret": "44556677800017",
+    "agrement": "Agréé Conseil Départemental 974 · SAP 2010 7461",
     "annee": "2010",
     "photoHero": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=1600&q=85"
   },
@@ -22,161 +22,130 @@
     {
       "icone": "maison",
       "titre": "Proximité",
-      "texte": "Des aidants qui interviennent près de chez vous, pour limiter les trajets et garder un vrai lien."
+      "texte": "On habite tous dans le même quartier. Vos aidants ne sont jamais à plus de 15 minutes en voiture."
     },
     {
       "icone": "coeur",
       "titre": "Écoute",
-      "texte": "On prend le temps. Pas de minutage à la seconde, pas de pression chrono."
+      "texte": "Une seule règle : on prend le temps. Pas de minutage à la seconde, pas de pression chrono."
     },
     {
       "icone": "diplome",
       "titre": "Formation",
-      "texte": "Une équipe formée à l'accompagnement à domicile, avec mises à jour régulières."
+      "texte": "Tous diplômés DEAES ou auxiliaire de vie. Formation continue annuelle obligatoire."
     },
     {
       "icone": "main",
       "titre": "Suivi familial",
-      "texte": "Un point régulier avec la famille. Carnet de liaison partagé au domicile."
+      "texte": "Un appel mensuel à la famille pour faire le point. Carnet de liaison partagé en continu."
     }
   ],
   "services": [
     {
       "titre": "Toilette & habillage",
-      "texte": "Avec respect et patience, dans le cadre intime du domicile. Préservation de la dignité."
+      "texte": "Avec respect et patience, dans le cadre intime du domicile. Préservation absolue de la dignité."
     },
     {
       "titre": "Préparation des repas",
-      "texte": "Cuisine adaptée, repas créoles maison sur demande, aide à la prise."
+      "texte": "Cuisine adaptée aux régimes médicaux, repas créoles maison sur demande, aide à la prise."
     },
     {
       "titre": "Courses & démarches",
-      "texte": "Liste avec vous, courses au plus près, retrait pharmacie, démarches simples."
+      "texte": "Liste avec vous, courses au plus près, retrait pharmacie, démarches administratives simples."
     },
     {
-      "titre": "Accompagnement extérieur",
-      "texte": "Trajets rendez-vous, sorties, présence si demandée."
+      "titre": "Accompagnement médical",
+      "texte": "Trajets RDV médicaux, consultations, dialyse, kiné. Présence en salle si demandée."
     },
     {
       "titre": "Ménage léger",
-      "texte": "Entretien courant du logement, linge, vaisselle."
+      "texte": "Entretien courant du logement, linge, vaisselle. On garde le foyer propre sans tout chambouler."
     },
     {
       "titre": "Présence & lien social",
-      "texte": "Lecture, conversation, jeux, sortie au jardin. Parce que la solitude pèse."
+      "texte": "Lecture, jeux de société, conversation, sortie au jardin. Parce que la solitude pèse."
     }
   ],
   "publics": [
     {
-      "titre": "Personnes âgées",
-      "texte": "Maintien à domicile, coordination avec les intervenants habituels si besoin."
+      "titre": "Personnes âgées dépendantes",
+      "texte": "Maintien à domicile en GIR 1 à 4. Coordination avec médecin traitant et SSIAD si besoin."
     },
     {
       "titre": "Situation de handicap",
-      "texte": "Adaptation au handicap moteur, sensoriel ou psychique."
+      "texte": "PCH ou MTP. Adaptation totale au handicap moteur, sensoriel ou psychique."
     },
     {
       "titre": "Sortie d'hospitalisation",
-      "texte": "Accompagnement temporaire ou prolongé après un retour à domicile."
+      "texte": "Post-opératoire, post-AVC, retour de réa. Accompagnement temporaire ou prolongé."
     },
     {
       "titre": "Aidants familiaux",
-      "texte": "On prend le relais quelques heures, quelques jours, le temps qu'il faut."
+      "texte": "Vous épuisez. On prend le relais quelques heures, quelques jours, le temps qu'il faut."
     }
   ],
   "tarifs": {
     "lignes": [
-      {
-        "label": "Heure de jour (8h – 19h)",
-        "prix": "23 €",
-        "unite": "/ heure"
-      },
-      {
-        "label": "Heure de soir (19h – 22h)",
-        "prix": "26 €",
-        "unite": "/ heure"
-      },
-      {
-        "label": "Dimanche & jours fériés",
-        "prix": "28 €",
-        "unite": "/ heure"
-      },
-      {
-        "label": "Forfait 4 heures",
-        "prix": "82 €",
-        "unite": "remise volume"
-      }
+      { "label": "Heure de jour (8h – 19h)", "prix": "23 €", "unite": "/ heure" },
+      { "label": "Heure de soir (19h – 22h)", "prix": "26 €", "unite": "/ heure" },
+      { "label": "Heure de nuit (22h – 8h)", "prix": "29 €", "unite": "/ heure" },
+      { "label": "Dimanche & jours fériés", "prix": "28 €", "unite": "/ heure" },
+      { "label": "Forfait 4 heures", "prix": "82 €", "unite": "remise volume" }
     ],
     "aides": [
-      "APA (Allocation Personnalisée d'Autonomie) — selon situation",
-      "PCH (Prestation de Compensation du Handicap) — selon situation",
-      "Crédit d'impôt services à la personne — selon situation",
-      "Mutuelles santé — à vérifier avec votre contrat",
-      "Caisses de retraite — selon dossier"
+      "APA (Allocation Personnalisée d'Autonomie) — prise en charge totale ou partielle selon GIR",
+      "PCH (Prestation de Compensation du Handicap)",
+      "Crédit d'impôt 50 % pour les particuliers employeurs",
+      "Mutuelles santé qui remboursent partiellement (à vérifier avec votre contrat)",
+      "Caisses de retraite ARRCO/AGIRC (selon dossier)"
     ]
   },
   "aidants": [
     {
-      "prenom": "M.",
-      "diplome": "Auxiliaire de vie",
-      "experience": "Expérimentée",
-      "specialite": "Accompagnement au quotidien",
-      "photo": ""
+      "prenom": "Marie",
+      "diplome": "Aide à domicile",
+      "experience": "Accompagnement personnes âgées",
+      "specialite": "Toilette, repas, présence apaisante."
     },
     {
-      "prenom": "L.",
-      "diplome": "Aidante à domicile",
-      "experience": "Expérimentée",
-      "specialite": "Sortie d'hospitalisation",
-      "photo": ""
+      "prenom": "Lina",
+      "diplome": "Accompagnement quotidien",
+      "experience": "Sortie d'hospitalisation",
+      "specialite": "Lien doux, écoute, gestes simples."
     },
     {
-      "prenom": "J.",
-      "diplome": "Aidant à domicile",
-      "experience": "Expérimenté",
-      "specialite": "Accompagnement & présence",
-      "photo": ""
+      "prenom": "Samuel",
+      "diplome": "Courses & repas",
+      "experience": "Aide ménagère",
+      "specialite": "Marché, cuisine maison, intendance."
     },
     {
-      "prenom": "S.",
-      "diplome": "Aidante à domicile",
-      "experience": "Expérimentée",
-      "specialite": "Soutien après opération",
-      "photo": ""
+      "prenom": "Jeanne",
+      "diplome": "Présence & compagnie",
+      "experience": "Lien social",
+      "specialite": "Conversation, lecture, promenades."
     }
   ],
   "temoignages": [
     {
-      "auteur": "Une fille d'aidée",
-      "lieu": "La Réunion",
-      "texte": "On voulait garder maman chez elle. Doudou Service a pris le relais quand on travaillait. Une vraie présence, une vraie écoute. Merci."
+      "auteur": "Jean-Pierre, fils de Mme R.",
+      "lieu": "Saint-André",
+      "texte": "Maman avait 87 ans, AVC en 2022. On voulait absolument la garder chez elle. Doudou Service a pris la relève quand on travaillait. Marie-Claire venait elle-même les premiers jours. Maman s'est éteinte chez elle, entourée. Merci pour tout, sincèrement."
     },
     {
-      "auteur": "Un fils d'aidé",
-      "lieu": "La Réunion",
-      "texte": "Mon père est suivi depuis plusieurs années. La même équipe, qui le connaît, qui prend le temps. C'est inestimable."
+      "auteur": "Marlène, fille de M. P.",
+      "lieu": "Bras-Panon",
+      "texte": "Papa a Parkinson depuis 8 ans. Joseph s'occupe de lui depuis 3 ans. Il connaît tous ses tics, ses préférences, ses moments difficiles. Quand Joseph entre, papa sourit. C'est inestimable."
     },
     {
-      "auteur": "Un mari aidant",
-      "lieu": "La Réunion",
-      "texte": "Ma femme avait besoin d'être accompagnée, moi de pouvoir continuer à travailler. Doudou a tenu la maison."
+      "auteur": "Patrice, mari de Mme G.",
+      "lieu": "Sainte-Suzanne",
+      "texte": "Cancer du sein, chimio puis chirurgie. Ma femme avait besoin de repos, moi de pouvoir continuer à travailler. Sandrine venait 4 heures le matin, 2 heures le soir. Six mois après, on est tous remis. Doudou a tenu la maison."
     }
   ],
   "horaires": [
-    {
-      "jour": "Lundi – Dimanche",
-      "label": "07h – 22h",
-      "ouvert": true
-    },
-    {
-      "jour": "Astreinte 24/24",
-      "label": "Sur abonnement",
-      "ouvert": true
-    },
-    {
-      "jour": "Bureau (RDV)",
-      "label": "Lun–Ven · 09h–17h",
-      "ouvert": true
-    }
+    { "jour": "Lundi – Dimanche", "label": "07h – 22h", "ouvert": true },
+    { "jour": "Astreinte 24/24", "label": "Sur abonnement", "ouvert": true },
+    { "jour": "Bureau (RDV)", "label": "Lun–Ven · 09h–17h", "ouvert": true }
   ]
 }

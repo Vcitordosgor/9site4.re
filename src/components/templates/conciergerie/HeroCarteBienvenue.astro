@@ -23,7 +23,7 @@ import data from '../../../data/templates/concierge.json';
       </p>
 
       <!-- Wordmark double -->
-      <h1 class="font-volkhov text-concierge-nuit leading-[0.92] tracking-tight" style="font-size: clamp(64px, 11vw, 160px);">
+      <h1 class="font-volkhov text-concierge-nuit leading-[1.0]" style="font-size: clamp(48px, 8vw, 120px);">
         <span class="italic">Concierge</span><br/>
         <span class="text-concierge-laiton">{data.info.wordmark2}</span>
       </h1>
@@ -39,15 +39,17 @@ import data from '../../../data/templates/concierge.json';
         <span class="block h-px w-16 bg-gradient-to-l from-concierge-laiton/60 to-concierge-laiton"></span>
       </div>
 
-      <!-- Promesse signature — temps retrouvé -->
+      <!-- Compteur 'Heures rendues à nos clients' — métrique signature concierge -->
       <figure class="mb-10">
         <figcaption class="flex items-center gap-2 font-hubot text-[10px] uppercase tracking-[0.32em] text-concierge-laiton mb-2">
           <span aria-hidden="true">✦</span>
-          <span>Notre promesse</span>
+          <span>Heures rendues à nos clients · 2025</span>
         </figcaption>
-        <p class="font-volkhov italic font-medium text-concierge-nuit leading-[1.15]" style="font-size: clamp(24px, 3vw, 32px);">
-          On s'occupe de tout ce qui prend du temps.<br/>
-          <span class="text-concierge-laiton">Vous retrouvez le vôtre.</span>
+        <p class="font-volkhov font-bold text-concierge-nuit leading-none tabular-nums" style="font-size: clamp(38px, 5vw, 56px);">
+          2 847 h
+        </p>
+        <p class="mt-2 font-volkhov italic text-concierge-graphite text-base md:text-lg">
+          Soit 119 jours retrouvés.
         </p>
       </figure>
 
@@ -58,7 +60,7 @@ import data from '../../../data/templates/concierge.json';
           class="inline-flex items-center justify-center h-13 px-9 bg-concierge-nuit text-concierge-champagne font-hubot text-sm uppercase tracking-[0.18em] font-medium hover:bg-concierge-encre transition-colors duration-500"
           style="height: 52px;"
         >
-          Demander un premier échange
+          Découvrir nos services
         </a>
         <a
           href={`tel:${data.info.telephoneHref}`}
@@ -69,34 +71,18 @@ import data from '../../../data/templates/concierge.json';
       </div>
     </div>
 
-    <!-- Composition graphique (carte de visite premium, sans photo) -->
+    <!-- Photo détail vertical droite -->
     <div class="lg:col-span-5">
-      <div class="relative aspect-[3/4] max-w-md mx-auto bg-concierge-nuit overflow-hidden hero-vivant">
-        <!-- Cadre laiton intérieur double -->
-        <div class="absolute inset-3 border border-concierge-laiton/40" aria-hidden="true"></div>
-        <div class="absolute inset-5 border border-concierge-laiton/20" aria-hidden="true"></div>
-
-        <!-- Mentions discrètes en haut -->
-        <div class="absolute top-8 left-8 text-concierge-laiton/40 text-[10px] uppercase tracking-[0.4em] font-hubot" aria-hidden="true">Maison</div>
-        <div class="absolute top-8 right-8 text-concierge-laiton/40 text-[10px] uppercase tracking-[0.4em] font-hubot" aria-hidden="true">Est. {data.info.annee}</div>
-
-        <!-- Monogramme central XL -->
-        <div class="absolute inset-0 flex flex-col items-center justify-center px-6">
-          <p class="font-pinyon text-concierge-laiton leading-none mb-4" style="font-size: clamp(48px, 9vw, 96px);">
-            Concierge
-          </p>
-          <div class="flex items-center gap-3" aria-hidden="true">
-            <span class="block h-px w-10 bg-concierge-laiton/60"></span>
-            <span class="text-concierge-laiton text-base">✦</span>
-            <span class="block h-px w-10 bg-concierge-laiton/60"></span>
-          </div>
-          <p class="mt-6 font-volkhov italic text-concierge-champagne text-center leading-tight" style="font-size: clamp(20px, 2.4vw, 28px);">
-            Le temps,<br/>retrouvé.
-          </p>
-        </div>
-
-        <!-- Étiquette en bas -->
-        <div class="absolute bottom-6 left-6 right-6 bg-concierge-champagne px-4 py-3">
+      <div class="relative aspect-[3/4] max-w-md mx-auto bg-concierge-blanc overflow-hidden">
+        <img
+          src={data.info.photoHero}
+          sizes="(min-width: 1024px) 40vw, 90vw"
+          alt="Détail de bienvenue Concierge & Co"
+          class="w-full h-full object-cover" style="object-position: center 40%;" loading="eager" fetchpriority="high" decoding="async">
+        <!-- Cadre laiton intérieur -->
+        <div class="absolute inset-3 border border-concierge-laiton/40 pointer-events-none" aria-hidden="true"></div>
+        <!-- Étiquette manuscrite en bas -->
+        <div class="absolute bottom-6 left-6 right-6 bg-concierge-champagne/95 px-4 py-3">
           <p class="font-pinyon text-concierge-laiton text-3xl leading-none">à votre service</p>
           <p class="mt-1 font-hubot text-[10px] uppercase tracking-[0.28em] text-concierge-graphite">
             depuis {data.info.annee}
@@ -106,18 +92,3 @@ import data from '../../../data/templates/concierge.json';
     </div>
   </div>
 </section>
-
-<style>
-  @keyframes hero-vivant {
-    from { transform: scale(1.06); }
-    to   { transform: scale(1); }
-  }
-  .hero-vivant {
-    transform-origin: center;
-    animation: hero-vivant 2400ms cubic-bezier(0.22, 1, 0.36, 1) both;
-    will-change: transform;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .hero-vivant { animation: none !important; transform: none !important; }
-  }
-</style>

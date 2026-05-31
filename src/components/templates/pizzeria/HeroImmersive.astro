@@ -8,20 +8,25 @@ import data from '../../../data/templates/pizzeria.json';
 ---
 
 <section class="relative w-full h-dvh min-h-[640px] max-h-[900px] overflow-hidden bg-pizza-charbon text-pizza-creme">
-  <!-- Photo plein écran (couverture) — margherita éditoriale, cadrage moins agressif -->
+  <!-- Photo plein écran (couverture) — responsive avec srcset pour LCP rapide -->
   <img
-    src="/images/pizzeria/hero.webp"
+    src="https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?w=1280&q=80&fm=webp"
+    srcset="
+      https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?w=640&q=75&fm=webp 640w,
+      https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?w=1024&q=78&fm=webp 1024w,
+      https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?w=1600&q=80&fm=webp 1600w
+    "
     sizes="100vw"
-    alt="Pizza margherita gros plan, basilic frais et mozzarella fior di latte"
+    alt="Pizza margherita au four à bois"
     width="1600"
-    height="900"
-    class="absolute inset-0 w-full h-full object-cover scale-[1.04]" loading="eager" fetchpriority="high" decoding="async">
+    height="1067"
+    class="absolute inset-0 w-full h-full object-cover" style="object-position: center 38%;" loading="eager" fetchpriority="high" decoding="async">
 
-  <!-- Overlay : gradient sombre plus profond pour lisibilité éditoriale -->
+  <!-- Overlay : gradient sombre bottom + vignette latérale -->
   <div class="absolute inset-0 pointer-events-none" aria-hidden="true"
        style="background:
-         linear-gradient(180deg, rgb(28 26 23 / 0.55) 0%, rgb(28 26 23 / 0.12) 30%, rgb(28 26 23 / 0.10) 50%, rgb(28 26 23 / 0.92) 100%),
-         linear-gradient(90deg, rgb(28 26 23 / 0.55) 0%, transparent 50%);">
+         linear-gradient(180deg, rgb(28 26 23 / 0.25) 0%, rgb(28 26 23 / 0) 25%, rgb(28 26 23 / 0) 45%, rgb(28 26 23 / 0.88) 100%),
+         linear-gradient(90deg, rgb(28 26 23 / 0.45) 0%, transparent 45%);">
   </div>
 
   <!-- Contenu : aligné en bas-gauche style éditorial -->
@@ -31,26 +36,26 @@ import data from '../../../data/templates/pizzeria.json';
       <span>Depuis {data.info.annee}</span>
     </p>
 
-    <h1 class="hero-title mt-6 font-playfair font-bold text-pizza-creme leading-[0.92] tracking-tight" style="font-size: clamp(64px, 11vw, 148px);">
+    <h1 class="hero-title mt-6 font-playfair font-bold text-pizza-creme leading-[0.95] tracking-tight" style="font-size: clamp(56px, 7vw, 96px);">
       {data.info.nom}
-      <span class="block italic font-medium text-pizza-dore mt-1" style="font-size: clamp(28px, 3.5vw, 52px);">
+      <span class="block italic font-medium text-pizza-dore mt-1" style="font-size: clamp(28px, 3.5vw, 48px);">
         {data.info.tagline}
       </span>
     </h1>
 
     <div class="hero-cta mt-10 flex flex-col sm:flex-row gap-4">
       <a
-        href="#commander"
+        href="#carte"
         class="inline-flex items-center justify-center h-14 px-8 text-base font-semibold rounded-full bg-pizza-rouge text-pizza-creme hover:bg-[#8B1F2A] transition-all"
         style="box-shadow: 0 8px 24px rgb(168 37 50 / 0.45);"
       >
-        Commander une pizza
+        Voir la carte
       </a>
       <a
-        href="#carte"
+        href="#commander"
         class="inline-flex items-center justify-center h-14 px-8 text-base font-semibold rounded-full border border-pizza-creme/40 text-pizza-creme bg-pizza-creme/5 backdrop-blur-sm hover:bg-pizza-creme hover:text-pizza-charbon transition-all"
       >
-        Voir la carte
+        Commander
       </a>
     </div>
   </div>
