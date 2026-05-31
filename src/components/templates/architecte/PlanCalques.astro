@@ -1,0 +1,223 @@
+---
+/**
+ * PlanCalques — Signature moment "Wow" pour /templates/architecte.
+ *
+ * Plan en coupe / vue isométrique d'une maison avec 4 calques techniques
+ * (gros œuvre, second œuvre, fluides, finitions) qu'on active un par un.
+ * Mimétise le calque architectural transparent. CSS pur + :checked.
+ */
+
+const calques = [
+  {
+    id: 'structure',
+    num: 'L01',
+    label: 'Gros œuvre',
+    desc: 'Fondations, dalle béton, murs porteurs, charpente. La structure qui tient tout.',
+    surface: '142 m²',
+  },
+  {
+    id: 'enveloppe',
+    num: 'L02',
+    label: 'Enveloppe',
+    desc: 'Isolation thermique extérieure, étanchéité, menuiseries triple vitrage, bardage bois.',
+    surface: 'R+1',
+  },
+  {
+    id: 'fluides',
+    num: 'L03',
+    label: 'Fluides',
+    desc: 'Réseaux eau, électricité, ventilation double-flux, plancher chauffant. Tout est dans les murs.',
+    surface: '12 circuits',
+  },
+  {
+    id: 'second',
+    num: 'L04',
+    label: 'Finitions',
+    desc: 'Cloisons, sols, peintures, mobilier intégré. Le projet livré clé en main.',
+    surface: '7 pièces',
+  },
+];
+
+const defaultId = 'structure';
+---
+
+<section id="plan-calques" class="bg-mahatma-papier text-mahatma-encre py-24 md:py-36 px-6 md:px-10">
+  <div class="max-w-content mx-auto">
+
+    <header class="mb-12 md:mb-16 max-w-3xl scroll-reveal">
+      <p class="font-fira-mono text-[10px] uppercase tracking-[0.32em] text-mahatma-cachet font-medium mb-5">
+        Méthode · Plan en 4 calques
+      </p>
+      <h2 class="font-schibsted-grotesk font-black text-mahatma-encre leading-[0.92]" style="font-size: clamp(44px, 7.5vw, 96px); letter-spacing: -0.02em;">
+        Lire un projet
+        <span class="block italic font-medium text-mahatma-beton">calque par calque.</span>
+      </h2>
+      <p class="mt-6 font-atkinson text-mahatma-encre/70 text-base md:text-lg max-w-xl leading-relaxed">
+        On vous transmet le projet en couches superposées. Vous comprenez ce qui se passe derrière chaque mur, avant qu'il soit fermé.
+      </p>
+    </header>
+
+    <div class="plan-wrap grid lg:grid-cols-5 gap-10 lg:gap-14 items-start scroll-reveal">
+
+      <!-- SVG plan -->
+      <div class="lg:col-span-3">
+        <div class="plan-stage relative rounded-sm bg-mahatma-blanc ring-1 ring-mahatma-beton/30 p-6 md:p-10">
+
+          <!-- Cartouche -->
+          <div class="absolute top-3 right-4 font-fira-mono text-[9px] uppercase tracking-[0.24em] text-mahatma-beton">
+            ATELIER MAHATMA · ECH. 1/100
+          </div>
+
+          {calques.map((c) => (
+            <input type="radio" name="plan-calque" id={`calque-${c.id}`} class="sr-only" checked={c.id === defaultId} />
+          ))}
+
+          <svg viewBox="0 0 400 280" class="w-full h-auto plan-svg" role="img" aria-label="Plan isométrique d'une maison avec 4 calques techniques">
+
+            <!-- Grille -->
+            {Array.from({length: 21}).map((_, i) => <line x1={i*20} y1="0" x2={i*20} y2="280" stroke="#0A0A0C" stroke-width="0.3" opacity="0.05"/>)}
+            {Array.from({length: 15}).map((_, i) => <line x1="0" y1={i*20} x2="400" y2={i*20} stroke="#0A0A0C" stroke-width="0.3" opacity="0.05"/>)}
+
+            <!-- Calque STRUCTURE (toujours en base, plus visible quand actif) -->
+            <g class="plan-layer plan-layer-structure">
+              <!-- Murs porteurs -->
+              <rect x="60" y="60" width="280" height="180" fill="none" stroke="#0A0A0C" stroke-width="3"/>
+              <line x1="200" y1="60" x2="200" y2="240" stroke="#0A0A0C" stroke-width="3"/>
+              <line x1="60" y1="160" x2="200" y2="160" stroke="#0A0A0C" stroke-width="3"/>
+              <line x1="200" y1="140" x2="340" y2="140" stroke="#0A0A0C" stroke-width="3"/>
+              <!-- Fondations hachurées (dans la marge) -->
+              <line x1="60" y1="245" x2="340" y2="245" stroke="#0A0A0C" stroke-width="1.5" stroke-dasharray="3 2"/>
+              <text x="200" y="265" text-anchor="middle" class="font-fira-mono" font-size="8" fill="#0A0A0C">FONDATIONS · DALLE BA</text>
+            </g>
+
+            <!-- Calque ENVELOPPE -->
+            <g class="plan-layer plan-layer-enveloppe">
+              <!-- ITE -->
+              <rect x="54" y="54" width="292" height="192" fill="none" stroke="#D02F32" stroke-width="1" stroke-dasharray="6 4"/>
+              <!-- Menuiseries -->
+              <rect x="85" y="57" width="40" height="6" fill="#D02F32" opacity="0.7"/>
+              <rect x="160" y="57" width="30" height="6" fill="#D02F32" opacity="0.7"/>
+              <rect x="240" y="57" width="50" height="6" fill="#D02F32" opacity="0.7"/>
+              <rect x="57" y="100" width="6" height="30" fill="#D02F32" opacity="0.7"/>
+              <rect x="337" y="180" width="6" height="40" fill="#D02F32" opacity="0.7"/>
+              <text x="200" y="35" text-anchor="middle" class="font-fira-mono" font-size="8" fill="#D02F32">ITE 200 MM · TRIPLE VITRAGE</text>
+            </g>
+
+            <!-- Calque FLUIDES -->
+            <g class="plan-layer plan-layer-fluides">
+              <!-- Réseaux comme lignes colorées -->
+              <path d="M70,80 L190,80 L190,150 L330,150" fill="none" stroke="#1E3A5F" stroke-width="1.5"/>
+              <path d="M70,100 L120,100 L120,230" fill="none" stroke="#7E7C75" stroke-width="1.5"/>
+              <path d="M210,80 L320,80 L320,230" fill="none" stroke="#D02F32" stroke-width="1.5" stroke-dasharray="2 2"/>
+              <!-- Plots VMC -->
+              <circle cx="100" cy="100" r="3" fill="#1E3A5F"/>
+              <circle cx="170" cy="200" r="3" fill="#1E3A5F"/>
+              <circle cx="280" cy="180" r="3" fill="#1E3A5F"/>
+              <text x="200" y="270" text-anchor="middle" class="font-fira-mono" font-size="8" fill="#0A0A0C">EAU · ELEC · VMC · PCBT</text>
+            </g>
+
+            <!-- Calque FINITIONS -->
+            <g class="plan-layer plan-layer-second">
+              <!-- Cloisons fines -->
+              <line x1="60" y1="110" x2="120" y2="110" stroke="#7E7C75" stroke-width="1"/>
+              <line x1="240" y1="140" x2="240" y2="240" stroke="#7E7C75" stroke-width="1"/>
+              <line x1="290" y1="140" x2="290" y2="240" stroke="#7E7C75" stroke-width="1"/>
+              <!-- Mobilier -->
+              <rect x="70" y="170" width="40" height="20" fill="#7E7C75" opacity="0.4"/>
+              <rect x="140" y="200" width="30" height="20" fill="#7E7C75" opacity="0.4"/>
+              <rect x="250" y="155" width="35" height="20" fill="#7E7C75" opacity="0.4"/>
+              <!-- Étiquettes pièces -->
+              <text x="130" y="100" text-anchor="middle" class="font-atkinson" font-size="9" fill="#0A0A0C" font-style="italic">salon</text>
+              <text x="270" y="100" text-anchor="middle" class="font-atkinson" font-size="9" fill="#0A0A0C" font-style="italic">cuisine</text>
+              <text x="130" y="200" text-anchor="middle" class="font-atkinson" font-size="9" fill="#0A0A0C" font-style="italic">ch. 1</text>
+              <text x="265" y="195" text-anchor="middle" class="font-atkinson" font-size="9" fill="#0A0A0C" font-style="italic">ch. 2</text>
+              <text x="315" y="195" text-anchor="middle" class="font-atkinson" font-size="9" fill="#0A0A0C" font-style="italic">sdb</text>
+            </g>
+
+          </svg>
+
+          <!-- Tabs calques -->
+          <div class="mt-6 flex flex-wrap gap-2">
+            {calques.map((c) => (
+              <label for={`calque-${c.id}`} class="plan-tab cursor-pointer inline-flex items-center gap-2 px-4 py-2 ring-1 ring-mahatma-encre/20 bg-mahatma-papier text-mahatma-encre/70 font-fira-mono text-[10px] uppercase tracking-[0.22em] transition-colors hover:text-mahatma-cachet hover:ring-mahatma-cachet/40 min-h-[44px]" data-zone={c.id}>
+                <span class="text-mahatma-cachet">{c.num}</span>
+                <span>{c.label}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Détail -->
+      <div class="lg:col-span-2 plan-panel relative">
+        {calques.map((c) => (
+          <article class="plan-detail rounded-sm bg-mahatma-encre text-mahatma-papier p-7 md:p-8" data-zone={c.id}>
+            <div class="flex items-baseline justify-between mb-4">
+              <p class="font-fira-mono text-[10px] uppercase tracking-[0.32em] text-mahatma-cachet font-medium">
+                Calque {c.num}
+              </p>
+              <span class="font-fira-mono text-[10px] text-mahatma-ciment/70 tabular-nums">{c.surface}</span>
+            </div>
+            <h3 class="font-schibsted-grotesk font-black text-mahatma-papier leading-tight" style="font-size: clamp(32px, 4vw, 48px); letter-spacing: -0.01em;">
+              {c.label}
+            </h3>
+            <p class="mt-5 font-atkinson text-mahatma-ciment text-sm md:text-base leading-relaxed">
+              {c.desc}
+            </p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Tous les calques visibles à 30 % par défaut, calque sélectionné à 100 % */
+  .plan-layer {
+    transition: opacity 350ms ease;
+    opacity: 0.18;
+  }
+  .plan-stage:has(#calque-structure:checked) .plan-layer-structure,
+  .plan-stage:has(#calque-enveloppe:checked) .plan-layer-enveloppe,
+  .plan-stage:has(#calque-fluides:checked) .plan-layer-fluides,
+  .plan-stage:has(#calque-second:checked) .plan-layer-second {
+    opacity: 1;
+  }
+  /* Structure : tjs visible un peu plus que les autres car c'est le squelette */
+  .plan-layer-structure { opacity: 0.45; }
+  .plan-stage:has(#calque-structure:checked) .plan-layer-structure { opacity: 1; }
+
+  /* Tab active */
+  .plan-stage:has(#calque-structure:checked) .plan-tab[data-zone="structure"],
+  .plan-stage:has(#calque-enveloppe:checked) .plan-tab[data-zone="enveloppe"],
+  .plan-stage:has(#calque-fluides:checked) .plan-tab[data-zone="fluides"],
+  .plan-stage:has(#calque-second:checked) .plan-tab[data-zone="second"] {
+    background: #0A0A0C;
+    color: #F2F0EB;
+    border-color: #0A0A0C;
+  }
+
+  /* Détail */
+  .plan-panel { display: grid; }
+  .plan-detail {
+    grid-area: 1 / 1;
+    opacity: 0;
+    transform: translateY(8px);
+    pointer-events: none;
+    transition: opacity 350ms ease, transform 350ms ease;
+  }
+  .plan-wrap:has(#calque-structure:checked) .plan-detail[data-zone="structure"],
+  .plan-wrap:has(#calque-enveloppe:checked) .plan-detail[data-zone="enveloppe"],
+  .plan-wrap:has(#calque-fluides:checked) .plan-detail[data-zone="fluides"],
+  .plan-wrap:has(#calque-second:checked) .plan-detail[data-zone="second"] {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .plan-layer, .plan-detail {
+      transition: none !important;
+    }
+  }
+</style>
