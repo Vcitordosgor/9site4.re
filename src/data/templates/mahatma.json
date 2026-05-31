@@ -18,13 +18,13 @@
     "annee": "2014"
   },
   "heroProjet": {
-    "nom": "Villa La Source",
-    "annee": "2024",
-    "lieu": "Saint-Leu",
-    "typologie": "Maison individuelle",
-    "surface": "280 m²",
-    "description": "Maison familiale en bois local, ventilation traversante naturelle, toiture papang inversée. Pas de climatisation.",
-    "photo": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1800&q=85"
+    "nom": "Bureaux Volkanik",
+    "annee": "2023",
+    "lieu": "Saint-Pierre",
+    "typologie": "Tertiaire",
+    "surface": "600 m²",
+    "description": "Siège social en R+2, façade ventilée bardage bois péi, patio traversant et toiture végétalisée. Pas de climatisation aux étages.",
+    "photo": "/images/architecte/bureaux.webp"
   },
   "atelier": {
     "intro": "L'Atelier Mahatma est une agence d'architecture installée à Saint-Pierre depuis 2014. Trois architectes, une vingtaine de projets actifs, des maîtrises d'ouvrage privées et publiques.",
@@ -56,14 +56,6 @@
   },
   "projets": [
     {
-      "nom": "Villa La Source",
-      "annee": "2024",
-      "lieu": "Saint-Leu",
-      "typologie": "Maison individuelle · 280 m²",
-      "statut": "Livré",
-      "photo": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=80"
-    },
-    {
       "nom": "Bureaux Volkanik",
       "annee": "2023",
       "lieu": "Saint-Pierre",
@@ -80,14 +72,6 @@
       "photo": "/images/architecte/lotissement.webp"
     },
     {
-      "nom": "Maison Carrère",
-      "annee": "2022",
-      "lieu": "Saint-Denis",
-      "typologie": "Restauration patrimoine",
-      "statut": "Livré · primé",
-      "photo": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=900&q=80"
-    },
-    {
       "nom": "École primaire",
       "annee": "2022",
       "lieu": "Bras-Panon",
@@ -102,22 +86,6 @@
       "typologie": "Commerce · 80 m²",
       "statut": "Livré",
       "photo": "/images/architecte/magasin.webp"
-    },
-    {
-      "nom": "Bibliothèque Aurore",
-      "annee": "2021",
-      "lieu": "Sainte-Marie",
-      "typologie": "Public · 950 m²",
-      "statut": "Livré",
-      "photo": "https://images.unsplash.com/photo-1568667256549-094345857637?w=900&q=80"
-    },
-    {
-      "nom": "Maison Tropic",
-      "annee": "2020",
-      "lieu": "L'Étang-Salé",
-      "typologie": "Maison individuelle · 195 m²",
-      "statut": "Livré",
-      "photo": "https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?w=900&q=80"
     }
   ],
   "phases": [
@@ -174,32 +142,32 @@
   ],
   "distinctions": [
     {
-      "annee": "2024",
-      "prix": "Équerre d'Argent",
-      "categorie": "Maisons individuelles",
-      "statut": "Finaliste",
-      "projet": "Villa La Source"
-    },
-    {
       "annee": "2023",
       "prix": "Réunion Architecture Award",
       "categorie": "Tertiaire",
       "statut": "Lauréat",
-      "projet": "Bureaux Volcanic"
+      "projet": "Bureaux Volkanik"
     },
     {
       "annee": "2022",
       "prix": "Prix Patrimoine Océan Indien",
-      "categorie": "Restauration",
+      "categorie": "Équipement public",
       "statut": "Mention spéciale",
-      "projet": "Maison Carrère"
+      "projet": "École primaire de Bras-Panon"
+    },
+    {
+      "annee": "2023",
+      "prix": "Trophée Habitat Réunion",
+      "categorie": "Logement collectif",
+      "statut": "Finaliste",
+      "projet": "Lotissement Les Îlets"
     },
     {
       "annee": "2021",
-      "prix": "Initiative Bois Réunion",
-      "categorie": "Maison ossature bois",
+      "prix": "Réunion Commerce Design",
+      "categorie": "Aménagement commercial",
       "statut": "Lauréat",
-      "projet": "Maison Tropic"
+      "projet": "Maison 162"
     }
   ],
   "horaires": [
