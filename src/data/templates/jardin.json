@@ -27,12 +27,12 @@
     "photoSalleAlt": "Salle de restaurant élégante, bois sombre et cave à vin éclairée",
     "photoChef": "/images/resto/chef.webp",
     "photoChefAlt": "Chef en train de dresser une assiette à la pince",
-    "photoAmbiance1": "/images/resto/chef.webp",
-    "photoAmbiance1Alt": "Geste précis au dressage en cuisine",
+    "photoAmbiance1": "/images/resto/hero.webp",
+    "photoAmbiance1Alt": "Plat signature dressé, finition au chef",
     "photoAmbiance2": "/images/resto/plat.webp",
     "photoAmbiance2Alt": "Plat dressé, geste précis du chef",
-    "photoAmbiance3": "/images/resto/salle.webp",
-    "photoAmbiance3Alt": "Salle dressée, lumière chaude du soir"
+    "photoAmbiance3": "/images/resto/vin.webp",
+    "photoAmbiance3Alt": "Plat poisson, sauce versée à la cuillère"
   },
   "manifesto": "Une cuisine simple en apparence, exigeante dans le détail. On ne cherche pas à impressionner — on cherche à faire plaisir.",
   "chiffres": [
