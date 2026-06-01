@@ -250,6 +250,44 @@ const serviceSchema = {
     <!-- 6. Offre -->
     <TarifsBref />
 
+    <!-- 6 bis. Voir aussi nos pages par métier -->
+    <section class="relative px-6 py-16 md:py-24" aria-labelledby="metiers-pilier-titre">
+      <div class="mx-auto max-w-5xl">
+        <div class="text-center max-w-3xl mx-auto">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-bleu"></span> Voir aussi
+          </p>
+          <h2 id="metiers-pilier-titre" class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl lg:text-5xl text-blanc-casse text-balance leading-[1.12]">
+            Nos pages
+            <span class="block italic font-medium text-bleu">par métier.</span>
+          </h2>
+          <p class="scroll-reveal mt-6 text-base md:text-lg text-blanc-casse/70 leading-relaxed">
+            Chaque métier a ses besoins propres. Découvrez l'approche 9site4 adaptée à votre secteur.
+          </p>
+        </div>
+
+        <ul class="scroll-reveal mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {[
+            { href: '/site-internet-restaurant-la-reunion', t: 'Restaurant', d: 'Restos, snacks, bars, cafés, pizzerias.' },
+            { href: '/site-internet-artisan-la-reunion', t: 'Artisan', d: 'Plombiers, électriciens, garages, BTP.' },
+            { href: '/site-internet-coiffeur-la-reunion', t: 'Coiffeur', d: 'Salons, coiffeurs, barbiers.' },
+            { href: '/site-internet-institut-beaute-spa-la-reunion', t: 'Institut & spa', d: 'Esthétique, spa, bien-être.' },
+            { href: '/site-internet-gite-location-la-reunion', t: 'Gîte & location', d: 'Gîtes, locations, conciergerie, tourisme.' },
+            { href: '/site-internet-profession-liberale-la-reunion', t: 'Profession libérale', d: 'Avocats, notaires, comptables, consultants.' },
+            { href: '/site-internet-bien-etre-sante-la-reunion', t: 'Bien-être & santé', d: 'Ostéo, naturo, diét, psy, coach, yoga.' },
+            { href: '/exemples', t: 'Toutes les réalisations', d: '40 sites pour tous les métiers du 974.' },
+          ].map((m) => (
+            <li>
+              <a href={m.href} class="block h-full rounded-2xl p-5 border border-white/10 hover:border-bleu transition-colors">
+                <p class="font-sora font-semibold text-blanc-casse">{m.t}</p>
+                <p class="mt-2 text-sm text-blanc-casse/65">{m.d}</p>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
     <!-- 7. FAQ -->
     <section class="relative px-6 py-16 md:py-24" aria-labelledby="faq-titre">
       <div class="mx-auto max-w-3xl">
@@ -279,12 +317,10 @@ const serviceSchema = {
 
         <!-- Maillage interne -->
         <p class="scroll-reveal mt-12 text-center text-sm text-blanc-casse/65">
-          Vous êtes dans un secteur précis ? Voir aussi&nbsp;:
-          <a href="/site-internet-restaurant-la-reunion" class="text-bleu hover:underline">site internet pour restaurant</a>
-          ·
-          <a href="/site-internet-artisan-la-reunion" class="text-bleu hover:underline">site internet pour artisan</a>
-          ·
+          Voir aussi&nbsp;:
           <a href="/tarifs" class="text-bleu hover:underline">tarifs</a>
+          ·
+          <a href="/exemples" class="text-bleu hover:underline">réalisations</a>
           ·
           <a href="/contact" class="text-bleu hover:underline">contact</a>.
         </p>
