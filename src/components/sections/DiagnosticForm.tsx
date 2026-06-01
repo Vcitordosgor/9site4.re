@@ -1,5 +1,5 @@
 /** @jsxImportSource preact */
-import { useRef, useState } from 'preact/hooks';
+import { useRef, useState, useMemo } from 'preact/hooks';
 import type { JSX } from 'preact';
 import siteConfig from '../../data/siteConfig.json';
 import { trackEvent } from '../../lib/tracking';
@@ -83,10 +83,17 @@ export default function DiagnosticForm() {
   const [sending, setSending] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
+  const mountedAt = useMemo(() => Date.now(), []);
 
   const onSubmit: JSX.GenericEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
     const form = e.currentTarget;
+    // Time-trap anti-bot : ignorer silencieusement si soumission < 1500ms après le mount.
+    if (Date.now() - mountedAt < 1500) {
+      setSubmitted(true);
+      form.reset();
+      return;
+    }
     const submitter = (e as unknown as { submitter?: HTMLElement | null }).submitter
       ?? (e.nativeEvent as SubmitEvent | undefined)?.submitter
       ?? null;
