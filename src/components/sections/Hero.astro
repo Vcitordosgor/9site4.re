@@ -13,7 +13,7 @@
   <!-- Fallback dégradé de marque -->
   <div class="absolute inset-0 -z-20 bg-black" aria-hidden="true"></div>
 
-  <!-- Vidéo de fond -->
+  <!-- Vidéo de fond (mp4 only — pas de poster externe : fallback = fond noir ci-dessus) -->
   <video
     class="hero-video absolute inset-0 -z-10 w-full h-full object-cover"
     autoplay
@@ -21,10 +21,8 @@
     loop
     playsinline
     preload="metadata"
-    poster="/images/hero-poster.jpg"
     aria-hidden="true"
   >
-    <source src="/videos/hero.webm" type="video/webm" />
     <source src="/videos/hero.mp4" type="video/mp4" />
   </video>
 
@@ -68,7 +66,7 @@
         data-track-event="cta_view_realisations_click"
         data-track-category="navigation"
         data-track-source="homepage_hero"
-        data-track-target="/exemples"
+        data-track-target="/realisations"
       >
         Voir nos réalisations
       </a>
