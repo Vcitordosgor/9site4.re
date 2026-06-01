@@ -13,18 +13,17 @@
   <!-- Fallback dégradé de marque -->
   <div class="absolute inset-0 -z-20 bg-black" aria-hidden="true"></div>
 
-  <!-- Vidéo de fond (mp4 only — pas de poster externe : fallback = fond noir ci-dessus) -->
+  <!-- Vidéo de fond — chargée UNIQUEMENT sur desktop, APRÈS le LCP (data-src injecté en JS).
+       Mobile + reduced-motion : aucune requête vidéo, fallback = fond noir. -->
   <video
     class="hero-video absolute inset-0 -z-10 w-full h-full object-cover"
-    autoplay
     muted
     loop
     playsinline
-    preload="metadata"
+    preload="none"
+    data-src="/videos/hero.mp4"
     aria-hidden="true"
-  >
-    <source src="/videos/hero.mp4" type="video/mp4" />
-  </video>
+  ></video>
 
   <!-- Overlay léger pour lisibilité (l'image/vidéo reste visible) -->
   <div class="absolute inset-0 -z-10 bg-bleu-nuit/45" aria-hidden="true"></div>
@@ -82,6 +81,11 @@
 </section>
 
 <style>
+  /* Mobile : aucune vidéo (gain réseau ≈ 4.7 MB et LCP plus rapide) */
+  @media (max-width: 767px) {
+    .hero-video { display: none; }
+  }
+  /* Reduced-motion : pas de vidéo + pas d'animation */
   @media (prefers-reduced-motion: reduce) {
     .hero-video { display: none; }
     .animate-bounce { animation: none; }
@@ -89,15 +93,40 @@
 </style>
 
 <script>
+  // Vidéo hero : charge UNIQUEMENT sur desktop (≥768px), APRÈS le LCP.
+  // Sur mobile et reduced-motion : zéro requête réseau pour la vidéo.
   function initHeroVideo() {
     const v = document.querySelector<HTMLVideoElement>('.hero-video');
     if (!v) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      v.removeAttribute('autoplay');
-      v.pause();
+
+    const isDesktop = window.matchMedia('(min-width: 768px)').matches;
+    const wantsMotion = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!isDesktop || !wantsMotion) {
+      // Mobile ou reduced-motion : on touche rien, la CSS cache déjà l'élément
       return;
     }
-    v.play().catch(() => {});
+
+    // Vidéo déjà chargée (navigation arrière, etc.)
+    if (v.src) {
+      v.play().catch(() => {});
+      return;
+    }
+
+    // Différer le chargement après le premier paint (LCP friendly)
+    const load = () => {
+      const src = v.dataset.src;
+      if (!src) return;
+      v.src = src;
+      v.load();
+      v.play().catch(() => {});
+    };
+
+    if ('requestIdleCallback' in window) {
+      (window as any).requestIdleCallback(load, { timeout: 1500 });
+    } else {
+      setTimeout(load, 800);
+    }
   }
   initHeroVideo();
   document.addEventListener('astro:page-load', initHeroVideo);
