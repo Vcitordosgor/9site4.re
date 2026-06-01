@@ -29,10 +29,10 @@
     "photoChefAlt": "Chef en train de dresser une assiette à la pince",
     "photoAmbiance1": "/images/resto/chef.webp",
     "photoAmbiance1Alt": "Geste précis au dressage en cuisine",
-    "photoAmbiance2": "/images/resto/salle.webp",
-    "photoAmbiance2Alt": "Salle dressée, lumière chaude du soir",
-    "photoAmbiance3": "/images/resto/plat.webp",
-    "photoAmbiance3Alt": "Plat dressé sur assiette en céramique, vue de dessus"
+    "photoAmbiance2": "/images/resto/plat.webp",
+    "photoAmbiance2Alt": "Plat dressé, geste précis du chef",
+    "photoAmbiance3": "/images/resto/salle.webp",
+    "photoAmbiance3Alt": "Salle dressée, lumière chaude du soir"
   },
   "manifesto": "Une cuisine simple en apparence, exigeante dans le détail. On ne cherche pas à impressionner — on cherche à faire plaisir.",
   "chiffres": [
