@@ -1,0 +1,54 @@
+---
+import Icon from '../ui/Icon.astro';
+
+/**
+ * Pourquoi choisir 9site4 — section 6 home.
+ */
+const blocs = [
+  {
+    icon: 'monitor',
+    titre: 'Une présence web professionnelle',
+    texte: "Un site clair, bien structuré et fidèle au niveau de sérieux de votre activité.",
+  },
+  {
+    icon: 'file-text',
+    titre: 'Une offre lisible',
+    texte: "Un prix unique, sans frais de création et sans option cachée. Vous savez ce que vous payez.",
+  },
+  {
+    icon: 'shield-check',
+    titre: 'Une gestion continue',
+    texte: "Hébergement, sécurité, maintenance et modifications simples gérés par 9site4 dans la durée.",
+  },
+  {
+    icon: 'map-pin',
+    titre: 'Un accompagnement local',
+    texte: "Une équipe à La Réunion, joignable, qui comprend les réalités des TPE/PME réunionnaises.",
+  },
+];
+---
+
+<section class="relative px-6 py-16 md:py-24" aria-labelledby="pourquoi-titre">
+  <div class="mx-auto max-w-content">
+    <div class="max-w-3xl mx-auto text-center">
+      <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+        <span class="w-2 h-2 rounded-full bg-bleu"></span> Pourquoi 9site4
+      </p>
+      <h2 id="pourquoi-titre" class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl lg:text-5xl text-blanc-casse text-balance leading-[1.12]">
+        Pourquoi les professionnels réunionnais choisissent 9site4.
+      </h2>
+    </div>
+
+    <ul class="scroll-reveal mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      {blocs.map((b) => (
+        <li class="group h-full flex flex-col rounded-3xl bg-blanc-casse p-7 transition-all duration-300 ease-out-soft hover:-translate-y-1 hover:bg-bleu hover:shadow-[0_10px_30px_-10px_rgba(145,166,255,0.55)]">
+          <span class="flex w-12 h-12 rounded-2xl bg-bleu/20 group-hover:bg-white/20 text-bleu-nuit group-hover:text-white items-center justify-center transition-colors duration-300">
+            <Icon name={b.icon} size={22} strokeWidth={1.75} />
+          </span>
+          <h3 class="mt-6 font-sora font-semibold text-lg text-bleu-nuit group-hover:text-white leading-snug transition-colors duration-300">{b.titre}</h3>
+          <p class="mt-2 text-sm text-bleu-nuit/65 group-hover:text-white/90 leading-relaxed transition-colors duration-300">{b.texte}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

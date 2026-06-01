@@ -1,0 +1,45 @@
+---
+/**
+ * Bandeau de réassurance défilant — section 2 home.
+ * Sobriété : un seul mouvement horizontal, mots-clés signature.
+ */
+const items = [
+  'Sites professionnels',
+  'Création incluse',
+  'Gestion continue',
+  'Prêt en 7 jours',
+  'Sans frais de création',
+  'Accompagnement local',
+];
+const loop = [...items, ...items, ...items];
+---
+
+<section class="relative overflow-hidden bg-black border-y border-blanc-casse/10" aria-label="Promesses 9site4">
+  <div class="bandeau-marquee py-5">
+    <div class="bandeau-track flex items-center gap-10 w-max whitespace-nowrap">
+      {loop.map((label, i) => (
+        <span class="flex items-center gap-10 text-blanc-casse/85" aria-hidden={i >= items.length ? 'true' : undefined}>
+          <span class="font-sora font-semibold text-sm md:text-base uppercase tracking-[0.18em]">{label}</span>
+          <span class="block w-1.5 h-1.5 rounded-full bg-bleu shrink-0" aria-hidden="true"></span>
+        </span>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .bandeau-track {
+    animation: bandeau-scroll 38s linear infinite;
+    will-change: transform;
+  }
+  .bandeau-marquee:hover .bandeau-track {
+    animation-play-state: paused;
+  }
+  @keyframes bandeau-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-33.333%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .bandeau-track { animation: none; }
+  }
+</style>

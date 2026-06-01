@@ -161,7 +161,7 @@ const moduleColor = moduleColors[realisation.moduleInclus] ?? 'orange';
       target="_blank"
       rel="noopener"
       class="block relative group/preview overflow-hidden border-b border-white/10 bg-bleu-nuit"
-      aria-label={`Voir le site ${realisation.nom}`}
+      aria-label={`Voir la réalisation ${realisation.nom}`}
     >
       <!-- Browser chrome minimaliste -->
       <div class="flex items-center gap-1.5 px-3 py-2 bg-bleu-nuit/95" aria-hidden="true">
@@ -175,14 +175,14 @@ const moduleColor = moduleColors[realisation.moduleInclus] ?? 'orange';
         <div class="absolute inset-0 transition-transform duration-700 ease-out-soft group-hover/preview:scale-[1.03]">
           <Preview />
         </div>
-        <!-- Badge "Démo métier" : signale clairement un exemple, pas un vrai client -->
-        <span class="absolute top-3 left-3 z-10 inline-flex items-center px-2.5 py-1 rounded-full bg-orange text-white text-[10px] font-bold uppercase tracking-wide shadow-md pointer-events-none">
-          Démo métier
+        <!-- Badge "Réalisation" -->
+        <span class="absolute top-3 left-3 z-10 inline-flex items-center px-2.5 py-1 rounded-full bg-bleu text-white text-[10px] font-bold uppercase tracking-wide shadow-md pointer-events-none">
+          Réalisation
         </span>
-        <!-- Overlay au hover avec pill "Voir la démo" -->
+        <!-- Overlay au hover -->
         <div class="absolute inset-0 flex items-center justify-center bg-bleu-nuit/55 opacity-0 group-hover/preview:opacity-100 transition-opacity duration-300">
           <span class="inline-flex items-center gap-2 h-11 px-5 rounded-full bg-bleu text-white font-semibold text-sm shadow-[0_0_24px_rgba(145,166,255,0.6)]">
-            Voir la démo
+            Voir la réalisation
             <Icon name="arrow-right" size={16} strokeWidth={2.5} />
           </span>
         </div>
@@ -226,7 +226,7 @@ const moduleColor = moduleColors[realisation.moduleInclus] ?? 'orange';
           rel="noopener"
           class="group/cta inline-flex items-center gap-1.5 h-10 px-4 text-sm font-semibold rounded-full bg-bleu text-white hover:bg-[#7e95ff] hover:-translate-y-0.5 shadow-[0_4px_16px_rgba(255,255,255,0.35)] transition-all duration-200"
         >
-          Voir la démo
+          Voir la réalisation
           <Icon name="arrow-right" size={14} strokeWidth={2.5} class="transition-transform duration-200 group-hover/cta:translate-x-0.5" />
         </a>
       ) : <span />}
@@ -235,7 +235,7 @@ const moduleColor = moduleColors[realisation.moduleInclus] ?? 'orange';
         href={ctaHref}
         class="inline-flex items-center gap-1.5 text-sm font-semibold text-blanc-casse/70 hover:text-bleu transition-colors"
       >
-        Je veux celui-ci
+        Créer un site dans cet esprit
         <Icon name="arrow-right" size={14} strokeWidth={2.5} class="transition-transform duration-200 group-hover:translate-x-0.5" />
       </a>
     </div>

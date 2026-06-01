@@ -72,27 +72,27 @@ type PageKey =
 
 const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'> & { noindex?: boolean; ogImage?: string; ogImageAlt?: string }> = {
   home: {
-    title: `${siteConfig.siteName} — Site pro à La Réunion, prêt en 7 jours`,
+    title: `${siteConfig.siteName} — Le partenaire web des TPE/PME à La Réunion`,
     description:
-      'Agence web pour TPE et PME à La Réunion. 9site4 crée et gère le site vitrine des entreprises réunionnaises : hébergement, maintenance, modifications simples et formulaire métier inclus, dès 97,4€/mois sans frais de création.',
+      'Partenaire web des professionnels réunionnais. 9site4 crée, structure et gère des sites professionnels pour TPE/PME à La Réunion : création incluse, module métier, hébergement, maintenance et accompagnement local pour 97,4€/mois.',
     canonical: '/',
   },
   exemples: {
-    title: `Exemples — Sites vitrines de démonstration pour TPE à La Réunion | ${siteConfig.siteName}`,
+    title: `Nos réalisations — Sites professionnels à La Réunion | ${siteConfig.siteName}`,
     description:
-      'Exemples de sites vitrines par métier à La Réunion (974) : artisans, restaurants, instituts de beauté, gîtes, coachs, professions libérales. Des démonstrations pour vous projeter, ensuite adaptées à votre activité.',
+      'Découvrez les réalisations 9site4 : sites professionnels conçus pour les TPE/PME réunionnaises — artisans, restaurants, instituts, gîtes, coachs, professions libérales. Chaque site est adapté au métier et géré dans la durée.',
     canonical: '/exemples',
   },
   tarifs: {
-    title: `Tarifs 9site4 — Site vitrine tout compris dès 97,4€/mois`,
+    title: `Tarifs 9site4 — Formule claire à 97,4€/mois pour votre site professionnel`,
     description:
-      'Site internet à La Réunion dès 97,4€/mois, soit environ 3,24€/jour. Domaine, hébergement, maintenance, modifications simples et formulaire métier inclus. Sans frais de création, sans engagement.',
+      'Une formule claire pour votre site professionnel à La Réunion : 97,4€/mois tout inclus. Création, design, module métier, domaine, hébergement, maintenance, modifications simples et accompagnement local. Sans frais de création, sans engagement.',
     canonical: '/tarifs',
   },
   contact: {
-    title: `Contact — Devis gratuit site web Réunion | ${siteConfig.siteName}`,
+    title: `Contact — Parlez-nous de votre projet web | ${siteConfig.siteName}`,
     description:
-      'Demandez votre devis gratuit pour la création de votre site internet à La Réunion. Réponse rapide par WhatsApp ou formulaire. Saint-Denis, Saint-Pierre, Saint-Paul et toute l\'île.',
+      'Présentez votre activité, votre besoin et vos objectifs à 9site4. Notre équipe vous répond avec une proposition claire et adaptée à votre métier. Accompagnement local à La Réunion.',
     canonical: '/contact',
   },
   legal: {

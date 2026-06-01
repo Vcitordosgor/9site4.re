@@ -20,13 +20,16 @@ const inclus = [
 
 <section class="relative px-6 py-14 md:py-20">
   <div class="mx-auto max-w-5xl">
-    <div class="text-center max-w-2xl mx-auto">
+    <div class="text-center max-w-3xl mx-auto">
       <p class="scroll-reveal inline-flex items-center px-3 py-1.5 rounded-full bg-orange text-white text-xs font-semibold uppercase tracking-wide">
-        Tarifs
+        Formule
       </p>
       <h2 class="scroll-reveal mt-4 font-sora font-bold text-2xl md:text-4xl text-blanc-casse text-balance leading-tight">
-        Un prix simple, tout compris.
+        Une formule claire pour votre site professionnel.
       </h2>
+      <p class="scroll-reveal mt-5 text-lg text-blanc-casse/70 leading-relaxed">
+        Pour 97,4€/mois, 9site4 crée, héberge, sécurise, maintient et met à jour votre site professionnel. Création, module métier, hébergement, maintenance et modifications simples sont inclus.
+      </p>
     </div>
 
     <!-- Carte prix signature -->
@@ -42,9 +45,8 @@ const inclus = [
           <Icon name="info" size={15} strokeWidth={2} class="text-white/80" />
           soit environ {siteConfig.pricing.daily}/jour
         </p>
-        <p class="relative mt-5 text-sm text-white/80 leading-relaxed">
-          Pour moins qu'un petit achat du quotidien par jour, votre site est créé,
-          hébergé, sécurisé, maintenu et modifiable simplement.
+        <p class="relative mt-5 text-sm text-white/85 leading-relaxed">
+          Création, module métier, hébergement, maintenance et modifications simples — tout est inclus dans une formule unique.
         </p>
       </div>
 
@@ -92,7 +94,11 @@ const inclus = [
       </div>
     </div>
 
-    <div class="scroll-reveal mt-10 flex justify-center">
+    <div class="scroll-reveal mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+      <Button variant="primary" size="lg" href="/contact">
+        Commencer avec 9site4
+        <Icon name="arrow-right" size={20} strokeWidth={2} />
+      </Button>
       <Button variant="secondary" size="lg" href="/tarifs">
         Voir les détails
         <Icon name="arrow-right" size={20} strokeWidth={2} />
