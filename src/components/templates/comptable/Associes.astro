@@ -1,17 +1,16 @@
 ---
 /**
- * Associes — trombinoscope institutionnel des 4 associés.
- * Avatars graphiques (initiales serif + pattern lignes verticales)
- * en lieu et place de portraits photo, pour assumer le côté
- * 'exemple de site fictionnel' et éviter l'impression IA fake.
+ * Associes — trombinoscope avec avatars stylisés (cercle silhouette neutre).
+ * Palette en nuances de gris (plus de doré).
  */
 import data from '../../../data/templates/auberval.json';
 
+// 4 nuances de gris — du clair au foncé
 const avatarVariants = [
-  'bg-auberval-marine text-auberval-feutre',
-  'bg-auberval-or text-auberval-marine',
-  'bg-auberval-encre text-auberval-feutre',
-  'bg-auberval-feutre text-auberval-marine ring-1 ring-inset ring-auberval-marine/35',
+  { bg: '#3D424A', fg: '#F1F0EC' }, // gris ardoise
+  { bg: '#9A9A93', fg: '#1B2330' }, // gris pierre
+  { bg: '#2A2D33', fg: '#F1F0EC' }, // gris anthracite
+  { bg: '#E6E4DD', fg: '#1B2330' }, // gris perle
 ];
 ---
 
@@ -19,44 +18,35 @@ const avatarVariants = [
   <div class="max-w-content mx-auto">
 
     <header class="mb-14 md:mb-20 max-w-3xl">
-      <p class="font-plex-sans text-[10px] uppercase tracking-[0.32em] text-auberval-or font-semibold mb-5">
+      <p class="font-plex-sans text-[10px] uppercase tracking-[0.32em] text-auberval-encre/55 font-semibold mb-5">
         ✦ Les associés
       </p>
       <h2 class="font-source-serif text-auberval-marine leading-[1.05]" style="font-size: clamp(36px, 5vw, 64px);">
         Quatre experts-comptables<br/>
-        <span class="italic text-auberval-or">à votre service.</span>
+        <span class="italic text-auberval-encre/60">à votre service.</span>
       </h2>
     </header>
 
     <ul class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-      {data.associes.map((a, i) => (
+      {data.associes.map((a, i) => {
+        const v = avatarVariants[i % avatarVariants.length];
+        return (
         <li>
           <article class="h-full">
-            <!-- Avatar graphique : initiales serif + pattern lignes verticales -->
+            <!-- Avatar SVG silhouette neutre -->
             <div
-              class:list={[
-                'relative aspect-square overflow-hidden mb-5 flex items-center justify-center',
-                avatarVariants[i % avatarVariants.length],
-              ]}
+              class="relative aspect-square overflow-hidden mb-5 flex items-center justify-center"
+              style={`background-color:${v.bg};color:${v.fg};`}
               role="img"
               aria-label={`Avatar de ${a.prenom} ${a.nom}`}
             >
-              <!-- Pattern lignes verticales (rappel rapport annuel) -->
-              <div
-                class="absolute inset-0 opacity-[0.10] pointer-events-none"
-                aria-hidden="true"
-                style="background-image: repeating-linear-gradient(90deg, transparent 0, transparent 22px, currentColor 22px, currentColor 23px);"
-              ></div>
-              <!-- Filet doré horizontal en haut -->
-              <div class="absolute top-0 inset-x-0 h-px bg-auberval-or/60" aria-hidden="true"></div>
-              <!-- Initiales -->
-              <span
-                class="relative font-source-serif font-light leading-none tabular-nums select-none"
-                style="font-size: clamp(80px, 14vw, 144px);"
-                aria-hidden="true"
-              >
-                {a.prenom.charAt(0)}{a.nom.charAt(0)}
-              </span>
+              <!-- Filet gris horizontal en haut -->
+              <div class="absolute top-0 inset-x-0 h-px bg-current/30" aria-hidden="true"></div>
+              <!-- Silhouette buste -->
+              <svg viewBox="0 0 200 200" class="relative w-3/5 h-3/5" fill="currentColor" aria-hidden="true">
+                <circle cx="100" cy="78" r="34" opacity="0.92" />
+                <path d="M40 200 C40 145 65 122 100 122 C135 122 160 145 160 200 Z" opacity="0.85" />
+              </svg>
               <!-- Étiquette OEC -->
               <span class="absolute bottom-3 left-3 inline-block bg-auberval-marine text-auberval-feutre font-dm-mono text-[10px] uppercase tracking-[0.18em] px-2.5 py-1.5">
                 ✦ {a.memberOEC}
@@ -64,7 +54,7 @@ const avatarVariants = [
             </div>
 
             <!-- Identité -->
-            <p class="font-dm-mono text-[10px] uppercase tracking-[0.28em] text-auberval-or mb-2">
+            <p class="font-dm-mono text-[10px] uppercase tracking-[0.28em] text-auberval-encre/55 mb-2">
               Associé n°{String(i + 1).padStart(2, '0')}
             </p>
             <h3 class="font-source-serif text-auberval-marine text-2xl leading-tight mb-1">
@@ -78,7 +68,8 @@ const avatarVariants = [
             </p>
           </article>
         </li>
-      ))}
+        );
+      })}
     </ul>
 
     <!-- Note -->
