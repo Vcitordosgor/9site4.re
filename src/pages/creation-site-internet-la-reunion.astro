@@ -2,10 +2,10 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/ui/Button.astro';
 import Icon from '../components/ui/Icon.astro';
-import RealisationCard from '../components/exemples/RealisationCard.astro';
+import RealisationCard from '../components/realisations/RealisationCard.astro';
 import TarifsBref from '../components/sections/TarifsBref.astro';
 import CTABand from '../components/sections/CTABand.astro';
-import realisations from '../data/exemples.json';
+import realisations from '../data/realisations.json';
 import { getSeo, absoluteUrl } from '../lib/seo';
 
 const seo = getSeo('creationSiteReunion');
@@ -98,7 +98,7 @@ const serviceSchema = {
             Créer mon site avec 9site4
             <Icon name="arrow-right" size={20} strokeWidth={2.25} />
           </Button>
-          <a href="/exemples" class="inline-flex items-center justify-center gap-2 h-14 px-8 text-lg font-semibold rounded-full text-bleu hover:text-blanc-casse transition-colors">
+          <a href="/realisations" class="inline-flex items-center justify-center gap-2 h-14 px-8 text-lg font-semibold rounded-full text-bleu hover:text-blanc-casse transition-colors">
             Voir nos réalisations
           </a>
         </div>
@@ -239,7 +239,7 @@ const serviceSchema = {
           ))}
         </ul>
         <div class="mt-10 text-center">
-          <a href="/exemples" class="inline-flex items-center gap-2 text-bleu hover:text-blanc-casse transition-colors font-semibold">
+          <a href="/realisations" class="inline-flex items-center gap-2 text-bleu hover:text-blanc-casse transition-colors font-semibold">
             Voir les 40 réalisations
             <Icon name="arrow-right" size={16} strokeWidth={2.25} />
           </a>
@@ -271,17 +271,16 @@ const serviceSchema = {
             { href: '/site-internet-restaurant-la-reunion', t: 'Restaurant', d: 'Restos, snacks, bars, cafés, pizzerias.' },
             { href: '/site-internet-artisan-la-reunion', t: 'Artisan', d: 'Plombiers, électriciens, garages, BTP.' },
             { href: '/site-internet-coiffeur-la-reunion', t: 'Coiffeur', d: 'Salons, coiffeurs, barbiers.' },
-            { href: '/site-internet-institut-beaute-spa-la-reunion', t: 'Institut & spa', d: 'Esthétique, spa, bien-être.' },
             { href: '/site-internet-gite-location-la-reunion', t: 'Gîte & location', d: 'Gîtes, locations, conciergerie, tourisme.' },
             { href: '/site-internet-profession-liberale-la-reunion', t: 'Profession libérale', d: 'Avocats, notaires, comptables, consultants.' },
             { href: '/site-internet-bien-etre-sante-la-reunion', t: 'Bien-être & santé', d: 'Ostéo, naturo, diét, psy, coach, yoga.' },
-            { href: '/site-internet-institut-beaute-la-reunion', t: 'Institut de beauté', d: 'Esthétique, tatouage, cartes cadeaux.' },
+            { href: '/site-internet-institut-beaute-la-reunion', t: 'Institut, spa & coiffure', d: 'Instituts, spas, salons, tatoueurs, bien-être.' },
             { href: '/site-internet-coach-independant-la-reunion', t: 'Coach & indépendant', d: 'Coachs, consultants, formateurs.' },
             { href: '/site-internet-commerce-local-la-reunion', t: 'Commerce local', d: 'Boutiques, boulangeries, fleuristes.' },
             { href: '/site-internet-tpe-pme-la-reunion', t: 'TPE/PME', d: 'Toutes activités, tous secteurs 974.' },
             { href: '/site-vitrine-la-reunion', t: 'Site vitrine', d: 'Vitrine professionnelle qui convertit.' },
             { href: '/agence-web-la-reunion', t: 'Agence web', d: 'Partenaire web TPE/PME 974.' },
-            { href: '/exemples', t: 'Toutes les réalisations', d: '40 sites pour tous les métiers du 974.' },
+            { href: '/realisations', t: 'Toutes les réalisations', d: '40 sites pour tous les métiers du 974.' },
           ].map((m) => (
             <li>
               <a href={m.href} class="block h-full rounded-2xl p-5 border border-white/10 hover:border-bleu transition-colors">
@@ -326,7 +325,7 @@ const serviceSchema = {
           Voir aussi&nbsp;:
           <a href="/tarifs" class="text-bleu hover:underline">tarifs</a>
           ·
-          <a href="/exemples" class="text-bleu hover:underline">réalisations</a>
+          <a href="/realisations" class="text-bleu hover:underline">réalisations</a>
           ·
           <a href="/contact" class="text-bleu hover:underline">contact</a>.
         </p>

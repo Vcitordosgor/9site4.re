@@ -2,7 +2,10 @@ User-agent: *
 Allow: /
 Disallow: /404
 Disallow: /styleguide
-Disallow: /templates/
+
+# /templates/* sont volontairement laissés crawlables :
+# ils portent un <meta name="robots" content="noindex"> dans le HTML.
+# Bloquer ici empêcherait Google de lire le noindex.
 
 # Mentions légales et politique de confidentialité : indexables
 # (pages de transparence = signal de sérieux pour Google).

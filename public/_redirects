@@ -1,0 +1,7 @@
+# Cloudflare Pages redirects
+# Renommage /exemples → /realisations
+/exemples /realisations 301
+/exemples/* /realisations/:splat 301
+
+# Merge institut beauté + spa → page institut unique (couvre spa, coiffure, tatouage)
+/site-internet-institut-beaute-spa-la-reunion /site-internet-institut-beaute-la-reunion 301

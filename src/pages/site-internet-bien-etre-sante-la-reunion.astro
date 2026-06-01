@@ -2,10 +2,10 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/ui/Button.astro';
 import Icon from '../components/ui/Icon.astro';
-import RealisationCard from '../components/exemples/RealisationCard.astro';
+import RealisationCard from '../components/realisations/RealisationCard.astro';
 import TarifsBref from '../components/sections/TarifsBref.astro';
 import CTABand from '../components/sections/CTABand.astro';
-import realisations from '../data/exemples.json';
+import realisations from '../data/realisations.json';
 import { getSeo, absoluteUrl } from '../lib/seo';
 
 const seo = getSeo('siteBienEtreSanteReunion');
@@ -92,7 +92,7 @@ const serviceSchema = {
             Créer mon site avec 9site4
             <Icon name="arrow-right" size={20} strokeWidth={2.25} />
           </Button>
-          <a href="/exemples" class="inline-flex items-center justify-center gap-2 h-14 px-8 text-lg font-semibold rounded-full text-bleu hover:text-blanc-casse transition-colors">
+          <a href="/realisations" class="inline-flex items-center justify-center gap-2 h-14 px-8 text-lg font-semibold rounded-full text-bleu hover:text-blanc-casse transition-colors">
             Voir nos réalisations
           </a>
         </div>
@@ -254,7 +254,7 @@ const serviceSchema = {
 
         <p class="scroll-reveal mt-12 text-center text-sm text-blanc-casse/65">
           Voir aussi&nbsp;:
-          <a href="/site-internet-institut-beaute-spa-la-reunion" class="text-bleu hover:underline">site pour institut & spa</a>
+          <a href="/site-internet-institut-beaute-la-reunion" class="text-bleu hover:underline">site pour institut, spa & coiffure</a>
           ·
           <a href="/site-internet-profession-liberale-la-reunion" class="text-bleu hover:underline">site pour profession libérale</a>
           ·

@@ -1,10 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import RealisationCard from '../components/exemples/RealisationCard.astro';
+import RealisationCard from '../components/realisations/RealisationCard.astro';
 import Icon from '../components/ui/Icon.astro';
-import FiltersBar from '../components/exemples/FiltersBar.tsx';
+import FiltersBar from '../components/realisations/FiltersBar.tsx';
 import CTABand from '../components/sections/CTABand.astro';
-import realisations from '../data/exemples.json';
+import realisations from '../data/realisations.json';
 import categories from '../data/categories.json';
 import { getSeo } from '../lib/seo';
 
@@ -39,7 +39,7 @@ const orderedRealisations = [
 ];
 ---
 
-<BaseLayout seo={getSeo('exemples')}>
+<BaseLayout seo={getSeo('realisations')}>
   <div class="bg-black text-blanc-casse">
   <!-- Hero éditorial : aligné qualité home (eyebrow + accent line + titre italique + animations) -->
   <section class="relative overflow-hidden px-6 pt-28 pb-14 md:pt-36 md:pb-20">
@@ -156,12 +156,6 @@ const orderedRealisations = [
           </a>
         </li>
         <li>
-          <a href="/site-internet-institut-beaute-spa-la-reunion" class="block h-full rounded-2xl p-5 border border-white/10 hover:border-bleu transition-colors">
-            <p class="font-sora font-semibold text-blanc-casse">Site pour institut & spa</p>
-            <p class="mt-2 text-sm text-blanc-casse/65">Instituts, spas, esthéticiennes, bien-être.</p>
-          </a>
-        </li>
-        <li>
           <a href="/site-internet-gite-location-la-reunion" class="block h-full rounded-2xl p-5 border border-white/10 hover:border-bleu transition-colors">
             <p class="font-sora font-semibold text-blanc-casse">Site pour gîte & location</p>
             <p class="mt-2 text-sm text-blanc-casse/65">Gîtes, locations, conciergeries, tourisme.</p>
@@ -181,8 +175,8 @@ const orderedRealisations = [
         </li>
         <li>
           <a href="/site-internet-institut-beaute-la-reunion" class="block h-full rounded-2xl p-5 border border-white/10 hover:border-bleu transition-colors">
-            <p class="font-sora font-semibold text-blanc-casse">Site pour institut de beauté</p>
-            <p class="mt-2 text-sm text-blanc-casse/65">Esthétique, tatouage, cartes cadeaux.</p>
+            <p class="font-sora font-semibold text-blanc-casse">Site pour institut, spa & coiffure</p>
+            <p class="mt-2 text-sm text-blanc-casse/65">Instituts, spas, salons, tatoueurs, bien-être.</p>
           </a>
         </li>
         <li>
