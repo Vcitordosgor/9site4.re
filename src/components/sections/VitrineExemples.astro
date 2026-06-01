@@ -3,51 +3,44 @@ import realisations from '../../data/realisations.json';
 
 // PERF : seuls les 12 previews effectivement affichés dans le marquee home
 // sont importés ici. Les 28 autres ne sont chargés que sur /realisations.
-import PreviewResto from '../realisations/previews/PreviewResto.astro';
 import PreviewPizzeria from '../realisations/previews/PreviewPizzeria.astro';
-import PreviewSalon from '../realisations/previews/PreviewSalon.astro';
-import PreviewSpa from '../realisations/previews/PreviewSpa.astro';
-import PreviewPaysagiste from '../realisations/previews/PreviewPaysagiste.astro';
+import PreviewAutoEcole from '../realisations/previews/PreviewAutoEcole.astro';
+import PreviewResto from '../realisations/previews/PreviewResto.astro';
+import PreviewBarJus from '../realisations/previews/PreviewBarJus.astro';
+import PreviewCoach from '../realisations/previews/PreviewCoach.astro';
 import PreviewYoga from '../realisations/previews/PreviewYoga.astro';
-import PreviewGite from '../realisations/previews/PreviewGite.astro';
-import PreviewPlongee from '../realisations/previews/PreviewPlongee.astro';
-import PreviewWedding from '../realisations/previews/PreviewWedding.astro';
-import PreviewPhotographe from '../realisations/previews/PreviewPhotographe.astro';
-import PreviewBoulangerie from '../realisations/previews/PreviewBoulangerie.astro';
 import PreviewStudioAudio from '../realisations/previews/PreviewStudioAudio.astro';
+import PreviewElectricien from '../realisations/previews/PreviewElectricien.astro';
+import PreviewAvocat from '../realisations/previews/PreviewAvocat.astro';
+import PreviewPhotographe from '../realisations/previews/PreviewPhotographe.astro';
 
 const previewMap: Record<string, any> = {
-  'restaurant-gastronomique': PreviewResto,
   'snack-pizzeria':           PreviewPizzeria,
-  'salon-de-coiffure':        PreviewSalon,
-  'spa-massage':              PreviewSpa,
-  'paysagiste':               PreviewPaysagiste,
+  'auto-ecole':               PreviewAutoEcole,
+  'restaurant-gastronomique': PreviewResto,
+  'bar-a-jus-tropical':       PreviewBarJus,
+  'coach-sportif':            PreviewCoach,
   'studio-yoga':              PreviewYoga,
-  'gite-de-montagne':         PreviewGite,
-  'plongee':                  PreviewPlongee,
-  'wedding-planner':          PreviewWedding,
-  'photographe-auteur':       PreviewPhotographe,
-  'boulangerie-artisanale':   PreviewBoulangerie,
   'studio-audio':             PreviewStudioAudio,
+  'electricite-generale':     PreviewElectricien,
+  'avocat-cabinet':           PreviewAvocat,
+  'photographe-auteur':       PreviewPhotographe,
 };
 
-// PERF : on n'affiche dans le marquee home qu'une sélection de 12 vignettes
-// (au lieu des 40, dupliquées 2 fois → 160). Les 40 restent visibles sur /realisations.
-// Gain : ~250 KB sur le HTML de la home. Le loop CSS infini est conservé en
-// dupliquant UNE seule fois ces 12 vignettes (24 nœuds au total, vs 160 avant).
+// PERF : on n'affiche dans le marquee home que les 10 premières réalisations
+// (ordre prioritaire identique à la page /realisations). Les 40 restent visibles sur /realisations.
+// Le loop CSS infini est conservé en dupliquant UNE seule fois ces 10 vignettes (20 nœuds total).
 const showcaseSlugs = [
-  'restaurant-gastronomique',
-  'salon-de-coiffure',
-  'paysagiste',
-  'studio-yoga',
-  'gite-de-montagne',
-  'photographe-auteur',
   'snack-pizzeria',
-  'spa-massage',
-  'wedding-planner',
-  'plongee',
-  'boulangerie-artisanale',
+  'auto-ecole',
+  'restaurant-gastronomique',
+  'bar-a-jus-tropical',
+  'coach-sportif',
+  'studio-yoga',
   'studio-audio',
+  'electricite-generale',
+  'avocat-cabinet',
+  'photographe-auteur',
 ];
 const showcase = showcaseSlugs
   .map((slug) => realisations.find((r) => r.slug === slug))
