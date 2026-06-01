@@ -259,13 +259,13 @@ export default {
         // Palette conciergerie (template /templates/conciergerie — Concierge & Co)
         // Style "service haut de gamme discret, réception d'hôtel cinq étoiles"
         // — bleu nuit profond + champagne + laiton vieilli + bordeaux feutré.
-        'concierge-nuit':      '#0F2742',  // bleu nuit profond — accent dominant
-        'concierge-encre':     '#0A0B0F',  // noir encre — texte AAA
-        'concierge-graphite':  '#3D3D3F',  // gris graphite — texte secondaire
-        'concierge-champagne': '#F5EFDF',  // crème champagne — fond
-        'concierge-blanc':     '#FAFAF7',
-        'concierge-laiton':    '#B89758',  // doré laiton vieilli — filets ornementaux
-        'concierge-bordeaux':  '#5A1F2A',  // bordeaux feutré — accent rare
+        'concierge-nuit':      '#1E4D3D',  // bleu nuit profond — accent dominant
+        'concierge-encre':     '#1A1F1B',  // noir encre — texte AAA
+        'concierge-graphite':  '#4A554E',  // gris graphite — texte secondaire
+        'concierge-champagne': '#EFE5D4',  // crème champagne — fond
+        'concierge-blanc':     '#FBF8F2',
+        'concierge-laiton':    '#C49A5A',  // doré laiton vieilli — filets ornementaux
+        'concierge-bordeaux':  '#A85E3C',  // bordeaux feutré — accent rare
         // Palette aide à domicile (template /templates/aide-domicile — Doudou Service)
         // Style "doux & humain, ton local créole-friendly, proximité familiale"
         // — bleu apaisant + rose chaleureux + jaune solaire + crème coton.
