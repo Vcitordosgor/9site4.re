@@ -1,11 +1,90 @@
 ---
 import realisations from '../../data/realisations.json';
 
-/**
- * VitrineExemples — double carrousel (rangées défilant en sens inverse),
- * cartes type "screenshot de site" avec barre de navigateur, overlay au hover.
- * Chiffres honnêtes. Pause au survol, coupé sous reduced-motion.
- */
+// Imports des 40 vignettes SVG/typographiques
+import PreviewResto from '../realisations/previews/PreviewResto.astro';
+import PreviewPizzeria from '../realisations/previews/PreviewPizzeria.astro';
+import PreviewBarJus from '../realisations/previews/PreviewBarJus.astro';
+import PreviewSalon from '../realisations/previews/PreviewSalon.astro';
+import PreviewInstitut from '../realisations/previews/PreviewInstitut.astro';
+import PreviewSpa from '../realisations/previews/PreviewSpa.astro';
+import PreviewPlomberie from '../realisations/previews/PreviewPlomberie.astro';
+import PreviewElectricien from '../realisations/previews/PreviewElectricien.astro';
+import PreviewPaysagiste from '../realisations/previews/PreviewPaysagiste.astro';
+import PreviewOsteo from '../realisations/previews/PreviewOsteo.astro';
+import PreviewDieteticienne from '../realisations/previews/PreviewDieteticienne.astro';
+import PreviewPsy from '../realisations/previews/PreviewPsy.astro';
+import PreviewCoach from '../realisations/previews/PreviewCoach.astro';
+import PreviewYoga from '../realisations/previews/PreviewYoga.astro';
+import PreviewDanse from '../realisations/previews/PreviewDanse.astro';
+import PreviewGite from '../realisations/previews/PreviewGite.astro';
+import PreviewExcursions from '../realisations/previews/PreviewExcursions.astro';
+import PreviewLocation from '../realisations/previews/PreviewLocation.astro';
+import PreviewConsultant from '../realisations/previews/PreviewConsultant.astro';
+import PreviewComptable from '../realisations/previews/PreviewComptable.astro';
+import PreviewArchitecte from '../realisations/previews/PreviewArchitecte.astro';
+import PreviewAutoEcole from '../realisations/previews/PreviewAutoEcole.astro';
+import PreviewConciergerie from '../realisations/previews/PreviewConciergerie.astro';
+import PreviewAideDomicile from '../realisations/previews/PreviewAideDomicile.astro';
+import PreviewPlongee from '../realisations/previews/PreviewPlongee.astro';
+import PreviewWedding from '../realisations/previews/PreviewWedding.astro';
+import PreviewPatisserie from '../realisations/previews/PreviewPatisserie.astro';
+import PreviewGarage from '../realisations/previews/PreviewGarage.astro';
+import PreviewPhotographe from '../realisations/previews/PreviewPhotographe.astro';
+import PreviewAvocat from '../realisations/previews/PreviewAvocat.astro';
+import PreviewBoulangerie from '../realisations/previews/PreviewBoulangerie.astro';
+import PreviewGlacier from '../realisations/previews/PreviewGlacier.astro';
+import PreviewCafeTorref from '../realisations/previews/PreviewCafeTorref.astro';
+import PreviewSurf from '../realisations/previews/PreviewSurf.astro';
+import PreviewFleuriste from '../realisations/previews/PreviewFleuriste.astro';
+import PreviewTatoueur from '../realisations/previews/PreviewTatoueur.astro';
+import PreviewNaturopathe from '../realisations/previews/PreviewNaturopathe.astro';
+import PreviewCreche from '../realisations/previews/PreviewCreche.astro';
+import PreviewNotaire from '../realisations/previews/PreviewNotaire.astro';
+import PreviewStudioAudio from '../realisations/previews/PreviewStudioAudio.astro';
+
+const previewMap: Record<string, any> = {
+  'restaurant-gastronomique':         PreviewResto,
+  'snack-pizzeria':                   PreviewPizzeria,
+  'bar-a-jus-tropical':               PreviewBarJus,
+  'salon-de-coiffure':                PreviewSalon,
+  'institut-de-beaute':               PreviewInstitut,
+  'spa-massage':                      PreviewSpa,
+  'plomberie':                        PreviewPlomberie,
+  'electricite-generale':             PreviewElectricien,
+  'paysagiste':                       PreviewPaysagiste,
+  'cabinet-osteopathie':              PreviewOsteo,
+  'dieteticienne':                    PreviewDieteticienne,
+  'psychologue':                      PreviewPsy,
+  'coach-sportif':                    PreviewCoach,
+  'studio-yoga':                      PreviewYoga,
+  'ecole-de-danse':                   PreviewDanse,
+  'gite-de-montagne':                 PreviewGite,
+  'excursions-randonnee':             PreviewExcursions,
+  'location-saisonniere-bord-de-mer': PreviewLocation,
+  'consultant':                       PreviewConsultant,
+  'cabinet-comptable':                PreviewComptable,
+  'architecte':                       PreviewArchitecte,
+  'auto-ecole':                       PreviewAutoEcole,
+  'conciergerie':                     PreviewConciergerie,
+  'aide-a-domicile':                  PreviewAideDomicile,
+  'plongee':                          PreviewPlongee,
+  'wedding-planner':                  PreviewWedding,
+  'patisserie-creole':                PreviewPatisserie,
+  'garage-mecanique':                 PreviewGarage,
+  'photographe-auteur':               PreviewPhotographe,
+  'avocat-cabinet':                   PreviewAvocat,
+  'boulangerie-artisanale':           PreviewBoulangerie,
+  'glacier-artisanal':                PreviewGlacier,
+  'cafe-torrefaction':                PreviewCafeTorref,
+  'ecole-de-surf':                    PreviewSurf,
+  'fleuriste-atelier':                PreviewFleuriste,
+  'studio-de-tatouage':               PreviewTatoueur,
+  'naturopathe':                      PreviewNaturopathe,
+  'micro-creche':                     PreviewCreche,
+  'etude-notariale':                  PreviewNotaire,
+  'studio-audio':                     PreviewStudioAudio,
+};
 
 const half = Math.ceil(realisations.length / 2);
 const row1Items = realisations.slice(0, half);
@@ -26,84 +105,81 @@ const stats = [
       Un site pensé pour votre métier.
     </h2>
     <p class="mt-5 mx-auto max-w-2xl text-lg text-blanc-casse/70 leading-relaxed">
-      Découvrez des exemples de sites créés par 9site4, métier par métier —
-      de quoi vous projeter pour le vôtre.
+      Quarante univers, quarante directions visuelles. Cliquez sur celle qui vous parle —
+      c'est exactement ce qu'on construira pour vous.
     </p>
   </div>
 
-  <!-- Double marquee -->
+  <!-- Double marquee — vignettes SVG natives (mêmes que sur /realisations) -->
   <div class="vitrine-marquee relative mt-10 md:mt-14 space-y-5" aria-label="Exemples de sites qui défilent">
     <!-- Rangée 1 (sens normal) -->
     <div class="vitrine-track-1 flex gap-5 w-max px-3">
-      {row1.map((r, i) => (
-        <a
-          href={r.previewUrl}
-          class="group relative shrink-0 w-80 md:w-96 rounded-2xl overflow-hidden ring-1 ring-blanc-casse/15 bg-black transition-all duration-300 hover:-translate-y-1 hover:ring-bleu/60"
-          aria-hidden={i >= row1Items.length ? 'true' : undefined}
-          tabindex={i >= row1Items.length ? -1 : undefined}
-        >
-          <div class="relative aspect-[4/3] overflow-hidden">
-            <img
-              src={r.thumbnail}
-              alt={`Exemple de site — ${r.nom}`}
-              class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-              loading="lazy"
-              decoding="async"
-            />
-            <div class="absolute bottom-0 inset-x-0 p-4 flex items-end justify-between gap-2 bg-bleu-nuit/55">
-              <span class="font-sora font-semibold text-sm text-blanc-casse">{r.nom}</span>
-              <span class="inline-flex items-center px-2 py-0.5 rounded-full bg-bleu text-white text-[10px] font-bold uppercase tracking-wide">
-                {r.moduleInclus}
-              </span>
+      {row1.map((r, i) => {
+        const Preview = previewMap[r.slug] ?? null;
+        return (
+          <a
+            href={r.previewUrl}
+            target="_blank"
+            rel="noopener"
+            class="group relative shrink-0 w-80 md:w-96 rounded-2xl overflow-hidden ring-1 ring-blanc-casse/15 bg-bleu-nuit transition-all duration-300 hover:-translate-y-1 hover:ring-bleu/60"
+            aria-hidden={i >= row1Items.length ? 'true' : undefined}
+            tabindex={i >= row1Items.length ? -1 : undefined}
+          >
+            <!-- Browser chrome minimaliste -->
+            <div class="flex items-center gap-1.5 px-3 py-2 bg-bleu-nuit/95" aria-hidden="true">
+              <span class="block w-2 h-2 rounded-full bg-[#FF5F57]"></span>
+              <span class="block w-2 h-2 rounded-full bg-[#FEBC2E]"></span>
+              <span class="block w-2 h-2 rounded-full bg-[#28C840]"></span>
             </div>
-            <!-- Hover overlay -->
-            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-bleu-nuit/70">
-              <span class="inline-flex items-center gap-1.5 h-10 px-5 rounded-full bg-bleu text-white font-semibold text-sm shadow-[0_0_24px_rgba(145,166,255,0.5)]">
-                Voir la démo
-                <span aria-hidden="true">→</span>
-              </span>
+            <div class="relative aspect-[4/3] overflow-hidden bg-blanc-casse">
+              {Preview ? <Preview /> : <div class="absolute inset-0 flex items-center justify-center text-bleu-nuit/30 text-xs">{r.nom}</div>}
+              <!-- Hover overlay -->
+              <div class="absolute inset-0 flex items-end justify-between gap-2 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-bleu-nuit/90 via-bleu-nuit/40 to-transparent">
+                <span class="font-sora font-semibold text-sm text-blanc-casse">{r.nom}</span>
+                <span class="inline-flex items-center px-2 py-0.5 rounded-full bg-bleu text-white text-[10px] font-bold uppercase tracking-wide">
+                  {r.moduleInclus}
+                </span>
+              </div>
             </div>
-          </div>
-        </a>
-      ))}
+          </a>
+        );
+      })}
     </div>
 
     <!-- Rangée 2 (sens inverse) -->
     <div class="vitrine-track-2 flex gap-5 w-max px-3">
-      {row2.map((r, i) => (
-        <a
-          href={r.previewUrl}
-          class="group relative shrink-0 w-80 md:w-96 rounded-2xl overflow-hidden ring-1 ring-blanc-casse/15 bg-black transition-all duration-300 hover:-translate-y-1 hover:ring-bleu/60"
-          aria-hidden={i >= row2Items.length ? 'true' : undefined}
-          tabindex={i >= row2Items.length ? -1 : undefined}
-        >
-          <div class="relative aspect-[4/3] overflow-hidden">
-            <img
-              src={r.thumbnail}
-              alt={`Exemple de site — ${r.nom}`}
-              class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-              loading="lazy"
-              decoding="async"
-            />
-            <div class="absolute bottom-0 inset-x-0 p-4 flex items-end justify-between gap-2 bg-bleu-nuit/55">
-              <span class="font-sora font-semibold text-sm text-blanc-casse">{r.nom}</span>
-              <span class="inline-flex items-center px-2 py-0.5 rounded-full bg-bleu text-white text-[10px] font-bold uppercase tracking-wide">
-                {r.moduleInclus}
-              </span>
+      {row2.map((r, i) => {
+        const Preview = previewMap[r.slug] ?? null;
+        return (
+          <a
+            href={r.previewUrl}
+            target="_blank"
+            rel="noopener"
+            class="group relative shrink-0 w-80 md:w-96 rounded-2xl overflow-hidden ring-1 ring-blanc-casse/15 bg-bleu-nuit transition-all duration-300 hover:-translate-y-1 hover:ring-bleu/60"
+            aria-hidden={i >= row2Items.length ? 'true' : undefined}
+            tabindex={i >= row2Items.length ? -1 : undefined}
+          >
+            <div class="flex items-center gap-1.5 px-3 py-2 bg-bleu-nuit/95" aria-hidden="true">
+              <span class="block w-2 h-2 rounded-full bg-[#FF5F57]"></span>
+              <span class="block w-2 h-2 rounded-full bg-[#FEBC2E]"></span>
+              <span class="block w-2 h-2 rounded-full bg-[#28C840]"></span>
             </div>
-            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-bleu-nuit/70">
-              <span class="inline-flex items-center gap-1.5 h-10 px-5 rounded-full bg-bleu text-white font-semibold text-sm shadow-[0_0_24px_rgba(145,166,255,0.5)]">
-                Voir la démo
-                <span aria-hidden="true">→</span>
-              </span>
+            <div class="relative aspect-[4/3] overflow-hidden bg-blanc-casse">
+              {Preview ? <Preview /> : <div class="absolute inset-0 flex items-center justify-center text-bleu-nuit/30 text-xs">{r.nom}</div>}
+              <div class="absolute inset-0 flex items-end justify-between gap-2 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-bleu-nuit/90 via-bleu-nuit/40 to-transparent">
+                <span class="font-sora font-semibold text-sm text-blanc-casse">{r.nom}</span>
+                <span class="inline-flex items-center px-2 py-0.5 rounded-full bg-bleu text-white text-[10px] font-bold uppercase tracking-wide">
+                  {r.moduleInclus}
+                </span>
+              </div>
             </div>
-          </div>
-        </a>
-      ))}
+          </a>
+        );
+      })}
     </div>
   </div>
 
-  <!-- Chiffres honnêtes (plus typographiques) -->
+  <!-- Chiffres honnêtes -->
   <div class="mx-auto max-w-content px-6 mt-16 md:mt-24">
     <dl class="grid grid-cols-1 sm:grid-cols-3 gap-10 text-center">
       {stats.map((s) => (
