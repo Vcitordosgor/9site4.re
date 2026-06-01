@@ -162,6 +162,11 @@ const moduleColor = moduleColors[realisation.moduleInclus] ?? 'orange';
       rel="noopener"
       class="block relative group/preview overflow-hidden border-b border-white/10 bg-bleu-nuit"
       aria-label={`Voir la réalisation ${realisation.nom}`}
+      data-track-event="cta_view_realisation_click"
+      data-track-category="navigation"
+      data-track-label={realisation.slug}
+      data-track-source="realisation_card_preview"
+      data-track-target={realisation.previewUrl}
     >
       <!-- Browser chrome minimaliste -->
       <div class="flex items-center gap-1.5 px-3 py-2 bg-bleu-nuit/95" aria-hidden="true">
@@ -225,6 +230,11 @@ const moduleColor = moduleColors[realisation.moduleInclus] ?? 'orange';
           target="_blank"
           rel="noopener"
           class="group/cta inline-flex items-center gap-1.5 h-10 px-4 text-sm font-semibold rounded-full bg-bleu text-white hover:bg-[#7e95ff] hover:-translate-y-0.5 shadow-[0_4px_16px_rgba(255,255,255,0.35)] transition-all duration-200"
+          data-track-event="cta_view_realisation_click"
+          data-track-category="navigation"
+          data-track-label={realisation.slug}
+          data-track-source="realisation_card_cta"
+          data-track-target={realisation.previewUrl}
         >
           Voir la réalisation
           <Icon name="arrow-right" size={14} strokeWidth={2.5} class="transition-transform duration-200 group-hover/cta:translate-x-0.5" />
@@ -234,6 +244,11 @@ const moduleColor = moduleColors[realisation.moduleInclus] ?? 'orange';
       <a
         href={ctaHref}
         class="inline-flex items-center gap-1.5 text-sm font-semibold text-blanc-casse/70 hover:text-bleu transition-colors"
+        data-track-event="cta_create_in_this_style_click"
+        data-track-category="conversion"
+        data-track-label={realisation.slug}
+        data-track-source="realisation_card"
+        data-track-target={ctaHref}
       >
         Créer un site dans cet esprit
         <Icon name="arrow-right" size={14} strokeWidth={2.5} class="transition-transform duration-200 group-hover:translate-x-0.5" />

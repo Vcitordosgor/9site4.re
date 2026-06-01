@@ -6,6 +6,7 @@ import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
 import MobileStickyCTA from '../components/layout/MobileStickyCTA.astro';
 import BackToSiteBubble from '../components/layout/BackToSiteBubble.astro';
+import Analytics from '../components/Analytics.astro';
 import { absoluteUrl, type PageSeo } from '../lib/seo';
 
 interface Props {
@@ -180,6 +181,10 @@ const schemaOrg = {
 
     <!-- Slot pour préchargements / hints page-spécifiques (preconnect, preload, etc.) -->
     <slot name="head" />
+
+    <!-- Analytics conditionnels (GA4 + Meta Pixel + auto-tracking).
+         Aucun script chargé si PUBLIC_ENABLE_ANALYTICS != 'true' ou IDs vides. -->
+    <Analytics />
 
     <!-- Build marker (debug) — permet d'identifier la version déployée -->
     <meta name="build-id" content={`9site4-${new Date().toISOString().slice(0, 10)}`} />

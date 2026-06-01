@@ -151,7 +151,17 @@ const onFaitPas = [
                 </p>
 
                 <div class="mt-8">
-                  <Button variant="primary" size="lg" href="/contact" fullWidth>
+                  <Button
+                    variant="primary"
+                    size="lg"
+                    href="/contact"
+                    fullWidth
+                    data-track-event="cta_pricing_click"
+                    data-track-category="conversion"
+                    data-track-source="pricing_page"
+                    data-track-target="/contact"
+                    data-track-page-type="pricing"
+                  >
                     Commencer avec 9site4
                     <Icon name="arrow-right" size={20} strokeWidth={2.25} />
                   </Button>
@@ -268,6 +278,6 @@ const onFaitPas = [
       </div>
     </section>
 
-    <CTABand />
+    <CTABand trackingSource="pricing_page_cta_band" trackingPageType="pricing" />
   </div>
 </BaseLayout>
