@@ -60,12 +60,13 @@ const today = new Date().toLocaleDateString('fr-FR', { weekday: 'long', day: 'nu
         return (
           <li class="group relative">
             <article class={`relative flex flex-col h-full bg-vanille-blanc border border-vanille-gousse/15 overflow-hidden transition-all duration-500 ease-out hover:-translate-y-1 hover:border-vanille-caramel/60 hover:shadow-[0_18px_44px_-18px_rgba(76,38,18,0.28)] ${epuise ? 'opacity-80' : ''}`}>
-              <div class="relative overflow-hidden aspect-[4/5] bg-vanille-papier">
-                <img src={photos[i] ?? photos[0]} alt={s.nom}
-                     class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1100ms] ease-out group-hover:scale-[1.06] group-hover:rotate-[0.6deg]"
-                     loading="lazy" decoding="async" width="600" height="750" />
+              <div class="relative aspect-[4/5] bg-gradient-to-br from-vanille-papier to-vanille-creme flex items-center justify-center overflow-hidden">
+                <!-- Numéro romain géant en filigrane (remplace la photo) -->
+                <span class="font-italianno text-vanille-caramel/30 leading-none italic select-none" style="font-size:clamp(160px,22vw,260px);" aria-hidden="true">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
                 <!-- Badge tag -->
-                <span class={`absolute top-4 left-4 inline-flex items-center px-3 py-1 rounded-full text-[10px] font-karla uppercase tracking-[0.22em] border backdrop-blur-md ${tag.cls}`}>
+                <span class={`absolute top-4 left-4 inline-flex items-center px-3 py-1 rounded-full text-[10px] font-karla uppercase tracking-[0.22em] border ${tag.cls}`}>
                   {tag.label}
                 </span>
                 <!-- Badge stock -->
@@ -79,10 +80,6 @@ const today = new Date().toLocaleDateString('fr-FR', { weekday: 'long', day: 'nu
                     Encore {reste} parts
                   </span>
                 )}
-                <!-- Numéro romain coin -->
-                <span class="absolute bottom-3 right-4 font-yeseva text-vanille-creme/90 text-5xl leading-none italic mix-blend-overlay" aria-hidden="true">
-                  {String(i + 1).padStart(2, '0')}
-                </span>
               </div>
 
               <div class="p-6 md:p-7 flex-1 flex flex-col">
