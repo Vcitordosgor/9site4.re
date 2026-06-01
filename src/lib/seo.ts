@@ -32,6 +32,11 @@ type PageKey =
   | 'creationSiteReunion'
   | 'siteRestaurantReunion'
   | 'siteArtisanReunion'
+  | 'siteCoiffeurReunion'
+  | 'siteInstitutSpaReunion'
+  | 'siteGiteLocationReunion'
+  | 'siteProfessionLiberaleReunion'
+  | 'siteBienEtreSanteReunion'
   | 'templatePizzeria'
   | 'templateSalon'
   | 'templateSpa'
@@ -132,6 +137,36 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
     description:
       "9site4 crée des sites professionnels pour artisans et entreprises locales à La Réunion : prestations, zones d'intervention, demande de devis, photos et gestion continue.",
     canonical: '/site-internet-artisan-la-reunion',
+  },
+  siteCoiffeurReunion: {
+    title: `Site internet pour coiffeur à La Réunion | ${siteConfig.siteName}`,
+    description:
+      '9site4 crée des sites professionnels pour salons de coiffure et coiffeurs à La Réunion : prestations, équipe, prise de rendez-vous et gestion continue.',
+    canonical: '/site-internet-coiffeur-la-reunion',
+  },
+  siteInstitutSpaReunion: {
+    title: `Site internet pour institut de beauté et spa à La Réunion | ${siteConfig.siteName}`,
+    description:
+      '9site4 crée des sites professionnels pour instituts de beauté, spas, esthéticiennes et centres de bien-être à La Réunion : soins, réservation et gestion continue.',
+    canonical: '/site-internet-institut-beaute-spa-la-reunion',
+  },
+  siteGiteLocationReunion: {
+    title: `Site internet pour gîte et location à La Réunion | ${siteConfig.siteName}`,
+    description:
+      '9site4 crée des sites professionnels pour gîtes, locations saisonnières, conciergeries et hébergements touristiques à La Réunion : présentation, calendrier, demande de séjour.',
+    canonical: '/site-internet-gite-location-la-reunion',
+  },
+  siteProfessionLiberaleReunion: {
+    title: `Site internet pour profession libérale à La Réunion | ${siteConfig.siteName}`,
+    description:
+      '9site4 crée des sites professionnels pour avocats, notaires, experts-comptables, consultants et architectes à La Réunion : présentation, méthode et prise de rendez-vous.',
+    canonical: '/site-internet-profession-liberale-la-reunion',
+  },
+  siteBienEtreSanteReunion: {
+    title: `Site internet pour praticien bien-être et santé à La Réunion | ${siteConfig.siteName}`,
+    description:
+      '9site4 crée des sites professionnels pour ostéopathes, naturopathes, diététiciens, coachs sportifs, yoga, danse et professionnels du bien-être à La Réunion : prestations, rendez-vous et gestion continue.',
+    canonical: '/site-internet-bien-etre-sante-la-reunion',
   },
   templatePizzeria: {
     title: 'Pizza Lé O — Pizzeria à Saint-Paul (Réunion) | Template 9site4',
