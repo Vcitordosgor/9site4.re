@@ -68,7 +68,7 @@ const inclus = [
 
     <!-- 2 formules compactes -->
     <div class="scroll-reveal mt-5 grid sm:grid-cols-2 gap-5">
-      <div class="flex items-center justify-between gap-4 bg-blanc-casse rounded-2xl ring-2 ring-bleu p-6 transition-all duration-300 ease-out-soft hover:-translate-y-0.5 hover:shadow-card-hover">
+      <div class="flex items-center justify-between gap-4 bg-blanc-casse rounded-2xl ring-1 ring-bleu-nuit/10 p-6 transition-all duration-300 ease-out-soft hover:-translate-y-0.5 hover:shadow-card-hover">
         <div>
           <p class="text-sm font-semibold text-bleu-nuit/60 uppercase tracking-wide">Mensuel</p>
           <p class="mt-1 text-sm text-bleu-nuit/65">Sans engagement de durée.</p>
@@ -94,12 +94,8 @@ const inclus = [
       </div>
     </div>
 
-    <div class="scroll-reveal mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-      <Button variant="primary" size="lg" href="/contact">
-        Commencer avec 9site4
-        <Icon name="arrow-right" size={20} strokeWidth={2} />
-      </Button>
-      <Button variant="secondary" size="lg" href="/tarifs">
+    <div class="scroll-reveal mt-10 flex justify-center">
+      <Button variant="primary" size="lg" href="/tarifs">
         Voir les détails
         <Icon name="arrow-right" size={20} strokeWidth={2} />
       </Button>
