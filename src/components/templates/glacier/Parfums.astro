@@ -4,14 +4,6 @@
  * pop, photo, tag sorbet/glace, couleur de fond signature par parfum.
  */
 import data from '../../../data/templates/sorbetpei.json';
-const photos = [
-  '/images/glacier/extra-1.webp',
-  '/images/glacier/extra-2.webp',
-  '/images/glacier/extra-3.webp',
-  '/images/glacier/extra-4.webp',
-  '/images/glacier/extra-5.webp',
-  '/images/glacier/extra-6.webp',
-];
 const marqueeMots = ['Mangue Carotte', 'Letchi', 'Ananas Victoria', 'Goyave rose', 'Vanille bourbon', 'Chocolat 70%', 'Combava (édition)'];
 ---
 <section id="parfums" class="relative pb-24 md:pb-36 overflow-hidden" style="background:#FFF6E2;">
@@ -52,17 +44,22 @@ const marqueeMots = ['Mangue Carotte', 'Letchi', 'Ananas Victoria', 'Goyave rose
       {data.parfumsPhares.map((p, i) => (
         <li class="group">
           <article class="relative flex flex-col h-full overflow-hidden transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_22px_44px_-18px_rgba(61,40,23,0.35)] rounded-[28px]" style={`background:${p.couleurFond};`}>
-            <div class="relative overflow-hidden aspect-[5/4]">
-              <img src={photos[i] ?? photos[0]} alt={p.nom}
-                   class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1100ms] ease-out group-hover:scale-[1.08] group-hover:rotate-[1deg]"
-                   loading="lazy" width="600" height="480" />
-              <span class="absolute top-4 left-4 inline-flex items-center px-3 py-1 rounded-full text-[10px] uppercase tracking-[0.22em] font-bold" style={`background:${p.couleur}; color:${p.couleur === '#FFF8E7' || p.couleur === '#FFD93D' ? '#3D2817' : '#FFF6E2'};`}>
+            <!-- Bandeau couleur signature + grande boule SVG (plus de photo) -->
+            <div class="relative aspect-[5/4] flex items-end justify-center overflow-hidden" style={`background:${p.couleur};`}>
+              <!-- Pattern points discret -->
+              <div class="absolute inset-0 opacity-20" style="background-image:radial-gradient(circle, #ffffff 1px, transparent 1.5px);background-size:14px 14px;" aria-hidden="true"></div>
+              <!-- Grande boule de glace SVG -->
+              <svg viewBox="0 0 200 200" class="relative w-3/4 h-3/4 -mb-6 transition-transform duration-700 group-hover:-translate-y-2" aria-hidden="true">
+                <circle cx="100" cy="110" r="68" fill={p.couleurFond} opacity="0.95"/>
+                <ellipse cx="80" cy="92" rx="18" ry="8" fill="#FFF6E2" opacity="0.42"/>
+                <circle cx="100" cy="110" r="68" fill="none" stroke={p.couleurFond} stroke-width="1.5" opacity="0.6"/>
+              </svg>
+              <span class="absolute top-4 left-4 inline-flex items-center px-3 py-1 rounded-full text-[10px] uppercase tracking-[0.22em] font-bold" style={`background:${p.couleurFond}; color:#3D2817;`}>
                 {p.type}
               </span>
               <span class="absolute top-4 right-4 inline-flex items-center px-3 py-1 rounded-full text-[10px] uppercase tracking-[0.22em] font-bold" style="background:#FFF6E2; color:#3D2817;">
                 {p.saison}
               </span>
-              <span class="absolute -bottom-6 right-5 block w-14 h-14 rounded-full" style={`background:${p.couleur}; box-shadow:0 0 0 4px ${p.couleurFond};`}></span>
             </div>
             <div class="p-7 flex-1 flex flex-col">
               <h3 class="font-fraunces leading-tight" style="color:#3D2817; font-size:clamp(28px,3.2vw,38px);">{p.nom}</h3>
