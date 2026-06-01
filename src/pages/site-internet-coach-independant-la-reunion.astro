@@ -1,0 +1,270 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/ui/Button.astro';
+import Icon from '../components/ui/Icon.astro';
+import RealisationCard from '../components/exemples/RealisationCard.astro';
+import TarifsBref from '../components/sections/TarifsBref.astro';
+import CTABand from '../components/sections/CTABand.astro';
+import realisations from '../data/exemples.json';
+import { getSeo, absoluteUrl } from '../lib/seo';
+
+const seo = getSeo('siteCoachIndependantReunion');
+
+const SLUGS = ['coach-sportif', 'studio-yoga', 'ecole-de-danse', 'consultant'];
+const selected = SLUGS
+  .map((s) => realisations.find((r) => r.slug === s))
+  .filter(Boolean) as typeof realisations;
+
+const faq = [
+  {
+    q: "Je suis coach sportif indépendant, comment présenter mes offres ?",
+    a: "On structure votre site autour de votre méthode : programmes (perte de poids, prise de masse, préparation course), formules (à la séance, abonnement, en ligne) et créneaux. Le visiteur comprend en 30 secondes si vous êtes le bon coach pour lui.",
+  },
+  {
+    q: "Puis-je proposer un premier échange gratuit en ligne ?",
+    a: "Oui, c'est même fortement recommandé pour les coachs et consultants. On intègre un formulaire de premier échange : questions ciblées sur le besoin, créneau souhaité, puis échange visio ou téléphone — ça filtre les contacts et améliore vos taux de signature.",
+  },
+  {
+    q: "Je suis consultant indépendant — ce qu'on construit est différent d'un coach sportif ?",
+    a: "Le squelette est commun : positionnement clair, offres lisibles, méthode, preuve sociale, premier contact. Mais les contenus, la tonalité et le module métier sont adaptés à votre activité — un coach sportif ne parle pas comme un consultant en stratégie.",
+  },
+  {
+    q: "Vous prenez en charge l'écriture des contenus ?",
+    a: "Oui. On vous interroge sur votre activité, votre clientèle et vos offres. Vous fournissez la matière brute, on écrit les textes pour qu'ils soient clairs, professionnels et orientés vers vos prospects.",
+  },
+  {
+    q: "Est-ce que mon site peut gérer plusieurs offres et formules ?",
+    a: "Bien sûr. On présente vos formules (à la séance, par pack, en abonnement, en visio, en présentiel) avec des tarifs clairs ou des fourchettes — et un CTA pour engager la conversation.",
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Création de site internet pour coach et indépendant à La Réunion',
+  serviceType: 'Création de site internet — Coach & Indépendant',
+  provider: { '@type': 'Organization', name: '9site4', url: 'https://9site4.re' },
+  areaServed: { '@type': 'AdministrativeArea', name: 'La Réunion' },
+  url: absoluteUrl(seo.canonical),
+  description: seo.description,
+  offers: { '@type': 'Offer', price: 97.4, priceCurrency: 'EUR', url: 'https://9site4.re/tarifs' },
+};
+---
+
+<BaseLayout seo={seo}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+
+  <div class="bg-black text-blanc-casse">
+    <!-- Hero -->
+    <section class="relative overflow-hidden px-6 pt-28 pb-16 md:pt-36 md:pb-24">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="hero-rise hero-rise-1 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-bleu text-white text-xs font-semibold uppercase tracking-wide">
+          <span class="block w-1.5 h-1.5 rounded-full bg-white/90 animate-pulse"></span>
+          Coachs · Consultants · Formateurs · Indépendants
+        </p>
+        <span class="hero-rise hero-rise-2 block mx-auto mt-7 h-[3px] w-16 bg-bleu" aria-hidden="true"></span>
+        <h1 class="hero-rise hero-rise-2 mt-5 font-sora font-bold text-balance leading-[1.08] text-[clamp(2.25rem,4vw+1rem,4rem)] tracking-tight text-blanc-casse">
+          Site internet pour coach et indépendant
+          <span class="block italic font-medium text-bleu">à La Réunion.</span>
+        </h1>
+        <p class="hero-rise hero-rise-4 mx-auto mt-7 max-w-2xl text-lg md:text-xl text-blanc-casse/80 leading-relaxed">
+          9site4 crée des sites professionnels pour coachs, consultants, formateurs et indépendants à La Réunion : offres, programmes, premier échange et gestion continue.
+        </p>
+        <div class="hero-rise hero-rise-5 mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+          <Button variant="primary" size="lg" href="/contact">
+            Créer mon site avec 9site4
+            <Icon name="arrow-right" size={20} strokeWidth={2.25} />
+          </Button>
+          <a href="/exemples" class="inline-flex items-center justify-center gap-2 h-14 px-8 text-lg font-semibold rounded-full text-bleu hover:text-blanc-casse transition-colors">
+            Voir nos réalisations
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pourquoi -->
+    <section class="relative px-6 py-16 md:py-24">
+      <div class="mx-auto max-w-5xl">
+        <div class="text-center max-w-3xl mx-auto">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-bleu"></span> Le besoin
+          </p>
+          <h2 class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl lg:text-5xl text-blanc-casse text-balance leading-[1.12]">
+            Un indépendant à La Réunion
+            <span class="block italic font-medium text-bleu">se vend d'abord par son site.</span>
+          </h2>
+          <p class="scroll-reveal mt-6 text-base md:text-lg text-blanc-casse/70 leading-relaxed">
+            Sans local visible, sans équipe pour répondre, votre site est votre premier rendez-vous avec un prospect. Il doit dire qui vous êtes, ce que vous proposez et pourquoi vous choisir — sans détour.
+          </p>
+        </div>
+
+        <ul class="scroll-reveal mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {[
+            { i: 'monitor', t: 'Votre positionnement clair', d: "Pour qui vous travaillez, sur quoi vous intervenez, ce qui vous différencie." },
+            { i: 'file-text', t: 'Vos offres lisibles', d: 'Séance, programme, abonnement, formation — chaque option a sa place.' },
+            { i: 'shield-check', t: 'Preuve de sérieux', d: "Certifications, parcours, références, témoignages structurés." },
+            { i: 'calendar-check', t: 'Premier échange facilité', d: "Visio, téléphone, café — un formulaire qui qualifie le besoin avant l'échange." },
+            { i: 'map-pin', t: 'Local ou en ligne', d: "Saint-Denis, Saint-Pierre, à distance — vos zones d'intervention claires." },
+            { i: 'calendar-clock', t: 'Gestion continue', d: 'Nouvelles offres, témoignages, articles : 9site4 met à jour pour vous.' },
+          ].map((item) => (
+            <li class="rounded-2xl p-6"
+              style="background: linear-gradient(180deg, #14161F 0%, #0A0B12 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 12px 30px -16px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08);">
+              <span class="flex w-11 h-11 items-center justify-center rounded-xl bg-bleu/15 text-bleu">
+                <Icon name={item.i} size={20} strokeWidth={1.75} />
+              </span>
+              <p class="mt-4 font-sora font-semibold text-blanc-casse">{item.t}</p>
+              <p class="mt-2 text-sm text-blanc-casse/70 leading-relaxed">{item.d}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- Ce que 9site4 structure -->
+    <section class="relative px-6 py-16 md:py-24">
+      <div class="mx-auto max-w-5xl">
+        <div class="text-center max-w-3xl mx-auto">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-bleu"></span> Ce que 9site4 structure
+          </p>
+          <h2 class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl lg:text-5xl text-blanc-casse text-balance leading-[1.12]">
+            Un site sérieux,
+            <span class="block italic font-medium text-bleu">vendeur, à votre image.</span>
+          </h2>
+        </div>
+
+        <ol class="scroll-reveal mt-12 grid md:grid-cols-2 gap-5">
+          {[
+            { n: '01', t: 'Présentation personnelle', d: "Qui vous êtes, votre parcours, votre approche du métier." },
+            { n: '02', t: 'Vos offres et programmes', d: "Séances, packs, abonnements, formations, durée, tarifs." },
+            { n: '03', t: 'Votre méthode', d: 'Comment vous travaillez, étapes, livrables, suivi.' },
+            { n: '04', t: 'Témoignages et résultats', d: 'Cas concrets, retours clients structurés, indicateurs si pertinent.' },
+            { n: '05', t: 'Zone et modalités', d: 'Présentiel, visio, domicile, salle, en entreprise.' },
+            { n: '06', t: 'Module premier échange', d: 'Formulaire qualifié + calendrier ou appel direct.' },
+          ].map((s) => (
+            <li class="rounded-2xl p-6"
+              style="background: linear-gradient(180deg, #14161F 0%, #0A0B12 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 12px 30px -16px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08);">
+              <p class="font-roboto-mono text-bleu text-sm font-semibold tracking-widest">{s.n}</p>
+              <p class="mt-2 font-sora font-semibold text-lg text-blanc-casse">{s.t}</p>
+              <p class="mt-2 text-sm text-blanc-casse/70 leading-relaxed">{s.d}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <!-- Module métier -->
+    <section class="relative px-6 py-16 md:py-24">
+      <div class="mx-auto max-w-5xl">
+        <div class="text-center max-w-3xl mx-auto">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-bleu"></span> Module métier
+          </p>
+          <h2 class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl lg:text-5xl text-blanc-casse text-balance leading-[1.12]">
+            Le premier échange
+            <span class="block italic font-medium text-bleu">au cœur du site.</span>
+          </h2>
+          <p class="scroll-reveal mt-6 text-base md:text-lg text-blanc-casse/70 leading-relaxed">
+            Pour un coach ou un consultant, la conversion ne se joue pas au panier — elle se joue au premier appel. Le site doit l'organiser proprement.
+          </p>
+        </div>
+
+        <ul class="scroll-reveal mt-12 grid sm:grid-cols-2 gap-5">
+          {[
+            { i: 'calendar-check', t: 'Premier échange qualifié', d: 'Questions ciblées + créneau réservé en ligne.' },
+            { i: 'file-text', t: 'Demande inscription / programme', d: "Formulaire détaillé adapté à votre type d'offre." },
+            { i: 'monitor', t: 'Compatible Calendly / outils', d: "Si vous utilisez déjà un outil de prise de RDV, on l'intègre proprement." },
+            { i: 'map-pin', t: 'Contact direct', d: 'WhatsApp, email, téléphone — selon vos préférences.' },
+          ].map((m) => (
+            <li class="rounded-2xl p-6"
+              style="background: linear-gradient(180deg, #14161F 0%, #0A0B12 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 12px 30px -16px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08);">
+              <span class="flex w-11 h-11 items-center justify-center rounded-xl bg-bleu/15 text-bleu">
+                <Icon name={m.i} size={20} strokeWidth={1.75} />
+              </span>
+              <p class="mt-4 font-sora font-semibold text-blanc-casse">{m.t}</p>
+              <p class="mt-2 text-sm text-blanc-casse/70 leading-relaxed">{m.d}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- Réalisations -->
+    <section class="relative px-6 py-16 md:py-24">
+      <div class="mx-auto max-w-content">
+        <div class="text-center max-w-3xl mx-auto">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-bleu"></span> Nos réalisations
+          </p>
+          <h2 class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl lg:text-5xl text-blanc-casse text-balance leading-[1.12]">
+            Coachs, studios, consultants
+            <span class="block italic font-medium text-bleu">conçus par 9site4.</span>
+          </h2>
+        </div>
+        <ul class="scroll-reveal mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {selected.map((r) => (
+            <li><RealisationCard realisation={r} /></li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <TarifsBref />
+
+    <!-- FAQ -->
+    <section class="relative px-6 py-16 md:py-24">
+      <div class="mx-auto max-w-3xl">
+        <div class="text-center">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-bleu"></span> Questions fréquentes
+          </p>
+          <h2 class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl lg:text-5xl text-blanc-casse text-balance leading-[1.12]">
+            Ce qu'on nous demande
+            <span class="block italic font-medium text-bleu">côté indépendants.</span>
+          </h2>
+        </div>
+        <div class="mt-12 space-y-3">
+          {faq.map((item) => (
+            <details class="group rounded-2xl p-5 md:p-6"
+              style="background: linear-gradient(180deg, #14161F 0%, #0A0B12 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 12px 30px -16px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08);">
+              <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
+                <span class="font-sora font-semibold text-blanc-casse">{item.q}</span>
+                <span class="shrink-0 text-bleu transition-transform duration-300 group-open:rotate-45">
+                  <Icon name="arrow-right" size={18} strokeWidth={2.25} />
+                </span>
+              </summary>
+              <p class="mt-4 text-sm md:text-base text-blanc-casse/75 leading-relaxed">{item.a}</p>
+            </details>
+          ))}
+        </div>
+
+        <p class="scroll-reveal mt-12 text-center text-sm text-blanc-casse/65">
+          Voir aussi&nbsp;:
+          <a href="/site-internet-bien-etre-sante-la-reunion" class="text-bleu hover:underline">site pour praticien bien-être</a>
+          ·
+          <a href="/site-internet-profession-liberale-la-reunion" class="text-bleu hover:underline">site pour profession libérale</a>
+          ·
+          <a href="/creation-site-internet-la-reunion" class="text-bleu hover:underline">création de site à La Réunion</a>
+          ·
+          <a href="/tarifs" class="text-bleu hover:underline">tarifs</a>
+          ·
+          <a href="/exemples" class="text-bleu hover:underline">réalisations</a>
+          ·
+          <a href="/contact" class="text-bleu hover:underline">contact</a>.
+        </p>
+      </div>
+    </section>
+
+    <CTABand />
+  </div>
+</BaseLayout>
