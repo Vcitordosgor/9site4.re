@@ -1,0 +1,272 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/ui/Button.astro';
+import Icon from '../components/ui/Icon.astro';
+import RealisationCard from '../components/exemples/RealisationCard.astro';
+import TarifsBref from '../components/sections/TarifsBref.astro';
+import CTABand from '../components/sections/CTABand.astro';
+import realisations from '../data/exemples.json';
+import { getSeo, absoluteUrl } from '../lib/seo';
+
+const seo = getSeo('siteBienEtreSanteReunion');
+
+const SLUGS = [
+  'cabinet-osteopathie',
+  'naturopathe',
+  'dieteticienne',
+  'psychologue',
+  'coach-sportif',
+  'studio-yoga',
+];
+const selected = SLUGS
+  .map((s) => realisations.find((r) => r.slug === s))
+  .filter(Boolean) as typeof realisations;
+
+const faq = [
+  {
+    q: 'Je suis ostéo / naturo / diététicienne — mon code de déontologie m\'impose des règles. Vous savez les respecter ?',
+    a: "Oui. On respecte les obligations propres à chaque profession : pas de promesses de guérison, pas d'avant/après médicalisés, mentions des diplômes, distinction claire avec les actes médicaux pour les non-soignants. Vous validez chaque contenu.",
+  },
+  {
+    q: 'Comment vous différenciez santé (ostéo, psy, naturo) et sport / yoga / danse ?',
+    a: "Même structure de site, mais le ton et le module métier s'adaptent : RDV individuel pour la santé, planning de cours collectifs + inscription pour le yoga, la danse ou le coaching. On choisit ensemble selon votre flux.",
+  },
+  {
+    q: 'Puis-je intégrer Doctolib, Crénolibre ou un autre outil de RDV existant ?',
+    a: "Oui. Si vous utilisez déjà Doctolib, Crénolibre, Calendly ou autre, on intègre proprement le bouton ou le widget. Sinon, on met en place un formulaire de prise de RDV simple, sans abonnement supplémentaire.",
+  },
+  {
+    q: 'Je donne des cours / ateliers — comment c\'est présenté ?',
+    a: "On structure un planning des cours (jour, heure, type, professeur, salle) avec un bouton d'inscription par séance ou par cycle. Idéal pour yoga, pilates, danse, méditation, ateliers nutrition.",
+  },
+  {
+    q: 'Combien de temps avant la mise en ligne ?',
+    a: "Environ 7 jours entre le brief et la mise en ligne. Vous continuez à accompagner vos patients ou élèves, on construit votre site.",
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Création de site internet pour praticien bien-être et santé à La Réunion',
+  serviceType: 'Création de site internet — Bien-être & santé',
+  provider: { '@type': 'Organization', name: '9site4', url: 'https://9site4.re' },
+  areaServed: { '@type': 'AdministrativeArea', name: 'La Réunion' },
+  url: absoluteUrl(seo.canonical),
+  description: seo.description,
+  offers: { '@type': 'Offer', price: 97.4, priceCurrency: 'EUR', url: 'https://9site4.re/tarifs' },
+};
+---
+
+<BaseLayout seo={seo}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+
+  <div class="bg-black text-blanc-casse">
+    <!-- Hero -->
+    <section class="relative overflow-hidden px-6 pt-28 pb-16 md:pt-36 md:pb-24">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="hero-rise hero-rise-1 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-bleu text-white text-xs font-semibold uppercase tracking-wide">
+          <span class="block w-1.5 h-1.5 rounded-full bg-white/90 animate-pulse"></span>
+          Ostéo · Naturo · Diét · Psy · Coach · Yoga · Danse
+        </p>
+        <span class="hero-rise hero-rise-2 block mx-auto mt-7 h-[3px] w-16 bg-bleu" aria-hidden="true"></span>
+        <h1 class="hero-rise hero-rise-2 mt-5 font-sora font-bold text-balance leading-[1.08] text-[clamp(2.25rem,4vw+1rem,4rem)] tracking-tight text-blanc-casse">
+          Site internet pour praticien bien-être et santé
+          <span class="block italic font-medium text-bleu">à La Réunion.</span>
+        </h1>
+        <p class="hero-rise hero-rise-4 mx-auto mt-7 max-w-2xl text-lg md:text-xl text-blanc-casse/80 leading-relaxed">
+          9site4 crée des sites professionnels pour ostéopathes, naturopathes, diététiciens, coachs sportifs, yoga, danse et professionnels du bien-être à La Réunion : prestations, rendez-vous et gestion continue.
+        </p>
+        <div class="hero-rise hero-rise-5 mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+          <Button variant="primary" size="lg" href="/contact">
+            Créer mon site avec 9site4
+            <Icon name="arrow-right" size={20} strokeWidth={2.25} />
+          </Button>
+          <a href="/exemples" class="inline-flex items-center justify-center gap-2 h-14 px-8 text-lg font-semibold rounded-full text-bleu hover:text-blanc-casse transition-colors">
+            Voir nos réalisations
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pourquoi -->
+    <section class="relative px-6 py-16 md:py-24">
+      <div class="mx-auto max-w-5xl">
+        <div class="text-center max-w-3xl mx-auto">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-bleu"></span> Le besoin
+          </p>
+          <h2 class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl lg:text-5xl text-blanc-casse text-balance leading-[1.12]">
+            Un praticien bien-être ou santé
+            <span class="block italic font-medium text-bleu">se choisit avec attention.</span>
+          </h2>
+          <p class="scroll-reveal mt-6 text-base md:text-lg text-blanc-casse/70 leading-relaxed">
+            Avant de prendre RDV chez un ostéo, une naturopathe ou de s'inscrire à un cours de yoga, on vérifie le parcours, la méthode, le cadre, les tarifs, les horaires. Un site clair et bienveillant pose la confiance — et facilite le premier pas.
+          </p>
+        </div>
+
+        <ul class="scroll-reveal mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {[
+            { i: 'shield-check', t: 'Parcours & diplômes', d: "Formation, écoles, années d'expérience, démarche personnelle." },
+            { i: 'file-text', t: 'Approche & méthode', d: 'Comment se déroule une séance, à qui ça s\'adresse, ce que ça ne remplace pas.' },
+            { i: 'monitor', t: 'Cabinet ou studio', d: 'Photos du lieu, ambiance, accès, confidentialité.' },
+            { i: 'calendar-check', t: 'Prise de RDV simple', d: "Doctolib, Crénolibre, Calendly ou formulaire — selon votre outil." },
+            { i: 'calendar-clock', t: 'Planning des cours', d: 'Pour yoga, pilates, danse, coaching : planning lisible et inscription rapide.' },
+            { i: 'map-pin', t: 'Tarifs & modalités', d: 'Honoraires affichés, remboursement mutuelle, modalités de paiement.' },
+          ].map((item) => (
+            <li class="rounded-2xl p-6"
+              style="background: linear-gradient(180deg, #14161F 0%, #0A0B12 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 12px 30px -16px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08);">
+              <span class="flex w-11 h-11 items-center justify-center rounded-xl bg-bleu/15 text-bleu">
+                <Icon name={item.i} size={20} strokeWidth={1.75} />
+              </span>
+              <p class="mt-4 font-sora font-semibold text-blanc-casse">{item.t}</p>
+              <p class="mt-2 text-sm text-blanc-casse/70 leading-relaxed">{item.d}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- Ce que 9site4 structure -->
+    <section class="relative px-6 py-16 md:py-24">
+      <div class="mx-auto max-w-5xl">
+        <div class="text-center max-w-3xl mx-auto">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-bleu"></span> Ce que 9site4 structure
+          </p>
+          <h2 class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl lg:text-5xl text-blanc-casse text-balance leading-[1.12]">
+            Tout ce dont
+            <span class="block italic font-medium text-bleu">votre activité a besoin.</span>
+          </h2>
+        </div>
+
+        <ol class="scroll-reveal mt-12 grid md:grid-cols-2 gap-5">
+          {[
+            { n: '01', t: 'Présentation du praticien', d: "Parcours, démarche, valeurs, ce qui guide votre pratique." },
+            { n: '02', t: 'Approche & séances', d: "Comment se déroule une séance, durée, déroulé, à qui c'est adapté." },
+            { n: '03', t: 'Prestations & tarifs', d: 'Bilan, séance individuelle, suivi, cours collectifs, cures.' },
+            { n: '04', t: 'Cabinet ou studio', d: 'Photos du lieu, accès, parking, ambiance.' },
+            { n: '05', t: 'Module RDV ou inscription', d: "Prise de RDV individuelle, ou planning de cours et inscription en ligne." },
+            { n: '06', t: 'Mentions & cadre', d: "Diplômes, distinction acte médical, charte éthique le cas échéant." },
+          ].map((s) => (
+            <li class="rounded-2xl p-6"
+              style="background: linear-gradient(180deg, #14161F 0%, #0A0B12 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 12px 30px -16px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08);">
+              <p class="font-roboto-mono text-bleu text-sm font-semibold tracking-widest">{s.n}</p>
+              <p class="mt-2 font-sora font-semibold text-lg text-blanc-casse">{s.t}</p>
+              <p class="mt-2 text-sm text-blanc-casse/70 leading-relaxed">{s.d}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <!-- Module métier -->
+    <section class="relative px-6 py-16 md:py-24">
+      <div class="mx-auto max-w-5xl">
+        <div class="text-center max-w-3xl mx-auto">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-bleu"></span> Module métier
+          </p>
+          <h2 class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl lg:text-5xl text-blanc-casse text-balance leading-[1.12]">
+            Rendez-vous, planning, inscription —
+            <span class="block italic font-medium text-bleu">selon votre activité.</span>
+          </h2>
+        </div>
+
+        <ul class="scroll-reveal mt-12 grid sm:grid-cols-2 gap-5">
+          {[
+            { i: 'calendar-check', t: 'Prise de RDV individuelle', d: 'Pour ostéo, naturo, diét, psy, coach : créneaux ouverts ou formulaire qualifié.' },
+            { i: 'monitor', t: 'Compatible Doctolib & autres', d: "Si vous utilisez Doctolib, Crénolibre, Calendly — on intègre proprement votre widget." },
+            { i: 'calendar-clock', t: 'Planning des cours collectifs', d: "Pour yoga, danse, pilates : planning lisible, inscription par séance ou cycle." },
+            { i: 'file-text', t: 'Premier échange découverte', d: 'Formulaire de contact pour échanger avant le premier RDV — utile en psy, naturo, coaching.' },
+          ].map((m) => (
+            <li class="rounded-2xl p-6"
+              style="background: linear-gradient(180deg, #14161F 0%, #0A0B12 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 12px 30px -16px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08);">
+              <span class="flex w-11 h-11 items-center justify-center rounded-xl bg-bleu/15 text-bleu">
+                <Icon name={m.i} size={20} strokeWidth={1.75} />
+              </span>
+              <p class="mt-4 font-sora font-semibold text-blanc-casse">{m.t}</p>
+              <p class="mt-2 text-sm text-blanc-casse/70 leading-relaxed">{m.d}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- Réalisations -->
+    <section class="relative px-6 py-16 md:py-24">
+      <div class="mx-auto max-w-content">
+        <div class="text-center max-w-3xl mx-auto">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-bleu"></span> Nos réalisations
+          </p>
+          <h2 class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl lg:text-5xl text-blanc-casse text-balance leading-[1.12]">
+            Praticiens santé, coachs, studios
+            <span class="block italic font-medium text-bleu">conçus par 9site4.</span>
+          </h2>
+        </div>
+        <ul class="scroll-reveal mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {selected.map((r) => (
+            <li><RealisationCard realisation={r} /></li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <TarifsBref />
+
+    <!-- FAQ -->
+    <section class="relative px-6 py-16 md:py-24">
+      <div class="mx-auto max-w-3xl">
+        <div class="text-center">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-bleu"></span> Questions fréquentes
+          </p>
+          <h2 class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl lg:text-5xl text-blanc-casse text-balance leading-[1.12]">
+            Ce qu'on nous demande
+            <span class="block italic font-medium text-bleu">côté bien-être & santé.</span>
+          </h2>
+        </div>
+        <div class="mt-12 space-y-3">
+          {faq.map((item) => (
+            <details class="group rounded-2xl p-5 md:p-6"
+              style="background: linear-gradient(180deg, #14161F 0%, #0A0B12 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 12px 30px -16px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08);">
+              <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
+                <span class="font-sora font-semibold text-blanc-casse">{item.q}</span>
+                <span class="shrink-0 text-bleu transition-transform duration-300 group-open:rotate-45">
+                  <Icon name="arrow-right" size={18} strokeWidth={2.25} />
+                </span>
+              </summary>
+              <p class="mt-4 text-sm md:text-base text-blanc-casse/75 leading-relaxed">{item.a}</p>
+            </details>
+          ))}
+        </div>
+
+        <p class="scroll-reveal mt-12 text-center text-sm text-blanc-casse/65">
+          Voir aussi&nbsp;:
+          <a href="/site-internet-institut-beaute-spa-la-reunion" class="text-bleu hover:underline">site pour institut & spa</a>
+          ·
+          <a href="/site-internet-profession-liberale-la-reunion" class="text-bleu hover:underline">site pour profession libérale</a>
+          ·
+          <a href="/creation-site-internet-la-reunion" class="text-bleu hover:underline">création de site à La Réunion</a>
+          ·
+          <a href="/tarifs" class="text-bleu hover:underline">tarifs</a>
+          ·
+          <a href="/contact" class="text-bleu hover:underline">contact</a>.
+        </p>
+      </div>
+    </section>
+
+    <CTABand />
+  </div>
+</BaseLayout>

@@ -1,0 +1,270 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/ui/Button.astro';
+import Icon from '../components/ui/Icon.astro';
+import RealisationCard from '../components/exemples/RealisationCard.astro';
+import TarifsBref from '../components/sections/TarifsBref.astro';
+import CTABand from '../components/sections/CTABand.astro';
+import realisations from '../data/exemples.json';
+import { getSeo, absoluteUrl } from '../lib/seo';
+
+const seo = getSeo('siteProfessionLiberaleReunion');
+
+const SLUGS = [
+  'avocat-cabinet',
+  'etude-notariale',
+  'cabinet-comptable',
+  'consultant',
+  'architecte',
+  'auto-ecole',
+];
+const selected = SLUGS
+  .map((s) => realisations.find((r) => r.slug === s))
+  .filter(Boolean) as typeof realisations;
+
+const faq = [
+  {
+    q: 'Je suis avocat / notaire — les ordres encadrent ce que je peux dire sur mon site. Vous connaissez les règles ?',
+    a: "Oui. On respecte les obligations déontologiques (CNB pour les avocats, CSN pour les notaires) : pas de comparaison, pas de témoignages clients nominatifs, mentions obligatoires, honoraires conformes. Vous validez chaque page avant publication.",
+  },
+  {
+    q: 'Mon cabinet a plusieurs associés et collaborateurs — comment c\'est structuré ?',
+    a: "Chaque associé a sa fiche : photo, parcours, domaines d'intervention, langues parlées. On peut hiérarchiser (associés / collaborateurs / juristes) et lier chaque fiche aux domaines de droit ou aux services concernés.",
+  },
+  {
+    q: 'Puis-je proposer une prise de rendez-vous en ligne ?',
+    a: "Oui. Selon votre fonctionnement : créneaux ouverts pour un premier échange découverte, formulaire de qualification (objet, urgence, préférence présentiel/visio), ou simple contact avec rappel par votre secrétariat. On adapte au niveau de filtre que vous souhaitez.",
+  },
+  {
+    q: 'Vos sites sont-ils adaptés aux consultants, architectes, experts indépendants ?',
+    a: "Bien sûr. L'approche est la même : présenter votre expertise, vos références, votre méthode, vos tarifs ou modalités, et capter un premier échange via un formulaire ou une prise de rendez-vous découverte.",
+  },
+  {
+    q: 'Combien de temps avant la mise en ligne ?',
+    a: "Environ 7 jours entre le brief et la mise en ligne. Vous traitez vos dossiers, on construit votre site.",
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Création de site internet pour profession libérale à La Réunion',
+  serviceType: 'Création de site internet — Professions libérales',
+  provider: { '@type': 'Organization', name: '9site4', url: 'https://9site4.re' },
+  areaServed: { '@type': 'AdministrativeArea', name: 'La Réunion' },
+  url: absoluteUrl(seo.canonical),
+  description: seo.description,
+  offers: { '@type': 'Offer', price: 97.4, priceCurrency: 'EUR', url: 'https://9site4.re/tarifs' },
+};
+---
+
+<BaseLayout seo={seo}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+
+  <div class="bg-black text-blanc-casse">
+    <!-- Hero -->
+    <section class="relative overflow-hidden px-6 pt-28 pb-16 md:pt-36 md:pb-24">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="hero-rise hero-rise-1 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-bleu text-white text-xs font-semibold uppercase tracking-wide">
+          <span class="block w-1.5 h-1.5 rounded-full bg-white/90 animate-pulse"></span>
+          Avocats · Notaires · Experts-comptables · Consultants · Architectes
+        </p>
+        <span class="hero-rise hero-rise-2 block mx-auto mt-7 h-[3px] w-16 bg-bleu" aria-hidden="true"></span>
+        <h1 class="hero-rise hero-rise-2 mt-5 font-sora font-bold text-balance leading-[1.08] text-[clamp(2.25rem,4vw+1rem,4rem)] tracking-tight text-blanc-casse">
+          Site internet pour profession libérale
+          <span class="block italic font-medium text-bleu">à La Réunion.</span>
+        </h1>
+        <p class="hero-rise hero-rise-4 mx-auto mt-7 max-w-2xl text-lg md:text-xl text-blanc-casse/80 leading-relaxed">
+          9site4 crée des sites professionnels pour avocats, notaires, experts-comptables, consultants et architectes à La Réunion : présentation, méthode et prise de rendez-vous.
+        </p>
+        <div class="hero-rise hero-rise-5 mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+          <Button variant="primary" size="lg" href="/contact">
+            Créer mon site avec 9site4
+            <Icon name="arrow-right" size={20} strokeWidth={2.25} />
+          </Button>
+          <a href="/exemples" class="inline-flex items-center justify-center gap-2 h-14 px-8 text-lg font-semibold rounded-full text-bleu hover:text-blanc-casse transition-colors">
+            Voir nos réalisations
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pourquoi -->
+    <section class="relative px-6 py-16 md:py-24">
+      <div class="mx-auto max-w-5xl">
+        <div class="text-center max-w-3xl mx-auto">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-bleu"></span> Le besoin
+          </p>
+          <h2 class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl lg:text-5xl text-blanc-casse text-balance leading-[1.12]">
+            Une profession libérale
+            <span class="block italic font-medium text-bleu">vend d'abord la confiance.</span>
+          </h2>
+          <p class="scroll-reveal mt-6 text-base md:text-lg text-blanc-casse/70 leading-relaxed">
+            Un client ne choisit pas un avocat, un notaire ou un expert-comptable au hasard. Il vérifie le sérieux du cabinet, les domaines d'intervention, l'équipe, la clarté des honoraires. Un site bien structuré renforce votre crédibilité avant le premier rendez-vous.
+          </p>
+        </div>
+
+        <ul class="scroll-reveal mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {[
+            { i: 'shield-check', t: 'Crédibilité immédiate', d: "Design sobre, hiérarchie claire, ton professionnel — pas de fioritures." },
+            { i: 'file-text', t: 'Domaines d\'intervention', d: 'Droit de la famille, affaires, succession, audit, conseil… présentés clairement.' },
+            { i: 'monitor', t: 'Présentation de l\'équipe', d: 'Associés, collaborateurs : photo, parcours, spécialités, langues.' },
+            { i: 'calendar-check', t: 'Premier échange organisé', d: 'Formulaire de qualification ou prise de rendez-vous, selon votre filtrage.' },
+            { i: 'map-pin', t: 'Cabinet & accès', d: 'Adresse, parking, accès TPMR, horaires du secrétariat.' },
+            { i: 'shield-check', t: 'Conformité déontologique', d: "Mentions obligatoires, honoraires conformes, respect des règles de l'ordre." },
+          ].map((item) => (
+            <li class="rounded-2xl p-6"
+              style="background: linear-gradient(180deg, #14161F 0%, #0A0B12 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 12px 30px -16px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08);">
+              <span class="flex w-11 h-11 items-center justify-center rounded-xl bg-bleu/15 text-bleu">
+                <Icon name={item.i} size={20} strokeWidth={1.75} />
+              </span>
+              <p class="mt-4 font-sora font-semibold text-blanc-casse">{item.t}</p>
+              <p class="mt-2 text-sm text-blanc-casse/70 leading-relaxed">{item.d}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- Ce que 9site4 structure -->
+    <section class="relative px-6 py-16 md:py-24">
+      <div class="mx-auto max-w-5xl">
+        <div class="text-center max-w-3xl mx-auto">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-bleu"></span> Ce que 9site4 structure
+          </p>
+          <h2 class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl lg:text-5xl text-blanc-casse text-balance leading-[1.12]">
+            Tout ce dont
+            <span class="block italic font-medium text-bleu">votre cabinet a besoin.</span>
+          </h2>
+        </div>
+
+        <ol class="scroll-reveal mt-12 grid md:grid-cols-2 gap-5">
+          {[
+            { n: '01', t: 'Présentation du cabinet', d: "Histoire, valeurs, positionnement, type de clientèle accompagnée." },
+            { n: '02', t: 'Domaines d\'intervention', d: "Une page claire par domaine : droit de la famille, affaires, succession, audit, conseil, projets d'architecture." },
+            { n: '03', t: 'Associés & équipe', d: 'Fiches nominatives : parcours, barreau, langues, spécialités.' },
+            { n: '04', t: 'Méthode & honoraires', d: "Comment se déroule un dossier, modalités de facturation, honoraires conformes." },
+            { n: '05', t: 'Module premier échange', d: 'Formulaire qualifié ou prise de rendez-vous découverte.' },
+            { n: '06', t: 'Infos pratiques', d: 'Adresse, secrétariat, urgences, modalités de contact.' },
+          ].map((s) => (
+            <li class="rounded-2xl p-6"
+              style="background: linear-gradient(180deg, #14161F 0%, #0A0B12 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 12px 30px -16px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08);">
+              <p class="font-roboto-mono text-bleu text-sm font-semibold tracking-widest">{s.n}</p>
+              <p class="mt-2 font-sora font-semibold text-lg text-blanc-casse">{s.t}</p>
+              <p class="mt-2 text-sm text-blanc-casse/70 leading-relaxed">{s.d}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <!-- Module métier -->
+    <section class="relative px-6 py-16 md:py-24">
+      <div class="mx-auto max-w-5xl">
+        <div class="text-center max-w-3xl mx-auto">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-bleu"></span> Module métier
+          </p>
+          <h2 class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl lg:text-5xl text-blanc-casse text-balance leading-[1.12]">
+            Premier échange, rendez-vous, qualification —
+            <span class="block italic font-medium text-bleu">selon votre filtrage.</span>
+          </h2>
+        </div>
+
+        <ul class="scroll-reveal mt-12 grid sm:grid-cols-2 gap-5">
+          {[
+            { i: 'calendar-check', t: 'RDV découverte en ligne', d: 'Créneaux ouverts pour un premier échange (téléphone, visio ou cabinet).' },
+            { i: 'file-text', t: 'Formulaire qualifié', d: "Objet de la demande, urgence, pièces existantes — votre secrétariat reçoit un dossier déjà cadré." },
+            { i: 'shield-check', t: 'Contact filtré', d: "Si vous préférez tout filtrer manuellement : formulaire sobre, rappel par le secrétariat." },
+            { i: 'map-pin', t: 'Coordonnées du cabinet', d: 'Téléphone, mail dédié, adresse, accès — toujours visibles, toujours à jour.' },
+          ].map((m) => (
+            <li class="rounded-2xl p-6"
+              style="background: linear-gradient(180deg, #14161F 0%, #0A0B12 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 12px 30px -16px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08);">
+              <span class="flex w-11 h-11 items-center justify-center rounded-xl bg-bleu/15 text-bleu">
+                <Icon name={m.i} size={20} strokeWidth={1.75} />
+              </span>
+              <p class="mt-4 font-sora font-semibold text-blanc-casse">{m.t}</p>
+              <p class="mt-2 text-sm text-blanc-casse/70 leading-relaxed">{m.d}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- Réalisations -->
+    <section class="relative px-6 py-16 md:py-24">
+      <div class="mx-auto max-w-content">
+        <div class="text-center max-w-3xl mx-auto">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-bleu"></span> Nos réalisations
+          </p>
+          <h2 class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl lg:text-5xl text-blanc-casse text-balance leading-[1.12]">
+            Cabinets, études, consultants
+            <span class="block italic font-medium text-bleu">conçus par 9site4.</span>
+          </h2>
+        </div>
+        <ul class="scroll-reveal mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {selected.map((r) => (
+            <li><RealisationCard realisation={r} /></li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <TarifsBref />
+
+    <!-- FAQ -->
+    <section class="relative px-6 py-16 md:py-24">
+      <div class="mx-auto max-w-3xl">
+        <div class="text-center">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-bleu"></span> Questions fréquentes
+          </p>
+          <h2 class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl lg:text-5xl text-blanc-casse text-balance leading-[1.12]">
+            Ce qu'on nous demande
+            <span class="block italic font-medium text-bleu">côté professions libérales.</span>
+          </h2>
+        </div>
+        <div class="mt-12 space-y-3">
+          {faq.map((item) => (
+            <details class="group rounded-2xl p-5 md:p-6"
+              style="background: linear-gradient(180deg, #14161F 0%, #0A0B12 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 12px 30px -16px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08);">
+              <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
+                <span class="font-sora font-semibold text-blanc-casse">{item.q}</span>
+                <span class="shrink-0 text-bleu transition-transform duration-300 group-open:rotate-45">
+                  <Icon name="arrow-right" size={18} strokeWidth={2.25} />
+                </span>
+              </summary>
+              <p class="mt-4 text-sm md:text-base text-blanc-casse/75 leading-relaxed">{item.a}</p>
+            </details>
+          ))}
+        </div>
+
+        <p class="scroll-reveal mt-12 text-center text-sm text-blanc-casse/65">
+          Voir aussi&nbsp;:
+          <a href="/site-internet-bien-etre-sante-la-reunion" class="text-bleu hover:underline">site pour praticien bien-être & santé</a>
+          ·
+          <a href="/creation-site-internet-la-reunion" class="text-bleu hover:underline">création de site à La Réunion</a>
+          ·
+          <a href="/tarifs" class="text-bleu hover:underline">tarifs</a>
+          ·
+          <a href="/contact" class="text-bleu hover:underline">contact</a>.
+        </p>
+      </div>
+    </section>
+
+    <CTABand />
+  </div>
+</BaseLayout>
