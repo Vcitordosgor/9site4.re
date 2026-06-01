@@ -291,13 +291,13 @@ export default {
         // Palette wedding — Sève & Sel (Saint-Gilles, cérémonies plage)
         // Ivoire chaleureux + or pâle élégant + corail tropical + lagon turquoise
         // (template /templates/wedding — pas la charte 9site4)
-        'seve-ivoire': '#FAF4EA',  // ivoire chaleureux — fond principal
-        'seve-creme':  '#F4EBD7',  // crème un cran plus saturé — fonds doux
-        'seve-or':     '#C9A96E',  // or pâle — accents, ornements floraux
-        'seve-corail': '#E8826C',  // corail tropical — CTA, accents chaud
-        'seve-lagon':  '#7FCDD8',  // turquoise lagon — accents froids subtils
-        'seve-marine': '#2A3F5C',  // bleu marine profond — texte principal
-        'seve-vert':   '#7A9461',  // vert sauge — feuillage SVG
+        'seve-ivoire': '#F5ECE4',  // ivoire chaleureux — fond principal
+        'seve-creme':  '#EDD6C9',  // crème un cran plus saturé — fonds doux
+        'seve-or':     '#B47358',  // or pâle — accents, ornements floraux
+        'seve-corail': '#9C4A3E',  // corail tropical — CTA, accents chaud
+        'seve-lagon':  '#344B5C',  // turquoise lagon — accents froids subtils
+        'seve-marine': '#2D2520',  // bleu marine profond — texte principal
+        'seve-vert':   '#7B9B7E',  // vert sauge — feuillage SVG
 
         // Palette pâtisserie créole — La Vanille de Bel-Air (Saint-André, Est)
         // Style "vitrine de pâtisserie artisanale, identité créole/vanille
