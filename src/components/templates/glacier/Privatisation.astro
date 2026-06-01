@@ -5,7 +5,7 @@ const formules = data.prive.map((p, i) => ({
   ...p,
   bg: ['#FFE4B8', '#FFD9E1', '#FFF3B8'][i] ?? '#FFE4B8',
   accent: ['#FFB347', '#FF6F91', '#FFD93D'][i] ?? '#FFB347',
-  photo: ['/images/glacier/extra-11.webp', '/images/glacier/extra-12.webp', '/images/glacier/extra-8.webp'][i],
+  photo: ['/images/glacier/privatisation-1.webp', '/images/glacier/privatisation-2.webp', '/images/glacier/privatisation-3.webp'][i],
 }));
 ---
 <section id="prive" class="relative py-24 md:py-36" style="background:#FFB347;">
@@ -64,8 +64,8 @@ const formules = data.prive.map((p, i) => ({
         </ul>
       </div>
       <div class="lg:col-span-6 grid grid-cols-2 gap-3">
-        <img src="/images/glacier/extra-9.webp" alt="Atelier enfants — mains qui versent la pulpe dans la turbine" class="rounded-[24px] aspect-square object-cover" loading="lazy" />
-        <img src="/images/glacier/extra-11.webp" alt="Cornets à la sortie de l'atelier" class="rounded-[24px] aspect-square object-cover mt-8" loading="lazy" />
+        <img src="/images/glacier/atelier-kids.webp" alt="Atelier enfants — mains qui versent la pulpe dans la turbine" class="rounded-[24px] aspect-square object-cover" loading="lazy" />
+        <img src="/images/glacier/privatisation-1.webp" alt="Cornets à la sortie de l'atelier" class="rounded-[24px] aspect-square object-cover mt-8" loading="lazy" />
       </div>
     </div>
 
@@ -73,7 +73,7 @@ const formules = data.prive.map((p, i) => ({
     <div class="mt-16 md:mt-20 grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
       <div class="lg:col-span-5">
         <div class="relative">
-          <img src="/images/glacier/extra-12.webp" alt={`Portrait de ${data.info.fondatrice}, glacière`} class="w-full aspect-[4/5] object-cover rounded-[28px]" loading="lazy" />
+          <img src="/images/glacier/glaciere.webp" alt={`Portrait de ${data.info.fondatrice}, glacière`} class="w-full aspect-[4/5] object-cover rounded-[28px]" loading="lazy" />
           <div class="absolute -bottom-5 -right-5 md:-right-8 w-32 h-32 md:w-36 md:h-36 rounded-full flex items-center justify-center text-center -rotate-12 shadow-[0_18px_44px_-12px_rgba(0,0,0,0.25)]" style="background:#FFD93D; color:#3D2817;">
             <span class="font-fraunces italic text-2xl leading-tight px-2">Léna<br/>{data.info.annee}</span>
           </div>
