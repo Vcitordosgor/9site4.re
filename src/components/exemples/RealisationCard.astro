@@ -148,7 +148,11 @@ const moduleIcon = moduleIcons[realisation.moduleInclus] ?? 'sparkle';
 const moduleColor = moduleColors[realisation.moduleInclus] ?? 'orange';
 ---
 
-<article class="tilt-card group relative bg-bleu-nuit rounded-2xl ring-1 ring-white/10 shadow-card overflow-hidden flex flex-col hover:shadow-card-hover hover:ring-bleu/40 transition-all duration-300">
+<article class="tilt-card group relative rounded-2xl overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-1"
+  style="background: linear-gradient(180deg, #1A1E2C 0%, #14161F 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 18px 40px -22px rgba(0,0,0,0.85), 0 0 0 1px rgba(145,166,255,0.15);"
+  onmouseover="this.style.boxShadow='0 1px 0 rgba(255,255,255,0.08) inset, 0 28px 60px -18px rgba(0,0,0,0.95), 0 0 0 1px rgba(145,166,255,0.45), 0 0 32px -8px rgba(145,166,255,0.35)';"
+  onmouseout="this.style.boxShadow='0 1px 0 rgba(255,255,255,0.06) inset, 0 18px 40px -22px rgba(0,0,0,0.85), 0 0 0 1px rgba(145,166,255,0.15)';"
+>
 
   {realisation.previewUrl && Preview ? (
     <!-- 🖥️ MINI-PREVIEW : la star de la carte, plus grand, avec overlay au survol -->
