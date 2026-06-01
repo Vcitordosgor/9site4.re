@@ -1,27 +1,54 @@
 ---
+import data from '../../../data/templates/spa.json';
 /**
- * Mini-preview Elio Spa — Nature Distilled.
+ * Mini-preview Elio Spa — photo plein cadre rituel.
  */
 ---
 
-<div class="absolute inset-0 bg-spa-creme text-spa-cacao overflow-hidden">
-  <svg class="absolute -right-16 -top-12 opacity-90" width="220" height="220" viewBox="0 0 100 100" aria-hidden="true">
-    <circle cx="50" cy="50" r="46" fill="none" stroke="#C67B5C" stroke-width="0.6" opacity="0.35"/>
-    <circle cx="50" cy="50" r="36" fill="none" stroke="#C67B5C" stroke-width="0.6" opacity="0.45"/>
-    <circle cx="50" cy="50" r="26" fill="none" stroke="#9C5B3D" stroke-width="0.8" opacity="0.55"/>
-    <circle cx="50" cy="50" r="16" fill="#E8C9B8" opacity="0.85"/>
-    <circle cx="50" cy="50" r="8" fill="#C67B5C"/>
-  </svg>
+<div class="absolute inset-0 bg-spa-cacao text-spa-creme overflow-hidden">
 
-  <div class="relative flex items-center justify-between px-3 pt-2">
-    <span class="font-cormorant italic text-spa-cacao text-[10px]">Elio · spa</span>
-    <span class="font-outfit text-[6px] uppercase tracking-[0.25em] text-spa-argile font-semibold">Massages</span>
+  <img
+    src={data.info.photoHero}
+    alt=""
+    class="absolute inset-0 w-full h-full object-cover scale-[1.03]"
+    loading="lazy"
+    decoding="async"
+  />
+
+  <div class="absolute inset-0" aria-hidden="true"
+       style="background:
+         linear-gradient(180deg, rgb(58 47 38 / 0.45) 0%, rgb(58 47 38 / 0.15) 35%, rgb(58 47 38 / 0.15) 55%, rgb(58 47 38 / 0.92) 100%),
+         linear-gradient(90deg, rgb(58 47 38 / 0.40) 0%, transparent 55%);">
   </div>
 
-  <div class="absolute left-3 right-3 bottom-3 max-w-[65%]">
-    <p class="font-outfit text-[5.5px] uppercase tracking-[0.32em] text-spa-argile mb-1">Spa & massages</p>
-    <p class="font-cormorant leading-[0.92] font-medium text-spa-cacao" style="font-size: clamp(18px, 3.8vw, 30px);">Respirer,</p>
-    <p class="font-cormorant italic text-spa-terracotta leading-[0.92]" style="font-size: clamp(18px, 3.8vw, 30px);">se reposer.</p>
-    <span class="mt-1.5 inline-flex items-center h-3 px-2 bg-spa-argile text-spa-creme font-outfit font-semibold text-[6px] uppercase tracking-[0.2em]">Réserver un soin</span>
+  <div class="relative flex items-center justify-between px-3 pt-2">
+    <div class="flex items-baseline gap-0.5">
+      <span class="font-bodoni italic font-light text-spa-creme text-[11px]">Elio</span>
+      <span class="font-bodoni italic font-light text-spa-rose text-[11px]">spa</span>
+    </div>
+    <div class="flex items-center gap-1.5 text-[6px] uppercase tracking-[0.18em] text-spa-creme/85 font-medium">
+      <span>Rituels</span>
+      <span>Soins</span>
+    </div>
+  </div>
+
+  <div class="absolute left-3 right-3 bottom-2.5">
+    <p class="font-raleway font-light text-[5.5px] uppercase tracking-[0.4em] text-spa-rose mb-1">
+      Spa &amp; massages · La Réunion
+    </p>
+    <p class="font-lora text-spa-creme leading-[1.0] font-medium" style="font-size: clamp(14px, 3vw, 24px);">
+      L'art du geste,
+    </p>
+    <p class="font-lora italic font-normal text-spa-rose leading-[1.0]" style="font-size: clamp(14px, 3vw, 24px);">
+      le souffle du temps.
+    </p>
+    <div class="mt-1.5 flex items-center gap-1.5">
+      <span class="inline-flex items-center h-3 px-2 bg-spa-terracotta text-spa-blanc font-raleway font-semibold text-[6.5px] uppercase tracking-[0.18em] rounded-full">
+        Réserver
+      </span>
+      <span class="inline-flex items-center h-3 px-2 ring-1 ring-spa-creme/45 text-spa-creme font-raleway font-semibold text-[6.5px] uppercase tracking-[0.18em] rounded-full">
+        Rituels
+      </span>
+    </div>
   </div>
 </div>

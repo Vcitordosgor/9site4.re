@@ -1,35 +1,62 @@
 ---
 /**
- * Mini-preview Le jardin perdu — magazine éditorial gastronomique.
+ * Mini-preview Le jardin perdu — fidèle au hero magazine éditorial sur
+ * fond bleu encre profond + filets or laiton + wordmark Bodoni géant
+ * blanc/or + encart photo à droite.
  */
 ---
 
 <div class="absolute inset-0 bg-resto-bleu-encre text-resto-blanc-casse overflow-hidden">
-  <span class="absolute top-2 left-2 w-3 h-px bg-resto-or/70" aria-hidden="true"></span>
-  <span class="absolute top-2 left-2 w-px h-3 bg-resto-or/70" aria-hidden="true"></span>
-  <span class="absolute bottom-2 right-2 w-3 h-px bg-resto-or/70" aria-hidden="true"></span>
-  <span class="absolute bottom-2 right-2 w-px h-3 bg-resto-or/70" aria-hidden="true"></span>
 
-  <div class="flex items-center justify-between px-3 pt-2 border-b border-resto-or/15 pb-1.5">
-    <span class="font-bodoni italic text-resto-blanc-casse text-[10px] tracking-wide">Le jardin perdu</span>
-    <span class="inline-flex items-center h-3 px-2 bg-resto-bleu-roi text-resto-blanc-casse font-manrope font-semibold text-[6px] uppercase tracking-wider">Réserver</span>
+  <!-- Filets or laiton décoratifs (coins) -->
+  <span class="absolute top-2 left-2 w-3 h-px bg-resto-or/60" aria-hidden="true"></span>
+  <span class="absolute top-2 left-2 w-px h-3 bg-resto-or/60" aria-hidden="true"></span>
+  <span class="absolute bottom-2 right-2 w-3 h-px bg-resto-or/60" aria-hidden="true"></span>
+  <span class="absolute bottom-2 right-2 w-px h-3 bg-resto-or/60" aria-hidden="true"></span>
+
+  <!-- Mini header magazine sur fond encre -->
+  <div class="flex items-center justify-between px-3 pt-2 pb-1.5 border-b border-resto-or/15">
+    <span class="font-bodoni italic font-medium text-resto-blanc-casse text-[10px] tracking-wide">Le jardin perdu</span>
+    <div class="flex items-center gap-1.5 text-[6px] uppercase tracking-[0.18em] text-resto-blanc-casse/65 font-medium">
+      <span>La carte</span>
+      <span>Cave</span>
+    </div>
+    <span class="inline-flex items-center h-3 px-2 bg-resto-bleu-roi text-resto-blanc-casse font-manrope font-semibold text-[6px] uppercase tracking-wider">
+      Réserver
+    </span>
   </div>
 
-  <div class="absolute left-1/2 -translate-x-1/2 top-[42%] flex items-center gap-2 text-resto-or/80" aria-hidden="true">
-    <span class="block w-10 h-px bg-resto-or/60"></span>
-    <svg viewBox="0 0 12 12" width="10" height="10"><path d="M6 0l1.5 4.5L12 6 7.5 7.5 6 12 4.5 7.5 0 6 4.5 4.5z" fill="currentColor"/></svg>
-    <span class="block w-10 h-px bg-resto-or/60"></span>
-  </div>
+  <!-- Hero magazine éditorial : grand wordmark gauche, encart photo droite -->
+  <div class="grid grid-cols-12 gap-2 px-3 pt-2 pb-2 h-[calc(100%-1.6rem)]">
 
-  <div class="absolute inset-0 flex flex-col justify-center items-center px-4 text-center">
-    <p class="font-manrope text-[5.5px] uppercase tracking-[0.32em] text-resto-or mb-1">Restaurant gastronomique</p>
-    <p class="font-bodoni leading-[0.9] font-medium" style="font-size: clamp(20px, 4.4vw, 38px);">Le jardin</p>
-    <p class="font-bodoni italic text-resto-or leading-[0.9] font-normal" style="font-size: clamp(20px, 4.4vw, 38px);">perdu.</p>
-    <p class="mt-2 font-bodoni italic text-resto-blanc-casse/75 text-[7px]">Cuisine du marché · tables sous les filaos</p>
-  </div>
+    <!-- LEFT (8) : eyebrow or + wordmark Bodoni géant + tagline italique -->
+    <div class="col-span-8 flex flex-col justify-center">
+      <p class="font-manrope font-medium text-[5.5px] uppercase tracking-[0.32em] text-resto-or mb-1">
+        · Restaurant gastronomique · St-Denis ·
+      </p>
+      <p class="font-bodoni text-resto-blanc-casse leading-[0.92] font-medium" style="font-size: clamp(16px, 3.4vw, 30px);">
+        Le jardin
+      </p>
+      <p class="font-bodoni italic text-resto-or leading-[0.92] font-normal pl-2" style="font-size: clamp(16px, 3.4vw, 30px);">
+        perdu.
+      </p>
+      <p class="mt-1.5 font-bodoni italic text-resto-blanc-casse/85 text-[7px] leading-snug max-w-[80%]">
+        Cuisine du marché, tables sous les filaos.
+      </p>
+    </div>
 
-  <div class="absolute left-3 right-3 bottom-2 flex items-center justify-between text-[6px] uppercase tracking-[0.2em] text-resto-blanc-casse/55">
-    <span>Saint-Denis</span>
-    <span class="text-resto-or">Menu dégustation →</span>
+    <!-- RIGHT (4) : encart photo verticale + filet or -->
+    <div class="col-span-4 flex items-center">
+      <figure class="relative w-full overflow-hidden" style="aspect-ratio: 4/5;">
+        <img
+          src="/images/resto/hero.webp"
+          alt=""
+          class="w-full h-full object-cover"
+          loading="lazy"
+          decoding="async"
+        />
+        <span class="absolute inset-0 ring-1 ring-resto-or/40 pointer-events-none" aria-hidden="true"></span>
+      </figure>
+    </div>
   </div>
 </div>

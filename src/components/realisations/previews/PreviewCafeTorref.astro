@@ -1,31 +1,68 @@
 ---
+import data from '../../../data/templates/brulerie.json';
 /**
- * Mini-preview Brûlerie d'altitude — café torréfacteur.
+ * Mini-preview Brûlerie d'altitude — photo plein cadre sombre + wordmark serif + code mono.
  */
 ---
 
-<div class="absolute inset-0 bg-torref-charbon text-torref-creme overflow-hidden">
-  <svg class="absolute left-4 top-4" width="60" height="80" viewBox="0 0 60 80" aria-hidden="true">
-    <g fill="none" stroke="#E8DDC7" stroke-width="0.7" opacity="0.45">
-      <path d="M10 70 Q20 60 14 50 Q8 40 18 30 Q26 22 20 12"/>
-      <path d="M28 70 Q38 60 32 50 Q26 40 36 30 Q44 22 38 12"/>
-    </g>
-  </svg>
+<div class="absolute inset-0 overflow-hidden" style="background-color: #1A0F0A; color: #E8DDC7;">
 
-  <svg class="absolute right-3 bottom-3" width="110" height="110" viewBox="0 0 100 100" aria-hidden="true">
-    <ellipse cx="50" cy="50" rx="38" ry="46" fill="#3E2A1F" stroke="#B57A4A" stroke-width="1.5" transform="rotate(-22 50 50)"/>
-    <path d="M50 6 Q44 50 56 94" stroke="#B57A4A" stroke-width="1.4" fill="none" transform="rotate(-22 50 50)"/>
-  </svg>
+  <!-- Photo plein cadre -->
+  <img
+    src={data.info.photoHero}
+    alt=""
+    class="absolute inset-0 w-full h-full object-cover scale-[1.04]"
+    loading="lazy"
+    decoding="async"
+  />
 
-  <div class="relative flex items-center justify-between px-3 pt-2">
-    <span class="font-fraunces italic text-torref-cuivre text-[10px]">Brûlerie d'altitude</span>
-    <span class="font-outfit text-[6px] uppercase tracking-[0.25em] text-torref-creme/70 font-semibold">Torréfacteur</span>
+  <!-- Overlay sombre dense -->
+  <div class="absolute inset-0" aria-hidden="true"
+       style="background:
+         linear-gradient(180deg, rgb(26 15 10 / 0.55) 0%, rgb(26 15 10 / 0.2) 30%, rgb(26 15 10 / 0.4) 60%, rgb(26 15 10 / 0.95) 100%),
+         linear-gradient(90deg, rgb(26 15 10 / 0.5) 0%, transparent 55%);">
   </div>
 
-  <div class="absolute left-3 bottom-2.5 max-w-[58%]">
-    <p class="font-outfit text-[5.5px] uppercase tracking-[0.32em] text-torref-cuivre mb-1">— Bourbon Pointu · 1200 m</p>
-    <p class="font-fraunces leading-[0.92] font-medium text-torref-creme" style="font-size: clamp(15px, 3.2vw, 25px);">Le café,</p>
-    <p class="font-fraunces italic text-torref-cuivre leading-[0.92]" style="font-size: clamp(15px, 3.2vw, 25px);">torréfié ici.</p>
-    <span class="mt-1.5 inline-flex items-center h-3 px-2 bg-torref-cuivre text-torref-charbon font-outfit font-semibold text-[6px] uppercase tracking-[0.2em]">Boutique en ligne</span>
+  <!-- Mini top-bar -->
+  <div class="relative flex items-center justify-between px-3 pt-2">
+    <span class="font-dm-mono text-[8.5px] uppercase tracking-[0.18em]" style="color: #E8DDC7;">
+      [ brûlerie d'altitude ]
+    </span>
+    <div class="flex items-center gap-1.5 text-[6px] uppercase tracking-wider font-medium" style="color: rgba(232, 221, 199, 0.75);">
+      <span>Origines</span>
+      <span>Abo.</span>
+    </div>
+  </div>
+
+  <!-- Lot code -->
+  <p class="absolute top-7 right-3 font-dm-mono text-[5.5px] uppercase tracking-[0.18em]" style="color: #B57A4A;">
+    Lot R-2017-08
+  </p>
+
+  <!-- Contenu bas gauche -->
+  <div class="absolute left-3 right-3 bottom-2.5">
+    <p class="flex items-center gap-1.5 font-dm-mono text-[5.5px] uppercase tracking-[0.25em] mb-1" style="color: #B57A4A;">
+      <span class="inline-block w-3 h-px" style="background-color: #B57A4A;" aria-hidden="true"></span>
+      <span>Depuis 2017 · 04 origines</span>
+    </p>
+    <p class="font-plex-serif font-semibold leading-[0.92] tracking-tight" style="color: #E8DDC7; font-size: clamp(13px, 2.8vw, 22px); font-family: 'IBM Plex Serif', Georgia, serif;">
+      Brûlerie<br/>
+      <em class="italic" style="color: #B57A4A;">d'altitude.</em>
+    </p>
+    <p class="mt-1 font-dm-mono text-[6px] uppercase tracking-[0.2em] max-w-[78%]" style="color: rgba(232, 221, 199, 0.75);">
+      Torréfaction lente · grains péi
+    </p>
+    <div class="mt-1.5 flex items-center gap-1.5">
+      <span class="inline-flex items-center h-3 px-2 font-dm-mono text-[6px] uppercase tracking-wider" style="background-color: #B57A4A; color: #1A0F0A;">
+        [ Origines ]
+      </span>
+      <span class="inline-flex items-center h-3 px-2 ring-1 font-dm-mono text-[6px] uppercase tracking-wider" style="color: #E8DDC7; --tw-ring-color: rgba(232, 221, 199, 0.4);">
+        [ S'abonner ]
+      </span>
+    </div>
   </div>
 </div>
+
+<style>
+  .font-plex-serif { font-family: 'IBM Plex Serif', Georgia, serif; }
+</style>

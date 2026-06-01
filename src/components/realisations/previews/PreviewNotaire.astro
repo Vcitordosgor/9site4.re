@@ -1,32 +1,57 @@
 ---
+import data from '../../../data/templates/notaire.json';
 /**
- * Mini-preview Étude Notariale — solennel.
+ * Mini-preview Étude Notariale & Associés — photo plein cadre bureau classique.
  */
 ---
 
-<div class="absolute inset-0 bg-notaire-marbre text-notaire-noir overflow-hidden">
-  <span class="absolute top-9 left-3 right-3 h-px bg-notaire-or" aria-hidden="true"></span>
-  <span class="absolute top-[40px] left-3 right-3 h-px bg-notaire-or/50" aria-hidden="true"></span>
-  <span class="absolute bottom-9 left-3 right-3 h-px bg-notaire-or/50" aria-hidden="true"></span>
+<div class="absolute inset-0 overflow-hidden" style="background-color: #F5F1EB; color: #1A1715;">
 
-  <svg class="absolute right-3 top-1/2 -translate-y-1/2" width="64" height="64" viewBox="0 0 60 60" aria-hidden="true">
-    <defs>
-      <radialGradient id="waxgrad" cx="0.3" cy="0.3"><stop offset="0%" stop-color="#A04848"/><stop offset="100%" stop-color="#5C2A2A"/></radialGradient>
-    </defs>
-    <circle cx="30" cy="30" r="22" fill="url(#waxgrad)"/>
-    <circle cx="30" cy="30" r="18" fill="none" stroke="#A28B5C" stroke-width="0.6"/>
-    <text x="30" y="34" text-anchor="middle" font-size="11" font-family="serif" fill="#A28B5C" font-style="italic">N</text>
-  </svg>
+  <img
+    src={data.info.photoHero}
+    alt=""
+    class="absolute inset-0 w-full h-full object-cover scale-[1.03]"
+    loading="lazy"
+    decoding="async"
+  />
 
-  <div class="relative flex items-center justify-between px-3 pt-2">
-    <span class="font-cormorant italic text-notaire-noir text-[10px]">Étude Notariale</span>
-    <span class="font-outfit text-[6px] uppercase tracking-[0.32em] text-notaire-or font-semibold">— Notaire</span>
+  <div class="absolute inset-0" aria-hidden="true"
+       style="background:
+         linear-gradient(180deg, rgb(26 23 21 / 0.32) 0%, rgb(26 23 21 / 0) 30%, rgb(26 23 21 / 0) 45%, rgb(26 23 21 / 0.92) 100%),
+         linear-gradient(90deg, rgb(26 23 21 / 0.48) 0%, transparent 55%);">
   </div>
 
-  <div class="absolute left-3 bottom-2.5 max-w-[55%]">
-    <p class="font-outfit text-[5.5px] uppercase tracking-[0.32em] text-notaire-bordeaux mb-1">Office · Saint-Denis</p>
-    <p class="font-cormorant leading-[0.92] font-medium text-notaire-noir" style="font-size: clamp(15px, 3.2vw, 26px);">Acter,</p>
-    <p class="font-cormorant italic text-notaire-bordeaux leading-[0.92]" style="font-size: clamp(15px, 3.2vw, 26px);">transmettre.</p>
-    <span class="mt-1.5 inline-flex items-center h-3 px-2 bg-notaire-noir text-notaire-marbre font-outfit font-semibold text-[6px] uppercase tracking-[0.2em]">Prendre rendez-vous</span>
+  <div class="relative flex items-center justify-between px-3 pt-2">
+    <div class="flex flex-col leading-tight">
+      <span class="font-cormorant italic text-[10px]" style="color: #F5F1EB;">Étude Notariale</span>
+      <span class="font-inter uppercase tracking-[0.22em] text-[5.5px]" style="color: #A28B5C;">& Associés</span>
+    </div>
+    <div class="flex items-center gap-1.5 text-[6px] uppercase tracking-wider font-inter" style="color: rgb(245 241 235 / 0.7);">
+      <span>Domaines</span>
+      <span>RDV</span>
+    </div>
+  </div>
+
+  <div class="absolute left-3 right-3 bottom-2.5">
+    <p class="font-inter text-[5.5px] uppercase tracking-[0.32em] mb-1" style="color: #A28B5C;">
+      ✦ Office notarial · 1998
+    </p>
+    <p class="font-cormorant leading-[0.95]" style="color: #F5F1EB; font-size: clamp(13px, 2.9vw, 22px);">
+      Étude Notariale
+    </p>
+    <p class="font-cormorant italic leading-[0.95]" style="color: #A28B5C; font-size: clamp(13px, 2.9vw, 22px);">
+      &amp; Associés.
+    </p>
+    <p class="mt-0.5 font-cormorant italic leading-tight" style="color: rgb(245 241 235 / 0.88); font-size: clamp(6.5px, 1.4vw, 10px);">
+      L'acte qui sécurise, la parole qui rassure.
+    </p>
+    <div class="mt-1.5 flex items-center gap-1.5">
+      <span class="inline-flex items-center h-3 px-2 font-inter font-semibold text-[6.5px] uppercase tracking-wider" style="background-color: #1A1715; color: #F5F1EB;">
+        Prendre RDV
+      </span>
+      <span class="inline-flex items-center h-3 px-2 font-inter font-semibold text-[6.5px] uppercase tracking-wider border" style="border-color: rgb(245 241 235 / 0.5); color: #F5F1EB;">
+        Domaines
+      </span>
+    </div>
   </div>
 </div>

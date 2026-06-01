@@ -1,35 +1,52 @@
 ---
+import data from '../../../data/templates/lazuli.json';
 /**
- * Mini-preview Villa Lazuli — brochure villa lifestyle.
+ * Mini-preview Villa Lazuli — photo plein cadre villa.
  */
 ---
 
-<div class="absolute inset-0 bg-lazuli-casse text-lazuli-marine overflow-hidden">
-  <div class="absolute bottom-0 inset-x-0 h-16" style="background: linear-gradient(180deg, transparent 0%, #3A7188 40%, #1B2D3A 100%);" aria-hidden="true"></div>
+<div class="absolute inset-0 bg-lazuli-marine text-lazuli-casse overflow-hidden">
 
-  <svg class="absolute right-3 bottom-6" width="110" height="80" viewBox="0 0 110 80" aria-hidden="true">
-    <rect x="10" y="34" width="48" height="34" fill="#FAF6ED"/>
-    <polygon points="6,34 34,16 62,34" fill="#A85B3F"/>
-    <rect x="20" y="48" width="8" height="14" fill="#3A7188"/>
-    <rect x="38" y="48" width="8" height="14" fill="#3A7188"/>
-    <line x1="84" y1="68" x2="86" y2="36" stroke="#8C7159" stroke-width="2"/>
-    <g fill="#CDDDB1">
-      <ellipse cx="76" cy="32" rx="14" ry="3" transform="rotate(-25 76 32)"/>
-      <ellipse cx="96" cy="32" rx="14" ry="3" transform="rotate(25 96 32)"/>
-      <ellipse cx="74" cy="40" rx="14" ry="3" transform="rotate(-50 74 40)"/>
-      <ellipse cx="98" cy="40" rx="14" ry="3" transform="rotate(50 98 40)"/>
-    </g>
-  </svg>
+  <img
+    src={data.info.photoHero}
+    alt=""
+    class="absolute inset-0 w-full h-full object-cover scale-[1.03]"
+    loading="lazy"
+    decoding="async"
+  />
 
-  <div class="relative flex items-center justify-between px-3 pt-2">
-    <span class="font-cormorant italic text-lazuli-marine text-[10px]">Villa Lazuli</span>
-    <span class="font-outfit text-[6px] uppercase tracking-[0.25em] text-lazuli-terracotta font-semibold">Location · mer</span>
+  <div class="absolute inset-0" aria-hidden="true"
+       style="background:
+         linear-gradient(180deg, rgb(27 45 58 / 0.35) 0%, rgb(27 45 58 / 0.05) 30%, rgb(27 45 58 / 0.10) 50%, rgb(27 45 58 / 0.93) 100%),
+         linear-gradient(90deg, rgb(27 45 58 / 0.50) 0%, transparent 55%);">
   </div>
 
-  <div class="absolute left-3 bottom-2.5 max-w-[55%]">
-    <p class="font-outfit text-[5.5px] uppercase tracking-[0.32em] text-lazuli-lagon mb-1">L'Hermitage · pieds dans l'eau</p>
-    <p class="font-cormorant leading-[0.92] font-medium text-lazuli-marine" style="font-size: clamp(16px, 3.4vw, 26px);">La villa,</p>
-    <p class="font-cormorant italic text-lazuli-terracotta leading-[0.92]" style="font-size: clamp(16px, 3.4vw, 26px);">le lagon.</p>
-    <span class="mt-1.5 inline-flex items-center h-3 px-2 bg-lazuli-terracotta text-lazuli-casse font-outfit font-semibold text-[6px] uppercase tracking-[0.2em]">Voir disponibilités</span>
+  <div class="relative flex items-center justify-between px-3 pt-2">
+    <div class="flex items-baseline gap-1">
+      <span class="font-italianno text-lazuli-coco text-[14px] leading-none">Villa</span>
+      <span class="font-yeseva text-lazuli-casse text-[10px] tracking-wide leading-none">Lazuli</span>
+    </div>
+    <div class="flex items-center gap-1.5 text-[6px] uppercase tracking-wider text-lazuli-casse/85 font-medium">
+      <span>Visite</span>
+      <span>Tarifs</span>
+    </div>
+  </div>
+
+  <div class="absolute left-3 right-3 bottom-2.5">
+    <p class="font-geist text-[5.5px] uppercase tracking-[0.25em] text-lazuli-coco font-semibold mb-1">
+      ★ 4,8/5 · Villa privée
+    </p>
+    <p class="font-italianno text-lazuli-coco leading-none" style="font-size: clamp(14px, 2.8vw, 22px);">Villa</p>
+    <p class="font-yeseva text-lazuli-casse leading-[0.9] tracking-tight" style="font-size: clamp(20px, 4vw, 32px);">
+      Lazuli.
+    </p>
+    <div class="mt-1.5 flex items-center gap-1.5">
+      <span class="inline-flex items-center h-3 px-2 bg-lazuli-terracotta text-lazuli-casse font-geist font-semibold text-[6.5px] rounded-full">
+        Réserver
+      </span>
+      <span class="inline-flex items-center h-3 px-2 ring-1 ring-lazuli-casse/45 text-lazuli-casse font-geist font-semibold text-[6.5px] rounded-full">
+        Visite
+      </span>
+    </div>
   </div>
 </div>

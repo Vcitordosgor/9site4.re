@@ -1,30 +1,56 @@
 ---
 /**
- * Mini-preview Boost Conduite — signalétique routière.
+ * Mini-preview Boost Conduite — photo plein cadre auto-école.
  */
 ---
 
-<div class="absolute inset-0 bg-boost-route text-boost-noir overflow-hidden">
-  <div class="absolute bottom-0 inset-x-0 h-10 bg-boost-asphalte" aria-hidden="true"></div>
-  <div class="absolute bottom-4 inset-x-3 h-1 flex gap-1.5" aria-hidden="true">
-    <span class="flex-1 bg-boost-jaune"></span><span class="flex-1"></span>
-    <span class="flex-1 bg-boost-jaune"></span><span class="flex-1"></span>
-    <span class="flex-1 bg-boost-jaune"></span><span class="flex-1"></span>
-    <span class="flex-1 bg-boost-jaune"></span><span class="flex-1"></span>
-  </div>
+<div class="absolute inset-0 bg-boost-route text-boost-noir font-funnel-sans overflow-hidden">
 
-  <div class="absolute right-3 top-1/2 -translate-y-1/2 w-16 h-16 rounded-full border-[3px] border-boost-route bg-boost-acier flex items-center justify-center">
-    <span class="font-archivo font-black text-boost-route text-[18px] leading-none">B</span>
+  <img
+    src="/images/auto-ecole/route.webp"
+    alt=""
+    class="absolute inset-0 w-full h-full object-cover scale-[1.03]"
+    loading="lazy"
+    decoding="async"
+  />
+
+  <div class="absolute inset-0" aria-hidden="true"
+       style="background:
+         linear-gradient(180deg, rgb(15 16 20 / 0.28) 0%, rgb(15 16 20 / 0) 32%, rgb(15 16 20 / 0) 48%, rgb(15 16 20 / 0.92) 100%),
+         linear-gradient(90deg, rgb(15 16 20 / 0.55) 0%, transparent 55%);">
   </div>
 
   <div class="relative flex items-center justify-between px-3 pt-2">
-    <span class="font-archivo font-black text-boost-acier text-[11px] tracking-wide">BOOST <span class="text-boost-jaune bg-boost-noir px-1">.CONDUITE</span></span>
-    <span class="font-archivo font-bold text-[6px] uppercase tracking-wider text-boost-feu">● Permis B</span>
+    <div class="flex items-baseline gap-1">
+      <span class="inline-flex items-center justify-center w-3.5 h-3.5 bg-boost-jaune text-boost-noir rounded-full font-funnel-display font-bold text-[8px] leading-none">B</span>
+      <span class="font-funnel-display font-bold text-boost-route text-[10px] tracking-tight">Boost</span>
+      <span class="font-funnel-display font-light text-boost-route/80 text-[10px] tracking-tight">Conduite</span>
+    </div>
+    <div class="flex items-center gap-1.5 text-[6px] uppercase tracking-wider text-boost-route/85 font-semibold">
+      <span>Forfaits</span>
+      <span>Code</span>
+    </div>
   </div>
 
-  <div class="absolute left-3 bottom-12 max-w-[60%]">
-    <p class="font-archivo font-bold text-[5.5px] uppercase tracking-[0.25em] text-boost-feu mb-1">→ ta route commence ici.</p>
-    <p class="font-archivo font-black leading-[0.88] text-boost-noir" style="font-size: clamp(17px, 3.6vw, 28px);">Permis<br/>au <span class="text-boost-acier">premier</span> coup.</p>
+  <div class="absolute left-3 right-3 bottom-2.5">
+    <p class="flex items-center gap-1.5 font-geist-mono font-bold text-[5.5px] uppercase tracking-[0.28em] text-boost-jaune mb-1">
+      <span class="inline-block w-3 h-px bg-boost-jaune" aria-hidden="true"></span>
+      <span>▸ Agréé Préfectoral</span>
+    </p>
+    <p class="font-funnel-display font-bold text-boost-route leading-[0.9]" style="font-size: clamp(15px, 3.2vw, 26px);">
+      Ton permis.<br/>
+      <span class="text-boost-jaune">Sans stress.</span>
+    </p>
+    <p class="mt-0.5 font-funnel-sans font-medium text-boost-route/85 leading-tight" style="font-size: clamp(8px, 1.6vw, 12px);">
+      87% de réussite · 3500 permis.
+    </p>
+    <div class="mt-1.5 flex items-center gap-1.5">
+      <span class="inline-flex items-center h-3 px-2 bg-boost-jaune text-boost-noir font-funnel-display font-bold text-[6.5px] rounded-full">
+        Je m'inscris
+      </span>
+      <span class="inline-flex items-center h-3 px-2 ring-1 ring-boost-route/45 text-boost-route font-funnel-display font-bold text-[6.5px] rounded-full">
+        Voir les forfaits
+      </span>
+    </div>
   </div>
-  <span class="absolute bottom-1.5 left-3 inline-flex items-center h-3 px-2 bg-boost-jaune text-boost-noir font-archivo font-black text-[6.5px] uppercase tracking-wider">Je m'inscris</span>
 </div>

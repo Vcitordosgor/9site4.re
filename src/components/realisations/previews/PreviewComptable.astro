@@ -1,31 +1,55 @@
 ---
+import data from '../../../data/templates/auberval.json';
 /**
- * Mini-preview Auberval & Associés — rapport annuel.
+ * Mini-preview Cabinet Auberval — photo plein cadre institutionnel.
  */
 ---
 
-<div class="absolute inset-0 bg-auberval-feutre text-auberval-marine overflow-hidden">
-  <span class="absolute top-7 left-3 right-3 h-px bg-auberval-or/60" aria-hidden="true"></span>
-  <span class="absolute top-8 left-3 right-3 h-px bg-auberval-or/30" aria-hidden="true"></span>
-  <span class="absolute bottom-9 left-3 right-3 h-px bg-auberval-or/40" aria-hidden="true"></span>
+<div class="absolute inset-0 bg-auberval-feutre text-auberval-marine font-plex-sans overflow-hidden">
 
-  <svg class="absolute right-4 top-1/2 -translate-y-1/2" width="56" height="56" viewBox="0 0 60 60" aria-hidden="true">
-    <circle cx="30" cy="30" r="26" fill="none" stroke="#A78A4F" stroke-width="1"/>
-    <circle cx="30" cy="30" r="22" fill="none" stroke="#A78A4F" stroke-width="0.5"/>
-    <text x="30" y="27" text-anchor="middle" font-size="6" font-family="serif" font-style="italic" fill="#1A2944">A&amp;A</text>
-    <text x="30" y="37" text-anchor="middle" font-size="3.5" font-family="serif" fill="#A78A4F" letter-spacing="1">CERTIFIÉ</text>
-    <circle cx="30" cy="44" r="1.2" fill="#4F7A5C"/>
-  </svg>
+  <img
+    src={data.info.photoCabinet}
+    alt=""
+    class="absolute inset-0 w-full h-full object-cover scale-[1.03]"
+    loading="lazy"
+    decoding="async"
+  />
 
-  <div class="relative flex items-center justify-between px-3 pt-2">
-    <span class="font-cormorant italic text-auberval-marine text-[10px]">Auberval &amp; Associés</span>
-    <span class="font-outfit text-[6px] uppercase tracking-[0.3em] text-auberval-or font-semibold">— EST. 1978</span>
+  <div class="absolute inset-0" aria-hidden="true"
+       style="background:
+         linear-gradient(180deg, rgb(20 30 50 / 0.30) 0%, rgb(20 30 50 / 0) 32%, rgb(20 30 50 / 0) 48%, rgb(20 30 50 / 0.92) 100%),
+         linear-gradient(90deg, rgb(20 30 50 / 0.55) 0%, transparent 55%);">
   </div>
 
-  <div class="absolute left-3 bottom-2.5 max-w-[60%]">
-    <p class="font-outfit text-[5.5px] uppercase tracking-[0.32em] text-auberval-encre mb-1">Expert-comptable · CAC</p>
-    <p class="font-cormorant leading-[0.92] font-medium text-auberval-marine" style="font-size: clamp(16px, 3.4vw, 26px);">Les chiffres,</p>
-    <p class="font-cormorant italic text-auberval-or leading-[0.92]" style="font-size: clamp(16px, 3.4vw, 26px);">l'évidence.</p>
-    <span class="mt-1.5 inline-flex items-center h-3 px-2 bg-auberval-marine text-auberval-feutre font-outfit font-semibold text-[6px] uppercase tracking-[0.2em]">Bilan gratuit</span>
+  <div class="relative flex items-center justify-between px-3 pt-2">
+    <div class="flex items-baseline gap-1">
+      <span class="font-source-serif text-auberval-feutre text-[10px]">Auberval</span>
+      <span class="font-source-serif italic text-auberval-or text-[8px]">&amp; Associés</span>
+    </div>
+    <div class="flex items-center gap-1.5 text-[6px] uppercase tracking-wider text-auberval-feutre/85 font-medium">
+      <span>Associés</span>
+      <span>Expertise</span>
+    </div>
+  </div>
+
+  <div class="absolute left-3 right-3 bottom-2.5">
+    <p class="font-dm-mono text-[5.5px] uppercase tracking-[0.32em] text-auberval-or mb-1">
+      Cabinet · depuis 2009
+    </p>
+    <p class="font-source-serif text-auberval-feutre leading-[0.95]" style="font-size: clamp(15px, 3.2vw, 26px);">
+      Auberval<br/>
+      <span class="italic text-auberval-or">&amp; Associés.</span>
+    </p>
+    <p class="mt-0.5 font-plex-sans text-auberval-feutre/85 leading-tight" style="font-size: clamp(8px, 1.6vw, 12px);">
+      Expertise comptable · La Réunion.
+    </p>
+    <div class="mt-1.5 flex items-center gap-1.5">
+      <span class="inline-flex items-center h-3 px-2 bg-auberval-or text-auberval-marine font-plex-sans font-semibold text-[6px] uppercase tracking-wider">
+        Nous rencontrer
+      </span>
+      <span class="inline-flex items-center h-3 px-2 ring-1 ring-auberval-feutre/45 text-auberval-feutre font-plex-sans font-semibold text-[6px] uppercase tracking-wider">
+        Notre expertise
+      </span>
+    </div>
   </div>
 </div>

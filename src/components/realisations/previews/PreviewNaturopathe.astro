@@ -1,26 +1,57 @@
 ---
+import data from '../../../data/templates/source.json';
 /**
- * Mini-preview Source — naturopathe.
+ * Mini-preview Source — photo plein cadre eau/nature.
  */
 ---
 
-<div class="absolute inset-0 bg-source-eau text-source-charbon overflow-hidden">
-  <div class="absolute -bottom-8 -right-8 w-40 h-40 rounded-full bg-source-amande/50" aria-hidden="true"></div>
+<div class="absolute inset-0 overflow-hidden" style="background-color: #E4F0EE; color: #1F2926;">
 
-  <svg class="absolute right-6 top-7" width="70" height="90" viewBox="0 0 60 80" aria-hidden="true">
-    <path d="M30 4 Q14 30 14 46 Q14 60 30 60 Q46 60 46 46 Q46 30 30 4Z" fill="#5D7C68" opacity="0.85"/>
-    <ellipse cx="42" cy="68" rx="14" ry="5" fill="#5D7C68" transform="rotate(20 42 68)" opacity="0.7"/>
-  </svg>
+  <img
+    src={data.info.photoHero}
+    alt=""
+    class="absolute inset-0 w-full h-full object-cover scale-[1.03]"
+    loading="lazy"
+    decoding="async"
+  />
 
-  <div class="relative flex items-center justify-between px-3 pt-2">
-    <span class="font-fraunces italic text-source-charbon text-[10px]">Source</span>
-    <span class="font-outfit text-[6px] uppercase tracking-[0.25em] text-source-mousse font-semibold">Naturopathe</span>
+  <div class="absolute inset-0" aria-hidden="true"
+       style="background:
+         linear-gradient(180deg, rgb(31 41 38 / 0.32) 0%, rgb(31 41 38 / 0) 30%, rgb(31 41 38 / 0) 45%, rgb(31 41 38 / 0.92) 100%),
+         linear-gradient(90deg, rgb(31 41 38 / 0.42) 0%, transparent 55%);">
   </div>
 
-  <div class="absolute left-3 right-3 bottom-2.5 max-w-[60%]">
-    <p class="font-outfit text-[5.5px] uppercase tracking-[0.32em] text-source-mousse mb-1">Bilans · phytothérapie</p>
-    <p class="font-fraunces leading-[0.92] font-medium text-source-charbon" style="font-size: clamp(15px, 3.2vw, 26px);">Revenir</p>
-    <p class="font-fraunces italic text-source-mousse leading-[0.92]" style="font-size: clamp(15px, 3.2vw, 26px);">à soi.</p>
-    <span class="mt-1.5 inline-flex items-center h-3 px-2 bg-source-mousse text-source-eau font-outfit font-semibold text-[6px] uppercase tracking-[0.2em]">Bilan offert</span>
+  <div class="relative flex items-center justify-between px-3 pt-2">
+    <div class="flex items-baseline gap-1.5">
+      <span class="font-lora italic text-[11px]" style="color: #E4F0EE;">Source</span>
+      <span class="font-manrope uppercase tracking-[0.18em] text-[6px]" style="color: #D3C29C;">naturopathie</span>
+    </div>
+    <div class="flex items-center gap-1.5 text-[6px] uppercase tracking-wider font-manrope" style="color: rgb(228 240 238 / 0.7);">
+      <span>Méthode</span>
+      <span>RDV</span>
+    </div>
+  </div>
+
+  <div class="absolute left-3 right-3 bottom-2.5">
+    <p class="font-manrope text-[5.5px] uppercase tracking-[0.32em] mb-1" style="color: #D3C29C;">
+      ✦ Naturopathie · 2019
+    </p>
+    <p class="font-lora italic leading-[0.95]" style="color: #E4F0EE; font-size: clamp(13px, 2.9vw, 23px);">
+      Comprendre,
+    </p>
+    <p class="font-lora leading-[0.95]" style="color: #E4F0EE; font-size: clamp(13px, 2.9vw, 23px);">
+      accompagner,
+    </p>
+    <p class="font-lora italic leading-[0.95]" style="color: #D3C29C; font-size: clamp(13px, 2.9vw, 23px);">
+      ralentir.
+    </p>
+    <div class="mt-1.5 flex items-center gap-1.5">
+      <span class="inline-flex items-center h-3 px-2 font-manrope font-semibold text-[6.5px] uppercase tracking-wider rounded-full" style="background-color: #5D7C68; color: #E4F0EE;">
+        Prendre RDV
+      </span>
+      <span class="inline-flex items-center h-3 px-2 font-manrope font-semibold text-[6.5px] uppercase tracking-wider border rounded-full" style="border-color: rgb(228 240 238 / 0.5); color: #E4F0EE;">
+        Méthode
+      </span>
+    </div>
   </div>
 </div>

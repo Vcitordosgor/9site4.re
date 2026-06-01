@@ -1,34 +1,60 @@
 ---
+import data from '../../../data/templates/encrevolcan.json';
 /**
- * Mini-preview Encre Volcan — studio tatouage.
+ * Mini-preview Encre Volcan — photo plein cadre tatoueur grayscale.
  */
 ---
 
-<div class="absolute inset-0 bg-tatoo-noir text-tatoo-creme overflow-hidden">
-  <span class="absolute top-2 left-2 right-2 bottom-2 border border-tatoo-creme/30" aria-hidden="true"></span>
-  <span class="absolute top-2.5 left-2.5 right-2.5 bottom-2.5 border border-tatoo-rouge/40" aria-hidden="true"></span>
+<div class="absolute inset-0 overflow-hidden" style="background-color: #0A0A0A; color: #EEE6D8;">
 
-  <svg class="absolute right-4 top-1/2 -translate-y-1/2" width="80" height="120" viewBox="0 0 60 100" aria-hidden="true">
-    <rect x="14" y="34" width="32" height="3" fill="#EEE6D8"/>
-    <rect x="26" y="20" width="8" height="14" fill="#A11920"/>
-    <circle cx="30" cy="18" r="3.5" fill="#EEE6D8"/>
-    <polygon points="22,38 38,38 30,90" fill="#EEE6D8" stroke="#A11920" stroke-width="0.8"/>
-    <line x1="30" y1="38" x2="30" y2="84" stroke="#A11920" stroke-width="0.6"/>
-    <g fill="#A11920">
-      <path d="M10 60 Q14 50 12 40 Q18 50 16 60Z"/>
-      <path d="M50 60 Q46 50 48 40 Q42 50 44 60Z"/>
-    </g>
-  </svg>
+  <img
+    src={data.info.photoHero}
+    alt=""
+    class="absolute inset-0 w-full h-full object-cover scale-[1.03] grayscale contrast-[1.15]"
+    loading="lazy"
+    decoding="async"
+  />
 
-  <div class="relative flex items-center justify-between px-3 pt-3">
-    <span class="font-bodoni italic font-bold text-tatoo-creme text-[11px]">Encre <span class="text-tatoo-rouge">Volcan</span></span>
-    <span class="font-jetbrains text-[6px] uppercase tracking-[0.2em] text-tatoo-creme/60">EST. 2012</span>
+  <div class="absolute inset-0" aria-hidden="true"
+       style="background:
+         linear-gradient(180deg, rgb(10 10 10 / 0.42) 0%, rgb(10 10 10 / 0) 30%, rgb(10 10 10 / 0) 45%, rgb(10 10 10 / 0.95) 100%),
+         linear-gradient(90deg, rgb(10 10 10 / 0.55) 0%, transparent 55%);">
   </div>
 
-  <div class="absolute left-3 bottom-2.5 max-w-[55%]">
-    <p class="font-jetbrains text-[5.5px] uppercase tracking-[0.25em] text-tatoo-rouge mb-1">Studio · Saint-Denis</p>
-    <p class="font-bodoni leading-[0.92] font-medium text-tatoo-creme" style="font-size: clamp(15px, 3.2vw, 26px);">L'encre,</p>
-    <p class="font-bodoni italic text-tatoo-rouge leading-[0.92]" style="font-size: clamp(15px, 3.2vw, 26px);">à vie.</p>
-    <span class="mt-1.5 inline-flex items-center h-3 px-2 bg-tatoo-rouge text-tatoo-creme font-jetbrains font-semibold text-[6px] uppercase tracking-wider">Voir le book</span>
+  <!-- Rouge sang strip à gauche -->
+  <div class="absolute top-0 left-0 bottom-0 w-[2px]" style="background-color: #A11920;" aria-hidden="true"></div>
+
+  <div class="relative flex items-center justify-between px-3 pt-2">
+    <div class="flex items-baseline gap-1.5">
+      <span class="font-cardo italic text-[10px]" style="color: #EEE6D8;">Encre</span>
+      <span class="font-mono uppercase tracking-[0.18em] text-[6px]" style="color: #A11920;">Volcan</span>
+    </div>
+    <div class="flex items-center gap-1.5 text-[6px] uppercase tracking-wider font-mono" style="color: rgb(238 230 216 / 0.65);">
+      <span>Styles</span>
+      <span>Réserver</span>
+    </div>
+  </div>
+
+  <div class="absolute left-3 right-3 bottom-2.5">
+    <p class="font-mono text-[5.5px] uppercase tracking-[0.32em] mb-1" style="color: #A11920;">
+      ✦ Tatouage · 2016
+    </p>
+    <p class="font-cardo leading-[0.88]" style="color: #EEE6D8; font-size: clamp(15px, 3.2vw, 26px);">
+      ENCRE
+    </p>
+    <p class="font-cardo italic leading-none" style="color: #A11920; font-size: clamp(15px, 3.2vw, 26px);">
+      Volcan.
+    </p>
+    <p class="mt-0.5 font-cardo italic leading-tight" style="color: rgb(238 230 216 / 0.88); font-size: clamp(6.5px, 1.4vw, 10px);">
+      L'aiguille, la main qui ne tremble pas.
+    </p>
+    <div class="mt-1.5 flex items-center gap-1.5">
+      <span class="inline-flex items-center h-3 px-2 font-mono font-semibold text-[6.5px] uppercase tracking-wider" style="background-color: #A11920; color: #EEE6D8;">
+        Réserver
+      </span>
+      <span class="inline-flex items-center h-3 px-2 font-mono font-semibold text-[6.5px] uppercase tracking-wider border" style="border-color: rgb(238 230 216 / 0.5); color: #EEE6D8;">
+        Voir flash
+      </span>
+    </div>
   </div>
 </div>

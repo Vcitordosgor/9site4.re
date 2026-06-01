@@ -1,38 +1,54 @@
 ---
 /**
- * Mini-preview Étude Roussin — cabinet d'avocats.
+ * Mini-preview Étude Roussin — photo plein cadre cabinet d'avocat.
  */
 ---
 
-<div class="absolute inset-0 bg-roussin-velin text-roussin-encre overflow-hidden">
-  <div class="absolute top-0 inset-x-0 h-9 bg-roussin-nuit" aria-hidden="true"></div>
-  <span class="absolute top-10 left-3 right-3 h-px bg-roussin-or" aria-hidden="true"></span>
-  <span class="absolute top-[44px] left-3 right-3 h-px bg-roussin-or/40" aria-hidden="true"></span>
+<div class="absolute inset-0 bg-roussin-velin text-roussin-nuit font-public-sans overflow-hidden">
 
-  <svg class="absolute right-3 top-12" width="80" height="90" viewBox="0 0 60 70" aria-hidden="true">
-    <g stroke="#A88B47" stroke-width="1.2" fill="none">
-      <line x1="30" y1="6" x2="30" y2="58"/>
-      <line x1="12" y1="18" x2="48" y2="18"/>
-      <line x1="12" y1="18" x2="6" y2="28"/>
-      <line x1="12" y1="18" x2="18" y2="28"/>
-      <path d="M4 28 Q12 34 20 28" fill="#A88B47" fill-opacity="0.18"/>
-      <line x1="48" y1="18" x2="42" y2="28"/>
-      <line x1="48" y1="18" x2="54" y2="28"/>
-      <path d="M40 28 Q48 34 56 28" fill="#A88B47" fill-opacity="0.18"/>
-      <line x1="22" y1="58" x2="38" y2="58"/>
-      <line x1="20" y1="62" x2="40" y2="62"/>
-    </g>
-  </svg>
+  <img
+    src="/images/avocat/bibliotheque.webp"
+    alt=""
+    class="absolute inset-0 w-full h-full object-cover scale-[1.03]"
+    loading="lazy"
+    decoding="async"
+  />
 
-  <div class="relative flex items-center justify-between px-3 pt-2 text-roussin-velin">
-    <span class="font-cormorant italic text-[10px]">Étude Roussin</span>
-    <span class="font-outfit text-[6px] uppercase tracking-[0.32em] text-roussin-laiton">— Avocat au Barreau</span>
+  <div class="absolute inset-0" aria-hidden="true"
+       style="background:
+         linear-gradient(180deg, rgb(22 28 40 / 0.35) 0%, rgb(22 28 40 / 0) 32%, rgb(22 28 40 / 0) 48%, rgb(22 28 40 / 0.92) 100%),
+         linear-gradient(90deg, rgb(22 28 40 / 0.55) 0%, transparent 55%);">
   </div>
 
-  <div class="absolute left-3 bottom-2.5 max-w-[55%]">
-    <p class="font-outfit text-[5.5px] uppercase tracking-[0.32em] text-roussin-bordeaux mb-1">Cabinet · Saint-Pierre</p>
-    <p class="font-cormorant leading-[0.92] font-medium text-roussin-encre" style="font-size: clamp(15px, 3.2vw, 26px);">Défendre</p>
-    <p class="font-cormorant italic text-roussin-bordeaux leading-[0.92]" style="font-size: clamp(15px, 3.2vw, 26px);">votre droit.</p>
-    <span class="mt-1.5 inline-flex items-center h-3 px-2 bg-roussin-nuit text-roussin-velin font-outfit font-semibold text-[6px] uppercase tracking-[0.2em]">Premier entretien</span>
+  <div class="relative flex items-center justify-between px-3 pt-2">
+    <div class="flex items-baseline gap-1">
+      <span class="font-eb-garamond text-roussin-velin text-[11px]">Roussin</span>
+      <span class="font-eb-garamond italic text-roussin-or text-[8px]">&amp; Associés</span>
+    </div>
+    <div class="flex items-center gap-1.5 text-[6px] uppercase tracking-[0.18em] text-roussin-velin/85 font-medium">
+      <span>Domaines</span>
+      <span>Associés</span>
+    </div>
+  </div>
+
+  <div class="absolute left-3 right-3 bottom-2.5">
+    <p class="flex items-center gap-1.5 font-public-sans font-semibold text-[5.5px] uppercase tracking-[0.28em] text-roussin-or mb-1">
+      <span class="inline-block w-3 h-px bg-roussin-or" aria-hidden="true"></span>
+      <span>Barreau · depuis 2008</span>
+    </p>
+    <p class="font-eb-garamond text-roussin-velin leading-[0.95]" style="font-size: clamp(16px, 3.2vw, 26px);">
+      Roussin
+    </p>
+    <p class="font-eb-garamond italic text-roussin-or leading-tight" style="font-size: clamp(10px, 2vw, 16px);">
+      Le droit, sans la posture.
+    </p>
+    <div class="mt-1.5 flex items-center gap-1.5">
+      <span class="inline-flex items-center h-3 px-2 bg-roussin-bordeaux text-roussin-velin font-public-sans font-semibold text-[6px] uppercase tracking-wider">
+        Prendre RDV
+      </span>
+      <span class="inline-flex items-center h-3 px-2 ring-1 ring-roussin-velin/45 text-roussin-velin font-public-sans font-semibold text-[6px] uppercase tracking-wider">
+        Nos domaines
+      </span>
+    </div>
   </div>
 </div>

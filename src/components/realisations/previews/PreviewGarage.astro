@@ -1,29 +1,56 @@
 ---
+import data from '../../../data/templates/motorpiton.json';
 /**
- * Mini-preview Atelier Motorpiton — fiche atelier mécanique.
+ * Mini-preview Motorpiton — photo plein cadre atelier mécanique.
  */
 ---
 
-<div class="absolute inset-0 bg-piton-asphalte text-piton-beton overflow-hidden">
+<div class="absolute inset-0 bg-piton-asphalte text-piton-beton font-inter-tight overflow-hidden">
+
+  <img
+    src={data.info.photoHero}
+    alt=""
+    class="absolute inset-0 w-full h-full object-cover scale-[1.03]"
+    loading="lazy"
+    decoding="async"
+  />
+
+  <div class="absolute inset-0" aria-hidden="true"
+       style="background:
+         linear-gradient(180deg, rgb(15 16 20 / 0.45) 0%, rgb(15 16 20 / 0.10) 30%, rgb(15 16 20 / 0.15) 50%, rgb(15 16 20 / 0.95) 100%),
+         linear-gradient(90deg, rgb(15 16 20 / 0.55) 0%, transparent 55%);">
+  </div>
+
   <div class="absolute top-0 inset-x-0 h-1 bg-piton-feu" aria-hidden="true"></div>
 
-  <svg class="absolute -right-6 -bottom-6" width="160" height="160" viewBox="0 0 100 100" aria-hidden="true">
-    <g fill="#FF5A1F" opacity="0.92">
-      <path d="M50 8l4 8h-8zM50 92l4-8h-8zM8 50l8-4v8zM92 50l-8-4v8zM20 20l8 2-6 6zM80 20l-8 2 6 6zM20 80l8-2-6-6zM80 80l-8-2 6-6z"/>
-      <circle cx="50" cy="50" r="32"/>
-    </g>
-    <circle cx="50" cy="50" r="12" fill="#0F1014"/>
-    <circle cx="50" cy="50" r="4" fill="#FF5A1F"/>
-  </svg>
-
-  <div class="relative flex items-center justify-between px-3 pt-3">
-    <span class="font-bebas text-piton-feu text-[12px] tracking-wider">MOTORPITON</span>
-    <span class="font-jetbrains text-[6px] uppercase tracking-wider text-piton-acide">// DIAG OK</span>
+  <div class="relative flex items-center justify-between px-3 pt-2.5">
+    <h1 class="font-bebas leading-none tracking-wide">
+      <span class="text-piton-blanc text-[11px]">MOTOR<span class="text-piton-feu">.</span>PITON</span>
+    </h1>
+    <div class="flex items-center gap-1.5 text-[6px] uppercase tracking-wider text-piton-beton/85 font-medium">
+      <span>Atelier</span>
+      <span>Devis</span>
+    </div>
   </div>
 
-  <div class="absolute left-3 bottom-2.5 max-w-[60%]">
-    <p class="font-jetbrains text-[5.5px] uppercase tracking-[0.25em] text-piton-feu mb-1">Garage · Le Tampon</p>
-    <p class="font-bebas leading-[0.85] tracking-wider text-piton-blanc" style="font-size: clamp(20px, 4.2vw, 34px);">RÉPARER<br/>VITE<span class="text-piton-feu">.</span></p>
-    <span class="mt-1.5 inline-flex items-center h-3 px-2 bg-piton-feu text-piton-asphalte font-bebas text-[7px] tracking-wider">Devis express</span>
+  <div class="absolute left-3 right-3 bottom-2.5">
+    <p class="font-jetbrains text-[5.5px] uppercase tracking-[0.28em] text-piton-feu mb-1">
+      ▸ Garage · La Réunion
+    </p>
+    <p class="font-bebas text-piton-blanc leading-[0.85] tracking-tight uppercase" style="font-size: clamp(16px, 3.4vw, 28px);">
+      Mécanique honnête,<br/>
+      <span class="text-piton-feu">devis sans détour.</span>
+    </p>
+    <div class="mt-1.5 flex items-center gap-1.5">
+      <span class="inline-flex items-center h-3 px-2 bg-piton-feu text-piton-asphalte font-bebas text-[7px] tracking-wide">
+        DEVIS ▸
+      </span>
+      <span class="inline-flex items-center h-3 px-2 ring-1 ring-piton-beton/45 text-piton-beton font-bebas text-[7px] tracking-wide">
+        L'ATELIER
+      </span>
+    </div>
   </div>
+
+  <div class="absolute bottom-0 inset-x-0 h-1.5" aria-hidden="true"
+       style="background: repeating-linear-gradient(45deg, #FF5A1F 0 5px, #0F1014 5px 10px);"></div>
 </div>

@@ -1,22 +1,54 @@
 ---
+import data from '../../../data/templates/marlene.json';
 /**
- * Mini-preview Maison Marléne — boutique-hôtel raffiné.
+ * Mini-preview Maison Marléne — photo plein cadre institut beauté.
  */
 ---
 
-<div class="absolute inset-0 bg-marlene-nacre text-marlene-noir overflow-hidden">
-  <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-[80%] aspect-square rounded-t-full bg-marlene-sable" aria-hidden="true"></div>
-  <div class="absolute top-3 left-1/2 -translate-x-1/2 w-[60%] aspect-square rounded-t-full bg-marlene-rose/70" aria-hidden="true"></div>
-  <span class="absolute top-1/2 left-3 right-3 h-px bg-marlene-champagne/60" aria-hidden="true"></span>
+<div class="absolute inset-0 bg-marlene-nacre text-marlene-noir font-mulish overflow-hidden">
 
-  <div class="relative flex items-center justify-between px-3 pt-2">
-    <span class="font-cormorant italic text-marlene-noir text-[10px]">Maison Marléne</span>
-    <span class="font-outfit text-[6px] uppercase tracking-[0.25em] text-marlene-champagne font-semibold">Institut</span>
+  <img
+    src={data.info.photoHero}
+    alt=""
+    class="absolute inset-0 w-full h-full object-cover scale-[1.03]"
+    loading="lazy"
+    decoding="async"
+  />
+
+  <div class="absolute inset-0" aria-hidden="true"
+       style="background:
+         linear-gradient(180deg, rgb(35 20 25 / 0.32) 0%, rgb(35 20 25 / 0) 32%, rgb(35 20 25 / 0) 48%, rgb(35 20 25 / 0.92) 100%),
+         linear-gradient(90deg, rgb(35 20 25 / 0.50) 0%, transparent 55%);">
   </div>
 
-  <div class="absolute inset-x-0 bottom-3 px-3 text-center">
-    <p class="font-cormorant italic leading-[0.95] text-marlene-bordeaux" style="font-size: clamp(20px, 4.2vw, 36px);">soin · charnel</p>
-    <p class="mt-1 font-outfit text-[6.5px] uppercase tracking-[0.32em] text-marlene-moka">Beauté · Saint-Gilles</p>
-    <span class="mt-1.5 inline-flex items-center h-3 px-2 bg-marlene-bordeaux text-marlene-nacre font-outfit font-semibold text-[6px] uppercase tracking-[0.2em]">Prendre rendez-vous</span>
+  <div class="relative flex items-center justify-between px-3 pt-2">
+    <div class="flex items-baseline gap-1">
+      <span class="font-marcellus text-marlene-nacre text-[8px] uppercase tracking-[0.32em] leading-none">MAISON</span>
+      <span class="font-marcellus text-marlene-champagne text-[8px] uppercase tracking-[0.32em] leading-none">MARLÉNE</span>
+    </div>
+    <div class="flex items-center gap-1.5 text-[6px] uppercase tracking-[0.18em] text-marlene-nacre/85 font-light">
+      <span>Rituel</span>
+      <span>Soins</span>
+    </div>
+  </div>
+
+  <div class="absolute left-3 right-3 bottom-2.5">
+    <p class="font-mulish text-[5px] uppercase tracking-[0.4em] text-marlene-champagne mb-1.5">
+      — Institut · depuis 2012 —
+    </p>
+    <p class="font-marcellus text-marlene-nacre uppercase tracking-[0.1em] leading-[0.95]" style="font-size: clamp(11px, 2.2vw, 18px);">
+      MAISON
+    </p>
+    <p class="font-eb-garamond italic text-marlene-champagne leading-[0.95]" style="font-size: clamp(16px, 3.2vw, 28px);">
+      Marléne.
+    </p>
+    <div class="mt-1.5 flex items-center gap-1.5">
+      <span class="inline-flex items-center h-3 px-2 bg-marlene-bordeaux text-marlene-nacre font-marcellus text-[6.5px] tracking-wide">
+        Réserver
+      </span>
+      <span class="inline-flex items-center h-3 px-2 ring-1 ring-marlene-nacre/45 text-marlene-nacre font-marcellus text-[6.5px] tracking-wide">
+        Soins
+      </span>
+    </div>
   </div>
 </div>

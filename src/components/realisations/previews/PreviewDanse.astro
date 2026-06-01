@@ -1,34 +1,54 @@
 ---
+import data from '../../../data/templates/vermeille.json';
 /**
- * Mini-preview Vermeille — ballet contemporain.
+ * Mini-preview Vermeille — photo plein cadre danseuse, hero théâtre.
  */
 ---
 
 <div class="absolute inset-0 bg-vermeille-velours text-vermeille-ivoire overflow-hidden">
-  <div class="absolute top-0 left-0 right-0 h-3 bg-vermeille-bordeaux" aria-hidden="true"></div>
-  <div class="absolute top-3 left-0 right-0 h-2" style="background: linear-gradient(180deg, #7A1A2A 0%, transparent 100%);" aria-hidden="true"></div>
 
-  <svg class="absolute right-3 top-6 bottom-6" width="80" viewBox="0 0 60 100" aria-hidden="true">
-    <g fill="#B8956A" stroke="#B8956A" stroke-width="1.2" stroke-linecap="round">
-      <circle cx="32" cy="14" r="4"/>
-      <line x1="32" y1="18" x2="34" y2="44"/>
-      <line x1="34" y1="44" x2="20" y2="70" stroke-width="2"/>
-      <line x1="34" y1="44" x2="54" y2="58" stroke-width="2"/>
-      <line x1="20" y1="70" x2="14" y2="92" stroke-width="2"/>
-      <line x1="34" y1="44" x2="48" y2="20" stroke-width="2"/>
-    </g>
-    <path d="M14 92 Q30 96 50 88" stroke="#E8C4C0" stroke-width="0.8" fill="none" opacity="0.6"/>
-  </svg>
+  <img
+    src={data.info.photoHero}
+    alt=""
+    class="absolute inset-0 w-full h-full object-cover scale-[1.03]"
+    loading="lazy"
+    decoding="async"
+  />
 
-  <div class="relative flex items-center justify-between px-3 pt-3">
-    <span class="font-cormorant italic text-vermeille-or text-[10px]">Vermeille</span>
-    <span class="font-outfit text-[6px] uppercase tracking-[0.25em] text-vermeille-rose font-semibold">Danse</span>
+  <div class="absolute inset-0" aria-hidden="true"
+       style="background:
+         linear-gradient(180deg, rgb(26 15 18 / 0.45) 0%, rgb(26 15 18 / 0.10) 35%, rgb(26 15 18 / 0.10) 55%, rgb(26 15 18 / 0.95) 100%),
+         linear-gradient(90deg, rgb(26 15 18 / 0.55) 0%, transparent 55%);">
   </div>
 
-  <div class="absolute left-3 right-3 bottom-2.5 max-w-[60%]">
-    <p class="font-outfit text-[5.5px] uppercase tracking-[0.32em] text-vermeille-or mb-1">École · classique & contemporain</p>
-    <p class="font-cormorant leading-[0.92] font-medium text-vermeille-ivoire" style="font-size: clamp(16px, 3.4vw, 28px);">Le corps,</p>
-    <p class="font-cormorant italic text-vermeille-rose leading-[0.92]" style="font-size: clamp(16px, 3.4vw, 28px);">une phrase.</p>
-    <span class="mt-1.5 inline-flex items-center h-3 px-2 bg-vermeille-bordeaux text-vermeille-ivoire font-outfit font-semibold text-[6px] uppercase tracking-[0.2em]">S'inscrire</span>
+  <div class="relative flex items-center justify-between px-3 pt-2">
+    <div class="flex items-baseline gap-1">
+      <span class="font-italiana text-vermeille-ivoire text-[11px] tracking-wide">Vermeille</span>
+      <span class="text-vermeille-or text-[5px]">✦</span>
+    </div>
+    <div class="flex items-center gap-1.5 text-[6px] uppercase tracking-[0.18em] text-vermeille-ivoire/80 font-light">
+      <span>Disciplines</span>
+      <span>Saison</span>
+    </div>
+  </div>
+
+  <div class="absolute left-3 right-3 bottom-2.5">
+    <p class="font-italiana text-[5.5px] uppercase tracking-[0.3em] text-vermeille-or mb-1">
+      École de danse · depuis 2008
+    </p>
+    <p class="font-italiana text-vermeille-ivoire leading-[0.9] tracking-tight" style="font-size: clamp(18px, 3.6vw, 30px);">
+      Vermeille
+    </p>
+    <p class="mt-0.5 font-italiana italic text-vermeille-or leading-tight" style="font-size: clamp(8px, 1.6vw, 12px);">
+      Le rideau ne se lève qu'avec vous.
+    </p>
+    <div class="mt-1.5 flex items-center gap-1.5">
+      <span class="inline-flex items-center h-3 px-2 bg-vermeille-bordeaux text-vermeille-ivoire font-italiana text-[6.5px] tracking-wide">
+        S'inscrire
+      </span>
+      <span class="inline-flex items-center h-3 px-2 ring-1 ring-vermeille-ivoire/45 text-vermeille-ivoire font-italiana text-[6.5px] tracking-wide">
+        La saison
+      </span>
+    </div>
   </div>
 </div>
