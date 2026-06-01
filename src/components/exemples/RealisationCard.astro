@@ -149,9 +149,9 @@ const moduleColor = moduleColors[realisation.moduleInclus] ?? 'orange';
 ---
 
 <article class="tilt-card group relative rounded-2xl overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-1"
-  style="background: #FFFFFF; box-shadow: 0 18px 40px -22px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.10);"
-  onmouseover="this.style.boxShadow='0 28px 60px -18px rgba(0,0,0,0.95), 0 0 0 1px rgba(255,255,255,0.35), 0 0 32px -8px rgba(255,255,255,0.25)';"
-  onmouseout="this.style.boxShadow='0 18px 40px -22px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.10)';"
+  style="background: linear-gradient(180deg, #1A1E2C 0%, #14161F 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 18px 40px -22px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.10);"
+  onmouseover="this.style.boxShadow='0 1px 0 rgba(255,255,255,0.08) inset, 0 28px 60px -18px rgba(0,0,0,0.95), 0 0 0 1.5px #91a6ff, 0 0 32px -6px rgba(145,166,255,0.55)';"
+  onmouseout="this.style.boxShadow='0 1px 0 rgba(255,255,255,0.06) inset, 0 18px 40px -22px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.10)';"
 >
 
   {realisation.previewUrl && Preview ? (
@@ -160,7 +160,7 @@ const moduleColor = moduleColors[realisation.moduleInclus] ?? 'orange';
       href={realisation.previewUrl}
       target="_blank"
       rel="noopener"
-      class="block relative group/preview overflow-hidden border-b border-bleu-nuit/10 bg-bleu-nuit"
+      class="block relative group/preview overflow-hidden border-b border-white/10 bg-bleu-nuit"
       aria-label={`Voir le site ${realisation.nom}`}
     >
       <!-- Browser chrome minimaliste -->
@@ -191,7 +191,7 @@ const moduleColor = moduleColors[realisation.moduleInclus] ?? 'orange';
   ) : (
     <!-- Fallback -->
     <div class="relative aspect-[4/3] overflow-hidden bg-white/5">
-      <div class="absolute inset-0 flex items-center justify-center text-bleu-nuit/30">
+      <div class="absolute inset-0 flex items-center justify-center text-blanc-casse/30">
         <Icon name={visual.icon} size={48} strokeWidth={1.5} />
       </div>
     </div>
@@ -201,11 +201,11 @@ const moduleColor = moduleColors[realisation.moduleInclus] ?? 'orange';
   <div class="flex-1 flex flex-col p-5 md:p-6">
 
     <!-- Meta inline : catégorie + module sur une ligne discrète -->
-    <div class="flex items-center gap-2 text-[10.5px] font-roboto-mono uppercase tracking-[0.18em] text-bleu-nuit/55 font-semibold mb-3">
+    <div class="flex items-center gap-2 text-[10.5px] font-roboto-mono uppercase tracking-[0.18em] text-blanc-casse/55 font-semibold mb-3">
       <span>{categoryName}</span>
       {realisation.previewUrl && (
         <>
-          <span aria-hidden="true" class="text-bleu-nuit/30">·</span>
+          <span aria-hidden="true" class="text-blanc-casse/30">·</span>
           <span class="inline-flex items-center gap-1.5 text-bleu">
             <Icon name={moduleIcon} size={11} strokeWidth={2.25} />
             Module {realisation.moduleInclus}
@@ -214,11 +214,11 @@ const moduleColor = moduleColors[realisation.moduleInclus] ?? 'orange';
       )}
     </div>
 
-    <h3 class="font-sora font-bold text-xl text-bleu-nuit leading-snug">{realisation.nom}</h3>
-    <p class="mt-2 text-sm text-bleu-nuit/65 leading-relaxed">{realisation.sousTitre}</p>
+    <h3 class="font-sora font-bold text-xl text-blanc-casse leading-snug">{realisation.nom}</h3>
+    <p class="mt-2 text-sm text-blanc-casse/65 leading-relaxed">{realisation.sousTitre}</p>
 
     <!-- CTA ligne : bouton mauve + lien tertiaire -->
-    <div class="mt-6 flex items-center justify-between gap-3 pt-5 border-t border-bleu-nuit/10">
+    <div class="mt-6 flex items-center justify-between gap-3 pt-5 border-t border-white/10">
       {realisation.previewUrl ? (
         <a
           href={realisation.previewUrl}
@@ -233,7 +233,7 @@ const moduleColor = moduleColors[realisation.moduleInclus] ?? 'orange';
 
       <a
         href={ctaHref}
-        class="inline-flex items-center gap-1.5 text-sm font-semibold text-bleu-nuit/70 hover:text-bleu transition-colors"
+        class="inline-flex items-center gap-1.5 text-sm font-semibold text-blanc-casse/70 hover:text-bleu transition-colors"
       >
         Je veux celui-ci
         <Icon name="arrow-right" size={14} strokeWidth={2.5} class="transition-transform duration-200 group-hover:translate-x-0.5" />

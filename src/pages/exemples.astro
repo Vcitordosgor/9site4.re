@@ -70,9 +70,9 @@ const featured = featuredSlugs
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         {featured.map((r) => (
           <article class="group relative flex flex-col rounded-3xl overflow-hidden transition-all duration-300 ease-out-soft hover:-translate-y-1.5"
-            style="background: #FFFFFF; box-shadow: 0 22px 50px -22px rgba(0,0,0,0.9), 0 0 0 1px rgba(255,255,255,0.15), 0 0 24px -10px rgba(255,255,255,0.18);"
+            style="background: linear-gradient(180deg, #1B2030 0%, #13151E 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.07) inset, 0 22px 50px -22px rgba(0,0,0,0.9), 0 0 0 1px rgba(255,255,255,0.15);"
             onmouseover="this.style.boxShadow='0 1px 0 rgba(255,255,255,0.1) inset, 0 36px 70px -18px rgba(0,0,0,0.95), 0 0 0 1px rgba(255,255,255,0.40), 0 0 40px -8px rgba(255,255,255,0.35)';"
-            onmouseout="this.style.boxShadow='0 22px 50px -22px rgba(0,0,0,0.9), 0 0 0 1px rgba(255,255,255,0.15), 0 0 24px -10px rgba(255,255,255,0.18)';"
+            onmouseout="this.style.boxShadow='0 1px 0 rgba(255,255,255,0.07) inset, 0 22px 50px -22px rgba(0,0,0,0.9), 0 0 0 1px rgba(255,255,255,0.15)';"
           >
             <a
               href={r.previewUrl}
@@ -106,15 +106,15 @@ const featured = featuredSlugs
               </div>
             </a>
             <div class="flex flex-col flex-1 p-6">
-              <p class="font-sora font-semibold text-lg text-bleu-nuit">{r.nom}</p>
-              <p class="mt-1 text-sm text-bleu-nuit/65 leading-relaxed">{r.sousTitre}</p>
-              <div class="mt-5 pt-4 border-t border-bleu-nuit/10 flex items-center justify-between gap-3">
-                <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-bleu/15 text-bleu-nuit text-xs font-semibold">
+              <p class="font-sora font-semibold text-lg text-blanc-casse">{r.nom}</p>
+              <p class="mt-1 text-sm text-blanc-casse/65 leading-relaxed">{r.sousTitre}</p>
+              <div class="mt-5 pt-4 border-t border-white/10 flex items-center justify-between gap-3">
+                <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-bleu/15 text-blanc-casse text-xs font-semibold">
                   Module : {r.moduleInclus}
                 </span>
                 <a
                   href="/contact"
-                  class="inline-flex items-center gap-1.5 text-sm font-semibold text-bleu-nuit/70 hover:text-bleu transition-colors"
+                  class="inline-flex items-center gap-1.5 text-sm font-semibold text-blanc-casse/70 hover:text-bleu transition-colors"
                 >
                   Je veux celui-ci
                   <Icon name="arrow-right" size={14} strokeWidth={2.5} />
