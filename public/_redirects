@@ -1,0 +1,4 @@
+# Cloudflare Pages redirects
+# Renommage /exemples → /realisations
+/exemples /realisations 301
+/exemples/* /realisations/:splat 301

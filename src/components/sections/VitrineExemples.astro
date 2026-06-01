@@ -1,20 +1,20 @@
 ---
-import realisations from '../../data/exemples.json';
+import realisations from '../../data/realisations.json';
 
 // PERF : seuls les 12 previews effectivement affichés dans le marquee home
-// sont importés ici. Les 28 autres ne sont chargés que sur /exemples.
-import PreviewResto from '../exemples/previews/PreviewResto.astro';
-import PreviewPizzeria from '../exemples/previews/PreviewPizzeria.astro';
-import PreviewSalon from '../exemples/previews/PreviewSalon.astro';
-import PreviewSpa from '../exemples/previews/PreviewSpa.astro';
-import PreviewPaysagiste from '../exemples/previews/PreviewPaysagiste.astro';
-import PreviewYoga from '../exemples/previews/PreviewYoga.astro';
-import PreviewGite from '../exemples/previews/PreviewGite.astro';
-import PreviewPlongee from '../exemples/previews/PreviewPlongee.astro';
-import PreviewWedding from '../exemples/previews/PreviewWedding.astro';
-import PreviewPhotographe from '../exemples/previews/PreviewPhotographe.astro';
-import PreviewBoulangerie from '../exemples/previews/PreviewBoulangerie.astro';
-import PreviewStudioAudio from '../exemples/previews/PreviewStudioAudio.astro';
+// sont importés ici. Les 28 autres ne sont chargés que sur /realisations.
+import PreviewResto from '../realisations/previews/PreviewResto.astro';
+import PreviewPizzeria from '../realisations/previews/PreviewPizzeria.astro';
+import PreviewSalon from '../realisations/previews/PreviewSalon.astro';
+import PreviewSpa from '../realisations/previews/PreviewSpa.astro';
+import PreviewPaysagiste from '../realisations/previews/PreviewPaysagiste.astro';
+import PreviewYoga from '../realisations/previews/PreviewYoga.astro';
+import PreviewGite from '../realisations/previews/PreviewGite.astro';
+import PreviewPlongee from '../realisations/previews/PreviewPlongee.astro';
+import PreviewWedding from '../realisations/previews/PreviewWedding.astro';
+import PreviewPhotographe from '../realisations/previews/PreviewPhotographe.astro';
+import PreviewBoulangerie from '../realisations/previews/PreviewBoulangerie.astro';
+import PreviewStudioAudio from '../realisations/previews/PreviewStudioAudio.astro';
 
 const previewMap: Record<string, any> = {
   'restaurant-gastronomique': PreviewResto,
@@ -32,7 +32,7 @@ const previewMap: Record<string, any> = {
 };
 
 // PERF : on n'affiche dans le marquee home qu'une sélection de 12 vignettes
-// (au lieu des 40, dupliquées 2 fois → 160). Les 40 restent visibles sur /exemples.
+// (au lieu des 40, dupliquées 2 fois → 160). Les 40 restent visibles sur /realisations.
 // Gain : ~250 KB sur le HTML de la home. Le loop CSS infini est conservé en
 // dupliquant UNE seule fois ces 12 vignettes (24 nœuds au total, vs 160 avant).
 const showcaseSlugs = [
@@ -162,7 +162,7 @@ const stats = [
 
     <div class="mt-12 flex justify-center">
       <a
-        href="/exemples"
+        href="/realisations"
         class="group inline-flex items-center justify-center gap-2 h-13 px-8 py-3.5 text-base font-semibold rounded-full bg-bleu text-white hover:bg-[#7e95ff] hover:-translate-y-0.5 shadow-[0_8px_30px_rgba(145,166,255,0.45)] transition-all duration-200 ease-out"
       >
         Voir toutes nos réalisations

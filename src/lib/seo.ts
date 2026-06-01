@@ -23,7 +23,7 @@ const DEFAULT_OG_ALT = `${siteConfig.siteName} — ${siteConfig.baseline}`;
 
 type PageKey =
   | 'home'
-  | 'exemples'
+  | 'realisations'
   | 'tarifs'
   | 'contact'
   | 'legal'
@@ -91,11 +91,11 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
       'Partenaire web des professionnels réunionnais. 9site4 crée, structure et gère des sites professionnels pour TPE/PME à La Réunion : création incluse, module métier, hébergement, maintenance et accompagnement local pour 97,4€/mois.',
     canonical: '/',
   },
-  exemples: {
+  realisations: {
     title: `Nos réalisations — Sites professionnels à La Réunion | ${siteConfig.siteName}`,
     description:
       'Découvrez les réalisations 9site4 : sites professionnels conçus pour les TPE/PME réunionnaises — artisans, restaurants, instituts, gîtes, coachs, professions libérales. Chaque site est adapté au métier et géré dans la durée.',
-    canonical: '/exemples',
+    canonical: '/realisations',
   },
   tarifs: {
     title: `Tarifs 9site4 — Formule claire à 97,4€/mois pour votre site professionnel`,
