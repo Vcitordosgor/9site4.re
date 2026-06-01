@@ -207,7 +207,7 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
   agenceWebReunion: {
     title: `Agence web à La Réunion pour TPE/PME | ${siteConfig.siteName}`,
     description:
-      ' 9site4 accompagne les professionnels réunionnais dans la création, la structuration et la gestion de leur site internet, avec une offre claire et un accompagnement local.'.trim(),
+      '9site4 accompagne les professionnels réunionnais dans la création, la structuration et la gestion de leur site internet, avec une offre claire et un accompagnement local.',
     canonical: '/agence-web-la-reunion',
   },
   templatePizzeria: {
