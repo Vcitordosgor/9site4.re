@@ -501,3 +501,25 @@ export function getSeo(page: PageKey): PageSeo {
 export function absoluteUrl(path: string): string {
   return new URL(path, siteConfig.siteUrl).toString();
 }
+
+/**
+ * SEO d'une page détail réalisation (/realisations/<slug>).
+ * Génère title/description/canonical à partir des champs métier
+ * (businessType, sector, nom). Indexable par défaut.
+ */
+export function getRealisationSeo(realisation: {
+  slug: string;
+  nom: string;
+  businessType: string;
+  sector?: string;
+}): PageSeo {
+  const business = realisation.businessType;
+  return {
+    title: `Réalisation de site internet pour ${business} à La Réunion | ${siteConfig.siteName}`,
+    description: `Découvrez une réalisation ${siteConfig.siteName} pour un site internet professionnel de ${business} à La Réunion : structure, module métier, présentation claire et prise de contact.`,
+    canonical: `/realisations/${realisation.slug}`,
+    ogImage: DEFAULT_OG_IMAGE,
+    ogImageAlt: DEFAULT_OG_ALT,
+    noindex: false,
+  };
+}
