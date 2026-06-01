@@ -1,54 +1,45 @@
 ---
 /**
- * Mini-preview Atelier Mahatma — photo plein cadre noir & blanc, vignette architectural.
+ * Mini-preview Atelier Mahatma — portfolio architectural.
  */
 ---
 
-<div class="absolute inset-0 bg-mahatma-papier text-mahatma-encre font-atkinson overflow-hidden">
+<div class="absolute inset-0 bg-mahatma-papier text-mahatma-encre overflow-hidden font-archivo">
+  <svg class="absolute inset-0 w-full h-full opacity-30" aria-hidden="true">
+    <defs>
+      <pattern id="grid-arch" width="16" height="16" patternUnits="userSpaceOnUse">
+        <path d="M16 0H0V16" fill="none" stroke="#7E7C75" stroke-width="0.3"/>
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#grid-arch)"/>
+  </svg>
 
-  <img
-    src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=1200&q=80"
-    alt=""
-    class="absolute inset-0 w-full h-full object-cover grayscale scale-[1.03]"
-    loading="lazy"
-    decoding="async"
-  />
+  <svg class="absolute right-3 top-7" width="120" height="80" viewBox="0 0 120 80" aria-hidden="true">
+    <g stroke="#0A0A0C" stroke-width="1" fill="none">
+      <rect x="10" y="30" width="100" height="40"/>
+      <polygon points="10,30 60,8 110,30"/>
+      <rect x="20" y="42" width="14" height="18"/>
+      <rect x="42" y="42" width="14" height="18"/>
+      <rect x="64" y="42" width="14" height="18"/>
+      <rect x="86" y="42" width="14" height="18"/>
+      <line x1="10" y1="72" x2="110" y2="72" stroke-dasharray="2 2"/>
+    </g>
+    <g stroke="#D02F32" stroke-width="0.6" fill="#D02F32" font-size="3.5">
+      <line x1="10" y1="76" x2="110" y2="76"/>
+      <text x="60" y="80" text-anchor="middle">12,40 m</text>
+    </g>
+  </svg>
 
-  <div class="absolute inset-0" aria-hidden="true"
-       style="background:
-         linear-gradient(180deg, rgb(10 10 12 / 0.25) 0%, rgb(10 10 12 / 0) 35%, rgb(10 10 12 / 0) 50%, rgb(10 10 12 / 0.90) 100%),
-         linear-gradient(90deg, rgb(10 10 12 / 0.55) 0%, transparent 55%);">
-  </div>
+  <div class="absolute top-3 right-3 w-7 h-7 border border-mahatma-cachet rounded-full flex items-center justify-center font-archivo font-black text-[6px] text-mahatma-cachet rotate-[-8deg] opacity-90" aria-hidden="true">AM</div>
 
   <div class="relative flex items-center justify-between px-3 pt-2">
-    <div class="flex items-baseline gap-1">
-      <span class="font-fira-mono text-mahatma-cachet text-[7px]">▢</span>
-      <span class="font-schibsted font-bold text-mahatma-papier text-[8px] uppercase tracking-tight">ATELIER</span>
-      <span class="font-schibsted font-light text-mahatma-papier text-[8px] uppercase tracking-tight">MAHATMA</span>
-    </div>
-    <div class="flex items-center gap-1.5 text-[6px] uppercase tracking-wider text-mahatma-papier/80">
-      <span>Projets</span>
-      <span>Méthode</span>
-    </div>
+    <span class="font-archivo font-bold tracking-widest text-mahatma-encre text-[10px]">ATELIER MAHATMA</span>
+    <span class="font-archivo text-[6px] uppercase tracking-[0.3em] text-mahatma-beton">— architecture DPLG</span>
   </div>
 
-  <div class="absolute left-3 right-3 bottom-2.5">
-    <p class="font-fira-mono text-[5.5px] uppercase tracking-[0.32em] text-mahatma-cachet mb-1">
-      Œuvre n° 0001 · 2024
-    </p>
-    <p class="font-schibsted font-bold text-mahatma-papier uppercase tracking-tight leading-[0.9]" style="font-size: clamp(15px, 3.2vw, 26px);">
-      Villa<br/>La Source.
-    </p>
-    <p class="mt-0.5 font-atkinson italic text-mahatma-papier/85 leading-tight" style="font-size: clamp(8px, 1.6vw, 12px);">
-      280 m² · La Réunion.
-    </p>
-    <div class="mt-1.5 flex items-center gap-1.5">
-      <span class="inline-flex items-center h-3 px-2 bg-mahatma-cachet text-mahatma-papier font-atkinson font-bold text-[6px] uppercase tracking-wider">
-        Voir les projets
-      </span>
-      <span class="inline-flex items-center h-3 px-2 ring-1 ring-mahatma-papier/45 text-mahatma-papier font-atkinson font-bold text-[6px] uppercase tracking-wider">
-        Rendez-vous
-      </span>
-    </div>
+  <div class="absolute left-3 bottom-2.5 max-w-[55%]">
+    <p class="font-archivo text-[5.5px] uppercase tracking-[0.3em] text-mahatma-beton mb-1">001 · Maison K, Saint-Leu</p>
+    <p class="font-instrument leading-[0.92] text-mahatma-encre" style="font-size: clamp(16px, 3.4vw, 26px);">L'espace,<br/><span class="italic">d'abord.</span></p>
+    <span class="mt-1.5 inline-flex items-center h-3 px-2 bg-mahatma-encre text-mahatma-papier font-archivo font-semibold text-[6px] uppercase tracking-[0.2em]">Projets</span>
   </div>
 </div>

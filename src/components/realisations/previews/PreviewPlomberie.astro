@@ -1,53 +1,28 @@
 ---
-import data from '../../../data/templates/bernard.json';
 /**
- * Mini-preview Bernard Plomberie — photo plein cadre artisan.
+ * Mini-preview Bernard Plomberie — poster industriel.
  */
 ---
 
 <div class="absolute inset-0 bg-bp-anthracite text-bp-blanc overflow-hidden">
-
-  <img
-    src={data.info.photoBernard}
-    alt=""
-    class="absolute inset-0 w-full h-full object-cover scale-[1.03]"
-    loading="lazy"
-    decoding="async"
-  />
-
-  <div class="absolute inset-0" aria-hidden="true"
-       style="background:
-         linear-gradient(180deg, rgb(20 22 28 / 0.40) 0%, rgb(20 22 28 / 0.05) 30%, rgb(20 22 28 / 0.10) 50%, rgb(20 22 28 / 0.95) 100%),
-         linear-gradient(90deg, rgb(20 22 28 / 0.60) 0%, transparent 55%);">
+  <div class="absolute -left-6 top-6 w-[140%] h-5 bg-bp-jaune rotate-[-12deg] flex items-center overflow-hidden" aria-hidden="true">
+    <div class="flex gap-2 px-2 text-bp-anthracite font-bebas text-[9px] tracking-[0.3em] whitespace-nowrap">
+      <span>BERNARD</span><span>★</span><span>PLOMBERIE</span><span>★</span><span>24/7</span><span>★</span><span>BERNARD</span><span>★</span><span>PLOMBERIE</span>
+    </div>
   </div>
 
   <div class="relative flex items-center justify-between px-3 pt-2">
-    <div class="flex items-center gap-1">
-      <span class="inline-flex items-center justify-center w-3.5 h-3.5 bg-bp-jaune text-bp-anthracite font-bebas text-[8px] leading-none">B</span>
-      <span class="font-bebas text-[10px] tracking-wide text-bp-blanc leading-none">BERNARD</span>
-      <span class="font-bebas text-[10px] tracking-wide text-bp-jaune leading-none">PLOMBERIE</span>
-    </div>
-    <div class="flex items-center gap-1.5 text-[6px] uppercase tracking-wider text-bp-blanc/85 font-medium">
-      <span>Services</span>
-      <span>Tarifs</span>
-    </div>
+    <span class="font-bebas text-bp-jaune text-[11px] tracking-wider">BERNARD</span>
+    <span class="inline-flex items-center h-3 px-2 bg-bp-rouge text-bp-blanc font-bebas text-[7px] tracking-wider">URGENCE 24/7</span>
   </div>
 
-  <div class="absolute left-3 right-3 bottom-2.5">
-    <p class="font-archivo font-bold text-[5.5px] uppercase tracking-[0.32em] text-bp-jaune mb-1">
-      ▸ Plombier · La Réunion
-    </p>
-    <p class="font-bebas text-bp-blanc leading-[0.85] tracking-tight uppercase" style="font-size: clamp(15px, 3.2vw, 26px);">
-      Fuite, bouchon ?<br/>
-      <span class="text-bp-jaune">Bernard arrive.</span>
-    </p>
-    <div class="mt-1.5 flex items-center gap-1.5">
-      <span class="inline-flex items-center h-3 px-2 bg-bp-jaune text-bp-anthracite font-bebas text-[7px] tracking-widest uppercase">
-        ☎ 0692 12 34 56
-      </span>
-      <span class="inline-flex items-center h-3 px-2 ring-1 ring-bp-blanc/45 text-bp-blanc font-bebas text-[7px] tracking-widest uppercase">
-        Devis gratuit
-      </span>
-    </div>
+  <svg class="absolute right-3 bottom-6 opacity-90" width="72" height="72" viewBox="0 0 64 64" aria-hidden="true">
+    <path d="M44 8a12 12 0 0 0-11 17l-22 22 6 6 22-22a12 12 0 1 0 5-23zm0 6a6 6 0 1 1 0 12 6 6 0 0 1 0-12z" fill="#FFC72C"/>
+  </svg>
+
+  <div class="absolute left-3 right-3 bottom-2.5 max-w-[65%]">
+    <p class="font-bebas text-bp-blanc leading-[0.9] tracking-wider" style="font-size: clamp(20px, 4.2vw, 36px);">Fuite ?</p>
+    <p class="font-bebas text-bp-jaune leading-[0.9] tracking-wider" style="font-size: clamp(20px, 4.2vw, 36px);">On arrive.</p>
+    <span class="mt-1.5 inline-flex items-center h-3 px-2 bg-bp-jaune text-bp-anthracite font-bebas text-[7px] tracking-wider">Appeler →</span>
   </div>
 </div>

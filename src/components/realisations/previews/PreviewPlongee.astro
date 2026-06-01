@@ -1,54 +1,39 @@
 ---
-import data from '../../../data/templates/bleulagon.json';
 /**
- * Mini-preview Bleu Lagon Plongée — photo plein cadre sous-marine.
+ * Mini-preview Bleu Lagon Plongée — profondeur océan.
  */
 ---
 
-<div class="absolute inset-0 bg-plongee-abysse text-plongee-ecume font-inter overflow-hidden">
-
-  <img
-    src={data.info.photoHero}
-    alt=""
-    class="absolute inset-0 w-full h-full object-cover scale-[1.03]"
-    loading="lazy"
-    decoding="async"
-  />
-
-  <div class="absolute inset-0" aria-hidden="true"
-       style="background:
-         linear-gradient(180deg, rgb(10 35 66 / 0.40) 0%, rgb(10 35 66 / 0.10) 30%, rgb(10 35 66 / 0.15) 50%, rgb(10 35 66 / 0.95) 100%),
-         linear-gradient(90deg, rgb(10 35 66 / 0.55) 0%, transparent 55%);">
+<div class="absolute inset-0 overflow-hidden" style="background: linear-gradient(180deg, #3FA9D6 0%, #1E3A5F 50%, #0A2342 100%);">
+  <div class="absolute inset-0" aria-hidden="true">
+    <span class="absolute left-[12%] top-[40%] w-3 h-3 rounded-full bg-plongee-ecume/60"></span>
+    <span class="absolute left-[20%] top-[28%] w-2 h-2 rounded-full bg-plongee-ecume/70"></span>
+    <span class="absolute left-[15%] top-[18%] w-1.5 h-1.5 rounded-full bg-plongee-ecume/80"></span>
+    <span class="absolute left-[25%] top-[10%] w-1 h-1 rounded-full bg-plongee-ecume/80"></span>
+    <span class="absolute right-[30%] top-[55%] w-2.5 h-2.5 rounded-full bg-plongee-ecume/40"></span>
   </div>
 
-  <div class="relative flex items-center justify-between px-3 pt-2">
-    <div class="flex items-baseline gap-1">
-      <span class="font-space-grotesk font-bold text-plongee-ecume text-[10px]">Bleu Lagon</span>
-      <span class="font-jetbrains text-plongee-corail text-[6px]">/974</span>
-    </div>
-    <div class="flex items-center gap-1.5 text-[6px] uppercase tracking-wider text-plongee-ecume/85 font-medium">
-      <span>Sorties</span>
-      <span>Formations</span>
-    </div>
+  <svg class="absolute right-4 bottom-6" width="80" height="100" viewBox="0 0 60 80" aria-hidden="true">
+    <g fill="#0F1419">
+      <circle cx="30" cy="10" r="5"/>
+      <ellipse cx="30" cy="32" rx="6" ry="14"/>
+      <ellipse cx="22" cy="56" rx="4" ry="14" transform="rotate(-15 22 56)"/>
+      <ellipse cx="38" cy="56" rx="4" ry="14" transform="rotate(15 38 56)"/>
+      <ellipse cx="18" cy="74" rx="8" ry="4" transform="rotate(-25 18 74)"/>
+      <ellipse cx="42" cy="74" rx="8" ry="4" transform="rotate(25 42 74)"/>
+    </g>
+    <rect x="36" y="20" width="4" height="14" fill="#FF7A5C"/>
+  </svg>
+
+  <div class="relative flex items-center justify-between px-3 pt-2 text-plongee-ecume">
+    <span class="font-cormorant italic text-[10px]">Bleu Lagon</span>
+    <span class="font-outfit text-[6px] uppercase tracking-[0.25em] text-plongee-corail font-semibold">Plongée</span>
   </div>
 
-  <div class="absolute left-3 right-3 bottom-2.5">
-    <p class="font-jetbrains text-[5.5px] uppercase tracking-[0.3em] text-plongee-lagon mb-1">
-      ▼ FFESSM · depuis 2014
-    </p>
-    <p class="font-space-grotesk font-bold text-plongee-ecume leading-[0.9]" style="font-size: clamp(15px, 3.2vw, 26px);">
-      Voir le lagon
-    </p>
-    <p class="font-space-grotesk italic font-light text-plongee-lagon leading-[0.95]" style="font-size: clamp(11px, 2.3vw, 18px);">
-      de l'intérieur.
-    </p>
-    <div class="mt-1.5 flex items-center gap-1.5">
-      <span class="inline-flex items-center h-3 px-2 bg-plongee-corail text-plongee-abysse font-space-grotesk font-bold text-[6.5px] uppercase tracking-wider rounded-full">
-        Réserver
-      </span>
-      <span class="inline-flex items-center h-3 px-2 ring-1 ring-plongee-ecume/45 text-plongee-ecume font-space-grotesk font-bold text-[6.5px] uppercase tracking-wider rounded-full">
-        Sorties
-      </span>
-    </div>
+  <div class="absolute left-3 right-3 bottom-2.5 max-w-[60%]">
+    <p class="font-outfit text-[5.5px] uppercase tracking-[0.32em] text-plongee-corail mb-1">Réserve marine · Saint-Leu</p>
+    <p class="font-cormorant leading-[0.92] font-medium text-plongee-ecume" style="font-size: clamp(16px, 3.4vw, 26px);">Plonger</p>
+    <p class="font-cormorant italic text-plongee-corail leading-[0.92]" style="font-size: clamp(16px, 3.4vw, 26px);">le silence.</p>
+    <span class="mt-1.5 inline-flex items-center h-3 px-2 bg-plongee-corail text-plongee-abysse font-outfit font-semibold text-[6px] uppercase tracking-[0.2em]">Baptême →</span>
   </div>
 </div>

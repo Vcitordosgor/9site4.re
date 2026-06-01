@@ -1,55 +1,32 @@
 ---
-import data from '../../../data/templates/doudou.json';
 /**
- * Mini-preview Doudou Service — photo plein cadre + overlay doux.
+ * Mini-preview Doudou Service — doux & humain.
  */
 ---
 
-<div class="absolute inset-0 bg-doudou-creme text-doudou-encre font-be-vietnam overflow-hidden">
+<div class="absolute inset-0 bg-doudou-creme text-doudou-encre overflow-hidden">
+  <div class="absolute -top-8 -right-8 w-32 h-32 rounded-full bg-doudou-soleil/60" aria-hidden="true"></div>
+  <div class="absolute -bottom-10 -left-6 w-32 h-32 rounded-full bg-doudou-ciel/80" aria-hidden="true"></div>
 
-  <img
-    src={data.info.photoHero}
-    alt=""
-    class="absolute inset-0 w-full h-full object-cover scale-[1.03]"
-    loading="lazy"
-    decoding="async"
-  />
-
-  <div class="absolute inset-0" aria-hidden="true"
-       style="background:
-         linear-gradient(180deg, rgb(34 30 28 / 0.30) 0%, rgb(34 30 28 / 0) 32%, rgb(34 30 28 / 0) 48%, rgb(34 30 28 / 0.88) 100%),
-         linear-gradient(90deg, rgb(34 30 28 / 0.45) 0%, transparent 55%);">
-  </div>
+  <svg class="absolute right-4 top-1/2 -translate-y-1/2" width="80" height="60" viewBox="0 0 80 60" aria-hidden="true">
+    <g fill="#D38B5E">
+      <path d="M10 30 Q10 12 24 12 Q34 12 36 22 L36 40 Q36 50 26 50 L18 50 Q10 50 10 42 Z"/>
+    </g>
+    <g fill="#5B3B6E">
+      <path d="M70 30 Q70 12 56 12 Q46 12 44 22 L44 40 Q44 50 54 50 L62 50 Q70 50 70 42 Z"/>
+    </g>
+    <ellipse cx="40" cy="32" rx="6" ry="3.5" fill="#3A2E2A" opacity="0.3"/>
+  </svg>
 
   <div class="relative flex items-center justify-between px-3 pt-2">
-    <span class="font-nunito font-bold text-doudou-creme text-[10px]">
-      Doudou <span class="text-doudou-rose">Service</span>
-    </span>
-    <div class="flex items-center gap-1.5 text-[6px] uppercase tracking-wider text-doudou-creme/85 font-semibold">
-      <span>Engagements</span>
-      <span>Tarifs</span>
-    </div>
+    <span class="font-fraunces italic text-doudou-bleu text-[10px]">Doudou Service</span>
+    <span class="font-outfit text-[6px] uppercase tracking-[0.25em] text-doudou-rose font-semibold">Aide à domicile</span>
   </div>
 
-  <div class="absolute left-3 right-3 bottom-2.5">
-    <p class="flex items-center gap-1.5 font-be-vietnam font-semibold text-[5.5px] uppercase tracking-[0.25em] text-doudou-soleil mb-1">
-      <span class="inline-block w-3 h-px bg-doudou-soleil" aria-hidden="true"></span>
-      <span>Agréé · depuis 2010</span>
-    </p>
-    <p class="font-nunito font-bold text-doudou-creme leading-[0.95]" style="font-size: clamp(14px, 3vw, 24px);">
-      Une présence,<br/>
-      <span class="text-doudou-soleil">au quotidien.</span>
-    </p>
-    <p class="mt-0.5 font-homemade text-doudou-rose leading-tight" style="font-size: clamp(9px, 1.7vw, 13px);">
-      on prend soin, à La Réunion
-    </p>
-    <div class="mt-1.5 flex items-center gap-1.5">
-      <span class="inline-flex items-center h-3 px-2 bg-doudou-rose text-doudou-creme font-be-vietnam font-semibold text-[6px] uppercase tracking-wider rounded-full">
-        Visite gratuite
-      </span>
-      <span class="inline-flex items-center h-3 px-2 ring-1 ring-doudou-creme/45 text-doudou-creme font-be-vietnam font-semibold text-[6px] uppercase tracking-wider rounded-full">
-        Nos services
-      </span>
-    </div>
+  <div class="absolute left-3 right-3 bottom-2.5 max-w-[60%]">
+    <p class="font-outfit text-[5.5px] uppercase tracking-[0.32em] text-doudou-bourgeon mb-1">— Lé là pou ou.</p>
+    <p class="font-fraunces leading-[0.95] font-medium text-doudou-encre" style="font-size: clamp(15px, 3.2vw, 24px);">Bien vivre,</p>
+    <p class="font-fraunces italic text-doudou-bleu leading-[0.95]" style="font-size: clamp(15px, 3.2vw, 24px);">chez soi.</p>
+    <span class="mt-1.5 inline-flex items-center h-3 px-2 bg-doudou-bleu text-doudou-creme font-outfit font-semibold text-[6px] uppercase tracking-[0.2em]">Nous appeler</span>
   </div>
 </div>

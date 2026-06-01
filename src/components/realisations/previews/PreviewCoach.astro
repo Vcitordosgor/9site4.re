@@ -1,52 +1,25 @@
 ---
-import data from '../../../data/templates/foudre.json';
 /**
- * Mini-preview Foudre Coaching — photo plein cadre athletic.
+ * Mini-preview Foudre Coaching — brutalist athletic.
  */
 ---
 
-<div class="absolute inset-0 bg-coach-noir text-coach-blanc font-barlow overflow-hidden">
+<div class="absolute inset-0 bg-coach-noir text-coach-blanc overflow-hidden">
+  <div class="absolute top-0 right-0 w-1/3 h-full bg-coach-lime" aria-hidden="true"></div>
 
-  <img
-    src={data.info.photoHero}
-    alt=""
-    class="absolute inset-0 w-full h-full object-cover grayscale scale-[1.03]"
-    loading="lazy"
-    decoding="async"
-  />
-
-  <div class="absolute inset-0" aria-hidden="true"
-       style="background:
-         linear-gradient(180deg, rgb(10 10 12 / 0.35) 0%, rgb(10 10 12 / 0) 30%, rgb(10 10 12 / 0) 50%, rgb(10 10 12 / 0.95) 100%),
-         linear-gradient(90deg, rgb(10 10 12 / 0.55) 0%, transparent 55%);">
-  </div>
+  <svg class="absolute right-3 top-1/2 -translate-y-1/2" width="50" height="80" viewBox="0 0 40 60" aria-hidden="true">
+    <path d="M22 0L4 32h12L12 60l24-36H22z" fill="#0A0A0A"/>
+  </svg>
 
   <div class="relative flex items-center justify-between px-3 pt-2">
-    <div class="flex items-baseline gap-1">
-      <span class="font-big-shoulders font-black text-coach-blanc text-[11px] tracking-tight uppercase">FOUDRE</span>
-      <span class="font-jetbrains text-coach-lime text-[6px]">/974</span>
-    </div>
-    <div class="flex items-center gap-1.5 text-[6px] uppercase tracking-wider text-coach-blanc/85 font-medium">
-      <span>Programmes</span>
-      <span>Tarifs</span>
-    </div>
+    <span class="font-bebas text-coach-lime text-[12px] tracking-wider">FOUDRE</span>
+    <span class="font-archivo font-black text-[6px] uppercase tracking-wider text-coach-noir bg-coach-lime px-1.5 py-0.5">COACH</span>
   </div>
 
-  <div class="absolute left-3 right-3 bottom-2.5">
-    <p class="font-jetbrains text-[5.5px] uppercase tracking-[0.25em] text-coach-lime mb-1">
-      EST. 2019 · LA RÉUNION
-    </p>
-    <p class="font-big-shoulders font-black uppercase text-coach-blanc leading-[0.85]" style="font-size: clamp(15px, 3.2vw, 26px);">
-      Ton corps mérite<br/>
-      <span class="text-coach-lime">mieux qu'excuses.</span>
-    </p>
-    <div class="mt-1.5 flex items-center gap-1.5">
-      <span class="inline-flex items-center h-3 px-2 bg-coach-lime text-coach-noir font-big-shoulders font-bold text-[6.5px] uppercase tracking-wider">
-        Réserver
-      </span>
-      <span class="inline-flex items-center h-3 px-2 ring-1 ring-coach-blanc/45 text-coach-blanc font-big-shoulders font-bold text-[6.5px] uppercase tracking-wider">
-        Programmes
-      </span>
-    </div>
+  <div class="absolute left-3 bottom-2.5 max-w-[60%]">
+    <p class="font-jetbrains text-[5.5px] uppercase tracking-[0.25em] text-coach-lime mb-1">— 12 weeks. zéro excuse.</p>
+    <p class="font-bebas text-coach-blanc leading-[0.85] tracking-wider" style="font-size: clamp(22px, 4.6vw, 38px);">PLUS<br/>FORT.</p>
+    <p class="font-bebas text-coach-lime leading-[0.85] tracking-wider" style="font-size: clamp(22px, 4.6vw, 38px);">VITE.</p>
+    <span class="mt-1.5 inline-flex items-center h-3 px-2 bg-coach-lime text-coach-noir font-archivo font-black text-[6.5px] uppercase tracking-wider">Je m'engage</span>
   </div>
 </div>

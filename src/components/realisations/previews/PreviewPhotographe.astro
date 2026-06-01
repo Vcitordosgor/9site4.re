@@ -1,57 +1,27 @@
 ---
-import data from '../../../data/templates/latitude.json';
 /**
- * Mini-preview Studio Latitude — photo plein cadre auteur.
+ * Mini-preview Studio Latitude — planche-contact chambre noire.
  */
 ---
 
-<div class="absolute inset-0 bg-latitude-noir text-latitude-blanc font-hanken overflow-hidden">
-
-  <img
-    src={data.info.photoHero}
-    alt=""
-    class="absolute inset-0 w-full h-full object-cover scale-[1.03]"
-    loading="lazy"
-    decoding="async"
-  />
-
-  <div class="absolute inset-0" aria-hidden="true"
-       style="background:
-         linear-gradient(180deg, rgb(10 10 12 / 0.40) 0%, rgb(10 10 12 / 0.05) 30%, rgb(10 10 12 / 0.10) 50%, rgb(10 10 12 / 0.95) 100%),
-         linear-gradient(90deg, rgb(10 10 12 / 0.55) 0%, transparent 55%);">
+<div class="absolute inset-0 bg-latitude-noir text-latitude-blanc overflow-hidden">
+  <div class="absolute inset-x-3 top-8 bottom-12 grid grid-cols-3 grid-rows-2 gap-1" aria-hidden="true">
+    <div class="bg-latitude-charbon border border-latitude-cendre/40 flex items-center justify-center text-[6px] font-jetbrains text-latitude-or">01</div>
+    <div class="bg-latitude-cendre/40 border border-latitude-cendre/40"></div>
+    <div class="bg-latitude-charbon border border-latitude-cendre/40 flex items-center justify-center text-[6px] font-jetbrains text-latitude-or">03</div>
+    <div class="bg-latitude-charbon border border-latitude-cendre/40 flex items-center justify-center text-[6px] font-jetbrains text-latitude-or">04</div>
+    <div class="bg-latitude-charbon border-2 border-latitude-labo flex items-center justify-center text-[6px] font-jetbrains text-latitude-labo">★ 05</div>
+    <div class="bg-latitude-cendre/40 border border-latitude-cendre/40"></div>
   </div>
 
   <div class="relative flex items-center justify-between px-3 pt-2">
-    <div class="flex items-baseline gap-1">
-      <span class="font-dm-serif text-latitude-blanc text-[10px]">Studio</span>
-      <span class="font-dm-serif italic text-latitude-or text-[10px]">Latitude.</span>
-    </div>
-    <div class="flex items-center gap-1.5 text-[6px] uppercase tracking-wider text-latitude-blanc/85 font-medium">
-      <span>Portfolio</span>
-      <span>Tarifs</span>
-    </div>
+    <span class="font-cormorant italic text-latitude-papier text-[10px]">Studio Latitude</span>
+    <span class="font-jetbrains text-[6px] uppercase tracking-[0.25em] text-latitude-or">— argentique</span>
   </div>
 
-  <div class="absolute left-3 right-3 bottom-2.5">
-    <p class="font-hanken uppercase text-latitude-or mb-1" style="font-size:5.5px;letter-spacing:0.32em;">
-      ✦ Photo d'auteur · 2016
-    </p>
-    <p class="font-dm-serif text-latitude-blanc leading-[0.9]" style="font-size: clamp(15px, 3.2vw, 26px);">
-      Studio
-    </p>
-    <p class="font-dm-serif italic text-latitude-or leading-[0.9]" style="font-size: clamp(15px, 3.2vw, 26px);">
-      Latitude.
-    </p>
-    <p class="mt-0.5 font-instrument italic text-latitude-blanc/90 leading-tight" style="font-size: clamp(8px, 1.6vw, 12px);">
-      L'image juste, jamais l'image facile.
-    </p>
-    <div class="mt-1.5 flex items-center gap-1.5">
-      <span class="inline-flex items-center h-3 px-2 bg-latitude-or text-latitude-noir font-hanken font-semibold text-[6.5px] uppercase tracking-wider">
-        Portfolio
-      </span>
-      <span class="inline-flex items-center h-3 px-2 ring-1 ring-latitude-blanc/45 text-latitude-blanc font-hanken font-semibold text-[6.5px] uppercase tracking-wider">
-        Contact
-      </span>
-    </div>
+  <div class="absolute left-3 right-3 bottom-2">
+    <p class="font-jetbrains text-[5.5px] uppercase tracking-[0.25em] text-latitude-labo mb-1">— planche-contact #023</p>
+    <p class="font-cormorant italic text-latitude-papier leading-[0.95]" style="font-size: clamp(14px, 3vw, 22px);">La lumière, le grain.</p>
+    <span class="mt-1 inline-flex items-center h-3 px-2 bg-latitude-labo text-latitude-papier font-jetbrains font-semibold text-[6px] uppercase tracking-wider">Voir la série</span>
   </div>
 </div>

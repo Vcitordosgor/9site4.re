@@ -1,54 +1,30 @@
 ---
-import data from '../../../data/templates/souffle.json';
 /**
- * Mini-preview Souffle Studio — photo plein cadre yoga contemplatif.
+ * Mini-preview Souffle Studio — slow & contemplatif.
  */
 ---
 
-<div class="absolute inset-0 bg-yoga-creme text-yoga-encre font-spectral overflow-hidden">
+<div class="absolute inset-0 bg-yoga-creme text-yoga-encre overflow-hidden">
+  <div class="absolute -top-8 left-1/2 -translate-x-1/2 w-32 h-32 rounded-full bg-yoga-ocre/35" aria-hidden="true"></div>
 
-  <img
-    src={data.info.photoLieu}
-    alt=""
-    class="absolute inset-0 w-full h-full object-cover scale-[1.03]"
-    loading="lazy"
-    decoding="async"
-  />
-
-  <div class="absolute inset-0" aria-hidden="true"
-       style="background:
-         linear-gradient(180deg, rgb(30 25 22 / 0.30) 0%, rgb(30 25 22 / 0) 32%, rgb(30 25 22 / 0) 48%, rgb(30 25 22 / 0.92) 100%),
-         linear-gradient(90deg, rgb(30 25 22 / 0.45) 0%, transparent 55%);">
-  </div>
+  <svg class="absolute right-4 bottom-6" width="80" height="80" viewBox="0 0 80 80" aria-hidden="true">
+    <g fill="#3F4A3A">
+      <circle cx="40" cy="22" r="8"/>
+      <path d="M40 32 Q28 38 22 56 Q20 66 28 68 L52 68 Q60 66 58 56 Q52 38 40 32"/>
+      <ellipse cx="20" cy="62" rx="14" ry="5"/>
+      <ellipse cx="60" cy="62" rx="14" ry="5"/>
+    </g>
+  </svg>
 
   <div class="relative flex items-center justify-between px-3 pt-2">
-    <div class="flex items-baseline gap-1">
-      <span class="font-dm-serif text-yoga-creme text-[11px]">Souffle</span>
-      <span class="font-spectral italic text-yoga-ocre text-[9px]">Studio</span>
-    </div>
-    <div class="flex items-center gap-1.5 text-[6px] uppercase tracking-[0.18em] text-yoga-creme/85 font-light">
-      <span>Planning</span>
-      <span>Pratiques</span>
-    </div>
+    <span class="font-fraunces italic text-yoga-encre text-[10px]">Souffle Studio</span>
+    <span class="font-outfit text-[6px] uppercase tracking-[0.25em] text-yoga-ocre font-semibold">Yoga</span>
   </div>
 
-  <div class="absolute left-3 right-3 bottom-2.5">
-    <p class="font-lexend text-[5.5px] uppercase tracking-[0.32em] text-yoga-ocre mb-1">
-      Studio · La Réunion
-    </p>
-    <p class="font-dm-serif text-yoga-creme leading-[1.0]" style="font-size: clamp(14px, 3vw, 24px);">
-      Le yoga,
-    </p>
-    <p class="font-spectral italic font-light text-yoga-ocre leading-[1.0]" style="font-size: clamp(14px, 3vw, 24px);">
-      comme on respire.
-    </p>
-    <div class="mt-1.5 flex items-center gap-1.5">
-      <span class="inline-flex items-center h-3 px-2 bg-yoga-ocre text-yoga-creme font-lexend font-semibold text-[6px] uppercase tracking-wider rounded-full">
-        Réserver
-      </span>
-      <span class="inline-flex items-center h-3 px-2 ring-1 ring-yoga-creme/45 text-yoga-creme font-lexend font-semibold text-[6px] uppercase tracking-wider rounded-full">
-        Planning
-      </span>
-    </div>
+  <div class="absolute left-3 right-3 bottom-3 max-w-[60%]">
+    <p class="font-outfit text-[5.5px] uppercase tracking-[0.32em] text-yoga-mousse mb-1">Studio · Saint-Leu</p>
+    <p class="font-fraunces leading-[0.95] font-medium" style="font-size: clamp(16px, 3.4vw, 26px);">Inspirer,</p>
+    <p class="font-fraunces italic text-yoga-ocre leading-[0.95]" style="font-size: clamp(16px, 3.4vw, 26px);">expirer.</p>
+    <span class="mt-1.5 inline-flex items-center h-3 px-2 bg-yoga-mousse text-yoga-creme font-outfit font-semibold text-[6px] uppercase tracking-[0.2em]">Cours d'essai</span>
   </div>
 </div>
