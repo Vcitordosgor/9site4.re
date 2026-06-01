@@ -37,6 +37,12 @@ type PageKey =
   | 'siteGiteLocationReunion'
   | 'siteProfessionLiberaleReunion'
   | 'siteBienEtreSanteReunion'
+  | 'siteInstitutBeauteReunion'
+  | 'siteCoachIndependantReunion'
+  | 'siteCommerceLocalReunion'
+  | 'siteTpePmeReunion'
+  | 'siteVitrineReunion'
+  | 'agenceWebReunion'
   | 'templatePizzeria'
   | 'templateSalon'
   | 'templateSpa'
@@ -167,6 +173,42 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
     description:
       '9site4 crée des sites professionnels pour ostéopathes, naturopathes, diététiciens, coachs sportifs, yoga, danse et professionnels du bien-être à La Réunion : prestations, rendez-vous et gestion continue.',
     canonical: '/site-internet-bien-etre-sante-la-reunion',
+  },
+  siteInstitutBeauteReunion: {
+    title: `Site internet pour institut de beauté à La Réunion | ${siteConfig.siteName}`,
+    description:
+      '9site4 crée des sites professionnels pour instituts de beauté, salons, spas, coiffeurs et professionnels du bien-être à La Réunion : soins, tarifs, rendez-vous et gestion continue.',
+    canonical: '/site-internet-institut-beaute-la-reunion',
+  },
+  siteCoachIndependantReunion: {
+    title: `Site internet pour coach et indépendant à La Réunion | ${siteConfig.siteName}`,
+    description:
+      '9site4 crée des sites professionnels pour coachs, consultants, formateurs et indépendants à La Réunion : offres, programmes, premier échange et gestion continue.',
+    canonical: '/site-internet-coach-independant-la-reunion',
+  },
+  siteCommerceLocalReunion: {
+    title: `Site internet pour commerce local à La Réunion | ${siteConfig.siteName}`,
+    description:
+      "9site4 crée des sites professionnels pour commerces locaux à La Réunion : présentation de l'activité, horaires, produits, contact, demandes d'information et gestion continue.",
+    canonical: '/site-internet-commerce-local-la-reunion',
+  },
+  siteTpePmeReunion: {
+    title: `Site internet pour TPE/PME à La Réunion | ${siteConfig.siteName}`,
+    description:
+      '9site4 accompagne les TPE/PME réunionnaises avec des sites professionnels clairs, fiables, adaptés à leur métier et gérés dans la durée.',
+    canonical: '/site-internet-tpe-pme-la-reunion',
+  },
+  siteVitrineReunion: {
+    title: `Site vitrine à La Réunion pour professionnels | ${siteConfig.siteName}`,
+    description:
+      '9site4 crée et gère des sites vitrines professionnels à La Réunion pour présenter votre activité, vos prestations, vos informations pratiques et faciliter la prise de contact.',
+    canonical: '/site-vitrine-la-reunion',
+  },
+  agenceWebReunion: {
+    title: `Agence web à La Réunion pour TPE/PME | ${siteConfig.siteName}`,
+    description:
+      ' 9site4 accompagne les professionnels réunionnais dans la création, la structuration et la gestion de leur site internet, avec une offre claire et un accompagnement local.'.trim(),
+    canonical: '/agence-web-la-reunion',
   },
   templatePizzeria: {
     title: 'Pizza Lé O — Pizzeria à Saint-Paul (Réunion) | Template 9site4',
