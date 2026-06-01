@@ -19,13 +19,24 @@ const categoriesWithCount = categories.map((c) => ({
   count: counts[c.id] ?? 0,
 }));
 
-// 3 exemples vedettes (métiers variés) mis en avant avant la grille complète
-// Sélection post passe qualité : boulangerie (gourmand), studio audio (pro/créatif),
-// plongée (tourisme/expérientiel) — 3 univers visuels et métiers très différents.
-const featuredSlugs = ['boulangerie-artisanale', 'studio-audio', 'plongee'];
-const featured = featuredSlugs
-  .map((slug) => realisations.find((r) => r.slug === slug))
-  .filter(Boolean) as typeof realisations;
+// Ordre personnalisé : ces métiers prioritaires en haut de grille
+const priorityOrder = [
+  'snack-pizzeria',
+  'auto-ecole',
+  'restaurant-gastronomique',
+  'bar-a-jus-tropical',
+  'coach-sportif',
+  'studio-yoga',
+  'studio-audio',
+  'electricite-generale',
+  'avocat-cabinet',
+];
+const orderedRealisations = [
+  ...priorityOrder
+    .map((slug) => realisations.find((r) => r.slug === slug))
+    .filter(Boolean) as typeof realisations,
+  ...realisations.filter((r) => !priorityOrder.includes(r.slug)),
+];
 ---
 
 <BaseLayout seo={getSeo('exemples')}>
@@ -56,85 +67,6 @@ const featured = featuredSlugs
     </div>
   </section>
 
-  <!-- Exemples vedettes -->
-  <section class="relative px-6 pb-4 md:pb-8" aria-labelledby="vedettes-titre">
-    <div class="mx-auto max-w-content">
-      <h2 id="vedettes-titre" class="sr-only">Exemples mis en avant</h2>
-      <div class="mb-4 flex items-center gap-2">
-        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-orange/15 text-orange text-[10.5px] font-bold uppercase tracking-[0.18em]">
-          <Icon name="sparkle" size={11} strokeWidth={2.5} />
-          Coups de cœur
-        </span>
-        <span class="text-xs text-blanc-casse/55 font-roboto-mono uppercase tracking-wider">3 démos repérées</span>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {featured.map((r) => (
-          <article class="group relative flex flex-col rounded-3xl overflow-hidden transition-all duration-300 ease-out-soft hover:-translate-y-1.5"
-            style="background: #000000; box-shadow: 0 1px 0 rgba(255,255,255,0.07) inset, 0 22px 50px -22px rgba(0,0,0,0.9), 0 0 0 1.5px #91a6ff, 0 0 32px -8px rgba(145,166,255,0.50);"
-            onmouseover="this.style.boxShadow='0 1px 0 rgba(255,255,255,0.1) inset, 0 36px 70px -18px rgba(0,0,0,0.95), 0 0 0 1px rgba(255,255,255,0.40), 0 0 40px -8px rgba(255,255,255,0.35)';"
-            onmouseout="this.style.boxShadow='0 1px 0 rgba(255,255,255,0.07) inset, 0 22px 50px -22px rgba(0,0,0,0.9), 0 0 0 1.5px #91a6ff, 0 0 32px -8px rgba(145,166,255,0.50)';"
-          >
-            <a
-              href={r.previewUrl}
-              target="_blank"
-              rel="noopener"
-              class="block relative overflow-hidden bg-bleu-nuit"
-              aria-label={`Voir la démo ${r.nom}`}
-            >
-              <div class="flex items-center gap-1.5 px-3 py-2 bg-black/80" aria-hidden="true">
-                <span class="block w-2.5 h-2.5 rounded-full bg-[#FF5F57]"></span>
-                <span class="block w-2.5 h-2.5 rounded-full bg-[#FEBC2E]"></span>
-                <span class="block w-2.5 h-2.5 rounded-full bg-[#28C840]"></span>
-              </div>
-              <div class="relative aspect-[4/3] overflow-hidden bg-bleu-nuit">
-                <img
-                  src={r.thumbnail}
-                  alt={`Exemple de site — ${r.nom}`}
-                  class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <span class="absolute top-3 left-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-orange text-white text-[10px] font-bold uppercase tracking-wide shadow-md">
-                  Démo métier
-                </span>
-                <div class="absolute inset-0 flex items-end justify-center pb-5 bg-gradient-to-t from-bleu-nuit/70 via-bleu-nuit/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <span class="inline-flex items-center gap-2 h-11 px-5 rounded-full bg-bleu text-white font-semibold text-sm shadow-[0_0_24px_rgba(145,166,255,0.6)]">
-                    Voir la démo
-                    <Icon name="arrow-right" size={16} strokeWidth={2.5} />
-                  </span>
-                </div>
-              </div>
-            </a>
-            <div class="flex flex-col flex-1 p-6">
-              <p class="font-sora font-semibold text-lg text-blanc-casse truncate" title={r.nom}>{r.nom}</p>
-              <p class="mt-1 text-sm text-blanc-casse/65 leading-relaxed truncate" title={r.sousTitre}>{r.sousTitre}</p>
-              <div class="mt-5 pt-4 border-t border-white/10 flex items-center justify-between gap-3">
-                <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-bleu/15 text-blanc-casse text-xs font-semibold">
-                  Module : {r.moduleInclus}
-                </span>
-                <a
-                  href="/contact"
-                  class="inline-flex items-center gap-1.5 text-sm font-semibold text-blanc-casse/70 hover:text-bleu transition-colors"
-                >
-                  Je veux celui-ci
-                  <Icon name="arrow-right" size={14} strokeWidth={2.5} />
-                </a>
-              </div>
-            </div>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Séparateur : toute la collection -->
-  <section class="relative px-6 pt-12 md:pt-16 pb-2" aria-hidden="true">
-    <div class="mx-auto max-w-content flex items-center gap-4">
-      <span class="h-px flex-1 bg-bleu-nuit/10"></span>
-      <span class="font-roboto-mono text-[11px] uppercase tracking-[0.28em] text-blanc-casse/45">Toute la collection</span>
-      <span class="h-px flex-1 bg-bleu-nuit/10"></span>
-    </div>
-  </section>
 
   <!-- Barre de filtres (Astro Island, client:load) -->
   <section class="relative px-6 pb-10" aria-label="Filtres">
@@ -160,7 +92,7 @@ const featured = featuredSlugs
     <div class="mx-auto max-w-content">
       <h2 id="liste-realisations" class="sr-only">Liste des exemples</h2>
       <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {realisations.map((r) => (
+        {orderedRealisations.map((r) => (
           <li data-realisation-categorie={r.categorie}>
             <RealisationCard realisation={r} />
           </li>
