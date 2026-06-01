@@ -351,10 +351,10 @@ export default {
 
         // ===== New templates batch 1 =====
         // Palette boulangerie (template /templates/boulangerie — Le Pain Levé)
-        'pain-mie':     '#F5EBD5',
-        'pain-croute':  '#7A4A2A',
-        'pain-charbon': '#1A1614',
-        'pain-or':      '#C89B3C',
+        'pain-mie':     '#E8E0CC',
+        'pain-croute':  '#5C4A2E',
+        'pain-charbon': '#1F2521',
+        'pain-or':      '#A87842',
         // Palette glacier (template /templates/glacier — Sorbet Péi)
         'sorbet-mangue':        '#FFB347',
         'sorbet-letchi':        '#FF6F91',

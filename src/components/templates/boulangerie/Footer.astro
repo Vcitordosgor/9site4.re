@@ -2,34 +2,34 @@
 import data from '../../../data/templates/painleve.json';
 const year = new Date().getFullYear();
 ---
-<footer class="relative pt-20 pb-14 overflow-hidden" style="background:#1A1614; color:#F5EBD5;">
+<footer class="relative pt-20 pb-14 overflow-hidden" style="background:#1F2521; color:#E8E0CC;">
   <svg class="absolute inset-0 w-full h-full opacity-[0.05] pointer-events-none" aria-hidden="true">
     <filter id="grain-foot"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2"/></filter>
-    <rect width="100%" height="100%" filter="url(#grain-foot)" fill="#F5EBD5"/>
+    <rect width="100%" height="100%" filter="url(#grain-foot)" fill="#E8E0CC"/>
   </svg>
 
   <div class="max-w-content mx-auto px-6 md:px-12 relative">
-    <p class="font-crimson-pro italic tracking-[-0.02em] leading-none" style="color:#C89B3C; font-size:clamp(72px,14vw,200px);">
+    <p class="font-crimson-pro italic tracking-[-0.02em] leading-none" style="color:#A87842; font-size:clamp(72px,14vw,200px);">
       Le Pain Levé.
     </p>
-    <p class="font-caveat text-3xl mt-4 max-w-lg" style="color:#E0D2B5;">
+    <p class="font-caveat text-3xl mt-4 max-w-lg" style="color:#D4C8AC;">
       — farine, eau, sel, temps. rien d'autre.
     </p>
 
     <div class="mt-16 grid md:grid-cols-3 gap-10">
       <div>
-        <p class="text-[10px] uppercase tracking-[0.28em] mb-3" style="color:#C89B3C;">Contact</p>
+        <p class="text-[10px] uppercase tracking-[0.28em] mb-3" style="color:#A87842;">Contact</p>
         <p class="text-[14px] leading-relaxed"><a href={`tel:${data.info.telephoneHref}`} class="hover:underline">{data.info.telephone}</a></p>
         <p class="text-[14px] leading-relaxed"><a href={`mailto:${data.info.email}`} class="hover:underline">{data.info.email}</a></p>
-        <p class="text-[14px] leading-relaxed mt-2" style="color:#E0D2B5;">Instagram {data.info.instagram}</p>
+        <p class="text-[14px] leading-relaxed mt-2" style="color:#D4C8AC;">Instagram {data.info.instagram}</p>
       </div>
       <div>
-        <p class="text-[10px] uppercase tracking-[0.28em] mb-3" style="color:#C89B3C;">Fournil</p>
-        <p class="text-[14px] leading-relaxed" style="color:#E0D2B5;">{data.info.adresseLigne1}<br/>{data.info.adresseLigne2}</p>
-        <p class="text-[14px] leading-relaxed mt-2" style="color:#E0D2B5;">{data.info.ouvertureHebdo}<br/>{data.info.fermeture}</p>
+        <p class="text-[10px] uppercase tracking-[0.28em] mb-3" style="color:#A87842;">Fournil</p>
+        <p class="text-[14px] leading-relaxed" style="color:#D4C8AC;">{data.info.adresseLigne1}<br/>{data.info.adresseLigne2}</p>
+        <p class="text-[14px] leading-relaxed mt-2" style="color:#D4C8AC;">{data.info.ouvertureHebdo}<br/>{data.info.fermeture}</p>
       </div>
       <div>
-        <p class="text-[10px] uppercase tracking-[0.28em] mb-3" style="color:#C89B3C;">Plan</p>
+        <p class="text-[10px] uppercase tracking-[0.28em] mb-3" style="color:#A87842;">Plan</p>
         <ul class="text-[14px] space-y-1.5">
           <li><a href="#manifeste" class="hover:underline">Manifeste</a></li>
           <li><a href="#carte" class="hover:underline">Les pains</a></li>
@@ -40,9 +40,9 @@ const year = new Date().getFullYear();
       </div>
     </div>
 
-    <div class="mt-14 pt-6 border-t flex flex-col md:flex-row items-start md:items-center justify-between gap-3 text-[11px] uppercase tracking-[0.22em]" style="border-color:rgba(245,235,213,0.15); color:#7A5C28;">
+    <div class="mt-14 pt-6 border-t flex flex-col md:flex-row items-start md:items-center justify-between gap-3 text-[11px] uppercase tracking-[0.22em]" style="border-color:rgba(232,224,204,0.15); color:#7A5C28;">
       <p>© {data.info.annee}–{year} {data.info.nom}</p>
-      <p class="font-caveat normal-case text-2xl tracking-normal" style="color:#C89B3C;">— bien le bonjour, et merci pour le pain.</p>
+      <p class="font-caveat normal-case text-2xl tracking-normal" style="color:#A87842;">— bien le bonjour, et merci pour le pain.</p>
     </div>
   </div>
 </footer>

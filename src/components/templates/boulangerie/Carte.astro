@@ -5,21 +5,21 @@
  */
 import data from '../../../data/templates/painleve.json';
 
-const photos = ['/images/boulangerie/extra-2.webp', '/images/boulangerie/extra-3.webp', '/images/boulangerie/extra-1.webp', '/images/boulangerie/extra-4.webp', '/images/boulangerie/extra-5.webp', '/images/boulangerie/hero.webp'];
+const photos = ['/images/boulangerie/pain-1.webp', '/images/boulangerie/pain-2.webp', '/images/boulangerie/pain-3.webp', '/images/boulangerie/pain-4.webp', '/images/boulangerie/pain-5.webp', '/images/boulangerie/hero.webp'];
 const items = [
   ...data.carte.pains.map((p, i) => ({ ...p, photo: photos[i % photos.length], cat: 'Pain' })),
   ...data.carte.viennoiseries.slice(0, 2).map((p, i) => ({ ...p, photo: photos[(i + 4) % photos.length], cat: 'Viennoiserie' })),
 ];
 const stocks = [22, 0, 14, 8, 6, 28];
 ---
-<section id="carte" class="relative py-28 md:py-36" style="background:#F5EBD5;">
+<section id="carte" class="relative py-28 md:py-36" style="background:#E8E0CC;">
   <div class="max-w-content mx-auto px-6 md:px-12">
     <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14 md:mb-20">
       <div class="max-w-3xl">
         <p class="font-caveat text-2xl md:text-3xl mb-3" style="color:#7A5C28;">— la carte</p>
-        <h2 class="font-crimson-pro leading-[0.95] tracking-[-0.01em]" style="font-size:clamp(40px,6vw,84px); color:#1A1614;">
+        <h2 class="font-crimson-pro leading-[0.95] tracking-[-0.01em]" style="font-size:clamp(40px,6vw,84px); color:#1F2521;">
           Six pains,
-          <span class="block italic" style="color:#C89B3C; font-size:clamp(54px,7.8vw,108px);">six caractères.</span>
+          <span class="block italic" style="color:#A87842; font-size:clamp(54px,7.8vw,108px);">six caractères.</span>
         </h2>
       </div>
       <p class="max-w-xs text-[14px] leading-relaxed" style="color:#3A3128;">
@@ -33,32 +33,32 @@ const stocks = [22, 0, 14, 8, 6, 28];
         const epuise = reste === 0;
         return (
           <li class="group">
-            <article class={`relative flex flex-col h-full border overflow-hidden transition-all duration-500 hover:-translate-y-1 ${epuise ? 'opacity-80' : ''}`} style="background:#F5EBD5; border-color:rgba(26,22,20,0.15);">
+            <article class={`relative flex flex-col h-full border overflow-hidden transition-all duration-500 hover:-translate-y-1 ${epuise ? 'opacity-80' : ''}`} style="background:#E8E0CC; border-color:rgba(26,22,20,0.15);">
               <div class="relative overflow-hidden aspect-[4/5]">
                 <img src={p.photo} alt={p.nom}
                      class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.05]"
                      loading="lazy" />
                 <div class="absolute inset-0" style="background:linear-gradient(180deg, transparent 55%, rgba(26,22,20,0.55));"></div>
-                <span class="absolute top-4 left-4 px-3 py-1 text-[10px] uppercase tracking-[0.22em] rounded-full" style="background:#F5EBD5; color:#1A1614;">{p.cat}</span>
+                <span class="absolute top-4 left-4 px-3 py-1 text-[10px] uppercase tracking-[0.22em] rounded-full" style="background:#E8E0CC; color:#1F2521;">{p.cat}</span>
                 {epuise ? (
-                  <span class="absolute top-4 right-4 px-3 py-1 text-[10px] uppercase tracking-[0.22em] rounded-full" style="background:#1A1614; color:#F5EBD5;">Épuisé · demain 11 h</span>
+                  <span class="absolute top-4 right-4 px-3 py-1 text-[10px] uppercase tracking-[0.22em] rounded-full" style="background:#1F2521; color:#E8E0CC;">Épuisé · demain 11 h</span>
                 ) : (
-                  <span class="absolute top-4 right-4 inline-flex items-center gap-1.5 px-3 py-1 text-[10px] uppercase tracking-[0.22em] rounded-full" style="background:rgba(245,235,213,0.95); color:#1A1614;">
+                  <span class="absolute top-4 right-4 inline-flex items-center gap-1.5 px-3 py-1 text-[10px] uppercase tracking-[0.22em] rounded-full" style="background:rgba(232,224,204,0.95); color:#1F2521;">
                     <span class="block w-1.5 h-1.5 rounded-full" style="background:#5C7448;"></span>
                     {reste} en vitrine
                   </span>
                 )}
                 <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-3">
-                  <h3 class="font-crimson-pro text-2xl md:text-3xl leading-tight" style="color:#F5EBD5;">{p.nom}</h3>
-                  <span class="font-crimson-pro text-2xl leading-none whitespace-nowrap" style="color:#C89B3C;">{p.prix}</span>
+                  <h3 class="font-crimson-pro text-2xl md:text-3xl leading-tight" style="color:#E8E0CC;">{p.nom}</h3>
+                  <span class="font-crimson-pro text-2xl leading-none whitespace-nowrap" style="color:#A87842;">{p.prix}</span>
                 </div>
               </div>
               <div class="p-6 flex-1 flex flex-col">
                 <p class="font-caveat text-2xl leading-tight" style="color:#7A5C28;">— {p.tagline}</p>
                 <p class="mt-3 text-[14px] leading-relaxed flex-1" style="color:#3A3128;">{p.description}</p>
                 <dl class="mt-5 pt-4 border-t text-[11.5px] flex items-center justify-between" style="border-color:rgba(26,22,20,0.15); color:#7A5C28;">
-                  <div><dt class="uppercase tracking-[0.18em]">Format</dt><dd class="mt-0.5 font-crimson-pro text-[15px]" style="color:#1A1614;">{p.format ?? '—'}</dd></div>
-                  {p.conserve && <div class="text-right"><dt class="uppercase tracking-[0.18em]">Garde</dt><dd class="mt-0.5 font-crimson-pro text-[15px]" style="color:#1A1614;">{p.conserve}</dd></div>}
+                  <div><dt class="uppercase tracking-[0.18em]">Format</dt><dd class="mt-0.5 font-crimson-pro text-[15px]" style="color:#1F2521;">{p.format ?? '—'}</dd></div>
+                  {p.conserve && <div class="text-right"><dt class="uppercase tracking-[0.18em]">Garde</dt><dd class="mt-0.5 font-crimson-pro text-[15px]" style="color:#1F2521;">{p.conserve}</dd></div>}
                 </dl>
               </div>
             </article>
