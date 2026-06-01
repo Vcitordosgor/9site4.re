@@ -5,7 +5,7 @@
  * Fiche du gîte à droite (titre, altitude, capacité, classification, prix).
  * Lignes topographiques SVG en arrière-plan (cercles concentriques).
  */
-import data from '../../../data/templates/cap-anglais.json';
+import data from '../../../data/templates/crete-aurere.json';
 ---
 
 <section id="top" class="relative bg-cap-papier overflow-hidden">
@@ -38,7 +38,7 @@ import data from '../../../data/templates/cap-anglais.json';
         <div class="relative aspect-[4/3] bg-cap-charbon overflow-hidden">
           <img
             src={data.info.photoHero} srcset={`${(data.info.photoHero).replace(/\.webp$/, "-640.webp")} 640w, ${(data.info.photoHero).replace(/\.webp$/, "-1024.webp")} 1024w, ${data.info.photoHero} 1600w`} sizes="100vw"
-            alt={`Le Cap Anglais, gîte de ${data.info.ville}`}
+            alt={`La Crête d'Aurère, gîte de ${data.info.ville}`}
             class="w-full h-full object-cover hero-vivant" width="1600" height="900" loading="eager" fetchpriority="high" decoding="async">
           <!-- Épingle topo SVG centrée -->
           <div class="absolute top-1/3 left-2/3 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-1.5">

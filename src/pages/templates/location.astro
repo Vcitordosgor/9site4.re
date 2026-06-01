@@ -1,11 +1,13 @@
 ---
+import '@fontsource/cormorant-garamond/latin-400.css';
+import '@fontsource/cormorant-garamond/latin-400-italic.css';
+import '@fontsource/cormorant-garamond/latin-500.css';
+import '@fontsource/cormorant-garamond/latin-500-italic.css';
 import '@fontsource/yeseva-one/latin-400.css';
 import '@fontsource/geist-sans/latin-300.css';
 import '@fontsource/geist-sans/latin-400.css';
 import '@fontsource/geist-sans/latin-500.css';
 import '@fontsource/geist-sans/latin-600.css';
-import '@fontsource/geist-sans/latin-700.css';
-import '@fontsource/italianno/latin-400.css';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSeo } from '../../lib/seo';
@@ -15,35 +17,30 @@ import lazuliData from '../../data/templates/lazuli.json';
 import LazuliHeader from '../../components/templates/location/LazuliHeader.astro';
 import HeroMagazine from '../../components/templates/location/HeroMagazine.astro';
 import Pitch from '../../components/templates/location/Pitch.astro';
-import Disponibilite from '../../components/templates/location/Disponibilite.astro';
-import Chiffres from '../../components/templates/location/Chiffres.astro';
-import VisiteGuidee from '../../components/templates/location/VisiteGuidee.astro';
-import Citation from '../../components/templates/location/Citation.astro';
-import Equipements from '../../components/templates/location/Equipements.astro';
-import PhotoLagon from '../../components/templates/location/PhotoLagon.astro';
 import Galerie from '../../components/templates/location/Galerie.astro';
 import Calligraphie from '../../components/templates/location/Calligraphie.astro';
+import VisiteGuidee from '../../components/templates/location/VisiteGuidee.astro';
+import PhotoLagon from '../../components/templates/location/PhotoLagon.astro';
+import Equipements from '../../components/templates/location/Equipements.astro';
+import Chiffres from '../../components/templates/location/Chiffres.astro';
 import TarifsSaisons from '../../components/templates/location/TarifsSaisons.astro';
+import Disponibilite from '../../components/templates/location/Disponibilite.astro';
+import Citation from '../../components/templates/location/Citation.astro';
 import Avis from '../../components/templates/location/Avis.astro';
-import Bandeau from '../../components/templates/location/Bandeau.astro';
 import BonnesAdresses from '../../components/templates/location/BonnesAdresses.astro';
-import FAQ from '../../components/templates/location/FAQ.astro';
+import Bandeau from '../../components/templates/location/Bandeau.astro';
 import Reservation from '../../components/templates/location/Reservation.astro';
+import FAQ from '../../components/templates/location/FAQ.astro';
 import CTAFinal from '../../components/templates/location/CTAFinal.astro';
 import LazuliFooter from '../../components/templates/location/LazuliFooter.astro';
-const businessLD = localBusinessSchema(lazuliData, 'LodgingBusiness');
 
+const businessLD = localBusinessSchema(lazuliData, 'LodgingBusiness');
 ---
 
 <BaseLayout seo={getSeo('templateLocation')} bare={true}>
   <Fragment slot="head">
     {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
-<link
-      rel="preload"
-      as="image"
-      href={lazuliData.info.photoHero}
-      fetchpriority="high"
-    />
+    <link rel="preload" as="image" href={lazuliData.info.photoHero} fetchpriority="high" />
   </Fragment>
 
   <LazuliHeader />
@@ -51,26 +48,25 @@ const businessLD = localBusinessSchema(lazuliData, 'LodgingBusiness');
   <main id="top" class="bg-lazuli-casse text-lazuli-marine font-geist">
     <HeroMagazine />
     <Pitch />
-    <Disponibilite />
-    <Chiffres />
-    <VisiteGuidee />
-    <Citation />
-    <Equipements />
-    <PhotoLagon />
     <Galerie />
     <Calligraphie />
+    <VisiteGuidee />
+    <PhotoLagon />
+    <Equipements />
+    <Chiffres />
     <TarifsSaisons />
+    <Disponibilite />
+    <Citation />
     <Avis />
-    <Bandeau />
     <BonnesAdresses />
-    <FAQ />
+    <Bandeau />
     <Reservation />
+    <FAQ />
     <CTAFinal />
   </main>
 
   <LazuliFooter />
 
-  <!-- Sticky CTA mobile : pill terracotta arrondi -->
   <a
     id="lazuli-sticky-cta"
     href="#reservation"

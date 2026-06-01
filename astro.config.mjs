@@ -22,5 +22,24 @@ export default defineConfig({
     }),
   ],
 
+  // Prefetch des liens du nav au hover (perf navigation entre pages 9site4)
+  prefetch: {
+    prefetchAll: false,
+    defaultStrategy: 'hover',
+  },
+
+  // Bundle CSS plus agressif :
+  // - inline les très petites feuilles dans le HTML pour éviter une requête bloquante
+  // - minification via lightningcss
+  build: {
+    inlineStylesheets: 'auto',
+  },
+
+  vite: {
+    build: {
+      cssMinify: 'esbuild',
+    },
+  },
+
   adapter: cloudflare()
 });

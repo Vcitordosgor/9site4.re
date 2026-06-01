@@ -1,0 +1,270 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/ui/Button.astro';
+import Icon from '../components/ui/Icon.astro';
+import RealisationCard from '../components/realisations/RealisationCard.astro';
+import TarifsBref from '../components/sections/TarifsBref.astro';
+import CTABand from '../components/sections/CTABand.astro';
+import realisations from '../data/realisations.json';
+import { getSeo, absoluteUrl } from '../lib/seo';
+
+const seo = getSeo('agenceWebReunion');
+
+const SLUGS = ['restaurant-gastronomique', 'salon-de-coiffure', 'plomberie', 'cabinet-osteopathie', 'gite-de-montagne', 'architecte'];
+const selected = SLUGS
+  .map((s) => realisations.find((r) => r.slug === s))
+  .filter(Boolean) as typeof realisations;
+
+const faq = [
+  {
+    q: "Vous êtes une agence web généraliste ?",
+    a: "Non — et c'est volontaire. 9site4 est spécialisée dans LE site professionnel pour TPE/PME réunionnaises. Pas de campagnes publicitaires, pas de stratégie réseaux sociaux complexe : un site, bien fait, géré dans la durée. C'est cette concentration qui fait la qualité.",
+  },
+  {
+    q: "Pourquoi choisir 9site4 plutôt qu'une agence web classique ?",
+    a: "Trois différences : une offre claire à 97,4€/mois (pas de devis à rallonge), un site structuré pour votre métier (pas un template générique), et une gestion continue incluse (pas un site abandonné dans 6 mois).",
+  },
+  {
+    q: "Vous travaillez avec quels types d'entreprises ?",
+    a: "Restaurateurs, artisans, professions libérales, hébergeurs, coachs, instituts, commerces locaux — toutes les TPE/PME réunionnaises qui ont besoin d'un site professionnel. Notre catalogue de réalisations couvre tous les secteurs du 974.",
+  },
+  {
+    q: "Et l'accompagnement après la mise en ligne ?",
+    a: "C'est notre vrai différenciant. Hébergement, maintenance, mises à jour techniques, modifications simples (horaires, photos, prestations, tarifs), conseils continus : tout est inclus dans la formule mensuelle.",
+  },
+  {
+    q: "Vous êtes basés à La Réunion ?",
+    a: "Oui. 9site4 est dédiée aux TPE/PME réunionnaises. Notre ancrage local nous permet de comprendre votre marché, vos codes, vos clients — et d'être réactifs quand vous nous écrivez.",
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Agence web à La Réunion — Création et gestion de site internet',
+  serviceType: 'Agence web',
+  provider: { '@type': 'Organization', name: '9site4', url: 'https://9site4.re' },
+  areaServed: { '@type': 'AdministrativeArea', name: 'La Réunion' },
+  url: absoluteUrl(seo.canonical),
+  description: seo.description,
+  offers: { '@type': 'Offer', price: 97.4, priceCurrency: 'EUR', url: 'https://9site4.re/tarifs' },
+};
+---
+
+<BaseLayout seo={seo}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+
+  <div class="bg-black text-blanc-casse">
+    <!-- Hero -->
+    <section class="relative overflow-hidden px-6 pt-28 pb-16 md:pt-36 md:pb-24">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="hero-rise hero-rise-1 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-bleu text-white text-xs font-semibold uppercase tracking-wide">
+          <span class="block w-1.5 h-1.5 rounded-full bg-white/90 animate-pulse"></span>
+          Partenaire web spécialisé · TPE/PME 974
+        </p>
+        <span class="hero-rise hero-rise-2 block mx-auto mt-7 h-[3px] w-16 bg-bleu" aria-hidden="true"></span>
+        <h1 class="hero-rise hero-rise-2 mt-5 font-sora font-bold text-balance leading-[1.08] text-[clamp(2.25rem,4vw+1rem,4rem)] tracking-tight text-blanc-casse">
+          Agence web
+          <span class="block italic font-medium text-bleu">à La Réunion.</span>
+        </h1>
+        <p class="hero-rise hero-rise-4 mx-auto mt-7 max-w-2xl text-lg md:text-xl text-blanc-casse/80 leading-relaxed">
+          9site4 accompagne les professionnels réunionnais dans la création, la structuration et la gestion de leur site internet, avec une offre claire et un accompagnement local.
+        </p>
+        <div class="hero-rise hero-rise-5 mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+          <Button variant="primary" size="lg" href="/contact">
+            Créer mon site avec 9site4
+            <Icon name="arrow-right" size={20} strokeWidth={2.25} />
+          </Button>
+          <a href="/realisations" class="inline-flex items-center justify-center gap-2 h-14 px-8 text-lg font-semibold rounded-full text-bleu hover:text-blanc-casse transition-colors">
+            Voir nos réalisations
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pourquoi -->
+    <section class="relative px-6 py-16 md:py-24">
+      <div class="mx-auto max-w-5xl">
+        <div class="text-center max-w-3xl mx-auto">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-bleu"></span> Notre positionnement
+          </p>
+          <h2 class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl lg:text-5xl text-blanc-casse text-balance leading-[1.12]">
+            Pas une agence web classique —
+            <span class="block italic font-medium text-bleu">un partenaire spécialisé.</span>
+          </h2>
+          <p class="scroll-reveal mt-6 text-base md:text-lg text-blanc-casse/70 leading-relaxed">
+            Les agences web généralistes vendent souvent de tout : sites, pub, SEO, réseaux, applications. 9site4 a fait un choix : se concentrer sur LE site professionnel pour TPE/PME du 974. C'est ce qui rend chaque site solide.
+          </p>
+        </div>
+
+        <ul class="scroll-reveal mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {[
+            { i: 'monitor', t: 'Offre claire', d: "97,4€/mois tout inclus, pas de devis à rallonge ni d'options cachées." },
+            { i: 'file-text', t: 'Méthode structurée', d: 'Brief, conception, mise en ligne, gestion continue — chaque étape balisée.' },
+            { i: 'shield-check', t: 'Site adapté au métier', d: 'Pas de template générique : structure pensée pour votre activité.' },
+            { i: 'wand', t: 'Module métier intégré', d: 'Le bon outil pour votre vrai flux client — devis, RDV, séjour, etc.' },
+            { i: 'map-pin', t: 'Ancrage 974', d: "Connaissance du marché local, des codes, des attentes clients réunionnais." },
+            { i: 'calendar-clock', t: 'Gestion continue', d: 'Hébergement, maintenance, modifications incluses — pas de site oublié.' },
+          ].map((item) => (
+            <li class="rounded-2xl p-6"
+              style="background: linear-gradient(180deg, #14161F 0%, #0A0B12 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 12px 30px -16px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08);">
+              <span class="flex w-11 h-11 items-center justify-center rounded-xl bg-bleu/15 text-bleu">
+                <Icon name={item.i} size={20} strokeWidth={1.75} />
+              </span>
+              <p class="mt-4 font-sora font-semibold text-blanc-casse">{item.t}</p>
+              <p class="mt-2 text-sm text-blanc-casse/70 leading-relaxed">{item.d}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- Ce que 9site4 structure -->
+    <section class="relative px-6 py-16 md:py-24">
+      <div class="mx-auto max-w-5xl">
+        <div class="text-center max-w-3xl mx-auto">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-bleu"></span> Notre méthode
+          </p>
+          <h2 class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl lg:text-5xl text-blanc-casse text-balance leading-[1.12]">
+            Comment 9site4
+            <span class="block italic font-medium text-bleu">construit votre site.</span>
+          </h2>
+        </div>
+
+        <ol class="scroll-reveal mt-12 grid md:grid-cols-2 gap-5">
+          {[
+            { n: '01', t: 'Brief activité', d: "Échange pour comprendre votre métier, vos clients, vos objectifs." },
+            { n: '02', t: 'Structure du site', d: "Plan de pages, hiérarchie, module métier choisi avec vous." },
+            { n: '03', t: 'Conception design', d: 'Identité visuelle adaptée à votre univers professionnel.' },
+            { n: '04', t: 'Rédaction & intégration', d: "Textes structurés, photos retravaillées, contenu prêt à publier." },
+            { n: '05', t: 'Mise en ligne', d: "Domaine, hébergement, SEO de base, fiche Google connectée." },
+            { n: '06', t: 'Gestion continue', d: 'Maintenance, modifications, conseils — sur toute la durée.' },
+          ].map((s) => (
+            <li class="rounded-2xl p-6"
+              style="background: linear-gradient(180deg, #14161F 0%, #0A0B12 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 12px 30px -16px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08);">
+              <p class="font-roboto-mono text-bleu text-sm font-semibold tracking-widest">{s.n}</p>
+              <p class="mt-2 font-sora font-semibold text-lg text-blanc-casse">{s.t}</p>
+              <p class="mt-2 text-sm text-blanc-casse/70 leading-relaxed">{s.d}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <!-- Module métier -->
+    <section class="relative px-6 py-16 md:py-24">
+      <div class="mx-auto max-w-5xl">
+        <div class="text-center max-w-3xl mx-auto">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-bleu"></span> Ce qu'on inclut
+          </p>
+          <h2 class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl lg:text-5xl text-blanc-casse text-balance leading-[1.12]">
+            Création, hébergement, maintenance
+            <span class="block italic font-medium text-bleu">— tout inclus.</span>
+          </h2>
+          <p class="scroll-reveal mt-6 text-base md:text-lg text-blanc-casse/70 leading-relaxed">
+            Une agence web qui livre puis disparaît, ça n'aide pas une TPE/PME. 9site4 reste votre partenaire web sur la durée.
+          </p>
+        </div>
+
+        <ul class="scroll-reveal mt-12 grid sm:grid-cols-2 gap-5">
+          {[
+            { i: 'globe', t: 'Domaine & hébergement', d: 'Inclus, optimisés pour la rapidité — pas de prestataire à gérer.' },
+            { i: 'shield-check', t: 'Maintenance technique', d: 'Mises à jour de sécurité, sauvegardes, supervision continue.' },
+            { i: 'file-text', t: 'Modifications simples', d: "Horaires, photos, prestations, tarifs — vous écrivez, on fait." },
+            { i: 'wand', t: 'Conseils continus', d: "Un partenaire web qui répond, conseille, fait évoluer le site." },
+          ].map((m) => (
+            <li class="rounded-2xl p-6"
+              style="background: linear-gradient(180deg, #14161F 0%, #0A0B12 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 12px 30px -16px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08);">
+              <span class="flex w-11 h-11 items-center justify-center rounded-xl bg-bleu/15 text-bleu">
+                <Icon name={m.i} size={20} strokeWidth={1.75} />
+              </span>
+              <p class="mt-4 font-sora font-semibold text-blanc-casse">{m.t}</p>
+              <p class="mt-2 text-sm text-blanc-casse/70 leading-relaxed">{m.d}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- Réalisations -->
+    <section class="relative px-6 py-16 md:py-24">
+      <div class="mx-auto max-w-content">
+        <div class="text-center max-w-3xl mx-auto">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-bleu"></span> Nos réalisations
+          </p>
+          <h2 class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl lg:text-5xl text-blanc-casse text-balance leading-[1.12]">
+            Une sélection
+            <span class="block italic font-medium text-bleu">de sites professionnels 974.</span>
+          </h2>
+        </div>
+        <ul class="scroll-reveal mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {selected.map((r) => (
+            <li><RealisationCard realisation={r} /></li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <TarifsBref />
+
+    <!-- FAQ -->
+    <section class="relative px-6 py-16 md:py-24">
+      <div class="mx-auto max-w-3xl">
+        <div class="text-center">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-bleu"></span> Questions fréquentes
+          </p>
+          <h2 class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl lg:text-5xl text-blanc-casse text-balance leading-[1.12]">
+            Ce qu'on nous demande
+            <span class="block italic font-medium text-bleu">sur l'agence.</span>
+          </h2>
+        </div>
+        <div class="mt-12 space-y-3">
+          {faq.map((item) => (
+            <details class="group rounded-2xl p-5 md:p-6"
+              style="background: linear-gradient(180deg, #14161F 0%, #0A0B12 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 12px 30px -16px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08);">
+              <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
+                <span class="font-sora font-semibold text-blanc-casse">{item.q}</span>
+                <span class="shrink-0 text-bleu transition-transform duration-300 group-open:rotate-45">
+                  <Icon name="arrow-right" size={18} strokeWidth={2.25} />
+                </span>
+              </summary>
+              <p class="mt-4 text-sm md:text-base text-blanc-casse/75 leading-relaxed">{item.a}</p>
+            </details>
+          ))}
+        </div>
+
+        <p class="scroll-reveal mt-12 text-center text-sm text-blanc-casse/65">
+          Voir aussi&nbsp;:
+          <a href="/site-vitrine-la-reunion" class="text-bleu hover:underline">site vitrine</a>
+          ·
+          <a href="/site-internet-tpe-pme-la-reunion" class="text-bleu hover:underline">site pour TPE/PME</a>
+          ·
+          <a href="/creation-site-internet-la-reunion" class="text-bleu hover:underline">création de site à La Réunion</a>
+          ·
+          <a href="/tarifs" class="text-bleu hover:underline">tarifs</a>
+          ·
+          <a href="/realisations" class="text-bleu hover:underline">réalisations</a>
+          ·
+          <a href="/contact" class="text-bleu hover:underline">contact</a> · <a href="/diagnostic-site-internet-la-reunion" class="text-bleu hover:underline" data-track-event="diagnostic_cta_click" data-track-category="conversion" data-track-source="seo_sector_voir_aussi" data-track-target="/diagnostic-site-internet-la-reunion">diagnostic gratuit</a>.
+        </p>
+      </div>
+    </section>
+
+    <CTABand trackingSource="seo_agence_cta_band" trackingSector="agence" trackingPageType="seo_landing" />
+  </div>
+</BaseLayout>

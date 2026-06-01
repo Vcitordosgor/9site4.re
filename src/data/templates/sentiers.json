@@ -2,7 +2,7 @@
   "info": {
     "nom": "Sentiers Croisés",
     "wordmark": "Sentiers Croisés",
-    "tagline": "Le Maïdo n'attend que vous.",
+    "tagline": "Des randonnées à couper le souffle.",
     "soustitre": "Guide indépendant · La Réunion, Volcan",
     "guide": "Théo Grondin",
     "ville": "La Réunion",
@@ -13,7 +13,7 @@
     "instagram": "@sentiers.croises",
     "siret": "000 000 000 00000",
     "annee": "2013",
-    "photoGuide": "/images/sentiers/plaine.webp",
+    "photoGuide": "/images/sentiers/guide.webp",
     "sortieDuJour": {
       "label": "Sortie du jour",
       "titre": "La Réunion",

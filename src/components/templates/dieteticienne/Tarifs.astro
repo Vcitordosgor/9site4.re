@@ -1,5 +1,14 @@
 ---
 import data from '../../../data/templates/mona.json';
+// Avatar SVG par programme — pas de photos
+const avatars = [
+  // Consultation : pomme stylisée (découverte / premier contact)
+  { bg: '#F4EFE6', accent: '#6B7F5C', icon: 'pomme' },
+  // Suivi 3 mois : feuille + 3 traits (croissance) — populaire
+  { bg: '#C56A4D', accent: '#F4EFE6', icon: 'feuille' },
+  // Accompagnement 6 mois : assiette + couverts (cap long)
+  { bg: '#F4EFE6', accent: '#2D3823', icon: 'assiette' },
+];
 ---
 
 <section id="tarifs" class="py-20 md:py-28" style="background-color: #F4EFE6;">
@@ -13,13 +22,40 @@ import data from '../../../data/templates/mona.json';
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
-      {data.programmes.map((p) => (
+      {data.programmes.map((p, i) => {
+        const a = avatars[i] ?? avatars[0];
+        return (
         <article class="relative flex flex-col rounded-3xl overflow-hidden" style={`background-color: ${p.populaire ? '#2D3823' : '#FFFFFF'}; color: ${p.populaire ? '#F4EFE6' : '#2D3823'};`}>
           {p.populaire && (
-            <span class="absolute top-5 right-5 inline-flex items-center font-dm-sans text-[10px] uppercase tracking-[0.22em] px-3 py-1 rounded-full" style="background-color: #C56A4D; color: #F4EFE6;">Le + demandé</span>
+            <span class="absolute top-5 right-5 inline-flex items-center font-dm-sans text-[10px] uppercase tracking-[0.22em] px-3 py-1 rounded-full z-10" style="background-color: #C56A4D; color: #F4EFE6;">Le + demandé</span>
           )}
-          <div class="aspect-[16/9] overflow-hidden">
-            <img src={p.photo} alt={p.label} loading="lazy" class="w-full h-full object-cover" />
+          <div class="aspect-[16/9] flex items-center justify-center" style={`background-color: ${a.bg};`}>
+            <svg viewBox="0 0 100 100" class="w-24 h-24" aria-hidden="true" fill="none" stroke={a.accent} stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              {a.icon === 'pomme' && (
+                <>
+                  <path d="M50 28 C36 28 22 38 22 56 C22 74 36 86 50 86 C64 86 78 74 78 56 C78 38 64 28 50 28 Z" />
+                  <path d="M50 28 L50 18" />
+                  <path d="M50 22 C55 18 62 16 66 20" stroke-width="2" fill={a.accent} />
+                </>
+              )}
+              {a.icon === 'feuille' && (
+                <>
+                  <path d="M30 80 C30 50 50 30 80 30 C80 60 60 80 30 80 Z" />
+                  <path d="M30 80 L80 30" />
+                  <path d="M50 70 L65 55" stroke-width="1.8" />
+                  <path d="M40 70 L55 55" stroke-width="1.8" />
+                </>
+              )}
+              {a.icon === 'assiette' && (
+                <>
+                  <circle cx="50" cy="55" r="28" />
+                  <circle cx="50" cy="55" r="20" stroke-width="1.5" />
+                  <path d="M20 25 L20 50" />
+                  <path d="M80 25 L80 50" />
+                  <path d="M25 25 L25 38" stroke-width="1.5" />
+                </>
+              )}
+            </svg>
           </div>
           <div class="p-7 flex flex-col gap-3 flex-1">
             <h3 class="font-fraunces text-2xl">{p.label}</h3>
@@ -41,7 +77,8 @@ import data from '../../../data/templates/mona.json';
             </div>
           </div>
         </article>
-      ))}
+        );
+      })}
     </div>
   </div>
 </section>

@@ -450,19 +450,23 @@ const etapes = [
 
 <section
   id="formulaires-integres"
-  class="relative overflow-hidden px-6 py-12 md:py-16"
+  class="relative overflow-hidden px-6 py-20 md:py-28"
   aria-labelledby="formulaires-titre"
->
-
-  <div class="relative mx-auto max-w-content">
-    <!-- Header centré (style Squarespace) -->
+>  <div class="relative mx-auto max-w-content">
+    <!-- Header centré : eyebrow + titre stratégique + double paragraphe -->
     <div class="max-w-3xl mx-auto text-center">
-      <h2 id="formulaires-titre" class="scroll-reveal font-sora font-bold text-3xl md:text-5xl text-blanc-casse text-balance leading-[1.1]">
-        Un formulaire qui vous fait gagner du temps.
+      <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+        <span class="w-2 h-2 rounded-full bg-bleu"></span> Module métier intégré
+      </p>
+      <h2 id="formulaires-titre" class="scroll-reveal mt-6 font-sora font-bold text-3xl md:text-5xl text-blanc-casse text-balance leading-[1.1]">
+        Un module métier intégré
+        <span class="block italic font-medium text-bleu">à votre site.</span>
       </h2>
-      <p class="scroll-reveal mt-6 text-lg text-blanc-casse/65 leading-relaxed">
-        Choisissez votre métier : le formulaire s'adapte et vous recevez des
-        demandes claires, directement par WhatsApp ou e-mail.
+      <p class="scroll-reveal mt-6 text-lg text-blanc-casse/70 leading-relaxed">
+        Réservation, demande de devis, rendez-vous, inscription, demande de séjour ou premier échange : chaque site 9site4 intègre un parcours adapté à votre activité.
+      </p>
+      <p class="scroll-reveal mt-3 text-base text-blanc-casse/55 leading-relaxed">
+        Sélectionnez une activité ci-dessous : le parcours s'adapte automatiquement et structure chaque demande pour qu'elle arrive prête à traiter, par e-mail ou WhatsApp.
       </p>
     </div>
 
@@ -532,9 +536,12 @@ const etapes = [
 
             <!-- Colonne mini-formulaire -->
             <div class="lg:col-span-3">
-              <div class="rounded-3xl bg-white text-bleu-nuit p-7 md:p-8 shadow-card-hover ring-1 ring-bleu-nuit/10">
+              <div class="relative rounded-3xl bg-white text-bleu-nuit p-5 md:p-6 ring-1 ring-bleu/30"
+                style="box-shadow: 0 22px 50px -20px rgba(0,0,0,0.85), 0 0 0 1.5px #91a6ff, 0 0 36px -10px rgba(145,166,255,0.55);">
+                <!-- Petit liseret bleu mauve en haut, écho à la card prix -->
+                <span class="absolute top-0 inset-x-10 h-px bg-gradient-to-r from-transparent via-bleu/60 to-transparent" aria-hidden="true"></span>
                 <!-- Mini-badge 'Aperçu live' avec point pulsant -->
-                <div class="flex items-center justify-between gap-3 pb-5 border-b border-bleu-nuit/10">
+                <div class="flex items-center justify-between gap-3 pb-3 border-b border-bleu-nuit/10">
                   <span class="inline-flex items-center gap-2 font-roboto-mono text-[10px] uppercase tracking-[0.22em] text-bleu-nuit/60 font-semibold">
                     <span class="relative flex h-2 w-2" aria-hidden="true">
                       <span class="absolute inline-flex h-full w-full rounded-full bg-bleu opacity-60 animate-ping"></span>
@@ -547,15 +554,15 @@ const etapes = [
                   </span>
                 </div>
 
-                <p class="mt-6 font-sora font-bold text-2xl leading-tight">{m.formTitle}</p>
+                <p class="mt-4 font-sora font-bold text-xl leading-tight">{m.formTitle}</p>
 
-                <p class="mt-1.5 text-sm text-bleu-nuit/60">
+                <p class="mt-1 text-xs text-bleu-nuit/55">
                   Aperçu interactif — cliquez dans les champs.
                 </p>
 
                 <form
                   id={`demo-form-${m.id}`}
-                  class="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3.5"
+                  class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-2.5"
                   data-demo-form
                   data-metier={m.id}
                   onsubmit="event.preventDefault();"
@@ -564,7 +571,7 @@ const etapes = [
                   {m.fields.map((f) => {
                     const fieldId = `${m.id}-${f.name}`;
                     const wrapClass = f.span === 2 ? 'sm:col-span-2' : '';
-                    const inputBase = 'w-full h-12 px-4 rounded-xl ring-1 ring-bleu-nuit/12 bg-white text-sm font-medium text-bleu-nuit placeholder:text-bleu-nuit/35 hover:ring-bleu-nuit/25 focus:ring-2 focus:ring-bleu outline-none shadow-sm transition-all duration-200';
+                    const inputBase = 'w-full h-10 px-3.5 rounded-lg ring-1 ring-bleu-nuit/12 bg-white text-sm font-medium text-bleu-nuit placeholder:text-bleu-nuit/35 hover:ring-bleu-nuit/25 focus:ring-2 focus:ring-bleu outline-none shadow-sm transition-all duration-200';
                     return (
                       <div class={wrapClass}>
                         {f.type !== 'checkbox' && (
@@ -594,7 +601,7 @@ const etapes = [
                         )}
 
                         {f.type === 'input-file' && (
-                          <label for={fieldId} class="flex flex-col items-center justify-center gap-1 h-[74px] px-3 rounded-xl ring-1 ring-dashed ring-bleu-nuit/25 bg-blanc-casse cursor-pointer hover:ring-bleu-nuit/45 hover:bg-bleu-nuit/[0.02] transition-all text-center">
+                          <label for={fieldId} class="flex flex-col items-center justify-center gap-1 h-[62px] px-3 rounded-lg ring-1 ring-dashed ring-bleu-nuit/25 bg-blanc-casse cursor-pointer hover:ring-bleu-nuit/45 hover:bg-bleu-nuit/[0.02] transition-all text-center">
                             <input id={fieldId} type="file" name={f.name}
                               accept="image/*"
                               class="sr-only" />
@@ -679,7 +686,7 @@ const etapes = [
                         )}
 
                         {f.type === 'checkbox' && (
-                          <label for={fieldId} class="flex items-center gap-2.5 h-11 px-3.5 rounded-xl ring-1 ring-bleu-nuit/15 bg-blanc-casse cursor-pointer hover:ring-bleu-nuit/30 transition-all">
+                          <label for={fieldId} class="flex items-center gap-2.5 h-10 px-3 rounded-lg ring-1 ring-bleu-nuit/15 bg-blanc-casse cursor-pointer hover:ring-bleu-nuit/30 transition-all">
                             <input id={fieldId} type="checkbox" name={f.name}
                               checked={f.defaultChecked ? true : undefined}
                               class="peer sr-only" />
@@ -699,7 +706,7 @@ const etapes = [
                 <button
                   type="submit"
                   form={`demo-form-${m.id}`}
-                  class="mt-6 w-full h-12 rounded-full font-inter font-semibold text-base inline-flex items-center justify-center gap-2 cursor-pointer transition-all duration-200 ease-out hover:-translate-y-0.5 active:translate-y-0 bg-bleu text-white hover:bg-[#7e95ff] shadow-[0_8px_24px_rgba(145,166,255,0.45)]"
+                  class="mt-5 w-full h-11 rounded-full font-inter font-semibold text-base inline-flex items-center justify-center gap-2 cursor-pointer transition-all duration-200 ease-out hover:-translate-y-0.5 active:translate-y-0 bg-bleu text-white hover:bg-[#7e95ff] shadow-[0_8px_24px_rgba(145,166,255,0.45)]"
                 >
                   {m.cta}
                   <Icon name="arrow-right" size={18} strokeWidth={2} />
@@ -819,9 +826,8 @@ const etapes = [
 
     <!-- CTA bas de section -->
     <div class="scroll-reveal mt-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-      <p class="text-sm text-blanc-casse/65 max-w-md">
-        Aucun de ces 6 cas n'est exactement le vôtre ? On adapte le formulaire
-        à toute activité — c'est inclus.
+      <p class="text-sm text-blanc-casse/70 max-w-md">
+        Votre activité n'est pas dans la liste ? Le module métier est adapté à chaque entreprise — c'est inclus dans la formule.
       </p>
       <a
         href="/contact"

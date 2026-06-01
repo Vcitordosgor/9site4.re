@@ -1,54 +1,75 @@
 ---
 import data from '../../../data/templates/concierge.json';
 ---
-<section id="contact" class="py-20 md:py-28" style="background:#0F1B2E; color:#F7F4EE;">
-  <div class="max-w-content mx-auto px-6 md:px-10">
-    <div class="grid md:grid-cols-5 gap-12 lg:gap-20">
-      <div class="md:col-span-2">
-        <div class="text-[11px] uppercase tracking-[0.28em] mb-4" style="color:#B89758;">Contact</div>
-        <h2 class="font-cormorant text-4xl md:text-5xl leading-tight mb-6">
-          Parlons de votre <em class="italic" style="color:#B89758;">bien.</em>
-        </h2>
-        <p class="text-[15px] leading-relaxed mb-8" style="color:#D8D2C0;">
-          Premier échange téléphonique de 20 minutes pour comprendre votre situation, puis visite sur place gratuite si pertinent. Réponse sous 48h.
-        </p>
-        <ul class="space-y-3 text-[15px]" style="color:#F7F4EE;">
-          <li><span class="text-[11px] uppercase tracking-[0.22em] block" style="color:#B89758;">Téléphone</span><a href={`tel:${data.info.telephoneHref}`}>{data.info.telephone}</a></li>
-          <li><span class="text-[11px] uppercase tracking-[0.22em] block" style="color:#B89758;">Email</span><a href={`mailto:${data.info.email}`}>{data.info.email}</a></li>
-          <li><span class="text-[11px] uppercase tracking-[0.22em] block" style="color:#B89758;">Zone</span>La Réunion · côte ouest et sud</li>
-          <li><span class="text-[11px] uppercase tracking-[0.22em] block" style="color:#B89758;">Horaires</span>Lundi → samedi · 8h – 20h</li>
-        </ul>
+<section id="contact" class="relative bg-concierge-nuit text-white py-24 md:py-32 overflow-hidden">
+  <div class="absolute inset-0 opacity-25 pointer-events-none" style="background: radial-gradient(ellipse 60% 70% at 80% 20%, #B89758, transparent 60%);"></div>
+  <div class="relative max-w-content mx-auto px-6 md:px-12 grid lg:grid-cols-12 gap-12">
+    <div class="lg:col-span-5">
+      <p class="font-inter text-[11px] uppercase tracking-[0.45em] text-concierge-laiton mb-4">§ On démarre ?</p>
+      <h2 class="font-cormorant italic leading-[0.92] tracking-tight" style="font-size: clamp(56px, 9vw, 140px);">
+        En trois<br/>questions.
+      </h2>
+      <p class="mt-8 font-inter text-white/80 leading-relaxed max-w-md">
+        L'audit est gratuit, sans engagement. On vous propose un revenu cible chiffré dans les sept jours.
+      </p>
+      <div class="mt-10 space-y-4 font-inter text-sm text-white/75">
+        <p class="flex items-center gap-3"><span class="w-8 h-px bg-concierge-laiton"></span> {data.info.telephone}</p>
+        <p class="flex items-center gap-3"><span class="w-8 h-px bg-concierge-laiton"></span> {data.info.email}</p>
+        <p class="flex items-center gap-3"><span class="w-8 h-px bg-concierge-laiton"></span> {data.info.instagram}</p>
       </div>
-      <form class="md:col-span-3 grid gap-4" onsubmit="event.preventDefault(); alert('Démonstration — formulaire non actif.');">
-        <div class="grid md:grid-cols-2 gap-4">
+    </div>
+
+    <form class="lg:col-span-7 bg-white/[0.04] ring-1 ring-concierge-laiton/30 p-8 md:p-12" onsubmit="event.preventDefault();" novalidate>
+      <fieldset class="space-y-4">
+        <legend class="font-cormorant italic text-2xl text-concierge-laiton mb-3">1. De quel bien parle-t-on ?</legend>
+        <div class="grid sm:grid-cols-2 gap-3">
+          {['Studio / T1', 'T2 – T3', 'Villa 4+ chambres', 'Plusieurs biens'].map(t => (
+            <label class="cursor-pointer">
+              <input type="radio" name="type" value={t} class="peer sr-only"/>
+              <span class="block px-4 py-3 ring-1 ring-white/20 peer-checked:ring-concierge-laiton peer-checked:bg-concierge-laiton/15 font-inter text-sm transition-colors">{t}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+
+      <hr class="my-8 border-concierge-laiton/15"/>
+
+      <fieldset class="space-y-4">
+        <legend class="font-cormorant italic text-2xl text-concierge-laiton mb-3">2. Combien de chambres ?</legend>
+        <div class="grid grid-cols-5 gap-2">
+          {['1','2','3','4','5+'].map(n => (
+            <label class="cursor-pointer">
+              <input type="radio" name="ch" value={n} class="peer sr-only"/>
+              <span class="block text-center py-3 ring-1 ring-white/20 peer-checked:ring-concierge-laiton peer-checked:bg-concierge-laiton/15 font-cormorant italic text-lg">{n}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+
+      <hr class="my-8 border-concierge-laiton/15"/>
+
+      <fieldset class="space-y-4">
+        <legend class="font-cormorant italic text-2xl text-concierge-laiton mb-3">3. Disponibilités pour la visite</legend>
+        <div class="grid sm:grid-cols-2 gap-4">
           <label class="block">
-            <span class="text-[11px] uppercase tracking-[0.22em] block mb-2" style="color:#B89758;">Nom</span>
-            <input required type="text" class="w-full h-12 px-4 bg-transparent border" style="border-color:rgba(247,244,238,0.30); color:#F7F4EE;"/>
+            <span class="font-inter text-[10px] uppercase tracking-[0.3em] text-concierge-laiton">Nom & email</span>
+            <input type="text" class="mt-2 w-full h-12 px-4 bg-white/10 ring-1 ring-white/20 font-inter text-white" />
           </label>
           <label class="block">
-            <span class="text-[11px] uppercase tracking-[0.22em] block mb-2" style="color:#B89758;">Téléphone</span>
-            <input required type="tel" class="w-full h-12 px-4 bg-transparent border" style="border-color:rgba(247,244,238,0.30); color:#F7F4EE;"/>
+            <span class="font-inter text-[10px] uppercase tracking-[0.3em] text-concierge-laiton">Téléphone</span>
+            <input type="tel" class="mt-2 w-full h-12 px-4 bg-white/10 ring-1 ring-white/20 font-inter text-white" />
+          </label>
+          <label class="block sm:col-span-2">
+            <span class="font-inter text-[10px] uppercase tracking-[0.3em] text-concierge-laiton">Créneaux possibles (texte libre)</span>
+            <textarea rows="3" class="mt-2 w-full px-4 py-3 bg-white/10 ring-1 ring-white/20 font-inter text-white" placeholder="Ex. lundi après-midi, mercredi matin…"></textarea>
           </label>
         </div>
-        <label class="block">
-          <span class="text-[11px] uppercase tracking-[0.22em] block mb-2" style="color:#B89758;">Email</span>
-          <input required type="email" class="w-full h-12 px-4 bg-transparent border" style="border-color:rgba(247,244,238,0.30); color:#F7F4EE;"/>
-        </label>
-        <label class="block">
-          <span class="text-[11px] uppercase tracking-[0.22em] block mb-2" style="color:#B89758;">Type de demande</span>
-          <select class="w-full h-12 px-4 bg-transparent border" style="border-color:rgba(247,244,238,0.30); color:#F7F4EE;">
-            <option style="color:#0F1B2E;">Propriétaire — confier mon bien</option>
-            <option style="color:#0F1B2E;">Voyageur — préparer mon séjour</option>
-            <option style="color:#0F1B2E;">Autre</option>
-          </select>
-        </label>
-        <label class="block">
-          <span class="text-[11px] uppercase tracking-[0.22em] block mb-2" style="color:#B89758;">Votre message</span>
-          <textarea rows="5" class="w-full px-4 py-3 bg-transparent border" style="border-color:rgba(247,244,238,0.30); color:#F7F4EE;"></textarea>
-        </label>
-        <button class="mt-2 h-12 text-[12px] uppercase tracking-[0.22em] font-semibold transition-colors"
-                style="background:#B89758; color:#0F1B2E;">Envoyer ma demande</button>
-      </form>
-    </div>
+      </fieldset>
+
+      <button type="submit" class="mt-8 w-full h-14 bg-concierge-laiton text-concierge-nuit font-inter text-sm uppercase tracking-[0.3em] hover:bg-white transition-colors">
+        Demander mon audit gratuit
+      </button>
+      <p class="mt-3 text-center font-inter text-xs text-white/55 italic">Réponse sous 48h ouvrées. Démonstration — formulaire non fonctionnel.</p>
+    </form>
   </div>
 </section>

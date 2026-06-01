@@ -1,26 +1,63 @@
 ---
+import data from '../../../data/templates/painleve.json';
 ---
-<section class="relative" style="background:#1A1614; color:#F5EBD5;">
-  <div class="grid md:grid-cols-2 min-h-[480px]">
-    <div class="relative min-h-[280px]">
-      <img src="/images/boulangerie/extra-1.webp" alt="Four à sole bois" class="absolute inset-0 w-full h-full object-cover" loading="lazy"/>
+<section class="relative" style="background:#E8E0CC;">
+  <div class="grid lg:grid-cols-2 min-h-[640px]">
+    <div class="relative min-h-[360px]">
+      <img src="/images/boulangerie/pain-6.webp" alt="Four à sole tournante en activité, voûte chaude rougeoyante" class="absolute inset-0 w-full h-full object-cover" loading="lazy"/>
+      <div class="absolute inset-0" style="background:linear-gradient(180deg, transparent 50%, rgba(26,22,20,0.35));"></div>
     </div>
-    <div class="flex items-center px-6 md:px-14 py-16">
-      <div>
-        <p class="font-caveat text-2xl mb-3" style="color:#C89B3C;">le four à sole —</p>
-        <h2 class="font-crimson-pro text-4xl md:text-5xl leading-tight mb-6">
-          Trois mètres carrés <em class="italic" style="color:#C89B3C;">de pierre.</em>
+    <div class="flex items-center px-6 md:px-14 py-20 lg:py-0" style="background:#1F2521; color:#E8E0CC;">
+      <div class="max-w-xl">
+        <p class="font-caveat text-2xl md:text-3xl mb-3" style="color:#A87842;">— {data.four.soustitre}</p>
+        <h2 class="font-crimson-pro leading-[0.95] tracking-[-0.01em]" style="font-size:clamp(40px,5.4vw,76px);">
+          {data.four.titre.split(' à ')[0]}
+          <span class="block italic" style="color:#A87842; font-size:clamp(50px,7vw,96px);">à sole tournante.</span>
         </h2>
-        <p class="text-lg leading-relaxed mb-4" style="color:#E0D2B5;">
-          Notre four est chauffé au bois de filao réunionnais dès 4h du matin. La pierre absorbe la chaleur lentement, puis la restitue pendant des heures. C'est cette inertie qui donne la croûte caramélisée.
+        <p class="mt-7 text-base md:text-lg leading-relaxed" style="color:#D4C8AC;">
+          {data.four.texte}
         </p>
-        <p class="text-lg leading-relaxed" style="color:#E0D2B5;">
-          280°C pour la cuisson, 220°C pour la finition. Tout est mesuré au thermomètre infrarouge — et à l'œil du boulanger.
-        </p>
-        <div class="mt-8 grid grid-cols-3 gap-px" style="background:rgba(245,235,213,0.20);">
-          <div class="py-4 text-center" style="background:#1A1614;"><div class="font-crimson-pro text-3xl" style="color:#C89B3C;">4h</div><div class="text-[10px] uppercase tracking-[0.22em] mt-1">Chauffe</div></div>
-          <div class="py-4 text-center" style="background:#1A1614;"><div class="font-crimson-pro text-3xl" style="color:#C89B3C;">280°</div><div class="text-[10px] uppercase tracking-[0.22em] mt-1">Cuisson</div></div>
-          <div class="py-4 text-center" style="background:#1A1614;"><div class="font-crimson-pro text-3xl" style="color:#C89B3C;">3m²</div><div class="text-[10px] uppercase tracking-[0.22em] mt-1">Sole pierre</div></div>
+        <ul class="mt-10 grid grid-cols-2 gap-x-6 gap-y-7">
+          {data.four.stats.map((s) => (
+            <li>
+              <p class="font-crimson-pro leading-none" style="color:#A87842; font-size:clamp(34px,4.6vw,52px);">{s.valeur}</p>
+              <p class="mt-2 text-[11px] uppercase tracking-[0.22em]" style="color:#D4C8AC;">{s.label}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-28 md:py-36" style="background:#EADBB7;">
+  <div class="max-w-content mx-auto px-6 md:px-12 grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+    <div class="lg:col-span-5">
+      <div class="relative">
+        <img src="/images/boulangerie/pain-7.webp" alt="Levain mère dans son pot, surface qui bulle doucement" class="w-full aspect-[4/5] object-cover" loading="lazy" />
+        <div class="absolute -bottom-5 -left-5 md:-left-8 max-w-[14rem] p-5 rotate-[-3deg] shadow-[0_18px_44px_-12px_rgba(0,0,0,0.35)]" style="background:#1F2521; color:#E8E0CC;">
+          <p class="font-caveat text-3xl leading-tight" style="color:#A87842;">— Margot, le levain.</p>
+          <p class="mt-1 text-[11px] uppercase tracking-[0.3em]" style="color:#D4C8AC;">Née en {data.levain.annee}</p>
+        </div>
+      </div>
+    </div>
+    <div class="lg:col-span-7">
+      <p class="font-caveat text-2xl md:text-3xl mb-3" style="color:#7A5C28;">— le levain mère</p>
+      <h2 class="font-crimson-pro leading-[0.95] tracking-[-0.01em]" style="font-size:clamp(38px,5.2vw,72px); color:#1F2521;">
+        Sept ans
+        <span class="block italic" style="color:#A87842; font-size:clamp(50px,7vw,96px);">de patience quotidienne.</span>
+      </h2>
+      <p class="mt-7 text-base md:text-lg leading-relaxed" style="color:#3A3128;">
+        {data.levain.texte}
+      </p>
+      <div class="mt-8 grid grid-cols-2 gap-6 max-w-md">
+        <div class="border-l-2 pl-4" style="border-color:#A87842;">
+          <p class="text-[10px] uppercase tracking-[0.24em]" style="color:#7A5C28;">Origine</p>
+          <p class="mt-1 font-crimson-pro text-base leading-tight" style="color:#1F2521;">{data.levain.origine}</p>
+        </div>
+        <div class="border-l-2 pl-4" style="border-color:#A87842;">
+          <p class="text-[10px] uppercase tracking-[0.24em]" style="color:#7A5C28;">Rythme</p>
+          <p class="mt-1 font-crimson-pro text-base leading-tight" style="color:#1F2521;">{data.levain.soustitre}</p>
         </div>
       </div>
     </div>

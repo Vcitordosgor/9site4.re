@@ -53,7 +53,7 @@ export default function FiltersBar({ categories, totalCount }: Props) {
   return (
     <div
       role="group"
-      aria-label="Filtrer les réalisations par catégorie"
+      aria-label="Filtrer les exemples par catégorie"
       class="flex flex-wrap gap-2 justify-center"
     >
       {all.map((cat) => {

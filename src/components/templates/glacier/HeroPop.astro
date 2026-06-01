@@ -1,25 +1,80 @@
 ---
+import data from '../../../data/templates/sorbetpei.json';
 ---
-<section class="relative w-full overflow-hidden" style="background:#FFD93D;">
-  <div class="grid md:grid-cols-2 items-center min-h-[88vh]">
-    <div class="relative order-2 md:order-1 px-6 md:px-14 py-14 md:py-0">
-      <p class="font-fraunces italic text-2xl md:text-3xl mb-4" style="color:#FF6F91;">vanille, letchi, mangue, coco —</p>
-      <h1 class="font-fraunces text-6xl md:text-8xl leading-[0.92]" style="color:#3D2817;">
-        Le sorbet,<br/><em class="italic" style="color:#FF6F91;">à l'île.</em>
-      </h1>
-      <p class="mt-7 max-w-md text-lg leading-relaxed" style="color:#5C3A1E;">
-        Sorbets et glaces artisanaux, 100% fruits de l'île. Sans colorant, sans arôme, sans poudre. Juste de la pulpe pressée le matin même et un peu de sucre de canne.
-      </p>
-      <div class="mt-9 flex flex-wrap gap-3">
-        <a href="#parfums" class="inline-flex items-center h-13 px-7 text-[12px] uppercase tracking-[0.22em] font-bold transition-transform hover:scale-105"
-           style="background:#3D2817; color:#FFD93D; border-radius:999px; height:52px;">Découvrir les parfums</a>
-        <a href="#tournee" class="inline-flex items-center h-13 px-7 text-[12px] uppercase tracking-[0.22em] font-bold transition-transform hover:scale-105 border-2"
-           style="border-color:#3D2817; color:#3D2817; border-radius:999px; height:52px;">Où nous croiser</a>
+<section id="top" class="relative w-full overflow-hidden" style="background:#FFD93D;">
+  <div class="grid lg:grid-cols-2 min-h-[100svh]">
+    <!-- Panneau jaune gauche -->
+    <div class="relative flex flex-col justify-center px-6 md:px-14 py-28 md:py-32 order-2 lg:order-1">
+      <!-- Soleil SVG décoratif -->
+      <svg class="absolute -top-32 -left-32 w-[420px] h-[420px] opacity-25 pointer-events-none" viewBox="0 0 100 100" aria-hidden="true">
+        <g stroke="#FF6F91" stroke-width="0.5" fill="none">
+          <circle cx="50" cy="50" r="20"/>
+          <line x1="50" y1="50" x2="95" y2="50" /><line x1="50" y1="50" x2="92" y2="67" /><line x1="50" y1="50" x2="82" y2="82" /><line x1="50" y1="50" x2="67" y2="92" /><line x1="50" y1="50" x2="50" y2="95" /><line x1="50" y1="50" x2="33" y2="92" /><line x1="50" y1="50" x2="18" y2="82" /><line x1="50" y1="50" x2="8" y2="67" /><line x1="50" y1="50" x2="5" y2="50" /><line x1="50" y1="50" x2="8" y2="33" /><line x1="50" y1="50" x2="18" y2="18" /><line x1="50" y1="50" x2="33" y2="8" /><line x1="50" y1="50" x2="50" y2="5" /><line x1="50" y1="50" x2="67" y2="8" /><line x1="50" y1="50" x2="82" y2="18" /><line x1="50" y1="50" x2="92" y2="33" />
+        </g>
+      </svg>
+
+      <div class="relative max-w-xl mx-auto lg:mx-0 w-full">
+        <p class="text-[11px] md:text-[12px] uppercase tracking-[0.42em] mb-7 flex items-center gap-3 font-bold" style="color:#FF6F91; font-family:'DM Sans',system-ui,sans-serif;">
+          <span class="block w-10 h-px" style="background:#FF6F91;"></span>
+          Glacier artisanal péi · depuis {data.info.annee}
+        </p>
+        <h1 class="font-fraunces leading-[0.88] tracking-[-0.02em]" style="font-size:clamp(54px,9.4vw,142px); color:#3D2817;">
+          Sorbet péi.
+          <span class="block italic" style="color:#FF6F91; font-size:clamp(70px,12vw,180px);">Fait à la main,</span>
+          <span class="block italic" style="color:#3D2817; font-size:clamp(70px,12vw,180px);">juste à côté.</span>
+        </h1>
+        <p class="mt-8 max-w-lg text-base md:text-lg leading-relaxed" style="color:#5C3A1E; font-family:'DM Sans',system-ui,sans-serif;">
+          {data.promesse}
+        </p>
+        <div class="mt-10 flex flex-wrap gap-3">
+          <a href="#parfums"
+             class="inline-flex items-center justify-center px-7 text-[12px] uppercase tracking-[0.22em] font-bold rounded-full transition-all hover:scale-[1.05]"
+             style="background:#3D2817; color:#FFD93D; height:54px; font-family:'DM Sans',system-ui,sans-serif;">
+            Découvrir les parfums
+          </a>
+          <a href="#tournee"
+             class="inline-flex items-center justify-center px-7 text-[12px] uppercase tracking-[0.22em] font-bold rounded-full transition-all hover:scale-[1.05] border-2"
+             style="border-color:#3D2817; color:#3D2817; height:54px; font-family:'DM Sans',system-ui,sans-serif;">
+            Où nous croiser
+          </a>
+        </div>
+
+        <div class="mt-12 grid grid-cols-3 gap-6 max-w-md" style="font-family:'DM Sans',system-ui,sans-serif;">
+          <div>
+            <p class="font-fraunces leading-none" style="color:#FF6F91; font-size:clamp(28px,4vw,42px);">100%</p>
+            <p class="mt-1 text-[10px] uppercase tracking-[0.22em] font-semibold" style="color:#3D2817;">Fruits péi</p>
+          </div>
+          <div>
+            <p class="font-fraunces leading-none" style="color:#FF6F91; font-size:clamp(28px,4vw,42px);">0</p>
+            <p class="mt-1 text-[10px] uppercase tracking-[0.22em] font-semibold" style="color:#3D2817;">Colorant · arôme</p>
+          </div>
+          <div>
+            <p class="font-fraunces leading-none" style="color:#FF6F91; font-size:clamp(28px,4vw,42px);">5</p>
+            <p class="mt-1 text-[10px] uppercase tracking-[0.22em] font-semibold" style="color:#3D2817;">Jours par semaine</p>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="relative order-1 md:order-2 min-h-[340px] md:min-h-[88vh]">
-      <img src="/images/glacier/hero.webp" alt="Cornet glacé artisanal" class="absolute inset-0 w-full h-full object-cover" fetchpriority="high"/>
-      <div class="absolute top-8 left-8 px-4 py-2 text-[11px] uppercase tracking-[0.28em] font-bold" style="background:#FF6F91; color:#FFF6E2; border-radius:999px;">Tournée Sud · ce dimanche</div>
+
+    <!-- Panneau photo droit -->
+    <div class="relative min-h-[55svh] lg:min-h-[100svh] order-1 lg:order-2 overflow-hidden">
+      <img src="/images/glacier/hero.webp" alt={data.info.photoHeroAlt}
+           class="absolute inset-0 w-full h-full object-cover scale-105"
+           fetchpriority="high" loading="eager" decoding="async" width="1200" height="1400" />
+
+      <!-- Sticker corail rotatif -->
+      <div class="absolute top-32 right-8 md:right-12 -rotate-6">
+        <div class="relative w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center text-center px-3 shadow-[0_18px_44px_-12px_rgba(0,0,0,0.35)]" style="background:#FF6F91; color:#FFF6E2;">
+          <span class="font-fraunces italic text-2xl md:text-3xl leading-tight relative">Sorbet<br/>du jour</span>
+        </div>
+      </div>
+
+      <div class="absolute bottom-8 left-8 right-8 lg:right-auto max-w-sm">
+        <div class="px-4 py-3 rounded-full inline-flex items-center gap-3" style="background:#FFF6E2; color:#3D2817; font-family:'DM Sans',system-ui,sans-serif;">
+          <span class="block w-2.5 h-2.5 rounded-full animate-pulse" style="background:#5C7448;"></span>
+          <span class="text-[11px] uppercase tracking-[0.28em] font-bold">Camion · ce soir au front de mer</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>

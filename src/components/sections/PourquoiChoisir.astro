@@ -1,0 +1,74 @@
+---
+import Icon from '../ui/Icon.astro';
+
+/**
+ * Pourquoi 9site4 — section 6 home : 4 piliers en cards sombres premium
+ * avec gradient inner, halos décoratifs, ring bleu mauve + halo violet
+ * au hover, séparateur or qui s'étire, accent en haut de chaque card.
+ */
+const blocs = [
+  {
+    icon: 'monitor',
+    titre: 'Une présence web professionnelle',
+    texte: "Un site clair, bien structuré, fidèle au niveau de sérieux de votre activité.",
+  },
+  {
+    icon: 'file-text',
+    titre: 'Une offre lisible',
+    texte: "Un prix unique, sans frais de création ni option cachée.",
+  },
+  {
+    icon: 'shield-check',
+    titre: 'Une gestion continue',
+    texte: "Hébergement, sécurité, maintenance et modifications gérés dans la durée.",
+  },
+  {
+    icon: 'map-pin',
+    titre: 'Un accompagnement local',
+    texte: "Une équipe à La Réunion qui comprend les TPE/PME réunionnaises.",
+  },
+];
+---
+
+<section class="relative px-6 py-20 md:py-28 overflow-hidden" aria-labelledby="pourquoi-titre">  <div class="relative mx-auto max-w-content">
+    <div class="max-w-3xl mx-auto text-center">
+      <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+        <span class="w-2 h-2 rounded-full bg-bleu"></span> Pourquoi 9site4
+      </p>
+      <h2 id="pourquoi-titre" class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl lg:text-5xl text-blanc-casse text-balance leading-[1.12]">
+        Pourquoi les pros réunionnais
+        <span class="block italic font-medium text-bleu">choisissent 9site4.</span>
+      </h2>
+    </div>
+
+    <ul class="scroll-reveal mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
+      {blocs.map((b, i) => (
+        <li class="group relative h-full">
+          <!-- Numéro discret en haut-droit de la card -->
+          <span class="absolute top-5 right-6 font-roboto-mono text-[10px] uppercase tracking-[0.3em] text-bleu/60 group-hover:text-bleu transition-colors duration-500 z-10 pointer-events-none" aria-hidden="true">0{i + 1}</span>
+
+          <article class="relative h-full flex flex-col rounded-3xl p-8 overflow-hidden transition-all duration-500 ease-out-soft hover:-translate-y-1.5"
+            style="background: linear-gradient(180deg, #14161F 0%, #0A0B12 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 18px 40px -22px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08);"
+            onmouseover="this.style.boxShadow='0 1px 0 rgba(255,255,255,0.10) inset, 0 28px 60px -18px rgba(0,0,0,0.95), 0 0 0 1.5px #91a6ff, 0 0 36px -8px rgba(145,166,255,0.50)';"
+            onmouseout="this.style.boxShadow='0 1px 0 rgba(255,255,255,0.06) inset, 0 18px 40px -22px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08)';"
+          >
+            <!-- Filet bleu mauve en haut -->
+            <span class="absolute top-0 inset-x-8 h-px bg-gradient-to-r from-transparent via-bleu/60 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-500" aria-hidden="true"></span>
+
+            <!-- Icône dans cercle gradient bleu mauve -->
+            <span class="relative flex w-14 h-14 items-center justify-center rounded-2xl overflow-hidden">
+              <span class="absolute inset-0 bg-gradient-to-br from-bleu/25 to-bleu/5 group-hover:from-bleu/40 group-hover:to-bleu/15 transition-all duration-500" aria-hidden="true"></span>
+              <Icon name={b.icon} size={24} strokeWidth={1.75} class="relative text-bleu" />
+            </span>
+
+            <!-- Séparateur or qui s'étire au hover -->
+            <span class="mt-6 block h-px w-10 bg-bleu/40 group-hover:w-16 group-hover:bg-bleu transition-all duration-500 ease-out-soft" aria-hidden="true"></span>
+
+            <h3 class="mt-5 font-sora font-semibold text-lg md:text-xl text-blanc-casse leading-snug">{b.titre}</h3>
+            <p class="mt-3 text-[14.5px] text-blanc-casse/65 leading-relaxed">{b.texte}</p>
+          </article>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

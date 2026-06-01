@@ -1,70 +1,36 @@
 ---
-/**
- * Avis — 4 avis vérifiés en cards numérotés + note moyenne.
- */
-import data from '../../../data/templates/lazuli.json';
+const avis = [
+  { profil: "Famille avec 2 enfants", date: "Juillet 2025", note: 5,
+    texte: "Vue à couper le souffle, villa très bien équipée. La piscine a fait l'unanimité. Les hôtes très disponibles sans jamais être intrusifs. On reviendra." },
+  { profil: "Couple, séjour de noces", date: "Septembre 2025", note: 5,
+    texte: "Calme absolu, lever de soleil sur le lagon, jardin clos. Le brumisateur en pleine journée, parfait. Marina nous a recommandé un super traiteur." },
+  { profil: "Groupe de 6 amis", date: "Mai 2025", note: 5,
+    texte: "Quatre chambres très espacées, on ne s'est jamais marchés dessus. Cuisine équipée pour cuisiner vraiment. Plage à pied en 5 minutes." },
+];
 ---
-
-<section id="avis" class="bg-lazuli-casse py-24 md:py-32 px-6 md:px-10">
-  <div class="max-w-content mx-auto">
-
-    <!-- Bandeau demo -->
-    <div class="mb-10 inline-flex items-center gap-2 px-3 h-7 bg-lazuli-terracotta/15 text-lazuli-terracotta font-geist text-[10px] uppercase tracking-[0.28em] font-semibold rounded-sm">
-      Exemple de bloc avis — vos vrais retours apparaîtront ici
+<section class="relative bg-lazuli-marine text-white py-24 md:py-32">
+  <div class="max-w-content mx-auto px-6 md:px-12">
+    <div class="mb-14">
+      <p class="font-geist text-[11px] uppercase tracking-[0.45em] text-lazuli-sable mb-4">§ Avis voyageurs</p>
+      <h2 class="font-cormorant italic leading-[0.95] tracking-tight" style="font-size: clamp(48px,7vw,96px);">
+        Ce qu'ils en disent.
+      </h2>
     </div>
-
-    <header class="grid lg:grid-cols-12 gap-8 mb-12 md:mb-16 items-end">
-      <div class="lg:col-span-7">
-        <p class="font-geist text-[10px] uppercase tracking-[0.32em] text-lazuli-lagon font-semibold mb-5">
-          ✦ Démo · avis exemples
-        </p>
-        <h2 class="font-yeseva text-lazuli-marine leading-[1.05]" style="font-size: clamp(36px, 5vw, 64px);">
-          Ce que diront
-          <span class="font-italianno text-lazuli-terracotta normal-case">vos voyageurs.</span>
-        </h2>
-      </div>
-      <div class="lg:col-span-5 lg:text-right">
-        <p class="font-geist text-lazuli-marine/65 text-base leading-relaxed">
-          Les blocs ci-dessous sont des exemples de mise en page. Une fois en ligne, vos vrais avis (plateformes ou directs) s'afficheront ici.
-        </p>
-      </div>
-    </header>
-
-    <ul class="grid sm:grid-cols-2 gap-4 md:gap-6">
-      {data.avis.map((a, i) => (
-        <li class="bg-lazuli-sable/40 p-7 md:p-8 border-l-2 border-lazuli-terracotta">
-
-          <!-- Header avis -->
-          <div class="flex items-start justify-between gap-3 mb-5">
-            <div>
-              <p class="font-geist text-[10px] uppercase tracking-[0.28em] text-lazuli-lagon font-semibold mb-1">
-                Exemple #{String(i + 1).padStart(2, '0')}
-              </p>
-              <p class="font-yeseva text-lazuli-marine text-xl leading-tight">
-                {a.prenom}
-              </p>
-            </div>
-            <div class="flex gap-0.5">
-              {Array.from({ length: a.note }).map(() => (
-                <span class="text-lazuli-terracotta text-base" aria-hidden="true">★</span>
-              ))}
-              {Array.from({ length: 5 - a.note }).map(() => (
-                <span class="text-lazuli-marine/25 text-base" aria-hidden="true">★</span>
-              ))}
-            </div>
+    <div class="grid md:grid-cols-3 gap-px bg-lazuli-sable/30">
+      {avis.map(a => (
+        <article class="bg-lazuli-marine p-8 md:p-10 flex flex-col">
+          <div class="flex gap-1 text-lazuli-sable mb-5">
+            {Array.from({length: a.note}).map(() => (
+              <svg class="w-4 h-4" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1l2.2 4.5 5 .7-3.6 3.5.85 4.95L8 12.3 3.55 14.65 4.4 9.7.8 6.2l5-.7L8 1z"/></svg>
+            ))}
           </div>
-
-          <!-- Citation -->
-          <blockquote class="font-italianno text-lazuli-marine text-2xl md:text-3xl leading-snug mb-4">
-            « {a.texte} »
-          </blockquote>
-
-          <!-- Date -->
-          <p class="font-geist text-[11px] uppercase tracking-[0.22em] text-lazuli-marine/55">
-            {a.date}
-          </p>
-        </li>
+          <p class="font-cormorant italic text-xl md:text-2xl leading-snug text-white">« {a.texte} »</p>
+          <div class="mt-auto pt-6 border-t border-lazuli-sable/25">
+            <p class="font-geist text-sm text-lazuli-sable">{a.profil}</p>
+            <p class="font-geist text-xs text-white/55 mt-1">Séjour {a.date}</p>
+          </div>
+        </article>
       ))}
-    </ul>
+    </div>
   </div>
 </section>

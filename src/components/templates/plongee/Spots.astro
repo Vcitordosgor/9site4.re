@@ -1,0 +1,52 @@
+---
+import data from '../../../data/templates/plongee.json';
+const spots = data.spots;
+---
+<section class="relative bg-plongee-ecume text-plongee-charbon py-24 lg:py-36">
+  <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+    <div class="max-w-2xl mb-14">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="inline-block w-10 h-px bg-plongee-corail"></span>
+        <span class="font-jetbrains-mono text-[11px] uppercase tracking-[0.32em] text-plongee-charbon/60">06 — Les spots</span>
+      </div>
+      <h2 class="font-fraunces font-light text-[clamp(2.5rem,5vw,4.5rem)] leading-[0.98]">
+        Trois sites,<br/><em class="italic text-plongee-lagon">trois univers.</em>
+      </h2>
+    </div>
+
+    <div class="grid lg:grid-cols-12 gap-10 items-start">
+      <!-- Carte SVG simplifiée -->
+      <div class="lg:col-span-7 relative aspect-[5/4] rounded-3xl overflow-hidden bg-gradient-to-br from-plongee-lagon/20 via-plongee-marine/40 to-plongee-abysse">
+        <!-- Côte stylisée -->
+        <svg class="absolute inset-0 w-full h-full" viewBox="0 0 100 80" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0,15 Q15,18 25,25 T55,30 Q70,32 100,28 L100,0 L0,0 Z" fill="#F4E5D2" opacity="0.85"/>
+          <path d="M0,18 Q15,21 25,28 T55,33 Q70,35 100,31" stroke="#FF7A5C" stroke-width="0.3" fill="none" stroke-dasharray="1 1"/>
+        </svg>
+        <!-- Points spots -->
+        {spots.map((s, i) => (
+          <button type="button" data-spot={s.id} class="absolute -translate-x-1/2 -translate-y-1/2 group" style={`left:${s.x}%; top:${s.y}%;`}>
+            <span class="block w-4 h-4 rounded-full bg-plongee-corail ring-4 ring-plongee-corail/30 group-hover:ring-8 transition-all"></span>
+            <span class="absolute top-6 left-1/2 -translate-x-1/2 whitespace-nowrap font-jetbrains-mono text-[10px] uppercase tracking-[0.22em] text-plongee-ecume bg-plongee-abysse/70 px-2 py-1 rounded backdrop-blur-sm">{String(i+1).padStart(2,'0')}</span>
+          </button>
+        ))}
+        <div class="absolute bottom-4 right-4 font-jetbrains-mono text-[10px] uppercase tracking-[0.3em] text-plongee-ecume/60">Côte ouest · La Réunion</div>
+      </div>
+
+      <!-- Liste -->
+      <div class="lg:col-span-5 space-y-4">
+        {spots.map((s, i) => (
+          <article data-spot-card={s.id} class="group relative p-6 rounded-2xl border border-plongee-charbon/10 hover:border-plongee-corail hover:bg-plongee-sable/40 transition-all cursor-pointer">
+            <div class="flex items-start gap-4">
+              <div class="font-fraunces text-3xl text-plongee-corail leading-none">{String(i+1).padStart(2,'0')}</div>
+              <div class="flex-1">
+                <h3 class="font-fraunces text-2xl text-plongee-charbon leading-tight">{s.nom}</h3>
+                <div class="mt-1 font-jetbrains-mono text-[10px] uppercase tracking-[0.25em] text-plongee-lagon">{s.type}</div>
+                <p class="mt-3 font-inter text-sm text-plongee-charbon/70 leading-relaxed">{s.description}</p>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

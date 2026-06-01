@@ -1,0 +1,268 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/ui/Button.astro';
+import Icon from '../components/ui/Icon.astro';
+import RealisationCard from '../components/realisations/RealisationCard.astro';
+import TarifsBref from '../components/sections/TarifsBref.astro';
+import CTABand from '../components/sections/CTABand.astro';
+import realisations from '../data/realisations.json';
+import { getSeo, absoluteUrl } from '../lib/seo';
+
+const seo = getSeo('siteCoiffeurReunion');
+
+const SLUGS = ['salon-de-coiffure', 'institut-de-beaute', 'spa-massage', 'studio-de-tatouage'];
+const selected = SLUGS
+  .map((s) => realisations.find((r) => r.slug === s))
+  .filter(Boolean) as typeof realisations;
+
+const faq = [
+  {
+    q: 'Mon salon a plusieurs coiffeurs avec chacun ses spécialités — comment c\'est géré ?',
+    a: "Le site présente votre équipe nominativement, avec photo, spécialités (coupe, couleur, balayage, dégradé, défrisage), expérience et éventuellement la prise de rendez-vous individualisée par coiffeur.",
+  },
+  {
+    q: 'Vos sites incluent-ils une vraie prise de rendez-vous en ligne ?',
+    a: "Oui. Selon votre flux client, on intègre soit un module de réservation simple (jour, heure, prestation), soit un lien direct vers votre outil métier existant (Planity, Treatwell, Booksy…) si vous l'utilisez déjà.",
+  },
+  {
+    q: 'Et les tarifs ? Je préfère ne pas tout afficher publiquement.',
+    a: "Vous décidez. On peut afficher la grille tarifaire complète, des fourchettes, ou simplement les prestations sans prix avec un bouton « demander un devis ». Votre choix, votre stratégie commerciale.",
+  },
+  {
+    q: 'Puis-je mettre en avant ma marque de coloration ou mes produits revendus ?',
+    a: "Bien sûr. On dédie une section aux marques que vous utilisez (L\'Oréal Professionnel, Schwarzkopf, Kérastase, marques bio…) — ça rassure les clients exigeants et renforce votre positionnement.",
+  },
+  {
+    q: 'Combien de temps avant la mise en ligne ?',
+    a: "Environ 7 jours entre le brief et la mise en ligne. Vous continuez à coiffer, on construit votre site.",
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Création de site internet pour coiffeur à La Réunion',
+  serviceType: 'Création de site internet — Coiffure',
+  provider: { '@type': 'Organization', name: '9site4', url: 'https://9site4.re' },
+  areaServed: { '@type': 'AdministrativeArea', name: 'La Réunion' },
+  url: absoluteUrl(seo.canonical),
+  description: seo.description,
+  offers: { '@type': 'Offer', price: 97.4, priceCurrency: 'EUR', url: 'https://9site4.re/tarifs' },
+};
+---
+
+<BaseLayout seo={seo}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+
+  <div class="bg-black text-blanc-casse">
+    <!-- Hero -->
+    <section class="relative overflow-hidden px-6 pt-28 pb-16 md:pt-36 md:pb-24">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="hero-rise hero-rise-1 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-bleu text-white text-xs font-semibold uppercase tracking-wide">
+          <span class="block w-1.5 h-1.5 rounded-full bg-white/90 animate-pulse"></span>
+          Salons de coiffure · Coiffeurs · Barbiers
+        </p>
+        <span class="hero-rise hero-rise-2 block mx-auto mt-7 h-[3px] w-16 bg-bleu" aria-hidden="true"></span>
+        <h1 class="hero-rise hero-rise-2 mt-5 font-sora font-bold text-balance leading-[1.08] text-[clamp(2.25rem,4vw+1rem,4rem)] tracking-tight text-blanc-casse">
+          Site internet pour coiffeur
+          <span class="block italic font-medium text-bleu">à La Réunion.</span>
+        </h1>
+        <p class="hero-rise hero-rise-4 mx-auto mt-7 max-w-2xl text-lg md:text-xl text-blanc-casse/80 leading-relaxed">
+          9site4 crée des sites professionnels pour salons de coiffure et coiffeurs à La Réunion : prestations, équipe, prise de rendez-vous et gestion continue.
+        </p>
+        <div class="hero-rise hero-rise-5 mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+          <Button variant="primary" size="lg" href="/contact">
+            Créer mon site avec 9site4
+            <Icon name="arrow-right" size={20} strokeWidth={2.25} />
+          </Button>
+          <a href="/realisations" class="inline-flex items-center justify-center gap-2 h-14 px-8 text-lg font-semibold rounded-full text-bleu hover:text-blanc-casse transition-colors">
+            Voir nos réalisations
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pourquoi -->
+    <section class="relative px-6 py-16 md:py-24">
+      <div class="mx-auto max-w-5xl">
+        <div class="text-center max-w-3xl mx-auto">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-bleu"></span> Le besoin
+          </p>
+          <h2 class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl lg:text-5xl text-blanc-casse text-balance leading-[1.12]">
+            Un salon de coiffure à La Réunion
+            <span class="block italic font-medium text-bleu">a besoin d'un site qui inspire confiance.</span>
+          </h2>
+          <p class="scroll-reveal mt-6 text-base md:text-lg text-blanc-casse/70 leading-relaxed">
+            Avant de pousser la porte, vos futurs clients cherchent votre univers, votre équipe, vos tarifs et un créneau libre. Un site flou ou daté envoie le mauvais signal — un site bien structuré transforme une recherche Google en rendez-vous pris.
+          </p>
+        </div>
+
+        <ul class="scroll-reveal mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {[
+            { i: 'monitor', t: 'Une vitrine soignée', d: "Salon, fauteuils, lumière, ambiance — vos vraies photos mettent en confiance." },
+            { i: 'file-text', t: 'Prestations claires', d: 'Coupe, couleur, balayage, soins, lissage, barbier, mariées.' },
+            { i: 'calendar-check', t: 'Prise de RDV en ligne', d: 'Le client réserve quand il pense à vous, jour ou nuit.' },
+            { i: 'shield-check', t: 'Votre équipe valorisée', d: 'Chaque coiffeur·euse présenté·e avec ses spécialités.' },
+            { i: 'map-pin', t: 'Adresse & horaires', d: 'Plan, parking, jours d\'ouverture — clairs et toujours à jour.' },
+            { i: 'calendar-clock', t: 'Gestion continue', d: 'Tarifs, équipe, photos : 9site4 met à jour pour vous.' },
+          ].map((item) => (
+            <li class="rounded-2xl p-6"
+              style="background: linear-gradient(180deg, #14161F 0%, #0A0B12 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 12px 30px -16px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08);">
+              <span class="flex w-11 h-11 items-center justify-center rounded-xl bg-bleu/15 text-bleu">
+                <Icon name={item.i} size={20} strokeWidth={1.75} />
+              </span>
+              <p class="mt-4 font-sora font-semibold text-blanc-casse">{item.t}</p>
+              <p class="mt-2 text-sm text-blanc-casse/70 leading-relaxed">{item.d}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- Ce que 9site4 structure -->
+    <section class="relative px-6 py-16 md:py-24">
+      <div class="mx-auto max-w-5xl">
+        <div class="text-center max-w-3xl mx-auto">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-bleu"></span> Ce que 9site4 structure
+          </p>
+          <h2 class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl lg:text-5xl text-blanc-casse text-balance leading-[1.12]">
+            Tout ce dont
+            <span class="block italic font-medium text-bleu">votre salon a besoin.</span>
+          </h2>
+        </div>
+
+        <ol class="scroll-reveal mt-12 grid md:grid-cols-2 gap-5">
+          {[
+            { n: '01', t: 'Présentation du salon', d: "Histoire, parti-pris, ambiance, marques utilisées." },
+            { n: '02', t: 'Prestations & tarifs', d: "Coupe, couleur, balayage, soins capillaires, barbier, événementiel." },
+            { n: '03', t: 'Équipe nominative', d: "Chaque coiffeur·euse avec photo, spécialités et expérience." },
+            { n: '04', t: 'Photos & ambiance', d: "Salon, réalisations avant/après, équipe en action." },
+            { n: '05', t: 'Module rendez-vous', d: 'Réservation en ligne intégrée ou lien vers votre outil métier.' },
+            { n: '06', t: 'Infos pratiques', d: "Adresse, horaires, téléphone, WhatsApp, parking, accès." },
+          ].map((s) => (
+            <li class="rounded-2xl p-6"
+              style="background: linear-gradient(180deg, #14161F 0%, #0A0B12 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 12px 30px -16px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08);">
+              <p class="font-roboto-mono text-bleu text-sm font-semibold tracking-widest">{s.n}</p>
+              <p class="mt-2 font-sora font-semibold text-lg text-blanc-casse">{s.t}</p>
+              <p class="mt-2 text-sm text-blanc-casse/70 leading-relaxed">{s.d}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <!-- Module métier : RDV -->
+    <section class="relative px-6 py-16 md:py-24">
+      <div class="mx-auto max-w-5xl">
+        <div class="text-center max-w-3xl mx-auto">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-bleu"></span> Module métier
+          </p>
+          <h2 class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl lg:text-5xl text-blanc-casse text-balance leading-[1.12]">
+            La prise de rendez-vous
+            <span class="block italic font-medium text-bleu">au cœur du site.</span>
+          </h2>
+          <p class="scroll-reveal mt-6 text-base md:text-lg text-blanc-casse/70 leading-relaxed">
+            Vos clients prennent rendez-vous le soir, dans le bus, depuis leur lit. Votre site doit le permettre — sans friction.
+          </p>
+        </div>
+
+        <ul class="scroll-reveal mt-12 grid sm:grid-cols-2 gap-5">
+          {[
+            { i: 'calendar-check', t: 'Réservation intégrée', d: 'Prestation, coiffeur, jour, heure : confirmation immédiate.' },
+            { i: 'monitor', t: 'Compatible Planity / Treatwell', d: "Si vous utilisez déjà un outil métier, on l'intègre proprement au site." },
+            { i: 'file-text', t: 'Demande sur-mesure', d: "Pour les prestations longues (couleur + balayage + soin), un formulaire détaillé permet d'organiser le créneau." },
+            { i: 'map-pin', t: 'Contact direct', d: 'Téléphone, WhatsApp, itinéraire — un clic, c\'est lancé.' },
+          ].map((m) => (
+            <li class="rounded-2xl p-6"
+              style="background: linear-gradient(180deg, #14161F 0%, #0A0B12 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 12px 30px -16px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08);">
+              <span class="flex w-11 h-11 items-center justify-center rounded-xl bg-bleu/15 text-bleu">
+                <Icon name={m.i} size={20} strokeWidth={1.75} />
+              </span>
+              <p class="mt-4 font-sora font-semibold text-blanc-casse">{m.t}</p>
+              <p class="mt-2 text-sm text-blanc-casse/70 leading-relaxed">{m.d}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- Réalisations -->
+    <section class="relative px-6 py-16 md:py-24">
+      <div class="mx-auto max-w-content">
+        <div class="text-center max-w-3xl mx-auto">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-bleu"></span> Nos réalisations
+          </p>
+          <h2 class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl lg:text-5xl text-blanc-casse text-balance leading-[1.12]">
+            Salons, instituts, spas
+            <span class="block italic font-medium text-bleu">conçus par 9site4.</span>
+          </h2>
+        </div>
+        <ul class="scroll-reveal mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {selected.map((r) => (
+            <li><RealisationCard realisation={r} /></li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <TarifsBref />
+
+    <!-- FAQ -->
+    <section class="relative px-6 py-16 md:py-24">
+      <div class="mx-auto max-w-3xl">
+        <div class="text-center">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-bleu"></span> Questions fréquentes
+          </p>
+          <h2 class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl lg:text-5xl text-blanc-casse text-balance leading-[1.12]">
+            Ce qu'on nous demande
+            <span class="block italic font-medium text-bleu">côté coiffure.</span>
+          </h2>
+        </div>
+        <div class="mt-12 space-y-3">
+          {faq.map((item) => (
+            <details class="group rounded-2xl p-5 md:p-6"
+              style="background: linear-gradient(180deg, #14161F 0%, #0A0B12 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 12px 30px -16px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08);">
+              <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
+                <span class="font-sora font-semibold text-blanc-casse">{item.q}</span>
+                <span class="shrink-0 text-bleu transition-transform duration-300 group-open:rotate-45">
+                  <Icon name="arrow-right" size={18} strokeWidth={2.25} />
+                </span>
+              </summary>
+              <p class="mt-4 text-sm md:text-base text-blanc-casse/75 leading-relaxed">{item.a}</p>
+            </details>
+          ))}
+        </div>
+
+        <p class="scroll-reveal mt-12 text-center text-sm text-blanc-casse/65">
+          Voir aussi&nbsp;:
+          <a href="/site-internet-institut-beaute-la-reunion" class="text-bleu hover:underline">site pour institut, spa & coiffure</a>
+          ·
+          <a href="/site-internet-bien-etre-sante-la-reunion" class="text-bleu hover:underline">site pour praticien bien-être</a>
+          ·
+          <a href="/creation-site-internet-la-reunion" class="text-bleu hover:underline">création de site à La Réunion</a>
+          ·
+          <a href="/tarifs" class="text-bleu hover:underline">tarifs</a>
+          ·
+          <a href="/contact" class="text-bleu hover:underline">contact</a> · <a href="/diagnostic-site-internet-la-reunion" class="text-bleu hover:underline" data-track-event="diagnostic_cta_click" data-track-category="conversion" data-track-source="seo_sector_voir_aussi" data-track-target="/diagnostic-site-internet-la-reunion">diagnostic gratuit</a>.
+        </p>
+      </div>
+    </section>
+
+    <CTABand trackingSource="seo_sector_cta_band" trackingSector="coiffeur" trackingPageType="seo_sector_page" />
+  </div>
+</BaseLayout>

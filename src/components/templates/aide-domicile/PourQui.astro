@@ -1,34 +1,45 @@
 ---
-import data from '../../../data/templates/doudou.json';
+const items = [
+  { titre: 'Personne âgée', sous: 'Maintien à domicile', texte: 'Quelques heures par jour, une présence régulière, le même visage. Pour que la maison reste la maison.', note: 'APA possible' },
+  { titre: 'Convalescence', sous: 'Après opération', texte: 'Le temps de remonter la pente. Aide pour la toilette, les repas, les courses — et la paix d’esprit.', note: 'Mutuelle / Sécu' },
+  { titre: 'Sortie d’hôpital', sous: 'Mise en place rapide', texte: 'On vous installe sous 48h. Coordination avec l’hôpital, l’infirmière, le kiné. Vous, vous respirez.', note: 'Sous 48h' },
+  { titre: 'Famille débordée', sous: 'Aidants familiaux', texte: 'Vous tenez tout, sans relais. On prend le relais quelques heures — vous prenez l’air.', note: 'Crédit d’impôt 50 %' },
+];
+const icons = [
+  '<path d="M12 4c-3 0-5 2.5-5 5 0 3 2 5 5 5s5-2 5-5c0-2.5-2-5-5-5z" /><path d="M5 21c0-4 3-7 7-7s7 3 7 7" />',
+  '<path d="M4 12h6l2 -4 2 8 2 -4h4" /><path d="M3 7h18M3 17h18" />',
+  '<path d="M3 12l4-4 4 4M7 8v10M14 6h7v12h-7zM17 10h2M17 14h2" />',
+  '<path d="M12 2v4M5 8l3 3M19 8l-3 3M12 22a8 8 0 008-8H4a8 8 0 008 8z" /><path d="M9 14h6" />',
+];
 ---
+<section id="pour-qui" class="bg-[#F8F0E3] py-24 md:py-32">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+    <div class="grid md:grid-cols-12 gap-10 mb-16">
+      <div class="md:col-span-5" data-reveal>
+        <p class="text-[#6B7F5C] text-[12px] uppercase tracking-[0.24em] mb-4">— Pour qui</p>
+        <h2 class="text-[#3D2A1E] leading-[0.95]" style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(44px,6.5vw,84px);">
+          Chaque situation,<br/><em class="text-[#C4674C]">son aide.</em>
+        </h2>
+      </div>
+      <div class="md:col-span-6 md:col-start-7 self-end">
+        <p class="text-[#3D2A1E]/75 text-[17px] leading-[1.65] max-w-lg">
+          On ne fait pas du copier-coller. On écoute, on observe, on adapte. Voici les quatre situations qu’on rencontre le plus souvent — et chacune appelle un rythme différent.
+        </p>
+      </div>
+    </div>
 
-<section class="bg-doudou-rose/15 py-20 md:py-28 px-6 md:px-10">
-  <div class="max-w-content mx-auto">
-
-    <header class="text-center mb-14 md:mb-16 max-w-2xl mx-auto">
-      <p class="font-homemade text-doudou-bleu text-3xl mb-3 leading-none rotate-[1deg]">
-        on accompagne
-      </p>
-      <h2 class="font-nunito font-bold text-doudou-encre leading-[1.1]" style="font-size: clamp(32px, 5vw, 56px);">
-        À qui nous<br/>
-        <span class="text-doudou-rose">nous adressons.</span>
-      </h2>
-    </header>
-
-    <ul class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-      {data.publics.map((p, i) => (
-        <li class="bg-doudou-creme p-6 rounded-3xl">
-          <span class="font-homemade text-doudou-rose text-3xl leading-none mb-4 inline-block">
-            {String(i + 1).padStart(2, '0')}.
-          </span>
-          <h3 class="font-nunito font-bold text-doudou-encre text-lg leading-tight mb-3">
-            {p.titre}
-          </h3>
-          <p class="font-be-vietnam text-doudou-encre/75 text-sm leading-relaxed">
-            {p.texte}
-          </p>
-        </li>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      {items.map((it, idx) => (
+        <article class="group relative bg-white rounded-[24px] p-7 ring-1 ring-[#3D2A1E]/10 hover:ring-[#C4674C]/30 transition-all hover:-translate-y-1 hover:shadow-[0_20px_50px_-20px_rgba(61,42,30,0.25)]" data-reveal>
+          <div class="w-14 h-14 rounded-2xl bg-[#F8F0E3] grid place-items-center mb-6 group-hover:bg-[#C4674C]/10 transition-colors">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C4674C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" set:html={icons[idx]} />
+          </div>
+          <p class="text-[11px] uppercase tracking-[0.18em] text-[#6B7F5C] mb-2">{it.sous}</p>
+          <h3 class="text-[28px] text-[#3D2A1E] leading-[1.1] mb-4" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;">{it.titre}</h3>
+          <p class="text-[14px] text-[#3D2A1E]/70 leading-[1.6] mb-6">{it.texte}</p>
+          <p class="text-[12px] text-[#C4674C] font-medium tracking-[0.05em]">{it.note} →</p>
+        </article>
       ))}
-    </ul>
+    </div>
   </div>
 </section>

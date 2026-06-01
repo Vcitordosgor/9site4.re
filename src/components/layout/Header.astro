@@ -5,7 +5,7 @@ import MobileMenu from './MobileMenu.astro';
 
 const navLinks = [
   { href: '/', label: 'Accueil' },
-  { href: '/realisations', label: 'Exemples métiers' },
+  { href: '/realisations', label: 'Réalisations' },
   { href: '/tarifs', label: 'Tarifs' },
   { href: '/contact', label: 'Contact' },
 ];
@@ -50,8 +50,12 @@ const isActive = (href: string) => {
       <a
         href="/contact"
         class="inline-flex items-center justify-center h-11 px-5 text-sm font-semibold rounded-full bg-blanc-casse text-black hover:bg-white hover:-translate-y-0.5 transition-all duration-200 ease-out"
+        data-track-event="cta_contact_click"
+        data-track-category="conversion"
+        data-track-source="header_nav"
+        data-track-target="/contact"
       >
-        Demander mon site
+        Créer mon site
       </a>
     </div>
 

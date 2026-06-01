@@ -3,6 +3,7 @@ import '@fontsource/crimson-pro/latin-400.css';
 import '@fontsource/crimson-pro/latin-500.css';
 import '@fontsource/crimson-pro/latin-600.css';
 import '@fontsource/crimson-pro/latin-400-italic.css';
+import '@fontsource/crimson-pro/latin-500-italic.css';
 import '@fontsource/caveat/latin-400.css';
 import '@fontsource/inter/latin-400.css';
 import '@fontsource/inter/latin-500.css';
@@ -34,7 +35,7 @@ const businessLD = localBusinessSchema(data, 'Bakery');
   </Fragment>
 
   <Header />
-  <main id="top" style="background:#F5EBD5; color:#1A1614; font-family:'Crimson Pro',Georgia,serif;">
+  <main style="background:#E8E0CC; color:#1F2521; font-family:'Crimson Pro',Georgia,serif;">
     <Hero />
     <Manifesto />
     <Four />
@@ -46,4 +47,23 @@ const businessLD = localBusinessSchema(data, 'Bakery');
     <Faq />
   </main>
   <Footer />
+
+  <a id="bl-sticky" href="#abonnement" data-visible="false"
+     class="md:hidden fixed bottom-4 inset-x-4 z-40 inline-flex items-center justify-center h-14 px-6 text-[12px] font-semibold uppercase tracking-[0.22em] rounded-full transition-all duration-300 ease-out data-[visible=false]:opacity-0 data-[visible=false]:translate-y-4 data-[visible=false]:pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0"
+     style="background:#1F2521; color:#A87842; font-family:Inter,system-ui,sans-serif; box-shadow:0 12px 32px rgba(26,22,20,0.35);">
+     Précommander le pain
+  </a>
+  <script>
+    const s = document.getElementById('bl-sticky');
+    const t = document.getElementById('abonnement') || document.getElementById('trouver');
+    if (s) {
+      const u = () => {
+        const past = window.scrollY > 480;
+        let inSec = false;
+        if (t) { const r = t.getBoundingClientRect(); inSec = r.top < window.innerHeight && r.bottom > 80; }
+        s.dataset.visible = String(past && !inSec);
+      };
+      u(); window.addEventListener('scroll', u, { passive: true }); window.addEventListener('resize', u, { passive: true });
+    }
+  </script>
 </BaseLayout>

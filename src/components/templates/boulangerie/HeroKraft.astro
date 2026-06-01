@@ -1,27 +1,64 @@
 ---
+import data from '../../../data/templates/painleve.json';
 ---
-<section class="relative w-full overflow-hidden" style="background:#1A1614;">
-  <div class="grid md:grid-cols-2 min-h-[640px] md:min-h-[88vh]">
-    <div class="relative order-2 md:order-1 flex items-center px-6 md:px-14 py-14 md:py-0">
-      <div>
-        <p class="font-caveat text-3xl md:text-4xl mb-3" style="color:#C89B3C;">depuis le four au feu de bois —</p>
-        <h1 class="font-crimson-pro text-5xl md:text-7xl leading-[1.02]" style="color:#F5EBD5;">
-          Du blé, de l'eau,<br/>du sel, du temps.<br/><em class="italic" style="color:#C89B3C;">Rien d'autre.</em>
+<section id="top" class="relative w-full overflow-hidden" style="background:#1F2521;">
+  <div class="grid lg:grid-cols-2 min-h-[100svh]">
+    <!-- Panneau kraft gauche -->
+    <div class="relative flex flex-col justify-center px-6 md:px-14 py-24 md:py-28 order-2 lg:order-1" style="background:#E8E0CC; color:#1F2521;">
+      <svg class="absolute inset-0 w-full h-full opacity-[0.07] pointer-events-none" aria-hidden="true">
+        <filter id="kraft-grain"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2"/><feColorMatrix values="0 0 0 0 0.10  0 0 0 0 0.08  0 0 0 0 0.06  0 0 0 1 0"/></filter>
+        <rect width="100%" height="100%" filter="url(#kraft-grain)"/>
+      </svg>
+      <div class="relative max-w-xl mx-auto lg:mx-0 w-full">
+        <p class="text-[11px] uppercase tracking-[0.42em] mb-7 flex items-center gap-3" style="color:#7A5C28;">
+          <span class="block w-10 h-px" style="background:#7A5C28;"></span>
+          Boulangerie au levain · depuis {data.info.annee}
+        </p>
+        <h1 class="font-crimson-pro leading-[0.92] tracking-[-0.015em]" style="font-size:clamp(54px,8.6vw,124px); color:#1F2521;">
+          <span class="block">Pain levain —</span>
+          <span class="block italic" style="color:#A87842;">depuis 4 h du matin.</span>
         </h1>
-        <p class="mt-6 max-w-md text-lg leading-relaxed" style="color:#E0D2B5;">
-          Boulangerie artisanale au levain naturel. Pétrissage main, fermentation longue, four à sole bois. Trois fournées par jour, vendues jusqu'à épuisement.
+        <p class="font-caveat text-3xl md:text-4xl mt-6 leading-tight" style="color:#7A5C28;">— farine, eau, sel, temps. rien d'autre.</p>
+        <p class="mt-7 max-w-lg text-base md:text-lg leading-relaxed" style="color:#3A3128;">
+          Une farine bio T80 d'un moulin péi, un levain mère né en 2018 d'une grappe de raisin local, une fermentation longue 18 à 24 heures à 4°C. Du sel marin, de l'eau. Pas de levure, pas d'améliorants.
         </p>
         <div class="mt-10 flex flex-wrap gap-3">
-          <a href="#precommande" class="inline-flex items-center h-12 px-7 text-[12px] uppercase tracking-[0.22em] font-semibold transition-colors"
-             style="background:#C89B3C; color:#1A1614;">Précommander</a>
-          <a href="#carte" class="inline-flex items-center h-12 px-7 text-[12px] uppercase tracking-[0.22em] font-semibold border"
-             style="border-color:#F5EBD5; color:#F5EBD5;">Voir la carte</a>
+          <a href="#abonnement" class="inline-flex items-center justify-center px-7 text-[12px] uppercase tracking-[0.22em] font-semibold rounded-full transition-colors" style="background:#1F2521; color:#E8E0CC; height:54px;">
+            Précommander
+          </a>
+          <a href="#carte" class="inline-flex items-center justify-center px-7 text-[12px] uppercase tracking-[0.22em] font-semibold rounded-full border-2 transition-colors" style="border-color:#1F2521; color:#1F2521; height:54px;">
+            Voir la carte
+          </a>
+        </div>
+
+        <div class="mt-12 grid grid-cols-3 gap-6 max-w-md">
+          <div>
+            <p class="font-crimson-pro leading-none" style="color:#A87842; font-size:clamp(28px,4vw,42px);">4 h</p>
+            <p class="mt-1 text-[10px] uppercase tracking-[0.22em]" style="color:#7A5C28;">Pétrissage matin</p>
+          </div>
+          <div>
+            <p class="font-crimson-pro leading-none" style="color:#A87842; font-size:clamp(28px,4vw,42px);">{data.four.stats[0]?.valeur ?? '240°C'}</p>
+            <p class="mt-1 text-[10px] uppercase tracking-[0.22em]" style="color:#7A5C28;">Sole tournante</p>
+          </div>
+          <div>
+            <p class="font-crimson-pro leading-none" style="color:#A87842; font-size:clamp(28px,4vw,42px);">18-24 h</p>
+            <p class="mt-1 text-[10px] uppercase tracking-[0.22em]" style="color:#7A5C28;">Fermentation</p>
+          </div>
         </div>
       </div>
     </div>
-    <div class="relative order-1 md:order-2 min-h-[320px]">
-      <img src="/images/boulangerie/hero.webp" alt="Miche de pain au levain" class="absolute inset-0 w-full h-full object-cover" fetchpriority="high"/>
-      <div class="absolute top-6 right-6 px-3 py-1 text-[10px] uppercase tracking-[0.28em]" style="background:#F5EBD5; color:#1A1614;">Fournée 7h · 12h · 17h</div>
+    <!-- Panneau photo droit -->
+    <div class="relative min-h-[55svh] lg:min-h-[100svh] order-1 lg:order-2">
+      <img src="/images/boulangerie/hero.webp" alt={data.info.photoHeroAlt}
+           class="absolute inset-0 w-full h-full object-cover"
+           fetchpriority="high" loading="eager" decoding="async" width="1200" height="1400" />
+      <div class="absolute inset-0" style="background:linear-gradient(180deg, rgba(26,22,20,0.10), rgba(26,22,20,0.45));"></div>
+      <div class="absolute top-8 right-8 px-4 py-2 text-[10px] uppercase tracking-[0.32em]" style="background:#E8E0CC; color:#1F2521;">
+        Fournée du jour · 11 h
+      </div>
+      <div class="absolute bottom-8 left-8 right-8 lg:right-auto max-w-sm">
+        <p class="font-caveat text-3xl leading-tight" style="color:#E8E0CC;">— miche campagne, levain 7 ans, juste sortie du four.</p>
+      </div>
     </div>
   </div>
 </section>

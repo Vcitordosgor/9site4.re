@@ -1,30 +1,53 @@
 ---
 import data from '../../../data/templates/sorbetpei.json';
 const nav = [
-  { href: '#parfums', label: 'Parfums' },
-  { href: '#processus', label: 'Atelier' },
+  { href: '#parfums', label: 'Parfums péi' },
+  { href: '#moment', label: 'Le moment glace' },
+  { href: '#processus', label: 'Processus' },
   { href: '#tournee', label: 'Tournée' },
-  { href: '#privatisation', label: 'Événements' },
+  { href: '#prive', label: 'Privatisation' },
 ];
 ---
-<header id="gl-header" data-scrolled="false" class="sticky top-0 z-50 transition-all duration-500"
-  style="background:rgba(255,246,226,0.96);">
-  <div class="max-w-content mx-auto px-6 md:px-10 h-16 md:h-20 flex items-center justify-between gap-6">
+<header id="gl-header" data-scrolled="false"
+  class="fixed top-0 inset-x-0 z-50 transition-all duration-500 ease-out"
+  style="background:rgba(255,217,61,0); border-bottom:1px solid rgba(0,0,0,0);">
+  <div class="max-w-content mx-auto px-5 md:px-10 h-16 md:h-20 flex items-center justify-between gap-6">
     <a href="#top" class="flex items-baseline gap-2.5" aria-label="Sorbet Péi">
-      <svg viewBox="0 0 32 32" class="w-9 h-9" aria-hidden="true">
-        <circle cx="16" cy="13" r="9" fill="#FF6F91"/><path d="M9 18 L16 32 L23 18 Z" fill="#FFB347"/><circle cx="16" cy="13" r="5" fill="#FFD93D"/>
+      <svg viewBox="0 0 36 36" class="w-9 h-9" aria-hidden="true">
+        <circle cx="18" cy="13" r="9" fill="#FF6F91"/>
+        <path d="M10 18 L18 33 L26 18 Z" fill="#FFB347"/>
+        <circle cx="18" cy="13" r="5" fill="#FFD93D"/>
+        <circle cx="16" cy="11" r="1.2" fill="#FFF6E2"/>
       </svg>
-      <span class="font-fraunces italic text-2xl md:text-3xl" style="color:#3D2817;">Sorbet Péi</span>
+      <span class="font-fraunces italic text-2xl md:text-3xl" id="gl-wm" style="color:#3D2817;">Sorbet Péi</span>
     </a>
-    <nav class="hidden md:flex items-center gap-7 text-[12px] uppercase tracking-[0.20em] font-semibold" aria-label="Navigation">
-      {nav.map(n => <a href={n.href} class="hover:opacity-60 transition-opacity" style="color:#3D2817;">{n.label}</a>)}
+    <nav class="hidden lg:flex items-center gap-7 text-[12px] uppercase tracking-[0.22em] font-semibold" aria-label="Navigation" id="gl-nav">
+      {nav.map(n => <a href={n.href} class="hover:opacity-60 transition-opacity">{n.label}</a>)}
     </nav>
-    <a href="#tournee" class="hidden md:inline-flex items-center h-10 px-5 text-[12px] uppercase tracking-[0.16em] font-bold transition-transform hover:scale-105"
-       style="background:#FF6F91; color:#FFF6E2; border-radius:999px;">Voir la tournée</a>
-    <a href={`tel:${data.info.telephoneHref}`} class="md:hidden inline-flex items-center h-10 px-4 text-[11px] uppercase tracking-wider font-bold" style="background:#FF6F91; color:#FFF6E2; border-radius:999px;">Appeler</a>
+    <a href="#tournee" id="gl-cta" class="hidden md:inline-flex items-center h-11 px-5 text-[12px] uppercase tracking-[0.18em] font-bold rounded-full transition-all hover:scale-[1.04]">
+      Voir la tournée
+    </a>
+    <a href={`tel:${data.info.telephoneHref}`} class="md:hidden inline-flex items-center h-10 px-4 text-[11px] uppercase tracking-wider font-bold rounded-full" style="background:#FF6F91; color:#FFF6E2;">Appeler</a>
   </div>
 </header>
-<script>
-  const h = document.getElementById('gl-header');
-  if (h) { const u = () => { h.dataset.scrolled = String(window.scrollY > 8); }; u(); window.addEventListener('scroll', u, { passive: true }); }
+<script is:inline>
+  (() => {
+    const h = document.getElementById('gl-header');
+    const wm = document.getElementById('gl-wm');
+    const nav = document.getElementById('gl-nav');
+    const cta = document.getElementById('gl-cta');
+    if (!h || !cta) return;
+    const upd = () => {
+      const s = window.scrollY > 40;
+      h.dataset.scrolled = String(s);
+      h.style.background = s ? 'rgba(255,246,226,0.96)' : 'rgba(255,217,61,0)';
+      h.style.borderBottomColor = s ? 'rgba(61,40,23,0.10)' : 'rgba(0,0,0,0)';
+      h.style.backdropFilter = s ? 'blur(12px) saturate(180%)' : 'none';
+      if (wm) wm.style.color = '#3D2817';
+      if (nav) nav.style.color = '#3D2817';
+      cta.style.background = s ? '#3D2817' : '#FF6F91';
+      cta.style.color = s ? '#FFD93D' : '#FFF6E2';
+    };
+    upd(); window.addEventListener('scroll', upd, { passive: true });
+  })();
 </script>

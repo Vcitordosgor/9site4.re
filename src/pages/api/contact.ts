@@ -1,5 +1,11 @@
 import type { APIRoute } from 'astro';
 import siteConfig from '../../data/siteConfig.json';
+import {
+  internalContactEmail,
+  autoReplyContactEmail,
+  type LeadContact,
+} from '../../lib/emailTemplates';
+import { qualifyLead, mapSource, defaultQualification } from '../../lib/leadScoring';
 
 export const prerender = false;
 
@@ -13,19 +19,21 @@ interface ContactPayload {
   preference?: string;
   message?: string;
   website?: string;
+  source?: string;
 }
 
 const PHONE_REGEX = /^[+]?[\d\s().-]{8,20}$/;
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
-function escapeHtml(str: string): string {
-  return str
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;');
-}
+type SebSendMsg = {
+  from: string;
+  to: string;
+  subject: string;
+  text: string;
+  html?: string;
+  replyTo?: string;
+};
+type Seb = { send: (msg: SebSendMsg) => Promise<unknown> };
 
 export const POST: APIRoute = async ({ request, locals }) => {
   let payload: ContactPayload;
@@ -38,6 +46,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
     });
   }
 
+  // Honeypot — silent OK, no email sent
   if (payload.website && payload.website.trim()) {
     return new Response(JSON.stringify({ ok: true }), {
       status: 200,
@@ -69,36 +78,8 @@ export const POST: APIRoute = async ({ request, locals }) => {
     );
   }
 
-  const lines = [
-    `Nom : ${nom}`,
-    entreprise ? `Entreprise : ${entreprise}` : null,
-    `Secteur : ${secteur}`,
-    `Téléphone : ${telephone}`,
-    `Email : ${email}`,
-    `Besoin : ${besoin}`,
-    `Préférence de contact : ${preference}`,
-    message ? `\nMessage :\n${message}` : null,
-  ].filter(Boolean);
-  const text = `Nouvelle demande depuis le formulaire 9site4.re\n\n${lines.join('\n')}`;
-
-  const html = `
-    <p><strong>Nouvelle demande depuis le formulaire 9site4.re</strong></p>
-    <ul>
-      <li><strong>Nom :</strong> ${escapeHtml(nom)}</li>
-      ${entreprise ? `<li><strong>Entreprise :</strong> ${escapeHtml(entreprise)}</li>` : ''}
-      <li><strong>Secteur :</strong> ${escapeHtml(secteur)}</li>
-      <li><strong>Téléphone :</strong> ${escapeHtml(telephone)}</li>
-      <li><strong>Email :</strong> <a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a></li>
-      <li><strong>Besoin :</strong> ${escapeHtml(besoin)}</li>
-      <li><strong>Préférence de contact :</strong> ${escapeHtml(preference)}</li>
-    </ul>
-    ${message ? `<p><strong>Message :</strong></p><p>${escapeHtml(message).replace(/\n/g, '<br>')}</p>` : ''}
-  `;
-
   const env = (locals as { runtime?: { env?: Record<string, unknown> } }).runtime?.env;
-  const seb = env?.SEB as
-    | { send: (msg: { from: string; to: string; subject: string; text: string; html?: string; replyTo?: string }) => Promise<unknown> }
-    | undefined;
+  const seb = env?.SEB as Seb | undefined;
 
   if (!seb) {
     return new Response(
@@ -107,22 +88,69 @@ export const POST: APIRoute = async ({ request, locals }) => {
     );
   }
 
-  const envKeys = env ? Object.keys(env) : [];
-  const discordKey = envKeys.find(
-    (k) => /discord/i.test(k) && /webhook/i.test(k)
-  );
-  const discordWebhook =
-    (discordKey && typeof env?.[discordKey] === 'string' && (env[discordKey] as string)) ||
-    null;
+  const sourceLabel = mapSource(payload.source) ?? undefined;
 
-  const emailTask = seb.send({
-    from: `9site4 Contact <contact@9site4.re>`,
-    to: siteConfig.contact.notifyEmail,
-    replyTo: email,
-    subject: `Demande de contact — ${nom}${entreprise ? ` (${entreprise})` : ''}`,
-    text,
-    html,
-  });
+  let qualification;
+  try {
+    qualification = qualifyLead(
+      {
+        nom,
+        entreprise,
+        email,
+        telephone,
+        secteur,
+        besoin,
+        message,
+        preferenceContact: preference,
+        source: sourceLabel,
+      },
+      'contact'
+    );
+  } catch (err) {
+    console.error('[api/contact] qualifyLead failed', err);
+    qualification = defaultQualification();
+  }
+
+  const lead: LeadContact = {
+    nom,
+    entreprise: entreprise || undefined,
+    email,
+    telephone,
+    secteur: secteur || undefined,
+    besoin: besoin || undefined,
+    message: message || undefined,
+    preferenceContact: preference || undefined,
+    source: sourceLabel,
+    qualification,
+    receivedAt: new Date(),
+  };
+
+  const internal = internalContactEmail(lead);
+
+  // 1) Internal notification — MANDATORY
+  try {
+    await seb.send({
+      from: `9site4 <${siteConfig.contact.email}>`,
+      to: siteConfig.contact.notifyEmail,
+      replyTo: email,
+      subject: internal.subject,
+      text: internal.text,
+      html: internal.html,
+    });
+  } catch (err) {
+    const detail = err instanceof Error ? `${err.name}: ${err.message}` : String(err);
+    console.error('[api/contact] internal email failed', detail);
+    return new Response(
+      JSON.stringify({ ok: false, error: 'send_failed', detail }),
+      { status: 502, headers: { 'Content-Type': 'application/json' } }
+    );
+  }
+
+  // 2) Best-effort tasks: Discord + auto-reply (never block 200)
+  const envKeys = env ? Object.keys(env) : [];
+  const discordKey = envKeys.find((k) => /discord/i.test(k) && /webhook/i.test(k));
+  const discordWebhook =
+    (discordKey && typeof env?.[discordKey] === 'string' && (env[discordKey] as string)) || null;
 
   const discordTask = discordWebhook
     ? fetch(discordWebhook, {
@@ -132,8 +160,8 @@ export const POST: APIRoute = async ({ request, locals }) => {
           username: '9site4 Contact',
           embeds: [
             {
-              title: `Nouvelle demande — ${nom}${entreprise ? ` (${entreprise})` : ''}`,
-              color: 0xff7a1a,
+              title: `Nouveau lead — ${nom}${entreprise ? ` (${entreprise})` : ''}`,
+              color: 0x91a6ff,
               fields: [
                 { name: 'Nom', value: nom, inline: true },
                 ...(entreprise ? [{ name: 'Entreprise', value: entreprise, inline: true }] : []),
@@ -145,7 +173,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
                 ...(message ? [{ name: 'Message', value: message.slice(0, 1024) }] : []),
               ],
               timestamp: new Date().toISOString(),
-              footer: { text: '9site4.re — formulaire de contact' },
+              footer: { text: '9site4.re — contact' },
             },
           ],
         }),
@@ -154,29 +182,29 @@ export const POST: APIRoute = async ({ request, locals }) => {
       })
     : Promise.resolve();
 
-  const [emailRes, discordRes] = await Promise.allSettled([emailTask, discordTask]);
+  // Auto-reply only if prospect email looks valid (already validated above)
+  const autoReply = autoReplyContactEmail(lead);
+  const autoReplyTask = seb
+    .send({
+      from: `9site4 <${siteConfig.contact.email}>`,
+      to: email,
+      replyTo: siteConfig.contact.email,
+      subject: autoReply.subject,
+      text: autoReply.text,
+      html: autoReply.html,
+    })
+    .then(() => undefined);
 
-  if (emailRes.status === 'rejected') {
-    const err = emailRes.reason;
-    const detail = err instanceof Error ? `${err.name}: ${err.message}` : String(err);
-    console.error('[api/contact] email failed', detail, err);
-    return new Response(
-      JSON.stringify({ ok: false, error: 'send_failed', detail }),
-      { status: 502, headers: { 'Content-Type': 'application/json' } }
-    );
-  }
-
+  const [discordRes, autoReplyRes] = await Promise.allSettled([discordTask, autoReplyTask]);
   if (discordRes.status === 'rejected') {
-    const err = discordRes.reason;
-    const discordDetail = err instanceof Error ? `${err.name}: ${err.message}` : String(err);
-    console.error('[api/contact] discord failed', discordDetail, err);
+    console.error('[api/contact] discord failed', String(discordRes.reason));
+  }
+  if (autoReplyRes.status === 'rejected') {
+    console.error('[api/contact] auto-reply failed', String(autoReplyRes.reason));
   }
 
-  return new Response(
-    JSON.stringify({ ok: true }),
-    {
-      status: 200,
-      headers: { 'Content-Type': 'application/json' },
-    }
-  );
+  return new Response(JSON.stringify({ ok: true }), {
+    status: 200,
+    headers: { 'Content-Type': 'application/json' },
+  });
 };

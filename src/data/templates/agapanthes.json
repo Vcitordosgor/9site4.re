@@ -3,324 +3,88 @@
     "nom": "Les agapanthes",
     "wordmark1": "Les",
     "wordmark2": "agapanthes",
+    "soustitre": "Atelier paysagiste · La Réunion",
     "tagline": "L'art du jardin",
     "taglineItalic": "à la créole.",
-    "intro": "Atelier paysagiste à La Réunion. Création de jardins, entretien régulier, palette végétale 100% locale. Pour les particuliers, les copropriétés et les hôtels du sud-ouest de l'île.",
-    "adresse": "14 chemin des Avirons, 97436 La Réunion",
+    "intro": "Atelier paysagiste à La Réunion. Création de jardins tropicaux, entretien régulier, palette végétale 100% péi. Pour les particuliers, copropriétés et hôtels du sud-ouest de l'île.",
+    "ville": "La Réunion",
+    "adresse": "14 chemin des Avirons · côte sud-ouest",
+    "adresseLigne1": "14 chemin des Avirons · côte sud-ouest",
+    "adresseLigne2": "97400 La Réunion",
     "telephone": "0692 12 34 56",
     "telephoneHref": "+262692123456",
-    "telephoneCompact": "0692 00 00 00",
+    "telephoneCompact": "0692 12 34 56",
     "email": "atelier@les-agapanthes.re",
     "whatsapp": "262692123456",
-    "whatsappDisplay": "+262 692 00 00 00",
+    "whatsappDisplay": "+262 692 12 34 56",
+    "instagram": "@les.agapanthes",
     "annee": 2011,
-    "siret": "SIRET sur demande",
-    "horaires": [
-      {
-        "jour": "Lundi – Vendredi",
-        "ouvert": true,
-        "label": "7h30 – 17h"
-      },
-      {
-        "jour": "Samedi",
-        "ouvert": true,
-        "label": "8h – 12h · sur RDV"
-      },
-      {
-        "jour": "Dimanche",
-        "ouvert": false,
-        "label": "Repos"
-      }
-    ],
     "photoHero": "/images/paysagiste/extra-1.webp",
-    "photoHeroAlt": "Jardin paysager récemment aménagé",
-    "photoApproche": "/images/paysagiste/extra-2.webp",
-    "photoApprocheAlt": "Paysagiste au travail dans un jardin tropical",
-    "photoEquipe": "/images/paysagiste/extra-3.webp",
-    "photoEquipeAlt": "Équipe de jardiniers en intervention",
-    "photoFleur": "/images/paysagiste/extra-4.webp",
-    "photoFleurAlt": "Détail végétal d'un jardin tropical",
-    "photoFeuille": "/images/paysagiste/extra-5.webp",
-    "photoFeuilleAlt": "Feuillage luxuriant en gros plan",
-    "photoGalerie1": "/images/paysagiste/extra-6.webp",
-    "photoGalerie1Alt": "Aménagement paysager réalisé par l'atelier",
-    "photoGalerie2": "/images/paysagiste/extra-7.webp",
-    "photoGalerie2Alt": "Massif fleuri créé sur mesure",
-    "photoGalerie3": "/images/paysagiste/extra-8.webp",
-    "photoGalerie3Alt": "Allée végétalisée chez un client",
-    "photoGalerie4": "/images/paysagiste/extra-2.webp",
-    "photoGalerie4Alt": "Jardin contemporain entretenu par l'équipe",
-    "photoGalerie5": "/images/paysagiste/extra-6.webp",
-    "photoGalerie5Alt": "Composition végétale tropicale"
+    "photoHeroAlt": "Jardin tropical luxuriant à La Réunion, agapanthes en floraison",
+    "horaires": [
+      { "jour": "Lundi – Vendredi", "ouvert": true, "label": "7h30 – 17h" },
+      { "jour": "Samedi", "ouvert": true, "label": "8h – 12h · sur RDV" },
+      { "jour": "Dimanche", "ouvert": false, "label": "Repos" }
+    ]
   },
-  "manifesto": "On dessine un jardin comme on écrit un poème. Avec des silences, des respirations, et des plantes qu'on connaît par cœur.",
-  "valeurs": [
-    {
-      "icon": "leaf",
-      "titre": "100% local",
-      "description": "Plantes adaptées au climat tropical réunionnais. Moins d'arrosage, moins de pertes, plus de beauté."
-    },
-    {
-      "icon": "drop",
-      "titre": "Sobre en eau",
-      "description": "Conception pensée pour un arrosage raisonné. Goutte-à-goutte, paillage, espèces résistantes."
-    },
-    {
-      "icon": "scissor",
-      "titre": "Sur-mesure",
-      "description": "Aucun jardin standard. Chaque création part de votre lieu, vos envies, votre rythme de vie."
-    }
+  "stats": [
+    { "valeur": "14 ans", "label": "d'atelier" },
+    { "valeur": "180+", "label": "jardins créés" },
+    { "valeur": "60+", "label": "espèces péi cultivées" },
+    { "valeur": "3", "label": "jardiniers à demeure" }
+  ],
+  "manifeste": "On dessine un jardin comme on écrit un poème. Avec des silences, des respirations, et des plantes qu'on connaît par cœur.",
+  "zones": [
+    { "id": "entree",   "nom": "L'entrée",            "x": 18, "y": 30, "description": "Le seuil du jardin : bordure d'agapanthes, dalles en pas japonais, lanterne discrète.", "photo": "/images/paysagiste/extra-5.webp" },
+    { "id": "piscine",  "nom": "Autour de la piscine","x": 62, "y": 32, "description": "Palmiers, bambous, bougainvilliers. Volume vertical pour intimité, palette chaude au soir.", "photo": "/images/paysagiste/extra-2.webp" },
+    { "id": "potager",  "nom": "Le potager créole",   "x": 30, "y": 70, "description": "Brèdes, vanilliers tuteurés, combavas, curcuma. Carrés surélevés, paillage canne.", "photo": "/images/paysagiste/extra-1.webp" },
+    { "id": "terrasse", "nom": "La terrasse",         "x": 75, "y": 68, "description": "Bois exotique péi, jardinières en lave, frangipanier ombrageant.", "photo": "/images/paysagiste/extra-4.webp" }
   ],
   "saisons": [
-    {
-      "id": "ete",
-      "nom": "Été austral",
-      "mois": "Décembre – Mars",
-      "couleur": "violet",
-      "description": "Saison des pluies et des floraisons généreuses. Parfait pour planter agapanthes, héliconias, balisiers.",
-      "actions": [
-        "Plantation des vivaces",
-        "Tailles légères",
-        "Surveillance arrosage"
-      ]
-    },
-    {
-      "id": "automne",
-      "nom": "Automne",
-      "mois": "Avril – Mai",
-      "couleur": "rose",
-      "description": "Transition douce. On installe les jeunes arbustes avant la fraîcheur, on prépare les sols pour l'hiver.",
-      "actions": [
-        "Plantation arbustes",
-        "Apport compost",
-        "Taille de structuration"
-      ]
-    },
-    {
-      "id": "hiver",
-      "nom": "Hiver austral",
-      "mois": "Juin – Septembre",
-      "couleur": "sauge",
-      "description": "Saison sèche et fraîche. Idéale pour les gros chantiers, terrasses, allées et tailles d'hiver.",
-      "actions": [
-        "Création de jardins",
-        "Élagage",
-        "Pose de paillage"
-      ]
-    },
-    {
-      "id": "printemps",
-      "nom": "Printemps",
-      "mois": "Octobre – Novembre",
-      "couleur": "violet",
-      "description": "Le réveil des plantes. On prépare l'explosion estivale : semis, divisions, plantations rapides.",
-      "actions": [
-        "Semis de fleurs",
-        "Division des touffes",
-        "Reprise arrosage"
-      ]
-    }
+    { "id": "ete",       "nom": "Été austral", "mois": "Déc — Mars", "color": "#6B5B95", "description": "Saison des pluies et floraisons généreuses. On plante les vivaces, on taille léger.", "actions": ["Plantation vivaces","Tailles légères","Goutte-à-goutte"] },
+    { "id": "vanille",   "nom": "Vanilliers",   "mois": "Avr — Mai",  "color": "#9DAB8E", "description": "Pollinisation manuelle de la vanille, récolte de combavas, semis d'hiver.", "actions": ["Pollinisation vanille","Semis d'hiver","Compost"] },
+    { "id": "hiver",     "nom": "Hiver austral","mois": "Juin — Sept","color": "#5C7058", "description": "Saison sèche et fraîche, idéale pour gros chantiers : terrasses, allées, tailles.", "actions": ["Création jardin","Élagage","Paillage"] },
+    { "id": "lychees",   "nom": "Lychees",      "mois": "Oct — Nov",  "color": "#C68C3C", "description": "Floraison des lychees, divisions, semis de fleurs. On prépare l'explosion estivale.", "actions": ["Récolte lychees","Divisions","Reprise arrosage"] }
   ],
-  "services": [
-    {
-      "id": "creation",
-      "icon": "sketch",
-      "titre": "Création de jardin",
-      "description": "Du diagnostic du terrain à la livraison clé en main. Plan paysager, choix des essences, plantation.",
-      "delai": "Devis sous 7j"
-    },
-    {
-      "id": "entretien",
-      "icon": "scissor",
-      "titre": "Entretien régulier",
-      "description": "Contrats mensuels ou trimestriels. Tailles, désherbage, traitements bio, ramassage feuilles.",
-      "delai": "Contrat annuel"
-    },
-    {
-      "id": "elagage",
-      "icon": "tree",
-      "titre": "Élagage & abattage",
-      "description": "Arbres fruitiers, palmiers, grands sujets. Toutes hauteurs, dans le respect des règles d'urbanisme.",
-      "delai": "Sur RDV"
-    },
-    {
-      "id": "terrasse",
-      "icon": "deck",
-      "titre": "Terrasses & allées",
-      "description": "Bois, pierre, dalles. Conception et pose, drainage inclus. Coordination avec vos travaux extérieurs.",
-      "delai": "Sous 1 mois"
-    },
-    {
-      "id": "arrosage",
-      "icon": "drop",
-      "titre": "Arrosage automatique",
-      "description": "Étude, pose, programmation. Goutte-à-goutte ou aspersion. Récupération d'eau de pluie possible.",
-      "delai": "Sous 2 sem."
-    },
-    {
-      "id": "conseil",
-      "icon": "book",
-      "titre": "Conseil & coaching",
-      "description": "Vous voulez jardiner vous-même ? On vient sur place pour vous guider, choisir, expliquer. Au tarif horaire.",
-      "delai": "Sur RDV"
-    }
+  "realisations": [
+    { "photo": "/images/paysagiste/extra-1.webp", "titre": "Villa Bel'Air",     "lieu": "côte ouest",     "type": "Création complète" },
+    { "photo": "/images/paysagiste/extra-2.webp", "titre": "Résidence Vacoa",   "lieu": "sud sauvage",    "type": "Aménagement piscine" },
+    { "photo": "/images/paysagiste/extra-3.webp", "titre": "Maison Hoarau",     "lieu": "hauts ouest",    "type": "Potager créole" },
+    { "photo": "/images/paysagiste/extra-4.webp", "titre": "Hôtel Lagon",       "lieu": "côte ouest",     "type": "Entretien hôtelier" },
+    { "photo": "/images/paysagiste/extra-8.webp", "titre": "Cour créole",       "lieu": "ville haute",    "type": "Rénovation patrimoine" }
   ],
   "plantes": [
-    {
-      "id": "agapanthe",
-      "nom": "Agapanthe",
-      "latin": "Agapanthus africanus",
-      "usage": "Massifs, bordures, pots. Floraison estivale violette. Symbole de l'atelier.",
-      "couleur": "violet"
-    },
-    {
-      "id": "heliconia",
-      "nom": "Héliconia",
-      "latin": "Heliconia rostrata",
-      "usage": "Plante exotique au port architectural. Fleur en bec de perroquet rouge et jaune.",
-      "couleur": "rose"
-    },
-    {
-      "id": "frangipanier",
-      "nom": "Frangipanier",
-      "latin": "Plumeria rubra",
-      "usage": "Petit arbre emblématique. Fleurs parfumées, feuillage caduc, port en parasol.",
-      "couleur": "rose"
-    },
-    {
-      "id": "vetiver",
-      "nom": "Vétiver",
-      "latin": "Chrysopogon zizanioides",
-      "usage": "Graminée stabilisatrice de sols. Idéal pour talus, lutte anti-érosion, parfum réconfortant.",
-      "couleur": "sauge"
-    },
-    {
-      "id": "tibouchina",
-      "nom": "Tibouchina",
-      "latin": "Tibouchina urvilleana",
-      "usage": "Arbuste à fleurs violettes velours. Floraison quasi continue toute l'année à La Réunion.",
-      "couleur": "violet"
-    },
-    {
-      "id": "bougain",
-      "nom": "Bougainvillier",
-      "latin": "Bougainvillea spectabilis",
-      "usage": "Liane vigoureuse, bractées colorées. Pour murs, pergolas, brises-vue. Très résistant.",
-      "couleur": "rose"
-    }
+    { "id": "vacoa",        "nom": "Vacoa",            "latin": "Pandanus utilis",         "usage": "Palmier endémique aux feuilles en spirale. Symbole du paysage péi. Résiste au vent." },
+    { "id": "frangipanier", "nom": "Frangipanier",     "latin": "Plumeria rubra",          "usage": "Petit arbre emblématique. Fleurs parfumées, feuillage caduc, port en parasol." },
+    { "id": "oiseau",       "nom": "Oiseau de paradis","latin": "Strelitzia reginae",      "usage": "Fleur architecturale orange et bleu, port de bananier. Massif spectaculaire." },
+    { "id": "anthurium",    "nom": "Anthurium",        "latin": "Anthurium andraeanum",    "usage": "Spathe cireuse rouge ou rose. Mi-ombre, pour sous-bois tropical luxuriant." },
+    { "id": "hibiscus",     "nom": "Hibiscus péi",     "latin": "Hibiscus rosa-sinensis",  "usage": "Floraison continue, palette blanc à pourpre. Haies vives, isolés." },
+    { "id": "bambou",       "nom": "Bambou",           "latin": "Bambusa multiplex",       "usage": "Brise-vue rapide, masse végétale dense, son du vent. Touffes contrôlées." }
   ],
   "equipe": [
-    {
-      "id": "claire",
-      "nom": "Claire Hoarau",
-      "role": "Paysagiste · gérante",
-      "experience": "Formée paysagiste",
-      "bio": "",
-      "photo": "/images/paysagiste/extra-3.webp",
-      "photoAlt": "Portrait de Claire, paysagiste"
-    },
-    {
-      "id": "leo",
-      "nom": "Léo Picard",
-      "role": "Jardinier · chef d'équipe",
-      "experience": "8 ans à l'atelier",
-      "bio": "",
-      "photo": "/images/paysagiste/extra-4.webp",
-      "photoAlt": "Portrait de Léo, jardinier"
-    },
-    {
-      "id": "amelie",
-      "nom": "Amélie Bertrand",
-      "role": "Élagueuse grimpeuse",
-      "experience": "Certificat de spécialisation",
-      "bio": "",
-      "photo": "/images/paysagiste/extra-5.webp",
-      "photoAlt": "Portrait d'Amélie, élagueuse"
-    }
+    { "id": "claire",  "nom": "Claire Hoarau",  "role": "Paysagiste · gérante",  "experience": "Formée à l'école de paysage", "bio": "Dessine chaque jardin à la main avant de poser un seul godet.",                        "photo": "/images/paysagiste/extra-5.webp" },
+    { "id": "leo",     "nom": "Léo Picard",     "role": "Chef d'équipe · jardinier","experience": "8 ans à l'atelier",        "bio": "Connaît le nom de chaque plante et repère une maladie à 3 mètres.",                       "photo": "/images/paysagiste/extra-6.webp" },
+    { "id": "amelie",  "nom": "Amélie Bertrand","role": "Élagueuse-grimpeuse",   "experience": "Certificat de spécialisation","bio": "Grimpe dans les flamboyants, taille les manguiers, surveille les grands sujets.",       "photo": "/images/paysagiste/extra-7.webp" }
   ],
-  "communes": [
-    "La Réunion",
-    "La Réunion",
-    "La Réunion",
-    "La Possession",
-    "La Réunion",
-    "La Réunion",
-    "Les Avirons",
-    "La Réunion",
-    "La Réunion",
-    "La Réunion"
+  "process": [
+    { "n": "01", "titre": "Premier rendez-vous", "texte": "Sur place, on écoute. Vos envies, vos contraintes, votre budget. Aucun engagement." },
+    { "n": "02", "titre": "Relevé du terrain",   "texte": "Mesures, sondage du sol, exposition, vents dominants. On documente avant de proposer." },
+    { "n": "03", "titre": "Plan paysager",       "texte": "Dessin à la main, palette végétale chiffrée, plan d'arrosage. Vous validez chaque détail." },
+    { "n": "04", "titre": "Chantier",            "texte": "Notre équipe à demeure, jamais de sous-traitance. Délais respectés." },
+    { "n": "05", "titre": "Suivi & entretien",   "texte": "Trois mois de garantie reprise. Contrat d'entretien optionnel pour préserver le dessin." }
   ],
-  "typesIntervention": [
-    {
-      "id": "creation",
-      "label": "Création complète"
-    },
-    {
-      "id": "renovation",
-      "label": "Rénovation jardin"
-    },
-    {
-      "id": "entretien",
-      "label": "Entretien régulier"
-    },
-    {
-      "id": "elagage",
-      "label": "Élagage / abattage"
-    },
-    {
-      "id": "terrasse",
-      "label": "Terrasse / allée"
-    },
-    {
-      "id": "arrosage",
-      "label": "Arrosage auto"
-    },
-    {
-      "id": "conseil",
-      "label": "Conseil sur place"
-    },
-    {
-      "id": "autre",
-      "label": "Autre"
-    }
+  "formules": [
+    { "id": "creation",       "titre": "Création de jardin", "soustitre": "Du terrain nu au jardin clé en main",   "prix": "97,4€", "unite": "/m² · démo",    "inclus": ["Plan paysager dessiné","Palette végétale péi","Plantation + arrosage","Garantie reprise 3 mois"],         "best": false },
+    { "id": "transformation", "titre": "Transformation",     "soustitre": "Reprise complète d'un jardin existant", "prix": "97,4€", "unite": "/m² · démo",    "inclus": ["Diagnostic et dessouchage","Réagencement végétal","Restructuration des massifs","Plan d'entretien"],     "best": true },
+    { "id": "entretien",      "titre": "Entretien régulier", "soustitre": "Contrats mensuels ou trimestriels",     "prix": "97,4€", "unite": "/mois · démo",  "inclus": ["Tailles et désherbage","Traitements bio","Ramassage feuilles","Visite arrosage auto"],                    "best": false }
   ],
-  "surfaces": [
-    {
-      "id": "petit",
-      "label": "Petit",
-      "valeur": "moins de 100 m²"
-    },
-    {
-      "id": "moyen",
-      "label": "Moyen",
-      "valeur": "100 à 500 m²"
-    },
-    {
-      "id": "grand",
-      "label": "Grand",
-      "valeur": "500 à 2000 m²"
-    },
-    {
-      "id": "tres-grand",
-      "label": "Très grand",
-      "valeur": "plus de 2000 m²"
-    }
+  "faq": [
+    { "q": "Vous intervenez sur toute l'île ?", "r": "Principalement côte sud-ouest et hauts de l'ouest. Sur devis, on peut se déplacer ailleurs pour les beaux projets." },
+    { "q": "Délais pour une création ?",        "r": "Comptez 4 à 6 semaines entre le premier RDV et le démarrage du chantier. Plus court hors saison cyclonique." },
+    { "q": "Garantie sur les plantations ?",    "r": "Reprise garantie 3 mois sur les sujets fournis et plantés. Au-delà : contrat d'entretien recommandé." },
+    { "q": "Travaillez-vous en bio ?",          "r": "Oui — compost maison, paillage canne, traitements naturels (purin d'ortie, savon noir). Pas de glyphosate, jamais." },
+    { "q": "Demande de devis ?",                "r": "Devis gratuit. Premier RDV sur place inclus. Si on n'est pas faits l'un pour l'autre, on vous oriente vers un confrère." }
   ],
-  "frequences": [
-    {
-      "id": "ponctuel",
-      "label": "Ponctuel",
-      "description": "Une seule intervention"
-    },
-    {
-      "id": "mensuel",
-      "label": "Mensuel",
-      "description": "Une fois par mois"
-    },
-    {
-      "id": "trimestriel",
-      "label": "Trimestriel",
-      "description": "Quatre fois par an"
-    }
-  ]
+  "citation": "Un beau jardin n'est jamais fini. Il vit, il respire, il change. Notre métier, c'est de l'accompagner.",
+  "citationAuteur": "Claire Hoarau · paysagiste"
 }

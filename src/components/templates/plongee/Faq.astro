@@ -1,81 +1,32 @@
 ---
-/**
- * Faq — questions plongée, focus sécurité et accessibilité.
- */
-const faq = [
-  {
-    q: 'Faut-il savoir nager pour faire un baptême ?',
-    r: 'Pas obligatoirement. Un baptême se fait dans une zone calme, à faible profondeur, avec un moniteur qui vous tient. Il faut simplement être à l\'aise dans l\'eau et accepter de mettre la tête sous la surface. Aucun pré-requis sportif.',
-  },
-  {
-    q: 'À partir de quel âge peut-on plonger ?',
-    r: '8 ans pour le baptême Discover (3 m maximum), 10 ans pour la formation Junior Open Water (12 m), 15 ans pour le niveau 1 PADI ou FFESSM classique. Sans limite haute tant que le certificat médical est favorable.',
-  },
-  {
-    q: 'Quels sont les sites de plongée ?',
-    r: 'Le tombant du lagon (10 à 25 m, faune corallienne dense), l\'épave du remorqueur (28 m, niveau 2 minimum), les jardins de gorgones de la passe nord. Chaque sortie cible un site adapté au niveau du plus jeune plongeur de la palanquée.',
-  },
-  {
-    q: 'Et si j\'ai peur en plongeant ?',
-    r: 'On remonte. C\'est la règle absolue. Une plongée n\'a de sens que si elle reste un plaisir. Le moniteur est formé à reconnaître les signes d\'inconfort et à proposer un retour en surface sans jugement, sans frais supplémentaires.',
-  },
-  {
-    q: 'Quel équipement est fourni ?',
-    r: 'Tout : combinaison, palmes, masque, tuba, gilet stabilisateur, détendeur, bouteille, plombs, ordinateur. Vous arrivez en maillot, on s\'occupe du reste. Les chaussons et le matériel intime peuvent être apportés.',
-  },
-  {
-    q: 'Combien de temps dure une plongée ?',
-    r: 'Une plongée d\'exploration dure entre 35 et 50 minutes en immersion. La sortie complète (briefing, navigation, plongée, débrief) prend 2h30 environ. Avec deux plongées : journée complète de 6 à 7 h.',
-  },
-];
+import data from '../../../data/templates/plongee.json';
+const faq = data.faq;
 ---
+<section class="relative bg-plongee-ecume text-plongee-charbon py-24 lg:py-36">
+  <div class="max-w-[1100px] mx-auto px-6 lg:px-12">
+    <div class="flex items-center gap-3 mb-6">
+      <span class="inline-block w-10 h-px bg-plongee-corail"></span>
+      <span class="font-jetbrains-mono text-[11px] uppercase tracking-[0.32em] text-plongee-charbon/60">08 — Questions</span>
+    </div>
+    <h2 class="font-fraunces font-light text-[clamp(2.5rem,5vw,4.5rem)] leading-[0.98] tracking-tight max-w-3xl">
+      Tout ce qu'on nous demande,<br/><em class="italic text-plongee-lagon">on y répond.</em>
+    </h2>
 
-<section id="faq" class="relative bg-plongee-ecume text-plongee-marine py-20 md:py-28 px-6 md:px-10">
-  <div class="max-w-3xl mx-auto">
-
-    <header class="mb-12 md:mb-14">
-      <p class="scroll-reveal font-jetbrains-mono text-[11px] uppercase tracking-[0.32em] text-plongee-corail">
-        Questions fréquentes
-      </p>
-      <h2 class="scroll-reveal mt-4 font-space-grotesk font-bold text-plongee-marine leading-[1] tracking-tight" style="font-size: clamp(30px, 4.2vw, 48px);">
-        Avant la première<br/>
-        <span class="text-plongee-lagon">bouteille.</span>
-      </h2>
-    </header>
-
-    <ul class="space-y-3">
-      {faq.map((item, i) => (
-        <li
-          class="scroll-reveal bg-plongee-sable/30 rounded-2xl border border-plongee-marine/15 hover:border-plongee-lagon transition-colors overflow-hidden"
-          style={`transition-delay: ${i * 50}ms`}
-        >
-          <details class="group plongee-faq">
-            <summary class="flex items-start justify-between gap-4 p-6 cursor-pointer list-none">
-              <span class="font-space-grotesk font-bold text-plongee-marine leading-snug" style="font-size: clamp(16px, 1.7vw, 19px);">
-                {item.q}
-              </span>
-              <span class="shrink-0 inline-flex items-center justify-center w-9 h-9 rounded-full bg-plongee-ecume border border-plongee-marine/20 text-plongee-corail transition-transform duration-300 group-open:rotate-180" aria-hidden="true">
-                <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="6 9 12 15 18 9"/>
-                </svg>
-              </span>
-            </summary>
-            <div class="px-6 pb-6 -mt-2">
-              <p class="font-inter text-plongee-marine/75 leading-[1.7]" style="font-size: 14.5px;">
-                {item.r}
-              </p>
+    <div class="mt-14 divide-y divide-plongee-charbon/10 border-y border-plongee-charbon/10">
+      {faq.map((f, i) => (
+        <details class="group py-6">
+          <summary class="flex items-center justify-between gap-6 cursor-pointer list-none">
+            <div class="flex items-baseline gap-5">
+              <span class="font-jetbrains-mono text-xs text-plongee-corail">{String(i+1).padStart(2,'0')}</span>
+              <span class="font-fraunces text-xl lg:text-2xl text-plongee-charbon">{f.q}</span>
             </div>
-          </details>
-        </li>
+            <span class="w-9 h-9 rounded-full border border-plongee-charbon/20 flex items-center justify-center flex-shrink-0 transition-transform group-open:rotate-45 group-open:bg-plongee-corail group-open:border-plongee-corail group-open:text-plongee-ecume">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+            </span>
+          </summary>
+          <p class="mt-4 ml-10 font-inter text-base leading-relaxed text-plongee-charbon/70 max-w-3xl">{f.r}</p>
+        </details>
       ))}
-    </ul>
+    </div>
   </div>
 </section>
-
-<style>
-  .plongee-faq summary::-webkit-details-marker { display: none; }
-  .plongee-faq summary:focus-visible {
-    outline: 2px solid rgb(63 169 214);
-    outline-offset: 4px;
-  }
-</style>

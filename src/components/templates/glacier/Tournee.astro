@@ -1,33 +1,58 @@
 ---
-const tournee = [
-  { jour: 'Mercredi', lieu: 'Marché de l\'ouest', horaire: '15h → 19h', zone: 'Côte ouest' },
-  { jour: 'Jeudi', lieu: 'Front de mer ouest', horaire: '16h → 20h', zone: 'Côte ouest' },
-  { jour: 'Vendredi', lieu: 'Sentier littoral sud', horaire: '15h → 19h', zone: 'Sud sauvage' },
-  { jour: 'Samedi', lieu: 'Marché bio sud', horaire: '9h → 13h', zone: 'Sud' },
-  { jour: 'Samedi soir', lieu: 'Place du village est', horaire: '17h → 21h', zone: 'Est' },
-  { jour: 'Dimanche', lieu: 'Pique-nique des Hauts', horaire: '11h → 17h', zone: 'Plaines' },
-];
+import data from '../../../data/templates/sorbetpei.json';
 ---
-<section id="tournee" class="py-24 md:py-32" style="background:#3D2817; color:#FFF6E2;">
-  <div class="max-w-content mx-auto px-6 md:px-10">
-    <div class="grid md:grid-cols-3 gap-12 lg:gap-16">
-      <div>
-        <p class="font-fraunces italic text-2xl mb-2" style="color:#FFD93D;">le camion glacé —</p>
-        <h2 class="font-fraunces text-4xl md:text-5xl leading-tight mb-5">La tournée <em class="italic" style="color:#FFD93D;">de la semaine.</em></h2>
-        <p class="text-lg leading-relaxed" style="color:#E8DFC9;">
-          Notre camion sillonne l'île toute l'année. Suivez-nous sur Instagram pour les imprévus, les ruptures de stock et les fournées limitées (letchi en saison).
+<section id="tournee" class="relative py-24 md:py-36 overflow-hidden" style="background:#3D2817; color:#FFF6E2;">
+  <div class="max-w-content mx-auto px-6 md:px-12">
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      <div class="lg:col-span-5">
+        <p class="text-[11px] uppercase tracking-[0.42em] mb-3 font-bold flex items-center gap-3" style="color:#FFD93D;">
+          <span class="block w-10 h-px" style="background:#FFD93D;"></span>
+          La tournée du camion
         </p>
-        <img src="/images/glacier/extra-10.webp" alt="Camion glacier" class="mt-8 w-full h-56 object-cover" style="border-radius:24px;" loading="lazy"/>
+        <h2 class="font-fraunces leading-[0.92] tracking-[-0.015em]" style="font-size:clamp(40px,5.6vw,80px);">
+          Cinq jours,
+          <span class="block italic" style="color:#FFD93D; font-size:clamp(54px,7.4vw,100px);">cinq spots péi.</span>
+        </h2>
+        <p class="mt-6 text-base md:text-lg leading-relaxed max-w-md" style="font-family:'DM Sans',system-ui,sans-serif; color:#E8DFC9;">
+          Suivez le camion sur Instagram pour les imprévus, les ruptures de stock, et les sorties surprises (letchi en saison, combava édition limitée).
+        </p>
+        <div class="mt-10 rounded-[28px] overflow-hidden aspect-[4/3]">
+          <img src="/images/glacier/extra-10.webp" alt="Camion glacier garé devant le lagon en fin de journée" class="w-full h-full object-cover" loading="lazy" />
+        </div>
+        <a href={`https://www.instagram.com/${data.info.instagram.replace('@', '')}`} target="_blank" rel="noopener"
+           class="mt-7 inline-flex items-center gap-2 px-7 rounded-full text-[12px] uppercase tracking-[0.22em] font-bold transition-all hover:scale-[1.04]"
+           style="background:#FFD93D; color:#3D2817; height:50px; font-family:'DM Sans',system-ui,sans-serif;">
+          Suivre la tournée live
+          <svg viewBox="0 0 24 24" width="14" height="14"><path d="M5 12h14m0 0l-5-5m5 5l-5 5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>
+        </a>
       </div>
-      <ul class="md:col-span-2 grid sm:grid-cols-2 gap-4">
-        {tournee.map(t => (
-          <li class="p-6" style="background:#FFD93D; color:#3D2817; border-radius:20px;">
-            <div class="text-[11px] uppercase tracking-[0.28em] font-bold mb-2" style="color:#FF6F91;">{t.zone}</div>
-            <div class="font-fraunces text-2xl mb-1">{t.jour}</div>
-            <div class="font-fraunces italic text-lg">{t.lieu}</div>
-            <div class="mt-2 text-[14px] font-semibold">{t.horaire}</div>
+
+      <ul class="lg:col-span-7 grid sm:grid-cols-2 gap-4 md:gap-5">
+        {data.tournee.map((t, i) => (
+          <li class="relative p-7 rounded-[28px] transition-all duration-500 hover:-translate-y-1" style="background:#FFD93D; color:#3D2817;">
+            <div class="flex items-baseline justify-between gap-3">
+              <span class="font-fraunces text-3xl leading-none">{t.jour}</span>
+              <span class="text-[10px] uppercase tracking-[0.22em] font-bold px-3 py-1 rounded-full" style="background:#FF6F91; color:#FFF6E2;">#{String(i + 1).padStart(2, '0')}</span>
+            </div>
+            <p class="mt-3 font-fraunces italic text-xl md:text-2xl leading-tight" style="color:#FF6F91;">— {t.lieu}</p>
+            <p class="mt-5 inline-flex items-center gap-2 text-[13px] font-bold" style="font-family:'DM Sans',system-ui,sans-serif;">
+              <span class="block w-2 h-2 rounded-full" style="background:#5C7448;"></span>
+              {t.horaire}
+            </p>
           </li>
         ))}
+        <li class="sm:col-span-2 p-7 rounded-[28px]" style="background:#FFF6E2; color:#3D2817;">
+          <p class="text-[10px] uppercase tracking-[0.32em] font-bold mb-3" style="color:#FF6F91;">— Saveurs du moment</p>
+          <ul class="grid sm:grid-cols-3 gap-4">
+            {data.saveursMoment.map((s) => (
+              <li>
+                <p class="font-fraunces italic text-lg leading-tight" style="color:#FF6F91;">{s.label}</p>
+                <p class="mt-1 font-fraunces text-xl leading-tight">{s.parfum}</p>
+                <p class="mt-2 text-[12.5px] leading-relaxed" style="font-family:'DM Sans',system-ui,sans-serif; color:#5C3A1E;">{s.texte}</p>
+              </li>
+            ))}
+          </ul>
+        </li>
       </ul>
     </div>
   </div>

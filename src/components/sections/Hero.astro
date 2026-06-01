@@ -1,6 +1,4 @@
 ---
-import siteConfig from '../../data/siteConfig.json';
-
 /**
  * Hero — style Squarespace : vidéo plein cadre, contenu centré, titre blanc
  * épuré, un seul bouton blanc plein, une ligne de réassurance. Minimaliste.
@@ -15,45 +13,63 @@ import siteConfig from '../../data/siteConfig.json';
   <!-- Fallback dégradé de marque -->
   <div class="absolute inset-0 -z-20 bg-black" aria-hidden="true"></div>
 
-  <!-- Vidéo de fond -->
+  <!-- Vidéo de fond — chargée UNIQUEMENT sur desktop, APRÈS le LCP (data-src injecté en JS).
+       Mobile + reduced-motion : aucune requête vidéo, fallback = fond noir. -->
   <video
     class="hero-video absolute inset-0 -z-10 w-full h-full object-cover"
-    autoplay
     muted
     loop
     playsinline
-    preload="metadata"
-    poster="/images/hero-poster.jpg"
+    preload="none"
+    data-src="/videos/hero.mp4"
     aria-hidden="true"
-  >
-    <source src="/videos/hero.webm" type="video/webm" />
-    <source src="/videos/hero.mp4" type="video/mp4" />
-  </video>
+  ></video>
 
   <!-- Overlay léger pour lisibilité (l'image/vidéo reste visible) -->
   <div class="absolute inset-0 -z-10 bg-bleu-nuit/45" aria-hidden="true"></div>
 
   <!-- Contenu centré -->
   <div class="relative z-10 mx-auto max-w-4xl px-6 py-28 text-center text-blanc-casse">
-    {/* Variante H1 à tester : "Votre site pro à La Réunion, en ligne en 7 jours, prêt à recevoir des demandes." */}
     <h1 class="hero-rise hero-rise-2 font-sora font-bold text-balance leading-[1.08] text-[clamp(2.25rem,4vw+1rem,4rem)] tracking-tight">
-      Des sites pour les pros
-      <br class="hidden sm:block" />
-      qui font vivre La Réunion.
+      Le partenaire web des pros
+      <span class="block italic font-medium text-bleu">qui font vivre La Réunion.</span>
     </h1>
 
-    <div class="hero-rise hero-rise-4 mt-10 flex justify-center">
-      <a
-        href="/contact"
-        class="inline-flex items-center justify-center h-14 px-10 text-base font-semibold rounded-md bg-blanc-casse text-bleu-nuit hover:bg-white hover:-translate-y-0.5 shadow-card hover:shadow-card-hover transition-all duration-200 ease-out"
-      >
-        Demander mon site
-      </a>
+    <p class="hero-rise hero-rise-3 mt-7 mx-auto max-w-2xl text-lg md:text-xl text-blanc-casse/85 leading-relaxed">
+      9site4 crée, structure et gère des sites professionnels pour les TPE/PME réunionnaises : clairs, fiables, adaptés à chaque métier et prêts en 7 jours.
+    </p>
+
+    <div class="hero-rise hero-rise-4 mt-9 flex flex-wrap justify-center gap-2.5">
+      {['Création incluse', 'Gestion continue', 'Sans frais de création', 'Accompagnement local'].map((b) => (
+        <span class="inline-flex items-center gap-2 h-9 px-4 rounded-full bg-white/[0.08] ring-1 ring-white/15 text-xs font-medium text-blanc-casse">
+          <span class="block w-1.5 h-1.5 rounded-full bg-bleu" aria-hidden="true"></span>
+          {b}
+        </span>
+      ))}
     </div>
 
-    <p class="hero-rise hero-rise-5 mt-6 text-base text-blanc-casse/85">
-      {siteConfig.pricing.monthly}/mois (≈ {siteConfig.pricing.daily}/jour) · Sans frais de création · Sans engagement · Fait à La Réunion
-    </p>
+    <div class="hero-rise hero-rise-5 mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+      <a
+        href="/contact"
+        class="inline-flex items-center justify-center h-14 px-9 text-base font-semibold rounded-full bg-blanc-casse text-bleu-nuit hover:bg-white hover:-translate-y-0.5 shadow-card hover:shadow-card-hover transition-all duration-200 ease-out"
+        data-track-event="cta_create_site_click"
+        data-track-category="conversion"
+        data-track-source="homepage_hero"
+        data-track-target="/contact"
+      >
+        Créer mon site avec 9site4
+      </a>
+      <a
+        href="/realisations"
+        class="inline-flex items-center justify-center h-14 px-7 text-base font-semibold rounded-full ring-1 ring-blanc-casse/40 text-blanc-casse hover:bg-white/10 hover:-translate-y-0.5 transition-all duration-200 ease-out"
+        data-track-event="cta_view_realisations_click"
+        data-track-category="navigation"
+        data-track-source="homepage_hero"
+        data-track-target="/realisations"
+      >
+        Voir nos réalisations
+      </a>
+    </div>
   </div>
 
   <!-- Indicateur de scroll discret -->
@@ -65,6 +81,11 @@ import siteConfig from '../../data/siteConfig.json';
 </section>
 
 <style>
+  /* Mobile : aucune vidéo (gain réseau ≈ 4.7 MB et LCP plus rapide) */
+  @media (max-width: 767px) {
+    .hero-video { display: none; }
+  }
+  /* Reduced-motion : pas de vidéo + pas d'animation */
   @media (prefers-reduced-motion: reduce) {
     .hero-video { display: none; }
     .animate-bounce { animation: none; }
@@ -72,15 +93,40 @@ import siteConfig from '../../data/siteConfig.json';
 </style>
 
 <script>
+  // Vidéo hero : charge UNIQUEMENT sur desktop (≥768px), APRÈS le LCP.
+  // Sur mobile et reduced-motion : zéro requête réseau pour la vidéo.
   function initHeroVideo() {
     const v = document.querySelector<HTMLVideoElement>('.hero-video');
     if (!v) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      v.removeAttribute('autoplay');
-      v.pause();
+
+    const isDesktop = window.matchMedia('(min-width: 768px)').matches;
+    const wantsMotion = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!isDesktop || !wantsMotion) {
+      // Mobile ou reduced-motion : on touche rien, la CSS cache déjà l'élément
       return;
     }
-    v.play().catch(() => {});
+
+    // Vidéo déjà chargée (navigation arrière, etc.)
+    if (v.src) {
+      v.play().catch(() => {});
+      return;
+    }
+
+    // Différer le chargement après le premier paint (LCP friendly)
+    const load = () => {
+      const src = v.dataset.src;
+      if (!src) return;
+      v.src = src;
+      v.load();
+      v.play().catch(() => {});
+    };
+
+    if ('requestIdleCallback' in window) {
+      (window as any).requestIdleCallback(load, { timeout: 1500 });
+    } else {
+      setTimeout(load, 800);
+    }
   }
   initHeroVideo();
   document.addEventListener('astro:page-load', initHeroVideo);

@@ -1,31 +1,58 @@
 ---
+import data from '../../../data/templates/painleve.json';
 const principes = [
-  { num: 'I', titre: 'Pétrissage main', texte: 'Trente minutes par fournée. Le pétrin électrique chauffe la pâte ; la main l\'écoute. C\'est plus long, c\'est meilleur.' },
-  { num: 'II', titre: 'Fermentation longue', texte: '24 à 36 heures de pousse au frais. Le gluten se transforme, les arômes se développent, la digestion devient légère.' },
-  { num: 'III', titre: 'Levain seulement', texte: 'Aucune levure boulangère industrielle. Notre chef de levain a 7 ans — il vit dans un pot, et il décide du goût.' },
-  { num: 'IV', titre: 'Farines locales', texte: 'Farine de blé bio bourbon, sarrasin péi, maïs grillé du Tampon. Moulin sur pierre, traçable au sac.' },
+  { num: 'I',   titre: 'Levain mère seulement', texte: "Aucune levure boulangère industrielle. Notre levain est né en 2018 d'une grappe de raisin péi. Il est nourri tous les matins." },
+  { num: 'II',  titre: 'Fermentation longue',   texte: "18 à 24 heures de pousse à froid, 4°C. Le gluten se transforme, les arômes naissent, la mie devient digeste." },
+  { num: 'III', titre: 'Pétrissage à la main',  texte: "Pas de pétrin mécanique. Une autolyse de 30 minutes, puis 12 minutes à la main. La pâte chauffe moins, vit mieux." },
+  { num: 'IV',  titre: 'Farines bio péi',       texte: "Une seule farine T80 bio, moulue par un moulin péi sur pierre. Sel marin de l'île, eau locale, rien de plus." },
 ];
+const marqueeMots = ['Levain naturel', 'Farines bio T80', 'Pétrissage main', 'Cuisson sur sole', 'Pain du jour', 'Une fournée à 11 h', 'Précommande la veille'];
 ---
-<section id="manifeste" class="py-24 md:py-32" style="background:#F5EBD5;">
-  <div class="max-w-content mx-auto px-6 md:px-10">
-    <div class="grid md:grid-cols-2 gap-12 lg:gap-20">
-      <div class="md:sticky md:top-28 self-start">
-        <p class="font-caveat text-2xl mb-2" style="color:#7A5C28;">notre manifeste —</p>
-        <h2 class="font-crimson-pro text-5xl md:text-6xl leading-[1.05]" style="color:#1A1614;">
-          Quatre principes, <em class="italic" style="color:#C89B3C;">aucun raccourci.</em>
+<section id="manifeste" class="relative pt-0 pb-28 md:pb-40 overflow-hidden" style="background:#E8E0CC;">
+  <!-- Marquee défilant en haut -->
+  <div class="py-4 border-b overflow-hidden" style="background:#1F2521; color:#E8E0CC; border-color:rgba(232,224,204,0.15);">
+    <div class="flex whitespace-nowrap will-change-transform" style="animation:bl-marquee 38s linear infinite;">
+      {Array.from({ length: 3 }).map(() => (
+        <div class="flex items-center shrink-0">
+          {marqueeMots.map((m) => (
+            <span class="font-crimson-pro italic text-2xl md:text-3xl px-8 md:px-10 flex items-center gap-6" style="color:#E8E0CC;">
+              {m}<span style="color:#A87842;">·</span>
+            </span>
+          ))}
+        </div>
+      ))}
+    </div>
+  </div>
+  <style>@keyframes bl-marquee { from { transform: translateX(0); } to { transform: translateX(-33.333%); } } @media (prefers-reduced-motion: reduce) { [style*='bl-marquee'] { animation: none !important; } }</style>
+
+  <div class="max-w-content mx-auto px-6 md:px-12 pt-24 md:pt-32 relative">
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-20">
+      <div class="lg:col-span-5 lg:sticky lg:top-28 self-start">
+        <p class="font-caveat text-2xl md:text-3xl mb-3" style="color:#7A5C28;">— notre manifeste</p>
+        <h2 class="font-crimson-pro leading-[0.95] tracking-[-0.01em]" style="font-size:clamp(40px,5.6vw,76px); color:#1F2521;">
+          Quatre principes,
+          <span class="block italic" style="color:#A87842; font-size:clamp(52px,7.2vw,98px);">aucun raccourci.</span>
         </h2>
-        <p class="mt-6 text-lg leading-relaxed" style="color:#3A3128;">
-          Nous faisons du pain comme on le faisait avant la levure industrielle. Plus de temps, plus de soin, moins de quantité. C'est volontaire.
+        <p class="mt-7 text-base md:text-lg leading-relaxed max-w-md" style="color:#3A3128;">
+          {data.manifesto}
         </p>
+        <ul class="mt-8 space-y-2 text-[13px]" style="color:#3A3128;">
+          {data.fournisseurs.map((f) => (
+            <li class="flex gap-2 items-center"><span style="color:#A87842;">✦</span>{f}</li>
+          ))}
+        </ul>
       </div>
-      <ul class="space-y-px" style="background:rgba(26,22,20,0.12);">
-        {principes.map(p => (
-          <li class="p-7 md:p-8" style="background:#F5EBD5;">
-            <div class="flex items-baseline gap-5 mb-2">
-              <span class="font-crimson-pro italic text-4xl" style="color:#C89B3C;">{p.num}</span>
-              <h3 class="font-crimson-pro text-2xl" style="color:#1A1614;">{p.titre}</h3>
+
+      <ul class="lg:col-span-7 grid gap-px" style="background:rgba(26,22,20,0.12);">
+        {principes.map((p) => (
+          <li class="p-8 md:p-10 transition-colors hover:bg-[#EADBB7]" style="background:#E8E0CC;">
+            <div class="flex items-baseline gap-5">
+              <span class="font-crimson-pro italic text-5xl md:text-6xl leading-none" style="color:#A87842;">{p.num}</span>
+              <div class="flex-1">
+                <h3 class="font-crimson-pro text-2xl md:text-3xl leading-tight" style="color:#1F2521;">{p.titre}</h3>
+                <p class="mt-3 text-[15px] leading-relaxed" style="color:#3A3128;">{p.texte}</p>
+              </div>
             </div>
-            <p class="text-[15px] leading-relaxed pl-12" style="color:#3A3128;">{p.texte}</p>
           </li>
         ))}
       </ul>

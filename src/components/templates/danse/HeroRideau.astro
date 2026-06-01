@@ -1,161 +1,100 @@
 ---
 /**
- * HeroRideau — animation rideau de scène à l'ouverture (1.2s).
- * Deux pans noir velours qui s'écartent au chargement, révélant le titre
- * Italiana et la photo silhouette danseuse. Programme de la saison en bas.
- * prefers-reduced-motion : rideaux déjà ouverts.
+ * HeroRideau — hero éditorial sans photo.
+ * Mot géant qui transitionne (Danser → Bouger → Vivre) avec SVG silhouette danseuse.
  */
 import data from '../../../data/templates/vermeille.json';
+const mots = ['Danser', 'Bouger', 'Vivre'];
 ---
 
 <section id="top" class="relative bg-vermeille-velours text-vermeille-ivoire min-h-[100svh] overflow-hidden">
 
-  <!-- Photo silhouette en arrière-plan, floutée et désaturée -->
+  <!-- Fond : gradient vermeille + grain + halo or -->
   <div class="absolute inset-0" aria-hidden="true">
-    <img
-      src={data.info.photoHero} srcset={`${(data.info.photoHero).replace(/\.webp$/, "-640.webp")} 640w, ${(data.info.photoHero).replace(/\.webp$/, "-1024.webp")} 1024w, ${data.info.photoHero} 1600w`} sizes="100vw"
-      alt=""
-      class="w-full h-full object-cover object-center grayscale opacity-40 hero-vivant" width="1600" height="900" loading="eager" fetchpriority="high" decoding="async">
-    <div class="absolute inset-0 bg-gradient-to-b from-vermeille-velours/85 via-vermeille-velours/55 to-vermeille-velours"></div>
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse 80% 60% at 70% 30%, rgba(184,149,106,0.18) 0%, transparent 60%), radial-gradient(ellipse 60% 80% at 20% 80%, rgba(122,26,42,0.25) 0%, transparent 60%);"></div>
+    <div class="absolute inset-0 opacity-[0.06] mix-blend-overlay" style="background-image: radial-gradient(#F8F0E5 1px, transparent 1px); background-size: 3px 3px;"></div>
   </div>
 
-  <!-- Filets dorés latéraux (décor théâtre) -->
+  <!-- Filets dorés latéraux -->
   <div class="absolute top-0 bottom-0 left-6 md:left-10 w-px bg-gradient-to-b from-transparent via-vermeille-or/30 to-transparent" aria-hidden="true"></div>
   <div class="absolute top-0 bottom-0 right-6 md:right-10 w-px bg-gradient-to-b from-transparent via-vermeille-or/30 to-transparent" aria-hidden="true"></div>
 
-  <!-- Cachet 'Auditions ouvertes' style billet de spectacle, rotaté -6°.
-       z-20 pour passer sous les rideaux (z-30) puis se révéler à leur ouverture. -->
-  <div
-    class="absolute top-24 right-6 md:top-32 md:right-12 z-20 ticket-stamp"
-    aria-label="Auditions ouvertes — septembre 2025, entrée libre"
-    style="transform: rotate(-6deg);"
-  >
-    <div class="bg-vermeille-ivoire text-vermeille-bordeaux px-4 py-2.5 ring-2 ring-vermeille-or shadow-[0_8px_24px_rgba(26,15,18,0.45)]" style="clip-path: polygon(0 8px, 8px 0, calc(100% - 8px) 0, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0 calc(100% - 8px));">
-      <p class="font-inter-tight text-[8px] uppercase tracking-[0.32em] text-vermeille-bordeaux/70">Auditions</p>
-      <p class="font-italiana text-base md:text-lg leading-tight">Sept 2025</p>
-      <p class="font-inter-tight text-[8px] uppercase tracking-[0.28em] text-vermeille-or/85 mt-0.5">Entrée libre</p>
-    </div>
-  </div>
+  <!-- SVG silhouette danseuse — à droite, géant, dorée -->
+  <svg class="absolute right-0 top-1/2 -translate-y-1/2 h-[110vh] w-auto opacity-[0.12] pointer-events-none hidden md:block" viewBox="0 0 400 800" fill="none" aria-hidden="true" style="filter: blur(0.5px);">
+    <g stroke="#B8956A" stroke-width="2.5" stroke-linecap="round" fill="none">
+      <!-- tête -->
+      <circle cx="200" cy="100" r="32" />
+      <!-- corps arqué -->
+      <path d="M200 132 Q210 220 230 320 Q260 420 290 480" />
+      <!-- bras levés -->
+      <path d="M210 200 Q260 140 320 80" />
+      <path d="M195 195 Q150 140 100 95" />
+      <!-- jambe appui -->
+      <path d="M290 480 Q300 580 290 700" />
+      <!-- jambe relevée arabesque -->
+      <path d="M260 420 Q200 460 100 470" />
+      <!-- pied pointe -->
+      <path d="M285 700 L295 720 L280 720 Z" fill="#B8956A" />
+    </g>
+  </svg>
 
   <!-- Contenu hero -->
-  <div class="relative max-w-content mx-auto px-10 md:px-16 pt-32 pb-20 md:pt-40 md:pb-24 min-h-[100svh] flex flex-col">
+  <div class="relative max-w-content mx-auto px-10 md:px-16 pt-32 pb-20 md:pt-40 min-h-[100svh] flex flex-col">
 
-    <!-- Saison en haut, micro — avec numéro de volume romain (livret théâtre) -->
-    <p class="font-inter-tight text-[10px] uppercase tracking-[0.5em] text-vermeille-or text-center mb-12 md:mb-16 flex items-center justify-center gap-3 flex-wrap">
-      <span class="font-italiana text-base normal-case tracking-normal text-vermeille-or italic">Vol. XVII</span>
-      <span class="text-vermeille-or/30" aria-hidden="true">·</span>
+    <!-- Saison -->
+    <p class="font-inter-tight text-[10px] uppercase tracking-[0.5em] text-vermeille-or text-center md:text-left mb-10 md:mb-12 flex items-center gap-3 justify-center md:justify-start">
+      <span class="font-italiana text-base normal-case tracking-normal italic">Vol. XVII</span>
+      <span class="text-vermeille-or/40">·</span>
       <span>Saison {data.info.saison}</span>
     </p>
 
-    <!-- Titre central très grand serif italienne -->
-    <div class="flex-1 flex flex-col items-center justify-center text-center">
-      <p class="font-caveat text-vermeille-rose/85 text-2xl md:text-3xl mb-6 transform -rotate-2" aria-hidden="true">
-        depuis 2008…
+    <!-- Mot rotatif géant -->
+    <div class="flex-1 flex flex-col justify-center">
+      <p class="font-caveat text-vermeille-rose text-2xl md:text-3xl mb-4 -rotate-2 origin-left" aria-hidden="true">
+        Cette saison, vous allez…
       </p>
-      <h1 class="font-italiana text-vermeille-ivoire leading-[0.92] tracking-tight" style="font-size: clamp(88px, 16vw, 260px);">
-        Vermeille
-      </h1>
-      <p class="mt-4 font-italiana italic text-vermeille-or text-2xl md:text-4xl tracking-[0.3em] uppercase">
-        École de danse
-      </p>
-
-      <!-- Tagline en serif italique élégant -->
-      <p class="mt-12 max-w-md font-italiana italic text-vermeille-ivoire/85 text-xl md:text-2xl leading-relaxed">
-        « {data.info.tagline} »
-      </p>
-
-      <!-- Filet doré ornemental -->
-      <div class="mt-12 flex items-center justify-center gap-3" aria-hidden="true">
-        <span class="block h-px w-16 md:w-24 bg-gradient-to-r from-transparent via-vermeille-or/50 to-vermeille-or"></span>
-        <span class="text-vermeille-or text-sm">✦</span>
-        <span class="block h-px w-16 md:w-24 bg-gradient-to-l from-transparent via-vermeille-or/50 to-vermeille-or"></span>
+      <div class="relative h-[clamp(96px,18vw,260px)] overflow-hidden" aria-label="Danser, Bouger, Vivre">
+        {mots.map((m, i) => (
+          <h1
+            class="absolute inset-0 font-italiana italic text-vermeille-ivoire leading-[0.92] tracking-tight word-rotate"
+            data-i={i}
+            style={`font-size: clamp(88px, 17vw, 260px); animation-delay: ${i * 2.4}s;`}
+          >{m}.</h1>
+        ))}
       </div>
+      <p class="mt-8 md:mt-10 max-w-xl font-inter-tight text-vermeille-ivoire/80 text-lg md:text-xl leading-relaxed">
+        École de danse à {data.info.ville}. Cinq langages, une même scène — du classique au hip-hop, de 6 à 77 ans.
+      </p>
     </div>
 
-    <!-- Bas : programme en avant + CTA -->
-    <div class="mt-12 md:mt-0 grid md:grid-cols-2 gap-8 items-end">
-
-      <!-- Programme prochain événement -->
-      <div class="border-l border-vermeille-or/30 pl-6">
-        <p class="font-inter-tight text-[10px] uppercase tracking-[0.4em] text-vermeille-rose mb-2">
-          Prochaine date
-        </p>
-        <p class="font-italiana text-vermeille-ivoire text-2xl md:text-3xl">
-          {data.spectacles[0].titre}
-        </p>
-        <p class="mt-1 font-inter-tight text-vermeille-ivoire/65 text-sm">
-          {data.spectacles[0].date}
-        </p>
-      </div>
-
-      <!-- CTA -->
-      <div class="md:text-right">
-        <a
-          href="#inscription"
-          class="inline-flex items-center justify-center h-13 px-10 bg-vermeille-bordeaux text-vermeille-ivoire font-italiana text-base tracking-wide hover:bg-vermeille-bordeaux/85 transition-colors duration-500"
-          style="height: 52px;"
-        >
-          Réserver mon premier cours
+    <!-- Bas : CTA + scroll cue -->
+    <div class="mt-auto pt-14 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+      <div class="flex flex-wrap items-center gap-3">
+        <a href="#inscription" class="inline-flex items-center gap-3 h-13 px-7 bg-vermeille-bordeaux text-vermeille-ivoire font-italiana text-lg tracking-wide hover:translate-y-[-2px] transition-transform">
+          S'inscrire à la saison
+          <span class="text-vermeille-or">→</span>
         </a>
-        <p class="mt-3 font-inter-tight text-[10px] uppercase tracking-[0.3em] text-vermeille-ivoire/55">
-          Cours d'essai offert · Dès 5 ans
-        </p>
+        <a href="#disciplines" class="inline-flex items-center gap-3 h-13 px-6 ring-1 ring-vermeille-or/40 text-vermeille-ivoire font-inter-tight text-sm uppercase tracking-[0.2em] hover:bg-vermeille-or/10 transition-colors">
+          Voir les disciplines
+        </a>
+      </div>
+      <div class="flex items-center gap-4 text-vermeille-or/70 font-inter-tight text-xs uppercase tracking-[0.3em]">
+        <span class="block w-12 h-px bg-vermeille-or/40"></span>
+        <span>{data.info.tagline}</span>
       </div>
     </div>
-  </div>
-
-  <!-- Rideaux de scène : deux pans qui s'écartent à l'ouverture -->
-  <div id="rideau-left" class="rideau pointer-events-none absolute top-0 bottom-0 left-0 w-1/2 bg-vermeille-velours z-30" style="background: linear-gradient(to right, #1A0F12 70%, #2A1F22 100%);" aria-hidden="true">
-    <div class="absolute inset-y-0 right-0 w-px bg-vermeille-or/40"></div>
-  </div>
-  <div id="rideau-right" class="rideau pointer-events-none absolute top-0 bottom-0 right-0 w-1/2 bg-vermeille-velours z-30" style="background: linear-gradient(to left, #1A0F12 70%, #2A1F22 100%);" aria-hidden="true">
-    <div class="absolute inset-y-0 left-0 w-px bg-vermeille-or/40"></div>
   </div>
 
   <style>
-    .rideau {
-      will-change: transform;
-    }
-    #rideau-left {
-      animation: rideauOuvreGauche 1.4s 0.3s ease-out forwards;
-    }
-    #rideau-right {
-      animation: rideauOuvreDroite 1.4s 0.3s ease-out forwards;
-    }
-    @keyframes rideauOuvreGauche {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-101%); }
-    }
-    @keyframes rideauOuvreDroite {
-      from { transform: translateX(0); }
-      to   { transform: translateX(101%); }
-    }
-    /* Apparition douce du cachet 'Auditions' après l'ouverture des rideaux. */
-    .ticket-stamp {
-      opacity: 0;
-      animation: ticketStamp 0.6s 1.7s ease-out forwards;
-    }
-    @keyframes ticketStamp {
-      from { opacity: 0; transform: rotate(-12deg) scale(0.85); }
-      to   { opacity: 1; transform: rotate(-6deg) scale(1); }
+    .word-rotate { opacity: 0; animation: vermeilleRotate 7.2s infinite; }
+    @keyframes vermeilleRotate {
+      0%, 5% { opacity: 0; transform: translateY(40px); }
+      10%, 30% { opacity: 1; transform: translateY(0); }
+      35%, 100% { opacity: 0; transform: translateY(-40px); }
     }
     @media (prefers-reduced-motion: reduce) {
-      #rideau-left  { transform: translateX(-101%); animation: none; }
-      #rideau-right { transform: translateX(101%);  animation: none; }
-      .ticket-stamp { opacity: 1; animation: none; transform: rotate(-6deg); }
+      .word-rotate { animation: none; opacity: 1; transform: none; }
+      .word-rotate[data-i="1"], .word-rotate[data-i="2"] { display: none; }
     }
-  
-  @keyframes hero-vivant {
-    from { transform: scale(1.06); }
-    to   { transform: scale(1); }
-  }
-  .hero-vivant {
-    transform-origin: center;
-    animation: hero-vivant 2400ms cubic-bezier(0.22, 1, 0.36, 1) both;
-    will-change: transform;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .hero-vivant { animation: none !important; transform: none !important; }
-  }
-</style>
+  </style>
 </section>

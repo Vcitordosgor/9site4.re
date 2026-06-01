@@ -259,23 +259,23 @@ export default {
         // Palette conciergerie (template /templates/conciergerie — Concierge & Co)
         // Style "service haut de gamme discret, réception d'hôtel cinq étoiles"
         // — bleu nuit profond + champagne + laiton vieilli + bordeaux feutré.
-        'concierge-nuit':      '#0F2742',  // bleu nuit profond — accent dominant
-        'concierge-encre':     '#0A0B0F',  // noir encre — texte AAA
-        'concierge-graphite':  '#3D3D3F',  // gris graphite — texte secondaire
-        'concierge-champagne': '#F5EFDF',  // crème champagne — fond
-        'concierge-blanc':     '#FAFAF7',
-        'concierge-laiton':    '#B89758',  // doré laiton vieilli — filets ornementaux
-        'concierge-bordeaux':  '#5A1F2A',  // bordeaux feutré — accent rare
+        'concierge-nuit':      '#1E4D3D',  // bleu nuit profond — accent dominant
+        'concierge-encre':     '#1A1F1B',  // noir encre — texte AAA
+        'concierge-graphite':  '#4A554E',  // gris graphite — texte secondaire
+        'concierge-champagne': '#EFE5D4',  // crème champagne — fond
+        'concierge-blanc':     '#FBF8F2',
+        'concierge-laiton':    '#C49A5A',  // doré laiton vieilli — filets ornementaux
+        'concierge-bordeaux':  '#A85E3C',  // bordeaux feutré — accent rare
         // Palette aide à domicile (template /templates/aide-domicile — Doudou Service)
         // Style "doux & humain, ton local créole-friendly, proximité familiale"
         // — bleu apaisant + rose chaleureux + jaune solaire + crème coton.
-        'doudou-ciel':     '#A5C8DD',  // bleu doux ciel — fond accents
-        'doudou-bleu':     '#3B6E8F',  // bleu apaisant — accent dominant
-        'doudou-rose':     '#E5A09A',  // rose chaleureux — accent secondaire
-        'doudou-creme':    '#FCF8F0',  // crème de coton — fond
-        'doudou-soleil':   '#FFE89F',  // jaune solaire pâle — micro-accent
-        'doudou-encre':    '#3D3D3F',  // gris encre — texte
-        'doudou-bourgeon': '#7FA66B',  // vert bourgeon — accent vif rare
+        'doudou-ciel':     '#E0CFE6',  // bleu doux ciel — fond accents
+        'doudou-bleu':     '#5B3B6E',  // bleu apaisant — accent dominant
+        'doudou-rose':     '#D38B5E',  // rose chaleureux — accent secondaire
+        'doudou-creme':    '#F9F2E8',  // crème de coton — fond
+        'doudou-soleil':   '#F2C24E',  // jaune solaire pâle — micro-accent
+        'doudou-encre':    '#3A2E2A',  // gris encre — texte
+        'doudou-bourgeon': '#6E8A5B',  // vert bourgeon — accent vif rare
 
         // Palette plongée — Bleu Lagon Plongée (Saint-Leu, réserve marine)
         // Profondeur océan + clarté lagon + accents corail vifs
@@ -291,13 +291,13 @@ export default {
         // Palette wedding — Sève & Sel (Saint-Gilles, cérémonies plage)
         // Ivoire chaleureux + or pâle élégant + corail tropical + lagon turquoise
         // (template /templates/wedding — pas la charte 9site4)
-        'seve-ivoire': '#FAF4EA',  // ivoire chaleureux — fond principal
-        'seve-creme':  '#F4EBD7',  // crème un cran plus saturé — fonds doux
-        'seve-or':     '#C9A96E',  // or pâle — accents, ornements floraux
-        'seve-corail': '#E8826C',  // corail tropical — CTA, accents chaud
-        'seve-lagon':  '#7FCDD8',  // turquoise lagon — accents froids subtils
-        'seve-marine': '#2A3F5C',  // bleu marine profond — texte principal
-        'seve-vert':   '#7A9461',  // vert sauge — feuillage SVG
+        'seve-ivoire': '#F5ECE4',  // ivoire chaleureux — fond principal
+        'seve-creme':  '#EDD6C9',  // crème un cran plus saturé — fonds doux
+        'seve-or':     '#B47358',  // or pâle — accents, ornements floraux
+        'seve-corail': '#9C4A3E',  // corail tropical — CTA, accents chaud
+        'seve-lagon':  '#344B5C',  // turquoise lagon — accents froids subtils
+        'seve-marine': '#2D2520',  // bleu marine profond — texte principal
+        'seve-vert':   '#7B9B7E',  // vert sauge — feuillage SVG
 
         // Palette pâtisserie créole — La Vanille de Bel-Air (Saint-André, Est)
         // Style "vitrine de pâtisserie artisanale, identité créole/vanille
@@ -351,10 +351,10 @@ export default {
 
         // ===== New templates batch 1 =====
         // Palette boulangerie (template /templates/boulangerie — Le Pain Levé)
-        'pain-mie':     '#F5EBD5',
-        'pain-croute':  '#7A4A2A',
-        'pain-charbon': '#1A1614',
-        'pain-or':      '#C89B3C',
+        'pain-mie':     '#E8E0CC',
+        'pain-croute':  '#5C4A2E',
+        'pain-charbon': '#1F2521',
+        'pain-or':      '#A87842',
         // Palette glacier (template /templates/glacier — Sorbet Péi)
         'sorbet-mangue':        '#FFB347',
         'sorbet-letchi':        '#FF6F91',

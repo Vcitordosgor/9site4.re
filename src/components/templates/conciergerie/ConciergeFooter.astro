@@ -1,35 +1,38 @@
 ---
 import data from '../../../data/templates/concierge.json';
-const year = new Date().getFullYear();
 ---
-<footer class="py-12 md:py-16 border-t" style="background:#F7F4EE; border-color:rgba(15,27,46,0.12);">
-  <div class="max-w-content mx-auto px-6 md:px-10 grid md:grid-cols-3 gap-10">
-    <div>
-      <div class="font-cormorant italic text-2xl" style="color:#0F1B2E;">Concierge & Co</div>
-      <p class="text-[12px] uppercase tracking-[0.22em] mt-1" style="color:#7A6A4E;">Conciergerie privée · Réunion</p>
-      <p class="mt-5 text-[14px] leading-relaxed" style="color:#3D4453;">Fondée en {data.info.annee}. Trois conciergères temps plein, une trentaine de propriétés sous gestion.</p>
+<footer class="relative bg-concierge-encre text-concierge-champagne pt-20 pb-12">
+  <div class="max-w-content mx-auto px-6 md:px-12">
+    <p class="font-cormorant italic text-concierge-laiton leading-[0.92] mb-16" style="font-size: clamp(64px,12vw,200px);">
+      {data.info.wordmark}.
+    </p>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12 pt-10 border-t border-concierge-laiton/25">
+      <div>
+        <p class="font-inter text-[10px] uppercase tracking-[0.3em] text-concierge-laiton mb-3">Maison</p>
+        <p class="font-cormorant italic text-lg">{data.info.nom}<br/>{data.info.ville}</p>
+      </div>
+      <div>
+        <p class="font-inter text-[10px] uppercase tracking-[0.3em] text-concierge-laiton mb-3">Contact</p>
+        <a href={`tel:${data.info.telephoneHref}`} class="block font-cormorant italic text-lg hover:text-concierge-laiton">{data.info.telephone}</a>
+        <a href={`mailto:${data.info.email}`} class="block font-inter text-sm text-concierge-champagne/65 mt-1 hover:text-concierge-laiton break-all">{data.info.email}</a>
+      </div>
+      <div>
+        <p class="font-inter text-[10px] uppercase tracking-[0.3em] text-concierge-laiton mb-3">Disponibilités</p>
+        <ul class="space-y-1 font-inter text-sm text-concierge-champagne/70">
+          {data.horaires.map(h => (
+            <li class="flex flex-col"><span class="text-concierge-champagne">{h.jour}</span><span class="italic text-xs opacity-75">{h.label}</span></li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <p class="font-inter text-[10px] uppercase tracking-[0.3em] text-concierge-laiton mb-3">Suivre</p>
+        <p class="font-cormorant italic text-lg">{data.info.instagram}</p>
+        <p class="font-inter text-xs text-concierge-champagne/55 mt-2">{data.info.siret}</p>
+      </div>
     </div>
-    <div>
-      <div class="text-[11px] uppercase tracking-[0.28em] mb-3" style="color:#7A6A4E;">Contact</div>
-      <ul class="space-y-2 text-[14px]" style="color:#0F1B2E;">
-        <li><a href={`tel:${data.info.telephoneHref}`}>{data.info.telephone}</a></li>
-        <li><a href={`mailto:${data.info.email}`}>{data.info.email}</a></li>
-        <li>Lundi → samedi · 8h – 20h</li>
-      </ul>
+    <div class="pt-8 border-t border-concierge-laiton/20 flex flex-wrap items-center justify-between gap-3 font-inter text-[11px] uppercase tracking-[0.25em] text-concierge-champagne/50">
+      <span>© {data.info.nom} {data.info.annee} — {new Date().getFullYear()}</span>
+      <span class="italic font-cormorant normal-case tracking-normal text-concierge-laiton text-base">{data.info.tagline}</span>
     </div>
-    <div>
-      <div class="text-[11px] uppercase tracking-[0.28em] mb-3" style="color:#7A6A4E;">Navigation</div>
-      <ul class="space-y-2 text-[14px]" style="color:#0F1B2E;">
-        <li><a href="#services">Services</a></li>
-        <li><a href="#tarification">Tarifs</a></li>
-        <li><a href="#zone">Zone d'intervention</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="max-w-content mx-auto px-6 md:px-10 mt-10 pt-6 border-t flex flex-wrap justify-between gap-3 text-[11px] uppercase tracking-[0.22em]"
-       style="border-color:rgba(15,27,46,0.12); color:#7A6A4E;">
-    <span>© {year} Concierge & Co — Démonstration 9site4</span>
-    <span>Tous droits réservés</span>
   </div>
 </footer>

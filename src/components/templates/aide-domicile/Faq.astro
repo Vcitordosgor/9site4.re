@@ -1,78 +1,35 @@
 ---
-/**
- * Faq — questions famille / aide à domicile.
- * Style chaleureux, accordion natif.
- */
-const faq = [
-  {
-    q: 'Quels sont vos délais pour démarrer ?',
-    r: 'Sur une demande non urgente : entre 7 et 14 jours, le temps de la visite, de la signature du contrat et du choix de l\'aidante. Pour les urgences (sortie d\'hôpital, perte de mobilité brutale), on s\'organise sous 48h.',
-  },
-  {
-    q: 'Combien ça coûte vraiment, après aides ?',
-    r: 'L\'avantage fiscal (crédit d\'impôt 50 %) ramène le coût horaire net à environ 12 à 14 € après remboursement. Pour les personnes éligibles APA ou PCH, le reste à charge peut être quasi nul. On vous fait le calcul personnalisé en visite.',
-  },
-  {
-    q: 'L\'aidante reste-t-elle toujours la même ?',
-    r: 'Oui, c\'est notre priorité. Une seule personne référente, plus une remplaçante connue pour les vacances ou maladies. La continuité est essentielle au lien de confiance.',
-  },
-  {
-    q: 'Que faites-vous si la personne refuse l\'aide ?',
-    r: 'C\'est fréquent au début. On vient une première fois en visite courtoise, sans rien imposer. On commence souvent par des prestations légères (courses, conversation) avant l\'aide à la toilette. La patience fait partie du métier.',
-  },
-  {
-    q: 'Êtes-vous agréés et déclarés ?',
-    r: 'Oui, nous intervenons dans le cadre des services à la personne. Nos aidantes sont salariées, formées et assurées. Selon votre situation, vous pouvez bénéficier d\'aides et d\'avantages fiscaux.',
-  },
+const faqs = [
+  { q: 'Comment marche le crédit d’impôt 50 % ?', r: 'Vous payez 100 % au départ, l’État vous rembourse 50 % via votre déclaration de revenus. Même les non-imposables y ont droit — c’est un crédit, pas une réduction.' },
+  { q: 'Vous êtes agréé CESU ?', r: 'Oui. Nous émettons une attestation fiscale annuelle, acceptée par l’administration. Tout est déclaré, tout est en règle.' },
+  { q: 'Que se passe-t-il si l’aidant tombe malade ?', r: 'Un remplaçant est présenté à la famille avant la première intervention. Pas de visage inconnu, jamais.' },
+  { q: 'On peut commencer par une seule heure ?', r: 'Bien sûr. Beaucoup commencent par un ou deux passages par semaine, et augmentent quand la confiance est là.' },
+  { q: 'Les aidants parlent créole ?', r: 'Oui, la plupart sont réunionnais. Pour les aînés, c’est souvent un déclic dès la première visite.' },
+  { q: 'On peut arrêter quand on veut ?', r: 'Aucun engagement de durée. Préavis 7 jours, c’est tout. On ne retient personne.' },
 ];
 ---
-
-<section id="faq" class="relative bg-doudou-creme py-20 md:py-28 px-6 md:px-10">
-  <div class="max-w-3xl mx-auto">
-
-    <header class="mb-12 md:mb-14">
-      <p class="scroll-reveal text-xs font-nunito font-bold uppercase tracking-[0.32em] text-doudou-rose">
-        Vos questions
-      </p>
-      <h2 class="scroll-reveal mt-4 font-nunito font-extrabold text-doudou-encre leading-[1.05]" style="font-size: clamp(32px, 4vw, 48px);">
-        Ce qu'on vous répond<br/>
-        <span class="text-doudou-bleu">au téléphone.</span>
-      </h2>
-    </header>
-
-    <ul class="space-y-3">
-      {faq.map((item, i) => (
-        <li
-          class="scroll-reveal bg-doudou-ciel/15 rounded-2xl border border-doudou-bleu/20 hover:border-doudou-bleu/50 transition-colors overflow-hidden"
-          style={`transition-delay: ${i * 50}ms`}
-        >
-          <details class="group doudou-faq">
-            <summary class="flex items-start justify-between gap-4 p-6 cursor-pointer list-none">
-              <span class="font-nunito font-bold text-doudou-encre leading-snug" style="font-size: clamp(16px, 1.6vw, 18px);">
-                {item.q}
-              </span>
-              <span class="shrink-0 inline-flex items-center justify-center w-9 h-9 rounded-full bg-doudou-creme border border-doudou-bleu/30 text-doudou-bleu transition-transform duration-300 group-open:rotate-180" aria-hidden="true">
-                <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="6 9 12 15 18 9"/>
-                </svg>
+<section class="bg-white py-24 md:py-32">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+    <div class="grid lg:grid-cols-12 gap-10">
+      <div class="lg:col-span-4" data-reveal>
+        <p class="text-[#6B7F5C] text-[12px] uppercase tracking-[0.24em] mb-4">— Questions familles</p>
+        <h2 class="text-[#3D2A1E] leading-[0.95]" style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(40px,5vw,64px);">
+          Ce qu’on nous<br/><em class="text-[#C4674C]">demande souvent.</em>
+        </h2>
+      </div>
+      <div class="lg:col-span-8 space-y-3">
+        {faqs.map((f, i) => (
+          <details class="group bg-[#F8F0E3] rounded-2xl px-6 py-5 ring-1 ring-[#3D2A1E]/10 hover:ring-[#C4674C]/30 transition-all" open={i === 0}>
+            <summary class="cursor-pointer list-none flex items-center justify-between gap-4">
+              <h3 class="text-[#3D2A1E] text-[18px] md:text-[20px] leading-snug pr-4" style="font-family:'Cormorant Garamond',serif;font-weight:500;">{f.q}</h3>
+              <span class="w-8 h-8 rounded-full ring-1 ring-[#3D2A1E]/15 grid place-items-center transition-transform group-open:rotate-45 shrink-0">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#3D2A1E" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
               </span>
             </summary>
-            <div class="px-6 pb-6 -mt-2">
-              <p class="font-be-vietnam text-doudou-encre/75 leading-[1.7]" style="font-size: 14.5px;">
-                {item.r}
-              </p>
-            </div>
+            <p class="mt-4 text-[#3D2A1E]/75 text-[15px] leading-[1.65]">{f.r}</p>
           </details>
-        </li>
-      ))}
-    </ul>
+        ))}
+      </div>
+    </div>
   </div>
 </section>
-
-<style>
-  .doudou-faq summary::-webkit-details-marker { display: none; }
-  .doudou-faq summary:focus-visible {
-    outline: 2px solid rgb(59 110 143);
-    outline-offset: 4px;
-  }
-</style>

@@ -4,7 +4,21 @@ import Icon from '../ui/Icon.astro';
 
 /**
  * CTABand — bande finale fond bleu-nuit, contraste fort.
+ *
+ * Props optionnelles `trackingSource` / `trackingSector` / `trackingPageType`
+ * pour contextualiser les events de conversion selon la page hôte
+ * (homepage_cta_band, seo_sector_page_restaurant, etc.).
  */
+interface Props {
+  trackingSource?: string;
+  trackingSector?: string;
+  trackingPageType?: string;
+}
+const {
+  trackingSource = 'cta_band',
+  trackingSector,
+  trackingPageType,
+} = Astro.props;
 ---
 
 <section class="relative overflow-hidden px-6 py-16 md:py-24 bg-bleu-nuit text-blanc-casse">
@@ -17,22 +31,37 @@ import Icon from '../ui/Icon.astro';
   <div class="relative mx-auto max-w-3xl text-center">
     <span class="scroll-reveal block mx-auto h-[3px] w-16 bg-bleu mb-6" aria-hidden="true"></span>
     <h2 class="scroll-reveal font-sora font-bold text-3xl md:text-5xl text-balance leading-tight">
-      Prêt à lancer votre site ?
+      Votre entreprise mérite un site à la hauteur.
     </h2>
     <p class="scroll-reveal mt-6 text-lg md:text-xl text-blanc-casse/85 leading-relaxed">
-      Parlez-nous de votre activité en deux lignes. On vous dit quel site on peut
-      créer pour vous, et on s'occupe du reste.
+      Présentez votre activité à 9site4. Nous vous proposons une structure adaptée à votre métier, à vos clients et à vos objectifs.
     </p>
     <div class="scroll-reveal mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-      <Button variant="primary" size="lg" href="/contact">
-        Demander mon site
+      <Button
+        variant="primary"
+        size="lg"
+        href="/contact"
+        data-track-event="cta_create_site_click"
+        data-track-category="conversion"
+        data-track-source={trackingSource}
+        data-track-target="/contact"
+        data-track-sector={trackingSector}
+        data-track-page-type={trackingPageType}
+      >
+        Créer mon site avec 9site4
         <Icon name="arrow-right" size={20} strokeWidth={2.25} />
       </Button>
       <a
         href="/realisations"
         class="inline-flex items-center justify-center gap-2 h-14 px-8 text-lg font-semibold rounded-full text-bleu hover:text-blanc-casse transition-colors"
+        data-track-event="cta_view_realisations_click"
+        data-track-category="navigation"
+        data-track-source={trackingSource}
+        data-track-target="/realisations"
+        data-track-sector={trackingSector}
+        data-track-page-type={trackingPageType}
       >
-        Voir un exemple pour mon métier
+        Voir nos réalisations
       </a>
     </div>
   </div>

@@ -1,176 +1,121 @@
 {
   "info": {
-    "nom": "Concierge & Co",
-    "wordmark1": "Concierge",
-    "wordmark2": "& Co",
-    "soustitre": "Conciergerie privée · La Réunion",
-    "tagline": "À votre disposition.",
-    "fondatrice": "La fondatrice",
+    "nom": "Maison Aldaïa",
+    "wordmark": "Aldaïa",
+    "soustitre": "Conciergerie locative · La Réunion",
+    "tagline": "Votre bien, géré comme le nôtre.",
+    "fondatrice": "Aldaïa Hoarau",
     "ville": "La Réunion",
-    "adresseLigne1": "Conciergerie",
+    "adresseLigne1": "Conciergerie locative",
     "adresseLigne2": "La Réunion",
     "telephone": "0692 12 34 56",
     "telephoneHref": "+262692123456",
     "whatsapp": "262692123456",
-    "email": "bonjour@concierge-and-co.re",
-    "instagram": "@concierge.and.co",
-    "siret": "",
-    "annee": "2018",
+    "email": "bonjour@maison-aldaia.re",
+    "instagram": "@maison.aldaia",
+    "siret": "SIRET sur demande",
+    "annee": "2019",
     "photoHero": "/images/conciergerie/hero.webp",
     "photoVilla": "/images/conciergerie/villa.webp"
   },
+  "kpi": [
+    { "valeur": "+38 %", "label": "Revenu locatif moyen", "sous": "vs gestion en direct" },
+    { "valeur": "4,9 / 5", "label": "Note voyageur moyenne", "sous": "sur l'ensemble des biens" },
+    { "valeur": "24h / 24", "label": "Support hôte & voyageur", "sous": "astreinte 7j/7" }
+  ],
   "promesse": [
-    "Une conciergerie, c'est avant tout des heures rendues à votre journée. Celles que vous passiez au pressing, à attendre un livreur, à organiser la garde du chien, à courir entre deux courses.",
-    "Charlotte Marchand a fondé Concierge & Co après dix ans à la réception du Royal Hôtel. La même rigueur, la même discrétion, mais à votre domicile cette fois — pas en chambre.",
-    "Nous travaillons en effectif réduit, par choix. Trois conciergères temps plein, une trentaine de clients fidèles. C'est volontaire : on ne veut pas devenir une plateforme."
+    "Une conciergerie pensée pour les propriétaires qui ne veulent ni perdre du temps, ni perdre du revenu, ni perdre la maîtrise de leur bien.",
+    "Nous accueillons chaque voyageur comme s'il entrait chez nous. Vous gardez la main sur l'agenda et les tarifs ; nous prenons en charge tout le reste.",
+    "Effectif réduit, périmètre choisi : un portefeuille de seize biens maximum à l'année, pour ne jamais diluer la qualité de l'accueil."
   ],
   "services": [
-    {
-      "id": "intendance",
-      "titre": "Intendance domicile",
-      "description": "Réception artisans, supervision ménage, suivi des entretiens techniques."
-    },
-    {
-      "id": "pressing",
-      "titre": "Pressing & blanchisserie",
-      "description": "Collecte, pressing chez nos partenaires, retour repassé et plié."
-    },
-    {
-      "id": "bagages",
-      "titre": "Réception bagages",
-      "description": "Récupération à l'aéroport, livraison à votre domicile sans attente."
-    },
-    {
-      "id": "courrier",
-      "titre": "Réception courrier",
-      "description": "Récupération en boîte aux lettres, tri, scan numérique sécurisé."
-    },
-    {
-      "id": "chauffeur",
-      "titre": "Chauffeur privé",
-      "description": "Trajets ponctuels ou récurrents, en VTC partenaire ou voiture personnelle."
-    },
-    {
-      "id": "petsitting",
-      "titre": "Pet-sitting",
-      "description": "Promenades, garde à domicile, soins vétérinaires programmés."
-    },
-    {
-      "id": "chef",
-      "titre": "Chef à domicile",
-      "description": "Repas préparés sur place, dîners privés, traiteur événementiel."
-    },
-    {
-      "id": "linge",
-      "titre": "Linge de maison",
-      "description": "Changement, repassage et rangement hebdomadaire des draps et serviettes."
-    }
+    { "id": "accueil",    "titre": "Check-in 24/7",          "description": "Accueil personnalisé à toute heure, remise de clés, visite guidée, livret d'accueil sur tablette." },
+    { "id": "menage",     "titre": "Ménage hôtelier",        "description": "Équipe en interne, draps et linge fournis, kit d'accueil, contrôle qualité à chaque rotation." },
+    { "id": "maintenance","titre": "Maintenance préventive", "description": "Entretien programmé, suivi des artisans partenaires, photos et rapports d'intervention." },
+    { "id": "multi",      "titre": "Support multilingue",    "description": "Accueil voyageur en FR, EN, ES, DE. Astreinte téléphonique et WhatsApp 24h/24." },
+    { "id": "photo",      "titre": "Photographies pro",      "description": "Reportage photo en lumière naturelle et home-staging léger, refait chaque saison." },
+    { "id": "annonce",    "titre": "Annonces & tarification","description": "Rédaction, mise en ligne multi-plateformes, yield management dynamique selon saison & événements." }
+  ],
+  "etapes": [
+    { "n": "01", "titre": "Visite & audit",     "description": "Nous visitons le bien, échangeons avec vous, formalisons un audit gratuit (revenu cible, travaux conseillés)." },
+    { "n": "02", "titre": "Mise en marché",     "description": "Reportage photo, rédaction des annonces, mise en ligne multi-plateformes, calage tarifaire saisonnier." },
+    { "n": "03", "titre": "Gestion quotidienne","description": "Accueil voyageurs, ménage, maintenance, support 24h/24. Vous recevez un reporting mensuel détaillé." },
+    { "n": "04", "titre": "Reporting & ajustements","description": "Bilan trimestriel, ajustements tarifaires, recommandations d'investissement pour augmenter encore le revenu." }
   ],
   "formules": [
     {
       "label": "Essentiel",
-      "prix": "250",
-      "frequence": "/ mois",
-      "description": "Trois services courants par mois. Idéal pour démarrer ou pour une utilisation ponctuelle.",
+      "prix": "8 %",
+      "frequence": "du loyer voyageur",
+      "description": "La gestion locative complète, sans extras. Pour démarrer ou pour les biens en gestion saisonnière légère.",
       "inclus": [
-        "3 services courants / mois",
-        "Réponse WhatsApp en heures ouvrées",
-        "Aucun engagement de durée",
-        "Forfait reportable un mois"
+        "Mise en ligne multi-plateformes",
+        "Check-in & check-out standard",
+        "Ménage hôtelier inclus",
+        "Reporting mensuel synthétique",
+        "Support voyageur en heures ouvrées"
       ]
     },
     {
       "label": "Premium",
-      "prix": "580",
-      "frequence": "/ mois",
-      "description": "Services courants illimités. La majorité de nos clientes & clients ont choisi cette formule.",
+      "prix": "18 %",
+      "frequence": "du loyer voyageur",
+      "description": "L'offre la plus choisie. Pour maximiser le revenu et la note voyageur — sans aucune intervention de votre part.",
       "inclus": [
-        "Services courants illimités",
-        "Réponse WhatsApp 7j/7 8h-20h",
-        "Une conciergère attitrée",
-        "Reporting mensuel détaillé",
-        "Accès à nos prestataires partenaires"
+        "Tout l'Essentiel",
+        "Yield management dynamique",
+        "Photographies pro renouvelées chaque saison",
+        "Check-in personnalisé 24/7 multilingue",
+        "Maintenance préventive incluse",
+        "Reporting détaillé + appel mensuel"
       ],
       "populaire": true
     },
     {
-      "label": "Excellence",
-      "prix": "1 200",
-      "frequence": "/ mois",
-      "description": "Sur-mesure. Pour les expatriations, secondes résidences, agendas chargés.",
+      "label": "Sur-mesure",
+      "prix": "Devis",
+      "frequence": "selon périmètre",
+      "description": "Pour les portefeuilles de plusieurs biens, les villas haut de gamme ou les modèles hybrides (saisonnier + meublé annuel).",
       "inclus": [
-        "Tout ce qui est dans Premium",
-        "Disponibilité 24h/24",
-        "Coordination équipes domicile",
-        "Gestion biens immobiliers",
-        "Achats personnalisés",
-        "Convention écrite confidentielle"
+        "Tout le Premium",
+        "Account manager dédié",
+        "Stratégie patrimoniale (achat, travaux)",
+        "Gestion équipes domicile (jardin, piscine)",
+        "Convention confidentielle écrite",
+        "Reporting consolidé temps réel"
       ]
-    }
-  ],
-  "journee": [
-    {
-      "heure": "J-1 · 18h",
-      "titre": "Brief WhatsApp",
-      "description": "Vous nous transmettez vos demandes du lendemain. Pressing à récupérer, chauffeur 15h, courses bio…"
-    },
-    {
-      "heure": "J · 08h",
-      "titre": "Prise en charge",
-      "description": "On démarre la journée. Vous recevez un message de confirmation des actions en cours."
-    },
-    {
-      "heure": "J · midi",
-      "titre": "Point d'étape",
-      "description": "Photo des actions accomplies, ajustement si nécessaire, validation pour la suite."
-    },
-    {
-      "heure": "J · 19h",
-      "titre": "Récapitulatif",
-      "description": "Synthèse écrite de la journée, factures partenaires consolidées, programme de demain validé."
     }
   ],
   "temoignages": [
     {
-      "initiales": "C. B.",
-      "anciennete": "Cliente Premium · 2 ans",
-      "lieu": "La Réunion",
-      "texte": "Charlotte gère ma vie quotidienne avec une discrétion exemplaire. Je ne sais plus comment je faisais avant. Sincèrement."
+      "initiales": "M. D.",
+      "anciennete": "Propriétaire depuis 2 ans",
+      "lieu": "Saint-Gilles",
+      "texte": "Mon revenu locatif a augmenté de plus de 30 % la première année. Aucun retour négatif voyageur. Aldaïa et son équipe gèrent vraiment comme si c'était chez eux."
     },
     {
-      "initiales": "A. D.",
-      "anciennete": "Cliente Essentiel · 1 an",
-      "lieu": "La Réunion",
-      "texte": "Trois services par mois suffisent largement. La récupération de mes colis et le pressing me libèrent un temps fou."
+      "initiales": "S. R.",
+      "anciennete": "Propriétaire depuis 1 an",
+      "lieu": "Saint-Pierre",
+      "texte": "Je vis à 9 000 km. Maison Aldaïa m'envoie un reporting détaillé chaque mois, photos à l'appui. Je n'ai plus à m'occuper de rien — et le bien n'a jamais été aussi bien entretenu."
     },
     {
-      "initiales": "M. P.",
-      "anciennete": "Cliente Excellence · 6 mois",
-      "lieu": "La Réunion",
-      "texte": "Je vis entre Paris et la Réunion. Concierge & Co s'occupe de tout en mon absence : artisans, courrier, plantes. Précieux."
-    },
-    {
-      "initiales": "F. G.",
-      "anciennete": "Client Premium · 3 ans",
-      "lieu": "La Réunion",
-      "texte": "L'essentiel pour moi : la confidentialité. Aucune info ne fuite. Charlotte et son équipe sont d'une rigueur absolue."
+      "initiales": "L. & A. M.",
+      "anciennete": "Propriétaires depuis 3 ans",
+      "lieu": "Saint-Leu",
+      "texte": "Ce qui fait la différence : la discrétion et le souci du détail. Notre villa est traitée comme un objet de famille, pas comme un produit Airbnb. C'est rare."
     }
   ],
+  "zones": [
+    { "id": "ouest",   "nom": "Côte ouest",     "villes": "Saint-Gilles · Saint-Leu · L'Étang-Salé", "color": "#B89758" },
+    { "id": "sud",     "nom": "Sud sauvage",    "villes": "Saint-Pierre · Saint-Joseph · Manapany", "color": "#C66B45" },
+    { "id": "nord",    "nom": "Nord créole",    "villes": "Saint-Denis · Sainte-Marie · Sainte-Suzanne", "color": "#0E1B2C" },
+    { "id": "hauts",   "nom": "Hauts de l'île", "villes": "Plaine des Cafres · Cilaos · Hell-Bourg", "color": "#5A1F2A" },
+    { "id": "est",     "nom": "Côte est",       "villes": "Saint-Benoît · Sainte-Anne · Saint-André", "color": "#3D3D3F" }
+  ],
   "horaires": [
-    {
-      "jour": "Lundi – Vendredi",
-      "label": "08h – 20h",
-      "ouvert": true
-    },
-    {
-      "jour": "Samedi",
-      "label": "09h – 18h",
-      "ouvert": true
-    },
-    {
-      "jour": "Dimanche",
-      "label": "Sur demande Excellence",
-      "ouvert": true
-    }
+    { "jour": "Hôtes (propriétaires)", "label": "Lun – Ven, 9h – 18h", "ouvert": true },
+    { "jour": "Voyageurs",             "label": "24h / 24, 7j / 7",     "ouvert": true },
+    { "jour": "Visites d'audit",       "label": "Sur rendez-vous",      "ouvert": true }
   ]
 }

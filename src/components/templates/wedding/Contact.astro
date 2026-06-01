@@ -1,40 +1,96 @@
 ---
 import data from '../../../data/templates/seve.json';
+const i = data.info;
 ---
-<section id="contact" class="py-24 md:py-32" style="background:#FAF4EA;">
-  <div class="max-w-content mx-auto px-6 md:px-10">
-    <div class="grid md:grid-cols-2 gap-12 lg:gap-20">
-      <div>
-        <p class="font-caveat text-2xl mb-2" style="color:#8AA288;">Écrivons-nous</p>
-        <h2 class="font-cormorant text-4xl md:text-5xl leading-tight mb-6" style="color:#3A352D;">Racontez-nous <em class="italic" style="color:#CC6B49;">votre projet.</em></h2>
-        <p class="text-base leading-relaxed mb-8" style="color:#5A5045;">Quelques lignes suffisent. On vous répond personnellement sous 48h ouvrées avec une proposition de RDV vidéo.</p>
-        <ul class="space-y-3 text-[15px]" style="color:#3A352D;">
-          <li><strong class="text-[11px] uppercase tracking-[0.22em] block" style="color:#8AA288;">Téléphone</strong><a href={`tel:${data.info.telephoneHref}`}>{data.info.telephone}</a></li>
-          <li><strong class="text-[11px] uppercase tracking-[0.22em] block" style="color:#8AA288;">Email</strong><a href={`mailto:${data.info.email}`}>{data.info.email}</a></li>
-          <li><strong class="text-[11px] uppercase tracking-[0.22em] block" style="color:#8AA288;">Instagram</strong>{data.info.instagram}</li>
-        </ul>
+<section id="contact" class="relative bg-[#FAF4EA] py-28 md:py-36 overflow-hidden">
+  <div aria-hidden="true" class="absolute -bottom-40 -right-40 w-[600px] h-[600px] rounded-full bg-[#CC6B49]/8 blur-3xl"></div>
+  <div class="relative max-w-content mx-auto px-6 md:px-10">
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-16">
+
+      <div class="lg:col-span-5" data-reveal>
+        <p class="text-[#8AA288] text-[11px] tracking-[0.32em] uppercase mb-6 flex items-center gap-3">
+          <span class="w-10 h-px bg-[#8AA288]"></span> On se rencontre ?
+        </p>
+        <h2 class="text-[#3A352D] leading-[0.92]" style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(48px,7vw,96px);">
+          Quarante-cinq <em class="text-[#CC6B49]">minutes</em>,<br/>en visio. Offertes.
+        </h2>
+        <p class="mt-6 text-[#3A352D]/75 text-[17px] leading-[1.6] max-w-md">
+          Pas de devis automatisé, pas de robot, pas d’engagement. On parle de votre histoire, de vos doutes, de vos rêves — et on voit si on est faits pour avancer ensemble.
+        </p>
+
+        <div class="mt-10 space-y-4">
+          <a href={`tel:${i.telephoneHref}`} class="flex items-center gap-4 p-5 rounded-2xl bg-white ring-1 ring-[#3A352D]/8 hover:ring-[#CC6B49]/40 transition-all">
+            <span class="w-12 h-12 rounded-full bg-[#CC6B49]/15 text-[#CC6B49] grid place-items-center shrink-0">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </span>
+            <div>
+              <p class="text-[11px] tracking-[0.18em] uppercase text-[#3A352D]/55 mb-1">Téléphone</p>
+              <p class="text-[#3A352D] text-[17px] font-medium tabular-nums">{i.telephone}</p>
+            </div>
+          </a>
+          <a href={`mailto:${i.email}`} class="flex items-center gap-4 p-5 rounded-2xl bg-white ring-1 ring-[#3A352D]/8 hover:ring-[#CC6B49]/40 transition-all">
+            <span class="w-12 h-12 rounded-full bg-[#8AA288]/15 text-[#8AA288] grid place-items-center shrink-0">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4zM4 4l8 8 8-8"/></svg>
+            </span>
+            <div>
+              <p class="text-[11px] tracking-[0.18em] uppercase text-[#3A352D]/55 mb-1">E-mail</p>
+              <p class="text-[#3A352D] text-[15px] font-medium">{i.email}</p>
+            </div>
+          </a>
+        </div>
       </div>
-      <form class="grid gap-4" onsubmit="event.preventDefault(); alert('Démonstration — formulaire non actif.');">
-        <div class="grid md:grid-cols-2 gap-4">
+
+      <form class="lg:col-span-7 bg-white rounded-[32px] p-8 md:p-12 ring-1 ring-[#3A352D]/8" style="box-shadow:0 40px 100px -40px rgba(58,53,45,0.2);" data-reveal>
+        <h3 class="text-[#3A352D] text-[32px] mb-2" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;">Parlez-nous de vous.</h3>
+        <p class="text-[#3A352D]/65 text-[14px] mb-8">Réponse personnalisée sous 48 h — vraiment.</p>
+
+        <div class="grid sm:grid-cols-2 gap-5 mb-5">
           <label class="block">
-            <span class="text-[11px] uppercase tracking-[0.22em] block mb-2" style="color:#8AA288;">Vos prénoms</span>
-            <input required type="text" class="w-full h-12 px-4 bg-transparent border" style="border-color:rgba(58,53,45,0.30); color:#3A352D;"/>
+            <span class="block text-[11px] tracking-[0.18em] uppercase text-[#3A352D]/55 mb-2">Date du mariage</span>
+            <input type="text" placeholder="ex. mai 2026" class="w-full h-12 px-4 rounded-xl bg-[#FAF4EA]/60 ring-1 ring-[#3A352D]/10 focus:ring-[#CC6B49] focus:bg-white outline-none text-[15px] transition-all" />
           </label>
           <label class="block">
-            <span class="text-[11px] uppercase tracking-[0.22em] block mb-2" style="color:#8AA288;">Date envisagée</span>
-            <input type="text" placeholder="Mois / année" class="w-full h-12 px-4 bg-transparent border" style="border-color:rgba(58,53,45,0.30); color:#3A352D;"/>
+            <span class="block text-[11px] tracking-[0.18em] uppercase text-[#3A352D]/55 mb-2">Nombre d’invités</span>
+            <select class="w-full h-12 px-4 rounded-xl bg-[#FAF4EA]/60 ring-1 ring-[#3A352D]/10 focus:ring-[#CC6B49] focus:bg-white outline-none text-[15px] transition-all">
+              <option>2 à 30 invités</option>
+              <option>30 à 80 invités</option>
+              <option>80 à 150 invités</option>
+              <option>Plus de 150</option>
+            </select>
           </label>
         </div>
-        <label class="block">
-          <span class="text-[11px] uppercase tracking-[0.22em] block mb-2" style="color:#8AA288;">Email</span>
-          <input required type="email" class="w-full h-12 px-4 bg-transparent border" style="border-color:rgba(58,53,45,0.30); color:#3A352D;"/>
+
+        <label class="block mb-5">
+          <span class="block text-[11px] tracking-[0.18em] uppercase text-[#3A352D]/55 mb-2">Budget envisagé</span>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+            {['< 5 000 €', '5 — 15 k€', '15 — 30 k€', '> 30 k€'].map((b) => (
+              <label class="cursor-pointer">
+                <input type="radio" name="budget" class="peer sr-only" />
+                <span class="block text-[13px] text-center py-3 rounded-xl ring-1 ring-[#3A352D]/15 text-[#3A352D]/75 hover:ring-[#CC6B49] hover:text-[#CC6B49] peer-checked:bg-[#3A352D] peer-checked:text-[#FAF4EA] peer-checked:ring-[#3A352D] transition-all">{b}</span>
+              </label>
+            ))}
+          </div>
         </label>
-        <label class="block">
-          <span class="text-[11px] uppercase tracking-[0.22em] block mb-2" style="color:#8AA288;">Racontez-nous</span>
-          <textarea rows="6" class="w-full px-4 py-3 bg-transparent border" style="border-color:rgba(58,53,45,0.30); color:#3A352D;"></textarea>
+
+        <label class="block mb-5">
+          <span class="block text-[11px] tracking-[0.18em] uppercase text-[#3A352D]/55 mb-2">Votre histoire en quelques mots</span>
+          <textarea rows="4" placeholder="On vit en métropole, on veut se marier à La Réunion en mai 2026, une cérémonie laïque les pieds dans le sable…" class="w-full p-4 rounded-xl bg-[#FAF4EA]/60 ring-1 ring-[#3A352D]/10 focus:ring-[#CC6B49] focus:bg-white outline-none text-[15px] resize-none transition-all"></textarea>
         </label>
-        <button class="mt-2 h-12 text-[12px] uppercase tracking-[0.22em] font-semibold transition-colors"
-                style="background:#CC6B49; color:#FAF4EA;">Envoyer</button>
+
+        <div class="grid sm:grid-cols-2 gap-5 mb-7">
+          <label class="block">
+            <span class="block text-[11px] tracking-[0.18em] uppercase text-[#3A352D]/55 mb-2">Prénoms</span>
+            <input type="text" placeholder="Marie & Théo" class="w-full h-12 px-4 rounded-xl bg-[#FAF4EA]/60 ring-1 ring-[#3A352D]/10 focus:ring-[#CC6B49] focus:bg-white outline-none text-[15px] transition-all" />
+          </label>
+          <label class="block">
+            <span class="block text-[11px] tracking-[0.18em] uppercase text-[#3A352D]/55 mb-2">E-mail</span>
+            <input type="email" class="w-full h-12 px-4 rounded-xl bg-[#FAF4EA]/60 ring-1 ring-[#3A352D]/10 focus:ring-[#CC6B49] focus:bg-white outline-none text-[15px] transition-all" />
+          </label>
+        </div>
+
+        <button type="submit" class="w-full h-[56px] rounded-full bg-[#3A352D] text-[#FAF4EA] text-[14px] tracking-[0.12em] uppercase font-medium hover:bg-[#CC6B49] transition-colors">
+          Réserver mon RDV découverte
+        </button>
       </form>
     </div>
   </div>

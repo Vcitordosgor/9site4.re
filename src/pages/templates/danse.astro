@@ -16,37 +16,27 @@ import vermeilleData from '../../data/templates/vermeille.json';
 import VermeilleHeader from '../../components/templates/danse/VermeilleHeader.astro';
 import HeroRideau from '../../components/templates/danse/HeroRideau.astro';
 import Disciplines from '../../components/templates/danse/Disciplines.astro';
-import Planning from '../../components/templates/danse/Planning.astro';
-import Tarifs from '../../components/templates/danse/Tarifs.astro';
-import PhotoStudio from '../../components/templates/danse/PhotoStudio.astro';
 import Bandeau from '../../components/templates/danse/Bandeau.astro';
-import Citation from '../../components/templates/danse/Citation.astro';
+import Planning from '../../components/templates/danse/Planning.astro';
+import PhotoStudio from '../../components/templates/danse/PhotoStudio.astro';
+import Comparatif from '../../components/templates/danse/Comparatif.astro';
+import Studio from '../../components/templates/danse/Studio.astro';
 import Stats from '../../components/templates/danse/Stats.astro';
 import Professeurs from '../../components/templates/danse/Professeurs.astro';
+import Tarifs from '../../components/templates/danse/Tarifs.astro';
+import Citation from '../../components/templates/danse/Citation.astro';
 import Spectacles from '../../components/templates/danse/Spectacles.astro';
-import Studio from '../../components/templates/danse/Studio.astro';
 import Inscription from '../../components/templates/danse/Inscription.astro';
+import Faq from '../../components/templates/danse/Faq.astro';
 import CTAFinal from '../../components/templates/danse/CTAFinal.astro';
 import VermeilleFooter from '../../components/templates/danse/VermeilleFooter.astro';
-import Processus from '../../components/templates/danse/Processus.astro';
-import Comparatif from '../../components/templates/danse/Comparatif.astro';
-import Partenaires from '../../components/templates/danse/Partenaires.astro';
-import Faq from '../../components/templates/danse/Faq.astro';
-const businessLD = localBusinessSchema(vermeilleData, 'DanceSchool');
 
+const businessLD = localBusinessSchema(vermeilleData, 'DanceSchool');
 ---
 
 <BaseLayout seo={getSeo('templateDanse')} bare={true}>
   <Fragment slot="head">
     {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
-    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
-    <link rel="dns-prefetch" href="https://images.unsplash.com" />
-    <link
-      rel="preload"
-      as="image"
-      href={vermeilleData.info.photoHero}
-      fetchpriority="high"
-    />
   </Fragment>
 
   <VermeilleHeader />
@@ -54,18 +44,16 @@ const businessLD = localBusinessSchema(vermeilleData, 'DanceSchool');
   <main id="top" class="bg-vermeille-ivoire text-vermeille-velours font-inter-tight">
     <HeroRideau />
     <Disciplines />
+    <Bandeau />
     <Planning />
     <PhotoStudio />
-    <Stats />
-    <Processus />
-    <Bandeau />
     <Comparatif />
+    <Studio />
+    <Stats />
     <Professeurs />
     <Citation />
-    <Spectacles />
-    <Partenaires />
-    <Studio />
     <Tarifs />
+    <Spectacles />
     <Inscription />
     <Faq />
     <CTAFinal />
@@ -73,7 +61,6 @@ const businessLD = localBusinessSchema(vermeilleData, 'DanceSchool');
 
   <VermeilleFooter />
 
-  <!-- Sticky CTA mobile : carré bordeaux pas pill (vs yoga rond) -->
   <a
     id="vermeille-sticky-cta"
     href="#inscription"

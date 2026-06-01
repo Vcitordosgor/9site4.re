@@ -1,20 +1,58 @@
 ---
 import realisations from '../../data/realisations.json';
 
-/**
- * VitrineExemples — double carrousel (rangées défilant en sens inverse),
- * cartes type "screenshot de site" avec barre de navigateur, overlay au hover.
- * Chiffres honnêtes. Pause au survol, coupé sous reduced-motion.
- */
+// PERF : seuls les 12 previews effectivement affichés dans le marquee home
+// sont importés ici. Les 28 autres ne sont chargés que sur /realisations.
+import PreviewPizzeria from '../realisations/previews/PreviewPizzeria.astro';
+import PreviewAutoEcole from '../realisations/previews/PreviewAutoEcole.astro';
+import PreviewResto from '../realisations/previews/PreviewResto.astro';
+import PreviewBarJus from '../realisations/previews/PreviewBarJus.astro';
+import PreviewCoach from '../realisations/previews/PreviewCoach.astro';
+import PreviewYoga from '../realisations/previews/PreviewYoga.astro';
+import PreviewStudioAudio from '../realisations/previews/PreviewStudioAudio.astro';
+import PreviewElectricien from '../realisations/previews/PreviewElectricien.astro';
+import PreviewAvocat from '../realisations/previews/PreviewAvocat.astro';
+import PreviewPhotographe from '../realisations/previews/PreviewPhotographe.astro';
 
-const half = Math.ceil(realisations.length / 2);
-const row1Items = realisations.slice(0, half);
-const row2Items = realisations.slice(half);
+const previewMap: Record<string, any> = {
+  'snack-pizzeria':           PreviewPizzeria,
+  'auto-ecole':               PreviewAutoEcole,
+  'restaurant-gastronomique': PreviewResto,
+  'bar-a-jus-tropical':       PreviewBarJus,
+  'coach-sportif':            PreviewCoach,
+  'studio-yoga':              PreviewYoga,
+  'studio-audio':             PreviewStudioAudio,
+  'electricite-generale':     PreviewElectricien,
+  'avocat-cabinet':           PreviewAvocat,
+  'photographe-auteur':       PreviewPhotographe,
+};
+
+// PERF : on n'affiche dans le marquee home que les 10 premières réalisations
+// (ordre prioritaire identique à la page /realisations). Les 40 restent visibles sur /realisations.
+// Le loop CSS infini est conservé en dupliquant UNE seule fois ces 10 vignettes (20 nœuds total).
+const showcaseSlugs = [
+  'snack-pizzeria',
+  'auto-ecole',
+  'restaurant-gastronomique',
+  'bar-a-jus-tropical',
+  'coach-sportif',
+  'studio-yoga',
+  'studio-audio',
+  'electricite-generale',
+  'avocat-cabinet',
+  'photographe-auteur',
+];
+const showcase = showcaseSlugs
+  .map((slug) => realisations.find((r) => r.slug === slug))
+  .filter(Boolean) as typeof realisations;
+const half = Math.ceil(showcase.length / 2);
+const row1Items = showcase.slice(0, half);
+const row2Items = showcase.slice(half);
 const row1 = [...row1Items, ...row1Items];
 const row2 = [...row2Items, ...row2Items];
 
 const stats = [
-  { value: `${realisations.length}`, label: 'exemples de sites en ligne' },
+  { value: '0 €', label: 'd’engagement, libre à tout moment' },
   { value: '7 jours', label: 'pour mettre votre site en ligne' },
   { value: '97,4€', label: 'par mois, tout compris' },
 ];
@@ -23,87 +61,84 @@ const stats = [
 <section class="relative overflow-hidden bg-bleu-nuit text-blanc-casse py-14 md:py-20" aria-labelledby="vitrine-titre">
   <div class="mx-auto max-w-content px-6 text-center">
     <h2 id="vitrine-titre" class="font-sora font-bold text-2xl md:text-4xl text-balance leading-tight">
-      Un site pensé pour votre métier.
+      Nos réalisations
+      <span class="block italic font-medium text-bleu">pour les pros réunionnais.</span>
     </h2>
-    <p class="mt-5 mx-auto max-w-2xl text-lg text-blanc-casse/70 leading-relaxed">
-      Découvrez des exemples de sites créés par 9site4, métier par métier —
-      de quoi vous projeter pour le vôtre.
+    <p class="mt-5 mx-auto max-w-2xl text-lg text-blanc-casse/75 leading-relaxed">
+      Une sélection de sites conçus par 9site4, métier par métier.
     </p>
   </div>
 
-  <!-- Double marquee -->
-  <div class="vitrine-marquee relative mt-10 md:mt-14 space-y-5" aria-label="Exemples de sites qui défilent">
+  <!-- Double marquee — vignettes des réalisations -->
+  <div class="vitrine-marquee relative mt-10 md:mt-14 space-y-5" aria-label="Nos réalisations qui défilent">
     <!-- Rangée 1 (sens normal) -->
     <div class="vitrine-track-1 flex gap-5 w-max px-3">
-      {row1.map((r, i) => (
-        <a
-          href={r.previewUrl}
-          class="group relative shrink-0 w-80 md:w-96 rounded-2xl overflow-hidden ring-1 ring-blanc-casse/15 bg-black transition-all duration-300 hover:-translate-y-1 hover:ring-bleu/60"
-          aria-hidden={i >= row1Items.length ? 'true' : undefined}
-          tabindex={i >= row1Items.length ? -1 : undefined}
-        >
-          <div class="relative aspect-[4/3] overflow-hidden">
-            <img
-              src={r.thumbnail}
-              alt={`Exemple de site — ${r.nom}`}
-              class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-              loading="lazy"
-              decoding="async"
-            />
-            <div class="absolute bottom-0 inset-x-0 p-4 flex items-end justify-between gap-2 bg-bleu-nuit/55">
-              <span class="font-sora font-semibold text-sm text-blanc-casse">{r.nom}</span>
-              <span class="inline-flex items-center px-2 py-0.5 rounded-full bg-bleu text-white text-[10px] font-bold uppercase tracking-wide">
-                {r.moduleInclus}
-              </span>
+      {row1.map((r, i) => {
+        const Preview = previewMap[r.slug] ?? null;
+        return (
+          <a
+            href={r.previewUrl}
+            target="_blank"
+            rel="noopener"
+            class="group relative shrink-0 w-80 md:w-96 rounded-2xl overflow-hidden ring-1 ring-blanc-casse/15 bg-bleu-nuit transition-all duration-300 hover:-translate-y-1 hover:ring-bleu/60"
+            aria-hidden={i >= row1Items.length ? 'true' : undefined}
+            tabindex={i >= row1Items.length ? -1 : undefined}
+          >
+            <!-- Browser chrome minimaliste -->
+            <div class="flex items-center gap-1.5 px-3 py-2 bg-bleu-nuit/95" aria-hidden="true">
+              <span class="block w-2 h-2 rounded-full bg-[#FF5F57]"></span>
+              <span class="block w-2 h-2 rounded-full bg-[#FEBC2E]"></span>
+              <span class="block w-2 h-2 rounded-full bg-[#28C840]"></span>
             </div>
-            <!-- Hover overlay -->
-            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-bleu-nuit/70">
-              <span class="inline-flex items-center gap-1.5 h-10 px-5 rounded-full bg-bleu text-white font-semibold text-sm shadow-[0_0_24px_rgba(145,166,255,0.5)]">
-                Voir la démo
-                <span aria-hidden="true">→</span>
-              </span>
+            <div class="relative aspect-[4/3] overflow-hidden bg-blanc-casse">
+              {Preview ? <Preview /> : <div class="absolute inset-0 flex items-center justify-center text-bleu-nuit/30 text-xs">{r.nom}</div>}
+              <!-- Hover overlay -->
+              <div class="absolute inset-0 flex items-end justify-between gap-2 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-bleu-nuit/90 via-bleu-nuit/40 to-transparent">
+                <span class="font-sora font-semibold text-sm text-blanc-casse">{r.nom}</span>
+                <span class="inline-flex items-center px-2 py-0.5 rounded-full bg-bleu text-white text-[10px] font-bold uppercase tracking-wide">
+                  {r.moduleInclus}
+                </span>
+              </div>
             </div>
-          </div>
-        </a>
-      ))}
+          </a>
+        );
+      })}
     </div>
 
     <!-- Rangée 2 (sens inverse) -->
     <div class="vitrine-track-2 flex gap-5 w-max px-3">
-      {row2.map((r, i) => (
-        <a
-          href={r.previewUrl}
-          class="group relative shrink-0 w-80 md:w-96 rounded-2xl overflow-hidden ring-1 ring-blanc-casse/15 bg-black transition-all duration-300 hover:-translate-y-1 hover:ring-bleu/60"
-          aria-hidden={i >= row2Items.length ? 'true' : undefined}
-          tabindex={i >= row2Items.length ? -1 : undefined}
-        >
-          <div class="relative aspect-[4/3] overflow-hidden">
-            <img
-              src={r.thumbnail}
-              alt={`Exemple de site — ${r.nom}`}
-              class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-              loading="lazy"
-              decoding="async"
-            />
-            <div class="absolute bottom-0 inset-x-0 p-4 flex items-end justify-between gap-2 bg-bleu-nuit/55">
-              <span class="font-sora font-semibold text-sm text-blanc-casse">{r.nom}</span>
-              <span class="inline-flex items-center px-2 py-0.5 rounded-full bg-bleu text-white text-[10px] font-bold uppercase tracking-wide">
-                {r.moduleInclus}
-              </span>
+      {row2.map((r, i) => {
+        const Preview = previewMap[r.slug] ?? null;
+        return (
+          <a
+            href={r.previewUrl}
+            target="_blank"
+            rel="noopener"
+            class="group relative shrink-0 w-80 md:w-96 rounded-2xl overflow-hidden ring-1 ring-blanc-casse/15 bg-bleu-nuit transition-all duration-300 hover:-translate-y-1 hover:ring-bleu/60"
+            aria-hidden={i >= row2Items.length ? 'true' : undefined}
+            tabindex={i >= row2Items.length ? -1 : undefined}
+          >
+            <div class="flex items-center gap-1.5 px-3 py-2 bg-bleu-nuit/95" aria-hidden="true">
+              <span class="block w-2 h-2 rounded-full bg-[#FF5F57]"></span>
+              <span class="block w-2 h-2 rounded-full bg-[#FEBC2E]"></span>
+              <span class="block w-2 h-2 rounded-full bg-[#28C840]"></span>
             </div>
-            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-bleu-nuit/70">
-              <span class="inline-flex items-center gap-1.5 h-10 px-5 rounded-full bg-bleu text-white font-semibold text-sm shadow-[0_0_24px_rgba(145,166,255,0.5)]">
-                Voir la démo
-                <span aria-hidden="true">→</span>
-              </span>
+            <div class="relative aspect-[4/3] overflow-hidden bg-blanc-casse">
+              {Preview ? <Preview /> : <div class="absolute inset-0 flex items-center justify-center text-bleu-nuit/30 text-xs">{r.nom}</div>}
+              <div class="absolute inset-0 flex items-end justify-between gap-2 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-bleu-nuit/90 via-bleu-nuit/40 to-transparent">
+                <span class="font-sora font-semibold text-sm text-blanc-casse">{r.nom}</span>
+                <span class="inline-flex items-center px-2 py-0.5 rounded-full bg-bleu text-white text-[10px] font-bold uppercase tracking-wide">
+                  {r.moduleInclus}
+                </span>
+              </div>
             </div>
-          </div>
-        </a>
-      ))}
+          </a>
+        );
+      })}
     </div>
   </div>
 
-  <!-- Chiffres honnêtes (plus typographiques) -->
+  <!-- Chiffres honnêtes -->
   <div class="mx-auto max-w-content px-6 mt-16 md:mt-24">
     <dl class="grid grid-cols-1 sm:grid-cols-3 gap-10 text-center">
       {stats.map((s) => (
@@ -123,7 +158,7 @@ const stats = [
         href="/realisations"
         class="group inline-flex items-center justify-center gap-2 h-13 px-8 py-3.5 text-base font-semibold rounded-full bg-bleu text-white hover:bg-[#7e95ff] hover:-translate-y-0.5 shadow-[0_8px_30px_rgba(145,166,255,0.45)] transition-all duration-200 ease-out"
       >
-        Voir tous les exemples métiers
+        Voir toutes nos réalisations
         <span aria-hidden="true" class="transition-transform duration-300 group-hover:translate-x-1">→</span>
       </a>
     </div>

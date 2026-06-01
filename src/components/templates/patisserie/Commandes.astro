@@ -1,58 +1,101 @@
 ---
+/**
+ * "Commande sur mesure" — formulaire complet : occasion, date,
+ * nb personnes, saveur, coords. Layout 2 colonnes éditorial.
+ */
 import data from '../../../data/templates/vanille.json';
 ---
+<section id="commandes" class="bg-vanille-grain text-vanille-creme py-24 md:py-36 relative overflow-hidden">
+  <svg class="absolute inset-0 w-full h-full opacity-[0.05] pointer-events-none" aria-hidden="true">
+    <filter id="grain-cmd"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2"/></filter>
+    <rect width="100%" height="100%" filter="url(#grain-cmd)"/>
+  </svg>
 
-<section id="commandes" class="bg-vanille-creme py-20 md:py-28">
-  <div class="max-w-content mx-auto px-6 md:px-10">
+  <div class="max-w-content mx-auto px-6 md:px-12 relative">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16">
+      <div class="lg:col-span-5">
+        <p class="font-karla text-[11px] uppercase tracking-[0.4em] text-vanille-caramel mb-4 flex items-center gap-3">
+          <span class="block w-8 h-px bg-vanille-caramel"></span>
+          Commande sur mesure
+        </p>
+        <h2 class="font-yeseva text-vanille-creme leading-[0.95]" style="font-size:clamp(38px,5.4vw,72px);">
+          Dites-nous
+          <span class="block italic font-italianno text-vanille-caramel" style="font-size:clamp(50px,7vw,96px);">votre occasion.</span>
+        </h2>
+        <p class="mt-6 font-karla text-[15px] text-vanille-creme/80 leading-relaxed max-w-md">
+          Remplissez ce formulaire en deux minutes. Stéphanie revient vers vous sous 48 h avec un devis, un croquis, et la confirmation du créneau de retrait.
+        </p>
 
-    <div class="text-center max-w-2xl mx-auto mb-14 md:mb-20">
-      <p class="font-karla text-[11px] uppercase tracking-[0.4em] text-vanille-caramel mb-4">— Comment commander —</p>
-      <h2 class="font-yeseva text-vanille-gousse text-4xl md:text-5xl leading-tight">
-        Quatre manières
-        <em class="font-italianno text-vanille-caramel text-5xl md:text-6xl not-italic">de se faire plaisir</em>
-      </h2>
-    </div>
+        <ul class="mt-10 space-y-4 font-karla text-[14px] text-vanille-creme/85">
+          <li class="flex gap-3"><span class="text-vanille-caramel mt-0.5">✦</span><span><strong class="text-vanille-creme">72 h minimum</strong> pour les entremets et plateaux.</span></li>
+          <li class="flex gap-3"><span class="text-vanille-caramel mt-0.5">✦</span><span><strong class="text-vanille-creme">4 semaines</strong> pour mariages et pièces montées.</span></li>
+          <li class="flex gap-3"><span class="text-vanille-caramel mt-0.5">✦</span><span><strong class="text-vanille-creme">25 € de minimum</strong> par commande sur mesure.</span></li>
+          <li class="flex gap-3"><span class="text-vanille-caramel mt-0.5">✦</span><span>Allergies, intolérances : précisez en commentaire.</span></li>
+        </ul>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
-      {data.commandes.map((c) => (
-        <article class="bg-vanille-blanc border border-vanille-gousse/25 p-7 md:p-8 relative flex flex-col">
-          <div class="flex items-baseline gap-4 mb-4">
-            <span class="font-yeseva text-vanille-caramel text-5xl md:text-6xl leading-none">{c.etape}</span>
-            <h3 class="font-yeseva text-vanille-gousse text-xl md:text-2xl leading-tight">{c.titre}</h3>
-          </div>
-          <p class="font-karla text-[14.5px] text-vanille-gousse/85 leading-relaxed">{c.texte}</p>
-        </article>
-      ))}
-    </div>
+        <div class="mt-10 pt-8 border-t border-vanille-caramel/30">
+          <p class="font-karla text-[10px] uppercase tracking-[0.3em] text-vanille-caramel mb-2">Ou plus vite</p>
+          <a href={`https://wa.me/${data.info.whatsapp}`} target="_blank" rel="noopener"
+             class="inline-flex items-center gap-2 font-yeseva italic text-vanille-creme text-2xl hover:text-vanille-caramel transition-colors">
+            WhatsApp à Stéphanie →
+          </a>
+        </div>
+      </div>
 
-    <!-- Délai de précommande & retrait -->
-    <div class="mt-16 md:mt-20">
-      <header class="text-center max-w-xl mx-auto mb-10">
-        <p class="font-karla text-[11px] uppercase tracking-[0.4em] text-vanille-caramel mb-3">— Précommande &amp; retrait —</p>
-        <h3 class="font-yeseva text-vanille-gousse text-2xl md:text-3xl leading-tight">
-          De la commande
-          <em class="font-italianno text-vanille-caramel text-4xl md:text-5xl not-italic">au plaisir.</em>
-        </h3>
-      </header>
-
-      <ol class="relative grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-0">
-        <!-- ligne horizontale desktop -->
-        <span class="hidden md:block absolute top-7 left-[16%] right-[16%] h-px bg-vanille-caramel/40" aria-hidden="true"></span>
-
-        {[
-          { jour: 'J − 3', titre: 'Commande', texte: 'Vous envoyez votre demande : pièce, parfum, nombre de parts.' },
-          { jour: 'J − 1', titre: 'Confirmation', texte: 'On revient vers vous avec le prix, l\'heure de retrait, le récap.' },
-          { jour: 'Jour J', titre: 'Retrait 10 h → 18 h', texte: 'Votre gâteau vous attend, frais, prêt à savourer.' },
-        ].map((s) => (
-          <li class="relative text-center md:px-4">
-            <span class="relative inline-flex items-center justify-center w-14 h-14 mx-auto rounded-full bg-vanille-caramel text-vanille-creme font-yeseva text-base ring-4 ring-vanille-creme z-10">
-              {s.jour}
-            </span>
-            <h4 class="mt-5 font-yeseva text-vanille-gousse text-lg md:text-xl">{s.titre}</h4>
-            <p class="mt-2 font-karla text-sm text-vanille-gousse/80 leading-relaxed max-w-[18rem] mx-auto">{s.texte}</p>
-          </li>
-        ))}
-      </ol>
+      <form class="lg:col-span-7 bg-vanille-creme text-vanille-gousse p-7 md:p-10 grid grid-cols-1 md:grid-cols-2 gap-5"
+            action={`https://wa.me/${data.info.whatsapp}`} method="get" target="_blank" rel="noopener">
+        <label class="md:col-span-2 flex flex-col gap-1.5">
+          <span class="font-karla text-[10px] uppercase tracking-[0.25em] text-vanille-caramel">Occasion</span>
+          <select name="occasion" required class="bg-vanille-blanc border border-vanille-gousse/30 h-12 px-3 font-karla text-[14px] focus:outline-none focus:border-vanille-caramel">
+            <option>Anniversaire</option>
+            <option>Mariage</option>
+            <option>Brunch maison</option>
+            <option>Communion / baptême</option>
+            <option>Soirée professionnelle</option>
+            <option>Autre</option>
+          </select>
+        </label>
+        <label class="flex flex-col gap-1.5">
+          <span class="font-karla text-[10px] uppercase tracking-[0.25em] text-vanille-caramel">Date souhaitée</span>
+          <input type="date" name="date" required class="bg-vanille-blanc border border-vanille-gousse/30 h-12 px-3 font-karla text-[14px] focus:outline-none focus:border-vanille-caramel" />
+        </label>
+        <label class="flex flex-col gap-1.5">
+          <span class="font-karla text-[10px] uppercase tracking-[0.25em] text-vanille-caramel">Nombre de personnes</span>
+          <input type="number" name="parts" min="1" max="300" placeholder="ex : 12" required class="bg-vanille-blanc border border-vanille-gousse/30 h-12 px-3 font-karla text-[14px] focus:outline-none focus:border-vanille-caramel" />
+        </label>
+        <label class="md:col-span-2 flex flex-col gap-1.5">
+          <span class="font-karla text-[10px] uppercase tracking-[0.25em] text-vanille-caramel">Saveur souhaitée</span>
+          <select name="saveur" class="bg-vanille-blanc border border-vanille-gousse/30 h-12 px-3 font-karla text-[14px] focus:outline-none focus:border-vanille-caramel">
+            <option>Vanille bourbon</option>
+            <option>Chocolat noir</option>
+            <option>Letchi (saison)</option>
+            <option>Mangue Carotte</option>
+            <option>Coco-rhum arrangé</option>
+            <option>À discuter</option>
+          </select>
+        </label>
+        <label class="flex flex-col gap-1.5">
+          <span class="font-karla text-[10px] uppercase tracking-[0.25em] text-vanille-caramel">Prénom</span>
+          <input type="text" name="prenom" required class="bg-vanille-blanc border border-vanille-gousse/30 h-12 px-3 font-karla text-[14px] focus:outline-none focus:border-vanille-caramel" />
+        </label>
+        <label class="flex flex-col gap-1.5">
+          <span class="font-karla text-[10px] uppercase tracking-[0.25em] text-vanille-caramel">Téléphone</span>
+          <input type="tel" name="tel" required placeholder="0692 ..." class="bg-vanille-blanc border border-vanille-gousse/30 h-12 px-3 font-karla text-[14px] focus:outline-none focus:border-vanille-caramel" />
+        </label>
+        <label class="md:col-span-2 flex flex-col gap-1.5">
+          <span class="font-karla text-[10px] uppercase tracking-[0.25em] text-vanille-caramel">Détails, allergies, idées de décor</span>
+          <textarea name="text" rows="4" class="bg-vanille-blanc border border-vanille-gousse/30 p-3 font-karla text-[14px] focus:outline-none focus:border-vanille-caramel" placeholder="Cake étagé chocolat-vanille pour 8 ans, prénom Léa, sans gluten…"></textarea>
+        </label>
+        <div class="md:col-span-2 flex flex-col sm:flex-row items-center justify-between gap-4 mt-2">
+          <p class="font-karla text-[11.5px] text-vanille-gousse/70 leading-snug">
+            Vos infos partent sur WhatsApp. Réponse Stéphanie sous 48 h.
+          </p>
+          <button type="submit" class="inline-flex items-center gap-2 h-13 px-7 rounded-full bg-vanille-gousse text-vanille-creme font-karla font-semibold text-[12px] uppercase tracking-[0.22em] hover:bg-vanille-caramel transition-colors" style="height:52px;">
+            Envoyer la demande
+            <svg viewBox="0 0 24 24" width="14" height="14"><path d="M5 12h14m0 0l-5-5m5 5l-5 5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+      </form>
     </div>
   </div>
 </section>

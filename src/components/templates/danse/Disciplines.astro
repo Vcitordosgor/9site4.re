@@ -1,79 +1,151 @@
 ---
 /**
- * Disciplines — 5 cartes verticales hautes type AFFICHE de spectacle.
- * Photo portrait haute (3:4), nom serif italienne énorme, niveau, créneaux.
- * Layout : grid responsive avec hauteurs alternées qui décalent légèrement
- * (effet poster mural). PAS de cards horizontales équiangles.
+ * Disciplines — carousel horizontal des 5 disciplines.
+ * Chaque card change la couleur d'accent au scroll-snap.
  */
 import data from '../../../data/templates/vermeille.json';
+const accents = {
+  'classique':    { bg: '#7A1A2A', fg: '#F8F0E5', tag: 'Bordeaux' },
+  'contemporain': { bg: '#1A0F12', fg: '#B8956A', tag: 'Velours' },
+  'jazz':         { bg: '#B8956A', fg: '#1A0F12', tag: 'Or' },
+  'hip-hop':      { bg: '#2A1F22', fg: '#E8C4C0', tag: 'Charbon' },
+  'modern':       { bg: '#E8C4C0', fg: '#7A1A2A', tag: 'Rose' },
+};
 ---
 
-<section id="disciplines" class="bg-vermeille-ivoire py-24 md:py-36 px-6 md:px-10">
-  <div class="max-w-content mx-auto">
-
-    <!-- Header éditorial -->
-    <header class="mb-16 md:mb-24 text-center max-w-2xl mx-auto">
-      <p class="font-inter-tight text-[10px] uppercase tracking-[0.4em] text-vermeille-bordeaux mb-6">
-        Les disciplines
-      </p>
-      <h2 class="font-italiana text-vermeille-velours leading-[1.0]" style="font-size: clamp(44px, 6vw, 80px);">
-        Cinq langages,
-        <span class="block italic text-vermeille-bordeaux">une même scène.</span>
-      </h2>
-      <div class="mt-8 flex items-center justify-center gap-3" aria-hidden="true">
-        <span class="block h-px w-12 bg-vermeille-or/40"></span>
-        <span class="text-vermeille-or text-sm">✦</span>
-        <span class="block h-px w-12 bg-vermeille-or/40"></span>
+<section id="disciplines" class="relative bg-vermeille-ivoire text-vermeille-velours py-24 md:py-32 overflow-hidden">
+  <div class="max-w-content mx-auto px-6 md:px-12 mb-14 md:mb-20">
+    <div class="flex items-baseline justify-between gap-6 flex-wrap">
+      <div>
+        <p class="font-inter-tight text-[10px] uppercase tracking-[0.5em] text-vermeille-or mb-4">§ I — Le répertoire</p>
+        <h2 class="font-italiana text-vermeille-velours leading-[0.95] tracking-tight" style="font-size: clamp(56px, 9vw, 132px);">
+          Cinq langages,<br/><em class="italic text-vermeille-bordeaux">une même</em> scène.
+        </h2>
       </div>
-    </header>
+      <p class="font-inter-tight text-sm md:text-base text-vermeille-velours/70 max-w-sm leading-relaxed">
+        Du classique au hip-hop, en passant par le contemporain, le jazz et le modern jazz. Chaque discipline a sa scène, son vocabulaire, ses créneaux.
+      </p>
+    </div>
+  </div>
 
-    <!-- Grid de cartes affiches -->
-    <ul class="grid grid-cols-2 lg:grid-cols-5 gap-x-4 md:gap-x-6 gap-y-12 md:gap-y-16">
-      {data.disciplines.map((d, i) => (
-        <li class:list={['group relative', i % 2 === 1 ? 'lg:mt-12' : '']}>
-          <a href="#inscription" class="block">
+  <!-- Carousel animé : auto-advance + flèches + dots -->
+  <div class="relative" data-disciplines-carousel>
+    <!-- Flèches navigation desktop -->
+    <button type="button" data-prev aria-label="Discipline précédente" class="hidden md:inline-flex absolute left-2 lg:left-6 top-1/2 -translate-y-1/2 z-20 items-center justify-center w-12 h-12 rounded-full bg-vermeille-velours text-vermeille-ivoire hover:bg-vermeille-bordeaux transition-colors shadow-lg">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-5 h-5"><path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button type="button" data-next aria-label="Discipline suivante" class="hidden md:inline-flex absolute right-2 lg:right-6 top-1/2 -translate-y-1/2 z-20 items-center justify-center w-12 h-12 rounded-full bg-vermeille-velours text-vermeille-ivoire hover:bg-vermeille-bordeaux transition-colors shadow-lg">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-5 h-5"><path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
 
-            <!-- Carte discipline (sans photo) -->
-            <div class="relative aspect-[3/4] overflow-hidden bg-vermeille-velours p-6 md:p-8 flex flex-col">
-              <div class="flex items-start justify-between">
-                <span class="font-italiana italic text-vermeille-ivoire text-3xl md:text-4xl">
-                  {d.numero}
-                </span>
-                <span class="text-vermeille-or text-2xl" aria-hidden="true">✦</span>
+    <div data-track class="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-6 px-6 md:px-12 scroll-smooth no-scrollbar">
+      {data.disciplines.map((d, i) => {
+        const a = accents[d.id] || accents.classique;
+        return (
+          <article
+            data-slide={i}
+            class="snap-start shrink-0 w-[80vw] md:w-[440px] aspect-[3/4] relative overflow-hidden discipline-card group cursor-pointer transition-transform duration-500"
+            style={`background:${a.bg}; color:${a.fg};`}
+          >
+            <!-- Filet doré bordure -->
+            <div class="absolute inset-3 ring-1 ring-current/15 pointer-events-none"></div>
+            <!-- Numéro géant en fond -->
+            <span class="absolute -bottom-10 -right-4 font-italiana italic leading-none opacity-[0.10]" style="font-size: clamp(220px,32vw,360px);">{d.numero}</span>
+
+            <div class="relative h-full flex flex-col p-7 md:p-9">
+              <div class="flex items-center justify-between font-inter-tight text-[10px] uppercase tracking-[0.35em] opacity-70">
+                <span>Discipline {d.numero}</span>
+                <span>{a.tag}</span>
               </div>
               <div class="mt-auto">
-                <p class="font-italiana italic text-vermeille-ivoire/90 leading-[1.0]" style="font-size: clamp(28px, 3vw, 40px);">
-                  {d.nom}
-                </p>
-                <p class="mt-3 font-inter-tight text-[10px] uppercase tracking-[0.3em] text-vermeille-or/80">
-                  {d.niveaux}
-                </p>
+                <h3 class="font-italiana italic leading-[0.9] tracking-tight" style="font-size: clamp(56px,7vw,88px);">{d.nom}</h3>
+                <p class="mt-3 font-inter-tight text-xs uppercase tracking-[0.25em] opacity-80">{d.niveaux}</p>
+                <p class="mt-5 font-inter-tight text-sm leading-relaxed max-w-[36ch] opacity-85">{d.description}</p>
+                <div class="mt-6 pt-5 border-t border-current/20 flex items-center justify-between font-inter-tight text-xs">
+                  <span class="opacity-70 max-w-[60%]">{d.creneaux}</span>
+                  <a href="#planning" class="inline-flex items-center gap-1 underline underline-offset-4 hover:gap-2 transition-all">Planning →</a>
+                </div>
               </div>
             </div>
-
-            <!-- Nom -->
-            <h3 class="mt-5 font-italiana text-vermeille-velours leading-[1.0] group-hover:text-vermeille-bordeaux transition-colors duration-500" style="font-size: clamp(28px, 3.5vw, 44px);">
-              {d.nom}
-            </h3>
-
-            <!-- Niveau -->
-            <p class="mt-2 font-inter-tight text-[10px] uppercase tracking-[0.25em] text-vermeille-bordeaux">
-              {d.niveaux}
-            </p>
-
-            <!-- Description -->
-            <p class="mt-3 font-inter-tight text-vermeille-velours/65 text-[13px] leading-[1.65]">
-              {d.description}
-            </p>
-
-            <!-- Créneaux discret -->
-            <p class="mt-4 pt-3 border-t border-vermeille-velours/15 font-italiana italic text-vermeille-velours/55 text-[13px] leading-relaxed">
-              {d.creneaux}
-            </p>
-          </a>
-        </li>
-      ))}
-    </ul>
-
+          </article>
+        );
+      })}
+    </div>
   </div>
+
+    <!-- Dots indicateurs -->
+    <div class="flex items-center justify-center gap-3 mt-6 mb-4" data-dots>
+      {data.disciplines.map((_, i) => (
+        <button type="button" data-dot={i} aria-label={`Aller à la discipline ${i + 1}`} class="w-2.5 h-2.5 rounded-full bg-vermeille-velours/25 hover:bg-vermeille-velours transition-colors data-[active=true]:bg-vermeille-bordeaux data-[active=true]:w-8" />
+      ))}
+    </div>
+  </div>
+
+  <style>
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { scrollbar-width: none; }
+    [data-disciplines-carousel] [data-slide] { opacity: 0.55; filter: saturate(0.7); }
+    [data-disciplines-carousel] [data-slide][data-active="true"] { opacity: 1; filter: none; transform: scale(1.02); }
+  </style>
+
+  <script is:inline>
+    (() => {
+      const root = document.querySelector('[data-disciplines-carousel]');
+      if (!root) return;
+      const track = root.querySelector('[data-track]');
+      const slides = Array.from(root.querySelectorAll('[data-slide]'));
+      const dots = Array.from(root.querySelectorAll('[data-dot]'));
+      const prev = root.querySelector('[data-prev]');
+      const next = root.querySelector('[data-next]');
+      let active = 0;
+      let timer = null;
+      const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      const scrollTo = (i) => {
+        active = (i + slides.length) % slides.length;
+        const el = slides[active];
+        const left = el.offsetLeft - (track.clientWidth - el.clientWidth) / 2;
+        track.scrollTo({ left, behavior: 'smooth' });
+        slides.forEach((s, k) => s.dataset.active = String(k === active));
+        dots.forEach((d, k) => d.dataset.active = String(k === active));
+      };
+
+      prev?.addEventListener('click', () => { scrollTo(active - 1); restart(); });
+      next?.addEventListener('click', () => { scrollTo(active + 1); restart(); });
+      dots.forEach((d, k) => d.addEventListener('click', () => { scrollTo(k); restart(); }));
+
+      const tick = () => scrollTo(active + 1);
+      const start = () => { if (reduce) return; timer = setInterval(tick, 4500); };
+      const stop = () => { if (timer) clearInterval(timer); timer = null; };
+      const restart = () => { stop(); start(); };
+
+      root.addEventListener('mouseenter', stop);
+      root.addEventListener('mouseleave', start);
+      track.addEventListener('touchstart', stop, { passive: true });
+      track.addEventListener('touchend', () => setTimeout(start, 1500), { passive: true });
+
+      // Sync active on user scroll
+      let scrollT;
+      track.addEventListener('scroll', () => {
+        clearTimeout(scrollT);
+        scrollT = setTimeout(() => {
+          const center = track.scrollLeft + track.clientWidth / 2;
+          let best = 0, bestDist = Infinity;
+          slides.forEach((s, k) => {
+            const c = s.offsetLeft + s.clientWidth / 2;
+            const dist = Math.abs(c - center);
+            if (dist < bestDist) { bestDist = dist; best = k; }
+          });
+          if (best !== active) {
+            active = best;
+            slides.forEach((s, k) => s.dataset.active = String(k === active));
+            dots.forEach((d, k) => d.dataset.active = String(k === active));
+          }
+        }, 80);
+      }, { passive: true });
+
+      scrollTo(0);
+      start();
+    })();
+  </script>
 </section>

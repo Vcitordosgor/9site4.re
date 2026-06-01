@@ -1,0 +1,38 @@
+---
+// Bento gallery 6 photos
+const photos = [
+  { src: '/images/wedding/extra-6.webp', cls: 'md:col-span-3 md:row-span-2 aspect-square md:aspect-auto', label: 'L’instant des vœux' },
+  { src: '/images/wedding/extra-7.webp', cls: 'md:col-span-3 aspect-[4/3]', label: 'Sous les filaos' },
+  { src: '/images/wedding/extra-8.webp', cls: 'md:col-span-3 aspect-[4/3]', label: 'Coucher de soleil' },
+  { src: '/images/wedding/extra-1.webp', cls: 'md:col-span-2 aspect-square', label: 'L’arche florale' },
+  { src: '/images/wedding/extra-2.webp', cls: 'md:col-span-2 aspect-square', label: 'Premier baiser' },
+  { src: '/images/wedding/extra-3.webp', cls: 'md:col-span-2 aspect-square', label: 'La danse' },
+];
+---
+<section id="univers" class="bg-[#FAF4EA] py-28 md:py-40">
+  <div class="max-w-content mx-auto px-6 md:px-10">
+    <div class="grid md:grid-cols-12 gap-10 mb-14">
+      <div class="md:col-span-6" data-reveal>
+        <p class="text-[#8AA288] text-[11px] tracking-[0.32em] uppercase mb-6 flex items-center gap-3">
+          <span class="w-10 h-px bg-[#8AA288]"></span> Notre univers
+        </p>
+        <h2 class="text-[#3A352D] leading-[0.92]" style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(52px,8vw,112px);">
+          Six <em class="text-[#CC6B49]">instants</em>,<br/>une même âme.
+        </h2>
+      </div>
+      <p class="md:col-span-5 md:col-start-8 self-end text-[#3A352D]/70 text-[16px] leading-[1.7]">
+        Avant de raconter votre histoire, voici la nôtre. Cliché par cliché.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-6 md:auto-rows-[200px] gap-3 md:gap-4">
+      {photos.map((p) => (
+        <figure class:list={['relative group overflow-hidden rounded-[20px] ring-1 ring-[#3A352D]/10', p.cls]}>
+          <img src={p.src} alt={p.label} class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1500ms] group-hover:scale-[1.06]" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-[#3A352D]/55 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <figcaption class="absolute bottom-4 left-4 text-[#FAF4EA] text-[18px] leading-none opacity-0 group-hover:opacity-100 transition-opacity" style="font-family:'Cormorant Garamond',serif;font-style:italic;">{p.label}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>

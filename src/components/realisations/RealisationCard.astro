@@ -148,16 +148,23 @@ const moduleIcon = moduleIcons[realisation.moduleInclus] ?? 'sparkle';
 const moduleColor = moduleColors[realisation.moduleInclus] ?? 'orange';
 ---
 
-<article class="tilt-card group relative bg-blanc-casse rounded-2xl ring-1 ring-bleu-nuit/10 shadow-card overflow-hidden flex flex-col hover:shadow-card-hover hover:ring-bleu/40 transition-all duration-300">
+<article class="tilt-card group relative rounded-2xl overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-1"
+  style="background: #000000; box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 18px 40px -22px rgba(0,0,0,0.85), 0 0 0 1.5px #91a6ff, 0 0 28px -8px rgba(145,166,255,0.45);"
+  onmouseover="this.style.boxShadow='0 1px 0 rgba(255,255,255,0.10) inset, 0 28px 60px -18px rgba(0,0,0,0.95), 0 0 0 2px #91a6ff, 0 0 44px -4px rgba(145,166,255,0.70)';"
+  onmouseout="this.style.boxShadow='0 1px 0 rgba(255,255,255,0.06) inset, 0 18px 40px -22px rgba(0,0,0,0.85), 0 0 0 1.5px #91a6ff, 0 0 28px -8px rgba(145,166,255,0.45)';"
+>
 
   {realisation.previewUrl && Preview ? (
     <!-- 🖥️ MINI-PREVIEW : la star de la carte, plus grand, avec overlay au survol -->
     <a
-      href={realisation.previewUrl}
-      target="_blank"
-      rel="noopener"
-      class="block relative group/preview overflow-hidden border-b border-bleu-nuit/10 bg-bleu-nuit"
-      aria-label={`Voir le site ${realisation.nom}`}
+      href={`/realisations/${realisation.slug}`}
+      class="block relative group/preview overflow-hidden border-b border-white/10 bg-bleu-nuit"
+      aria-label={`Voir la réalisation ${realisation.nom}`}
+      data-track-event="cta_view_realisation_click"
+      data-track-category="navigation"
+      data-track-label={realisation.slug}
+      data-track-source="realisation_card_preview"
+      data-track-target={`/realisations/${realisation.slug}`}
     >
       <!-- Browser chrome minimaliste -->
       <div class="flex items-center gap-1.5 px-3 py-2 bg-bleu-nuit/95" aria-hidden="true">
@@ -167,18 +174,18 @@ const moduleColor = moduleColors[realisation.moduleInclus] ?? 'orange';
       </div>
 
       <!-- Viewport plus grand (4/3 au lieu de 5/3) -->
-      <div class="relative aspect-[4/3] overflow-hidden bg-blanc-casse">
+      <div class="relative aspect-[4/3] overflow-hidden bg-bleu-nuit">
         <div class="absolute inset-0 transition-transform duration-700 ease-out-soft group-hover/preview:scale-[1.03]">
           <Preview />
         </div>
-        <!-- Badge "Démo métier" : signale clairement un exemple, pas un vrai client -->
-        <span class="absolute top-3 left-3 z-10 inline-flex items-center px-2.5 py-1 rounded-full bg-orange text-white text-[10px] font-bold uppercase tracking-wide shadow-md pointer-events-none">
-          Démo métier
+        <!-- Badge "Réalisation" -->
+        <span class="absolute top-3 left-3 z-10 inline-flex items-center px-2.5 py-1 rounded-full bg-bleu text-white text-[10px] font-bold uppercase tracking-wide shadow-md pointer-events-none">
+          Réalisation
         </span>
-        <!-- Overlay au hover avec pill "Voir la démo" -->
+        <!-- Overlay au hover -->
         <div class="absolute inset-0 flex items-center justify-center bg-bleu-nuit/55 opacity-0 group-hover/preview:opacity-100 transition-opacity duration-300">
           <span class="inline-flex items-center gap-2 h-11 px-5 rounded-full bg-bleu text-white font-semibold text-sm shadow-[0_0_24px_rgba(145,166,255,0.6)]">
-            Voir la démo
+            Voir la réalisation
             <Icon name="arrow-right" size={16} strokeWidth={2.5} />
           </span>
         </div>
@@ -186,8 +193,8 @@ const moduleColor = moduleColors[realisation.moduleInclus] ?? 'orange';
     </a>
   ) : (
     <!-- Fallback -->
-    <div class="relative aspect-[4/3] overflow-hidden bg-bleu-nuit/[0.05]">
-      <div class="absolute inset-0 flex items-center justify-center text-bleu-nuit/30">
+    <div class="relative aspect-[4/3] overflow-hidden bg-white/5">
+      <div class="absolute inset-0 flex items-center justify-center text-blanc-casse/30">
         <Icon name={visual.icon} size={48} strokeWidth={1.5} />
       </div>
     </div>
@@ -197,11 +204,11 @@ const moduleColor = moduleColors[realisation.moduleInclus] ?? 'orange';
   <div class="flex-1 flex flex-col p-5 md:p-6">
 
     <!-- Meta inline : catégorie + module sur une ligne discrète -->
-    <div class="flex items-center gap-2 text-[10.5px] font-roboto-mono uppercase tracking-[0.18em] text-bleu-nuit/55 font-semibold mb-3">
+    <div class="flex items-center gap-2 text-[10.5px] font-roboto-mono uppercase tracking-[0.18em] text-blanc-casse/55 font-semibold mb-3">
       <span>{categoryName}</span>
       {realisation.previewUrl && (
         <>
-          <span aria-hidden="true" class="text-bleu-nuit/30">·</span>
+          <span aria-hidden="true" class="text-blanc-casse/30">·</span>
           <span class="inline-flex items-center gap-1.5 text-bleu">
             <Icon name={moduleIcon} size={11} strokeWidth={2.25} />
             Module {realisation.moduleInclus}
@@ -210,28 +217,36 @@ const moduleColor = moduleColors[realisation.moduleInclus] ?? 'orange';
       )}
     </div>
 
-    <h3 class="font-sora font-bold text-xl text-bleu-nuit leading-snug">{realisation.nom}</h3>
-    <p class="mt-2 text-sm text-bleu-nuit/65 leading-relaxed">{realisation.sousTitre}</p>
+    <h3 class="font-sora font-bold text-xl text-blanc-casse leading-snug truncate" title={realisation.nom}>{realisation.nom}</h3>
+    <p class="mt-2 text-sm text-blanc-casse/65 leading-relaxed truncate" title={realisation.sousTitre}>{realisation.sousTitre}</p>
 
     <!-- CTA ligne : bouton mauve + lien tertiaire -->
-    <div class="mt-6 flex items-center justify-between gap-3 pt-5 border-t border-bleu-nuit/10">
+    <div class="mt-6 flex flex-wrap items-center justify-between gap-x-3 gap-y-2 pt-5 border-t border-white/10">
       {realisation.previewUrl ? (
         <a
-          href={realisation.previewUrl}
-          target="_blank"
-          rel="noopener"
-          class="group/cta inline-flex items-center gap-1.5 h-10 px-4 text-sm font-semibold rounded-full bg-bleu text-white hover:bg-[#7e95ff] hover:-translate-y-0.5 shadow-[0_4px_16px_rgba(145,166,255,0.45)] transition-all duration-200"
+          href={`/realisations/${realisation.slug}`}
+          class="group/cta inline-flex items-center gap-1.5 h-10 px-4 text-sm font-semibold rounded-full bg-bleu text-white hover:bg-[#7e95ff] hover:-translate-y-0.5 shadow-[0_4px_16px_rgba(255,255,255,0.35)] transition-all duration-200"
+          data-track-event="cta_view_realisation_click"
+          data-track-category="navigation"
+          data-track-label={realisation.slug}
+          data-track-source="realisation_card_cta"
+          data-track-target={`/realisations/${realisation.slug}`}
         >
-          Voir la démo
+          Voir la réalisation
           <Icon name="arrow-right" size={14} strokeWidth={2.5} class="transition-transform duration-200 group-hover/cta:translate-x-0.5" />
         </a>
       ) : <span />}
 
       <a
         href={ctaHref}
-        class="inline-flex items-center gap-1.5 text-sm font-semibold text-bleu-nuit/70 hover:text-bleu transition-colors"
+        class="inline-flex items-center gap-1.5 text-sm font-semibold text-blanc-casse/70 hover:text-bleu transition-colors"
+        data-track-event="cta_create_in_this_style_click"
+        data-track-category="conversion"
+        data-track-label={realisation.slug}
+        data-track-source="realisation_card"
+        data-track-target={ctaHref}
       >
-        Je veux celui-ci
+        Créer un site dans cet esprit
         <Icon name="arrow-right" size={14} strokeWidth={2.5} class="transition-transform duration-200 group-hover:translate-x-0.5" />
       </a>
     </div>

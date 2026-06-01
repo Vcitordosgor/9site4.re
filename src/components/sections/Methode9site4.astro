@@ -1,0 +1,93 @@
+---
+import Icon from '../ui/Icon.astro';
+
+/**
+ * Méthode 9site4 — section 4 home : 3 blocs reliés par une ligne pointillée
+ * dorée bleu mauve. Cards sombres premium avec accent gradient au hover,
+ * gros chiffre romain géant en filigrane, séparateurs élégants.
+ */
+const etapes = [
+  {
+    num: '01',
+    icon: 'file-text',
+    titre: 'Cadrer votre activité',
+    texte: "Nous identifions vos prestations, vos informations clés, vos objectifs et la manière dont vos clients doivent vous contacter.",
+  },
+  {
+    num: '02',
+    icon: 'wand',
+    titre: 'Structurer votre site',
+    texte: "Nous organisons vos pages, vos textes, vos visuels, vos appels à l'action et votre module métier pour créer un site clair et professionnel.",
+  },
+  {
+    num: '03',
+    icon: 'shield-check',
+    titre: 'Gérer votre présence web',
+    texte: "Hébergement, sécurité, maintenance, modifications simples et accompagnement local sont intégrés dans la durée.",
+  },
+];
+---
+
+<section class="relative px-6 py-20 md:py-28 overflow-hidden" aria-labelledby="methode-titre">  <div class="relative mx-auto max-w-content">
+    <div class="max-w-3xl mx-auto text-center">
+      <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+        <span class="w-2 h-2 rounded-full bg-bleu"></span> Méthode 9site4
+      </p>
+      <h2 id="methode-titre" class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl lg:text-5xl text-blanc-casse text-balance leading-[1.12]">
+        Une méthode pensée
+        <span class="block italic font-medium text-bleu">pour les entreprises locales.</span>
+      </h2>
+    </div>
+
+    <!-- Ligne pointillée bleu mauve qui relie les 3 cards (desktop only) -->
+    <div class="scroll-reveal relative mt-16 md:mt-20">
+      <div class="hidden md:block absolute top-24 left-[16%] right-[16%] h-px border-t-2 border-dashed border-bleu/40 pointer-events-none" aria-hidden="true"></div>
+      <!-- 3 petits dots bleu mauve sur la ligne, alignés sur le centre de chaque card -->
+      <div class="hidden md:flex absolute top-24 left-[16%] right-[16%] -translate-y-1/2 justify-between pointer-events-none" aria-hidden="true">
+        <span class="block w-3 h-3 rounded-full bg-bleu ring-4 ring-black"></span>
+        <span class="block w-3 h-3 rounded-full bg-bleu ring-4 ring-black"></span>
+        <span class="block w-3 h-3 rounded-full bg-bleu ring-4 ring-black"></span>
+      </div>
+
+      <ol class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 relative">
+        {etapes.map((e, i) => (
+          <li class="group relative">
+            <article class="relative h-full flex flex-col rounded-3xl p-8 md:p-9 overflow-hidden transition-all duration-500 ease-out-soft hover:-translate-y-1.5"
+              style="background: linear-gradient(180deg, #14161F 0%, #0A0B12 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 18px 40px -22px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08);"
+              onmouseover="this.style.boxShadow='0 1px 0 rgba(255,255,255,0.10) inset, 0 28px 60px -18px rgba(0,0,0,0.95), 0 0 0 1.5px #91a6ff, 0 0 36px -8px rgba(145,166,255,0.50)';"
+              onmouseout="this.style.boxShadow='0 1px 0 rgba(255,255,255,0.06) inset, 0 18px 40px -22px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08)';"
+            >
+              <!-- Gradient accent en haut, plus présent au hover -->
+              <span class="absolute top-0 inset-x-8 h-px bg-gradient-to-r from-transparent via-bleu/60 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-500" aria-hidden="true"></span>
+
+              <!-- Header card : icône + numéro -->
+              <div class="flex items-center justify-between">
+                <span class="relative flex w-14 h-14 items-center justify-center rounded-2xl overflow-hidden">
+                  <span class="absolute inset-0 bg-gradient-to-br from-bleu/25 to-bleu/5 group-hover:from-bleu/40 group-hover:to-bleu/15 transition-all duration-500" aria-hidden="true"></span>
+                  <Icon name={e.icon} size={24} strokeWidth={1.75} class="relative text-bleu" />
+                </span>
+                <span class="font-sora font-bold text-bleu/40 group-hover:text-bleu/70 transition-colors duration-500 text-2xl leading-none tabular-nums tracking-tight">{e.num}</span>
+              </div>
+
+              <!-- Petit séparateur or-bleu au hover -->
+              <span class="mt-6 block h-px w-10 bg-bleu/40 group-hover:w-16 group-hover:bg-bleu transition-all duration-500 ease-out-soft" aria-hidden="true"></span>
+
+              <h3 class="mt-5 font-sora font-semibold text-xl md:text-2xl text-blanc-casse leading-snug">{e.titre}</h3>
+              <p class="mt-3 text-[15px] md:text-base text-blanc-casse/65 leading-relaxed">{e.texte}</p>
+
+              <!-- Flèche entre cards (desktop, sauf dernière) -->
+              {i < etapes.length - 1 && (
+                <span class="hidden md:flex absolute top-1/2 -right-6 lg:-right-7 -translate-y-1/2 w-10 h-10 rounded-full items-center justify-center pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  style="background: rgba(145,166,255,0.15); backdrop-filter: blur(4px);"
+                  aria-hidden="true"
+                >
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#91a6ff" stroke-width="2" class="w-5 h-5"><path d="M5 12h14m0 0l-5-5m5 5l-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              )}
+            </article>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </div>
+</section>

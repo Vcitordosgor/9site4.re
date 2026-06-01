@@ -15,8 +15,12 @@ import Header from '../../components/templates/cafe-torref/Header.astro';
 import Hero from '../../components/templates/cafe-torref/HeroSac.astro';
 import Origines from '../../components/templates/cafe-torref/Origines.astro';
 import Methodes from '../../components/templates/cafe-torref/Methodes.astro';
+import Torrefacteur from '../../components/templates/cafe-torref/Torrefacteur.astro';
+import Preparation from '../../components/templates/cafe-torref/Preparation.astro';
 import Atelier from '../../components/templates/cafe-torref/Atelier.astro';
 import Abonnement from '../../components/templates/cafe-torref/Abonnement.astro';
+import Boutique from '../../components/templates/cafe-torref/Boutique.astro';
+import Engagement from '../../components/templates/cafe-torref/Engagement.astro';
 import Faq from '../../components/templates/cafe-torref/Faq.astro';
 import Footer from '../../components/templates/cafe-torref/Footer.astro';
 
@@ -32,9 +36,37 @@ const businessLD = localBusinessSchema(data, 'CafeOrCoffeeShop');
     <Hero />
     <Origines />
     <Methodes />
+    <Torrefacteur />
+    <Preparation />
     <Atelier />
     <Abonnement />
+    <Boutique />
+    <Engagement />
     <Faq />
   </main>
   <Footer />
+
+  <a
+    id="cf-sticky-cta"
+    href="#abonnement"
+    data-visible="false"
+    class="md:hidden fixed bottom-5 inset-x-5 z-40 inline-flex items-center justify-center h-12 text-[11px] uppercase tracking-[0.22em] font-semibold transition-all duration-300 data-[visible=false]:opacity-0 data-[visible=false]:translate-y-4 data-[visible=false]:pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0"
+    style="font-family:'DM Mono',monospace; background:#B57A4A; color:#1A0F0A; box-shadow:0 12px 28px rgba(26,15,10,0.40);"
+  >S'abonner — 14€ / 15 jours</a>
+
+  <script>
+    const sticky = document.getElementById('cf-sticky-cta');
+    const target = document.getElementById('abonnement');
+    if (sticky && target) {
+      const update = () => {
+        const rect = target.getBoundingClientRect();
+        const inSection = rect.top < window.innerHeight && rect.bottom > 80;
+        const scrolledPastHero = window.scrollY > 600;
+        sticky.dataset.visible = String(scrolledPastHero && !inSection);
+      };
+      update();
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update, { passive: true });
+    }
+  </script>
 </BaseLayout>

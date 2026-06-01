@@ -29,6 +29,20 @@ type PageKey =
   | 'legal'
   | 'notFound'
   | 'styleguide'
+  | 'creationSiteReunion'
+  | 'siteRestaurantReunion'
+  | 'siteArtisanReunion'
+  | 'siteCoiffeurReunion'
+  | 'siteGiteLocationReunion'
+  | 'siteProfessionLiberaleReunion'
+  | 'siteBienEtreSanteReunion'
+  | 'siteInstitutBeauteReunion'
+  | 'siteCoachIndependantReunion'
+  | 'siteCommerceLocalReunion'
+  | 'siteTpePmeReunion'
+  | 'siteVitrineReunion'
+  | 'agenceWebReunion'
+  | 'diagnostic'
   | 'templatePizzeria'
   | 'templateSalon'
   | 'templateSpa'
@@ -72,27 +86,27 @@ type PageKey =
 
 const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'> & { noindex?: boolean; ogImage?: string; ogImageAlt?: string }> = {
   home: {
-    title: `${siteConfig.siteName} — Site pro à La Réunion, prêt en 7 jours`,
+    title: `${siteConfig.siteName} — Le partenaire web des TPE/PME à La Réunion`,
     description:
-      'Agence web pour TPE et PME à La Réunion. 9site4 crée et gère le site vitrine des entreprises réunionnaises : hébergement, maintenance, modifications simples et formulaire métier inclus, dès 97,4€/mois sans frais de création.',
+      'Partenaire web des professionnels réunionnais. 9site4 crée, structure et gère des sites professionnels pour TPE/PME à La Réunion : création incluse, module métier, hébergement, maintenance et accompagnement local pour 97,4€/mois.',
     canonical: '/',
   },
   realisations: {
-    title: `Exemples métiers — Sites vitrines pour TPE à La Réunion | ${siteConfig.siteName}`,
+    title: `Nos réalisations — Sites professionnels à La Réunion | ${siteConfig.siteName}`,
     description:
-      'Exemples de sites vitrines par métier à La Réunion (974) : artisans, restaurants, instituts de beauté, gîtes, coachs, professions libérales. Des démonstrations pour vous projeter, ensuite adaptées à votre activité.',
+      'Découvrez les réalisations 9site4 : sites professionnels conçus pour les TPE/PME réunionnaises — artisans, restaurants, instituts, gîtes, coachs, professions libérales. Chaque site est adapté au métier et géré dans la durée.',
     canonical: '/realisations',
   },
   tarifs: {
-    title: `Tarifs 9site4 — Site vitrine tout compris dès 97,4€/mois`,
+    title: `Tarifs 9site4 — Formule claire à 97,4€/mois pour votre site professionnel`,
     description:
-      'Site internet à La Réunion dès 97,4€/mois, soit environ 3,24€/jour. Domaine, hébergement, maintenance, modifications simples et formulaire métier inclus. Sans frais de création, sans engagement.',
+      'Une formule claire pour votre site professionnel à La Réunion : 97,4€/mois tout inclus. Création, design, module métier, domaine, hébergement, maintenance, modifications simples et accompagnement local. Sans frais de création, sans engagement.',
     canonical: '/tarifs',
   },
   contact: {
-    title: `Contact — Devis gratuit site web Réunion | ${siteConfig.siteName}`,
+    title: `Contact — Parlez-nous de votre projet web | ${siteConfig.siteName}`,
     description:
-      'Demandez votre devis gratuit pour la création de votre site internet à La Réunion. Réponse rapide par WhatsApp ou formulaire. Saint-Denis, Saint-Pierre, Saint-Paul et toute l\'île.',
+      'Présentez votre activité, votre besoin et vos objectifs à 9site4. Notre équipe vous répond avec une proposition claire et adaptée à votre métier. Accompagnement local à La Réunion.',
     canonical: '/contact',
   },
   legal: {
@@ -111,6 +125,90 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
     description: 'Bibliothèque de composants UI.',
     canonical: '/styleguide',
     noindex: true,
+  },
+  creationSiteReunion: {
+    title: `Création de site internet à La Réunion pour TPE/PME | ${siteConfig.siteName}`,
+    description:
+      '9site4 crée, structure et gère des sites internet professionnels pour les TPE/PME à La Réunion. Site prêt en 7 jours, création incluse, gestion continue.',
+    canonical: '/creation-site-internet-la-reunion',
+  },
+  siteRestaurantReunion: {
+    title: `Site internet pour restaurant à La Réunion | ${siteConfig.siteName}`,
+    description:
+      '9site4 crée des sites professionnels pour restaurants, snacks, bars, cafés et pizzerias à La Réunion : carte, horaires, photos, réservation et gestion continue.',
+    canonical: '/site-internet-restaurant-la-reunion',
+  },
+  siteArtisanReunion: {
+    title: `Site internet pour artisan à La Réunion | ${siteConfig.siteName}`,
+    description:
+      "9site4 crée des sites professionnels pour artisans et entreprises locales à La Réunion : prestations, zones d'intervention, demande de devis, photos et gestion continue.",
+    canonical: '/site-internet-artisan-la-reunion',
+  },
+  siteCoiffeurReunion: {
+    title: `Site internet pour coiffeur à La Réunion | ${siteConfig.siteName}`,
+    description:
+      '9site4 crée des sites professionnels pour salons de coiffure et coiffeurs à La Réunion : prestations, équipe, prise de rendez-vous et gestion continue.',
+    canonical: '/site-internet-coiffeur-la-reunion',
+  },
+  siteGiteLocationReunion: {
+    title: `Site internet pour gîte et location à La Réunion | ${siteConfig.siteName}`,
+    description:
+      '9site4 crée des sites professionnels pour gîtes, locations saisonnières, conciergeries et hébergements touristiques à La Réunion : présentation, calendrier, demande de séjour.',
+    canonical: '/site-internet-gite-location-la-reunion',
+  },
+  siteProfessionLiberaleReunion: {
+    title: `Site internet pour profession libérale à La Réunion | ${siteConfig.siteName}`,
+    description:
+      '9site4 crée des sites professionnels pour avocats, notaires, experts-comptables, consultants et architectes à La Réunion : présentation, méthode et prise de rendez-vous.',
+    canonical: '/site-internet-profession-liberale-la-reunion',
+  },
+  siteBienEtreSanteReunion: {
+    title: `Site internet pour praticien bien-être et santé à La Réunion | ${siteConfig.siteName}`,
+    description:
+      '9site4 crée des sites professionnels pour ostéopathes, naturopathes, diététiciens, coachs sportifs, yoga, danse et professionnels du bien-être à La Réunion : prestations, rendez-vous et gestion continue.',
+    canonical: '/site-internet-bien-etre-sante-la-reunion',
+  },
+  siteInstitutBeauteReunion: {
+    title: `Site internet pour institut de beauté à La Réunion | ${siteConfig.siteName}`,
+    description:
+      '9site4 crée des sites professionnels pour instituts de beauté, spas, salons de coiffure, tatoueurs et professionnels du bien-être à La Réunion : soins, équipe, prise de rendez-vous et gestion continue.',
+    canonical: '/site-internet-institut-beaute-la-reunion',
+  },
+  siteCoachIndependantReunion: {
+    title: `Site internet pour coach et indépendant à La Réunion | ${siteConfig.siteName}`,
+    description:
+      '9site4 crée des sites professionnels pour coachs, consultants, formateurs et indépendants à La Réunion : offres, programmes, premier échange et gestion continue.',
+    canonical: '/site-internet-coach-independant-la-reunion',
+  },
+  siteCommerceLocalReunion: {
+    title: `Site internet pour commerce local à La Réunion | ${siteConfig.siteName}`,
+    description:
+      "9site4 crée des sites professionnels pour commerces locaux à La Réunion : présentation de l'activité, horaires, produits, contact, demandes d'information et gestion continue.",
+    canonical: '/site-internet-commerce-local-la-reunion',
+  },
+  siteTpePmeReunion: {
+    title: `Site internet pour TPE/PME à La Réunion | ${siteConfig.siteName}`,
+    description:
+      '9site4 accompagne les TPE/PME réunionnaises avec des sites professionnels clairs, fiables, adaptés à leur métier et gérés dans la durée.',
+    canonical: '/site-internet-tpe-pme-la-reunion',
+  },
+  siteVitrineReunion: {
+    title: `Site vitrine à La Réunion pour professionnels | ${siteConfig.siteName}`,
+    description:
+      '9site4 crée et gère des sites vitrines professionnels à La Réunion pour présenter votre activité, vos prestations, vos informations pratiques et faciliter la prise de contact.',
+    canonical: '/site-vitrine-la-reunion',
+  },
+  agenceWebReunion: {
+    title: `Agence web à La Réunion pour TPE/PME | ${siteConfig.siteName}`,
+    description:
+      '9site4 accompagne les professionnels réunionnais dans la création, la structuration et la gestion de leur site internet, avec une offre claire et un accompagnement local.',
+    canonical: '/agence-web-la-reunion',
+  },
+  diagnostic: {
+    title: `Diagnostic gratuit de site internet à La Réunion | ${siteConfig.siteName}`,
+    description:
+      'Demandez un diagnostic gratuit de votre site internet ou de votre présence en ligne. 9site4 analyse votre visibilité, votre clarté, vos informations clés et vos points de contact.',
+    canonical: '/diagnostic-site-internet-la-reunion',
   },
   templatePizzeria: {
     title: 'Pizza Lé O — Pizzeria à Saint-Paul (Réunion) | Template 9site4',
@@ -218,9 +316,9 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
     noindex: true,
   },
   templateGite: {
-    title: 'Le Cap Anglais — Gîte de cirque à Cilaos (Réunion) | Template 9site4',
+    title: 'La Crête d\'Aurère — Gîte de cirque à Cilaos (Réunion) | Template 9site4',
     description:
-      'Le Cap Anglais (fictif) — gîte authentique à Cilaos, calendrier en direct, réservation. Démo 9site4 : votre site gîte sera adapté à votre hébergement.',
+      'La Crête d\'Aurère (fictif) — gîte authentique à Cilaos, calendrier en direct, réservation. Démo 9site4 : votre site gîte sera adapté à votre hébergement.',
     canonical: '/templates/gite',
     noindex: true,
   },
@@ -409,4 +507,26 @@ export function getSeo(page: PageKey): PageSeo {
 /** Convertit un chemin relatif en URL absolue basée sur siteConfig.siteUrl. */
 export function absoluteUrl(path: string): string {
   return new URL(path, siteConfig.siteUrl).toString();
+}
+
+/**
+ * SEO d'une page détail réalisation (/realisations/<slug>).
+ * Génère title/description/canonical à partir des champs métier
+ * (businessType, sector, nom). Indexable par défaut.
+ */
+export function getRealisationSeo(realisation: {
+  slug: string;
+  nom: string;
+  businessType: string;
+  sector?: string;
+}): PageSeo {
+  const business = realisation.businessType;
+  return {
+    title: `Réalisation de site internet pour ${business} à La Réunion | ${siteConfig.siteName}`,
+    description: `Découvrez une réalisation ${siteConfig.siteName} pour un site internet professionnel de ${business} à La Réunion : structure, module métier, présentation claire et prise de contact.`,
+    canonical: `/realisations/${realisation.slug}`,
+    ogImage: DEFAULT_OG_IMAGE,
+    ogImageAlt: DEFAULT_OG_ALT,
+    noindex: false,
+  };
 }

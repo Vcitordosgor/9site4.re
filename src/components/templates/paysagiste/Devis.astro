@@ -1,41 +1,98 @@
 ---
-/**
- * Devis — wrapper de la section "Demande de devis".
- * Charge le formulaire en Astro Island Preact.
- * Le formulaire ouvre WhatsApp pré-rempli.
- */
 import data from '../../../data/templates/agapanthes.json';
-import RdvForm from './RdvForm.tsx';
+const info = data.info;
+const formules = data.formules;
 ---
-
-<section id="devis" class="relative bg-agap-pierre/40 py-20 md:py-32 px-6 md:px-10">
-  <div class="max-w-content mx-auto">
-
-    <header class="text-center max-w-2xl mx-auto mb-12 md:mb-16">
-      <p class="scroll-reveal flex items-center justify-center gap-3 text-xs font-outfit font-medium uppercase tracking-[0.32em] text-agap-violet">
-        <span class="block w-8 h-px bg-agap-violet" aria-hidden="true"></span>
-        <span>Demander un devis</span>
-        <span class="block w-8 h-px bg-agap-violet" aria-hidden="true"></span>
-      </p>
-      <h2 class="scroll-reveal mt-5 font-cormorant text-agap-feuille leading-[1.05]" style="font-size: clamp(36px, 5.5vw, 60px);">
-        Parlons de
-        <span class="italic font-medium text-agap-violet">votre jardin.</span>
+<section id="devis" class="relative bg-agap-lin text-agap-feuille py-24 lg:py-36">
+  <div class="max-w-[1400px] mx-auto px-6 lg:px-12 grid lg:grid-cols-12 gap-12">
+    <div class="lg:col-span-5">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="inline-block w-10 h-px bg-agap-violet"></span>
+        <span class="font-manrope text-[11px] uppercase tracking-[0.32em] text-agap-feuille/60">08 — Devis</span>
+      </div>
+      <h2 class="font-cormorant font-light text-[clamp(2.5rem,5vw,4.5rem)] leading-[1]">
+        Parlons<br/><em class="italic text-agap-violet">de votre terrain.</em>
       </h2>
-      <p class="scroll-reveal mt-6 font-outfit text-agap-feuille/70 leading-[1.7]">
-        Réponse sous 48h ouvrées. Premier rendez-vous de diagnostic
-        toujours sur place et toujours gratuit.
-      </p>
-    </header>
+      <p class="mt-8 font-manrope text-base text-agap-feuille/70 leading-relaxed max-w-md">Décrivez votre projet en quelques clics. On vous rappelle sous 48h ouvrées avec un premier ordre de grandeur.</p>
 
-    <div class="scroll-reveal">
-      <RdvForm
-        client:load
-        typesIntervention={data.typesIntervention}
-        surfaces={data.surfaces}
-        frequences={data.frequences}
-        whatsapp={data.info.whatsapp}
-        atelierNom={data.info.nom}
-      />
+      <div class="mt-10 space-y-4 font-manrope text-sm">
+        <a href={`tel:${info.telephoneHref}`} class="flex items-center gap-4 group">
+          <span class="w-10 h-10 rounded-full bg-agap-violet/10 text-agap-violet flex items-center justify-center group-hover:bg-agap-violet group-hover:text-agap-lin transition"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92Z"/></svg></span>
+          <span class="font-cormorant text-xl">{info.telephone}</span>
+        </a>
+        <a href={`mailto:${info.email}`} class="flex items-center gap-4 group">
+          <span class="w-10 h-10 rounded-full bg-agap-violet/10 text-agap-violet flex items-center justify-center group-hover:bg-agap-violet group-hover:text-agap-lin transition"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3,7 12,13 21,7"/></svg></span>
+          <span class="font-cormorant italic text-lg">{info.email}</span>
+        </a>
+      </div>
     </div>
+
+    <form class="lg:col-span-7 bg-agap-pierre/30 rounded-3xl p-6 lg:p-10 border border-agap-feuille/10">
+      <div class="font-manrope text-[11px] uppercase tracking-[0.3em] text-agap-violet mb-2">Formulaire</div>
+      <h3 class="font-cormorant text-3xl lg:text-4xl mb-8">Votre projet en 3 questions</h3>
+
+      <!-- Type d'intervention (radio cards) -->
+      <fieldset class="mb-8">
+        <legend class="font-manrope text-xs uppercase tracking-[0.22em] text-agap-feuille/60 mb-3">Type d'intervention</legend>
+        <div class="grid grid-cols-3 gap-2">
+          {formules.map((fo, i) => (
+            <label class="relative cursor-pointer">
+              <input type="radio" name="type" value={fo.id} class="peer sr-only" checked={i === 0} />
+              <div class="p-4 rounded-xl border border-agap-feuille/15 bg-agap-lin text-center peer-checked:bg-agap-violet peer-checked:border-agap-violet peer-checked:text-agap-lin transition">
+                <div class="font-cormorant text-lg leading-tight">{fo.titre.split(' ')[0]}</div>
+              </div>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+
+      <!-- Surface slider -->
+      <div class="mb-8">
+        <div class="flex items-center justify-between mb-3">
+          <span class="font-manrope text-xs uppercase tracking-[0.22em] text-agap-feuille/60">Surface estimée</span>
+          <span class="font-cormorant italic text-lg text-agap-violet" id="surface-val">300 m²</span>
+        </div>
+        <input type="range" id="surface" min="20" max="2000" step="10" value="300" class="w-full accent-agap-violet"/>
+        <div class="flex justify-between mt-1 font-manrope text-[10px] uppercase tracking-[0.22em] text-agap-feuille/40">
+          <span>20 m²</span><span>2000 m²</span>
+        </div>
+      </div>
+
+      <!-- Budget -->
+      <fieldset class="mb-8">
+        <legend class="font-manrope text-xs uppercase tracking-[0.22em] text-agap-feuille/60 mb-3">Budget envisagé</legend>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+          {['~ 2k€','2-5k€','5-15k€','15k€ +'].map((b, i) => (
+            <label class="relative cursor-pointer">
+              <input type="radio" name="budget" class="peer sr-only" checked={i === 1} />
+              <div class="px-3 py-2 rounded-full border border-agap-feuille/15 bg-agap-lin text-center font-manrope text-xs peer-checked:bg-agap-violet peer-checked:border-agap-violet peer-checked:text-agap-lin transition">{b}</div>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+
+      <div class="grid sm:grid-cols-2 gap-4 mb-4">
+        <label class="block">
+          <span class="font-manrope text-xs uppercase tracking-[0.22em] text-agap-feuille/60">Prénom</span>
+          <input type="text" class="mt-2 w-full h-12 px-4 rounded-xl bg-agap-lin border border-agap-feuille/15 font-manrope text-sm focus:border-agap-violet focus:outline-none"/>
+        </label>
+        <label class="block">
+          <span class="font-manrope text-xs uppercase tracking-[0.22em] text-agap-feuille/60">Téléphone</span>
+          <input type="tel" class="mt-2 w-full h-12 px-4 rounded-xl bg-agap-lin border border-agap-feuille/15 font-manrope text-sm focus:border-agap-violet focus:outline-none"/>
+        </label>
+      </div>
+
+      <button type="submit" class="mt-4 w-full h-14 rounded-full bg-agap-violet text-agap-lin text-xs font-manrope font-semibold uppercase tracking-[0.22em] hover:bg-agap-violet-fonce transition">
+        Recevoir un devis
+      </button>
+      <p class="mt-4 font-manrope text-[11px] text-agap-feuille/50 text-center">Démo · ce formulaire n'envoie rien.</p>
+    </form>
   </div>
 </section>
+<script>
+  const slider = document.getElementById('surface') as HTMLInputElement | null;
+  const out = document.getElementById('surface-val');
+  if (slider && out) {
+    slider.addEventListener('input', () => { out.textContent = `${slider.value} m²`; });
+  }
+</script>

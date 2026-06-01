@@ -1,162 +1,52 @@
 ---
-/**
- * Formules — 5 cards formules de plongée style 'fiche technique d'instrument'.
- * Chaque card = profondeur + durée + niveau + prix + inclus en bullets.
- * Mix dense (data plongeur) + empathique (description en clair).
- */
-import Icon from '../../ui/Icon.astro';
-import data from '../../../data/templates/bleulagon.json';
-
-const iconMap: Record<string, string> = {
-  'spark': 'sparkle',
-  'waves': 'globe',
-  'leaf': 'shield-check',
-  'compass': 'calendar-clock',
-  'shield': 'shield-check',
-};
+import data from '../../../data/templates/plongee.json';
+const formules = data.formules;
 ---
-
-<section id="formules" class="bg-plongee-ecume py-24 md:py-36 px-6 md:px-10">
-  <div class="max-w-content mx-auto">
-
-    <!-- Carrousel photos profondeur -->
-    <div class="mb-14 md:mb-20 -mx-6 md:-mx-10">
-      <div class="flex gap-3 overflow-x-auto snap-x snap-mandatory scroll-smooth px-6 md:px-10 pb-3" style="scrollbar-width: thin;">
-        {[1,2,3,4,5,6,7,8].map((n) => (
-          <img
-            src={`/images/plongee/extra-${n}.webp`}
-            alt={`Plongée — profondeur ${n}`}
-            class="snap-start shrink-0 w-[80%] sm:w-[55%] md:w-[40%] lg:w-[30%] aspect-[4/3] object-cover rounded-2xl"
-            loading="lazy"
-          />
-        ))}
+<section id="formules" class="relative bg-plongee-abysse text-plongee-ecume py-24 lg:py-36 overflow-hidden">
+  <div class="absolute inset-0 opacity-[0.05]" style="background-image: radial-gradient(#5BC0BE 1px, transparent 1px); background-size: 28px 28px;"></div>
+  <div class="relative max-w-[1400px] mx-auto px-6 lg:px-12">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16">
+      <div class="max-w-2xl">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="inline-block w-10 h-px bg-plongee-corail"></span>
+          <span class="font-jetbrains-mono text-[11px] uppercase tracking-[0.32em] text-plongee-ecume/60">02 — Formules</span>
+        </div>
+        <h2 class="font-fraunces font-light text-[clamp(2.5rem,5vw,4.5rem)] leading-[0.98] tracking-tight">
+          Trois formules,<br/><em class="italic text-plongee-lagon">une seule philosophie.</em>
+        </h2>
       </div>
+      <p class="font-inter text-sm lg:text-base text-plongee-ecume/70 max-w-sm">
+        Tarifs démonstration. Pour une cotation réelle adaptée à votre niveau, appelez-nous.
+      </p>
     </div>
 
-    <header class="mb-14 md:mb-20 max-w-3xl">
-      <p class="font-jetbrains text-[10px] uppercase tracking-[0.32em] text-plongee-corail font-medium mb-5">
-        ▼ 5 formules · de baptême au passage de niveau
-      </p>
-      <h2 class="font-space-grotesk font-bold text-plongee-abysse leading-[1.0]" style="font-size: clamp(40px, 6vw, 76px);">
-        Choisissez votre
-        <span class="italic font-light text-plongee-lagon">profondeur.</span>
-      </h2>
-      <p class="mt-6 font-inter text-plongee-marine/85 text-lg leading-relaxed">
-        Du premier baptême en surface à la formation PADI Open Water, on adapte la sortie à votre niveau, votre envie, votre rythme. Toutes les formules incluent le matériel et l'encadrement.
-      </p>
-    </header>
-
-    <ul class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-      {data.formules.map((f, i) => (
-        <li class:list={[
-          'group relative bg-plongee-abysse text-plongee-ecume rounded-2xl p-6 md:p-7 ring-1 ring-plongee-marine/40 hover:ring-plongee-corail transition-all hover:-translate-y-1 flex flex-col',
-          i === 3 ? 'lg:col-start-2' : '',
-        ]}>
-          <!-- Icône + niveau badge -->
-          <div class="flex items-start justify-between gap-3 mb-5">
-            <span class="flex w-12 h-12 rounded-xl bg-plongee-lagon/15 text-plongee-lagon items-center justify-center">
-              <Icon name={iconMap[f.icone] ?? 'sparkle'} size={22} strokeWidth={1.75} />
-            </span>
-            <span class="inline-flex items-center h-6 px-2.5 bg-plongee-corail/15 text-plongee-corail font-jetbrains text-[10px] uppercase tracking-wider rounded-full">
-              {f.niveau}
-            </span>
+    <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+      {formules.map((f, i) => (
+        <article class={`group relative flex flex-col p-7 lg:p-9 rounded-3xl transition-all duration-500 hover:-translate-y-1 ${i === 1 ? 'bg-plongee-corail text-plongee-abysse' : 'bg-plongee-marine/40 border border-plongee-ecume/10 hover:border-plongee-lagon/50'}`}>
+          <div class={`font-jetbrains-mono text-[10px] uppercase tracking-[0.32em] ${i === 1 ? 'text-plongee-abysse/70' : 'text-plongee-lagon'}`}>{f.niveau}</div>
+          <h3 class="mt-4 font-fraunces text-3xl lg:text-4xl leading-tight">{f.titre}</h3>
+          <p class={`mt-4 text-sm font-inter leading-relaxed flex-1 ${i === 1 ? 'text-plongee-abysse/80' : 'text-plongee-ecume/70'}`}>{f.description}</p>
+          <div class="mt-6 flex items-baseline gap-2">
+            <span class="font-fraunces text-5xl">{f.prix}</span>
+            <span class={`text-xs font-inter ${i === 1 ? 'text-plongee-abysse/60' : 'text-plongee-ecume/50'}`}>/pers · démo</span>
           </div>
-
-          <!-- Titre -->
-          <h3 class="font-space-grotesk font-bold text-plongee-ecume text-2xl leading-tight">
-            {f.titre}
-          </h3>
-
-          <!-- Données techniques en grille type instrument -->
-          <dl class="mt-4 grid grid-cols-2 gap-x-3 gap-y-2 pt-3 border-t border-plongee-ecume/10 font-jetbrains text-[10px] uppercase tracking-[0.18em]">
-            <div>
-              <dt class="text-plongee-lagon mb-0.5">Durée</dt>
-              <dd class="text-plongee-ecume tabular-nums">{f.duree}</dd>
-            </div>
-            <div>
-              <dt class="text-plongee-lagon mb-0.5">Profondeur</dt>
-              <dd class="text-plongee-ecume tabular-nums">{f.profondeur}</dd>
-            </div>
-          </dl>
-
-          <!-- Description -->
-          <p class="mt-5 font-inter text-plongee-ecume/75 text-sm leading-relaxed">
-            {f.description}
-          </p>
-
-          <!-- Inclus -->
-          <ul class="mt-5 space-y-2 flex-1">
-            {f.inclus.map((item) => (
-              <li class="flex items-start gap-2 font-inter text-[13px] text-plongee-ecume/85 leading-snug">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" class="text-plongee-lagon shrink-0 mt-0.5" aria-hidden="true">
-                  <path d="M20 6L9 17l-5-5"/>
-                </svg>
+          <ul class={`mt-6 space-y-2.5 text-sm font-inter ${i === 1 ? 'text-plongee-abysse/85' : 'text-plongee-ecume/80'}`}>
+            {f.inclus.map(item => (
+              <li class="flex gap-2.5">
+                <span class={`mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0 ${i === 1 ? 'bg-plongee-abysse' : 'bg-plongee-corail'}`}></span>
                 <span>{item}</span>
               </li>
             ))}
           </ul>
-
-          <!-- Prix + CTA -->
-          <div class="mt-6 pt-5 border-t border-plongee-ecume/10 flex items-end justify-between gap-3">
-            <p class="font-space-grotesk font-bold text-plongee-corail leading-none tabular-nums" style="font-size: 36px;">
-              {f.prix}
-            </p>
-            <a
-              href={`https://wa.me/${data.info.whatsapp}?text=${encodeURIComponent(`Bonjour, je voudrais réserver : ${f.titre}`)}`}
-              target="_blank"
-              rel="noopener"
-              class="inline-flex items-center gap-1.5 font-inter font-semibold text-plongee-ecume text-sm hover:text-plongee-corail transition-colors"
-            >
-              Réserver
-              <span aria-hidden="true">→</span>
-            </a>
+          <div class={`mt-6 pt-6 border-t ${i === 1 ? 'border-plongee-abysse/15' : 'border-plongee-ecume/10'} flex items-center justify-between text-[10px] font-jetbrains-mono uppercase tracking-[0.2em]`}>
+            <span>{f.duree.split(' · ')[0]}</span>
+            <span>{f.profondeur}</span>
           </div>
-        </li>
+          <a href="#contact" class={`mt-6 inline-flex items-center justify-center h-12 rounded-full text-[11px] font-semibold uppercase tracking-[0.22em] font-inter transition ${i === 1 ? 'bg-plongee-abysse text-plongee-ecume hover:bg-plongee-charbon' : 'border border-plongee-ecume/30 text-plongee-ecume hover:bg-plongee-ecume hover:text-plongee-abysse'}`}>
+            Réserver
+          </a>
+        </article>
       ))}
-    </ul>
-
-    <!-- Tableau niveaux PADI / CMAS + prérequis -->
-    <div class="mt-16 md:mt-20 bg-plongee-abysse text-plongee-ecume rounded-2xl ring-1 ring-plongee-marine/40 overflow-hidden">
-      <div class="px-6 md:px-8 py-5 border-b border-plongee-ecume/10">
-        <p class="font-jetbrains text-[10px] uppercase tracking-[0.32em] text-plongee-corail font-medium">▼ Niveaux PADI / CMAS · prérequis</p>
-        <h3 class="mt-2 font-space-grotesk font-bold text-plongee-ecume text-2xl md:text-3xl leading-tight">
-          Quel niveau pour quelle sortie ?
-        </h3>
-      </div>
-
-      <div class="overflow-x-auto">
-        <table class="w-full text-left font-inter text-sm min-w-[640px]">
-          <thead>
-            <tr class="border-b border-plongee-ecume/10">
-              <th class="px-5 md:px-8 py-4 font-jetbrains text-[10px] uppercase tracking-[0.22em] text-plongee-lagon font-medium">Formule</th>
-              <th class="px-5 py-4 font-jetbrains text-[10px] uppercase tracking-[0.22em] text-plongee-lagon font-medium">Âge mini</th>
-              <th class="px-5 py-4 font-jetbrains text-[10px] uppercase tracking-[0.22em] text-plongee-lagon font-medium">Certif. requise</th>
-              <th class="px-5 md:px-8 py-4 font-jetbrains text-[10px] uppercase tracking-[0.22em] text-plongee-lagon font-medium">Profondeur max</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-plongee-ecume/10">
-            {[
-              { f: 'Baptême',                   age: '8 ans',  certif: 'Aucune',                       prof: '6 m' },
-              { f: 'PADI Scuba Diver',          age: '10 ans', certif: 'Aucune',                       prof: '12 m' },
-              { f: 'PADI Open Water (N1 CMAS)', age: '10 ans', certif: 'Aucune',                       prof: '18 m' },
-              { f: 'Exploration N2 CMAS',       age: '12 ans', certif: 'Open Water ou N1',             prof: '20 – 40 m' },
-              { f: 'Advanced Open Water',       age: '12 ans', certif: 'Open Water ou équivalent',     prof: '30 m' },
-              { f: 'Rescue Diver',              age: '12 ans', certif: 'Advanced + EFR ≤ 24 mois',     prof: '30 m' },
-            ].map((r) => (
-              <tr>
-                <td class="px-5 md:px-8 py-4 font-space-grotesk font-semibold text-plongee-ecume">{r.f}</td>
-                <td class="px-5 py-4 text-plongee-ecume/80 tabular-nums">{r.age}</td>
-                <td class="px-5 py-4 text-plongee-ecume/80">{r.certif}</td>
-                <td class="px-5 md:px-8 py-4 text-plongee-corail font-semibold tabular-nums">{r.prof}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-
-      <p class="px-6 md:px-8 py-5 border-t border-plongee-ecume/10 font-inter italic text-plongee-ecume/70 text-sm">
-        Certificat médical de non contre-indication à la plongée demandé à partir de 12 ans pour toute formation. Cours conformes aux standards fédéraux FFESSM et PADI.
-      </p>
     </div>
   </div>
 </section>

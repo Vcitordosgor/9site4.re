@@ -1,0 +1,64 @@
+---
+const cas = [
+  {
+    secteur: 'Restauration',
+    titre: 'Création d\'un restaurant 12 couverts',
+    contexte: 'Couple de chefs en reconversion, budget de démarrage limité, choix de statut juridique flou (EURL ou SAS ?).',
+    intervention: 'Étude TJM, bilan prévisionnel sur 3 ans, choix SAS pour faciliter l\'entrée d\'un futur associé, montage du dossier banque, négociation BPI.',
+    resultat: 'Ouverture en 5 mois. Prêt obtenu à 78 % du besoin. Rentabilité atteinte au 9e mois.',
+  },
+  {
+    secteur: 'Patrimoine',
+    titre: 'SCI familiale · transmission',
+    contexte: 'Famille avec un bien locatif de 380 K€, deux enfants, optimisation succession recherchée. Arbitrage IR / IS à trancher.',
+    intervention: 'Simulation 15 ans IR vs IS, démembrement parts sociales nue-propriété aux enfants, comptabilité SCI IS, déclaration 2065.',
+    resultat: 'Économie estimée 42 K€ sur droits de succession. Trésorerie SCI optimisée. Comptabilité tenue depuis 4 ans.',
+  },
+  {
+    secteur: 'Artisanat',
+    titre: 'TPE bâtiment · 4 salariés',
+    contexte: 'Entreprise familiale 18 ans d\'existence, comptabilité chez prédécesseur retraité, paie sous-traitée à un tiers, aucun pilotage.',
+    intervention: 'Reprise dossier, mise en place forfait global (compta + paie + bilan), tableau de bord trimestriel, étude trésorerie sur chantiers en cours.',
+    resultat: 'Marge brute remontée de 3,2 pts en 18 mois. Recouvrement clients gagné de 22 jours. Honoraires divisés par 1,4 vs ancien dispositif.',
+  },
+];
+---
+<section id="cas" class="bg-auberval-feutre py-24 md:py-32 px-6 md:px-10 border-t border-auberval-marine/15">
+  <div class="max-w-content mx-auto">
+    <header class="mb-14 max-w-3xl">
+      <p class="font-plex-sans text-[10px] uppercase tracking-[0.32em] text-auberval-or font-semibold mb-5">✦ Cas concrets</p>
+      <h2 class="font-source-serif text-auberval-marine leading-[0.98]" style="font-size: clamp(36px, 5vw, 64px);">
+        Trois dossiers,<br/><span class="italic text-auberval-or font-light">trois résultats.</span>
+      </h2>
+      <p class="mt-6 font-plex-sans text-[15.5px] leading-relaxed text-auberval-marine/75 max-w-2xl">
+        Dossiers anonymisés, chiffres réels. La méthode du cabinet : contexte → intervention → résultat mesuré.
+      </p>
+    </header>
+
+    <div class="space-y-px bg-auberval-marine/15 border border-auberval-marine/15">
+      {cas.map((c, i) => (
+        <article class="bg-auberval-feutre p-7 md:p-10 grid md:grid-cols-12 gap-6 md:gap-10">
+          <div class="md:col-span-3">
+            <div class="font-dm-mono text-[10px] uppercase tracking-[0.28em] text-auberval-or mb-3">Cas n° 0{i + 1}</div>
+            <div class="font-dm-mono text-[11px] uppercase tracking-[0.22em] text-auberval-encre/60 mb-3">— {c.secteur}</div>
+            <h3 class="font-source-serif text-auberval-marine text-2xl md:text-3xl leading-tight">{c.titre}</h3>
+          </div>
+          <div class="md:col-span-9 grid sm:grid-cols-3 gap-6 md:gap-8">
+            <div>
+              <div class="font-dm-mono text-[10px] uppercase tracking-[0.28em] text-auberval-encre/55 mb-2 pb-2 border-b border-auberval-marine/15">Contexte</div>
+              <p class="font-plex-sans text-[14px] leading-relaxed text-auberval-marine/85">{c.contexte}</p>
+            </div>
+            <div>
+              <div class="font-dm-mono text-[10px] uppercase tracking-[0.28em] text-auberval-or mb-2 pb-2 border-b border-auberval-or/30">Intervention</div>
+              <p class="font-plex-sans text-[14px] leading-relaxed text-auberval-marine/85">{c.intervention}</p>
+            </div>
+            <div>
+              <div class="font-dm-mono text-[10px] uppercase tracking-[0.28em] text-auberval-marine mb-2 pb-2 border-b border-auberval-marine/30">Résultat</div>
+              <p class="font-plex-sans text-[14px] leading-relaxed text-auberval-marine font-medium">{c.resultat}</p>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

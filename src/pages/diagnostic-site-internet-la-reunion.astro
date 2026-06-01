@@ -1,0 +1,386 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/ui/Icon.astro';
+import PourquoiChoisir from '../components/sections/PourquoiChoisir.astro';
+import DiagnosticForm from '../components/sections/DiagnosticForm.tsx';
+import siteConfig from '../data/siteConfig.json';
+import { getSeo, absoluteUrl } from '../lib/seo';
+
+const seo = getSeo('diagnostic');
+
+const analyses = [
+  {
+    icon: 'sparkle',
+    titre: 'Clarté de votre activité',
+    texte: 'Compréhension immédiate de ce que vous proposez, en moins de 5 secondes.',
+  },
+  {
+    icon: 'list',
+    titre: 'Présentation de vos prestations',
+    texte: "Détail des offres, lisibilité des tarifs si pertinents, structure adaptée à votre métier.",
+  },
+  {
+    icon: 'info',
+    titre: 'Informations pratiques',
+    texte: "Horaires, adresse, zone d'intervention, contact, accessibilité.",
+  },
+  {
+    icon: 'message-circle',
+    titre: 'Parcours de contact',
+    texte: 'Capacité à transformer un visiteur en demande qualifiée (devis, RDV, séjour…).',
+  },
+  {
+    icon: 'palette',
+    titre: 'Cohérence visuelle',
+    texte: 'Alignement entre votre site, vos réseaux et votre image professionnelle.',
+  },
+  {
+    icon: 'map-pin',
+    titre: 'Présence locale à La Réunion',
+    texte: 'Fiche Google Business, mentions locales, ancrage géographique.',
+  },
+];
+
+const cibles = [
+  'TPE / PME',
+  'Artisans',
+  'Restaurants',
+  'Instituts & spas',
+  'Gîtes & locations',
+  'Professions libérales',
+  'Coachs & indépendants',
+  'Commerces locaux',
+  'Indépendants',
+  'Sans site actuel',
+  'Avec site à améliorer',
+];
+
+const livrables = [
+  {
+    titre: 'Les points forts de votre présence actuelle',
+    texte: "Ce qui fonctionne déjà et qu'il faut conserver.",
+  },
+  {
+    titre: 'Les informations manquantes ou difficiles à trouver',
+    texte: "Ce qui empêche vos clients de comprendre ou de vous joindre.",
+  },
+  {
+    titre: 'Les éléments qui peuvent freiner la prise de contact',
+    texte: "Les points de friction concrets entre le visiteur et la demande.",
+  },
+  {
+    titre: "Les priorités d'amélioration",
+    texte: 'Ce qui aura le plus d\'impact, dans l\'ordre.',
+  },
+  {
+    titre: 'Une recommandation sur le type de site adapté à votre activité',
+    texte: 'Vitrine, présentation détaillée, module métier… selon votre réalité.',
+  },
+];
+
+const diagnosticSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Diagnostic gratuit de présence web',
+  serviceType: 'Audit de site internet et présence en ligne',
+  provider: {
+    '@type': 'Organization',
+    name: siteConfig.siteName,
+    url: siteConfig.siteUrl,
+  },
+  areaServed: {
+    '@type': 'AdministrativeArea',
+    name: 'La Réunion',
+  },
+  description:
+    'Diagnostic gratuit et personnalisé de votre site internet, de votre fiche Google et de votre présence sur les réseaux, par 9site4 à La Réunion.',
+  url: absoluteUrl('/diagnostic-site-internet-la-reunion'),
+  offers: {
+    '@type': 'Offer',
+    name: 'Diagnostic gratuit',
+    price: '0',
+    priceCurrency: 'EUR',
+    availability: 'https://schema.org/InStock',
+  },
+};
+---
+
+<BaseLayout seo={seo}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(diagnosticSchema)} />
+  </Fragment>
+
+  <div class="bg-black text-blanc-casse">
+    <!-- ============================================================ -->
+    <!-- SECTION 1 — HERO                                              -->
+    <!-- ============================================================ -->
+    <section class="relative overflow-hidden px-6 pt-28 pb-16 md:pt-36 md:pb-20">
+      <div class="pointer-events-none absolute -top-32 -right-32 w-[28rem] h-[28rem] rounded-full bg-bleu/20 blur-3xl opacity-60" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute -bottom-32 -left-32 w-[24rem] h-[24rem] rounded-full bg-bleu/15 blur-3xl opacity-40" aria-hidden="true"></div>
+
+      <div class="relative mx-auto max-w-3xl text-center">
+        <p class="hero-rise hero-rise-1 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-bleu/15 ring-1 ring-bleu/30 text-bleu text-[11px] font-semibold uppercase tracking-[0.28em]">
+          <span class="block w-1.5 h-1.5 rounded-full bg-bleu animate-pulse"></span>
+          Diagnostic gratuit
+        </p>
+        <span class="hero-rise hero-rise-2 block mx-auto mt-7 h-[3px] w-16 bg-bleu" aria-hidden="true"></span>
+        <h1 class="hero-rise hero-rise-2 mt-5 font-sora font-bold text-balance leading-[1.05] text-[clamp(2.25rem,4vw+1rem,4rem)] tracking-tight text-blanc-casse">
+          Diagnostic gratuit de votre présence web
+          <span class="block italic font-medium text-bleu">à La Réunion.</span>
+        </h1>
+        <p class="hero-rise hero-rise-4 mx-auto mt-7 max-w-2xl text-lg md:text-xl text-blanc-casse/75 leading-relaxed">
+          Vous avez déjà un site, une page Instagram, une fiche Google ou simplement une activité à présenter ? 9site4 vous aide à identifier ce qui peut être clarifié, structuré ou amélioré pour rassurer vos clients et faciliter la prise de contact.
+        </p>
+
+        <div class="hero-rise hero-rise-5 mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="#diagnostic-form"
+            class="inline-flex items-center justify-center h-14 px-8 text-base font-semibold rounded-full bg-blanc-casse text-bleu-nuit hover:bg-white hover:-translate-y-0.5 shadow-card hover:shadow-card-hover transition-all duration-200 ease-out"
+            data-track-event="diagnostic_cta_click"
+            data-track-category="conversion"
+            data-track-source="diagnostic_hero"
+            data-track-target="#diagnostic-form"
+            data-track-page-type="diagnostic"
+          >
+            Demander mon diagnostic gratuit
+          </a>
+          <a
+            href="/realisations"
+            class="inline-flex items-center justify-center h-14 px-7 text-base font-semibold rounded-full ring-1 ring-blanc-casse/40 text-blanc-casse hover:bg-white/10 hover:-translate-y-0.5 transition-all duration-200 ease-out"
+            data-track-event="cta_view_realisations_click"
+            data-track-category="navigation"
+            data-track-source="diagnostic_hero"
+            data-track-target="/realisations"
+            data-track-page-type="diagnostic"
+          >
+            Voir nos réalisations
+          </a>
+        </div>
+
+        <div class="hero-rise hero-rise-5 mt-9 flex flex-wrap justify-center gap-2.5">
+          {['Gratuit', 'Sans engagement', 'Réponse personnalisée', 'Accompagnement local'].map((b) => (
+            <span class="inline-flex items-center gap-2 h-9 px-4 rounded-full bg-white/[0.08] ring-1 ring-white/15 text-xs font-medium text-blanc-casse">
+              <span class="block w-1.5 h-1.5 rounded-full bg-bleu" aria-hidden="true"></span>
+              {b}
+            </span>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 2 — POURQUOI DEMANDER UN DIAGNOSTIC                   -->
+    <!-- ============================================================ -->
+    <section class="relative px-6 py-20 md:py-28" aria-labelledby="pourquoi-titre">
+      <div class="relative mx-auto max-w-3xl">
+        <div class="text-center">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-bleu"></span> Pourquoi un diagnostic
+          </p>
+          <h2 id="pourquoi-titre" class="scroll-reveal mt-6 font-sora font-bold text-3xl md:text-5xl text-blanc-casse text-balance leading-[1.1]">
+            Une présence web claire change tout
+            <span class="block italic font-medium text-bleu">pour vos clients à La Réunion.</span>
+          </h2>
+        </div>
+
+        <div class="scroll-reveal mt-10 space-y-5 text-base md:text-lg text-blanc-casse/75 leading-relaxed">
+          <p>
+            La majorité des prises de contact démarrent en ligne : un client cherche votre activité sur Google, ouvre votre site ou votre fiche, regarde vos photos, vos horaires, vos tarifs, vos prestations. En quelques secondes, il décide de vous écrire — ou de passer à la suivante. Une présence claire, cohérente et professionnelle fait la différence entre un visiteur curieux et une demande concrète.
+          </p>
+          <p>
+            Un diagnostic permet de prendre du recul sur ce que voient réellement vos clients. Lisibilité de votre offre, qualité des photos, informations pratiques accessibles, cohérence entre votre site, votre fiche Google et vos réseaux : autant de points qui rassurent — ou qui freinent — la transformation d'un visiteur en demande.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 3 — CE QUE 9SITE4 ANALYSE                             -->
+    <!-- ============================================================ -->
+    <section class="relative overflow-hidden px-6 py-20 md:py-28 bg-black" aria-labelledby="analyse-titre">
+      <div class="relative mx-auto max-w-content">
+        <div class="text-center max-w-2xl mx-auto">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-bleu"></span> Ce que nous analysons
+          </p>
+          <h2 id="analyse-titre" class="scroll-reveal mt-6 font-sora font-bold text-3xl md:text-5xl text-blanc-casse text-balance leading-[1.1]">
+            Six dimensions clés
+            <span class="block italic font-medium text-bleu">pour évaluer votre présence.</span>
+          </h2>
+          <p class="scroll-reveal mt-6 text-base md:text-lg text-blanc-casse/65 leading-relaxed">
+            Un regard structuré sur ce que voient vos clients, et sur ce qui peut être amélioré pour transformer plus de visiteurs en demandes.
+          </p>
+        </div>
+
+        <div class="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+          {analyses.map((a, i) => (
+            <article
+              class="scroll-reveal group relative rounded-3xl p-7 overflow-hidden transition-all duration-300 ring-1 ring-white/[0.08] hover:ring-bleu/40"
+              style={`background: linear-gradient(180deg, #14161F 0%, #0A0B12 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 18px 40px -22px rgba(0,0,0,0.85); transition-delay: ${i * 60}ms`}
+            >
+              <span class="relative flex w-12 h-12 items-center justify-center rounded-2xl overflow-hidden">
+                <span class="absolute inset-0 bg-gradient-to-br from-bleu/40 to-bleu/5" aria-hidden="true"></span>
+                <Icon name={a.icon} size={22} strokeWidth={1.75} class="relative text-bleu" />
+              </span>
+              <span class="block mt-5 h-px w-10 bg-bleu/50 group-hover:w-20 transition-all duration-300" aria-hidden="true"></span>
+              <h3 class="mt-5 font-sora font-semibold text-lg md:text-xl text-blanc-casse leading-tight">
+                {a.titre}
+              </h3>
+              <p class="mt-3 text-sm md:text-base text-blanc-casse/70 leading-relaxed">{a.texte}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 4 — POUR QUI ?                                        -->
+    <!-- ============================================================ -->
+    <section class="relative px-6 py-20 md:py-24" aria-labelledby="pour-qui-titre">
+      <div class="relative mx-auto max-w-4xl text-center">
+        <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+          <span class="w-2 h-2 rounded-full bg-bleu"></span> Pour qui
+        </p>
+        <h2 id="pour-qui-titre" class="scroll-reveal mt-6 font-sora font-bold text-3xl md:text-5xl text-blanc-casse text-balance leading-[1.1]">
+          Un diagnostic pensé
+          <span class="block italic font-medium text-bleu">pour les pros réunionnais.</span>
+        </h2>
+        <p class="scroll-reveal mt-6 text-base md:text-lg text-blanc-casse/65 leading-relaxed max-w-2xl mx-auto">
+          Que vous démarriez votre activité ou que vous cherchiez à améliorer votre site existant, le diagnostic 9site4 s'adapte à votre réalité.
+        </p>
+
+        <ul class="scroll-reveal mt-10 flex flex-wrap justify-center gap-2.5">
+          {cibles.map((c) => (
+            <li class="inline-flex items-center gap-2 h-10 px-4 rounded-full bg-white/[0.05] ring-1 ring-white/15 text-sm font-medium text-blanc-casse hover:ring-bleu/40 hover:bg-white/[0.08] transition-colors">
+              <span class="block w-1.5 h-1.5 rounded-full bg-bleu" aria-hidden="true"></span>
+              {c}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 5 — CE QUE VOUS RECEVEZ                               -->
+    <!-- ============================================================ -->
+    <section class="relative px-6 py-20 md:py-28" aria-labelledby="livrables-titre">
+      <div class="relative mx-auto max-w-3xl">
+        <div class="text-center">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-bleu"></span> Ce que vous recevez
+          </p>
+          <h2 id="livrables-titre" class="scroll-reveal mt-6 font-sora font-bold text-3xl md:text-5xl text-blanc-casse text-balance leading-[1.1]">
+            Un retour clair,
+            <span class="italic font-medium text-bleu">directement utile.</span>
+          </h2>
+        </div>
+
+        <ul class="scroll-reveal mt-12 space-y-4">
+          {livrables.map((l) => (
+            <li class="relative flex items-start gap-4 rounded-2xl p-5 ring-1 ring-white/10 bg-white/[0.03] hover:ring-bleu/30 transition-colors">
+              <span class="relative flex w-10 h-10 shrink-0 items-center justify-center rounded-xl overflow-hidden">
+                <span class="absolute inset-0 bg-gradient-to-br from-bleu/40 to-bleu/5" aria-hidden="true"></span>
+                <Icon name="check" size={18} strokeWidth={2} class="relative text-bleu" />
+              </span>
+              <div>
+                <p class="font-sora font-semibold text-base md:text-lg text-blanc-casse">{l.titre}</p>
+                <p class="mt-1 text-sm md:text-base text-blanc-casse/65 leading-relaxed">{l.texte}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+
+        <p class="scroll-reveal mt-10 text-center text-base md:text-lg text-blanc-casse/75 leading-relaxed italic">
+          Un retour personnalisé, clair et utile — pas un audit de 30 pages que personne ne lit.
+        </p>
+
+        <p class="scroll-reveal mt-8 text-center text-sm text-blanc-casse/65">
+          Voir aussi&nbsp;:
+          <a href="/creation-site-internet-la-reunion" class="text-bleu hover:underline">création de site internet à La Réunion</a>
+          ·
+          <a href="/realisations" class="text-bleu hover:underline">nos réalisations</a>
+          ·
+          <a href="/tarifs" class="text-bleu hover:underline">tarifs</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 6 — FORMULAIRE DIAGNOSTIC                             -->
+    <!-- ============================================================ -->
+    <section id="diagnostic-form" class="relative px-6 py-20 md:py-28 scroll-mt-24" aria-labelledby="form-titre">
+      <div class="relative mx-auto max-w-3xl">
+        <div class="text-center mb-12">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-bleu"></span> Demander mon diagnostic
+          </p>
+          <h2 id="form-titre" class="scroll-reveal mt-6 font-sora font-bold text-3xl md:text-5xl text-blanc-casse text-balance leading-[1.1]">
+            Présentez-nous votre activité,
+            <span class="block italic font-medium text-bleu">nous regardons le reste.</span>
+          </h2>
+          <p class="scroll-reveal mt-6 text-base md:text-lg text-blanc-casse/65 leading-relaxed">
+            Remplissez ce formulaire — vous recevrez un retour personnalisé sous quelques jours ouvrés.
+          </p>
+        </div>
+
+        <div class="scroll-reveal relative rounded-3xl overflow-hidden"
+          style="background: #FFFFFF; box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 22px 50px -20px rgba(0,0,0,0.85), 0 0 0 1.5px #91a6ff, 0 0 36px -10px rgba(145,166,255,0.50);">
+          <span class="absolute top-0 inset-x-10 h-px bg-gradient-to-r from-transparent via-bleu/60 to-transparent" aria-hidden="true"></span>
+          <div class="relative">
+            <DiagnosticForm client:load />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 7 — POURQUOI 9SITE4 ?                                 -->
+    <!-- ============================================================ -->
+    <PourquoiChoisir />
+
+    <!-- ============================================================ -->
+    <!-- SECTION 8 — CTA FINAL                                         -->
+    <!-- ============================================================ -->
+    <section class="relative overflow-hidden px-6 py-16 md:py-24 bg-bleu-nuit text-blanc-casse">
+      <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div class="absolute -top-32 -right-32 w-80 h-80 rounded-full ring-2 ring-bleu/25"></div>
+        <div class="absolute -bottom-40 -left-40 w-[28rem] h-[28rem] rounded-full ring-2 ring-bleu/15"></div>
+      </div>
+
+      <div class="relative mx-auto max-w-3xl text-center">
+        <span class="scroll-reveal block mx-auto h-[3px] w-16 bg-bleu mb-6" aria-hidden="true"></span>
+        <h2 class="scroll-reveal font-sora font-bold text-3xl md:text-5xl text-balance leading-tight">
+          Vous voulez savoir ce que votre présence web peut améliorer ?
+        </h2>
+        <p class="scroll-reveal mt-6 text-lg md:text-xl text-blanc-casse/85 leading-relaxed">
+          Présentez votre activité à 9site4. Nous vous répondons avec un retour clair et une recommandation adaptée à votre métier.
+        </p>
+        <div class="scroll-reveal mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="#diagnostic-form"
+            class="inline-flex items-center justify-center gap-2 h-14 px-8 text-lg font-semibold rounded-full bg-bleu text-blanc-casse hover:bg-white hover:text-bleu-nuit transition-colors shadow-card hover:shadow-card-hover"
+            data-track-event="diagnostic_cta_click"
+            data-track-category="conversion"
+            data-track-source="diagnostic_cta_band"
+            data-track-target="#diagnostic-form"
+            data-track-page-type="diagnostic"
+          >
+            Demander mon diagnostic gratuit
+            <Icon name="arrow-right" size={20} strokeWidth={2.25} />
+          </a>
+          <a
+            href="/contact"
+            class="inline-flex items-center justify-center gap-2 h-14 px-8 text-lg font-semibold rounded-full text-bleu hover:text-blanc-casse transition-colors"
+            data-track-event="cta_contact_click"
+            data-track-category="conversion"
+            data-track-source="diagnostic_final_cta"
+            data-track-target="/contact"
+            data-track-page-type="diagnostic"
+          >
+            Contacter 9site4
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

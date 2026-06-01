@@ -1,0 +1,51 @@
+---
+import Icon from '../ui/Icon.astro';
+
+/**
+ * Module métier intégré — section 5 home.
+ * 6 cards par métier avec parcours associé.
+ */
+const cards = [
+  { icon: 'calendar-clock', metier: 'Restaurant',     parcours: 'Réservation' },
+  { icon: 'wrench',         metier: 'Artisan / BTP',  parcours: 'Demande de devis' },
+  { icon: 'palette',        metier: 'Institut',       parcours: 'Rendez-vous' },
+  { icon: 'globe',          metier: 'Gîte',           parcours: 'Demande de séjour' },
+  { icon: 'calendar-check', metier: 'Coach',          parcours: 'Premier échange' },
+  { icon: 'map-pin',        metier: 'Service local',  parcours: "Demande d'intervention" },
+];
+---
+
+<section class="relative px-6 py-16 md:py-24 bg-bleu-nuit text-blanc-casse" aria-labelledby="module-titre">
+  <div class="mx-auto max-w-content">
+    <div class="max-w-3xl mx-auto text-center">
+      <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+        <span class="w-2 h-2 rounded-full bg-bleu"></span> Module métier intégré
+      </p>
+      <h2 id="module-titre" class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl lg:text-5xl text-blanc-casse text-balance leading-[1.12]">
+        Un module métier intégré à votre site.
+      </h2>
+      <p class="scroll-reveal mt-6 text-lg text-blanc-casse/70 leading-relaxed">
+        Réservation, demande de devis, rendez-vous, inscription, demande de séjour ou premier échange : chaque site 9site4 intègre un parcours adapté à votre activité.
+      </p>
+    </div>
+
+    <ul class="scroll-reveal mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {cards.map((c) => (
+        <li class="group relative flex items-center gap-4 rounded-2xl bg-white/[0.04] ring-1 ring-white/10 p-5 transition-all duration-300 ease-out-soft hover:-translate-y-1 hover:bg-white/[0.07] hover:ring-bleu/40">
+          <span class="flex w-12 h-12 shrink-0 rounded-2xl bg-bleu/20 text-bleu items-center justify-center transition-colors duration-300 group-hover:bg-bleu group-hover:text-white">
+            <Icon name={c.icon} size={22} strokeWidth={1.75} />
+          </span>
+          <div class="min-w-0">
+            <p class="font-sora font-semibold text-base text-blanc-casse leading-tight">{c.metier}</p>
+            <p class="mt-1 text-sm text-blanc-casse/70 leading-snug">
+              <span class="inline-flex items-center gap-1.5">
+                <span aria-hidden="true" class="text-bleu">→</span>
+                {c.parcours}
+              </span>
+            </p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

@@ -1,25 +1,50 @@
 ---
-const photos = [
-  '/images/fleuriste/extra-1.webp',
-  '/images/fleuriste/bouquet.webp',
-  '/images/fleuriste/extra-3.webp',
-  '/images/fleuriste/extra-4.webp',
-  '/images/fleuriste/extra-5.webp',
-  '/images/fleuriste/extra-6.webp',
+// Mood-board SVG : aucune photo (toutes déjà utilisées en exclusivité ailleurs).
+// 6 fleurs stylisées (hibiscus, frangipanier, anthurium, oiseau de paradis, vacoa, bougainvillier).
+const cards = [
+  { saison: 'Printemps austral', mois: 'Sept · Nov', nom: 'Hibiscus & frangipanier', bg: '#F4E6E0', accent: '#C49B62', petals: 6, pCol: '#E8A8B8', cCol: '#F4C24A' },
+  { saison: 'Été chaud', mois: 'Déc · Mars', nom: 'Bougainvillier & oiseau de paradis', bg: '#E8D5BE', accent: '#A8584A', petals: 5, pCol: '#D4691A', cCol: '#FFCB6B' },
+  { saison: 'Automne austral', mois: 'Avril · Mai', nom: 'Anthurium & vanille', bg: '#D8E0CB', accent: '#5C7448', petals: 1, pCol: '#E53E3E', cCol: '#FFFCF5' },
+  { saison: 'Hiver doux', mois: 'Juin · Août', nom: 'Vacoa & dombeya', bg: '#F5E2D5', accent: '#A85E3C', petals: 8, pCol: '#F4B860', cCol: '#5C3D2E' },
+  { saison: 'Toute saison', mois: 'L\'année', nom: 'Plantes vertes péi', bg: '#E8E4D0', accent: '#7B9461', petals: 0, pCol: '#5C7448', cCol: '#A8C18A' },
+  { saison: 'Sur demande', mois: 'Sur réservation', nom: 'Cueillette du jour', bg: '#D8E0CB', accent: '#3A4A2F', petals: 7, pCol: '#FFFCF5', cCol: '#E53E3E' },
 ];
 ---
 <section class="py-24 md:py-32" style="background:#5C7448; color:#FBF3EE;">
   <div class="max-w-content mx-auto px-6 md:px-10">
     <div class="mb-12 max-w-2xl">
-      <p class="font-cormorant italic text-2xl mb-2" style="color:#F4E6E0;">notre galerie —</p>
-      <h2 class="font-cormorant text-5xl md:text-6xl leading-tight">Quelques compositions <em class="italic" style="color:#F4E6E0;">récentes.</em></h2>
+      <p class="font-cormorant italic text-2xl mb-2" style="color:#F4E6E0;">le carnet saisonnier —</p>
+      <h2 class="font-cormorant text-5xl md:text-6xl leading-tight">Six saisons, <em class="italic" style="color:#F4E6E0;">six bouquets.</em></h2>
+      <p class="mt-5 font-inter text-[15px] leading-relaxed max-w-md" style="color:#E8E0CC;">
+        Chaque mois, la cueillette change. Voici le carnet végétal de l'année selon le calendrier péi.
+      </p>
     </div>
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-      {photos.map((p, i) => (
-        <figure class={`overflow-hidden ${i === 0 || i === 4 ? 'md:row-span-2' : ''}`}>
-          <img src={p} alt="" class={`w-full object-cover transition-transform duration-700 hover:scale-105 ${i === 0 || i === 4 ? 'h-full min-h-[480px]' : 'aspect-square'}`} loading="lazy"/>
-        </figure>
+    <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {cards.map((c) => (
+        <li class="group relative rounded-[28px] overflow-hidden flex flex-col transition-all duration-500 hover:-translate-y-1" style={`background:${c.bg}; color:#2A2520;`}>
+          <div class="relative aspect-[5/4] flex items-center justify-center" style={`background:${c.bg};`}>
+            <svg viewBox="0 0 200 200" class="w-3/5 h-3/5 transition-transform duration-[1200ms] ease-out group-hover:rotate-[12deg]" aria-hidden="true">
+              {c.petals > 0 && Array.from({ length: c.petals }).map((_, k) => {
+                const a = (k * 360) / c.petals;
+                return <ellipse cx="100" cy="58" rx="18" ry={c.petals > 4 ? 38 : 44} fill={c.pCol} opacity="0.92" transform={`rotate(${a} 100 100)`} />;
+              })}
+              {c.petals === 0 && (
+                <g>
+                  <path d="M100 30 L80 90 L60 130 M100 30 L120 90 L140 130 M100 30 L100 160" stroke={c.pCol} stroke-width="4" stroke-linecap="round" fill="none"/>
+                  <ellipse cx="80" cy="90" rx="12" ry="18" fill={c.pCol} opacity="0.85"/>
+                  <ellipse cx="120" cy="90" rx="12" ry="18" fill={c.pCol} opacity="0.85"/>
+                  <ellipse cx="100" cy="100" rx="10" ry="22" fill={c.pCol} opacity="0.95"/>
+                </g>
+              )}
+              <circle cx="100" cy="100" r="14" fill={c.cCol} />
+            </svg>
+          </div>
+          <div class="p-6 pt-2 flex flex-col gap-1">
+            <p class="font-inter text-[10px] uppercase tracking-[0.28em] font-semibold" style={`color:${c.accent};`}>{c.saison} · {c.mois}</p>
+            <h3 class="font-cormorant italic text-2xl leading-tight">{c.nom}</h3>
+          </div>
+        </li>
       ))}
-    </div>
+    </ul>
   </div>
 </section>

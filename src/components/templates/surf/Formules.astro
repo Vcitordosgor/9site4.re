@@ -1,8 +1,8 @@
 ---
 const formules = [
-  { titre: 'INITIATION', sous: 'Première vague', prix: '50€', duree: '1h30', niveau: 'Débutant', desc: 'Briefing sécurité, équipement fourni, premières vagues sur mousse. À partir de 8 ans.', photo: '/images/surf/extra-1.webp' },
-  { titre: 'PERFECTIONNEMENT', sous: 'Stage 5 séances', prix: '220€', duree: '5×1h30', niveau: 'Intermédiaire', desc: 'Take-off propre, virages, lecture de vague. Sur 5 séances étalées sur la semaine.', photo: '/images/surf/extra-2.webp', populaire: true },
-  { titre: 'COACHING', sous: 'Sur-mesure', prix: '75€', duree: '1h30 1-à-1', niveau: 'Confirmé', desc: 'Analyse vidéo, travail technique ciblé. Pour passer un cap ou préparer un voyage surf.', photo: '/images/surf/extra-3.webp' },
+  { titre: 'INITIATION', sous: 'Première vague', prix: '50€', duree: '1h30', niveau: 'Débutant', desc: 'Briefing sécurité, équipement fourni, premières vagues sur mousse. À partir de 8 ans.', tag: '01' },
+  { titre: 'PERFECTIONNEMENT', sous: 'Stage 5 séances', prix: '220€', duree: '5×1h30', niveau: 'Intermédiaire', desc: 'Take-off propre, virages, lecture de vague. Sur 5 séances étalées sur la semaine.', tag: '02', populaire: true },
+  { titre: 'COACHING', sous: 'Sur-mesure', prix: '75€', duree: '1h30 1-à-1', niveau: 'Confirmé', desc: 'Analyse vidéo, travail technique ciblé. Pour passer un cap ou préparer un voyage surf.', tag: '03' },
 ];
 ---
 <section id="formules" class="py-24 md:py-32" style="background:#F4F8F7;">
@@ -14,7 +14,15 @@ const formules = [
     <div class="grid md:grid-cols-3 gap-5">
       {formules.map(f => (
         <article class="flex flex-col" style={`background:${f.populaire ? '#0F2A36' : '#FFFFFF'}; color:${f.populaire ? '#F4F8F7' : '#0F2A36'};`}>
-          <div class="aspect-[5/4] overflow-hidden"><img src={f.photo} alt={f.titre} class="w-full h-full object-cover" loading="lazy"/></div>
+          <!-- Bandeau coloré + numéro géant SVG (plus de photo) -->
+          <div class="relative aspect-[5/4] flex items-center justify-center overflow-hidden" style={`background:${f.populaire ? '#1A4654' : '#E5EFEF'};`}>
+            <span class="font-bebas leading-none select-none" style={`font-size:clamp(180px,22vw,280px); color:${f.populaire ? '#FF6B5A' : '#3CACAE'}; opacity:0.85;`} aria-hidden="true">{f.tag}</span>
+            <!-- Vague SVG décorative en bas -->
+            <svg viewBox="0 0 400 80" class="absolute bottom-0 inset-x-0 w-full h-12" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M0,40 Q60,10 120,40 T240,40 T360,40 L400,40 L400,80 L0,80 Z" fill={f.populaire ? '#0F2A36' : '#FFFFFF'} opacity="0.85"/>
+              <path d="M0,55 Q70,30 140,55 T280,55 T400,55 L400,80 L0,80 Z" fill={f.populaire ? '#0F2A36' : '#FFFFFF'}/>
+            </svg>
+          </div>
           <div class="p-7 md:p-8 flex flex-col flex-grow">
             {f.populaire && <div class="text-[10px] uppercase tracking-[0.32em] mb-3 font-bold" style="color:#FF6B5A;">LE PLUS POPULAIRE</div>}
             <h3 class="font-bebas text-4xl md:text-5xl leading-none mb-1">{f.titre}</h3>
