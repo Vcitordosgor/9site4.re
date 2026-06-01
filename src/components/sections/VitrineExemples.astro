@@ -1,94 +1,60 @@
 ---
 import realisations from '../../data/exemples.json';
 
-// Imports des 40 vignettes SVG/typographiques
+// PERF : seuls les 12 previews effectivement affichés dans le marquee home
+// sont importés ici. Les 28 autres ne sont chargés que sur /exemples.
 import PreviewResto from '../exemples/previews/PreviewResto.astro';
 import PreviewPizzeria from '../exemples/previews/PreviewPizzeria.astro';
-import PreviewBarJus from '../exemples/previews/PreviewBarJus.astro';
 import PreviewSalon from '../exemples/previews/PreviewSalon.astro';
-import PreviewInstitut from '../exemples/previews/PreviewInstitut.astro';
 import PreviewSpa from '../exemples/previews/PreviewSpa.astro';
-import PreviewPlomberie from '../exemples/previews/PreviewPlomberie.astro';
-import PreviewElectricien from '../exemples/previews/PreviewElectricien.astro';
 import PreviewPaysagiste from '../exemples/previews/PreviewPaysagiste.astro';
-import PreviewOsteo from '../exemples/previews/PreviewOsteo.astro';
-import PreviewDieteticienne from '../exemples/previews/PreviewDieteticienne.astro';
-import PreviewPsy from '../exemples/previews/PreviewPsy.astro';
-import PreviewCoach from '../exemples/previews/PreviewCoach.astro';
 import PreviewYoga from '../exemples/previews/PreviewYoga.astro';
-import PreviewDanse from '../exemples/previews/PreviewDanse.astro';
 import PreviewGite from '../exemples/previews/PreviewGite.astro';
-import PreviewExcursions from '../exemples/previews/PreviewExcursions.astro';
-import PreviewLocation from '../exemples/previews/PreviewLocation.astro';
-import PreviewConsultant from '../exemples/previews/PreviewConsultant.astro';
-import PreviewComptable from '../exemples/previews/PreviewComptable.astro';
-import PreviewArchitecte from '../exemples/previews/PreviewArchitecte.astro';
-import PreviewAutoEcole from '../exemples/previews/PreviewAutoEcole.astro';
-import PreviewConciergerie from '../exemples/previews/PreviewConciergerie.astro';
-import PreviewAideDomicile from '../exemples/previews/PreviewAideDomicile.astro';
 import PreviewPlongee from '../exemples/previews/PreviewPlongee.astro';
 import PreviewWedding from '../exemples/previews/PreviewWedding.astro';
-import PreviewPatisserie from '../exemples/previews/PreviewPatisserie.astro';
-import PreviewGarage from '../exemples/previews/PreviewGarage.astro';
 import PreviewPhotographe from '../exemples/previews/PreviewPhotographe.astro';
-import PreviewAvocat from '../exemples/previews/PreviewAvocat.astro';
 import PreviewBoulangerie from '../exemples/previews/PreviewBoulangerie.astro';
-import PreviewGlacier from '../exemples/previews/PreviewGlacier.astro';
-import PreviewCafeTorref from '../exemples/previews/PreviewCafeTorref.astro';
-import PreviewSurf from '../exemples/previews/PreviewSurf.astro';
-import PreviewFleuriste from '../exemples/previews/PreviewFleuriste.astro';
-import PreviewTatoueur from '../exemples/previews/PreviewTatoueur.astro';
-import PreviewNaturopathe from '../exemples/previews/PreviewNaturopathe.astro';
-import PreviewCreche from '../exemples/previews/PreviewCreche.astro';
-import PreviewNotaire from '../exemples/previews/PreviewNotaire.astro';
 import PreviewStudioAudio from '../exemples/previews/PreviewStudioAudio.astro';
 
 const previewMap: Record<string, any> = {
-  'restaurant-gastronomique':         PreviewResto,
-  'snack-pizzeria':                   PreviewPizzeria,
-  'bar-a-jus-tropical':               PreviewBarJus,
-  'salon-de-coiffure':                PreviewSalon,
-  'institut-de-beaute':               PreviewInstitut,
-  'spa-massage':                      PreviewSpa,
-  'plomberie':                        PreviewPlomberie,
-  'electricite-generale':             PreviewElectricien,
-  'paysagiste':                       PreviewPaysagiste,
-  'cabinet-osteopathie':              PreviewOsteo,
-  'dieteticienne':                    PreviewDieteticienne,
-  'psychologue':                      PreviewPsy,
-  'coach-sportif':                    PreviewCoach,
-  'studio-yoga':                      PreviewYoga,
-  'ecole-de-danse':                   PreviewDanse,
-  'gite-de-montagne':                 PreviewGite,
-  'excursions-randonnee':             PreviewExcursions,
-  'location-saisonniere-bord-de-mer': PreviewLocation,
-  'consultant':                       PreviewConsultant,
-  'cabinet-comptable':                PreviewComptable,
-  'architecte':                       PreviewArchitecte,
-  'auto-ecole':                       PreviewAutoEcole,
-  'conciergerie':                     PreviewConciergerie,
-  'aide-a-domicile':                  PreviewAideDomicile,
-  'plongee':                          PreviewPlongee,
-  'wedding-planner':                  PreviewWedding,
-  'patisserie-creole':                PreviewPatisserie,
-  'garage-mecanique':                 PreviewGarage,
-  'photographe-auteur':               PreviewPhotographe,
-  'avocat-cabinet':                   PreviewAvocat,
-  'boulangerie-artisanale':           PreviewBoulangerie,
-  'glacier-artisanal':                PreviewGlacier,
-  'cafe-torrefaction':                PreviewCafeTorref,
-  'ecole-de-surf':                    PreviewSurf,
-  'fleuriste-atelier':                PreviewFleuriste,
-  'studio-de-tatouage':               PreviewTatoueur,
-  'naturopathe':                      PreviewNaturopathe,
-  'micro-creche':                     PreviewCreche,
-  'etude-notariale':                  PreviewNotaire,
-  'studio-audio':                     PreviewStudioAudio,
+  'restaurant-gastronomique': PreviewResto,
+  'snack-pizzeria':           PreviewPizzeria,
+  'salon-de-coiffure':        PreviewSalon,
+  'spa-massage':              PreviewSpa,
+  'paysagiste':               PreviewPaysagiste,
+  'studio-yoga':              PreviewYoga,
+  'gite-de-montagne':         PreviewGite,
+  'plongee':                  PreviewPlongee,
+  'wedding-planner':          PreviewWedding,
+  'photographe-auteur':       PreviewPhotographe,
+  'boulangerie-artisanale':   PreviewBoulangerie,
+  'studio-audio':             PreviewStudioAudio,
 };
 
-const half = Math.ceil(realisations.length / 2);
-const row1Items = realisations.slice(0, half);
-const row2Items = realisations.slice(half);
+// PERF : on n'affiche dans le marquee home qu'une sélection de 12 vignettes
+// (au lieu des 40, dupliquées 2 fois → 160). Les 40 restent visibles sur /exemples.
+// Gain : ~250 KB sur le HTML de la home. Le loop CSS infini est conservé en
+// dupliquant UNE seule fois ces 12 vignettes (24 nœuds au total, vs 160 avant).
+const showcaseSlugs = [
+  'restaurant-gastronomique',
+  'salon-de-coiffure',
+  'paysagiste',
+  'studio-yoga',
+  'gite-de-montagne',
+  'photographe-auteur',
+  'snack-pizzeria',
+  'spa-massage',
+  'wedding-planner',
+  'plongee',
+  'boulangerie-artisanale',
+  'studio-audio',
+];
+const showcase = showcaseSlugs
+  .map((slug) => realisations.find((r) => r.slug === slug))
+  .filter(Boolean) as typeof realisations;
+const half = Math.ceil(showcase.length / 2);
+const row1Items = showcase.slice(0, half);
+const row2Items = showcase.slice(half);
 const row1 = [...row1Items, ...row1Items];
 const row2 = [...row2Items, ...row2Items];
 
