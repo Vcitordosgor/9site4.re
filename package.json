@@ -92,6 +92,7 @@
   },
   "devDependencies": {
     "lighthouse": "^13.1.0",
+    "lightningcss": "^1.32.0",
     "wrangler": "^4.85.0"
   }
 }
