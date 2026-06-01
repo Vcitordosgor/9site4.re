@@ -42,6 +42,7 @@ type PageKey =
   | 'siteTpePmeReunion'
   | 'siteVitrineReunion'
   | 'agenceWebReunion'
+  | 'diagnostic'
   | 'templatePizzeria'
   | 'templateSalon'
   | 'templateSpa'
@@ -202,6 +203,12 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
     description:
       '9site4 accompagne les professionnels réunionnais dans la création, la structuration et la gestion de leur site internet, avec une offre claire et un accompagnement local.',
     canonical: '/agence-web-la-reunion',
+  },
+  diagnostic: {
+    title: `Diagnostic gratuit de site internet à La Réunion | ${siteConfig.siteName}`,
+    description:
+      'Demandez un diagnostic gratuit de votre site internet ou de votre présence en ligne. 9site4 analyse votre visibilité, votre clarté, vos informations clés et vos points de contact.',
+    canonical: '/diagnostic-site-internet-la-reunion',
   },
   templatePizzeria: {
     title: 'Pizza Lé O — Pizzeria à Saint-Paul (Réunion) | Template 9site4',
