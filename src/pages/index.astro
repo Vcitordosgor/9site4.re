@@ -23,5 +23,48 @@ import { getSeo } from '../lib/seo';
   <PourquoiChoisir />
   <TarifsBref />
   <Vision />
+
+  <!-- Maillage interne sobre : sites professionnels par secteur (SEO) -->
+  <section class="relative bg-black px-6 py-16 md:py-20" aria-labelledby="secteurs-titre">
+    <div class="mx-auto max-w-6xl">
+      <div class="text-center">
+        <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+          <span class="w-2 h-2 rounded-full bg-bleu"></span> Sites professionnels par secteur
+        </p>
+        <h2 id="secteurs-titre" class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl text-blanc-casse text-balance leading-[1.12]">
+          Une expertise adaptée
+          <span class="block italic font-medium text-bleu">à votre métier.</span>
+        </h2>
+        <p class="scroll-reveal mt-5 max-w-2xl mx-auto text-base text-blanc-casse/65 leading-relaxed">
+          9site4 conçoit des sites pensés pour chaque activité réunionnaise — module métier intégré, contenu structuré, gestion continue.
+        </p>
+      </div>
+
+      <ul class="scroll-reveal mt-12 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+        {[
+          { href: '/site-internet-restaurant-la-reunion', t: 'Restaurants' },
+          { href: '/site-internet-artisan-la-reunion', t: 'Artisans' },
+          { href: '/site-internet-coiffeur-la-reunion', t: 'Coiffeurs' },
+          { href: '/site-internet-institut-beaute-spa-la-reunion', t: 'Instituts & Spas' },
+          { href: '/site-internet-gite-location-la-reunion', t: 'Gîtes & locations' },
+          { href: '/site-internet-profession-liberale-la-reunion', t: 'Professions libérales' },
+          { href: '/site-internet-coach-independant-la-reunion', t: 'Coachs & indépendants' },
+          { href: '/site-internet-tpe-pme-la-reunion', t: 'TPE / PME' },
+        ].map((m) => (
+          <li>
+            <a href={m.href} class="block h-full rounded-2xl px-4 py-3 border border-white/10 hover:border-bleu hover:bg-white/[0.03] transition-colors text-sm md:text-base font-sora font-semibold text-blanc-casse">
+              {m.t}
+              <span class="ml-1 text-bleu">→</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <p class="scroll-reveal mt-8 text-center text-sm text-blanc-casse/65">
+        <a href="/creation-site-internet-la-reunion" class="text-bleu hover:underline">Voir la page pilier création de site internet à La Réunion</a>
+      </p>
+    </div>
+  </section>
+
   <CTABand />
 </BaseLayout>
