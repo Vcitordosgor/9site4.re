@@ -1,14 +1,5 @@
 ---
 import data from '../../../data/templates/encrevolcan.json';
-
-const flashImages = [
-  '/images/tatoueur/flash-1.webp',
-  '/images/tatoueur/flash-2.webp',
-  '/images/tatoueur/flash-3.webp',
-  '/images/tatoueur/flash-4.webp',
-  '/images/tatoueur/flash-5.webp',
-  '/images/tatoueur/flash-6.webp',
-];
 ---
 
 <section id="flash" class="py-20 md:py-28 relative" style="background-color: #EEE6D8;">
@@ -30,38 +21,30 @@ const flashImages = [
       </div>
     </div>
 
+    <!-- Grille sans photos : cards typographiques avec ref + style + prix -->
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4">
-      {data.flash.map((f, i) => (
+      {data.flash.map((f) => (
         <a
           href={`https://wa.me/${data.info.whatsapp}?text=${encodeURIComponent(`Bonjour, je veux réserver le flash ${f.ref} (${f.style}, ${f.prix}).`)}`}
           target="_blank"
           rel="noopener"
-          class="group block relative aspect-[4/5] overflow-hidden border-2 transition-colors"
-          style="border-color: #1F1A18;"
+          class="group block relative aspect-[4/5] overflow-hidden border-2 transition-all flex flex-col p-4 hover:-translate-y-1"
+          style="border-color: #1F1A18; background-color: #0A0A0A; color: #EEE6D8;"
           onmouseover="this.style.borderColor='#A11920';"
           onmouseout="this.style.borderColor='#1F1A18';"
         >
-          <img
-            src={flashImages[i % flashImages.length]}
-            alt={`Flash ${f.ref} — ${f.style}`}
-            class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 scale-100 group-hover:scale-105"
-            loading="lazy"
-            decoding="async"
-          />
           <!-- Référence haut -->
-          <div class="absolute top-2 left-2 px-2 py-1 font-mono text-[9px] uppercase tracking-[0.18em]" style="background-color: #0A0A0A; color: #EEE6D8;">
-            {f.ref}
+          <div class="font-mono text-[10px] uppercase tracking-[0.22em] opacity-60">{f.ref}</div>
+          <!-- Numéro romain géant en filigrane -->
+          <div class="flex-1 flex items-center justify-center">
+            <span class="font-cardo italic select-none" style="font-size: clamp(64px, 8vw, 96px); color: #A11920; opacity: 0.85;">
+              {f.ref.replace(/[^0-9]/g, '') || '✦'}
+            </span>
           </div>
-          <!-- Prix bas -->
-          <div class="absolute inset-x-0 bottom-0 px-3 py-2.5" style="background-color: rgb(10 10 10 / 0.92);">
-            <div class="flex items-center justify-between">
-              <span class="font-mono text-[9.5px] uppercase tracking-[0.18em]" style="color: rgb(238 230 216 / 0.7);">
-                {f.style}
-              </span>
-              <span class="font-cardo text-base leading-none" style="color: #A11920;">
-                {f.prix}
-              </span>
-            </div>
+          <!-- Style + prix -->
+          <div class="mt-auto pt-3 border-t" style="border-color:rgba(238,230,216,0.18);">
+            <p class="font-mono text-[9.5px] uppercase tracking-[0.22em] opacity-70 mb-1">{f.style}</p>
+            <p class="font-cardo text-xl leading-none" style="color: #A11920;">{f.prix}</p>
           </div>
         </a>
       ))}
