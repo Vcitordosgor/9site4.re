@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Icon from '../components/ui/Icon.astro';
+import Faq from '../components/sections/Faq.tsx';
 import ContactForm from '../components/sections/ContactForm.tsx';
 import siteConfig from '../data/siteConfig.json';
 import categories from '../data/categories.json';
@@ -9,127 +10,222 @@ import { getSeo } from '../lib/seo';
 const waUrl = `https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeURIComponent(
   siteConfig.contact.whatsappMessage
 )}`;
+
+const promesses = [
+  {
+    icon: 'clock',
+    titre: 'Réponse sous 24h',
+    texte: "Vous nous écrivez aujourd'hui, on vous répond demain. Ouvrés.",
+  },
+  {
+    icon: 'shield-check',
+    titre: 'Sans engagement',
+    texte: "Un échange pour comprendre votre besoin. Vous décidez ensuite.",
+  },
+  {
+    icon: 'headphones',
+    titre: 'RDV téléphone 30 min',
+    texte: "Un appel court pour cadrer votre projet, sans jargon technique.",
+  },
+];
+
+const contactFaq = [
+  {
+    id: 'delai',
+    question: 'Quel délai pour avoir une réponse ?',
+    reponse:
+      "Nous répondons en général sous 24h ouvrées. Si vous écrivez le vendredi soir ou le week-end, comptez le lundi. Pour une demande urgente, WhatsApp reste le canal le plus rapide.",
+  },
+  {
+    id: 'rencontre',
+    question: 'Faut-il se rencontrer en physique ?',
+    reponse:
+      "Non, ce n'est pas obligatoire. Tout se fait à distance par téléphone, email et WhatsApp — pratique partout à La Réunion. Si vous tenez à un rendez-vous physique sur Saint-Denis ou Saint-Pierre, on peut s'organiser.",
+  },
+  {
+    id: 'confidentialite',
+    question: 'Mes informations restent-elles confidentielles ?',
+    reponse:
+      "Oui. Vos données sont conservées 12 mois maximum, ne sont jamais revendues ni partagées, et servent uniquement à vous recontacter au sujet de votre projet. Conforme RGPD.",
+  },
+  {
+    id: 'pretz',
+    question: "Je n'ai pas encore de cahier des charges, c'est ok ?",
+    reponse:
+      "Tout à fait. Décrivez simplement votre métier et ce que vous attendez de votre site, on s'occupe du reste. Pas besoin de jargon ni de plan détaillé : c'est notre travail de structurer.",
+  },
+];
 ---
 
 <BaseLayout seo={getSeo('contact')}>
-  <!-- Hero éditorial : aligné qualité home -->
-  <section class="relative overflow-hidden px-6 pt-28 pb-14 md:pt-36 md:pb-20">
-    <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
-      <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-[40rem] h-[40rem] halo-mix opacity-50"></div>
-    </div>
-    <div class="mx-auto max-w-3xl text-center">
-      <p class="hero-rise hero-rise-1 inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-bleu-nuit/55 font-semibold">
-        <span class="w-2 h-2 rounded-full bg-bleu"></span> Contact
-      </p>
-      <span class="hero-rise hero-rise-2 block mx-auto mt-7 h-[3px] w-16 bg-bleu" aria-hidden="true"></span>
-      <h1 class="hero-rise hero-rise-2 mt-5 font-sora font-bold text-balance leading-[1.08] text-[clamp(2.25rem,4vw+1rem,4rem)] tracking-tight text-bleu-nuit">
-        Parlez-nous
-        <span class="block italic font-medium text-bleu">de votre projet.</span>
-      </h1>
-      <p class="hero-rise hero-rise-4 mx-auto mt-7 max-w-2xl text-lg md:text-xl text-bleu-nuit/70 leading-relaxed">
-        Pas besoin de cahier des charges. Décrivez votre métier, vos besoins et vos
-        coordonnées : on vous répond avec une proposition simple, claire et adaptée.
-      </p>
-      <p class="hero-rise hero-rise-5 mt-5 inline-flex items-center gap-2 text-sm font-medium text-bleu-nuit/70">
-        <Icon name="shield-check" size={16} class="text-bleu-nuit" strokeWidth={2} />
-        Réponse rapide · Projet simple · Pas besoin de parler technique
-      </p>
-    </div>
-  </section>
-
-  <!-- 2 colonnes : formulaire + colonne réassurance -->
-  <section class="relative px-6 pb-24 md:pb-32">
-    <div class="mx-auto max-w-content grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-      <!-- Colonne formulaire -->
-      <div class="lg:col-span-7">
-        <ContactForm client:load categories={categories} />
+  <div class="bg-black text-blanc-casse">
+    <!-- ============================================================ -->
+    <!-- HERO éditorial                                                -->
+    <!-- ============================================================ -->
+    <section class="relative overflow-hidden px-6 pt-28 pb-16 md:pt-36 md:pb-20">
+      <div class="pointer-events-none absolute -top-32 -right-32 w-[28rem] h-[28rem] rounded-full bg-bleu/20 blur-3xl opacity-60 halo-pulse" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute -bottom-32 -left-32 w-[24rem] h-[24rem] rounded-full bg-bleu/15 blur-3xl opacity-40 halo-pulse-slow" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
+        <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-[40rem] h-[40rem] halo-mix opacity-60"></div>
       </div>
 
-      <!-- Colonne réassurance -->
-      <aside class="lg:col-span-5 space-y-5 lg:sticky lg:top-28">
-        <!-- Carte réassurance -->
-        <div class="bg-blanc-casse rounded-2xl ring-1 ring-bleu-nuit/10 shadow-card p-7">
-          <h2 class="font-sora font-semibold text-xl text-bleu-nuit">
-            Comment ça se passe
+      <div class="relative mx-auto max-w-3xl text-center">
+        <p class="hero-rise hero-rise-1 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-bleu/15 ring-1 ring-bleu/30 text-bleu text-[11px] font-semibold uppercase tracking-[0.28em]">
+          <span class="block w-1.5 h-1.5 rounded-full bg-bleu animate-pulse"></span>
+          Contact
+        </p>
+        <span class="hero-rise hero-rise-2 block mx-auto mt-7 h-[3px] w-16 bg-bleu" aria-hidden="true"></span>
+        <h1 class="hero-rise hero-rise-2 mt-5 font-sora font-bold text-balance leading-[1.05] text-[clamp(2.5rem,4.5vw+1rem,4.5rem)] tracking-tight text-blanc-casse">
+          On parle
+          <span class="block italic font-medium text-bleu">de votre projet ?</span>
+        </h1>
+        <p class="hero-rise hero-rise-4 mx-auto mt-7 max-w-2xl text-lg md:text-xl text-blanc-casse/70 leading-relaxed">
+          Pas besoin de cahier des charges. Dites-nous votre métier et ce qui
+          coince aujourd'hui — on revient vers vous avec une proposition simple
+          et adaptée.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 2 COLONNES : formulaire (gauche) + réassurance (droite)       -->
+    <!-- ============================================================ -->
+    <section class="relative px-6 pb-20 md:pb-28">
+      <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div class="absolute top-1/3 -right-24 w-[28rem] h-[28rem] halo-bleu opacity-25"></div>
+      </div>
+
+      <div class="relative mx-auto max-w-content grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+        <!-- ===== Colonne formulaire ===== -->
+        <div class="lg:col-span-7 scroll-reveal">
+          <ContactForm client:load categories={categories} />
+        </div>
+
+        <!-- ===== Colonne réassurance (sticky desktop) ===== -->
+        <aside class="lg:col-span-5 space-y-5 lg:sticky lg:top-28">
+          <!-- Pourquoi nous écrire -->
+          <div class="scroll-reveal rounded-3xl bg-white/[0.03] ring-1 ring-white/10 p-7 md:p-8">
+            <p class="inline-flex items-center gap-2 font-roboto-mono text-[10px] uppercase tracking-[0.3em] text-bleu font-semibold">
+              <span class="w-1.5 h-1.5 rounded-full bg-bleu"></span>
+              Pourquoi nous écrire
+            </p>
+            <h2 class="mt-4 font-sora font-bold text-2xl text-blanc-casse leading-tight">
+              Trois choses qu'on s'engage à faire.
+            </h2>
+            <ul class="mt-6 space-y-5">
+              {promesses.map((p) => (
+                <li class="flex items-start gap-4">
+                  <span class="flex w-11 h-11 shrink-0 rounded-2xl bg-bleu/15 text-bleu ring-1 ring-bleu/30 items-center justify-center">
+                    <Icon name={p.icon} size={20} strokeWidth={1.75} />
+                  </span>
+                  <div>
+                    <p class="font-sora font-semibold text-base text-blanc-casse">{p.titre}</p>
+                    <p class="mt-1 text-sm text-blanc-casse/65 leading-relaxed">{p.texte}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- WhatsApp express -->
+          <a
+            href={waUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="scroll-reveal group flex items-center justify-between gap-4 w-full p-5 rounded-2xl bg-[#075E54] text-white hover:bg-[#054039] hover:-translate-y-0.5 hover:shadow-[0_20px_40px_-15px_rgba(7,94,84,0.6)] transition-all duration-200 ease-out"
+          >
+            <span class="flex items-center gap-3">
+              <span class="flex w-11 h-11 shrink-0 rounded-full bg-white/15 items-center justify-center">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.92 0-2.65-1.03-5.14-2.91-7.01zM12.05 20.15h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.21 8.21 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83 8.25 8.25 0 0 1-8.24 8.22zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06a6.79 6.79 0 0 1-2-1.23 7.5 7.5 0 0 1-1.38-1.72c-.14-.25 0-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42l-.48-.01a.93.93 0 0 0-.67.31 2.81 2.81 0 0 0-.87 2.08c0 1.23.89 2.41 1.02 2.58.12.17 1.76 2.7 4.27 3.78.6.26 1.06.41 1.42.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z" />
+                </svg>
+              </span>
+              <span>
+                <span class="block font-sora font-semibold text-base">Discuter sur WhatsApp</span>
+                <span class="block text-sm text-white/90">Réponse souvent dans l'heure</span>
+              </span>
+            </span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="shrink-0 transition-transform duration-300 ease-out group-hover:translate-x-1">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </a>
+
+          <!-- Coordonnées -->
+          <div class="scroll-reveal rounded-2xl bg-white/[0.03] ring-1 ring-white/10 p-6 space-y-4">
+            <div>
+              <p class="text-xs font-semibold text-blanc-casse/55 uppercase tracking-wide">Email</p>
+              <a
+                href={`mailto:${siteConfig.contact.email}`}
+                class="mt-1.5 inline-flex items-center gap-2 font-sora font-semibold text-base text-blanc-casse hover:text-bleu transition-colors"
+              >
+                <Icon name="mail" size={18} class="text-bleu shrink-0" strokeWidth={1.75} />
+                {siteConfig.contact.email}
+              </a>
+            </div>
+            <div class="border-t border-white/10 pt-4">
+              <p class="text-xs font-semibold text-blanc-casse/55 uppercase tracking-wide">Disponibilité</p>
+              <p class="mt-1.5 flex items-center gap-2 text-sm text-blanc-casse/85">
+                <Icon name="map-pin" size={18} class="text-bleu shrink-0" strokeWidth={1.75} />
+                {siteConfig.location.region} · 100% en ligne
+              </p>
+              <p class="mt-1.5 flex items-center gap-2 text-sm text-blanc-casse/85">
+                <Icon name="clock" size={18} class="text-bleu shrink-0" strokeWidth={1.75} />
+                Lun–Ven · 9h–18h (heure 974)
+              </p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- TRUST INDICATORS : 3 KPI                                      -->
+    <!-- ============================================================ -->
+    <section class="relative overflow-hidden px-6 py-16 md:py-20" aria-label="Chiffres clés">
+      <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[36rem] h-[36rem] halo-mix opacity-30"></div>
+      </div>
+
+      <div class="relative mx-auto max-w-5xl">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
+          <div class="scroll-reveal text-center rounded-3xl bg-white/[0.03] ring-1 ring-white/10 p-8 hover:ring-bleu/30 hover:bg-white/[0.05] transition-all duration-300">
+            <p class="font-sora font-bold text-5xl text-bleu" data-count="40" data-count-suffix="">40</p>
+            <p class="mt-2 text-sm text-blanc-casse/70">démos métiers en ligne</p>
+          </div>
+          <div class="scroll-reveal text-center rounded-3xl bg-white/[0.03] ring-1 ring-white/10 p-8 hover:ring-bleu/30 hover:bg-white/[0.05] transition-all duration-300" style="transition-delay: 80ms">
+            <p class="font-sora font-bold text-5xl text-bleu" data-count="7" data-count-suffix="">7</p>
+            <p class="mt-2 text-sm text-blanc-casse/70">jours pour démarrer votre site</p>
+          </div>
+          <div class="scroll-reveal text-center rounded-3xl bg-white/[0.03] ring-1 ring-white/10 p-8 hover:ring-bleu/30 hover:bg-white/[0.05] transition-all duration-300" style="transition-delay: 160ms">
+            <p class="font-sora font-bold text-5xl text-bleu" data-count="97.4" data-count-decimals="1" data-count-suffix="€">97,4€</p>
+            <p class="mt-2 text-sm text-blanc-casse/70">/mois tout inclus</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- FAQ COURTE                                                    -->
+    <!-- ============================================================ -->
+    <section class="relative overflow-hidden px-6 py-20 md:py-28" aria-labelledby="faq-titre">
+      <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div class="absolute -top-24 left-0 w-[28rem] h-[28rem] halo-bleu opacity-30"></div>
+      </div>
+
+      <div class="relative mx-auto max-w-3xl">
+        <div class="text-center mb-12">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-bleu"></span> FAQ contact
+          </p>
+          <h2 id="faq-titre" class="scroll-reveal mt-6 font-sora font-bold text-3xl md:text-5xl text-blanc-casse text-balance leading-[1.1]">
+            Avant d'écrire,
+            <span class="italic font-medium text-bleu">quelques réponses.</span>
           </h2>
-          <ul class="mt-5 space-y-4">
-            <li class="flex items-start gap-3">
-              <span class="flex w-9 h-9 shrink-0 rounded-full bg-bleu text-white items-center justify-center font-sora font-bold text-sm">1</span>
-              <div>
-                <p class="font-semibold text-sm text-bleu-nuit">Vous nous écrivez</p>
-                <p class="mt-0.5 text-sm text-bleu-nuit/65 leading-relaxed">
-                  Quelques infos sur votre activité suffisent.
-                </p>
-              </div>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="flex w-9 h-9 shrink-0 rounded-full bg-orange text-white items-center justify-center font-sora font-bold text-sm">2</span>
-              <div>
-                <p class="font-semibold text-sm text-bleu-nuit">On vous rappelle</p>
-                <p class="mt-0.5 text-sm text-bleu-nuit/65 leading-relaxed">
-                  Pour comprendre votre métier et vos besoins concrets.
-                </p>
-              </div>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="flex w-9 h-9 shrink-0 rounded-full bg-bleu text-white items-center justify-center font-sora font-bold text-sm">3</span>
-              <div>
-                <p class="font-semibold text-sm text-bleu-nuit">On lance votre site</p>
-                <p class="mt-0.5 text-sm text-bleu-nuit/65 leading-relaxed">
-                  Mise en ligne rapide, suivi par un seul interlocuteur.
-                </p>
-              </div>
-            </li>
-          </ul>
         </div>
-
-        <!-- Bouton WhatsApp -->
-        <a
-          href={waUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="group flex items-center justify-between gap-4 w-full p-5 rounded-2xl bg-[#075E54] text-white shadow-card hover:bg-[#054039] hover:shadow-card-hover hover:-translate-y-0.5 transition-all duration-200 ease-out"
-        >
-          <span class="flex items-center gap-3">
-            <span class="flex w-11 h-11 shrink-0 rounded-full bg-white/15 items-center justify-center">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.92 0-2.65-1.03-5.14-2.91-7.01zM12.05 20.15h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.21 8.21 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83 8.25 8.25 0 0 1-8.24 8.22zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06a6.79 6.79 0 0 1-2-1.23 7.5 7.5 0 0 1-1.38-1.72c-.14-.25 0-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42l-.48-.01a.93.93 0 0 0-.67.31 2.81 2.81 0 0 0-.87 2.08c0 1.23.89 2.41 1.02 2.58.12.17 1.76 2.7 4.27 3.78.6.26 1.06.41 1.42.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z" />
-              </svg>
-            </span>
-            <span>
-              <span class="block font-sora font-semibold text-base">Discuter sur WhatsApp</span>
-              <span class="block text-sm text-white">{siteConfig.contact.whatsappDisplay}</span>
-            </span>
-          </span>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="shrink-0 transition-transform duration-300 ease-out group-hover:translate-x-1">
-            <path d="M5 12h14M12 5l7 7-7 7" />
-          </svg>
-        </a>
-
-        <!-- Email + localisation -->
-        <div class="bg-blanc-casse rounded-2xl ring-1 ring-bleu-nuit/10 p-6 space-y-4">
-          <div>
-            <p class="text-xs font-semibold text-bleu-nuit/70 uppercase tracking-wide">Email</p>
-            <a
-              href={`mailto:${siteConfig.contact.email}`}
-              class="mt-1.5 inline-flex items-center gap-2 font-sora font-semibold text-base text-bleu-nuit hover:text-orange transition-colors"
-            >
-              <Icon name="mail" size={18} class="text-bleu-nuit shrink-0" strokeWidth={1.75} />
-              {siteConfig.contact.email}
-            </a>
-          </div>
-          <div class="border-t border-bleu-nuit/10 pt-4">
-            <p class="text-xs font-semibold text-bleu-nuit/70 uppercase tracking-wide">Disponibilité</p>
-            <p class="mt-1.5 flex items-center gap-2 text-sm text-bleu-nuit/85">
-              <Icon name="globe" size={18} class="text-bleu-nuit/65 shrink-0" strokeWidth={1.75} />
-              {siteConfig.location.region} · {siteConfig.location.areaCode}
-            </p>
-            <p class="mt-1.5 text-sm text-bleu-nuit/65 leading-relaxed">
-              Réponse en général sous 24h ouvrées.
-            </p>
-          </div>
+        <div class="scroll-reveal">
+          <Faq client:load items={contactFaq} />
         </div>
-      </aside>
-    </div>
-  </section>
+      </div>
+    </section>
+  </div>
 </BaseLayout>
