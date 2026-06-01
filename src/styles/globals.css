@@ -30,11 +30,15 @@
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
     text-rendering: optimizeLegibility;
+    /* Garde-fou anti scroll horizontal : empêche tout débordement accidentel
+       (halo absolus, marquees, transformations) de causer un scroll-x global. */
+    overflow-x: clip;
   }
 
   body {
     @apply bg-black text-blanc-casse font-inter antialiased;
     font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    overflow-x: clip;
   }
 
   h1, h2, h3, h4, h5, h6 {
