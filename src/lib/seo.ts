@@ -78,7 +78,7 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
     canonical: '/',
   },
   exemples: {
-    title: `Exemples métiers — Sites vitrines pour TPE à La Réunion | ${siteConfig.siteName}`,
+    title: `Exemples — Sites vitrines de démonstration pour TPE à La Réunion | ${siteConfig.siteName}`,
     description:
       'Exemples de sites vitrines par métier à La Réunion (974) : artisans, restaurants, instituts de beauté, gîtes, coachs, professions libérales. Des démonstrations pour vous projeter, ensuite adaptées à votre activité.',
     canonical: '/exemples',
