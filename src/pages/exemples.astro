@@ -106,8 +106,8 @@ const featured = featuredSlugs
               </div>
             </a>
             <div class="flex flex-col flex-1 p-6">
-              <p class="font-sora font-semibold text-lg text-blanc-casse">{r.nom}</p>
-              <p class="mt-1 text-sm text-blanc-casse/65 leading-relaxed">{r.sousTitre}</p>
+              <p class="font-sora font-semibold text-lg text-blanc-casse truncate" title={r.nom}>{r.nom}</p>
+              <p class="mt-1 text-sm text-blanc-casse/65 leading-relaxed truncate" title={r.sousTitre}>{r.sousTitre}</p>
               <div class="mt-5 pt-4 border-t border-white/10 flex items-center justify-between gap-3">
                 <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-bleu/15 text-blanc-casse text-xs font-semibold">
                   Module : {r.moduleInclus}

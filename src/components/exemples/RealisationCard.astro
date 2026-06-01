@@ -214,8 +214,8 @@ const moduleColor = moduleColors[realisation.moduleInclus] ?? 'orange';
       )}
     </div>
 
-    <h3 class="font-sora font-bold text-xl text-blanc-casse leading-snug">{realisation.nom}</h3>
-    <p class="mt-2 text-sm text-blanc-casse/65 leading-relaxed">{realisation.sousTitre}</p>
+    <h3 class="font-sora font-bold text-xl text-blanc-casse leading-snug truncate" title={realisation.nom}>{realisation.nom}</h3>
+    <p class="mt-2 text-sm text-blanc-casse/65 leading-relaxed truncate" title={realisation.sousTitre}>{realisation.sousTitre}</p>
 
     <!-- CTA ligne : bouton mauve + lien tertiaire -->
     <div class="mt-6 flex items-center justify-between gap-3 pt-5 border-t border-white/10">
