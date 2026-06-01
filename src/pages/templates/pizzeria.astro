@@ -27,7 +27,9 @@ const businessLD = localBusinessSchema(data, 'Restaurant');
     <link
       rel="preload"
       as="image"
-      href="/images/pizzeria/hero.webp"
+      href="/images/pizzeria/four-1024.webp"
+      imagesrcset="/images/pizzeria/four-640.webp 640w, /images/pizzeria/four-1024.webp 1024w, /images/pizzeria/four.webp 1600w"
+      imagesizes="100vw"
       fetchpriority="high"
     />
   </Fragment>
@@ -93,8 +95,8 @@ const businessLD = localBusinessSchema(data, 'Restaurant');
         <figure class="scroll-reveal lg:col-span-6 order-1 lg:order-2">
           <div class="relative overflow-hidden rounded-sm" style="aspect-ratio: 4/3;">
             <img
-              src="/images/pizzeria/four.webp"
-              alt="Flammes dans un four à bois traditionnel"
+              src="/images/pizzeria/hero.webp"
+              alt="Four à bois traditionnel en pleine cuisson, lumière chaude"
               loading="lazy"
               decoding="async"
               class="w-full h-full object-cover"
