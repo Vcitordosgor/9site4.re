@@ -7,7 +7,21 @@
     "moduleInclus": "Réservation",
     "slug": "restaurant-gastronomique",
     "previewUrl": "/templates/resto",
-    "thumbnail": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=80"
+    "thumbnail": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=80",
+    "businessType": "restaurant gastronomique",
+    "sector": "Restauration & alimentation",
+    "zone": "La Réunion",
+    "shortDescription": "Carte du chef, menus et réservation de table",
+    "goal": "Mettre en avant la cuisine du chef, la cave et faciliter la réservation de table.",
+    "structuredElements": [
+      "Présentation du chef et de l'identité",
+      "Carte du moment et menus dégustation",
+      "Galerie d'ambiance et de plats",
+      "Réservation de table en ligne",
+      "Informations pratiques et accès"
+    ],
+    "sectorPageUrl": "/site-internet-restaurant-la-reunion",
+    "moduleDescription": "Réservation directe en ligne, avec confirmation automatique et gestion des créneaux selon la capacité de la salle."
   },
   {
     "id": 2,
@@ -17,7 +31,21 @@
     "moduleInclus": "Réservation",
     "slug": "snack-pizzeria",
     "previewUrl": "/templates/pizzeria",
-    "thumbnail": "https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?w=900&q=80"
+    "thumbnail": "https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?w=900&q=80",
+    "businessType": "snack-pizzeria",
+    "sector": "Restauration & alimentation",
+    "zone": "La Réunion",
+    "shortDescription": "Menu, panier et commande WhatsApp",
+    "goal": "Présenter la carte du jour et permettre la commande WhatsApp ou la réservation rapide.",
+    "structuredElements": [
+      "Carte du jour avec photos",
+      "Horaires, localisation et accès",
+      "Commande WhatsApp en un clic",
+      "Présentation de l'équipe et du fournil",
+      "Galerie ambiance et produits"
+    ],
+    "sectorPageUrl": "/site-internet-restaurant-la-reunion",
+    "moduleDescription": "Module Réservation / commande rapide : créneau ou panier WhatsApp, confirmation immédiate, idéal pour le service du midi et du soir."
   },
   {
     "id": 3,
@@ -27,7 +55,21 @@
     "moduleInclus": "Réservation",
     "slug": "bar-a-jus-tropical",
     "previewUrl": "/templates/bar-jus",
-    "thumbnail": "https://images.unsplash.com/photo-1622597467836-f3285f2131b8?w=900&q=80"
+    "thumbnail": "https://images.unsplash.com/photo-1622597467836-f3285f2131b8?w=900&q=80",
+    "businessType": "bar à jus tropical",
+    "sector": "Restauration & alimentation",
+    "zone": "La Réunion",
+    "shortDescription": "Carte des jus, événements et réservation",
+    "goal": "Mettre en valeur la carte des jus pressés du jour et faciliter la commande à emporter.",
+    "structuredElements": [
+      "Carte des jus et smoothie bowls",
+      "Fruits péi de saison",
+      "Commande WhatsApp",
+      "Événements et privatisations",
+      "Informations pratiques"
+    ],
+    "sectorPageUrl": "/site-internet-restaurant-la-reunion",
+    "moduleDescription": "Module Réservation / commande : panier à emporter, confirmation immédiate, gestion simple des stocks du jour."
   },
   {
     "id": 4,
@@ -37,7 +79,21 @@
     "moduleInclus": "Rendez-vous",
     "slug": "salon-de-coiffure",
     "previewUrl": "/templates/salon",
-    "thumbnail": "https://images.unsplash.com/photo-1562322140-8baeececf3df?w=900&q=80"
+    "thumbnail": "https://images.unsplash.com/photo-1562322140-8baeececf3df?w=900&q=80",
+    "businessType": "salon de coiffure",
+    "sector": "Beauté & bien-être",
+    "zone": "La Réunion",
+    "shortDescription": "Prestations, équipe et prise de rendez-vous",
+    "goal": "Présenter les prestations et l'équipe, et permettre la prise de rendez-vous en ligne.",
+    "structuredElements": [
+      "Prestations détaillées et tarifs",
+      "Présentation de l'équipe",
+      "Galerie de coupes signature",
+      "Prise de rendez-vous en ligne",
+      "Horaires et accès"
+    ],
+    "sectorPageUrl": "/site-internet-coiffeur-la-reunion",
+    "moduleDescription": "Module Rendez-vous intégré : créneaux par coiffeur, confirmation automatique, rappel SMS optionnel."
   },
   {
     "id": 5,
@@ -47,7 +103,21 @@
     "moduleInclus": "Rendez-vous",
     "slug": "institut-de-beaute",
     "previewUrl": "/templates/institut",
-    "thumbnail": "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=900&q=80"
+    "thumbnail": "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=900&q=80",
+    "businessType": "institut de beauté",
+    "sector": "Beauté & bien-être",
+    "zone": "La Réunion",
+    "shortDescription": "Soins, tarifs et réservation en ligne",
+    "goal": "Présenter les soins, marques expertes et permettre la réservation en ligne.",
+    "structuredElements": [
+      "Catalogue de soins et tarifs",
+      "Marques partenaires",
+      "Cartes cadeaux",
+      "Réservation en ligne par soin",
+      "Présentation des esthéticiennes"
+    ],
+    "sectorPageUrl": "/site-internet-institut-beaute-la-reunion",
+    "moduleDescription": "Module Rendez-vous : agenda en ligne par praticienne, options de soin, durée et tarif affichés en clair."
   },
   {
     "id": 6,
@@ -57,7 +127,21 @@
     "moduleInclus": "Rendez-vous",
     "slug": "spa-massage",
     "previewUrl": "/templates/spa",
-    "thumbnail": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=900&q=80"
+    "thumbnail": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=900&q=80",
+    "businessType": "spa et massages",
+    "sector": "Beauté & bien-être",
+    "zone": "La Réunion",
+    "shortDescription": "Catalogue de soins et planning des rendez-vous",
+    "goal": "Mettre en avant les rituels signature et faciliter la réservation directe.",
+    "structuredElements": [
+      "Catalogue de rituels et soins",
+      "Présentation du lieu",
+      "Cartes cadeaux et privatisation",
+      "Réservation directe en ligne",
+      "Modalités et accès"
+    ],
+    "sectorPageUrl": "/site-internet-institut-beaute-la-reunion",
+    "moduleDescription": "Module Rendez-vous : agenda multi-cabines, durées modulables, confirmation immédiate."
   },
   {
     "id": 7,
@@ -67,7 +151,21 @@
     "moduleInclus": "Intervention",
     "slug": "plomberie",
     "previewUrl": "/templates/plomberie",
-    "thumbnail": "https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=900&q=80"
+    "thumbnail": "https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=900&q=80",
+    "businessType": "plombier",
+    "sector": "Artisans & BTP",
+    "zone": "La Réunion",
+    "shortDescription": "Interventions urgentes et demande de dépannage",
+    "goal": "Rassurer sur l'urgence, montrer la zone d'intervention et faciliter la demande de dépannage.",
+    "structuredElements": [
+      "Prestations et urgences 24h",
+      "Zones d'intervention",
+      "Tarifs transparents",
+      "Demande d'intervention en ligne",
+      "Avis et garanties"
+    ],
+    "sectorPageUrl": "/site-internet-artisan-la-reunion",
+    "moduleDescription": "Module Intervention : formulaire urgence avec disponibilités, notification immédiate par e-mail et WhatsApp."
   },
   {
     "id": 8,
@@ -77,7 +175,21 @@
     "moduleInclus": "Devis",
     "slug": "electricite-generale",
     "previewUrl": "/templates/electricien",
-    "thumbnail": "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=900&q=80"
+    "thumbnail": "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=900&q=80",
+    "businessType": "électricien",
+    "sector": "Artisans & BTP",
+    "zone": "La Réunion",
+    "shortDescription": "Présentation, références et demande de devis",
+    "goal": "Présenter les compétences (mise aux normes, IRVE, dépannage) et faciliter la demande de devis.",
+    "structuredElements": [
+      "Prestations détaillées",
+      "Références de chantiers",
+      "Certifications",
+      "Demande de devis en ligne",
+      "Zones d'intervention"
+    ],
+    "sectorPageUrl": "/site-internet-artisan-la-reunion",
+    "moduleDescription": "Module Devis : formulaire qualifié avec photos, réponse sous 24h, suivi par e-mail."
   },
   {
     "id": 9,
@@ -87,7 +199,21 @@
     "moduleInclus": "Devis",
     "slug": "paysagiste",
     "previewUrl": "/templates/paysagiste",
-    "thumbnail": "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=900&q=80"
+    "thumbnail": "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=900&q=80",
+    "businessType": "paysagiste",
+    "sector": "Artisans & BTP",
+    "zone": "La Réunion",
+    "shortDescription": "Réalisations, services et devis personnalisé",
+    "goal": "Mettre en valeur les réalisations et faciliter la demande de devis personnalisé.",
+    "structuredElements": [
+      "Portfolio de jardins créés",
+      "Prestations (création, entretien)",
+      "Plantes péi",
+      "Demande de devis en ligne",
+      "Présentation de l'équipe"
+    ],
+    "sectorPageUrl": "/site-internet-artisan-la-reunion",
+    "moduleDescription": "Module Devis : qualification du projet (surface, type), photos, réponse rapide."
   },
   {
     "id": 10,
@@ -97,7 +223,21 @@
     "moduleInclus": "Rendez-vous",
     "slug": "cabinet-osteopathie",
     "previewUrl": "/templates/osteo",
-    "thumbnail": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=900&q=80"
+    "thumbnail": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=900&q=80",
+    "businessType": "ostéopathe",
+    "sector": "Santé & paramédical",
+    "zone": "La Réunion",
+    "shortDescription": "Présentation, horaires et prise de rendez-vous",
+    "goal": "Présenter l'approche du praticien et permettre la prise de rendez-vous en ligne.",
+    "structuredElements": [
+      "Approche et formations",
+      "Indications et public",
+      "Horaires et tarifs",
+      "Prise de rendez-vous en ligne",
+      "Accès et stationnement"
+    ],
+    "sectorPageUrl": "/site-internet-bien-etre-sante-la-reunion",
+    "moduleDescription": "Module Rendez-vous : agenda en ligne, première consultation distinguée, rappel par e-mail."
   },
   {
     "id": 11,
@@ -107,7 +247,21 @@
     "moduleInclus": "Rendez-vous",
     "slug": "dieteticienne",
     "previewUrl": "/templates/dieteticienne",
-    "thumbnail": "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=900&q=80"
+    "thumbnail": "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=900&q=80",
+    "businessType": "diététicienne",
+    "sector": "Santé & paramédical",
+    "zone": "La Réunion",
+    "shortDescription": "Approche, consultations et rendez-vous en ligne",
+    "goal": "Présenter l'approche, les programmes et permettre la prise de rendez-vous.",
+    "structuredElements": [
+      "Approche nutritionnelle",
+      "Programmes proposés",
+      "Modalités (cabinet, visio)",
+      "Prise de rendez-vous en ligne",
+      "Tarifs et remboursement"
+    ],
+    "sectorPageUrl": "/site-internet-bien-etre-sante-la-reunion",
+    "moduleDescription": "Module Rendez-vous : créneaux cabinet et visio, confirmation automatique, suivi par e-mail."
   },
   {
     "id": 12,
@@ -117,7 +271,21 @@
     "moduleInclus": "Rendez-vous",
     "slug": "psychologue",
     "previewUrl": "/templates/psychologue",
-    "thumbnail": "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=900&q=80"
+    "thumbnail": "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=900&q=80",
+    "businessType": "psychologue",
+    "sector": "Santé & paramédical",
+    "zone": "La Réunion",
+    "shortDescription": "Présentation, modalités et rendez-vous confidentiel",
+    "goal": "Présenter la pratique avec discrétion et permettre une prise de contact confidentielle.",
+    "structuredElements": [
+      "Présentation et formations",
+      "Public et indications",
+      "Cadre déontologique",
+      "Prise de rendez-vous discrète",
+      "Tarifs et modalités"
+    ],
+    "sectorPageUrl": "/site-internet-bien-etre-sante-la-reunion",
+    "moduleDescription": "Module Rendez-vous : prise de contact confidentielle, première séance distinguée."
   },
   {
     "id": 13,
@@ -127,7 +295,21 @@
     "moduleInclus": "Rendez-vous",
     "slug": "coach-sportif",
     "previewUrl": "/templates/coach",
-    "thumbnail": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=900&q=80"
+    "thumbnail": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=900&q=80",
+    "businessType": "coach sportif",
+    "sector": "Sport & coaching",
+    "zone": "La Réunion",
+    "shortDescription": "Programmes, tarifs et rendez-vous personnalisés",
+    "goal": "Présenter les programmes et faciliter la prise de rendez-vous pour une séance d'essai.",
+    "structuredElements": [
+      "Méthode et programmes",
+      "Tarifs et formules",
+      "Séance d'essai",
+      "Prise de rendez-vous en ligne",
+      "Témoignages clients"
+    ],
+    "sectorPageUrl": "/site-internet-bien-etre-sante-la-reunion",
+    "moduleDescription": "Module Rendez-vous : créneaux domicile, plage ou salle, paiement formule possible."
   },
   {
     "id": 14,
@@ -137,7 +319,21 @@
     "moduleInclus": "Réservation",
     "slug": "studio-yoga",
     "previewUrl": "/templates/yoga",
-    "thumbnail": "https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=900&q=80"
+    "thumbnail": "https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=900&q=80",
+    "businessType": "studio de yoga",
+    "sector": "Sport & coaching",
+    "zone": "La Réunion",
+    "shortDescription": "Planning des cours et réservation en ligne",
+    "goal": "Présenter les cours, le planning et permettre l'inscription en ligne.",
+    "structuredElements": [
+      "Disciplines proposées",
+      "Planning hebdomadaire",
+      "Cours d'essai",
+      "Réservation en ligne par cours",
+      "Présentation des professeurs"
+    ],
+    "sectorPageUrl": "/site-internet-bien-etre-sante-la-reunion",
+    "moduleDescription": "Module Réservation : planning de cours, inscription par séance ou abonnement."
   },
   {
     "id": 15,
@@ -147,7 +343,21 @@
     "moduleInclus": "Réservation",
     "slug": "ecole-de-danse",
     "previewUrl": "/templates/danse",
-    "thumbnail": "https://images.unsplash.com/photo-1547153760-18fc86324498?w=900&q=80"
+    "thumbnail": "https://images.unsplash.com/photo-1547153760-18fc86324498?w=900&q=80",
+    "businessType": "école de danse",
+    "sector": "Sport & coaching",
+    "zone": "La Réunion",
+    "shortDescription": "Cours, professeurs et inscription aux séances",
+    "goal": "Présenter les disciplines et professeurs, et faciliter l'inscription aux séances.",
+    "structuredElements": [
+      "Disciplines et niveaux",
+      "Présentation des professeurs",
+      "Planning des cours",
+      "Inscription en ligne",
+      "Spectacles et événements"
+    ],
+    "sectorPageUrl": "/site-internet-bien-etre-sante-la-reunion",
+    "moduleDescription": "Module Réservation : inscription par cours ou trimestre, places limitées affichées en clair."
   },
   {
     "id": 16,
@@ -157,7 +367,21 @@
     "moduleInclus": "Réservation",
     "slug": "gite-de-montagne",
     "previewUrl": "/templates/gite",
-    "thumbnail": "https://images.unsplash.com/photo-1488462237308-ecaa28b729d7?w=900&q=80"
+    "thumbnail": "https://images.unsplash.com/photo-1488462237308-ecaa28b729d7?w=900&q=80",
+    "businessType": "gîte de montagne",
+    "sector": "Tourisme & loisirs",
+    "zone": "La Réunion",
+    "shortDescription": "Présentation, photos et réservation des séjours",
+    "goal": "Présenter le gîte, ses équipements et permettre la réservation directe.",
+    "structuredElements": [
+      "Présentation du gîte",
+      "Équipements et confort",
+      "Calendrier de disponibilités",
+      "Réservation directe",
+      "Activités à proximité"
+    ],
+    "sectorPageUrl": "/site-internet-gite-location-la-reunion",
+    "moduleDescription": "Module Réservation : calendrier en direct, paiement acompte possible, confirmation automatique."
   },
   {
     "id": 17,
@@ -167,7 +391,21 @@
     "moduleInclus": "Réservation",
     "slug": "excursions-randonnee",
     "previewUrl": "/templates/excursions",
-    "thumbnail": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=900&q=80"
+    "thumbnail": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=900&q=80",
+    "businessType": "guide de randonnée",
+    "sector": "Tourisme & loisirs",
+    "zone": "La Réunion",
+    "shortDescription": "Itinéraires, tarifs et réservation des sorties",
+    "goal": "Présenter les itinéraires et faciliter la réservation des sorties guidées.",
+    "structuredElements": [
+      "Catalogue d'itinéraires",
+      "Niveaux et durées",
+      "Dates ouvertes",
+      "Réservation en ligne",
+      "Sécurité et équipement"
+    ],
+    "sectorPageUrl": "/site-internet-gite-location-la-reunion",
+    "moduleDescription": "Module Réservation : sorties datées, places limitées, paiement en ligne."
   },
   {
     "id": 18,
@@ -177,7 +415,21 @@
     "moduleInclus": "Réservation",
     "slug": "location-saisonniere-bord-de-mer",
     "previewUrl": "/templates/location",
-    "thumbnail": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=900&q=80"
+    "thumbnail": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=900&q=80",
+    "businessType": "location saisonnière",
+    "sector": "Tourisme & loisirs",
+    "zone": "La Réunion",
+    "shortDescription": "Logement, équipements et réservation",
+    "goal": "Mettre en valeur le bien et permettre la réservation en direct sans commission.",
+    "structuredElements": [
+      "Galerie haute qualité",
+      "Équipements et services",
+      "Calendrier en direct",
+      "Réservation directe",
+      "Avis voyageurs"
+    ],
+    "sectorPageUrl": "/site-internet-gite-location-la-reunion",
+    "moduleDescription": "Module Réservation : calendrier synchronisé, demande ou réservation directe, paiement acompte."
   },
   {
     "id": 19,
@@ -187,7 +439,21 @@
     "moduleInclus": "Rendez-vous",
     "slug": "consultant",
     "previewUrl": "/templates/consultant",
-    "thumbnail": "https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?w=900&q=80"
+    "thumbnail": "https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?w=900&q=80",
+    "businessType": "consultant indépendant",
+    "sector": "Services aux professionnels",
+    "zone": "La Réunion",
+    "shortDescription": "Expertise, références et prise de rendez-vous",
+    "goal": "Présenter l'expertise, les références et faciliter le premier rendez-vous diagnostic.",
+    "structuredElements": [
+      "Expertise et domaines",
+      "Case studies clients",
+      "Méthode d'accompagnement",
+      "Prise de rendez-vous diagnostic",
+      "Tarifs et formules"
+    ],
+    "sectorPageUrl": "/site-internet-coach-independant-la-reunion",
+    "moduleDescription": "Module Rendez-vous : créneau diagnostic gratuit, visio possible, confirmation immédiate."
   },
   {
     "id": 20,
@@ -197,7 +463,21 @@
     "moduleInclus": "Rendez-vous",
     "slug": "cabinet-comptable",
     "previewUrl": "/templates/comptable",
-    "thumbnail": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=80"
+    "thumbnail": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=80",
+    "businessType": "cabinet comptable",
+    "sector": "Services aux professionnels",
+    "zone": "La Réunion",
+    "shortDescription": "Services, équipe et rendez-vous découverte",
+    "goal": "Présenter les services, l'équipe et permettre la prise de rendez-vous découverte.",
+    "structuredElements": [
+      "Services proposés",
+      "Équipe et expertises",
+      "Honoraires transparents",
+      "Prise de rendez-vous découverte",
+      "Espace client"
+    ],
+    "sectorPageUrl": "/site-internet-profession-liberale-la-reunion",
+    "moduleDescription": "Module Rendez-vous : premier échange découverte, formulaire qualifiant, confirmation automatique."
   },
   {
     "id": 21,
@@ -207,7 +487,21 @@
     "moduleInclus": "Devis",
     "slug": "architecte",
     "previewUrl": "/templates/architecte",
-    "thumbnail": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=80"
+    "thumbnail": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=80",
+    "businessType": "architecte",
+    "sector": "Services aux professionnels",
+    "zone": "La Réunion",
+    "shortDescription": "Projets, méthode et demande de devis",
+    "goal": "Mettre en valeur le portfolio et faciliter la demande de devis pour un projet.",
+    "structuredElements": [
+      "Portfolio de projets",
+      "Méthode et accompagnement",
+      "Spécialités (rénovation, neuf)",
+      "Demande de devis",
+      "Premier rendez-vous"
+    ],
+    "sectorPageUrl": "/site-internet-profession-liberale-la-reunion",
+    "moduleDescription": "Module Devis : qualification du projet (surface, budget, lieu), premier RDV proposé."
   },
   {
     "id": 22,
@@ -217,7 +511,21 @@
     "moduleInclus": "Rendez-vous",
     "slug": "auto-ecole",
     "previewUrl": "/templates/auto-ecole",
-    "thumbnail": "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=900&q=80"
+    "thumbnail": "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=900&q=80",
+    "businessType": "auto-école",
+    "sector": "Services aux particuliers",
+    "zone": "La Réunion",
+    "shortDescription": "Formations, forfaits et inscription en ligne",
+    "goal": "Présenter les forfaits permis et faciliter l'inscription en ligne.",
+    "structuredElements": [
+      "Forfaits permis B",
+      "Code en ligne 24/7",
+      "Équipe de moniteurs",
+      "Inscription en ligne",
+      "Taux de réussite"
+    ],
+    "sectorPageUrl": "/site-internet-commerce-local-la-reunion",
+    "moduleDescription": "Module Rendez-vous / inscription : choix du forfait, créneaux d'évaluation, paiement échelonné."
   },
   {
     "id": 23,
@@ -227,7 +535,21 @@
     "moduleInclus": "Devis",
     "slug": "conciergerie",
     "previewUrl": "/templates/conciergerie",
-    "thumbnail": "https://images.unsplash.com/photo-1455587734955-081b22074882?w=900&q=80"
+    "thumbnail": "https://images.unsplash.com/photo-1455587734955-081b22074882?w=900&q=80",
+    "businessType": "conciergerie privée",
+    "sector": "Services aux particuliers",
+    "zone": "La Réunion",
+    "shortDescription": "Prestations, formules et demande de devis",
+    "goal": "Présenter les services à la personne et faciliter la demande de devis.",
+    "structuredElements": [
+      "Services proposés",
+      "Formules d'abonnement",
+      "Zones desservies",
+      "Demande de devis",
+      "Garanties et assurances"
+    ],
+    "sectorPageUrl": "/site-internet-commerce-local-la-reunion",
+    "moduleDescription": "Module Devis : qualification du besoin, formule recommandée, réponse rapide."
   },
   {
     "id": 24,
@@ -237,7 +559,21 @@
     "moduleInclus": "Intervention",
     "slug": "aide-a-domicile",
     "previewUrl": "/templates/aide-domicile",
-    "thumbnail": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=900&q=80"
+    "thumbnail": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=900&q=80",
+    "businessType": "service d'aide à domicile",
+    "sector": "Services aux particuliers",
+    "zone": "La Réunion",
+    "shortDescription": "Services, zone d'intervention et planning",
+    "goal": "Rassurer sur la qualité du service et faciliter la demande d'intervention.",
+    "structuredElements": [
+      "Services proposés",
+      "Équipe formée",
+      "APA / PCH acceptés",
+      "Demande d'intervention",
+      "Zones desservies"
+    ],
+    "sectorPageUrl": "/site-internet-commerce-local-la-reunion",
+    "moduleDescription": "Module Intervention : qualification du besoin, planning proposé, devis gratuit."
   },
   {
     "id": 25,
@@ -247,7 +583,21 @@
     "moduleInclus": "Réservation",
     "slug": "plongee",
     "previewUrl": "/templates/plongee",
-    "thumbnail": "https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=900&q=80"
+    "thumbnail": "https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=900&q=80",
+    "businessType": "centre de plongée",
+    "sector": "Tourisme & loisirs",
+    "zone": "La Réunion",
+    "shortDescription": "Formules de plongée, sécurité et baptême Saint-Leu",
+    "goal": "Présenter les formules de plongée et faciliter la réservation de sorties.",
+    "structuredElements": [
+      "Baptême et exploration",
+      "Sorties baleines",
+      "Encadrement et sécurité",
+      "Réservation en ligne",
+      "Équipement fourni"
+    ],
+    "sectorPageUrl": "/site-internet-gite-location-la-reunion",
+    "moduleDescription": "Module Réservation : sorties datées, places limitées, paiement acompte en ligne."
   },
   {
     "id": 26,
@@ -257,7 +607,21 @@
     "moduleInclus": "Devis",
     "slug": "wedding-planner",
     "previewUrl": "/templates/wedding",
-    "thumbnail": "https://images.unsplash.com/photo-1519741497674-611481863552?w=900&q=80"
+    "thumbnail": "https://images.unsplash.com/photo-1519741497674-611481863552?w=900&q=80",
+    "businessType": "wedding planner",
+    "sector": "Services aux particuliers",
+    "zone": "La Réunion",
+    "shortDescription": "Cérémonies plage, civiles et intimes à La Réunion",
+    "goal": "Mettre en valeur les cérémonies réalisées et faciliter la demande de devis sur-mesure.",
+    "structuredElements": [
+      "Portfolio de cérémonies",
+      "Lieux iconiques 974",
+      "Formules d'accompagnement",
+      "Demande de devis",
+      "Premier rendez-vous"
+    ],
+    "sectorPageUrl": "/site-internet-commerce-local-la-reunion",
+    "moduleDescription": "Module Devis : qualification du projet (date, lieu, budget), réponse personnalisée."
   },
   {
     "id": 27,
@@ -267,7 +631,21 @@
     "moduleInclus": "Réservation",
     "slug": "patisserie-creole",
     "previewUrl": "/templates/patisserie",
-    "thumbnail": "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=900&q=80"
+    "thumbnail": "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=900&q=80",
+    "businessType": "pâtisserie créole",
+    "sector": "Restauration & alimentation",
+    "zone": "La Réunion",
+    "shortDescription": "Carte du jour, calendrier des saisons et commandes spéciales",
+    "goal": "Mettre en avant la carte du jour et faciliter les commandes spéciales.",
+    "structuredElements": [
+      "Carte du jour",
+      "Calendrier des saisons",
+      "Commandes mariages et événements",
+      "Réservation et commande",
+      "Présentation du fournil"
+    ],
+    "sectorPageUrl": "/site-internet-restaurant-la-reunion",
+    "moduleDescription": "Module Réservation / commande : panier dédié pour les commandes spéciales, créneaux de retrait."
   },
   {
     "id": 28,
@@ -277,7 +655,21 @@
     "moduleInclus": "Devis",
     "slug": "garage-mecanique",
     "previewUrl": "/templates/garage",
-    "thumbnail": "https://images.unsplash.com/photo-1486006920555-c77dcf18193c?w=900&q=80"
+    "thumbnail": "https://images.unsplash.com/photo-1486006920555-c77dcf18193c?w=900&q=80",
+    "businessType": "garage mécanique",
+    "sector": "Artisans & BTP",
+    "zone": "La Réunion",
+    "shortDescription": "Interventions chiffrées, devis 24h et bordereau atelier",
+    "goal": "Présenter les services et faciliter la demande de devis chiffré.",
+    "structuredElements": [
+      "Interventions et tarifs",
+      "Équipe certifiée",
+      "Devis 24h",
+      "Demande en ligne",
+      "Marques traitées"
+    ],
+    "sectorPageUrl": "/site-internet-artisan-la-reunion",
+    "moduleDescription": "Module Devis : qualification (véhicule, panne), bordereau atelier en réponse, planning proposé."
   },
   {
     "id": 29,
@@ -287,7 +679,21 @@
     "moduleInclus": "Devis",
     "slug": "photographe-auteur",
     "previewUrl": "/templates/photographe",
-    "thumbnail": "https://images.unsplash.com/photo-1606983340126-99ab4feaa64a?w=900&q=80"
+    "thumbnail": "https://images.unsplash.com/photo-1606983340126-99ab4feaa64a?w=900&q=80",
+    "businessType": "photographe d'auteur",
+    "sector": "Services aux professionnels",
+    "zone": "La Réunion",
+    "shortDescription": "Portraits argentiques, mariage éditorial et tirages d'art",
+    "goal": "Mettre en valeur le portfolio et faciliter la demande de devis pour un projet.",
+    "structuredElements": [
+      "Portfolio par série",
+      "Spécialités (portrait, mariage)",
+      "Démarche d'auteur",
+      "Demande de devis",
+      "Tirages numérotés"
+    ],
+    "sectorPageUrl": "/site-internet-profession-liberale-la-reunion",
+    "moduleDescription": "Module Devis : qualification du projet (type, date, lieu), réponse personnalisée."
   },
   {
     "id": 30,
@@ -297,7 +703,21 @@
     "moduleInclus": "Rendez-vous",
     "slug": "avocat-cabinet",
     "previewUrl": "/templates/avocat",
-    "thumbnail": "https://images.unsplash.com/photo-1505664194779-8beaceb93744?w=900&q=80"
+    "thumbnail": "https://images.unsplash.com/photo-1505664194779-8beaceb93744?w=900&q=80",
+    "businessType": "cabinet d'avocats",
+    "sector": "Services aux professionnels",
+    "zone": "La Réunion",
+    "shortDescription": "Domaines d'intervention, associés et honoraires transparents",
+    "goal": "Présenter les domaines d'intervention et faciliter la prise de rendez-vous.",
+    "structuredElements": [
+      "Domaines d'intervention",
+      "Associés et collaborateurs",
+      "Honoraires transparents",
+      "Prise de rendez-vous",
+      "Premier contact qualifié"
+    ],
+    "sectorPageUrl": "/site-internet-profession-liberale-la-reunion",
+    "moduleDescription": "Module Rendez-vous : prise de RDV par domaine, qualification du dossier, confidentialité préservée."
   },
   {
     "id": 31,
@@ -307,7 +727,21 @@
     "moduleInclus": "Commande",
     "slug": "boulangerie-artisanale",
     "previewUrl": "/templates/boulangerie",
-    "thumbnail": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=900&q=80"
+    "thumbnail": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=900&q=80",
+    "businessType": "boulangerie artisanale",
+    "sector": "Restauration & alimentation",
+    "zone": "La Réunion",
+    "shortDescription": "Levain naturel et viennoiseries maison",
+    "goal": "Présenter la gamme de pains au levain et faciliter les commandes spéciales.",
+    "structuredElements": [
+      "Pains au levain",
+      "Viennoiseries pur beurre",
+      "Calendrier de cuisson",
+      "Commande en ligne",
+      "Présentation du fournil"
+    ],
+    "sectorPageUrl": "/site-internet-restaurant-la-reunion",
+    "moduleDescription": "Module Commande : panier de pré-commande, créneaux de retrait, paiement à l'enlèvement ou en ligne."
   },
   {
     "id": 32,
@@ -317,7 +751,21 @@
     "moduleInclus": "Commande",
     "slug": "glacier-artisanal",
     "previewUrl": "/templates/glacier",
-    "thumbnail": "https://images.unsplash.com/photo-1501443762994-82bd5dace89a?w=900&q=80"
+    "thumbnail": "https://images.unsplash.com/photo-1501443762994-82bd5dace89a?w=900&q=80",
+    "businessType": "glacier artisanal",
+    "sector": "Restauration & alimentation",
+    "zone": "La Réunion",
+    "shortDescription": "Sorbets fruits péi et crèmes glacées",
+    "goal": "Mettre en valeur les parfums péi et faciliter la commande pour événements.",
+    "structuredElements": [
+      "Carte des parfums",
+      "Sorbets fruits péi",
+      "Tournée du camion glacé",
+      "Privatisation événement",
+      "Commande en ligne"
+    ],
+    "sectorPageUrl": "/site-internet-restaurant-la-reunion",
+    "moduleDescription": "Module Commande : panier événement, gestion des stocks par parfum, créneaux limités."
   },
   {
     "id": 33,
@@ -327,7 +775,21 @@
     "moduleInclus": "Commande",
     "slug": "cafe-torrefaction",
     "previewUrl": "/templates/cafe-torref",
-    "thumbnail": "https://images.unsplash.com/photo-1559525839-d9acfd03c2f7?w=900&q=80"
+    "thumbnail": "https://images.unsplash.com/photo-1559525839-d9acfd03c2f7?w=900&q=80",
+    "businessType": "torréfacteur",
+    "sector": "Restauration & alimentation",
+    "zone": "La Réunion",
+    "shortDescription": "Brûlerie artisanale, abonnement grains",
+    "goal": "Présenter les origines et faciliter l'abonnement grains frais.",
+    "structuredElements": [
+      "Origines proposées",
+      "Méthodes de torréfaction",
+      "Abonnement grains frais",
+      "Commande en ligne",
+      "Atelier et formations"
+    ],
+    "sectorPageUrl": "/site-internet-restaurant-la-reunion",
+    "moduleDescription": "Module Commande : panier grains, abonnement mensuel, paiement en ligne et livraison ou retrait."
   },
   {
     "id": 34,
@@ -337,7 +799,21 @@
     "moduleInclus": "Réservation",
     "slug": "ecole-de-surf",
     "previewUrl": "/templates/surf",
-    "thumbnail": "https://images.unsplash.com/photo-1502680390469-be75c86b636f?w=900&q=80"
+    "thumbnail": "https://images.unsplash.com/photo-1502680390469-be75c86b636f?w=900&q=80",
+    "businessType": "école de surf",
+    "sector": "Tourisme & loisirs",
+    "zone": "La Réunion",
+    "shortDescription": "Initiation, perfectionnement, stages",
+    "goal": "Présenter les formules et faciliter la réservation des cours.",
+    "structuredElements": [
+      "Initiation et perfectionnement",
+      "Stages enfants et adultes",
+      "Matériel inclus",
+      "Réservation en ligne",
+      "Spots et sécurité"
+    ],
+    "sectorPageUrl": "/site-internet-gite-location-la-reunion",
+    "moduleDescription": "Module Réservation : cours datés, places limitées, paiement acompte en ligne."
   },
   {
     "id": 35,
@@ -347,7 +823,21 @@
     "moduleInclus": "Devis",
     "slug": "fleuriste-atelier",
     "previewUrl": "/templates/fleuriste",
-    "thumbnail": "https://images.unsplash.com/photo-1494973367193-3f1f0a4cdcbe?w=900&q=80"
+    "thumbnail": "https://images.unsplash.com/photo-1494973367193-3f1f0a4cdcbe?w=900&q=80",
+    "businessType": "fleuriste",
+    "sector": "Services aux particuliers",
+    "zone": "La Réunion",
+    "shortDescription": "Bouquets, mariages, événementiel floral",
+    "goal": "Mettre en valeur les compositions et faciliter la demande de devis événementiel.",
+    "structuredElements": [
+      "Bouquets de saison",
+      "Mariage et événementiel",
+      "Abonnement bureau",
+      "Demande de devis",
+      "Présentation de l'atelier"
+    ],
+    "sectorPageUrl": "/site-internet-commerce-local-la-reunion",
+    "moduleDescription": "Module Devis : qualification (type d'événement, budget, date), réponse personnalisée."
   },
   {
     "id": 36,
@@ -357,7 +847,21 @@
     "moduleInclus": "Réservation",
     "slug": "studio-de-tatouage",
     "previewUrl": "/templates/tatoueur",
-    "thumbnail": "https://images.unsplash.com/photo-1565058379802-bbe93b2f703a?w=900&q=80"
+    "thumbnail": "https://images.unsplash.com/photo-1565058379802-bbe93b2f703a?w=900&q=80",
+    "businessType": "studio de tatouage",
+    "sector": "Beauté & bien-être",
+    "zone": "La Réunion",
+    "shortDescription": "Styles signature, flash sheet et réservation de consultation",
+    "goal": "Présenter les styles signature et faciliter la prise de consultation.",
+    "structuredElements": [
+      "Portfolios par tatoueur",
+      "Styles signature",
+      "Flash sheet disponible",
+      "Réservation de consultation",
+      "Hygiène et garanties"
+    ],
+    "sectorPageUrl": "/site-internet-institut-beaute-la-reunion",
+    "moduleDescription": "Module Réservation : consultation par tatoueur, acompte en ligne, créneaux de séance."
   },
   {
     "id": 37,
@@ -367,7 +871,21 @@
     "moduleInclus": "Rendez-vous",
     "slug": "naturopathe",
     "previewUrl": "/templates/naturopathe",
-    "thumbnail": "https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=900&q=80"
+    "thumbnail": "https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=900&q=80",
+    "businessType": "naturopathe",
+    "sector": "Santé & paramédical",
+    "zone": "La Réunion",
+    "shortDescription": "Méthode, parcours, conseils et rendez-vous en ligne",
+    "goal": "Présenter la méthode et faciliter la prise de rendez-vous en ligne.",
+    "structuredElements": [
+      "Méthode et formations",
+      "Indications (fatigue, sommeil, etc.)",
+      "Programme d'accompagnement",
+      "Prise de rendez-vous en ligne",
+      "Tarifs et modalités"
+    ],
+    "sectorPageUrl": "/site-internet-bien-etre-sante-la-reunion",
+    "moduleDescription": "Module Rendez-vous : agenda en ligne, première consultation distinguée, suivi par e-mail."
   },
   {
     "id": 38,
@@ -377,7 +895,21 @@
     "moduleInclus": "Inscription",
     "slug": "micro-creche",
     "previewUrl": "/templates/creche",
-    "thumbnail": "https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=900&q=80"
+    "thumbnail": "https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=900&q=80",
+    "businessType": "micro-crèche",
+    "sector": "Services aux particuliers",
+    "zone": "La Réunion",
+    "shortDescription": "Pédagogie, équipe, journée type et inscription",
+    "goal": "Présenter la pédagogie et l'équipe, et faciliter l'inscription.",
+    "structuredElements": [
+      "Pédagogie et projet",
+      "Équipe diplômée",
+      "Journée type",
+      "Inscription en ligne",
+      "Tarifs et horaires"
+    ],
+    "sectorPageUrl": "/site-internet-commerce-local-la-reunion",
+    "moduleDescription": "Module Inscription : dossier en ligne, qualification (âge, jours), visite proposée."
   },
   {
     "id": 39,
@@ -387,7 +919,21 @@
     "moduleInclus": "Rendez-vous",
     "slug": "etude-notariale",
     "previewUrl": "/templates/notaire",
-    "thumbnail": "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=900&q=80"
+    "thumbnail": "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=900&q=80",
+    "businessType": "étude notariale",
+    "sector": "Services aux professionnels",
+    "zone": "La Réunion",
+    "shortDescription": "Domaines, notaires, frais transparents et prise de rendez-vous",
+    "goal": "Présenter les domaines et faciliter la prise de rendez-vous qualifiée.",
+    "structuredElements": [
+      "Domaines (famille, succession, etc.)",
+      "Notaires et collaborateurs",
+      "Frais transparents",
+      "Prise de rendez-vous",
+      "Documents à apporter"
+    ],
+    "sectorPageUrl": "/site-internet-profession-liberale-la-reunion",
+    "moduleDescription": "Module Rendez-vous : prise de RDV par domaine, qualification du dossier, confirmation par e-mail."
   },
   {
     "id": 40,
@@ -397,6 +943,20 @@
     "moduleInclus": "Réservation",
     "slug": "studio-audio",
     "previewUrl": "/templates/studio-audio",
-    "thumbnail": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=900&q=80"
+    "thumbnail": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=900&q=80",
+    "businessType": "studio d'enregistrement",
+    "sector": "Services aux professionnels",
+    "zone": "La Réunion",
+    "shortDescription": "Services, équipement, tarifs et réservation de session",
+    "goal": "Présenter les prestations et faciliter la réservation de sessions.",
+    "structuredElements": [
+      "Prestations (enregistrement, mixage)",
+      "Équipement (SSL, Pro Tools)",
+      "Ingés résidents",
+      "Réservation de session",
+      "Tarifs au forfait"
+    ],
+    "sectorPageUrl": "/site-internet-profession-liberale-la-reunion",
+    "moduleDescription": "Module Réservation : session datée, acompte en ligne, brief envoyé en amont."
   }
 ]

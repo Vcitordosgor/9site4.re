@@ -157,16 +157,14 @@ const moduleColor = moduleColors[realisation.moduleInclus] ?? 'orange';
   {realisation.previewUrl && Preview ? (
     <!-- 🖥️ MINI-PREVIEW : la star de la carte, plus grand, avec overlay au survol -->
     <a
-      href={realisation.previewUrl}
-      target="_blank"
-      rel="noopener"
+      href={`/realisations/${realisation.slug}`}
       class="block relative group/preview overflow-hidden border-b border-white/10 bg-bleu-nuit"
       aria-label={`Voir la réalisation ${realisation.nom}`}
       data-track-event="cta_view_realisation_click"
       data-track-category="navigation"
       data-track-label={realisation.slug}
       data-track-source="realisation_card_preview"
-      data-track-target={realisation.previewUrl}
+      data-track-target={`/realisations/${realisation.slug}`}
     >
       <!-- Browser chrome minimaliste -->
       <div class="flex items-center gap-1.5 px-3 py-2 bg-bleu-nuit/95" aria-hidden="true">
@@ -226,15 +224,13 @@ const moduleColor = moduleColors[realisation.moduleInclus] ?? 'orange';
     <div class="mt-6 flex flex-wrap items-center justify-between gap-x-3 gap-y-2 pt-5 border-t border-white/10">
       {realisation.previewUrl ? (
         <a
-          href={realisation.previewUrl}
-          target="_blank"
-          rel="noopener"
+          href={`/realisations/${realisation.slug}`}
           class="group/cta inline-flex items-center gap-1.5 h-10 px-4 text-sm font-semibold rounded-full bg-bleu text-white hover:bg-[#7e95ff] hover:-translate-y-0.5 shadow-[0_4px_16px_rgba(255,255,255,0.35)] transition-all duration-200"
           data-track-event="cta_view_realisation_click"
           data-track-category="navigation"
           data-track-label={realisation.slug}
           data-track-source="realisation_card_cta"
-          data-track-target={realisation.previewUrl}
+          data-track-target={`/realisations/${realisation.slug}`}
         >
           Voir la réalisation
           <Icon name="arrow-right" size={14} strokeWidth={2.5} class="transition-transform duration-200 group-hover/cta:translate-x-0.5" />
