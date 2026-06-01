@@ -29,6 +29,9 @@ type PageKey =
   | 'legal'
   | 'notFound'
   | 'styleguide'
+  | 'creationSiteReunion'
+  | 'siteRestaurantReunion'
+  | 'siteArtisanReunion'
   | 'templatePizzeria'
   | 'templateSalon'
   | 'templateSpa'
@@ -111,6 +114,24 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
     description: 'Bibliothèque de composants UI.',
     canonical: '/styleguide',
     noindex: true,
+  },
+  creationSiteReunion: {
+    title: `Création de site internet à La Réunion pour TPE/PME | ${siteConfig.siteName}`,
+    description:
+      '9site4 crée, structure et gère des sites internet professionnels pour les TPE/PME à La Réunion. Site prêt en 7 jours, création incluse, gestion continue.',
+    canonical: '/creation-site-internet-la-reunion',
+  },
+  siteRestaurantReunion: {
+    title: `Site internet pour restaurant à La Réunion | ${siteConfig.siteName}`,
+    description:
+      '9site4 crée des sites professionnels pour restaurants, snacks, bars, cafés et pizzerias à La Réunion : carte, horaires, photos, réservation et gestion continue.',
+    canonical: '/site-internet-restaurant-la-reunion',
+  },
+  siteArtisanReunion: {
+    title: `Site internet pour artisan à La Réunion | ${siteConfig.siteName}`,
+    description:
+      "9site4 crée des sites professionnels pour artisans et entreprises locales à La Réunion : prestations, zones d'intervention, demande de devis, photos et gestion continue.",
+    canonical: '/site-internet-artisan-la-reunion',
   },
   templatePizzeria: {
     title: 'Pizza Lé O — Pizzeria à Saint-Paul (Réunion) | Template 9site4',

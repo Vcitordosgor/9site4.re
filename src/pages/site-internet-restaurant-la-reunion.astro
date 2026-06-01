@@ -1,0 +1,260 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/ui/Button.astro';
+import Icon from '../components/ui/Icon.astro';
+import RealisationCard from '../components/exemples/RealisationCard.astro';
+import TarifsBref from '../components/sections/TarifsBref.astro';
+import CTABand from '../components/sections/CTABand.astro';
+import realisations from '../data/exemples.json';
+import { getSeo, absoluteUrl } from '../lib/seo';
+
+const seo = getSeo('siteRestaurantReunion');
+
+const selected = realisations.filter((r) => r.categorie === 'restaurants').slice(0, 6);
+
+const faq = [
+  {
+    q: 'Mon restaurant a besoin d\'un site, mais je n\'ai pas de carte fixe — c\'est possible ?',
+    a: "Oui. Le site est conçu pour s'adapter à une carte qui évolue : carte du jour, suggestions, plats saisonniers. 9site4 met à jour la carte côté gestion continue, vous nous transmettez les changements et on s'occupe du reste.",
+  },
+  {
+    q: 'Puis-je avoir un module de réservation en ligne ?',
+    a: "Oui. Le module métier intégré peut être une réservation directe (date, heure, nombre de couverts), une commande WhatsApp pour les snacks et pizzerias, ou un simple formulaire de contact selon votre fonctionnement.",
+  },
+  {
+    q: 'Vous gérez aussi les bars, cafés, glaciers et boulangeries ?',
+    a: "Oui. Notre approche couvre toute la restauration locale : restaurants traditionnels, snacks créoles, pizzerias, bars, cafés torréfacteurs, glaciers artisanaux, pâtisseries et boulangeries du 974.",
+  },
+  {
+    q: 'Et les photos ? Je n\'ai pas de photographe professionnel.',
+    a: "Nous travaillons avec vos visuels existants et vous guidons sur les photos à prévoir (plats, salle, équipe). Un site avec de vraies photos d'établissement réunionnais convertit mieux qu'un site générique.",
+  },
+  {
+    q: 'Combien de temps avant la mise en ligne ?',
+    a: "Comptez environ 7 jours entre le brief et la mise en ligne. Vous restez en cuisine, on construit le site.",
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Création de site internet pour restaurant à La Réunion',
+  serviceType: 'Création de site internet — Restauration',
+  provider: { '@type': 'Organization', name: '9site4', url: 'https://9site4.re' },
+  areaServed: { '@type': 'AdministrativeArea', name: 'La Réunion' },
+  url: absoluteUrl(seo.canonical),
+  description: seo.description,
+  offers: { '@type': 'Offer', price: 97.4, priceCurrency: 'EUR', url: 'https://9site4.re/tarifs' },
+};
+---
+
+<BaseLayout seo={seo}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+
+  <div class="bg-black text-blanc-casse">
+    <!-- Hero -->
+    <section class="relative overflow-hidden px-6 pt-28 pb-16 md:pt-36 md:pb-24">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="hero-rise hero-rise-1 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-bleu text-white text-xs font-semibold uppercase tracking-wide">
+          <span class="block w-1.5 h-1.5 rounded-full bg-white/90 animate-pulse"></span>
+          Restaurants · Snacks · Bars · Cafés
+        </p>
+        <span class="hero-rise hero-rise-2 block mx-auto mt-7 h-[3px] w-16 bg-bleu" aria-hidden="true"></span>
+        <h1 class="hero-rise hero-rise-2 mt-5 font-sora font-bold text-balance leading-[1.08] text-[clamp(2.25rem,4vw+1rem,4rem)] tracking-tight text-blanc-casse">
+          Site internet pour restaurant
+          <span class="block italic font-medium text-bleu">à La Réunion.</span>
+        </h1>
+        <p class="hero-rise hero-rise-4 mx-auto mt-7 max-w-2xl text-lg md:text-xl text-blanc-casse/80 leading-relaxed">
+          9site4 crée des sites professionnels pour restaurants, snacks, bars, cafés et pizzerias à La Réunion : carte, horaires, photos, réservation et gestion continue.
+        </p>
+        <div class="hero-rise hero-rise-5 mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+          <Button variant="primary" size="lg" href="/contact">
+            Créer mon site avec 9site4
+            <Icon name="arrow-right" size={20} strokeWidth={2.25} />
+          </Button>
+          <a href="/exemples" class="inline-flex items-center justify-center gap-2 h-14 px-8 text-lg font-semibold rounded-full text-bleu hover:text-blanc-casse transition-colors">
+            Voir nos réalisations
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pourquoi -->
+    <section class="relative px-6 py-16 md:py-24">
+      <div class="mx-auto max-w-5xl">
+        <div class="text-center max-w-3xl mx-auto">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-bleu"></span> Le besoin
+          </p>
+          <h2 class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl lg:text-5xl text-blanc-casse text-balance leading-[1.12]">
+            Un restaurant à La Réunion
+            <span class="block italic font-medium text-bleu">a besoin d'un site qui donne envie.</span>
+          </h2>
+          <p class="scroll-reveal mt-6 text-base md:text-lg text-blanc-casse/70 leading-relaxed">
+            Vos clients cherchent d'abord la carte, les horaires, les photos, l'adresse et de quoi réserver. Un site flou ou daté fait perdre des couverts chaque semaine.
+          </p>
+        </div>
+
+        <ul class="scroll-reveal mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {[
+            { i: 'file-text', t: 'La carte, lisible', d: 'Plats, entrées, desserts, suggestions du jour, allergènes, prix.' },
+            { i: 'calendar-clock', t: 'Horaires & service', d: "Midi, soir, jours fermés, service continu, événements." },
+            { i: 'monitor', t: 'Photos de l\'établissement', d: 'Salle, terrasse, assiettes, équipe — l\'ambiance vraie de chez vous.' },
+            { i: 'calendar-check', t: 'Réservation en ligne', d: 'Date, heure, couverts, notes, ou commande WhatsApp directe.' },
+            { i: 'map-pin', t: 'Adresse & accès', d: 'Plan, parking, livraison, à emporter — clairement indiqué.' },
+            { i: 'shield-check', t: 'Mise à jour continue', d: 'Carte, horaires, photos : 9site4 modifie pour vous.' },
+          ].map((item) => (
+            <li class="rounded-2xl p-6"
+              style="background: linear-gradient(180deg, #14161F 0%, #0A0B12 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 12px 30px -16px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08);">
+              <span class="flex w-11 h-11 items-center justify-center rounded-xl bg-bleu/15 text-bleu">
+                <Icon name={item.i} size={20} strokeWidth={1.75} />
+              </span>
+              <p class="mt-4 font-sora font-semibold text-blanc-casse">{item.t}</p>
+              <p class="mt-2 text-sm text-blanc-casse/70 leading-relaxed">{item.d}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- Ce que 9site4 structure pour la restauration -->
+    <section class="relative px-6 py-16 md:py-24">
+      <div class="mx-auto max-w-5xl">
+        <div class="text-center max-w-3xl mx-auto">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-bleu"></span> Ce que 9site4 structure
+          </p>
+          <h2 class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl lg:text-5xl text-blanc-casse text-balance leading-[1.12]">
+            Tout ce dont
+            <span class="block italic font-medium text-bleu">votre établissement a besoin.</span>
+          </h2>
+        </div>
+
+        <ol class="scroll-reveal mt-12 grid md:grid-cols-2 gap-5">
+          {[
+            { n: '01', t: 'Présentation de l\'établissement', d: "Concept, cuisine, valeurs, chef, équipe." },
+            { n: '02', t: 'Carte & menus', d: "Carte du midi, du soir, menu enfant, formules, suggestions saison." },
+            { n: '03', t: 'Infos pratiques', d: 'Adresse, horaires, téléphone, WhatsApp, accès, parking.' },
+            { n: '04', t: 'Photos & ambiance', d: 'Salle, plats, terrasse, équipe — vos vraies photos.' },
+            { n: '05', t: 'Module métier intégré', d: 'Réservation en ligne, commande WhatsApp ou contact direct.' },
+            { n: '06', t: 'Appels à l\'action clairs', d: 'Réserver une table, voir la carte, appeler, itinéraire.' },
+          ].map((s) => (
+            <li class="rounded-2xl p-6"
+              style="background: linear-gradient(180deg, #14161F 0%, #0A0B12 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 12px 30px -16px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08);">
+              <p class="font-roboto-mono text-bleu text-sm font-semibold tracking-widest">{s.n}</p>
+              <p class="mt-2 font-sora font-semibold text-lg text-blanc-casse">{s.t}</p>
+              <p class="mt-2 text-sm text-blanc-casse/70 leading-relaxed">{s.d}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <!-- Module métier -->
+    <section class="relative px-6 py-16 md:py-24">
+      <div class="mx-auto max-w-5xl">
+        <div class="text-center max-w-3xl mx-auto">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-bleu"></span> Module métier
+          </p>
+          <h2 class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl lg:text-5xl text-blanc-casse text-balance leading-[1.12]">
+            Réservation, carte, commande, contact —
+            <span class="block italic font-medium text-bleu">selon votre fonctionnement.</span>
+          </h2>
+        </div>
+
+        <ul class="scroll-reveal mt-12 grid sm:grid-cols-2 gap-5">
+          {[
+            { i: 'calendar-check', t: 'Réservation en ligne', d: 'Date, heure, nombre de couverts, message personnalisé. Adapté aux restaurants traditionnels.' },
+            { i: 'file-text', t: 'Carte interactive', d: "Affichage clair des plats, prix, allergènes — mise à jour en gestion continue." },
+            { i: 'monitor', t: 'Commande WhatsApp', d: "Idéal pour snacks, pizzerias, glaciers : un clic, message pré-rempli, panier transmis." },
+            { i: 'map-pin', t: 'Contact & itinéraire', d: 'Téléphone, mail, WhatsApp, plan Google Maps, accès parking.' },
+          ].map((m) => (
+            <li class="rounded-2xl p-6"
+              style="background: linear-gradient(180deg, #14161F 0%, #0A0B12 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 12px 30px -16px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08);">
+              <span class="flex w-11 h-11 items-center justify-center rounded-xl bg-bleu/15 text-bleu">
+                <Icon name={m.i} size={20} strokeWidth={1.75} />
+              </span>
+              <p class="mt-4 font-sora font-semibold text-blanc-casse">{m.t}</p>
+              <p class="mt-2 text-sm text-blanc-casse/70 leading-relaxed">{m.d}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- Réalisations -->
+    <section class="relative px-6 py-16 md:py-24">
+      <div class="mx-auto max-w-content">
+        <div class="text-center max-w-3xl mx-auto">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-bleu"></span> Nos réalisations
+          </p>
+          <h2 class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl lg:text-5xl text-blanc-casse text-balance leading-[1.12]">
+            Restaurants, snacks, cafés, glaciers
+            <span class="block italic font-medium text-bleu">conçus par 9site4.</span>
+          </h2>
+        </div>
+        <ul class="scroll-reveal mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {selected.map((r) => (
+            <li><RealisationCard realisation={r} /></li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <TarifsBref />
+
+    <!-- FAQ -->
+    <section class="relative px-6 py-16 md:py-24">
+      <div class="mx-auto max-w-3xl">
+        <div class="text-center">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-bleu"></span> Questions fréquentes
+          </p>
+          <h2 class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl lg:text-5xl text-blanc-casse text-balance leading-[1.12]">
+            Ce qu'on nous demande
+            <span class="block italic font-medium text-bleu">côté restauration.</span>
+          </h2>
+        </div>
+        <div class="mt-12 space-y-3">
+          {faq.map((item) => (
+            <details class="group rounded-2xl p-5 md:p-6"
+              style="background: linear-gradient(180deg, #14161F 0%, #0A0B12 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 12px 30px -16px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08);">
+              <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
+                <span class="font-sora font-semibold text-blanc-casse">{item.q}</span>
+                <span class="shrink-0 text-bleu transition-transform duration-300 group-open:rotate-45">
+                  <Icon name="arrow-right" size={18} strokeWidth={2.25} />
+                </span>
+              </summary>
+              <p class="mt-4 text-sm md:text-base text-blanc-casse/75 leading-relaxed">{item.a}</p>
+            </details>
+          ))}
+        </div>
+
+        <p class="scroll-reveal mt-12 text-center text-sm text-blanc-casse/65">
+          Voir aussi&nbsp;:
+          <a href="/creation-site-internet-la-reunion" class="text-bleu hover:underline">création de site internet à La Réunion</a>
+          ·
+          <a href="/site-internet-artisan-la-reunion" class="text-bleu hover:underline">site internet pour artisan</a>
+          ·
+          <a href="/tarifs" class="text-bleu hover:underline">tarifs</a>
+          ·
+          <a href="/contact" class="text-bleu hover:underline">contact</a>.
+        </p>
+      </div>
+    </section>
+
+    <CTABand />
+  </div>
+</BaseLayout>
