@@ -23,7 +23,7 @@ const DEFAULT_OG_ALT = `${siteConfig.siteName} — ${siteConfig.baseline}`;
 
 type PageKey =
   | 'home'
-  | 'realisations'
+  | 'exemples'
   | 'tarifs'
   | 'contact'
   | 'legal'
@@ -77,11 +77,11 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
       'Agence web pour TPE et PME à La Réunion. 9site4 crée et gère le site vitrine des entreprises réunionnaises : hébergement, maintenance, modifications simples et formulaire métier inclus, dès 97,4€/mois sans frais de création.',
     canonical: '/',
   },
-  realisations: {
+  exemples: {
     title: `Exemples métiers — Sites vitrines pour TPE à La Réunion | ${siteConfig.siteName}`,
     description:
       'Exemples de sites vitrines par métier à La Réunion (974) : artisans, restaurants, instituts de beauté, gîtes, coachs, professions libérales. Des démonstrations pour vous projeter, ensuite adaptées à votre activité.',
-    canonical: '/realisations',
+    canonical: '/exemples',
   },
   tarifs: {
     title: `Tarifs 9site4 — Site vitrine tout compris dès 97,4€/mois`,

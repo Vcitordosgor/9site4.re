@@ -1,47 +1,47 @@
 ---
-import realisations from '../../data/realisations.json';
+import realisations from '../../data/exemples.json';
 
 // Imports des 40 vignettes SVG/typographiques
-import PreviewResto from '../realisations/previews/PreviewResto.astro';
-import PreviewPizzeria from '../realisations/previews/PreviewPizzeria.astro';
-import PreviewBarJus from '../realisations/previews/PreviewBarJus.astro';
-import PreviewSalon from '../realisations/previews/PreviewSalon.astro';
-import PreviewInstitut from '../realisations/previews/PreviewInstitut.astro';
-import PreviewSpa from '../realisations/previews/PreviewSpa.astro';
-import PreviewPlomberie from '../realisations/previews/PreviewPlomberie.astro';
-import PreviewElectricien from '../realisations/previews/PreviewElectricien.astro';
-import PreviewPaysagiste from '../realisations/previews/PreviewPaysagiste.astro';
-import PreviewOsteo from '../realisations/previews/PreviewOsteo.astro';
-import PreviewDieteticienne from '../realisations/previews/PreviewDieteticienne.astro';
-import PreviewPsy from '../realisations/previews/PreviewPsy.astro';
-import PreviewCoach from '../realisations/previews/PreviewCoach.astro';
-import PreviewYoga from '../realisations/previews/PreviewYoga.astro';
-import PreviewDanse from '../realisations/previews/PreviewDanse.astro';
-import PreviewGite from '../realisations/previews/PreviewGite.astro';
-import PreviewExcursions from '../realisations/previews/PreviewExcursions.astro';
-import PreviewLocation from '../realisations/previews/PreviewLocation.astro';
-import PreviewConsultant from '../realisations/previews/PreviewConsultant.astro';
-import PreviewComptable from '../realisations/previews/PreviewComptable.astro';
-import PreviewArchitecte from '../realisations/previews/PreviewArchitecte.astro';
-import PreviewAutoEcole from '../realisations/previews/PreviewAutoEcole.astro';
-import PreviewConciergerie from '../realisations/previews/PreviewConciergerie.astro';
-import PreviewAideDomicile from '../realisations/previews/PreviewAideDomicile.astro';
-import PreviewPlongee from '../realisations/previews/PreviewPlongee.astro';
-import PreviewWedding from '../realisations/previews/PreviewWedding.astro';
-import PreviewPatisserie from '../realisations/previews/PreviewPatisserie.astro';
-import PreviewGarage from '../realisations/previews/PreviewGarage.astro';
-import PreviewPhotographe from '../realisations/previews/PreviewPhotographe.astro';
-import PreviewAvocat from '../realisations/previews/PreviewAvocat.astro';
-import PreviewBoulangerie from '../realisations/previews/PreviewBoulangerie.astro';
-import PreviewGlacier from '../realisations/previews/PreviewGlacier.astro';
-import PreviewCafeTorref from '../realisations/previews/PreviewCafeTorref.astro';
-import PreviewSurf from '../realisations/previews/PreviewSurf.astro';
-import PreviewFleuriste from '../realisations/previews/PreviewFleuriste.astro';
-import PreviewTatoueur from '../realisations/previews/PreviewTatoueur.astro';
-import PreviewNaturopathe from '../realisations/previews/PreviewNaturopathe.astro';
-import PreviewCreche from '../realisations/previews/PreviewCreche.astro';
-import PreviewNotaire from '../realisations/previews/PreviewNotaire.astro';
-import PreviewStudioAudio from '../realisations/previews/PreviewStudioAudio.astro';
+import PreviewResto from '../exemples/previews/PreviewResto.astro';
+import PreviewPizzeria from '../exemples/previews/PreviewPizzeria.astro';
+import PreviewBarJus from '../exemples/previews/PreviewBarJus.astro';
+import PreviewSalon from '../exemples/previews/PreviewSalon.astro';
+import PreviewInstitut from '../exemples/previews/PreviewInstitut.astro';
+import PreviewSpa from '../exemples/previews/PreviewSpa.astro';
+import PreviewPlomberie from '../exemples/previews/PreviewPlomberie.astro';
+import PreviewElectricien from '../exemples/previews/PreviewElectricien.astro';
+import PreviewPaysagiste from '../exemples/previews/PreviewPaysagiste.astro';
+import PreviewOsteo from '../exemples/previews/PreviewOsteo.astro';
+import PreviewDieteticienne from '../exemples/previews/PreviewDieteticienne.astro';
+import PreviewPsy from '../exemples/previews/PreviewPsy.astro';
+import PreviewCoach from '../exemples/previews/PreviewCoach.astro';
+import PreviewYoga from '../exemples/previews/PreviewYoga.astro';
+import PreviewDanse from '../exemples/previews/PreviewDanse.astro';
+import PreviewGite from '../exemples/previews/PreviewGite.astro';
+import PreviewExcursions from '../exemples/previews/PreviewExcursions.astro';
+import PreviewLocation from '../exemples/previews/PreviewLocation.astro';
+import PreviewConsultant from '../exemples/previews/PreviewConsultant.astro';
+import PreviewComptable from '../exemples/previews/PreviewComptable.astro';
+import PreviewArchitecte from '../exemples/previews/PreviewArchitecte.astro';
+import PreviewAutoEcole from '../exemples/previews/PreviewAutoEcole.astro';
+import PreviewConciergerie from '../exemples/previews/PreviewConciergerie.astro';
+import PreviewAideDomicile from '../exemples/previews/PreviewAideDomicile.astro';
+import PreviewPlongee from '../exemples/previews/PreviewPlongee.astro';
+import PreviewWedding from '../exemples/previews/PreviewWedding.astro';
+import PreviewPatisserie from '../exemples/previews/PreviewPatisserie.astro';
+import PreviewGarage from '../exemples/previews/PreviewGarage.astro';
+import PreviewPhotographe from '../exemples/previews/PreviewPhotographe.astro';
+import PreviewAvocat from '../exemples/previews/PreviewAvocat.astro';
+import PreviewBoulangerie from '../exemples/previews/PreviewBoulangerie.astro';
+import PreviewGlacier from '../exemples/previews/PreviewGlacier.astro';
+import PreviewCafeTorref from '../exemples/previews/PreviewCafeTorref.astro';
+import PreviewSurf from '../exemples/previews/PreviewSurf.astro';
+import PreviewFleuriste from '../exemples/previews/PreviewFleuriste.astro';
+import PreviewTatoueur from '../exemples/previews/PreviewTatoueur.astro';
+import PreviewNaturopathe from '../exemples/previews/PreviewNaturopathe.astro';
+import PreviewCreche from '../exemples/previews/PreviewCreche.astro';
+import PreviewNotaire from '../exemples/previews/PreviewNotaire.astro';
+import PreviewStudioAudio from '../exemples/previews/PreviewStudioAudio.astro';
 
 const previewMap: Record<string, any> = {
   'restaurant-gastronomique':         PreviewResto,
@@ -110,7 +110,7 @@ const stats = [
     </p>
   </div>
 
-  <!-- Double marquee — vignettes SVG natives (mêmes que sur /realisations) -->
+  <!-- Double marquee — vignettes SVG natives (mêmes que sur /exemples) -->
   <div class="vitrine-marquee relative mt-10 md:mt-14 space-y-5" aria-label="Exemples de sites qui défilent">
     <!-- Rangée 1 (sens normal) -->
     <div class="vitrine-track-1 flex gap-5 w-max px-3">
@@ -196,7 +196,7 @@ const stats = [
 
     <div class="mt-12 flex justify-center">
       <a
-        href="/realisations"
+        href="/exemples"
         class="group inline-flex items-center justify-center gap-2 h-13 px-8 py-3.5 text-base font-semibold rounded-full bg-bleu text-white hover:bg-[#7e95ff] hover:-translate-y-0.5 shadow-[0_8px_30px_rgba(145,166,255,0.45)] transition-all duration-200 ease-out"
       >
         Voir tous les exemples métiers

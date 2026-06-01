@@ -1,10 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import RealisationCard from '../components/realisations/RealisationCard.astro';
+import RealisationCard from '../components/exemples/RealisationCard.astro';
 import Icon from '../components/ui/Icon.astro';
-import FiltersBar from '../components/realisations/FiltersBar.tsx';
+import FiltersBar from '../components/exemples/FiltersBar.tsx';
 import CTABand from '../components/sections/CTABand.astro';
-import realisations from '../data/realisations.json';
+import realisations from '../data/exemples.json';
 import categories from '../data/categories.json';
 import { getSeo } from '../lib/seo';
 
@@ -28,7 +28,7 @@ const featured = featuredSlugs
   .filter(Boolean) as typeof realisations;
 ---
 
-<BaseLayout seo={getSeo('realisations')}>
+<BaseLayout seo={getSeo('exemples')}>
   <div class="bg-blanc-casse text-bleu-nuit">
   <!-- Hero éditorial : aligné qualité home (eyebrow + accent line + titre italique + animations) -->
   <section class="relative overflow-hidden px-6 pt-28 pb-14 md:pt-36 md:pb-20">
@@ -146,7 +146,7 @@ const featured = featuredSlugs
         aria-live="polite"
         aria-atomic="true"
       >
-        {realisations.length} réalisations affichées.
+        {realisations.length} exemples affichés.
       </p>
     </div>
   </section>
@@ -154,7 +154,7 @@ const featured = featuredSlugs
   <!-- Grille des 30 cartes (rendu serveur, filtré côté client par display) -->
   <section class="relative px-6 pb-20 md:pb-28" aria-labelledby="liste-realisations">
     <div class="mx-auto max-w-content">
-      <h2 id="liste-realisations" class="sr-only">Liste des réalisations</h2>
+      <h2 id="liste-realisations" class="sr-only">Liste des exemples</h2>
       <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {realisations.map((r) => (
           <li data-realisation-categorie={r.categorie}>

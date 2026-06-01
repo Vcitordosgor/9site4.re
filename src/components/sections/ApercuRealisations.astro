@@ -1,8 +1,8 @@
 ---
 import Button from '../ui/Button.astro';
 import Icon from '../ui/Icon.astro';
-import RealisationCard from '../realisations/RealisationCard.astro';
-import realisations from '../../data/realisations.json';
+import RealisationCard from '../exemples/RealisationCard.astro';
+import realisations from '../../data/exemples.json';
 
 /**
  * Aperçu des réalisations — brief §7.5.
@@ -35,7 +35,7 @@ if (cards.length !== selection.length) {
         </h2>
       </div>
       <div class="scroll-reveal hidden md:block">
-        <Button variant="tertiary" size="md" href="/realisations">
+        <Button variant="tertiary" size="md" href="/exemples">
           Voir tous les exemples
           <Icon name="arrow-right" size={18} strokeWidth={2} />
         </Button>
@@ -51,7 +51,7 @@ if (cards.length !== selection.length) {
     </div>
 
     <div class="mt-10 md:hidden">
-      <Button variant="secondary" size="md" href="/realisations" fullWidth>
+      <Button variant="secondary" size="md" href="/exemples" fullWidth>
         Voir tous les exemples
         <Icon name="arrow-right" size={18} strokeWidth={2} />
       </Button>
