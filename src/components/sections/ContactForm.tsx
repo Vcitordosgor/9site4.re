@@ -2,6 +2,7 @@
 import { useRef, useState } from 'preact/hooks';
 import type { JSX } from 'preact';
 import siteConfig from '../../data/siteConfig.json';
+import { trackEvent } from '../../lib/tracking';
 
 interface Category {
   id: string;
@@ -152,6 +153,15 @@ export default function ContactForm({ categories }: Props) {
     if (channel === 'whatsapp') {
       const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
       window.open(waUrl, '_blank', 'noopener,noreferrer');
+      // Tracking conversion (sans PII : seulement secteur + canal).
+      trackEvent({
+        name: 'contact_form_submit',
+        category: 'conversion',
+        label: 'whatsapp',
+        source: 'contact_form',
+        sector: data.secteur,
+        page_type: 'contact',
+      });
       setLastMessage(message);
       setSubmittedChannel('whatsapp');
       setSubmitted(true);
@@ -177,6 +187,15 @@ export default function ContactForm({ categories }: Props) {
         );
         return;
       }
+      // Tracking conversion email (sans PII).
+      trackEvent({
+        name: 'contact_form_submit',
+        category: 'conversion',
+        label: 'email',
+        source: 'contact_form',
+        sector: data.secteur,
+        page_type: 'contact',
+      });
       setLastMessage(message);
       setSubmittedChannel('email');
       setSubmitted(true);

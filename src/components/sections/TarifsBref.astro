@@ -126,7 +126,15 @@ const inclus = [
     </div>
 
     <div class="scroll-reveal mt-12 flex justify-center">
-      <Button variant="primary" size="lg" href="/tarifs">
+      <Button
+        variant="primary"
+        size="lg"
+        href="/tarifs"
+        data-track-event="cta_pricing_click"
+        data-track-category="navigation"
+        data-track-source="tarifs_bref"
+        data-track-target="/tarifs"
+      >
         Voir les détails
         <Icon name="arrow-right" size={20} strokeWidth={2} />
       </Button>

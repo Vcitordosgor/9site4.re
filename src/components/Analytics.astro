@@ -1,0 +1,46 @@
+---
+/**
+ * Analytics — chargement conditionnel GA4 + Meta Pixel + auto-binding tracking.
+ *
+ * Tout est gated par PUBLIC_ENABLE_ANALYTICS === 'true' ET la présence d'un ID.
+ * Si rien n'est configuré : 0 script, 0 event, 0 erreur.
+ */
+const GA_ID = import.meta.env.PUBLIC_GA_MEASUREMENT_ID as string | undefined;
+const PIXEL_ID = import.meta.env.PUBLIC_META_PIXEL_ID as string | undefined;
+const ENABLED = import.meta.env.PUBLIC_ENABLE_ANALYTICS === 'true';
+
+const HAS_GA = ENABLED && !!GA_ID;
+const HAS_PIXEL = ENABLED && !!PIXEL_ID;
+const HAS_ANY = HAS_GA || HAS_PIXEL;
+---
+
+{HAS_GA && (
+  <>
+    <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}></script>
+    <script is:inline define:vars={{ GA_ID }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ window.dataLayer.push(arguments); }
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', GA_ID, { anonymize_ip: true, send_page_view: true });
+    </script>
+  </>
+)}
+
+{HAS_PIXEL && (
+  <script is:inline define:vars={{ PIXEL_ID }}>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    window.fbq('init', PIXEL_ID);
+    window.fbq('track', 'PageView');
+  </script>
+)}
+
+{HAS_ANY && (
+  <script>
+    // Charge l'auto-binding et expose trackEvent en global pour usage ad-hoc.
+    import('../lib/tracking').catch(() => {});
+  </script>
+)}
