@@ -149,9 +149,9 @@ const moduleColor = moduleColors[realisation.moduleInclus] ?? 'orange';
 ---
 
 <article class="tilt-card group relative rounded-2xl overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-1"
-  style="background: linear-gradient(180deg, #1A1E2C 0%, #14161F 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 18px 40px -22px rgba(0,0,0,0.85), 0 0 0 1px rgba(145,166,255,0.15);"
-  onmouseover="this.style.boxShadow='0 1px 0 rgba(255,255,255,0.08) inset, 0 28px 60px -18px rgba(0,0,0,0.95), 0 0 0 1px rgba(145,166,255,0.45), 0 0 32px -8px rgba(145,166,255,0.35)';"
-  onmouseout="this.style.boxShadow='0 1px 0 rgba(255,255,255,0.06) inset, 0 18px 40px -22px rgba(0,0,0,0.85), 0 0 0 1px rgba(145,166,255,0.15)';"
+  style="background: linear-gradient(180deg, #1A1E2C 0%, #14161F 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 18px 40px -22px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.10);"
+  onmouseover="this.style.boxShadow='0 1px 0 rgba(255,255,255,0.08) inset, 0 28px 60px -18px rgba(0,0,0,0.95), 0 0 0 1px rgba(255,255,255,0.35), 0 0 32px -8px rgba(255,255,255,0.25)';"
+  onmouseout="this.style.boxShadow='0 1px 0 rgba(255,255,255,0.06) inset, 0 18px 40px -22px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.10)';"
 >
 
   {realisation.previewUrl && Preview ? (
@@ -224,7 +224,7 @@ const moduleColor = moduleColors[realisation.moduleInclus] ?? 'orange';
           href={realisation.previewUrl}
           target="_blank"
           rel="noopener"
-          class="group/cta inline-flex items-center gap-1.5 h-10 px-4 text-sm font-semibold rounded-full bg-bleu text-white hover:bg-[#7e95ff] hover:-translate-y-0.5 shadow-[0_4px_16px_rgba(145,166,255,0.45)] transition-all duration-200"
+          class="group/cta inline-flex items-center gap-1.5 h-10 px-4 text-sm font-semibold rounded-full bg-bleu text-white hover:bg-[#7e95ff] hover:-translate-y-0.5 shadow-[0_4px_16px_rgba(255,255,255,0.35)] transition-all duration-200"
         >
           Voir la démo
           <Icon name="arrow-right" size={14} strokeWidth={2.5} class="transition-transform duration-200 group-hover/cta:translate-x-0.5" />
