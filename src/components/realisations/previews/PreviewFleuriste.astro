@@ -1,63 +1,43 @@
 ---
-import data from '../../../data/templates/frangipane.json';
 /**
- * Mini-preview Frangipane — photo bouquet pastel + wordmark Cormorant italique éditorial.
+ * Mini-preview Frangipane — fleuriste atelier.
  */
 ---
 
-<div class="absolute inset-0 overflow-hidden" style="background-color: #F4E6E0; color: #2A2520;">
+<div class="absolute inset-0 bg-flora-poudre text-flora-charbon overflow-hidden">
+  <svg class="absolute right-2 top-2 bottom-2" width="120" viewBox="0 0 80 120" aria-hidden="true">
+    <g stroke="#5C7448" stroke-width="1.4" fill="none">
+      <path d="M40 118 Q42 80 30 30"/>
+      <path d="M40 118 Q40 70 50 40"/>
+      <path d="M40 118 Q44 75 64 50"/>
+    </g>
+    <g fill="#5C7448">
+      <ellipse cx="22" cy="64" rx="8" ry="3" transform="rotate(-40 22 64)"/>
+      <ellipse cx="56" cy="80" rx="7" ry="3" transform="rotate(35 56 80)"/>
+    </g>
+    <g transform="translate(30 30)" fill="#F4E6E0" stroke="#C49B62" stroke-width="0.6">
+      <circle cx="0" cy="-5" r="4"/><circle cx="5" cy="-1" r="4"/><circle cx="3" cy="5" r="4"/><circle cx="-3" cy="5" r="4"/><circle cx="-5" cy="-1" r="4"/>
+      <circle cx="0" cy="0" r="2.5" fill="#C49B62"/>
+    </g>
+    <g transform="translate(50 40)" fill="#F4E6E0" stroke="#C49B62" stroke-width="0.6">
+      <circle cx="0" cy="-5" r="4.5"/><circle cx="5" cy="-1" r="4.5"/><circle cx="3" cy="5" r="4.5"/><circle cx="-3" cy="5" r="4.5"/><circle cx="-5" cy="-1" r="4.5"/>
+      <circle cx="0" cy="0" r="2.5" fill="#C49B62"/>
+    </g>
+    <g transform="translate(64 50)" fill="#C49B62">
+      <circle cx="0" cy="-4" r="3"/><circle cx="4" cy="0" r="3"/><circle cx="0" cy="4" r="3"/><circle cx="-4" cy="0" r="3"/>
+      <circle cx="0" cy="0" r="2" fill="#5C7448"/>
+    </g>
+  </svg>
 
-  <!-- Photo plein cadre -->
-  <img
-    src={data.info.photoHero}
-    alt=""
-    class="absolute inset-0 w-full h-full object-cover scale-[1.04]"
-    loading="lazy"
-    decoding="async"
-  />
-
-  <!-- Overlay : poudre rose chaude + assombrissement bas -->
-  <div class="absolute inset-0" aria-hidden="true"
-       style="background:
-         linear-gradient(180deg, rgb(244 230 224 / 0.2) 0%, rgb(42 37 32 / 0) 30%, rgb(42 37 32 / 0) 45%, rgb(42 37 32 / 0.92) 100%),
-         linear-gradient(90deg, rgb(42 37 32 / 0.35) 0%, transparent 55%);">
-  </div>
-
-  <!-- Mini top-bar -->
   <div class="relative flex items-center justify-between px-3 pt-2">
-    <span class="font-cormorant italic font-medium text-[11px]" style="color: #F4E6E0;">
-      Frangipane
-    </span>
-    <div class="flex items-center gap-1.5 text-[6px] uppercase tracking-wider font-semibold" style="color: rgba(244, 230, 224, 0.85);">
-      <span>Mariage</span>
-      <span>Bouquet</span>
-    </div>
+    <span class="font-cormorant italic text-flora-charbon text-[10px]">Frangipane</span>
+    <span class="font-outfit text-[6px] uppercase tracking-[0.25em] text-flora-feuille font-semibold">Atelier fleurs</span>
   </div>
 
-  <!-- Petite annotation -->
-  <p class="absolute top-7 right-3 font-cormorant italic text-[8px]" style="color: #C49B62;">
-    atelier floral ∼
-  </p>
-
-  <!-- Contenu : bas-gauche style éditorial -->
-  <div class="absolute left-3 right-3 bottom-2.5">
-    <p class="flex items-center gap-1.5 font-jakarta font-semibold text-[5.5px] uppercase tracking-[0.25em] mb-1" style="color: #C49B62;">
-      <span class="inline-block w-3 h-px" style="background-color: #C49B62;" aria-hidden="true"></span>
-      <span>Depuis 2019 · La Réunion</span>
-    </p>
-    <p class="font-cormorant italic leading-[0.92] tracking-tight" style="color: #F4E6E0; font-size: clamp(15px, 3.2vw, 26px); font-weight: 500;">
-      Frangipane.
-    </p>
-    <p class="mt-0.5 font-cormorant italic leading-tight" style="color: #C49B62; font-size: clamp(8px, 1.6vw, 12px);">
-      Composer comme on écrit.
-    </p>
-    <div class="mt-1.5 flex items-center gap-1.5">
-      <span class="inline-flex items-center h-3 px-2 font-jakarta font-semibold text-[6px] uppercase tracking-wider rounded-full" style="background-color: #5C7448; color: #F4E6E0;">
-        Compositions
-      </span>
-      <span class="inline-flex items-center h-3 px-2 ring-1 font-jakarta font-semibold text-[6px] uppercase tracking-wider rounded-full" style="color: #F4E6E0; --tw-ring-color: rgba(244, 230, 224, 0.5);">
-        Mariage
-      </span>
-    </div>
+  <div class="absolute left-3 bottom-2.5 max-w-[55%]">
+    <p class="font-outfit text-[5.5px] uppercase tracking-[0.32em] text-flora-ocre mb-1">Composition · sur mesure</p>
+    <p class="font-cormorant leading-[0.92] font-medium text-flora-charbon" style="font-size: clamp(15px, 3.2vw, 26px);">Le bouquet</p>
+    <p class="font-cormorant italic text-flora-feuille leading-[0.92]" style="font-size: clamp(15px, 3.2vw, 26px);">qui parle.</p>
+    <span class="mt-1.5 inline-flex items-center h-3 px-2 bg-flora-feuille text-flora-poudre font-outfit font-semibold text-[6px] uppercase tracking-[0.2em]">Commander</span>
   </div>
 </div>

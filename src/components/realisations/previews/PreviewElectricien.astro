@@ -1,56 +1,42 @@
 ---
-import data from '../../../data/templates/volta.json';
 /**
- * Mini-preview Volta — photo plein cadre tableau électrique.
+ * Mini-preview Volta — tableau électrique digital.
  */
 ---
 
 <div class="absolute inset-0 bg-volta-noir text-volta-fumee overflow-hidden">
+  <svg class="absolute inset-0 w-full h-full opacity-20" aria-hidden="true">
+    <defs>
+      <pattern id="grid-volta" width="14" height="14" patternUnits="userSpaceOnUse">
+        <path d="M14 0H0V14" fill="none" stroke="#06D4F5" stroke-width="0.3"/>
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#grid-volta)"/>
+  </svg>
 
-  <img
-    src={data.info.photoHero}
-    alt=""
-    class="absolute inset-0 w-full h-full object-cover scale-[1.03]"
-    loading="lazy"
-    decoding="async"
-  />
+  <svg class="absolute top-0 right-0 h-full" width="120" viewBox="0 0 120 200" aria-hidden="true">
+    <g stroke="#06D4F5" stroke-width="1.2" fill="none" opacity="0.6">
+      <path d="M120 30H80V70H40"/>
+      <path d="M120 90H100V140H60"/>
+      <circle cx="80" cy="30" r="2" fill="#06D4F5"/>
+      <circle cx="40" cy="70" r="2" fill="#06D4F5"/>
+      <circle cx="60" cy="140" r="2" fill="#06D4F5"/>
+    </g>
+  </svg>
 
-  <div class="absolute inset-0" aria-hidden="true"
-       style="background:
-         linear-gradient(180deg, rgb(8 12 18 / 0.45) 0%, rgb(8 12 18 / 0.10) 30%, rgb(8 12 18 / 0.15) 50%, rgb(8 12 18 / 0.95) 100%),
-         linear-gradient(90deg, rgb(8 12 18 / 0.60) 0%, transparent 55%);">
-  </div>
+  <svg class="absolute right-4 top-1/2 -translate-y-1/2" width="70" height="100" viewBox="0 0 40 60" aria-hidden="true">
+    <path d="M22 0L4 32h12L12 60l24-36H22z" fill="#06D4F5"/>
+  </svg>
 
   <div class="relative flex items-center justify-between px-3 pt-2">
-    <div class="flex items-center gap-1">
-      <svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor" class="text-volta-cyan"><path d="M13 2L4.5 13.5H11L10 22L20.5 10H14L13 2Z"/></svg>
-      <span class="font-syne font-bold text-volta-blanc text-[11px]">Volta</span>
-    </div>
-    <div class="flex items-center gap-1.5 text-[6px] uppercase tracking-wider text-volta-fumee/85 font-medium">
-      <span>Services</span>
-      <span>Urgence</span>
-    </div>
+    <span class="font-space-grotesk font-bold text-volta-cyan text-[10px] tracking-wide">VOLTA<span class="text-volta-cuivre">.</span></span>
+    <span class="font-jetbrains text-[6px] text-volta-fumee/60 uppercase tracking-wider">// 220V</span>
   </div>
 
-  <div class="absolute left-3 right-3 bottom-2.5">
-    <div class="flex items-center gap-1 mb-1">
-      <span class="relative flex h-1.5 w-1.5">
-        <span class="absolute inline-flex h-full w-full rounded-full bg-volta-cyan opacity-75 animate-ping"></span>
-        <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-volta-cyan"></span>
-      </span>
-      <span class="font-space-grotesk text-[5.5px] uppercase tracking-[0.22em] text-volta-cyan font-semibold">
-        URGENCE 24h/24
-      </span>
-    </div>
-    <p class="font-syne font-extrabold text-volta-blanc leading-[0.9]" style="font-size: clamp(15px, 3.2vw, 26px);">
-      L'électricité,<br/>
-      <span class="text-volta-cyan">c'est sérieux.</span>
-    </p>
-    <div class="mt-1.5 flex items-center gap-1.5">
-      <span class="inline-flex items-center h-3 px-2 bg-volta-cyan text-volta-noir font-space-grotesk font-bold text-[6.5px] uppercase tracking-wider">
-        Devis gratuit
-      </span>
-      <span class="font-space-grotesk text-volta-fumee text-[7px] tabular-nums">0692 12 34 56</span>
-    </div>
+  <div class="absolute left-3 bottom-2.5 max-w-[70%]">
+    <p class="font-jetbrains text-[5.5px] uppercase tracking-[0.25em] text-volta-cyan mb-1">Électricité générale</p>
+    <p class="font-space-grotesk font-bold text-volta-blanc leading-[0.9]" style="font-size: clamp(18px, 3.8vw, 30px);">Sous tension,</p>
+    <p class="font-space-grotesk font-bold text-volta-cyan leading-[0.9]" style="font-size: clamp(18px, 3.8vw, 30px);">sans souci.</p>
+    <span class="mt-1.5 inline-flex items-center h-3 px-2 bg-volta-cyan text-volta-noir font-space-grotesk font-bold text-[6.5px] uppercase tracking-wider">Devis gratuit</span>
   </div>
 </div>

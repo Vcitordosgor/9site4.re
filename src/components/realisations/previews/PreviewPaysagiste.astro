@@ -1,55 +1,38 @@
 ---
-import data from '../../../data/templates/agapanthes.json';
 /**
- * Mini-preview Les agapanthes — photo plein cadre jardin créole.
+ * Mini-preview Les Agapanthes — carnet du paysagiste.
  */
 ---
 
 <div class="absolute inset-0 bg-agap-lin text-agap-feuille overflow-hidden">
+  <svg class="absolute -bottom-4 -left-4" width="120" height="80" viewBox="0 0 120 80" aria-hidden="true">
+    <ellipse cx="20" cy="60" rx="40" ry="22" fill="#9DAB8E" opacity="0.5"/>
+    <ellipse cx="60" cy="70" rx="50" ry="18" fill="#5C7058" opacity="0.5"/>
+  </svg>
 
-  <img
-    src={data.info.photoHero}
-    alt=""
-    class="absolute inset-0 w-full h-full object-cover scale-[1.03]"
-    loading="lazy"
-    decoding="async"
-  />
-
-  <div class="absolute inset-0" aria-hidden="true"
-       style="background:
-         linear-gradient(180deg, rgb(28 38 30 / 0.32) 0%, rgb(28 38 30 / 0) 32%, rgb(28 38 30 / 0) 48%, rgb(28 38 30 / 0.92) 100%),
-         linear-gradient(90deg, rgb(28 38 30 / 0.50) 0%, transparent 55%);">
-  </div>
+  <svg class="absolute right-4 top-6" width="80" height="120" viewBox="0 0 60 100" aria-hidden="true">
+    <line x1="30" y1="40" x2="30" y2="100" stroke="#5C7058" stroke-width="1.5"/>
+    <g fill="#6B5B95">
+      <circle cx="30" cy="30" r="6"/>
+      <circle cx="20" cy="34" r="5"/>
+      <circle cx="40" cy="34" r="5"/>
+      <circle cx="22" cy="22" r="5"/>
+      <circle cx="38" cy="22" r="5"/>
+      <circle cx="30" cy="18" r="5"/>
+      <circle cx="14" cy="28" r="4"/>
+      <circle cx="46" cy="28" r="4"/>
+    </g>
+  </svg>
 
   <div class="relative flex items-center justify-between px-3 pt-2">
-    <div class="flex items-baseline gap-0.5">
-      <span class="font-cormorant italic text-agap-lin text-[10px]">Les</span>
-      <span class="font-cormorant italic font-semibold text-agap-violet text-[10px]">agapanthes</span>
-    </div>
-    <div class="flex items-center gap-1.5 text-[6px] uppercase tracking-[0.18em] text-agap-lin/85 font-medium">
-      <span>Services</span>
-      <span>Réalisations</span>
-    </div>
+    <span class="font-cormorant italic text-agap-feuille text-[10px]">Les Agapanthes</span>
+    <span class="font-outfit text-[6px] uppercase tracking-[0.25em] text-agap-violet font-semibold">Paysagiste</span>
   </div>
 
-  <div class="absolute left-3 right-3 bottom-2.5">
-    <p class="flex items-center gap-1.5 font-outfit text-[5.5px] uppercase tracking-[0.32em] text-agap-violet mb-1 font-semibold">
-      <span class="inline-block w-3 h-px bg-agap-violet" aria-hidden="true"></span>
-      <span>Atelier paysagiste · 974</span>
-    </p>
-    <p class="font-cormorant font-medium text-agap-lin leading-[0.95]" style="font-size: clamp(15px, 3.2vw, 26px);">
-      L'art du jardin
-    </p>
-    <p class="font-cormorant italic font-medium text-agap-violet leading-[0.95]" style="font-size: clamp(15px, 3.2vw, 26px);">
-      à la créole.
-    </p>
-    <div class="mt-1.5 flex items-center gap-1.5">
-      <span class="inline-flex items-center h-3 px-2 bg-agap-violet text-agap-lin font-outfit font-semibold text-[6.5px] uppercase tracking-wider rounded-full">
-        Devis gratuit
-      </span>
-      <span class="inline-flex items-center h-3 px-2 ring-1 ring-agap-lin/45 text-agap-lin font-outfit font-semibold text-[6.5px] uppercase tracking-wider rounded-full">
-        Réalisations
-      </span>
-    </div>
+  <div class="absolute left-3 right-3 bottom-2.5 max-w-[65%]">
+    <p class="font-outfit text-[5.5px] uppercase tracking-[0.32em] text-agap-sauge-fonce mb-1">Jardins · La Réunion</p>
+    <p class="font-cormorant leading-[0.92] font-medium" style="font-size: clamp(17px, 3.6vw, 28px);">Dessiner</p>
+    <p class="font-cormorant italic text-agap-violet leading-[0.92]" style="font-size: clamp(17px, 3.6vw, 28px);">vos jardins.</p>
+    <span class="mt-1.5 inline-flex items-center h-3 px-2 bg-agap-violet text-agap-lin font-outfit font-semibold text-[6px] uppercase tracking-[0.2em]">Voir nos jardins</span>
   </div>
 </div>

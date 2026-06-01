@@ -1,54 +1,36 @@
 ---
-import data from '../../../data/templates/concierge.json';
 /**
- * Mini-preview Concierge & Co — photo plein cadre boutique-hôtel.
+ * Mini-preview Concierge & Co — service haut de gamme.
  */
 ---
 
-<div class="absolute inset-0 bg-concierge-champagne text-concierge-encre font-hubot overflow-hidden">
+<div class="absolute inset-0 bg-concierge-champagne text-concierge-encre overflow-hidden">
+  <div class="absolute top-0 inset-x-0 h-16 bg-concierge-nuit" aria-hidden="true"></div>
 
-  <img
-    src={data.info.photoHero}
-    alt=""
-    class="absolute inset-0 w-full h-full object-cover scale-[1.03]"
-    loading="lazy"
-    decoding="async"
-  />
+  <svg class="absolute right-3 top-2 z-10" width="60" height="60" viewBox="0 0 60 60" aria-hidden="true">
+    <g stroke="#C49A5A" stroke-width="1.4" fill="none" stroke-linecap="round">
+      <circle cx="14" cy="14" r="6"/>
+      <line x1="18" y1="18" x2="48" y2="48"/>
+      <line x1="44" y1="44" x2="48" y2="40"/>
+      <line x1="40" y1="48" x2="44" y2="52"/>
+      <circle cx="46" cy="14" r="6"/>
+      <line x1="42" y1="18" x2="12" y2="48"/>
+      <line x1="16" y1="44" x2="12" y2="40"/>
+      <line x1="20" y1="48" x2="16" y2="52"/>
+    </g>
+  </svg>
 
-  <div class="absolute inset-0" aria-hidden="true"
-       style="background:
-         linear-gradient(180deg, rgb(20 30 50 / 0.32) 0%, rgb(20 30 50 / 0) 32%, rgb(20 30 50 / 0) 48%, rgb(20 30 50 / 0.92) 100%),
-         linear-gradient(90deg, rgb(20 30 50 / 0.55) 0%, transparent 55%);">
+  <div class="relative flex items-center justify-between px-3 pt-2 text-concierge-champagne">
+    <span class="font-cormorant italic text-[10px]">Concierge &amp; Co</span>
+    <span class="font-outfit text-[6px] uppercase tracking-[0.3em] text-concierge-laiton">— 24/7</span>
   </div>
 
-  <div class="relative flex items-center justify-between px-3 pt-2">
-    <div class="flex items-baseline gap-1">
-      <span class="font-volkhov italic text-concierge-champagne text-[10px]">Concierge</span>
-      <span class="font-volkhov text-concierge-laiton text-[9px] tracking-wide">&amp; Co</span>
-    </div>
-    <div class="flex items-center gap-1.5 text-[6px] uppercase tracking-[0.18em] text-concierge-champagne/85 font-medium">
-      <span>Services</span>
-      <span>Formules</span>
-    </div>
-  </div>
+  <span class="absolute top-[60px] left-3 right-3 h-px bg-concierge-laiton/40" aria-hidden="true"></span>
 
-  <div class="absolute left-3 right-3 bottom-2.5">
-    <p class="font-pinyon text-concierge-laiton leading-none mb-0.5" style="font-size: clamp(14px, 2.8vw, 22px);">
-      Bienvenue.
-    </p>
-    <p class="font-volkhov italic text-concierge-champagne leading-[0.95]" style="font-size: clamp(15px, 3vw, 24px);">
-      Concierge <span class="not-italic text-concierge-laiton">&amp; Co</span>
-    </p>
-    <p class="mt-0.5 font-hubot text-concierge-champagne/85 leading-tight" style="font-size: clamp(7px, 1.4vw, 11px);">
-      Conciergerie privée · La Réunion
-    </p>
-    <div class="mt-1.5 flex items-center gap-1.5">
-      <span class="inline-flex items-center h-3 px-2 bg-concierge-laiton text-concierge-nuit font-hubot font-medium text-[6px] uppercase tracking-[0.18em]">
-        Nous contacter
-      </span>
-      <span class="inline-flex items-center h-3 px-2 ring-1 ring-concierge-champagne/45 text-concierge-champagne font-hubot text-[6px] uppercase tracking-[0.18em]">
-        Formules
-      </span>
-    </div>
+  <div class="absolute left-3 right-3 bottom-2.5 max-w-[65%]">
+    <p class="font-outfit text-[5.5px] uppercase tracking-[0.32em] text-concierge-bordeaux mb-1">Conciergerie locative · Réunion</p>
+    <p class="font-cormorant leading-[0.92] font-medium text-concierge-encre" style="font-size: clamp(15px, 3.2vw, 26px);">Votre bien,</p>
+    <p class="font-cormorant italic text-concierge-nuit leading-[0.92]" style="font-size: clamp(15px, 3.2vw, 26px);">entre bonnes mains.</p>
+    <span class="mt-1.5 inline-flex items-center h-3 px-2 bg-concierge-nuit text-concierge-champagne font-outfit font-semibold text-[6px] uppercase tracking-[0.2em]">Estimer mes revenus</span>
   </div>
 </div>
