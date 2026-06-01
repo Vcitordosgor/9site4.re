@@ -35,9 +35,9 @@
   ],
   "manifeste": "On dessine un jardin comme on écrit un poème. Avec des silences, des respirations, et des plantes qu'on connaît par cœur.",
   "zones": [
-    { "id": "entree",   "nom": "L'entrée",            "x": 18, "y": 30, "description": "Le seuil du jardin : bordure d'agapanthes, dalles en pas japonais, lanterne discrète.", "photo": "/images/paysagiste/extra-1.webp" },
+    { "id": "entree",   "nom": "L'entrée",            "x": 18, "y": 30, "description": "Le seuil du jardin : bordure d'agapanthes, dalles en pas japonais, lanterne discrète.", "photo": "/images/paysagiste/extra-5.webp" },
     { "id": "piscine",  "nom": "Autour de la piscine","x": 62, "y": 32, "description": "Palmiers, bambous, bougainvilliers. Volume vertical pour intimité, palette chaude au soir.", "photo": "/images/paysagiste/extra-2.webp" },
-    { "id": "potager",  "nom": "Le potager créole",   "x": 30, "y": 70, "description": "Brèdes, vanilliers tuteurés, combavas, curcuma. Carrés surélevés, paillage canne.", "photo": "/images/paysagiste/extra-3.webp" },
+    { "id": "potager",  "nom": "Le potager créole",   "x": 30, "y": 70, "description": "Brèdes, vanilliers tuteurés, combavas, curcuma. Carrés surélevés, paillage canne.", "photo": "/images/paysagiste/extra-1.webp" },
     { "id": "terrasse", "nom": "La terrasse",         "x": 75, "y": 68, "description": "Bois exotique péi, jardinières en lave, frangipanier ombrageant.", "photo": "/images/paysagiste/extra-4.webp" }
   ],
   "saisons": [
