@@ -25,12 +25,12 @@ const faq = [
     a: "Oui. On intègre un système simple de cartes cadeaux : montant libre ou prestations packagées, paiement en ligne ou commande à retirer. C'est un vrai levier de chiffre d'affaires sur les périodes Saint-Valentin, fête des mères, fin d'année.",
   },
   {
-    q: "Je suis tatoueur ou pratique des soins esthétiques avancés — c'est adapté ?",
-    a: "Oui. Cette page couvre les instituts de beauté, salons d'esthétique, studios de tatouage et professionnels du bien-être esthétique. Le site valorise votre style, vos références visuelles, vos conditions sanitaires et la prise de contact avant projet.",
+    q: "Je suis spa, salon de coiffure ou tatoueur — c'est adapté ?",
+    a: "Oui. Cette page couvre instituts de beauté, spas, salons de coiffure, studios de tatouage, esthéticiennes et professionnels du bien-être. Le site valorise votre équipe, votre ambiance détente, votre planning, vos références visuelles et la prise de RDV en ligne — quelle que soit votre spécialité.",
   },
   {
-    q: "Quelle différence avec la page institut & spa déjà existante ?",
-    a: "La page institut & spa est centrée sur le combo soins + équipe + planning de coiffure. Celle-ci est centrée sur les soins esthétiques, l'ambiance de votre lieu et les cartes cadeaux. Choisissez celle qui correspond le mieux à votre activité — ou parlons-en ensemble.",
+    q: "Mon équipe est composée de plusieurs praticiennes — comment c'est géré ?",
+    a: "Chaque membre de l'équipe a sa fiche (photo, spécialités, parcours) et son planning de RDV. Vos clientes peuvent choisir la personne avec qui prendre rendez-vous. C'est utile pour les spas, salons de coiffure et instituts avec plusieurs praticiennes.",
   },
   {
     q: "Combien de temps pour mettre en ligne mon site institut ?",
@@ -70,7 +70,7 @@ const serviceSchema = {
       <div class="mx-auto max-w-3xl text-center">
         <p class="hero-rise hero-rise-1 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-bleu text-white text-xs font-semibold uppercase tracking-wide">
           <span class="block w-1.5 h-1.5 rounded-full bg-white/90 animate-pulse"></span>
-          Instituts · Esthétique · Tatouage · Bien-être
+          Institut · Spa · Coiffure · Tatouage · Bien-être
         </p>
         <span class="hero-rise hero-rise-2 block mx-auto mt-7 h-[3px] w-16 bg-bleu" aria-hidden="true"></span>
         <h1 class="hero-rise hero-rise-2 mt-5 font-sora font-bold text-balance leading-[1.08] text-[clamp(2.25rem,4vw+1rem,4rem)] tracking-tight text-blanc-casse">
@@ -78,7 +78,7 @@ const serviceSchema = {
           <span class="block italic font-medium text-bleu">à La Réunion.</span>
         </h1>
         <p class="hero-rise hero-rise-4 mx-auto mt-7 max-w-2xl text-lg md:text-xl text-blanc-casse/80 leading-relaxed">
-          9site4 crée des sites professionnels pour instituts, salons d'esthétique, studios de tatouage et professionnels du bien-être esthétique à La Réunion : soins, tarifs, ambiance, cartes cadeaux et gestion continue.
+          9site4 crée des sites professionnels pour instituts de beauté, spas, salons de coiffure, studios de tatouage et professionnels du bien-être à La Réunion : soins, équipe, planning de RDV, ambiance détente, cartes cadeaux et gestion continue.
         </p>
         <div class="hero-rise hero-rise-5 mt-10 flex flex-col sm:flex-row gap-4 justify-center">
           <Button variant="primary" size="lg" href="/contact">
@@ -110,11 +110,11 @@ const serviceSchema = {
 
         <ul class="scroll-reveal mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {[
-            { i: 'monitor', t: 'Une ambiance qui transparait', d: "Cabines, lumière, parfums : vos photos transmettent l'atmosphère du lieu." },
-            { i: 'file-text', t: 'Soins détaillés', d: 'Chaque prestation expliquée : durée, bénéfices, conditions, prix.' },
-            { i: 'shield-check', t: 'Marques et produits', d: 'Les marques que vous utilisez rassurent les clientes exigeantes.' },
+            { i: 'monitor', t: 'Une ambiance détente palpable', d: "Cabines, lumière, parfums, espace spa : vos photos transmettent l'atmosphère du lieu." },
+            { i: 'file-text', t: 'Soins et prestations détaillés', d: 'Chaque soin, coupe ou tatouage expliqué : durée, bénéfices, conditions, prix.' },
+            { i: 'shield-check', t: 'Équipe et expertises', d: 'Vos praticiennes, coiffeurs et tatoueurs présentés — spécialités, parcours, signature.' },
             { i: 'wand', t: 'Cartes cadeaux', d: "Vente en ligne ou réservation simple — un levier pour vos pics d'activité." },
-            { i: 'map-pin', t: 'Localisation claire', d: 'Adresse, parking, accès, horaires : tout pour faciliter la première visite.' },
+            { i: 'calendar-check', t: 'Planning de RDV par praticienne', d: "Choix du soin, de la personne et du créneau — sans appel, sans friction." },
             { i: 'calendar-clock', t: 'Gestion continue', d: 'Nouveaux soins, photos, événements : 9site4 met à jour pour vous.' },
           ].map((item) => (
             <li class="rounded-2xl p-6"
@@ -249,11 +249,6 @@ const serviceSchema = {
         </div>
 
         <p class="scroll-reveal mt-12 text-center text-sm text-blanc-casse/65">
-          Vous êtes spa ou salon de coiffure ?
-          <a href="/site-internet-institut-beaute-spa-la-reunion" class="text-bleu hover:underline">Voir la page dédiée institut & spa</a>.
-        </p>
-
-        <p class="scroll-reveal mt-6 text-center text-sm text-blanc-casse/65">
           Voir aussi&nbsp;:
           <a href="/site-internet-coiffeur-la-reunion" class="text-bleu hover:underline">site pour coiffeur</a>
           ·

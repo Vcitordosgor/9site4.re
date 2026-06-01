@@ -33,7 +33,6 @@ type PageKey =
   | 'siteRestaurantReunion'
   | 'siteArtisanReunion'
   | 'siteCoiffeurReunion'
-  | 'siteInstitutSpaReunion'
   | 'siteGiteLocationReunion'
   | 'siteProfessionLiberaleReunion'
   | 'siteBienEtreSanteReunion'
@@ -150,12 +149,6 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
       '9site4 crée des sites professionnels pour salons de coiffure et coiffeurs à La Réunion : prestations, équipe, prise de rendez-vous et gestion continue.',
     canonical: '/site-internet-coiffeur-la-reunion',
   },
-  siteInstitutSpaReunion: {
-    title: `Site internet pour institut de beauté et spa à La Réunion | ${siteConfig.siteName}`,
-    description:
-      '9site4 crée des sites professionnels pour instituts de beauté, spas, esthéticiennes et centres de bien-être à La Réunion : soins, réservation et gestion continue.',
-    canonical: '/site-internet-institut-beaute-spa-la-reunion',
-  },
   siteGiteLocationReunion: {
     title: `Site internet pour gîte et location à La Réunion | ${siteConfig.siteName}`,
     description:
@@ -177,7 +170,7 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
   siteInstitutBeauteReunion: {
     title: `Site internet pour institut de beauté à La Réunion | ${siteConfig.siteName}`,
     description:
-      '9site4 crée des sites professionnels pour instituts de beauté, salons, spas, coiffeurs et professionnels du bien-être à La Réunion : soins, tarifs, rendez-vous et gestion continue.',
+      '9site4 crée des sites professionnels pour instituts de beauté, spas, salons de coiffure, tatoueurs et professionnels du bien-être à La Réunion : soins, équipe, prise de rendez-vous et gestion continue.',
     canonical: '/site-internet-institut-beaute-la-reunion',
   },
   siteCoachIndependantReunion: {
