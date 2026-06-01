@@ -6,236 +6,339 @@ import Icon from '../components/ui/Icon.astro';
 import Faq from '../components/sections/Faq.tsx';
 import CTABand from '../components/sections/CTABand.astro';
 import siteConfig from '../data/siteConfig.json';
-import faq from '../data/faq.json';
 import { inclusions } from '../lib/inclusions';
 import { getSeo } from '../lib/seo';
 
-// Liste résumée pour les cartes de prix (titres seulement, pas de paragraphe)
+// Liste résumée pour la grande carte de prix (titres seulement)
 const cardItems = inclusions.map((i) => i.titre);
+
+// FAQ dédiée tarifs (engagement, résiliation, facturation, domaine, design, e-commerce)
+const tarifsFaq = [
+  {
+    id: 'engagement',
+    question: 'Y a-t-il un engagement de durée ?',
+    reponse:
+      "Non. L'abonnement mensuel à 97,4€/mois est sans engagement. Vous pouvez résilier à tout moment, sans frais et sans justification. La formule annuelle, plus économique (≈ 2 mois offerts), est payée d'avance pour 12 mois.",
+  },
+  {
+    id: 'resiliation',
+    question: 'Comment résilier mon abonnement ?',
+    reponse:
+      "Un simple email ou message WhatsApp suffit. Nous arrêtons le prélèvement le mois suivant. Vous récupérez votre nom de domaine si vous souhaitez le conserver ailleurs.",
+  },
+  {
+    id: 'domaine',
+    question: 'Le nom de domaine est-il inclus ?',
+    reponse:
+      "Oui, un nom de domaine en .re, .fr ou .com est inclus dans l'abonnement. Si vous possédez déjà un domaine, nous le rattachons à votre nouveau site, sans coût supplémentaire.",
+  },
+  {
+    id: 'design',
+    question: 'Puis-je changer le design de mon site plus tard ?',
+    reponse:
+      "Oui, les ajustements simples (couleurs, photos, textes, horaires) sont inclus à vie. Une refonte complète de la charte graphique fait l'objet d'un devis dédié, mais reste rare : nos sites sont pensés pour durer.",
+  },
+  {
+    id: 'facturation',
+    question: 'Comment se passe la facturation ?',
+    reponse:
+      "Prélèvement automatique mensuel ou règlement annuel. Vous recevez une facture professionnelle chaque mois, conforme à la comptabilité (TVA, mentions légales). Tout est en euros, depuis La Réunion.",
+  },
+  {
+    id: 'ecommerce',
+    question: 'Est-ce que vous faites des sites e-commerce ?',
+    reponse:
+      "Non, notre offre principale est dédiée aux sites vitrines pros. Pour un vrai e-commerce (catalogue, paiement, stock), écrivez-nous : on regarde votre projet honnêtement et on vous oriente, même si ce n'est pas avec nous.",
+  },
+];
+
+// Comparaison transparente : ce qu'on fait / ce qu'on ne fait pas
+const onFait = [
+  'Sites vitrines pour TPE/PME locales',
+  'Formulaire métier (devis, RDV, réservation)',
+  'Hébergement, sécurité, mises à jour',
+  'Modifications de contenu simples',
+  'Référencement local La Réunion',
+  'Un interlocuteur unique, joignable',
+];
+const onFaitPas = [
+  "Sites e-commerce (catalogue + paiement)",
+  "Applications web sur-mesure",
+  "Refonte d'identité visuelle / logo",
+  "Campagnes Google Ads / Meta Ads",
+  "Rédaction de contenus longue durée",
+  "Sites multilingues complexes",
+];
 ---
 
 <BaseLayout seo={getSeo('tarifs')}>
-  <!-- Hero éditorial : aligné qualité home -->
-  <section class="relative overflow-hidden px-6 pt-28 pb-14 md:pt-36 md:pb-20">
-    <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
-      <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-[40rem] h-[40rem] halo-mix opacity-50"></div>
-    </div>
-    <div class="mx-auto max-w-3xl text-center">
-      <p class="hero-rise hero-rise-1 inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-bleu-nuit/55 font-semibold">
-        <span class="w-2 h-2 rounded-full bg-orange"></span> Tarifs
-      </p>
-      <span class="hero-rise hero-rise-2 block mx-auto mt-7 h-[3px] w-16 bg-bleu" aria-hidden="true"></span>
-      <h1 class="hero-rise hero-rise-2 mt-5 font-sora font-bold text-balance leading-[1.08] text-[clamp(2.25rem,4vw+1rem,4rem)] tracking-tight text-bleu-nuit">
-        Tarifs clairs,
-        <span class="block italic font-medium text-bleu">tout est inclus.</span>
-      </h1>
-      <p class="hero-rise hero-rise-4 mx-auto mt-7 max-w-2xl text-lg md:text-xl text-bleu-nuit/70 leading-relaxed">
-        {siteConfig.pricing.monthly}/mois, soit environ {siteConfig.pricing.daily}/jour.
-        Pas d'option cachée, pas d'engagement de durée.
-      </p>
-    </div>
-  </section>
+  <div class="bg-black text-blanc-casse">
+    <!-- ============================================================ -->
+    <!-- HERO éditorial : eyebrow + accent line + titre italique       -->
+    <!-- ============================================================ -->
+    <section class="relative overflow-hidden px-6 pt-28 pb-16 md:pt-36 md:pb-24">
+      <!-- Halos décoratifs signature -->
+      <div class="pointer-events-none absolute -top-32 -right-32 w-[28rem] h-[28rem] rounded-full bg-bleu/20 blur-3xl opacity-60 halo-pulse" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute -bottom-32 -left-32 w-[24rem] h-[24rem] rounded-full bg-bleu/15 blur-3xl opacity-40 halo-pulse-slow" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
+        <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-[40rem] h-[40rem] halo-mix opacity-60"></div>
+      </div>
 
-  <!-- Section "Ce qui est inclus" : reprise détaillée des 8 items
-       (placée AVANT la section prix pour expliquer la valeur avant le tarif) -->
-  <section class="relative overflow-hidden px-6 pb-20 md:pb-24" aria-labelledby="inclus-titre">
-    <div class="pointer-events-none absolute inset-0" aria-hidden="true">
-      <div class="absolute top-1/4 -left-24 w-[28rem] h-[28rem] halo-bleu opacity-40"></div>
-      <div class="absolute bottom-0 -right-24 w-[24rem] h-[24rem] halo-orange opacity-30"></div>
-    </div>
-    <div class="relative mx-auto max-w-content">
-      <div class="text-center max-w-2xl mx-auto">
-        <p class="scroll-reveal inline-flex items-center px-3 py-1.5 rounded-full bg-bleu text-white text-xs font-semibold uppercase tracking-wide">
-          Ce qui est inclus
+      <div class="relative mx-auto max-w-3xl text-center">
+        <p class="hero-rise hero-rise-1 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-bleu/15 ring-1 ring-bleu/30 text-bleu text-[11px] font-semibold uppercase tracking-[0.28em]">
+          <span class="block w-1.5 h-1.5 rounded-full bg-bleu animate-pulse"></span>
+          Une seule offre
         </p>
-        <h2 id="inclus-titre" class="scroll-reveal mt-4 font-sora font-bold text-3xl md:text-5xl text-bleu-nuit text-balance leading-tight">
-          Tout ce dont vous avez besoin
-        </h2>
-      </div>
-      <ul class="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        {inclusions.map((item, i) => {
-          const isBleu = i % 2 === 0;
-          return (
-            <li
-              class="scroll-reveal group bg-blanc-casse rounded-2xl ring-1 ring-bleu-nuit/10 p-6 transition-all duration-300 ease-out-soft hover:-translate-y-0.5 hover:shadow-card-hover hover:ring-bleu-nuit/15"
-              style={`transition-delay: ${(i % 4) * 60}ms`}
-            >
-              <span class:list={[
-                'flex w-12 h-12 rounded-xl items-center justify-center transition-colors duration-300',
-                isBleu
-                  ? 'bg-bleu/25 text-bleu-nuit group-hover:bg-bleu-nuit group-hover:text-blanc-casse'
-                  : 'bg-orange/15 text-orange group-hover:bg-orange group-hover:text-bleu-nuit',
-              ]}>
-                <Icon name={item.icon} size={22} strokeWidth={1.75} />
-              </span>
-              <h3 class="mt-5 font-sora font-semibold text-lg text-bleu-nuit leading-snug">
-                {item.titre}
-              </h3>
-              <p class="mt-2 text-sm text-bleu-nuit/65 leading-relaxed">{item.texte}</p>
-            </li>
-          );
-        })}
-      </ul>
-    </div>
-  </section>
-
-  <!-- 2 cartes de prix : présentées APRÈS l'explication de la valeur incluse -->
-  <section class="relative overflow-hidden px-6 py-20 md:py-24 bg-bleu/[0.06]" aria-labelledby="prix-titre">
-    <div class="pointer-events-none absolute inset-0" aria-hidden="true">
-      <div class="absolute -top-24 right-0 w-[28rem] h-[28rem] halo-bleu opacity-30"></div>
-    </div>
-    <div class="relative mx-auto max-w-4xl">
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <p class="scroll-reveal inline-flex items-center px-3 py-1.5 rounded-full bg-orange text-white text-xs font-semibold uppercase tracking-wide">
-          Tarifs
+        <span class="hero-rise hero-rise-2 block mx-auto mt-7 h-[3px] w-16 bg-bleu" aria-hidden="true"></span>
+        <h1 class="hero-rise hero-rise-2 mt-5 font-sora font-bold text-balance leading-[1.05] text-[clamp(2.5rem,4.5vw+1rem,4.5rem)] tracking-tight text-blanc-casse">
+          Un prix unique,
+          <span class="block italic font-medium text-bleu">tout est inclus.</span>
+        </h1>
+        <p class="hero-rise hero-rise-4 mx-auto mt-7 max-w-2xl text-lg md:text-xl text-blanc-casse/70 leading-relaxed">
+          {siteConfig.pricing.monthly}/mois, soit environ {siteConfig.pricing.daily}/jour.
+          Pas de frais de création, pas d'engagement, pas d'option cachée.
         </p>
-        <h2 id="prix-titre" class="scroll-reveal mt-4 font-sora font-bold text-3xl md:text-5xl text-bleu-nuit text-balance leading-tight">
-          Choisissez votre formule
-        </h2>
-      </div>
-      <div class="grid sm:grid-cols-2 gap-5">
-        <!-- Mensuel -->
-        <article class="scroll-reveal flex flex-col bg-blanc-casse rounded-2xl ring-2 ring-bleu shadow-card p-7 md:p-8 transition-all duration-300 ease-out-soft hover:-translate-y-0.5 hover:shadow-card-hover">
-          <p class="text-sm font-semibold text-bleu-nuit/60 uppercase tracking-wide">Mensuel</p>
-          <p class="mt-3 flex items-baseline gap-1">
-            <span class="font-sora font-bold text-5xl text-bleu-nuit" data-count="97.4" data-count-decimals="1" data-count-suffix="€">{siteConfig.pricing.monthly}</span>
-            <span class="text-base text-bleu-nuit/60">/mois</span>
-          </p>
-          <p class="mt-3 text-sm text-bleu-nuit/65">Sans engagement de durée.</p>
-          <ul class="mt-7 space-y-3 flex-1">
-            {cardItems.map((label) => (
-              <li class="flex items-start gap-3 text-sm text-bleu-nuit/85">
-                <Icon name="shield-check" size={18} class="text-bleu-nuit shrink-0 mt-0.5" strokeWidth={2} />
-                <span>{label}</span>
-              </li>
-            ))}
-          </ul>
-          <div class="mt-8">
-            <Button variant="primary" size="md" href="/contact" fullWidth>
-              Demander mon site
-              <Icon name="arrow-right" size={18} strokeWidth={2} />
-            </Button>
-          </div>
-        </article>
 
-        <!-- Annuel -->
-        <article class="scroll-reveal relative flex flex-col bg-bleu-nuit text-blanc-casse rounded-2xl shadow-card-hover p-7 md:p-8 transition-all duration-300 ease-out-soft hover:-translate-y-0.5">
-          <div class="flex items-center justify-between">
-            <p class="text-sm font-semibold text-blanc-casse/70 uppercase tracking-wide">Annuel</p>
-            <Badge variant="primary" size="sm">≈ 2 mois offerts</Badge>
-          </div>
-          <p class="mt-3 flex items-baseline gap-1">
-            <span class="font-sora font-bold text-5xl" data-count="974" data-count-suffix="€">{siteConfig.pricing.yearly}</span>
-            <span class="text-base text-blanc-casse/60">/an</span>
-          </p>
-          <p class="mt-3 text-sm text-blanc-casse/70">Plus économique sur l'année.</p>
-          <ul class="mt-7 space-y-3 flex-1">
-            {cardItems.map((label) => (
-              <li class="flex items-start gap-3 text-sm text-blanc-casse/85">
-                <Icon name="shield-check" size={18} class="text-orange shrink-0 mt-0.5" strokeWidth={2} />
-                <span>{label}</span>
-              </li>
-            ))}
-          </ul>
-          <div class="mt-8">
-            <Button variant="primary-on-dark" size="md" href="/contact" fullWidth>
-              Demander mon site
-              <Icon name="arrow-right" size={18} strokeWidth={2} />
-            </Button>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Pourquoi 97,4€/mois ? -->
-  <section class="relative px-6 py-20 md:py-24" aria-labelledby="pourquoi-titre">
-    <div class="mx-auto max-w-content">
-      <div class="max-w-3xl mx-auto text-center">
-        <h2 id="pourquoi-titre" class="scroll-reveal font-sora font-bold text-3xl md:text-5xl text-bleu-nuit text-balance leading-tight">
-          Pourquoi {siteConfig.pricing.monthly}/mois ?
-        </h2>
-        <p class="scroll-reveal mt-6 text-lg text-bleu-nuit/70 leading-relaxed">
-          Parce qu'un site ne se limite pas à sa création. Il faut le mettre en
-          ligne, l'héberger, le sécuriser, le maintenir, changer les horaires,
-          modifier les textes, remplacer les photos et garder un interlocuteur
-          quand quelque chose bloque.
-        </p>
-      </div>
-      <div class="scroll-reveal mt-12 grid grid-cols-1 md:grid-cols-3 gap-5">
-        <article class="rounded-2xl bg-blanc-casse ring-1 ring-bleu-nuit/10 p-6 md:p-7 transition-all duration-300 ease-out-soft hover:-translate-y-0.5 hover:shadow-card-hover hover:ring-bleu-nuit/15">
-          <span class="flex w-12 h-12 rounded-xl bg-bleu/25 text-bleu-nuit items-center justify-center">
-            <Icon name="euro" size={22} strokeWidth={1.75} />
-          </span>
-          <h3 class="mt-5 font-sora font-semibold text-lg text-bleu-nuit leading-snug">Sans frais de création</h3>
-          <p class="mt-2 text-sm text-bleu-nuit/65 leading-relaxed">Pas besoin de sortir 1 500 € au démarrage. Votre site est inclus dans l'abonnement.</p>
-        </article>
-        <article class="rounded-2xl bg-blanc-casse ring-1 ring-bleu-nuit/10 p-6 md:p-7 transition-all duration-300 ease-out-soft hover:-translate-y-0.5 hover:shadow-card-hover hover:ring-bleu-nuit/15">
-          <span class="flex w-12 h-12 rounded-xl bg-orange/15 text-orange items-center justify-center">
-            <Icon name="shield-check" size={22} strokeWidth={1.75} />
-          </span>
-          <h3 class="mt-5 font-sora font-semibold text-lg text-bleu-nuit leading-snug">Sans technique à gérer</h3>
-          <p class="mt-2 text-sm text-bleu-nuit/65 leading-relaxed">Nom de domaine, hébergement, sécurité, maintenance : 9site4 s'en occupe.</p>
-        </article>
-        <article class="rounded-2xl bg-blanc-casse ring-1 ring-bleu-nuit/10 p-6 md:p-7 transition-all duration-300 ease-out-soft hover:-translate-y-0.5 hover:shadow-card-hover hover:ring-bleu-nuit/15">
-          <span class="flex w-12 h-12 rounded-xl bg-bleu/25 text-bleu-nuit items-center justify-center">
-            <Icon name="check" size={22} strokeWidth={1.75} />
-          </span>
-          <h3 class="mt-5 font-sora font-semibold text-lg text-bleu-nuit leading-snug">Sans mauvaise surprise</h3>
-          <p class="mt-2 text-sm text-bleu-nuit/65 leading-relaxed">Une offre claire, un prix prévisible, des modifications simples incluses.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Ce que vous n'avez pas à gérer -->
-  <section class="relative px-6 py-20 md:py-28" aria-labelledby="pas-a-gerer-titre">
-    <div class="mx-auto max-w-content">
-      <div class="max-w-3xl">
-        <p class="scroll-reveal inline-flex items-center px-3 py-1.5 rounded-full bg-orange text-white text-xs font-semibold uppercase tracking-wide">
-          Ce que vous n'avez pas à gérer
-        </p>
-        <h2 id="pas-a-gerer-titre" class="scroll-reveal mt-4 font-sora font-bold text-3xl md:text-5xl text-bleu-nuit text-balance leading-tight">
-          On s'occupe de tout ce qui vous ralentit.
-        </h2>
-      </div>
-      <ul class="scroll-reveal mt-10 grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {[
-          'Pas de WordPress à apprendre',
-          'Pas d\'hébergement à configurer',
-          'Pas de plugin à maintenir',
-          'Pas de freelance à relancer',
-          'Pas de cahier des charges compliqué',
-          'Pas de mise à jour de sécurité à suivre',
-        ].map((item) => (
-          <li class="flex items-start gap-3 rounded-2xl bg-blanc-casse ring-1 ring-bleu-nuit/10 px-5 py-4">
-            <span class="flex w-6 h-6 rounded-full bg-bleu/25 text-bleu-nuit items-center justify-center shrink-0 mt-0.5">
-              <Icon name="check" size={14} strokeWidth={2.5} />
+        <!-- Mini-badges réassurance -->
+        <div class="hero-rise hero-rise-5 mt-8 flex flex-wrap items-center justify-center gap-2.5">
+          {['Sans engagement', 'Sans frais de création', 'Résiliation à tout moment'].map((t) => (
+            <span class="inline-flex items-center gap-2 h-9 px-4 rounded-full bg-white/[0.04] ring-1 ring-white/10 text-xs font-medium text-blanc-casse/80">
+              <Icon name="check" size={13} strokeWidth={2.5} class="text-bleu" />
+              {t}
             </span>
-            <span class="text-base text-bleu-nuit/80 leading-snug">{item}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </section>
-
-  <!-- FAQ accordéon -->
-  <section class="relative overflow-hidden px-6 py-20 md:py-28 bg-bleu/[0.06]" aria-labelledby="faq-titre">
-    <div class="pointer-events-none absolute inset-0" aria-hidden="true">
-      <div class="absolute -top-24 right-0 w-[28rem] h-[28rem] halo-bleu opacity-40"></div>
-    </div>
-    <div class="relative mx-auto max-w-3xl">
-      <div class="text-center mb-12">
-        <p class="scroll-reveal inline-flex items-center px-3 py-1.5 rounded-full bg-bleu text-white text-xs font-semibold uppercase tracking-wide">
-          FAQ
-        </p>
-        <h2 id="faq-titre" class="scroll-reveal mt-4 font-sora font-bold text-3xl md:text-5xl text-bleu-nuit text-balance leading-tight">
-          Questions fréquentes
-        </h2>
+          ))}
+        </div>
       </div>
-      <Faq client:load items={faq} />
-    </div>
-  </section>
+    </section>
 
-  <CTABand />
+    <!-- ============================================================ -->
+    <!-- CARTE PRIX SIGNATURE : grande carte héroïque (gradient ring)  -->
+    <!-- ============================================================ -->
+    <section class="relative px-6 pb-20 md:pb-28" aria-labelledby="prix-titre">
+      <div class="relative mx-auto max-w-3xl">
+        <!-- Halo signature bleu mauve derrière la card -->
+        <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
+          <div class="absolute inset-x-8 top-12 bottom-12 rounded-[2.5rem] bg-bleu/30 blur-3xl opacity-60"></div>
+        </div>
+
+        <article class="scroll-reveal relative rounded-[2rem] p-[1.5px] bg-gradient-to-br from-bleu via-bleu/40 to-white/10 shadow-[0_30px_80px_-20px_rgba(145,166,255,0.55)]">
+          <div class="relative rounded-[1.93rem] bg-[#0a0a0a] p-8 md:p-12 overflow-hidden">
+            <!-- Glow interne discret -->
+            <div class="pointer-events-none absolute -top-32 -right-32 w-80 h-80 rounded-full bg-bleu/20 blur-3xl" aria-hidden="true"></div>
+
+            <div class="relative grid md:grid-cols-2 gap-10 items-start">
+              <!-- Colonne prix -->
+              <div>
+                <p class="inline-flex items-center gap-2 font-roboto-mono text-[10px] uppercase tracking-[0.3em] text-bleu font-semibold">
+                  <span class="w-1.5 h-1.5 rounded-full bg-bleu"></span>
+                  Formule unique
+                </p>
+                <h2 id="prix-titre" class="mt-4 font-sora font-bold text-3xl md:text-4xl text-blanc-casse leading-tight">
+                  Site vitrine
+                  <span class="block italic font-medium text-bleu">tout compris.</span>
+                </h2>
+
+                <div class="mt-8 flex items-baseline gap-2">
+                  <span
+                    class="font-sora font-bold text-[clamp(3.75rem,8vw,5.5rem)] leading-none tracking-tight text-blanc-casse"
+                    data-count="97.4"
+                    data-count-decimals="1"
+                    data-count-suffix="€"
+                  >{siteConfig.pricing.monthly}</span>
+                  <span class="text-lg text-blanc-casse/60 font-medium">/mois</span>
+                </div>
+                <p class="mt-3 text-sm text-blanc-casse/60">
+                  Soit environ <span class="text-blanc-casse/85 font-medium">{siteConfig.pricing.daily}/jour</span>. Sans engagement.
+                </p>
+
+                <div class="mt-8">
+                  <Button variant="primary" size="lg" href="/contact" fullWidth>
+                    Commencer mon site
+                    <Icon name="arrow-right" size={20} strokeWidth={2.25} />
+                  </Button>
+                  <p class="mt-3 text-center text-xs text-blanc-casse/55">
+                    Réponse sous 24h ouvrées · Fait à La Réunion
+                  </p>
+                </div>
+
+                <!-- Toggle annuel discret -->
+                <div class="mt-6 flex items-center justify-between rounded-2xl bg-white/[0.04] ring-1 ring-white/10 px-4 py-3">
+                  <div>
+                    <p class="font-sora font-semibold text-sm text-blanc-casse">Formule annuelle</p>
+                    <p class="text-xs text-blanc-casse/60">{siteConfig.pricing.yearly}/an · ≈ 2 mois offerts</p>
+                  </div>
+                  <Badge variant="primary" size="sm">−17%</Badge>
+                </div>
+              </div>
+
+              <!-- Colonne inclusions -->
+              <div>
+                <p class="font-sora font-semibold text-sm text-blanc-casse/85 uppercase tracking-wide">
+                  Ce qui est inclus
+                </p>
+                <ul class="mt-5 space-y-3.5">
+                  {cardItems.map((label) => (
+                    <li class="flex items-start gap-3 text-[15px] text-blanc-casse/85 leading-snug">
+                      <span class="flex w-5 h-5 rounded-full bg-bleu/20 text-bleu items-center justify-center shrink-0 mt-0.5">
+                        <Icon name="check" size={12} strokeWidth={3} />
+                      </span>
+                      <span>{label}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- WHAT'S INCLUDED : 2-col grid détaillée (8 features avec icon) -->
+    <!-- ============================================================ -->
+    <section class="relative overflow-hidden px-6 py-20 md:py-28" aria-labelledby="inclus-titre">
+      <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div class="absolute top-0 -left-24 w-[28rem] h-[28rem] halo-bleu opacity-40"></div>
+        <div class="absolute bottom-0 -right-24 w-[24rem] h-[24rem] halo-orange opacity-30"></div>
+      </div>
+
+      <div class="relative mx-auto max-w-content">
+        <div class="text-center max-w-2xl mx-auto">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-bleu"></span> Détail complet
+          </p>
+          <h2 id="inclus-titre" class="scroll-reveal mt-6 font-sora font-bold text-3xl md:text-5xl text-blanc-casse text-balance leading-[1.1]">
+            Tout ce dont vous avez besoin,
+            <span class="block italic font-medium text-bleu">dans un seul prix.</span>
+          </h2>
+          <p class="scroll-reveal mt-6 text-lg text-blanc-casse/65 leading-relaxed">
+            Pas d'option à cocher, pas de surprise à la facture. Voici l'intégralité
+            de ce qui est compris dans votre abonnement {siteConfig.pricing.monthly}/mois.
+          </p>
+        </div>
+
+        <ul class="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {inclusions.map((item, i) => {
+            const isBleu = i % 2 === 0;
+            return (
+              <li
+                class="scroll-reveal group bg-blanc-casse rounded-2xl ring-1 ring-bleu-nuit/10 p-6 transition-all duration-300 ease-out-soft hover:-translate-y-1 hover:shadow-[0_20px_40px_-15px_rgba(145,166,255,0.45)] hover:ring-bleu/40"
+                style={`transition-delay: ${(i % 4) * 60}ms`}
+              >
+                <span class:list={[
+                  'flex w-12 h-12 rounded-xl items-center justify-center transition-colors duration-300',
+                  isBleu
+                    ? 'bg-bleu/20 text-bleu-nuit group-hover:bg-bleu group-hover:text-white'
+                    : 'bg-orange/15 text-orange group-hover:bg-orange group-hover:text-white',
+                ]}>
+                  <Icon name={item.icon} size={22} strokeWidth={1.75} />
+                </span>
+                <h3 class="mt-5 font-sora font-semibold text-lg text-bleu-nuit leading-snug">
+                  {item.titre}
+                </h3>
+                <p class="mt-2 text-sm text-bleu-nuit/65 leading-relaxed">{item.texte}</p>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- COMPARAISON TRANSPARENTE : ce qu'on fait / ce qu'on ne fait pas -->
+    <!-- ============================================================ -->
+    <section class="relative overflow-hidden px-6 py-20 md:py-28" aria-labelledby="compare-titre">
+      <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div class="absolute top-1/3 left-1/2 -translate-x-1/2 w-[32rem] h-[32rem] halo-mix opacity-30"></div>
+      </div>
+
+      <div class="relative mx-auto max-w-5xl">
+        <div class="text-center max-w-2xl mx-auto">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-orange"></span> Transparence
+          </p>
+          <h2 id="compare-titre" class="scroll-reveal mt-6 font-sora font-bold text-3xl md:text-5xl text-blanc-casse text-balance leading-[1.1]">
+            On vous dit aussi
+            <span class="block italic font-medium text-bleu">ce qu'on ne fait pas.</span>
+          </h2>
+          <p class="scroll-reveal mt-6 text-lg text-blanc-casse/65 leading-relaxed">
+            Mieux vaut une honnêteté nette qu'une promesse vague. Voilà notre périmètre.
+          </p>
+        </div>
+
+        <div class="mt-14 grid md:grid-cols-2 gap-5">
+          <!-- ON FAIT -->
+          <div class="scroll-reveal relative rounded-3xl bg-blanc-casse p-7 md:p-8 ring-1 ring-bleu-nuit/10 shadow-card">
+            <div class="flex items-center gap-3">
+              <span class="flex w-11 h-11 rounded-2xl bg-bleu/20 text-bleu-nuit items-center justify-center">
+                <Icon name="check" size={20} strokeWidth={2.5} />
+              </span>
+              <p class="font-sora font-bold text-xl text-bleu-nuit">Ce qu'on fait</p>
+            </div>
+            <ul class="mt-6 space-y-3">
+              {onFait.map((t) => (
+                <li class="flex items-start gap-3 text-[15px] text-bleu-nuit/85 leading-snug">
+                  <span class="flex w-5 h-5 rounded-full bg-bleu/25 text-bleu-nuit items-center justify-center shrink-0 mt-0.5">
+                    <Icon name="check" size={12} strokeWidth={3} />
+                  </span>
+                  <span>{t}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- ON FAIT PAS -->
+          <div class="scroll-reveal relative rounded-3xl bg-white/[0.03] p-7 md:p-8 ring-1 ring-white/10">
+            <div class="flex items-center gap-3">
+              <span class="flex w-11 h-11 rounded-2xl bg-white/[0.06] text-blanc-casse/70 items-center justify-center ring-1 ring-white/10">
+                <Icon name="x" size={20} strokeWidth={2.5} />
+              </span>
+              <p class="font-sora font-bold text-xl text-blanc-casse">Ce qu'on ne fait pas</p>
+            </div>
+            <ul class="mt-6 space-y-3">
+              {onFaitPas.map((t) => (
+                <li class="flex items-start gap-3 text-[15px] text-blanc-casse/70 leading-snug">
+                  <span class="flex w-5 h-5 rounded-full bg-white/[0.06] text-blanc-casse/50 items-center justify-center shrink-0 mt-0.5 ring-1 ring-white/10">
+                    <Icon name="x" size={11} strokeWidth={3} />
+                  </span>
+                  <span>{t}</span>
+                </li>
+              ))}
+            </ul>
+            <p class="mt-6 text-sm text-blanc-casse/55 leading-relaxed border-t border-white/10 pt-5">
+              Besoin d'un de ces sujets ? On peut quand même vous orienter vers
+              quelqu'un de confiance — il suffit de demander.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- FAQ TARIFS : accordéon                                        -->
+    <!-- ============================================================ -->
+    <section class="relative overflow-hidden px-6 py-20 md:py-28" aria-labelledby="faq-titre">
+      <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div class="absolute -top-24 right-0 w-[28rem] h-[28rem] halo-bleu opacity-30"></div>
+        <div class="absolute bottom-0 -left-24 w-[24rem] h-[24rem] halo-orange opacity-20"></div>
+      </div>
+
+      <div class="relative mx-auto max-w-3xl">
+        <div class="text-center mb-12">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-bleu"></span> FAQ tarifs
+          </p>
+          <h2 id="faq-titre" class="scroll-reveal mt-6 font-sora font-bold text-3xl md:text-5xl text-blanc-casse text-balance leading-[1.1]">
+            Les questions
+            <span class="italic font-medium text-bleu">qu'on nous pose souvent.</span>
+          </h2>
+        </div>
+        <div class="scroll-reveal">
+          <Faq client:load items={tarifsFaq} />
+        </div>
+      </div>
+    </section>
+
+    <CTABand />
+  </div>
 </BaseLayout>
