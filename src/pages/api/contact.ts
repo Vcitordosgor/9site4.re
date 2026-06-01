@@ -5,6 +5,7 @@ import {
   autoReplyContactEmail,
   type LeadContact,
 } from '../../lib/emailTemplates';
+import { qualifyLead, mapSource, defaultQualification } from '../../lib/leadScoring';
 
 export const prerender = false;
 
@@ -18,6 +19,7 @@ interface ContactPayload {
   preference?: string;
   message?: string;
   website?: string;
+  source?: string;
 }
 
 const PHONE_REGEX = /^[+]?[\d\s().-]{8,20}$/;
@@ -86,6 +88,29 @@ export const POST: APIRoute = async ({ request, locals }) => {
     );
   }
 
+  const sourceLabel = mapSource(payload.source) ?? undefined;
+
+  let qualification;
+  try {
+    qualification = qualifyLead(
+      {
+        nom,
+        entreprise,
+        email,
+        telephone,
+        secteur,
+        besoin,
+        message,
+        preferenceContact: preference,
+        source: sourceLabel,
+      },
+      'contact'
+    );
+  } catch (err) {
+    console.error('[api/contact] qualifyLead failed', err);
+    qualification = defaultQualification();
+  }
+
   const lead: LeadContact = {
     nom,
     entreprise: entreprise || undefined,
@@ -95,6 +120,8 @@ export const POST: APIRoute = async ({ request, locals }) => {
     besoin: besoin || undefined,
     message: message || undefined,
     preferenceContact: preference || undefined,
+    source: sourceLabel,
+    qualification,
     receivedAt: new Date(),
   };
 

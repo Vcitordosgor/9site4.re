@@ -5,6 +5,7 @@ import {
   autoReplyDiagnosticEmail,
   type LeadDiagnostic,
 } from '../../lib/emailTemplates';
+import { qualifyLead, mapSource, defaultQualification } from '../../lib/leadScoring';
 
 export const prerender = false;
 
@@ -21,6 +22,7 @@ interface DiagnosticPayload {
   preference?: string;
   message?: string;
   website?: string;
+  source?: string;
 }
 
 const PHONE_REGEX = /^[+]?[\d\s().-]{8,20}$/;
@@ -96,6 +98,32 @@ export const POST: APIRoute = async ({ request, locals }) => {
 
   const aSite: 'oui' | 'non' = aSiteRaw === 'oui' ? 'oui' : 'non';
 
+  const sourceLabel = mapSource(payload.source) ?? undefined;
+
+  let qualification;
+  try {
+    qualification = qualifyLead(
+      {
+        nom,
+        entreprise,
+        secteur,
+        aSite,
+        url: aSite === 'oui' && urlSite ? urlSite : undefined,
+        reseaux: lienRezo,
+        objectif,
+        email,
+        telephone,
+        preferenceContact: preference,
+        message,
+        source: sourceLabel,
+      },
+      'diagnostic'
+    );
+  } catch (err) {
+    console.error('[api/diagnostic] qualifyLead failed', err);
+    qualification = defaultQualification();
+  }
+
   const lead: LeadDiagnostic = {
     nom,
     entreprise: entreprise || undefined,
@@ -108,6 +136,8 @@ export const POST: APIRoute = async ({ request, locals }) => {
     telephone,
     preferenceContact: preference || undefined,
     message: message || undefined,
+    source: sourceLabel,
+    qualification,
     receivedAt: new Date(),
   };
 
