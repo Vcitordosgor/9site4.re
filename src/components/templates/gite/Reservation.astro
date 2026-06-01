@@ -8,7 +8,7 @@
  * Sidebar récap "Votre séjour" avec PRIX TOTAL CALCULÉ EN LIVE
  * (basé sur tarifs basse/haute saison + nuits + options).
  */
-import data from '../../../data/templates/cap-anglais.json';
+import data from '../../../data/templates/crete-aurere.json';
 const waBase = `https://wa.me/${data.info.whatsapp}`;
 ---
 
@@ -445,7 +445,7 @@ const waBase = `https://wa.me/${data.info.whatsapp}`;
       if (form.querySelector('input[name="accompagnement"]')?.checked) opts.push('Accompagnement rando');
 
       const text = [
-        'Bonjour, je souhaite réserver Le Cap Anglais.',
+        'Bonjour, je souhaite réserver La Crête d'Aurère.',
         '',
         '— SÉJOUR —',
         fd.get('arrivee') ? `Arrivée : ${fd.get('arrivee')}` : '',

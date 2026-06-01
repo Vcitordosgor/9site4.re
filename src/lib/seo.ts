@@ -218,9 +218,9 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
     noindex: true,
   },
   templateGite: {
-    title: 'Le Cap Anglais — Gîte de cirque à Cilaos (Réunion) | Template 9site4',
+    title: 'La Crête d\'Aurère — Gîte de cirque à Cilaos (Réunion) | Template 9site4',
     description:
-      'Le Cap Anglais (fictif) — gîte authentique à Cilaos, calendrier en direct, réservation. Démo 9site4 : votre site gîte sera adapté à votre hébergement.',
+      'La Crête d\'Aurère (fictif) — gîte authentique à Cilaos, calendrier en direct, réservation. Démo 9site4 : votre site gîte sera adapté à votre hébergement.',
     canonical: '/templates/gite',
     noindex: true,
   },
