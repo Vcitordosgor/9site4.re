@@ -269,13 +269,13 @@ export default {
         // Palette aide à domicile (template /templates/aide-domicile — Doudou Service)
         // Style "doux & humain, ton local créole-friendly, proximité familiale"
         // — bleu apaisant + rose chaleureux + jaune solaire + crème coton.
-        'doudou-ciel':     '#A5C8DD',  // bleu doux ciel — fond accents
-        'doudou-bleu':     '#3B6E8F',  // bleu apaisant — accent dominant
-        'doudou-rose':     '#E5A09A',  // rose chaleureux — accent secondaire
-        'doudou-creme':    '#FCF8F0',  // crème de coton — fond
-        'doudou-soleil':   '#FFE89F',  // jaune solaire pâle — micro-accent
-        'doudou-encre':    '#3D3D3F',  // gris encre — texte
-        'doudou-bourgeon': '#7FA66B',  // vert bourgeon — accent vif rare
+        'doudou-ciel':     '#E0CFE6',  // bleu doux ciel — fond accents
+        'doudou-bleu':     '#5B3B6E',  // bleu apaisant — accent dominant
+        'doudou-rose':     '#D38B5E',  // rose chaleureux — accent secondaire
+        'doudou-creme':    '#F9F2E8',  // crème de coton — fond
+        'doudou-soleil':   '#F2C24E',  // jaune solaire pâle — micro-accent
+        'doudou-encre':    '#3A2E2A',  // gris encre — texte
+        'doudou-bourgeon': '#6E8A5B',  // vert bourgeon — accent vif rare
 
         // Palette plongée — Bleu Lagon Plongée (Saint-Leu, réserve marine)
         // Profondeur océan + clarté lagon + accents corail vifs
