@@ -93,7 +93,7 @@ const row1 = [...row1Items, ...row1Items];
 const row2 = [...row2Items, ...row2Items];
 
 const stats = [
-  { value: `${realisations.length}`, label: 'exemples de sites en ligne' },
+  { value: `${realisations.length}`, label: 'réalisations en ligne' },
   { value: '7 jours', label: 'pour mettre votre site en ligne' },
   { value: '97,4€', label: 'par mois, tout compris' },
 ];
@@ -102,16 +102,18 @@ const stats = [
 <section class="relative overflow-hidden bg-bleu-nuit text-blanc-casse py-14 md:py-20" aria-labelledby="vitrine-titre">
   <div class="mx-auto max-w-content px-6 text-center">
     <h2 id="vitrine-titre" class="font-sora font-bold text-2xl md:text-4xl text-balance leading-tight">
-      Un site pensé pour votre métier.
+      Nos réalisations
     </h2>
-    <p class="mt-5 mx-auto max-w-2xl text-lg text-blanc-casse/70 leading-relaxed">
-      Quarante univers, quarante directions visuelles. Cliquez sur celle qui vous parle —
-      c'est exactement ce qu'on construira pour vous.
+    <p class="mt-5 mx-auto max-w-2xl text-lg text-blanc-casse/80 leading-relaxed">
+      Découvrez une sélection de sites conçus par 9site4 pour les professionnels réunionnais.
+    </p>
+    <p class="mt-4 mx-auto max-w-3xl text-base text-blanc-casse/65 leading-relaxed">
+      Chaque réalisation illustre notre manière de structurer une activité en ligne : une présentation claire, une identité adaptée au métier, des informations essentielles bien organisées et un parcours de contact simple.
     </p>
   </div>
 
-  <!-- Double marquee — vignettes SVG natives (mêmes que sur /exemples) -->
-  <div class="vitrine-marquee relative mt-10 md:mt-14 space-y-5" aria-label="Exemples de sites qui défilent">
+  <!-- Double marquee — vignettes des réalisations -->
+  <div class="vitrine-marquee relative mt-10 md:mt-14 space-y-5" aria-label="Nos réalisations qui défilent">
     <!-- Rangée 1 (sens normal) -->
     <div class="vitrine-track-1 flex gap-5 w-max px-3">
       {row1.map((r, i) => {
@@ -199,7 +201,7 @@ const stats = [
         href="/exemples"
         class="group inline-flex items-center justify-center gap-2 h-13 px-8 py-3.5 text-base font-semibold rounded-full bg-bleu text-white hover:bg-[#7e95ff] hover:-translate-y-0.5 shadow-[0_8px_30px_rgba(145,166,255,0.45)] transition-all duration-200 ease-out"
       >
-        Voir tous les exemples
+        Voir toutes nos réalisations
         <span aria-hidden="true" class="transition-transform duration-300 group-hover:translate-x-1">→</span>
       </a>
     </div>

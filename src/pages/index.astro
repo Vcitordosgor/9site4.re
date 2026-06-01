@@ -1,26 +1,31 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/sections/Hero.astro';
-import Manifeste from '../components/sections/Manifeste.astro';
-import Douleur from '../components/sections/Douleur.astro';
-import FormulairesIntegres from '../components/sections/FormulairesIntegres.astro';
-import Etapes7Jours from '../components/sections/Etapes7Jours.astro';
-import TarifsBref from '../components/sections/TarifsBref.astro';
+import BandeauReassurance from '../components/sections/BandeauReassurance.astro';
 import VitrineExemples from '../components/sections/VitrineExemples.astro';
+import Methode9site4 from '../components/sections/Methode9site4.astro';
+import ModuleMetier from '../components/sections/ModuleMetier.astro';
+import FormulairesIntegres from '../components/sections/FormulairesIntegres.astro';
+import PourquoiChoisir from '../components/sections/PourquoiChoisir.astro';
+import TarifsBref from '../components/sections/TarifsBref.astro';
+import Vision from '../components/sections/Vision.astro';
+import ReassuranceFinale from '../components/sections/ReassuranceFinale.astro';
 import CTABand from '../components/sections/CTABand.astro';
 import { getSeo } from '../lib/seo';
 ---
 
 <BaseLayout seo={getSeo('home')}>
   <Hero />
+  <BandeauReassurance />
   <VitrineExemples />
   <div class="flex justify-center bg-black"><span class="block h-px w-24 bg-bleu/60" aria-hidden="true"></span></div>
-  <Manifeste />
+  <Methode9site4 />
+  <ModuleMetier />
   <FormulairesIntegres />
   <div class="flex justify-center bg-black"><span class="block h-px w-24 bg-bleu/60" aria-hidden="true"></span></div>
-  <Douleur />
-  <Etapes7Jours />
-  <div class="flex justify-center bg-black"><span class="block h-px w-24 bg-bleu/60" aria-hidden="true"></span></div>
+  <PourquoiChoisir />
   <TarifsBref />
+  <Vision />
+  <ReassuranceFinale />
   <CTABand />
 </BaseLayout>

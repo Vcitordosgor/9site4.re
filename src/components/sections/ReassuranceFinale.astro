@@ -1,0 +1,41 @@
+---
+import Icon from '../ui/Icon.astro';
+
+/**
+ * Réassurance finale — section 9 home : 8 garanties en grille.
+ */
+const items = [
+  { icon: 'clock',         label: 'Réponse sous 24h ouvrées' },
+  { icon: 'calendar-check',label: 'Rendez-vous de cadrage' },
+  { icon: 'map-pin',       label: 'Accompagnement à La Réunion' },
+  { icon: 'shield-check',  label: 'Sans engagement' },
+  { icon: 'wand',          label: 'Maintenance incluse' },
+  { icon: 'file-text',     label: 'Modifications simples incluses' },
+  { icon: 'mail',          label: 'Facturation professionnelle' },
+  { icon: 'globe',         label: 'Nom de domaine inclus' },
+];
+---
+
+<section class="relative px-6 py-16 md:py-24" aria-labelledby="reassurance-titre">
+  <div class="mx-auto max-w-content">
+    <div class="max-w-3xl mx-auto text-center">
+      <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+        <span class="w-2 h-2 rounded-full bg-bleu"></span> Accompagnement
+      </p>
+      <h2 id="reassurance-titre" class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl lg:text-5xl text-blanc-casse text-balance leading-[1.12]">
+        Un accompagnement clair, local et professionnel.
+      </h2>
+    </div>
+
+    <ul class="scroll-reveal mt-14 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
+      {items.map((it) => (
+        <li class="flex flex-col items-start gap-3 rounded-2xl bg-white/[0.04] ring-1 ring-white/10 p-5 transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.07] hover:ring-bleu/40">
+          <span class="flex w-10 h-10 rounded-xl bg-bleu/20 text-bleu items-center justify-center">
+            <Icon name={it.icon} size={20} strokeWidth={1.75} />
+          </span>
+          <p class="text-sm font-semibold text-blanc-casse leading-snug">{it.label}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
