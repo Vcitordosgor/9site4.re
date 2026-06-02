@@ -85,7 +85,15 @@ type PageKey =
   | 'templateNaturopathe'
   | 'templateCreche'
   | 'templateNotaire'
-  | 'templateStudioAudio';
+  | 'templateStudioAudio'
+  | 'villeSaintDenis'
+  | 'villeSaintPaul'
+  | 'villeSaintPierre'
+  | 'villeLeTampon'
+  | 'villeSaintAndre'
+  | 'villeSaintLouis'
+  | 'villeSaintBenoit'
+  | 'villeSaintJoseph';
 
 const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'> & { noindex?: boolean; ogImage?: string; ogImageAlt?: string }> = {
   home: {
@@ -510,6 +518,54 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
       'Onde (fictif) — enregistrement, mixage, mastering streaming, SSL/Pro Tools, ingés résidents. Démo 9site4 : votre site studio sera adapté à vos prestations.',
     canonical: '/templates/studio-audio',
     noindex: true,
+  },
+  villeSaintDenis: {
+    title: `Création de site internet à Saint-Denis (974) — Pour TPE/PME et indépendants | ${siteConfig.siteName}`,
+    description:
+      "9site4 crée et gère le site internet des professionnels de Saint-Denis (974) : cabinets, commerces, restaurants, services. Création incluse, accompagnement local, 97,4€/mois.",
+    canonical: '/creation-site-internet-saint-denis',
+  },
+  villeSaintPaul: {
+    title: `Création de site internet à Saint-Paul (974) — Pour TPE/PME et indépendants | ${siteConfig.siteName}`,
+    description:
+      "Site internet professionnel à Saint-Paul (Ouest, 974) : artisans, restaurants, gîtes, instituts, commerces. 9site4 conçoit, structure et maintient votre site, 97,4€/mois.",
+    canonical: '/creation-site-internet-saint-paul',
+  },
+  villeSaintPierre: {
+    title: `Création de site internet à Saint-Pierre (974) — Pour TPE/PME et indépendants | ${siteConfig.siteName}`,
+    description:
+      "9site4 accompagne les professionnels du Sud à Saint-Pierre (97410) : commerces, restauration, professions libérales, services. Site clair, géré dans la durée, 97,4€/mois.",
+    canonical: '/creation-site-internet-saint-pierre',
+  },
+  villeLeTampon: {
+    title: `Création de site internet au Tampon (974) — Pour TPE/PME et indépendants | ${siteConfig.siteName}`,
+    description:
+      "Vous êtes artisan, commerçant ou indépendant au Tampon (97430) ? 9site4 crée un site internet professionnel adapté aux Hauts du Sud — création incluse, 97,4€/mois.",
+    canonical: '/creation-site-internet-le-tampon',
+  },
+  villeSaintAndre: {
+    title: `Création de site internet à Saint-André (974) — Pour TPE/PME et indépendants | ${siteConfig.siteName}`,
+    description:
+      "Création de site internet pour les professionnels de Saint-André (Est, 97440) : artisans, commerces, services, restauration. 9site4 conçoit et maintient votre site, 97,4€/mois.",
+    canonical: '/creation-site-internet-saint-andre',
+  },
+  villeSaintLouis: {
+    title: `Création de site internet à Saint-Louis (974) — Pour TPE/PME et indépendants | ${siteConfig.siteName}`,
+    description:
+      "9site4 crée des sites internet pour les commerces, artisans et services de Saint-Louis (97450), entre Sud et Ouest de La Réunion. Tout inclus, 97,4€/mois.",
+    canonical: '/creation-site-internet-saint-louis',
+  },
+  villeSaintBenoit: {
+    title: `Création de site internet à Saint-Benoît (974) — Pour TPE/PME et indépendants | ${siteConfig.siteName}`,
+    description:
+      "Site internet professionnel à Saint-Benoît (Est, 97470) : services, tourisme nature, artisans, commerces. 9site4 prend en charge la création et la gestion continue, 97,4€/mois.",
+    canonical: '/creation-site-internet-saint-benoit',
+  },
+  villeSaintJoseph: {
+    title: `Création de site internet à Saint-Joseph (974) — Pour TPE/PME et indépendants | ${siteConfig.siteName}`,
+    description:
+      "9site4 accompagne les professionnels de Saint-Joseph et du Sud sauvage (97480) : agriculture, gîtes, artisans, commerces locaux. Site géré, accompagnement local, 97,4€/mois.",
+    canonical: '/creation-site-internet-saint-joseph',
   },
 };
 

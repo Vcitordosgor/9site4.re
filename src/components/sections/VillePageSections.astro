@@ -1,0 +1,209 @@
+---
+import Icon from '../ui/Icon.astro';
+import RealisationCard from '../realisations/RealisationCard.astro';
+import TarifsBref from './TarifsBref.astro';
+import realisations from '../../data/realisations.json';
+import { villes, SECTEURS_LABELS, type VilleInfo, type SecteurSlug } from '../../data/villes.ts';
+
+interface Props {
+  ville: VilleInfo;
+  /** index pour faire varier la sélection des réalisations entre villes */
+  variantSeed?: number;
+  /** raisons "Pourquoi un site pro" personnalisées par ville (5 entrées) */
+  raisons: { i: string; t: string; d: string }[];
+  /** étapes méthode (5) — partagées mais wording adaptable */
+  methode?: { n: string; t: string; d: string }[];
+  /** FAQ locale 4 questions */
+  faq: { q: string; a: string }[];
+}
+
+const { ville, variantSeed = 0, raisons, methode, faq } = Astro.props;
+
+const defaultMethode = [
+  { n: '01', t: 'Comprendre', d: 'Votre activité, vos clients, votre zone d\'intervention.' },
+  { n: '02', t: 'Structurer', d: 'L\'arborescence, les pages-clés, les appels à l\'action.' },
+  { n: '03', t: 'Concevoir', d: 'Design sobre, mobile-first, à votre image.' },
+  { n: '04', t: 'Module métier', d: 'Réservation, devis, RDV, contact — selon votre besoin.' },
+  { n: '05', t: 'Mise en ligne & suivi', d: 'Domaine, hébergement, modifications, mises à jour.' },
+];
+const steps = methode ?? defaultMethode;
+
+// Sélection réalisations : rotation simple selon le seed pour éviter duplication entre villes
+const offset = variantSeed * 2;
+const selected = [...realisations.slice(offset, offset + 6), ...realisations.slice(0, Math.max(0, 6 - (realisations.length - offset)))].slice(0, 6);
+
+const proches = ville.villesProches
+  .map((s) => villes.find((v) => v.slug === s))
+  .filter(Boolean) as VilleInfo[];
+
+const secteurs = ville.secteursPertinents.slice(0, 8);
+const cardStyle = 'background: linear-gradient(180deg, #14161F 0%, #0A0B12 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 12px 30px -16px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08);';
+---
+
+<!-- Section 2 — Contexte local -->
+<section class="relative px-6 py-16 md:py-24">
+  <div class="mx-auto max-w-3xl text-center">
+    <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+      <span class="w-2 h-2 rounded-full bg-bleu"></span> {ville.nom} · {ville.code} · {ville.microRegion}
+    </p>
+    <h2 class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl text-blanc-casse text-balance leading-[1.12]">
+      Le tissu professionnel
+      <span class="block italic font-medium text-bleu">de {ville.nom}.</span>
+    </h2>
+    <p class="scroll-reveal mt-6 text-base md:text-lg text-blanc-casse/75 leading-relaxed">{ville.descriptionCourte}</p>
+    <p class="scroll-reveal mt-4 text-base md:text-lg text-blanc-casse/75 leading-relaxed">{ville.contextEconomique}</p>
+  </div>
+</section>
+
+<!-- Section 3 — Pourquoi -->
+<section class="relative px-6 py-16 md:py-24">
+  <div class="mx-auto max-w-5xl">
+    <div class="text-center max-w-3xl mx-auto">
+      <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+        <span class="w-2 h-2 rounded-full bg-bleu"></span> Pourquoi un site pro
+      </p>
+      <h2 class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl text-blanc-casse text-balance leading-[1.12]">
+        Ce qu'un site internet apporte
+        <span class="block italic font-medium text-bleu">à un professionnel de {ville.nom}.</span>
+      </h2>
+    </div>
+    <ul class="scroll-reveal mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {raisons.map((item) => (
+        <li class="rounded-2xl p-6" style={cardStyle}>
+          <span class="flex w-11 h-11 items-center justify-center rounded-xl bg-bleu/15 text-bleu">
+            <Icon name={item.i} size={20} strokeWidth={1.75} />
+          </span>
+          <p class="mt-4 font-sora font-semibold text-blanc-casse">{item.t}</p>
+          <p class="mt-2 text-sm text-blanc-casse/70 leading-relaxed">{item.d}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<!-- Section 4 — Activités locales -->
+<section class="relative px-6 py-16 md:py-24">
+  <div class="mx-auto max-w-5xl">
+    <div class="text-center max-w-3xl mx-auto">
+      <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+        <span class="w-2 h-2 rounded-full bg-bleu"></span> Activités accompagnées
+      </p>
+      <h2 class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl text-blanc-casse text-balance leading-[1.12]">
+        Métiers que 9site4 accompagne
+        <span class="block italic font-medium text-bleu">à {ville.nom}.</span>
+      </h2>
+    </div>
+    <ul class="scroll-reveal mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {secteurs.map((slug: SecteurSlug) => (
+        <li>
+          <a href={`/site-internet-${slug}-la-reunion`} class="block h-full rounded-2xl p-6 hover:ring-2 hover:ring-bleu/40 transition" style={cardStyle}>
+            <p class="font-sora font-semibold text-blanc-casse">Site internet pour {SECTEURS_LABELS[slug].label.toLowerCase()} à {ville.nom}</p>
+            <p class="mt-2 text-sm text-blanc-casse/70 leading-relaxed">{SECTEURS_LABELS[slug].desc}</p>
+            <span class="mt-4 inline-flex items-center gap-1 text-sm text-bleu">Voir la page métier <Icon name="arrow-right" size={14} strokeWidth={2.25} /></span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<!-- Section 5 — Méthode -->
+<section class="relative px-6 py-16 md:py-24">
+  <div class="mx-auto max-w-5xl">
+    <div class="text-center max-w-3xl mx-auto">
+      <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+        <span class="w-2 h-2 rounded-full bg-bleu"></span> Méthode 9site4
+      </p>
+      <h2 class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl text-blanc-casse text-balance leading-[1.12]">
+        Comment on procède
+        <span class="block italic font-medium text-bleu">pour votre site à {ville.nom}.</span>
+      </h2>
+    </div>
+    <ol class="scroll-reveal mt-12 grid md:grid-cols-2 lg:grid-cols-5 gap-5">
+      {steps.map((s) => (
+        <li class="rounded-2xl p-6" style={cardStyle}>
+          <p class="font-roboto-mono text-bleu text-sm font-semibold tracking-widest">{s.n}</p>
+          <p class="mt-2 font-sora font-semibold text-blanc-casse">{s.t}</p>
+          <p class="mt-2 text-sm text-blanc-casse/70 leading-relaxed">{s.d}</p>
+        </li>
+      ))}
+    </ol>
+    <p class="scroll-reveal mt-10 text-center text-sm text-blanc-casse/70">
+      Voir le détail de <a href="/methode-9site4" class="text-bleu hover:underline">la méthode 9site4</a>.
+    </p>
+  </div>
+</section>
+
+<!-- Section 6 — Tarif -->
+<TarifsBref />
+
+<!-- Section 7 — Réalisations -->
+<section class="relative px-6 py-16 md:py-24">
+  <div class="mx-auto max-w-content">
+    <div class="text-center max-w-3xl mx-auto">
+      <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+        <span class="w-2 h-2 rounded-full bg-bleu"></span> Réalisations
+      </p>
+      <h2 class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl text-blanc-casse text-balance leading-[1.12]">
+        Quelques sites professionnels
+        <span class="block italic font-medium text-bleu">conçus par 9site4.</span>
+      </h2>
+    </div>
+    <ul class="scroll-reveal mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {selected.map((r) => (
+        <li><RealisationCard realisation={r} /></li>
+      ))}
+    </ul>
+    <p class="scroll-reveal mt-10 text-center">
+      <a href="/realisations" class="inline-flex items-center gap-1 text-sm text-bleu hover:underline">Voir toutes nos réalisations <Icon name="arrow-right" size={14} strokeWidth={2.25} /></a>
+    </p>
+  </div>
+</section>
+
+<!-- Section 8 — Villes proches -->
+{proches.length > 0 && (
+  <section class="relative px-6 py-12">
+    <div class="mx-auto max-w-3xl text-center">
+      <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+        <span class="w-2 h-2 rounded-full bg-bleu"></span> Villes proches
+      </p>
+      <p class="scroll-reveal mt-4 text-base md:text-lg text-blanc-casse/75 leading-relaxed">
+        9site4 accompagne aussi les professionnels à
+        {proches.map((v, i) => (
+          <>
+            {i > 0 && (i === proches.length - 1 ? ' et ' : ', ')}
+            <a href={`/creation-site-internet-${v.slug}`} class="text-bleu hover:underline">{v.nom}</a>
+          </>
+        ))}.
+      </p>
+    </div>
+  </section>
+)}
+
+<!-- Section 9 — FAQ locale -->
+<section class="relative px-6 py-16 md:py-24">
+  <div class="mx-auto max-w-3xl">
+    <div class="text-center">
+      <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+        <span class="w-2 h-2 rounded-full bg-bleu"></span> Questions fréquentes
+      </p>
+      <h2 class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl text-blanc-casse text-balance leading-[1.12]">
+        Vos questions
+        <span class="block italic font-medium text-bleu">depuis {ville.nom}.</span>
+      </h2>
+    </div>
+    <div class="mt-12 space-y-3">
+      {faq.map((item) => (
+        <details class="group rounded-2xl p-5 md:p-6" style={cardStyle}>
+          <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
+            <span class="font-sora font-semibold text-blanc-casse">{item.q}</span>
+            <span class="shrink-0 text-bleu transition-transform duration-300 group-open:rotate-45">
+              <Icon name="arrow-right" size={18} strokeWidth={2.25} />
+            </span>
+          </summary>
+          <p class="mt-4 text-sm md:text-base text-blanc-casse/75 leading-relaxed">{item.a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

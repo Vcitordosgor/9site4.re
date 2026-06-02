@@ -9,6 +9,7 @@ import realisations from '../data/realisations.json';
 import FAQAccordion from '../components/sections/FAQAccordion.astro';
 import { getFaqForPage } from '../data/faq';
 import { getSeo, absoluteUrl } from '../lib/seo';
+import { villes } from '../data/villes.ts';
 
 const seo = getSeo('creationSiteReunion');
 
@@ -295,6 +296,30 @@ const serviceSchema = {
           ·
           <a href="/contact" class="text-bleu hover:underline">contact</a> · <a href="/diagnostic-site-internet-la-reunion" class="text-bleu hover:underline" data-track-event="diagnostic_cta_click" data-track-category="conversion" data-track-source="seo_sector_voir_aussi" data-track-target="/diagnostic-site-internet-la-reunion">diagnostic gratuit</a> · <a href="/methode-9site4" class="text-bleu hover:underline">méthode 9site4</a>.
         </p>
+      </div>
+    </section>
+
+    <!-- Maillage géographique -->
+    <section class="relative px-6 py-16 md:py-24">
+      <div class="mx-auto max-w-5xl">
+        <div class="text-center max-w-3xl mx-auto">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-bleu"></span> Par ville
+          </p>
+          <h2 class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl text-blanc-casse text-balance leading-[1.12]">
+            Création de site internet
+            <span class="block italic font-medium text-bleu">par ville à La Réunion.</span>
+          </h2>
+        </div>
+        <ul class="scroll-reveal mt-10 grid grid-cols-2 md:grid-cols-4 gap-3">
+          {villes.map((v) => (
+            <li>
+              <a href={`/creation-site-internet-${v.slug}`} class="block rounded-xl px-4 py-3 text-sm text-blanc-casse/85 hover:text-bleu hover:ring-1 hover:ring-bleu/40 transition" style="background: linear-gradient(180deg, #14161F 0%, #0A0B12 100%); box-shadow: 0 0 0 1px rgba(255,255,255,0.06);">
+                Site internet à {v.nom}<br/><span class="text-xs text-blanc-casse/55">{v.code} · {v.microRegion}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
 
