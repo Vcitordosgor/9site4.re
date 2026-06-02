@@ -1,0 +1,641 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/ui/Icon.astro';
+import realisations from '../data/realisations.json';
+import { getSeo, absoluteUrl } from '../lib/seo';
+
+const seo = getSeo('methode');
+
+const etapes = [
+  {
+    num: '01',
+    icon: 'file-text',
+    titre: 'Comprendre votre activité',
+    texte: "Nous prenons le temps d'identifier votre métier, vos prestations, vos clients, vos objectifs et ce que votre site doit accomplir pour vous.",
+  },
+  {
+    num: '02',
+    icon: 'wand',
+    titre: 'Structurer votre présence web',
+    texte: "Nous organisons la présentation, les offres, les informations pratiques, les photos, la zone d'intervention, le contact et les appels à l'action.",
+  },
+  {
+    num: '03',
+    icon: 'monitor',
+    titre: 'Concevoir un site adapté à votre métier',
+    texte: "Chaque secteur a ses codes : nous appliquons une mise en page, un ton et une structure adaptés aux attentes de vos clients.",
+  },
+  {
+    num: '04',
+    icon: 'wrench',
+    titre: 'Intégrer le bon module métier',
+    texte: "Devis, réservation, prise de rendez-vous, demande de séjour, inscription ou demande d'information : le bon outil au bon endroit.",
+  },
+  {
+    num: '05',
+    icon: 'shield-check',
+    titre: 'Mettre en ligne et gérer dans la durée',
+    texte: "Hébergement, sécurité, maintenance et modifications simples sont assurés en continu, avec un interlocuteur local.",
+  },
+];
+
+const priseEnCharge = [
+  'Architecture du site',
+  'Design et mise en page',
+  'Textes courts et structurés',
+  'Organisation des prestations',
+  'Module métier intégré',
+  'Mise en ligne',
+  'Nom de domaine',
+  'Hébergement',
+  'Sécurité',
+  'Maintenance',
+  'Modifications simples',
+  'Accompagnement local',
+];
+
+// 8 secteurs avec lien SEO + 1-2 réalisations proches
+type SectorCard = {
+  titre: string;
+  besoin: string;
+  module: string;
+  href: string;
+  realisationSlugs: string[];
+};
+
+const secteurs: SectorCard[] = [
+  {
+    titre: 'Restaurants, snacks, cafés',
+    besoin: 'Présenter la carte, donner envie et faciliter la réservation ou la commande.',
+    module: 'Réservation de table ou commande WhatsApp',
+    href: '/site-internet-restaurant-la-reunion',
+    realisationSlugs: ['restaurant-gastronomique', 'snack-pizzeria'],
+  },
+  {
+    titre: 'Artisans et BTP',
+    besoin: "Mettre en avant les prestations, la zone d'intervention et générer des demandes de devis.",
+    module: 'Demande de devis structurée',
+    href: '/site-internet-artisan-la-reunion',
+    realisationSlugs: ['plomberie', 'electricite-generale'],
+  },
+  {
+    titre: 'Instituts, beauté, bien-être',
+    besoin: 'Valoriser les soins, l\'équipe et permettre une prise de rendez-vous claire.',
+    module: 'Prise de rendez-vous en ligne',
+    href: '/site-internet-institut-beaute-la-reunion',
+    realisationSlugs: ['institut-de-beaute', 'spa-massage'],
+  },
+  {
+    titre: 'Gîtes et tourisme',
+    besoin: "Présenter l'hébergement, afficher les disponibilités et recevoir des demandes de séjour.",
+    module: 'Demande de séjour avec dates',
+    href: '/site-internet-gite-location-la-reunion',
+    realisationSlugs: ['gite-de-montagne', 'location-saisonniere-bord-de-mer'],
+  },
+  {
+    titre: 'Professions libérales',
+    besoin: 'Rassurer par le cadre, la méthode et organiser la prise de contact.',
+    module: 'Prise de rendez-vous ou demande d\'information',
+    href: '/site-internet-profession-liberale-la-reunion',
+    realisationSlugs: ['avocat-cabinet', 'cabinet-comptable'],
+  },
+  {
+    titre: 'Coachs et indépendants',
+    besoin: 'Expliquer les offres, les programmes et déclencher un premier échange.',
+    module: 'Inscription ou demande de premier échange',
+    href: '/site-internet-coach-independant-la-reunion',
+    realisationSlugs: ['coach-sportif', 'consultant'],
+  },
+  {
+    titre: 'Commerces locaux',
+    besoin: "Présenter l'enseigne, les produits, les horaires et faciliter la prise de contact.",
+    module: 'Demande d\'information ou contact direct',
+    href: '/site-internet-commerce-local-la-reunion',
+    realisationSlugs: ['boulangerie-artisanale', 'fleuriste-atelier'],
+  },
+  {
+    titre: 'TPE et PME',
+    besoin: 'Structurer la présentation de l\'entreprise, des services et du contact professionnel.',
+    module: 'Formulaire de contact qualifié',
+    href: '/site-internet-tpe-pme-la-reunion',
+    realisationSlugs: ['architecte', 'auto-ecole'],
+  },
+];
+
+function findReal(slug: string) {
+  return realisations.find((r: any) => r.slug === slug);
+}
+
+const comparatif = [
+  { sans: 'Contenu dispersé', avec: 'Contenu organisé par secteur et parcours client' },
+  { sans: 'Formulaire générique', avec: 'Module métier adapté (devis, RDV, séjour, etc.)' },
+  { sans: 'Site livré puis oublié', avec: 'Gestion continue, maintenance et modifications' },
+  { sans: 'Technique à gérer soi-même', avec: 'Hébergement, domaine et sécurité inclus' },
+  { sans: 'Prix difficile à anticiper', avec: 'Formule claire à 97,4€/mois ou 974€/an' },
+  { sans: 'Peu adapté au métier', avec: 'Structure pensée pour votre secteur' },
+];
+
+// 8 réalisations variées (1-2 par secteur)
+const showcaseSlugs = [
+  'restaurant-gastronomique',
+  'institut-de-beaute',
+  'plomberie',
+  'gite-de-montagne',
+  'avocat-cabinet',
+  'coach-sportif',
+  'boulangerie-artisanale',
+  'architecte',
+];
+const showcase = showcaseSlugs.map((s) => findReal(s)).filter(Boolean) as any[];
+
+const faqItems = [
+  {
+    q: 'Combien de temps prend la méthode 9site4 ?',
+    r: "Le cadrage et la structuration prennent environ une semaine après réception de vos informations. La mise en ligne d'un premier site se fait généralement sous 7 jours ouvrés.",
+  },
+  {
+    q: 'Est-ce que je dois fournir tous les textes ?',
+    r: "Non. Nous rédigeons les textes courts et structurés à partir des informations que vous nous transmettez sur votre activité, vos prestations et vos clients.",
+  },
+  {
+    q: 'Est-ce que la méthode s\'adapte à mon métier ?',
+    r: "Oui. La méthode 9site4 a été pensée pour s'adapter aux codes de chaque secteur : restauration, artisanat, beauté, tourisme, professions libérales, coaching, commerce local et TPE/PME.",
+  },
+  {
+    q: 'Est-ce que je peux demander une réalisation comme point de départ ?',
+    r: "Oui. Vous pouvez nous indiquer une réalisation existante qui correspond à votre univers. Elle servira de base de discussion, votre site sera ensuite adapté à votre activité.",
+  },
+  {
+    q: 'Que se passe-t-il après la mise en ligne ?',
+    r: "Votre site est maintenu en continu : hébergement, sécurité, sauvegardes et modifications simples sont assurés. Vous gardez un interlocuteur local pour toute évolution.",
+  },
+  {
+    q: 'Est-ce que 9site4 gère les modifications ?',
+    r: "Oui. Les modifications simples (textes, photos, horaires, prestations, coordonnées) sont incluses dans la formule. Vous nous transmettez la demande et nous l'appliquons.",
+  },
+  {
+    q: 'Est-ce que je peux commencer même si je n\'ai pas encore tous mes contenus ?',
+    r: "Oui. Nous démarrons avec ce que vous avez. La méthode est conçue pour avancer par étapes, sans bloquer le projet sur des contenus manquants.",
+  },
+];
+
+// JSON-LD WebPage + Service + FAQPage
+const canonicalUrl = absoluteUrl(seo.canonical);
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebPage',
+      '@id': `${canonicalUrl}#methode-webpage`,
+      url: canonicalUrl,
+      name: seo.title,
+      description: seo.description,
+      inLanguage: 'fr-RE',
+    },
+    {
+      '@type': 'Service',
+      '@id': `${canonicalUrl}#methode-service`,
+      name: 'Méthode 9site4 — création, structuration et gestion de site internet',
+      description:
+        "Méthode en 5 étapes pour créer, structurer et gérer un site professionnel à La Réunion : comprendre l'activité, structurer la présence web, concevoir un site adapté au métier, intégrer le module métier, mettre en ligne et gérer dans la durée.",
+      serviceType: 'Création et gestion de site internet',
+      areaServed: { '@type': 'AdministrativeArea', name: 'La Réunion' },
+      url: canonicalUrl,
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': `${canonicalUrl}#methode-faq`,
+      mainEntity: faqItems.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.r },
+      })),
+    },
+  ],
+};
+---
+
+<BaseLayout seo={seo}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <div class="bg-black text-blanc-casse">
+    <!-- ============================================================ -->
+    <!-- 1. HERO                                                       -->
+    <!-- ============================================================ -->
+    <section class="relative isolate overflow-hidden px-6 pt-28 pb-20 md:pt-36 md:pb-28" aria-labelledby="methode-h1">
+      <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
+        <div class="absolute -top-32 right-0 w-[34rem] h-[34rem] halo-bleu opacity-40"></div>
+        <div class="absolute bottom-0 -left-24 w-[28rem] h-[28rem] halo-bleu opacity-25"></div>
+      </div>
+      <div class="relative mx-auto max-w-4xl text-center">
+        <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+          <span class="w-2 h-2 rounded-full bg-bleu"></span> Méthode 9site4
+        </p>
+        <h1 id="methode-h1" class="scroll-reveal mt-6 font-sora font-bold text-balance leading-[1.08] text-[clamp(2.25rem,4vw+1rem,4rem)] tracking-tight">
+          La méthode
+          <span class="block italic font-medium text-bleu">9site4.</span>
+        </h1>
+        <p class="scroll-reveal mt-7 mx-auto max-w-2xl text-lg md:text-xl text-blanc-casse/85 leading-relaxed">
+          Une approche claire pour créer, structurer et gérer des sites professionnels adaptés aux TPE/PME réunionnaises.
+        </p>
+
+        <div class="scroll-reveal mt-9 flex flex-wrap justify-center gap-2.5">
+          {['Cadrage', 'Création', 'Module métier', 'Gestion continue', 'Accompagnement local'].map((b) => (
+            <span class="inline-flex items-center gap-2 h-9 px-4 rounded-full bg-white/[0.08] ring-1 ring-white/15 text-xs font-medium text-blanc-casse">
+              <span class="block w-1.5 h-1.5 rounded-full bg-bleu" aria-hidden="true"></span>
+              {b}
+            </span>
+          ))}
+        </div>
+
+        <div class="scroll-reveal mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/contact"
+            class="inline-flex items-center justify-center min-h-[3.5rem] px-9 text-base font-semibold rounded-full bg-blanc-casse text-bleu-nuit hover:bg-white hover:-translate-y-0.5 shadow-card hover:shadow-card-hover transition-all duration-200 ease-out"
+            data-track-event="cta_create_site_click"
+            data-track-category="conversion"
+            data-track-source="methode_hero"
+            data-track-target="/contact"
+          >
+            Créer mon site avec 9site4
+          </a>
+          <a
+            href="/realisations"
+            class="inline-flex items-center justify-center min-h-[3.5rem] px-7 text-base font-semibold rounded-full ring-1 ring-blanc-casse/40 text-blanc-casse hover:bg-white/10 hover:-translate-y-0.5 transition-all duration-200 ease-out"
+            data-track-event="cta_view_realisations_click"
+            data-track-category="navigation"
+            data-track-source="methode_hero"
+            data-track-target="/realisations"
+          >
+            Voir nos réalisations
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 2. POURQUOI UNE METHODE                                       -->
+    <!-- ============================================================ -->
+    <section class="relative px-6 py-20 md:py-28" aria-labelledby="pourquoi-methode-titre">
+      <div class="relative mx-auto max-w-content">
+        <div class="max-w-3xl mx-auto text-center">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-bleu"></span> Le sens de la méthode
+          </p>
+          <h2 id="pourquoi-methode-titre" class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl lg:text-5xl text-blanc-casse text-balance leading-[1.12]">
+            Pourquoi une méthode
+            <span class="block italic font-medium text-bleu">plutôt qu'un simple site.</span>
+          </h2>
+          <p class="scroll-reveal mt-6 text-lg text-blanc-casse/80 leading-relaxed">
+            Un site professionnel ne se résume pas à un design. Il doit présenter clairement votre activité, rassurer les visiteurs, organiser vos prestations, faciliter la prise de contact et rester à jour dans le temps.
+          </p>
+          <p class="scroll-reveal mt-4 text-base md:text-lg text-blanc-casse/70 leading-relaxed">
+            La méthode 9site4 structure ces étapes pour que rien ne soit laissé au hasard, et pour que votre site reste utile mois après mois.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 3. LES 5 ETAPES                                               -->
+    <!-- ============================================================ -->
+    <section class="relative px-6 py-20 md:py-28 overflow-hidden" aria-labelledby="etapes-titre">
+      <div class="relative mx-auto max-w-content">
+        <div class="max-w-3xl mx-auto text-center">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-bleu"></span> Les 5 étapes
+          </p>
+          <h2 id="etapes-titre" class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl lg:text-5xl text-blanc-casse text-balance leading-[1.12]">
+            De votre activité
+            <span class="block italic font-medium text-bleu">à votre site géré dans la durée.</span>
+          </h2>
+        </div>
+
+        <ol class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {etapes.map((e) => (
+            <li class="group relative">
+              <article class="relative h-full flex flex-col rounded-3xl p-8 overflow-hidden transition-all duration-500 ease-out-soft hover:-translate-y-1.5"
+                style="background: linear-gradient(180deg, #14161F 0%, #0A0B12 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 18px 40px -22px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08);"
+              >
+                <span class="absolute top-0 inset-x-8 h-px bg-gradient-to-r from-transparent via-bleu/60 to-transparent opacity-60" aria-hidden="true"></span>
+                <div class="flex items-center justify-between">
+                  <span class="relative flex w-14 h-14 items-center justify-center rounded-2xl overflow-hidden">
+                    <span class="absolute inset-0 bg-gradient-to-br from-bleu/25 to-bleu/5" aria-hidden="true"></span>
+                    <Icon name={e.icon} size={24} strokeWidth={1.75} class="relative text-bleu" />
+                  </span>
+                  <span class="font-sora font-bold text-bleu/40 text-2xl leading-none tabular-nums tracking-tight">{e.num}</span>
+                </div>
+                <span class="mt-6 block h-px w-10 bg-bleu/40" aria-hidden="true"></span>
+                <h3 class="mt-5 font-sora font-semibold text-xl md:text-2xl text-blanc-casse leading-snug">
+                  <span class="font-roboto-mono text-[11px] uppercase tracking-[0.28em] text-bleu/80 block mb-2">Étape {e.num}</span>
+                  {e.titre}
+                </h3>
+                <p class="mt-3 text-[15px] md:text-base text-blanc-casse/70 leading-relaxed">{e.texte}</p>
+              </article>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 4. CE QUE 9SITE4 PREND EN CHARGE                              -->
+    <!-- ============================================================ -->
+    <section class="relative px-6 py-20 md:py-28" aria-labelledby="prise-en-charge-titre">
+      <div class="relative mx-auto max-w-content">
+        <div class="max-w-3xl mx-auto text-center">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-bleu"></span> Inclus dans la méthode
+          </p>
+          <h2 id="prise-en-charge-titre" class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl lg:text-5xl text-blanc-casse text-balance leading-[1.12]">
+            Ce que 9site4
+            <span class="block italic font-medium text-bleu">prend en charge.</span>
+          </h2>
+        </div>
+
+        <ul class="mt-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
+          {priseEnCharge.map((item) => (
+            <li class="flex items-start gap-3 rounded-2xl p-4 ring-1 ring-white/10 bg-white/[0.03]">
+              <span class="mt-0.5 flex h-6 w-6 flex-none items-center justify-center rounded-full bg-bleu/20">
+                <Icon name="check" size={14} strokeWidth={2.5} class="text-bleu" />
+              </span>
+              <span class="text-sm md:text-base font-medium text-blanc-casse/90">{item}</span>
+            </li>
+          ))}
+        </ul>
+
+        <p class="scroll-reveal mt-10 text-center text-sm text-blanc-casse/65">
+          Tout est inclus dans une formule claire :{' '}
+          <a href="/tarifs" class="text-bleu hover:underline">97,4€/mois ou 974€/an</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 5. METHODE ADAPTEE AUX METIERS LOCAUX                         -->
+    <!-- ============================================================ -->
+    <section class="relative px-6 py-20 md:py-28" aria-labelledby="secteurs-titre">
+      <div class="relative mx-auto max-w-content">
+        <div class="max-w-3xl mx-auto text-center">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-bleu"></span> Métiers locaux
+          </p>
+          <h2 id="secteurs-titre" class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl lg:text-5xl text-blanc-casse text-balance leading-[1.12]">
+            Une méthode adaptée
+            <span class="block italic font-medium text-bleu">aux métiers réunionnais.</span>
+          </h2>
+        </div>
+
+        <div class="mt-14 grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+          {secteurs.map((s) => (
+            <article class="relative h-full flex flex-col rounded-3xl p-7 md:p-8 ring-1 ring-white/10 bg-gradient-to-b from-white/[0.04] to-white/[0.01]">
+              <h3 class="font-sora font-semibold text-xl text-blanc-casse leading-snug">{s.titre}</h3>
+              <p class="mt-3 text-[15px] text-blanc-casse/75 leading-relaxed">{s.besoin}</p>
+              <p class="mt-3 text-sm text-blanc-casse/65">
+                <span class="font-roboto-mono uppercase tracking-wide text-[11px] text-bleu/80">Module recommandé · </span>
+                <span class="text-blanc-casse/85">{s.module}</span>
+              </p>
+              <div class="mt-5 pt-5 border-t border-white/10 flex flex-wrap gap-x-4 gap-y-2">
+                <a
+                  href={s.href}
+                  class="inline-flex items-center gap-1 text-sm font-semibold text-bleu hover:text-blanc-casse transition-colors"
+                  data-track-event="methode_sector_link_click"
+                  data-track-category="navigation"
+                  data-track-source="methode_secteurs"
+                  data-track-target={s.href}
+                >
+                  Voir la page métier <span aria-hidden="true">→</span>
+                </a>
+                {s.realisationSlugs.map((slug) => {
+                  const r = findReal(slug);
+                  if (!r) return null;
+                  return (
+                    <a
+                      href={`/realisations/${r.slug}`}
+                      class="inline-flex items-center gap-1 text-sm text-blanc-casse/70 hover:text-bleu transition-colors"
+                      data-track-event="methode_sector_link_click"
+                      data-track-category="navigation"
+                      data-track-source="methode_secteurs_realisation"
+                      data-track-target={`/realisations/${r.slug}`}
+                    >
+                      Réalisation : {r.businessType} <span aria-hidden="true">→</span>
+                    </a>
+                  );
+                })}
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 6. POURQUOI CETTE METHODE RASSURE VOS CLIENTS                 -->
+    <!-- ============================================================ -->
+    <section class="relative px-6 py-20 md:py-28" aria-labelledby="rassure-titre">
+      <div class="relative mx-auto max-w-content">
+        <div class="max-w-3xl mx-auto text-center">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-bleu"></span> Effet sur vos visiteurs
+          </p>
+          <h2 id="rassure-titre" class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl lg:text-5xl text-blanc-casse text-balance leading-[1.12]">
+            Pourquoi cette méthode
+            <span class="block italic font-medium text-bleu">rassure vos clients.</span>
+          </h2>
+          <p class="scroll-reveal mt-6 text-base md:text-lg text-blanc-casse/75 leading-relaxed">
+            Un site structuré avec la méthode 9site4 rend les informations plus accessibles, facilite la prise de contact et donne une image professionnelle de votre activité.
+          </p>
+        </div>
+
+        <ul class="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {[
+            { t: 'Plus clair', d: "Les informations clés se trouvent facilement, sans surcharge." },
+            { t: 'Plus crédible', d: "La présentation reflète le sérieux de votre activité." },
+            { t: 'Plus facile à comprendre', d: "Vos prestations et offres sont organisées par parcours client." },
+            { t: 'Mieux adapté au parcours client', d: "Le visiteur trouve la bonne action au bon moment." },
+            { t: 'Plus simple à maintenir', d: "Les contenus évoluent sans casser la structure du site." },
+            { t: 'Plus professionnel sur mobile', d: "Lecture confortable, boutons accessibles, contact en un geste." },
+          ].map((b) => (
+            <li class="rounded-2xl p-6 ring-1 ring-white/10 bg-white/[0.03]">
+              <h3 class="font-sora font-semibold text-lg text-blanc-casse">{b.t}</h3>
+              <p class="mt-2 text-sm text-blanc-casse/70 leading-relaxed">{b.d}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 7. LA DIFFERENCE                                              -->
+    <!-- ============================================================ -->
+    <section class="relative px-6 py-20 md:py-28" aria-labelledby="comparatif-titre">
+      <div class="relative mx-auto max-w-5xl">
+        <div class="max-w-3xl mx-auto text-center">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-bleu"></span> Comparaison
+          </p>
+          <h2 id="comparatif-titre" class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl lg:text-5xl text-blanc-casse text-balance leading-[1.12]">
+            La différence avec une
+            <span class="block italic font-medium text-bleu">création de site classique.</span>
+          </h2>
+        </div>
+
+        <div class="mt-12 overflow-hidden rounded-3xl ring-1 ring-white/10">
+          <div class="grid grid-cols-2 bg-white/[0.04]">
+            <div class="p-5 border-r border-white/10">
+              <p class="font-roboto-mono uppercase tracking-wide text-[11px] text-blanc-casse/55 font-semibold">Site créé sans méthode</p>
+            </div>
+            <div class="p-5">
+              <p class="font-roboto-mono uppercase tracking-wide text-[11px] text-bleu font-semibold">Site structuré avec 9site4</p>
+            </div>
+          </div>
+          <ul>
+            {comparatif.map((c, i) => (
+              <li class={`grid grid-cols-2 ${i % 2 === 0 ? 'bg-white/[0.015]' : 'bg-transparent'}`}>
+                <p class="p-5 border-r border-white/10 text-sm md:text-base text-blanc-casse/65">{c.sans}</p>
+                <p class="p-5 text-sm md:text-base text-blanc-casse/95 font-medium">{c.avec}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 8. REALISATIONS                                               -->
+    <!-- ============================================================ -->
+    <section class="relative px-6 py-20 md:py-28" aria-labelledby="realisations-titre">
+      <div class="relative mx-auto max-w-content">
+        <div class="max-w-3xl mx-auto text-center">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-bleu"></span> Réalisations
+          </p>
+          <h2 id="realisations-titre" class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl lg:text-5xl text-blanc-casse text-balance leading-[1.12]">
+            Nos réalisations illustrent
+            <span class="block italic font-medium text-bleu">cette méthode.</span>
+          </h2>
+          <p class="scroll-reveal mt-6 text-base md:text-lg text-blanc-casse/75 leading-relaxed">
+            Chaque réalisation montre une application concrète de la méthode 9site4 : une activité structurée, un parcours clair et un module adapté au métier.
+          </p>
+        </div>
+
+        <ul class="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {showcase.map((r) => (
+            <li>
+              <a
+                href={`/realisations/${r.slug}`}
+                class="group block h-full rounded-2xl p-5 ring-1 ring-white/10 bg-white/[0.03] hover:ring-bleu hover:bg-white/[0.06] transition-all"
+              >
+                <p class="font-roboto-mono uppercase tracking-wide text-[10px] text-bleu/80 font-semibold">{r.sector}</p>
+                <h3 class="mt-2 font-sora font-semibold text-base text-blanc-casse group-hover:text-bleu transition-colors">{r.businessType}</h3>
+                <p class="mt-2 text-sm text-blanc-casse/65 leading-relaxed line-clamp-3">{r.shortDescription}</p>
+                <p class="mt-4 text-xs text-bleu">Voir la réalisation →</p>
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <div class="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/realisations"
+            class="inline-flex items-center justify-center min-h-[3.5rem] px-7 text-base font-semibold rounded-full ring-1 ring-blanc-casse/40 text-blanc-casse hover:bg-white/10 transition-all"
+            data-track-event="cta_view_realisations_click"
+            data-track-category="navigation"
+            data-track-source="methode_realisations"
+            data-track-target="/realisations"
+          >
+            Voir nos réalisations
+          </a>
+          <a
+            href="/contact"
+            class="inline-flex items-center justify-center min-h-[3.5rem] px-9 text-base font-semibold rounded-full bg-bleu text-bleu-nuit hover:bg-white transition-all"
+            data-track-event="cta_create_site_click"
+            data-track-category="conversion"
+            data-track-source="methode_realisations"
+            data-track-target="/contact"
+          >
+            Créer un site dans cet esprit
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 9. FAQ                                                        -->
+    <!-- ============================================================ -->
+    <section class="relative px-6 py-20 md:py-28" aria-labelledby="faq-titre">
+      <div class="relative mx-auto max-w-3xl">
+        <div class="text-center mb-12">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-bleu"></span> Questions fréquentes
+          </p>
+          <h2 id="faq-titre" class="scroll-reveal mt-6 font-sora font-bold text-3xl md:text-5xl text-blanc-casse text-balance leading-[1.1]">
+            La méthode 9site4
+            <span class="italic font-medium text-bleu">en quelques réponses.</span>
+          </h2>
+        </div>
+
+        <ul class="space-y-3">
+          {faqItems.map((f) => (
+            <li>
+              <details class="group rounded-2xl ring-1 ring-white/10 bg-white/[0.03] open:bg-white/[0.05] open:ring-bleu/40 transition-colors">
+                <summary class="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 min-h-[3.25rem] text-left font-sora font-semibold text-base md:text-lg text-blanc-casse">
+                  <span>{f.q}</span>
+                  <span class="flex-none w-6 h-6 rounded-full bg-bleu/15 text-bleu flex items-center justify-center transition-transform group-open:rotate-45" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14" /></svg>
+                  </span>
+                </summary>
+                <div class="px-5 pb-5 -mt-1 text-[15px] text-blanc-casse/75 leading-relaxed">
+                  {f.r}
+                </div>
+              </details>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 10. CTA FINAL                                                 -->
+    <!-- ============================================================ -->
+    <section class="relative px-6 py-20 md:py-28 overflow-hidden" aria-labelledby="cta-final-titre">
+      <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-[40rem] h-[40rem] halo-bleu opacity-30"></div>
+      </div>
+      <div class="relative mx-auto max-w-3xl text-center">
+        <h2 id="cta-final-titre" class="scroll-reveal font-sora font-bold text-3xl md:text-5xl text-blanc-casse text-balance leading-[1.1]">
+          Votre activité mérite un site
+          <span class="block italic font-medium text-bleu">construit avec méthode.</span>
+        </h2>
+        <p class="scroll-reveal mt-6 text-base md:text-lg text-blanc-casse/80 leading-relaxed">
+          Présentez votre activité à 9site4. Nous vous proposons une structure adaptée à votre métier, à vos clients et à vos objectifs.
+        </p>
+        <div class="scroll-reveal mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/contact"
+            class="inline-flex items-center justify-center min-h-[3.5rem] px-9 text-base font-semibold rounded-full bg-blanc-casse text-bleu-nuit hover:bg-white hover:-translate-y-0.5 shadow-card hover:shadow-card-hover transition-all duration-200 ease-out"
+            data-track-event="cta_create_site_click"
+            data-track-category="conversion"
+            data-track-source="methode_cta_final"
+            data-track-target="/contact"
+          >
+            Créer mon site avec 9site4
+          </a>
+          <a
+            href="/diagnostic-site-internet-la-reunion"
+            class="inline-flex items-center justify-center min-h-[3.5rem] px-7 text-base font-semibold rounded-full ring-1 ring-blanc-casse/40 text-blanc-casse hover:bg-white/10 hover:-translate-y-0.5 transition-all duration-200 ease-out"
+            data-track-event="cta_diagnostic_click"
+            data-track-category="conversion"
+            data-track-source="methode_cta_final"
+            data-track-target="/diagnostic-site-internet-la-reunion"
+          >
+            Demander un diagnostic gratuit
+          </a>
+        </div>
+        <p class="scroll-reveal mt-8 text-sm text-blanc-casse/55">
+          <a href="/creation-site-internet-la-reunion" class="hover:text-bleu transition-colors">Voir la page création de site internet à La Réunion →</a>
+        </p>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
