@@ -7,6 +7,7 @@
  */
 
 import siteConfig from '../data/siteConfig.json';
+import type { Qualification } from './leadScoring';
 
 /* -------------------------------------------------------------------------- */
 /* Types                                                                      */
@@ -21,6 +22,8 @@ export type LeadContact = {
   besoin?: string;
   message?: string;
   preferenceContact?: string; // 'whatsapp' | 'email' | 'phone' or label
+  source?: string;
+  qualification?: Qualification;
   receivedAt?: Date;
 };
 
@@ -36,6 +39,8 @@ export type LeadDiagnostic = {
   telephone: string;
   preferenceContact?: string;
   message?: string;
+  source?: string;
+  qualification?: Qualification;
   receivedAt?: Date;
 };
 
@@ -166,6 +171,68 @@ function renderContactButtons(lead: { nom: string; email: string; telephone: str
 }
 
 /* -------------------------------------------------------------------------- */
+/* Qualification block (INTERNAL emails only)                                 */
+/* -------------------------------------------------------------------------- */
+
+const PRIORITY_BADGE: Record<Qualification['priority'], { bg: string; color: string }> = {
+  'Haute': { bg: '#E11D48', color: '#ffffff' },
+  'Moyenne': { bg: '#91a6ff', color: '#ffffff' },
+  'À qualifier': { bg: '#E5E7EB', color: '#14161F' },
+};
+
+const TEMPERATURE_BADGE: Record<Qualification['temperature'], { bg: string; color: string; icon: string }> = {
+  'Chaud': { bg: '#FF7B5C', color: '#ffffff', icon: '🔥' },
+  'Tiède': { bg: '#F4B860', color: '#14161F', icon: '☕' },
+  'Exploratoire': { bg: '#6B7280', color: '#ffffff', icon: '🌱' },
+};
+
+function badge(text: string, bg: string, color: string): string {
+  return `<span style="display:inline-block;padding:4px 12px;border-radius:999px;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;background:${bg};color:${color};">${escapeHtml(text)}</span>`;
+}
+
+function renderQualificationBlock(q: Qualification): string {
+  const p = PRIORITY_BADGE[q.priority];
+  const t = TEMPERATURE_BADGE[q.temperature];
+  const tempBadge = `<span style="display:inline-block;padding:4px 12px;border-radius:999px;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;background:${t.bg};color:${t.color};">${t.icon} ${escapeHtml(q.temperature)}</span>`;
+
+  return `
+    <div style="${STYLE.sectionTitle}">Lecture commerciale 9site4</div>
+    <div style="padding:16px;background:#fafafe;border:1px solid #ececf2;border-radius:8px;">
+      <div style="margin:0 0 10px;">
+        <span style="font-size:12px;color:#6B6B7A;font-weight:600;margin-right:8px;">Priorité :</span>
+        ${badge(q.priority, p.bg, p.color)}
+      </div>
+      <div style="margin:0 0 12px;">
+        <span style="font-size:12px;color:#6B6B7A;font-weight:600;margin-right:8px;">Température :</span>
+        ${tempBadge}
+      </div>
+      <p style="margin:8px 0 4px;font-size:14px;color:#14161F;"><strong>Besoin probable :</strong> ${escapeHtml(q.likelyNeed)}</p>
+      <p style="margin:4px 0;font-size:14px;color:#14161F;"><strong>Offre suggérée :</strong> ${escapeHtml(q.suggestedOffer)}</p>
+      <p style="margin:4px 0;font-size:13px;color:#6B6B7A;font-style:italic;"><strong style="font-style:normal;">Pourquoi cette lecture :</strong> ${escapeHtml(q.reason)}</p>
+      <p style="margin:10px 0 0;font-size:14px;color:#14161F;"><strong>Action recommandée :</strong> ${escapeHtml(q.recommendedAction)}</p>
+    </div>
+    ${q.qualificationQuestions.length ? `
+    <div style="${STYLE.sectionTitle}">Questions à poser au premier échange</div>
+    <ul style="margin:8px 0 0;padding-left:20px;font-size:14px;color:#2A2A35;line-height:1.6;">
+      ${q.qualificationQuestions.map((qq) => `<li style="margin:4px 0;">${escapeHtml(qq)}</li>`).join('')}
+    </ul>` : ''}
+  `;
+}
+
+function renderQualificationText(q: Qualification): string {
+  return [
+    `--- Lecture commerciale 9site4 ---`,
+    `Priorité : ${q.priority}`,
+    `Température : ${q.temperature}`,
+    `Besoin probable : ${q.likelyNeed}`,
+    `Offre suggérée : ${q.suggestedOffer}`,
+    `Pourquoi : ${q.reason}`,
+    `Action recommandée : ${q.recommendedAction}`,
+    q.qualificationQuestions.length ? `\nQuestions à poser :\n${q.qualificationQuestions.map((qq) => `- ${qq}`).join('\n')}` : '',
+  ].filter(Boolean).join('\n');
+}
+
+/* -------------------------------------------------------------------------- */
 /* Internal email — Contact                                                   */
 /* -------------------------------------------------------------------------- */
 
@@ -206,21 +273,19 @@ export function internalContactEmail(lead: LeadContact): EmailContent {
       <p style="${STYLE.subtitle}">Contact</p>
     </div>
     <h1 style="${STYLE.h1}">${escapeHtml(lead.nom)}${lead.entreprise ? ` — ${escapeHtml(lead.entreprise)}` : ''}</h1>
-    <p style="${STYLE.dateLine}">Reçu le ${escapeHtml(dateStr)} (heure 974)</p>
+    <p style="${STYLE.dateLine}">Reçu le ${escapeHtml(dateStr)} (heure 974)${lead.source ? `<br><span style="color:#8b8b96;">Source du lead : ${escapeHtml(lead.source)}</span>` : ''}</p>
 
     <div style="${STYLE.sectionTitle}">Résumé</div>
     <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
       ${rows}
     </table>
 
+    ${lead.qualification ? renderQualificationBlock(lead.qualification) : `<div style="${STYLE.action}"><strong>Action recommandée :</strong> Reprendre contact selon sa préférence, qualifier son besoin, puis proposer un échange court pour cadrer son projet.</div>`}
+
     <div style="${STYLE.sectionTitle}">Contacter rapidement</div>
     ${renderContactButtons(lead)}
 
     ${messageBlock}
-
-    <div style="${STYLE.action}">
-      <strong>Action recommandée :</strong> Reprendre contact selon sa préférence, qualifier son besoin, puis proposer un échange court pour cadrer son projet.
-    </div>
 
     <div style="${STYLE.footer}">
       Demande reçue depuis 9site4.re — Vous pouvez répondre directement à cet email (Reply-To = prospect).
@@ -241,8 +306,9 @@ export function internalContactEmail(lead: LeadContact): EmailContent {
     `Téléphone : ${lead.telephone}`,
     lead.preferenceContact ? `Préférence : ${lead.preferenceContact}` : null,
     lead.message && lead.message.trim() ? `\nMessage :\n${lead.message.trim()}` : null,
+    lead.source ? `\nSource du lead : ${lead.source}` : null,
     ``,
-    `Action : reprendre contact selon sa préférence, qualifier le besoin, proposer un échange court.`,
+    lead.qualification ? renderQualificationText(lead.qualification) : `Action : reprendre contact selon sa préférence, qualifier le besoin, proposer un échange court.`,
     ``,
     `— 9site4.re`,
   ]
@@ -328,7 +394,7 @@ export function internalDiagnosticEmail(lead: LeadDiagnostic): EmailContent {
       <p style="${STYLE.subtitle}">Diagnostic gratuit</p>
     </div>
     <h1 style="${STYLE.h1}">${escapeHtml(lead.nom)}${lead.entreprise ? ` — ${escapeHtml(lead.entreprise)}` : ''}</h1>
-    <p style="${STYLE.dateLine}">Reçu le ${escapeHtml(dateStr)} (heure 974)</p>
+    <p style="${STYLE.dateLine}">Reçu le ${escapeHtml(dateStr)} (heure 974)${lead.source ? `<br><span style="color:#8b8b96;">Source du lead : ${escapeHtml(lead.source)}</span>` : ''}</p>
 
     <div style="${STYLE.sectionTitle}">Résumé</div>
     <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
@@ -337,12 +403,10 @@ export function internalDiagnosticEmail(lead: LeadDiagnostic): EmailContent {
 
     ${presenceBlock}
 
+    ${lead.qualification ? renderQualificationBlock(lead.qualification) : `<div style="${STYLE.action}"><strong>Action recommandée :</strong> Analyser la présence actuelle du prospect puis répondre avec 3 priorités simples — 1) ce qui est déjà clair, 2) ce qui peut être amélioré, 3) ce que 9site4 recommande comme structure de site.</div>`}
+
     <div style="${STYLE.sectionTitle}">Contacter rapidement</div>
     ${renderContactButtons(lead)}
-
-    <div style="${STYLE.action}">
-      <strong>Action recommandée :</strong> Analyser la présence actuelle du prospect puis répondre avec 3 priorités simples — 1) ce qui est déjà clair, 2) ce qui peut être amélioré, 3) ce que 9site4 recommande comme structure de site.
-    </div>
 
     <div style="${STYLE.footer}">
       Demande reçue depuis 9site4.re — Vous pouvez répondre directement à cet email (Reply-To = prospect).
@@ -366,8 +430,9 @@ export function internalDiagnosticEmail(lead: LeadDiagnostic): EmailContent {
     hasUrl ? `Site actuel : ${lead.url}` : null,
     hasReseaux ? `Instagram / Google : ${lead.reseaux}` : null,
     hasMessage ? `\nMessage :\n${lead.message!.trim()}` : null,
+    lead.source ? `\nSource du lead : ${lead.source}` : null,
     ``,
-    `Action : 3 priorités — déjà clair / à améliorer / recommandation 9site4.`,
+    lead.qualification ? renderQualificationText(lead.qualification) : `Action : 3 priorités — déjà clair / à améliorer / recommandation 9site4.`,
     ``,
     `— 9site4.re`,
   ]
@@ -471,6 +536,201 @@ Merci pour votre demande de diagnostic gratuit.
 Nous allons regarder les informations transmises afin d'identifier les points qui peuvent être clarifiés, structurés ou améliorés dans votre présence web.
 
 Vous recevrez un retour clair et adapté à votre activité.
+
+En attendant, vous pouvez consulter nos réalisations :
+https://9site4.re/realisations/
+
+À très vite,
+L'équipe 9site4`;
+
+  return { subject, html, text };
+}
+
+/* -------------------------------------------------------------------------- */
+/* Internal email — Site recommendation                                       */
+/* -------------------------------------------------------------------------- */
+
+export type LeadRecommendation = {
+  nom: string;
+  entreprise?: string;
+  email?: string;
+  telephone?: string;
+  preferenceContact?: string;
+  message?: string;
+  receivedAt?: Date;
+};
+
+export type RecommendationSummary = {
+  profile: string;
+  recommendedSiteType: string;
+  recommendedModule: string;
+  priority: 'Haute' | 'Moyenne' | 'Basse';
+  explanation: string;
+  suggestedPages: string[];
+  suggestedCTAs: string[];
+  recommendedNextStep: string;
+};
+
+export type AnswersSummary = {
+  secteur: string;
+  priorite: string;
+  contact: string;
+  presence: string;
+  elements: string[];
+  urgence: string;
+  suite: string;
+};
+
+export function internalRecommendationEmail(opts: {
+  lead: LeadRecommendation;
+  answers: AnswersSummary;
+  recommendation: RecommendationSummary;
+}): EmailContent {
+  const { lead, answers, recommendation } = opts;
+  const receivedAt = lead.receivedAt ?? new Date();
+  const dateStr = formatReunionDate(receivedAt);
+  const titleId = (lead.entreprise && lead.entreprise.trim()) || lead.nom;
+  const subject = `[Nouvelle recommandation 9site4] ${titleId} — ${answers.secteur}`;
+  const preheader = 'Nouvelle recommandation depuis l\'outil "Trouver le site adapté".';
+
+  const emailLink = lead.email
+    ? `<a href="mailto:${escapeHtml(lead.email)}" style="color:#91a6ff;text-decoration:none;">${escapeHtml(lead.email)}</a>`
+    : null;
+  const telLink = lead.telephone
+    ? `<a href="tel:${escapeHtml(sanitizePhone(lead.telephone))}" style="color:#91a6ff;text-decoration:none;">${escapeHtml(lead.telephone)}</a>`
+    : null;
+
+  const rows = [
+    renderRow('Type', 'Recommandation de site'),
+    renderRow('Nom', lead.nom),
+    renderRow('Entreprise', lead.entreprise),
+    renderRow('Secteur', answers.secteur),
+    renderRow('Priorité', recommendation.priority),
+    renderRow('Type de site recommandé', recommendation.recommendedSiteType),
+    renderRow('Module recommandé', recommendation.recommendedModule),
+    renderRow('Préférence de contact', lead.preferenceContact),
+    renderRowHtml('Téléphone', telLink),
+    renderRowHtml('Email', emailLink),
+  ].join('');
+
+  const answersRows = [
+    renderRow('Secteur', answers.secteur),
+    renderRow('Priorité actuelle', answers.priorite),
+    renderRow('Type de contact souhaité', answers.contact),
+    renderRow('Présence en ligne actuelle', answers.presence),
+    renderRow('Éléments à valoriser', answers.elements.join(', ')),
+    renderRow('Urgence', answers.urgence),
+    renderRow('Suite souhaitée', answers.suite),
+  ].join('');
+
+  const messageBlock = lead.message && lead.message.trim()
+    ? `<div style="${STYLE.sectionTitle}">Message libre</div>
+       <div style="${STYLE.msgBox}">${nl2br(lead.message.trim())}</div>`
+    : '';
+
+  const contactButtons = lead.email && lead.telephone
+    ? `<div style="${STYLE.sectionTitle}">Contacter rapidement</div>
+       ${renderContactButtons({ nom: lead.nom, email: lead.email, telephone: lead.telephone })}`
+    : '';
+
+  const html = `<!DOCTYPE html>
+<html lang="fr">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escapeHtml(subject)}</title></head>
+<body style="${STYLE.outer}">
+  <span style="${STYLE.preheader}">${escapeHtml(preheader)}</span>
+  <div style="${STYLE.card}">
+    <div>
+      <span style="${STYLE.brand}">9site4</span>
+      <span style="${STYLE.badge}">Recommandation</span>
+      <p style="${STYLE.subtitle}">Outil "Trouver le site adapté"</p>
+    </div>
+    <h1 style="${STYLE.h1}">${escapeHtml(lead.nom)}${lead.entreprise ? ` — ${escapeHtml(lead.entreprise)}` : ''}</h1>
+    <p style="${STYLE.dateLine}">Reçu le ${escapeHtml(dateStr)} (heure 974)</p>
+
+    <div style="${STYLE.sectionTitle}">Résumé</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+      ${rows}
+    </table>
+
+    <div style="${STYLE.sectionTitle}">Réponses du prospect</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+      ${answersRows}
+    </table>
+
+    ${contactButtons}
+
+    ${messageBlock}
+
+    <div style="${STYLE.action}">
+      <strong>Action recommandée :</strong> ${escapeHtml(recommendation.recommendedNextStep)}. Reprendre contact selon la préférence et confirmer la recommandation (${escapeHtml(recommendation.recommendedSiteType)}).
+    </div>
+
+    <div style="${STYLE.footer}">
+      Demande reçue depuis 9site4.re — Vous pouvez répondre directement à cet email (Reply-To = prospect).
+    </div>
+  </div>
+</body>
+</html>`;
+
+  const text = [
+    `Nouvelle recommandation 9site4`,
+    `Reçu le ${dateStr} (heure 974)`,
+    ``,
+    `Nom : ${lead.nom}`,
+    lead.entreprise ? `Entreprise : ${lead.entreprise}` : null,
+    `Secteur : ${answers.secteur}`,
+    `Priorité : ${recommendation.priority}`,
+    `Type de site recommandé : ${recommendation.recommendedSiteType}`,
+    `Module recommandé : ${recommendation.recommendedModule}`,
+    lead.preferenceContact ? `Préférence : ${lead.preferenceContact}` : null,
+    lead.telephone ? `Téléphone : ${lead.telephone}` : null,
+    lead.email ? `Email : ${lead.email}` : null,
+    ``,
+    `Réponses :`,
+    `- Priorité actuelle : ${answers.priorite}`,
+    `- Type de contact souhaité : ${answers.contact}`,
+    `- Présence actuelle : ${answers.presence}`,
+    `- Éléments à valoriser : ${answers.elements.join(', ')}`,
+    `- Urgence : ${answers.urgence}`,
+    `- Suite souhaitée : ${answers.suite}`,
+    lead.message && lead.message.trim() ? `\nMessage :\n${lead.message.trim()}` : null,
+    ``,
+    `Action : ${recommendation.recommendedNextStep}.`,
+    ``,
+    `— 9site4.re`,
+  ]
+    .filter(Boolean)
+    .join('\n');
+
+  return { subject, html, text };
+}
+
+export function autoReplyRecommendationEmail(opts: { nom: string }): EmailContent {
+  const subject = 'Votre recommandation 9site4 a bien été reçue';
+  const preheader = 'Merci d\'avoir utilisé l\'outil "Trouver le site adapté".';
+  const nomSafe = escapeHtml(opts.nom);
+
+  const paras = `
+    <p style="margin:0 0 12px;font-size:15px;color:#2A2A35;line-height:1.6;">Bonjour ${nomSafe},</p>
+    <p style="margin:0 0 12px;font-size:15px;color:#2A2A35;line-height:1.6;">Merci d'avoir utilisé l'outil "Trouver le site adapté" sur 9site4.</p>
+    <p style="margin:0 0 12px;font-size:15px;color:#2A2A35;line-height:1.6;">Nous avons bien reçu votre demande ainsi que la recommandation générée à partir de vos réponses. Notre équipe revient vers vous rapidement avec une proposition claire et adaptée à votre activité.</p>
+    <p style="margin:0 0 12px;font-size:15px;color:#2A2A35;line-height:1.6;">En attendant, vous pouvez consulter nos réalisations :<br>
+      <a href="https://9site4.re/realisations/" style="color:#91a6ff;text-decoration:none;">https://9site4.re/realisations/</a>
+    </p>
+    <p style="margin:16px 0 0;font-size:15px;color:#2A2A35;line-height:1.6;">À très vite,<br>L'équipe 9site4</p>
+  `;
+
+  const html = autoReplyHtmlShell({
+    preheader,
+    title: 'Votre recommandation a bien été reçue',
+    bodyParagraphsHtml: paras,
+  });
+
+  const text = `Bonjour ${opts.nom},
+
+Merci d'avoir utilisé l'outil "Trouver le site adapté" sur 9site4.
+
+Nous avons bien reçu votre demande ainsi que la recommandation générée à partir de vos réponses. Notre équipe revient vers vous rapidement avec une proposition claire et adaptée à votre activité.
 
 En attendant, vous pouvez consulter nos réalisations :
 https://9site4.re/realisations/

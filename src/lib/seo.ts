@@ -43,6 +43,9 @@ type PageKey =
   | 'siteVitrineReunion'
   | 'agenceWebReunion'
   | 'diagnostic'
+  | 'trouverSiteAdapte'
+  | 'faq'
+  | 'methode'
   | 'templatePizzeria'
   | 'templateSalon'
   | 'templateSpa'
@@ -204,11 +207,29 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
       '9site4 accompagne les professionnels réunionnais dans la création, la structuration et la gestion de leur site internet, avec une offre claire et un accompagnement local.',
     canonical: '/agence-web-la-reunion',
   },
+  trouverSiteAdapte: {
+    title: `Quel site internet pour votre activité à La Réunion ? | ${siteConfig.siteName}`,
+    description:
+      'Répondez à quelques questions et découvrez le type de site professionnel adapté à votre activité : devis, réservation, rendez-vous, présentation, diagnostic ou module métier.',
+    canonical: '/trouver-le-site-adapte',
+  },
+  faq: {
+    title: `Questions fréquentes sur la création de site internet à La Réunion | ${siteConfig.siteName}`,
+    description:
+      "Retrouvez les réponses aux questions fréquentes sur 9site4 : création de site internet, tarif, engagement, nom de domaine, modifications, SEO, formulaires, réalisations et accompagnement local.",
+    canonical: '/questions-frequentes',
+  },
   diagnostic: {
     title: `Diagnostic gratuit de site internet à La Réunion | ${siteConfig.siteName}`,
     description:
       'Demandez un diagnostic gratuit de votre site internet ou de votre présence en ligne. 9site4 analyse votre visibilité, votre clarté, vos informations clés et vos points de contact.',
     canonical: '/diagnostic-site-internet-la-reunion',
+  },
+  methode: {
+    title: 'La méthode 9site4 — Création de site internet à La Réunion',
+    description:
+      'Découvrez la méthode 9site4 pour créer, structurer et gérer un site professionnel à La Réunion : cadrage, réalisation, module métier, mise en ligne et accompagnement continu.',
+    canonical: '/methode-9site4',
   },
   templatePizzeria: {
     title: 'Pizza Lé O — Pizzeria à Saint-Paul (Réunion) | Template 9site4',

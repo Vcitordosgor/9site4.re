@@ -6,6 +6,8 @@ import RealisationCard from '../components/realisations/RealisationCard.astro';
 import TarifsBref from '../components/sections/TarifsBref.astro';
 import CTABand from '../components/sections/CTABand.astro';
 import realisations from '../data/realisations.json';
+import FAQAccordion from '../components/sections/FAQAccordion.astro';
+import { getFaqForPage } from '../data/faq';
 import { getSeo, absoluteUrl } from '../lib/seo';
 
 const seo = getSeo('creationSiteReunion');
@@ -23,38 +25,9 @@ const selected = selectedSlugs
   .map((s) => realisations.find((r) => r.slug === s))
   .filter(Boolean) as typeof realisations;
 
-const faq = [
-  {
-    q: 'Combien de temps pour créer mon site internet à La Réunion ?',
-    a: "Votre site professionnel est prêt en 7 jours environ. 9site4 prend en charge la structure, le contenu, le design, le module métier et la mise en ligne — vous restez concentré sur votre activité.",
-  },
-  {
-    q: 'Y a-t-il des frais de création ?',
-    a: "Non. La création est incluse dans la formule unique à 97,4€/mois : pas de frais de création, pas d'engagement, pas de surprise. La maintenance et les modifications simples sont également incluses.",
-  },
-  {
-    q: 'Mon site sera-t-il adapté à mon métier ?',
-    a: "Oui. Chaque site est structuré pour votre activité : prestations, photos, zone d'intervention, horaires, formulaire de devis ou de réservation, module métier intégré. Aucun site 9site4 ne ressemble à un autre.",
-  },
-  {
-    q: 'Qui gère mon site après la mise en ligne ?',
-    a: "9site4 assure la gestion continue : hébergement, maintenance, mises à jour techniques, modifications simples (horaires, photos, prestations, tarifs). Vous nous écrivez, on s'en occupe.",
-  },
-  {
-    q: 'Travaillez-vous uniquement avec des entreprises de La Réunion ?',
-    a: "Oui. 9site4 est dédié aux TPE/PME réunionnaises. Notre accompagnement local nous permet de comprendre votre marché, votre clientèle et les codes du 974.",
-  },
-];
+// FAQ centralisée (voir src/data/faq.ts). JSON-LD FAQPage uniquement sur /questions-frequentes/.
+const faq = getFaqForPage('creation');
 
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: faq.map((item) => ({
-    '@type': 'Question',
-    name: item.q,
-    acceptedAnswer: { '@type': 'Answer', text: item.a },
-  })),
-};
 const serviceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
@@ -74,7 +47,6 @@ const serviceSchema = {
 ---
 
 <BaseLayout seo={seo}>
-  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
 
   <div class="bg-black text-blanc-casse">
@@ -305,29 +277,23 @@ const serviceSchema = {
             <span class="block italic font-medium text-bleu">le plus souvent.</span>
           </h2>
         </div>
-        <div class="mt-12 space-y-3">
-          {faq.map((item) => (
-            <details class="group rounded-2xl p-5 md:p-6"
-              style="background: linear-gradient(180deg, #14161F 0%, #0A0B12 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 12px 30px -16px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08);">
-              <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
-                <span class="font-sora font-semibold text-blanc-casse">{item.q}</span>
-                <span class="shrink-0 text-bleu transition-transform duration-300 group-open:rotate-45">
-                  <Icon name="arrow-right" size={18} strokeWidth={2.25} />
-                </span>
-              </summary>
-              <p class="mt-4 text-sm md:text-base text-blanc-casse/75 leading-relaxed">{item.a}</p>
-            </details>
-          ))}
+        <div class="mt-12">
+          <FAQAccordion items={faq} idPrefix="faq-creation" />
         </div>
 
         <!-- Maillage interne -->
         <p class="scroll-reveal mt-12 text-center text-sm text-blanc-casse/65">
+          <a href="/questions-frequentes" class="text-bleu hover:text-blanc-casse underline-offset-4 hover:underline transition-colors">
+            Voir toutes les questions fréquentes →
+          </a>
+        </p>
+        <p class="scroll-reveal mt-4 text-center text-sm text-blanc-casse/65">
           Voir aussi&nbsp;:
           <a href="/tarifs" class="text-bleu hover:underline">tarifs</a>
           ·
           <a href="/realisations" class="text-bleu hover:underline">réalisations</a>
           ·
-          <a href="/contact" class="text-bleu hover:underline">contact</a> · <a href="/diagnostic-site-internet-la-reunion" class="text-bleu hover:underline" data-track-event="diagnostic_cta_click" data-track-category="conversion" data-track-source="seo_sector_voir_aussi" data-track-target="/diagnostic-site-internet-la-reunion">diagnostic gratuit</a>.
+          <a href="/contact" class="text-bleu hover:underline">contact</a> · <a href="/diagnostic-site-internet-la-reunion" class="text-bleu hover:underline" data-track-event="diagnostic_cta_click" data-track-category="conversion" data-track-source="seo_sector_voir_aussi" data-track-target="/diagnostic-site-internet-la-reunion">diagnostic gratuit</a> · <a href="/methode-9site4" class="text-bleu hover:underline">méthode 9site4</a>.
         </p>
       </div>
     </section>

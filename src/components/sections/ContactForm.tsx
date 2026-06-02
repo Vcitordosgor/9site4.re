@@ -178,10 +178,11 @@ export default function ContactForm({ categories }: Props) {
 
     setSending(true);
     try {
+      const sourcePath = typeof window !== 'undefined' ? window.location.pathname : '';
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, source: sourcePath }),
       });
       if (!res.ok) {
         const body = await res.json().catch(() => ({} as Record<string, unknown>));

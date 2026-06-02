@@ -92,6 +92,91 @@ Si l'email prospect est invalide à la validation (format), l'endpoint renvoie `
 3. **Honeypot** : remplir manuellement le champ `website` caché → réponse 200 mais aucun email reçu.
 4. **Discord** (si configuré) : un embed apparaît sur le canal.
 
-## 11. Politique 0 PII analytics
+## 11. Qualification commerciale automatique (INTERNE)
 
-Le tracking client (`src/lib/tracking.ts`) ne reçoit **jamais** de données nominatives ni de coordonnées. Seuls des events de conversion abstraits sont envoyés. Aucun changement n'a été apporté à cette stratégie dans le cadre de ce refactor email.
+Depuis cette itération, chaque email **interne** (envoyé à `9site4@gmail.com`) est enrichi d'une **lecture commerciale** produite par `src/lib/leadScoring.ts`. Objectif : qu'à l'ouverture de Gmail, le commercial sache en 5 secondes si rappeler tout de suite, quel besoin probable, quelle offre proposer, quelles questions poser.
+
+**Confidentialité — règles strictes** :
+- La qualification apparaît **uniquement** dans l'email interne.
+- **Jamais** envoyée au prospect (l'auto-reply reste neutre).
+- **Jamais** envoyée dans GA4, Meta Pixel, Discord, ni dans aucun log côté client.
+- Si le scoring échoue, un fallback générique est utilisé — l'envoi de l'email interne n'est **jamais** bloqué.
+
+### Règles de scoring — Contact
+
+Variables-clés : `hasPhone`, `hasCompany`, `isCalledFor` (préférence téléphone/whatsapp), `clearNeed` (besoin renseigné et non vague), `messageHasProject` (mots-clés "site", "création", "refonte", "réservation", "devis", "présentation", "projet"…).
+
+**Priorité** :
+- `Haute` : besoin clair + téléphone + entreprise + (préférence téléphone OU mention projet dans message).
+- `Moyenne` : téléphone + message présent, ou besoin clair + entreprise.
+- `À qualifier` : tout le reste.
+
+**Température** :
+- `Chaud` : besoin clair + téléphone + entreprise + mention projet dans message.
+- `Tiède` : téléphone ou entreprise + message présent (non vague).
+- `Exploratoire` : message vague ("je ne sais pas", "renseignements") ou ni téléphone ni entreprise.
+
+### Règles de scoring — Diagnostic
+
+Variables-clés : `hasSite`, `hasUrl`, `hasNetworks`, `hasPhone`, `clearGoal` (un des 5 objectifs business définis), `vagueGoal` ("Je ne sais pas encore").
+
+**Priorité** :
+- `Haute` : site existant + URL + objectif "Améliorer mon site actuel" ou "Recevoir plus de demandes" + téléphone.
+- `Moyenne` : pas de site + objectif clair + téléphone, OU site + URL + objectif non vague.
+- `À qualifier` : peu d'infos, objectif vague, pas de téléphone.
+
+**Température** :
+- `Chaud` : objectif clair + téléphone + (site OU réseaux) + objectif non vague.
+- `Tiède` : diagnostic demandé mais besoin imprécis ou pas de téléphone.
+- `Exploratoire` : objectif vague, ou ni site ni réseaux ni téléphone.
+
+### Signification opérationnelle
+
+| Priorité | Action commerciale |
+|---|---|
+| Haute | Rappeler **dans la journée** (canal indiqué) |
+| Moyenne | Rappel ou email **sous 24-48h** |
+| À qualifier | **Email court** avec 2-3 questions avant proposition |
+
+| Température | Sens |
+|---|---|
+| Chaud | Projet identifié, intention d'achat élevée |
+| Tiède | Intéressé mais flou — qualification à faire |
+| Exploratoire | Cherche surtout à comprendre — nourrir |
+
+### Exemples concrets
+
+**Exemple 1 — Contact `Haute` / `Chaud`** :
+> Marie (Snack Cocotier), tél +262692…, besoin "Création de site", message "Je veux un site pour mon restaurant avec réservation et présentation du menu". Préférence : téléphone.
+>
+> → **Haute / Chaud**. Action : rappeler dans la journée par téléphone. Offre : Formule 9site4 — 97,4€/mois. Questions sur domaine, logo, prestations à mettre en avant.
+
+**Exemple 2 — Diagnostic `Haute` / `Chaud`** :
+> Léa (Coiffure Léa), site existant `https://coiffure-lea.re`, objectif "Recevoir plus de demandes", téléphone fourni, préférence WhatsApp.
+>
+> → **Haute / Chaud**. Action : rappeler sous 24h par WhatsApp avec 3 priorités sur le site existant. Offre : refonte + gestion continue.
+
+**Exemple 3 — Contact `À qualifier` / `Exploratoire`** :
+> Paul, pas d'entreprise, pas de téléphone, besoin "autre", message "je ne sais pas, juste des infos".
+>
+> → **À qualifier / Exploratoire**. Action : email court pour comprendre le besoin. Offre : diagnostic gratuit.
+
+### Source du lead
+
+Le champ `source` (mappé via `mapSource()` depuis `window.location.pathname` envoyé par le formulaire) ajoute une ligne discrète dans l'email interne : "Source du lead : Page contact / Page diagnostic / Page SEO restaurant / …". Si la page n'est pas reconnue, la ligne est omise.
+
+### Limites
+
+- Le scoring est **indicatif** : il s'appuie sur des heuristiques simples (présence de champs, mots-clés). Il ne remplace pas la qualification humaine au téléphone.
+- Toujours vérifier les signaux avant de positionner une offre.
+- En cas de doute (signaux contradictoires), traiter comme `À qualifier`.
+
+### Fichiers source
+
+- Logique pure : `src/lib/leadScoring.ts` (`qualifyLead`, `mapSource`, `defaultQualification`).
+- Rendu HTML/text : bloc "Lecture commerciale 9site4" dans `src/lib/emailTemplates.ts`.
+- Intégration : `src/pages/api/contact.ts` et `src/pages/api/diagnostic.ts` (try/catch + fallback).
+
+## 12. Politique 0 PII analytics
+
+Le tracking client (`src/lib/tracking.ts`) ne reçoit **jamais** de données nominatives ni de coordonnées. Seuls des events de conversion abstraits sont envoyés. Aucun changement n'a été apporté à cette stratégie dans le cadre de ce refactor email. Le scoring de qualification reste **strictement côté serveur** et ne fuite pas dans le tracking.
