@@ -44,6 +44,7 @@ type PageKey =
   | 'agenceWebReunion'
   | 'diagnostic'
   | 'trouverSiteAdapte'
+  | 'faq'
   | 'templatePizzeria'
   | 'templateSalon'
   | 'templateSpa'
@@ -210,6 +211,12 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
     description:
       'Répondez à quelques questions et découvrez le type de site professionnel adapté à votre activité : devis, réservation, rendez-vous, présentation, diagnostic ou module métier.',
     canonical: '/trouver-le-site-adapte',
+  },
+  faq: {
+    title: `Questions fréquentes sur la création de site internet à La Réunion | ${siteConfig.siteName}`,
+    description:
+      "Retrouvez les réponses aux questions fréquentes sur 9site4 : création de site internet, tarif, engagement, nom de domaine, modifications, SEO, formulaires, réalisations et accompagnement local.",
+    canonical: '/questions-frequentes',
   },
   diagnostic: {
     title: `Diagnostic gratuit de site internet à La Réunion | ${siteConfig.siteName}`,

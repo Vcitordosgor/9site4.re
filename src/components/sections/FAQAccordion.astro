@@ -1,0 +1,128 @@
+---
+import Icon from '../ui/Icon.astro';
+import { groupFaqByCategory, type FaqCategory, type FaqItem } from '../../data/faq';
+
+interface Props {
+  items: FaqItem[];
+  /** Si fourni, affiche une nav d'ancres par catégorie et regroupe les items par catégorie. */
+  categories?: FaqCategory[];
+  /** Préfixe d'ID utilisé pour les ancres (utile pour éviter les collisions). */
+  idPrefix?: string;
+  /** Affiche le titre h2 de chaque catégorie (uniquement si `categories` est fourni). */
+  showCategoryHeadings?: boolean;
+}
+
+const {
+  items,
+  categories,
+  idPrefix = 'faq',
+  showCategoryHeadings = true,
+} = Astro.props;
+
+const groups = categories ? groupFaqByCategory(items) : null;
+---
+
+{groups && (
+  <nav aria-label="Catégories de questions" class="mb-10">
+    <ul class="flex flex-wrap gap-2">
+      {groups.map((g) => (
+        <li>
+          <a
+            href={`#${idPrefix}-${g.category.slug}`}
+            class="inline-flex items-center gap-2 h-9 px-4 rounded-full bg-white/[0.05] ring-1 ring-white/15 text-xs font-medium text-blanc-casse/85 hover:ring-bleu/40 hover:bg-white/[0.1] hover:text-blanc-casse transition-colors"
+          >
+            <span class="block w-1.5 h-1.5 rounded-full bg-bleu" aria-hidden="true"></span>
+            {g.category.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+)}
+
+{groups ? (
+  <div class="space-y-12 md:space-y-16">
+    {groups.map((g) => (
+      <section id={`${idPrefix}-${g.category.slug}`} class="scroll-mt-28">
+        {showCategoryHeadings && (
+          <h2 class="font-sora font-bold text-2xl md:text-3xl text-blanc-casse mb-6">
+            {g.category.label}
+          </h2>
+        )}
+        <ul class="space-y-3">
+          {g.items.map((item) => (
+            <li>
+              <details
+                class="group rounded-2xl p-5 md:p-6 transition-colors duration-200"
+                style="background: linear-gradient(180deg, #14161F 0%, #0A0B12 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 12px 30px -16px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08);"
+              >
+                <summary class="flex items-center justify-between gap-4 cursor-pointer list-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bleu rounded-md">
+                  <span class="font-sora font-semibold text-base md:text-lg text-blanc-casse leading-snug">
+                    {item.question}
+                  </span>
+                  <span class="shrink-0 text-bleu transition-transform duration-300 group-open:rotate-45" aria-hidden="true">
+                    <Icon name="arrow-right" size={18} strokeWidth={2.25} />
+                  </span>
+                </summary>
+                <div class="mt-4 text-sm md:text-base text-blanc-casse/75 leading-relaxed">
+                  <p>{item.answer}</p>
+                  {item.relatedLinks && item.relatedLinks.length > 0 && (
+                    <ul class="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm">
+                      {item.relatedLinks.map((link) => (
+                        <li>
+                          <a
+                            href={link.href}
+                            class="text-bleu hover:text-blanc-casse underline-offset-4 hover:underline transition-colors"
+                          >
+                            {link.label} →
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </details>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+  </div>
+) : (
+  <ul class="space-y-3">
+    {items.map((item) => (
+      <li>
+        <details
+          class="group rounded-2xl p-5 md:p-6 transition-colors duration-200"
+          style="background: linear-gradient(180deg, #14161F 0%, #0A0B12 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 12px 30px -16px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08);"
+        >
+          <summary class="flex items-center justify-between gap-4 cursor-pointer list-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bleu rounded-md">
+            <span class="font-sora font-semibold text-base md:text-lg text-blanc-casse leading-snug">
+              {item.question}
+            </span>
+            <span class="shrink-0 text-bleu transition-transform duration-300 group-open:rotate-45" aria-hidden="true">
+              <Icon name="arrow-right" size={18} strokeWidth={2.25} />
+            </span>
+          </summary>
+          <div class="mt-4 text-sm md:text-base text-blanc-casse/75 leading-relaxed">
+            <p>{item.answer}</p>
+            {item.relatedLinks && item.relatedLinks.length > 0 && (
+              <ul class="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm">
+                {item.relatedLinks.map((link) => (
+                  <li>
+                    <a
+                      href={link.href}
+                      class="text-bleu hover:text-blanc-casse underline-offset-4 hover:underline transition-colors"
+                    >
+                      {link.label} →
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </details>
+      </li>
+    ))}
+  </ul>
+)}

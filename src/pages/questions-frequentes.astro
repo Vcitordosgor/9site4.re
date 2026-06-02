@@ -1,0 +1,162 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FAQAccordion from '../components/sections/FAQAccordion.astro';
+import Icon from '../components/ui/Icon.astro';
+import { getSeo } from '../lib/seo';
+import { faqItems, faqCategories } from '../data/faq';
+
+const seo = getSeo('faq');
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+};
+
+const badges = [
+  'Offre claire',
+  'Sans frais de création',
+  'Gestion continue',
+  'Accompagnement local',
+];
+---
+
+<BaseLayout seo={seo}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <div class="bg-black text-blanc-casse">
+    <!-- HERO -->
+    <section class="relative overflow-hidden px-6 pt-28 pb-16 md:pt-36 md:pb-20">
+      <div class="pointer-events-none absolute -top-32 -right-32 w-[28rem] h-[28rem] rounded-full bg-bleu/20 blur-3xl opacity-60" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute -bottom-32 -left-32 w-[24rem] h-[24rem] rounded-full bg-bleu/15 blur-3xl opacity-40" aria-hidden="true"></div>
+
+      <div class="relative mx-auto max-w-3xl text-center">
+        <p class="hero-rise hero-rise-1 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-bleu/15 ring-1 ring-bleu/30 text-bleu text-[11px] font-semibold uppercase tracking-[0.28em]">
+          <span class="block w-1.5 h-1.5 rounded-full bg-bleu animate-pulse"></span>
+          Centre d'aide
+        </p>
+        <span class="hero-rise hero-rise-2 block mx-auto mt-7 h-[3px] w-16 bg-bleu" aria-hidden="true"></span>
+        <h1 class="hero-rise hero-rise-2 mt-5 font-sora font-bold text-balance leading-[1.05] text-[clamp(2.25rem,4vw+1rem,4rem)] tracking-tight text-blanc-casse">
+          Questions
+          <span class="block italic font-medium text-bleu">fréquentes.</span>
+        </h1>
+        <p class="hero-rise hero-rise-4 mx-auto mt-7 max-w-2xl text-lg md:text-xl text-blanc-casse/75 leading-relaxed">
+          Tout ce qu'il faut savoir avant de créer votre site professionnel avec 9site4 : tarif, délai, engagement, gestion, domaine, SEO, formulaires et accompagnement local.
+        </p>
+
+        <div class="hero-rise hero-rise-5 mt-9 flex flex-wrap justify-center gap-2.5">
+          {badges.map((b) => (
+            <span class="inline-flex items-center gap-2 h-9 px-4 rounded-full bg-white/[0.05] ring-1 ring-white/15 text-xs font-medium text-blanc-casse/90">
+              <span class="block w-1.5 h-1.5 rounded-full bg-bleu" aria-hidden="true"></span>
+              {b}
+            </span>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ COMPLÈTE -->
+    <section class="relative px-6 pb-20 md:pb-28" aria-labelledby="faq-titre">
+      <div class="relative mx-auto max-w-3xl">
+        <h2 id="faq-titre" class="sr-only">Toutes les questions par catégorie</h2>
+        <FAQAccordion items={faqItems} categories={faqCategories} idPrefix="faq" />
+      </div>
+    </section>
+
+    <!-- CTA intermédiaire — diagnostic -->
+    <section class="relative px-6 pb-20" aria-label="Diagnostic gratuit">
+      <div class="mx-auto max-w-3xl rounded-2xl px-6 py-5 md:px-8 md:py-6 ring-1 ring-bleu/30 bg-bleu/[0.06] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div>
+          <p class="font-sora font-semibold text-base md:text-lg text-blanc-casse">
+            Vous hésitez encore ?
+          </p>
+          <p class="mt-1 text-sm md:text-base text-blanc-casse/70 leading-relaxed">
+            Commencez par un diagnostic gratuit de votre présence web.
+          </p>
+        </div>
+        <a
+          href="/diagnostic-site-internet-la-reunion"
+          class="shrink-0 inline-flex items-center justify-center gap-2 h-11 px-5 text-sm font-semibold rounded-full bg-bleu text-blanc-casse hover:bg-blanc-casse hover:text-bleu-nuit transition-colors"
+          data-track-event="diagnostic_cta_click"
+          data-track-category="conversion"
+          data-track-source="faq_page_intermediate"
+          data-track-target="/diagnostic-site-internet-la-reunion"
+        >
+          Demander mon diagnostic →
+        </a>
+      </div>
+    </section>
+
+    <!-- CTA intermédiaire — réalisations -->
+    <section class="relative px-6 pb-20" aria-label="Voir les réalisations">
+      <div class="mx-auto max-w-3xl rounded-2xl px-6 py-5 md:px-8 md:py-6 ring-1 ring-white/10 bg-white/[0.03] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div>
+          <p class="font-sora font-semibold text-base md:text-lg text-blanc-casse">
+            Vous voulez voir ce que 9site4 peut créer ?
+          </p>
+          <p class="mt-1 text-sm md:text-base text-blanc-casse/70 leading-relaxed">
+            Découvrez nos réalisations pour différents métiers du 974.
+          </p>
+        </div>
+        <a
+          href="/realisations"
+          class="shrink-0 inline-flex items-center justify-center gap-2 h-11 px-5 text-sm font-semibold rounded-full ring-1 ring-blanc-casse/30 text-blanc-casse hover:bg-white/10 transition-colors"
+        >
+          Voir nos réalisations →
+        </a>
+      </div>
+    </section>
+
+    <!-- CTA final -->
+    <section class="relative overflow-hidden px-6 py-16 md:py-24 bg-bleu-nuit text-blanc-casse" aria-labelledby="cta-final-titre">
+      <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div class="absolute -top-32 -right-32 w-80 h-80 rounded-full ring-2 ring-bleu/25"></div>
+        <div class="absolute -bottom-40 -left-40 w-[28rem] h-[28rem] rounded-full ring-2 ring-bleu/15"></div>
+      </div>
+
+      <div class="relative mx-auto max-w-3xl text-center">
+        <span class="block mx-auto h-[3px] w-16 bg-bleu mb-6" aria-hidden="true"></span>
+        <h2 id="cta-final-titre" class="font-sora font-bold text-3xl md:text-5xl text-balance leading-tight">
+          Vous avez encore une question ?
+        </h2>
+        <p class="mt-6 text-lg md:text-xl text-blanc-casse/85 leading-relaxed">
+          Écrivez-nous : 9site4 vous répond avec une proposition claire, adaptée à votre métier et à votre activité à La Réunion.
+        </p>
+        <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/contact"
+            class="inline-flex items-center justify-center gap-2 h-14 px-8 text-lg font-semibold rounded-full bg-bleu text-blanc-casse hover:bg-white hover:text-bleu-nuit transition-colors shadow-card hover:shadow-card-hover"
+            data-track-event="cta_contact_click"
+            data-track-category="conversion"
+            data-track-source="faq_page_final_cta"
+            data-track-target="/contact"
+            data-track-page-type="faq"
+          >
+            Contacter 9site4
+            <Icon name="arrow-right" size={20} strokeWidth={2.25} />
+          </a>
+          <a
+            href="/diagnostic-site-internet-la-reunion"
+            class="inline-flex items-center justify-center gap-2 h-14 px-8 text-lg font-semibold rounded-full ring-1 ring-blanc-casse/40 text-blanc-casse hover:bg-white/10 transition-colors"
+            data-track-event="diagnostic_cta_click"
+            data-track-category="conversion"
+            data-track-source="faq_page_final_cta"
+            data-track-target="/diagnostic-site-internet-la-reunion"
+            data-track-page-type="faq"
+          >
+            Demander un diagnostic gratuit
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

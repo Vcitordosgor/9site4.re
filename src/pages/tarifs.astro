@@ -3,54 +3,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/ui/Button.astro';
 import Badge from '../components/ui/Badge.astro';
 import Icon from '../components/ui/Icon.astro';
-import Faq from '../components/sections/Faq.tsx';
+import FAQAccordion from '../components/sections/FAQAccordion.astro';
 import CTABand from '../components/sections/CTABand.astro';
 import siteConfig from '../data/siteConfig.json';
 import { inclusions } from '../lib/inclusions';
 import { getSeo } from '../lib/seo';
+import { getFaqForPage } from '../data/faq';
 
 // Liste résumée pour la grande carte de prix (titres seulement)
 const cardItems = inclusions.map((i) => i.titre);
 
-// FAQ dédiée tarifs (engagement, résiliation, facturation, domaine, design, e-commerce)
-const tarifsFaq = [
-  {
-    id: 'engagement',
-    question: 'Y a-t-il un engagement de durée ?',
-    reponse:
-      "Non. L'abonnement mensuel à 97,4€/mois est sans engagement. Vous pouvez résilier à tout moment, sans frais et sans justification. La formule annuelle, plus économique (≈ 2 mois offerts), est payée d'avance pour 12 mois.",
-  },
-  {
-    id: 'resiliation',
-    question: 'Comment résilier mon abonnement ?',
-    reponse:
-      "Un simple email ou message WhatsApp suffit. Nous arrêtons le prélèvement le mois suivant. Vous récupérez votre nom de domaine si vous souhaitez le conserver ailleurs.",
-  },
-  {
-    id: 'domaine',
-    question: 'Le nom de domaine est-il inclus ?',
-    reponse:
-      "Oui, un nom de domaine en .re, .fr ou .com est inclus dans l'abonnement. Si vous possédez déjà un domaine, nous le rattachons à votre nouveau site, sans coût supplémentaire.",
-  },
-  {
-    id: 'design',
-    question: 'Puis-je changer le design de mon site plus tard ?',
-    reponse:
-      "Oui, les ajustements simples (couleurs, photos, textes, horaires) sont inclus à vie. Une refonte complète de la charte graphique fait l'objet d'un devis dédié, mais reste rare : nos sites sont pensés pour durer.",
-  },
-  {
-    id: 'facturation',
-    question: 'Comment se passe la facturation ?',
-    reponse:
-      "Prélèvement automatique mensuel ou règlement annuel. Vous recevez une facture professionnelle chaque mois, conforme à la comptabilité (TVA, mentions légales). Tout est en euros, depuis La Réunion.",
-  },
-  {
-    id: 'ecommerce',
-    question: 'Est-ce que vous faites des sites e-commerce ?',
-    reponse:
-      "Non, notre offre principale est dédiée aux sites vitrines pros. Pour un vrai e-commerce (catalogue, paiement, stock), écrivez-nous : on regarde votre projet honnêtement et on vous oriente, même si ce n'est pas avec nous.",
-  },
-];
+// FAQ dédiée tarifs : sous-ensemble centralisé (voir src/data/faq.ts).
+const tarifsFaq = getFaqForPage('tarifs');
 
 // Comparaison transparente : ce qu'on fait / ce qu'on ne fait pas
 const onFait = [
@@ -306,8 +270,13 @@ const onFaitPas = [
           </h2>
         </div>
         <div class="scroll-reveal">
-          <Faq client:load items={tarifsFaq} />
+          <FAQAccordion items={tarifsFaq} idPrefix="faq-tarifs" />
         </div>
+        <p class="scroll-reveal mt-10 text-center text-sm text-blanc-casse/65">
+          <a href="/questions-frequentes" class="text-bleu hover:text-blanc-casse underline-offset-4 hover:underline transition-colors">
+            Voir toutes les questions fréquentes →
+          </a>
+        </p>
       </div>
     </section>
 
