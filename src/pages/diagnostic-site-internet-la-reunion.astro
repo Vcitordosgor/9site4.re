@@ -3,8 +3,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Icon from '../components/ui/Icon.astro';
 import PourquoiChoisir from '../components/sections/PourquoiChoisir.astro';
 import DiagnosticForm from '../components/sections/DiagnosticForm.tsx';
+import FAQAccordion from '../components/sections/FAQAccordion.astro';
 import siteConfig from '../data/siteConfig.json';
 import { getSeo, absoluteUrl } from '../lib/seo';
+import { getFaqForPage } from '../data/faq';
+
+const diagnosticFaq = getFaqForPage('diagnostic');
 
 const seo = getSeo('diagnostic');
 
@@ -330,6 +334,31 @@ const diagnosticSchema = {
             <DiagnosticForm client:load />
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 6 bis — FAQ DIAGNOSTIC                                -->
+    <!-- ============================================================ -->
+    <section class="relative px-6 py-20 md:py-28" aria-labelledby="faq-diag-titre">
+      <div class="relative mx-auto max-w-3xl">
+        <div class="text-center mb-12">
+          <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-bleu"></span> FAQ diagnostic
+          </p>
+          <h2 id="faq-diag-titre" class="scroll-reveal mt-6 font-sora font-bold text-3xl md:text-5xl text-blanc-casse text-balance leading-[1.1]">
+            Avant de demander,
+            <span class="italic font-medium text-bleu">quelques réponses.</span>
+          </h2>
+        </div>
+        <div class="scroll-reveal">
+          <FAQAccordion items={diagnosticFaq} idPrefix="faq-diagnostic" />
+        </div>
+        <p class="scroll-reveal mt-10 text-center text-sm text-blanc-casse/65">
+          <a href="/questions-frequentes" class="text-bleu hover:text-blanc-casse underline-offset-4 hover:underline transition-colors">
+            Voir toutes les questions fréquentes →
+          </a>
+        </p>
       </div>
     </section>
 

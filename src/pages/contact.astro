@@ -1,11 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Icon from '../components/ui/Icon.astro';
-import Faq from '../components/sections/Faq.tsx';
+import FAQAccordion from '../components/sections/FAQAccordion.astro';
 import ContactForm from '../components/sections/ContactForm.tsx';
 import siteConfig from '../data/siteConfig.json';
 import categories from '../data/categories.json';
 import { getSeo } from '../lib/seo';
+import { getFaqForPage } from '../data/faq';
 
 const waUrl = `https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeURIComponent(
   siteConfig.contact.whatsappMessage
@@ -29,32 +30,8 @@ const promesses = [
   },
 ];
 
-const contactFaq = [
-  {
-    id: 'delai',
-    question: 'Quel délai pour avoir une réponse ?',
-    reponse:
-      "Nous répondons en général sous 24h ouvrées. Si vous écrivez le vendredi soir ou le week-end, comptez le lundi. Pour une demande urgente, WhatsApp reste le canal le plus rapide.",
-  },
-  {
-    id: 'rencontre',
-    question: 'Faut-il se rencontrer en physique ?',
-    reponse:
-      "Non, ce n'est pas obligatoire. Tout se fait à distance par téléphone, email et WhatsApp — pratique partout à La Réunion. Si vous tenez à un rendez-vous physique sur Saint-Denis ou Saint-Pierre, on peut s'organiser.",
-  },
-  {
-    id: 'confidentialite',
-    question: 'Mes informations restent-elles confidentielles ?',
-    reponse:
-      "Oui. Vos données sont conservées 12 mois maximum, ne sont jamais revendues ni partagées, et servent uniquement à vous recontacter au sujet de votre projet. Conforme RGPD.",
-  },
-  {
-    id: 'pretz',
-    question: "Je n'ai pas encore de cahier des charges, c'est ok ?",
-    reponse:
-      "Tout à fait. Décrivez simplement votre métier et ce que vous attendez de votre site, on s'occupe du reste. Pas besoin de jargon ni de plan détaillé : c'est notre travail de structurer.",
-  },
-];
+// FAQ centralisée — questions liées à "que se passe-t-il après l'envoi du formulaire".
+const contactFaq = getFaqForPage('contact');
 ---
 
 <BaseLayout seo={getSeo('contact')}>
@@ -254,8 +231,13 @@ const contactFaq = [
           </h2>
         </div>
         <div class="scroll-reveal">
-          <Faq client:load items={contactFaq} />
+          <FAQAccordion items={contactFaq} idPrefix="faq-contact" />
         </div>
+        <p class="scroll-reveal mt-10 text-center text-sm text-blanc-casse/65">
+          <a href="/questions-frequentes" class="text-bleu hover:text-blanc-casse underline-offset-4 hover:underline transition-colors">
+            Voir toutes les questions fréquentes →
+          </a>
+        </p>
       </div>
     </section>
   </div>
