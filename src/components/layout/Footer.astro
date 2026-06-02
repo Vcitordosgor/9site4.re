@@ -1,6 +1,7 @@
 ---
 import Wordmark from './Wordmark.astro';
 import siteConfig from '../../data/siteConfig.json';
+import { villes } from '../../data/villes.ts';
 
 const navLinks = [
   { href: '/', label: 'Accueil' },
@@ -181,6 +182,20 @@ const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeU
             La méthode 9site4
           </a>
         </li>
+      </ul>
+    </div>
+
+    <!-- Maillage SEO : villes desservies -->
+    <div class="mt-10 pt-6 border-t border-blanc-casse/10">
+      <h2 class="text-xs uppercase tracking-wider font-semibold text-bleu">Villes desservies à La Réunion</h2>
+      <ul class="mt-4 flex flex-wrap gap-x-5 gap-y-2">
+        {villes.map((v) => (
+          <li>
+            <a href={`/creation-site-internet-${v.slug}`} class="text-sm text-blanc-casse/85 hover:text-bleu transition-colors duration-200">
+              Site internet à {v.nom}
+            </a>
+          </li>
+        ))}
       </ul>
     </div>
 
