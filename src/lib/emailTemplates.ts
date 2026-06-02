@@ -482,6 +482,201 @@ L'équipe 9site4`;
 }
 
 /* -------------------------------------------------------------------------- */
+/* Internal email — Site recommendation                                       */
+/* -------------------------------------------------------------------------- */
+
+export type LeadRecommendation = {
+  nom: string;
+  entreprise?: string;
+  email?: string;
+  telephone?: string;
+  preferenceContact?: string;
+  message?: string;
+  receivedAt?: Date;
+};
+
+export type RecommendationSummary = {
+  profile: string;
+  recommendedSiteType: string;
+  recommendedModule: string;
+  priority: 'Haute' | 'Moyenne' | 'Basse';
+  explanation: string;
+  suggestedPages: string[];
+  suggestedCTAs: string[];
+  recommendedNextStep: string;
+};
+
+export type AnswersSummary = {
+  secteur: string;
+  priorite: string;
+  contact: string;
+  presence: string;
+  elements: string[];
+  urgence: string;
+  suite: string;
+};
+
+export function internalRecommendationEmail(opts: {
+  lead: LeadRecommendation;
+  answers: AnswersSummary;
+  recommendation: RecommendationSummary;
+}): EmailContent {
+  const { lead, answers, recommendation } = opts;
+  const receivedAt = lead.receivedAt ?? new Date();
+  const dateStr = formatReunionDate(receivedAt);
+  const titleId = (lead.entreprise && lead.entreprise.trim()) || lead.nom;
+  const subject = `[Nouvelle recommandation 9site4] ${titleId} — ${answers.secteur}`;
+  const preheader = 'Nouvelle recommandation depuis l\'outil "Trouver le site adapté".';
+
+  const emailLink = lead.email
+    ? `<a href="mailto:${escapeHtml(lead.email)}" style="color:#91a6ff;text-decoration:none;">${escapeHtml(lead.email)}</a>`
+    : null;
+  const telLink = lead.telephone
+    ? `<a href="tel:${escapeHtml(sanitizePhone(lead.telephone))}" style="color:#91a6ff;text-decoration:none;">${escapeHtml(lead.telephone)}</a>`
+    : null;
+
+  const rows = [
+    renderRow('Type', 'Recommandation de site'),
+    renderRow('Nom', lead.nom),
+    renderRow('Entreprise', lead.entreprise),
+    renderRow('Secteur', answers.secteur),
+    renderRow('Priorité', recommendation.priority),
+    renderRow('Type de site recommandé', recommendation.recommendedSiteType),
+    renderRow('Module recommandé', recommendation.recommendedModule),
+    renderRow('Préférence de contact', lead.preferenceContact),
+    renderRowHtml('Téléphone', telLink),
+    renderRowHtml('Email', emailLink),
+  ].join('');
+
+  const answersRows = [
+    renderRow('Secteur', answers.secteur),
+    renderRow('Priorité actuelle', answers.priorite),
+    renderRow('Type de contact souhaité', answers.contact),
+    renderRow('Présence en ligne actuelle', answers.presence),
+    renderRow('Éléments à valoriser', answers.elements.join(', ')),
+    renderRow('Urgence', answers.urgence),
+    renderRow('Suite souhaitée', answers.suite),
+  ].join('');
+
+  const messageBlock = lead.message && lead.message.trim()
+    ? `<div style="${STYLE.sectionTitle}">Message libre</div>
+       <div style="${STYLE.msgBox}">${nl2br(lead.message.trim())}</div>`
+    : '';
+
+  const contactButtons = lead.email && lead.telephone
+    ? `<div style="${STYLE.sectionTitle}">Contacter rapidement</div>
+       ${renderContactButtons({ nom: lead.nom, email: lead.email, telephone: lead.telephone })}`
+    : '';
+
+  const html = `<!DOCTYPE html>
+<html lang="fr">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escapeHtml(subject)}</title></head>
+<body style="${STYLE.outer}">
+  <span style="${STYLE.preheader}">${escapeHtml(preheader)}</span>
+  <div style="${STYLE.card}">
+    <div>
+      <span style="${STYLE.brand}">9site4</span>
+      <span style="${STYLE.badge}">Recommandation</span>
+      <p style="${STYLE.subtitle}">Outil "Trouver le site adapté"</p>
+    </div>
+    <h1 style="${STYLE.h1}">${escapeHtml(lead.nom)}${lead.entreprise ? ` — ${escapeHtml(lead.entreprise)}` : ''}</h1>
+    <p style="${STYLE.dateLine}">Reçu le ${escapeHtml(dateStr)} (heure 974)</p>
+
+    <div style="${STYLE.sectionTitle}">Résumé</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+      ${rows}
+    </table>
+
+    <div style="${STYLE.sectionTitle}">Réponses du prospect</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+      ${answersRows}
+    </table>
+
+    ${contactButtons}
+
+    ${messageBlock}
+
+    <div style="${STYLE.action}">
+      <strong>Action recommandée :</strong> ${escapeHtml(recommendation.recommendedNextStep)}. Reprendre contact selon la préférence et confirmer la recommandation (${escapeHtml(recommendation.recommendedSiteType)}).
+    </div>
+
+    <div style="${STYLE.footer}">
+      Demande reçue depuis 9site4.re — Vous pouvez répondre directement à cet email (Reply-To = prospect).
+    </div>
+  </div>
+</body>
+</html>`;
+
+  const text = [
+    `Nouvelle recommandation 9site4`,
+    `Reçu le ${dateStr} (heure 974)`,
+    ``,
+    `Nom : ${lead.nom}`,
+    lead.entreprise ? `Entreprise : ${lead.entreprise}` : null,
+    `Secteur : ${answers.secteur}`,
+    `Priorité : ${recommendation.priority}`,
+    `Type de site recommandé : ${recommendation.recommendedSiteType}`,
+    `Module recommandé : ${recommendation.recommendedModule}`,
+    lead.preferenceContact ? `Préférence : ${lead.preferenceContact}` : null,
+    lead.telephone ? `Téléphone : ${lead.telephone}` : null,
+    lead.email ? `Email : ${lead.email}` : null,
+    ``,
+    `Réponses :`,
+    `- Priorité actuelle : ${answers.priorite}`,
+    `- Type de contact souhaité : ${answers.contact}`,
+    `- Présence actuelle : ${answers.presence}`,
+    `- Éléments à valoriser : ${answers.elements.join(', ')}`,
+    `- Urgence : ${answers.urgence}`,
+    `- Suite souhaitée : ${answers.suite}`,
+    lead.message && lead.message.trim() ? `\nMessage :\n${lead.message.trim()}` : null,
+    ``,
+    `Action : ${recommendation.recommendedNextStep}.`,
+    ``,
+    `— 9site4.re`,
+  ]
+    .filter(Boolean)
+    .join('\n');
+
+  return { subject, html, text };
+}
+
+export function autoReplyRecommendationEmail(opts: { nom: string }): EmailContent {
+  const subject = 'Votre recommandation 9site4 a bien été reçue';
+  const preheader = 'Merci d\'avoir utilisé l\'outil "Trouver le site adapté".';
+  const nomSafe = escapeHtml(opts.nom);
+
+  const paras = `
+    <p style="margin:0 0 12px;font-size:15px;color:#2A2A35;line-height:1.6;">Bonjour ${nomSafe},</p>
+    <p style="margin:0 0 12px;font-size:15px;color:#2A2A35;line-height:1.6;">Merci d'avoir utilisé l'outil "Trouver le site adapté" sur 9site4.</p>
+    <p style="margin:0 0 12px;font-size:15px;color:#2A2A35;line-height:1.6;">Nous avons bien reçu votre demande ainsi que la recommandation générée à partir de vos réponses. Notre équipe revient vers vous rapidement avec une proposition claire et adaptée à votre activité.</p>
+    <p style="margin:0 0 12px;font-size:15px;color:#2A2A35;line-height:1.6;">En attendant, vous pouvez consulter nos réalisations :<br>
+      <a href="https://9site4.re/realisations/" style="color:#91a6ff;text-decoration:none;">https://9site4.re/realisations/</a>
+    </p>
+    <p style="margin:16px 0 0;font-size:15px;color:#2A2A35;line-height:1.6;">À très vite,<br>L'équipe 9site4</p>
+  `;
+
+  const html = autoReplyHtmlShell({
+    preheader,
+    title: 'Votre recommandation a bien été reçue',
+    bodyParagraphsHtml: paras,
+  });
+
+  const text = `Bonjour ${opts.nom},
+
+Merci d'avoir utilisé l'outil "Trouver le site adapté" sur 9site4.
+
+Nous avons bien reçu votre demande ainsi que la recommandation générée à partir de vos réponses. Notre équipe revient vers vous rapidement avec une proposition claire et adaptée à votre activité.
+
+En attendant, vous pouvez consulter nos réalisations :
+https://9site4.re/realisations/
+
+À très vite,
+L'équipe 9site4`;
+
+  return { subject, html, text };
+}
+
+/* -------------------------------------------------------------------------- */
 /* Exports for testing / introspection                                        */
 /* -------------------------------------------------------------------------- */
 
