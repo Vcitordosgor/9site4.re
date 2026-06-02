@@ -43,6 +43,7 @@ type PageKey =
   | 'siteVitrineReunion'
   | 'agenceWebReunion'
   | 'diagnostic'
+  | 'trouverSiteAdapte'
   | 'templatePizzeria'
   | 'templateSalon'
   | 'templateSpa'
@@ -203,6 +204,12 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
     description:
       '9site4 accompagne les professionnels réunionnais dans la création, la structuration et la gestion de leur site internet, avec une offre claire et un accompagnement local.',
     canonical: '/agence-web-la-reunion',
+  },
+  trouverSiteAdapte: {
+    title: `Quel site internet pour votre activité à La Réunion ? | ${siteConfig.siteName}`,
+    description:
+      'Répondez à quelques questions et découvrez le type de site professionnel adapté à votre activité : devis, réservation, rendez-vous, présentation, diagnostic ou module métier.',
+    canonical: '/trouver-le-site-adapte',
   },
   diagnostic: {
     title: `Diagnostic gratuit de site internet à La Réunion | ${siteConfig.siteName}`,
