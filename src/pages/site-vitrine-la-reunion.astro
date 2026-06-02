@@ -38,15 +38,6 @@ const faq = [
   },
 ];
 
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: faq.map((item) => ({
-    '@type': 'Question',
-    name: item.q,
-    acceptedAnswer: { '@type': 'Answer', text: item.a },
-  })),
-};
 const serviceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
@@ -61,7 +52,6 @@ const serviceSchema = {
 ---
 
 <BaseLayout seo={seo}>
-  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
 
   <div class="bg-black text-blanc-casse">
@@ -260,7 +250,7 @@ const serviceSchema = {
           ·
           <a href="/realisations" class="text-bleu hover:underline">réalisations</a>
           ·
-          <a href="/contact" class="text-bleu hover:underline">contact</a> · <a href="/diagnostic-site-internet-la-reunion" class="text-bleu hover:underline" data-track-event="diagnostic_cta_click" data-track-category="conversion" data-track-source="seo_sector_voir_aussi" data-track-target="/diagnostic-site-internet-la-reunion">diagnostic gratuit</a>.
+          <a href="/contact" class="text-bleu hover:underline">contact</a> · <a href="/diagnostic-site-internet-la-reunion" class="text-bleu hover:underline" data-track-event="diagnostic_cta_click" data-track-category="conversion" data-track-source="seo_sector_voir_aussi" data-track-target="/diagnostic-site-internet-la-reunion">diagnostic gratuit</a> · <a href="/methode-9site4" class="text-bleu hover:underline">méthode 9site4</a> · <a href="/questions-frequentes" class="text-bleu hover:underline">questions fréquentes</a> · <a href="/trouver-le-site-adapte" class="text-bleu hover:underline">trouver le site adapté</a>.
         </p>
       </div>
     </section>
