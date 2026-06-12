@@ -14,6 +14,7 @@ import data from '../../data/templates/concierge.json';
 
 import ConciergeHeader from '../../components/templates/conciergerie/ConciergeHeader.astro';
 import HeroCarteBienvenue from '../../components/templates/conciergerie/HeroCarteBienvenue.astro';
+import BandeauPresence from '../../components/templates/conciergerie/BandeauPresence.astro';
 import Services from '../../components/templates/conciergerie/Services.astro';
 import Promesse from '../../components/templates/conciergerie/Promesse.astro';
 import CommentCaMarche from '../../components/templates/conciergerie/CommentCaMarche.astro';
@@ -40,6 +41,7 @@ const businessLD = localBusinessSchema(data, 'LocalBusiness');
 
   <main class="bg-concierge-champagne text-concierge-encre font-inter">
     <HeroCarteBienvenue />
+    <BandeauPresence />
     <Services />
     <Promesse />
     <CommentCaMarche />

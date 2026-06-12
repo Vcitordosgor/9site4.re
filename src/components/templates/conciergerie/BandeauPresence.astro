@@ -1,0 +1,53 @@
+---
+/**
+ * BandeauPresence — bandeau marquee fin "Concierge présent" qui défile horizontalement.
+ * Pause si hors viewport, désactive si prefers-reduced-motion.
+ */
+const ville = "Saint-Gilles";
+const items = [
+  `Concierge présent : ${ville} · Aujourd'hui`,
+  "Check-in 24/7 · FR · EN · ES · DE",
+  "Astreinte téléphonique 24h/24",
+  "Yield management dynamique",
+  "Seize biens · choisis pour la qualité",
+];
+const loop = [...items, ...items];
+---
+<div class="concierge-marquee relative bg-concierge-nuit text-concierge-laiton border-y border-concierge-laiton/15 overflow-hidden" aria-label="Présence concierge">
+  <div class="concierge-marquee-track flex gap-12 py-3 whitespace-nowrap will-change-transform">
+    {loop.map((t, i) => (
+      <span class="font-inter text-[11px] uppercase tracking-[0.35em] flex items-center gap-12" aria-hidden={i >= items.length ? 'true' : undefined}>
+        <span>{t}</span>
+        <span class="inline-block w-1.5 h-1.5 rounded-full bg-concierge-laiton/60" aria-hidden="true"></span>
+      </span>
+    ))}
+  </div>
+
+  <style>
+    .concierge-marquee-track {
+      animation: concierge-marquee 38s linear infinite;
+    }
+    @keyframes concierge-marquee {
+      from { transform: translate3d(0,0,0); }
+      to   { transform: translate3d(-50%,0,0); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .concierge-marquee-track { animation: none !important; transform: none !important; }
+    }
+  </style>
+
+  <script is:inline>
+    (function () {
+      var wrap = document.querySelector('.concierge-marquee');
+      if (!wrap) return;
+      var track = wrap.querySelector('.concierge-marquee-track');
+      if (!track) return;
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          track.style.animationPlayState = e.isIntersecting ? 'running' : 'paused';
+        });
+      }, { threshold: 0 });
+      io.observe(wrap);
+    })();
+  </script>
+</div>
