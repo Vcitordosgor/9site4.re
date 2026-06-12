@@ -4,6 +4,13 @@
   <div class="relative h-screen min-h-[640px] w-full overflow-hidden" style="background:#0F2A36;">
     <img src="/images/surf/hero.webp" alt="Vague à La Réunion" class="absolute inset-0 w-full h-full object-cover" fetchpriority="high"/>
     <div class="absolute inset-0" style="background:linear-gradient(180deg, rgba(15,42,54,0.30) 0%, rgba(15,42,54,0.65) 100%);"></div>
+    <!-- SIGNATURE : vague stylisée qui ondule en bas du hero -->
+    <svg class="absolute inset-x-0 bottom-0 w-full h-32 md:h-44 pointer-events-none z-10" viewBox="0 0 1440 200" preserveAspectRatio="none" aria-hidden="true">
+      <path class="surf-wave surf-wave-3" d="M0,140 C200,90 380,180 600,130 C820,80 1040,170 1260,120 C1340,100 1400,110 1440,115 L1440,200 L0,200 Z" fill="rgba(15,42,54,0.55)"/>
+      <path class="surf-wave surf-wave-2" d="M0,150 C220,110 420,190 640,150 C860,110 1080,180 1300,140 C1370,125 1410,130 1440,135 L1440,200 L0,200 Z" fill="rgba(15,42,54,0.75)"/>
+      <path class="surf-wave surf-wave-1" d="M0,170 C240,140 460,200 700,170 C940,140 1160,200 1380,170 L1440,165 L1440,200 L0,200 Z" fill="#0F2A36"/>
+    </svg>
+
     <div class="absolute inset-x-0 bottom-0 p-6 md:p-14">
       <div class="max-w-content mx-auto">
         <div class="text-[11px] uppercase tracking-[0.32em] mb-4 font-bold" style="color:#FF6B5A;">École de surf · Réunion · ouest</div>
@@ -16,9 +23,43 @@
         <div class="mt-9 flex flex-wrap gap-3 items-center">
           <a href="#process" class="inline-flex items-center h-13 px-7 text-[12px] uppercase tracking-[0.22em] font-bold" style="background:#FF6B5A; color:#0F2A36; height:52px;">Réserver un cours</a>
           <a href="#maree" class="inline-flex items-center h-13 px-7 text-[12px] uppercase tracking-[0.22em] font-bold border" style="border-color:#F4F8F7; color:#F4F8F7; height:52px;">Voir la marée</a>
-          <span class="ml-auto hidden md:inline font-bebas text-3xl" style="color:#FF6B5A;">2.1m · 14s · NW</span>
+          <span class="ml-auto hidden md:inline-flex items-center gap-2 font-bebas text-3xl" style="color:#FF6B5A;">
+            <svg width="46" height="22" viewBox="0 0 46 22" fill="none" aria-hidden="true">
+              <path class="surf-mini-wave" d="M2,12 C8,4 14,20 22,12 C30,4 36,20 44,12" stroke="#FF6B5A" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <span class="houle-pulse">2.1m · 14s · NW</span>
+          </span>
         </div>
       </div>
     </div>
   </div>
+
+  <style>
+    .surf-wave { will-change: transform; }
+    .surf-wave-1 { animation: surf-wave-roll 8s ease-in-out infinite; }
+    .surf-wave-2 { animation: surf-wave-roll 11s ease-in-out infinite reverse; }
+    .surf-wave-3 { animation: surf-wave-roll 14s ease-in-out infinite; }
+    @keyframes surf-wave-roll {
+      0%, 100% { transform: translateX(0); }
+      50%      { transform: translateX(-22px); }
+    }
+    .surf-mini-wave {
+      stroke-dasharray: 70;
+      stroke-dashoffset: 70;
+      animation: surf-mini-draw 4s ease-in-out infinite;
+    }
+    @keyframes surf-mini-draw {
+      0% { stroke-dashoffset: 70; }
+      50% { stroke-dashoffset: 0; }
+      100% { stroke-dashoffset: -70; }
+    }
+    .houle-pulse { animation: houle-pulse 3s ease-in-out infinite; }
+    @keyframes houle-pulse {
+      0%, 100% { opacity: 0.75; }
+      50%      { opacity: 1; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .surf-wave, .surf-mini-wave, .houle-pulse { animation: none; }
+    }
+  </style>
 </section>

@@ -4,6 +4,24 @@ const info = data.info;
 const stats = data.stats;
 ---
 <section id="top" class="relative min-h-screen w-full overflow-hidden bg-plongee-abysse text-plongee-ecume">
+
+  <!-- SIGNATURE : bulles qui remontent doucement -->
+  <div class="bl-bubbles pointer-events-none absolute inset-0 z-0" aria-hidden="true">
+    <span class="bl-bubble" style="left:8%; --d:14s; --s:7px; --o:0.55;"></span>
+    <span class="bl-bubble" style="left:18%; --d:22s; --s:11px; --o:0.4; animation-delay:-4s;"></span>
+    <span class="bl-bubble" style="left:30%; --d:18s; --s:5px; --o:0.5; animation-delay:-9s;"></span>
+    <span class="bl-bubble" style="left:42%; --d:25s; --s:14px; --o:0.32; animation-delay:-13s;"></span>
+    <span class="bl-bubble" style="left:55%; --d:16s; --s:8px; --o:0.5; animation-delay:-2s;"></span>
+    <span class="bl-bubble" style="left:68%; --d:20s; --s:6px; --o:0.45; animation-delay:-11s;"></span>
+    <span class="bl-bubble" style="left:78%; --d:24s; --s:12px; --o:0.35; animation-delay:-6s;"></span>
+    <span class="bl-bubble" style="left:88%; --d:17s; --s:9px; --o:0.5; animation-delay:-15s;"></span>
+  </div>
+
+  <!-- SIGNATURE : profondeur-mètre live -->
+  <div class="hidden md:flex absolute top-32 right-8 z-20 flex-col items-end gap-1 px-3 py-2 rounded-sm bg-plongee-abysse/55 ring-1 ring-plongee-lagon/35 backdrop-blur-sm" aria-hidden="true">
+    <span class="font-jetbrains-mono text-[9px] uppercase tracking-[0.3em] text-plongee-lagon">profondeur</span>
+    <span class="font-fraunces text-2xl tabular-nums text-plongee-ecume" data-depth-meter>−0 m</span>
+  </div>
   <div class="absolute inset-0">
     <img src={info.photoHero} alt={info.photoHeroAlt} class="w-full h-full object-cover scale-105 motion-safe:animate-[hero-zoom_3s_ease-out_forwards]" fetchpriority="high" />
     <div class="absolute inset-0 bg-gradient-to-b from-plongee-abysse/70 via-plongee-abysse/45 to-plongee-abysse"></div>
@@ -67,4 +85,50 @@ const stats = data.stats;
   @keyframes hero-rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes hero-zoom { from { transform: scale(1.12); } to { transform: scale(1.04); } }
   @keyframes float { 0%,100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, 8px); } }
+
+  /* SIGNATURE : bulles */
+  .bl-bubble {
+    position: absolute;
+    bottom: -40px;
+    width: var(--s, 8px);
+    height: var(--s, 8px);
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.85), rgba(91,192,190,0.45) 60%, rgba(91,192,190,0) 100%);
+    opacity: var(--o, 0.5);
+    animation: bl-rise var(--d, 18s) linear infinite;
+    will-change: transform, opacity;
+  }
+  @keyframes bl-rise {
+    0%   { transform: translateY(0) translateX(0); opacity: 0; }
+    8%   { opacity: var(--o, 0.5); }
+    50%  { transform: translateY(-50vh) translateX(12px); }
+    90%  { opacity: var(--o, 0.5); }
+    100% { transform: translateY(-110vh) translateX(-6px); opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .bl-bubble { animation: none; opacity: 0; }
+  }
 </style>
+
+<script>
+  // SIGNATURE : profondeur-mètre qui descend au scroll (-5, -12, -18, -25, -40)
+  (function(){
+    const meter = document.querySelector<HTMLElement>('[data-depth-meter]');
+    if (!meter) return;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return;
+    const paliers = [0, 5, 12, 18, 25, 40];
+    let raf = 0;
+    function update() {
+      raf = 0;
+      const docH = document.documentElement.scrollHeight - window.innerHeight;
+      const p = Math.max(0, Math.min(1, window.scrollY / Math.max(1, docH)));
+      const target = paliers[Math.min(paliers.length - 1, Math.floor(p * paliers.length))];
+      meter!.textContent = `−${target} m`;
+    }
+    window.addEventListener('scroll', () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    }, { passive: true });
+    update();
+  })();
+</script>
