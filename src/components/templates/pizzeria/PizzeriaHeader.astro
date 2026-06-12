@@ -13,7 +13,8 @@ const navLinks = [
 <header
   id="pizzeria-header"
   data-scrolled="false"
-  class="fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-out"
+  class="fixed inset-x-0 z-40 transition-all duration-500 ease-out"
+  style="top: var(--pizza-header-offset, 0px);"
 >
   <div class="max-w-content mx-auto px-6 md:px-10 h-20 flex items-center justify-between gap-6">
     <a href="#top" class="font-playfair font-bold leading-none text-pizza-creme transition-colors" style="font-size: 22px;">
@@ -63,7 +64,8 @@ const navLinks = [
   data-open="false"
   aria-hidden="true"
   inert
-  class="md:hidden fixed inset-0 top-20 z-40 bg-pizza-charbon transition-opacity duration-300 ease-out data-[open=false]:opacity-0 data-[open=false]:pointer-events-none data-[open=true]:opacity-100"
+  class="md:hidden fixed inset-x-0 bottom-0 z-30 bg-pizza-charbon transition-opacity duration-300 ease-out data-[open=false]:opacity-0 data-[open=false]:pointer-events-none data-[open=true]:opacity-100"
+  style="top: calc(var(--pizza-header-offset, 0px) + 5rem);"
 >
   <nav class="h-full flex flex-col px-6 pt-10 pb-10" aria-label="Navigation mobile">
     <ul class="flex-1 flex flex-col gap-2">
@@ -100,11 +102,21 @@ const navLinks = [
 <script>
   const header = document.getElementById('pizzeria-header');
   if (header) {
+    const banner = document.getElementById('demo-banner');
+    const syncOffset = () => {
+      const h = banner && banner.offsetParent !== null ? banner.getBoundingClientRect().height : 0;
+      document.documentElement.style.setProperty('--pizza-header-offset', `${Math.round(h)}px`);
+    };
     const update = () => {
       header.dataset.scrolled = String(window.scrollY > 60);
     };
+    syncOffset();
     update();
     window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', syncOffset, { passive: true });
+    if (banner && 'ResizeObserver' in window) {
+      new ResizeObserver(syncOffset).observe(banner);
+    }
   }
 
   const toggle = document.getElementById('pizzeria-menu-toggle');

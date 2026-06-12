@@ -1,10 +1,16 @@
 ---
 /**
- * Signature WOAW : "Carte des parfums péi" — grille 6 parfums avec card
- * pop, photo, tag sorbet/glace, couleur de fond signature par parfum.
+ * Signature WOAW : "Carte des parfums péi"
+ * — Moment signature : grosse boule de glace interactive (3-color radial gradient sphere)
+ *   qui change de couleur au survol/clic d'un parfum dans le carrousel, avec une goutte
+ *   qui tombe en boucle pour la fraîcheur.
+ * — Grille des 6 parfums avec card pop, tag sorbet/glace, couleur signature.
  */
 import data from '../../../data/templates/sorbetpei.json';
 const marqueeMots = ['Mangue Carotte', 'Letchi', 'Ananas Victoria', 'Goyave rose', 'Vanille bourbon', 'Chocolat 70%', 'Combava (édition)'];
+
+// Couleur "highlight" claire pour chaque parfum (pour le top du gradient sphère)
+const parfums = data.parfumsPhares;
 ---
 <section id="parfums" class="relative pb-24 md:pb-36 overflow-hidden" style="background:#FFF6E2;">
   <!-- Marquee Fraunces italique défilant -->
@@ -21,10 +27,9 @@ const marqueeMots = ['Mangue Carotte', 'Letchi', 'Ananas Victoria', 'Goyave rose
       ))}
     </div>
   </div>
-  <style>@keyframes gl-marquee { from { transform: translateX(0); } to { transform: translateX(-33.333%); } } @media (prefers-reduced-motion: reduce) { [style*='gl-marquee'] { animation: none !important; } }</style>
 
-  <div class="max-w-content mx-auto px-6 md:px-12 pt-24 md:pt-32 relative">
-    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14 md:mb-20">
+  <div class="max-w-content mx-auto px-6 md:px-12 pt-20 md:pt-28 relative">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 md:mb-16">
       <div class="max-w-3xl">
         <p class="text-[11px] uppercase tracking-[0.42em] mb-3 flex items-center gap-3 font-bold" style="color:#FF6F91;">
           <span class="block w-10 h-px" style="background:#FF6F91;"></span>
@@ -40,16 +45,181 @@ const marqueeMots = ['Mangue Carotte', 'Letchi', 'Ananas Victoria', 'Goyave rose
       </p>
     </div>
 
+    <!-- ============================================================ -->
+    <!-- SIGNATURE MOMENT : boule interactive + carrousel parfums -->
+    <!-- ============================================================ -->
+    <div
+      id="gl-scoop-stage"
+      class="relative mb-16 md:mb-24 rounded-[36px] overflow-hidden px-4 sm:px-8 pt-10 sm:pt-14 pb-8"
+      style={`background:#FFEFCC; --scoop-color:${parfums[0].couleur}; --scoop-bg:${parfums[0].couleurFond}; --scoop-name:'${parfums[0].nom}';`}
+    >
+      <!-- Halo pulsant en fond -->
+      <div class="absolute inset-0 pointer-events-none opacity-40" aria-hidden="true"
+           style="background:radial-gradient(circle at 50% 35%, var(--scoop-color) 0%, transparent 55%); transition:background 700ms cubic-bezier(.4,0,.2,1);"></div>
+
+      <p class="relative text-center text-[10px] sm:text-[11px] uppercase tracking-[0.32em] font-bold mb-3" style="color:#3D2817;">
+        <span class="opacity-60">Choisis ton parfum —</span>
+        <span class="inline-block ml-1" style="color:var(--scoop-color); filter:saturate(1.4) brightness(0.78); transition:color 600ms;">
+          la boule change.
+        </span>
+      </p>
+
+      <!-- BOULE DE GLACE (cône + scoop avec radial gradient 3 couleurs) -->
+      <div class="relative mx-auto flex justify-center" style="width:clamp(180px,30vw,260px);">
+        <div class="gl-scoop-wrap relative" style="width:100%;">
+          <!-- Goutte qui tombe (loop) -->
+          <span class="gl-drip" aria-hidden="true"></span>
+
+          <!-- Boule = div avec radial gradient 3 couleurs -->
+          <div class="gl-scoop relative mx-auto" aria-hidden="true"></div>
+
+          <!-- Cône SVG -->
+          <svg class="relative -mt-6 mx-auto block" viewBox="0 0 120 110" style="width:80%; height:auto;" aria-hidden="true">
+            <defs>
+              <pattern id="glConeWaffle" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                <line x1="0" y1="0" x2="0" y2="10" stroke="#3D2817" stroke-width="0.8" opacity="0.45"/>
+                <line x1="5" y1="0" x2="5" y2="10" stroke="#3D2817" stroke-width="0.8" opacity="0.45"/>
+              </pattern>
+            </defs>
+            <!-- Bord supérieur du cône (rebord) -->
+            <ellipse cx="60" cy="14" rx="48" ry="8" fill="#D8932C"/>
+            <ellipse cx="60" cy="12" rx="48" ry="6" fill="#E9A537"/>
+            <!-- Corps du cône -->
+            <path d="M12 16 L60 108 L108 16 Z" fill="#E9A537"/>
+            <path d="M14 16 L60 102 L106 16 Z" fill="url(#glConeWaffle)"/>
+            <!-- Ombre intérieure -->
+            <path d="M12 16 L60 108 L108 16 Z" fill="none" stroke="#B97A1F" stroke-width="1.2" opacity="0.6"/>
+          </svg>
+
+          <!-- Étiquette nom du parfum sélectionné -->
+          <p class="relative mt-4 text-center font-fraunces italic" style="color:#3D2817; font-size:clamp(22px,2.8vw,32px); transition:transform 400ms;">
+            <span id="gl-scoop-label">{parfums[0].nom}</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- Carrousel de pastilles parfum (scroll horizontal sur mobile) -->
+      <div class="relative mt-6 sm:mt-8 overflow-x-auto no-scrollbar -mx-4 sm:mx-0">
+        <ul class="flex sm:flex-wrap sm:justify-center gap-2.5 sm:gap-3 px-4 sm:px-0 pb-2 sm:pb-0 snap-x snap-mandatory" role="tablist" aria-label="Parfums">
+          {parfums.map((p, i) => (
+            <li class="shrink-0 snap-start">
+              <button
+                type="button"
+                class="gl-parfum-chip group inline-flex items-center gap-2.5 pl-2 pr-4 py-2 rounded-full text-[12px] font-bold tracking-[0.06em] transition-all duration-300 hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+                data-color={p.couleur}
+                data-bg={p.couleurFond}
+                data-name={p.nom}
+                data-target={`parfum-${p.id}`}
+                aria-pressed={i === 0 ? 'true' : 'false'}
+                style={`background:#FFF6E2; color:#3D2817; box-shadow:0 4px 12px -4px rgba(61,40,23,0.15);`}
+              >
+                <span class="gl-chip-dot inline-block w-6 h-6 rounded-full transition-transform duration-300 group-hover:scale-110"
+                      style={`background:radial-gradient(circle at 30% 25%, ${p.couleurFond}, ${p.couleur} 65%, ${p.couleur === '#FFF8E7' ? '#E9C77F' : '#3D2817'} 140%); box-shadow:inset 0 -2px 4px rgba(0,0,0,0.15);`}></span>
+                <span class="whitespace-nowrap">{p.nom}</span>
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <style>
+      @keyframes gl-marquee { from { transform: translateX(0); } to { transform: translateX(-33.333%); } }
+      @media (prefers-reduced-motion: reduce) { [style*='gl-marquee'] { animation: none !important; } }
+
+      /* Scoop : boule sphérique avec dégradé radial 3 couleurs */
+      #gl-scoop-stage .gl-scoop {
+        width: clamp(160px, 26vw, 230px);
+        height: clamp(160px, 26vw, 230px);
+        border-radius: 50%;
+        background: radial-gradient(
+          circle at 32% 28%,
+          #FFFFFF 0%,
+          var(--scoop-bg) 22%,
+          var(--scoop-color) 62%,
+          color-mix(in srgb, var(--scoop-color) 65%, #3D2817) 100%
+        );
+        box-shadow:
+          inset -8px -14px 28px rgba(61,40,23,0.22),
+          inset 6px 8px 18px rgba(255,255,255,0.35),
+          0 22px 40px -16px rgba(61,40,23,0.45);
+        transition: background 700ms cubic-bezier(.4,0,.2,1), transform 500ms cubic-bezier(.4,0,.2,1);
+        animation: gl-scoop-breathe 6s ease-in-out infinite;
+      }
+      #gl-scoop-stage .gl-scoop::before {
+        /* Petite glaçure brillante */
+        content: '';
+        position: absolute;
+        top: 14%; left: 22%;
+        width: 26%; height: 18%;
+        border-radius: 50%;
+        background: radial-gradient(circle at 40% 35%, rgba(255,255,255,0.85), rgba(255,255,255,0) 70%);
+        pointer-events: none;
+      }
+      @keyframes gl-scoop-breathe {
+        0%, 100% { transform: translateY(0) scale(1); }
+        50%      { transform: translateY(-4px) scale(1.015); }
+      }
+
+      /* Goutte qui tombe */
+      #gl-scoop-stage .gl-drip {
+        position: absolute;
+        left: 50%;
+        top: clamp(150px, 24vw, 220px);
+        width: 14px;
+        height: 18px;
+        margin-left: -7px;
+        background: var(--scoop-color);
+        border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+        transform-origin: 50% 0;
+        box-shadow: inset -2px -2px 4px rgba(0,0,0,0.18), inset 2px 2px 4px rgba(255,255,255,0.5);
+        opacity: 0;
+        animation: gl-drip 4.5s cubic-bezier(.55,.1,.7,.4) infinite;
+        transition: background 700ms cubic-bezier(.4,0,.2,1);
+        z-index: 1;
+      }
+      @keyframes gl-drip {
+        0%        { transform: translateY(0) scaleY(0.6); opacity: 0; }
+        12%       { transform: translateY(2px) scaleY(0.9); opacity: 0.95; }
+        45%       { transform: translateY(30px) scaleY(1.25); opacity: 1; }
+        80%       { transform: translateY(70px) scaleY(1.55); opacity: 0.85; }
+        95%, 100% { transform: translateY(90px) scaleY(0.4); opacity: 0; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        #gl-scoop-stage .gl-scoop { animation: none; }
+        #gl-scoop-stage .gl-drip { animation: none; opacity: 0; }
+      }
+
+      /* Chip actif */
+      #gl-scoop-stage .gl-parfum-chip[aria-pressed="true"] {
+        background: #3D2817 !important;
+        color: #FFF6E2 !important;
+        box-shadow: 0 8px 22px -8px rgba(61,40,23,0.55);
+      }
+
+      .no-scrollbar { scrollbar-width: none; }
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+
+      /* Carte parfum : pop visuel sur la cible */
+      .gl-parfum-card.is-pulse {
+        animation: gl-pop 900ms ease-out;
+      }
+      @keyframes gl-pop {
+        0% { transform: translateY(0) scale(1); box-shadow: 0 0 0 0 currentColor; }
+        30% { transform: translateY(-8px) scale(1.015); }
+        100% { transform: translateY(0) scale(1); }
+      }
+    </style>
+
     <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-7">
-      {data.parfumsPhares.map((p, i) => (
-        <li class="group">
-          <article class="relative flex flex-col h-full overflow-hidden transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_22px_44px_-18px_rgba(61,40,23,0.35)] rounded-[28px]" style={`background:${p.couleurFond};`}>
-            <!-- Bandeau couleur signature + grande boule SVG (plus de photo) -->
+      {parfums.map((p) => (
+        <li class="group" id={`parfum-${p.id}`}>
+          <article class="gl-parfum-card relative flex flex-col h-full overflow-hidden transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_22px_44px_-18px_rgba(61,40,23,0.35)] rounded-[28px]" style={`background:${p.couleurFond};`}>
+            <!-- Bandeau couleur signature + grande boule SVG -->
             <div class="relative aspect-[5/4] flex items-end justify-center overflow-hidden" style={`background:${p.couleur};`}>
-              <!-- Pattern points discret -->
               <div class="absolute inset-0 opacity-20" style="background-image:radial-gradient(circle, #ffffff 1px, transparent 1.5px);background-size:14px 14px;" aria-hidden="true"></div>
-              <!-- Grande boule de glace SVG -->
-              <svg viewBox="0 0 200 200" class="relative w-3/4 h-3/4 -mb-6 transition-transform duration-700 group-hover:-translate-y-2" aria-hidden="true">
+              <svg viewBox="0 0 200 200" class="relative w-3/4 h-3/4 -mb-6 transition-transform duration-700 group-hover:-translate-y-2 group-hover:rotate-3" aria-hidden="true">
                 <circle cx="100" cy="110" r="68" fill={p.couleurFond} opacity="0.95"/>
                 <ellipse cx="80" cy="92" rx="18" ry="8" fill="#FFF6E2" opacity="0.42"/>
                 <circle cx="100" cy="110" r="68" fill="none" stroke={p.couleurFond} stroke-width="1.5" opacity="0.6"/>
@@ -67,7 +237,7 @@ const marqueeMots = ['Mangue Carotte', 'Letchi', 'Ananas Victoria', 'Goyave rose
               <p class="mt-4 text-[14.5px] leading-relaxed flex-1" style="color:#5C3A1E; font-family:'DM Sans',system-ui,sans-serif;">{p.description}</p>
               <a href={`https://wa.me/${data.info.whatsapp}?text=${encodeURIComponent(`Bonjour, je voudrais commander un bac : ${p.nom}.`)}`}
                  target="_blank" rel="noopener"
-                 class="mt-6 inline-flex items-center justify-center w-full px-6 rounded-full text-[12px] uppercase tracking-[0.22em] font-bold transition-all hover:scale-[1.02]"
+                 class="mt-6 inline-flex items-center justify-center w-full px-6 rounded-full text-[12px] uppercase tracking-[0.22em] font-bold transition-all hover:scale-[1.02] hover:gap-3"
                  style="background:#3D2817; color:#FFD93D; height:48px; font-family:'DM Sans',system-ui,sans-serif;">
                 Commander un bac
                 <svg viewBox="0 0 24 24" width="13" height="13" class="ml-2"><path d="M5 12h14m0 0l-5-5m5 5l-5 5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>
@@ -97,4 +267,55 @@ const marqueeMots = ['Mangue Carotte', 'Letchi', 'Ananas Victoria', 'Goyave rose
       </div>
     </div>
   </div>
+
+  <script>
+    (function () {
+      const stage = document.getElementById('gl-scoop-stage');
+      if (!stage) return;
+      const chips = stage.querySelectorAll('.gl-parfum-chip');
+      const label = stage.querySelector('#gl-scoop-label');
+      let activeIdx = 0;
+
+      const apply = (chip) => {
+        const color = chip.getAttribute('data-color');
+        const bg = chip.getAttribute('data-bg');
+        const name = chip.getAttribute('data-name');
+        if (color) stage.style.setProperty('--scoop-color', color);
+        if (bg) stage.style.setProperty('--scoop-bg', bg);
+        if (label && name) label.textContent = name;
+      };
+
+      const setActive = (idx) => {
+        chips.forEach((c, i) => c.setAttribute('aria-pressed', String(i === idx)));
+        activeIdx = idx;
+        apply(chips[idx]);
+      };
+
+      chips.forEach((chip, i) => {
+        chip.addEventListener('mouseenter', () => apply(chip));
+        chip.addEventListener('focus', () => apply(chip));
+        chip.addEventListener('mouseleave', () => apply(chips[activeIdx]));
+        chip.addEventListener('blur', () => apply(chips[activeIdx]));
+        chip.addEventListener('click', () => {
+          setActive(i);
+          const target = chip.getAttribute('data-target');
+          if (target) {
+            const el = document.getElementById(target);
+            if (el) {
+              const card = el.querySelector('.gl-parfum-card');
+              if (card) {
+                card.classList.remove('is-pulse');
+                // Force reflow to restart animation
+                void card.offsetWidth;
+                card.classList.add('is-pulse');
+              }
+              el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+          }
+        });
+      });
+    })();
+  </script>
 </section>
+</content>
+</invoke>

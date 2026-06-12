@@ -1,18 +1,37 @@
 ---
+const petals = [
+  { left: '6%',  delay: '0s',    dur: '22s', size: 14, rot: '12deg',  color: '#F4E6E0', sway: '18px',  desktopOnly: false },
+  { left: '18%', delay: '-7s',   dur: '28s', size: 11, rot: '-18deg', color: '#E8D5BE', sway: '-22px', desktopOnly: false },
+  { left: '32%', delay: '-14s',  dur: '24s', size: 16, rot: '34deg',  color: '#F4E6E0', sway: '14px',  desktopOnly: true  },
+  { left: '46%', delay: '-3s',   dur: '30s', size: 12, rot: '-8deg',  color: '#E8D5BE', sway: '-16px', desktopOnly: false },
+  { left: '62%', delay: '-18s',  dur: '26s', size: 13, rot: '22deg',  color: '#C49B62', sway: '20px',  desktopOnly: true  },
+  { left: '76%', delay: '-10s',  dur: '32s', size: 15, rot: '-26deg', color: '#F4E6E0', sway: '-12px', desktopOnly: false },
+  { left: '88%', delay: '-5s',   dur: '25s', size: 10, rot: '14deg',  color: '#E8D5BE', sway: '18px',  desktopOnly: true  },
+  { left: '54%', delay: '-21s',  dur: '34s', size: 13, rot: '-4deg',  color: '#F4E6E0', sway: '-20px', desktopOnly: true  },
+];
 ---
-<section class="relative w-full overflow-hidden" style="background:#FBF3EE;">
-  <div class="grid md:grid-cols-2 min-h-[88vh] items-center">
+<section class="fl-hero relative w-full overflow-hidden" style="background:#FBF3EE;">
+  <div class="fl-petals" aria-hidden="true">
+    {petals.map(p => (
+      <span
+        class={`fl-petal${p.desktopOnly ? ' fl-petal--desk' : ''}`}
+        style={`left:${p.left}; width:${p.size}px; height:${p.size * 1.4}px; background:${p.color}; animation-delay:${p.delay}; animation-duration:${p.dur}; --sway:${p.sway}; --rot:${p.rot};`}
+      ></span>
+    ))}
+  </div>
+
+  <div class="relative grid md:grid-cols-2 min-h-[88vh] items-center">
     <div class="relative order-2 md:order-1 px-6 md:px-14 py-14 md:py-0">
       <p class="font-cormorant italic text-2xl md:text-3xl mb-3" style="color:#5C7448;">au creux des mains —</p>
-      <h1 class="font-cormorant text-6xl md:text-8xl leading-[0.95]" style="color:#2A2520;">
+      <h1 class="font-cormorant text-6xl md:text-8xl leading-[0.95] tracking-tight" style="color:#2A2520;">
         Une fleur,<br/>une émotion,<br/><em class="italic" style="color:#C49B62;">une intention.</em>
       </h1>
       <p class="mt-7 max-w-md text-lg leading-relaxed" style="color:#5A4F45;">
         Atelier floral à La Réunion. Bouquets de saison, mariages, deuils, événementiel, abonnement et plantes. Cueilli local quand c'est possible, importé éthique quand il le faut.
       </p>
       <div class="mt-9 flex flex-wrap gap-3">
-        <a href="#petales" class="inline-flex items-center h-12 px-7 text-[12px] uppercase tracking-[0.22em] font-semibold transition-colors" style="background:#2A2520; color:#FBF3EE;">Voir les compositions</a>
-        <a href="#contact" class="inline-flex items-center h-12 px-7 text-[12px] uppercase tracking-[0.22em] font-semibold border" style="border-color:#2A2520; color:#2A2520;">Commander</a>
+        <a href="#petales" class="fl-cta fl-cta--solid inline-flex items-center h-12 px-7 text-[12px] uppercase tracking-[0.22em] font-semibold">Voir les compositions</a>
+        <a href="#contact" class="fl-cta fl-cta--ghost inline-flex items-center h-12 px-7 text-[12px] uppercase tracking-[0.22em] font-semibold border">Commander</a>
       </div>
     </div>
     <div class="relative order-1 md:order-2 min-h-[340px] md:min-h-[88vh]">
@@ -20,3 +39,65 @@
     </div>
   </div>
 </section>
+
+<style>
+  .fl-hero { isolation: isolate; }
+  .fl-cta--solid { background:#2A2520; color:#FBF3EE; transition: transform .3s ease, background .3s ease, box-shadow .3s ease; }
+  .fl-cta--solid:hover { background:#C49B62; transform: translateY(-2px); box-shadow: 0 10px 24px -12px rgba(196,155,98,0.55); }
+  .fl-cta--ghost { border-color:#2A2520; color:#2A2520; transition: background .3s ease, color .3s ease, transform .3s ease; }
+  .fl-cta--ghost:hover { background:#2A2520; color:#FBF3EE; transform: translateY(-2px); }
+
+  .fl-petals {
+    position: absolute; inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+  }
+  .fl-petal {
+    position: absolute;
+    top: -8%;
+    border-radius: 80% 20% 75% 25% / 60% 40% 65% 35%;
+    opacity: 0;
+    filter: blur(0.3px);
+    will-change: transform, opacity;
+    animation-name: fl-fall;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-play-state: paused;
+    transform: translate3d(0, -20px, 0) rotate(var(--rot, 0deg));
+  }
+  .fl-hero[data-play="1"] .fl-petal { animation-play-state: running; }
+
+  @keyframes fl-fall {
+    0%   { transform: translate3d(0, -10vh, 0) rotate(var(--rot, 0deg)); opacity: 0; }
+    10%  { opacity: 0.55; }
+    50%  { transform: translate3d(var(--sway, 16px), 50vh, 0) rotate(calc(var(--rot, 0deg) + 180deg)); opacity: 0.45; }
+    90%  { opacity: 0.35; }
+    100% { transform: translate3d(0, 110vh, 0) rotate(calc(var(--rot, 0deg) + 360deg)); opacity: 0; }
+  }
+
+  /* Hide desktop-only petals on small screens for perf */
+  @media (max-width: 768px) {
+    .fl-petal--desk { display: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fl-petal { display: none !important; }
+  }
+</style>
+
+<script>
+  const hero = document.querySelector('.fl-hero') as HTMLElement | null;
+  if (hero && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        for (const e of entries) {
+          hero.dataset.play = e.isIntersecting ? '1' : '0';
+        }
+      }, { threshold: 0.05 });
+      io.observe(hero);
+    } else {
+      hero.dataset.play = '1';
+    }
+  }
+</script>

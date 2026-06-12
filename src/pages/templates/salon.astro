@@ -32,6 +32,7 @@ import Instants from '../../components/templates/salon/Instants.astro';
 import Duo from '../../components/templates/salon/Duo.astro';
 import Marques from '../../components/templates/salon/Marques.astro';
 import Faq from '../../components/templates/salon/Faq.astro';
+import CiseauxSignature from '../../components/templates/salon/CiseauxSignature.astro';
 const businessLD = localBusinessSchema(salonData, 'HairSalon');
 
 ---
@@ -54,6 +55,7 @@ const businessLD = localBusinessSchema(salonData, 'HairSalon');
   <main id="top" class="bg-salon-blanc text-salon-noir font-dm-sans">
     <HeroSplit />
     <Manifesto />
+    <CiseauxSignature />
     <Prestations />
     <Instants />
     <Duo />

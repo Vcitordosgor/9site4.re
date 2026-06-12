@@ -3,9 +3,19 @@ import data from '../../../data/templates/painleve.json';
 ---
 <section class="relative" style="background:#E8E0CC;">
   <div class="grid lg:grid-cols-2 min-h-[640px]">
-    <div class="relative min-h-[360px]">
+    <div class="relative min-h-[360px] overflow-hidden" id="four-visual">
       <img src="/images/boulangerie/pain-6.webp" alt="Four à sole tournante en activité, voûte chaude rougeoyante" class="absolute inset-0 w-full h-full object-cover" loading="lazy"/>
       <div class="absolute inset-0" style="background:linear-gradient(180deg, transparent 50%, rgba(26,22,20,0.35));"></div>
+
+      <!-- Vapeur subtile qui s'élève du pain — signature artisanale -->
+      <div class="bl-steam pointer-events-none absolute inset-x-0 bottom-0 h-full" aria-hidden="true">
+        <span class="bl-puff" style="--x:28%; --d:0s;   --s:1;   --o:.55;"></span>
+        <span class="bl-puff" style="--x:42%; --d:1.4s; --s:1.2; --o:.45;"></span>
+        <span class="bl-puff" style="--x:55%; --d:.6s;  --s:.9;  --o:.6;"></span>
+        <span class="bl-puff" style="--x:68%; --d:2.1s; --s:1.1; --o:.4;"></span>
+        <span class="bl-puff" style="--x:78%; --d:3.2s; --s:.85; --o:.5;"></span>
+        <span class="bl-puff" style="--x:35%; --d:4s;   --s:1;   --o:.4;"></span>
+      </div>
     </div>
     <div class="flex items-center px-6 md:px-14 py-20 lg:py-0" style="background:#1F2521; color:#E8E0CC;">
       <div class="max-w-xl">
@@ -29,6 +39,54 @@ import data from '../../../data/templates/painleve.json';
     </div>
   </div>
 </section>
+
+<style>
+  /* Vapeur — désactivée par défaut, activée via IntersectionObserver */
+  .bl-steam { opacity: 0; transition: opacity 1.2s ease-out; }
+  .bl-steam.is-on { opacity: 1; }
+  .bl-puff {
+    position: absolute;
+    left: var(--x);
+    bottom: 18%;
+    width: clamp(60px, 9vw, 130px);
+    height: clamp(60px, 9vw, 130px);
+    margin-left: calc(clamp(60px, 9vw, 130px) / -2);
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 50%, rgba(232,224,204,0.55) 0%, rgba(232,224,204,0.18) 45%, rgba(232,224,204,0) 72%);
+    filter: blur(8px);
+    opacity: 0;
+    transform: translateY(0) scale(calc(var(--s) * 0.6));
+  }
+  .bl-steam.is-on .bl-puff {
+    animation: bl-rise 7s ease-in-out var(--d) infinite;
+  }
+  @keyframes bl-rise {
+    0%   { transform: translate(0, 0)        scale(calc(var(--s) * 0.55)); opacity: 0; }
+    18%  { opacity: var(--o); }
+    55%  { transform: translate(-10px, -55%) scale(calc(var(--s) * 1));   opacity: calc(var(--o) * 0.7); }
+    100% { transform: translate(14px, -110%) scale(calc(var(--s) * 1.4)); opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .bl-steam, .bl-steam.is-on .bl-puff { animation: none !important; opacity: 0 !important; }
+  }
+</style>
+
+<script>
+  (() => {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return;
+    const el = document.getElementById('four-visual');
+    if (!el) return;
+    const steam = el.querySelector('.bl-steam');
+    if (!steam) return;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { steam.classList.add('is-on'); io.disconnect(); }
+      });
+    }, { threshold: 0.25 });
+    io.observe(el);
+  })();
+</script>
 
 <section class="py-28 md:py-36" style="background:#EADBB7;">
   <div class="max-w-content mx-auto px-6 md:px-12 grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">

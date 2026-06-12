@@ -1,0 +1,198 @@
+---
+/**
+ * CiseauxSignature — moment signature.
+ * Une paire de ciseaux SVG glisse horizontalement et "coupe" un fil
+ * lorsque la section entre dans le viewport. Quelques mèches tombent
+ * derrière son sillage. 100% vanille, prefers-reduced-motion respecté
+ * (état final affiché sans animation).
+ */
+---
+
+<section
+  id="signature"
+  aria-labelledby="signature-titre"
+  class="relative bg-salon-blanc py-24 md:py-36 px-6 md:px-10 overflow-hidden"
+>
+  <div class="max-w-content mx-auto">
+
+    <header class="text-center max-w-2xl mx-auto mb-12 md:mb-16">
+      <p class="scroll-reveal flex items-center justify-center gap-3 text-xs font-semibold uppercase tracking-[0.3em] text-salon-vert">
+        <span class="inline-block w-10 h-px bg-salon-vert" aria-hidden="true"></span>
+        <span>Le geste</span>
+        <span class="inline-block w-10 h-px bg-salon-vert" aria-hidden="true"></span>
+      </p>
+      <h2
+        id="signature-titre"
+        class="scroll-reveal mt-5 font-fraunces font-bold text-salon-noir leading-[1.05]"
+        style="font-size: clamp(34px, 5.4vw, 60px);"
+      >
+        Un trait,
+        <span class="italic font-medium text-salon-vert">un seul.</span>
+      </h2>
+      <p class="scroll-reveal mt-5 text-salon-noir/70 leading-relaxed max-w-xl mx-auto">
+        Pas dix coups de ciseaux pour rattraper. Le bon geste, là où il faut.
+      </p>
+    </header>
+
+    <!-- La scène — ciseaux + fil -->
+    <div
+      class="ciseaux-scene scroll-reveal relative mx-auto"
+      data-ciseaux
+      style="max-width: 880px;"
+    >
+      <div class="relative h-[180px] sm:h-[220px] md:h-[260px] flex items-center">
+
+        <!-- Le fil (ligne) que les ciseaux vont couper -->
+        <svg
+          class="absolute inset-x-0 top-1/2 -translate-y-1/2 w-full"
+          height="6"
+          viewBox="0 0 880 6"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <line
+            x1="0" y1="3" x2="880" y2="3"
+            stroke="#0A0A0A" stroke-width="1.5"
+            stroke-dasharray="880" stroke-dashoffset="0"
+            class="ciseaux-line"
+          />
+        </svg>
+
+        <!-- Sillage : moitié droite du fil qui glisse vers le bas après la coupe -->
+        <div
+          class="ciseaux-falling absolute top-1/2 right-0 h-px bg-salon-noir origin-left"
+          aria-hidden="true"
+          style="width: 50%;"
+        ></div>
+
+        <!-- Mèches qui tombent -->
+        <div class="ciseaux-meches absolute inset-0 pointer-events-none" aria-hidden="true">
+          <span class="meche" style="--x: 22%; --d: 0ms;"></span>
+          <span class="meche" style="--x: 38%; --d: 120ms;"></span>
+          <span class="meche" style="--x: 55%; --d: 260ms;"></span>
+          <span class="meche" style="--x: 72%; --d: 380ms;"></span>
+          <span class="meche" style="--x: 84%; --d: 520ms;"></span>
+        </div>
+
+        <!-- Ciseaux SVG — glissent de gauche à droite -->
+        <svg
+          class="ciseaux-svg absolute top-1/2 left-0 -translate-y-1/2"
+          width="72" height="72" viewBox="0 0 64 64"
+          fill="none" stroke="#2D4A3A" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <!-- Anneaux -->
+          <circle cx="14" cy="14" r="7" />
+          <circle cx="14" cy="50" r="7" />
+          <!-- Lames qui se croisent au centre droit -->
+          <path d="M19 19 L58 30" />
+          <path d="M19 45 L58 34" />
+          <!-- Pivot -->
+          <circle cx="32" cy="32" r="1.6" fill="#2D4A3A" stroke="none" />
+        </svg>
+
+      </div>
+
+      <!-- Légende sous la scène -->
+      <p class="mt-8 text-center font-fraunces italic text-salon-vert text-base md:text-lg">
+        « On coupe quand on a compris le cheveu. »
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* État de départ */
+  .ciseaux-svg { transform: translate(0, -50%); }
+  .ciseaux-line { stroke-dashoffset: 0; }
+  .ciseaux-falling {
+    transform: translateY(-50%) rotate(0deg);
+    transition: none;
+    opacity: 1;
+  }
+  .ciseaux-meches .meche {
+    position: absolute;
+    top: 50%;
+    left: var(--x);
+    width: 1px;
+    height: 0;
+    background: linear-gradient(to bottom, #0A0A0A, transparent);
+    opacity: 0;
+    transform: translate(-50%, 0);
+  }
+
+  /* Animation déclenchée par .is-cutting (ajoutée par JS au scroll-in) */
+  .ciseaux-scene.is-cutting .ciseaux-svg {
+    animation: ciseaux-slide 2400ms cubic-bezier(0.6, 0.05, 0.35, 1) forwards;
+  }
+  .ciseaux-scene.is-cutting .ciseaux-line {
+    animation: ciseaux-cut 2400ms cubic-bezier(0.6, 0.05, 0.35, 1) forwards;
+  }
+  .ciseaux-scene.is-cutting .ciseaux-falling {
+    animation: ciseaux-fall 1400ms cubic-bezier(0.55, 0.05, 0.3, 1) forwards;
+    animation-delay: 1100ms;
+  }
+  .ciseaux-scene.is-cutting .ciseaux-meches .meche {
+    animation: meche-fall 1600ms cubic-bezier(0.4, 0.05, 0.5, 1) forwards;
+    animation-delay: var(--d, 0ms);
+  }
+
+  @keyframes ciseaux-slide {
+    0%   { transform: translate(0, -50%) rotate(-2deg); }
+    50%  { transform: translate(calc(50% - 8px), -50%) rotate(2deg); }
+    100% { transform: translate(calc(100% - 72px), -50%) rotate(-2deg); }
+  }
+  @keyframes ciseaux-cut {
+    /* Le trait disparaît derrière les ciseaux qui passent (gauche → droite) */
+    0%   { stroke-dashoffset: 0; }
+    100% { stroke-dashoffset: -880; }
+  }
+  @keyframes ciseaux-fall {
+    0%   { transform: translateY(-50%) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(140px) rotate(6deg); opacity: 0; }
+  }
+  @keyframes meche-fall {
+    0%   { height: 0; opacity: 0; transform: translate(-50%, 0) rotate(0deg); }
+    20%  { opacity: 0.7; height: 28px; }
+    100% { opacity: 0; height: 64px; transform: translate(-50%, 140px) rotate(12deg); }
+  }
+
+  /* Respect prefers-reduced-motion : état final lisible, pas d'animation */
+  @media (prefers-reduced-motion: reduce) {
+    .ciseaux-scene .ciseaux-svg {
+      animation: none !important;
+      transform: translate(calc(100% - 72px), -50%) !important;
+    }
+    .ciseaux-scene .ciseaux-line {
+      animation: none !important;
+      stroke-dashoffset: -880 !important;
+    }
+    .ciseaux-scene .ciseaux-falling,
+    .ciseaux-scene .ciseaux-meches .meche {
+      animation: none !important;
+      opacity: 0 !important;
+    }
+  }
+</style>
+
+<script>
+  /* Déclenche l'animation à l'entrée dans le viewport, une seule fois. */
+  const scenes = document.querySelectorAll<HTMLElement>('[data-ciseaux]');
+  if (scenes.length) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // léger délai pour laisser le scroll-reveal entrer d'abord
+            window.setTimeout(() => entry.target.classList.add('is-cutting'), 220);
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.45 }
+    );
+    scenes.forEach((s) => io.observe(s));
+  }
+</script>

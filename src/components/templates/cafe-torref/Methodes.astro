@@ -39,9 +39,9 @@ const ticks = ['0 min', '4 min', '8 min', '12 min', 'Final'];
       <p class="mt-5 text-[16px] leading-relaxed" style="color:#D8C9A8;">Chaque grain réclame sa courbe. Pas de raccourci, pas de torréfaction « universelle » : on adapte la rampe de température au profil aromatique.</p>
     </div>
 
-    <div class="grid lg:grid-cols-2 gap-6">
+    <div class="grid lg:grid-cols-2 gap-6 cf-curves">
       {courbes.map(c => (
-        <article class="p-7 md:p-9" style="background:#3E2A1F;">
+        <article class="cf-curve p-7 md:p-9 relative transition-all duration-500" style="background:#3E2A1F;">
           <div class="flex items-baseline justify-between mb-6">
             <div class="font-instrument italic text-6xl leading-none" style="color:#B57A4A;">{c.num}</div>
             <div class="text-right text-[11px] uppercase tracking-[0.22em]" style="font-family:'DM Mono',monospace; color:#D8C9A8;">{c.duree} · {c.temp} max</div>
@@ -61,8 +61,8 @@ const ticks = ['0 min', '4 min', '8 min', '12 min', 'Final'];
                 </linearGradient>
               </defs>
               {[40, 80, 120].map(y => <line x1="0" y1={y} x2="400" y2={y} stroke="rgba(232,221,199,0.10)" stroke-dasharray="2 4"/>)}
-              <path d={`${c.path} L400,180 L0,180 Z`} fill={`url(#grad-${c.num})`}/>
-              <path d={c.path} fill="none" stroke="#D4A574" stroke-width="2" stroke-linecap="round"/>
+              <path class="cf-curve-fill" d={`${c.path} L400,180 L0,180 Z`} fill={`url(#grad-${c.num})`}/>
+              <path class="cf-curve-line" d={c.path} fill="none" stroke="#D4A574" stroke-width="2" stroke-linecap="round"/>
               <circle cx="200" cy={c.crackY} r="3" fill="#E8DDC7"/>
               <text x="208" y={c.crackY - 5} fill="#E8DDC7" font-size="9" font-family="DM Mono, monospace" letter-spacing="1">1er crack</text>
               <circle cx="320" cy={c.dropY} r="3" fill="#E8DDC7" opacity="0.55"/>
@@ -98,10 +98,41 @@ const ticks = ['0 min', '4 min', '8 min', '12 min', 'Final'];
       ))}
     </div>
 
-    <div class="mt-12 grid sm:grid-cols-3 gap-3">
+    <div class="mt-12 grid sm:grid-cols-3 gap-3 cf-curves-end">
       <img src="/images/cafe-torref/extra-1.webp" alt="Grains verts" class="aspect-[4/3] object-cover" loading="lazy"/>
       <img src="/images/cafe-torref/extra-2.webp" alt="En cours de torréfaction" class="aspect-[4/3] object-cover" loading="lazy"/>
       <img src="/images/cafe-torref/extra-3.webp" alt="Grains torréfiés" class="aspect-[4/3] object-cover" loading="lazy"/>
     </div>
   </div>
 </section>
+
+<style>
+  .cf-curve { will-change: transform; }
+  .cf-curve .cf-curve-line {
+    transition: stroke 0.5s ease, stroke-width 0.5s ease, filter 0.5s ease;
+  }
+  .cf-curve .cf-curve-fill { transition: opacity 0.5s ease; }
+
+  .cf-curves:hover .cf-curve:not(:hover) {
+    opacity: 0.55;
+  }
+  .cf-curves:hover .cf-curve:not(:hover) .cf-curve-line {
+    stroke: #7A5C3F;
+    stroke-width: 1.4;
+  }
+  .cf-curves:hover .cf-curve:not(:hover) .cf-curve-fill { opacity: 0.3; }
+
+  .cf-curve:hover {
+    transform: translateY(-2px);
+  }
+  .cf-curve:hover .cf-curve-line {
+    stroke: #E8DDC7;
+    stroke-width: 2.6;
+    filter: drop-shadow(0 0 6px rgba(212,165,116,0.55));
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cf-curve, .cf-curve .cf-curve-line, .cf-curve .cf-curve-fill { transition: none; }
+    .cf-curve:hover { transform: none; }
+  }
+</style>
