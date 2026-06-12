@@ -6,8 +6,8 @@ import data from '../../../data/templates/encrevolcan.json';
 ---
 
 <section id="top" class="relative overflow-hidden" style="background-color: #0A0A0A; color: #EEE6D8;">
-  <!-- Grain noir gritty -->
-  <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-[0.12]" aria-hidden="true">
+  <!-- Grain noir gritty (réduit pour laisser respirer le trait d'aiguille) -->
+  <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-[0.07]" aria-hidden="true">
     <filter id="encre-grain">
       <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" />
       <feColorMatrix values="0 0 0 0 0.93  0 0 0 0 0.90  0 0 0 0 0.85  0 0 0 0.18 0" />
@@ -18,10 +18,12 @@ import data from '../../../data/templates/encrevolcan.json';
   <!-- Rouge sang vertical strip à gauche -->
   <div class="absolute top-0 left-0 bottom-0 w-1 md:w-2" style="background-color: #A11920;" aria-hidden="true"></div>
 
-  <!-- Signature tatoueur : trait d'aiguille qui se dessine -->
+  <!-- Signature tatoueur : trait d'aiguille qui se dessine (épaissi + halo rouge sang) -->
   <svg class="encre-needle absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 1600 900" preserveAspectRatio="none" fill="none" aria-hidden="true">
-    <path d="M 40 880 C 200 700, 100 520, 320 460 S 700 480, 760 320 S 980 80, 1180 180 S 1500 360, 1560 100"
-      stroke="#EEE6D8" stroke-width="1.4" stroke-linecap="round" opacity="0.55" />
+    <path class="encre-halo" d="M 40 880 C 200 700, 100 520, 320 460 S 700 480, 760 320 S 980 80, 1180 180 S 1500 360, 1560 100"
+      stroke="#A11920" stroke-width="6" stroke-linecap="round" opacity="0.32" />
+    <path class="encre-trait" d="M 40 880 C 200 700, 100 520, 320 460 S 700 480, 760 320 S 980 80, 1180 180 S 1500 360, 1560 100"
+      stroke="#EEE6D8" stroke-width="2.4" stroke-linecap="round" opacity="0.78" />
   </svg>
   <style>
     .encre-needle path {
@@ -29,6 +31,7 @@ import data from '../../../data/templates/encrevolcan.json';
       stroke-dashoffset: 4000;
       animation: encre-draw 4.5s cubic-bezier(0.65, 0, 0.35, 1) 0.4s forwards;
     }
+    .encre-halo { filter: blur(2px); }
     @keyframes encre-draw { to { stroke-dashoffset: 0; } }
     @media (prefers-reduced-motion: reduce) {
       .encre-needle path { stroke-dashoffset: 0; animation: none; }
@@ -76,19 +79,17 @@ import data from '../../../data/templates/encrevolcan.json';
             href={`https://wa.me/${data.info.whatsapp}?text=${encodeURIComponent('Bonjour, je souhaite réserver une consultation tatouage.')}`}
             target="_blank"
             rel="noopener"
+            data-encre-cta="primary"
             class="inline-flex items-center justify-center h-12 px-8 font-mono font-semibold text-[11.5px] uppercase tracking-[0.22em] transition-colors duration-300"
             style="background-color: #A11920; color: #EEE6D8;"
-            onmouseover="this.style.backgroundColor='#EEE6D8'; this.style.color='#0A0A0A';"
-            onmouseout="this.style.backgroundColor='#A11920'; this.style.color='#EEE6D8';"
           >
             Réserver consultation
           </a>
           <a
             href="#flash"
+            data-encre-cta="ghost"
             class="inline-flex items-center justify-center h-12 px-8 font-mono font-semibold text-[11.5px] uppercase tracking-[0.22em] border-2 transition-colors duration-300"
-            style="border-color: #EEE6D8; color: #EEE6D8;"
-            onmouseover="this.style.backgroundColor='#EEE6D8'; this.style.color='#0A0A0A';"
-            onmouseout="this.style.backgroundColor='transparent'; this.style.color='#EEE6D8';"
+            style="border-color: #EEE6D8; color: #EEE6D8; background-color: transparent;"
           >
             Voir la flash sheet
           </a>
@@ -132,4 +133,23 @@ import data from '../../../data/templates/encrevolcan.json';
       </div>
     </div>
   </div>
+
+  <script>
+    (() => {
+      const themePrimary = { bg: '#A11920', fg: '#EEE6D8' };
+      const themeGhost   = { bg: 'transparent', fg: '#EEE6D8' };
+      const themeHover   = { bg: '#EEE6D8', fg: '#0A0A0A' };
+      document.querySelectorAll('[data-encre-cta]').forEach((el) => {
+        const base = el.getAttribute('data-encre-cta') === 'primary' ? themePrimary : themeGhost;
+        const apply = (t) => {
+          el.style.backgroundColor = t.bg;
+          el.style.color = t.fg;
+        };
+        el.addEventListener('mouseenter', () => apply(themeHover));
+        el.addEventListener('mouseleave', () => apply(base));
+        el.addEventListener('focus', () => apply(themeHover));
+        el.addEventListener('blur', () => apply(base));
+      });
+    })();
+  </script>
 </section>
