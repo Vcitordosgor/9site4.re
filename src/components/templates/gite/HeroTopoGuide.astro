@@ -10,6 +10,13 @@ import data from '../../../data/templates/crete-aurere.json';
 
 <section id="top" class="relative bg-cap-papier overflow-hidden">
 
+  <!-- SIGNATURE : nappes de brume qui se lèvent doucement (parallax léger) -->
+  <div class="brume-layer pointer-events-none absolute inset-x-0 top-0 h-[80vh] overflow-hidden" aria-hidden="true">
+    <span class="brume brume-1"></span>
+    <span class="brume brume-2"></span>
+    <span class="brume brume-3"></span>
+  </div>
+
   <!-- Lignes topographiques en arrière-plan -->
   <svg class="absolute -right-32 -bottom-32 w-[700px] h-[700px] opacity-[0.08] pointer-events-none" viewBox="0 0 600 600" fill="none" stroke="#3D5840" stroke-width="0.6" aria-hidden="true">
     <ellipse cx="300" cy="300" rx="280" ry="200" transform="rotate(-15 300 300)"/>
@@ -57,7 +64,9 @@ import data from '../../../data/templates/crete-aurere.json';
           <!-- Étiquette altitude en bas gauche -->
           <div class="absolute bottom-4 left-4 bg-cap-papier/95 px-3 py-2">
             <p class="font-jetbrains text-[10px] uppercase tracking-[0.22em] text-cap-terre">Altitude</p>
-            <p class="font-bricolage font-semibold text-cap-charbon text-base tabular-nums">{data.info.altitude}</p>
+            <p class="font-bricolage font-semibold text-cap-charbon text-base tabular-nums">
+              <span class="altimetre-num" data-altimetre data-target="1220">0</span><span> m</span>
+            </p>
           </div>
 
           <!-- Marqueur lieu en haut-gauche : La Réunion, cirque -->
@@ -184,6 +193,36 @@ import data from '../../../data/templates/crete-aurere.json';
 </section>
 
 <style>
+  /* SIGNATURE : nappes de brume du cirque qui se lèvent */
+  .brume-layer { z-index: 0; mix-blend-mode: screen; }
+  .brume {
+    position: absolute;
+    left: -10%;
+    width: 130%;
+    height: 220px;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0;
+    background: radial-gradient(ellipse at center, rgba(255,255,255,0.85) 0%, rgba(241,235,219,0.4) 40%, transparent 70%);
+    will-change: transform, opacity;
+    animation: brume-rise 22s ease-in-out infinite;
+  }
+  .brume-1 { top: 22%; animation-delay: 0s; }
+  .brume-2 { top: 38%; animation-delay: -7s; height: 280px; opacity: 0.7; }
+  .brume-3 { top: 55%; animation-delay: -14s; height: 180px; }
+  @keyframes brume-rise {
+    0%   { transform: translateY(60px) scaleX(1); opacity: 0; }
+    30%  { opacity: 0.55; }
+    60%  { opacity: 0.4; }
+    100% { transform: translateY(-180px) scaleX(1.15); opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .brume { animation: none; opacity: 0.3; transform: none; }
+  }
+
+  /* Altimètre compteur */
+  .altimetre-num { font-variant-numeric: tabular-nums; transition: color 600ms ease; }
+
   @keyframes hero-vivant {
     from { transform: scale(1.06); }
     to   { transform: scale(1); }
@@ -197,3 +236,30 @@ import data from '../../../data/templates/crete-aurere.json';
     .hero-vivant { animation: none !important; transform: none !important; }
   }
 </style>
+
+<script>
+  // SIGNATURE : altimètre qui monte à l'apparition
+  (function(){
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const el = document.querySelector('[data-altimetre]') as HTMLElement | null;
+    if (!el) return;
+    const target = parseInt(el.dataset.target || '0', 10);
+    if (reduce) { el.textContent = String(target); return; }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const start = performance.now();
+        const dur = 1800;
+        function tick(now: number){
+          const p = Math.min(1, (now - start) / dur);
+          const eased = 1 - Math.pow(1 - p, 3);
+          el!.textContent = String(Math.round(target * eased));
+          if (p < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+        io.disconnect();
+      });
+    }, { threshold: 0.4 });
+    io.observe(el);
+  })();
+</script>

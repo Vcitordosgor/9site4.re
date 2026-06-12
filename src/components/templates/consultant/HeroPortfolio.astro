@@ -47,6 +47,40 @@ import data from '../../../data/templates/lucas.json';
 <span class="text-lucas-encre">─────────────────────────────────────────────</span>
     </pre>
 
+    <!-- SIGNATURE : courbe de croissance qui se trace -->
+    <figure class="mt-10 max-w-2xl border-l-2 border-lucas-vert/50 pl-5" aria-hidden="true">
+      <figcaption class="font-space-mono text-[11px] uppercase tracking-[0.22em] text-lucas-encre mb-2 flex items-baseline justify-between gap-4">
+        <span>Acquisition · 12 mois · client e-commerce</span>
+        <span class="text-lucas-vert tabular-nums">+184 %</span>
+      </figcaption>
+      <svg viewBox="0 0 480 100" class="w-full h-auto" role="img" aria-label="Courbe de croissance : +184% sur 12 mois">
+        <defs>
+          <linearGradient id="lucas-growth-fill" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0%" stop-color="#A3E635" stop-opacity="0.35"/>
+            <stop offset="100%" stop-color="#A3E635" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <path
+          class="lucas-growth-area"
+          d="M0,82 L40,80 L80,76 L120,70 L160,62 L200,55 L240,52 L280,42 L320,32 L360,24 L400,16 L440,10 L480,6 L480,100 L0,100 Z"
+          fill="url(#lucas-growth-fill)"
+        />
+        <path
+          class="lucas-growth-line"
+          d="M0,82 L40,80 L80,76 L120,70 L160,62 L200,55 L240,52 L280,42 L320,32 L360,24 L400,16 L440,10 L480,6"
+          fill="none"
+          stroke="#A3E635"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <circle class="lucas-growth-dot" cx="480" cy="6" r="4" fill="#A3E635"/>
+        <line x1="0" y1="90" x2="480" y2="90" stroke="#3F4045" stroke-width="0.5" stroke-dasharray="2 3"/>
+        <text x="2" y="98" font-family="ui-monospace, monospace" font-size="8" fill="#7A7D85">M+0</text>
+        <text x="478" y="98" font-family="ui-monospace, monospace" font-size="8" fill="#7A7D85" text-anchor="end">M+12</text>
+      </svg>
+    </figure>
+
     <!-- Avatar typographique + ligne d'identité minimale (substitut photo stock) -->
     <div class="mt-12 flex items-center gap-4">
       <span
@@ -101,8 +135,46 @@ import data from '../../../data/templates/lucas.json';
       0%, 50% { opacity: 1; }
       51%, 100% { opacity: 0; }
     }
+    /* Courbe de croissance */
+    .lucas-growth-line {
+      stroke-dasharray: 700;
+      stroke-dashoffset: 700;
+      transition: stroke-dashoffset 2.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .lucas-growth-area {
+      opacity: 0;
+      transition: opacity 1.2s ease 1.2s;
+    }
+    .lucas-growth-dot {
+      opacity: 0;
+      transform-origin: center;
+      transform-box: fill-box;
+      transition: opacity 400ms ease 2.2s;
+    }
+    .is-in .lucas-growth-line { stroke-dashoffset: 0; }
+    .is-in .lucas-growth-area { opacity: 1; }
+    .is-in .lucas-growth-dot { opacity: 1; animation: lucas-dot-pulse 2s ease-in-out 2.4s infinite; }
+    @keyframes lucas-dot-pulse {
+      0%, 100% { transform: scale(1); }
+      50%      { transform: scale(1.4); }
+    }
     @media (prefers-reduced-motion: reduce) {
       .cursor-blink { animation: none; }
+      .lucas-growth-line { transition: none; stroke-dashoffset: 0; }
+      .lucas-growth-area, .lucas-growth-dot { opacity: 1; transition: none; animation: none; }
     }
   </style>
+
+  <script>
+    (function(){
+      const fig = document.querySelector('.lucas-growth-line')?.closest('figure');
+      if (!fig) return;
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { (e.target as HTMLElement).classList.add('is-in'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.4 });
+      io.observe(fig);
+    })();
+  </script>
 </section>

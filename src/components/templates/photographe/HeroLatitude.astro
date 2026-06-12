@@ -3,8 +3,21 @@
 <section class="relative w-full">
   <div class="relative h-screen min-h-[600px] w-full overflow-hidden" style="background:#0A0A0B;">
     <img src="/images/photographe/extra-1.webp" alt="Photographie éditoriale par Studio Latitude"
-         class="absolute inset-0 w-full h-full object-cover" fetchpriority="high"/>
+         class="absolute inset-0 w-full h-full object-cover latitude-photo" fetchpriority="high"/>
     <div class="absolute inset-0" style="background:linear-gradient(180deg, rgba(10,10,11,0.10) 0%, rgba(10,10,11,0.60) 100%);"></div>
+
+    <!-- SIGNATURE : grain argentique -->
+    <div class="absolute inset-0 latitude-grain pointer-events-none" aria-hidden="true"></div>
+
+    <!-- SIGNATURE : obturateur (iris) qui s'ouvre au chargement -->
+    <div class="latitude-iris pointer-events-none absolute inset-0 z-30" aria-hidden="true">
+      <span class="iris-blade iris-b1"></span>
+      <span class="iris-blade iris-b2"></span>
+      <span class="iris-blade iris-b3"></span>
+      <span class="iris-blade iris-b4"></span>
+      <span class="iris-blade iris-b5"></span>
+      <span class="iris-blade iris-b6"></span>
+    </div>
     <div class="absolute inset-x-0 bottom-0 p-6 md:p-12">
       <div class="max-w-content mx-auto">
         <div class="text-[10px] uppercase tracking-[0.32em] mb-5" style="color:#E8DFCB;">Studio Latitude · La Réunion</div>
@@ -21,4 +34,68 @@
       </div>
     </div>
   </div>
+
+  <style>
+    /* Iris : 6 lames triangulaires qui s'ouvrent depuis le centre */
+    .latitude-iris {
+      animation: iris-fade 200ms ease 1500ms forwards;
+    }
+    @keyframes iris-fade { to { opacity: 0; visibility: hidden; } }
+    .iris-blade {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 0; height: 0;
+      border-style: solid;
+      border-color: #0A0A0B transparent transparent transparent;
+      border-width: 120vh 70vw 0 70vw;
+      transform-origin: 50% 0;
+      transform: translate(-50%, 0) rotate(0deg) translateY(0);
+      animation: iris-open 1500ms cubic-bezier(0.7, 0, 0.3, 1) forwards;
+    }
+    .iris-b1 { transform: translate(-50%, 0) rotate(0deg);   }
+    .iris-b2 { transform: translate(-50%, 0) rotate(60deg);  }
+    .iris-b3 { transform: translate(-50%, 0) rotate(120deg); }
+    .iris-b4 { transform: translate(-50%, 0) rotate(180deg); }
+    .iris-b5 { transform: translate(-50%, 0) rotate(240deg); }
+    .iris-b6 { transform: translate(-50%, 0) rotate(300deg); }
+    @keyframes iris-open {
+      0%   { transform: translate(-50%, 0) var(--rot, rotate(0deg)) translateY(0); }
+      100% { transform: translate(-50%, 0) var(--rot, rotate(0deg)) translateY(120vh); }
+    }
+    .iris-b1 { --rot: rotate(0deg); }
+    .iris-b2 { --rot: rotate(60deg); }
+    .iris-b3 { --rot: rotate(120deg); }
+    .iris-b4 { --rot: rotate(180deg); }
+    .iris-b5 { --rot: rotate(240deg); }
+    .iris-b6 { --rot: rotate(300deg); }
+    /* Photo : zoom léger après iris */
+    .latitude-photo { animation: latitude-zoom 4s ease-out 800ms both; }
+    @keyframes latitude-zoom {
+      from { transform: scale(1.08); }
+      to   { transform: scale(1); }
+    }
+    /* Grain argentique */
+    .latitude-grain {
+      background-image:
+        radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
+        radial-gradient(rgba(0,0,0,0.06) 1px, transparent 1px);
+      background-size: 3px 3px, 5px 5px;
+      background-position: 0 0, 1px 1px;
+      mix-blend-mode: overlay;
+      opacity: 0.4;
+      animation: grain-shift 1.2s steps(4) infinite;
+    }
+    @keyframes grain-shift {
+      0%   { transform: translate(0, 0); }
+      25%  { transform: translate(-2px, 1px); }
+      50%  { transform: translate(2px, -1px); }
+      75%  { transform: translate(-1px, -2px); }
+      100% { transform: translate(0, 0); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .latitude-iris { display: none; }
+      .latitude-photo { animation: none; transform: none; }
+      .latitude-grain { animation: none; opacity: 0.25; }
+    }
+  </style>
 </section>

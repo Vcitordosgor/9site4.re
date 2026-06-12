@@ -74,6 +74,19 @@ import data from '../../../data/templates/onde.json';
         </p>
       </div>
 
+      <!-- SIGNATURE : equalizer animé -->
+      <div class="lg:col-span-12 mt-12 mb-4" aria-hidden="true">
+        <div class="flex items-end justify-between gap-[2px] h-20 md:h-28 px-3 py-2 border" style="border-color: rgba(124,58,237,0.25); background-color: rgba(124,58,237,0.04);">
+          {Array.from({length: 56}).map((_, i) => (
+            <span class="onde-eq-bar block w-full rounded-sm" style={`background: linear-gradient(180deg, #22D3EE 0%, #7C3AED 100%); animation-delay: -${(i * 73) % 1900}ms; animation-duration: ${900 + (i * 31) % 700}ms;`}></span>
+          ))}
+        </div>
+        <div class="mt-2 flex items-center justify-between font-jetbrains text-[10px] uppercase tracking-[0.22em]" style="color: #22D3EE;">
+          <span>// LIVE_MIX</span>
+          <span class="onde-peak" style="color: #F5F4F8;">−6.2 dB · 44.1 kHz</span>
+        </div>
+      </div>
+
       <!-- Photo console -->
       <div class="lg:col-span-5 relative">
         <div class="relative aspect-square overflow-hidden border" style="border-color: #7C3AED; box-shadow: 0 0 48px rgba(124, 58, 237, 0.4);">
@@ -120,4 +133,32 @@ import data from '../../../data/templates/onde.json';
       </div>
     </div>
   </div>
+
+  <style>
+    .onde-eq-bar {
+      height: 15%;
+      transform-origin: bottom;
+      animation-name: onde-eq;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease-in-out;
+      will-change: transform;
+    }
+    @keyframes onde-eq {
+      0%, 100% { transform: scaleY(0.15); }
+      20%      { transform: scaleY(0.85); }
+      40%      { transform: scaleY(0.4); }
+      60%      { transform: scaleY(1); }
+      80%      { transform: scaleY(0.55); }
+    }
+    .onde-peak { animation: onde-peak-flicker 2.4s steps(8) infinite; }
+    @keyframes onde-peak-flicker {
+      0%, 80% { opacity: 1; }
+      85%     { opacity: 0.55; }
+      100%    { opacity: 1; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .onde-eq-bar { animation: none; height: 50%; }
+      .onde-peak { animation: none; }
+    }
+  </style>
 </section>

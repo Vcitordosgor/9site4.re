@@ -46,6 +46,24 @@ import data from '../../../data/templates/lazuli.json';
     </div>
   </div>
 
+  <!-- SIGNATURE : vague océan stylisée qui ondule en bas du hero -->
+  <svg class="lazuli-wave absolute bottom-0 inset-x-0 w-full h-24 md:h-32 pointer-events-none" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+    <defs>
+      <linearGradient id="lazuli-wave-grad" x1="0" x2="0" y1="0" y2="1">
+        <stop offset="0%" stop-color="#E8C9A5" stop-opacity="0"/>
+        <stop offset="100%" stop-color="#E8C9A5" stop-opacity="0.55"/>
+      </linearGradient>
+    </defs>
+    <path class="lazuli-wave-path lazuli-wave-back" fill="url(#lazuli-wave-grad)" d="M0,60 C240,100 480,20 720,55 C960,90 1200,40 1440,70 L1440,120 L0,120 Z"/>
+    <path class="lazuli-wave-path lazuli-wave-front" fill="rgba(232,201,165,0.35)" d="M0,80 C220,40 460,110 720,75 C980,40 1220,100 1440,70 L1440,120 L0,120 Z"/>
+  </svg>
+
+  <!-- SIGNATURE : indicateur d'heure dorée -->
+  <div class="hidden md:flex absolute top-32 right-12 items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-sm ring-1 ring-white/20" aria-hidden="true">
+    <span class="block w-2 h-2 rounded-full lazuli-sun"></span>
+    <span class="font-geist text-[10px] uppercase tracking-[0.32em] text-lazuli-sable" id="lazuli-hour-label">Golden hour</span>
+  </div>
+
   <!-- Stats coin bas-droit -->
   <div class="absolute bottom-12 right-6 md:right-12 hidden md:flex flex-col items-end gap-3 text-right">
     {data.stats.slice(0,3).map(s => (
@@ -55,4 +73,26 @@ import data from '../../../data/templates/lazuli.json';
       </div>
     ))}
   </div>
+
+  <style>
+    .lazuli-wave-path { will-change: transform; transform-origin: center; }
+    .lazuli-wave-back { animation: lazuli-wave-roll 11s ease-in-out infinite; }
+    .lazuli-wave-front { animation: lazuli-wave-roll 7s ease-in-out infinite reverse; }
+    @keyframes lazuli-wave-roll {
+      0%, 100% { transform: translateX(0) translateY(0); }
+      50%      { transform: translateX(-14px) translateY(3px); }
+    }
+    .lazuli-sun {
+      background: radial-gradient(circle, #FFD79A 0%, #E8A05C 70%);
+      box-shadow: 0 0 12px rgba(255,179,90,0.85);
+      animation: lazuli-sun-pulse 4s ease-in-out infinite;
+    }
+    @keyframes lazuli-sun-pulse {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50%      { transform: scale(1.25); opacity: 1; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .lazuli-wave-back, .lazuli-wave-front, .lazuli-sun { animation: none; }
+    }
+  </style>
 </section>
