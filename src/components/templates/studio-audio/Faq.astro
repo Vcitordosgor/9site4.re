@@ -15,7 +15,7 @@ import data from '../../../data/templates/onde.json';
 
     <div class="space-y-3">
       {data.faq.map((f) => (
-        <details class="group border-2 transition-colors" style="background-color: rgb(124 58 237 / 0.05); border-color: rgb(124 58 237 / 0.3);" onmouseover="this.style.borderColor='#22D3EE';" onmouseout="this.style.borderColor='rgb(124 58 237 / 0.3)';">
+        <details class="group border-2 transition-colors" data-onde-faq style="background-color: rgb(124 58 237 / 0.05); border-color: rgb(124 58 237 / 0.3);">
           <summary class="cursor-pointer list-none flex items-start gap-4 p-5 md:p-7">
             <span class="font-jetbrains font-bold text-2xl leading-none mt-0.5 transition-transform duration-300 group-open:rotate-45" style="color: #22D3EE;" aria-hidden="true">+</span>
             <span class="flex-1 font-space-grotesk font-medium text-base md:text-lg leading-snug">{f.q}</span>
@@ -28,3 +28,12 @@ import data from '../../../data/templates/onde.json';
     </div>
   </div>
 </section>
+
+<script>
+  const PURPLE = 'rgb(124 58 237 / 0.3)';
+  const CYAN = '#22D3EE';
+  document.querySelectorAll<HTMLElement>('[data-onde-faq]').forEach((el) => {
+    el.addEventListener('mouseenter', () => { el.style.borderColor = CYAN; });
+    el.addEventListener('mouseleave', () => { el.style.borderColor = PURPLE; });
+  });
+</script>

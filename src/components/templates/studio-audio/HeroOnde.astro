@@ -53,18 +53,16 @@ import data from '../../../data/templates/onde.json';
           <a
             href="#tarifs"
             class="inline-flex items-center justify-center h-13 py-3.5 px-8 font-jetbrains font-semibold text-[12px] uppercase tracking-[0.2em] transition-all duration-300"
+            data-onde-hero-primary
             style="background-color: #7C3AED; color: #F5F4F8; box-shadow: 0 0 24px rgba(124, 58, 237, 0.5);"
-            onmouseover="this.style.backgroundColor='#22D3EE'; this.style.color='#0D0D14'; this.style.boxShadow='0 0 28px rgba(34, 211, 238, 0.7)';"
-            onmouseout="this.style.backgroundColor='#7C3AED'; this.style.color='#F5F4F8'; this.style.boxShadow='0 0 24px rgba(124, 58, 237, 0.5)';"
           >
             Réserver une session
           </a>
           <a
             href="#services"
             class="inline-flex items-center justify-center h-13 py-3.5 px-8 font-jetbrains font-semibold text-[12px] uppercase tracking-[0.2em] border-2 transition-colors duration-300"
+            data-onde-hero-ghost
             style="border-color: #22D3EE; color: #22D3EE;"
-            onmouseover="this.style.backgroundColor='#22D3EE'; this.style.color='#0D0D14';"
-            onmouseout="this.style.backgroundColor='transparent'; this.style.color='#22D3EE';"
           >
             Nos services
           </a>
@@ -161,4 +159,29 @@ import data from '../../../data/templates/onde.json';
       .onde-peak { animation: none; }
     }
   </style>
+
+  <script>
+    document.querySelectorAll<HTMLElement>('[data-onde-hero-primary]').forEach((el) => {
+      el.addEventListener('mouseenter', () => {
+        el.style.backgroundColor = '#22D3EE';
+        el.style.color = '#0D0D14';
+        el.style.boxShadow = '0 0 28px rgba(34, 211, 238, 0.7)';
+      });
+      el.addEventListener('mouseleave', () => {
+        el.style.backgroundColor = '#7C3AED';
+        el.style.color = '#F5F4F8';
+        el.style.boxShadow = '0 0 24px rgba(124, 58, 237, 0.5)';
+      });
+    });
+    document.querySelectorAll<HTMLElement>('[data-onde-hero-ghost]').forEach((el) => {
+      el.addEventListener('mouseenter', () => {
+        el.style.backgroundColor = '#22D3EE';
+        el.style.color = '#0D0D14';
+      });
+      el.addEventListener('mouseleave', () => {
+        el.style.backgroundColor = 'transparent';
+        el.style.color = '#22D3EE';
+      });
+    });
+  </script>
 </section>
