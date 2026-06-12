@@ -20,15 +20,11 @@ import PressionSignature from '../../components/templates/plomberie/PressionSign
 import Process from '../../components/templates/plomberie/Process.astro';
 import Tarifs from '../../components/templates/plomberie/Tarifs.astro';
 import Intervention from '../../components/templates/plomberie/Intervention.astro';
-import Garanties from '../../components/templates/plomberie/Garanties.astro';
 import Certifications from '../../components/templates/plomberie/Certifications.astro';
 import Citation from '../../components/templates/plomberie/Citation.astro';
 import Zone from '../../components/templates/plomberie/Zone.astro';
 import Chantiers from '../../components/templates/plomberie/Chantiers.astro';
-import AccentBand from '../../components/templates/plomberie/AccentBand.astro';
-import APropos from '../../components/templates/plomberie/APropos.astro';
 import Avis from '../../components/templates/plomberie/Avis.astro';
-import Partenaires from '../../components/templates/plomberie/Partenaires.astro';
 import CTAFinal from '../../components/templates/plomberie/CTAFinal.astro';
 import PlomberieFooter from '../../components/templates/plomberie/PlomberieFooter.astro';
 
@@ -51,20 +47,16 @@ const businessLD = localBusinessSchema(bernardData, 'Plumber');
   <main id="top" class="bg-bp-ciment text-bp-anthracite font-archivo">
     <HeroPoster />
     <Numbers />
-    <PressionSignature />
-    <Zone />
     <Services />
-    <Process />
-    <Tarifs />
     <Intervention />
-    <Garanties />
+    <Process />
+    <PressionSignature />
+    <Chantiers />
+    <Avis />
+    <Tarifs />
+    <Zone />
     <Certifications />
     <Citation />
-    <Chantiers />
-    <AccentBand />
-    <APropos />
-    <Avis />
-    <Partenaires />
     <CTAFinal />
   </main>
 
