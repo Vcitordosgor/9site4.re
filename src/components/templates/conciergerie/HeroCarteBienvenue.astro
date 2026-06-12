@@ -1,12 +1,54 @@
 ---
 import data from '../../../data/templates/concierge.json';
 ---
-<section id="top" class="relative min-h-[100svh] overflow-hidden text-white scroll-mt-20" style="background:#0E1B2C;">
+<section id="top" class="concierge-hero relative min-h-[100svh] overflow-hidden text-white scroll-mt-20" style="background:#0E1B2C;">
   <div class="absolute inset-0" aria-hidden="true">
-    <img src={data.info.photoVilla} alt="" class="w-full h-full object-cover" width="1600" height="900" loading="eager" fetchpriority="high" decoding="async" />
+    <img src={data.info.photoVilla} alt="" class="concierge-hero-img w-full h-full object-cover" width="1600" height="900" loading="eager" fetchpriority="high" decoding="async" />
     <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(14,27,44,0.55) 0%, rgba(14,27,44,0.25) 40%, rgba(14,27,44,0.95) 100%);"></div>
     <div class="absolute inset-0" style="background: linear-gradient(90deg, rgba(14,27,44,0.65) 0%, transparent 55%);"></div>
+    <!-- Golden-hour : voile chaud qui pulse en luminosité/saturation -->
+    <div class="concierge-golden absolute inset-0 mix-blend-soft-light" style="background: radial-gradient(120% 80% at 80% 20%, rgba(255,176,80,0.45) 0%, rgba(255,140,60,0.15) 35%, transparent 70%);"></div>
   </div>
+
+  <style>
+    .concierge-hero-img {
+      animation: concierge-warm 14s ease-in-out infinite alternate;
+      will-change: filter;
+    }
+    .concierge-golden {
+      animation: concierge-golden 14s ease-in-out infinite alternate;
+      will-change: opacity;
+    }
+    @keyframes concierge-warm {
+      0%   { filter: brightness(0.96) saturate(0.95); }
+      100% { filter: brightness(1.06) saturate(1.15); }
+    }
+    @keyframes concierge-golden {
+      0%   { opacity: 0.35; }
+      100% { opacity: 0.75; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .concierge-hero-img, .concierge-golden { animation: none !important; }
+    }
+  </style>
+
+  <script is:inline>
+    (function () {
+      var sec = document.querySelector('.concierge-hero');
+      if (!sec) return;
+      var img = sec.querySelector('.concierge-hero-img');
+      var ov = sec.querySelector('.concierge-golden');
+      if (!img || !ov) return;
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          var play = e.isIntersecting ? 'running' : 'paused';
+          img.style.animationPlayState = play;
+          ov.style.animationPlayState = play;
+        });
+      }, { threshold: 0 });
+      io.observe(sec);
+    })();
+  </script>
 
   <div class="relative max-w-content mx-auto px-6 md:px-12 pt-32 md:pt-40 pb-20 min-h-[100svh] flex flex-col">
     <p class="font-inter text-[11px] uppercase tracking-[0.45em] text-concierge-laiton flex items-center gap-3 mb-10">

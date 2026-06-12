@@ -1,6 +1,13 @@
 ---
 import data from '../../../data/templates/agapanthes.json';
 const plantes = data.plantes;
+const saisons = [
+  { id: 'all',       label: 'Toutes' },
+  { id: 'printemps', label: 'Printemps' },
+  { id: 'ete',       label: 'Été' },
+  { id: 'automne',   label: 'Automne' },
+  { id: 'hiver',     label: 'Hiver' },
+];
 ---
 <section id="plantes" class="relative bg-agap-lin text-agap-feuille py-24 lg:py-36">
   <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
@@ -14,9 +21,27 @@ const plantes = data.plantes;
       </h2>
     </div>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+    <!-- Filtres saison -->
+    <div class="mb-10 flex flex-wrap items-center gap-2" role="group" aria-label="Filtrer par saison de plantation" data-saison-filters>
+      <span class="font-manrope text-[10px] uppercase tracking-[0.3em] text-agap-feuille/50 mr-2">Saison de plantation</span>
+      {saisons.map(s => (
+        <button
+          type="button"
+          data-saison={s.id}
+          class="saison-chip px-4 h-9 rounded-full border border-agap-feuille/15 text-agap-feuille/75 font-manrope text-[11px] uppercase tracking-[0.22em] hover:border-agap-violet/50 hover:text-agap-feuille transition-colors data-[active=true]:bg-agap-violet data-[active=true]:text-agap-lin data-[active=true]:border-agap-violet"
+          data-active={s.id === 'all' ? 'true' : 'false'}
+          aria-pressed={s.id === 'all' ? 'true' : 'false'}
+        >{s.label}</button>
+      ))}
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5" data-plantes-grid>
       {plantes.map((p, i) => (
-        <article class="group relative p-7 rounded-3xl bg-agap-pierre/30 border border-agap-feuille/10 hover:border-agap-violet/40 transition-all duration-500 hover:-translate-y-1">
+        <article
+          data-saisons={(p.saisons || []).join(',')}
+          class="plante-card group relative p-7 rounded-3xl bg-agap-pierre/30 border border-agap-feuille/10 hover:border-agap-violet/40 transition-all duration-500 hover:-translate-y-1 data-[hidden=true]:hidden"
+          data-hidden="false"
+        >
           <!-- Icône SVG botanique abstraite -->
           <svg class="w-12 h-12 text-agap-violet mb-6 transition-transform duration-500 ease-out group-hover:scale-110 group-hover:rotate-[6deg]" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M24 44V20"/>
@@ -32,5 +57,37 @@ const plantes = data.plantes;
         </article>
       ))}
     </div>
+
+    <p class="mt-6 font-manrope text-[11px] uppercase tracking-[0.22em] text-agap-feuille/40" data-saison-empty hidden>Aucune plante n'est mise en terre à cette saison — choisissez une autre période.</p>
   </div>
+
+  <script is:inline>
+    (function () {
+      var filters = document.querySelectorAll('[data-saison-filters] .saison-chip');
+      var cards = document.querySelectorAll('[data-plantes-grid] .plante-card');
+      var empty = document.querySelector('[data-saison-empty]');
+      if (!filters.length || !cards.length) return;
+      function apply(saison) {
+        var visible = 0;
+        cards.forEach(function (c) {
+          var list = (c.getAttribute('data-saisons') || '').split(',').filter(Boolean);
+          var show = saison === 'all' || list.indexOf(saison) > -1;
+          c.setAttribute('data-hidden', show ? 'false' : 'true');
+          if (show) visible++;
+        });
+        if (empty) { if (visible === 0) empty.removeAttribute('hidden'); else empty.setAttribute('hidden',''); }
+      }
+      filters.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var s = btn.getAttribute('data-saison') || 'all';
+          filters.forEach(function (b) {
+            var active = b === btn;
+            b.setAttribute('data-active', String(active));
+            b.setAttribute('aria-pressed', String(active));
+          });
+          apply(s);
+        });
+      });
+    })();
+  </script>
 </section>

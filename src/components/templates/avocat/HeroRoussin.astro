@@ -31,7 +31,7 @@ const today = new Date().toLocaleDateString('fr-FR', { day:'numeric', month:'lon
     <div class="text-center max-w-3xl mx-auto">
 
       <!-- Armoiries balance géantes — XXL animée (oscillation lente) -->
-      <svg viewBox="0 0 200 220" class="balance-anim w-96 md:w-[28rem] lg:w-[32rem] mx-auto text-roussin-or" aria-hidden="true">
+      <svg viewBox="0 0 200 220" class="balance-anim w-52 sm:w-72 md:w-[28rem] lg:w-[32rem] mx-auto text-roussin-or" aria-hidden="true">
         <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
           <!-- Mât central -->
           <line x1="100" y1="20" x2="100" y2="190" />
@@ -54,8 +54,8 @@ const today = new Date().toLocaleDateString('fr-FR', { day:'numeric', month:'lon
           <!-- Socle -->
           <rect x="80" y="190" width="40" height="6" fill="currentColor"/>
           <rect x="70" y="196" width="60" height="4" fill="currentColor"/>
-          <!-- Ornements feuilles laurier -->
-          <g stroke-width="0.8" opacity="0.7">
+          <!-- Ornements feuilles laurier (cachés en mobile pour alléger) -->
+          <g stroke-width="0.8" opacity="0.7" class="balance-laurier">
             <path d="M55 130 Q70 125 85 130 Q70 140 55 130 Z" fill="currentColor" fill-opacity="0.15"/>
             <path d="M115 130 Q130 125 145 130 Q130 140 115 130 Z" fill="currentColor" fill-opacity="0.15"/>
           </g>
@@ -69,6 +69,9 @@ const today = new Date().toLocaleDateString('fr-FR', { day:'numeric', month:'lon
           .balance-fleau {
             animation: balance-sway 5s cubic-bezier(.45,.05,.55,.95) infinite;
             transform-origin: 100px 50px;
+          }
+          @media (max-width: 639px) {
+            .balance-laurier { display: none; }
           }
           @media (prefers-reduced-motion: reduce) {
             .balance-fleau { animation: none; }
@@ -91,10 +94,10 @@ const today = new Date().toLocaleDateString('fr-FR', { day:'numeric', month:'lon
       </h1>
 
       <!-- Filet ornemental -->
-      <div class="flex items-center justify-center gap-3 my-6 md:my-8" aria-hidden="true">
-        <span class="block w-20 md:w-32 h-px bg-roussin-or"></span>
-        <span class="text-roussin-or text-xl">⚖</span>
-        <span class="block w-20 md:w-32 h-px bg-roussin-or"></span>
+      <div class="flex items-center justify-center gap-3 my-5 md:my-8" aria-hidden="true">
+        <span class="block w-10 sm:w-20 md:w-32 h-px bg-roussin-or/70 sm:bg-roussin-or"></span>
+        <span class="text-roussin-or text-base sm:text-xl">⚖</span>
+        <span class="block w-10 sm:w-20 md:w-32 h-px bg-roussin-or/70 sm:bg-roussin-or"></span>
       </div>
 
       <!-- Tagline -->

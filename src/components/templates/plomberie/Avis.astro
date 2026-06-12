@@ -17,11 +17,16 @@ import data from '../../../data/templates/bernard.json';
         <span class="block w-8 h-[3px] bg-bp-jaune" aria-hidden="true"></span>
       </p>
       <h2 class="scroll-reveal mt-5 font-bebas uppercase text-bp-anthracite leading-[0.95] tracking-tight" style="font-size: clamp(40px, 5.5vw, 72px);">
-        ★★★★★
+        La pression<br/>
+        <span class="text-bp-anthracite/55">de la confiance.</span>
       </h2>
-      <p class="scroll-reveal mt-3 font-archivo text-bp-anthracite/65 text-sm">
-        Vos vrais retours clients apparaîtront ici
-      </p>
+      <div class="scroll-reveal mt-5 inline-flex items-center justify-center gap-1.5 text-bp-jaune" aria-label="Note moyenne 5 sur 5">
+        {Array.from({ length: 5 }).map(() => (
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+          </svg>
+        ))}
+      </div>
     </header>
 
     <ul class="grid md:grid-cols-3 gap-5 md:gap-6">

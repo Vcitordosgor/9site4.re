@@ -51,15 +51,18 @@
     { "photo": "/images/paysagiste/extra-2.webp", "titre": "Résidence Vacoa",   "lieu": "sud sauvage",    "type": "Aménagement piscine" },
     { "photo": "/images/paysagiste/extra-3.webp", "titre": "Maison Hoarau",     "lieu": "hauts ouest",    "type": "Potager créole" },
     { "photo": "/images/paysagiste/extra-4.webp", "titre": "Hôtel Lagon",       "lieu": "côte ouest",     "type": "Entretien hôtelier" },
+    { "photo": "/images/paysagiste/extra-5.webp", "titre": "Jardin Païta",      "lieu": "plaine des Cafres","type": "Massif d'altitude" },
+    { "photo": "/images/paysagiste/extra-6.webp", "titre": "Domaine Cilaos",    "lieu": "cirque ouest",   "type": "Restauration paysagère" },
+    { "photo": "/images/paysagiste/extra-7.webp", "titre": "Lodge Mafate",      "lieu": "hauts est",      "type": "Plan paysager naturel" },
     { "photo": "/images/paysagiste/extra-8.webp", "titre": "Cour créole",       "lieu": "ville haute",    "type": "Rénovation patrimoine" }
   ],
   "plantes": [
-    { "id": "vacoa",        "nom": "Vacoa",            "latin": "Pandanus utilis",         "usage": "Palmier endémique aux feuilles en spirale. Symbole du paysage péi. Résiste au vent." },
-    { "id": "frangipanier", "nom": "Frangipanier",     "latin": "Plumeria rubra",          "usage": "Petit arbre emblématique. Fleurs parfumées, feuillage caduc, port en parasol." },
-    { "id": "oiseau",       "nom": "Oiseau de paradis","latin": "Strelitzia reginae",      "usage": "Fleur architecturale orange et bleu, port de bananier. Massif spectaculaire." },
-    { "id": "anthurium",    "nom": "Anthurium",        "latin": "Anthurium andraeanum",    "usage": "Spathe cireuse rouge ou rose. Mi-ombre, pour sous-bois tropical luxuriant." },
-    { "id": "hibiscus",     "nom": "Hibiscus péi",     "latin": "Hibiscus rosa-sinensis",  "usage": "Floraison continue, palette blanc à pourpre. Haies vives, isolés." },
-    { "id": "bambou",       "nom": "Bambou",           "latin": "Bambusa multiplex",       "usage": "Brise-vue rapide, masse végétale dense, son du vent. Touffes contrôlées." }
+    { "id": "vacoa",        "nom": "Vacoa",            "latin": "Pandanus utilis",         "usage": "Palmier endémique aux feuilles en spirale. Symbole du paysage péi. Résiste au vent.", "saisons": ["hiver"] },
+    { "id": "frangipanier", "nom": "Frangipanier",     "latin": "Plumeria rubra",          "usage": "Petit arbre emblématique. Fleurs parfumées, feuillage caduc, port en parasol.", "saisons": ["printemps","ete"] },
+    { "id": "oiseau",       "nom": "Oiseau de paradis","latin": "Strelitzia reginae",      "usage": "Fleur architecturale orange et bleu, port de bananier. Massif spectaculaire.", "saisons": ["automne","hiver"] },
+    { "id": "anthurium",    "nom": "Anthurium",        "latin": "Anthurium andraeanum",    "usage": "Spathe cireuse rouge ou rose. Mi-ombre, pour sous-bois tropical luxuriant.", "saisons": ["printemps","automne"] },
+    { "id": "hibiscus",     "nom": "Hibiscus péi",     "latin": "Hibiscus rosa-sinensis",  "usage": "Floraison continue, palette blanc à pourpre. Haies vives, isolés.", "saisons": ["printemps","ete","automne"] },
+    { "id": "bambou",       "nom": "Bambou",           "latin": "Bambusa multiplex",       "usage": "Brise-vue rapide, masse végétale dense, son du vent. Touffes contrôlées.", "saisons": ["hiver","printemps"] }
   ],
   "equipe": [
     { "id": "claire",  "nom": "Claire Hoarau",  "role": "Paysagiste · gérante",  "experience": "Formée à l'école de paysage", "bio": "Dessine chaque jardin à la main avant de poser un seul godet.",                        "photo": "/images/paysagiste/extra-5.webp" },
@@ -69,9 +72,10 @@
   "process": [
     { "n": "01", "titre": "Premier rendez-vous", "texte": "Sur place, on écoute. Vos envies, vos contraintes, votre budget. Aucun engagement." },
     { "n": "02", "titre": "Relevé du terrain",   "texte": "Mesures, sondage du sol, exposition, vents dominants. On documente avant de proposer." },
-    { "n": "03", "titre": "Plan paysager",       "texte": "Dessin à la main, palette végétale chiffrée, plan d'arrosage. Vous validez chaque détail." },
-    { "n": "04", "titre": "Chantier",            "texte": "Notre équipe à demeure, jamais de sous-traitance. Délais respectés." },
-    { "n": "05", "titre": "Suivi & entretien",   "texte": "Trois mois de garantie reprise. Contrat d'entretien optionnel pour préserver le dessin." }
+    { "n": "03", "titre": "Palette végétale",    "texte": "Choix des plantes en fonction du sol et du climat — endémiques priorisées, calendrier de floraison étalé." },
+    { "n": "04", "titre": "Plan paysager",       "texte": "Dessin à la main, palette végétale chiffrée, plan d'arrosage. Vous validez chaque détail." },
+    { "n": "05", "titre": "Chantier",            "texte": "Notre équipe à demeure, jamais de sous-traitance. Délais respectés." },
+    { "n": "06", "titre": "Suivi & entretien",   "texte": "Trois mois de garantie reprise. Contrat d'entretien optionnel pour préserver le dessin." }
   ],
   "formules": [
     { "id": "creation",       "titre": "Création de jardin", "soustitre": "Du terrain nu au jardin clé en main",   "prix": "97,4€", "unite": "/m² · démo",    "inclus": ["Plan paysager dessiné","Palette végétale péi","Plantation + arrosage","Garantie reprise 3 mois"],         "best": false },

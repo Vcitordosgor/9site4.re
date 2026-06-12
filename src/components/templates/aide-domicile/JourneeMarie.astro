@@ -74,29 +74,66 @@ const moments = [
           <span></span>
           {['lun','mar','mer','jeu','ven','sam','dim'].map((d) => (<span class="text-center">{d}</span>))}
         </div>
-        {[
-          { h: '08h', cells: [1,1,1,1,1,0,0] },
-          { h: '10h', cells: [1,0,1,0,1,0,0] },
-          { h: '12h', cells: [1,1,1,1,1,1,1] },
-          { h: '15h', cells: [0,2,0,2,0,2,0] },
-          { h: '19h', cells: [2,2,2,2,2,2,2] },
-        ].map((row, r) => (
-          <div class="grid grid-cols-[44px_repeat(7,1fr)] gap-1.5 sm:gap-2 mb-1.5 sm:mb-2 last:mb-0">
-            <span class="text-[11px] sm:text-[12px] text-[#F8F0E3]/60 tabular-nums self-center" style="font-family:'Cormorant Garamond',serif;font-style:italic;">{row.h}</span>
-            {row.cells.map((v, c) => (
-              <span
-                class="jm-cell aspect-square rounded-md sm:rounded-lg ring-1 ring-[#F8F0E3]/10 bg-[#F8F0E3]/[0.04]"
-                data-fill={v}
-                style={`--d:${(r * 7 + c) * 55}ms;`}
-                aria-hidden="true"
-              ></span>
-            ))}
-          </div>
-        ))}
+        {(() => {
+          const jours = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche'];
+          const rows = [
+            { h: '08h', cells: [1,1,1,1,1,0,0], label: 'Toilette + petit-déjeuner' },
+            { h: '10h', cells: [1,0,1,0,1,0,0], label: 'Ménage léger + promenade' },
+            { h: '12h', cells: [1,1,1,1,1,1,1], label: 'Repas mijoté ensemble' },
+            { h: '15h', cells: [0,2,0,2,0,2,0], label: 'Lecture, jeux, compagnie' },
+            { h: '19h', cells: [2,2,2,2,2,2,2], label: 'Dîner + coucher en douceur' },
+          ];
+          return rows.map((row, r) => (
+            <div class="grid grid-cols-[44px_repeat(7,1fr)] gap-1.5 sm:gap-2 mb-1.5 sm:mb-2 last:mb-0">
+              <span class="text-[11px] sm:text-[12px] text-[#F8F0E3]/60 tabular-nums self-center" style="font-family:'Cormorant Garamond',serif;font-style:italic;">{row.h}</span>
+              {row.cells.map((v, c) => (
+                v === 0 ? (
+                  <span
+                    class="jm-cell aspect-square rounded-md sm:rounded-lg ring-1 ring-[#F8F0E3]/10 bg-[#F8F0E3]/[0.04]"
+                    data-fill={v}
+                    style={`--d:${(r * 7 + c) * 55}ms;`}
+                    aria-hidden="true"
+                  ></span>
+                ) : (
+                  <button
+                    type="button"
+                    class="jm-cell jm-slot aspect-square rounded-md sm:rounded-lg ring-1 ring-[#F8F0E3]/10 bg-[#F8F0E3]/[0.04] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F8F0E3]/70"
+                    data-fill={v}
+                    style={`--d:${(r * 7 + c) * 55}ms;`}
+                    data-jour={jours[c]}
+                    data-heure={row.h}
+                    data-prestation={row.label}
+                    aria-label={`${jours[c]} ${row.h} — ${row.label}`}
+                  ></button>
+                )
+              ))}
+            </div>
+          ));
+        })()}
         <p class="mt-5 text-[12px] text-[#F8F0E3]/55 italic" style="font-family:'Cormorant Garamond',serif;">
           Exemple — Mme R., maintien à domicile, 18 h / semaine.
         </p>
       </div>
+    </div>
+
+    <!-- Popover détails prestation -->
+    <div
+      id="jm-pop"
+      role="dialog"
+      aria-modal="false"
+      aria-label="Détails de la prestation"
+      class="hidden absolute z-30 max-w-[260px] rounded-[14px] bg-[#F8F0E3] text-[#3D2A1E] shadow-xl ring-1 ring-[#3D2A1E]/15 p-4"
+    >
+      <div class="flex items-start justify-between gap-3">
+        <div>
+          <p id="jm-pop-when" class="text-[11px] uppercase tracking-[0.2em] text-[#C4674C]"></p>
+          <p id="jm-pop-prest" class="mt-1 text-[16px] leading-snug" style="font-family:'Cormorant Garamond',serif;font-style:italic;"></p>
+        </div>
+        <button id="jm-pop-close" aria-label="Fermer" class="-mr-1 -mt-1 w-7 h-7 grid place-items-center rounded-full text-[#3D2A1E]/70 hover:text-[#3D2A1E] hover:bg-[#3D2A1E]/10">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+      <div id="jm-pop-arrow" class="absolute w-3 h-3 bg-[#F8F0E3] ring-1 ring-[#3D2A1E]/15 rotate-45" aria-hidden="true"></div>
     </div>
 
     <div class="mt-16 md:mt-20 flex items-center gap-4">
@@ -117,6 +154,78 @@ const moments = [
     prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: 'smooth' }));
     next.addEventListener('click', () => track.scrollBy({ left: step(), behavior: 'smooth' }));
   }
+
+  // Popover slots semaine: clic révèle prestation; ferme via close, outside, Esc.
+  (() => {
+    const section = document.getElementById('journee');
+    const pop = document.getElementById('jm-pop');
+    const popWhen = document.getElementById('jm-pop-when');
+    const popPrest = document.getElementById('jm-pop-prest');
+    const popClose = document.getElementById('jm-pop-close');
+    const popArrow = document.getElementById('jm-pop-arrow');
+    if (!section || !pop || !popWhen || !popPrest || !popClose || !popArrow) return;
+    let currentTrigger = null;
+    const hide = () => {
+      pop.classList.add('hidden');
+      if (currentTrigger) currentTrigger.removeAttribute('aria-expanded');
+      currentTrigger = null;
+    };
+    const place = (trigger) => {
+      const sRect = section.getBoundingClientRect();
+      const tRect = trigger.getBoundingClientRect();
+      pop.classList.remove('hidden');
+      const pRect = pop.getBoundingClientRect();
+      const margin = 12;
+      const cxCell = tRect.left + tRect.width / 2 - sRect.left;
+      let left = cxCell - pRect.width / 2;
+      const minLeft = margin;
+      const maxLeft = sRect.width - pRect.width - margin;
+      if (left < minLeft) left = minLeft;
+      if (left > maxLeft) left = maxLeft;
+      // Above the cell if room, otherwise below
+      const top = tRect.top - sRect.top - pRect.height - 12;
+      const placeAbove = top > margin;
+      const finalTop = placeAbove ? top : (tRect.bottom - sRect.top + 12);
+      pop.style.left = left + 'px';
+      pop.style.top = finalTop + 'px';
+      // Arrow
+      const arrowLeft = Math.max(10, Math.min(pRect.width - 18, cxCell - left - 6));
+      popArrow.style.left = arrowLeft + 'px';
+      if (placeAbove) {
+        popArrow.style.top = (pRect.height - 6) + 'px';
+        popArrow.style.bottom = '';
+      } else {
+        popArrow.style.top = '-6px';
+        popArrow.style.bottom = '';
+      }
+    };
+    section.querySelectorAll('.jm-slot').forEach((btn) => {
+      btn.addEventListener('click', (ev) => {
+        ev.stopPropagation();
+        const t = ev.currentTarget;
+        if (currentTrigger === t) { hide(); return; }
+        currentTrigger = t;
+        popWhen.textContent = (t.dataset.jour || '') + ' · ' + (t.dataset.heure || '');
+        popPrest.textContent = t.dataset.prestation || '';
+        t.setAttribute('aria-expanded', 'true');
+        place(t);
+      });
+    });
+    popClose.addEventListener('click', (e) => { e.stopPropagation(); hide(); });
+    document.addEventListener('click', (e) => {
+      if (pop.classList.contains('hidden')) return;
+      if (pop.contains(e.target)) return;
+      hide();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !pop.classList.contains('hidden')) {
+        hide();
+        if (currentTrigger) currentTrigger.focus();
+      }
+    });
+    window.addEventListener('resize', () => { if (currentTrigger) place(currentTrigger); });
+    window.addEventListener('scroll', () => { if (currentTrigger) place(currentTrigger); }, { passive: true });
+  })();
 
   // Signature: weekly grid soft-fills cell by cell on scroll-in.
   const week = document.getElementById('jm-week');
@@ -155,6 +264,11 @@ const moments = [
   #jm-week.is-on .jm-cell[data-fill="2"]{
     background-color: rgba(107,127,92,.78);
     box-shadow: inset 0 0 0 1px rgba(107,127,92,.35), 0 4px 12px -6px rgba(107,127,92,.5);
+  }
+  #jm-week .jm-slot{ cursor: pointer; }
+  #jm-week .jm-slot:hover, #jm-week .jm-slot[aria-expanded="true"]{
+    filter: brightness(1.08);
+    box-shadow: 0 0 0 2px rgba(248,240,227,.35), inset 0 0 0 1px rgba(248,240,227,.25);
   }
   @media (prefers-reduced-motion: reduce){
     #jm-week .jm-cell{ transition: none; transform: none; }

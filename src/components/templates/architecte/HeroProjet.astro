@@ -22,16 +22,32 @@ import data from '../../../data/templates/mahatma.json';
       <span class="col-span-3 text-right">{new Date().getFullYear()}</span>
     </div>
 
-    <!-- Plan d'architecte CSS (axonométrie + cotations) -->
-    <figure class="relative aspect-[16/10] mb-8 overflow-hidden bg-mahatma-papier ring-1 ring-mahatma-encre/30 hero-vivant">
-      <!-- Grille millimétrée -->
-      <div class="absolute inset-0 pointer-events-none opacity-[0.18]" aria-hidden="true"
+    <!-- Photo du projet + overlay plan d'architecte au survol -->
+    <figure
+      class="relative aspect-[16/10] mb-8 overflow-hidden bg-mahatma-papier ring-1 ring-mahatma-encre/30 hero-vivant hero-photo group"
+      tabindex="0"
+    >
+      <!-- Photo de fond -->
+      <img
+        src="/images/architecte/ecole.webp"
+        alt="Projet d'architecture — école livrée récemment"
+        class="absolute inset-0 w-full h-full object-cover hero-photo-img"
+        loading="eager"
+        decoding="async"
+        width="1600"
+        height="1000"
+      />
+      <!-- Voile clair par défaut, plus opaque au survol pour révéler le plan -->
+      <div class="hero-photo-veil absolute inset-0 pointer-events-none bg-mahatma-papier/0 transition-[background-color] duration-700" aria-hidden="true"></div>
+
+      <!-- Grille millimétrée (visible avec le plan) -->
+      <div class="hero-photo-grid absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-700" aria-hidden="true"
            style="background-image: linear-gradient(to right, #0A0A0C 1px, transparent 1px), linear-gradient(to bottom, #0A0A0C 1px, transparent 1px); background-size: 24px 24px;"></div>
-      <div class="absolute inset-0 pointer-events-none opacity-[0.35]" aria-hidden="true"
+      <div class="hero-photo-grid absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-700" aria-hidden="true"
            style="background-image: linear-gradient(to right, #0A0A0C 1px, transparent 1px), linear-gradient(to bottom, #0A0A0C 1px, transparent 1px); background-size: 120px 120px;"></div>
 
-      <!-- Plan axonométrique SVG -->
-      <svg viewBox="0 0 800 500" class="absolute inset-0 w-full h-full blueprint-svg" aria-hidden="true" preserveAspectRatio="xMidYMid meet" data-blueprint>
+      <!-- Plan axonométrique SVG (overlay) -->
+      <svg viewBox="0 0 800 500" class="absolute inset-0 w-full h-full blueprint-svg hero-photo-plan opacity-0 transition-opacity duration-700" aria-hidden="true" preserveAspectRatio="xMidYMid meet" data-blueprint>
         <g stroke="#0A0A0C" fill="none" stroke-linecap="square" stroke-linejoin="miter" class="bp-strokes">
           <!-- Volume principal (axonométrie) -->
           <polygon points="220,220 520,220 600,160 300,160" stroke-width="1.5" fill="#0A0A0C" fill-opacity="0.04"/>
@@ -61,6 +77,23 @@ import data from '../../../data/templates/mahatma.json';
         <text x="80" y="225" font-family="ui-monospace, monospace" font-size="10" fill="#6B6863" letter-spacing="2">A</text>
         <text x="365" y="76" font-family="ui-monospace, monospace" font-size="10" fill="#6B6863" letter-spacing="2">1</text>
       </svg>
+
+      <!-- Indice d'interaction -->
+      <div class="hero-photo-hint absolute bottom-4 right-4 md:bottom-6 md:right-6 z-10 font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-papier bg-mahatma-encre/75 px-3 py-1.5 backdrop-blur-[2px] pointer-events-none transition-opacity duration-500" aria-hidden="true">
+        <span class="hero-hint-default">Survol · voir le plan</span>
+        <span class="hero-hint-touch hidden">Toucher · voir le plan</span>
+      </div>
+
+      <!-- Toggle plan/photo (mobile, accessible) -->
+      <button
+        type="button"
+        class="hero-photo-toggle absolute top-4 left-4 md:top-8 md:left-8 z-10 font-fira-mono text-[10px] uppercase tracking-[0.22em] text-mahatma-encre bg-mahatma-papier/90 ring-1 ring-mahatma-encre/40 px-3 py-1.5 hover:bg-mahatma-papier focus:outline-none focus-visible:ring-2 focus-visible:ring-mahatma-cachet"
+        aria-pressed="false"
+        aria-label="Afficher le plan d'architecte"
+      >
+        <span class="hero-toggle-on">▢ Voir le plan</span>
+        <span class="hero-toggle-off hidden">▢ Voir la photo</span>
+      </button>
 
       <!-- Cachet rouge en surimpression -->
       <div class="absolute top-4 right-4 md:top-8 md:right-8 border-2 border-mahatma-cachet text-mahatma-cachet px-3 py-1.5 font-fira-mono text-[10px] uppercase tracking-[0.22em] bg-mahatma-papier/90 transform rotate-[-3deg]">
@@ -175,6 +208,48 @@ import data from '../../../data/templates/mahatma.json';
     .hero-vivant { animation: none !important; transform: none !important; }
   }
 
+  /* Hero photo + plan overlay */
+  .hero-photo-img {
+    filter: grayscale(0.6) contrast(1.02);
+    transition: filter 700ms ease, transform 1200ms ease;
+  }
+  .hero-photo.is-plan .hero-photo-img,
+  .hero-photo:hover .hero-photo-img,
+  .hero-photo:focus-within .hero-photo-img {
+    filter: grayscale(1) contrast(1.1) brightness(1.05);
+  }
+  .hero-photo.is-plan .hero-photo-veil,
+  .hero-photo:hover .hero-photo-veil,
+  .hero-photo:focus-within .hero-photo-veil {
+    background-color: rgba(244, 240, 232, 0.82);
+  }
+  .hero-photo.is-plan .hero-photo-grid,
+  .hero-photo:hover .hero-photo-grid,
+  .hero-photo:focus-within .hero-photo-grid {
+    opacity: 0.35;
+  }
+  .hero-photo.is-plan .hero-photo-plan,
+  .hero-photo:hover .hero-photo-plan,
+  .hero-photo:focus-within .hero-photo-plan {
+    opacity: 1;
+  }
+  .hero-photo.is-plan .hero-photo-hint,
+  .hero-photo:hover .hero-photo-hint,
+  .hero-photo:focus-within .hero-photo-hint {
+    opacity: 0;
+  }
+  @media (hover: none) {
+    .hero-photo-hint .hero-hint-default { display: none; }
+    .hero-photo-hint .hero-hint-touch { display: inline; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-photo-img,
+    .hero-photo-veil,
+    .hero-photo-grid,
+    .hero-photo-plan,
+    .hero-photo-hint { transition: none !important; }
+  }
+
   /* Signature : plan d'architecte qui se dessine au scroll */
   .blueprint-svg .bp-strokes > * {
     stroke-dasharray: var(--bp-len, 1200);
@@ -224,5 +299,24 @@ import data from '../../../data/templates/mahatma.json';
       });
     }, { threshold: 0.25 });
     io.observe(svg);
+  })();
+
+  // Toggle photo <-> plan (tactile & accessibilité)
+  (() => {
+    const fig = document.querySelector<HTMLElement>('.hero-photo');
+    const btn = document.querySelector<HTMLButtonElement>('.hero-photo-toggle');
+    if (!fig || !btn) return;
+    const on = btn.querySelector<HTMLElement>('.hero-toggle-on');
+    const off = btn.querySelector<HTMLElement>('.hero-toggle-off');
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const active = fig.classList.toggle('is-plan');
+      btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+      btn.setAttribute('aria-label', active ? 'Afficher la photo du projet' : "Afficher le plan d'architecte");
+      if (on && off) {
+        on.classList.toggle('hidden', active);
+        off.classList.toggle('hidden', !active);
+      }
+    });
   })();
 </script>

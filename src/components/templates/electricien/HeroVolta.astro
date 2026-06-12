@@ -10,22 +10,22 @@ import data from '../../../data/templates/volta.json';
          class="absolute inset-0 w-full h-full object-cover opacity-25 mix-blend-luminosity" />
     <div class="absolute inset-0" style="background: radial-gradient(120% 80% at 80% 20%, rgb(6 212 245 / 0.12) 0%, transparent 60%), linear-gradient(180deg, rgb(15 17 21 / 0.85) 0%, rgb(22 26 32 / 0.95) 100%);"></div>
 
-    <!-- Schéma tableau électrique (visible desktop, masqué mobile) -->
-    <svg class="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 h-[88%] w-auto opacity-[0.22] hero-vivant"
-         viewBox="0 0 360 480" fill="none" aria-hidden="true">
+    <!-- Schéma tableau électrique interactif (visible desktop, masqué mobile) -->
+    <svg id="volta-tableau" class="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 h-[88%] w-auto opacity-[0.32] hero-vivant"
+         viewBox="0 0 360 480" fill="none" aria-label="Tableau électrique conforme NF C 15-100 — cliquez pour basculer les disjoncteurs">
       <!-- Coffret -->
       <rect x="20" y="20" width="320" height="440" rx="6" stroke="#06D4F5" stroke-width="1.5" fill="rgb(6 212 245 / 0.03)"/>
       <rect x="36" y="36" width="288" height="40" stroke="#06D4F5" stroke-width="1" opacity="0.6"/>
       <text x="50" y="62" fill="#06D4F5" font-family="monospace" font-size="14" opacity="0.9">NF C 15-100</text>
-      <!-- Rails DIN + disjoncteurs -->
+      <!-- Rails DIN + disjoncteurs cliquables -->
       {[100, 170, 240, 310, 380].map((y) => (
         <g>
           <line x1="36" y1={y} x2="324" y2={y} stroke="#06D4F5" stroke-width="0.6" opacity="0.45"/>
-          {[50, 90, 130, 170, 210, 250, 290].map((x) => (
-            <g>
-              <rect x={x} y={y - 22} width="28" height="44" stroke="#06D4F5" stroke-width="1" fill="rgb(6 212 245 / 0.05)"/>
-              <line x1={x + 14} y1={y - 16} x2={x + 14} y2={y - 8} stroke="#06D4F5" stroke-width="1.2"/>
-              <circle cx={x + 14} cy={y - 4} r="1.5" fill="#06D4F5"/>
+          {[50, 90, 130, 170, 210, 250, 290].map((x, idx) => (
+            <g class="volta-disj" data-on={((idx + y) % 3 === 0).toString()} tabindex="0" role="button" aria-label="Basculer disjoncteur">
+              <rect x={x} y={y - 22} width="28" height="44" rx="1" class="volta-disj-body"/>
+              <line x1={x + 14} y1={y - 16} x2={x + 14} y2={y - 8} class="volta-disj-lever"/>
+              <circle cx={x + 14} cy={y - 4} r="1.6" class="volta-disj-led"/>
             </g>
           ))}
         </g>
@@ -152,4 +152,37 @@ import data from '../../../data/templates/volta.json';
   @media (prefers-reduced-motion: reduce) {
     .hero-vivant { animation: none !important; transform: none !important; }
   }
+
+  /* Disjoncteurs interactifs */
+  #volta-tableau { pointer-events: auto; }
+  .volta-disj { cursor: pointer; outline: none; }
+  .volta-disj-body { stroke: #06D4F5; stroke-width: 1; fill: rgb(6 212 245 / 0.04); transition: fill 0.25s ease, stroke 0.25s ease; }
+  .volta-disj-lever { stroke: #06D4F5; stroke-width: 1.2; transition: transform 0.22s cubic-bezier(0.4,0,0.2,1); transform-box: fill-box; transform-origin: center; }
+  .volta-disj-led { fill: #2A2F36; transition: fill 0.25s ease, filter 0.25s ease; }
+  .volta-disj[data-on="true"] .volta-disj-body { fill: rgb(6 212 245 / 0.18); stroke: #06D4F5; }
+  .volta-disj[data-on="true"] .volta-disj-led { fill: #06D4F5; filter: drop-shadow(0 0 4px rgb(6 212 245 / 0.9)); }
+  .volta-disj[data-on="false"] .volta-disj-lever { transform: translateY(8px); }
+  .volta-disj:hover .volta-disj-body { fill: rgb(6 212 245 / 0.22); }
+  .volta-disj:focus-visible .volta-disj-body { stroke: #ffffff; stroke-width: 1.5; }
+  @media (prefers-reduced-motion: reduce) {
+    .volta-disj-body, .volta-disj-lever, .volta-disj-led { transition: none; }
+  }
 </style>
+
+<script>
+  (() => {
+    const tableau = document.getElementById('volta-tableau');
+    if (!tableau) return;
+    const disjs = tableau.querySelectorAll<SVGGElement>('.volta-disj');
+    const toggle = (g: SVGGElement) => {
+      const on = g.getAttribute('data-on') === 'true';
+      g.setAttribute('data-on', String(!on));
+    };
+    disjs.forEach((g) => {
+      g.addEventListener('click', () => toggle(g));
+      g.addEventListener('keydown', (ev: KeyboardEvent) => {
+        if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); toggle(g); }
+      });
+    });
+  })();
+</script>
