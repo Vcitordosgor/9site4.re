@@ -1,0 +1,122 @@
+---
+/**
+ * Tarifs Volta — 3 forfaits : Dépannage / Mise aux normes / Borne IRVE.
+ * Cartes sombres, accent cyan, prix "à partir de" honnêtes.
+ */
+const forfaits = [
+  {
+    cle: 'depannage',
+    label: 'Dépannage',
+    prix: '89',
+    unite: '€ / intervention',
+    note: 'forfait déplacement + 1ʳᵉ heure',
+    bullets: [
+      'Diagnostic complet du tableau',
+      'Réarmement disjoncteur, recherche de fuite',
+      'Devis remis sur place avant toute réparation',
+      'Intervention 7j/7 — créneau sous 2h en semaine',
+    ],
+    accent: false,
+  },
+  {
+    cle: 'normes',
+    label: 'Mise aux normes',
+    prix: '1 480',
+    unite: '€ à partir de',
+    note: 'studio / T1 — diagnostic Consuel inclus',
+    bullets: [
+      'Audit complet selon NF C 15-100',
+      'Remplacement du tableau + différentiels 30 mA',
+      'Mise à la terre + liaisons équipotentielles',
+      'Attestation Consuel pour assurance / bailleur',
+    ],
+    accent: true,
+  },
+  {
+    cle: 'irve',
+    label: 'Borne IRVE',
+    prix: '1 290',
+    unite: '€ pose incluse',
+    note: 'borne 7,4 kW — éligible crédit d\'impôt 500 €',
+    bullets: [
+      'Borne certifiée IRVE (Hager, Schneider, Legrand)',
+      'Tirage de ligne dédiée 32 A + protection T2',
+      'Pose murale ou sur pied, intérieur ou extérieur',
+      'Mise en service + déclaration auprès du gestionnaire',
+    ],
+    accent: false,
+  },
+];
+---
+
+<section id="tarifs" class="relative bg-volta-noir py-20 md:py-32 px-6 md:px-10 overflow-hidden">
+  <div class="pointer-events-none absolute inset-0 opacity-[0.04]" aria-hidden="true"
+       style="background-image: linear-gradient(to right, rgb(6 212 245 / 0.4) 1px, transparent 1px), linear-gradient(to bottom, rgb(6 212 245 / 0.4) 1px, transparent 1px); background-size: 64px 64px;">
+  </div>
+
+  <div class="relative max-w-content mx-auto">
+
+    <header class="mb-14 md:mb-20 max-w-2xl">
+      <p class="scroll-reveal flex items-center gap-3 text-xs font-space-grotesk font-semibold uppercase tracking-[0.32em] text-volta-cyan">
+        <span class="block w-8 h-px bg-volta-cyan/50" aria-hidden="true"></span>
+        Tarifs
+      </p>
+      <h2 class="scroll-reveal mt-4 font-syne font-bold text-volta-blanc leading-[1.05]" style="font-size: clamp(32px, 5vw, 56px);">
+        Trois forfaits.<br/>
+        <span class="text-volta-cyan">Aucune surprise.</span>
+      </h2>
+      <p class="scroll-reveal mt-6 font-space-grotesk text-volta-fumee/65 max-w-xl leading-relaxed">
+        Devis détaillé signé avant toute intervention. Pas de "et en plus il y a…" trois jours plus tard.
+      </p>
+    </header>
+
+    <div class="grid md:grid-cols-3 gap-px bg-volta-fumee/5">
+      {forfaits.map((f) => (
+        <article
+          class={`scroll-reveal relative bg-volta-acier p-8 md:p-10 flex flex-col ${f.accent ? 'ring-1 ring-volta-cyan/40' : ''}`}
+        >
+          {f.accent && (
+            <span class="absolute top-0 right-0 -translate-y-1/2 bg-volta-cyan text-volta-noir font-space-grotesk text-[10px] font-bold uppercase tracking-[0.22em] px-3 py-1 rounded-sm">
+              Le plus demandé
+            </span>
+          )}
+
+          <p class="font-space-grotesk text-[11px] font-semibold uppercase tracking-[0.28em] text-volta-cyan mb-4">
+            {f.label}
+          </p>
+
+          <div class="flex items-baseline gap-2 mb-2">
+            <span class="font-syne font-extrabold text-volta-blanc tabular-nums leading-none" style="font-size: clamp(40px, 4.5vw, 56px);">
+              {f.prix}
+            </span>
+            <span class="font-space-grotesk text-sm text-volta-fumee/55">{f.unite}</span>
+          </div>
+          <p class="font-space-grotesk italic text-xs text-volta-fumee/55 mb-7">{f.note}</p>
+
+          <ul class="space-y-3 mb-8 grow">
+            {f.bullets.map((b) => (
+              <li class="flex items-start gap-3 font-space-grotesk text-sm text-volta-fumee/75 leading-relaxed">
+                <svg class="shrink-0 mt-1.5 text-volta-cyan" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                <span>{b}</span>
+              </li>
+            ))}
+          </ul>
+
+          <a
+            href="#devis"
+            class={`inline-flex items-center justify-center h-12 px-6 text-xs font-space-grotesk font-semibold uppercase tracking-[0.18em] rounded-sm transition-colors ${f.accent ? 'bg-volta-cyan text-volta-noir hover:bg-volta-blanc' : 'border border-volta-cyan/40 text-volta-cyan hover:bg-volta-cyan hover:text-volta-noir'}`}
+          >
+            Demander un devis
+          </a>
+        </article>
+      ))}
+    </div>
+
+    <p class="scroll-reveal mt-10 font-space-grotesk italic text-xs text-volta-fumee/45 text-center max-w-2xl mx-auto">
+      Tarifs indicatifs TTC, île de La Réunion. Majoration nuit (22h–6h) et jours fériés : +35 %.
+    </p>
+
+  </div>
+</section>
