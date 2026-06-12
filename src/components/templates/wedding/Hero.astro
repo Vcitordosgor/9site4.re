@@ -2,6 +2,24 @@
 import data from '../../../data/templates/seve.json';
 ---
 <section id="top" class="relative h-[100svh] min-h-[640px] w-full overflow-hidden">
+
+  <!-- SIGNATURE : pétales qui tombent doucement -->
+  <div class="seve-petals pointer-events-none absolute inset-0 z-10" aria-hidden="true">
+    <span class="petal" style="left:6%; animation-delay:-2s; --d:18s;"></span>
+    <span class="petal" style="left:14%; animation-delay:-9s; --d:23s;"></span>
+    <span class="petal" style="left:24%; animation-delay:-5s; --d:20s; --r:1.4;"></span>
+    <span class="petal" style="left:38%; animation-delay:-14s; --d:25s;"></span>
+    <span class="petal" style="left:52%; animation-delay:-1s; --d:22s; --r:0.9;"></span>
+    <span class="petal" style="left:66%; animation-delay:-11s; --d:19s;"></span>
+    <span class="petal" style="left:78%; animation-delay:-7s; --d:24s; --r:1.2;"></span>
+    <span class="petal" style="left:90%; animation-delay:-16s; --d:21s;"></span>
+  </div>
+
+  <!-- SIGNATURE : deux lignes qui s'entrelacent -->
+  <svg class="absolute bottom-0 left-0 w-full h-32 md:h-40 pointer-events-none z-[5]" viewBox="0 0 1440 160" preserveAspectRatio="none" aria-hidden="true">
+    <path class="seve-line seve-line-a" d="M-20,140 C260,40 540,140 720,80 C900,20 1180,120 1460,40" fill="none" stroke="#CC6B49" stroke-width="1.6" stroke-linecap="round" opacity="0.85"/>
+    <path class="seve-line seve-line-b" d="M-20,40 C260,140 540,40 720,100 C900,160 1180,60 1460,140" fill="none" stroke="#FAF4EA" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+  </svg>
   <img src="/images/wedding/extra-1.webp" alt="Cérémonie de mariage à La Réunion" class="absolute inset-0 w-full h-full object-cover" loading="eager" fetchpriority="high" />
   <div class="absolute inset-0" style="background:linear-gradient(180deg, rgba(58,53,45,0.05) 0%, rgba(58,53,45,0.15) 40%, rgba(58,53,45,0.75) 100%);"></div>
   <div class="absolute inset-0" style="background:linear-gradient(110deg, rgba(58,53,45,0.55) 0%, transparent 55%);"></div>
@@ -33,4 +51,41 @@ import data from '../../../data/templates/seve.json';
     <span>Défiler</span>
     <span class="w-12 h-px bg-[#FAF4EA]/40"></span>
   </div>
+
+  <style>
+    /* Pétales */
+    .petal {
+      position: absolute;
+      top: -30px;
+      width: 12px;
+      height: 6px;
+      background: linear-gradient(135deg, #F5C6B0 0%, #CC6B49 100%);
+      border-radius: 12px 3px 12px 3px;
+      opacity: 0;
+      transform-origin: center;
+      animation: petal-fall var(--d, 20s) linear infinite;
+      filter: blur(0.3px);
+    }
+    @keyframes petal-fall {
+      0%   { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
+      8%   { opacity: 0.85; }
+      50%  { transform: translateY(50vh) translateX(40px) rotate(180deg); }
+      90%  { opacity: 0.6; }
+      100% { transform: translateY(110vh) translateX(-30px) rotate(360deg); opacity: 0; }
+    }
+    /* Lignes entrelacées */
+    .seve-line {
+      stroke-dasharray: 2400;
+      stroke-dashoffset: 2400;
+      animation: seve-line-draw 4s cubic-bezier(0.65, 0, 0.35, 1) 600ms forwards;
+    }
+    .seve-line-b { animation-delay: 1200ms; }
+    @keyframes seve-line-draw {
+      to { stroke-dashoffset: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .petal { animation: none; opacity: 0; }
+      .seve-line { animation: none; stroke-dashoffset: 0; }
+    }
+  </style>
 </section>
