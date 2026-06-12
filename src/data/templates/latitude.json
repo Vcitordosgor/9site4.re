@@ -131,22 +131,22 @@
   ],
   "avis": [
     {
-      "prenom": "Une cliente",
-      "metier": "Portrait d'auteur",
+      "prenom": "Mariés · Saint-Leu",
+      "metier": "Reportage · juin",
+      "etoiles": 5,
+      "texte": "Discret toute la journée, jamais une pose forcée. L'album raconte exactement ce qu'on a vécu."
+    },
+    {
+      "prenom": "Famille · Saint-Denis",
+      "metier": "Portrait à domicile",
       "etoiles": 5,
       "texte": "Du temps passé à parler avant de toucher l'appareil. Le résultat : un portrait juste, qu'on garde."
     },
     {
-      "prenom": "Un couple",
-      "metier": "Reportage mariage",
+      "prenom": "Brand · Cilaos",
+      "metier": "Campagne éditoriale",
       "etoiles": 5,
-      "texte": "On voulait un photographe discret et d'auteur. Album magnifique, pas une pose forcée, travail sérieux."
-    },
-    {
-      "prenom": "Un client institutionnel",
-      "metier": "Reportage événementiel",
-      "etoiles": 5,
-      "texte": "Couverture d'événement professionnelle, présence discrète, livrables utilisables sur tous nos supports."
+      "texte": "Direction artistique précise, livrables impeccables. Tirages utilisés sur tous nos supports."
     }
   ],
   "infosCles": {

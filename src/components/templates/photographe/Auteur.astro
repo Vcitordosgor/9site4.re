@@ -9,8 +9,9 @@ import data from '../../../data/templates/latitude.json';
 
       <!-- Portrait Aurélien -->
       <div class="md:col-span-5">
-        <div class="relative aspect-[4/5] overflow-hidden border border-latitude-or/40 bg-latitude-cendre/30 flex items-center justify-center" role="img" aria-label={`Portrait stylisé d'${data.fondateur.nom}, photographe`}>
-          <span class="font-dm-serif text-latitude-or select-none" style="font-size: clamp(140px, 26vw, 240px); line-height: 1;">{data.fondateur.nom.charAt(0).toUpperCase()}</span>
+        <div class="relative aspect-[4/5] overflow-hidden border border-latitude-or/40 bg-latitude-cendre/30" role="img" aria-label={`Portrait de ${data.fondateur.nom}, photographe`}>
+          <img src="/images/photographe/pexels-david-underland-9822136.webp" alt={`Portrait — ${data.fondateur.nom}`} loading="lazy" decoding="async" width="600" height="750" class="absolute inset-0 w-full h-full object-cover" />
+          <div class="absolute inset-0" style="background:linear-gradient(180deg, rgba(10,10,11,0.10) 0%, rgba(10,10,11,0.55) 100%);"></div>
           <div class="absolute top-5 left-5 font-hanken text-[10px] uppercase tracking-[0.25em] text-latitude-blanc/85 bg-latitude-noir/40 px-2 py-1">PORTRAIT N° 001</div>
           <div class="absolute bottom-5 right-5 text-right bg-latitude-noir/40 px-3 py-2">
             <p class="font-caveat text-latitude-or text-3xl leading-none">Studio Latitude</p>
