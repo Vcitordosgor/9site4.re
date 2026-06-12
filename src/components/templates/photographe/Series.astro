@@ -1,4 +1,5 @@
 ---
+import IrisIcon from './IrisIcon.astro';
 const seances = [
   { num: '01', titre: 'Couple', sous: 'Engagement, anniversaire, escapade', photo: '/images/photographe/extra-2.webp' },
   { num: '02', titre: 'Famille', sous: 'Du nourrisson aux grands-parents', photo: '/images/photographe/extra-3.webp' },
@@ -9,7 +10,7 @@ const seances = [
 <section id="seances" class="py-24 md:py-32" style="background:#FAF7F0;">
   <div class="max-w-content mx-auto px-6 md:px-10">
     <div class="mb-16 max-w-2xl">
-      <div class="text-[10px] uppercase tracking-[0.32em] mb-3" style="color:#6E6A60;">Séances proposées</div>
+      <div class="text-[10px] uppercase tracking-[0.32em] mb-3 inline-flex items-center gap-2" style="color:#6E6A60;"><IrisIcon size={12} tone="dark" /> Séances proposées</div>
       <h2 class="font-fraunces text-5xl md:text-6xl leading-tight" style="color:#0A0A0B;">Quatre façons <em class="italic">de regarder.</em></h2>
     </div>
     <div class="grid md:grid-cols-2 gap-10 lg:gap-16">

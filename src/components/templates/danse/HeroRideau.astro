@@ -38,7 +38,7 @@ const mots = ['Danser', 'Bouger', 'Vivre'];
     </g>
   </svg>
   <!-- Version mobile : silhouette simplifiée, plus petite, en bas à droite -->
-  <svg class="absolute -right-6 bottom-6 h-[42vh] w-auto opacity-[0.13] pointer-events-none md:hidden" viewBox="0 0 400 800" fill="none" aria-hidden="true" style="filter: blur(0.4px);">
+  <svg class="absolute -right-6 bottom-6 h-[38vh] w-auto opacity-[0.085] pointer-events-none md:hidden" viewBox="0 0 400 800" fill="none" aria-hidden="true" style="filter: blur(0.4px);">
     <g stroke="#B8956A" stroke-width="3" stroke-linecap="round" fill="none">
       <circle cx="200" cy="100" r="32" />
       <path d="M200 132 Q210 240 240 360 Q270 460 290 520" />
@@ -51,7 +51,7 @@ const mots = ['Danser', 'Bouger', 'Vivre'];
   </svg>
 
   <!-- Contenu hero -->
-  <div class="relative max-w-content mx-auto px-10 md:px-16 pt-32 pb-20 md:pt-40 min-h-[100svh] flex flex-col">
+  <div class="relative max-w-content mx-auto px-8 md:px-16 pt-28 pb-16 md:pt-40 md:pb-20 min-h-[100svh] flex flex-col">
 
     <!-- Saison -->
     <p class="font-inter-tight text-[10px] uppercase tracking-[0.5em] text-vermeille-or text-center md:text-left mb-10 md:mb-12 flex items-center gap-3 justify-center md:justify-start">
@@ -65,12 +65,12 @@ const mots = ['Danser', 'Bouger', 'Vivre'];
       <p class="font-caveat text-vermeille-rose text-2xl md:text-3xl mb-4 -rotate-2 origin-left" aria-hidden="true">
         Cette saison, vous allez…
       </p>
-      <div class="relative h-[clamp(96px,18vw,260px)] overflow-hidden" aria-label="Danser, Bouger, Vivre">
+      <div class="relative h-[clamp(72px,16vw,240px)] sm:h-[clamp(96px,17vw,260px)] overflow-hidden" aria-label="Danser, Bouger, Vivre">
         {mots.map((m, i) => (
           <h1
             class="absolute inset-0 font-italiana italic text-vermeille-ivoire leading-[0.92] tracking-tight word-rotate"
             data-i={i}
-            style={`font-size: clamp(88px, 17vw, 260px); animation-delay: ${i * 2.4}s;`}
+            style={`font-size: clamp(64px, 14vw, 240px); animation-delay: ${i * 2.4}s;`}
           >{m}.</h1>
         ))}
       </div>

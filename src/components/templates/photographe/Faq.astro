@@ -1,4 +1,5 @@
 ---
+import IrisIcon from './IrisIcon.astro';
 const faqs = [
   { q: 'Argentique ou numérique ?', r: 'Les deux, selon le projet. Argentique 35mm pour les séances éditoriales et le mariage ; numérique pour la corporate et les délais courts. Toujours discuté en amont.' },
   { q: 'Délai de livraison ?', r: 'Sélection sous 7 jours, retouches finales sous 21 jours pour le portrait, 6 semaines pour un mariage. Express possible (+30%).' },
@@ -10,7 +11,7 @@ const faqs = [
 <section class="py-24 md:py-32" style="background:#F2EBDD;">
   <div class="max-w-content mx-auto px-6 md:px-10">
     <div class="mb-12 max-w-2xl">
-      <div class="text-[10px] uppercase tracking-[0.32em] mb-3" style="color:#6E6A60;">Questions fréquentes</div>
+      <div class="text-[10px] uppercase tracking-[0.32em] mb-3 inline-flex items-center gap-2" style="color:#6E6A60;"><IrisIcon size={12} tone="dark" /> Questions fréquentes</div>
       <h2 class="font-fraunces text-5xl md:text-6xl leading-tight" style="color:#0A0A0B;">FAQ.</h2>
     </div>
     <div class="max-w-3xl divide-y" style="border-color:rgba(10,10,11,0.15);">
