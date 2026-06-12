@@ -48,13 +48,13 @@ import data from '../../../data/templates/marlene.json';
 
       <!-- Médaillon typographique au centre (monogramme + ornement floral) -->
       <div class="lg:col-span-4">
-        <div class="relative aspect-square max-w-xs mx-auto bg-marlene-sable overflow-hidden hero-vivant">
+        <div class="relative aspect-square max-w-xs mx-auto bg-marlene-sable overflow-hidden">
           <!-- Cadre champagne extérieur et intérieur -->
           <div class="absolute inset-3 border border-marlene-champagne/40" aria-hidden="true"></div>
           <div class="absolute inset-5 border border-marlene-champagne/20" aria-hidden="true"></div>
 
-          <!-- Ornement floral SVG -->
-          <svg viewBox="0 0 200 200" class="absolute inset-0 w-full h-full" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+          <!-- Ornement floral SVG (rotation continue très lente 60s) -->
+          <svg viewBox="0 0 200 200" class="institut-couronne absolute inset-0 w-full h-full" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
             <g stroke="currentColor" class="text-marlene-champagne" fill="none" stroke-width="0.5" opacity="0.65">
               <!-- Couronne florale -->
               <circle cx="100" cy="100" r="68"/>
@@ -147,16 +147,17 @@ import data from '../../../data/templates/marlene.json';
 </section>
 
 <style>
-  @keyframes hero-vivant {
-    from { transform: scale(1.06); }
-    to   { transform: scale(1); }
-  }
-  .hero-vivant {
-    transform-origin: center;
-    animation: hero-vivant 2400ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  /* Couronne florale : rotation continue très lente 60s, perceptible mais pas distrayante */
+  .institut-couronne {
+    transform-origin: 50% 50%;
+    animation: institut-rotate 60s linear infinite;
     will-change: transform;
   }
+  @keyframes institut-rotate {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
   @media (prefers-reduced-motion: reduce) {
-    .hero-vivant { animation: none !important; transform: none !important; }
+    .institut-couronne { animation: none !important; transform: none !important; }
   }
 </style>

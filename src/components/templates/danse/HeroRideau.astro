@@ -19,7 +19,7 @@ const mots = ['Danser', 'Bouger', 'Vivre'];
   <div class="absolute top-0 bottom-0 left-6 md:left-10 w-px bg-gradient-to-b from-transparent via-vermeille-or/30 to-transparent" aria-hidden="true"></div>
   <div class="absolute top-0 bottom-0 right-6 md:right-10 w-px bg-gradient-to-b from-transparent via-vermeille-or/30 to-transparent" aria-hidden="true"></div>
 
-  <!-- SVG silhouette danseuse — à droite, géant, dorée -->
+  <!-- SVG silhouette danseuse — à droite, géant desktop / version mobile simplifiée -->
   <svg class="absolute right-0 top-1/2 -translate-y-1/2 h-[110vh] w-auto opacity-[0.12] pointer-events-none hidden md:block" viewBox="0 0 400 800" fill="none" aria-hidden="true" style="filter: blur(0.5px);">
     <g stroke="#B8956A" stroke-width="2.5" stroke-linecap="round" fill="none">
       <!-- tête -->
@@ -35,6 +35,18 @@ const mots = ['Danser', 'Bouger', 'Vivre'];
       <path d="M260 420 Q200 460 100 470" />
       <!-- pied pointe -->
       <path d="M285 700 L295 720 L280 720 Z" fill="#B8956A" />
+    </g>
+  </svg>
+  <!-- Version mobile : silhouette simplifiée, plus petite, en bas à droite -->
+  <svg class="absolute -right-6 bottom-6 h-[42vh] w-auto opacity-[0.13] pointer-events-none md:hidden" viewBox="0 0 400 800" fill="none" aria-hidden="true" style="filter: blur(0.4px);">
+    <g stroke="#B8956A" stroke-width="3" stroke-linecap="round" fill="none">
+      <circle cx="200" cy="100" r="32" />
+      <path d="M200 132 Q210 240 240 360 Q270 460 290 520" />
+      <path d="M205 200 Q250 130 305 70" />
+      <path d="M195 195 Q150 130 100 90" />
+      <path d="M290 520 Q300 620 290 720" />
+      <path d="M260 420 Q200 460 110 470" />
+      <path d="M285 720 L295 740 L280 740 Z" fill="#B8956A" />
     </g>
   </svg>
 

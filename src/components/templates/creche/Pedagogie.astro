@@ -9,6 +9,9 @@ import data from '../../../data/templates/nid.json';
       <h2 class="font-nunito font-extrabold leading-[1.05]" style="color: #5C3D3D; font-size: clamp(34px, 5vw, 58px);">
         Quatre <span style="color: #B89441;">repères</span> au quotidien.
       </h2>
+      <p class="mt-6 font-dm-sans text-[15px] leading-relaxed" style="color: rgba(92,61,61,0.75);">
+        Inspiré de Pikler-Lóczy et Montessori, notre projet pédagogique tient en une page — disponible sur demande lors de la visite.
+      </p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -22,6 +25,20 @@ import data from '../../../data/templates/nid.json';
           </article>
         );
       })}
+    </div>
+
+    <!-- Projet pédagogique : 3 engagements concrets -->
+    <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-4">
+      {[
+        { titre: 'Motricité libre', detail: 'Pas de transat, pas de trotteur. L\'enfant trouve son équilibre à son rythme, sur tapis ferme.' },
+        { titre: 'Verbalisation des soins', detail: 'Chaque geste est annoncé : « je vais te prendre dans les bras », « on va changer ta couche ».' },
+        { titre: 'Réunion parents trimestrielle', detail: 'Un samedi matin par trimestre pour échanger sur le projet et ajuster ensemble.' },
+      ].map((e) => (
+        <div class="p-5 md:p-6 rounded-2xl border" style="background-color: #FFFFFF; border-color: rgba(228,182,182,0.45);">
+          <p class="font-nunito font-bold text-lg mb-2" style="color: #5C3D3D;">{e.titre}</p>
+          <p class="font-dm-sans text-[13px] leading-relaxed" style="color: rgba(92,61,61,0.72);">{e.detail}</p>
+        </div>
+      ))}
     </div>
   </div>
 </section>
