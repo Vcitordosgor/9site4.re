@@ -29,7 +29,7 @@ import data from '../../../data/templates/sorbetpei.json';
 
       <ul class="lg:col-span-7 grid sm:grid-cols-2 gap-4 md:gap-5">
         {data.tournee.map((t, i) => (
-          <li class="relative p-7 rounded-[28px] transition-all duration-500 hover:-translate-y-1" style="background:#FFD93D; color:#3D2817;">
+          <li class="relative p-7 rounded-[28px] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_18px_40px_-20px_rgba(61,40,23,0.6)]" style="background:#F5D77A; color:#3D2817;">
             <div class="flex items-baseline justify-between gap-3">
               <span class="font-fraunces text-3xl leading-none">{t.jour}</span>
               <span class="text-[10px] uppercase tracking-[0.22em] font-bold px-3 py-1 rounded-full" style="background:#FF6F91; color:#FFF6E2;">#{String(i + 1).padStart(2, '0')}</span>

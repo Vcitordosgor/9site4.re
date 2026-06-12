@@ -24,7 +24,7 @@ const etapes = [
 
     <ol class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-5">
       {etapes.map((e, i) => (
-        <li class="relative p-7 rounded-[28px] transition-all duration-500 hover:-translate-y-1" style={`background:${fonds[i] ?? '#FFF6E2'}; color:#3D2817;`}>
+        <li class="relative p-7 rounded-[28px] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_20px_42px_-22px_rgba(61,40,23,0.55)]" style={`background:${fonds[i] ?? '#FFF6E2'}; color:#3D2817;`}>
           <div class="w-16 h-16 rounded-full flex items-center justify-center mb-5" style={`background:${colors[i] ?? '#FF6F91'}; color:#FFF6E2;`}>
             <svg viewBox="0 0 32 32" class="w-9 h-9" aria-hidden="true">
               {icons[i] === 'producteur' && <path d="M16 4 L20 12 L28 14 L22 20 L23 28 L16 24 L9 28 L10 20 L4 14 L12 12 Z" fill="currentColor"/>}
