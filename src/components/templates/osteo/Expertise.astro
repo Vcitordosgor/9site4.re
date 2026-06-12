@@ -5,25 +5,35 @@ const zones = [
     titre: 'Dos & rachis',
     motifs: ['Lombalgies & sciatiques', 'Cervicalgies', 'Hernies discales (suivi)', "Scoliose de l'adulte"],
     photo: '/images/osteo/extra-2.webp',
+    bodyId: 'spine',
   },
   {
     id: 'nuque',
     titre: 'Tête & nuque',
     motifs: ['Maux de tête, migraines', 'Tensions cervicales', 'Vertiges positionnels', 'ATM & mâchoire'],
     photo: '/images/osteo/extra-6.webp',
+    bodyId: 'head',
   },
   {
     id: 'sport',
     titre: 'Sportifs & blessures',
     motifs: ['Tendinites épaule, coude, genou', 'Entorses (suivi de cicatrisation)', 'Préparation & récupération', 'Pubalgies'],
     photo: '/images/osteo/extra-3.webp',
+    bodyId: 'limbs',
   },
   {
     id: 'grossesse',
     titre: 'Grossesse & post-partum',
-    motifs: ['Douleurs lombaires & pubiennes', 'Préparation à l\'accouchement', 'Récupération du périnée', 'Suivi mère & bébé'],
+    motifs: ['Douleurs lombaires & pubiennes', "Préparation à l'accouchement", 'Récupération du périnée', 'Suivi mère & bébé'],
     photo: '/images/osteo/extra-5.webp',
+    bodyId: 'pelvis',
   },
+];
+
+const equipement = [
+  { titre: 'Table Léopold tri-zones', detail: 'Hauteur réglable, drop thoraco-lombaire, têtière percée pour la sphère ATM.' },
+  { titre: 'Diagnostic palpatoire normé', detail: 'Tests neuro-orthopédiques systématiques, drapeaux rouges en amont de chaque séance.' },
+  { titre: 'Compte-rendu écrit', detail: 'Bilan adressé au médecin traitant sur demande, exercices à domicile illustrés.' },
 ];
 ---
 
@@ -40,25 +50,137 @@ const zones = [
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-      {zones.map((z) => (
-        <article class="grid grid-cols-5 overflow-hidden border" style="background-color: #FFFFFF; border-color: rgba(31,58,68,0.10);">
-          <div class="col-span-2 aspect-square md:aspect-auto">
-            <img src={z.photo} alt={`Soin ${z.titre.toLowerCase()} — cabinet d'ostéopathie`} loading="lazy" class="w-full h-full object-cover" />
-          </div>
-          <div class="col-span-3 p-6 md:p-7 flex flex-col gap-4">
-            <h3 class="font-cormorant text-2xl md:text-3xl" style="color: #1F3A44;">{z.titre}</h3>
-            <ul class="space-y-2.5 font-inter text-[13.5px]" style="color: rgba(31,58,68,0.78);">
-              {z.motifs.map((m) => (
-                <li class="flex items-start gap-2.5">
-                  <span class="mt-2 block w-1.5 h-1.5 rounded-full shrink-0" style="background-color: #C9B79A;"></span>
-                  <span>{m}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </article>
+    <!-- Layout : corps interactif à gauche, zone détaillée à droite -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 mb-16 md:mb-20">
+
+      <!-- Schéma corps cliquable -->
+      <div class="lg:col-span-5">
+        <p class="font-inter text-[10.5px] uppercase tracking-[0.28em] mb-5" style="color: rgba(31,58,68,0.55);">
+          Cliquez sur une zone du corps
+        </p>
+        <div class="relative mx-auto max-w-[280px]">
+          <svg viewBox="0 0 200 480" class="w-full h-auto" aria-label="Schéma anatomique interactif" role="img">
+            <!-- silhouette -->
+            <g fill="rgba(31,58,68,0.06)" stroke="rgba(31,58,68,0.32)" stroke-width="1.2">
+              <circle cx="100" cy="40" r="26" />
+              <path d="M70 70 Q100 75 130 70 L150 130 L155 230 L130 250 L130 380 L120 470 L105 470 L100 380 L100 260 L100 260 L100 380 L95 470 L80 470 L70 380 L70 250 L45 230 L50 130 Z" />
+            </g>
+            <!-- Hotspots -->
+            <g class="osteo-hotspot-group">
+              <button type="button" data-osteo-zone="head"   class="osteo-hotspot" aria-label="Tête & nuque">
+                <circle cx="100" cy="40" r="20" />
+              </button>
+              <button type="button" data-osteo-zone="spine"  class="osteo-hotspot" aria-label="Dos & rachis">
+                <ellipse cx="100" cy="170" rx="22" ry="55" />
+              </button>
+              <button type="button" data-osteo-zone="pelvis" class="osteo-hotspot" aria-label="Bassin">
+                <ellipse cx="100" cy="255" rx="34" ry="20" />
+              </button>
+              <button type="button" data-osteo-zone="limbs"  class="osteo-hotspot" aria-label="Membres">
+                <ellipse cx="86" cy="370" rx="14" ry="60" />
+                <ellipse cx="114" cy="370" rx="14" ry="60" />
+              </button>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Détails de la zone sélectionnée -->
+      <div class="lg:col-span-7">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          {zones.map((z) => (
+            <article data-osteo-zone-card={z.bodyId} class="osteo-zone-card grid grid-cols-5 overflow-hidden border transition-opacity duration-300" style="background-color: #FFFFFF; border-color: rgba(31,58,68,0.10);">
+              <div class="col-span-2 aspect-square md:aspect-auto">
+                <img src={z.photo} alt={`Soin ${z.titre.toLowerCase()} — cabinet d'ostéopathie`} loading="lazy" class="w-full h-full object-cover" />
+              </div>
+              <div class="col-span-3 p-6 md:p-7 flex flex-col gap-4">
+                <h3 class="font-cormorant text-2xl md:text-3xl" style="color: #1F3A44;">{z.titre}</h3>
+                <ul class="space-y-2.5 font-inter text-[13.5px]" style="color: rgba(31,58,68,0.78);">
+                  {z.motifs.map((m) => (
+                    <li class="flex items-start gap-2.5">
+                      <span class="mt-2 block w-1.5 h-1.5 rounded-full shrink-0" style="background-color: #C9B79A;"></span>
+                      <span>{m}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Équipement & méthode du cabinet -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-px" style="background-color: rgba(31,58,68,0.12);">
+      {equipement.map((e) => (
+        <div class="p-6 md:p-7" style="background-color: #FFFFFF;">
+          <p class="font-cormorant text-xl md:text-2xl mb-3" style="color: #1F3A44;">{e.titre}</p>
+          <p class="font-inter text-[13.5px] leading-relaxed" style="color: rgba(31,58,68,0.72);">{e.detail}</p>
+        </div>
       ))}
     </div>
+
+    <!-- Prise en charge sécu / mutuelle -->
+    <div class="mt-10 md:mt-12 p-6 md:p-8 border" style="background-color: #FFFFFF; border-color: rgba(31,58,68,0.10);">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-baseline">
+        <div>
+          <p class="font-inter text-[10.5px] uppercase tracking-[0.28em] mb-2" style="color: rgba(31,58,68,0.55);">Sécurité sociale</p>
+          <p class="font-cormorant text-lg" style="color: #1F3A44;">Non remboursée par l'Assurance Maladie.</p>
+        </div>
+        <div>
+          <p class="font-inter text-[10.5px] uppercase tracking-[0.28em] mb-2" style="color: rgba(31,58,68,0.55);">Mutuelles</p>
+          <p class="font-cormorant text-lg" style="color: #1F3A44;">3 à 5 séances/an prises en charge selon contrat (forfait 30–60 €).</p>
+        </div>
+        <div>
+          <p class="font-inter text-[10.5px] uppercase tracking-[0.28em] mb-2" style="color: rgba(31,58,68,0.55);">Facture</p>
+          <p class="font-cormorant text-lg" style="color: #1F3A44;">Facture détaillée remise systématiquement pour transmission mutuelle.</p>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <style>
+    .osteo-hotspot {
+      fill: rgba(201, 183, 154, 0.18);
+      stroke: rgba(201, 183, 154, 0.6);
+      stroke-width: 1.2;
+      cursor: pointer;
+      transition: fill 220ms ease, stroke 220ms ease;
+    }
+    .osteo-hotspot:hover, .osteo-hotspot:focus { fill: rgba(201, 183, 154, 0.45); stroke: #1F3A44; outline: none; }
+    .osteo-hotspot[data-active="true"] { fill: rgba(201, 183, 154, 0.6); stroke: #1F3A44; }
+    .osteo-zone-card[data-dim="true"] { opacity: 0.35; }
+    @media (prefers-reduced-motion: reduce) {
+      .osteo-zone-card { transition: none; }
+    }
+  </style>
+
+  <script>
+    (() => {
+      const hotspots = document.querySelectorAll('[data-osteo-zone]');
+      const cards = document.querySelectorAll('[data-osteo-zone-card]');
+      if (!hotspots.length || !cards.length) return;
+      const setActive = (zone) => {
+        hotspots.forEach((h) => h.setAttribute('data-active', String(h.getAttribute('data-osteo-zone') === zone)));
+        cards.forEach((c) => {
+          const match = c.getAttribute('data-osteo-zone-card') === zone;
+          c.setAttribute('data-dim', String(!match));
+        });
+      };
+      const clear = () => {
+        hotspots.forEach((h) => h.removeAttribute('data-active'));
+        cards.forEach((c) => c.removeAttribute('data-dim'));
+      };
+      hotspots.forEach((h) => {
+        h.addEventListener('click', () => setActive(h.getAttribute('data-osteo-zone')));
+        h.addEventListener('mouseleave', () => {
+          if (!document.querySelector('[data-osteo-zone][data-active="true"]')) clear();
+        });
+      });
+      // Click outside SVG → clear
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('[data-osteo-zone]')) clear();
+      });
+    })();
+  </script>
 </section>

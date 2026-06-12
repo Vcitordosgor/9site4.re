@@ -77,7 +77,22 @@ const info = data.info;
           <img src={info.photoHero} alt={info.photoHeroAlt} loading="eager" fetchpriority="high" class="w-full h-full object-cover" />
         </div>
         <div class="hidden md:block absolute -bottom-6 -right-6 max-w-[200px] p-5 rounded-3xl shadow-lg" style="background-color: #FCDA89; color: #5C3D3D;">
-          <p class="font-nunito font-bold text-sm">Sieste libre, doudou en main 💛</p>
+          <p class="font-nunito font-bold text-sm flex items-center gap-2">
+            <span>Sieste libre, doudou en main</span>
+            <svg class="w-4 h-4 shrink-0 creche-heart" viewBox="0 0 24 24" fill="#E4738A" aria-hidden="true">
+              <path d="M12 21s-7.5-4.5-9.7-9.4C.6 7.6 3.4 3.5 7.5 3.8c2 .2 3.5 1.4 4.5 3 1-1.6 2.5-2.8 4.5-3 4.1-.3 6.9 3.8 5.2 7.8C19.5 16.5 12 21 12 21z"/>
+            </svg>
+          </p>
+          <style>
+            .creche-heart { transform-origin: center; animation: creche-heart 2.4s ease-in-out infinite; }
+            @keyframes creche-heart {
+              0%, 100% { transform: scale(1); }
+              50%      { transform: scale(1.12); }
+            }
+            @media (prefers-reduced-motion: reduce) {
+              .creche-heart { animation: none; }
+            }
+          </style>
         </div>
       </div>
     </div>
