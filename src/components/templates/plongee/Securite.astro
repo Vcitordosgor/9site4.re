@@ -23,5 +23,84 @@ const items = data.securite;
         ))}
       </div>
     </div>
+
+    <!-- Paliers de décompression animés -->
+    <div class="mt-20 lg:mt-28 grid lg:grid-cols-12 gap-10 items-end">
+      <div class="lg:col-span-4">
+        <div class="font-jetbrains-mono text-[11px] uppercase tracking-[0.32em] text-plongee-charbon/60">Procédure type</div>
+        <h3 class="mt-3 font-fraunces text-2xl lg:text-3xl text-plongee-marine leading-tight">Paliers de décompression — la remontée raisonnée.</h3>
+        <p class="mt-3 font-inter text-sm leading-relaxed text-plongee-charbon/70">De −40 m à la surface, chaque palier permet à l'azote dissous de s'évacuer. Notre protocole respecte rigoureusement les tables MN90.</p>
+      </div>
+      <div class="lg:col-span-8" data-paliers-track>
+        <div class="grid grid-cols-4 gap-3 lg:gap-5">
+          <div class="palier-step" data-delay="0">
+            <div class="palier-bar"><span class="palier-fill" style="background: linear-gradient(180deg,#1F4D5C 0%,#0B2530 100%);"></span></div>
+            <div class="mt-3 font-jetbrains-mono text-[10px] uppercase tracking-[0.22em] text-plongee-charbon/55">Fond</div>
+            <div class="font-fraunces text-xl lg:text-2xl text-plongee-abysse">−40 m</div>
+            <div class="font-inter text-[11px] text-plongee-charbon/60 mt-0.5">départ</div>
+          </div>
+          <div class="palier-step" data-delay="600">
+            <div class="palier-bar"><span class="palier-fill" style="background: linear-gradient(180deg,#2E708A 0%,#1F4D5C 100%); --fill: 55%;"></span></div>
+            <div class="mt-3 font-jetbrains-mono text-[10px] uppercase tracking-[0.22em] text-plongee-charbon/55">Palier 1</div>
+            <div class="font-fraunces text-xl lg:text-2xl text-plongee-marine">−18 m</div>
+            <div class="font-inter text-[11px] text-plongee-charbon/60 mt-0.5">3 min</div>
+          </div>
+          <div class="palier-step" data-delay="1200">
+            <div class="palier-bar"><span class="palier-fill" style="background: linear-gradient(180deg,#4C9BB5 0%,#2E708A 100%); --fill: 78%;"></span></div>
+            <div class="mt-3 font-jetbrains-mono text-[10px] uppercase tracking-[0.22em] text-plongee-charbon/55">Palier 2</div>
+            <div class="font-fraunces text-xl lg:text-2xl text-plongee-lagon">−9 m</div>
+            <div class="font-inter text-[11px] text-plongee-charbon/60 mt-0.5">5 min</div>
+          </div>
+          <div class="palier-step" data-delay="1800">
+            <div class="palier-bar"><span class="palier-fill" style="background: linear-gradient(180deg,#A8D4E2 0%,#4C9BB5 100%); --fill: 100%;"></span></div>
+            <div class="mt-3 font-jetbrains-mono text-[10px] uppercase tracking-[0.22em] text-plongee-charbon/55">Surface</div>
+            <div class="font-fraunces text-xl lg:text-2xl text-plongee-corail">0 m</div>
+            <div class="font-inter text-[11px] text-plongee-charbon/60 mt-0.5">retour</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
+
+<style>
+  .palier-bar {
+    position: relative;
+    height: 88px;
+    border-radius: 10px;
+    background: rgba(11,37,48,0.06);
+    overflow: hidden;
+  }
+  .palier-fill {
+    position: absolute;
+    inset: auto 0 0 0;
+    height: var(--fill, 30%);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 900ms cubic-bezier(0.22,1,0.36,1);
+  }
+  [data-paliers-track].is-in .palier-fill {
+    transform: scaleY(1);
+  }
+  [data-paliers-track].is-in .palier-step[data-delay="600"] .palier-fill { transition-delay: 600ms; }
+  [data-paliers-track].is-in .palier-step[data-delay="1200"] .palier-fill { transition-delay: 1200ms; }
+  [data-paliers-track].is-in .palier-step[data-delay="1800"] .palier-fill { transition-delay: 1800ms; }
+  @media (prefers-reduced-motion: reduce) {
+    .palier-fill { transform: scaleY(1) !important; transition: none !important; }
+  }
+</style>
+
+<script>
+  const track = document.querySelector('[data-paliers-track]');
+  if (track) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          (e.target as HTMLElement).classList.add('is-in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.35 });
+    io.observe(track);
+  }
+</script>

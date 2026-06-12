@@ -33,7 +33,7 @@ import data from '../../../data/templates/jardin.json';
 
       <!-- Wordmark immense en deux lignes Bodoni -->
       <h1 class="hero-title mt-8 sm:mt-10 font-bodoni text-resto-blanc-casse leading-[0.92]">
-        <span class="block font-medium" style="font-size: clamp(64px, 13vw, 184px);">Le jardin</span>
+        <span class="block font-medium" style="font-size: clamp(64px, 13vw, 184px);"><span class="resto-dropcap inline-block">L</span>e jardin</span>
         <span class="block italic font-normal text-resto-or pl-[5%]" style="font-size: clamp(64px, 13vw, 184px);">perdu.</span>
       </h1>
 
@@ -104,6 +104,17 @@ import data from '../../../data/templates/jardin.json';
   .hero-side    { animation: resto-rise 1000ms cubic-bezier(0.16, 1, 0.3, 1) backwards; animation-delay: 500ms; }
   .hero-scroll  { animation: resto-pulse 2400ms ease-in-out infinite; }
 
+  @keyframes resto-dropcap-breathe {
+    0%, 100% { opacity: 0.95; transform: scale(1); }
+    50%      { opacity: 1;    transform: scale(1.02); }
+  }
+  .resto-dropcap {
+    transform-origin: 50% 60%;
+    animation: resto-dropcap-breathe 9s ease-in-out infinite;
+    animation-delay: 1.4s;
+    will-change: transform, opacity;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .hero-eyebrow, .hero-title, .hero-tagline, .hero-side {
       animation: none !important;
@@ -111,5 +122,6 @@ import data from '../../../data/templates/jardin.json';
       transform: none !important;
     }
     .hero-scroll { animation: none !important; }
+    .resto-dropcap { animation: none !important; transform: none !important; opacity: 1 !important; }
   }
 </style>
