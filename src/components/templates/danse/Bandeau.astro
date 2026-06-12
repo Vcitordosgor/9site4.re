@@ -6,10 +6,32 @@ const mots = ['Lever', 'Tenir', 'Glisser', 'Sauter', 'Tomber', 'Recommencer'];
 ---
 
 <section class="relative bg-vermeille-velours text-vermeille-ivoire py-20 md:py-28 overflow-hidden">
-  <div class="max-w-content mx-auto px-6 md:px-12 mb-12">
+  <!-- Signature danse : trait continu qui danse à travers la section -->
+  <svg class="dance-trail absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 1600 900" preserveAspectRatio="none" fill="none" aria-hidden="true">
+    <path d="M -20 120 C 240 40, 360 280, 600 200 S 980 60, 1180 220 S 1500 460, 1620 360
+             M -20 560 C 200 700, 400 480, 640 600 S 1000 820, 1240 660 S 1500 480, 1620 600"
+      stroke="#B8956A" stroke-width="1.2" stroke-linecap="round" opacity="0.45" />
+  </svg>
+  <div class="relative max-w-content mx-auto px-6 md:px-12 mb-12">
     <p class="font-inter-tight text-[10px] uppercase tracking-[0.5em] text-vermeille-or">— Galerie de mouvement —</p>
   </div>
-  <div class="space-y-2 md:space-y-3 select-none">
+  <style>
+    .dance-trail path { stroke-dasharray: 6000; stroke-dashoffset: 6000; transition: stroke-dashoffset 2.4s cubic-bezier(0.22, 1, 0.36, 1); }
+    .dance-trail.is-in path { stroke-dashoffset: 0; }
+    @media (prefers-reduced-motion: reduce) {
+      .dance-trail path { stroke-dashoffset: 0 !important; transition: none !important; }
+    }
+  </style>
+  <script>
+    const trail = document.querySelector('.dance-trail');
+    if (trail) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { trail.classList.add('is-in'); io.disconnect(); } });
+      }, { threshold: 0.2 });
+      io.observe(trail);
+    }
+  </script>
+  <div class="relative space-y-2 md:space-y-3 select-none">
     {mots.map((m, i) => (
       <div class="overflow-hidden">
         <p

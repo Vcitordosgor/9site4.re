@@ -49,6 +49,17 @@ const accents = {
           >
             <!-- Filet doré bordure -->
             <div class="absolute inset-3 ring-1 ring-current/15 pointer-events-none"></div>
+            <!-- Texture diagonale subtile pour éviter l'effet "case noire" sur les cartes sombres -->
+            <div class="absolute inset-0 pointer-events-none opacity-[0.06]" style="background-image: repeating-linear-gradient(135deg, currentColor 0 1px, transparent 1px 14px);"></div>
+            <!-- Silhouette danseuse en filigrane -->
+            <svg viewBox="0 0 100 200" class="absolute right-4 top-6 h-1/2 w-auto opacity-[0.12] pointer-events-none" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
+              <circle cx="50" cy="22" r="8" />
+              <path d="M50 30 Q54 70 60 110 Q70 150 78 180" />
+              <path d="M52 50 Q70 30 90 18" />
+              <path d="M48 48 Q26 26 8 14" />
+              <path d="M60 110 Q42 130 14 130" />
+              <path d="M78 180 L86 196 L70 196 Z" fill="currentColor" />
+            </svg>
             <!-- Numéro géant en fond -->
             <span class="absolute -bottom-10 -right-4 font-italiana italic leading-none opacity-[0.10]" style="font-size: clamp(220px,32vw,360px);">{d.numero}</span>
 

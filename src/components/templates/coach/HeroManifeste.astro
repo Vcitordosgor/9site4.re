@@ -62,8 +62,35 @@ import data from '../../../data/templates/foudre.json';
           src={data.info.photoHero} srcset={`${(data.info.photoHero).replace(/\.webp$/, "-640.webp")} 640w, ${(data.info.photoHero).replace(/\.webp$/, "-1024.webp")} 1024w, ${data.info.photoHero} 1600w`} sizes="100vw"
           alt=""
           class="w-full h-full object-cover object-center grayscale contrast-110 hero-vivant" width="1600" height="900" loading="eager" fetchpriority="high" decoding="async">
-        <!-- Overlay lime en bas -->
-        <div class="absolute bottom-0 left-0 right-0 h-1 bg-coach-lime"></div>
+        <!-- Overlay lime en bas + signature : compteur de reps + barre d'effort -->
+        <div class="absolute bottom-0 left-0 right-0">
+          <div class="flex items-center gap-3 px-3 py-2 bg-coach-noir/85 backdrop-blur-sm">
+            <span class="font-jetbrains text-[10px] uppercase tracking-widest text-coach-lime">REPS</span>
+            <span id="coach-reps" class="font-big-shoulders font-black text-coach-blanc text-2xl leading-none tabular-nums">00</span>
+            <span class="font-jetbrains text-[10px] text-coach-blanc/40">/ 12</span>
+            <div class="flex-1 h-1 bg-coach-blanc/15 overflow-hidden">
+              <div id="coach-effort" class="h-full bg-coach-lime" style="width:0%; transition: width 600ms cubic-bezier(0.4,0,0.2,1);"></div>
+            </div>
+          </div>
+        </div>
+        <script>
+          /* Compteur de reps cyclique 0-12 avec barre d'effort */
+          (() => {
+            const reps = document.getElementById('coach-reps');
+            const bar = document.getElementById('coach-effort');
+            if (!reps || !bar) return;
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+              reps.textContent = '12'; bar.style.width = '100%'; return;
+            }
+            let n = 0;
+            const tick = () => {
+              n = (n + 1) % 14;
+              reps.textContent = String(Math.min(n,12)).padStart(2,'0');
+              bar.style.width = (Math.min(n,12) / 12 * 100) + '%';
+            };
+            setInterval(tick, 850);
+          })();
+        </script>
         <!-- Étiquette coach -->
         <div class="absolute top-4 left-4 bg-coach-noir/85 backdrop-blur-sm px-3 py-1.5">
           <p class="font-jetbrains text-[10px] uppercase tracking-widest text-coach-lime">Coach</p>

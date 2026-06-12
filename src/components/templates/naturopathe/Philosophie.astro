@@ -26,10 +26,10 @@ const piliers = [
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       {piliers.map((p, i) => (
-        <article class="relative p-7 md:p-8" style="background-color: #F1ECE0;">
-          <p class="font-cormorant italic text-5xl absolute top-5 right-6" style="color: rgba(79,93,67,0.25);">{String(i+1).padStart(2,'0')}</p>
-          <h3 class="font-cormorant text-2xl mb-3" style="color: #2E3826;">{p.titre}</h3>
-          <p class="font-manrope text-[14px] leading-relaxed" style="color: rgba(46,56,38,0.78);">{p.texte}</p>
+        <article class="relative p-7 md:p-8 overflow-hidden" style="background-color: #F1ECE0;">
+          <p class="font-cormorant italic text-5xl absolute top-4 right-5 pointer-events-none select-none" style="color: rgba(79,93,67,0.18); z-index:0;">{String(i+1).padStart(2,'0')}</p>
+          <h3 class="relative font-cormorant text-2xl mb-3 pr-12" style="color: #2E3826; z-index:1;">{p.titre}</h3>
+          <p class="relative font-manrope text-[14px] leading-relaxed" style="color: rgba(46,56,38,0.78); z-index:1;">{p.texte}</p>
         </article>
       ))}
     </div>

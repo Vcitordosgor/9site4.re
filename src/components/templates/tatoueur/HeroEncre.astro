@@ -18,6 +18,23 @@ import data from '../../../data/templates/encrevolcan.json';
   <!-- Rouge sang vertical strip à gauche -->
   <div class="absolute top-0 left-0 bottom-0 w-1 md:w-2" style="background-color: #A11920;" aria-hidden="true"></div>
 
+  <!-- Signature tatoueur : trait d'aiguille qui se dessine -->
+  <svg class="encre-needle absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 1600 900" preserveAspectRatio="none" fill="none" aria-hidden="true">
+    <path d="M 40 880 C 200 700, 100 520, 320 460 S 700 480, 760 320 S 980 80, 1180 180 S 1500 360, 1560 100"
+      stroke="#EEE6D8" stroke-width="1.4" stroke-linecap="round" opacity="0.55" />
+  </svg>
+  <style>
+    .encre-needle path {
+      stroke-dasharray: 4000;
+      stroke-dashoffset: 4000;
+      animation: encre-draw 4.5s cubic-bezier(0.65, 0, 0.35, 1) 0.4s forwards;
+    }
+    @keyframes encre-draw { to { stroke-dashoffset: 0; } }
+    @media (prefers-reduced-motion: reduce) {
+      .encre-needle path { stroke-dashoffset: 0; animation: none; }
+    }
+  </style>
+
   <div class="max-w-content mx-auto px-6 md:px-10 pt-14 md:pt-24 pb-16 md:pb-28 relative">
 
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-14 items-end">
