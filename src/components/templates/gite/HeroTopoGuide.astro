@@ -83,8 +83,8 @@ import data from '../../../data/templates/crete-aurere.json';
           Fig. 1 — Le gîte vu depuis le sentier d'accès, côté est. Le Pic du Maïdo est visible par temps clair (à droite).
         </p>
 
-        <!-- Profil altimétrique du sentier d'accès — touche topo-guide scientifique -->
-        <figure class="mt-5 pt-4 border-t border-cap-charbon/15">
+        <!-- Profil altimétrique du sentier d'accès — touche topo-guide scientifique (desktop uniquement, mobile aéré) -->
+        <figure class="hidden md:block mt-5 pt-4 border-t border-cap-charbon/15">
           <figcaption class="font-jetbrains text-[10px] uppercase tracking-[0.22em] text-cap-terre mb-2 flex items-baseline justify-between gap-3 flex-wrap">
             <span>Fig. 2 — Profil altimétrique du sentier d'accès</span>
             <span class="text-cap-charbon/70">D+ 600 m · 4,2 km</span>
@@ -162,11 +162,11 @@ import data from '../../../data/templates/crete-aurere.json';
             <span class="uppercase tracking-[0.18em] text-cap-terre">Chambres</span>
             <span class="text-cap-charbon">4 chambres</span>
           </li>
-          <li class="flex items-baseline justify-between gap-3 py-1.5 border-b border-cap-charbon/15">
+          <li class="hidden md:flex items-baseline justify-between gap-3 py-1.5 border-b border-cap-charbon/15">
             <span class="uppercase tracking-[0.18em] text-cap-terre">Tarif</span>
             <span class="text-cap-charbon">22–32 € /pers /nuit</span>
           </li>
-          <li class="flex items-baseline justify-between gap-3 py-1.5">
+          <li class="hidden md:flex items-baseline justify-between gap-3 py-1.5">
             <span class="uppercase tracking-[0.18em] text-cap-terre">Hôte</span>
             <span class="text-cap-charbon">{data.info.hote}</span>
           </li>
