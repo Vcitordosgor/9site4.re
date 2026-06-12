@@ -109,9 +109,13 @@ const ticks = ['0 min', '4 min', '8 min', '12 min', 'Final'];
 <style>
   .cf-curve { will-change: transform; }
   .cf-curve .cf-curve-line {
-    transition: stroke 0.5s ease, stroke-width 0.5s ease, filter 0.5s ease;
+    stroke-dasharray: 520;
+    stroke-dashoffset: 520;
+    transition: stroke 0.5s ease, stroke-width 0.5s ease, filter 0.5s ease, stroke-dashoffset 2200ms cubic-bezier(0.22, 1, 0.36, 1);
   }
-  .cf-curve .cf-curve-fill { transition: opacity 0.5s ease; }
+  .cf-curve .cf-curve-fill { opacity: 0; transition: opacity 1200ms ease 600ms; }
+  .cf-curves.is-in .cf-curve .cf-curve-line { stroke-dashoffset: 0; }
+  .cf-curves.is-in .cf-curve .cf-curve-fill { opacity: 1; }
 
   .cf-curves:hover .cf-curve:not(:hover) {
     opacity: 0.55;
@@ -132,7 +136,17 @@ const ticks = ['0 min', '4 min', '8 min', '12 min', 'Final'];
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .cf-curve, .cf-curve .cf-curve-line, .cf-curve .cf-curve-fill { transition: none; }
+    .cf-curve, .cf-curve .cf-curve-line, .cf-curve .cf-curve-fill { transition: none; stroke-dashoffset: 0; opacity: 1; }
     .cf-curve:hover { transform: none; }
   }
 </style>
+<script>
+  (() => {
+    const wrap = document.querySelector('#methodes .cf-curves');
+    if (!wrap) return;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { wrap.classList.add('is-in'); io.disconnect(); } });
+    }, { threshold: 0.25 });
+    io.observe(wrap);
+  })();
+</script>

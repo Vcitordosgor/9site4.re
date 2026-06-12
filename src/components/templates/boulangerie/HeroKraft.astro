@@ -60,7 +60,16 @@ import data from '../../../data/templates/painleve.json';
            class="absolute inset-0 w-full h-full object-cover"
            fetchpriority="high" loading="eager" decoding="async" width="1200" height="1400" />
       <div class="absolute inset-0" style="background:linear-gradient(180deg, rgba(26,22,20,0.10), rgba(26,22,20,0.45));"></div>
-      <div class="absolute top-8 right-8 px-4 py-2 text-[10px] uppercase tracking-[0.32em]" style="background:#E8E0CC; color:#1F2521;">
+
+      <!-- Vapeur continue sortant du pain (3 puffs) -->
+      <div aria-hidden="true" class="bl-hero-steam absolute inset-x-0 bottom-[34%] pointer-events-none h-[40%]">
+        <span class="bl-hero-puff" style="--x:30%; --d:0s;   --s:1.0;"></span>
+        <span class="bl-hero-puff" style="--x:50%; --d:1.4s; --s:1.15;"></span>
+        <span class="bl-hero-puff" style="--x:70%; --d:2.8s; --s:0.9;"></span>
+      </div>
+
+      <div class="absolute top-8 right-8 px-4 py-2 text-[10px] uppercase tracking-[0.32em] inline-flex items-center gap-2" style="background:#E8E0CC; color:#1F2521;">
+        <span class="bl-fournee-dot inline-block w-1.5 h-1.5 rounded-full" style="background:#A87842;"></span>
         Fournée du jour · 11 h
       </div>
       <div class="absolute bottom-8 left-8 right-8 lg:right-auto max-w-sm">
@@ -68,4 +77,36 @@ import data from '../../../data/templates/painleve.json';
       </div>
     </div>
   </div>
+
+  <style>
+    .bl-hero-puff {
+      position: absolute;
+      left: var(--x);
+      bottom: 0;
+      width: clamp(80px, 12vw, 160px);
+      height: clamp(80px, 12vw, 160px);
+      margin-left: calc(clamp(80px, 12vw, 160px) / -2);
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(232,224,204,0.55) 0%, rgba(232,224,204,0.18) 45%, rgba(232,224,204,0) 72%);
+      filter: blur(10px);
+      transform-origin: 50% 100%;
+      animation: bl-hero-rise 6.4s ease-in-out var(--d) infinite;
+      opacity: 0;
+    }
+    @keyframes bl-hero-rise {
+      0%   { transform: translate(0, 0)    scale(calc(var(--s) * 0.55)); opacity: 0; }
+      20%  { opacity: 0.85; }
+      60%  { transform: translate(-12px, -90%) scale(calc(var(--s) * 1.15)); opacity: 0.5; }
+      100% { transform: translate(16px, -180%) scale(calc(var(--s) * 1.55)); opacity: 0; }
+    }
+    .bl-fournee-dot { animation: bl-fournee-pulse 2.2s ease-in-out infinite; }
+    @keyframes bl-fournee-pulse {
+      0%, 100% { opacity: 0.45; transform: scale(1); }
+      50%      { opacity: 1;    transform: scale(1.5); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .bl-hero-puff, .bl-fournee-dot { animation: none; }
+      .bl-hero-puff { opacity: 0; }
+    }
+  </style>
 </section>
