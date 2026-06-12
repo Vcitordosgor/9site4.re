@@ -6,13 +6,25 @@
 import data from '../../../data/templates/boost.json';
 ---
 
-<section id="top" class="relative bg-boost-route overflow-hidden pt-24 pb-16 md:pt-32 md:pb-24 px-5 md:px-8">
+<section id="top" class="boost-hero relative bg-boost-route overflow-hidden pt-24 pb-16 md:pt-32 md:pb-24 px-5 md:px-8">
 
-  <!-- Pattern panneaux routiers en arrière-plan -->
-  <svg class="absolute -top-32 -right-32 w-[400px] h-[400px] opacity-10 pointer-events-none" viewBox="0 0 200 200" fill="#2456E8" aria-hidden="true">
-    <polygon points="100,20 180,180 20,180" stroke="#2456E8" stroke-width="4" fill="none"/>
-    <text x="100" y="140" text-anchor="middle" font-family="Funnel Display" font-weight="700" font-size="60">!</text>
-  </svg>
+  <!-- Cascade de panneaux routiers animés (signature) -->
+  <div class="boost-panneaux pointer-events-none absolute top-12 md:top-20 left-3 md:left-6 lg:left-10 z-0 hidden sm:flex flex-col gap-4 md:gap-5" aria-hidden="true">
+    <!-- STOP : octogone rouge -->
+    <svg class="boost-panneau" data-i="1" width="84" height="84" viewBox="0 0 100 100">
+      <polygon points="30,5 70,5 95,30 95,70 70,95 30,95 5,70 5,30" fill="#E11D2E" stroke="#fff" stroke-width="4"/>
+      <text x="50" y="62" text-anchor="middle" font-family="Funnel Display, sans-serif" font-weight="800" font-size="28" fill="#fff" letter-spacing="1">STOP</text>
+    </svg>
+    <!-- Limitation 60 : disque blanc bord rouge -->
+    <svg class="boost-panneau" data-i="2" width="78" height="78" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="46" fill="#fff" stroke="#E11D2E" stroke-width="9"/>
+      <text x="50" y="64" text-anchor="middle" font-family="Funnel Display, sans-serif" font-weight="800" font-size="44" fill="#1A1A1A">60</text>
+    </svg>
+    <!-- Cédez le passage : triangle inversé blanc bord rouge -->
+    <svg class="boost-panneau" data-i="3" width="86" height="76" viewBox="0 0 100 88">
+      <polygon points="50,82 6,8 94,8" fill="#fff" stroke="#E11D2E" stroke-width="7" stroke-linejoin="round"/>
+    </svg>
+  </div>
 
   <div class="relative max-w-content mx-auto grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
 
@@ -25,7 +37,7 @@ import data from '../../../data/templates/boost.json';
 
       <h1 class="font-funnel-display font-bold text-boost-noir leading-[0.95] tracking-tight" style="font-size: clamp(48px, 9vw, 144px);">
         Ton permis.<br/>
-        <span class="text-boost-acier">Sans stress.</span>
+        <span class="text-boost-acier">Permis en main.</span>
       </h1>
 
       <p class="mt-6 font-funnel-sans text-boost-asphalte text-lg md:text-xl leading-relaxed max-w-xl">
@@ -142,3 +154,67 @@ import data from '../../../data/templates/boost.json';
     </div>
   </div>
 </section>
+
+<style>
+  /* Cascade des panneaux : opacity + translate + rotate, déclenché via .is-running */
+  .boost-panneau {
+    opacity: 0;
+    transform: translateY(-18px) rotate(-8deg);
+    transition: opacity 600ms cubic-bezier(0.16, 1, 0.3, 1), transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.18));
+    will-change: transform, opacity;
+  }
+  .boost-hero.is-running .boost-panneau[data-i="1"] {
+    opacity: 1;
+    transform: translateY(0) rotate(-4deg);
+    transition-delay: 200ms;
+  }
+  .boost-hero.is-running .boost-panneau[data-i="2"] {
+    opacity: 1;
+    transform: translateY(0) rotate(3deg);
+    transition-delay: 450ms;
+  }
+  .boost-hero.is-running .boost-panneau[data-i="3"] {
+    opacity: 1;
+    transform: translateY(0) rotate(-2deg);
+    transition-delay: 700ms;
+  }
+  /* Léger bobbing infini une fois en place, pause hors viewport via .is-running */
+  @keyframes boost-panneau-float {
+    0%, 100% { transform: translateY(0) rotate(var(--rot, 0deg)); }
+    50%      { transform: translateY(-4px) rotate(var(--rot, 0deg)); }
+  }
+  .boost-hero.is-running .boost-panneau[data-i="1"] { --rot: -4deg; }
+  .boost-hero.is-running .boost-panneau[data-i="2"] { --rot: 3deg; }
+  .boost-hero.is-running .boost-panneau[data-i="3"] { --rot: -2deg; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .boost-panneau {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+      animation: none !important;
+    }
+  }
+</style>
+
+<script>
+  const heroPanneaux = document.querySelector('.boost-hero');
+  if (heroPanneaux && 'IntersectionObserver' in window) {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) {
+      heroPanneaux.classList.add('is-running');
+    } else {
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) heroPanneaux.classList.add('is-running');
+            else heroPanneaux.classList.remove('is-running');
+          });
+        },
+        { threshold: 0.15 }
+      );
+      io.observe(heroPanneaux);
+    }
+  }
+</script>
