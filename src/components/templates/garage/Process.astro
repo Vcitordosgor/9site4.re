@@ -29,10 +29,13 @@ const steps = [
       </h2>
     </header>
 
-    <ol class="relative space-y-0 border-l-2 border-piton-feu/30 pl-6 sm:pl-10 md:pl-14">
+    <ol id="garage-process-list" class="relative space-y-0 pl-6 sm:pl-10 md:pl-14">
+      <!-- Rail timeline (fond + fill animé) -->
+      <span aria-hidden="true" class="absolute left-0 top-0 bottom-0 w-[2px] bg-piton-feu/15"></span>
+      <span id="garage-process-fill" aria-hidden="true" class="absolute left-0 top-0 w-[2px] bg-piton-feu" style="height:0; transition: height 2400ms cubic-bezier(0.22,1,0.36,1);"></span>
       {steps.map((s, i) => (
-        <li class="scroll-reveal relative pb-12 last:pb-0" style={`transition-delay: ${i * 80}ms`}>
-          <span class="absolute -left-[34px] sm:-left-[50px] md:-left-[66px] top-1 inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-piton-feu text-piton-asphalte font-bebas text-2xl sm:text-3xl border-4 border-piton-asphalte">
+        <li class="scroll-reveal garage-step relative pb-12 last:pb-0" style={`transition-delay: ${i * 80}ms; --step:${i};`}>
+          <span class="absolute -left-[34px] sm:-left-[50px] md:-left-[66px] top-1 inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-piton-feu text-piton-asphalte font-bebas text-2xl sm:text-3xl border-4 border-piton-asphalte garage-step-num">
             {s.num}
           </span>
           <div>
@@ -50,4 +53,34 @@ const steps = [
       ))}
     </ol>
   </div>
+
+  <style>
+    .garage-step-num {
+      transition: transform 320ms ease, box-shadow 320ms ease;
+    }
+    .garage-step:hover .garage-step-num {
+      transform: scale(1.06);
+      box-shadow: 0 12px 28px -10px rgba(255,90,31,0.55);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #garage-process-fill { transition: none; height: 100% !important; }
+      .garage-step-num { transition: none; }
+    }
+  </style>
+  <script>
+    (() => {
+      const list = document.getElementById('garage-process-list');
+      const fill = document.getElementById('garage-process-fill');
+      if (!list || !fill) return;
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            requestAnimationFrame(() => { fill.style.height = list.offsetHeight + 'px'; });
+            io.disconnect();
+          }
+        });
+      }, { threshold: 0.15 });
+      io.observe(list);
+    })();
+  </script>
 </section>

@@ -59,8 +59,8 @@ const petales = [
               <div class="text-[11px] uppercase tracking-[0.32em] mb-3" style="color:#5C7448;">{p.label}</div>
               <h3 class="font-cormorant text-4xl md:text-5xl leading-tight mb-2" style="color:#2A2520;">{p.titre}</h3>
               <div class="font-cormorant italic text-xl mb-5" style="color:#C49B62;">{p.soustitre}</div>
-              <div class="aspect-[5/4] overflow-hidden mb-5">
-                <img src={p.photo} alt={p.titre} class="w-full h-full object-cover" loading="lazy"/>
+              <div class="aspect-[5/4] overflow-hidden mb-5 fl-comp-photo">
+                <img src={p.photo} alt={p.titre} class="w-full h-full object-cover transition-transform duration-700 fl-comp-img" loading="lazy"/>
               </div>
               <p class="text-base leading-relaxed mb-6" style="color:#5A4F45;">{p.desc}</p>
               <a href="#contact" class="inline-flex items-center h-12 px-7 text-[12px] uppercase tracking-[0.22em] font-semibold" style="background:#2A2520; color:#FBF3EE;">Commander cette offre</a>
@@ -111,4 +111,13 @@ const petales = [
     background: #2A2520; color: #FBF3EE; border-color: #2A2520;
   }
   @keyframes petalFade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  .fl-comp-photo { position: relative; }
+  .fl-comp-photo::after {
+    content:''; position:absolute; inset:0;
+    background: linear-gradient(180deg, transparent 65%, rgba(196,155,98,0.18));
+    opacity: 0; transition: opacity 500ms ease;
+    pointer-events: none;
+  }
+  article:hover .fl-comp-img { transform: scale(1.06); }
+  article:hover .fl-comp-photo::after { opacity: 1; }
 </style>
