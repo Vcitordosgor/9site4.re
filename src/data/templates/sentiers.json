@@ -191,18 +191,27 @@
   "temoignages": [
     {
       "prenom": "Léa",
-      "sortie": "La Réunion",
+      "age": 32,
+      "ville": "Saint-Denis",
+      "profil": "Randonneuse occasionnelle",
+      "sortie": "Maïdo · lever de soleil",
       "date": "Octobre 2025",
       "texte": "Sortie inoubliable. Lever de soleil au Maïdo, à 30 secondes près le moment parfait."
     },
     {
       "prenom": "Marc",
+      "age": 45,
+      "ville": "Saint-Paul",
+      "profil": "Marcheur aguerri",
       "sortie": "Grand Bénare",
       "date": "Septembre 2025",
       "texte": "On a tout : technique, sécurité, anecdotes. Théo connaît sa montagne par cœur."
     },
     {
       "prenom": "Camille",
+      "age": 41,
+      "ville": "Saint-Gilles",
+      "profil": "Famille avec ados",
       "sortie": "Bras de Cabot",
       "date": "Août 2025",
       "texte": "Mes ados ont tenu jusqu'au bout. Premiers vrais souvenirs en famille à La Réunion."
