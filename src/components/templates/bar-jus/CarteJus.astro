@@ -1,9 +1,21 @@
 ---
 /**
- * CarteJus — grid 4 cols de 8 jus avec photo, badge, prix.
- * Chaque card a une rotation légère + ring couleur bordée. Click → ajoute panier.
+ * CarteJus — grid de 8 jus avec photo, badge, prix.
+ * Signature : verre SVG sticky qui se remplit de la couleur du jus survolé,
+ * avec ingrédients flottants (fruits emoji) dans le liquide.
  */
 import data from '../../../data/templates/lagon.json';
+
+const jusColors: Record<string, { liquid: string; fruits: string[] }> = {
+  'mangue-passion':     { liquid: '#F4C430', fruits: ['🥭', '🍋'] },
+  'carotte-gingembre':  { liquid: '#FF8C2A', fruits: ['🥕', '🫚'] },
+  'ananas-menthe':      { liquid: '#E8D852', fruits: ['🍍', '🌿'] },
+  'vert-detox':         { liquid: '#A8DC2A', fruits: ['🥒', '🍏'] },
+  'goyave-hibiscus':    { liquid: '#E84B7C', fruits: ['🌺', '🍋'] },
+  'betterave-orange':   { liquid: '#B83B5C', fruits: ['🍊', '🫚'] },
+  'coco-vanille':       { liquid: '#FFF1D6', fruits: ['🥥', '🌼'] },
+  'pomme-fenouil':      { liquid: '#C7E89A', fruits: ['🍏', '🌿'] },
+};
 ---
 
 <section id="carte" class="bg-lagon-mangue py-20 md:py-32 px-5 md:px-8 relative overflow-hidden">
@@ -25,71 +37,157 @@ import data from '../../../data/templates/lagon.json';
       </h2>
       <p class="mt-6 font-onest text-lagon-charbon/85 text-lg max-w-md font-medium">
         Pressés à la commande, jamais avant. Si on en manque, on en manque — c'est la règle.
+        <span class="hidden lg:inline font-architects text-lagon-pitaya text-xl ml-1">↳ survole un jus pour voir le verre se remplir</span>
       </p>
     </header>
 
-    <ul class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-      {data.jus.map((j, i) => (
-        <li
-          data-jus
-          data-id={j.id}
-          data-nom={j.nom}
-          data-prix={j.prix.toFixed(2)}
-          class:list={[
-            'group bg-lagon-coco ring-4 ring-lagon-charbon p-3 md:p-4 transition-transform duration-300',
-            i % 2 === 0 ? 'hover:rotate-1' : 'hover:-rotate-1',
-          ]}
-        >
-          <!-- Photo carrée + badge -->
-          <div class="relative aspect-square overflow-hidden bg-lagon-charbon mb-3">
-            <img
-              src={j.photo}
-              alt={j.alt ?? j.nom}
-              loading="lazy"
-              decoding="async"
-              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-            />
-            {j.badge && (
-              <span class:list={[
-                'absolute top-2 left-2 inline-flex items-center px-2 py-1 font-bagel text-[10px] tracking-wide rounded-full',
-                j.badge === 'STAR' ? 'bg-lagon-mangue text-lagon-charbon' :
-                j.badge === 'NOUVEAU' ? 'bg-lagon-pitaya text-lagon-blanc' :
-                j.badge === 'DETOX' ? 'bg-lagon-lime text-lagon-charbon' :
-                j.badge === 'ÉNERGIE' ? 'bg-lagon-pitaya text-lagon-blanc' :
-                'bg-lagon-turquoise text-lagon-charbon'
-              ]}>
-                {j.badge === 'STAR' ? '★ ' + j.badge : j.badge}
-              </span>
-            )}
+    <!-- Layout grid + verre sticky à droite (desktop) -->
+    <div class="grid lg:grid-cols-12 gap-8 lg:gap-10">
+
+      <!-- Verre sticky (desktop only) — masqué sur mobile -->
+      <aside class="hidden lg:block lg:col-span-4 lg:order-2" aria-hidden="true">
+        <div class="sticky top-24">
+          <div id="lagon-glass" class="relative mx-auto" style="--liquid: #F4C430; --liquid-soft: #F4C43099;">
+            <svg viewBox="0 0 220 320" class="w-full max-w-[260px] mx-auto block drop-shadow-[6px_6px_0_rgba(26,20,16,0.9)]" role="img" aria-label="Verre de jus">
+              <!-- Glass outline -->
+              <defs>
+                <clipPath id="glass-clip">
+                  <path d="M44 60 L176 60 L160 280 Q160 296 144 296 L76 296 Q60 296 60 280 Z"/>
+                </clipPath>
+              </defs>
+
+              <!-- Glass back face (transparent fill) -->
+              <path d="M44 60 L176 60 L160 280 Q160 296 144 296 L76 296 Q60 296 60 280 Z"
+                fill="#FFF8EC" fill-opacity="0.35" stroke="#1A1410" stroke-width="5" stroke-linejoin="round"/>
+
+              <!-- Liquid (clipped to glass) -->
+              <g clip-path="url(#glass-clip)">
+                <!-- liquid body -->
+                <rect id="liquid-body" x="0" y="110" width="220" height="220" fill="var(--liquid)" style="transition: fill 600ms ease;"/>
+                <!-- wavy top -->
+                <path id="liquid-wave" d="M0 112 Q30 100 60 112 T120 112 T180 112 T240 112 L240 130 L0 130 Z"
+                  fill="var(--liquid)" style="transition: fill 600ms ease;">
+                  <animate attributeName="d"
+                    dur="5s" repeatCount="indefinite"
+                    values="
+                      M0 112 Q30 100 60 112 T120 112 T180 112 T240 112 L240 130 L0 130 Z;
+                      M0 112 Q30 124 60 112 T120 112 T180 112 T240 112 L240 130 L0 130 Z;
+                      M0 112 Q30 100 60 112 T120 112 T180 112 T240 112 L240 130 L0 130 Z" />
+                </path>
+                <!-- bubbles -->
+                <circle cx="80" cy="220" r="4" fill="#FFF8EC" opacity="0.55">
+                  <animate attributeName="cy" values="270;120;270" dur="6s" repeatCount="indefinite"/>
+                  <animate attributeName="opacity" values="0;0.6;0" dur="6s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="120" cy="240" r="3" fill="#FFF8EC" opacity="0.5">
+                  <animate attributeName="cy" values="280;130;280" dur="7s" repeatCount="indefinite" begin="1s"/>
+                  <animate attributeName="opacity" values="0;0.5;0" dur="7s" repeatCount="indefinite" begin="1s"/>
+                </circle>
+                <circle cx="100" cy="200" r="2.5" fill="#FFF8EC" opacity="0.5">
+                  <animate attributeName="cy" values="290;140;290" dur="5s" repeatCount="indefinite" begin="2s"/>
+                  <animate attributeName="opacity" values="0;0.5;0" dur="5s" repeatCount="indefinite" begin="2s"/>
+                </circle>
+              </g>
+
+              <!-- Rim -->
+              <ellipse cx="110" cy="60" rx="66" ry="9" fill="#FFF8EC" fill-opacity="0.7" stroke="#1A1410" stroke-width="5"/>
+              <!-- Highlight -->
+              <path d="M70 90 L78 250" stroke="#FFF8EC" stroke-width="4" stroke-linecap="round" opacity="0.5"/>
+
+              <!-- Straw -->
+              <rect x="120" y="20" width="10" height="80" fill="#E84B7C" stroke="#1A1410" stroke-width="3" rx="2" transform="rotate(8 125 60)"/>
+              <rect x="120" y="20" width="10" height="14" fill="#FFF8EC" stroke="#1A1410" stroke-width="3" rx="2" transform="rotate(8 125 60)"/>
+            </svg>
+
+            <!-- Floating fruit emojis (above straw, drift over glass) -->
+            <div id="lagon-fruits" class="pointer-events-none absolute inset-0 flex items-center justify-center">
+              <span class="fruit-float fruit-1 absolute text-3xl" style="left: 30%; top: 38%;">🥭</span>
+              <span class="fruit-float fruit-2 absolute text-2xl" style="left: 55%; top: 52%;">🍋</span>
+            </div>
+
+            <!-- Label sous le verre -->
+            <p id="lagon-glass-label" class="mt-5 text-center font-architects text-lagon-charbon text-xl rotate-[-1deg]">
+              ↑ survole un jus
+            </p>
           </div>
+        </div>
+      </aside>
 
-          <!-- Nom -->
-          <h3 class="font-bagel text-lagon-charbon text-lg md:text-xl leading-tight mb-1">
-            {j.nom}
-          </h3>
-
-          <!-- Ingrédients -->
-          <p class="font-onest text-lagon-charbon/70 text-xs md:text-sm leading-snug mb-3">
-            {j.ingredients}
-          </p>
-
-          <!-- Prix + bouton ajouter -->
-          <div class="flex items-center justify-between gap-2 pt-2 border-t-2 border-lagon-charbon/20">
-            <span class="font-bagel text-2xl text-lagon-charbon tabular-nums">
-              {j.prix.toFixed(2).replace('.', ',')} €
-            </span>
-            <button
-              type="button"
-              data-add-jus={j.id}
-              class="add-btn inline-flex items-center justify-center w-9 h-9 bg-lagon-pitaya text-lagon-blanc font-bagel text-xl rounded-full hover:bg-lagon-charbon transition-colors"
-              aria-label={`Ajouter ${j.nom} au panier`}
+      <!-- Grille des jus -->
+      <ul class="lg:col-span-8 lg:order-1 grid grid-cols-2 lg:grid-cols-2 gap-4 md:gap-6">
+        {data.jus.map((j, i) => {
+          const meta = jusColors[j.id] ?? { liquid: '#F4C430', fruits: ['🍋'] };
+          return (
+            <li
+              data-jus
+              data-id={j.id}
+              data-nom={j.nom}
+              data-prix={j.prix.toFixed(2)}
+              data-liquid={meta.liquid}
+              data-fruits={meta.fruits.join('|')}
+              class:list={[
+                'group bg-lagon-coco ring-4 ring-lagon-charbon p-3 md:p-4 transition-all duration-300 will-change-transform',
+                i % 2 === 0 ? 'hover:rotate-1' : 'hover:-rotate-1',
+                'hover:-translate-y-1 hover:shadow-[6px_6px_0_#1A1410]',
+              ]}
             >
-              +
-            </button>
-          </div>
-        </li>
-      ))}
-    </ul>
+              <!-- Photo carrée + badge -->
+              <div class="relative aspect-square overflow-hidden bg-lagon-charbon mb-3">
+                <img
+                  src={j.photo}
+                  alt={j.alt ?? j.nom}
+                  loading="lazy"
+                  decoding="async"
+                  width="600"
+                  height="600"
+                  class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
+                  style="object-position: 50% 50%;"
+                />
+                {j.badge && (
+                  <span class:list={[
+                    'absolute top-2 left-2 inline-flex items-center px-2 py-1 font-bagel text-[10px] tracking-wide rounded-full ring-2 ring-lagon-charbon',
+                    j.badge === 'STAR' ? 'bg-lagon-mangue text-lagon-charbon' :
+                    j.badge === 'NOUVEAU' ? 'bg-lagon-pitaya text-lagon-blanc' :
+                    j.badge === 'DETOX' ? 'bg-lagon-lime text-lagon-charbon' :
+                    j.badge === 'ÉNERGIE' ? 'bg-lagon-pitaya text-lagon-blanc' :
+                    'bg-lagon-turquoise text-lagon-charbon'
+                  ]}>
+                    {j.badge === 'STAR' ? '★ ' + j.badge : j.badge}
+                  </span>
+                )}
+                <!-- Color dot indicator -->
+                <span class="absolute bottom-2 right-2 w-5 h-5 rounded-full ring-2 ring-lagon-coco" style={`background-color: ${meta.liquid};`} aria-hidden="true"></span>
+              </div>
+
+              <!-- Nom -->
+              <h3 class="font-bagel text-lagon-charbon text-lg md:text-xl leading-tight mb-1">
+                {j.nom}
+              </h3>
+
+              <!-- Ingrédients -->
+              <p class="font-onest text-lagon-charbon/70 text-xs md:text-sm leading-snug mb-3">
+                {j.ingredients}
+              </p>
+
+              <!-- Prix + bouton ajouter -->
+              <div class="flex items-center justify-between gap-2 pt-2 border-t-2 border-lagon-charbon/20">
+                <span class="font-bagel text-2xl text-lagon-charbon tabular-nums">
+                  {j.prix.toFixed(2).replace('.', ',')} €
+                </span>
+                <button
+                  type="button"
+                  data-add-jus={j.id}
+                  class="add-btn inline-flex items-center justify-center w-10 h-10 bg-lagon-pitaya text-lagon-blanc font-bagel text-xl rounded-full ring-2 ring-lagon-charbon hover:bg-lagon-charbon hover:scale-110 active:scale-95 transition-all"
+                  aria-label={`Ajouter ${j.nom} au panier`}
+                >
+                  +
+                </button>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
 
     <!-- Vertus & ingrédients (tableau) -->
     <div class="mt-20 md:mt-28">
@@ -134,4 +232,62 @@ import data from '../../../data/templates/lagon.json';
       </p>
     </div>
   </div>
+
+  <style>
+    /* Floating fruits inside glass */
+    .fruit-float {
+      animation: fruit-bob 4s ease-in-out infinite;
+      filter: drop-shadow(2px 2px 0 rgba(26,20,16,0.25));
+    }
+    .fruit-1 { animation-delay: 0s; }
+    .fruit-2 { animation-delay: -2s; animation-duration: 5s; }
+    @keyframes fruit-bob {
+      0%, 100% { transform: translateY(0) rotate(-6deg); }
+      50%      { transform: translateY(-12px) rotate(6deg); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .fruit-float, #liquid-wave animate, #lagon-glass circle animate { animation: none !important; }
+    }
+  </style>
+
+  <script>
+    (() => {
+      const glass = document.getElementById('lagon-glass');
+      const fruitsBox = document.getElementById('lagon-fruits');
+      const label = document.getElementById('lagon-glass-label');
+      if (!glass || !fruitsBox || !label) return;
+
+      const items = document.querySelectorAll('[data-jus]');
+      let activeId: string | null = null;
+
+      function apply(el: HTMLElement) {
+        const liquid = el.dataset.liquid || '#F4C430';
+        const fruits = (el.dataset.fruits || '').split('|').filter(Boolean);
+        const nom = el.dataset.nom || '';
+        glass!.style.setProperty('--liquid', liquid);
+        glass!.style.setProperty('--liquid-soft', liquid + '99');
+        // Replace fruits
+        fruitsBox!.innerHTML = '';
+        fruits.forEach((f, i) => {
+          const span = document.createElement('span');
+          span.className = 'fruit-float absolute';
+          span.style.cssText = `left:${28 + i * 24}%; top:${42 + (i % 2) * 12}%; font-size:${i === 0 ? '2rem' : '1.5rem'};`;
+          span.style.animationDelay = `${-i * 1.4}s`;
+          span.textContent = f;
+          fruitsBox!.appendChild(span);
+        });
+        label!.textContent = '↳ ' + nom;
+      }
+
+      items.forEach((el) => {
+        const node = el as HTMLElement;
+        node.addEventListener('mouseenter', () => {
+          if (activeId === node.dataset.id) return;
+          activeId = node.dataset.id || null;
+          apply(node);
+        });
+        node.addEventListener('focusin', () => apply(node));
+      });
+    })();
+  </script>
 </section>

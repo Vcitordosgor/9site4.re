@@ -23,13 +23,20 @@ import data from '../../../data/templates/painleve.json';
           Une farine bio T80 d'un moulin péi, un levain mère né en 2018 d'une grappe de raisin local, une fermentation longue 18 à 24 heures à 4°C. Du sel marin, de l'eau. Pas de levure, pas d'améliorants.
         </p>
         <div class="mt-10 flex flex-wrap gap-3">
-          <a href="#abonnement" class="inline-flex items-center justify-center px-7 text-[12px] uppercase tracking-[0.22em] font-semibold rounded-full transition-colors" style="background:#1F2521; color:#E8E0CC; height:54px;">
+          <a href="#abonnement" class="bl-cta-primary inline-flex items-center justify-center px-7 text-[12px] uppercase tracking-[0.22em] font-semibold rounded-full transition-all duration-300" style="background:#1F2521; color:#E8E0CC; height:54px;">
             Précommander
           </a>
-          <a href="#carte" class="inline-flex items-center justify-center px-7 text-[12px] uppercase tracking-[0.22em] font-semibold rounded-full border-2 transition-colors" style="border-color:#1F2521; color:#1F2521; height:54px;">
+          <a href="#carte" class="bl-cta-ghost inline-flex items-center justify-center px-7 text-[12px] uppercase tracking-[0.22em] font-semibold rounded-full border-2 transition-all duration-300" style="border-color:#1F2521; color:#1F2521; height:54px;">
             Voir la carte
           </a>
         </div>
+        <style>
+          .bl-cta-primary:hover { background:#A87842 !important; transform: translateY(-1px); box-shadow: 0 10px 24px -10px rgba(31,37,33,0.45); }
+          .bl-cta-ghost:hover   { background:#1F2521 !important; color:#E8E0CC !important; transform: translateY(-1px); }
+          @media (prefers-reduced-motion: reduce) {
+            .bl-cta-primary:hover, .bl-cta-ghost:hover { transform: none; }
+          }
+        </style>
 
         <div class="mt-12 grid grid-cols-3 gap-6 max-w-md">
           <div>

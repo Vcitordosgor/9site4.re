@@ -1,0 +1,304 @@
+---
+/**
+ * RevGauge — moment signature "compte-tours" + checklist d'inspection 32 points.
+ * - SVG gauge : aiguille animée de 0 à 7400 RPM au scroll-in (transition CSS).
+ * - RPM ticker : requestAnimationFrame, easeOutCubic.
+ * - Checklist 32 points : cascade au scroll-in (stagger via CSS transition + JS class).
+ * - IntersectionObserver one-shot, respecte prefers-reduced-motion.
+ */
+
+// 32 points d'inspection — équilibré 4 colonnes
+const inspectionPoints = [
+  'Freins avant', 'Freins arrière', 'Plaquettes', 'Disques',
+  'Pneus AV G/D', 'Pneus AR G/D', 'Pression', 'Géométrie',
+  'Phares', 'Feux stop', 'Clignotants', 'Antibrouillard',
+  'Batterie', 'Alternateur', 'Démarreur', 'Bougies',
+  'Huile moteur', 'Liquide frein', 'Lave-glace', 'Liquide refroid.',
+  'Courroie distrib.', 'Filtre à air', 'Filtre habitacle', 'Filtre carburant',
+  'Amortisseurs', 'Rotules', 'Silentblocs', 'Triangles',
+  'Échappement', 'Catalyseur', 'Embrayage', 'Carrosserie',
+];
+
+// Aiguille : de -120° (0 RPM) à +120° (8000 RPM) — on s'arrête à 7400 (~+99°)
+const MAX_RPM = 7400;
+const START_DEG = -120;
+const END_DEG = 120;
+const finalDeg = START_DEG + ((MAX_RPM / 8000) * (END_DEG - START_DEG));
+
+// Ticks 0..8 (x1000)
+const ticks = Array.from({ length: 9 }, (_, i) => {
+  const deg = START_DEG + (i / 8) * (END_DEG - START_DEG);
+  return { value: i, deg, red: i >= 7 };
+});
+---
+
+<section
+  id="diagnostic"
+  aria-label="Diagnostic atelier et checklist 32 points"
+  class="bg-piton-asphalte text-piton-beton py-20 md:py-28 relative overflow-hidden"
+>
+  <!-- Caution tape top -->
+  <div class="absolute top-0 inset-x-0 h-1 bg-piton-feu" aria-hidden="true"></div>
+
+  <div class="max-w-content mx-auto px-6 md:px-10">
+
+    <div class="max-w-2xl mb-12 md:mb-16">
+      <p class="font-jetbrains text-[11px] uppercase tracking-[0.4em] text-piton-feu mb-4">▸ Diagnostic atelier</p>
+      <h2 class="font-bebas text-piton-blanc text-5xl md:text-7xl leading-[0.9] tracking-[0.02em]">
+        ON MONTE EN RÉGIME,<br/>
+        <span class="text-piton-feu">ON CHECK 32 POINTS.</span>
+      </h2>
+      <p class="mt-5 font-inter-tight text-piton-beton/75 text-[15px] leading-relaxed max-w-xl">
+        Banc moteur, valise multimarque, contrôle visuel ligne par ligne. Chaque voiture qui sort du
+        pont a passé notre <strong class="text-piton-blanc">checklist 32 points</strong>.
+        Pas de zone d'ombre. Pas d'oubli.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-start">
+
+      <!-- ===== GAUGE ===== -->
+      <div class="lg:col-span-5">
+        <div
+          id="rev-gauge-wrap"
+          class="bg-piton-acier border-l-4 border-piton-feu p-6 md:p-8 relative"
+        >
+          <div class="flex items-center justify-between mb-4">
+            <p class="font-jetbrains text-[10px] uppercase tracking-[0.25em] text-piton-feu">▸ Banc moteur</p>
+            <p class="font-jetbrains text-[10px] uppercase tracking-[0.18em] text-piton-beton/55">CH-04 · LIVE</p>
+          </div>
+
+          <!-- SVG rev counter -->
+          <div class="relative mx-auto" style="max-width: 360px;">
+            <svg
+              viewBox="0 0 240 240"
+              role="img"
+              aria-label="Compte-tours : 0 à 7400 tours par minute"
+              class="w-full h-auto block"
+            >
+              <!-- arc background -->
+              <circle cx="120" cy="120" r="100" fill="none" stroke="#0F1014" stroke-width="22" />
+              <!-- arc colored (mask via stroke-dasharray on full circle, only show 240°) -->
+              <g transform="rotate(150 120 120)">
+                <!-- green/normal arc 0..7000 -->
+                <circle cx="120" cy="120" r="100"
+                  fill="none" stroke="#454850" stroke-width="22"
+                  stroke-dasharray="419 209" stroke-linecap="butt" />
+                <!-- red zone 7000+ -->
+                <circle cx="120" cy="120" r="100"
+                  fill="none" stroke="#FF5A1F" stroke-width="22"
+                  stroke-dasharray="60 568" stroke-dashoffset="-366" />
+              </g>
+
+              <!-- ticks -->
+              {ticks.map((t) => (
+                <g transform={`rotate(${t.deg} 120 120)`}>
+                  <line x1="120" y1="32" x2="120" y2={t.value % 1 === 0 ? 46 : 42}
+                    stroke={t.red ? '#FF5A1F' : '#E8E5DD'} stroke-width={t.value === 0 || t.value === 8 ? 2.5 : 2} />
+                  <text
+                    x="120" y="62"
+                    text-anchor="middle"
+                    transform={`rotate(${-t.deg} 120 62)`}
+                    fill={t.red ? '#FF5A1F' : '#E8E5DD'}
+                    font-family="'Bebas Neue', sans-serif"
+                    font-size="14"
+                    letter-spacing="1"
+                  >{t.value}</text>
+                </g>
+              ))}
+
+              <!-- "x1000 RPM" label -->
+              <text x="120" y="180" text-anchor="middle"
+                fill="#E8E5DD" opacity="0.5"
+                font-family="'JetBrains Mono', monospace"
+                font-size="8" letter-spacing="2">x1000 RPM</text>
+
+              <!-- needle -->
+              <g id="rev-needle" style={`transform: rotate(${START_DEG}deg); transform-origin: 120px 120px;`}>
+                <polygon points="120,35 116,124 124,124" fill="#FF5A1F" />
+                <circle cx="120" cy="124" r="6" fill="#0F1014" stroke="#FF5A1F" stroke-width="2.5" />
+              </g>
+
+              <!-- center cap -->
+              <circle cx="120" cy="120" r="14" fill="#0F1014" stroke="#454850" stroke-width="1.5" />
+            </svg>
+
+            <!-- Digital RPM readout -->
+            <div class="absolute left-1/2 -translate-x-1/2 bottom-4 text-center pointer-events-none">
+              <p class="font-bebas text-piton-blanc text-4xl md:text-5xl leading-none tabular-nums">
+                <span id="rev-rpm-value">0</span>
+              </p>
+              <p class="font-jetbrains text-[10px] uppercase tracking-[0.22em] text-piton-feu mt-1">RPM</p>
+            </div>
+          </div>
+
+          <!-- readout lines -->
+          <div class="mt-6 grid grid-cols-2 gap-3 font-jetbrains text-[11px] tabular-nums">
+            <div class="bg-piton-asphalte/60 px-3 py-2 border-l-2 border-piton-feu/60">
+              <p class="text-[9px] uppercase tracking-[0.18em] text-piton-feu mb-0.5">Ralenti</p>
+              <p class="text-piton-blanc">820 rpm</p>
+            </div>
+            <div class="bg-piton-asphalte/60 px-3 py-2 border-l-2 border-piton-acide/60">
+              <p class="text-[9px] uppercase tracking-[0.18em] text-piton-acide mb-0.5">Compression</p>
+              <p class="text-piton-blanc">12.4 bar</p>
+            </div>
+            <div class="bg-piton-asphalte/60 px-3 py-2 border-l-2 border-piton-feu/60">
+              <p class="text-[9px] uppercase tracking-[0.18em] text-piton-feu mb-0.5">T° huile</p>
+              <p class="text-piton-blanc">92 °C</p>
+            </div>
+            <div class="bg-piton-asphalte/60 px-3 py-2 border-l-2 border-piton-acide/60">
+              <p class="text-[9px] uppercase tracking-[0.18em] text-piton-acide mb-0.5">Diagnostic</p>
+              <p class="text-piton-blanc">OK · 0 défaut</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== CHECKLIST 32 POINTS ===== -->
+      <div class="lg:col-span-7">
+        <div class="bg-piton-acier border-l-4 border-piton-acide p-6 md:p-8">
+          <div class="flex items-center justify-between mb-5">
+            <p class="font-jetbrains text-[10px] uppercase tracking-[0.25em] text-piton-acide">▸ Checklist atelier</p>
+            <p class="font-bebas text-piton-blanc text-xl tracking-[0.08em]">
+              <span id="check-count">0</span><span class="text-piton-beton/40">/32</span>
+            </p>
+          </div>
+
+          <ul
+            id="inspection-checklist"
+            class="grid grid-cols-2 md:grid-cols-4 gap-x-3 gap-y-2"
+          >
+            {inspectionPoints.map((point, i) => (
+              <li
+                class="check-item flex items-center gap-2 font-jetbrains text-[11.5px] text-piton-beton/55 transition-all duration-300 ease-out"
+                data-index={i}
+                style={`transition-delay: ${i * 60}ms;`}
+              >
+                <span class="check-box inline-flex items-center justify-center w-4 h-4 border border-piton-fonte text-piton-acide flex-shrink-0 transition-colors duration-200">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" class="check-mark opacity-0 transition-opacity duration-200" aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                </span>
+                <span class="check-label truncate">{point}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div class="mt-6 pt-5 border-t border-piton-fonte/40 flex items-center justify-between gap-3 flex-wrap">
+            <p class="font-jetbrains text-[10.5px] uppercase tracking-[0.18em] text-piton-beton/65">
+              ✓ Rapport remis à chaque restitution
+            </p>
+            <a
+              href="#contact"
+              class="inline-flex items-center justify-center h-10 px-4 bg-piton-acide text-piton-asphalte font-bebas tracking-[0.08em] hover:bg-piton-blanc transition-colors"
+            >
+              Réserver l'inspection ▸
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  #rev-needle {
+    transition: transform 2400ms cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+  }
+  .check-item.is-checked {
+    color: #FAFAF8;
+  }
+  .check-item.is-checked .check-box {
+    background-color: #D4FF3A;
+    border-color: #D4FF3A;
+    color: #0F1014;
+  }
+  .check-item.is-checked .check-mark {
+    opacity: 1;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #rev-needle { transition: none !important; }
+    .check-item { transition: none !important; transition-delay: 0ms !important; }
+  }
+</style>
+
+<script is:inline define:vars={{ finalDeg, MAX_RPM }}>
+  (function () {
+    const wrap = document.getElementById('rev-gauge-wrap');
+    const needle = document.getElementById('rev-needle');
+    const rpmEl = document.getElementById('rev-rpm-value');
+    const list = document.getElementById('inspection-checklist');
+    const countEl = document.getElementById('check-count');
+    if (!wrap || !needle || !rpmEl || !list || !countEl) return;
+
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let triggered = false;
+
+    function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+
+    function formatRpm(n) {
+      return Math.round(n).toLocaleString('fr-FR').replace(/ /g, ' ');
+    }
+
+    function trigger() {
+      if (triggered) return;
+      triggered = true;
+
+      if (reduce) {
+        needle.style.transform = `rotate(${finalDeg}deg)`;
+        rpmEl.textContent = formatRpm(MAX_RPM);
+        const items = list.querySelectorAll('.check-item');
+        items.forEach((it) => it.classList.add('is-checked'));
+        countEl.textContent = '32';
+        return;
+      }
+
+      // Needle CSS transition
+      requestAnimationFrame(() => {
+        needle.style.transform = `rotate(${finalDeg}deg)`;
+      });
+
+      // RPM ticker rAF
+      const duration = 2400;
+      const t0 = performance.now();
+      function tick(now) {
+        const p = Math.min(1, (now - t0) / duration);
+        const v = easeOutCubic(p) * MAX_RPM;
+        rpmEl.textContent = formatRpm(v);
+        if (p < 1) requestAnimationFrame(tick);
+        else rpmEl.textContent = formatRpm(MAX_RPM);
+      }
+      requestAnimationFrame(tick);
+
+      // Checklist cascade
+      const items = list.querySelectorAll('.check-item');
+      let checked = 0;
+      items.forEach((it, i) => {
+        const delay = 400 + i * 60;
+        setTimeout(() => {
+          it.classList.add('is-checked');
+          checked += 1;
+          countEl.textContent = String(checked);
+        }, delay);
+      });
+    }
+
+    // If already in viewport on load
+    const rect = wrap.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.85 && rect.bottom > 0) {
+      trigger();
+      return;
+    }
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          trigger();
+          io.disconnect();
+        }
+      });
+    }, { threshold: 0.25 });
+    io.observe(wrap);
+  })();
+</script>

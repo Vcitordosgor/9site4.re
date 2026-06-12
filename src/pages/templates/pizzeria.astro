@@ -56,7 +56,85 @@ const businessLD = localBusinessSchema(data, 'Restaurant');
     <style>
       @keyframes pizza-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
       @media (prefers-reduced-motion: reduce) { [style*="pizza-marquee"] { animation: none !important; } }
+
+      /* === Four à bois qui respire === */
+      #four-breathe { isolation: isolate; }
+      .four-ember {
+        background: radial-gradient(
+          ellipse 45% 38% at 50% 62%,
+          rgb(255 138 60 / 0.55) 0%,
+          rgb(220 70 30 / 0.32) 32%,
+          rgb(168 37 50 / 0.10) 58%,
+          transparent 78%
+        );
+        mix-blend-mode: screen;
+        opacity: 0.85;
+        will-change: opacity, transform;
+      }
+      .four-flicker {
+        background: radial-gradient(
+          ellipse 28% 22% at 50% 60%,
+          rgb(255 200 120 / 0.45) 0%,
+          rgb(255 140 60 / 0.18) 45%,
+          transparent 80%
+        );
+        opacity: 0.7;
+        will-change: opacity, transform;
+      }
+      #four-breathe[data-breathing='true'] .four-ember {
+        animation: ember-breathe 3.6s ease-in-out infinite;
+      }
+      #four-breathe[data-breathing='true'] .four-flicker {
+        animation: ember-flicker 1.9s steps(8, end) infinite;
+      }
+      #four-breathe[data-breathing='true'] .ember-dot {
+        animation: ember-dot 1.8s ease-in-out infinite;
+      }
+      .ember-dot::after {
+        content: '';
+        position: absolute;
+        inset: -4px;
+        border-radius: 9999px;
+        background: rgb(232 184 99 / 0.55);
+        filter: blur(3px);
+        opacity: 0.7;
+      }
+      @keyframes ember-breathe {
+        0%, 100% { opacity: 0.55; transform: scale(1); }
+        50%      { opacity: 0.95; transform: scale(1.04); }
+      }
+      @keyframes ember-flicker {
+        0%   { opacity: 0.45; transform: translate(0, 0); }
+        15%  { opacity: 0.82; transform: translate(-1px, 1px); }
+        30%  { opacity: 0.55; transform: translate(1px, -1px); }
+        45%  { opacity: 0.95; transform: translate(-1px, -1px); }
+        60%  { opacity: 0.6;  transform: translate(1px, 1px); }
+        75%  { opacity: 0.88; transform: translate(0, -1px); }
+        100% { opacity: 0.5;  transform: translate(0, 0); }
+      }
+      @keyframes ember-dot {
+        0%, 100% { box-shadow: 0 0 0 0 rgb(232 184 99 / 0.6); }
+        50%      { box-shadow: 0 0 0 6px rgb(232 184 99 / 0); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #four-breathe[data-breathing='true'] .four-ember,
+        #four-breathe[data-breathing='true'] .four-flicker,
+        #four-breathe[data-breathing='true'] .ember-dot { animation: none !important; }
+        .four-ember { opacity: 0.75; }
+        .four-flicker { opacity: 0.5; }
+      }
     </style>
+    <script>
+      const fourBreathe = document.getElementById('four-breathe');
+      if (fourBreathe) {
+        const io = new IntersectionObserver((entries) => {
+          for (const e of entries) {
+            fourBreathe.dataset.breathing = String(e.isIntersecting);
+          }
+        }, { threshold: 0.15 });
+        io.observe(fourBreathe);
+      }
+    </script>
 
     <StatBanner />
     <Manifesto />
@@ -69,15 +147,15 @@ const businessLD = localBusinessSchema(data, 'Restaurant');
             <span class="inline-block w-8 h-px bg-pizza-rouge" aria-hidden="true"></span>
             <span>Le four à bois</span>
           </p>
-          <h2 class="scroll-reveal mt-5 font-playfair font-bold text-pizza-charbon leading-tight" style="font-size: clamp(32px, 4vw, 48px);">
+          <h2 class="scroll-reveal mt-5 font-playfair font-bold text-pizza-charbon leading-[1.02] tracking-tight" style="font-size: clamp(34px, 4.4vw, 54px);">
             Une coupole de briques
-            <span class="block italic font-medium text-pizza-rouge">portée à 450°C.</span>
+            <span class="block italic font-medium text-pizza-rouge mt-1">portée à 450°C.</span>
           </h2>
           <div class="scroll-reveal mt-6 space-y-4 font-inter text-pizza-charbon/75 leading-relaxed">
             <p>Notre four traditionnel, construit en briques réfractaires, est alimenté au bois de letchi et de goyavier. La flamme lèche la voûte, la sole emmagasine la chaleur, et la pizza cuit en 90 secondes à peine.</p>
             <p>Cette cuisson rapide à très haute température donne ce cornicione gonflé et alvéolé, ces taches de cuisson irrégulières, et ce parfum de bois si caractéristique.</p>
           </div>
-          <ul class="scroll-reveal mt-8 grid grid-cols-3 gap-4">
+          <ul class="scroll-reveal mt-10 grid grid-cols-3 gap-4 pt-6 border-t border-pizza-charbon/10">
             <li class="text-center">
               <p class="font-playfair font-bold text-pizza-rouge tabular-nums" style="font-size: 28px;">450°C</p>
               <p class="mt-1 text-[11px] uppercase tracking-[0.2em] text-pizza-charbon/55">Voûte</p>
@@ -93,14 +171,28 @@ const businessLD = localBusinessSchema(data, 'Restaurant');
           </ul>
         </div>
         <figure class="scroll-reveal lg:col-span-6 order-1 lg:order-2">
-          <div class="relative overflow-hidden rounded-sm" style="aspect-ratio: 4/3;">
+          <div id="four-breathe" class="relative overflow-hidden rounded-sm shadow-[0_20px_60px_-20px_rgb(28_26_23/0.4)]" style="aspect-ratio: 4/3;">
             <img
               src="/images/pizzeria/hero.webp"
               alt="Four à bois traditionnel en pleine cuisson, lumière chaude"
               loading="lazy"
               decoding="async"
               class="w-full h-full object-cover"
+              style="object-position: center 55%;"
             />
+            <!-- Ember glow : halo qui respire sur la gueule du four -->
+            <div class="four-ember pointer-events-none absolute inset-0" aria-hidden="true"></div>
+            <div class="four-flicker pointer-events-none absolute inset-0 mix-blend-screen" aria-hidden="true"></div>
+
+            <!-- Pill live "450°C · feu vivant" -->
+            <div class="absolute left-4 bottom-4 md:left-5 md:bottom-5 inline-flex items-center gap-2.5 rounded-full bg-pizza-charbon/85 backdrop-blur-md pl-3 pr-4 py-2 ring-1 ring-pizza-dore/40 shadow-lg">
+              <span class="ember-dot relative inline-flex w-2.5 h-2.5 rounded-full bg-pizza-dore"></span>
+              <span class="font-inter text-[11px] md:text-xs font-semibold uppercase tracking-[0.18em] text-pizza-creme">
+                <span class="tabular-nums text-pizza-dore">450°C</span>
+                <span class="text-pizza-creme/40 mx-1">·</span>
+                <span>Feu vivant</span>
+              </span>
+            </div>
           </div>
         </figure>
       </div>

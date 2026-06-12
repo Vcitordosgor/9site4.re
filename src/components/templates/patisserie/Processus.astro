@@ -27,7 +27,7 @@ const etapes = [
 ];
 ---
 
-<section class="bg-vanille-creme py-20 md:py-32 relative">
+<section class="bg-vanille-creme py-20 md:py-32 relative overflow-hidden">
   <div class="max-w-content mx-auto px-6 md:px-10">
 
     <div class="text-center max-w-2xl mx-auto mb-16 md:mb-24">
@@ -52,5 +52,170 @@ const etapes = [
         </li>
       ))}
     </ol>
+
+    {/* — Signature moment : l'entremets se monte couche par couche au scroll — */}
+    <div class="mt-24 md:mt-36 grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+      <div class="lg:col-span-5 order-2 lg:order-1">
+        <p class="font-karla text-[11px] uppercase tracking-[0.4em] text-vanille-caramel mb-4 flex items-center gap-3">
+          <span class="block w-8 h-px bg-vanille-caramel"></span>
+          La coupe d'un entremets
+        </p>
+        <h3 class="font-yeseva text-vanille-gousse leading-[1.02]" style="font-size:clamp(30px,3.6vw,46px);">
+          Cinq couches,
+          <span class="block italic font-italianno text-vanille-caramel" style="font-size:clamp(40px,5vw,64px);">une seule cuillère.</span>
+        </h3>
+        <p class="mt-6 font-karla text-[15px] text-vanille-gousse/80 leading-relaxed max-w-md">
+          Chaque entremets est un montage à la main, étage par étage, dans son cercle. On commence par le biscuit, on finit par la gousse. Entre les deux, trois textures qui doivent tenir ensemble.
+        </p>
+        <ul id="entremets-legend" class="mt-8 space-y-3 max-w-md">
+          <li data-layer="0" class="flex items-center gap-4 text-vanille-gousse/55 transition-colors duration-500">
+            <span class="block w-10 h-3 rounded-sm shrink-0" style="background:#C68642;"></span>
+            <span class="font-karla text-[14px]"><strong class="font-semibold text-vanille-gousse/90">Glaçage caramel</strong> · miroir tiède, coulé à la louche.</span>
+          </li>
+          <li data-layer="1" class="flex items-center gap-4 text-vanille-gousse/55 transition-colors duration-500">
+            <span class="block w-10 h-4 rounded-sm shrink-0" style="background:#F4E8CE;"></span>
+            <span class="font-karla text-[14px]"><strong class="font-semibold text-vanille-gousse/90">Mousse vanille</strong> · trois gousses de Bras-Panon infusées la veille.</span>
+          </li>
+          <li data-layer="2" class="flex items-center gap-4 text-vanille-gousse/55 transition-colors duration-500">
+            <span class="block w-10 h-3 rounded-sm shrink-0" style="background:#D14B3C;"></span>
+            <span class="font-karla text-[14px]"><strong class="font-semibold text-vanille-gousse/90">Crémeux letchi</strong> · saison, à peine sucré.</span>
+          </li>
+          <li data-layer="3" class="flex items-center gap-4 text-vanille-gousse/55 transition-colors duration-500">
+            <span class="block w-10 h-3 rounded-sm shrink-0" style="background:#7AA05B;"></span>
+            <span class="font-karla text-[14px]"><strong class="font-semibold text-vanille-gousse/90">Insert pandan</strong> · vert herbacé pour casser le sucre.</span>
+          </li>
+          <li data-layer="4" class="flex items-center gap-4 text-vanille-gousse/55 transition-colors duration-500">
+            <span class="block w-10 h-4 rounded-sm shrink-0" style="background:#5C3A1E;"></span>
+            <span class="font-karla text-[14px]"><strong class="font-semibold text-vanille-gousse/90">Biscuit moelleux</strong> · base imbibée, légère, tenue.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="lg:col-span-7 order-1 lg:order-2">
+        <div
+          id="entremets-stack"
+          class="relative mx-auto"
+          style="width:min(100%,440px);aspect-ratio:1/1;"
+          aria-hidden="true"
+        >
+          {/* Assiette */}
+          <div class="absolute left-1/2 -translate-x-1/2 bottom-[8%] w-[105%] h-3 rounded-full bg-vanille-gousse/15 blur-[2px]"></div>
+          <div class="absolute left-1/2 -translate-x-1/2 bottom-[9%] w-[92%] h-2 rounded-full bg-vanille-gousse/25"></div>
+
+          {/* Stack */}
+          <div class="absolute inset-x-[10%] bottom-[10%] top-[10%] flex flex-col-reverse justify-start gap-[3px]">
+            {/* Biscuit (couche 4) */}
+            <div class="entremets-layer rounded-b-[14px] rounded-t-sm shadow-[inset_0_-4px_8px_rgba(0,0,0,0.18)]" data-i="4" style="background:linear-gradient(180deg,#7A5230 0%,#5C3A1E 100%);height:18%;"></div>
+            {/* Insert pandan (couche 3) */}
+            <div class="entremets-layer rounded-sm" data-i="3" style="background:linear-gradient(180deg,#8FB36C 0%,#7AA05B 100%);height:9%;"></div>
+            {/* Crémeux letchi (couche 2) */}
+            <div class="entremets-layer rounded-sm" data-i="2" style="background:linear-gradient(180deg,#E76554 0%,#D14B3C 100%);height:11%;"></div>
+            {/* Mousse vanille (couche 1) */}
+            <div class="entremets-layer rounded-sm relative overflow-hidden" data-i="1" style="background:linear-gradient(180deg,#FBF3E2 0%,#F4E8CE 100%);height:32%;">
+              <span class="absolute left-3 top-2 block w-1 h-1 rounded-full bg-vanille-grain/70"></span>
+              <span class="absolute left-8 top-6 block w-0.5 h-0.5 rounded-full bg-vanille-grain/60"></span>
+              <span class="absolute right-6 top-4 block w-1 h-1 rounded-full bg-vanille-grain/70"></span>
+              <span class="absolute right-12 top-10 block w-0.5 h-0.5 rounded-full bg-vanille-grain/60"></span>
+              <span class="absolute left-1/2 top-1/2 block w-0.5 h-0.5 rounded-full bg-vanille-grain/60"></span>
+            </div>
+            {/* Glaçage (couche 0) — sommet */}
+            <div class="entremets-layer rounded-t-[20px] rounded-b-sm relative overflow-hidden shadow-[inset_0_3px_6px_rgba(255,255,255,0.35)]" data-i="0" style="background:linear-gradient(180deg,#E0A05C 0%,#C68642 70%,#A86F32 100%);height:12%;">
+              <span class="absolute inset-x-0 top-0 h-1.5 bg-white/25"></span>
+            </div>
+            {/* Gousse de vanille — décor au sommet */}
+            <div class="entremets-vanille absolute -top-6 left-1/2 -translate-x-1/2 rotate-[-12deg]" data-i="0" style="width:46%;height:8px;background:linear-gradient(90deg,#2A1B0F 0%,#5C3A1E 50%,#2A1B0F 100%);border-radius:9999px;box-shadow:0 3px 6px rgba(42,27,15,0.35);"></div>
+          </div>
+
+          {/* Repères numérotés */}
+          <div class="absolute right-[2%] top-[10%] bottom-[10%] flex flex-col justify-between text-right">
+            {['I','II','III','IV','V'].map((r) => (
+              <span class="font-italianno text-vanille-caramel/50 text-2xl leading-none">{r}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
+
+  <style>
+    #entremets-stack .entremets-layer,
+    #entremets-stack .entremets-vanille {
+      opacity: 0;
+      transform: translateY(-22px) scaleY(0.55);
+      transform-origin: bottom center;
+      transition: opacity 620ms cubic-bezier(.2,.7,.2,1), transform 720ms cubic-bezier(.2,.7,.2,1);
+      will-change: opacity, transform;
+    }
+    #entremets-stack[data-revealed="true"] .entremets-layer[data-i="4"],
+    #entremets-stack[data-revealed="true"] .entremets-layer[data-i="3"],
+    #entremets-stack[data-revealed="true"] .entremets-layer[data-i="2"],
+    #entremets-stack[data-revealed="true"] .entremets-layer[data-i="1"],
+    #entremets-stack[data-revealed="true"] .entremets-layer[data-i="0"],
+    #entremets-stack[data-revealed="true"] .entremets-vanille {
+      opacity: 1;
+      transform: translateY(0) scaleY(1);
+    }
+    #entremets-stack[data-revealed="true"] .entremets-layer[data-i="4"] { transition-delay: 80ms; }
+    #entremets-stack[data-revealed="true"] .entremets-layer[data-i="3"] { transition-delay: 280ms; }
+    #entremets-stack[data-revealed="true"] .entremets-layer[data-i="2"] { transition-delay: 480ms; }
+    #entremets-stack[data-revealed="true"] .entremets-layer[data-i="1"] { transition-delay: 680ms; }
+    #entremets-stack[data-revealed="true"] .entremets-layer[data-i="0"] { transition-delay: 940ms; }
+    #entremets-stack[data-revealed="true"] .entremets-vanille { transition-delay: 1180ms; }
+
+    #entremets-legend li.is-active {
+      color: rgb(92 58 30 / 0.95);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #entremets-stack .entremets-layer,
+      #entremets-stack .entremets-vanille {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+
+  <script is:inline>
+    (() => {
+      const stack = document.getElementById('entremets-stack');
+      const legend = document.getElementById('entremets-legend');
+      if (!stack) return;
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const legendItems = legend ? Array.from(legend.querySelectorAll('li[data-layer]')) : [];
+      const order = [4, 3, 2, 1, 0];
+      const delays = [80, 280, 480, 680, 940];
+
+      const highlight = () => {
+        if (reduce) {
+          legendItems.forEach((li) => li.classList.add('is-active'));
+          return;
+        }
+        order.forEach((layer, idx) => {
+          setTimeout(() => {
+            const li = legendItems.find((el) => Number(el.dataset.layer) === layer);
+            if (li) li.classList.add('is-active');
+          }, delays[idx] + 200);
+        });
+      };
+
+      if (reduce) {
+        stack.dataset.revealed = 'true';
+        highlight();
+        return;
+      }
+
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            stack.dataset.revealed = 'true';
+            highlight();
+            io.disconnect();
+          }
+        });
+      }, { threshold: 0.35, rootMargin: '0px 0px -8% 0px' });
+      io.observe(stack);
+    })();
+  </script>
 </section>
