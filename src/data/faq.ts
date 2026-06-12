@@ -41,6 +41,7 @@ export interface FaqItem {
 
 export const faqCategories: FaqCategory[] = [
   { id: 'offre', label: 'Offre 9site4', slug: 'offre' },
+  { id: 'objections', label: 'Vos questions honnêtes', slug: 'objections' },
   { id: 'prix', label: 'Prix et engagement', slug: 'prix' },
   { id: 'creation', label: 'Création du site', slug: 'creation' },
   { id: 'gestion', label: 'Gestion continue', slug: 'gestion' },
@@ -96,6 +97,97 @@ export const faqItems: FaqItem[] = [
     question: "Quelle est la différence avec Wix ou WordPress fait soi-même ?",
     answer:
       "Faire son site soi-même demande du temps, des compétences et un suivi technique. Avec 9site4, vous n'avez rien à gérer : structure, design, contenu, mise en ligne, sécurité et évolutions sont pris en charge. Vous récupérez du temps pour votre métier.",
+  },
+
+  // ============================================================
+  // OBJECTIONS HONNÊTES (TPE/PME 974)
+  // Réponses directes aux vraies questions qu'on entend sur le terrain.
+  // Ton : franc, sans bullshit commercial, sans surpromesse.
+  // ============================================================
+  {
+    id: 'obj-prix-cher',
+    category: 'objections',
+    question: "97,4€/mois c'est cher pour un site, non ?",
+    answer:
+      "C'est légitime de se poser la question. Comparé à un site Wix gratuit, oui c'est plus cher. Comparé à une agence qui facture 2 500€ de création + 30€/mois de maintenance, c'est moins cher la première année et équivalent ensuite. Le 97,4€/mois couvre tout : création, design, domaine, hébergement, maintenance, modifications. Sans engagement, vous arrêtez quand vous voulez. À comparer aussi à un encart presse, une pub radio ou un flyer : un site travaille pour vous 24h/24 toute l'année.",
+    showOnPages: ['tarifs', 'contact'],
+  },
+  {
+    id: 'obj-wix-gratuit',
+    category: 'objections',
+    question: "Je peux faire un site gratuit avec Wix, pourquoi payer ?",
+    answer:
+      "Vous pouvez, c'est vrai. La question n'est pas 'gratuit ou payant', c'est 'combien de temps allez-vous y passer et est-ce que le résultat va vraiment ressembler à votre métier'. Wix gratuit affiche de la pub, le nom de domaine est en wix.com/votre-nom, et vous gérez tout vous-même : structure, textes, SEO, mises à jour, sécurité. Avec 9site4, vous n'écrivez pas une ligne de code, vous n'avez pas à apprendre un outil, et le site a l'air d'un vrai site pro. Si vous avez le temps et l'envie d'apprendre, Wix peut suffire. Si vous voulez vous concentrer sur votre métier, 9site4 a plus de sens.",
+    showOnPages: ['tarifs'],
+  },
+  {
+    id: 'obj-cousin',
+    category: 'objections',
+    question: "Mon cousin / un ami va me faire un site, ça suffit non ?",
+    answer:
+      "Souvent oui, au début. Le problème arrive 6 mois après : le cousin n'a plus le temps, le site n'est plus à jour, le formulaire ne marche plus, l'hébergement expire, plus personne ne sait où sont les accès. Et vous n'osez pas relancer. Avec 9site4 vous avez un interlocuteur professionnel, joignable, qui s'en occupe dans la durée. Si votre cousin est développeur pro et qu'il s'engage à maintenir votre site 3 ans, foncez. Sinon, vous gagnez en sérénité.",
+    showOnPages: ['tarifs'],
+  },
+  {
+    id: 'obj-pas-besoin',
+    category: 'objections',
+    question: "Je n'ai pas besoin de site, mes clients me connaissent déjà.",
+    answer:
+      "Vos clients actuels oui. Mais les nouveaux ? Quand quelqu'un entend parler de vous, le premier réflexe à La Réunion comme ailleurs, c'est de taper votre nom sur Google. S'il ne trouve rien, ou juste une fiche vide, vous passez pour quelqu'un qui n'existe plus. Un site clair sert aussi à rassurer ceux qui hésitent à vous appeler : horaires, prestations, tarifs, photos. Ce n'est pas pour vous, c'est pour eux.",
+  },
+  {
+    id: 'obj-facebook',
+    category: 'objections',
+    question: "J'ai déjà une page Facebook / Instagram, c'est suffisant non ?",
+    answer:
+      "Les réseaux sociaux servent à entretenir le lien et montrer votre quotidien. Un site sert à structurer votre offre : prestations, tarifs, zone d'intervention, prise de contact, mentions légales. Les deux sont complémentaires, pas concurrents. Et surtout : Facebook ne vous appartient pas. Si demain Meta change ses règles ou suspend votre page, vous perdez tout. Votre site et votre nom de domaine sont à vous.",
+  },
+  {
+    id: 'obj-pas-le-temps',
+    category: 'objections',
+    question: "Je n'ai pas le temps de m'occuper d'un site.",
+    answer:
+      "C'est précisément pour ça que 9site4 existe. Vous nous transmettez les informations essentielles (activité, prestations, horaires, photos si vous en avez), le reste est notre travail : structure, design, contenu, mise en ligne, suivi. Comptez 30 minutes au démarrage, puis quelques minutes par modification quand votre activité bouge. Vous ne touchez à rien de technique.",
+    showOnPages: ['contact'],
+  },
+  {
+    id: 'obj-comprends-rien-web',
+    category: 'objections',
+    question: "Je ne comprends rien au web, ça va être trop compliqué pour moi.",
+    answer:
+      "Pas besoin de comprendre le web. Pas de panneau d'administration à apprendre, pas de mot de passe à retenir, pas d'outil à installer. Vous parlez français, nous comprenons votre métier. Pour modifier une horaire, un tarif, une photo : vous envoyez un message WhatsApp ou un mail, nous le faisons. C'est volontairement simple.",
+  },
+  {
+    id: 'obj-site-mappartient',
+    category: 'objections',
+    question: "Est-ce que le site m'appartient vraiment ?",
+    answer:
+      "Le contenu (textes, photos, prestations) vous appartient à 100%, c'est votre matière. Le nom de domaine est à votre nom et peut être transféré si vous partez. La structure technique du site est conçue par 9site4 : si vous résiliez, vous récupérez votre domaine et vos contenus, mais le site lui-même cesse d'être hébergé par nous. C'est le même fonctionnement que la plupart des offres en abonnement. Si vous voulez la pleine propriété du code source, il faut une formule différente — parlons-en.",
+    showOnPages: ['tarifs'],
+  },
+  {
+    id: 'obj-peux-arreter',
+    category: 'objections',
+    question: "Si ça ne me convient pas, je peux arrêter ?",
+    answer:
+      "Oui, à tout moment, sans frais ni justification. Un email ou un message WhatsApp suffit. Le prélèvement s'arrête le mois suivant. Vous repartez avec votre nom de domaine et vos contenus. C'est sans engagement parce qu'on préfère que vous restiez parce que ça vous sert, pas parce que vous êtes coincé.",
+    showOnPages: ['tarifs', 'contact'],
+  },
+  {
+    id: 'obj-ramener-clients',
+    category: 'objections',
+    question: "Est-ce que ça va vraiment me ramener des clients ?",
+    answer:
+      "Honnêtement : non, aucun prestataire sérieux ne peut le promettre. Un site ne fait pas le travail de votre fiche Google, de vos avis, de votre bouche-à-oreille ou de votre métier. Ce qu'un site clair fait, c'est : rassurer les gens qui hésitent, leur donner les bonnes informations au bon moment, et faciliter la prise de contact. Sur 100 personnes qui entendent parler de vous, un site bien structuré transforme plus de curieux en demandes. C'est un levier parmi d'autres, pas une baguette magique.",
+    showOnPages: ['tarifs', 'diagnostic'],
+  },
+  {
+    id: 'obj-pourquoi-vous',
+    category: 'objections',
+    question: "Pourquoi vous et pas une agence web classique ?",
+    answer:
+      "Une agence classique facture une création (souvent 2 000 à 5 000€), puis vous laisse gérer la suite ou facture une maintenance à part. C'est un bon modèle pour des projets complexes. 9site4 est pensé pour les TPE/PME de La Réunion qui veulent une présence web pro sans gros budget initial et sans avoir à gérer la suite : tout est inclus dans un abonnement clair. Si votre besoin est complexe (e-commerce avec 500 références, application sur mesure, marketplace), une agence sera plus adaptée. Pour un site vitrine professionnel qui présente votre activité et capte des demandes, 9site4 est plus simple.",
+    showOnPages: ['tarifs'],
   },
 
   // ============================================================
