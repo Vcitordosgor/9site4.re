@@ -36,7 +36,7 @@ const navLinks = [
 
     <nav class="hidden md:flex items-center gap-7 lg:gap-9 font-jetbrains text-[11px] uppercase tracking-[0.18em]" aria-label="Navigation">
       {navLinks.map((link) => (
-        <a href={link.href} class="transition-colors duration-300" style="color: #F5F4F8;" onmouseover="this.style.color='#22D3EE';" onmouseout="this.style.color='#F5F4F8';">
+        <a href={link.href} class="transition-colors duration-300" data-onde-nav style="color: #F5F4F8;">
           {link.label}
         </a>
       ))}
@@ -47,9 +47,8 @@ const navLinks = [
       target="_blank"
       rel="noopener"
       class="hidden md:inline-flex items-center justify-center h-10 px-5 font-jetbrains font-semibold text-[11px] uppercase tracking-[0.18em] transition-all duration-300"
+      data-onde-cta
       style="background-color: #7C3AED; color: #F5F4F8; box-shadow: 0 0 16px rgba(124, 58, 237, 0.5);"
-      onmouseover="this.style.backgroundColor='#22D3EE'; this.style.color='#0D0D14'; this.style.boxShadow='0 0 18px rgba(34, 211, 238, 0.6)';"
-      onmouseout="this.style.backgroundColor='#7C3AED'; this.style.color='#F5F4F8'; this.style.boxShadow='0 0 16px rgba(124, 58, 237, 0.5)';"
     >
       Réserver
     </a>
@@ -80,4 +79,22 @@ const navLinks = [
     update();
     window.addEventListener('scroll', update, { passive: true });
   }
+
+  document.querySelectorAll<HTMLElement>('[data-onde-nav]').forEach((el) => {
+    el.addEventListener('mouseenter', () => { el.style.color = '#22D3EE'; });
+    el.addEventListener('mouseleave', () => { el.style.color = '#F5F4F8'; });
+  });
+
+  document.querySelectorAll<HTMLElement>('[data-onde-cta]').forEach((el) => {
+    el.addEventListener('mouseenter', () => {
+      el.style.backgroundColor = '#22D3EE';
+      el.style.color = '#0D0D14';
+      el.style.boxShadow = '0 0 18px rgba(34, 211, 238, 0.6)';
+    });
+    el.addEventListener('mouseleave', () => {
+      el.style.backgroundColor = '#7C3AED';
+      el.style.color = '#F5F4F8';
+      el.style.boxShadow = '0 0 16px rgba(124, 58, 237, 0.5)';
+    });
+  });
 </script>

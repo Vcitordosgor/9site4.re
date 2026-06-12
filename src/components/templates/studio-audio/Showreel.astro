@@ -20,6 +20,9 @@ const wave = (seed: number, n = 48) => {
   }
   return out;
 };
+
+// Waveform du mini-player (40 barres)
+const miniWave = wave(101, 40);
 ---
 
 <section id="showreel" class="py-20 md:py-28" style="background-color: #0D0D14; color: #F5F4F8;">
@@ -38,6 +41,77 @@ const wave = (seed: number, n = 48) => {
           {'>'} Échantillons de productions réalisées récemment.
           Lecture sur demande après échange — droits cession contrôlés.
         </p>
+      </div>
+    </div>
+
+    <!-- Mini-player visuel (cosmétique) -->
+    <div
+      id="onde-mini-player"
+      class="mb-10 p-5 md:p-6 border-2"
+      style="background-color: rgb(124 58 237 / 0.06); border-color: rgb(124 58 237 / 0.4);"
+      aria-label="Lecteur de démonstration (visuel)"
+    >
+      <div class="flex items-center justify-between gap-4 mb-4">
+        <div class="min-w-0">
+          <p class="font-jetbrains text-[10px] uppercase tracking-[0.25em]" style="color: #22D3EE;">// NOW_PLAYING</p>
+          <p class="mt-1 font-space-grotesk font-bold text-base md:text-lg truncate">
+            Demo · Sessions Studio Onde
+          </p>
+        </div>
+        <span
+          class="font-jetbrains text-[12px] tabular-nums shrink-0"
+          style="color: rgb(245 244 248 / 0.75);"
+          data-onde-mp-time
+          aria-hidden="true"
+        >00:00 / 03:24</span>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <button
+          type="button"
+          data-onde-mp-toggle
+          aria-pressed="false"
+          aria-label="Lecture démo (visuelle)"
+          class="w-12 h-12 shrink-0 inline-flex items-center justify-center transition-colors"
+          style="background-color: #7C3AED; color: #F5F4F8;"
+        >
+          <svg data-onde-mp-icon-play viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor" aria-hidden="true">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+          <svg data-onde-mp-icon-pause viewBox="0 0 24 24" class="w-5 h-5 hidden" fill="currentColor" aria-hidden="true">
+            <path d="M6 5h4v14H6zM14 5h4v14h-4z"/>
+          </svg>
+        </button>
+
+        <div class="flex-1 min-w-0">
+          <!-- Waveform statique -->
+          <svg viewBox="0 0 240 36" class="w-full h-9 block" aria-hidden="true" preserveAspectRatio="none">
+            {miniWave.map((v, idx) => {
+              const h = v * 32;
+              const y = (36 - h) / 2;
+              const x = idx * (240 / miniWave.length);
+              const accent = idx % 5 === 0;
+              return (
+                <rect
+                  x={x}
+                  y={y}
+                  width={(240 / miniWave.length) - 1.5}
+                  height={h}
+                  fill={accent ? '#22D3EE' : '#7C3AED'}
+                  opacity={accent ? 0.85 : 0.55}
+                />
+              );
+            })}
+          </svg>
+
+          <!-- Progress bar animée -->
+          <div class="mt-2 h-[3px] w-full overflow-hidden" style="background-color: rgb(245 244 248 / 0.12);">
+            <div
+              class="onde-mp-progress h-full"
+              style="background: linear-gradient(90deg, #7C3AED 0%, #22D3EE 100%); width: 100%;"
+            ></div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -60,10 +134,9 @@ const wave = (seed: number, n = 48) => {
               <button
                 type="button"
                 aria-label={`Lecture · ${e.titre}`}
+                data-onde-extrait-btn
                 class="w-11 h-11 shrink-0 inline-flex items-center justify-center transition-colors"
                 style="background-color: #7C3AED; color: #F5F4F8;"
-                onmouseover="this.style.backgroundColor='#22D3EE'; this.style.color='#0D0D14';"
-                onmouseout="this.style.backgroundColor='#7C3AED'; this.style.color='#F5F4F8';"
               >
                 <span class="font-jetbrains text-sm" aria-hidden="true">▶</span>
               </button>
@@ -98,4 +171,124 @@ const wave = (seed: number, n = 48) => {
       {'>'} Showreel complet sur demande · NDA possible
     </p>
   </div>
+
+  <style>
+    .onde-mp-progress {
+      transform-origin: left center;
+      animation: onde-mp-fill 30s linear infinite;
+      animation-play-state: paused;
+      will-change: transform;
+    }
+    @keyframes onde-mp-fill {
+      0%   { transform: scaleX(0); }
+      100% { transform: scaleX(1); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .onde-mp-progress { animation: none; transform: scaleX(0.15); }
+    }
+  </style>
+
+  <script>
+    // ---------- Color hover refactor (no animation, no reduced-motion gate) ----------
+    document.querySelectorAll<HTMLElement>('[data-onde-extrait-btn]').forEach((el) => {
+      el.addEventListener('mouseenter', () => {
+        el.style.backgroundColor = '#22D3EE';
+        el.style.color = '#0D0D14';
+      });
+      el.addEventListener('mouseleave', () => {
+        el.style.backgroundColor = '#7C3AED';
+        el.style.color = '#F5F4F8';
+      });
+    });
+
+    const toggleBtn = document.querySelector<HTMLButtonElement>('[data-onde-mp-toggle]');
+    if (toggleBtn) {
+      toggleBtn.addEventListener('mouseenter', () => {
+        toggleBtn.style.backgroundColor = '#22D3EE';
+        toggleBtn.style.color = '#0D0D14';
+      });
+      toggleBtn.addEventListener('mouseleave', () => {
+        toggleBtn.style.backgroundColor = '#7C3AED';
+        toggleBtn.style.color = '#F5F4F8';
+      });
+    }
+
+    // ---------- Mini-player (cosmétique) ----------
+    (() => {
+      const player = document.getElementById('onde-mini-player');
+      if (!player || !toggleBtn) return;
+
+      const progress = player.querySelector<HTMLElement>('.onde-mp-progress');
+      const iconPlay = player.querySelector<HTMLElement>('[data-onde-mp-icon-play]');
+      const iconPause = player.querySelector<HTMLElement>('[data-onde-mp-icon-pause]');
+      const timeEl = player.querySelector<HTMLElement>('[data-onde-mp-time]');
+
+      const TOTAL = 204; // 03:24 in seconds
+      let elapsed = 0;
+      let isPlaying = false;
+      let inView = true;
+      let tickId: number | null = null;
+
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      const fmt = (s: number) => {
+        const m = Math.floor(s / 60).toString().padStart(2, '0');
+        const sec = Math.floor(s % 60).toString().padStart(2, '0');
+        return `${m}:${sec}`;
+      };
+
+      const renderTime = () => {
+        if (timeEl) timeEl.textContent = `${fmt(elapsed)} / 03:24`;
+      };
+
+      const applyAnimState = () => {
+        if (!progress) return;
+        if (reduced) {
+          progress.style.animationPlayState = 'paused';
+          return;
+        }
+        progress.style.animationPlayState = (isPlaying && inView) ? 'running' : 'paused';
+      };
+
+      const startTick = () => {
+        if (tickId !== null) return;
+        tickId = window.setInterval(() => {
+          elapsed = (elapsed + 1) % (TOTAL + 1);
+          renderTime();
+        }, 1000);
+      };
+      const stopTick = () => {
+        if (tickId !== null) { clearInterval(tickId); tickId = null; }
+      };
+
+      const setPlaying = (next: boolean) => {
+        isPlaying = next;
+        toggleBtn.setAttribute('aria-pressed', String(isPlaying));
+        if (iconPlay && iconPause) {
+          iconPlay.classList.toggle('hidden', isPlaying);
+          iconPause.classList.toggle('hidden', !isPlaying);
+        }
+        applyAnimState();
+        if (isPlaying) startTick(); else stopTick();
+      };
+
+      toggleBtn.addEventListener('click', () => setPlaying(!isPlaying));
+
+      // Pause animation when out of viewport
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+          for (const entry of entries) {
+            inView = entry.isIntersecting;
+            applyAnimState();
+            if (!inView) stopTick();
+            else if (isPlaying) startTick();
+          }
+        }, { threshold: 0.05 });
+        io.observe(player);
+      }
+
+      renderTime();
+      applyAnimState();
+    })();
+  </script>
 </section>

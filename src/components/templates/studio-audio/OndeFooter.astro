@@ -29,11 +29,11 @@ import data from '../../../data/templates/onde.json';
       <div class="md:col-span-3">
         <p class="font-jetbrains text-[10px] uppercase tracking-[0.22em] mb-3" style="color: #22D3EE;">// STUDIO</p>
         <ul class="space-y-2 font-jetbrains text-[12.5px]">
-          <li><a href="#services" class="transition-colors" onmouseover="this.style.color='#22D3EE';" onmouseout="this.style.color='inherit';">Services</a></li>
-          <li><a href="#studio" class="transition-colors" onmouseover="this.style.color='#22D3EE';" onmouseout="this.style.color='inherit';">Équipement</a></li>
-          <li><a href="#ingenieurs" class="transition-colors" onmouseover="this.style.color='#22D3EE';" onmouseout="this.style.color='inherit';">Équipe</a></li>
-          <li><a href="#process" class="transition-colors" onmouseover="this.style.color='#22D3EE';" onmouseout="this.style.color='inherit';">Process</a></li>
-          <li><a href="#tarifs" class="transition-colors" onmouseover="this.style.color='#22D3EE';" onmouseout="this.style.color='inherit';">Tarifs</a></li>
+          <li><a href="#services" class="transition-colors" data-onde-footer-link>Services</a></li>
+          <li><a href="#studio" class="transition-colors" data-onde-footer-link>Équipement</a></li>
+          <li><a href="#ingenieurs" class="transition-colors" data-onde-footer-link>Équipe</a></li>
+          <li><a href="#process" class="transition-colors" data-onde-footer-link>Process</a></li>
+          <li><a href="#tarifs" class="transition-colors" data-onde-footer-link>Tarifs</a></li>
         </ul>
       </div>
 
@@ -55,3 +55,10 @@ import data from '../../../data/templates/onde.json';
     </div>
   </div>
 </footer>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-onde-footer-link]').forEach((el) => {
+    el.addEventListener('mouseenter', () => { el.style.color = '#22D3EE'; });
+    el.addEventListener('mouseleave', () => { el.style.color = 'inherit'; });
+  });
+</script>

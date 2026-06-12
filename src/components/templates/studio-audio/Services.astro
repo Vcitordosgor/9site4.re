@@ -15,7 +15,7 @@ import data from '../../../data/templates/onde.json';
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
       {data.services.map((s) => (
-        <article class="group relative p-7 md:p-9 border-2 transition-all hover:-translate-y-1 overflow-hidden" style="background-color: rgb(124 58 237 / 0.05); border-color: rgb(124 58 237 / 0.4);" onmouseover="this.style.borderColor='#22D3EE'; this.style.boxShadow='0 0 28px rgba(34, 211, 238, 0.3)';" onmouseout="this.style.borderColor='rgb(124 58 237 / 0.4)'; this.style.boxShadow='none';">
+        <article class="group relative p-7 md:p-9 border-2 transition-all hover:-translate-y-1 overflow-hidden" data-onde-service style="background-color: rgb(124 58 237 / 0.05); border-color: rgb(124 58 237 / 0.4);">
 
           <!-- Code badge -->
           <div class="flex items-baseline justify-between gap-4 mb-6">
@@ -75,3 +75,16 @@ import data from '../../../data/templates/onde.json';
     </div>
   </div>
 </section>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-onde-service]').forEach((el) => {
+    el.addEventListener('mouseenter', () => {
+      el.style.borderColor = '#22D3EE';
+      el.style.boxShadow = '0 0 28px rgba(34, 211, 238, 0.3)';
+    });
+    el.addEventListener('mouseleave', () => {
+      el.style.borderColor = 'rgb(124 58 237 / 0.4)';
+      el.style.boxShadow = 'none';
+    });
+  });
+</script>

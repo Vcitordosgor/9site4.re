@@ -3,16 +3,33 @@ import data from '../../../data/templates/seve.json';
 ---
 <section id="top" class="relative h-[100svh] min-h-[640px] w-full overflow-hidden">
 
-  <!-- SIGNATURE : pétales qui tombent doucement -->
+  <!-- SIGNATURE : frangipaniers qui flottent doucement -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="frangipanier" viewBox="-50 -50 100 100">
+        <g>
+          <ellipse cx="0" cy="-26" rx="14" ry="26" fill="#FAF4EA" opacity="0.92" transform="rotate(0)"/>
+          <ellipse cx="0" cy="-26" rx="14" ry="26" fill="#FAF4EA" opacity="0.92" transform="rotate(72)"/>
+          <ellipse cx="0" cy="-26" rx="14" ry="26" fill="#FAF4EA" opacity="0.92" transform="rotate(144)"/>
+          <ellipse cx="0" cy="-26" rx="14" ry="26" fill="#FAF4EA" opacity="0.92" transform="rotate(216)"/>
+          <ellipse cx="0" cy="-26" rx="14" ry="26" fill="#FAF4EA" opacity="0.92" transform="rotate(288)"/>
+          <ellipse cx="0" cy="-14" rx="9" ry="13" fill="#CC6B49" opacity="0.55" transform="rotate(0)"/>
+          <ellipse cx="0" cy="-14" rx="9" ry="13" fill="#CC6B49" opacity="0.55" transform="rotate(72)"/>
+          <ellipse cx="0" cy="-14" rx="9" ry="13" fill="#CC6B49" opacity="0.55" transform="rotate(144)"/>
+          <ellipse cx="0" cy="-14" rx="9" ry="13" fill="#CC6B49" opacity="0.55" transform="rotate(216)"/>
+          <ellipse cx="0" cy="-14" rx="9" ry="13" fill="#CC6B49" opacity="0.55" transform="rotate(288)"/>
+          <circle r="6" fill="#9CAF88" opacity="0.85"/>
+        </g>
+      </symbol>
+    </defs>
+  </svg>
   <div class="seve-petals pointer-events-none absolute inset-0 z-10" aria-hidden="true">
-    <span class="petal" style="left:6%; animation-delay:-2s; --d:18s;"></span>
-    <span class="petal" style="left:14%; animation-delay:-9s; --d:23s;"></span>
-    <span class="petal" style="left:24%; animation-delay:-5s; --d:20s; --r:1.4;"></span>
-    <span class="petal" style="left:38%; animation-delay:-14s; --d:25s;"></span>
-    <span class="petal" style="left:52%; animation-delay:-1s; --d:22s; --r:0.9;"></span>
-    <span class="petal" style="left:66%; animation-delay:-11s; --d:19s;"></span>
-    <span class="petal" style="left:78%; animation-delay:-7s; --d:24s; --r:1.2;"></span>
-    <span class="petal" style="left:90%; animation-delay:-16s; --d:21s;"></span>
+    <svg class="frangi" style="left:8%;  top:14%; width:54px;  --d:13s; animation-delay:-1s;" viewBox="-50 -50 100 100"><use href="#frangipanier"/></svg>
+    <svg class="frangi" style="left:22%; top:62%; width:68px;  --d:15s; animation-delay:-5s;" viewBox="-50 -50 100 100"><use href="#frangipanier"/></svg>
+    <svg class="frangi" style="left:46%; top:22%; width:46px;  --d:12s; animation-delay:-3s;" viewBox="-50 -50 100 100"><use href="#frangipanier"/></svg>
+    <svg class="frangi" style="left:64%; top:70%; width:60px;  --d:14s; animation-delay:-7s;" viewBox="-50 -50 100 100"><use href="#frangipanier"/></svg>
+    <svg class="frangi" style="left:82%; top:30%; width:52px;  --d:16s; animation-delay:-2s;" viewBox="-50 -50 100 100"><use href="#frangipanier"/></svg>
+    <svg class="frangi" style="left:90%; top:78%; width:42px;  --d:13s; animation-delay:-9s;" viewBox="-50 -50 100 100"><use href="#frangipanier"/></svg>
   </div>
 
   <!-- SIGNATURE : deux lignes qui s'entrelacent -->
@@ -53,25 +70,20 @@ import data from '../../../data/templates/seve.json';
   </div>
 
   <style>
-    /* Pétales */
-    .petal {
+    /* Frangipaniers — flottent doucement */
+    .frangi {
       position: absolute;
-      top: -30px;
-      width: 12px;
-      height: 6px;
-      background: linear-gradient(135deg, #F5C6B0 0%, #CC6B49 100%);
-      border-radius: 12px 3px 12px 3px;
-      opacity: 0;
+      height: auto;
+      opacity: 0.85;
       transform-origin: center;
-      animation: petal-fall var(--d, 20s) linear infinite;
-      filter: blur(0.3px);
+      animation: frangi-float var(--d, 14s) ease-in-out infinite;
+      filter: drop-shadow(0 6px 14px rgba(58,53,45,0.25));
+      will-change: transform;
     }
-    @keyframes petal-fall {
-      0%   { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
-      8%   { opacity: 0.85; }
-      50%  { transform: translateY(50vh) translateX(40px) rotate(180deg); }
-      90%  { opacity: 0.6; }
-      100% { transform: translateY(110vh) translateX(-30px) rotate(360deg); opacity: 0; }
+    @keyframes frangi-float {
+      0%   { transform: translateY(0)    translateX(0)    rotate(-6deg); }
+      50%  { transform: translateY(-14px) translateX(8px) rotate(6deg); }
+      100% { transform: translateY(0)    translateX(0)    rotate(-6deg); }
     }
     /* Lignes entrelacées */
     .seve-line {
@@ -84,7 +96,7 @@ import data from '../../../data/templates/seve.json';
       to { stroke-dashoffset: 0; }
     }
     @media (prefers-reduced-motion: reduce) {
-      .petal { animation: none; opacity: 0; }
+      .frangi { animation: none; opacity: 0.85; }
       .seve-line { animation: none; stroke-dashoffset: 0; }
     }
   </style>

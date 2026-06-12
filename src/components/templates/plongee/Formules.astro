@@ -16,7 +16,7 @@ const formules = data.formules;
         </h2>
       </div>
       <p class="font-inter text-sm lg:text-base text-plongee-ecume/70 max-w-sm">
-        Tarifs démonstration. Pour une cotation réelle adaptée à votre niveau, appelez-nous.
+        Tarifs indicatifs. Pour une cotation adaptée à votre niveau, appelez-nous.
       </p>
     </div>
 
@@ -28,7 +28,7 @@ const formules = data.formules;
           <p class={`mt-4 text-sm font-inter leading-relaxed flex-1 ${i === 1 ? 'text-plongee-abysse/80' : 'text-plongee-ecume/70'}`}>{f.description}</p>
           <div class="mt-6 flex items-baseline gap-2">
             <span class="font-fraunces text-5xl">{f.prix}</span>
-            <span class={`text-xs font-inter ${i === 1 ? 'text-plongee-abysse/60' : 'text-plongee-ecume/50'}`}>/pers · démo</span>
+            <span class={`text-xs font-inter ${i === 1 ? 'text-plongee-abysse/60' : 'text-plongee-ecume/50'}`}>/pers · indicatif</span>
           </div>
           <ul class={`mt-6 space-y-2.5 text-sm font-inter ${i === 1 ? 'text-plongee-abysse/85' : 'text-plongee-ecume/80'}`}>
             {f.inclus.map(item => (

@@ -1,8 +1,11 @@
 ---
 /**
- * VisiteGuidee — floor-plan SVG interactif. Hover sur pièce → carte avec photo.
+ * VisiteGuidee — floor-plan SVG interactif. Hover/focus/tap sur pièce → highlight + label + photo.
  */
 import data from '../../../data/templates/lazuli.json';
+
+const defaultPhoto = '/images/location/extra-1.webp';
+const defaultLabel = 'Séjour · 48 m²';
 ---
 <section id="espace" class="relative bg-lazuli-casse text-lazuli-marine py-24 md:py-32 overflow-hidden">
   <div class="max-w-content mx-auto px-6 md:px-12">
@@ -11,68 +14,74 @@ import data from '../../../data/templates/lazuli.json';
       <h2 class="font-cormorant italic leading-[0.95] tracking-tight" style="font-size: clamp(48px,8vw,116px);">
         Le plan,<br/>pièce par pièce.
       </h2>
+      <p class="mt-6 font-geist text-sm text-lazuli-marine/70 max-w-xl">Survolez ou touchez une pièce pour révéler sa photo. Plan navigable au clavier.</p>
     </div>
 
     <div class="grid lg:grid-cols-12 gap-10">
-      <!-- Plan -->
       <div class="lg:col-span-7">
-        <div class="relative aspect-[4/3] bg-lazuli-marine/5 ring-1 ring-lazuli-sable/40 p-6">
-          <svg viewBox="0 0 600 450" class="w-full h-full" aria-label="Plan de la villa Lazuli">
-            <!-- contour villa -->
+        <div class="relative aspect-[4/3] bg-lazuli-marine/5 ring-1 ring-lazuli-sable/40 p-6" id="floor-plan-wrap">
+          <svg viewBox="0 0 600 450" class="w-full h-full floor-plan-svg" aria-label="Plan interactif de la villa Lazuli">
             <rect x="40" y="40" width="520" height="370" fill="none" stroke="#1B2D3A" stroke-width="2" />
-            <!-- séjour grand -->
-            <g class="floor-room" data-room="sejour">
+
+            <g class="floor-room" data-room="sejour" data-label="Séjour · 48 m²" data-photo="/images/location/extra-1.webp" tabindex="0" role="button" aria-label="Séjour, 48 mètres carrés">
               <rect x="40" y="40" width="300" height="200" fill="#E6CC8A" fill-opacity="0.2" stroke="#1B2D3A" />
               <text x="190" y="145" text-anchor="middle" font-family="Cormorant Garamond" font-style="italic" font-size="22" fill="#1B2D3A">Séjour</text>
               <text x="190" y="165" text-anchor="middle" font-family="Geist Sans" font-size="10" fill="#3A7188">48 m²</text>
             </g>
-            <!-- cuisine -->
-            <g class="floor-room" data-room="cuisine">
+            <g class="floor-room" data-room="cuisine" data-label="Cuisine · 22 m²" data-photo="/images/location/extra-2.webp" tabindex="0" role="button" aria-label="Cuisine, 22 mètres carrés">
               <rect x="340" y="40" width="220" height="120" fill="#CDDDB1" fill-opacity="0.25" stroke="#1B2D3A" />
               <text x="450" y="100" text-anchor="middle" font-family="Cormorant Garamond" font-style="italic" font-size="20" fill="#1B2D3A">Cuisine</text>
               <text x="450" y="118" text-anchor="middle" font-family="Geist Sans" font-size="10" fill="#3A7188">22 m²</text>
             </g>
-            <!-- chambre 1 -->
-            <g class="floor-room" data-room="ch1">
+            <g class="floor-room" data-room="ch1" data-label="Chambre 1 · 14 m²" data-photo="/images/location/extra-3.webp" tabindex="0" role="button" aria-label="Chambre 1, 14 mètres carrés">
               <rect x="340" y="160" width="110" height="80" fill="#A85B3F" fill-opacity="0.15" stroke="#1B2D3A" />
               <text x="395" y="200" text-anchor="middle" font-family="Cormorant Garamond" font-style="italic" font-size="16" fill="#1B2D3A">Ch. 1</text>
             </g>
-            <!-- chambre 2 -->
-            <g class="floor-room" data-room="ch2">
+            <g class="floor-room" data-room="ch2" data-label="Chambre 2 · 14 m²" data-photo="/images/location/extra-4.webp" tabindex="0" role="button" aria-label="Chambre 2, 14 mètres carrés">
               <rect x="450" y="160" width="110" height="80" fill="#A85B3F" fill-opacity="0.15" stroke="#1B2D3A" />
               <text x="505" y="200" text-anchor="middle" font-family="Cormorant Garamond" font-style="italic" font-size="16" fill="#1B2D3A">Ch. 2</text>
             </g>
-            <!-- chambres 3 4 -->
-            <g class="floor-room" data-room="ch3">
+            <g class="floor-room" data-room="ch3" data-label="Chambre 3 · 18 m²" data-photo="/images/location/extra-5.webp" tabindex="0" role="button" aria-label="Chambre 3, 18 mètres carrés">
               <rect x="40" y="240" width="150" height="170" fill="#A85B3F" fill-opacity="0.15" stroke="#1B2D3A" />
               <text x="115" y="325" text-anchor="middle" font-family="Cormorant Garamond" font-style="italic" font-size="18" fill="#1B2D3A">Ch. 3</text>
             </g>
-            <g class="floor-room" data-room="ch4">
+            <g class="floor-room" data-room="ch4" data-label="Chambre 4 · 18 m²" data-photo="/images/location/extra-6.webp" tabindex="0" role="button" aria-label="Chambre 4, 18 mètres carrés">
               <rect x="190" y="240" width="150" height="170" fill="#A85B3F" fill-opacity="0.15" stroke="#1B2D3A" />
               <text x="265" y="325" text-anchor="middle" font-family="Cormorant Garamond" font-style="italic" font-size="18" fill="#1B2D3A">Ch. 4</text>
             </g>
-            <!-- SDB -->
-            <g class="floor-room" data-room="sdb">
+            <g class="floor-room" data-room="sdb" data-label="Salle de bain · 12 m²" data-photo="/images/location/extra-2.webp" tabindex="0" role="button" aria-label="Salle de bain, 12 mètres carrés">
               <rect x="340" y="240" width="110" height="170" fill="#3A7188" fill-opacity="0.18" stroke="#1B2D3A" />
               <text x="395" y="325" text-anchor="middle" font-family="Cormorant Garamond" font-style="italic" font-size="16" fill="#1B2D3A">SDB</text>
             </g>
-            <!-- Terrasse extérieur -->
-            <g class="floor-room" data-room="terrasse">
+            <g class="floor-room" data-room="terrasse" data-label="Terrasse · 40 m²" data-photo="/images/location/extra-1.webp" tabindex="0" role="button" aria-label="Terrasse, 40 mètres carrés">
               <rect x="450" y="240" width="110" height="170" fill="#E6CC8A" fill-opacity="0.35" stroke="#1B2D3A" stroke-dasharray="5 3" />
               <text x="505" y="320" text-anchor="middle" font-family="Cormorant Garamond" font-style="italic" font-size="14" fill="#1B2D3A">Terrasse</text>
               <text x="505" y="335" text-anchor="middle" font-family="Geist Sans" font-size="9" fill="#3A7188">40 m²</text>
             </g>
-            <!-- Nord -->
             <g transform="translate(560, 60)">
               <circle r="14" fill="none" stroke="#A85B3F" stroke-width="1.2"/>
               <text y="5" text-anchor="middle" font-family="Cormorant Garamond" font-style="italic" font-size="14" fill="#A85B3F">N</text>
             </g>
           </svg>
-          <span class="absolute bottom-3 right-4 font-geist text-[10px] uppercase tracking-[0.3em] text-lazuli-marine/55">Plan schématique</span>
+          <div id="floor-floating-label" class="floor-floating-label" aria-hidden="true"></div>
+          <span class="absolute bottom-3 right-4 font-geist text-[10px] uppercase tracking-[0.3em] text-lazuli-marine/55">Plan schématique · interactif</span>
         </div>
+
+        <figure class="mt-4 relative aspect-[16/10] bg-lazuli-marine/5 ring-1 ring-lazuli-sable/40 overflow-hidden">
+          <img
+            id="floor-photo"
+            src={defaultPhoto}
+            alt="Pièce sélectionnée"
+            class="absolute inset-0 w-full h-full object-cover floor-photo-img"
+            loading="lazy"
+            width="800" height="500"
+          />
+          <figcaption id="floor-photo-caption" class="absolute bottom-0 inset-x-0 p-4 font-cormorant italic text-lazuli-casse text-xl" style="background:linear-gradient(0deg, rgba(27,45,58,0.75), rgba(27,45,58,0));">
+            {defaultLabel}
+          </figcaption>
+        </figure>
       </div>
 
-      <!-- Liste pièces -->
       <ol class="lg:col-span-5 divide-y divide-lazuli-sable/40 border-y border-lazuli-sable/40">
         {data.visite.map((v, i) => (
           <li class="py-5 flex gap-5 items-baseline">
@@ -86,4 +95,108 @@ import data from '../../../data/templates/lazuli.json';
       </ol>
     </div>
   </div>
+
+  <style>
+    .floor-room { cursor: pointer; outline: none; transition: opacity 200ms ease; }
+    .floor-room rect { transition: fill-opacity 220ms ease, stroke-width 220ms ease; }
+    .floor-room:hover rect,
+    .floor-room:focus-visible rect,
+    .floor-room[data-active="true"] rect {
+      fill: #A85B3F;
+      fill-opacity: 0.45;
+      stroke-width: 2.5;
+    }
+    .floor-room:focus-visible rect { stroke: #A85B3F; }
+    .floor-floating-label {
+      position: absolute;
+      pointer-events: none;
+      background: #1B2D3A;
+      color: #F5EFE6;
+      font-family: 'Geist Sans', system-ui, sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      padding: 6px 12px;
+      border-radius: 2px;
+      opacity: 0;
+      transform: translate(-50%, -120%);
+      transition: opacity 180ms ease;
+      white-space: nowrap;
+      z-index: 5;
+    }
+    .floor-floating-label[data-visible="true"] { opacity: 1; }
+    .floor-photo-img { transition: opacity 260ms ease; }
+    .floor-photo-img[data-swapping="true"] { opacity: 0.4; }
+    @media (prefers-reduced-motion: reduce) {
+      .floor-room, .floor-room rect, .floor-floating-label, .floor-photo-img { transition: none !important; }
+    }
+  </style>
+
+  <script>
+    (() => {
+      const wrap = document.getElementById('floor-plan-wrap');
+      if (!wrap) return;
+      const rooms = wrap.querySelectorAll('.floor-room');
+      const label = document.getElementById('floor-floating-label');
+      const photo = document.getElementById('floor-photo');
+      const caption = document.getElementById('floor-photo-caption');
+      let activeId = null;
+      const isTouch = window.matchMedia('(hover: none)').matches;
+
+      const showLabel = (g) => {
+        if (!label) return;
+        label.textContent = g.getAttribute('data-label') || '';
+        const wr = wrap.getBoundingClientRect();
+        const gr = g.getBoundingClientRect();
+        label.style.left = (gr.left - wr.left + gr.width / 2) + 'px';
+        label.style.top = (gr.top - wr.top) + 'px';
+        label.dataset.visible = 'true';
+      };
+      const hideLabel = () => { if (label) label.dataset.visible = 'false'; };
+
+      const setPhoto = (g) => {
+        if (!photo || !caption) return;
+        const src = g.getAttribute('data-photo');
+        const lbl = g.getAttribute('data-label') || '';
+        caption.textContent = lbl;
+        if (!src) return;
+        if (photo.getAttribute('src') === src) return;
+        photo.dataset.swapping = 'true';
+        const tmp = new Image();
+        tmp.onload = () => {
+          photo.setAttribute('src', src);
+          photo.setAttribute('alt', lbl);
+          photo.dataset.swapping = 'false';
+        };
+        tmp.src = src;
+      };
+
+      const activate = (g) => {
+        rooms.forEach(r => r.removeAttribute('data-active'));
+        g.setAttribute('data-active', 'true');
+        activeId = g.getAttribute('data-room');
+        showLabel(g);
+        setPhoto(g);
+      };
+
+      rooms.forEach((g) => {
+        g.addEventListener('mouseenter', () => { if (!isTouch) activate(g); });
+        g.addEventListener('mouseleave', () => { if (!isTouch) hideLabel(); });
+        g.addEventListener('focus', () => activate(g));
+        g.addEventListener('blur', () => hideLabel());
+        g.addEventListener('click', (e) => {
+          e.preventDefault();
+          if (activeId === g.getAttribute('data-room') && isTouch) {
+            g.removeAttribute('data-active');
+            activeId = null;
+            hideLabel();
+          } else {
+            activate(g);
+          }
+        });
+        g.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(g); }
+        });
+      });
+    })();
+  </script>
 </section>
