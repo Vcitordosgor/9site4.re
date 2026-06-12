@@ -48,14 +48,40 @@ import data from '../../../data/templates/salon.json';
     <div class="order-2 lg:order-1 lg:col-span-7 text-center lg:text-left">
       <p class="hero-eyebrow flex items-center justify-center lg:justify-start gap-3 text-xs font-semibold uppercase tracking-[0.3em] text-salon-vert">
         <span class="inline-block w-10 h-px bg-salon-vert" aria-hidden="true"></span>
-        <span>Salon · La Réunion</span>
+        <span class="inline-flex items-center gap-2">
+          <span class="salon-kicker-dot inline-block w-1.5 h-1.5 rounded-full bg-salon-vert" aria-hidden="true"></span>
+          Salon · La Réunion
+        </span>
       </p>
 
       <h1 class="hero-title mt-5 sm:mt-6 font-fraunces font-bold text-salon-noir leading-[0.9] tracking-tight" style="font-size: clamp(64px, 13vw, 160px);">
         <span class="block">Cheveux.</span>
-        <span class="block italic text-salon-vert">Coupe.</span>
+        <span class="block italic text-salon-vert salon-cut-word">Coupe.</span>
         <span class="block">Style.</span>
       </h1>
+      <style>
+        .salon-kicker-dot { animation: salon-kdot 2.6s ease-in-out infinite; }
+        @keyframes salon-kdot {
+          0%, 100% { opacity: 0.4; transform: scale(1); }
+          50%      { opacity: 1;   transform: scale(1.5); }
+        }
+        .salon-cut-word { position: relative; display: inline-block; }
+        .salon-cut-word::after {
+          content: ''; position: absolute; left: 0; right: 100%; bottom: 0.18em;
+          height: 3px; background: currentColor; opacity: 0.5;
+          animation: salon-cut 5s ease-in-out infinite;
+        }
+        @keyframes salon-cut {
+          0%, 100% { right: 100%; opacity: 0; }
+          20%      { right: 100%; opacity: 0; }
+          50%      { right: 0;    opacity: 0.5; }
+          80%      { right: 0;    opacity: 0.5; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .salon-kicker-dot, .salon-cut-word::after { animation: none; }
+          .salon-cut-word::after { right: 0; opacity: 0.4; }
+        }
+      </style>
       <p class="sr-only">{data.info.tagline} {data.info.taglineItalic}</p>
 
       <p class="hero-intro mt-5 sm:mt-7 text-salon-noir/75 leading-[1.7] max-w-xl mx-auto lg:mx-0" style="font-size: 17px;">
