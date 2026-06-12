@@ -84,12 +84,22 @@ import data from '../../../data/templates/lucas.json';
     <!-- Avatar typographique + ligne d'identité minimale (substitut photo stock) -->
     <div class="mt-12 flex items-center gap-4">
       <span
-        class="flex w-14 h-14 md:w-16 md:h-16 rounded-full ring-2 ring-lucas-vert/40 bg-lucas-noir items-center justify-center font-instrument italic text-lucas-vert leading-none select-none"
-        style="font-size: 26px;"
+        class="flex w-14 h-14 md:w-16 md:h-16 rounded-full ring-2 ring-lucas-vert/40 bg-lucas-noir items-center justify-center overflow-hidden"
         role="img"
-        aria-label={`Avatar de ${data.info.wordmark}`}
+        aria-label={`Portrait stylisé de ${data.info.wordmark}`}
       >
-        LF
+        <svg viewBox="0 0 64 64" width="100%" height="100%" aria-hidden="true">
+          <defs>
+            <clipPath id="lucas-portrait-clip"><circle cx="32" cy="32" r="32"/></clipPath>
+          </defs>
+          <g clip-path="url(#lucas-portrait-clip)">
+            <rect width="64" height="64" fill="#0E1014"/>
+            <path d="M0 64 C 8 46, 24 42, 32 42 C 40 42, 56 46, 64 64 Z" fill="#A3E635"/>
+            <circle cx="32" cy="26" r="11" fill="#A3E635"/>
+            <circle cx="32" cy="26" r="11" fill="#0E1014" opacity="0.08"/>
+            <path d="M21 25 q11 -16 22 0" fill="none" stroke="#0E1014" stroke-width="1.2" opacity="0.35"/>
+          </g>
+        </svg>
       </span>
       <div>
         <p class="font-hanken font-semibold text-lucas-blanc text-base">{data.info.wordmark}</p>
