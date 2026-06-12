@@ -9,10 +9,18 @@ import data from '../../../data/templates/aubry.json';
 
 <section id="top" class="relative bg-aubry-perle min-h-[100svh] overflow-hidden">
 
-  <!-- Ornement typographique géant en arrière-plan : esperluette -->
-  <p class="absolute top-1/2 -right-12 md:-right-32 -translate-y-1/2 font-caslon italic text-aubry-rose/15 leading-none select-none pointer-events-none" style="font-size: clamp(280px, 50vw, 720px);" aria-hidden="true">
+  <!-- Ornement typographique géant en arrière-plan : esperluette qui respire (signature très discrète) -->
+  <p class="aubry-breath absolute top-1/2 -right-12 md:-right-32 -translate-y-1/2 font-caslon italic text-aubry-rose/15 leading-none select-none pointer-events-none" style="font-size: clamp(280px, 50vw, 720px);" aria-hidden="true">
     &amp;
   </p>
+  <style>
+    .aubry-breath { animation: aubry-breath 11s ease-in-out infinite; transform-origin: 60% 50%; }
+    @keyframes aubry-breath {
+      0%, 100% { opacity: 0.85; transform: translateY(-50%) scale(1); }
+      50%      { opacity: 1;    transform: translateY(-50%) scale(1.03); }
+    }
+    @media (prefers-reduced-motion: reduce) { .aubry-breath { animation: none; } }
+  </style>
 
   <div class="relative max-w-content mx-auto px-6 md:px-10 pt-32 pb-20 md:pt-40 md:pb-28 min-h-[100svh] flex flex-col">
 

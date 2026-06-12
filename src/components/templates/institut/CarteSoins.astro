@@ -42,7 +42,7 @@ function effetFor(label: string): string {
     </header>
 
     <!-- Accordéons par catégorie -->
-    <ul class="border-t border-marlene-noir/15">
+    <ul class="border-t border-marlene-noir/15 marlene-glow-list">
       {data.categories.map((cat, i) => (
         <li class="border-b border-marlene-noir/15" data-effet={effetFor(cat.label)}>
           <details class="group" open={i === 0}>
@@ -109,5 +109,32 @@ function effetFor(label: string): string {
 
   <style>
     details > summary::-webkit-details-marker { display: none; }
+    /* Signature institut : halo doux qui suit la souris sur les lignes de soins */
+    .marlene-glow-list { --gx: 50%; --gy: 50%; }
+    .marlene-glow-list summary { position: relative; isolation: isolate; overflow: hidden; }
+    .marlene-glow-list summary::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none; z-index: -1;
+      background: radial-gradient(280px circle at var(--gx) var(--gy),
+                  rgba(199,159,118,0.18), transparent 55%);
+      opacity: 0; transition: opacity 400ms ease;
+    }
+    .marlene-glow-list summary:hover::before { opacity: 1; }
+    @media (prefers-reduced-motion: reduce) {
+      .marlene-glow-list summary::before { display: none; }
+    }
   </style>
+
+  <script>
+    /* Suit la souris pour positionner le halo */
+    const list = document.querySelector('.marlene-glow-list');
+    if (list && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      list.addEventListener('pointermove', (e) => {
+        const t = (e.target as HTMLElement).closest('summary') as HTMLElement | null;
+        if (!t) return;
+        const r = t.getBoundingClientRect();
+        t.style.setProperty('--gx', `${e.clientX - r.left}px`);
+        t.style.setProperty('--gy', `${e.clientY - r.top}px`);
+      });
+    }
+  </script>
 </section>

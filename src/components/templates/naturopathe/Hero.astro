@@ -4,6 +4,26 @@ const info = data.info;
 ---
 
 <section id="top" class="relative overflow-hidden" style="background-color: #F1ECE0;">
+  <style>
+    .nat-stem {
+      stroke-dasharray: 1200;
+      stroke-dashoffset: 1200;
+      animation: nat-grow 2.6s ease-out 0.3s forwards;
+    }
+    .nat-leaf {
+      transform-box: fill-box;
+      transform-origin: center;
+      opacity: 0; transform: scale(0);
+      animation: nat-leaf 700ms cubic-bezier(0.34, 1.4, 0.5, 1) forwards;
+      animation-delay: calc(0.7s + var(--i) * 0.32s);
+    }
+    @keyframes nat-grow { to { stroke-dashoffset: 0; } }
+    @keyframes nat-leaf { to { opacity: 0.85; transform: scale(1); } }
+    @media (prefers-reduced-motion: reduce) {
+      .nat-stem { animation: none; stroke-dashoffset: 0; }
+      .nat-leaf { animation: none; opacity: 0.85; transform: none; }
+    }
+  </style>
   <!-- Single clean hero photo (no overlaid header bug) -->
   <div class="relative max-w-content mx-auto px-5 md:px-10 pt-10 md:pt-16 pb-16 md:pb-24">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-end">
@@ -33,6 +53,19 @@ const info = data.info;
         <div class="aspect-[4/5] overflow-hidden">
           <img src={info.photoHero} alt={info.photoHeroAlt} loading="eager" fetchpriority="high" class="w-full h-full object-cover" />
         </div>
+        <!-- Signature naturopathe : tige qui pousse au scroll -->
+        <svg class="nat-plant absolute -left-10 md:-left-14 -bottom-6 h-[110%] w-24 md:w-32 pointer-events-none" viewBox="0 0 120 600" fill="none" aria-hidden="true">
+          <path class="nat-stem" d="M60 600 C 40 480, 80 380, 55 280 S 30 140, 60 20"
+            stroke="#4F5D43" stroke-width="2" stroke-linecap="round" />
+          <g class="nat-leaves" stroke="#4F5D43" stroke-width="1.6" fill="#7C8C6A">
+            <ellipse class="nat-leaf" style="--i:0" cx="40" cy="500" rx="18" ry="7" transform="rotate(-25 40 500)" />
+            <ellipse class="nat-leaf" style="--i:1" cx="80" cy="430" rx="20" ry="8" transform="rotate(20 80 430)" />
+            <ellipse class="nat-leaf" style="--i:2" cx="35" cy="350" rx="22" ry="9" transform="rotate(-30 35 350)" />
+            <ellipse class="nat-leaf" style="--i:3" cx="75" cy="260" rx="18" ry="7" transform="rotate(25 75 260)" />
+            <ellipse class="nat-leaf" style="--i:4" cx="42" cy="170" rx="16" ry="6" transform="rotate(-20 42 170)" />
+            <ellipse class="nat-leaf" style="--i:5" cx="72" cy="90" rx="14" ry="6" transform="rotate(18 72 90)" />
+          </g>
+        </svg>
       </div>
     </div>
 
