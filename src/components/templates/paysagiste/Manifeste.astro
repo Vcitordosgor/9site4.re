@@ -3,13 +3,31 @@ import data from '../../../data/templates/agapanthes.json';
 ---
 <section class="relative bg-agap-lin text-agap-feuille py-24 lg:py-36 overflow-hidden">
   <div class="absolute inset-0 opacity-[0.04]" style="background-image: radial-gradient(#3D2E5E 1px, transparent 1px); background-size: 24px 24px;"></div>
+
+  <!-- Vigne signature, bord gauche -->
+  <svg data-agap-vine class="agap-vine pointer-events-none absolute left-0 top-0 h-full w-20 lg:w-32" viewBox="0 0 100 1000" preserveAspectRatio="none" aria-hidden="true">
+    <path class="agap-vine-stem" d="M30,0 C50,140 10,260 40,400 C70,540 20,680 50,820 C40,900 35,960 45,1000" fill="none" stroke="#9DAB8E" stroke-width="2" stroke-linecap="round"/>
+    <g class="agap-vine-leaves" fill="#9DAB8E">
+      <path d="M40,140 q30,-14 44,8 q-24,18 -44,-8 z" opacity="0.85"/>
+      <path d="M28,320 q-30,-14 -44,10 q24,18 44,-10 z" opacity="0.85"/>
+      <path d="M50,500 q30,-12 42,10 q-22,18 -42,-10 z" opacity="0.85"/>
+      <path d="M28,680 q-30,-14 -44,8 q24,20 44,-8 z" opacity="0.85"/>
+    </g>
+    <g class="agap-vine-blooms" fill="#6B5B95">
+      <circle cx="36" cy="220" r="3"/>
+      <circle cx="42" cy="224" r="2.5"/>
+      <circle cx="38" cy="780" r="3"/>
+      <circle cx="44" cy="784" r="2.5"/>
+    </g>
+  </svg>
+
   <div class="relative max-w-4xl mx-auto px-6 lg:px-12 text-center">
-    <div class="flex items-center justify-center gap-3 mb-8">
+    <div data-agap-reveal class="flex items-center justify-center gap-3 mb-8">
       <span class="inline-block w-10 h-px bg-agap-violet"></span>
       <span class="font-manrope text-[11px] uppercase tracking-[0.32em] text-agap-feuille/60">Manifeste</span>
       <span class="inline-block w-10 h-px bg-agap-violet"></span>
     </div>
-    <p class="font-cormorant font-light text-[clamp(1.75rem,4vw,3.25rem)] leading-[1.25] italic text-agap-feuille">
+    <p data-agap-reveal data-delay="1" class="font-cormorant font-light text-[clamp(1.75rem,4vw,3.25rem)] leading-[1.25] italic text-agap-feuille">
       « {data.manifeste} »
     </p>
   </div>

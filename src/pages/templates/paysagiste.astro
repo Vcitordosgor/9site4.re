@@ -35,6 +35,32 @@ const businessLD = localBusinessSchema(agapData, 'LocalBusiness');
 ---
 
 <BaseLayout seo={getSeo('templatePaysagiste')} bare={true}>
+  <style is:global>
+    [data-agap-reveal] { opacity: 0; transform: translateY(28px); transition: opacity .9s ease-out, transform .9s cubic-bezier(.22,.61,.36,1); }
+    [data-agap-reveal].is-in { opacity: 1; transform: translateY(0); }
+    [data-agap-reveal][data-delay="1"] { transition-delay: .12s; }
+    [data-agap-reveal][data-delay="2"] { transition-delay: .24s; }
+    [data-agap-reveal][data-delay="3"] { transition-delay: .36s; }
+    @media (prefers-reduced-motion: reduce) {
+      [data-agap-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
+    }
+    /* Signature vine (réutilisable hors hero) */
+    .agap-vine-stem { stroke-dasharray: 2400; stroke-dashoffset: 2400; transition: stroke-dashoffset 1.8s cubic-bezier(.22,.61,.36,1); }
+    .agap-vine-leaves > path { opacity: 0; transform: scale(0.2); transform-origin: center; transform-box: fill-box; transition: opacity .7s ease-out, transform .9s cubic-bezier(.34,1.56,.64,1); }
+    .agap-vine-blooms circle { opacity: 0; transform: scale(0); transform-origin: center; transform-box: fill-box; transition: opacity .6s ease-out, transform .7s cubic-bezier(.34,1.56,.64,1); }
+    .agap-vine.is-revealed .agap-vine-stem { stroke-dashoffset: 0; }
+    .agap-vine.is-revealed .agap-vine-leaves > path { opacity: 0.85; transform: scale(1); }
+    .agap-vine.is-revealed .agap-vine-blooms circle { opacity: 0.7; transform: scale(1); }
+    .agap-vine.is-revealed .agap-vine-leaves > path:nth-child(1){ transition-delay: .35s; }
+    .agap-vine.is-revealed .agap-vine-leaves > path:nth-child(2){ transition-delay: .55s; }
+    .agap-vine.is-revealed .agap-vine-leaves > path:nth-child(3){ transition-delay: .75s; }
+    .agap-vine.is-revealed .agap-vine-leaves > path:nth-child(4){ transition-delay: .95s; }
+    .agap-vine.is-revealed .agap-vine-blooms circle { transition-delay: 1.2s; }
+    @media (prefers-reduced-motion: reduce) {
+      .agap-vine-stem { stroke-dashoffset: 0 !important; transition: none !important; }
+      .agap-vine-leaves > path, .agap-vine-blooms circle { opacity: 0.85 !important; transform: none !important; transition: none !important; }
+    }
+  </style>
   <Fragment slot="head">
     {businessLD && <script type="application/ld+json" set:html={JSON.stringify(businessLD)} />}
     <link rel="preload" as="image" href={agapData.info.photoHero} fetchpriority="high" />
@@ -82,6 +108,43 @@ const businessLD = localBusinessSchema(agapData, 'LocalBusiness');
       updateSticky();
       window.addEventListener('scroll', updateSticky, { passive: true });
       window.addEventListener('resize', updateSticky, { passive: true });
+    }
+
+    // SIGNATURE — révèle les vignes botaniques au scroll (IntersectionObserver)
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const vines = document.querySelectorAll<SVGSVGElement>('[data-agap-vine]');
+    if (vines.length) {
+      if (reduce || !('IntersectionObserver' in window)) {
+        vines.forEach(v => v.classList.add('is-revealed'));
+      } else {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach(e => {
+            if (e.isIntersecting) {
+              e.target.classList.add('is-revealed');
+              io.unobserve(e.target);
+            }
+          });
+        }, { rootMargin: '0px 0px -15% 0px', threshold: 0.05 });
+        vines.forEach(v => io.observe(v));
+      }
+    }
+
+    // Scroll-reveal des en-têtes de sections
+    const reveals = document.querySelectorAll<HTMLElement>('[data-agap-reveal]');
+    if (reveals.length) {
+      if (reduce || !('IntersectionObserver' in window)) {
+        reveals.forEach(r => r.classList.add('is-in'));
+      } else {
+        const io2 = new IntersectionObserver((entries) => {
+          entries.forEach(e => {
+            if (e.isIntersecting) {
+              (e.target as HTMLElement).classList.add('is-in');
+              io2.unobserve(e.target);
+            }
+          });
+        }, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
+        reveals.forEach(r => io2.observe(r));
+      }
     }
   </script>
 </BaseLayout>

@@ -2,15 +2,33 @@
 import data from '../../../data/templates/agapanthes.json';
 ---
 <section class="relative bg-agap-violet-fonce text-agap-lin py-24 lg:py-36 overflow-hidden">
-  <svg class="absolute -left-10 -top-10 w-72 opacity-15" viewBox="0 0 200 200" aria-hidden="true">
+  <svg class="absolute -left-10 -top-10 w-72 opacity-15 pointer-events-none" viewBox="0 0 200 200" aria-hidden="true">
     <path d="M100,10 Q140,80 120,180 Q100,150 100,100 Q100,80 100,10 Z" fill="#E8D4D9"/>
   </svg>
-  <svg class="absolute -right-10 -bottom-10 w-80 opacity-15" viewBox="0 0 200 200" aria-hidden="true">
+  <svg class="absolute -right-10 -bottom-10 w-80 opacity-15 pointer-events-none" viewBox="0 0 200 200" aria-hidden="true">
     <path d="M100,10 Q60,80 80,180 Q100,150 100,100 Q100,80 100,10 Z" fill="#9DAB8E"/>
   </svg>
+
+  <!-- Vigne signature (rose poudré sur fond violet) -->
+  <svg data-agap-vine class="agap-vine pointer-events-none absolute right-0 top-0 h-full w-16 lg:w-28" viewBox="0 0 100 800" preserveAspectRatio="none" aria-hidden="true">
+    <path class="agap-vine-stem" d="M60,0 C40,120 80,240 50,360 C20,480 70,580 55,800" fill="none" stroke="#E8D4D9" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+    <g class="agap-vine-leaves" fill="#E8D4D9">
+      <path d="M55,140 q-26,-10 -38,8 q22,16 38,-8 z" opacity="0.7"/>
+      <path d="M70,300 q26,-12 38,8 q-26,16 -38,-8 z" opacity="0.7"/>
+      <path d="M50,460 q-28,-10 -40,10 q22,18 40,-10 z" opacity="0.7"/>
+      <path d="M70,620 q26,-10 38,10 q-26,16 -38,-10 z" opacity="0.7"/>
+    </g>
+    <g class="agap-vine-blooms" fill="#E8D4D9">
+      <circle cx="55" cy="220" r="3"/>
+      <circle cx="62" cy="224" r="2.5"/>
+      <circle cx="58" cy="540" r="3"/>
+      <circle cx="65" cy="544" r="2.5"/>
+    </g>
+  </svg>
+
   <div class="relative max-w-4xl mx-auto px-6 lg:px-12 text-center">
-    <span class="font-cormorant text-7xl lg:text-9xl italic text-agap-rose leading-none block">"</span>
-    <blockquote class="font-cormorant font-light text-3xl lg:text-5xl leading-[1.25] italic">{data.citation}</blockquote>
-    <div class="mt-10 font-manrope text-[11px] uppercase tracking-[0.32em] text-agap-lin/60">{data.citationAuteur}</div>
+    <span data-agap-reveal class="font-cormorant text-7xl lg:text-9xl italic text-agap-rose leading-none block">"</span>
+    <blockquote data-agap-reveal data-delay="1" class="font-cormorant font-light text-3xl lg:text-5xl leading-[1.25] italic">{data.citation}</blockquote>
+    <div data-agap-reveal data-delay="2" class="mt-10 font-manrope text-[11px] uppercase tracking-[0.32em] text-agap-lin/60">{data.citationAuteur}</div>
   </div>
 </section>

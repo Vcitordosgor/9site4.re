@@ -2,23 +2,47 @@
 import data from '../../../data/templates/roussin.json';
 ---
 
-<section class="bg-roussin-papier border-y border-roussin-or/40 py-24 md:py-36 px-6 md:px-10 relative">
+<section class="bg-roussin-papier border-y border-roussin-or/40 py-24 md:py-36 px-6 md:px-10 relative overflow-hidden">
   <div class="absolute inset-x-0 top-3 h-px bg-roussin-or/50" aria-hidden="true"></div>
   <div class="absolute inset-x-0 bottom-3 h-px bg-roussin-or/50" aria-hidden="true"></div>
 
   <div class="max-w-5xl mx-auto text-center">
-    <p class="font-public-sans text-[10.5px] uppercase tracking-[0.32em] text-roussin-or mb-8">
+    <p class="font-public-sans text-[10.5px] uppercase tracking-[0.32em] text-roussin-or mb-10">
       — Principe de la maison —
     </p>
-    <span aria-hidden="true" class="block font-eb-garamond text-roussin-or leading-none mb-2 select-none" style="font-size: clamp(80px, 14vw, 200px);">
-      &ldquo;
-    </span>
-    <blockquote class="font-eb-garamond italic text-roussin-nuit leading-[1.2] tracking-tight" style="font-size: clamp(32px, 4.2vw, 52px);">
+
+    <!-- SIGNATURE: Balance — arrives slightly tilted, eases to perfect equilibrium -->
+    <div class="roussin-balance mx-auto mb-12" aria-hidden="true" style="width:124px;height:106px;">
+      <svg viewBox="0 0 200 170" width="124" height="106" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#A88B47" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="60" y1="155" x2="140" y2="155" />
+        <line x1="100" y1="155" x2="100" y2="32" />
+        <circle cx="100" cy="28" r="3" fill="#A88B47" stroke="none" />
+        <g class="roussin-balance__beam" style="transform-origin: 100px 32px;">
+          <line x1="38" y1="32" x2="162" y2="32" />
+          <line x1="38" y1="32" x2="28" y2="74" />
+          <line x1="38" y1="32" x2="48" y2="74" />
+          <line x1="162" y1="32" x2="152" y2="74" />
+          <line x1="162" y1="32" x2="172" y2="74" />
+          <path d="M20 74 Q38 96 56 74" />
+          <path d="M144 74 Q162 96 180 74" />
+        </g>
+      </svg>
+    </div>
+
+    <blockquote class="font-eb-garamond italic text-roussin-nuit leading-[1.18] tracking-tight" style="font-size: clamp(32px, 4.2vw, 52px);">
       Un dossier bien instruit gagne <span class="text-roussin-bordeaux">deux fois</span> : devant le juge, et dans l'esprit du client.
     </blockquote>
-    <div class="flex items-center justify-center gap-3 mt-10" aria-hidden="true">
+
+    <!-- "Considérant que..." — sequential serif fade-in, gravitas band -->
+    <ul class="roussin-considerant mt-14 mx-auto max-w-2xl text-left font-eb-garamond text-roussin-nuit/85 leading-[1.7] space-y-3" style="font-size: clamp(16px, 1.4vw, 19px);">
+      <li><span class="italic text-roussin-or">Considérant que</span> chaque dossier mérite une instruction patiente,</li>
+      <li><span class="italic text-roussin-or">Considérant que</span> la clarté de l'écrit prévaut sur l'éclat de la parole,</li>
+      <li><span class="italic text-roussin-or">Considérant que</span> le client doit comprendre, à chaque étape, ce qui est fait en son nom —</li>
+    </ul>
+
+    <div class="flex items-center justify-center gap-3 mt-12" aria-hidden="true">
       <span class="block w-12 h-px bg-roussin-or"></span>
-      <span class="text-roussin-or text-base">⚖</span>
+      <span class="block w-1.5 h-1.5 rotate-45 bg-roussin-or"></span>
       <span class="block w-12 h-px bg-roussin-or"></span>
     </div>
     <p class="mt-4 font-public-sans text-[11px] uppercase tracking-[0.28em] text-roussin-nuit/70">
@@ -26,3 +50,52 @@ import data from '../../../data/templates/roussin.json';
     </p>
   </div>
 </section>
+
+<style>
+  .roussin-balance svg { display: block; margin: 0 auto; }
+  .roussin-balance__beam {
+    transform: rotate(-9deg);
+    transition: transform 2200ms cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+  }
+  .roussin-balance.is-settled .roussin-balance__beam { transform: rotate(0deg); }
+
+  .roussin-considerant li {
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 900ms ease-out, transform 900ms ease-out;
+  }
+  .roussin-considerant.is-revealed li:nth-child(1) { transition-delay: 200ms; opacity: 1; transform: none; }
+  .roussin-considerant.is-revealed li:nth-child(2) { transition-delay: 700ms; opacity: 1; transform: none; }
+  .roussin-considerant.is-revealed li:nth-child(3) { transition-delay: 1200ms; opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .roussin-balance__beam { transition: none !important; transform: none !important; }
+    .roussin-considerant li { transition: none !important; opacity: 1 !important; transform: none !important; }
+  }
+</style>
+
+<script>
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const balance = document.querySelector('.roussin-balance');
+  const considerant = document.querySelector('.roussin-considerant');
+
+  if (reduce) {
+    balance?.classList.add('is-settled');
+    considerant?.classList.add('is-revealed');
+  } else if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add(e.target === balance ? 'is-settled' : 'is-revealed');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.35 });
+    if (balance) io.observe(balance);
+    if (considerant) io.observe(considerant);
+  } else {
+    balance?.classList.add('is-settled');
+    considerant?.classList.add('is-revealed');
+  }
+</script>

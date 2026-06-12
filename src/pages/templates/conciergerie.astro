@@ -38,7 +38,7 @@ const businessLD = localBusinessSchema(data, 'LocalBusiness');
 
   <ConciergeHeader />
 
-  <main id="top" class="bg-concierge-champagne text-concierge-encre font-inter">
+  <main class="bg-concierge-champagne text-concierge-encre font-inter">
     <HeroCarteBienvenue />
     <Services />
     <Promesse />
@@ -68,12 +68,15 @@ const businessLD = localBusinessSchema(data, 'LocalBusiness');
   <script>
     const sticky = document.getElementById('concierge-sticky-cta');
     const contact = document.getElementById('contact');
+    const footerEl = document.querySelector('footer');
     if (sticky && contact) {
       const update = () => {
         const rect = contact.getBoundingClientRect();
         const inSection = rect.top < window.innerHeight && rect.bottom > 80;
+        const footerRect = footerEl ? footerEl.getBoundingClientRect() : null;
+        const nearFooter = footerRect ? footerRect.top < window.innerHeight - 40 : false;
         const scrolledPastHero = window.scrollY > 600;
-        sticky.dataset.visible = String(scrolledPastHero && !inSection);
+        sticky.dataset.visible = String(scrolledPastHero && !inSection && !nearFooter);
       };
       update();
       window.addEventListener('scroll', update, { passive: true });

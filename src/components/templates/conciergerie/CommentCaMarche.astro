@@ -1,42 +1,160 @@
 ---
 /**
- * CommentCaMarche — 4 étapes en timeline horizontale scrollable.
+ * CommentCaMarche — 4 étapes timeline + signature checklist auto-tick on scroll.
  */
 import data from '../../../data/templates/concierge.json';
+
+const checklist = [
+  "Visite du bien & audit revenu cible",
+  "Reportage photo en lumière naturelle",
+  "Rédaction & mise en ligne multi-plateformes",
+  "Calage tarifaire saisonnier dynamique",
+  "Mise en place du protocole d'accueil 24/7",
+  "Premier reporting détaillé sous 30 jours",
+];
 ---
-<section id="processus" class="relative bg-concierge-nuit text-white py-24 md:py-32 overflow-hidden">
-  <div class="max-w-content mx-auto px-6 md:px-12 mb-12">
+<section id="processus" class="relative bg-concierge-nuit text-white py-24 md:py-32 overflow-hidden scroll-mt-20">
+  <div class="max-w-content mx-auto px-6 md:px-12 mb-16">
     <p class="font-inter text-[11px] uppercase tracking-[0.45em] text-concierge-laiton mb-4">§ Méthode</p>
     <h2 class="font-cormorant italic leading-[0.95] tracking-tight" style="font-size: clamp(48px, 8vw, 116px);">
       De la visite<br/>au reporting.
     </h2>
   </div>
 
+  <!-- timeline 4 étapes -->
   <div class="relative">
-    <!-- ligne timeline -->
-    <div class="absolute top-1/2 left-0 right-0 h-px bg-concierge-laiton/40 -translate-y-1/2 mx-12 hidden md:block"></div>
     <div class="overflow-x-auto md:overflow-visible no-scrollbar">
-      <ol class="flex md:grid md:grid-cols-4 gap-6 md:gap-8 px-6 md:px-12 pb-10">
+      <ol class="flex md:grid md:grid-cols-4 gap-6 md:gap-8 px-6 md:px-12 pb-4">
         {data.etapes.map((e, i) => (
-          <li class="shrink-0 w-[80vw] md:w-auto relative">
-            <div class="flex flex-col items-start gap-4">
-              <span class="relative z-10 w-14 h-14 flex items-center justify-center bg-concierge-laiton text-concierge-nuit font-cormorant italic text-2xl">{e.n}</span>
+          <li class="shrink-0 w-[78vw] md:w-auto relative">
+            <div class="flex flex-col items-start gap-5">
+              <div class="relative flex items-center w-full">
+                <span class="relative z-10 w-14 h-14 flex items-center justify-center bg-concierge-laiton text-concierge-nuit font-cormorant italic text-2xl shrink-0">{e.n}</span>
+                {i < 3 && (
+                  <span class="hidden md:block flex-1 h-px bg-concierge-laiton/40 ml-2"></span>
+                )}
+              </div>
               <div>
                 <h3 class="font-cormorant italic text-2xl md:text-3xl text-white leading-tight">{e.titre}</h3>
                 <p class="mt-2 font-inter text-sm text-white/70 leading-relaxed">{e.description}</p>
               </div>
             </div>
-            {i < 3 && (
-              <div class="absolute top-7 -right-3 md:right-0 w-6 md:w-8 h-px bg-concierge-laiton/60 hidden md:block"></div>
-            )}
           </li>
         ))}
       </ol>
     </div>
   </div>
 
+  <!-- Signature checklist auto-tick -->
+  <div class="max-w-content mx-auto px-6 md:px-12 mt-24 md:mt-32 grid lg:grid-cols-12 gap-12 items-start">
+    <div class="lg:col-span-4">
+      <p class="font-inter text-[11px] uppercase tracking-[0.45em] text-concierge-laiton mb-4">§ Ce qu'on coche pour vous</p>
+      <h3 class="font-cormorant italic leading-[0.95] tracking-tight" style="font-size: clamp(36px, 4.5vw, 64px);">
+        Sept jours.<br/>Six gestes.<br/>Zéro relance.
+      </h3>
+      <p class="mt-6 font-inter text-sm text-white/65 leading-relaxed max-w-sm">
+        Chaque étape est validée par votre interlocuteur dédié, dans l'ordre, sans rien laisser au hasard.
+      </p>
+    </div>
+
+    <ul id="concierge-checklist" class="lg:col-span-8 space-y-3 md:space-y-4">
+      {checklist.map((item, i) => (
+        <li
+          class="concierge-check-item group flex items-center gap-5 md:gap-6 px-5 md:px-6 py-5 md:py-6 bg-white/[0.03] ring-1 ring-concierge-laiton/15 transition-colors duration-500"
+          data-index={i}
+          style={`--stagger:${i * 140}ms;`}
+        >
+          <span class="check-ring relative w-9 h-9 md:w-10 md:h-10 shrink-0 flex items-center justify-center rounded-full ring-1 ring-concierge-laiton/40 transition-all duration-500">
+            <svg class="check-svg w-5 h-5 md:w-6 md:h-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path class="check-path" d="M5 12.5l4.2 4.2L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"/>
+            </svg>
+          </span>
+          <span class="check-label font-cormorant italic text-lg md:text-2xl text-white/85 leading-snug flex-1 transition-colors duration-500">{item}</span>
+          <span class="check-num font-inter text-[10px] uppercase tracking-[0.3em] text-concierge-laiton/60 hidden md:inline">{String(i+1).padStart(2,'0')}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+
   <style>
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { scrollbar-width: none; }
+
+    .concierge-check-item .check-ring {
+      color: rgba(184,151,88,0.55);
+    }
+    .concierge-check-item.is-checked .check-ring {
+      background: #B89758;
+      color: #0E1B2C;
+      box-shadow: 0 8px 22px -8px rgba(184,151,88,0.65);
+    }
+    .concierge-check-item.is-checked {
+      background: rgba(184,151,88,0.07);
+      border-color: rgba(184,151,88,0.35);
+    }
+    .concierge-check-item .check-path {
+      transition: stroke-dashoffset 700ms cubic-bezier(0.65, 0, 0.35, 1);
+      transition-delay: var(--stagger, 0ms);
+    }
+    .concierge-check-item.is-checked .check-path {
+      stroke-dashoffset: 0;
+    }
+    .concierge-check-item .check-label {
+      position: relative;
+    }
+    .concierge-check-item .check-label::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 52%;
+      height: 1px;
+      background: rgba(245,239,223,0.55);
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform 600ms cubic-bezier(0.65, 0, 0.35, 1);
+      transition-delay: calc(var(--stagger, 0ms) + 350ms);
+    }
+    .concierge-check-item.is-checked .check-label {
+      color: rgba(255,255,255,0.55);
+    }
+    .concierge-check-item.is-checked .check-label::after {
+      transform: scaleX(1);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .concierge-check-item .check-path,
+      .concierge-check-item .check-label::after {
+        transition: none !important;
+        transition-delay: 0ms !important;
+      }
+    }
   </style>
+
+  <script is:inline>
+    (() => {
+      const list = document.getElementById('concierge-checklist');
+      if (!list) return;
+      const items = Array.from(list.querySelectorAll('.concierge-check-item'));
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      const tickAll = () => items.forEach(el => el.classList.add('is-checked'));
+
+      if (reduce || !('IntersectionObserver' in window)) {
+        tickAll();
+        return;
+      }
+
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-checked');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.55, rootMargin: '0px 0px -10% 0px' });
+
+      items.forEach(el => io.observe(el));
+    })();
+  </script>
 </section>

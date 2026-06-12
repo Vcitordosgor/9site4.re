@@ -14,8 +14,8 @@ const faq = data.faq;
 
     <div class="mt-14 divide-y divide-agap-feuille/15 border-y border-agap-feuille/15">
       {faq.map((f, i) => (
-        <details class="group py-6">
-          <summary class="flex items-center justify-between gap-6 cursor-pointer list-none">
+        <details class="group py-6" name="agap-faq">
+          <summary class="flex items-center justify-between gap-6 cursor-pointer list-none transition-colors hover:text-agap-violet">
             <div class="flex items-baseline gap-5">
               <span class="font-manrope text-xs text-agap-violet">{String(i+1).padStart(2,'0')}</span>
               <span class="font-cormorant text-xl lg:text-2xl">{f.q}</span>

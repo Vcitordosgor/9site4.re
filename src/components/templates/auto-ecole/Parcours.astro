@@ -1,54 +1,132 @@
 ---
 /**
- * Parcours — 6 étapes avec icônes panneaux routiers SVG.
+ * Parcours — SIGNATURE: route animée tracée d'Inscription à Permis obtenu.
+ * Le tracé SVG se dessine au scroll (stroke-dashoffset), les jalons s'allument
+ * un à un, et un compteur "taux de réussite" s'anime jusqu'à 92%.
  */
 import data from '../../../data/templates/boost.json';
 
 const panneauPaths: Record<string, string> = {
-  // Stop : octogone rouge
   stop: '<polygon points="14,4 30,4 40,14 40,30 30,40 14,40 4,30 4,14"/>',
-  // Rond-point : 3 flèches circulaires
   'rond-point': '<circle cx="22" cy="22" r="14"/><path d="M22 14 L26 18 L18 18 Z M30 22 L26 26 L26 18 Z M22 30 L18 26 L26 26 Z" fill="currentColor"/>',
-  // Code : panneau triangulaire
   code: '<polygon points="22,4 40,38 4,38" stroke-width="2.5" fill="none"/><text x="22" y="32" text-anchor="middle" font-family="monospace" font-size="12" font-weight="bold" fill="currentColor">!</text>',
-  // Céder : triangle inversé
   ceder: '<polygon points="22,40 40,4 4,4" stroke-width="2.5" fill="none"/>',
-  // Vitesse : cercle avec chiffre
   vitesse: '<circle cx="22" cy="22" r="16" stroke-width="3" fill="none"/><text x="22" y="28" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="currentColor">90</text>',
-  // Fin route : drapeau damier
   'fin-route': '<rect x="6" y="14" width="32" height="20"/><path d="M6 14 L14 14 L14 22 L22 22 L22 14 L30 14 L30 22 L22 22 L22 30 L14 30 L14 22 L6 22 Z" fill="white"/>',
 };
+
+const etapes = data.parcours;
+const N = etapes.length;
+// Positions des jalons (viewBox 100x100, ondulation douce)
+const milestones = etapes.map((e, i) => ({
+  num: e.num,
+  titre: e.titre,
+  x: 6 + (88 * i) / (N - 1),
+  y: 50 - 18 * Math.sin((i / (N - 1)) * Math.PI * 1.2),
+}));
+let d = `M ${milestones[0].x} ${milestones[0].y}`;
+for (let i = 1; i < milestones.length; i++) {
+  const prev = milestones[i - 1];
+  const cur = milestones[i];
+  const cx1 = prev.x + (cur.x - prev.x) * 0.5;
+  const cy1 = prev.y;
+  const cx2 = prev.x + (cur.x - prev.x) * 0.5;
+  const cy2 = cur.y;
+  d += ` C ${cx1} ${cy1}, ${cx2} ${cy2}, ${cur.x} ${cur.y}`;
+}
 ---
 
-<section id="parcours" class="bg-boost-route py-20 md:py-28 px-5 md:px-8">
+<section id="parcours" class="bg-boost-route py-20 md:py-28 px-5 md:px-8 relative overflow-hidden">
   <div class="max-w-content mx-auto">
 
     <header class="mb-12 md:mb-16 max-w-2xl">
       <p class="font-geist-mono text-[10px] uppercase tracking-[0.28em] text-boost-acier mb-4 font-medium">
-        ▸ Parcours en 6 étapes
+        ▸ Parcours en {N} étapes
       </p>
       <h2 class="font-funnel-display font-bold text-boost-noir leading-[0.95] tracking-tight" style="font-size: clamp(40px, 7vw, 88px);">
         De zéro au permis,<br/>
-        <span class="text-boost-acier">en 6 étapes claires.</span>
+        <span class="text-boost-acier">en {N} étapes claires.</span>
       </h2>
     </header>
 
-    <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-      {data.parcours.map((e) => (
-        <li class="bg-boost-noir text-boost-route p-7 rounded-3xl group hover:bg-boost-acier transition-colors">
+    <!-- SIGNATURE : route animée tracée -->
+    <div class="boost-road relative mb-14 md:mb-20 select-none" data-road>
 
-          <!-- Panneau SVG -->
+      <div class="flex items-center justify-between mb-4 font-geist-mono text-[10px] uppercase tracking-[0.22em] text-boost-asphalte">
+        <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-boost-feu animate-pulse"></span> Inscription</span>
+        <span class="flex items-center gap-2">Permis obtenu <span class="w-2 h-2 rounded-full bg-boost-jaune ring-2 ring-boost-noir"></span></span>
+      </div>
+
+      <div class="relative w-full" style="aspect-ratio: 1000 / 260;">
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none" class="absolute inset-0 w-full h-full" aria-hidden="true">
+          <!-- Asphalte -->
+          <path d={d} fill="none" stroke="#1A1A1A" stroke-linecap="round" vector-effect="non-scaling-stroke" style="stroke-width:18"/>
+          <path d={d} fill="none" stroke="#2B2B2F" stroke-linecap="round" vector-effect="non-scaling-stroke" style="stroke-width:12"/>
+          <!-- Ligne pointillée centrale qui défile (vibe route) -->
+          <path
+            class="boost-road-stripe"
+            d={d}
+            fill="none"
+            stroke="#FFD93D"
+            stroke-linecap="round"
+            stroke-dasharray="6 8"
+            vector-effect="non-scaling-stroke"
+            style="stroke-width:2"
+          />
+          <!-- Tracé progressif (signature) -->
+          <path
+            class="boost-road-progress"
+            d={d}
+            fill="none"
+            stroke="#FF3B30"
+            stroke-linecap="round"
+            vector-effect="non-scaling-stroke"
+            style="stroke-width:3"
+          />
+        </svg>
+
+        <!-- Jalons -->
+        {milestones.map((m, i) => (
+          <div
+            class="boost-milestone absolute -translate-x-1/2 -translate-y-1/2 flex flex-col items-center pointer-events-none"
+            style={`left:${m.x}%; top:${m.y}%;`}
+            data-milestone={i}
+          >
+            <span class="boost-milestone-dot relative w-8 h-8 md:w-10 md:h-10 rounded-full bg-boost-route ring-[3px] ring-boost-noir flex items-center justify-center font-geist-mono font-bold text-[10px] md:text-xs text-boost-asphalte transition-all duration-500">
+              <span class="boost-milestone-num">{m.num}</span>
+              <span class="boost-milestone-check absolute inset-0 flex items-center justify-center text-boost-noir text-base md:text-lg opacity-0 transition-opacity duration-300">✓</span>
+            </span>
+            <span class="boost-milestone-label hidden sm:block mt-2 font-funnel-display font-bold text-[10px] md:text-[11px] uppercase tracking-wide text-boost-asphalte/70 whitespace-nowrap transition-colors">
+              {m.titre.split(' ').slice(0, 2).join(' ')}
+            </span>
+          </div>
+        ))}
+      </div>
+
+      <!-- Compteur taux de réussite (secondaire) -->
+      <div class="mt-10 md:mt-12 flex flex-wrap items-baseline justify-end gap-x-4 gap-y-1">
+        <span class="font-funnel-display font-bold text-boost-noir tabular-nums leading-none" style="font-size: clamp(48px, 8vw, 96px);">
+          <span class="boost-counter" data-counter-target="92" data-counter-suffix="%">0%</span>
+        </span>
+        <span class="font-funnel-sans font-semibold text-boost-asphalte text-sm md:text-base uppercase tracking-[0.14em] max-w-[18ch]">
+          de réussite au permis
+        </span>
+      </div>
+    </div>
+
+    <!-- Cartes étapes -->
+    <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {etapes.map((e, i) => (
+        <li class="boost-card bg-boost-noir text-boost-route p-7 rounded-3xl group hover:bg-boost-acier transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_-12px_rgba(15,15,17,0.45)]" data-card={i}>
           <div class="mb-5 flex items-center justify-between">
-            <svg width="44" height="44" viewBox="0 0 44 44" fill="#FFD93D" stroke="#FFD93D" class="text-boost-jaune" aria-hidden="true" set:html={panneauPaths[e.panneau] ?? panneauPaths.stop} />
+            <svg width="44" height="44" viewBox="0 0 44 44" fill="#FFD93D" stroke="#FFD93D" class="text-boost-jaune transition-transform group-hover:rotate-[-6deg] group-hover:scale-110" aria-hidden="true" set:html={panneauPaths[e.panneau] ?? panneauPaths.stop} />
             <span class="font-geist-mono text-[11px] uppercase tracking-[0.22em] text-boost-route/55 tabular-nums">
               ▸ {e.num}
             </span>
           </div>
-
           <h3 class="font-funnel-display font-bold text-boost-route text-xl leading-tight mb-3">
             {e.titre}
           </h3>
-
           <p class="font-funnel-sans text-boost-route/75 text-sm leading-relaxed">
             {e.description}
           </p>
@@ -57,3 +135,109 @@ const panneauPaths: Record<string, string> = {
     </ul>
   </div>
 </section>
+
+<style>
+  @keyframes boost-stripe-flow { to { stroke-dashoffset: -140; } }
+  .boost-road-stripe { animation: boost-stripe-flow 6s linear infinite; }
+
+  .boost-road-progress {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    transition: stroke-dashoffset 2s cubic-bezier(0.22, 0.61, 0.36, 1);
+    filter: drop-shadow(0 0 6px rgba(255,59,48,0.4));
+  }
+  [data-road][data-played="true"] .boost-road-progress { stroke-dashoffset: 0; }
+
+  .boost-milestone[data-lit="true"] .boost-milestone-dot {
+    background: #FFD93D;
+    color: #1A1A1A;
+    transform: scale(1.15);
+    box-shadow: 0 0 0 6px rgba(255,217,61,0.22);
+  }
+  .boost-milestone[data-lit="true"] .boost-milestone-num { opacity: 0; }
+  .boost-milestone[data-lit="true"] .boost-milestone-check { opacity: 1; }
+  .boost-milestone[data-lit="true"] .boost-milestone-label { color: #1A1A1A; }
+
+  .boost-card {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.6s ease, transform 0.6s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .boost-card[data-in="true"] { opacity: 1; transform: translateY(0); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .boost-road-stripe { animation: none; }
+    .boost-road-progress { transition: none; stroke-dashoffset: 0 !important; }
+    .boost-card { opacity: 1 !important; transform: none !important; transition: none; }
+  }
+</style>
+
+<script>
+  (() => {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const road = document.querySelector('[data-road]') as HTMLElement | null;
+    if (!road) return;
+
+    const milestones = Array.from(road.querySelectorAll<HTMLElement>('.boost-milestone'));
+    const counters = Array.from(document.querySelectorAll<HTMLElement>('.boost-counter'));
+    const cards = Array.from(document.querySelectorAll<HTMLElement>('.boost-card'));
+
+    const lightAll = (immediate = false) => {
+      milestones.forEach((m, i) => {
+        if (immediate) { m.dataset.lit = 'true'; return; }
+        setTimeout(() => { m.dataset.lit = 'true'; }, 300 + i * (1700 / Math.max(1, milestones.length)));
+      });
+    };
+
+    const animateCounter = (el: HTMLElement) => {
+      const target = parseFloat(el.dataset.counterTarget || '0');
+      const suffix = el.dataset.counterSuffix || '';
+      if (reduce) { el.textContent = `${Math.round(target)}${suffix}`; return; }
+      const dur = 1600;
+      const t0 = performance.now();
+      const ease = (t: number) => 1 - Math.pow(1 - t, 3);
+      const tick = (now: number) => {
+        const p = Math.min(1, (now - t0) / dur);
+        el.textContent = `${Math.round(target * ease(p))}${suffix}`;
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+
+    if (reduce) {
+      road.dataset.played = 'true';
+      lightAll(true);
+      counters.forEach(animateCounter);
+      cards.forEach((c) => (c.dataset.in = 'true'));
+      return;
+    }
+
+    const roadIO = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting && road.dataset.played !== 'true') {
+            road.dataset.played = 'true';
+            lightAll();
+            counters.forEach(animateCounter);
+            roadIO.disconnect();
+          }
+        });
+      },
+      { threshold: 0.35 },
+    );
+    roadIO.observe(road);
+
+    const cardIO = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            (e.target as HTMLElement).dataset.in = 'true';
+            cardIO.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.15 },
+    );
+    cards.forEach((c) => cardIO.observe(c));
+  })();
+</script>

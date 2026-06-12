@@ -2,7 +2,7 @@
 import data from '../../../data/templates/doudou.json';
 const i = data.info;
 ---
-<section id="top" class="relative bg-[#F8F0E3] overflow-hidden pt-[120px] md:pt-[140px] pb-20 md:pb-28">
+<section id="hero" class="relative bg-[#F8F0E3] overflow-hidden pt-[120px] md:pt-[140px] pb-24 md:pb-32">
   <div aria-hidden="true" class="absolute -top-32 -right-40 w-[560px] h-[560px] rounded-full bg-[#C4674C]/10 blur-3xl pointer-events-none"></div>
   <div aria-hidden="true" class="absolute top-1/2 -left-32 w-[420px] h-[420px] rounded-full bg-[#6B7F5C]/10 blur-3xl pointer-events-none"></div>
 
@@ -37,7 +37,7 @@ const i = data.info;
           { label: 'Aidants formés', sub: 'Auxiliaires de vie diplômés' },
           { label: 'Mutuelle équipe', sub: 'Assurance RC pro' },
         ].map((s) => (
-          <span class="inline-flex items-center gap-3 pl-1 pr-4 py-1 rounded-full bg-white/60 ring-1 ring-[#3D2A1E]/10">
+          <span class="inline-flex items-center gap-3 pl-1.5 pr-4 py-1 rounded-full bg-white/70 ring-1 ring-[#3D2A1E]/10 hover:bg-white/90 transition-colors">
             <span class="w-7 h-7 rounded-full bg-[#6B7F5C] text-[#F8F0E3] grid place-items-center text-[11px]">✓</span>
             <span class="leading-tight">
               <span class="block text-[12px] font-semibold text-[#3D2A1E]">{s.label}</span>
@@ -48,17 +48,17 @@ const i = data.info;
       </div>
     </div>
 
-    <div class="lg:col-span-5 order-1 lg:order-2" data-reveal>
-      <div class="relative">
+    <div class="lg:col-span-5 order-1 lg:order-2 px-2 sm:px-0 pt-6 lg:pt-0" data-reveal>
+      <div class="relative mx-auto max-w-[420px] lg:max-w-none">
         <div class="relative aspect-[4/5] rounded-[28px] overflow-hidden ring-1 ring-[#3D2A1E]/10" style="box-shadow:0 40px 80px -30px rgba(61,42,30,0.35);">
           <img src={i.photoHero} alt="Une aidante et une personne âgée à domicile" class="absolute inset-0 w-full h-full object-cover" loading="eager" fetchpriority="high" />
           <div class="absolute inset-0 bg-gradient-to-t from-[#3D2A1E]/30 via-transparent to-transparent"></div>
         </div>
-        <div class="absolute -bottom-6 -left-6 bg-[#F8F0E3] rounded-2xl px-5 py-4 ring-1 ring-[#3D2A1E]/10" style="box-shadow:0 16px 40px rgba(61,42,30,0.12);">
+        <div class="absolute -bottom-5 left-2 sm:-bottom-6 sm:-left-6 bg-[#F8F0E3] rounded-2xl px-5 py-4 ring-1 ring-[#3D2A1E]/10" style="box-shadow:0 16px 40px rgba(61,42,30,0.12);">
           <p class="text-[#C4674C]" style="font-family:'Caveat',cursive;font-size:28px;line-height:1;">7 jours / 7</p>
           <p class="mt-1 text-[11px] text-[#3D2A1E]/60 uppercase tracking-[0.15em]">07h — 22h</p>
         </div>
-        <div class="absolute -top-5 -right-5 bg-[#C4674C] text-[#F8F0E3] rounded-2xl px-4 py-3 rotate-[4deg]" style="box-shadow:0 10px 24px rgba(196,103,76,0.35);">
+        <div class="absolute -top-4 right-2 sm:-top-5 sm:-right-5 bg-[#C4674C] text-[#F8F0E3] rounded-2xl px-4 py-3 rotate-[4deg]" style="box-shadow:0 10px 24px rgba(196,103,76,0.35);">
           <p class="text-[12px] uppercase tracking-[0.18em] opacity-90">M. André</p>
           <p class="text-[17px] font-medium" style="font-family:'Cormorant Garamond',serif;font-style:italic;">82 ans, Le Tampon</p>
         </div>

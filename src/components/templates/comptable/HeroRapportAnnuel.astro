@@ -66,19 +66,105 @@ import data from '../../../data/templates/auberval.json';
       </div>
     </div>
 
-    <!-- Bandeau 4 stats -->
-    <ul class="grid grid-cols-2 md:grid-cols-4 gap-px bg-auberval-marine/15 border-t border-b border-auberval-marine/15">
-      {data.stats.map((s) => (
-        <li class="bg-auberval-feutre py-6 md:py-8 px-4 text-center">
-          <p class="font-source-serif text-auberval-marine leading-none tabular-nums" style="font-size: clamp(28px, 4vw, 48px);">
-            {s.valeur}
-          </p>
-          <p class="mt-3 font-dm-mono text-[10px] uppercase tracking-[0.22em] text-auberval-encre/65">
-            {s.label}
-          </p>
-        </li>
-      ))}
+    <!-- Bandeau 4 stats — compteurs animés (signature) -->
+    <ul class="grid grid-cols-2 md:grid-cols-4 gap-px bg-auberval-marine/15 border-t border-b border-auberval-marine/15" data-counters>
+      {data.stats.map((s) => {
+        const m = String(s.valeur).match(/^(\D*)(\d+(?:[.,]\d+)?)(.*)$/);
+        const prefix = m ? m[1] : '';
+        const target = m ? m[2] : '';
+        const suffix = m ? m[3] : String(s.valeur);
+        return (
+          <li class="bg-auberval-feutre py-6 md:py-8 px-4 text-center">
+            <p class="font-source-serif text-auberval-marine leading-none" style="font-size: clamp(28px, 4vw, 48px); font-variant-numeric: tabular-nums lining-nums; font-feature-settings: 'tnum' 1, 'lnum' 1;">
+              <span aria-hidden="true">{prefix}</span><span class="auberval-count" data-target={target} data-final={s.valeur}>0</span><span aria-hidden="true">{suffix}</span>
+              <span class="sr-only">{s.valeur}</span>
+            </p>
+            <p class="mt-3 font-dm-mono text-[10px] uppercase tracking-[0.22em] text-auberval-encre/65">
+              {s.label}
+            </p>
+          </li>
+        );
+      })}
     </ul>
+
+    <!-- Courbe progression — trait sobre qui se dessine -->
+    <figure class="auberval-chart mt-6 md:mt-8" aria-label="Évolution du cabinet sur dix ans">
+      <div class="flex items-baseline justify-between font-dm-mono text-[10px] uppercase tracking-[0.28em] text-auberval-or/80 mb-2">
+        <span>Progression — 10 dernières années</span>
+        <span class="hidden sm:inline" style="font-variant-numeric: tabular-nums;">indice 100 → 240</span>
+      </div>
+      <svg viewBox="0 0 600 120" preserveAspectRatio="none" class="block w-full h-[88px] md:h-[104px]" role="img" aria-hidden="true">
+        <defs>
+          <linearGradient id="auberval-fill" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0%" stop-color="#a78a4f" stop-opacity="0.18"/>
+            <stop offset="100%" stop-color="#a78a4f" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <g stroke="rgba(26,41,68,0.08)" stroke-width="1">
+          <line x1="0" x2="600" y1="30" y2="30"/>
+          <line x1="0" x2="600" y1="60" y2="60"/>
+          <line x1="0" x2="600" y1="90" y2="90"/>
+        </g>
+        <path class="auberval-area" d="M0,100 L60,94 L120,88 L180,80 L240,72 L300,62 L360,54 L420,42 L480,34 L540,24 L600,16 L600,120 L0,120 Z" fill="url(#auberval-fill)" opacity="0"/>
+        <path class="auberval-line" d="M0,100 L60,94 L120,88 L180,80 L240,72 L300,62 L360,54 L420,42 L480,34 L540,24 L600,16"
+              fill="none" stroke="#a78a4f" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </figure>
+
+    <style>
+      .auberval-line { stroke-dasharray: 1400; stroke-dashoffset: 1400; }
+      .auberval-chart[data-revealed="true"] .auberval-line { animation: auberval-draw 1800ms cubic-bezier(0.22, 0.61, 0.36, 1) forwards; }
+      .auberval-chart[data-revealed="true"] .auberval-area { animation: auberval-fade 1400ms ease-out 600ms forwards; }
+      @keyframes auberval-draw { to { stroke-dashoffset: 0; } }
+      @keyframes auberval-fade { to { opacity: 1; } }
+      @media (prefers-reduced-motion: reduce) {
+        .auberval-line { stroke-dashoffset: 0 !important; animation: none !important; }
+        .auberval-area { opacity: 1 !important; animation: none !important; }
+      }
+    </style>
+
+    <script is:inline>
+      (function () {
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        function ease(t) { return 1 - Math.pow(1 - t, 3); } /* easeOutCubic — pas de rebond */
+        function formatNum(target, value) {
+          if (/[.,]/.test(target)) {
+            var dec = (target.split(/[.,]/)[1] || '').length;
+            return value.toFixed(dec).replace('.', target.indexOf(',') > -1 ? ',' : '.');
+          }
+          return Math.round(value).toString();
+        }
+        function animateCounter(el) {
+          var raw = el.getAttribute('data-target') || '0';
+          var target = parseFloat(raw.replace(',', '.'));
+          if (!isFinite(target)) { el.textContent = el.getAttribute('data-final') || raw; return; }
+          if (reduce) { el.textContent = formatNum(raw, target); return; }
+          var duration = 1600, start = null;
+          function step(ts) {
+            if (start === null) start = ts;
+            var t = Math.min(1, (ts - start) / duration);
+            el.textContent = formatNum(raw, target * ease(t));
+            if (t < 1) requestAnimationFrame(step);
+          }
+          requestAnimationFrame(step);
+        }
+        var list = document.querySelector('[data-counters]');
+        var chart = document.querySelector('.auberval-chart');
+        if (!list && !chart) return;
+        var fired = false;
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (!e.isIntersecting || fired) return;
+            fired = true;
+            if (list) list.querySelectorAll('.auberval-count').forEach(animateCounter);
+            if (chart) chart.setAttribute('data-revealed', 'true');
+            io.disconnect();
+          });
+        }, { threshold: 0.35 });
+        if (list) io.observe(list);
+        if (chart) io.observe(chart);
+      })();
+    </script>
 
     <!-- Mot de l'associé fondateur (lettre du président style rapport annuel) -->
     <figure class="mt-12 md:mt-14 max-w-3xl">

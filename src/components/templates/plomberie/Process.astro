@@ -32,9 +32,9 @@ const steps = [
     <ol class="relative grid md:grid-cols-5 gap-0 border-t-2 border-bp-jaune/30">
       {steps.map((s, i) => (
         <li class:list={[
-          'scroll-reveal relative pt-10 pr-5 pb-2 md:pr-7',
+          'group scroll-reveal relative pt-10 pr-5 pb-2 md:pr-7',
           i > 0 ? 'md:border-l-2 border-bp-jaune/30 md:pl-7' : '',
-          i > 0 ? 'border-t-2 md:border-t-0 mt-8 md:mt-0 pt-10' : '',
+          i > 0 ? 'border-t-2 md:border-t-0 mt-8 md:mt-0' : '',
         ]} style={`transition-delay: ${i * 80}ms`}>
           <span class="absolute -top-[2px] left-0 right-0 h-[2px] bg-bp-jaune scale-x-0 origin-left transition-transform duration-700 group-[.is-visible]:scale-x-100" aria-hidden="true"></span>
           <span class="block font-bebas text-bp-jaune leading-none tabular-nums" style="font-size: clamp(56px, 7vw, 88px);">

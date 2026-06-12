@@ -45,7 +45,7 @@ const zones = data.zones;
         {zones.map((z, i) => (
           <button type="button" data-zone={z.id} class="absolute -translate-x-1/2 -translate-y-1/2 group" style={`left:${z.x}%; top:${z.y}%;`} aria-label={z.nom}>
             <span class="block w-5 h-5 rounded-full bg-agap-violet ring-4 ring-agap-violet/30 group-hover:ring-8 group-[.is-active]:bg-agap-lin group-[.is-active]:ring-agap-violet transition-all"></span>
-            <span class="absolute top-7 left-1/2 -translate-x-1/2 whitespace-nowrap font-manrope text-[10px] uppercase tracking-[0.22em] text-agap-lin bg-agap-violet-fonce/90 px-2 py-1 rounded backdrop-blur-sm">{String(i+1).padStart(2,'0')} · {z.nom}</span>
+            <span class="absolute top-7 left-1/2 -translate-x-1/2 whitespace-nowrap font-manrope text-[10px] uppercase tracking-[0.22em] text-agap-lin bg-agap-violet-fonce/95 px-2.5 py-1 rounded backdrop-blur-sm opacity-0 group-hover:opacity-100 group-[.is-active]:opacity-100 transition-opacity duration-200 pointer-events-none">{String(i+1).padStart(2,'0')} · {z.nom}</span>
           </button>
         ))}
         <div class="absolute top-4 left-4 font-manrope text-[10px] uppercase tracking-[0.3em] text-agap-feuille/50">Plan paysager · échelle libre</div>

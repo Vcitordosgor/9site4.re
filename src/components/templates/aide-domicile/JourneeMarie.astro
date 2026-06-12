@@ -38,6 +38,7 @@ const moments = [
           <div class="relative aspect-[3/4] rounded-[24px] overflow-hidden ring-1 ring-white/10">
             <img src={m.img} alt={m.titre} class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105" loading="lazy" />
             <div class="absolute inset-0 bg-gradient-to-t from-[#3D2A1E] via-[#3D2A1E]/40 to-transparent"></div>
+            <div class="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#3D2A1E]/55 to-transparent pointer-events-none"></div>
             <div class="absolute top-5 left-5 text-[#F8F0E3]" style="font-family:'Cormorant Garamond',serif;font-style:italic;">
               <span class="text-[44px] leading-none">{m.h}</span>
             </div>
@@ -51,9 +52,56 @@ const moments = [
       ))}
     </div>
 
-    <div class="mt-10 flex items-center gap-4">
+    <!-- SIGNATURE: une semaine type qui se remplit au scroll -->
+    <div class="mt-20 md:mt-24 grid lg:grid-cols-12 gap-10 lg:gap-14 items-start" data-reveal>
+      <div class="lg:col-span-4">
+        <p class="text-[#C4674C] text-[12px] uppercase tracking-[0.24em] mb-4">— Une semaine type</p>
+        <h3 class="leading-[0.98] tracking-[-0.01em] mb-6" style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(34px,4vw,52px);">
+          Régulière,<br/><em class="text-[#C4674C]">prévisible.</em>
+        </h3>
+        <p class="text-[#F8F0E3]/75 text-[16px] leading-[1.65]">
+          La même aidante, aux mêmes heures, presque chaque jour. Les habitudes rassurent — et libèrent la famille.
+        </p>
+        <div class="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-[12px] text-[#F8F0E3]/70">
+          <span class="inline-flex items-center gap-2"><span class="w-3 h-3 rounded-sm bg-[#C4674C]"></span> Visite matin</span>
+          <span class="inline-flex items-center gap-2"><span class="w-3 h-3 rounded-sm bg-[#6B7F5C]"></span> Visite après-midi</span>
+          <span class="inline-flex items-center gap-2"><span class="w-3 h-3 rounded-sm bg-[#F8F0E3]/15 ring-1 ring-[#F8F0E3]/25"></span> Famille / repos</span>
+        </div>
+      </div>
+
+      <div id="jm-week" class="lg:col-span-8 rounded-[24px] bg-[#F8F0E3]/[0.04] ring-1 ring-[#F8F0E3]/12 p-4 sm:p-6">
+        <div class="grid grid-cols-[44px_repeat(7,1fr)] gap-1.5 sm:gap-2 text-[10px] sm:text-[11px] uppercase tracking-[0.14em] text-[#F8F0E3]/55 mb-2">
+          <span></span>
+          {['lun','mar','mer','jeu','ven','sam','dim'].map((d) => (<span class="text-center">{d}</span>))}
+        </div>
+        {[
+          { h: '08h', cells: [1,1,1,1,1,0,0] },
+          { h: '10h', cells: [1,0,1,0,1,0,0] },
+          { h: '12h', cells: [1,1,1,1,1,1,1] },
+          { h: '15h', cells: [0,2,0,2,0,2,0] },
+          { h: '19h', cells: [2,2,2,2,2,2,2] },
+        ].map((row, r) => (
+          <div class="grid grid-cols-[44px_repeat(7,1fr)] gap-1.5 sm:gap-2 mb-1.5 sm:mb-2 last:mb-0">
+            <span class="text-[11px] sm:text-[12px] text-[#F8F0E3]/60 tabular-nums self-center" style="font-family:'Cormorant Garamond',serif;font-style:italic;">{row.h}</span>
+            {row.cells.map((v, c) => (
+              <span
+                class="jm-cell aspect-square rounded-md sm:rounded-lg ring-1 ring-[#F8F0E3]/10 bg-[#F8F0E3]/[0.04]"
+                data-fill={v}
+                style={`--d:${(r * 7 + c) * 55}ms;`}
+                aria-hidden="true"
+              ></span>
+            ))}
+          </div>
+        ))}
+        <p class="mt-5 text-[12px] text-[#F8F0E3]/55 italic" style="font-family:'Cormorant Garamond',serif;">
+          Exemple — Mme R., maintien à domicile, 18 h / semaine.
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-16 md:mt-20 flex items-center gap-4">
       <div class="flex-1 h-px bg-[#F8F0E3]/15"></div>
-      <p class="text-[14px] text-[#F8F0E3]/65 italic" style="font-family:'Cormorant Garamond',serif;">
+      <p class="text-[14px] text-[#F8F0E3]/65 italic text-center" style="font-family:'Cormorant Garamond',serif;">
         « Ce qu’on offre, ce n’est pas une prestation. C’est un rythme. »
       </p>
       <div class="flex-1 h-px bg-[#F8F0E3]/15"></div>
@@ -69,5 +117,46 @@ const moments = [
     prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: 'smooth' }));
     next.addEventListener('click', () => track.scrollBy({ left: step(), behavior: 'smooth' }));
   }
+
+  // Signature: weekly grid soft-fills cell by cell on scroll-in.
+  const week = document.getElementById('jm-week');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (week) {
+    if (reduceMotion) {
+      week.classList.add('is-on');
+    } else {
+      const wio = new IntersectionObserver((entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            week.classList.add('is-on');
+            wio.unobserve(e.target);
+          }
+        }
+      }, { threshold: 0.25 });
+      wio.observe(week);
+    }
+  }
 </script>
-<style>#jm-track::-webkit-scrollbar{display:none}</style>
+<style>
+  #jm-track::-webkit-scrollbar{display:none}
+  /* Weekly grid: cells are pre-sized to avoid CLS; only opacity/color animates. */
+  #jm-week .jm-cell{
+    transition: background-color .9s ease, box-shadow .9s ease, transform .9s ease;
+    transform: scale(.92);
+  }
+  #jm-week.is-on .jm-cell{
+    transform: scale(1);
+    transition-delay: var(--d, 0ms);
+  }
+  #jm-week.is-on .jm-cell[data-fill="1"]{
+    background-color: rgba(196,103,76,.85);
+    box-shadow: inset 0 0 0 1px rgba(196,103,76,.35), 0 4px 12px -6px rgba(196,103,76,.6);
+  }
+  #jm-week.is-on .jm-cell[data-fill="2"]{
+    background-color: rgba(107,127,92,.78);
+    box-shadow: inset 0 0 0 1px rgba(107,127,92,.35), 0 4px 12px -6px rgba(107,127,92,.5);
+  }
+  @media (prefers-reduced-motion: reduce){
+    #jm-week .jm-cell{ transition: none; transform: none; }
+  }
+</style>
