@@ -6,60 +6,122 @@ const stats = data.stats;
 <section id="top" class="relative min-h-screen overflow-hidden bg-agap-lin text-agap-feuille">
   <!-- Photo plein écran parallax -->
   <div class="absolute inset-0">
-    <img id="agap-hero-img" src={info.photoHero} alt={info.photoHeroAlt} class="absolute inset-0 w-full h-[120%] object-cover" style="transform: translateY(0)" fetchpriority="high" />
-    <div class="absolute inset-0 bg-gradient-to-b from-agap-lin/15 via-agap-lin/0 to-agap-lin"></div>
+    <img id="agap-hero-img" src={info.photoHero} alt={info.photoHeroAlt} class="absolute inset-0 w-full h-[120%] object-cover" style="transform: translateY(0) scale(1.04); transform-origin: center;" fetchpriority="high" />
+    <div class="absolute inset-0 bg-gradient-to-b from-agap-lin/20 via-agap-lin/0 to-agap-lin"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-agap-lin/40 via-transparent to-transparent"></div>
   </div>
 
   <!-- Feuilles SVG en superposition -->
-  <svg class="absolute -left-10 top-32 w-64 lg:w-96 opacity-30 motion-safe:animate-[sway_8s_ease-in-out_infinite]" viewBox="0 0 200 200" aria-hidden="true">
+  <svg class="absolute -left-10 top-32 w-64 lg:w-96 opacity-30 motion-safe:animate-[agap-sway_8s_ease-in-out_infinite] pointer-events-none" viewBox="0 0 200 200" aria-hidden="true">
     <path d="M100,10 Q140,80 120,180 Q100,150 100,100 Q100,80 100,10 Z" fill="#5C7058" opacity="0.7"/>
     <path d="M100,100 L100,160" stroke="#3D2E5E" stroke-width="1" opacity="0.6"/>
   </svg>
-  <svg class="absolute -right-12 bottom-40 w-72 lg:w-[28rem] opacity-25 motion-safe:animate-[sway-r_10s_ease-in-out_infinite]" viewBox="0 0 200 200" aria-hidden="true">
+  <svg class="absolute -right-12 bottom-40 w-72 lg:w-[28rem] opacity-25 motion-safe:animate-[agap-sway-r_10s_ease-in-out_infinite] pointer-events-none" viewBox="0 0 200 200" aria-hidden="true">
     <path d="M100,10 Q60,80 80,180 Q100,150 100,100 Q100,80 100,10 Z" fill="#9DAB8E" opacity="0.7"/>
   </svg>
 
   <div class="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12 pt-32 lg:pt-40 pb-32 min-h-screen flex flex-col justify-center">
-    <div class="flex items-center gap-3 mb-8 motion-safe:animate-[rise_900ms_ease-out_both]">
+    <div class="flex items-center gap-3 mb-8 motion-safe:animate-[agap-rise_900ms_ease-out_both]">
       <span class="inline-block w-10 h-px bg-agap-violet"></span>
       <span class="font-manrope text-[11px] uppercase tracking-[0.32em] text-agap-feuille/70">{info.soustitre}</span>
     </div>
-    <h1 class="font-cormorant font-light text-[clamp(3.2rem,9vw,9rem)] leading-[0.95] tracking-tight max-w-5xl motion-safe:animate-[rise_1.1s_ease-out_120ms_both]">
+    <h1 class="font-cormorant font-light text-[clamp(3.2rem,9vw,9rem)] leading-[0.92] tracking-tight max-w-5xl motion-safe:animate-[agap-rise_1.1s_ease-out_120ms_both]">
       {info.tagline}<br/><em class="italic text-agap-violet">{info.taglineItalic}</em>
     </h1>
-    <p class="mt-10 max-w-xl font-manrope text-base lg:text-lg leading-relaxed text-agap-feuille/85 motion-safe:animate-[rise_1.2s_ease-out_240ms_both]">{info.intro}</p>
+    <p class="mt-10 max-w-xl font-manrope text-base lg:text-lg leading-relaxed text-agap-feuille/85 motion-safe:animate-[agap-rise_1.2s_ease-out_240ms_both]">{info.intro}</p>
 
-    <div class="mt-10 flex flex-wrap gap-4 motion-safe:animate-[rise_1.3s_ease-out_360ms_both]">
-      <a href="#devis" class="inline-flex items-center gap-3 h-14 px-8 rounded-full bg-agap-violet text-agap-lin text-xs font-manrope font-semibold uppercase tracking-[0.22em] hover:bg-agap-violet-fonce transition-colors">
+    <div class="mt-10 flex flex-wrap gap-4 motion-safe:animate-[agap-rise_1.3s_ease-out_360ms_both]">
+      <a href="#devis" class="group inline-flex items-center gap-3 h-14 px-8 rounded-full bg-agap-violet text-agap-lin text-xs font-manrope font-semibold uppercase tracking-[0.22em] hover:bg-agap-violet-fonce transition-all duration-300 hover:shadow-[0_12px_30px_-8px_rgba(107,91,149,0.55)]">
         Demander un devis
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M14 5l7 7-7 7"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="transition-transform duration-300 group-hover:translate-x-1"><path d="M5 12h14M14 5l7 7-7 7"/></svg>
       </a>
-      <a href="#plan" class="inline-flex items-center h-14 px-8 rounded-full border border-agap-feuille/25 text-agap-feuille text-xs font-manrope uppercase tracking-[0.22em] hover:bg-agap-feuille/5">
+      <a href="#plan" class="inline-flex items-center h-14 px-8 rounded-full border border-agap-feuille/30 text-agap-feuille text-xs font-manrope uppercase tracking-[0.22em] hover:bg-agap-feuille hover:text-agap-lin transition-colors duration-300">
         Voir un plan
       </a>
     </div>
 
-    <div class="mt-20 grid grid-cols-2 lg:grid-cols-4 gap-px bg-agap-feuille/10 border border-agap-feuille/10 rounded-2xl overflow-hidden motion-safe:animate-[rise_1.4s_ease-out_500ms_both]">
+    <div class="mt-20 grid grid-cols-2 lg:grid-cols-4 gap-px bg-agap-feuille/10 border border-agap-feuille/10 rounded-2xl overflow-hidden motion-safe:animate-[agap-rise_1.4s_ease-out_500ms_both]">
       {stats.map(s => (
-        <div class="bg-agap-lin/85 backdrop-blur-sm px-5 py-6">
+        <div class="bg-agap-lin/85 backdrop-blur-sm px-5 py-6 transition-colors hover:bg-agap-lin">
           <div class="font-cormorant text-3xl lg:text-4xl italic text-agap-violet">{s.valeur}</div>
           <div class="font-manrope text-[10px] uppercase tracking-[0.22em] mt-2 text-agap-feuille/60">{s.label}</div>
         </div>
       ))}
     </div>
   </div>
+
+  <!-- SIGNATURE : vigne botanique qui pousse sur le bord droit au scroll -->
+  <svg data-agap-vine class="agap-vine pointer-events-none absolute right-0 top-0 h-full w-24 lg:w-40 z-[5]" viewBox="0 0 200 1000" preserveAspectRatio="none" aria-hidden="true">
+    <path class="agap-vine-stem" d="M170,0 C150,120 190,220 160,340 C130,460 180,560 150,680 C120,800 170,900 155,1000"
+      fill="none" stroke="#5C7058" stroke-width="2" stroke-linecap="round"/>
+    <g class="agap-vine-leaves" fill="#5C7058">
+      <path d="M165,120 q-30,-12 -42,8 q22,18 42,-8 z" opacity="0.85"/>
+      <path d="M178,220 q26,-14 38,10 q-26,18 -38,-10 z" opacity="0.85"/>
+      <path d="M155,340 q-32,-10 -44,12 q24,18 44,-12 z" opacity="0.85"/>
+      <path d="M175,460 q28,-12 40,12 q-28,16 -40,-12 z" opacity="0.85"/>
+      <path d="M160,560 q-30,-14 -42,8 q22,20 42,-8 z" opacity="0.85"/>
+      <path d="M178,680 q26,-12 38,10 q-26,18 -38,-10 z" opacity="0.85"/>
+      <path d="M155,800 q-32,-10 -44,10 q24,18 44,-10 z" opacity="0.85"/>
+    </g>
+    <g class="agap-vine-blooms" fill="#6B5B95">
+      <circle cx="160" cy="180" r="3"/>
+      <circle cx="168" cy="184" r="2.5"/>
+      <circle cx="172" cy="178" r="2"/>
+      <circle cx="180" cy="520" r="3"/>
+      <circle cx="186" cy="524" r="2.5"/>
+      <circle cx="190" cy="518" r="2"/>
+      <circle cx="158" cy="860" r="3"/>
+      <circle cx="166" cy="864" r="2.5"/>
+    </g>
+  </svg>
 </section>
 <style>
-  @keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes sway { 0%,100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }
-  @keyframes sway-r { 0%,100% { transform: rotate(3deg); } 50% { transform: rotate(-3deg); } }
+  @keyframes agap-rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes agap-sway { 0%,100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }
+  @keyframes agap-sway-r { 0%,100% { transform: rotate(3deg); } 50% { transform: rotate(-3deg); } }
+
+  .agap-vine-stem {
+    stroke-dasharray: 2400;
+    stroke-dashoffset: 2400;
+    transition: stroke-dashoffset 1.8s cubic-bezier(.22,.61,.36,1);
+  }
+  .agap-vine-leaves > path {
+    opacity: 0;
+    transform: scale(0.2);
+    transform-origin: center;
+    transform-box: fill-box;
+    transition: opacity .7s ease-out, transform .9s cubic-bezier(.34,1.56,.64,1);
+  }
+  .agap-vine-blooms circle {
+    opacity: 0;
+    transform: scale(0);
+    transform-origin: center;
+    transform-box: fill-box;
+    transition: opacity .6s ease-out, transform .7s cubic-bezier(.34,1.56,.64,1);
+  }
+  .agap-vine.is-revealed .agap-vine-stem { stroke-dashoffset: 0; }
+  .agap-vine.is-revealed .agap-vine-leaves > path { opacity: 0.85; transform: scale(1); }
+  .agap-vine.is-revealed .agap-vine-blooms circle { opacity: 0.7; transform: scale(1); }
+  .agap-vine.is-revealed .agap-vine-leaves > path:nth-child(1){ transition-delay: .35s; }
+  .agap-vine.is-revealed .agap-vine-leaves > path:nth-child(2){ transition-delay: .55s; }
+  .agap-vine.is-revealed .agap-vine-leaves > path:nth-child(3){ transition-delay: .75s; }
+  .agap-vine.is-revealed .agap-vine-leaves > path:nth-child(4){ transition-delay: .95s; }
+  .agap-vine.is-revealed .agap-vine-leaves > path:nth-child(5){ transition-delay: 1.15s; }
+  .agap-vine.is-revealed .agap-vine-leaves > path:nth-child(6){ transition-delay: 1.35s; }
+  .agap-vine.is-revealed .agap-vine-leaves > path:nth-child(7){ transition-delay: 1.55s; }
+  .agap-vine.is-revealed .agap-vine-blooms circle { transition-delay: 1.2s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .agap-vine-stem { stroke-dashoffset: 0 !important; transition: none !important; }
+    .agap-vine-leaves > path, .agap-vine-blooms circle { opacity: 0.85 !important; transform: none !important; transition: none !important; }
+  }
 </style>
 <script>
   const img = document.getElementById('agap-hero-img') as HTMLImageElement | null;
-  if (img) {
+  if (img && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const onScroll = () => {
       const y = window.scrollY;
-      if (y < 800) img.style.transform = `translateY(${y * 0.15}px)`;
+      if (y < 800) img.style.transform = `translateY(${y * 0.15}px) scale(1.04)`;
     };
     window.addEventListener('scroll', onScroll, { passive: true });
   }

@@ -4,9 +4,11 @@ import data from '../../../data/templates/volta.json';
 
 <section id="top" class="relative min-h-dvh flex items-center bg-volta-noir overflow-hidden">
 
-  <!-- Fond graphique : dégradé sombre + composition tableau électrique SVG -->
+  <!-- Fond graphique : photo + dégradé sombre + composition tableau électrique SVG -->
   <div class="absolute inset-0" aria-hidden="true">
-    <div class="absolute inset-0" style="background: radial-gradient(120% 80% at 80% 20%, rgb(6 212 245 / 0.10) 0%, transparent 60%), linear-gradient(180deg, rgb(15 17 21) 0%, rgb(22 26 32) 100%);"></div>
+    <img src={data.info.photoHero} alt="" fetchpriority="high" decoding="async"
+         class="absolute inset-0 w-full h-full object-cover opacity-25 mix-blend-luminosity" />
+    <div class="absolute inset-0" style="background: radial-gradient(120% 80% at 80% 20%, rgb(6 212 245 / 0.12) 0%, transparent 60%), linear-gradient(180deg, rgb(15 17 21 / 0.85) 0%, rgb(22 26 32 / 0.95) 100%);"></div>
 
     <!-- Schéma tableau électrique (visible desktop, masqué mobile) -->
     <svg class="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 h-[88%] w-auto opacity-[0.22] hero-vivant"
@@ -83,7 +85,7 @@ import data from '../../../data/templates/volta.json';
       <div class="mt-10 flex flex-wrap gap-4">
         <a
           href="#devis"
-          class="inline-flex items-center justify-center px-8 text-sm font-space-grotesk font-semibold uppercase tracking-[0.18em] rounded-sm bg-volta-cyan text-volta-noir hover:bg-volta-blanc transition-colors"
+          class="volta-cta-primary inline-flex items-center justify-center px-8 text-sm font-space-grotesk font-semibold uppercase tracking-[0.18em] rounded-sm bg-volta-cyan text-volta-noir hover:bg-volta-blanc transition-all"
           style="height: 52px;"
         >
           Demander un devis
@@ -131,6 +133,13 @@ import data from '../../../data/templates/volta.json';
 </section>
 
 <style>
+  .volta-cta-primary {
+    box-shadow: 0 8px 24px rgb(6 212 245 / 0.25);
+  }
+  .volta-cta-primary:hover {
+    box-shadow: 0 12px 36px rgb(6 212 245 / 0.5);
+    transform: translateY(-1px);
+  }
   @keyframes hero-vivant {
     from { transform: scale(1.06); }
     to   { transform: scale(1); }

@@ -50,6 +50,9 @@ const fiches = [
                 decoding="async"
                 class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
               />
+              <!-- Calque grille technique révélé au survol (signature subtile) -->
+              <div class="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500 motion-reduce:transition-none motion-reduce:group-hover:opacity-0" aria-hidden="true"
+                   style="background-image: linear-gradient(to right, rgba(250,247,242,0.5) 1px, transparent 1px), linear-gradient(to bottom, rgba(250,247,242,0.5) 1px, transparent 1px); background-size: 32px 32px; mix-blend-mode: difference;"></div>
               <!-- Numéro projet -->
               <span class="absolute top-3 left-3 inline-block bg-mahatma-papier text-mahatma-encre font-fira-mono text-[10px] uppercase tracking-[0.18em] px-2 py-1">
                 /{String(i + 1).padStart(2, '0')}

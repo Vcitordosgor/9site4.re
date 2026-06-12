@@ -11,8 +11,12 @@ const icons: Record<string, string> = {
 };
 ---
 
-<section id="services" class="bg-volta-acier py-20 md:py-32 px-6 md:px-10">
-  <div class="max-w-content mx-auto">
+<section id="services" class="relative bg-volta-acier py-20 md:py-32 px-6 md:px-10 overflow-hidden">
+  <div class="pointer-events-none absolute inset-0 opacity-[0.04]" aria-hidden="true"
+       style="background-image: linear-gradient(to right, rgb(6 212 245 / 0.4) 1px, transparent 1px), linear-gradient(to bottom, rgb(6 212 245 / 0.4) 1px, transparent 1px); background-size: 64px 64px;">
+  </div>
+
+  <div class="relative max-w-content mx-auto">
 
     <header class="mb-14 md:mb-20">
       <p class="scroll-reveal flex items-center gap-3 text-xs font-space-grotesk font-semibold uppercase tracking-[0.32em] text-volta-cyan">
@@ -25,19 +29,99 @@ const icons: Record<string, string> = {
       </h2>
     </header>
 
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-volta-fumee/5">
-      {data.services.map((s) => (
-        <article class="scroll-reveal bg-volta-acier p-8 md:p-10 group hover:bg-volta-noir transition-colors">
-          <div class="w-10 h-10 flex items-center justify-center border border-volta-cyan/20 rounded-sm mb-6 group-hover:border-volta-cyan/50 transition-colors">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="text-volta-cyan" aria-hidden="true">
-              <path d={icons[s.id] ?? icons.installation}/>
-            </svg>
+    <div class="volta-services-grid grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-volta-fumee/5">
+      {data.services.map((s, i) => (
+        <article
+          class="volta-service-card scroll-reveal relative bg-volta-acier p-8 md:p-10 group transition-colors duration-300"
+          style={`transition-delay: ${i * 60}ms`}
+        >
+          <!-- SIGNATURE: luminous current running along card border -->
+          <svg class="volta-current pointer-events-none absolute inset-0 w-full h-full" preserveAspectRatio="none" aria-hidden="true">
+            <rect x="1" y="1" width="calc(100% - 2px)" height="calc(100% - 2px)" rx="2" ry="2"
+                  fill="none" stroke="rgb(6 212 245)" stroke-width="1.5" pathLength="100" />
+          </svg>
+
+          <div class="relative">
+            <div class="w-11 h-11 flex items-center justify-center border border-volta-cyan/25 rounded-sm mb-6 group-hover:border-volta-cyan group-hover:bg-volta-cyan/5 transition-all duration-300">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="text-volta-cyan group-hover:drop-shadow-[0_0_6px_rgb(6_212_245_/_0.7)] transition-all" aria-hidden="true">
+                <path d={icons[s.id] ?? icons.installation}/>
+              </svg>
+            </div>
+            <h3 class="font-syne font-semibold text-volta-blanc text-lg md:text-xl mb-3 group-hover:text-volta-cyan transition-colors">{s.titre}</h3>
+            <p class="font-space-grotesk text-sm text-volta-fumee/65 leading-relaxed">{s.description}</p>
+
+            <span class="mt-6 inline-flex items-center gap-2 text-[11px] font-space-grotesk font-semibold uppercase tracking-[0.22em] opacity-0 group-hover:opacity-100 text-volta-cyan translate-y-1 group-hover:translate-y-0 transition-all duration-300">
+              En savoir plus
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"/>
+                <polyline points="12 5 19 12 12 19"/>
+              </svg>
+            </span>
           </div>
-          <h3 class="font-syne font-semibold text-volta-blanc text-lg mb-3">{s.titre}</h3>
-          <p class="font-space-grotesk text-sm text-volta-fumee/60 leading-relaxed">{s.description}</p>
         </article>
       ))}
     </div>
 
   </div>
 </section>
+
+<style>
+  .volta-service-card { isolation: isolate; }
+  .volta-service-card:hover { background-color: rgb(15 17 21); }
+  .volta-current {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    overflow: visible;
+  }
+  .volta-current rect {
+    stroke-dasharray: 18 82;
+    stroke-dashoffset: 0;
+    filter: drop-shadow(0 0 4px rgb(6 212 245 / 0.85)) drop-shadow(0 0 10px rgb(6 212 245 / 0.55));
+  }
+  .volta-service-card:hover .volta-current,
+  .volta-service-card:focus-within .volta-current,
+  .volta-service-card.is-charged .volta-current {
+    opacity: 1;
+    animation: volta-current-run 2.6s linear infinite;
+  }
+  @keyframes volta-current-run {
+    from { stroke-dashoffset: 0; }
+    to   { stroke-dashoffset: -100; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .volta-service-card:hover .volta-current,
+    .volta-service-card.is-charged .volta-current { animation: none; opacity: 0.45; }
+  }
+</style>
+
+<script>
+  // Signature electric pulse: current ripples sequentially through cards when grid enters viewport.
+  // IntersectionObserver pauses animation off-viewport.
+  (() => {
+    const cards = document.querySelectorAll('.volta-service-card');
+    if (!cards.length) return;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return;
+
+    let charged = false;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const card = entry.target;
+        if (entry.isIntersecting) {
+          if (!charged) {
+            const idx = Array.from(cards).indexOf(card);
+            window.setTimeout(() => {
+              card.classList.add('is-charged');
+              window.setTimeout(() => card.classList.remove('is-charged'), 2400);
+            }, idx * 180);
+          }
+        } else {
+          card.classList.remove('is-charged');
+        }
+      });
+      if (!charged && entries.some(e => e.isIntersecting)) charged = true;
+    }, { threshold: 0.3 });
+
+    cards.forEach((c) => io.observe(c));
+  })();
+</script>

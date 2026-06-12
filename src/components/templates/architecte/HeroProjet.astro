@@ -31,8 +31,8 @@ import data from '../../../data/templates/mahatma.json';
            style="background-image: linear-gradient(to right, #0A0A0C 1px, transparent 1px), linear-gradient(to bottom, #0A0A0C 1px, transparent 1px); background-size: 120px 120px;"></div>
 
       <!-- Plan axonométrique SVG -->
-      <svg viewBox="0 0 800 500" class="absolute inset-0 w-full h-full" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
-        <g stroke="#0A0A0C" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+      <svg viewBox="0 0 800 500" class="absolute inset-0 w-full h-full blueprint-svg" aria-hidden="true" preserveAspectRatio="xMidYMid meet" data-blueprint>
+        <g stroke="#0A0A0C" fill="none" stroke-linecap="square" stroke-linejoin="miter" class="bp-strokes">
           <!-- Volume principal (axonométrie) -->
           <polygon points="220,220 520,220 600,160 300,160" stroke-width="1.5" fill="#0A0A0C" fill-opacity="0.04"/>
           <polygon points="520,220 520,360 600,300 600,160" stroke-width="1.5" fill="#0A0A0C" fill-opacity="0.08"/>
@@ -174,4 +174,55 @@ import data from '../../../data/templates/mahatma.json';
   @media (prefers-reduced-motion: reduce) {
     .hero-vivant { animation: none !important; transform: none !important; }
   }
+
+  /* Signature : plan d'architecte qui se dessine au scroll */
+  .blueprint-svg .bp-strokes > * {
+    stroke-dasharray: var(--bp-len, 1200);
+    stroke-dashoffset: var(--bp-len, 1200);
+  }
+  .blueprint-svg[data-drawn="true"] .bp-strokes > * {
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 1800ms cubic-bezier(0.65, 0, 0.35, 1);
+    transition-delay: calc(var(--bp-i, 0) * 110ms);
+  }
+  .blueprint-svg text {
+    opacity: 0;
+    transition: opacity 600ms ease 1600ms;
+  }
+  .blueprint-svg[data-drawn="true"] text { opacity: 1; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .blueprint-svg .bp-strokes > * {
+      stroke-dasharray: none !important;
+      stroke-dashoffset: 0 !important;
+      transition: none !important;
+    }
+    .blueprint-svg text { opacity: 1 !important; transition: none !important; }
+  }
 </style>
+
+<script>
+  (() => {
+    const svg = document.querySelector<SVGSVGElement>('svg[data-blueprint]');
+    if (!svg) return;
+    const strokes = svg.querySelectorAll<SVGGeometryElement>('.bp-strokes > *');
+    strokes.forEach((el, i) => {
+      let len = 0;
+      try { len = (el as any).getTotalLength ? (el as any).getTotalLength() : 0; } catch {}
+      if (!len || !isFinite(len)) len = 1200;
+      el.style.setProperty('--bp-len', String(Math.ceil(len)));
+      el.style.setProperty('--bp-i', String(i));
+    });
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) { svg.setAttribute('data-drawn', 'true'); return; }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          svg.setAttribute('data-drawn', 'true');
+          io.disconnect();
+        }
+      });
+    }, { threshold: 0.25 });
+    io.observe(svg);
+  })();
+</script>

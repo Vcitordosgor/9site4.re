@@ -1,7 +1,7 @@
 ---
 import data from '../../../data/templates/concierge.json';
 ---
-<section id="top" class="relative min-h-[100svh] overflow-hidden text-white" style="background:#0E1B2C;">
+<section id="top" class="relative min-h-[100svh] overflow-hidden text-white scroll-mt-20" style="background:#0E1B2C;">
   <div class="absolute inset-0" aria-hidden="true">
     <img src={data.info.photoVilla} alt="" class="w-full h-full object-cover" width="1600" height="900" loading="eager" fetchpriority="high" decoding="async" />
     <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(14,27,44,0.55) 0%, rgba(14,27,44,0.25) 40%, rgba(14,27,44,0.95) 100%);"></div>
@@ -16,7 +16,7 @@ import data from '../../../data/templates/concierge.json';
 
     <div class="flex-1 flex flex-col justify-center max-w-4xl">
       <p class="font-cormorant italic text-concierge-laiton text-2xl md:text-3xl mb-5">{data.info.wordmark}</p>
-      <h1 class="font-cormorant italic leading-[0.92] tracking-tight" style="font-size: clamp(72px, 13vw, 200px);">
+      <h1 class="font-cormorant italic leading-[0.92] tracking-tight" style="font-size: clamp(56px, 12vw, 200px);">
         Votre bien,<br/>géré comme<br/>le nôtre.
       </h1>
       <p class="mt-10 max-w-xl font-inter text-white/80 text-lg leading-relaxed">

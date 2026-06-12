@@ -38,7 +38,7 @@ const businessLD = localBusinessSchema(doudouData, 'LocalBusiness');
 
   <Header />
 
-  <main id="top" style="background:#F8F0E3; color:#3D2A1E; font-family:'Inter',system-ui,sans-serif;">
+  <main id="top" style="background:#F8F0E3; color:#3D2A1E; font-family:'Inter',system-ui,sans-serif; padding-bottom:env(safe-area-inset-bottom);">
     <Hero />
     <JourneeMarie />
     <PourQui />
@@ -59,7 +59,7 @@ const businessLD = localBusinessSchema(doudouData, 'LocalBusiness');
     href="#contact"
     data-visible="false"
     class="md:hidden fixed bottom-5 inset-x-5 z-40 inline-flex items-center justify-center gap-2 h-[52px] bg-[#3D2A1E] text-[#F8F0E3] text-[14px] font-medium rounded-full transition-all duration-300 data-[visible=false]:opacity-0 data-[visible=false]:translate-y-4 data-[visible=false]:pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0"
-    style="box-shadow:0 14px 32px rgba(61,42,30,0.32); font-family:'Inter',system-ui,sans-serif;"
+    style="box-shadow:0 14px 32px rgba(61,42,30,0.32); font-family:'Inter',system-ui,sans-serif; bottom:calc(1.25rem + env(safe-area-inset-bottom));"
   >
     Visite gratuite à domicile
   </a>
@@ -67,35 +67,43 @@ const businessLD = localBusinessSchema(doudouData, 'LocalBusiness');
   <script>
     const sticky = document.getElementById('ad-sticky');
     const target = document.getElementById('contact');
+    const bandeau = document.getElementById('bandeau');
     if (sticky && target) {
+      const inView = (el: HTMLElement | null) => {
+        if (!el) return false;
+        const r = el.getBoundingClientRect();
+        return r.top < window.innerHeight - 40 && r.bottom > 80;
+      };
       const upd = () => {
-        const rect = target.getBoundingClientRect();
-        const inSection = rect.top < window.innerHeight && rect.bottom > 80;
         const past = window.scrollY > 600;
-        sticky.dataset.visible = String(past && !inSection);
+        const hide = inView(target as HTMLElement) || inView(bandeau as HTMLElement);
+        sticky.dataset.visible = String(past && !hide);
       };
       upd();
       window.addEventListener('scroll', upd, { passive: true });
       window.addEventListener('resize', upd, { passive: true });
     }
 
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const els = document.querySelectorAll('[data-reveal]');
-    els.forEach((el) => {
-      const h = el as HTMLElement;
-      h.style.opacity = '0';
-      h.style.transform = 'translateY(28px)';
-      h.style.transition = 'opacity .9s ease, transform .9s ease';
-    });
-    const io = new IntersectionObserver((entries) => {
-      for (const e of entries) {
-        if (e.isIntersecting) {
-          const h = e.target as HTMLElement;
-          h.style.opacity = '1';
-          h.style.transform = 'translateY(0)';
-          io.unobserve(e.target);
+    if (!reduce) {
+      els.forEach((el) => {
+        const h = el as HTMLElement;
+        h.style.opacity = '0';
+        h.style.transform = 'translateY(28px)';
+        h.style.transition = 'opacity .9s ease, transform .9s ease';
+      });
+      const io = new IntersectionObserver((entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            const h = e.target as HTMLElement;
+            h.style.opacity = '1';
+            h.style.transform = 'translateY(0)';
+            io.unobserve(e.target);
+          }
         }
-      }
-    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
-    els.forEach((el) => io.observe(el));
+      }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
+      els.forEach((el) => io.observe(el));
+    }
   </script>
 </BaseLayout>
