@@ -1,0 +1,67 @@
+{
+  "ranAt": "2026-06-23T17:05:26.388Z",
+  "pages": {
+    "/": {
+      "issues": [
+        {
+          "pattern": "fixed-width-large",
+          "count": 12,
+          "samples": [
+            "w-[300px]",
+            "w-[340px]",
+            "w-[300px]"
+          ]
+        }
+      ],
+      "ok": false
+    },
+    "realisations": {
+      "issues": [],
+      "ok": true
+    },
+    "tarifs": {
+      "issues": [],
+      "ok": true
+    },
+    "contact": {
+      "issues": [],
+      "ok": true
+    },
+    "diagnostic-site-internet-la-reunion": {
+      "issues": [],
+      "ok": true
+    },
+    "trouver-le-site-adapte": {
+      "issues": [],
+      "ok": true
+    },
+    "methode-9site4": {
+      "issues": [],
+      "ok": true
+    },
+    "questions-frequentes": {
+      "issues": [],
+      "ok": true
+    },
+    "creation-site-internet-la-reunion": {
+      "issues": [],
+      "ok": true
+    },
+    "agence-web-la-reunion": {
+      "issues": [],
+      "ok": true
+    },
+    "site-vitrine-la-reunion": {
+      "issues": [],
+      "ok": true
+    },
+    "mentions-legales": {
+      "issues": [],
+      "ok": true
+    }
+  },
+  "summary": {
+    "totalIssues": 1,
+    "totalPages": 12
+  }
+}
