@@ -151,9 +151,9 @@ const creativeWork = {
           Réalisation 9site4 · {realisation.sector}
         </p>
         <span class="block mx-auto mt-7 h-[3px] w-16 bg-bleu" aria-hidden="true"></span>
-        <h1 class="mt-5 font-sora font-bold text-balance leading-[1.08] text-[clamp(2rem,3.5vw+1rem,3.5rem)] tracking-tight text-blanc-casse">
+        <h1 class="mt-5 font-sora font-bold text-balance leading-[1.08] text-[clamp(1.75rem,3.5vw+1rem,3.5rem)] tracking-tight text-blanc-casse">
           Réalisation de site internet pour
-          <span class="block italic font-medium text-bleu">{realisation.businessType} à La Réunion.</span>
+          <span class="block italic font-medium text-bleu break-words">{realisation.businessType} à La Réunion.</span>
         </h1>
         <p class="mx-auto mt-7 max-w-2xl text-lg md:text-xl text-blanc-casse/80 leading-relaxed">
           {realisation.goal}
@@ -192,7 +192,7 @@ const creativeWork = {
     </section>
 
     <!-- Section 2 : Contexte métier -->
-    <section class="relative px-6 py-12 md:py-16">
+    <section class="relative px-4 sm:px-6 py-12 md:py-16">
       <div class="mx-auto max-w-3xl">
         <p class="font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
           <span class="inline-block align-middle w-2 h-2 rounded-full bg-bleu mr-2"></span>
@@ -215,7 +215,7 @@ const creativeWork = {
     </section>
 
     <!-- Section 3 : Ce que 9site4 structure -->
-    <section class="relative px-6 py-12 md:py-16">
+    <section class="relative px-4 sm:px-6 py-12 md:py-16">
       <div class="mx-auto max-w-5xl">
         <p class="font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
           <span class="inline-block align-middle w-2 h-2 rounded-full bg-bleu mr-2"></span>
@@ -227,7 +227,7 @@ const creativeWork = {
         </h2>
         <ul class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {realisation.structuredElements.map((el: string) => (
-            <li class="rounded-2xl p-6"
+            <li class="rounded-2xl p-6 min-w-0"
               style="background: linear-gradient(180deg, #14161F 0%, #0A0B12 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 12px 30px -16px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08);">
               <div class="inline-flex items-center justify-center w-10 h-10 rounded-xl mb-4"
                 style="background: linear-gradient(135deg, #91a6ff 0%, #b39dff 100%);">
@@ -241,7 +241,7 @@ const creativeWork = {
     </section>
 
     <!-- Section 4 : Module métier intégré -->
-    <section class="relative px-6 py-12 md:py-16">
+    <section class="relative px-4 sm:px-6 py-12 md:py-16">
       <div class="mx-auto max-w-4xl rounded-3xl p-8 md:p-10"
         style="background: linear-gradient(180deg, #14161F 0%, #0A0B12 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 12px 30px -16px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08);">
         <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-bleu/15 text-bleu text-xs font-bold uppercase tracking-wide">
@@ -263,7 +263,7 @@ const creativeWork = {
 
     <!-- Section 5 : Aperçu visuel -->
     {realisation.previewUrl && Preview && (
-      <section class="relative px-6 py-12 md:py-16">
+      <section class="relative px-4 sm:px-6 py-12 md:py-16">
         <div class="mx-auto max-w-5xl">
           <p class="font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
             <span class="inline-block align-middle w-2 h-2 rounded-full bg-bleu mr-2"></span>
@@ -308,7 +308,7 @@ const creativeWork = {
 
     <!-- Section 6 : Réalisations proches -->
     {related.length > 0 && (
-      <section class="relative px-6 py-12 md:py-16">
+      <section class="relative px-4 sm:px-6 py-12 md:py-16">
         <div class="mx-auto max-w-content">
           <p class="font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
             <span class="inline-block align-middle w-2 h-2 rounded-full bg-bleu mr-2"></span>
@@ -320,7 +320,7 @@ const creativeWork = {
           </h2>
           <ul class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {related.map((r) => (
-              <li>
+              <li class="min-w-0">
                 <RealisationCard realisation={r} />
               </li>
             ))}

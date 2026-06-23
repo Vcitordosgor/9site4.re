@@ -55,7 +55,7 @@ const orderedRealisations = [
         {realisations.length} réalisations
       </p>
       <span class="hero-rise hero-rise-2 block mx-auto mt-7 h-[3px] w-16 bg-bleu" aria-hidden="true"></span>
-      <h1 class="hero-rise hero-rise-2 mt-5 font-sora font-bold text-balance leading-[1.08] text-[clamp(2.25rem,4vw+1rem,4rem)] tracking-tight text-blanc-casse">
+      <h1 class="hero-rise hero-rise-2 mt-5 font-sora font-bold text-balance leading-[1.08] text-[clamp(2rem,4vw+1rem,4rem)] tracking-tight text-blanc-casse">
         Nos réalisations
         <span class="block italic font-medium text-bleu">pour les pros réunionnais.</span>
       </h1>
@@ -70,7 +70,7 @@ const orderedRealisations = [
 
 
   <!-- Barre de filtres (Astro Island, client:load) -->
-  <section class="relative px-6 pb-10" aria-label="Filtres">
+  <section class="relative px-4 sm:px-6 pb-10" aria-label="Filtres">
     <div class="mx-auto max-w-content">
       <FiltersBar
         client:load
@@ -89,12 +89,12 @@ const orderedRealisations = [
   </section>
 
   <!-- Grille des 30 cartes (rendu serveur, filtré côté client par display) -->
-  <section class="relative px-6 pb-20 md:pb-28" aria-labelledby="liste-realisations">
+  <section class="relative px-4 sm:px-6 pb-20 md:pb-28" aria-labelledby="liste-realisations">
     <div class="mx-auto max-w-content">
       <h2 id="liste-realisations" class="sr-only">Liste des réalisations</h2>
-      <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {orderedRealisations.map((r) => (
-          <li data-realisation-categorie={r.categorie}>
+          <li class="min-w-0" data-realisation-categorie={r.categorie}>
             <RealisationCard realisation={r} />
           </li>
         ))}
@@ -138,79 +138,79 @@ const orderedRealisations = [
         <span class="block italic font-medium text-bleu">aux principaux métiers du 974.</span>
       </h2>
       <ul class="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <li>
+        <li class="min-w-0">
           <a href="/creation-site-internet-la-reunion" class="block h-full rounded-2xl p-5 border border-white/10 hover:border-bleu transition-colors">
             <p class="font-sora font-semibold text-blanc-casse">Création de site à La Réunion</p>
             <p class="mt-2 text-sm text-blanc-casse/65">Page pilier pour les TPE/PME réunionnaises.</p>
           </a>
         </li>
-        <li>
+        <li class="min-w-0">
           <a href="/site-internet-restaurant-la-reunion" class="block h-full rounded-2xl p-5 border border-white/10 hover:border-bleu transition-colors">
             <p class="font-sora font-semibold text-blanc-casse">Site pour restaurant</p>
             <p class="mt-2 text-sm text-blanc-casse/65">Restaurants, snacks, bars, cafés, pizzerias.</p>
           </a>
         </li>
-        <li>
+        <li class="min-w-0">
           <a href="/site-internet-artisan-la-reunion" class="block h-full rounded-2xl p-5 border border-white/10 hover:border-bleu transition-colors">
             <p class="font-sora font-semibold text-blanc-casse">Site pour artisan</p>
             <p class="mt-2 text-sm text-blanc-casse/65">Plombiers, électriciens, garages, BTP.</p>
           </a>
         </li>
-        <li>
+        <li class="min-w-0">
           <a href="/site-internet-coiffeur-la-reunion" class="block h-full rounded-2xl p-5 border border-white/10 hover:border-bleu transition-colors">
             <p class="font-sora font-semibold text-blanc-casse">Site pour coiffeur</p>
             <p class="mt-2 text-sm text-blanc-casse/65">Salons, coiffeurs, barbiers.</p>
           </a>
         </li>
-        <li>
+        <li class="min-w-0">
           <a href="/site-internet-gite-location-la-reunion" class="block h-full rounded-2xl p-5 border border-white/10 hover:border-bleu transition-colors">
             <p class="font-sora font-semibold text-blanc-casse">Site pour gîte & location</p>
             <p class="mt-2 text-sm text-blanc-casse/65">Gîtes, locations, conciergeries, tourisme.</p>
           </a>
         </li>
-        <li>
+        <li class="min-w-0">
           <a href="/site-internet-profession-liberale-la-reunion" class="block h-full rounded-2xl p-5 border border-white/10 hover:border-bleu transition-colors">
             <p class="font-sora font-semibold text-blanc-casse">Site pour profession libérale</p>
             <p class="mt-2 text-sm text-blanc-casse/65">Avocats, notaires, comptables, consultants.</p>
           </a>
         </li>
-        <li>
+        <li class="min-w-0">
           <a href="/site-internet-bien-etre-sante-la-reunion" class="block h-full rounded-2xl p-5 border border-white/10 hover:border-bleu transition-colors">
             <p class="font-sora font-semibold text-blanc-casse">Site pour bien-être & santé</p>
             <p class="mt-2 text-sm text-blanc-casse/65">Ostéo, naturo, diét, psy, coach, yoga, danse.</p>
           </a>
         </li>
-        <li>
+        <li class="min-w-0">
           <a href="/site-internet-institut-beaute-la-reunion" class="block h-full rounded-2xl p-5 border border-white/10 hover:border-bleu transition-colors">
             <p class="font-sora font-semibold text-blanc-casse">Site pour institut, spa & coiffure</p>
             <p class="mt-2 text-sm text-blanc-casse/65">Instituts, spas, salons, tatoueurs, bien-être.</p>
           </a>
         </li>
-        <li>
+        <li class="min-w-0">
           <a href="/site-internet-coach-independant-la-reunion" class="block h-full rounded-2xl p-5 border border-white/10 hover:border-bleu transition-colors">
             <p class="font-sora font-semibold text-blanc-casse">Site pour coach & indépendant</p>
             <p class="mt-2 text-sm text-blanc-casse/65">Coachs, consultants, formateurs, indépendants.</p>
           </a>
         </li>
-        <li>
+        <li class="min-w-0">
           <a href="/site-internet-commerce-local-la-reunion" class="block h-full rounded-2xl p-5 border border-white/10 hover:border-bleu transition-colors">
             <p class="font-sora font-semibold text-blanc-casse">Site pour commerce local</p>
             <p class="mt-2 text-sm text-blanc-casse/65">Boutiques, boulangeries, fleuristes, garages.</p>
           </a>
         </li>
-        <li>
+        <li class="min-w-0">
           <a href="/site-internet-tpe-pme-la-reunion" class="block h-full rounded-2xl p-5 border border-white/10 hover:border-bleu transition-colors">
             <p class="font-sora font-semibold text-blanc-casse">Site pour TPE/PME</p>
             <p class="mt-2 text-sm text-blanc-casse/65">Toutes activités, tous secteurs du 974.</p>
           </a>
         </li>
-        <li>
+        <li class="min-w-0">
           <a href="/site-vitrine-la-reunion" class="block h-full rounded-2xl p-5 border border-white/10 hover:border-bleu transition-colors">
             <p class="font-sora font-semibold text-blanc-casse">Site vitrine</p>
             <p class="mt-2 text-sm text-blanc-casse/65">Vitrine professionnelle qui convertit.</p>
           </a>
         </li>
-        <li>
+        <li class="min-w-0">
           <a href="/agence-web-la-reunion" class="block h-full rounded-2xl p-5 border border-white/10 hover:border-bleu transition-colors">
             <p class="font-sora font-semibold text-blanc-casse">Agence web</p>
             <p class="mt-2 text-sm text-blanc-casse/65">Partenaire web TPE/PME, offre claire.</p>
