@@ -276,3 +276,28 @@
   }
 }
 
+/* ---------------------------------------------------------------------------
+   Responsive guardrails (audit 320 -> 1920)
+   Pages SEO metiers + villes : evite les debordements sur mobile etroit.
+   --------------------------------------------------------------------------- */
+
+/* Lignes "Voir aussi : a . b . c ..." denses : autorise la coupure intra-mot
+   et evite le debordement horizontal sur mobile etroit. */
+.villes-mesh-mention,
+.seo-links-row {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* Pills/badges hero longs : sur mobile on autorise le retour a la ligne. */
+.hero-badge-wrap {
+  white-space: normal;
+  text-align: center;
+  max-width: 100%;
+}
+
+/* Garde-fou enfants flex/grid */
+.seo-grid > * {
+  min-width: 0;
+}
+
