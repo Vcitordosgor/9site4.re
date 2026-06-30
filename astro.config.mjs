@@ -18,7 +18,6 @@ export default defineConfig({
         !page.includes('/mentions-legales') &&
         !page.includes('/404') &&
         !page.includes('/styleguide') &&
-        !page.includes('/abonnement') &&
         !page.includes('/templates/'),
     }),
   ],
