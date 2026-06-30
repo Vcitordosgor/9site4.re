@@ -10,6 +10,11 @@ import { inclusions } from '../lib/inclusions';
 import { getSeo } from '../lib/seo';
 import { getFaqForPage } from '../data/faq';
 
+// Liens de paiement Stripe (Payment Links hébergés par Stripe).
+// TODO: remplacer par les vrais liens avant mise en ligne.
+const STRIPE_LINK_OFFRE_MENSUELLE = 'https://buy.stripe.com/REMPLACER_MENSUEL';
+const STRIPE_LINK_OFFRE_ANNUELLE = 'https://buy.stripe.com/REMPLACER_ANNUEL';
+
 // Liste résumée pour la grande carte de prix (titres seulement)
 const cardItems = inclusions.map((i) => i.titre);
 
@@ -118,29 +123,59 @@ const onFaitPas = [
                   <Button
                     variant="primary"
                     size="lg"
-                    href="/contact"
+                    href={STRIPE_LINK_OFFRE_MENSUELLE}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     fullWidth
                     data-track-event="cta_pricing_click"
                     data-track-category="conversion"
                     data-track-source="pricing_page"
-                    data-track-target="/contact"
+                    data-track-target="stripe_mensuel"
                     data-track-page-type="pricing"
                   >
-                    Commencer avec 9site4
+                    Choisir
                     <Icon name="arrow-right" size={20} strokeWidth={2.25} />
                   </Button>
+                  <p class="mt-3 text-center text-sm">
+                    <a
+                      href="/contact"
+                      class="text-blanc-casse/70 underline-offset-4 hover:text-bleu hover:underline transition-colors"
+                      data-track-event="cta_pricing_click"
+                      data-track-category="conversion"
+                      data-track-source="pricing_page"
+                      data-track-target="/contact"
+                      data-track-page-type="pricing"
+                    >
+                      Ou réserver une démo
+                    </a>
+                  </p>
                   <p class="mt-3 text-center text-xs text-blanc-casse/55">
                     Réponse sous 24h ouvrées · Fait à La Réunion
                   </p>
                 </div>
 
                 <!-- Toggle annuel discret -->
-                <div class="mt-6 flex items-center justify-between rounded-2xl bg-white/[0.04] ring-1 ring-white/10 px-4 py-3">
+                <div class="mt-6 flex items-center justify-between gap-3 rounded-2xl bg-white/[0.04] ring-1 ring-white/10 px-4 py-3">
                   <div>
                     <p class="font-sora font-semibold text-sm text-blanc-casse">Formule annuelle</p>
                     <p class="text-xs text-blanc-casse/60">{siteConfig.pricing.yearly}/an · ≈ 2 mois offerts</p>
                   </div>
-                  <Badge variant="primary" size="sm">−17%</Badge>
+                  <div class="flex items-center gap-3 shrink-0">
+                    <Badge variant="primary" size="sm">−17%</Badge>
+                    <a
+                      href={STRIPE_LINK_OFFRE_ANNUELLE}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-sm font-semibold text-bleu underline-offset-4 hover:text-blanc-casse hover:underline transition-colors"
+                      data-track-event="cta_pricing_click"
+                      data-track-category="conversion"
+                      data-track-source="pricing_page"
+                      data-track-target="stripe_annuel"
+                      data-track-page-type="pricing"
+                    >
+                      Choisir
+                    </a>
+                  </div>
                 </div>
               </div>
 
