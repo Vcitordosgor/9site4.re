@@ -6,6 +6,7 @@ import {
   type LeadContact,
 } from '../../lib/emailTemplates';
 import { qualifyLead, mapSource, defaultQualification } from '../../lib/leadScoring';
+import { createNotionLead } from '../../lib/notionLead';
 
 export const prerender = false;
 
@@ -146,7 +147,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
     );
   }
 
-  // 2) Best-effort tasks: Discord + auto-reply (never block 200)
+  // 2) Best-effort tasks: Discord + auto-reply + Notion (never block 200)
   const envKeys = env ? Object.keys(env) : [];
   const discordKey = envKeys.find((k) => /discord/i.test(k) && /webhook/i.test(k));
   const discordWebhook =
@@ -195,12 +196,45 @@ export const POST: APIRoute = async ({ request, locals }) => {
     })
     .then(() => undefined);
 
-  const [discordRes, autoReplyRes] = await Promise.allSettled([discordTask, autoReplyTask]);
+  // Notion — crée le lead dans le CRM (marque forcée à "9site4")
+  const notionMessage = [
+    besoin ? `Besoin : ${besoin}` : '',
+    secteur ? `Secteur : ${secteur}` : '',
+    preference ? `Préférence contact : ${preference}` : '',
+    message ? `Message : ${message}` : '',
+  ]
+    .filter(Boolean)
+    .join('\n');
+
+  const notionToken =
+    typeof env?.NOTION_TOKEN === 'string' ? (env.NOTION_TOKEN as string) : null;
+  const notionTask = notionToken
+    ? createNotionLead(
+        {
+          nom,
+          email,
+          telephone,
+          entreprise: entreprise || undefined,
+          message: notionMessage || undefined,
+          marque: '9site4',
+        },
+        notionToken
+      )
+    : Promise.resolve();
+
+  const [discordRes, autoReplyRes, notionRes] = await Promise.allSettled([
+    discordTask,
+    autoReplyTask,
+    notionTask,
+  ]);
   if (discordRes.status === 'rejected') {
     console.error('[api/contact] discord failed', String(discordRes.reason));
   }
   if (autoReplyRes.status === 'rejected') {
     console.error('[api/contact] auto-reply failed', String(autoReplyRes.reason));
+  }
+  if (notionRes.status === 'rejected') {
+    console.error('[api/contact] notion failed', String(notionRes.reason));
   }
 
   return new Response(JSON.stringify({ ok: true }), {
