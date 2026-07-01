@@ -489,7 +489,7 @@ const etapes = [
               aria-controls={`panel-${m.id}`}
               id={`tab-${m.id}`}
               tabindex={i === 0 ? 0 : -1}
-              class="group inline-flex items-center gap-2 h-11 px-4 rounded-full text-sm font-medium text-blanc-casse/65 transition-all duration-200 ease-out hover:bg-blanc-casse/[0.08] hover:text-blanc-casse aria-selected:bg-bleu aria-selected:text-white aria-selected:font-semibold cursor-pointer"
+              class="group inline-flex items-center gap-2 h-11 px-4 rounded-full text-sm font-medium text-blanc-casse/65 transition-all duration-200 ease-out hover:bg-blanc-casse/[0.08] hover:text-blanc-casse aria-selected:bg-bleu aria-selected:text-bleu-nuit aria-selected:font-semibold cursor-pointer"
             >
               <Icon name={m.icon} size={16} strokeWidth={2} />
               <span class="md:hidden">{m.shortLabel ?? m.label}</span>
@@ -529,7 +529,7 @@ const etapes = [
             <!-- Connecteur formulaire → téléphone (desktop) -->
             <div class="hidden lg:flex absolute left-[58%] top-1/2 -translate-y-1/2 z-10 items-center gap-1.5" aria-hidden="true">
               <span class="block w-16 h-[2px] bg-bleu"></span>
-              <span class="flex items-center justify-center w-10 h-10 rounded-full bg-bleu text-white shadow-[0_0_24px_rgba(145,166,255,0.6)]">
+              <span class="flex items-center justify-center w-10 h-10 rounded-full bg-bleu text-bleu-nuit shadow-[0_0_24px_rgba(145,166,255,0.6)]">
                 <Icon name="arrow-right" size={18} strokeWidth={2.5} />
               </span>
             </div>
@@ -706,7 +706,7 @@ const etapes = [
                 <button
                   type="submit"
                   form={`demo-form-${m.id}`}
-                  class="mt-5 w-full h-11 rounded-full font-inter font-semibold text-base inline-flex items-center justify-center gap-2 cursor-pointer transition-all duration-200 ease-out hover:-translate-y-0.5 active:translate-y-0 bg-bleu text-white hover:bg-[#7e95ff] shadow-[0_8px_24px_rgba(145,166,255,0.45)]"
+                  class="mt-5 w-full h-11 rounded-full font-inter font-semibold text-base inline-flex items-center justify-center gap-2 cursor-pointer transition-all duration-200 ease-out hover:-translate-y-0.5 active:translate-y-0 bg-bleu text-bleu-nuit hover:bg-bleu-fonce shadow-[0_8px_24px_rgba(145,166,255,0.45)]"
                 >
                   {m.cta}
                   <Icon name="arrow-right" size={18} strokeWidth={2} />
@@ -768,10 +768,10 @@ const etapes = [
                        coin tr-sm comme une notif descendant en push) -->
                   <div class="flex justify-center">
                     <div
-                      class="w-full rounded-2xl rounded-tr-sm bg-blanc-casse ring-1 ring-orange/40 px-3.5 py-3 shadow-sm"
+                      class="w-full rounded-2xl rounded-tr-sm bg-blanc-casse ring-1 ring-bleu/40 px-3.5 py-3 shadow-sm"
                       data-notif-bubble
                     >
-                      <p class="font-roboto-mono text-[9px] uppercase tracking-[0.22em] font-semibold text-orange flex items-center gap-1.5 mb-2">
+                      <p class="font-roboto-mono text-[9px] uppercase tracking-[0.22em] font-semibold text-bleu flex items-center gap-1.5 mb-2">
                         <Icon name="mail" size={11} strokeWidth={2.5} class="shrink-0" />
                         9site4 · Nouveau formulaire
                       </p>
@@ -831,7 +831,7 @@ const etapes = [
       </p>
       <a
         href="/contact"
-        class="group inline-flex shrink-0 items-center justify-center gap-2 h-12 px-6 text-base font-semibold rounded-full bg-bleu text-white hover:bg-[#7e95ff] hover:-translate-y-0.5 shadow-[0_8px_24px_rgba(145,166,255,0.45)] transition-all duration-200 ease-out"
+        class="group inline-flex shrink-0 items-center justify-center gap-2 h-12 px-6 text-base font-semibold rounded-full bg-bleu text-bleu-nuit hover:bg-bleu-fonce hover:-translate-y-0.5 shadow-[0_8px_24px_rgba(145,166,255,0.45)] transition-all duration-200 ease-out"
       >
         Décrire mon besoin
         <Icon name="arrow-right" size={18} strokeWidth={2} class="transition-transform duration-300 group-hover:translate-x-1" />

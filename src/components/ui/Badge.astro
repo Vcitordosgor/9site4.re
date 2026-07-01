@@ -4,13 +4,13 @@
  * rounded-full, fond teinté, texte semibold.
  */
 interface Props {
-  variant?: 'neutral' | 'primary' | 'secondary' | 'accent' | 'outline';
+  variant?: 'primary' | 'outline';
   size?: 'sm' | 'md';
   class?: string;
 }
 
 const {
-  variant = 'neutral',
+  variant = 'primary',
   size = 'sm',
   class: className = '',
 } = Astro.props;
@@ -21,11 +21,8 @@ const sizes = {
 };
 
 const variants = {
-  neutral: 'bg-bleu-nuit/5 text-bleu-nuit/80 ring-1 ring-bleu-nuit/10',
-  primary: 'bg-orange text-white',
-  secondary: 'bg-bleu text-white',
-  accent: 'bg-bleu-nuit text-blanc-casse',
-  outline: 'bg-transparent text-bleu-nuit ring-1 ring-bleu-nuit/30',
+  primary: 'bg-bleu text-bleu-nuit',
+  outline: 'bg-transparent text-blanc-casse ring-1 ring-blanc-casse/30',
 };
 ---
 

@@ -540,7 +540,7 @@ function ResultView(props: {
           Merci. Nous avons reçu votre recommandation personnalisée. Notre équipe revient vers vous rapidement avec une proposition adaptée à votre activité.
         </p>
         <div class="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
-          <a href="/realisations" class="inline-flex items-center justify-center h-11 px-5 text-sm font-semibold rounded-full bg-bleu text-blanc-casse hover:bg-bleu-nuit transition-all">Voir nos réalisations</a>
+          <a href="/realisations" class="inline-flex items-center justify-center h-11 px-5 text-sm font-semibold rounded-full bg-bleu text-bleu-nuit hover:bg-bleu-fonce transition-all">Voir nos réalisations</a>
           <button
             type="button"
             onClick={onRestart}
@@ -733,7 +733,7 @@ function ResultView(props: {
         <div class="pt-2 flex flex-col sm:flex-row gap-3">
           <button
             type="submit" disabled={sending} aria-busy={sending}
-            class="inline-flex items-center justify-center gap-2 h-14 px-6 text-base font-semibold rounded-full bg-bleu text-blanc-casse shadow-card hover:bg-bleu-nuit hover:shadow-card-hover transition-all cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed flex-1"
+            class="inline-flex items-center justify-center gap-2 h-14 px-6 text-base font-semibold rounded-full bg-bleu text-bleu-nuit shadow-card hover:bg-bleu-fonce hover:shadow-card-hover transition-all cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed flex-1"
           >
             {sending ? 'Envoi…' : 'Recevoir ma recommandation'}
           </button>

@@ -17,9 +17,12 @@ export default {
     extend: {
       colors: {
         // Charte 9site4 : noir / blanc / bleu mauve.
-        // (tokens "orange" et "bleu-nuit" conservés par compat mais remappés)
+        // (token "bleu-nuit" conservé par compat mais remappé)
         bleu: '#91A6FF',
-        orange: '#91A6FF',
+        accent: '#91a6ff',
+        'bleu-fonce': '#7E95FF',
+        surface: '#14161F',
+        'surface-deep': '#0A0B12',
         'blanc-casse': '#FEFEFA',
         'bleu-nuit': '#000000',
         // Palette pizzeria — refonte trattoria éditoriale
@@ -481,6 +484,7 @@ export default {
       borderRadius: {
         '2xl': '1rem',
         '3xl': '1.5rem',
+        '4xl': '2rem',
       },
       boxShadow: {
         'card': '0 1px 2px 0 rgb(11 20 55 / 0.04), 0 1px 3px 0 rgb(11 20 55 / 0.06)',

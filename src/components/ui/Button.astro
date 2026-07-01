@@ -5,7 +5,7 @@
  * Conforme skill §2 : touch target ≥44px, cursor-pointer, focus visible.
  */
 interface Props {
-  variant?: 'primary' | 'primary-on-dark' | 'secondary' | 'tertiary';
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'inverse';
   size?: 'sm' | 'md' | 'lg';
   href?: string;
   type?: 'button' | 'submit' | 'reset';
@@ -43,14 +43,15 @@ const tertiarySizes = {
 
 const variants = {
   primary:
-    'bg-bleu text-white shadow-[0_8px_24px_rgba(145,166,255,0.45)] hover:bg-[#7e95ff] hover:-translate-y-0.5 hover:shadow-card-hover active:translate-y-0',
-  // CTA sur fond foncé : même mauve, texte blanc.
-  'primary-on-dark':
-    'bg-bleu text-white shadow-[0_8px_24px_rgba(145,166,255,0.45)] hover:bg-[#7e95ff] hover:-translate-y-0.5 hover:shadow-card-hover active:translate-y-0',
+    'bg-bleu text-bleu-nuit shadow-[0_8px_24px_rgba(145,166,255,0.45)] hover:bg-bleu-fonce hover:-translate-y-0.5 hover:shadow-card-hover active:translate-y-0',
+  // Outline / ghost — distinct du primary.
   secondary:
-    'bg-bleu text-white hover:bg-[#7e95ff] hover:-translate-y-0.5 shadow-[0_8px_24px_rgba(145,166,255,0.45)]',
+    'bg-transparent ring-1 ring-bleu text-bleu hover:bg-bleu/10 hover:-translate-y-0.5 active:translate-y-0',
   tertiary:
-    'bg-transparent text-bleu-nuit hover:text-orange',
+    'bg-transparent text-blanc-casse hover:text-bleu',
+  // Fond clair sur section sombre.
+  inverse:
+    'bg-blanc-casse text-bleu-nuit hover:bg-white hover:-translate-y-0.5 active:translate-y-0',
 };
 
 const classes = [

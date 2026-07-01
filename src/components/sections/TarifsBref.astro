@@ -66,12 +66,12 @@ const inclus = [
       <ul class="lg:col-span-3 grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-4">
         {inclus.map((item) => (
           <li class="group relative flex flex-col rounded-2xl p-5 overflow-hidden transition-all duration-500 ease-out-soft hover:-translate-y-1"
-            style="background: linear-gradient(180deg, #14161F 0%, #0A0B12 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 12px 30px -16px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08);"
+            class="card-dark"
             onmouseover="this.style.boxShadow='0 1px 0 rgba(255,255,255,0.10) inset, 0 18px 40px -16px rgba(0,0,0,0.95), 0 0 0 1.5px #91a6ff, 0 0 24px -8px rgba(145,166,255,0.45)';"
             onmouseout="this.style.boxShadow='0 1px 0 rgba(255,255,255,0.06) inset, 0 12px 30px -16px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08)';"
           >
             <!-- Check coin haut-droit -->
-            <span class="absolute top-3 right-3 flex w-5 h-5 rounded-full bg-bleu/20 group-hover:bg-bleu transition-colors duration-500 text-bleu group-hover:text-white items-center justify-center" aria-hidden="true">
+            <span class="absolute top-3 right-3 flex w-5 h-5 rounded-full bg-bleu/20 group-hover:bg-bleu transition-colors duration-500 text-bleu group-hover:text-bleu-nuit items-center justify-center" aria-hidden="true">
               <Icon name="check" size={11} strokeWidth={3} />
             </span>
 
@@ -91,7 +91,7 @@ const inclus = [
     <div class="scroll-reveal mt-6 grid sm:grid-cols-2 gap-5">
       <!-- Mensuel : card sombre -->
       <div class="group relative flex items-center justify-between gap-4 rounded-2xl p-6 overflow-hidden transition-all duration-500 ease-out-soft hover:-translate-y-0.5"
-        style="background: linear-gradient(180deg, #14161F 0%, #0A0B12 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 12px 30px -16px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08);"
+        class="card-dark"
         onmouseover="this.style.boxShadow='0 1px 0 rgba(255,255,255,0.10) inset, 0 18px 40px -16px rgba(0,0,0,0.95), 0 0 0 1.5px #91a6ff, 0 0 24px -8px rgba(145,166,255,0.40)';"
         onmouseout="this.style.boxShadow='0 1px 0 rgba(255,255,255,0.06) inset, 0 12px 30px -16px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08)';"
       >

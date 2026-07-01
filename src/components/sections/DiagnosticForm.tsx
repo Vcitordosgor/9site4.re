@@ -236,7 +236,7 @@ export default function DiagnosticForm() {
             href={waUrl}
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center justify-center h-11 px-5 text-sm font-semibold rounded-full bg-bleu text-blanc-casse hover:bg-bleu-nuit transition-all duration-200"
+            class="inline-flex items-center justify-center h-11 px-5 text-sm font-semibold rounded-full bg-bleu text-bleu-nuit hover:bg-bleu-fonce transition-all duration-200"
           >
             Rouvrir WhatsApp
           </a>
@@ -424,7 +424,7 @@ export default function DiagnosticForm() {
           </button>
           <button
             type="submit" name="channel" value="email" disabled={sending} aria-busy={sending}
-            class="group relative inline-flex items-center justify-center gap-2 h-14 px-6 text-base font-semibold rounded-full bg-bleu text-blanc-casse shadow-card hover:bg-bleu-nuit hover:shadow-card-hover active:translate-y-px transition-all duration-200 ease-out cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
+            class="group relative inline-flex items-center justify-center gap-2 h-14 px-6 text-base font-semibold rounded-full bg-bleu text-bleu-nuit shadow-card hover:bg-bleu-fonce hover:shadow-card-hover active:translate-y-px transition-all duration-200 ease-out cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
           >
             {sending ? (
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="animate-spin">

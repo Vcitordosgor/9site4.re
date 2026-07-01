@@ -51,7 +51,7 @@ export default function Faq({ items }: Props) {
                 <span
                   class={`flex w-8 h-8 shrink-0 items-center justify-center rounded-full transition-all duration-300 ease-out ${
                     isOpen
-                      ? 'bg-orange text-blanc-casse rotate-45'
+                      ? 'bg-bleu text-bleu-nuit rotate-45'
                       : 'bg-bleu-nuit/5 text-bleu-nuit'
                   }`}
                   aria-hidden="true"

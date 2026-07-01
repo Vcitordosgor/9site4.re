@@ -199,7 +199,7 @@ export default function ContactForm({ categories }: Props) {
         aria-live="polite"
         class="bg-blanc-casse rounded-2xl ring-1 ring-bleu-nuit/10 shadow-card p-8 text-center"
       >
-        <div class="mx-auto flex w-14 h-14 rounded-full bg-orange/15 text-orange items-center justify-center">
+        <div class="mx-auto flex w-14 h-14 rounded-full bg-bleu/15 text-bleu items-center justify-center">
           <svg
             width="28"
             height="28"
@@ -229,7 +229,7 @@ export default function ContactForm({ categories }: Props) {
             href={waUrl}
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center justify-center h-11 px-5 text-sm font-semibold rounded-full bg-bleu text-blanc-casse hover:bg-bleu-nuit transition-all duration-200"
+            class="inline-flex items-center justify-center h-11 px-5 text-sm font-semibold rounded-full bg-bleu text-bleu-nuit hover:bg-bleu-fonce transition-all duration-200"
           >
             Rouvrir WhatsApp
           </a>
@@ -254,7 +254,7 @@ export default function ContactForm({ categories }: Props) {
   // ===== FORMULAIRE =====
   const inputBase =
     'w-full h-12 px-4 text-base font-inter text-bleu-nuit bg-blanc-casse rounded-xl ring-1 transition-all duration-200 ease-out placeholder:text-bleu-nuit/55';
-  const inputOk = 'ring-bleu-nuit/15 focus:ring-2 focus:ring-orange';
+  const inputOk = 'ring-bleu-nuit/15 focus:ring-2 focus:ring-bleu';
   const inputErr = 'ring-2 ring-red-500 focus:ring-red-500';
   const labelBase = 'block text-sm font-semibold text-bleu-nuit mb-2';
   const errClass = 'mt-1.5 text-xs text-red-600';
@@ -287,7 +287,7 @@ export default function ContactForm({ categories }: Props) {
       <div class="grid sm:grid-cols-2 gap-5">
         <div>
           <label for="cf-nom" class={labelBase}>
-            Nom <span class="text-orange" aria-hidden="true">*</span>
+            Nom <span class="text-bleu" aria-hidden="true">*</span>
           </label>
           <input
             id="cf-nom"
@@ -325,7 +325,7 @@ export default function ContactForm({ categories }: Props) {
       {/* Secteur */}
       <div>
         <label for="cf-secteur" class={labelBase}>
-          Secteur d'activité <span class="text-orange" aria-hidden="true">*</span>
+          Secteur d'activité <span class="text-bleu" aria-hidden="true">*</span>
         </label>
         <select
           id="cf-secteur"
@@ -357,7 +357,7 @@ export default function ContactForm({ categories }: Props) {
       <div class="grid sm:grid-cols-2 gap-5">
         <div>
           <label for="cf-tel" class={labelBase}>
-            Téléphone <span class="text-orange" aria-hidden="true">*</span>
+            Téléphone <span class="text-bleu" aria-hidden="true">*</span>
           </label>
           <input
             id="cf-tel"
@@ -384,7 +384,7 @@ export default function ContactForm({ categories }: Props) {
         </div>
         <div>
           <label for="cf-email" class={labelBase}>
-            Email <span class="text-orange" aria-hidden="true">*</span>
+            Email <span class="text-bleu" aria-hidden="true">*</span>
           </label>
           <input
             id="cf-email"
@@ -452,7 +452,7 @@ export default function ContactForm({ categories }: Props) {
             value="email"
             disabled={sending}
             aria-busy={sending}
-            class="group relative inline-flex items-center justify-center gap-2 h-14 px-6 text-base font-semibold rounded-full bg-bleu text-blanc-casse shadow-card hover:bg-bleu-nuit hover:shadow-card-hover active:translate-y-px transition-all duration-200 ease-out cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
+            class="group relative inline-flex items-center justify-center gap-2 h-14 px-6 text-base font-semibold rounded-full bg-bleu text-bleu-nuit shadow-card hover:bg-bleu-fonce hover:shadow-card-hover active:translate-y-px transition-all duration-200 ease-out cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
           >
             {sending ? (
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="animate-spin">
@@ -472,7 +472,7 @@ export default function ContactForm({ categories }: Props) {
           les informations du formulaire — vous pourrez le relire avant l'envoi.
           Vos données restent confidentielles et sont conservées 12 mois maximum.
           {' '}
-          <a href="/mentions-legales#donnees" class="underline underline-offset-2 hover:text-orange">
+          <a href="/mentions-legales#donnees" class="underline underline-offset-2 hover:text-bleu">
             En savoir plus
           </a>.
         </p>

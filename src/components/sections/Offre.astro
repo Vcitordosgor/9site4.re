@@ -12,11 +12,11 @@ import { inclusions as items } from '../../lib/inclusions';
 <section class="relative overflow-hidden px-6 py-14 md:py-20 bg-bleu/[0.06]">
   <div class="pointer-events-none absolute inset-0" aria-hidden="true">
     <div class="absolute top-1/4 -left-24 w-[28rem] h-[28rem] halo-bleu opacity-50"></div>
-    <div class="absolute bottom-0 -right-24 w-[24rem] h-[24rem] halo-orange opacity-40"></div>
+    <div class="absolute bottom-0 -right-24 w-[24rem] h-[24rem] halo-bleu-soft opacity-40"></div>
   </div>
   <div class="relative mx-auto max-w-content">
     <div class="text-center max-w-2xl mx-auto">
-      <p class="scroll-reveal inline-flex items-center px-3 py-1.5 rounded-full bg-orange text-white text-xs font-semibold uppercase tracking-wide">
+      <p class="scroll-reveal inline-flex items-center px-3 py-1.5 rounded-full bg-bleu text-bleu-nuit text-xs font-semibold uppercase tracking-wide">
         Ce qui est inclus
       </p>
       <h2 class="scroll-reveal mt-4 font-sora font-bold text-2xl md:text-4xl text-bleu-nuit text-balance leading-tight">
@@ -39,7 +39,7 @@ import { inclusions as items } from '../../lib/inclusions';
               'flex w-12 h-12 rounded-xl items-center justify-center transition-colors duration-300',
               isBleu
                 ? 'bg-bleu/20 text-bleu-nuit group-hover:bg-bleu-nuit group-hover:text-blanc-casse'
-                : 'bg-orange/15 text-orange group-hover:bg-orange group-hover:text-blanc-casse',
+                : 'bg-bleu/15 text-bleu group-hover:bg-bleu group-hover:text-bleu-nuit',
             ]}>
               <Icon name={item.icon} size={22} strokeWidth={1.75} />
             </span>

@@ -58,7 +58,7 @@ const serviceSchema = {
     <!-- Hero -->
     <section class="relative overflow-hidden px-6 pt-28 pb-16 md:pt-36 md:pb-24">
       <div class="mx-auto max-w-3xl text-center">
-        <p class="hero-rise hero-rise-1 inline-flex flex-wrap items-center justify-center gap-2 px-3 py-1.5 rounded-full bg-bleu text-white text-xs font-semibold uppercase tracking-wide text-center">
+        <p class="hero-rise hero-rise-1 inline-flex flex-wrap items-center justify-center gap-2 px-3 py-1.5 rounded-full bg-bleu text-bleu-nuit text-xs font-semibold uppercase tracking-wide text-center">
           <span class="block w-1.5 h-1.5 rounded-full bg-white/90 animate-pulse"></span>
           Salons de coiffure · Coiffeurs · Barbiers
         </p>
@@ -108,7 +108,7 @@ const serviceSchema = {
             { i: 'calendar-clock', t: 'Gestion continue', d: 'Tarifs, équipe, photos : 9site4 met à jour pour vous.' },
           ].map((item) => (
             <li class="rounded-2xl p-6"
-              style="background: linear-gradient(180deg, #14161F 0%, #0A0B12 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 12px 30px -16px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08);">
+              class="card-dark">
               <span class="flex w-11 h-11 items-center justify-center rounded-xl bg-bleu/15 text-bleu">
                 <Icon name={item.i} size={20} strokeWidth={1.75} />
               </span>
@@ -143,7 +143,7 @@ const serviceSchema = {
             { n: '06', t: 'Infos pratiques', d: "Adresse, horaires, téléphone, WhatsApp, parking, accès." },
           ].map((s) => (
             <li class="rounded-2xl p-6"
-              style="background: linear-gradient(180deg, #14161F 0%, #0A0B12 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 12px 30px -16px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08);">
+              class="card-dark">
               <p class="font-roboto-mono text-bleu text-sm font-semibold tracking-widest">{s.n}</p>
               <p class="mt-2 font-sora font-semibold text-lg text-blanc-casse">{s.t}</p>
               <p class="mt-2 text-sm text-blanc-casse/70 leading-relaxed">{s.d}</p>
@@ -177,7 +177,7 @@ const serviceSchema = {
             { i: 'map-pin', t: 'Contact direct', d: 'Téléphone, WhatsApp, itinéraire — un clic, c\'est lancé.' },
           ].map((m) => (
             <li class="rounded-2xl p-6"
-              style="background: linear-gradient(180deg, #14161F 0%, #0A0B12 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 12px 30px -16px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08);">
+              class="card-dark">
               <span class="flex w-11 h-11 items-center justify-center rounded-xl bg-bleu/15 text-bleu">
                 <Icon name={m.i} size={20} strokeWidth={1.75} />
               </span>
@@ -226,7 +226,7 @@ const serviceSchema = {
         <div class="mt-12 space-y-3">
           {faq.map((item) => (
             <details class="group rounded-2xl p-5 md:p-6"
-              style="background: linear-gradient(180deg, #14161F 0%, #0A0B12 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 12px 30px -16px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08);">
+              class="card-dark">
               <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
                 <span class="font-sora font-semibold text-blanc-casse">{item.q}</span>
                 <span class="shrink-0 text-bleu transition-transform duration-300 group-open:rotate-45">

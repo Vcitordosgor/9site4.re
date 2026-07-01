@@ -37,7 +37,6 @@ const proches = ville.villesProches
   .filter(Boolean) as VilleInfo[];
 
 const secteurs = ville.secteursPertinents.slice(0, 8);
-const cardStyle = 'background: linear-gradient(180deg, #14161F 0%, #0A0B12 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 12px 30px -16px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08);';
 ---
 
 <!-- Section 2 — Contexte local -->
@@ -69,7 +68,7 @@ const cardStyle = 'background: linear-gradient(180deg, #14161F 0%, #0A0B12 100%)
     </div>
     <ul class="scroll-reveal mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
       {raisons.map((item) => (
-        <li class="rounded-2xl p-6" style={cardStyle}>
+        <li class="card-dark rounded-2xl p-6">
           <span class="flex w-11 h-11 items-center justify-center rounded-xl bg-bleu/15 text-bleu">
             <Icon name={item.i} size={20} strokeWidth={1.75} />
           </span>
@@ -96,7 +95,7 @@ const cardStyle = 'background: linear-gradient(180deg, #14161F 0%, #0A0B12 100%)
     <ul class="scroll-reveal mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
       {secteurs.map((slug: SecteurSlug) => (
         <li>
-          <a href={`/site-internet-${slug}-la-reunion`} class="block h-full rounded-2xl p-6 hover:ring-2 hover:ring-bleu/40 transition" style={cardStyle}>
+          <a href={`/site-internet-${slug}-la-reunion`} class="card-dark block h-full rounded-2xl p-6 hover:ring-2 hover:ring-bleu/40 transition">
             <p class="font-sora font-semibold text-blanc-casse">Site internet pour {SECTEURS_LABELS[slug].label.toLowerCase()} à {ville.nom}</p>
             <p class="mt-2 text-sm text-blanc-casse/70 leading-relaxed">{SECTEURS_LABELS[slug].desc}</p>
             <span class="mt-4 inline-flex items-center gap-1 text-sm text-bleu">Voir la page métier <Icon name="arrow-right" size={14} strokeWidth={2.25} /></span>
@@ -121,7 +120,7 @@ const cardStyle = 'background: linear-gradient(180deg, #14161F 0%, #0A0B12 100%)
     </div>
     <ol class="scroll-reveal mt-12 grid md:grid-cols-2 lg:grid-cols-5 gap-5">
       {steps.map((s) => (
-        <li class="rounded-2xl p-6" style={cardStyle}>
+        <li class="card-dark rounded-2xl p-6">
           <p class="font-roboto-mono text-bleu text-sm font-semibold tracking-widest">{s.n}</p>
           <p class="mt-2 font-sora font-semibold text-blanc-casse">{s.t}</p>
           <p class="mt-2 text-sm text-blanc-casse/70 leading-relaxed">{s.d}</p>
@@ -194,7 +193,7 @@ const cardStyle = 'background: linear-gradient(180deg, #14161F 0%, #0A0B12 100%)
     </div>
     <div class="mt-12 space-y-3">
       {faq.map((item) => (
-        <details class="group rounded-2xl p-5 md:p-6" style={cardStyle}>
+        <details class="card-dark group rounded-2xl p-5 md:p-6">
           <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
             <span class="font-sora font-semibold text-blanc-casse">{item.q}</span>
             <span class="shrink-0 text-bleu transition-transform duration-300 group-open:rotate-45">

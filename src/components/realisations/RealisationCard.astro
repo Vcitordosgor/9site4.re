@@ -179,12 +179,12 @@ const moduleColor = moduleColors[realisation.moduleInclus] ?? 'orange';
           <Preview />
         </div>
         <!-- Badge "Réalisation" -->
-        <span class="absolute top-3 left-3 z-10 inline-flex items-center px-2.5 py-1 rounded-full bg-bleu text-white text-[10px] font-bold uppercase tracking-wide shadow-md pointer-events-none">
+        <span class="absolute top-3 left-3 z-10 inline-flex items-center px-2.5 py-1 rounded-full bg-bleu text-bleu-nuit text-[10px] font-bold uppercase tracking-wide shadow-md pointer-events-none">
           Réalisation
         </span>
         <!-- Overlay au hover -->
         <div class="absolute inset-0 flex items-center justify-center bg-bleu-nuit/55 opacity-0 group-hover/preview:opacity-100 transition-opacity duration-300">
-          <span class="inline-flex items-center gap-2 h-11 px-5 rounded-full bg-bleu text-white font-semibold text-sm shadow-[0_0_24px_rgba(145,166,255,0.6)]">
+          <span class="inline-flex items-center gap-2 h-11 px-5 rounded-full bg-bleu text-bleu-nuit font-semibold text-sm shadow-[0_0_24px_rgba(145,166,255,0.6)]">
             Voir la réalisation
             <Icon name="arrow-right" size={16} strokeWidth={2.5} />
           </span>
@@ -225,7 +225,7 @@ const moduleColor = moduleColors[realisation.moduleInclus] ?? 'orange';
       {realisation.previewUrl ? (
         <a
           href={`/realisations/${realisation.slug}`}
-          class="group/cta inline-flex items-center gap-1.5 h-10 px-4 text-sm font-semibold rounded-full bg-bleu text-white hover:bg-[#7e95ff] hover:-translate-y-0.5 shadow-[0_4px_16px_rgba(255,255,255,0.35)] transition-all duration-200"
+          class="group/cta inline-flex items-center gap-1.5 h-10 px-4 text-sm font-semibold rounded-full bg-bleu text-bleu-nuit hover:bg-bleu-fonce hover:-translate-y-0.5 shadow-[0_4px_16px_rgba(255,255,255,0.35)] transition-all duration-200"
           data-track-event="cta_view_realisation_click"
           data-track-category="navigation"
           data-track-label={realisation.slug}

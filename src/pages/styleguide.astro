@@ -23,7 +23,7 @@ const sectorOptions = [
 
 const swatches = [
   { name: 'bleu', hex: '#91A6FF', usage: 'Accents, liens, éléments secondaires', class: 'bg-bleu' },
-  { name: 'orange', hex: '#FF8F00', usage: 'CTA principaux, accents forts', class: 'bg-orange' },
+  { name: 'orange', hex: '#FF8F00', usage: 'CTA principaux, accents forts', class: 'bg-bleu' },
   { name: 'blanc-casse', hex: '#FEFEFA', usage: 'Fond principal des sections claires', class: 'bg-blanc-casse ring-1 ring-bleu-nuit/10' },
   { name: 'bleu-nuit', hex: '#0B1437', usage: 'Texte principal, fonds sombres, footer', class: 'bg-bleu-nuit' },
 ];
@@ -257,15 +257,15 @@ const sections = [
       <h2 class="text-3xl font-sora font-bold text-bleu-nuit">Badges</h2>
       <Card padding="lg" class="mt-8">
         <div class="flex flex-wrap items-center gap-3">
-          <Badge variant="neutral">Neutral</Badge>
+          <Badge variant="outline">Neutral</Badge>
           <Badge variant="primary">Primary</Badge>
-          <Badge variant="secondary">Secondary</Badge>
-          <Badge variant="accent">Accent</Badge>
+          <Badge variant="primary">Secondary</Badge>
+          <Badge variant="outline">Accent</Badge>
           <Badge variant="outline">Outline</Badge>
           <span class="w-px h-6 bg-bleu-nuit/10 mx-2"></span>
-          <Badge variant="neutral" size="md">Restaurant créole</Badge>
+          <Badge variant="outline" size="md">Restaurant créole</Badge>
           <Badge variant="primary" size="md">≈ 2 mois offerts</Badge>
-          <Badge variant="secondary" size="md">Formulaire : Réservation</Badge>
+          <Badge variant="primary" size="md">Formulaire : Réservation</Badge>
         </div>
       </Card>
     </section>
@@ -276,7 +276,7 @@ const sections = [
       <p class="mt-2 text-bleu-nuit/70">Bordure fine, ombre douce, hover optionnel.</p>
       <div class="mt-8 grid md:grid-cols-3 gap-6">
         <Card padding="md">
-          <Badge variant="neutral">Default</Badge>
+          <Badge variant="outline">Default</Badge>
           <h3 class="mt-3 text-xl font-sora font-semibold text-bleu-nuit">Carte simple</h3>
           <p class="mt-2 text-sm text-bleu-nuit/70">Sans hover. Padding md.</p>
         </Card>
@@ -286,7 +286,7 @@ const sections = [
           <p class="mt-2 text-sm text-bleu-nuit/70">Survolez : élévation + scale subtil.</p>
         </Card>
         <Card padding="lg" hover href="#">
-          <Badge variant="secondary">Lien</Badge>
+          <Badge variant="primary">Lien</Badge>
           <h3 class="mt-3 text-xl font-sora font-semibold text-bleu-nuit">Carte cliquable</h3>
           <p class="mt-2 text-sm text-bleu-nuit/70">Rendue en &lt;a&gt; avec href.</p>
         </Card>
@@ -378,9 +378,9 @@ const sections = [
           </div>
         </div>
         <div class="relative h-48 rounded-2xl ring-1 ring-bleu-nuit/10 overflow-hidden bg-blanc-casse">
-          <div class="absolute inset-0 halo-orange" aria-hidden="true"></div>
+          <div class="absolute inset-0 halo-bleu-soft" aria-hidden="true"></div>
           <div class="relative h-full flex items-end p-4">
-            <code class="text-xs bg-bleu-nuit/5 px-2 py-1 rounded">halo-orange</code>
+            <code class="text-xs bg-bleu-nuit/5 px-2 py-1 rounded">halo-bleu-soft</code>
           </div>
         </div>
         <div class="relative h-48 rounded-2xl ring-1 ring-bleu-nuit/10 overflow-hidden bg-blanc-casse">
