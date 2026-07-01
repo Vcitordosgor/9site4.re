@@ -233,7 +233,7 @@ const businessLD = localBusinessSchema(data, 'Restaurant');
 
     <!-- Carte + Commander (1 island Preact qui partage le panier) -->
     <PizzeriaShop
-      client:load
+      client:visible
       info={{ nom: data.info.nom, whatsapp: data.info.whatsapp }}
       menu={data.menu}
       items={data.items}

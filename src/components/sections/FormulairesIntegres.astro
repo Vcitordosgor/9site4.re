@@ -515,9 +515,9 @@ const etapes = [
               <p class="font-roboto-mono text-[10px] uppercase tracking-[0.28em] text-bleu">
                 {m.formKicker}
               </p>
-              <h4 class="mt-3 font-sora font-bold text-xl md:text-2xl text-blanc-casse">
+              <h3 class="mt-3 font-sora font-bold text-xl md:text-2xl text-blanc-casse">
                 {m.formTitle}
-              </h4>
+              </h3>
               <p class="mt-3 text-sm text-blanc-casse/70 leading-relaxed">
                 {m.example}
               </p>
@@ -571,7 +571,7 @@ const etapes = [
                   {m.fields.map((f) => {
                     const fieldId = `${m.id}-${f.name}`;
                     const wrapClass = f.span === 2 ? 'sm:col-span-2' : '';
-                    const inputBase = 'w-full h-10 px-3.5 rounded-lg ring-1 ring-bleu-nuit/12 bg-white text-sm font-medium text-bleu-nuit placeholder:text-bleu-nuit/35 hover:ring-bleu-nuit/25 focus:ring-2 focus:ring-bleu outline-none shadow-sm transition-all duration-200';
+                    const inputBase = 'w-full h-11 px-3.5 rounded-lg ring-1 ring-bleu-nuit/12 bg-white text-sm font-medium text-bleu-nuit placeholder:text-bleu-nuit/35 hover:ring-bleu-nuit/25 focus:ring-2 focus:ring-bleu outline-none shadow-sm transition-all duration-200';
                     return (
                       <div class={wrapClass}>
                         {f.type !== 'checkbox' && (
@@ -611,7 +611,7 @@ const etapes = [
                             </svg>
                             <span class="text-[11px] font-medium text-bleu-nuit/70 leading-tight">Cliquez pour joindre une photo</span>
                             {f.hint && (
-                              <span class="text-[9px] text-bleu-nuit/45 leading-tight">{f.hint}</span>
+                              <span class="text-[10px] text-bleu-nuit/45 leading-tight">{f.hint}</span>
                             )}
                           </label>
                         )}
@@ -661,7 +661,7 @@ const etapes = [
                                   data-field-name={f.name} data-label={o.label}
                                   checked={o.value === f.defaultValue ? true : undefined}
                                   class="peer sr-only" />
-                                <span class="block text-center px-2 py-2.5 rounded-xl text-xs font-medium leading-tight transition-all bg-bleu-nuit/[0.04] text-bleu-nuit/70 ring-1 ring-bleu-nuit/10 peer-checked:bg-bleu-nuit peer-checked:text-blanc-casse peer-checked:ring-bleu-nuit hover:bg-bleu-nuit/[0.08] peer-focus-visible:ring-2 peer-focus-visible:ring-bleu-nuit/40">
+                                <span class="block text-center px-2 py-3 rounded-xl text-xs font-medium leading-tight transition-all bg-bleu-nuit/[0.04] text-bleu-nuit/70 ring-1 ring-bleu-nuit/10 peer-checked:bg-bleu-nuit peer-checked:text-blanc-casse peer-checked:ring-bleu-nuit hover:bg-bleu-nuit/[0.08] peer-focus-visible:ring-2 peer-focus-visible:ring-bleu-nuit/40">
                                   {o.label}
                                 </span>
                               </label>
@@ -677,7 +677,7 @@ const etapes = [
                                   data-field-name={f.name} data-label={o.label}
                                   checked={o.value === f.defaultValue ? true : undefined}
                                   class="peer sr-only" />
-                                <span class="inline-flex items-center h-8 px-3 rounded-full text-xs font-medium transition-all bg-bleu-nuit/[0.06] text-bleu-nuit/70 ring-1 ring-bleu-nuit/10 peer-checked:bg-bleu-nuit peer-checked:text-blanc-casse peer-checked:ring-bleu-nuit hover:bg-bleu-nuit/[0.10] peer-focus-visible:ring-2 peer-focus-visible:ring-bleu-nuit/40">
+                                <span class="inline-flex items-center h-10 px-3 rounded-full text-xs font-medium transition-all bg-bleu-nuit/[0.06] text-bleu-nuit/70 ring-1 ring-bleu-nuit/10 peer-checked:bg-bleu-nuit peer-checked:text-blanc-casse peer-checked:ring-bleu-nuit hover:bg-bleu-nuit/[0.10] peer-focus-visible:ring-2 peer-focus-visible:ring-bleu-nuit/40">
                                   {o.label}
                                 </span>
                               </label>

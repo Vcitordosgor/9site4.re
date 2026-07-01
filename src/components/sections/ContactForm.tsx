@@ -253,7 +253,7 @@ export default function ContactForm({ categories }: Props) {
 
   // ===== FORMULAIRE =====
   const inputBase =
-    'w-full h-12 px-4 text-base font-inter text-bleu-nuit bg-blanc-casse rounded-xl ring-1 transition-all duration-200 ease-out placeholder:text-bleu-nuit/40';
+    'w-full h-12 px-4 text-base font-inter text-bleu-nuit bg-blanc-casse rounded-xl ring-1 transition-all duration-200 ease-out placeholder:text-bleu-nuit/55';
   const inputOk = 'ring-bleu-nuit/15 focus:ring-2 focus:ring-orange';
   const inputErr = 'ring-2 ring-red-500 focus:ring-red-500';
   const labelBase = 'block text-sm font-semibold text-bleu-nuit mb-2';
