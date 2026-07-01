@@ -10,10 +10,17 @@ import { inclusions } from '../lib/inclusions';
 import { getSeo } from '../lib/seo';
 import { getFaqForPage } from '../data/faq';
 
-// Liens de paiement Stripe (Payment Links hébergés par Stripe).
-// TODO: remplacer par les vrais liens avant mise en ligne.
-const STRIPE_LINK_OFFRE_MENSUELLE = 'https://buy.stripe.com/REMPLACER_MENSUEL';
-const STRIPE_LINK_OFFRE_ANNUELLE = 'https://buy.stripe.com/REMPLACER_ANNUEL';
+// Liens de paiement Stripe (Payment Links hébergés par Stripe),
+// centralisés dans src/data/siteConfig.json (pricing.stripe*Url).
+// Garde-fou : tant que les URLs sont des placeholders, les CTA pointent vers /contact.
+const stripeReady = !siteConfig.pricing.stripeMonthlyUrl.includes('REMPLACER');
+const monthlyCtaHref = stripeReady ? siteConfig.pricing.stripeMonthlyUrl : '/contact';
+const yearlyCtaHref = stripeReady ? siteConfig.pricing.stripeYearlyUrl : '/contact';
+const monthlyCtaTarget = stripeReady ? 'stripe_mensuel' : '/contact';
+const yearlyCtaTarget = stripeReady ? 'stripe_annuel' : '/contact';
+const externalAttrs = stripeReady
+  ? { target: '_blank', rel: 'noopener noreferrer' }
+  : {};
 
 // Liste résumée pour la grande carte de prix (titres seulement)
 const cardItems = inclusions.map((i) => i.titre);
@@ -60,7 +67,7 @@ const onFaitPas = [
         </p>
         <span class="hero-rise hero-rise-2 block mx-auto mt-7 h-[3px] w-16 bg-bleu" aria-hidden="true"></span>
         <h1 class="hero-rise hero-rise-2 mt-5 font-sora font-bold text-balance leading-[1.05] text-[clamp(2.5rem,4.5vw+1rem,4.5rem)] tracking-tight text-blanc-casse">
-          Une formule claire
+          Une formule claire{' '}
           <span class="block italic font-medium text-bleu">pour créer et gérer votre site professionnel.</span>
         </h1>
         <p class="hero-rise hero-rise-4 mx-auto mt-7 max-w-2xl text-lg md:text-xl text-blanc-casse/75 leading-relaxed">
@@ -102,7 +109,7 @@ const onFaitPas = [
                   Formule unique
                 </p>
                 <h2 id="prix-titre" class="mt-4 font-sora font-bold text-3xl md:text-4xl text-blanc-casse leading-tight">
-                  Votre présence web professionnelle,
+                  Votre présence web professionnelle,{' '}
                   <span class="block italic font-medium text-bleu">gérée par 9site4.</span>
                 </h2>
 
@@ -113,7 +120,7 @@ const onFaitPas = [
                     data-count-decimals="1"
                     data-count-suffix="€"
                   >{siteConfig.pricing.monthly}</span>
-                  <span class="text-lg text-blanc-casse/60 font-medium">/mois</span>
+                  <span class="text-lg text-blanc-casse/60 font-medium">/mois TTC</span>
                 </div>
                 <p class="mt-3 text-sm text-blanc-casse/60">
                   Soit environ <span class="text-blanc-casse/85 font-medium">{siteConfig.pricing.daily}/jour</span>. Sans engagement.
@@ -123,17 +130,16 @@ const onFaitPas = [
                   <Button
                     variant="primary"
                     size="lg"
-                    href={STRIPE_LINK_OFFRE_MENSUELLE}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href={monthlyCtaHref}
+                    {...externalAttrs}
                     fullWidth
                     data-track-event="cta_pricing_click"
                     data-track-category="conversion"
                     data-track-source="pricing_page"
-                    data-track-target="stripe_mensuel"
+                    data-track-target={monthlyCtaTarget}
                     data-track-page-type="pricing"
                   >
-                    Choisir
+                    Choisir la formule mensuelle
                     <Icon name="arrow-right" size={20} strokeWidth={2.25} />
                   </Button>
                   <p class="mt-3 text-center text-sm">
@@ -150,7 +156,7 @@ const onFaitPas = [
                     </a>
                   </p>
                   <p class="mt-3 text-center text-xs text-blanc-casse/55">
-                    Réponse sous 24h ouvrées · Fait à La Réunion
+                    Sans engagement · Résiliation en un email · Vous restez propriétaire de votre domaine
                   </p>
                 </div>
 
@@ -163,17 +169,16 @@ const onFaitPas = [
                   <div class="flex items-center gap-3 shrink-0">
                     <Badge variant="primary" size="sm">−17%</Badge>
                     <a
-                      href={STRIPE_LINK_OFFRE_ANNUELLE}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      href={yearlyCtaHref}
+                      {...externalAttrs}
                       class="text-sm font-semibold text-bleu underline-offset-4 hover:text-blanc-casse hover:underline transition-colors"
                       data-track-event="cta_pricing_click"
                       data-track-category="conversion"
                       data-track-source="pricing_page"
-                      data-track-target="stripe_annuel"
+                      data-track-target={yearlyCtaTarget}
                       data-track-page-type="pricing"
                     >
-                      Choisir
+                      Choisir la formule annuelle
                     </a>
                   </div>
                 </div>
@@ -249,7 +254,7 @@ const onFaitPas = [
             <span class="w-2 h-2 rounded-full bg-bleu"></span> Détail complet
           </p>
           <h2 id="inclus-titre" class="scroll-reveal mt-6 font-sora font-bold text-3xl md:text-5xl text-blanc-casse text-balance leading-[1.1]">
-            Tout ce dont vous avez besoin,
+            Tout ce dont vous avez besoin,{' '}
             <span class="block italic font-medium text-bleu">dans un seul prix.</span>
           </h2>
           <p class="scroll-reveal mt-6 text-lg text-blanc-casse/65 leading-relaxed">
@@ -300,7 +305,7 @@ const onFaitPas = [
             <span class="w-2 h-2 rounded-full bg-bleu"></span> FAQ tarifs
           </p>
           <h2 id="faq-titre" class="scroll-reveal mt-6 font-sora font-bold text-3xl md:text-5xl text-blanc-casse text-balance leading-[1.1]">
-            Les questions
+            Les questions{' '}
             <span class="italic font-medium text-bleu">qu'on nous pose souvent.</span>
           </h2>
         </div>

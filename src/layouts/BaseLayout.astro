@@ -57,7 +57,10 @@ const schemaOrg = {
       description: siteConfig.baseline,
       url: siteConfig.siteUrl,
       email: siteConfig.contact.email,
-      telephone: `+${siteConfig.contact.whatsapp}`,
+      // Numéro omis tant que le placeholder n'est pas remplacé par le vrai numéro
+      ...(siteConfig.contact.whatsapp !== '262692000000'
+        ? { telephone: `+${siteConfig.contact.whatsapp}` }
+        : {}),
       image: absoluteUrl(seo.ogImage),
       priceRange: '€€',
       knowsLanguage: 'fr',

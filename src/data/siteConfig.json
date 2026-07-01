@@ -20,7 +20,9 @@
     "yearly": "974€",
     "daily": "3,24€",
     "noSetupFee": "Sans frais de création",
-    "highlight": "À partir de 97,4€/mois — Tout inclus"
+    "highlight": "97,4€/mois — Tout inclus, sans engagement",
+    "stripeMonthlyUrl": "https://buy.stripe.com/REMPLACER_MENSUEL",
+    "stripeYearlyUrl": "https://buy.stripe.com/REMPLACER_ANNUEL"
   },
   "delivery": {
     "leadTime": "7 jours"
