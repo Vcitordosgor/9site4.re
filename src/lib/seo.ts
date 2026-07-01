@@ -103,9 +103,9 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
     canonical: '/',
   },
   realisations: {
-    title: `Nos réalisations — Sites professionnels à La Réunion | ${siteConfig.siteName}`,
+    title: `Nos exemples de sites — Démonstrations métier à La Réunion | ${siteConfig.siteName}`,
     description:
-      'Découvrez les réalisations 9site4 : sites professionnels conçus pour les TPE/PME réunionnaises — artisans, restaurants, instituts, gîtes, coachs, professions libérales. Chaque site est adapté au métier et géré dans la durée.',
+      'Découvrez les exemples de sites 9site4 : démonstrations conçues métier par métier pour les TPE/PME réunionnaises — artisans, restaurants, instituts, gîtes, coachs, professions libérales. Votre site sera adapté à votre activité.',
     canonical: '/realisations',
   },
   tarifs: {

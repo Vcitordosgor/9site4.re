@@ -52,18 +52,21 @@ const orderedRealisations = [
     <div class="mx-auto max-w-3xl text-center">
       <p class="hero-rise hero-rise-1 inline-flex flex-wrap items-center justify-center gap-2 px-3 py-1.5 rounded-full bg-bleu text-white text-xs font-semibold uppercase tracking-wide text-center">
         <span class="block w-1.5 h-1.5 rounded-full bg-white/90 animate-pulse"></span>
-        {realisations.length} réalisations
+        {realisations.length} exemples de sites
       </p>
       <span class="hero-rise hero-rise-2 block mx-auto mt-7 h-[3px] w-16 bg-bleu" aria-hidden="true"></span>
       <h1 class="hero-rise hero-rise-2 mt-5 font-sora font-bold text-balance leading-[1.08] text-[clamp(2rem,4vw+1rem,4rem)] tracking-tight text-blanc-casse">
-        Nos réalisations
-        <span class="block italic font-medium text-bleu">pour les pros réunionnais.</span>
+        Des exemples de sites,{' '}
+        <span class="block italic font-medium text-bleu">métier par métier.</span>
       </h1>
       <p class="hero-rise hero-rise-4 mx-auto mt-7 max-w-2xl text-lg md:text-xl text-blanc-casse/80 leading-relaxed">
-        Découvrez une sélection de sites conçus par 9site4 pour les professionnels réunionnais.
+        Découvrez une sélection d'exemples de sites conçus par 9site4 pour les métiers réunionnais.
       </p>
       <p class="hero-rise hero-rise-5 mx-auto mt-5 max-w-2xl text-base text-blanc-casse/65 leading-relaxed">
-        Chaque réalisation illustre notre manière de structurer une activité en ligne. Votre site sera adapté à votre métier, vos contenus et vos objectifs.
+        Chaque exemple illustre notre manière de structurer une activité en ligne. Votre site sera adapté à votre métier, vos contenus et vos objectifs.
+      </p>
+      <p class="hero-rise hero-rise-5 mx-auto mt-4 max-w-2xl text-sm text-blanc-casse/55 leading-relaxed">
+        Sites de démonstration conçus par 9site4 — les noms d'entreprises qui y figurent sont fictifs.
       </p>
     </div>
   </section>
@@ -83,7 +86,7 @@ const orderedRealisations = [
         aria-live="polite"
         aria-atomic="true"
       >
-        {realisations.length} réalisations affichées.
+        {realisations.length} exemples affichés.
       </p>
     </div>
   </section>
@@ -91,7 +94,7 @@ const orderedRealisations = [
   <!-- Grille des 30 cartes (rendu serveur, filtré côté client par display) -->
   <section class="relative px-4 sm:px-6 pb-20 md:pb-28" aria-labelledby="liste-realisations">
     <div class="mx-auto max-w-content">
-      <h2 id="liste-realisations" class="sr-only">Liste des réalisations</h2>
+      <h2 id="liste-realisations" class="sr-only">Liste des exemples de sites</h2>
       <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {orderedRealisations.map((r) => (
           <li class="min-w-0" data-realisation-categorie={r.categorie}>
@@ -109,7 +112,7 @@ const orderedRealisations = [
         <span class="w-2 h-2 rounded-full bg-bleu"></span> Votre métier n'est pas dans la liste ?
       </p>
       <h2 id="pas-trouve-titre" class="scroll-reveal mt-6 font-sora font-bold text-2xl md:text-4xl lg:text-5xl text-blanc-casse text-balance leading-[1.12]">
-        Ces réalisations sont un point de départ.
+        Ces exemples sont un point de départ.{' '}
         <span class="block mt-1 italic font-medium text-bleu">Votre site sera adapté à votre activité.</span>
       </h2>
       <p class="scroll-reveal mx-auto mt-7 max-w-2xl text-lg text-blanc-casse/70 leading-relaxed">
