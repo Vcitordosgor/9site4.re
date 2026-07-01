@@ -69,8 +69,6 @@ export const POST: APIRoute = async ({ request, locals }) => {
   if (!secteur) errors.push('secteur');
   if (!telephone || !PHONE_REGEX.test(telephone)) errors.push('telephone');
   if (!email || !EMAIL_REGEX.test(email)) errors.push('email');
-  if (!besoin) errors.push('besoin');
-  if (!preference) errors.push('preference');
 
   if (errors.length > 0) {
     return new Response(
@@ -169,8 +167,8 @@ export const POST: APIRoute = async ({ request, locals }) => {
                 { name: 'Secteur', value: secteur, inline: true },
                 { name: 'Téléphone', value: telephone, inline: true },
                 { name: 'Email', value: email, inline: true },
-                { name: 'Besoin', value: besoin, inline: true },
-                { name: 'Préférence', value: preference, inline: true },
+                ...(besoin ? [{ name: 'Besoin', value: besoin, inline: true }] : []),
+                ...(preference ? [{ name: 'Préférence', value: preference, inline: true }] : []),
                 ...(message ? [{ name: 'Message', value: message.slice(0, 1024) }] : []),
               ],
               timestamp: new Date().toISOString(),

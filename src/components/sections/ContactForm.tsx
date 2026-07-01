@@ -20,11 +20,6 @@ function buildMessage(data: FormData, categories: Category[]): string {
   const secteurLabel =
     categories.find((c) => c.id === data.secteur)?.nom ??
     (data.secteur === 'autre' ? 'Autre' : data.secteur);
-  const besoinLabel =
-    BESOINS.find((b) => b.value === data.besoin)?.label ?? data.besoin;
-  const prefLabel =
-    PREFERENCES.find((p) => p.value === data.preference)?.label ??
-    data.preference;
   const lines = [
     'Bonjour 9site4, je souhaite être recontacté(e).',
     '',
@@ -34,9 +29,7 @@ function buildMessage(data: FormData, categories: Category[]): string {
   lines.push(
     `Secteur : ${secteurLabel}`,
     `Téléphone : ${data.telephone}`,
-    `Email : ${data.email}`,
-    `Besoin : ${besoinLabel}`,
-    `Préférence de contact : ${prefLabel}`
+    `Email : ${data.email}`
   );
   if (data.message) {
     lines.push('', 'Message :', data.message);
@@ -50,23 +43,8 @@ interface FormData {
   secteur: string;
   telephone: string;
   email: string;
-  besoin: string;
-  preference: string;
   message: string;
 }
-
-const BESOINS = [
-  { value: 'creation', label: 'Création complète' },
-  { value: 'refonte', label: 'Refonte' },
-  { value: 'module', label: 'Recevoir des demandes plus complètes' },
-  { value: 'inconnu', label: 'Je ne sais pas encore' },
-];
-
-const PREFERENCES = [
-  { value: 'telephone', label: 'Téléphone' },
-  { value: 'email', label: 'Email' },
-  { value: 'whatsapp', label: 'WhatsApp' },
-];
 
 // Format français large : +262, 0692, espaces, points, tirets, parenthèses
 const PHONE_REGEX = /^[+]?[\d\s().-]{8,20}$/;
@@ -121,8 +99,6 @@ export default function ContactForm({ categories }: Props) {
       secteur: ((fd.get('secteur') as string) || '').trim(),
       telephone: ((fd.get('telephone') as string) || '').trim(),
       email: ((fd.get('email') as string) || '').trim(),
-      besoin: ((fd.get('besoin') as string) || '').trim(),
-      preference: ((fd.get('preference') as string) || '').trim(),
       message: ((fd.get('message') as string) || '').trim(),
     };
 
@@ -138,10 +114,6 @@ export default function ContactForm({ categories }: Props) {
       errs.email = 'Veuillez indiquer une adresse email.';
     } else if (!EMAIL_REGEX.test(data.email)) {
       errs.email = "L'adresse email semble invalide.";
-    }
-    if (!data.besoin) errs.besoin = 'Veuillez choisir un besoin principal.';
-    if (!data.preference) {
-      errs.preference = 'Veuillez choisir une préférence de contact.';
     }
 
     setErrors(errs);
@@ -433,67 +405,6 @@ export default function ContactForm({ categories }: Props) {
           )}
         </div>
       </div>
-
-      {/* Besoin principal */}
-      <div>
-        <label for="cf-besoin" class={labelBase}>
-          Besoin principal <span class="text-orange" aria-hidden="true">*</span>
-        </label>
-        <select
-          id="cf-besoin"
-          name="besoin"
-          required
-          aria-required="true"
-          aria-invalid={errors.besoin ? 'true' : 'false'}
-          aria-describedby={errors.besoin ? 'cf-besoin-err' : undefined}
-          class={`${inputBase} ${errors.besoin ? inputErr : inputOk} appearance-none bg-no-repeat`}
-          style="background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E&quot;); background-position: right 1rem center; background-size: 16px; padding-right: 2.5rem;"
-          defaultValue=""
-        >
-          <option value="" disabled>Choisir un besoin…</option>
-          {BESOINS.map((b) => (
-            <option value={b.value} key={b.value}>
-              {b.label}
-            </option>
-          ))}
-        </select>
-        {errors.besoin && (
-          <p id="cf-besoin-err" role="alert" class={errClass}>
-            {errors.besoin}
-          </p>
-        )}
-      </div>
-
-      {/* Préférence de contact (radio) */}
-      <fieldset
-        aria-describedby={errors.preference ? 'cf-pref-err' : undefined}
-      >
-        <legend class={labelBase}>
-          Préférence de contact <span class="text-orange" aria-hidden="true">*</span>
-        </legend>
-        <div class="grid sm:grid-cols-3 gap-2">
-          {PREFERENCES.map((p) => (
-            <label
-              key={p.value}
-              class="relative flex items-center justify-center gap-2 h-12 px-4 rounded-xl text-sm font-semibold text-bleu-nuit bg-blanc-casse ring-1 ring-bleu-nuit/15 cursor-pointer transition-all duration-200 hover:ring-bleu-nuit/30 has-[:checked]:bg-bleu-nuit has-[:checked]:text-blanc-casse has-[:checked]:ring-bleu-nuit"
-            >
-              <input
-                type="radio"
-                name="preference"
-                value={p.value}
-                required
-                class="sr-only peer"
-              />
-              <span>{p.label}</span>
-            </label>
-          ))}
-        </div>
-        {errors.preference && (
-          <p id="cf-pref-err" role="alert" class={errClass}>
-            {errors.preference}
-          </p>
-        )}
-      </fieldset>
 
       {/* Message libre */}
       <div>
