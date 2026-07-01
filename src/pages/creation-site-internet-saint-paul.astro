@@ -38,10 +38,10 @@ const raisons = [
 ];
 
 const faq = [
-  { q: `Êtes-vous basés à ${ville.nom} ?`, a: "9site4 accompagne les professionnels de toute La Réunion à distance et en visio. Vous n'avez pas besoin de vous déplacer." },
-  { q: `Travaillez-vous avec des professionnels de ${ville.nom} ?`, a: `Oui. Artisans, commerces, indépendants et services installés à ${ville.nom} (${ville.code}) sont accompagnés comme dans le reste de l'île.` },
-  { q: `Comment se passe le premier échange si je suis à ${ville.nom} ?`, a: 'Un appel ou une visio d\'environ 30 minutes suffit pour cadrer votre besoin. Vous recevez ensuite une proposition écrite claire.' },
-  { q: `Le site fonctionnera-t-il pour mes clients à ${ville.nom} et alentours ?`, a: `Oui. Le site est optimisé pour être trouvé localement (${ville.nom}, ${ville.microRegion}) et fonctionne parfaitement sur mobile.` },
+  { q: "Mon activité à Saint-Paul est saisonnière : un site reste-t-il utile toute l'année ?", a: "Oui, à condition qu'il reste à jour. Gîte, restaurant ou activité de loisirs : le site présente vos disponibilités, vos horaires et vos offres du moment. La gestion continue 9site4 sert exactement à cela — vous signalez le changement, nous l'appliquons." },
+  { q: "Vous occupez-vous des gîtes et locations de Saint-Gilles, la Saline ou l'Hermitage ?", a: "Oui. Les hébergements touristiques de la côte Ouest font partie des activités que nous accompagnons : présentation du logement, calendrier, demande de séjour, photos. Tout Saint-Paul (97460) est couvert, du littoral aux Hauts." },
+  { q: "Comment se passe le premier échange depuis Saint-Paul ?", a: "Par téléphone ou en visio, environ 30 minutes, sans déplacement. Vous recevez ensuite une proposition écrite claire avant tout engagement." },
+  { q: "Une clientèle de passage trouvera-t-elle mon établissement ?", a: "Le site est construit pour les recherches locales et mobiles : informations essentielles visibles immédiatement, itinéraire, contact en un geste. Nous ne garantissons pas de classement Google, mais nous mettons toutes les bonnes pratiques de votre côté." },
 ];
 
 const placeSchema = {
@@ -79,7 +79,7 @@ const faqSchema = {
         </p>
         <span class="hero-rise hero-rise-2 block mx-auto mt-7 h-[3px] w-16 bg-bleu" aria-hidden="true"></span>
         <h1 class="hero-rise hero-rise-2 mt-5 font-sora font-bold text-balance leading-[1.08] text-[clamp(2.25rem,4vw+1rem,4rem)] tracking-tight text-blanc-casse">
-          Création de site internet à {ville.nom}
+          Création de site internet à {ville.nom}{' '}
           <span class="block italic font-medium text-bleu">(La Réunion).</span>
         </h1>
         <p class="hero-rise hero-rise-4 mx-auto mt-7 max-w-2xl text-lg md:text-xl text-blanc-casse/80 leading-relaxed">
@@ -97,10 +97,26 @@ const faqSchema = {
 
     <VillePageSections ville={ville} variantSeed={1} raisons={raisons} faq={faq} />
 
+    <section class="relative px-6 py-16 md:py-24" aria-labelledby="web-local-titre">
+      <div class="mx-auto max-w-3xl">
+        <h2 id="web-local-titre" class="scroll-reveal font-sora font-bold text-2xl md:text-4xl text-blanc-casse text-balance leading-[1.12]">
+          Le web à {ville.nom}{' '}
+          <span class="block italic font-medium text-bleu">vu de la côte Ouest.</span>
+        </h2>
+        <div class="scroll-reveal mt-8 space-y-5 text-blanc-casse/75 leading-relaxed">
+        <p>Saint-Paul est la plus grande commune de l'île en superficie et compte environ 105 000 habitants, répartis de Saint-Gilles à la Possession, du littoral aux Hauts. Son économie est portée par le tourisme balnéaire, les hébergements, la restauration, les commerces de proximité et un fort tissu d'artisans installés dans les quartiers résidentiels.</p>
+        <p>Cette dominante touristique change la donne pour votre site : une partie de vos visiteurs ne connaît ni votre enseigne ni votre quartier. Un vacancier qui cherche une table à Saint-Gilles, un gîte à la Saline ou un soin en institut décide en quelques minutes, sur son téléphone. Photos honnêtes, tarifs affichés, moyen de contact immédiat : c'est ce qui transforme une recherche en réservation.</p>
+        <p>La saisonnalité compte aussi. Les hébergements et les activités de loisirs de l'Ouest alternent haute et basse saison : le site doit rester juste toute l'année — calendrier de disponibilités, horaires ajustés, offres mises à jour. C'est précisément le rôle de la gestion continue 9site4 : vous signalez le changement, nous l'appliquons.</p>
+        <p>Enfin, Saint-Paul ne vit pas que du tourisme. Artisans du bâtiment, commerces de bourg, indépendants et TPE des quartiers résidentiels ont besoin de la même chose que partout ailleurs : être trouvés par les habitants de la commune et des villes voisines, de Saint-Denis à Saint-Louis, avec un site sérieux qui présente prestations, zone d'intervention et prise de contact simple.</p>
+        <p>Restauration, hébergement, instituts, artisans, commerces : les secteurs porteurs de Saint-Paul correspondent aux formats de sites que 9site4 pratique au quotidien. Chaque site embarque le module utile à votre activité — calendrier de séjour, réservation de table, prise de rendez-vous ou demande de devis — dans un abonnement unique qui couvre la création, l'hébergement et les modifications, sans facturation à l'acte. Si vous exercez sur la côte Ouest, le premier échange — gratuit et sans engagement — suffit à cadrer ce qu'un site peut réellement changer pour votre activité.</p>
+        </div>
+      </div>
+    </section>
+
     <section class="relative px-6 py-16 md:py-24">
       <div class="mx-auto max-w-3xl text-center">
         <h2 class="scroll-reveal font-sora font-bold text-2xl md:text-4xl text-blanc-casse text-balance leading-[1.12]">
-          Vous êtes professionnel à {ville.nom} ?
+          Vous êtes professionnel à {ville.nom} ?{' '}
           <span class="block italic font-medium text-bleu">Présentez votre activité à 9site4.</span>
         </h2>
         <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">

@@ -117,7 +117,7 @@ export const faqItems: FaqItem[] = [
     category: 'objections',
     question: "Je peux faire un site gratuit avec Wix, pourquoi payer ?",
     answer:
-      "Vous pouvez, c'est vrai. La question n'est pas 'gratuit ou payant', c'est 'combien de temps allez-vous y passer et est-ce que le résultat va vraiment ressembler à votre métier'. Wix gratuit affiche de la pub, le nom de domaine est en wix.com/votre-nom, et vous gérez tout vous-même : structure, textes, SEO, mises à jour, sécurité. Avec 9site4, vous n'écrivez pas une ligne de code, vous n'avez pas à apprendre un outil, et le site a l'air d'un vrai site pro. Si vous avez le temps et l'envie d'apprendre, Wix peut suffire. Si vous voulez vous concentrer sur votre métier, 9site4 a plus de sens.",
+      "Vous pouvez, c'est vrai. La question n'est pas « gratuit ou payant », c'est « combien de temps allez-vous y passer et est-ce que le résultat va vraiment ressembler à votre métier ». Wix gratuit affiche de la pub, le nom de domaine est en wix.com/votre-nom, et vous gérez tout vous-même : structure, textes, SEO, mises à jour, sécurité. Avec 9site4, vous n'écrivez pas une ligne de code, vous n'avez pas à apprendre un outil, et le site a l'air d'un vrai site pro. Si vous avez le temps et l'envie d'apprendre, Wix peut suffire. Si vous voulez vous concentrer sur votre métier, 9site4 a plus de sens.",
     showOnPages: ['tarifs'],
   },
   {
@@ -155,7 +155,7 @@ export const faqItems: FaqItem[] = [
     category: 'objections',
     question: "Je ne comprends rien au web, ça va être trop compliqué pour moi.",
     answer:
-      "Pas besoin de comprendre le web. Pas de panneau d'administration à apprendre, pas de mot de passe à retenir, pas d'outil à installer. Vous parlez français, nous comprenons votre métier. Pour modifier une horaire, un tarif, une photo : vous envoyez un message WhatsApp ou un mail, nous le faisons. C'est volontairement simple.",
+      "Pas besoin de comprendre le web. Pas de panneau d'administration à apprendre, pas de mot de passe à retenir, pas d'outil à installer. Vous parlez français, nous comprenons votre métier. Pour modifier un horaire, un tarif, une photo : vous envoyez un message WhatsApp ou un mail, nous le faisons. C'est volontairement simple.",
   },
   {
     id: 'obj-site-mappartient',

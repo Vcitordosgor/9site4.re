@@ -35,7 +35,7 @@
   "legal": {
     "_todo": "À COMPLÉTER PAR L'HUMAIN avant lancement : raison sociale / éditeur, SIRET, adresse, directeur de publication, hébergeur exact (OVH vs Cloudflare). Ne pas inventer.",
     "editor": "[À compléter]",
-    "host": "OVH",
+    "host": "Cloudflare Pages",
     "publisher": "[À compléter]"
   }
 }

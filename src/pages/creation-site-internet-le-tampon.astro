@@ -38,10 +38,10 @@ const raisons = [
 ];
 
 const faq = [
-  { q: `Êtes-vous basés à ${ville.nom} ?`, a: "9site4 accompagne les professionnels de toute La Réunion à distance et en visio. Vous n'avez pas besoin de vous déplacer." },
-  { q: `Travaillez-vous avec des professionnels de ${ville.nom} ?`, a: `Oui. Artisans, commerces, indépendants et services installés à ${ville.nom} (${ville.code}) sont accompagnés comme dans le reste de l'île.` },
-  { q: `Comment se passe le premier échange si je suis à ${ville.nom} ?`, a: 'Un appel ou une visio d\'environ 30 minutes suffit pour cadrer votre besoin. Vous recevez ensuite une proposition écrite claire.' },
-  { q: `Le site fonctionnera-t-il pour mes clients à ${ville.nom} et alentours ?`, a: `Oui. Le site est optimisé pour être trouvé localement (${ville.nom}, ${ville.microRegion}) et fonctionne parfaitement sur mobile.` },
+  { q: "Je suis dans les Hauts du Tampon : peut-on vraiment tout faire à distance ?", a: "Oui, et c'est même le fonctionnement normal de 9site4 : premier échange par téléphone ou visio (environ 30 minutes), puis e-mail ou WhatsApp pour les contenus et les validations. Aucun déplacement n'est demandé, ni pour vous ni pour nous." },
+  { q: "Je suis artisan : à quoi me servira concrètement un site ?", a: "À montrer vos chantiers en photos, préciser votre zone d'intervention (Le Tampon et le bassin sud) et recevoir des demandes de devis déjà qualifiées, plutôt que des appels flous à rappeler entre deux chantiers." },
+  { q: "Mon activité couvre plusieurs communes du Sud : comment le site le gère-t-il ?", a: "Le site décrit votre zone réelle d'intervention — Le Tampon, Saint-Pierre, Saint-Louis, Saint-Joseph si c'est votre cas — pour que les bonnes demandes vous trouvent, d'où qu'elles viennent dans le bassin sud." },
+  { q: "Que se passe-t-il si mes tarifs ou prestations changent ?", a: "Vous nous envoyez la modification, nous la mettons en ligne : c'est inclus dans la gestion continue, sans facturation à l'acte." },
 ];
 
 const placeSchema = {
@@ -79,7 +79,7 @@ const faqSchema = {
         </p>
         <span class="hero-rise hero-rise-2 block mx-auto mt-7 h-[3px] w-16 bg-bleu" aria-hidden="true"></span>
         <h1 class="hero-rise hero-rise-2 mt-5 font-sora font-bold text-balance leading-[1.08] text-[clamp(2.25rem,4vw+1rem,4rem)] tracking-tight text-blanc-casse">
-          Création de site internet à {ville.nom}
+          Création de site internet à {ville.nom}{' '}
           <span class="block italic font-medium text-bleu">(La Réunion).</span>
         </h1>
         <p class="hero-rise hero-rise-4 mx-auto mt-7 max-w-2xl text-lg md:text-xl text-blanc-casse/80 leading-relaxed">
@@ -97,10 +97,26 @@ const faqSchema = {
 
     <VillePageSections ville={ville} variantSeed={3} raisons={raisons} faq={faq} />
 
+    <section class="relative px-6 py-16 md:py-24" aria-labelledby="web-local-titre">
+      <div class="mx-auto max-w-3xl">
+        <h2 id="web-local-titre" class="scroll-reveal font-sora font-bold text-2xl md:text-4xl text-blanc-casse text-balance leading-[1.12]">
+          Le web à {ville.nom}{' '}
+          <span class="block italic font-medium text-bleu">vu des Hauts du Sud.</span>
+        </h2>
+        <div class="scroll-reveal mt-8 space-y-5 text-blanc-casse/75 leading-relaxed">
+        <p>Le Tampon s'étire des plaines aux Hauts et compte environ 80 000 habitants répartis sur de nombreux quartiers : Trois-Mares, la Plaine des Cafres, les centres-bourgs. Cette géographie étendue a une conséquence directe pour les professionnels : la clientèle ne passe pas forcément devant votre local, elle vous cherche en ligne.</p>
+        <p>L'économie tamponnaise est portée par l'agriculture, l'élevage, un tissu dense d'artisans du bâtiment et de services à la personne, ainsi que des commerces de proximité. Pour un artisan, le site remplit un rôle précis : montrer les chantiers réalisés, délimiter la zone d'intervention, recevoir des demandes de devis qualifiées — plutôt que des appels flous à rappeler entre deux chantiers.</p>
+        <p>La distance n'est pas un obstacle pour créer le site lui-même. 9site4 travaille à distance et en visio avec tous les professionnels de l'île : que vous soyez à Trois-Mares ou à la Plaine des Cafres, le premier échange se fait par téléphone, et le reste suit par e-mail ou WhatsApp, à votre rythme.</p>
+        <p>Un site pour un professionnel du Tampon (97430) est aussi pensé pour le bassin sud dans son ensemble : beaucoup d'artisans et de services interviennent jusqu'à Saint-Pierre, Saint-Louis ou Saint-Joseph. Le site précise cette zone, présente vos prestations sans jargon et reste maintenu dans la durée, mises à jour comprises.</p>
+        <p>Au-delà de l'artisanat, la commune compte de nombreux commerces de bourg, restaurants, praticiens du bien-être et services à la personne. Pour chacun de ces métiers, 9site4 propose un format de site éprouvé, avec le module adapté — devis, rendez-vous, contact — et une formule unique : création incluse dans l'abonnement, hébergement, sécurité et mises à jour pris en charge dans la durée. Le premier échange, gratuit et sans déplacement, permet de vérifier ensemble si ce format correspond à votre activité tamponnaise avant tout engagement.</p>
+        </div>
+      </div>
+    </section>
+
     <section class="relative px-6 py-16 md:py-24">
       <div class="mx-auto max-w-3xl text-center">
         <h2 class="scroll-reveal font-sora font-bold text-2xl md:text-4xl text-blanc-casse text-balance leading-[1.12]">
-          Vous êtes professionnel à {ville.nom} ?
+          Vous êtes professionnel à {ville.nom} ?{' '}
           <span class="block italic font-medium text-bleu">Présentez votre activité à 9site4.</span>
         </h2>
         <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">

@@ -1,7 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /404
-Disallow: /styleguide
 
 # /templates/* sont volontairement laissés crawlables :
 # ils portent un <meta name="robots" content="noindex"> dans le HTML.

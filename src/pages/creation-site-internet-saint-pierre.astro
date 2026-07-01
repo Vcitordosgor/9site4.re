@@ -38,10 +38,10 @@ const raisons = [
 ];
 
 const faq = [
-  { q: `Êtes-vous basés à ${ville.nom} ?`, a: "9site4 accompagne les professionnels de toute La Réunion à distance et en visio. Vous n'avez pas besoin de vous déplacer." },
-  { q: `Travaillez-vous avec des professionnels de ${ville.nom} ?`, a: `Oui. Artisans, commerces, indépendants et services installés à ${ville.nom} (${ville.code}) sont accompagnés comme dans le reste de l'île.` },
-  { q: `Comment se passe le premier échange si je suis à ${ville.nom} ?`, a: 'Un appel ou une visio d\'environ 30 minutes suffit pour cadrer votre besoin. Vous recevez ensuite une proposition écrite claire.' },
-  { q: `Le site fonctionnera-t-il pour mes clients à ${ville.nom} et alentours ?`, a: `Oui. Le site est optimisé pour être trouvé localement (${ville.nom}, ${ville.microRegion}) et fonctionne parfaitement sur mobile.` },
+  { q: "Je tiens un commerce ou un restaurant à Saint-Pierre : que doit montrer mon site en priorité ?", a: "L'essentiel d'abord : horaires exacts, adresse, carte ou prestations, moyen de contact immédiat (téléphone, WhatsApp). C'est ce que vérifie un client du bassin sud avant de se déplacer, presque toujours depuis son mobile." },
+  { q: "Ma clientèle vient de tout le Sud : le site le reflétera-t-il ?", a: "Oui. Saint-Pierre draine des clients du Tampon, de Saint-Louis ou de Saint-Joseph : le site présente votre zone de chalandise réelle et reste facile à trouver depuis tout le bassin sud." },
+  { q: "Faut-il venir dans un bureau pour lancer le projet ?", a: "Non. Un appel ou une visio d'environ 30 minutes suffit pour cadrer votre besoin, suivi d'une proposition écrite. Aucun déplacement n'est nécessaire, à Saint-Pierre comme ailleurs." },
+  { q: "Puis-je faire évoluer ma carte ou mes prestations après la mise en ligne ?", a: "Oui, c'est inclus dans la gestion continue : vous envoyez la modification, nous la mettons en ligne. Le site n'est pas figé au jour de la livraison." },
 ];
 
 const placeSchema = {
@@ -79,7 +79,7 @@ const faqSchema = {
         </p>
         <span class="hero-rise hero-rise-2 block mx-auto mt-7 h-[3px] w-16 bg-bleu" aria-hidden="true"></span>
         <h1 class="hero-rise hero-rise-2 mt-5 font-sora font-bold text-balance leading-[1.08] text-[clamp(2.25rem,4vw+1rem,4rem)] tracking-tight text-blanc-casse">
-          Création de site internet à {ville.nom}
+          Création de site internet à {ville.nom}{' '}
           <span class="block italic font-medium text-bleu">(La Réunion).</span>
         </h1>
         <p class="hero-rise hero-rise-4 mx-auto mt-7 max-w-2xl text-lg md:text-xl text-blanc-casse/80 leading-relaxed">
@@ -97,10 +97,26 @@ const faqSchema = {
 
     <VillePageSections ville={ville} variantSeed={2} raisons={raisons} faq={faq} />
 
+    <section class="relative px-6 py-16 md:py-24" aria-labelledby="web-local-titre">
+      <div class="mx-auto max-w-3xl">
+        <h2 id="web-local-titre" class="scroll-reveal font-sora font-bold text-2xl md:text-4xl text-blanc-casse text-balance leading-[1.12]">
+          Le web à {ville.nom}{' '}
+          <span class="block italic font-medium text-bleu">vu de la capitale du Sud.</span>
+        </h2>
+        <div class="scroll-reveal mt-8 space-y-5 text-blanc-casse/75 leading-relaxed">
+        <p>Sous-préfecture d'environ 85 000 habitants, Saint-Pierre joue le rôle de capitale économique du Sud. Centre-ville commerçant, front de mer animé, marché forain, restauration dense et services aux professionnels : l'activité y draine une clientèle qui dépasse largement la commune, du Tampon à Saint-Joseph en passant par Saint-Louis.</p>
+        <p>Pour un commerce ou un restaurant saint-pierrois, cette densité est une chance et une contrainte : le client a le choix. Avant de se déplacer, il vérifie en ligne les horaires, la carte, les avis, l'adresse exacte. Un site absent ou obsolète, et c'est l'établissement d'à côté qui récupère la visite. Un site précis et à jour, et vous partez avec un coup d'avance.</p>
+        <p>Les professions libérales et les services aux entreprises du bassin sud ont un enjeu différent : inspirer confiance avant le premier rendez-vous. Une présentation claire du cabinet, des domaines d'intervention et un moyen de prise de contact simple font souvent la différence entre deux structures équivalentes.</p>
+        <p>9site4 conçoit pour les professionnels de Saint-Pierre (97410) des sites structurés autour de leur métier : carte et réservation pour la restauration, prestations et devis pour les services, rendez-vous pour les soins. Le tout géré dans la durée, avec des mises à jour incluses, pour que le site reste le reflet exact de votre activité.</p>
+        <p>Saint-Pierre est aussi une ville de rendez-vous : coiffeurs, instituts, praticiens du bien-être, coachs et consultants y sont nombreux. Pour ces activités, le site 9site4 intègre un module de prise de rendez-vous ou de premier contact adapté, en plus de la présentation de vos prestations. La formule reste la même pour tous : abonnement unique, création incluse, gestion continue et mises à jour comprises. Un doute sur l'intérêt d'un site pour votre activité saint-pierroise ? Le premier échange est gratuit et permet d'y répondre franchement, sans discours commercial.</p>
+        </div>
+      </div>
+    </section>
+
     <section class="relative px-6 py-16 md:py-24">
       <div class="mx-auto max-w-3xl text-center">
         <h2 class="scroll-reveal font-sora font-bold text-2xl md:text-4xl text-blanc-casse text-balance leading-[1.12]">
-          Vous êtes professionnel à {ville.nom} ?
+          Vous êtes professionnel à {ville.nom} ?{' '}
           <span class="block italic font-medium text-bleu">Présentez votre activité à 9site4.</span>
         </h2>
         <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">

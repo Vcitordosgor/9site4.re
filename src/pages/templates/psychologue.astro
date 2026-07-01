@@ -17,6 +17,7 @@ import aubryData from '../../data/templates/aubry.json';
 
 import AubryHeader from '../../components/templates/psychologue/AubryHeader.astro';
 import HeroLivre from '../../components/templates/psychologue/HeroLivre.astro';
+import Publics from '../../components/templates/psychologue/Publics.astro';
 import Approche from '../../components/templates/psychologue/Approche.astro';
 import Engagements from '../../components/templates/psychologue/Engagements.astro';
 import PhotoCabinet from '../../components/templates/psychologue/PhotoCabinet.astro';
@@ -40,6 +41,7 @@ const businessLD = localBusinessSchema(aubryData, 'MedicalBusiness');
 
   <main id="top" class="bg-aubry-perle text-aubry-encre font-albert">
     <HeroLivre />
+    <Publics />
     <Approche />
     <Engagements />
     <PhotoCabinet />

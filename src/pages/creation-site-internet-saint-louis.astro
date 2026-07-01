@@ -38,10 +38,10 @@ const raisons = [
 ];
 
 const faq = [
-  { q: `Êtes-vous basés à ${ville.nom} ?`, a: "9site4 accompagne les professionnels de toute La Réunion à distance et en visio. Vous n'avez pas besoin de vous déplacer." },
-  { q: `Travaillez-vous avec des professionnels de ${ville.nom} ?`, a: `Oui. Artisans, commerces, indépendants et services installés à ${ville.nom} (${ville.code}) sont accompagnés comme dans le reste de l'île.` },
-  { q: `Comment se passe le premier échange si je suis à ${ville.nom} ?`, a: 'Un appel ou une visio d\'environ 30 minutes suffit pour cadrer votre besoin. Vous recevez ensuite une proposition écrite claire.' },
-  { q: `Le site fonctionnera-t-il pour mes clients à ${ville.nom} et alentours ?`, a: `Oui. Le site est optimisé pour être trouvé localement (${ville.nom}, ${ville.microRegion}) et fonctionne parfaitement sur mobile.` },
+  { q: "J'interviens de Saint-Louis vers Saint-Pierre et l'Ouest : le site couvrira-t-il tout ça ?", a: "Oui. La position de carrefour de Saint-Louis est justement un atout : le site décrit précisément votre zone d'intervention, du bassin sud à la côte Ouest, pour que les demandes viennent de toute votre zone réelle." },
+  { q: "Quels contenus dois-je fournir pour démarrer ?", a: "Vos textes de base (activité, prestations, tarifs si vous les affichez), quelques photos et vos informations pratiques. On vous guide sur le reste : c'est cadré lors du premier échange téléphonique." },
+  { q: "Le rendez-vous de lancement peut-il se faire sans déplacement ?", a: "Oui, tout se fait par téléphone ou en visio, environ 30 minutes. Vous recevez ensuite une proposition écrite claire avant de vous engager." },
+  { q: "Une fois le site en ligne, les modifications sont-elles payantes ?", a: "Non, elles sont comprises dans la gestion continue : changement d'horaires, de tarifs, nouvelle prestation — vous nous l'envoyez, nous le mettons en ligne." },
 ];
 
 const placeSchema = {
@@ -79,7 +79,7 @@ const faqSchema = {
         </p>
         <span class="hero-rise hero-rise-2 block mx-auto mt-7 h-[3px] w-16 bg-bleu" aria-hidden="true"></span>
         <h1 class="hero-rise hero-rise-2 mt-5 font-sora font-bold text-balance leading-[1.08] text-[clamp(2.25rem,4vw+1rem,4rem)] tracking-tight text-blanc-casse">
-          Création de site internet à {ville.nom}
+          Création de site internet à {ville.nom}{' '}
           <span class="block italic font-medium text-bleu">(La Réunion).</span>
         </h1>
         <p class="hero-rise hero-rise-4 mx-auto mt-7 max-w-2xl text-lg md:text-xl text-blanc-casse/80 leading-relaxed">
@@ -97,10 +97,26 @@ const faqSchema = {
 
     <VillePageSections ville={ville} variantSeed={5} raisons={raisons} faq={faq} />
 
+    <section class="relative px-6 py-16 md:py-24" aria-labelledby="web-local-titre">
+      <div class="mx-auto max-w-3xl">
+        <h2 id="web-local-titre" class="scroll-reveal font-sora font-bold text-2xl md:text-4xl text-blanc-casse text-balance leading-[1.12]">
+          Le web à {ville.nom}{' '}
+          <span class="block italic font-medium text-bleu">vu du carrefour Sud-Ouest.</span>
+        </h2>
+        <div class="scroll-reveal mt-8 space-y-5 text-blanc-casse/75 leading-relaxed">
+        <p>Avec environ 53 000 habitants, Saint-Louis articule le Sud et l'Ouest de l'île. Son économie repose sur l'agriculture — la canne et la sucrerie du Gol en sont les symboles —, les commerces, les services et un réseau d'artisans actifs sur la commune et les bassins voisins.</p>
+        <p>Cette position de carrefour est un atout commercial : la clientèle potentielle d'un professionnel saint-louisien ne s'arrête pas aux limites de la commune. Artisans et services interviennent couramment vers Saint-Pierre, Le Tampon ou la côte Ouest. Encore faut-il que cette zone d'intervention soit visible : c'est le rôle du site, qui la décrit noir sur blanc.</p>
+        <p>Pour les commerces et la restauration du centre-ville et de la Rivière, l'enjeu est plus simple mais tout aussi décisif : des horaires justes, une adresse claire, un moyen de contact immédiat. La majorité des recherches locales se font sur mobile, souvent juste avant la visite — le site doit y répondre en quelques secondes.</p>
+        <p>9site4 construit pour les professionnels de Saint-Louis (97450) des sites adaptés à leur métier : devis pour les artisans, présentation et contact pour les commerces, rendez-vous pour les services. La création est incluse dans l'abonnement, et la gestion continue garantit que le site reste exact dans le temps, sans surcoût à chaque modification.</p>
+        <p>La commune compte aussi des professions libérales, des salons, des praticiens du bien-être et des restaurants pour lesquels le format 9site4 s'applique de la même façon : un site structuré autour du métier, un module adapté — rendez-vous, réservation ou contact —, et un interlocuteur qui suit le site dans la durée plutôt qu'un prestataire qui disparaît après la livraison. Pour savoir si ce format correspond à votre activité à Saint-Louis, le premier échange téléphonique est gratuit et n'engage à rien.</p>
+        </div>
+      </div>
+    </section>
+
     <section class="relative px-6 py-16 md:py-24">
       <div class="mx-auto max-w-3xl text-center">
         <h2 class="scroll-reveal font-sora font-bold text-2xl md:text-4xl text-blanc-casse text-balance leading-[1.12]">
-          Vous êtes professionnel à {ville.nom} ?
+          Vous êtes professionnel à {ville.nom} ?{' '}
           <span class="block italic font-medium text-bleu">Présentez votre activité à 9site4.</span>
         </h2>
         <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">

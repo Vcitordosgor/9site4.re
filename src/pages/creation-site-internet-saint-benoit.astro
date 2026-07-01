@@ -38,10 +38,10 @@ const raisons = [
 ];
 
 const faq = [
-  { q: `Êtes-vous basés à ${ville.nom} ?`, a: "9site4 accompagne les professionnels de toute La Réunion à distance et en visio. Vous n'avez pas besoin de vous déplacer." },
-  { q: `Travaillez-vous avec des professionnels de ${ville.nom} ?`, a: `Oui. Artisans, commerces, indépendants et services installés à ${ville.nom} (${ville.code}) sont accompagnés comme dans le reste de l'île.` },
-  { q: `Comment se passe le premier échange si je suis à ${ville.nom} ?`, a: 'Un appel ou une visio d\'environ 30 minutes suffit pour cadrer votre besoin. Vous recevez ensuite une proposition écrite claire.' },
-  { q: `Le site fonctionnera-t-il pour mes clients à ${ville.nom} et alentours ?`, a: `Oui. Le site est optimisé pour être trouvé localement (${ville.nom}, ${ville.microRegion}) et fonctionne parfaitement sur mobile.` },
+  { q: "Mon gîte ou mon activité nature dépend des visiteurs de passage : comment le site les atteint-il ?", a: "Les visiteurs de la côte est cherchent hébergement et activités sur mobile, souvent au dernier moment. Le site présente l'essentiel immédiatement — photos, tarifs, disponibilités, contact — pour transformer cette recherche en demande de séjour ou de réservation." },
+  { q: "La fréquentation touristique varie selon les saisons : le site suivra-t-il ?", a: "Oui. Disponibilités, tarifs saisonniers, périodes de fermeture : les mises à jour sont incluses dans la gestion continue. Vous signalez le changement, nous l'appliquons." },
+  { q: "Peut-on tout organiser à distance depuis Saint-Benoît ?", a: "Oui, c'est notre fonctionnement standard : un appel ou une visio d'environ 30 minutes pour cadrer le projet, puis des échanges par e-mail ou WhatsApp. Aucun déplacement n'est nécessaire." },
+  { q: "Je ne suis pas dans le tourisme : le site a-t-il autant d'intérêt pour moi ?", a: "Oui. Artisan, commerce ou profession libérale à Saint-Benoît (97470) : l'offre en ligne y est encore clairsemée, et un site clair et à jour suffit souvent à se distinguer nettement dans sa catégorie." },
 ];
 
 const placeSchema = {
@@ -79,7 +79,7 @@ const faqSchema = {
         </p>
         <span class="hero-rise hero-rise-2 block mx-auto mt-7 h-[3px] w-16 bg-bleu" aria-hidden="true"></span>
         <h1 class="hero-rise hero-rise-2 mt-5 font-sora font-bold text-balance leading-[1.08] text-[clamp(2.25rem,4vw+1rem,4rem)] tracking-tight text-blanc-casse">
-          Création de site internet à {ville.nom}
+          Création de site internet à {ville.nom}{' '}
           <span class="block italic font-medium text-bleu">(La Réunion).</span>
         </h1>
         <p class="hero-rise hero-rise-4 mx-auto mt-7 max-w-2xl text-lg md:text-xl text-blanc-casse/80 leading-relaxed">
@@ -97,10 +97,26 @@ const faqSchema = {
 
     <VillePageSections ville={ville} variantSeed={6} raisons={raisons} faq={faq} />
 
+    <section class="relative px-6 py-16 md:py-24" aria-labelledby="web-local-titre">
+      <div class="mx-auto max-w-3xl">
+        <h2 id="web-local-titre" class="scroll-reveal font-sora font-bold text-2xl md:text-4xl text-blanc-casse text-balance leading-[1.12]">
+          Le web à {ville.nom}{' '}
+          <span class="block italic font-medium text-bleu">vu de la côte au vent.</span>
+        </h2>
+        <div class="scroll-reveal mt-8 space-y-5 text-blanc-casse/75 leading-relaxed">
+        <p>Sous-préfecture de l'Est d'environ 37 000 habitants, Saint-Benoît est la porte d'entrée vers les cirques et le volcan côté est. Son économie combine services administratifs, tissu artisanal local et une activité touristique liée aux cascades, à la nature et aux sports outdoor de la côte au vent.</p>
+        <p>Ce tourisme nature a une particularité : il se prépare en ligne. Randonneurs, familles et visiteurs qui descendent vers Takamaka, la Rivière des Marsouins ou le volcan cherchent un gîte, une table ou une activité depuis leur téléphone, souvent la veille ou le jour même. Un hébergement ou un prestataire d'activités sans site visible passe simplement à côté de ces demandes.</p>
+        <p>Pour les autres professionnels bénédictins — artisans, commerces, professions libérales, services —, le site répond à un besoin plus classique : présenter l'activité, rassurer, faciliter le contact. Dans une ville où l'offre en ligne reste clairsemée, un site soigné suffit souvent à se distinguer nettement.</p>
+        <p>9site4 travaille avec les professionnels de Saint-Benoît (97470) entièrement à distance : premier échange en visio ou par téléphone, contenus par e-mail ou WhatsApp, mise en ligne en 7 jours environ après réception de vos éléments. Ensuite, la gestion continue maintient le site à jour — saisons, tarifs, disponibilités — sans intervention technique de votre part.</p>
+        <p>Gîtes et tables d'hôtes de la côte est, artisans, TPE de services, commerces du centre : pour chacun de ces profils, 9site4 livre un site structuré autour du métier, avec le module qui compte — demande de séjour, devis, rendez-vous ou contact. La formule unique couvre la création, l'hébergement, la sécurité et les modifications, pour un coût connu d'avance. Le premier échange est gratuit : décrivez votre activité bénédictine, nous vous disons franchement si un site 9site4 est pertinent pour vous.</p>
+        </div>
+      </div>
+    </section>
+
     <section class="relative px-6 py-16 md:py-24">
       <div class="mx-auto max-w-3xl text-center">
         <h2 class="scroll-reveal font-sora font-bold text-2xl md:text-4xl text-blanc-casse text-balance leading-[1.12]">
-          Vous êtes professionnel à {ville.nom} ?
+          Vous êtes professionnel à {ville.nom} ?{' '}
           <span class="block italic font-medium text-bleu">Présentez votre activité à 9site4.</span>
         </h2>
         <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">

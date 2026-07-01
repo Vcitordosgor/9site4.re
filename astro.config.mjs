@@ -13,9 +13,11 @@ export default defineConfig({
   integrations: [
     tailwind({ applyBaseStyles: false }),
     preact(),
+    // NOTE (P2-13) : l'URL de la home apparaît sans slash final dans le sitemap
+    // (https://9site4.re). @astrojs/sitemap ne permet pas simplement de forcer le
+    // slash final ; sans impact SEO notable, documenté ici volontairement.
     sitemap({
       filter: (page) =>
-        !page.includes('/mentions-legales') &&
         !page.includes('/404') &&
         !page.includes('/styleguide') &&
         !page.includes('/templates/'),

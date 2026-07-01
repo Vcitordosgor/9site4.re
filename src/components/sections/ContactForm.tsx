@@ -53,9 +53,13 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 /**
  * ContactForm — Astro Island (client:load).
  * - 8 champs, validation HTML5 + JS supplémentaire pour tel/email
- * - honeypot caché (name="website")
- * - sur soumission valide : console.log(formData) + message de succès + reset
- * - aucun envoi réel (front uniquement à ce stade)
+ * - honeypot caché (name="website") : soumission silencieusement ignorée si rempli
+ *   (revérifié côté serveur par /api/contact)
+ * - deux canaux d'envoi réels, choisis par le bouton de soumission :
+ *   1. WhatsApp : ouvre un deep-link wa.me pré-rempli avec le message construit
+ *   2. Email : POST JSON vers /api/contact (validation + honeypot côté serveur),
+ *      avec affichage des erreurs serveur et repli conseillé vers WhatsApp
+ * - tracking de conversion sans PII (secteur + canal) via trackEvent
  */
 export default function ContactForm({ categories }: Props) {
   const formRef = useRef<HTMLFormElement>(null);

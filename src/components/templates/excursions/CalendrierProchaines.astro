@@ -21,10 +21,12 @@ import data from '../../../data/templates/sentiers.json';
 
     <div class="overflow-x-auto -mx-6 md:-mx-10 px-6 md:px-10 pb-2" style="scrollbar-width: thin;">
       <ul class="flex gap-4 min-w-max">
-        {data.prochaines.map((p) => (
+        {data.prochaines.map((p) => {
+          const Tag = p.places === 0 ? 'span' : 'a';
+          return (
           <li class="w-56 shrink-0">
-            <a
-              href={p.places === 0 ? '#' : '#reservation'}
+            <Tag
+              href={p.places === 0 ? undefined : '#reservation'}
               class:list={[
                 'block bg-sentiers-foret/40 backdrop-blur-sm border border-sentiers-brume/15 p-5 h-full transition-colors',
                 p.places === 0 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-sentiers-foret hover:border-sentiers-soleil',
@@ -39,9 +41,10 @@ import data from '../../../data/templates/sentiers.json';
                   {p.places === 0 ? 'Complet' : p.places === 1 ? '1 place' : `${p.places} places`}
                 </p>
               </div>
-            </a>
+            </Tag>
           </li>
-        ))}
+          );
+        })}
       </ul>
     </div>
 

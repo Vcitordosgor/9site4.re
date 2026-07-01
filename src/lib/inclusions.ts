@@ -1,6 +1,6 @@
 /**
  * Liste partagée des 8 inclusions de l'abonnement.
- * Source unique pour la home (sections/Offre.astro) et la page tarifs.
+ * Source unique pour la page tarifs.
  */
 export interface Inclusion {
   icon: string;

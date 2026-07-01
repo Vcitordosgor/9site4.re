@@ -38,10 +38,10 @@ const raisons = [
 ];
 
 const faq = [
-  { q: `Êtes-vous basés à ${ville.nom} ?`, a: "9site4 accompagne les professionnels de toute La Réunion à distance et en visio. Vous n'avez pas besoin de vous déplacer." },
-  { q: `Travaillez-vous avec des professionnels de ${ville.nom} ?`, a: `Oui. Artisans, commerces, indépendants et services installés à ${ville.nom} (${ville.code}) sont accompagnés comme dans le reste de l'île.` },
-  { q: `Comment se passe le premier échange si je suis à ${ville.nom} ?`, a: 'Un appel ou une visio d\'environ 30 minutes suffit pour cadrer votre besoin. Vous recevez ensuite une proposition écrite claire.' },
-  { q: `Le site fonctionnera-t-il pour mes clients à ${ville.nom} et alentours ?`, a: `Oui. Le site est optimisé pour être trouvé localement (${ville.nom}, ${ville.microRegion}) et fonctionne parfaitement sur mobile.` },
+  { q: "Je travaille surtout au bouche-à-oreille à Saint-André : un site va-t-il changer quelque chose ?", a: "Il le prolonge plutôt qu'il ne le remplace : un client recommandé vérifie presque toujours en ligne avant d'appeler. Un site clair confirme la recommandation ; une absence de site peut la faire douter." },
+  { q: "Y a-t-il un intérêt à être en ligne alors que l'Est est moins connecté que l'Ouest ?", a: "Justement : la concurrence en ligne y est plus faible. Un professionnel de Saint-André avec un site soigné et à jour se démarque plus facilement dans sa catégorie que dans les zones saturées de l'île." },
+  { q: "Comment se déroule le projet si je suis à Saint-André ?", a: "Entièrement à distance : un appel ou une visio d'environ 30 minutes pour cadrer, puis les contenus par e-mail ou WhatsApp. Le site est généralement en ligne en 7 jours environ après réception de vos éléments." },
+  { q: "Mon entreprise intervient aussi vers Saint-Benoît et Saint-Denis : le site peut-il le dire ?", a: "Oui. Le site décrit votre zone d'intervention réelle sur le bassin est et au-delà, pour capter les demandes de toute votre zone et pas seulement du centre-ville de Saint-André (97440)." },
 ];
 
 const placeSchema = {
@@ -79,7 +79,7 @@ const faqSchema = {
         </p>
         <span class="hero-rise hero-rise-2 block mx-auto mt-7 h-[3px] w-16 bg-bleu" aria-hidden="true"></span>
         <h1 class="hero-rise hero-rise-2 mt-5 font-sora font-bold text-balance leading-[1.08] text-[clamp(2.25rem,4vw+1rem,4rem)] tracking-tight text-blanc-casse">
-          Création de site internet à {ville.nom}
+          Création de site internet à {ville.nom}{' '}
           <span class="block italic font-medium text-bleu">(La Réunion).</span>
         </h1>
         <p class="hero-rise hero-rise-4 mx-auto mt-7 max-w-2xl text-lg md:text-xl text-blanc-casse/80 leading-relaxed">
@@ -97,10 +97,26 @@ const faqSchema = {
 
     <VillePageSections ville={ville} variantSeed={4} raisons={raisons} faq={faq} />
 
+    <section class="relative px-6 py-16 md:py-24" aria-labelledby="web-local-titre">
+      <div class="mx-auto max-w-3xl">
+        <h2 id="web-local-titre" class="scroll-reveal font-sora font-bold text-2xl md:text-4xl text-blanc-casse text-balance leading-[1.12]">
+          Le web à {ville.nom}{' '}
+          <span class="block italic font-medium text-bleu">vu de l'Est.</span>
+        </h2>
+        <div class="scroll-reveal mt-8 space-y-5 text-blanc-casse/75 leading-relaxed">
+        <p>Principale ville de l'Est avec environ 58 000 habitants, Saint-André reste un pôle agricole majeur — canne, fruits — doublé d'une zone d'activité industrielle et artisanale. Le centre-ville et les quartiers concentrent commerces de proximité, restauration locale et services aux habitants.</p>
+        <p>Pour les artisans et entreprises de la zone d'activité comme pour les commerces du centre, l'enjeu web est concret : être trouvé par les habitants de la commune et du bassin est, présenter clairement prestations et coordonnées, et recevoir des demandes exploitables. Beaucoup de professionnels de Saint-André fonctionnent encore uniquement au bouche-à-oreille ; un site sérieux prolonge cette réputation au lieu de la remplacer.</p>
+        <p>L'Est est moins saturé en ligne que l'Ouest ou le chef-lieu : les professionnels qui prennent le temps de soigner leur présence web y sont d'autant plus visibles. Un salon de coiffure, un institut, un snack ou une entreprise du bâtiment avec un site clair et à jour se distingue immédiatement dans sa catégorie.</p>
+        <p>9site4 accompagne les professionnels de Saint-André (97440) à distance, comme partout sur l'île : un échange téléphonique pour cadrer le besoin, un site construit autour de votre métier, puis une gestion continue qui garde les informations exactes — horaires, tarifs, prestations — sans que vous ayez à vous en occuper.</p>
+        <p>Restauration locale, salons de coiffure, instituts, commerces de quartier, entreprises du bâtiment et de l'industrie légère : les métiers présents à Saint-André correspondent aux formats de sites que 9site4 construit régulièrement. Chaque site est livré avec le module utile à votre activité — devis, rendez-vous, contact — et une formule unique couvrant création, hébergement et modifications, sans mauvaise surprise de facturation. Un appel gratuit d'une trentaine de minutes suffit pour évaluer ensemble, honnêtement, ce qu'un site apporterait à votre activité saint-andréenne.</p>
+        </div>
+      </div>
+    </section>
+
     <section class="relative px-6 py-16 md:py-24">
       <div class="mx-auto max-w-3xl text-center">
         <h2 class="scroll-reveal font-sora font-bold text-2xl md:text-4xl text-blanc-casse text-balance leading-[1.12]">
-          Vous êtes professionnel à {ville.nom} ?
+          Vous êtes professionnel à {ville.nom} ?{' '}
           <span class="block italic font-medium text-bleu">Présentez votre activité à 9site4.</span>
         </h2>
         <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">

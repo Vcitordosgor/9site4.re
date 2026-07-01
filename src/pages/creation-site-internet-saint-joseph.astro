@@ -38,10 +38,10 @@ const raisons = [
 ];
 
 const faq = [
-  { q: `Êtes-vous basés à ${ville.nom} ?`, a: "9site4 accompagne les professionnels de toute La Réunion à distance et en visio. Vous n'avez pas besoin de vous déplacer." },
-  { q: `Travaillez-vous avec des professionnels de ${ville.nom} ?`, a: `Oui. Artisans, commerces, indépendants et services installés à ${ville.nom} (${ville.code}) sont accompagnés comme dans le reste de l'île.` },
-  { q: `Comment se passe le premier échange si je suis à ${ville.nom} ?`, a: 'Un appel ou une visio d\'environ 30 minutes suffit pour cadrer votre besoin. Vous recevez ensuite une proposition écrite claire.' },
-  { q: `Le site fonctionnera-t-il pour mes clients à ${ville.nom} et alentours ?`, a: `Oui. Le site est optimisé pour être trouvé localement (${ville.nom}, ${ville.microRegion}) et fonctionne parfaitement sur mobile.` },
+  { q: "Saint-Joseph est loin des centres de l'île : est-ce un problème pour créer le site ?", a: "Aucun. 9site4 travaille entièrement à distance : cadrage par téléphone ou visio (environ 30 minutes), échanges par e-mail ou WhatsApp. Que vous soyez à Vincendo ou à Grand Coude, le processus est identique." },
+  { q: "Je propose un gîte ou des produits locaux (vanille, fruits) : que peut m'apporter un site ?", a: "L'accès à une clientèle qui ne passera jamais devant chez vous : visiteurs du Sud sauvage, clients de toute l'île, voire de métropole. Le site présente vos produits ou votre hébergement, avec photos, tarifs et demande de contact directe." },
+  { q: "Mes clients réservent parfois depuis la métropole ou l'étranger : le site est-il adapté ?", a: "Oui. Le site est accessible partout, rapide même sur des connexions moyennes, et le module de demande de séjour ou de contact fonctionne quel que soit le fuseau horaire de votre client." },
+  { q: "Qui s'occupe du site une fois qu'il est en ligne ?", a: "Nous. Hébergement, sécurité, maintenance et modifications de contenu sont inclus dans l'abonnement : vous signalez un changement, nous le mettons en ligne." },
 ];
 
 const placeSchema = {
@@ -79,7 +79,7 @@ const faqSchema = {
         </p>
         <span class="hero-rise hero-rise-2 block mx-auto mt-7 h-[3px] w-16 bg-bleu" aria-hidden="true"></span>
         <h1 class="hero-rise hero-rise-2 mt-5 font-sora font-bold text-balance leading-[1.08] text-[clamp(2.25rem,4vw+1rem,4rem)] tracking-tight text-blanc-casse">
-          Création de site internet à {ville.nom}
+          Création de site internet à {ville.nom}{' '}
           <span class="block italic font-medium text-bleu">(La Réunion).</span>
         </h1>
         <p class="hero-rise hero-rise-4 mx-auto mt-7 max-w-2xl text-lg md:text-xl text-blanc-casse/80 leading-relaxed">
@@ -97,10 +97,26 @@ const faqSchema = {
 
     <VillePageSections ville={ville} variantSeed={7} raisons={raisons} faq={faq} />
 
+    <section class="relative px-6 py-16 md:py-24" aria-labelledby="web-local-titre">
+      <div class="mx-auto max-w-3xl">
+        <h2 id="web-local-titre" class="scroll-reveal font-sora font-bold text-2xl md:text-4xl text-blanc-casse text-balance leading-[1.12]">
+          Le web à {ville.nom}{' '}
+          <span class="block italic font-medium text-bleu">vu du Sud sauvage.</span>
+        </h2>
+        <div class="scroll-reveal mt-8 space-y-5 text-blanc-casse/75 leading-relaxed">
+        <p>Ville principale du Sud sauvage avec environ 38 000 habitants, Saint-Joseph s'étend entre océan, ravines et plantations. L'économie locale mêle agriculture — vanille, fruits, élevage —, pêche, tourisme nature et un artisanat réparti sur des quartiers étendus, de Vincendo à Grand Coude.</p>
+        <p>Cet éloignement relatif du reste de l'île est précisément ce qui rend le web utile ici. Un gîte du Sud sauvage, un producteur de vanille ou un artisan de Vincendo ne peut pas compter sur le passage : ses clients le trouvent en ligne ou ne le trouvent pas. Un site clair, avec photos, tarifs et contact direct, fait le travail qu'aucune vitrine physique ne peut faire à cette échelle.</p>
+        <p>Le tourisme nature du Sud sauvage — côtes volcaniques, forêts, randonnées — attire une clientèle qui prépare et réserve à distance, parfois depuis la métropole ou l'étranger. Pour un hébergement ou une table locale, être présentable en ligne n'est pas un plus : c'est la condition d'accès à cette clientèle.</p>
+        <p>9site4 accompagne les professionnels de Saint-Joseph (97480) sans qu'aucun déplacement ne soit nécessaire, dans un sens comme dans l'autre : cadrage par téléphone ou visio, contenus par e-mail ou WhatsApp, site en ligne en 7 jours environ après réception de vos éléments, puis gestion continue incluse pour les mises à jour.</p>
+        <p>Gîtes du Sud sauvage, artisans, restaurants, commerces de proximité, producteurs : les profils saint-josephois correspondent aux formats de sites que 9site4 réalise couramment. Chaque site embarque le module adapté à l'activité — demande de séjour, devis, réservation ou contact — dans une formule unique où la création est incluse et où les mises à jour ne sont jamais facturées en plus. Un simple appel gratuit permet de cadrer votre projet depuis le Sud sauvage, sans engagement et sans déplacement.</p>
+        </div>
+      </div>
+    </section>
+
     <section class="relative px-6 py-16 md:py-24">
       <div class="mx-auto max-w-3xl text-center">
         <h2 class="scroll-reveal font-sora font-bold text-2xl md:text-4xl text-blanc-casse text-balance leading-[1.12]">
-          Vous êtes professionnel à {ville.nom} ?
+          Vous êtes professionnel à {ville.nom} ?{' '}
           <span class="block italic font-medium text-bleu">Présentez votre activité à 9site4.</span>
         </h2>
         <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">

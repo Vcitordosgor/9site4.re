@@ -144,61 +144,61 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
     canonical: '/creation-site-internet-la-reunion',
   },
   siteRestaurantReunion: {
-    title: `Site internet pour restaurant à La Réunion | ${siteConfig.siteName}`,
+    title: `Site internet restaurant à La Réunion — Carte, réservation, WhatsApp | ${siteConfig.siteName}`,
     description:
       '9site4 crée des sites professionnels pour restaurants, snacks, bars, cafés et pizzerias à La Réunion : carte, horaires, photos, réservation et gestion continue.',
     canonical: '/site-internet-restaurant-la-reunion',
   },
   siteArtisanReunion: {
-    title: `Site internet pour artisan à La Réunion | ${siteConfig.siteName}`,
+    title: `Site internet artisan à La Réunion — Devis, chantiers, zones d'intervention | ${siteConfig.siteName}`,
     description:
       "9site4 crée des sites professionnels pour artisans et entreprises locales à La Réunion : prestations, zones d'intervention, demande de devis, photos et gestion continue.",
     canonical: '/site-internet-artisan-la-reunion',
   },
   siteCoiffeurReunion: {
-    title: `Site internet pour coiffeur à La Réunion | ${siteConfig.siteName}`,
+    title: `Site internet coiffeur à La Réunion — Prestations, équipe, rendez-vous | ${siteConfig.siteName}`,
     description:
-      '9site4 crée des sites professionnels pour salons de coiffure et coiffeurs à La Réunion : prestations, équipe, prise de rendez-vous et gestion continue.',
+      "Votre salon de coiffure ou barbershop mérite mieux qu'une page Facebook : 9site4 crée un site qui présente vos coupes, vos tarifs et votre équipe, et facilite la prise de rendez-vous.",
     canonical: '/site-internet-coiffeur-la-reunion',
   },
   siteGiteLocationReunion: {
-    title: `Site internet pour gîte et location à La Réunion | ${siteConfig.siteName}`,
+    title: `Site internet gîte et location à La Réunion — Calendrier, demande de séjour | ${siteConfig.siteName}`,
     description:
       '9site4 crée des sites professionnels pour gîtes, locations saisonnières, conciergeries et hébergements touristiques à La Réunion : présentation, calendrier, demande de séjour.',
     canonical: '/site-internet-gite-location-la-reunion',
   },
   siteProfessionLiberaleReunion: {
-    title: `Site internet pour profession libérale à La Réunion | ${siteConfig.siteName}`,
+    title: `Site internet profession libérale à La Réunion — Crédibilité, prise de RDV | ${siteConfig.siteName}`,
     description:
       '9site4 crée des sites professionnels pour avocats, notaires, experts-comptables, consultants et architectes à La Réunion : présentation, méthode et prise de rendez-vous.',
     canonical: '/site-internet-profession-liberale-la-reunion',
   },
   siteBienEtreSanteReunion: {
-    title: `Site internet pour praticien bien-être et santé à La Réunion | ${siteConfig.siteName}`,
+    title: `Site internet bien-être et santé à La Réunion — Prestations, RDV en ligne | ${siteConfig.siteName}`,
     description:
       '9site4 crée des sites professionnels pour ostéopathes, naturopathes, diététiciens, coachs sportifs, yoga, danse et professionnels du bien-être à La Réunion : prestations, rendez-vous et gestion continue.',
     canonical: '/site-internet-bien-etre-sante-la-reunion',
   },
   siteInstitutBeauteReunion: {
-    title: `Site internet pour institut de beauté à La Réunion | ${siteConfig.siteName}`,
+    title: `Site internet institut de beauté à La Réunion — Soins, cartes cadeaux, réservation | ${siteConfig.siteName}`,
     description:
-      '9site4 crée des sites professionnels pour instituts de beauté, spas, salons de coiffure, tatoueurs et professionnels du bien-être à La Réunion : soins, équipe, prise de rendez-vous et gestion continue.',
+      "Institut de beauté, spa ou onglerie à La Réunion : un site qui met en valeur vos soins, vos cartes cadeaux et votre univers, avec réservation simple. Créé et géré par 9site4.",
     canonical: '/site-internet-institut-beaute-la-reunion',
   },
   siteCoachIndependantReunion: {
-    title: `Site internet pour coach et indépendant à La Réunion | ${siteConfig.siteName}`,
+    title: `Site internet coach et indépendant à La Réunion — Offres, programmes, premier échange | ${siteConfig.siteName}`,
     description:
       '9site4 crée des sites professionnels pour coachs, consultants, formateurs et indépendants à La Réunion : offres, programmes, premier échange et gestion continue.',
     canonical: '/site-internet-coach-independant-la-reunion',
   },
   siteCommerceLocalReunion: {
-    title: `Site internet pour commerce local à La Réunion | ${siteConfig.siteName}`,
+    title: `Site internet commerce local à La Réunion — Horaires, infos pratiques, contact | ${siteConfig.siteName}`,
     description:
       "9site4 crée des sites professionnels pour commerces locaux à La Réunion : présentation de l'activité, horaires, produits, contact, demandes d'information et gestion continue.",
     canonical: '/site-internet-commerce-local-la-reunion',
   },
   siteTpePmeReunion: {
-    title: `Site internet pour TPE/PME à La Réunion | ${siteConfig.siteName}`,
+    title: `Site internet TPE/PME à La Réunion — Clair, fiable, géré dans la durée | ${siteConfig.siteName}`,
     description:
       '9site4 accompagne les TPE/PME réunionnaises avec des sites professionnels clairs, fiables, adaptés à leur métier et gérés dans la durée.',
     canonical: '/site-internet-tpe-pme-la-reunion',
@@ -520,49 +520,49 @@ const PAGES: Record<PageKey, Omit<PageSeo, 'ogImage' | 'ogImageAlt' | 'noindex'>
     noindex: true,
   },
   villeSaintDenis: {
-    title: `Création de site internet à Saint-Denis (974) — Pour TPE/PME et indépendants | ${siteConfig.siteName}`,
+    title: `Création de site internet à Saint-Denis — Cabinets, commerces et services du Nord (974) | ${siteConfig.siteName}`,
     description:
       "9site4 crée et gère le site internet des professionnels de Saint-Denis (974) : cabinets, commerces, restaurants, services. Création incluse, accompagnement local, 97,4€/mois.",
     canonical: '/creation-site-internet-saint-denis',
   },
   villeSaintPaul: {
-    title: `Création de site internet à Saint-Paul (974) — Pour TPE/PME et indépendants | ${siteConfig.siteName}`,
+    title: `Création de site internet à Saint-Paul — Commerces, gîtes et restaurants de l'Ouest (974) | ${siteConfig.siteName}`,
     description:
       "Site internet professionnel à Saint-Paul (Ouest, 974) : artisans, restaurants, gîtes, instituts, commerces. 9site4 conçoit, structure et maintient votre site, 97,4€/mois.",
     canonical: '/creation-site-internet-saint-paul',
   },
   villeSaintPierre: {
-    title: `Création de site internet à Saint-Pierre (974) — Pour TPE/PME et indépendants | ${siteConfig.siteName}`,
+    title: `Création de site internet à Saint-Pierre — Capitale économique du Sud (97410) | ${siteConfig.siteName}`,
     description:
       "9site4 accompagne les professionnels du Sud à Saint-Pierre (97410) : commerces, restauration, professions libérales, services. Site clair, géré dans la durée, 97,4€/mois.",
     canonical: '/creation-site-internet-saint-pierre',
   },
   villeLeTampon: {
-    title: `Création de site internet au Tampon (974) — Pour TPE/PME et indépendants | ${siteConfig.siteName}`,
+    title: `Création de site internet au Tampon — Artisans et pros des Hauts du Sud (97430) | ${siteConfig.siteName}`,
     description:
       "Vous êtes artisan, commerçant ou indépendant au Tampon (97430) ? 9site4 crée un site internet professionnel adapté aux Hauts du Sud — création incluse, 97,4€/mois.",
     canonical: '/creation-site-internet-le-tampon',
   },
   villeSaintAndre: {
-    title: `Création de site internet à Saint-André (974) — Pour TPE/PME et indépendants | ${siteConfig.siteName}`,
+    title: `Création de site internet à Saint-André — Artisans et commerces de l'Est (97440) | ${siteConfig.siteName}`,
     description:
       "Création de site internet pour les professionnels de Saint-André (Est, 97440) : artisans, commerces, services, restauration. 9site4 conçoit et maintient votre site, 97,4€/mois.",
     canonical: '/creation-site-internet-saint-andre',
   },
   villeSaintLouis: {
-    title: `Création de site internet à Saint-Louis (974) — Pour TPE/PME et indépendants | ${siteConfig.siteName}`,
+    title: `Création de site internet à Saint-Louis — Commerces et artisans, carrefour Sud-Ouest (97450) | ${siteConfig.siteName}`,
     description:
       "9site4 crée des sites internet pour les commerces, artisans et services de Saint-Louis (97450), entre Sud et Ouest de La Réunion. Tout inclus, 97,4€/mois.",
     canonical: '/creation-site-internet-saint-louis',
   },
   villeSaintBenoit: {
-    title: `Création de site internet à Saint-Benoît (974) — Pour TPE/PME et indépendants | ${siteConfig.siteName}`,
+    title: `Création de site internet à Saint-Benoît — Tourisme nature et services de l'Est (97470) | ${siteConfig.siteName}`,
     description:
       "Site internet professionnel à Saint-Benoît (Est, 97470) : services, tourisme nature, artisans, commerces. 9site4 prend en charge la création et la gestion continue, 97,4€/mois.",
     canonical: '/creation-site-internet-saint-benoit',
   },
   villeSaintJoseph: {
-    title: `Création de site internet à Saint-Joseph (974) — Pour TPE/PME et indépendants | ${siteConfig.siteName}`,
+    title: `Création de site internet à Saint-Joseph — Gîtes, artisans et pros du Sud sauvage (97480) | ${siteConfig.siteName}`,
     description:
       "9site4 accompagne les professionnels de Saint-Joseph et du Sud sauvage (97480) : agriculture, gîtes, artisans, commerces locaux. Site géré, accompagnement local, 97,4€/mois.",
     canonical: '/creation-site-internet-saint-joseph',

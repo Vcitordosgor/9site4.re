@@ -18,10 +18,10 @@ const raisons = [
 ];
 
 const faq = [
-  { q: `Êtes-vous basés à ${ville.nom} ?`, a: "9site4 accompagne les professionnels de toute La Réunion à distance et en visio. Vous n'avez pas besoin de vous déplacer." },
-  { q: `Travaillez-vous avec des professionnels de ${ville.nom} ?`, a: `Oui. Nous accompagnons cabinets, commerces et indépendants installés à ${ville.nom} (${ville.code}) comme dans le reste de l'île.` },
-  { q: `Comment se passe le premier échange si je suis à ${ville.nom} ?`, a: 'Un appel ou une visio d\'environ 30 minutes pour cadrer le besoin, suivi d\'une proposition écrite claire.' },
-  { q: `Le site fonctionnera-t-il pour mes clients à ${ville.nom} et alentours ?`, a: `Oui. Le site est pensé pour être trouvé en local (référencement sur ${ville.nom} et ${ville.microRegion}) et lisible sur mobile.` },
+  { q: "Faut-il se rencontrer en personne pour créer mon site à Saint-Denis ?", a: "Non. Tout se fait à distance : un appel ou une visio d'environ 30 minutes pour cadrer le besoin, puis des échanges par e-mail ou WhatsApp. Vous gardez votre temps pour votre activité." },
+  { q: "Mon cabinet ou mon commerce du centre-ville peut-il se démarquer en ligne ?", a: "La concurrence est plus dense à Saint-Denis qu'ailleurs sur l'île, mais un site structuré, avec des contenus précis sur vos prestations, permet d'être identifié clairement. Nous ne promettons pas de position sur Google : nous livrons une base saine, rapide et bien référençable." },
+  { q: "En combien de temps mon site est-il en ligne ?", a: "Environ 7 jours après réception de vos contenus (textes, photos, informations pratiques). Le délai réel dépend surtout de la rapidité de vos retours." },
+  { q: "Mes clients viennent aussi de Saint-André ou de Saint-Benoît : le site en tiendra-t-il compte ?", a: "Oui. Le site présente votre zone réelle d'activité ou de chalandise, pas seulement une adresse à Saint-Denis (97400). Il reste lisible et rapide sur mobile, où se font la plupart des recherches locales." },
 ];
 
 const placeSchema = {
@@ -59,7 +59,7 @@ const faqSchema = {
         </p>
         <span class="hero-rise hero-rise-2 block mx-auto mt-7 h-[3px] w-16 bg-bleu" aria-hidden="true"></span>
         <h1 class="hero-rise hero-rise-2 mt-5 font-sora font-bold text-balance leading-[1.08] text-[clamp(2.25rem,4vw+1rem,4rem)] tracking-tight text-blanc-casse">
-          Création de site internet à {ville.nom}
+          Création de site internet à {ville.nom}{' '}
           <span class="block italic font-medium text-bleu">(La Réunion).</span>
         </h1>
         <p class="hero-rise hero-rise-4 mx-auto mt-7 max-w-2xl text-lg md:text-xl text-blanc-casse/80 leading-relaxed">
@@ -77,10 +77,26 @@ const faqSchema = {
 
     <VillePageSections ville={ville} variantSeed={0} raisons={raisons} faq={faq} />
 
+    <section class="relative px-6 py-16 md:py-24" aria-labelledby="web-local-titre">
+      <div class="mx-auto max-w-3xl">
+        <h2 id="web-local-titre" class="scroll-reveal font-sora font-bold text-2xl md:text-4xl text-blanc-casse text-balance leading-[1.12]">
+          Le web à {ville.nom}{' '}
+          <span class="block italic font-medium text-bleu">vu du chef-lieu.</span>
+        </h2>
+        <div class="scroll-reveal mt-8 space-y-5 text-blanc-casse/75 leading-relaxed">
+        <p>Avec environ 150 000 habitants, Saint-Denis est la commune la plus peuplée de La Réunion et son principal pôle tertiaire. Préfecture, sièges d'entreprises, cabinets libéraux, commerces de centre-ville : la concurrence y est réelle dans presque tous les secteurs, et vos clients comparent avant de choisir. Un site clair, à jour et facile à trouver est souvent le premier contact avec votre cabinet ou votre boutique.</p>
+        <p>Les activités qui structurent l'économie dionysienne — administration, services, commerce, professions libérales — ont un point commun : la crédibilité se joue de plus en plus en ligne. Un avocat, un expert-comptable ou un consultant sans site sérieux part avec un handicap face à des confrères bien présentés. Pour un commerce du centre-ville, des horaires exacts et des informations d'accès claires évitent des appels inutiles et des clients perdus.</p>
+        <p>Un site 9site4 pour un professionnel de Saint-Denis, c'est une structure pensée pour votre métier : présentation de l'activité, prestations, prise de rendez-vous ou demande de devis, informations pratiques. Le contenu est rédigé pour être compris rapidement, y compris sur mobile, où se fait l'essentiel des recherches locales.</p>
+        <p>Saint-Denis rayonne aussi au-delà de ses limites : une partie de votre clientèle vient de Saint-André, de Saint-Benoît ou de l'Ouest pour travailler ou consulter dans le chef-lieu. Votre site doit donc présenter clairement votre zone d'activité, pas seulement une adresse. C'est ce que nous préparons : des pages lisibles, un référencement local propre et une gestion continue pour que les informations restent justes dans le temps.</p>
+        <p>Concrètement, les secteurs les plus demandeurs à Saint-Denis sont ceux que 9site4 connaît bien : professions libérales, TPE/PME de services, commerces de proximité, restauration, salons de coiffure, instituts et praticiens du bien-être. Pour chacun, le site intègre le module métier qui compte — prise de rendez-vous, demande de devis, réservation ou simple contact — et l'abonnement unique couvre création, hébergement et mises à jour, sans frais cachés. Le premier échange est gratuit : présentez votre activité dionysienne, nous vous répondons honnêtement sur ce qu'un site peut vous apporter — et ce qu'il ne peut pas.</p>
+        </div>
+      </div>
+    </section>
+
     <section class="relative px-6 py-16 md:py-24">
       <div class="mx-auto max-w-3xl text-center">
         <h2 class="scroll-reveal font-sora font-bold text-2xl md:text-4xl text-blanc-casse text-balance leading-[1.12]">
-          Vous êtes professionnel à {ville.nom} ?
+          Vous êtes professionnel à {ville.nom} ?{' '}
           <span class="block italic font-medium text-bleu">Présentez votre activité à 9site4.</span>
         </h2>
         <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
