@@ -581,6 +581,21 @@ export function getSeo(page: PageKey): PageSeo {
   };
 }
 
+/**
+ * Bloc Offer JSON-LD standard de l'abonnement (source unique de vérité).
+ * Le prix est dérivé de siteConfig.pricing.monthly ("97,4€" → 97.4) :
+ * le jour d'une promo, modifier siteConfig.json suffit pour toutes les pages SEO.
+ */
+export function getServiceOffer() {
+  const price = parseFloat(siteConfig.pricing.monthly.replace(',', '.'));
+  return {
+    '@type': 'Offer',
+    price,
+    priceCurrency: 'EUR',
+    url: `${siteConfig.siteUrl}/tarifs`,
+  } as const;
+}
+
 /** Convertit un chemin relatif en URL absolue basée sur siteConfig.siteUrl. */
 export function absoluteUrl(path: string): string {
   return new URL(path, siteConfig.siteUrl).toString();

@@ -4,6 +4,7 @@
  * épuré, un seul bouton blanc plein, une ligne de réassurance. Minimaliste.
  * Vidéo optionnelle : dégradé de marque en fallback. Coupée sous reduced-motion.
  */
+import Button from '../ui/Button.astro';
 ---
 
 <section
@@ -49,16 +50,18 @@
     </div>
 
     <div class="hero-rise hero-rise-5 mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-      <a
+      <Button
+        variant="inverse"
+        size="md"
         href="/contact"
-        class="inline-flex items-center justify-center h-14 px-9 text-base font-semibold rounded-full bg-blanc-casse text-bleu-nuit hover:bg-white hover:-translate-y-0.5 shadow-card hover:shadow-card-hover transition-all duration-200 ease-out"
+        class="h-14 px-9 shadow-card hover:shadow-card-hover"
         data-track-event="cta_create_site_click"
         data-track-category="conversion"
         data-track-source="homepage_hero"
         data-track-target="/contact"
       >
         Créer mon site
-      </a>
+      </Button>
       <a
         href="/realisations"
         class="inline-flex items-center justify-center h-14 px-7 text-base font-semibold rounded-full ring-1 ring-blanc-casse/40 text-blanc-casse hover:bg-white/10 hover:-translate-y-0.5 transition-all duration-200 ease-out"

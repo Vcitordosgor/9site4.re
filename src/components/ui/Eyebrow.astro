@@ -1,0 +1,43 @@
+---
+/**
+ * Eyebrow — surtitre de section (P2-18).
+ *
+ * Deux variants observés dans le design existant, ici unifiés (tracking 0.3em) :
+ * - `pill`  : badge arrondi bg-bleu/15 + ring (heros, mises en avant).
+ * - `label` : libellé font-roboto-mono précédé d'un point bleu (titres de section).
+ *
+ * Prop `tone` :
+ * - `light` : à poser sur fond sombre (texte blanc-cassé / bleu clair).
+ * - `dark`  : à poser sur fond clair (texte bleu-nuit).
+ *
+ * NB : les instances existantes ne sont volontairement pas migrées ;
+ * ce composant sert de référence pour les futures pages (voir /styleguide).
+ */
+interface Props {
+  variant?: 'pill' | 'label';
+  tone?: 'light' | 'dark';
+  class?: string;
+}
+
+const { variant = 'label', tone = 'light', class: className = '' } = Astro.props;
+
+const base = 'inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.3em]';
+
+const variants = {
+  pill: {
+    light: 'px-3 py-1.5 rounded-full bg-bleu/15 ring-1 ring-bleu/30 text-bleu',
+    dark: 'px-3 py-1.5 rounded-full bg-bleu/10 ring-1 ring-bleu/25 text-bleu-nuit',
+  },
+  label: {
+    light: 'font-roboto-mono text-blanc-casse/55',
+    dark: 'font-roboto-mono text-bleu-nuit/55',
+  },
+} as const;
+
+const classes = [base, variants[variant][tone], className].filter(Boolean).join(' ');
+---
+
+<p class={classes}>
+  {variant === 'label' && <span class="w-2 h-2 rounded-full bg-bleu" aria-hidden="true"></span>}
+  <slot />
+</p>

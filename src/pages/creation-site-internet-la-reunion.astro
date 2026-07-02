@@ -8,7 +8,7 @@ import CTABand from '../components/sections/CTABand.astro';
 import realisations from '../data/realisations.json';
 import FAQAccordion from '../components/sections/FAQAccordion.astro';
 import { getFaqForPage } from '../data/faq';
-import { getSeo, absoluteUrl } from '../lib/seo';
+import { getSeo, absoluteUrl, getServiceOffer } from '../lib/seo';
 import { villes } from '../data/villes.ts';
 
 const seo = getSeo('creationSiteReunion');
@@ -38,12 +38,7 @@ const serviceSchema = {
   areaServed: { '@type': 'AdministrativeArea', name: 'La Réunion' },
   url: absoluteUrl(seo.canonical),
   description: seo.description,
-  offers: {
-    '@type': 'Offer',
-    price: 97.4,
-    priceCurrency: 'EUR',
-    url: 'https://9site4.re/tarifs',
-  },
+  offers: getServiceOffer(),
 };
 ---
 

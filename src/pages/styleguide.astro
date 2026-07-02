@@ -1,10 +1,17 @@
 ---
+/**
+ * Styleguide interne (P2-27) — publié en prod volontairement :
+ * la page est noindex (cf. seo.ts) et exclue du sitemap (cf. astro.config.mjs),
+ * donc orpheline pour les moteurs. L'exclure du build (output static) casserait
+ * son usage en dev/QA sans bénéfice réel — choix documenté dans l'audit.
+ */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getSeo } from '../lib/seo';
 import Wordmark from '../components/layout/Wordmark.astro';
 import Button from '../components/ui/Button.astro';
 import Card from '../components/ui/Card.astro';
 import Badge from '../components/ui/Badge.astro';
+import Eyebrow from '../components/ui/Eyebrow.astro';
 import Input from '../components/ui/Input.astro';
 import Select from '../components/ui/Select.astro';
 import Textarea from '../components/ui/Textarea.astro';
@@ -248,6 +255,30 @@ const sections = [
             <Button variant="primary" size="md" fullWidth>Créer mon site</Button>
             <Button variant="secondary" size="md" fullWidth>Voir les exemples</Button>
           </div>
+        </Card>
+      </div>
+    </section>
+
+    <!-- Eyebrow -->
+    <section id="eyebrow" class="scroll-mt-24">
+      <h2 class="text-3xl font-sora font-bold text-bleu-nuit">Eyebrow</h2>
+      <p class="mt-2 text-bleu-nuit/70">
+        Surtitre de section (tracking unifié <code class="text-xs bg-bleu-nuit/5 px-1 rounded">0.3em</code>).
+        2 variants : <code class="text-xs bg-bleu-nuit/5 px-1 rounded">pill</code> (badge héros) et
+        <code class="text-xs bg-bleu-nuit/5 px-1 rounded">label</code> (libellé mono pointé) ·
+        prop <code class="text-xs bg-bleu-nuit/5 px-1 rounded">tone</code> : light (fond sombre) / dark (fond clair).
+        Composant destiné aux futures pages — les instances existantes ne sont pas migrées.
+      </p>
+      <div class="mt-8 grid md:grid-cols-2 gap-6">
+        <div class="rounded-2xl bg-black p-8 flex flex-col items-start gap-6">
+          <p class="text-xs uppercase tracking-wider text-blanc-casse/50">tone="light" (fond sombre)</p>
+          <Eyebrow variant="pill" tone="light">Offre tout compris</Eyebrow>
+          <Eyebrow variant="label" tone="light">Sites professionnels par secteur</Eyebrow>
+        </div>
+        <Card padding="lg" class="flex flex-col items-start gap-6">
+          <p class="text-xs uppercase tracking-wider text-bleu-nuit/50">tone="dark" (fond clair)</p>
+          <Eyebrow variant="pill" tone="dark">Offre tout compris</Eyebrow>
+          <Eyebrow variant="label" tone="dark">Sites professionnels par secteur</Eyebrow>
         </Card>
       </div>
     </section>

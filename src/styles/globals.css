@@ -81,6 +81,18 @@
 
 /* Cartes sombres — surface tokenisée (P1-14). Deux profondeurs d'ombre. */
 @layer components {
+  /*
+   * Rythme vertical standard (P2-16).
+   * .section    → espacement par défaut de toute section de contenu.
+   * .section-lg → pages piliers / sections adjacentes au hero (respiration accrue).
+   * Utiliser ces classes pour les nouvelles sections plutôt que des py-* ad hoc.
+   */
+  .section {
+    @apply py-16 md:py-24;
+  }
+  .section-lg {
+    @apply py-20 md:py-28;
+  }
   .card-dark {
     background: linear-gradient(180deg, theme('colors.surface') 0%, theme('colors.surface-deep') 100%);
     box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 12px 30px -16px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08);

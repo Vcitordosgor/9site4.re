@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/ui/Button.astro';
 import Icon from '../components/ui/Icon.astro';
 import VillePageSections from '../components/sections/VillePageSections.astro';
-import { getSeo, absoluteUrl } from '../lib/seo';
+import { getSeo, absoluteUrl, getServiceOffer } from '../lib/seo';
 import { getVille } from '../data/villes.ts';
 
 const seo = getSeo('villeLeTampon');
@@ -57,7 +57,7 @@ const placeSchema = {
   },
   url: absoluteUrl(seo.canonical),
   description: seo.description,
-  offers: { '@type': 'Offer', price: 97.4, priceCurrency: 'EUR', url: 'https://9site4.re/tarifs' },
+  offers: getServiceOffer(),
 };
 const faqSchema = {
   '@context': 'https://schema.org',
