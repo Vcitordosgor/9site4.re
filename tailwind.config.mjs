@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}', '!./src/pages/templates/**', '!./src/components/templates/**'],
   /**
    * Safelist défensive pour les couleurs custom de la charte.
    * Garantit que les variantes utilisées (couleur pleine + opacités courantes)

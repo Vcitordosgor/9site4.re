@@ -1,0 +1,12 @@
+/*
+ * Source Tailwind des templates de démo (/templates/*).
+ * Compilée par `npm run css:templates` (voir package.json) avec
+ * tailwind.templates.config.mjs → src/styles/templates.css (gitignoré),
+ * importée uniquement par les pages src/pages/templates/*.astro.
+ *
+ * P1-17 (AUDIT.md) : on ne passe PAS par le pipeline PostCSS d'Astro pour
+ * cette feuille — la directive `@config` fuit avec @astrojs/tailwind et
+ * contaminerait globals.css avec l'union des classes templates. La
+ * compilation se fait donc en amont via le CLI Tailwind.
+ */
+@tailwind utilities;
