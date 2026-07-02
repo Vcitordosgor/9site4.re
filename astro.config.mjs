@@ -20,7 +20,9 @@ export default defineConfig({
       filter: (page) =>
         !page.includes('/404') &&
         !page.includes('/styleguide') &&
-        !page.includes('/templates/'),
+        !page.includes('/templates/') &&
+        // fragments HTML (panneaux de la démo formulaires) : pas des pages
+        !page.includes('/fragments/'),
     }),
   ],
 

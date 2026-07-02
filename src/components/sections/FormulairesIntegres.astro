@@ -6,446 +6,8 @@ import Icon from '../ui/Icon.astro';
  * Tabs "Je suis…" + démo de formulaire adapté au métier.
  */
 
-type FieldType =
-  // Anciens types (rendu visuel) — encore utilisés en attendant 2b.3
-  | 'text'
-  | 'date'
-  | 'time'
-  | 'counter'
-  | 'tel'
-  | 'chips'
-  | 'select'
-  | 'cards'
-  // Nouveaux types (vrais HTML inputs interactifs) — utilisés à partir de 2b.3
-  | 'input-text'
-  | 'input-tel'
-  | 'input-email'
-  | 'input-date'
-  | 'input-time'
-  | 'input-number'
-  | 'input-file'
-  | 'select-real'
-  | 'textarea'
-  | 'radios-cards'
-  | 'radios-chips'
-  | 'checkbox';
-
-interface FieldOption {
-  value: string;
-  label: string;
-}
-
-interface Field {
-  type: FieldType;
-  label: string;
-  // Anciens props (rendu visuel statique)
-  value?: string;
-  options?: string[] | FieldOption[];
-  active?: number;
-  hint?: string;
-  icon?: string;
-  // Nouveaux props (vrais HTML inputs)
-  name?: string;
-  placeholder?: string;
-  defaultValue?: string;
-  defaultChecked?: boolean;
-  min?: string | number;
-  max?: string | number;
-  rows?: number;
-  span?: 1 | 2;
-}
-
-interface Metier {
-  id: string;
-  label: string;
-  shortLabel?: string;
-  icon: string;
-  color: 'bleu' | 'orange';
-  formKicker: string;
-  formTitle: string;
-  fields: Field[];
-  cta: string;
-  example: string;
-  // Conversation WhatsApp (étape 5b) — message d'intro client + réponse pro
-  clientIntro: string;
-  proReply: string;
-}
-
-/**
- * 6 métiers de la démo, avec champs inspirés des formulaires réels des
- * templates clients (yoga/Reservation, resto/Reservation, paysagiste/Devis,
- * institut/Reservation, gite/Reservation, coach/Essai). Chaque métier garde
- * la logique propre à son activité — étape 2b transformera ces fields en
- * vrais HTML inputs cliquables.
- */
-const metiers: Metier[] = [
-  {
-    id: 'yoga',
-    label: 'Prof de yoga',
-    shortLabel: 'Yoga',
-    icon: 'sparkle',
-    color: 'orange',
-    formKicker: 'Formulaire · Inscription cours collectif',
-    formTitle: 'Inscrivez-vous à un cours',
-    fields: [
-      { type: 'select-real', name: 'cours', label: 'Cours choisi',
-        options: [
-          { value: 'doux', label: 'Yoga doux — mardi 18h30 — Saint-Denis (6 places)' },
-          { value: 'vinyasa', label: 'Vinyasa — jeudi 19h — Saint-Pierre (3 places)' },
-          { value: 'prenatal', label: 'Yoga prénatal — samedi 9h30 — Saint-Gilles (4 places)' },
-        ],
-        defaultValue: 'doux', span: 2 },
-      { type: 'input-text', name: 'nom', label: 'Nom',
-        placeholder: 'Emma', defaultValue: 'Emma', span: 1 },
-      { type: 'input-tel', name: 'telephone', label: 'Téléphone',
-        placeholder: '0692 •• •• ••', span: 1 },
-      { type: 'input-email', name: 'email', label: 'E-mail',
-        placeholder: 'emma@exemple.fr', span: 2 },
-      { type: 'radios-chips', name: 'niveau', label: 'Niveau',
-        options: [
-          { value: 'debutant', label: 'Débutant' },
-          { value: 'intermediaire', label: 'Intermédiaire' },
-          { value: 'avance', label: 'Avancé' },
-        ],
-        defaultValue: 'debutant', span: 2 },
-      { type: 'textarea', name: 'message', label: 'Message ou précision (facultatif)',
-        placeholder: 'Je viens pour un premier cours…',
-        rows: 2, span: 2 },
-    ],
-    cta: 'Je réserve ma place',
-    example: 'Le client choisit son cours et son niveau — vous savez immédiatement à quel créneau il s\'inscrit.',
-    clientIntro: 'Bonjour, je voudrais m\'inscrire à un cours.',
-    proReply: 'Bonjour Emma, merci pour votre demande. Je vous confirme votre place rapidement.',
-  },
-  {
-    id: 'resto',
-    label: 'Restaurant',
-    shortLabel: 'Resto',
-    icon: 'calendar-clock',
-    color: 'orange',
-    formKicker: 'Formulaire · Réservation table',
-    formTitle: 'Réservez votre table',
-    fields: [
-      { type: 'input-text', name: 'nom', label: 'Nom',
-        placeholder: 'Emma', defaultValue: 'Emma', span: 1 },
-      { type: 'input-tel', name: 'telephone', label: 'Téléphone',
-        placeholder: '0692 •• •• ••', span: 1 },
-      { type: 'select-real', name: 'creneau', label: 'Créneau disponible',
-        options: [
-          { value: 'ven-1930', label: 'Ven. 14 nov · 19h30 — 3 tables restantes' },
-          { value: 'ven-2100', label: 'Ven. 14 nov · 21h00 — 1 table restante' },
-          { value: 'sam-1230', label: 'Sam. 15 nov · 12h30 — 5 tables restantes' },
-          { value: 'sam-2000', label: 'Sam. 15 nov · 20h00 — 2 tables restantes' },
-          { value: 'dim-1230', label: 'Dim. 16 nov · 12h30 — 4 tables restantes' },
-        ],
-        defaultValue: 'sam-2000', span: 2 },
-      { type: 'input-number', name: 'personnes', label: 'Nombre de personnes',
-        defaultValue: '4', min: 1, max: 12, span: 1 },
-      { type: 'select-real', name: 'demande', label: 'Demande spéciale',
-        options: [
-          { value: 'aucune', label: 'Aucune' },
-          { value: 'terrasse', label: 'Terrasse si possible' },
-          { value: 'chaise-bebe', label: 'Chaise bébé' },
-          { value: 'anniversaire', label: 'Anniversaire' },
-          { value: 'allergie', label: 'Allergie alimentaire' },
-          { value: 'table-calme', label: 'Table au calme' },
-        ],
-        defaultValue: 'terrasse', span: 1 },
-    ],
-    cta: 'Réserver ma table',
-    example: 'Le client choisit un créneau réellement disponible (avec les tables restantes) — fini les réservations sur des horaires déjà complets.',
-    clientIntro: 'Bonjour, je voudrais réserver une table.',
-    proReply: 'Bonjour Emma, merci. Je vérifie la disponibilité et je reviens vers vous tout de suite.',
-  },
-  {
-    id: 'artisan',
-    label: 'Artisan / BTP',
-    shortLabel: 'Artisan',
-    icon: 'wrench',
-    color: 'bleu',
-    formKicker: 'Formulaire · Demande de devis',
-    formTitle: 'Demandez votre devis',
-    fields: [
-      { type: 'input-text', name: 'nom', label: 'Nom',
-        placeholder: 'Emma', defaultValue: 'Emma', span: 1 },
-      { type: 'input-tel', name: 'telephone', label: 'Téléphone',
-        placeholder: '0692 •• •• ••', span: 1 },
-      { type: 'select-real', name: 'commune', label: 'Commune du chantier',
-        options: [
-          { value: 'st-denis', label: 'Saint-Denis' },
-          { value: 'st-paul', label: 'Saint-Paul' },
-          { value: 'st-pierre', label: 'Saint-Pierre' },
-          { value: 'st-andre', label: 'Saint-André' },
-          { value: 'le-tampon', label: 'Le Tampon' },
-          { value: 'st-gilles', label: 'Saint-Gilles' },
-          { value: 'autre', label: 'Autre commune' },
-        ],
-        defaultValue: 'st-denis', span: 1 },
-      { type: 'select-real', name: 'travaux', label: 'Type de travaux',
-        options: [
-          { value: 'renovation', label: 'Rénovation' },
-          { value: 'depannage', label: 'Dépannage' },
-          { value: 'installation', label: 'Installation' },
-          { value: 'entretien', label: 'Entretien' },
-          { value: 'extension', label: 'Extension' },
-          { value: 'autre', label: 'Autre' },
-        ],
-        defaultValue: 'renovation', span: 1 },
-      { type: 'radios-chips', name: 'urgence', label: 'Niveau d\'urgence',
-        options: [
-          { value: 'urgent', label: 'Urgent — intervention rapide' },
-          { value: 'semaine', label: 'Dans la semaine' },
-          { value: 'mois', label: 'Dans le mois' },
-          { value: 'projet', label: 'Projet à venir' },
-        ],
-        defaultValue: 'mois', span: 2 },
-      { type: 'select-real', name: 'budget', label: 'Budget estimé',
-        options: [
-          { value: 'a-definir', label: 'À définir' },
-          { value: 'moins-500', label: 'Moins de 500 €' },
-          { value: '500-2000', label: '500 € à 2 000 €' },
-          { value: '2000-5000', label: '2 000 € à 5 000 €' },
-          { value: 'plus-5000', label: 'Plus de 5 000 €' },
-        ],
-        defaultValue: 'a-definir', span: 1 },
-      { type: 'input-file', name: 'photo', label: 'Photo du problème / chantier',
-        hint: 'JPG ou PNG · 5 Mo max', span: 1 },
-      { type: 'textarea', name: 'description', label: 'Description du besoin',
-        placeholder: 'Je souhaite refaire une petite salle de bain…',
-        defaultValue: 'Je souhaite refaire une petite salle de bain.',
-        rows: 2, span: 2 },
-    ],
-    cta: 'Demander un devis',
-    example: 'Le client qualifie son besoin et joint une photo — vous gagnez du temps et vous chiffrez plus juste dès le 1er échange.',
-    clientIntro: 'Bonjour, j\'aurais besoin d\'un devis.',
-    proReply: 'Bonjour Emma, merci pour votre demande. Je regarde cela et je vous recontacte rapidement.',
-  },
-  {
-    id: 'institut',
-    label: 'Institut de beauté / spa',
-    shortLabel: 'Institut',
-    icon: 'palette',
-    color: 'orange',
-    formKicker: 'Formulaire · Pré-demande de rendez-vous',
-    formTitle: 'Demandez un rendez-vous',
-    fields: [
-      { type: 'input-text', name: 'nom', label: 'Nom',
-        placeholder: 'Emma', defaultValue: 'Emma', span: 1 },
-      { type: 'input-tel', name: 'telephone', label: 'Téléphone',
-        placeholder: '0692 •• •• ••', span: 1 },
-      { type: 'select-real', name: 'soin', label: 'Soin souhaité',
-        options: [
-          { value: 'massage', label: 'Massage relaxant' },
-          { value: 'visage', label: 'Soin du visage' },
-          { value: 'epilation', label: 'Épilation' },
-          { value: 'manucure', label: 'Manucure' },
-          { value: 'rituel', label: 'Rituel spa' },
-          { value: 'cadeau', label: 'Carte cadeau' },
-        ],
-        defaultValue: 'massage', span: 2 },
-      { type: 'radios-chips', name: 'pour-qui', label: 'Pour qui ?',
-        options: [
-          { value: 'moi', label: 'Pour moi' },
-          { value: 'offrir', label: 'Pour offrir' },
-          { value: 'duo', label: 'Pour un duo' },
-        ],
-        defaultValue: 'moi', span: 2 },
-      { type: 'select-real', name: 'creneau', label: 'Créneau disponible',
-        options: [
-          { value: 'jeu-10', label: 'Jeu. 20 nov · 10h00 — disponible' },
-          { value: 'jeu-1430', label: 'Jeu. 20 nov · 14h30 — disponible' },
-          { value: 'ven-16', label: 'Ven. 21 nov · 16h00 — dernière place' },
-          { value: 'sam-9', label: 'Sam. 22 nov · 9h00 — disponible' },
-          { value: 'sam-1130', label: 'Sam. 22 nov · 11h30 — disponible' },
-        ],
-        defaultValue: 'ven-16', span: 2 },
-      { type: 'textarea', name: 'message', label: 'Message / précision (facultatif)',
-        placeholder: 'Je préfère une praticienne si possible…',
-        rows: 2, span: 2 },
-    ],
-    cta: 'Demander un rendez-vous',
-    example: 'Le client choisit un créneau réellement libre dans votre planning — vous ne recevez que des demandes sur des horaires disponibles.',
-    clientIntro: 'Bonjour, je souhaite réserver un soin.',
-    proReply: 'Bonjour Emma, merci. Je vous propose un créneau au plus vite.',
-  },
-  {
-    id: 'gite',
-    label: 'Gîte / Location',
-    shortLabel: 'Gîte',
-    icon: 'globe',
-    color: 'bleu',
-    formKicker: 'Formulaire · Demande de séjour',
-    formTitle: 'Vérifiez les disponibilités',
-    fields: [
-      { type: 'input-text', name: 'nom', label: 'Nom',
-        placeholder: 'Emma', defaultValue: 'Emma', span: 1 },
-      { type: 'input-tel', name: 'telephone', label: 'Téléphone',
-        placeholder: '0692 •• •• ••', span: 1 },
-      { type: 'input-email', name: 'email', label: 'E-mail',
-        placeholder: 'emma@exemple.fr', span: 2 },
-      { type: 'select-real', name: 'periode', label: 'Période disponible',
-        options: [
-          { value: 'nov-22-24', label: '22 → 24 nov · 2 nuits — disponible' },
-          { value: 'nov-28-30', label: '28 → 30 nov · 2 nuits — disponible' },
-          { value: 'dec-05-08', label: '5 → 8 déc · 3 nuits — dernières dispos' },
-          { value: 'dec-19-26', label: '19 → 26 déc · semaine — disponible' },
-        ],
-        defaultValue: 'nov-22-24', span: 2 },
-      { type: 'input-number', name: 'voyageurs', label: 'Nombre de voyageurs',
-        defaultValue: '2', min: 1, max: 12, span: 1 },
-      { type: 'select-real', name: 'sejour', label: 'Type de séjour',
-        options: [
-          { value: 'weekend', label: 'Week-end' },
-          { value: 'famille', label: 'Vacances en famille' },
-          { value: 'couple', label: 'Séjour en couple' },
-          { value: 'long', label: 'Télétravail / long séjour' },
-          { value: 'amis', label: 'Groupe d\'amis' },
-        ],
-        defaultValue: 'couple', span: 1 },
-      { type: 'textarea', name: 'demande', label: 'Demande particulière (facultatif)',
-        placeholder: 'Arrivée tardive, lit bébé, vue / terrasse, parking, animaux acceptés ?',
-        rows: 2, span: 2 },
-    ],
-    cta: 'Réserver ces dates',
-    example: 'Le client choisit parmi vos périodes réellement disponibles — plus de demandes sur des dates déjà réservées.',
-    clientIntro: 'Bonjour, je voudrais connaître vos disponibilités.',
-    proReply: 'Bonjour Emma, merci pour votre demande. Je vérifie les disponibilités et je reviens vers vous rapidement.',
-  },
-  {
-    id: 'coach',
-    label: 'Coach sportif',
-    shortLabel: 'Coach',
-    icon: 'calendar-check',
-    color: 'bleu',
-    formKicker: 'Formulaire · Premier bilan',
-    formTitle: 'Demandez un premier échange',
-    fields: [
-      { type: 'input-text', name: 'nom', label: 'Nom',
-        placeholder: 'Emma', defaultValue: 'Emma', span: 1 },
-      { type: 'input-tel', name: 'telephone', label: 'Téléphone',
-        placeholder: '0692 •• •• ••', span: 1 },
-      { type: 'select-real', name: 'objectif', label: 'Objectif principal',
-        options: [
-          { value: 'poids', label: 'Perte de poids' },
-          { value: 'forme', label: 'Remise en forme' },
-          { value: 'muscle', label: 'Prise de muscle' },
-          { value: 'preparation', label: 'Préparation sportive' },
-          { value: 'mobilite', label: 'Bien-être / mobilité' },
-          { value: 'reprise', label: 'Reprise après pause' },
-        ],
-        defaultValue: 'forme', span: 2 },
-      { type: 'radios-chips', name: 'niveau', label: 'Niveau actuel',
-        options: [
-          { value: 'debutant', label: 'Débutant' },
-          { value: 'intermediaire', label: 'Intermédiaire' },
-          { value: 'avance', label: 'Avancé' },
-          { value: 'reprise', label: 'Reprise après arrêt' },
-        ],
-        defaultValue: 'reprise', span: 2 },
-      { type: 'select-real', name: 'format', label: 'Format souhaité',
-        options: [
-          { value: 'individuel', label: 'Coaching individuel' },
-          { value: 'duo', label: 'Coaching en duo' },
-          { value: 'groupe', label: 'Petit groupe' },
-          { value: 'distance', label: 'Programme à distance' },
-          { value: 'indecis', label: 'Je ne sais pas encore' },
-        ],
-        defaultValue: 'individuel', span: 1 },
-      { type: 'select-real', name: 'frequence', label: 'Fréquence souhaitée',
-        options: [
-          { value: '1', label: '1 fois par semaine' },
-          { value: '2', label: '2 fois par semaine' },
-          { value: '3', label: '3 fois par semaine' },
-          { value: 'ponctuel', label: 'Ponctuellement' },
-          { value: 'a-definir', label: 'À définir ensemble' },
-        ],
-        defaultValue: '2', span: 1 },
-      { type: 'input-text', name: 'contraintes', label: 'Contraintes / blessures',
-        placeholder: 'Douleur au genou droit…',
-        defaultValue: 'Douleur au genou droit', span: 2 },
-      { type: 'select-real', name: 'creneau', label: 'Créneau disponible pour le 1er bilan',
-        options: [
-          { value: 'lun-18', label: 'Lun. 17 nov · 18h00 — disponible' },
-          { value: 'mer-12', label: 'Mer. 19 nov · 12h00 — disponible' },
-          { value: 'jeu-19', label: 'Jeu. 20 nov · 19h00 — dernière place' },
-          { value: 'sam-10', label: 'Sam. 22 nov · 10h00 — disponible' },
-        ],
-        defaultValue: 'mer-12', span: 2 },
-      { type: 'textarea', name: 'message', label: 'Message',
-        placeholder: 'Je veux reprendre progressivement…',
-        rows: 2, span: 2 },
-    ],
-    cta: 'Réserver mon premier bilan',
-    example: 'Le client réserve directement un créneau libre pour le premier bilan — vous ne gérez que des rendez-vous réellement disponibles.',
-    clientIntro: 'Bonjour, je cherche un accompagnement sportif.',
-    proReply: 'Bonjour Emma, merci pour votre message. Je vous propose un premier échange pour en parler.',
-  },
-];
-
-/**
- * Formate la valeur initiale d'un field pour l'affichage dans la carte
- * "Message reçu". Le JS côté client (étape 2c.2) appliquera la même logique
- * en live quand l'utilisateur modifie un champ.
- */
-function fieldDisplay(f: Field): string {
-  const placeholder = '—';
-  switch (f.type) {
-    case 'input-text':
-    case 'input-tel':
-    case 'input-email':
-    case 'input-number':
-      return f.defaultValue || f.placeholder || placeholder;
-    case 'input-file':
-      return f.defaultValue || 'Aucune photo jointe';
-    case 'input-date': {
-      if (!f.defaultValue) return placeholder;
-      const d = new Date(f.defaultValue);
-      if (isNaN(d.getTime())) return f.defaultValue;
-      return d.toLocaleDateString('fr-FR', {
-        weekday: 'long', day: 'numeric', month: 'long',
-      });
-    }
-    case 'input-time':
-      return f.defaultValue ? f.defaultValue.replace(':', 'h') : placeholder;
-    case 'select-real':
-    case 'radios-cards':
-    case 'radios-chips': {
-      const opts = (f.options as FieldOption[]) ?? [];
-      const opt = opts.find((o) => o.value === f.defaultValue);
-      return opt?.label ?? placeholder;
-    }
-    case 'textarea':
-      return f.defaultValue || f.placeholder || placeholder;
-    case 'checkbox':
-      return f.defaultChecked ? 'Oui' : 'Non';
-    default:
-      return placeholder;
-  }
-}
-
-const etapes = [
-  {
-    num: '01',
-    icon: 'file-text',
-    color: 'bleu',
-    titre: 'Le client remplit le formulaire',
-    texte: 'Il indique ce dont il a besoin : réservation, devis, rendez-vous, inscription, demande de séjour ou premier échange.',
-  },
-  {
-    num: '02',
-    icon: 'mail',
-    color: 'orange',
-    titre: 'Vous recevez les informations',
-    texte: 'Tout arrive directement par e-mail et/ou WhatsApp, déjà structuré.',
-  },
-  {
-    num: '03',
-    icon: 'calendar-check',
-    color: 'bleu',
-    titre: 'Vous répondez plus vite',
-    texte: 'Vous avez les bonnes infos pour rappeler, confirmer, envoyer un devis ou proposer un créneau.',
-  },
-];
+import FormPanelDemo from './FormPanelDemo.astro';
+import { metiers } from '../../lib/formDemo';
 ---
 
 <section
@@ -499,328 +61,12 @@ const etapes = [
         </div>
       </div>
 
-      <!-- Panels -->
-      <div class="relative">
-        {metiers.map((m, i) => (
-          <div
-            role="tabpanel"
-            id={`panel-${m.id}`}
-            aria-labelledby={`tab-${m.id}`}
-            data-panel={m.id}
-            data-active={i === 0 ? 'true' : 'false'}
-            hidden={i !== 0}
-          >
-            <!-- Header full-width : kicker + titre + intro orientée bénéfice pro -->
-            <header class="mb-5 lg:mb-7 max-w-3xl mx-auto text-center">
-              <p class="font-roboto-mono text-[10px] uppercase tracking-[0.28em] text-bleu">
-                {m.formKicker}
-              </p>
-              <h3 class="mt-3 font-sora font-bold text-xl md:text-2xl text-blanc-casse">
-                {m.formTitle}
-              </h3>
-              <p class="mt-3 text-sm text-blanc-casse/70 leading-relaxed">
-                {m.example}
-              </p>
-            </header>
-
-            <!-- Grid : formulaire à gauche (3/5) + carte 'Message reçu' à droite (2/5) -->
-            <div class="relative grid lg:grid-cols-5 gap-6 lg:gap-8 items-start">
-
-            <!-- Connecteur formulaire → téléphone (desktop) -->
-            <div class="hidden lg:flex absolute left-[58%] top-1/2 -translate-y-1/2 z-10 items-center gap-1.5" aria-hidden="true">
-              <span class="block w-16 h-[2px] bg-bleu"></span>
-              <span class="flex items-center justify-center w-10 h-10 rounded-full bg-bleu text-bleu-nuit shadow-[0_0_24px_rgba(145,166,255,0.6)]">
-                <Icon name="arrow-right" size={18} strokeWidth={2.5} />
-              </span>
-            </div>
-
-            <!-- Colonne mini-formulaire -->
-            <div class="lg:col-span-3">
-              <div class="relative rounded-3xl bg-white text-bleu-nuit p-5 md:p-6 ring-1 ring-bleu/30"
-                style="box-shadow: 0 22px 50px -20px rgba(0,0,0,0.85), 0 0 0 1.5px #91a6ff, 0 0 36px -10px rgba(145,166,255,0.55);">
-                <!-- Petit liseret bleu mauve en haut, écho à la card prix -->
-                <span class="absolute top-0 inset-x-10 h-px bg-gradient-to-r from-transparent via-bleu/60 to-transparent" aria-hidden="true"></span>
-                <!-- Mini-badge 'Aperçu live' avec point pulsant -->
-                <div class="flex items-center justify-between gap-3 pb-3 border-b border-bleu-nuit/10">
-                  <span class="inline-flex items-center gap-2 font-roboto-mono text-[10px] uppercase tracking-[0.22em] text-bleu-nuit/60 font-semibold">
-                    <span class="relative flex h-2 w-2" aria-hidden="true">
-                      <span class="absolute inline-flex h-full w-full rounded-full bg-bleu opacity-60 animate-ping"></span>
-                      <span class="relative inline-flex h-2 w-2 rounded-full bg-bleu"></span>
-                    </span>
-                    Aperçu live
-                  </span>
-                  <span class="inline-flex items-center gap-1.5 px-2.5 h-6 rounded-full bg-bleu-nuit/[0.05] font-roboto-mono text-[9px] uppercase tracking-[0.2em] text-bleu-nuit/45">
-                    {m.formKicker.replace('Formulaire · ', '')}
-                  </span>
-                </div>
-
-                <p class="mt-4 font-sora font-bold text-xl leading-tight">{m.formTitle}</p>
-
-                <p class="mt-1 text-xs text-bleu-nuit/55">
-                  Aperçu interactif — cliquez dans les champs.
-                </p>
-
-                <form
-                  id={`demo-form-${m.id}`}
-                  class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-2.5"
-                  data-demo-form
-                  data-metier={m.id}
-                  onsubmit="event.preventDefault();"
-                  novalidate
-                >
-                  {m.fields.map((f) => {
-                    const fieldId = `${m.id}-${f.name}`;
-                    const wrapClass = f.span === 2 ? 'sm:col-span-2' : '';
-                    const inputBase = 'w-full h-11 px-3.5 rounded-lg ring-1 ring-bleu-nuit/12 bg-white text-sm font-medium text-bleu-nuit placeholder:text-bleu-nuit/35 hover:ring-bleu-nuit/25 focus:ring-2 focus:ring-bleu outline-none shadow-sm transition-all duration-200';
-                    return (
-                      <div class={wrapClass}>
-                        {f.type !== 'checkbox' && (
-                          <label for={fieldId} class="block text-[11px] font-medium text-bleu-nuit/55 uppercase tracking-wide mb-1.5">
-                            {f.label}
-                          </label>
-                        )}
-
-                        {f.type === 'input-text' && (
-                          <input id={fieldId} type="text" name={f.name}
-                            placeholder={f.placeholder} value={f.defaultValue ?? ''}
-                            class={inputBase} />
-                        )}
-
-                        {f.type === 'input-tel' && (
-                          <input id={fieldId} type="tel" name={f.name} inputmode="tel"
-                            autocomplete="tel" placeholder={f.placeholder}
-                            value={f.defaultValue ?? ''}
-                            class={`${inputBase} tabular-nums`} />
-                        )}
-
-                        {f.type === 'input-email' && (
-                          <input id={fieldId} type="email" name={f.name}
-                            autocomplete="email" placeholder={f.placeholder}
-                            value={f.defaultValue ?? ''}
-                            class={inputBase} />
-                        )}
-
-                        {f.type === 'input-file' && (
-                          <label for={fieldId} class="flex flex-col items-center justify-center gap-1 h-[62px] px-3 rounded-lg ring-1 ring-dashed ring-bleu-nuit/25 bg-blanc-casse cursor-pointer hover:ring-bleu-nuit/45 hover:bg-bleu-nuit/[0.02] transition-all text-center">
-                            <input id={fieldId} type="file" name={f.name}
-                              accept="image/*"
-                              class="sr-only" />
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="text-bleu-nuit/45" aria-hidden="true">
-                              <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/>
-                              <circle cx="12" cy="13" r="3"/>
-                            </svg>
-                            <span class="text-[11px] font-medium text-bleu-nuit/70 leading-tight">Cliquez pour joindre une photo</span>
-                            {f.hint && (
-                              <span class="text-[10px] text-bleu-nuit/45 leading-tight">{f.hint}</span>
-                            )}
-                          </label>
-                        )}
-
-                        {f.type === 'input-date' && (
-                          <input id={fieldId} type="date" name={f.name}
-                            value={f.defaultValue ?? ''}
-                            class={`${inputBase} tabular-nums cursor-pointer`} />
-                        )}
-
-                        {f.type === 'input-time' && (
-                          <input id={fieldId} type="time" name={f.name}
-                            value={f.defaultValue ?? ''}
-                            class={`${inputBase} tabular-nums cursor-pointer`} />
-                        )}
-
-                        {f.type === 'input-number' && (
-                          <input id={fieldId} type="number" name={f.name}
-                            min={f.min} max={f.max} value={f.defaultValue ?? ''}
-                            class={`${inputBase} tabular-nums`} />
-                        )}
-
-                        {f.type === 'select-real' && (
-                          <select id={fieldId} name={f.name}
-                            class={`${inputBase} cursor-pointer appearance-none bg-no-repeat bg-[right_0.875rem_center] pr-9`}
-                            style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%2212%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23000000%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><path d=%22m6 9 6 6 6-6%22/></svg>'); background-size: 12px;">
-                            {(f.options as FieldOption[]).map((o) => (
-                              <option value={o.value} selected={o.value === f.defaultValue}>
-                                {o.label}
-                              </option>
-                            ))}
-                          </select>
-                        )}
-
-                        {f.type === 'textarea' && (
-                          <textarea id={fieldId} name={f.name}
-                            rows={f.rows ?? 2} placeholder={f.placeholder}
-                            class="w-full px-3.5 py-2.5 rounded-xl ring-1 ring-bleu-nuit/15 bg-blanc-casse text-sm font-medium text-bleu-nuit placeholder:text-bleu-nuit/30 focus:ring-2 focus:ring-bleu-nuit/40 outline-none resize-none transition-shadow"
-                          >{f.defaultValue ?? ''}</textarea>
-                        )}
-
-                        {f.type === 'radios-cards' && (
-                          <div class="grid grid-cols-2 sm:grid-cols-4 gap-1.5">
-                            {(f.options as FieldOption[]).map((o) => (
-                              <label class="cursor-pointer">
-                                <input type="radio" name={fieldId} value={o.value}
-                                  data-field-name={f.name} data-label={o.label}
-                                  checked={o.value === f.defaultValue ? true : undefined}
-                                  class="peer sr-only" />
-                                <span class="block text-center px-2 py-3 rounded-xl text-xs font-medium leading-tight transition-all bg-bleu-nuit/[0.04] text-bleu-nuit/70 ring-1 ring-bleu-nuit/10 peer-checked:bg-bleu-nuit peer-checked:text-blanc-casse peer-checked:ring-bleu-nuit hover:bg-bleu-nuit/[0.08] peer-focus-visible:ring-2 peer-focus-visible:ring-bleu-nuit/40">
-                                  {o.label}
-                                </span>
-                              </label>
-                            ))}
-                          </div>
-                        )}
-
-                        {f.type === 'radios-chips' && (
-                          <div class="flex flex-wrap gap-1.5">
-                            {(f.options as FieldOption[]).map((o) => (
-                              <label class="cursor-pointer">
-                                <input type="radio" name={fieldId} value={o.value}
-                                  data-field-name={f.name} data-label={o.label}
-                                  checked={o.value === f.defaultValue ? true : undefined}
-                                  class="peer sr-only" />
-                                <span class="inline-flex items-center h-10 px-3 rounded-full text-xs font-medium transition-all bg-bleu-nuit/[0.06] text-bleu-nuit/70 ring-1 ring-bleu-nuit/10 peer-checked:bg-bleu-nuit peer-checked:text-blanc-casse peer-checked:ring-bleu-nuit hover:bg-bleu-nuit/[0.10] peer-focus-visible:ring-2 peer-focus-visible:ring-bleu-nuit/40">
-                                  {o.label}
-                                </span>
-                              </label>
-                            ))}
-                          </div>
-                        )}
-
-                        {f.type === 'checkbox' && (
-                          <label for={fieldId} class="flex items-center gap-2.5 h-10 px-3 rounded-lg ring-1 ring-bleu-nuit/15 bg-blanc-casse cursor-pointer hover:ring-bleu-nuit/30 transition-all">
-                            <input id={fieldId} type="checkbox" name={f.name}
-                              checked={f.defaultChecked ? true : undefined}
-                              class="peer sr-only" />
-                            <span class="flex items-center justify-center w-5 h-5 rounded-md ring-1 ring-bleu-nuit/25 peer-checked:bg-bleu-nuit peer-checked:ring-bleu-nuit transition-all shrink-0">
-                              <svg class="w-3 h-3 text-blanc-casse opacity-0 peer-checked:opacity-100 transition-opacity" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                <path d="M16.7 5.3a1 1 0 0 1 0 1.4l-7 7a1 1 0 0 1-1.4 0l-3-3a1 1 0 0 1 1.4-1.4l2.3 2.3 6.3-6.3a1 1 0 0 1 1.4 0z"/>
-                              </svg>
-                            </span>
-                            <span class="text-sm font-medium text-bleu-nuit">{f.label}</span>
-                          </label>
-                        )}
-                      </div>
-                    );
-                  })}
-                </form>
-
-                <button
-                  type="submit"
-                  form={`demo-form-${m.id}`}
-                  class="mt-5 w-full h-11 rounded-full font-inter font-semibold text-base inline-flex items-center justify-center gap-2 cursor-pointer transition-all duration-200 ease-out hover:-translate-y-0.5 active:translate-y-0 bg-bleu text-bleu-nuit hover:bg-bleu-fonce shadow-[0_8px_24px_rgba(145,166,255,0.45)]"
-                >
-                  {m.cta}
-                  <Icon name="arrow-right" size={18} strokeWidth={2} />
-                </button>
-                <p class="mt-2.5 text-[11px] text-bleu-nuit/55 text-center leading-relaxed">
-                  Cliquez pour simuler l'envoi — sur votre site, les demandes arrivent par e-mail ou WhatsApp.
-                </p>
-              </div>
-            </div>
-
-            <!-- Colonne conversation WhatsApp Business : 3 bulles (client, formulaire 9site4, pro) -->
-            <aside class="lg:col-span-2 lg:sticky lg:top-24" aria-label={`Aperçu conversation pour ${m.label}`}>
-              <!-- Mockup téléphone (légèrement incliné sur desktop, ombre + halo mauve) -->
-              <div class="relative mx-auto w-[280px] sm:w-[300px] lg:w-[340px] max-w-full lg:rotate-[-3deg]">
-                <div class="relative rounded-[2.6rem] bg-black p-2.5 ring-1 ring-blanc-casse/10 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6),0_0_80px_-20px_rgba(145,166,255,0.45)]">
-                  <!-- Notch -->
-                  <div class="pointer-events-none absolute top-2.5 left-1/2 -translate-x-1/2 z-20 h-6 w-28 rounded-b-2xl bg-black" aria-hidden="true"></div>
-                  <!-- Bouton volume gauche -->
-                  <div class="pointer-events-none absolute -left-[3px] top-24 w-[3px] h-10 rounded-l-sm bg-black" aria-hidden="true"></div>
-                  <div class="pointer-events-none absolute -left-[3px] top-40 w-[3px] h-16 rounded-l-sm bg-black" aria-hidden="true"></div>
-                  <!-- Bouton power droit -->
-                  <div class="pointer-events-none absolute -right-[3px] top-32 w-[3px] h-14 rounded-r-sm bg-black" aria-hidden="true"></div>
-                  <div
-                    class="relative rounded-[2.1rem] overflow-hidden bg-[#ECE5DD]"
-                    data-message-card
-                  >
-                    <!-- Barre d'état (le notch repose dessus) -->
-                    <div class="h-7 bg-[#075E54]" aria-hidden="true"></div>
-                    <!-- Header WhatsApp Business -->
-                <header class="flex items-center gap-3 px-4 py-3 bg-[#075E54] text-blanc-casse">
-                  <span class="flex w-9 h-9 rounded-full bg-blanc-casse/20 items-center justify-center font-sora font-bold text-sm shrink-0" aria-hidden="true">
-                    {m.label.charAt(0)}
-                  </span>
-                  <div class="flex-1 min-w-0">
-                    <p class="font-sora font-semibold text-sm leading-tight truncate">Vous · WhatsApp Business</p>
-                    <p class="text-[11px] text-blanc-casse/75 leading-tight flex items-center gap-1.5 mt-0.5">
-                      <span class="block w-1.5 h-1.5 rounded-full bg-[#25D366]"></span>
-                      en ligne
-                    </p>
-                  </div>
-                  <span class="flex items-center gap-3 text-blanc-casse/70" aria-hidden="true">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="6" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="18" r="1.5"/></svg>
-                  </span>
-                </header>
-
-                <!-- Convo body (fond bleu nuit léger pour évoquer WA) -->
-                <div class="px-3 py-4 space-y-2.5">
-
-                  <!-- Bulle 1 : message client (gauche) -->
-                  <div class="flex justify-start">
-                    <div class="max-w-[85%] rounded-2xl rounded-bl-sm bg-blanc-casse text-bleu-nuit px-3 py-2 shadow-sm">
-                      <p class="text-[13px] leading-snug">{m.clientIntro}</p>
-                      <p class="text-[10px] text-bleu-nuit/40 mt-1 text-right tabular-nums">10:24</p>
-                    </div>
-                  </div>
-
-                  <!-- Bulle 2 : notification 9site4 (centre, ring orange,
-                       coin tr-sm comme une notif descendant en push) -->
-                  <div class="flex justify-center">
-                    <div
-                      class="w-full rounded-2xl rounded-tr-sm bg-blanc-casse ring-1 ring-bleu/40 px-3.5 py-3 shadow-sm"
-                      data-notif-bubble
-                    >
-                      <p class="font-roboto-mono text-[9px] uppercase tracking-[0.22em] font-semibold text-bleu flex items-center gap-1.5 mb-2">
-                        <Icon name="mail" size={11} strokeWidth={2.5} class="shrink-0" />
-                        9site4 · Nouveau formulaire
-                      </p>
-                      <p class="font-sora font-semibold text-bleu-nuit text-sm leading-snug">
-                        Nouvelle demande — {m.label}
-                      </p>
-                      <dl class="mt-2.5 space-y-1.5">
-                        {m.fields.map((f) => (
-                          <div class="grid grid-cols-[6rem_1fr] gap-2 items-baseline">
-                            <dt class="text-[9.5px] uppercase tracking-wide text-bleu-nuit/55 font-medium leading-tight">
-                              {f.label}
-                            </dt>
-                            <dd
-                              class="text-[12px] text-bleu-nuit leading-snug break-words"
-                              data-message-key={f.name}
-                            >
-                              {fieldDisplay(f)}
-                            </dd>
-                          </div>
-                        ))}
-                      </dl>
-                      <div class="mt-2.5 flex items-center justify-between gap-2">
-                        <span class="inline-flex items-center gap-1.5 h-6 px-2.5 rounded-full bg-[#25D366]/15 text-[#0E5B2F] text-[9.5px] font-semibold uppercase tracking-wide">
-                          <span class="w-1.5 h-1.5 rounded-full bg-[#25D366]"></span>
-                          Demande prête à traiter
-                        </span>
-                        <span class="text-[10px] text-bleu-nuit/40 tabular-nums">10:24 ✓✓</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Bulle 3 : réponse pro (droite, vert WhatsApp) -->
-                  <div class="flex justify-end">
-                    <div class="max-w-[85%] rounded-2xl rounded-br-sm bg-[#DCF8C6] text-bleu-nuit px-3 py-2 shadow-sm">
-                      <p class="text-[13px] leading-snug">{m.proReply}</p>
-                      <p class="text-[10px] text-bleu-nuit/40 mt-1 text-right tabular-nums">
-                        10:25 <span class="text-[#34B7F1]">✓✓</span>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                </div>
-                </div>
-              </div>
-            </aside>
-
-            </div>
-          </div>
-        ))}
+      <!-- Panels : seul le 1er est rendu inline (SEO + first paint identiques).
+           Les 5 autres sont des fragments statiques /fragments/form-panel/[id]
+           insérés ici au 1er clic (ou pré-chargés au survol) sur leur onglet
+           — voir mountPanel() dans le <script>. -->
+      <div class="relative" data-panels>
+        <FormPanelDemo metier={metiers[0]} active />
       </div>
     </div>
 
@@ -843,16 +89,56 @@ const etapes = [
 <script>
   document.querySelectorAll<HTMLElement>('[data-form-demo]').forEach((demo) => {
     const tabs = Array.from(demo.querySelectorAll<HTMLButtonElement>('[data-tab]'));
-    const panels = Array.from(demo.querySelectorAll<HTMLElement>('[data-panel]'));
+    const panelsContainer = demo.querySelector<HTMLElement>('[data-panels]');
+    // Les panneaux sont montés paresseusement : seul le 1er est dans le DOM
+    // au load ; les autres sont des fragments HTML statiques insérés au 1er
+    // clic (ou pré-chargés au survol) sur leur onglet.
+    const getPanels = () =>
+      Array.from(demo.querySelectorAll<HTMLElement>('[data-panel]'));
 
-    const select = (id: string, focusTab = false) => {
+    // Monte le panneau `id` s'il n'est pas encore dans le DOM : fetch du
+    // fragment statique /fragments/form-panel/[id], insertion dans le
+    // conteneur, puis init du JS du panneau (sync live + simulation d'envoi).
+    // La promesse est mémoïsée pour dédupliquer hover + clics rapides.
+    const mounting = new Map<string, Promise<HTMLElement | null>>();
+    const mountPanel = (id: string): Promise<HTMLElement | null> => {
+      const existing = demo.querySelector<HTMLElement>(`[data-panel="${id}"]`);
+      if (existing) return Promise.resolve(existing);
+      let pending = mounting.get(id);
+      if (pending) return pending;
+      pending = (async () => {
+        try {
+          const res = await fetch(`/fragments/form-panel/${id}`);
+          if (!res.ok || !panelsContainer) return null;
+          panelsContainer.insertAdjacentHTML('beforeend', await res.text());
+          const panel = demo.querySelector<HTMLElement>(`[data-panel="${id}"]`);
+          if (panel) initPanel(panel);
+          return panel;
+        } catch {
+          // Échec réseau : on retire la promesse mémoïsée pour permettre
+          // un nouvel essai au prochain clic, et on garde le panneau actuel.
+          mounting.delete(id);
+          return null;
+        }
+      })();
+      mounting.set(id, pending);
+      return pending;
+    };
+
+    let wantedId = '';
+    const select = async (id: string, focusTab = false) => {
+      wantedId = id;
+      const panel = await mountPanel(id);
+      // Fragment indisponible, ou un autre onglet a été demandé entre-temps :
+      // on ne touche pas à l'état courant.
+      if (!panel || wantedId !== id) return;
       tabs.forEach((tab) => {
         const active = tab.dataset.tab === id;
         tab.setAttribute('aria-selected', String(active));
         tab.setAttribute('tabindex', active ? '0' : '-1');
         if (active && focusTab) tab.focus();
       });
-      panels.forEach((p) => {
+      getPanels().forEach((p) => {
         const active = p.dataset.panel === id;
         p.dataset.active = String(active);
         if (active) p.removeAttribute('hidden');
@@ -861,6 +147,15 @@ const etapes = [
     };
 
     tabs.forEach((tab, i) => {
+      // Pré-chargement du fragment au survol/focus pour masquer la latence
+      // du fetch au clic (le panneau est inséré caché, select() l'affichera).
+      const prefetch = () => {
+        const id = tab.dataset.tab;
+        if (id) void mountPanel(id);
+      };
+      tab.addEventListener('pointerenter', prefetch);
+      tab.addEventListener('focus', prefetch);
+
       tab.addEventListener('click', () => {
         const id = tab.dataset.tab;
         if (id) select(id);
@@ -986,7 +281,9 @@ const etapes = [
       }
     };
 
-    panels.forEach((panel) => {
+    // Init par panneau : appelé au load pour le panneau inline, et au 1er
+    // montage (insertion du fragment) pour les autres.
+    function initPanel(panel: HTMLElement) {
       const form = panel.querySelector<HTMLFormElement>('[data-demo-form]');
       if (!form) return;
       form.addEventListener('input', () => syncMessageCard(panel));
@@ -995,6 +292,8 @@ const etapes = [
         e.preventDefault();
         simulateSend(panel);
       });
-    });
+    }
+
+    getPanels().forEach(initPanel);
   });
 </script>

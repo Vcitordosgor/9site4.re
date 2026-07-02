@@ -1,0 +1,24 @@
+---
+import FormPanelDemo from '../../../components/sections/FormPanelDemo.astro';
+import { metiers } from '../../../lib/formDemo';
+
+/**
+ * Fragments HTML statiques des panneaux de la démo "Formulaires intégrés"
+ * (home). Seul le 1er panneau est rendu inline sur la home ; les 5 autres
+ * sont chargés depuis ces fragments au clic sur leur onglet (P1-18 : DOM
+ * initial réduit). `partial` : pas de doctype/layout — juste le markup du
+ * panneau, prêt à être inséré via insertAdjacentHTML. Exclus du sitemap.
+ */
+export const partial = true;
+
+export function getStaticPaths() {
+  // Le 1er métier est rendu inline sur la home, mais on génère quand même
+  // son fragment : inoffensif et plus simple/robuste (aucun cas particulier).
+  return metiers.map((m) => ({ params: { id: m.id } }));
+}
+
+const { id } = Astro.params;
+const metier = metiers.find((m) => m.id === id)!;
+---
+
+<FormPanelDemo metier={metier} />
