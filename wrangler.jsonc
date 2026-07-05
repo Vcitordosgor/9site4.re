@@ -16,8 +16,10 @@
   },
   "send_email": [
     {
+      // destination_address = boîte OVHcloud (France), destination VÉRIFIÉE du binding.
+      // Remplacer REMPLACER_BOITE_OVH par l'adresse réelle (idem siteConfig.contact.notifyEmail).
       "name": "SEB",
-      "destination_address": "9site4@gmail.com"
+      "destination_address": "REMPLACER_BOITE_OVH"
     }
   ]
 }

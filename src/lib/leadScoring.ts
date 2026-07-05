@@ -1,7 +1,7 @@
 /**
  * Lead qualification scoring — INTERNAL USE ONLY.
  *
- * Used solely to enrich the internal notification email sent to 9site4@gmail.com.
+ * Used solely to enrich the internal notification email sent to the OVHcloud inbox.
  * MUST NEVER be exposed to the prospect, GA4, Meta Pixel, or any client-side surface.
  *
  * Pure function — no IO, no logging. Caller is responsible for try/catch + fallback.
