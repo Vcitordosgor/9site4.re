@@ -98,8 +98,7 @@ const serviceSchema = {
             { icon: 'wand', t: 'Réservation ou devis', d: "Un formulaire métier capte les demandes 24h/24, même quand vous êtes en intervention." },
             { icon: 'shield-check', t: 'Un site qui dure', d: "Hébergement, maintenance, mises à jour, modifications — 9site4 gère, vous travaillez." },
           ].map((item) => (
-            <li class="rounded-2xl p-6"
-              class="card-dark">
+            <li class="rounded-2xl p-6 card-dark">
               <span class="flex w-11 h-11 items-center justify-center rounded-xl bg-bleu/15 text-bleu">
                 <Icon name={item.icon} size={20} strokeWidth={1.75} />
               </span>
@@ -133,8 +132,7 @@ const serviceSchema = {
             { n: '05', t: 'Zone et localisation', d: "Communes desservies, périmètre d'intervention, ancrage local." },
             { n: '06', t: 'Module métier intégré', d: 'Réservation, devis, RDV, séjour, commande, inscription — adapté à vous.' },
           ].map((s) => (
-            <li class="rounded-2xl p-6"
-              class="card-dark">
+            <li class="rounded-2xl p-6 card-dark">
               <p class="font-roboto-mono text-bleu text-sm font-semibold tracking-widest">{s.n}</p>
               <p class="mt-2 font-sora font-semibold text-lg text-blanc-casse">{s.t}</p>
               <p class="mt-2 text-sm text-blanc-casse/70 leading-relaxed">{s.d}</p>
@@ -176,8 +174,7 @@ const serviceSchema = {
             { i: 'globe', t: 'Séjour & location', d: 'Gîtes, locations saisonnières, tourisme, excursions.' },
             { i: 'monitor', t: 'Commande', d: 'Boulangeries, pâtisseries, glaciers, torréfacteurs.' },
           ].map((m) => (
-            <li class="rounded-2xl p-6"
-              class="card-dark">
+            <li class="rounded-2xl p-6 card-dark">
               <span class="flex w-11 h-11 items-center justify-center rounded-xl bg-bleu/15 text-bleu">
                 <Icon name={m.i} size={20} strokeWidth={1.75} />
               </span>
@@ -279,11 +276,11 @@ const serviceSchema = {
 
         <!-- Maillage interne -->
         <p class="scroll-reveal mt-12 text-center text-sm text-blanc-casse/65">
-          <a href="/questions-frequentes" class="text-bleu hover:text-blanc-casse underline-offset-4 hover:underline transition-colors">
+          <a href="/questions-frequentes" class="text-blanc-casse/55 hover:text-blanc-casse underline underline-offset-4 decoration-blanc-casse/25 hover:decoration-bleu/60 transition-colors">
             Voir toutes les questions fréquentes →
           </a>
         </p>
-        <p class="scroll-reveal mt-4 text-center text-sm text-blanc-casse/65">
+        <p class="seo-links-row scroll-reveal mt-4 text-center text-sm text-blanc-casse/65">
           Voir aussi&nbsp;:
           <a href="/tarifs" class="text-bleu hover:underline">tarifs</a>
           ·

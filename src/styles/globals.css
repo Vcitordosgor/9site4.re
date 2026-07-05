@@ -245,4 +245,28 @@
   word-break: break-word;
 }
 
+/* ---------------------------------------------------------------------------
+   Maillage SEO discret : les rangees "Voir aussi : ..." restent de vrais
+   liens crawlables et cliquables, mais avec un poids visuel attenue facon
+   banque de ressources en pied de page (jamais display:none / span).
+   --------------------------------------------------------------------------- */
+.seo-links-row {
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: rgba(254, 254, 250, 0.45);
+}
+
+.seo-links-row a {
+  color: rgba(254, 254, 250, 0.55);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(254, 254, 250, 0.2);
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.seo-links-row a:hover {
+  color: rgba(254, 254, 250, 0.8);
+  text-decoration-color: rgba(145, 166, 255, 0.6);
+}
+
 

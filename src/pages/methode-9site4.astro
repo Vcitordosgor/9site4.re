@@ -314,8 +314,7 @@ const jsonLd = {
         <ol class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {etapes.map((e) => (
             <li class="group relative">
-              <article class="relative h-full flex flex-col rounded-3xl p-8 overflow-hidden transition-all duration-500 ease-out-soft hover:-translate-y-1.5"
-                class="card-dark-lg"
+              <article class="relative h-full flex flex-col rounded-3xl p-8 overflow-hidden transition-all duration-500 ease-out-soft hover:-translate-y-1.5 card-dark-lg"
               >
                 <span class="absolute top-0 inset-x-8 h-px bg-gradient-to-r from-transparent via-bleu/60 to-transparent opacity-60" aria-hidden="true"></span>
                 <div class="flex items-center justify-between">
@@ -398,7 +397,7 @@ const jsonLd = {
               <div class="mt-5 pt-5 border-t border-white/15 flex flex-wrap gap-x-4 gap-y-2">
                 <a
                   href={s.href}
-                  class="inline-flex items-center gap-1 text-sm font-semibold text-bleu hover:text-blanc-casse transition-colors"
+                  class="inline-flex items-center gap-1 text-sm text-blanc-casse/55 hover:text-blanc-casse underline underline-offset-4 decoration-blanc-casse/25 hover:decoration-bleu/60 transition-colors"
                   data-track-event="methode_sector_link_click"
                   data-track-category="navigation"
                   data-track-source="methode_secteurs"
@@ -633,7 +632,7 @@ const jsonLd = {
           </a>
         </div>
         <p class="scroll-reveal mt-8 text-sm text-blanc-casse/55">
-          <a href="/creation-site-internet-la-reunion" class="hover:text-bleu transition-colors">Voir la page création de site internet à La Réunion →</a>
+          <a href="/creation-site-internet-la-reunion" class="text-blanc-casse/55 hover:text-blanc-casse underline underline-offset-4 decoration-blanc-casse/25 hover:decoration-bleu/60 transition-colors">Voir la page création de site internet à La Réunion →</a>
         </p>
       </div>
     </section>
