@@ -88,10 +88,10 @@
    * Utiliser ces classes pour les nouvelles sections plutôt que des py-* ad hoc.
    */
   .section {
-    @apply py-16 md:py-24;
+    @apply py-14 md:py-20;
   }
   .section-lg {
-    @apply py-20 md:py-28;
+    @apply py-16 md:py-24;
   }
   .card-dark {
     background: linear-gradient(180deg, theme('colors.surface') 0%, theme('colors.surface-deep') 100%);
