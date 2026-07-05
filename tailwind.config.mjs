@@ -21,8 +21,10 @@ export default {
         bleu: '#91A6FF',
         accent: '#91a6ff',
         'bleu-fonce': '#7E95FF',
-        surface: '#14161F',
-        'surface-deep': '#0A0B12',
+        // Surfaces de carte — volontairement plus claires que le fond noir pur (#000)
+        // pour que chaque carte se détache. Teinte violet froid (cohérent DA dark violet).
+        surface: '#1B1E2B',
+        'surface-deep': '#141621',
         'blanc-casse': '#FEFEFA',
         'bleu-nuit': '#000000',
         // Palette pizzeria — refonte trattoria éditoriale
