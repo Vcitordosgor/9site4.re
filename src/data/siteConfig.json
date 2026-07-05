@@ -4,8 +4,7 @@
   "siteUrl": "https://9site4.re",
   "contact": {
     "email": "contact@9site4.re",
-    "notifyEmail": "REMPLACER_BOITE_OVH",
-    "_notifyEmailTodo": "Boîte OVHcloud (France) = destination VÉRIFIÉE du binding SEB. Remplacer 'REMPLACER_BOITE_OVH' par l'adresse réelle ici ET dans wrangler.jsonc (destination_address), puis tester l'envoi sur la preview.",
+    "notifyEmail": "9site4@gmail.com",
     "whatsapp": "262692000000",
     "whatsappDisplay": "Envoyer un message",
     "_whatsappTodo": "Placeholder Réunion (+262 692 00 00 00) — remplacer par le vrai numéro 0692/0693 avant lancement",
