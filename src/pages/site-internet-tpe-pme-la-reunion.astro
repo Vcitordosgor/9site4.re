@@ -107,8 +107,7 @@ const serviceSchema = {
             { i: 'map-pin', t: 'Ancrage local', d: 'Communes, zone, références locales — pour la recherche du 974.' },
             { i: 'calendar-clock', t: 'Gestion continue', d: 'Modifications simples incluses, votre site ne devient pas obsolète.' },
           ].map((item) => (
-            <li class="rounded-2xl p-6"
-              class="card-dark">
+            <li class="rounded-2xl p-6 card-dark">
               <span class="flex w-11 h-11 items-center justify-center rounded-xl bg-bleu/15 text-bleu">
                 <Icon name={item.i} size={20} strokeWidth={1.75} />
               </span>
@@ -142,8 +141,7 @@ const serviceSchema = {
             { n: '05', t: 'Zone et localisation', d: "Communes desservies, ancrage local, points de repère 974." },
             { n: '06', t: 'Module métier + CTA', d: 'Réservation, devis, RDV, séjour, commande, inscription, info.' },
           ].map((s) => (
-            <li class="rounded-2xl p-6"
-              class="card-dark">
+            <li class="rounded-2xl p-6 card-dark">
               <p class="font-roboto-mono text-bleu text-sm font-semibold tracking-widest">{s.n}</p>
               <p class="mt-2 font-sora font-semibold text-lg text-blanc-casse">{s.t}</p>
               <p class="mt-2 text-sm text-blanc-casse/70 leading-relaxed">{s.d}</p>
@@ -178,8 +176,7 @@ const serviceSchema = {
             { i: 'globe', t: 'Séjour & location', d: 'Gîtes, locations, conciergeries, tourisme.' },
             { i: 'monitor', t: 'Demande info', d: 'Commerces, services aux particuliers, B2B.' },
           ].map((m) => (
-            <li class="rounded-2xl p-6"
-              class="card-dark">
+            <li class="rounded-2xl p-6 card-dark">
               <span class="flex w-11 h-11 items-center justify-center rounded-xl bg-bleu/15 text-bleu">
                 <Icon name={m.i} size={20} strokeWidth={1.75} />
               </span>
@@ -227,8 +224,7 @@ const serviceSchema = {
         </div>
         <div class="mt-12 space-y-3">
           {faq.map((item) => (
-            <details class="group rounded-2xl p-5 md:p-6"
-              class="card-dark">
+            <details class="group rounded-2xl p-5 md:p-6 card-dark">
               <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
                 <span class="font-sora font-semibold text-blanc-casse">{item.q}</span>
                 <span class="shrink-0 text-bleu transition-transform duration-300 group-open:rotate-45">

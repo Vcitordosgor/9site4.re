@@ -115,8 +115,7 @@ const serviceSchema = {
             { i: 'shield-check', t: 'Confiance & sérieux', d: "SIRET, assurance, qualifications, ancienneté — affichés proprement." },
             { i: 'calendar-clock', t: 'Disponibilités', d: "Délais, urgences, horaires : les clients savent à quoi s'attendre." },
           ].map((item) => (
-            <li class="rounded-2xl p-6"
-              class="card-dark">
+            <li class="rounded-2xl p-6 card-dark">
               <span class="flex w-11 h-11 items-center justify-center rounded-xl bg-bleu/15 text-bleu">
                 <Icon name={item.i} size={20} strokeWidth={1.75} />
               </span>
@@ -150,8 +149,7 @@ const serviceSchema = {
             { n: '05', t: 'Module métier intégré', d: 'Demande de devis ou prise de contact rapide.' },
             { n: '06', t: 'Confiance & contact', d: 'SIRET, assurance, téléphone, WhatsApp, mail.' },
           ].map((s) => (
-            <li class="rounded-2xl p-6"
-              class="card-dark">
+            <li class="rounded-2xl p-6 card-dark">
               <p class="font-roboto-mono text-bleu text-sm font-semibold tracking-widest">{s.n}</p>
               <p class="mt-2 font-sora font-semibold text-lg text-blanc-casse">{s.t}</p>
               <p class="mt-2 text-sm text-blanc-casse/70 leading-relaxed">{s.d}</p>
@@ -180,8 +178,7 @@ const serviceSchema = {
             { i: 'wrench', t: 'Intervention rapide', d: "Bouton urgence, plage horaire, retour express selon votre fonctionnement." },
             { i: 'map-pin', t: 'Zone d\'intervention', d: 'Communes desservies, micro-régions, rayon en km — mis en avant.' },
           ].map((m) => (
-            <li class="rounded-2xl p-6"
-              class="card-dark">
+            <li class="rounded-2xl p-6 card-dark">
               <span class="flex w-11 h-11 items-center justify-center rounded-xl bg-bleu/15 text-bleu">
                 <Icon name={m.i} size={20} strokeWidth={1.75} />
               </span>
@@ -229,8 +226,7 @@ const serviceSchema = {
         </div>
         <div class="mt-12 space-y-3">
           {faq.map((item) => (
-            <details class="group rounded-2xl p-5 md:p-6"
-              class="card-dark">
+            <details class="group rounded-2xl p-5 md:p-6 card-dark">
               <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
                 <span class="font-sora font-semibold text-blanc-casse">{item.q}</span>
                 <span class="shrink-0 text-bleu transition-transform duration-300 group-open:rotate-45">

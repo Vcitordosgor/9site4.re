@@ -108,8 +108,7 @@ const serviceSchema = {
             { i: 'map-pin', t: 'Ancrage 974', d: "Connaissance du marché local, des codes, des attentes clients réunionnais." },
             { i: 'calendar-clock', t: 'Gestion continue', d: 'Hébergement, maintenance, modifications incluses — pas de site oublié.' },
           ].map((item) => (
-            <li class="rounded-2xl p-6"
-              class="card-dark">
+            <li class="rounded-2xl p-6 card-dark">
               <span class="flex w-11 h-11 items-center justify-center rounded-xl bg-bleu/15 text-bleu">
                 <Icon name={item.i} size={20} strokeWidth={1.75} />
               </span>
@@ -143,8 +142,7 @@ const serviceSchema = {
             { n: '05', t: 'Mise en ligne', d: "Domaine, hébergement, SEO de base, fiche Google connectée." },
             { n: '06', t: 'Gestion continue', d: 'Maintenance, modifications, conseils — sur toute la durée.' },
           ].map((s) => (
-            <li class="rounded-2xl p-6"
-              class="card-dark">
+            <li class="rounded-2xl p-6 card-dark">
               <p class="font-roboto-mono text-bleu text-sm font-semibold tracking-widest">{s.n}</p>
               <p class="mt-2 font-sora font-semibold text-lg text-blanc-casse">{s.t}</p>
               <p class="mt-2 text-sm text-blanc-casse/70 leading-relaxed">{s.d}</p>
@@ -177,8 +175,7 @@ const serviceSchema = {
             { i: 'file-text', t: 'Modifications simples', d: "Horaires, photos, prestations, tarifs — vous écrivez, on fait." },
             { i: 'wand', t: 'Conseils continus', d: "Un partenaire web qui répond, conseille, fait évoluer le site." },
           ].map((m) => (
-            <li class="rounded-2xl p-6"
-              class="card-dark">
+            <li class="rounded-2xl p-6 card-dark">
               <span class="flex w-11 h-11 items-center justify-center rounded-xl bg-bleu/15 text-bleu">
                 <Icon name={m.i} size={20} strokeWidth={1.75} />
               </span>
@@ -226,8 +223,7 @@ const serviceSchema = {
         </div>
         <div class="mt-12 space-y-3">
           {faq.map((item) => (
-            <details class="group rounded-2xl p-5 md:p-6"
-              class="card-dark">
+            <details class="group rounded-2xl p-5 md:p-6 card-dark">
               <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
                 <span class="font-sora font-semibold text-blanc-casse">{item.q}</span>
                 <span class="shrink-0 text-bleu transition-transform duration-300 group-open:rotate-45">
@@ -239,7 +235,7 @@ const serviceSchema = {
           ))}
         </div>
 
-        <p class="scroll-reveal mt-12 text-center text-sm text-blanc-casse/65">
+        <p class="seo-links-row scroll-reveal mt-12 text-center text-sm text-blanc-casse/65">
           Voir aussi&nbsp;:
           <a href="/site-vitrine-la-reunion" class="text-bleu hover:underline">site vitrine</a>
           ·

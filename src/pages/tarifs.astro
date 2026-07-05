@@ -77,7 +77,7 @@ const onFaitPas = [
         <!-- Mini-badges réassurance -->
         <div class="hero-rise hero-rise-5 mt-8 flex flex-wrap items-center justify-center gap-2.5">
           {['Sans engagement', 'Sans frais de création', 'Résiliation à tout moment'].map((t) => (
-            <span class="inline-flex items-center gap-2 h-9 px-4 rounded-full bg-white/[0.04] ring-1 ring-white/10 text-xs font-medium text-blanc-casse/80">
+            <span class="inline-flex items-center gap-2 h-9 px-4 rounded-full bg-white/[0.06] ring-1 ring-white/15 text-xs font-medium text-blanc-casse/80">
               <Icon name="check" size={13} strokeWidth={2.5} class="text-bleu" />
               {t}
             </span>
@@ -161,26 +161,24 @@ const onFaitPas = [
                 </div>
 
                 <!-- Toggle annuel discret -->
-                <div class="mt-6 flex items-center justify-between gap-3 rounded-2xl bg-white/[0.04] ring-1 ring-white/10 px-4 py-3">
-                  <div>
+                <div class="mt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 rounded-2xl bg-white/[0.06] ring-1 ring-white/15 px-4 py-3">
+                  <div class="flex items-center gap-2 flex-wrap">
                     <p class="font-sora font-semibold text-sm text-blanc-casse">Formule annuelle</p>
-                    <p class="text-xs text-blanc-casse/60">{siteConfig.pricing.yearly}/an · ≈ 2 mois offerts</p>
-                  </div>
-                  <div class="flex items-center gap-3 shrink-0">
                     <Badge variant="primary" size="sm">−17%</Badge>
-                    <a
-                      href={yearlyCtaHref}
-                      {...externalAttrs}
-                      class="text-sm font-semibold text-bleu underline-offset-4 hover:text-blanc-casse hover:underline transition-colors"
-                      data-track-event="cta_pricing_click"
-                      data-track-category="conversion"
-                      data-track-source="pricing_page"
-                      data-track-target={yearlyCtaTarget}
-                      data-track-page-type="pricing"
-                    >
-                      Choisir la formule annuelle
-                    </a>
+                    <span class="w-full text-xs text-blanc-casse/60">{siteConfig.pricing.yearly}/an · ≈ 2 mois offerts</span>
                   </div>
+                  <a
+                    href={yearlyCtaHref}
+                    {...externalAttrs}
+                    class="shrink-0 inline-flex items-center gap-1 text-sm font-semibold text-bleu underline-offset-4 hover:text-blanc-casse hover:underline transition-colors"
+                    data-track-event="cta_pricing_click"
+                    data-track-category="conversion"
+                    data-track-source="pricing_page"
+                    data-track-target={yearlyCtaTarget}
+                    data-track-page-type="pricing"
+                  >
+                    Choisir l'annuel <span aria-hidden="true">→</span>
+                  </a>
                 </div>
               </div>
 

@@ -107,8 +107,7 @@ const serviceSchema = {
             { i: 'calendar-check', t: 'Planning de RDV par praticienne', d: "Choix du soin, de la personne et du créneau — sans appel, sans friction." },
             { i: 'calendar-clock', t: 'Gestion continue', d: 'Nouveaux soins, photos, événements : 9site4 met à jour pour vous.' },
           ].map((item) => (
-            <li class="rounded-2xl p-6"
-              class="card-dark">
+            <li class="rounded-2xl p-6 card-dark">
               <span class="flex w-11 h-11 items-center justify-center rounded-xl bg-bleu/15 text-bleu">
                 <Icon name={item.i} size={20} strokeWidth={1.75} />
               </span>
@@ -142,8 +141,7 @@ const serviceSchema = {
             { n: '05', t: 'Cartes cadeaux & promotions', d: 'Bons cadeaux, offres saisonnières, événements ponctuels.' },
             { n: '06', t: 'Module RDV ou demande info', d: "Réservation directe, formulaire de pré-projet ou WhatsApp." },
           ].map((s) => (
-            <li class="rounded-2xl p-6"
-              class="card-dark">
+            <li class="rounded-2xl p-6 card-dark">
               <p class="font-roboto-mono text-bleu text-sm font-semibold tracking-widest">{s.n}</p>
               <p class="mt-2 font-sora font-semibold text-lg text-blanc-casse">{s.t}</p>
               <p class="mt-2 text-sm text-blanc-casse/70 leading-relaxed">{s.d}</p>
@@ -176,8 +174,7 @@ const serviceSchema = {
             { i: 'file-text', t: 'Demande sur-mesure', d: "Pour les tatouages ou prestations longues, formulaire dédié avec photos." },
             { i: 'map-pin', t: 'Contact direct', d: 'WhatsApp, téléphone, itinéraire — pour les indécises.' },
           ].map((m) => (
-            <li class="rounded-2xl p-6"
-              class="card-dark">
+            <li class="rounded-2xl p-6 card-dark">
               <span class="flex w-11 h-11 items-center justify-center rounded-xl bg-bleu/15 text-bleu">
                 <Icon name={m.i} size={20} strokeWidth={1.75} />
               </span>
@@ -225,8 +222,7 @@ const serviceSchema = {
         </div>
         <div class="mt-12 space-y-3">
           {faq.map((item) => (
-            <details class="group rounded-2xl p-5 md:p-6"
-              class="card-dark">
+            <details class="group rounded-2xl p-5 md:p-6 card-dark">
               <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
                 <span class="font-sora font-semibold text-blanc-casse">{item.q}</span>
                 <span class="shrink-0 text-bleu transition-transform duration-300 group-open:rotate-45">

@@ -140,12 +140,12 @@ const stats = [
 
   <!-- Chiffres honnêtes -->
   <div class="mx-auto max-w-content px-6 mt-16 md:mt-24">
-    <dl class="grid grid-cols-1 sm:grid-cols-3 gap-10 text-center">
+    <dl class="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-5 text-center">
       {stats.map((s) => (
-        <div>
+        <div class="card-dark rounded-3xl px-6 py-8 md:py-10">
           <dt class="sr-only">{s.label}</dt>
           <dd>
-            <span class="block font-sora font-bold text-5xl md:text-7xl text-blanc-casse leading-none tracking-tight">{s.value}</span>
+            <span class="block font-sora font-bold text-5xl md:text-6xl text-blanc-casse leading-none tracking-tight">{s.value}</span>
             <span class="block mx-auto mt-4 h-[2px] w-10 bg-bleu" aria-hidden="true"></span>
             <span class="mt-4 block text-sm md:text-base text-blanc-casse/70" aria-hidden="true">{s.label}</span>
           </dd>

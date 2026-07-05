@@ -19,7 +19,8 @@ const inclus = [
 ];
 ---
 
-<section class="relative px-6 py-20 md:py-28 overflow-hidden">  <div class="relative mx-auto max-w-5xl">
+<section class="relative px-6 pt-16 md:pt-24 pb-20 md:pb-28 overflow-hidden">
+  <div class="relative mx-auto max-w-5xl">
     <div class="text-center max-w-3xl mx-auto">
       <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
         <span class="w-2 h-2 rounded-full bg-bleu"></span> Formule
@@ -65,10 +66,9 @@ const inclus = [
       <!-- Inclusions en bento sombres premium -->
       <ul class="lg:col-span-3 grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-4">
         {inclus.map((item) => (
-          <li class="group relative flex flex-col rounded-2xl p-5 overflow-hidden transition-all duration-500 ease-out-soft hover:-translate-y-1"
-            class="card-dark"
+          <li class="group relative flex flex-col rounded-2xl p-5 overflow-hidden transition-all duration-500 ease-out-soft hover:-translate-y-1 card-dark"
             onmouseover="this.style.boxShadow='0 1px 0 rgba(255,255,255,0.10) inset, 0 18px 40px -16px rgba(0,0,0,0.95), 0 0 0 1.5px #91a6ff, 0 0 24px -8px rgba(145,166,255,0.45)';"
-            onmouseout="this.style.boxShadow='0 1px 0 rgba(255,255,255,0.06) inset, 0 12px 30px -16px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08)';"
+            onmouseout="this.style.boxShadow='';"
           >
             <!-- Check coin haut-droit -->
             <span class="absolute top-3 right-3 flex w-5 h-5 rounded-full bg-bleu/20 group-hover:bg-bleu transition-colors duration-500 text-bleu group-hover:text-bleu-nuit items-center justify-center" aria-hidden="true">
@@ -90,10 +90,9 @@ const inclus = [
     <!-- 2 formules compactes : mensuel + annuel -->
     <div class="scroll-reveal mt-6 grid sm:grid-cols-2 gap-5">
       <!-- Mensuel : card sombre -->
-      <div class="group relative flex items-center justify-between gap-4 rounded-2xl p-6 overflow-hidden transition-all duration-500 ease-out-soft hover:-translate-y-0.5"
-        class="card-dark"
+      <div class="group relative flex items-center justify-between gap-4 rounded-2xl p-6 overflow-hidden transition-all duration-500 ease-out-soft hover:-translate-y-0.5 card-dark card-accent"
         onmouseover="this.style.boxShadow='0 1px 0 rgba(255,255,255,0.10) inset, 0 18px 40px -16px rgba(0,0,0,0.95), 0 0 0 1.5px #91a6ff, 0 0 24px -8px rgba(145,166,255,0.40)';"
-        onmouseout="this.style.boxShadow='0 1px 0 rgba(255,255,255,0.06) inset, 0 12px 30px -16px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08)';"
+        onmouseout="this.style.boxShadow='';"
       >
         <div>
           <p class="font-roboto-mono text-[11px] uppercase tracking-[0.3em] text-bleu font-semibold">Mensuel</p>
