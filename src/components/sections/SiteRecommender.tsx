@@ -1,6 +1,5 @@
 /** @jsxImportSource preact */
 import { useMemo, useState } from 'preact/hooks';
-import siteConfig from '../../data/siteConfig.json';
 import realisations from '../../data/realisations.json';
 import { trackEvent } from '../../lib/tracking';
 import {
@@ -22,7 +21,6 @@ import {
   type NextStepKey,
 } from '../../lib/siteRecommendation';
 
-const WHATSAPP_NUMBER = siteConfig.contact.whatsapp;
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 type Step = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7;
@@ -142,7 +140,6 @@ export default function SiteRecommender() {
       <ResultView
         recommendation={recommendation}
         matchingRealisations={matchingRealisations}
-        sectorLabel={SECTEUR_LABELS[draft.secteur as SectorKey]}
         lead={lead}
         setLead={setLead}
         leadErrors={leadErrors}
@@ -392,7 +389,6 @@ function NavFooter({
 function ResultView(props: {
   recommendation: ReturnType<typeof getRecommendation>;
   matchingRealisations: RealisationItem[];
-  sectorLabel: string;
   lead: { nom: string; entreprise: string; telephone: string; email: string; preference: string; message: string };
   setLead: (l: typeof props.lead) => void;
   leadErrors: Record<string, string>;
@@ -410,7 +406,6 @@ function ResultView(props: {
   const {
     recommendation: rec,
     matchingRealisations,
-    sectorLabel,
     lead,
     setLead,
     leadErrors,
@@ -490,7 +485,7 @@ function ResultView(props: {
         setServerError(
           code === 'validation'
             ? 'Certains champs sont invalides.'
-            : `L'envoi a échoué [${code}${body.detail ? ` — ${body.detail}` : ''}]. Vous pouvez nous écrire directement sur WhatsApp.`
+            : `L'envoi a échoué [${code}${body.detail ? ` — ${body.detail}` : ''}]. Merci de réessayer dans un instant.`
         );
         return;
       }
@@ -503,29 +498,11 @@ function ResultView(props: {
       });
       setSubmitted(true);
     } catch {
-      setServerError("Impossible d'envoyer la demande (réseau). Vous pouvez nous écrire directement sur WhatsApp.");
+      setServerError("Impossible d'envoyer la demande (réseau). Merci de réessayer dans un instant.");
     } finally {
       setSending(false);
     }
   }
-
-  const waMessage = useMemo(() => {
-    const lines = [
-      `Bonjour 9site4, je viens de l'outil "Trouver le site adapté".`,
-      ``,
-      `Activité : ${sectorLabel}`,
-      `Recommandation : ${rec.recommendedSiteType}`,
-      `Module : ${rec.recommendedModule}`,
-      `Priorité : ${rec.priority}`,
-      `Suite souhaitée : ${rec.recommendedNextStep}`,
-    ];
-    if (lead.nom) lines.push(``, `Nom : ${lead.nom}`);
-    if (lead.entreprise) lines.push(`Entreprise : ${lead.entreprise}`);
-    if (lead.message) lines.push(``, `Message : ${lead.message}`);
-    return lines.join('\n');
-  }, [rec, sectorLabel, lead]);
-
-  const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waMessage)}`;
 
   if (submitted) {
     return (
@@ -537,7 +514,7 @@ function ResultView(props: {
         </div>
         <h3 class="mt-5 font-sora font-semibold text-2xl text-bleu-nuit">Votre demande a bien été envoyée.</h3>
         <p class="mt-3 text-base text-bleu-nuit/75 max-w-xl mx-auto">
-          Merci. Nous avons reçu votre recommandation personnalisée. Notre équipe revient vers vous rapidement avec une proposition adaptée à votre activité.
+          Merci, nous avons bien reçu votre demande. Nous vous répondons sous 24&nbsp;h ouvrées avec une proposition adaptée à votre activité.
         </p>
         <div class="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
           <a href="/realisations" class="inline-flex items-center justify-center h-11 px-5 text-sm font-semibold rounded-full bg-bleu text-bleu-nuit hover:bg-bleu-fonce transition-all">Voir nos réalisations</a>
@@ -719,40 +696,24 @@ function ResultView(props: {
         {serverError && (
           <div class="rounded-xl bg-red-50 ring-1 ring-red-200 px-4 py-3">
             <p role="alert" class="text-sm text-red-700">{serverError}</p>
-            <a
-              href={waUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="mt-2 inline-flex items-center gap-2 text-sm font-semibold text-[#1ebe57] hover:underline"
-            >
-              Envoyer sur WhatsApp →
-            </a>
           </div>
         )}
 
-        <div class="pt-2 flex flex-col sm:flex-row gap-3">
+        <div class="pt-2">
           <button
             type="submit" disabled={sending} aria-busy={sending}
-            class="inline-flex items-center justify-center gap-2 h-14 px-6 text-base font-semibold rounded-full bg-bleu text-bleu-nuit shadow-card hover:bg-bleu-fonce hover:shadow-card-hover transition-all cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed flex-1"
+            class="inline-flex w-full items-center justify-center gap-2 h-14 px-6 text-base font-semibold rounded-full bg-bleu text-bleu-nuit shadow-card hover:bg-bleu-fonce hover:shadow-card-hover transition-all cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
           >
-            {sending ? 'Envoi…' : 'Recevoir ma recommandation'}
+            {sending && (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="animate-spin">
+                <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+              </svg>
+            )}
+            {sending ? 'Envoi…' : 'Envoyer ma demande →'}
           </button>
-          <a
-            href={waUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            data-track-event="site_recommender_cta_click"
-            data-track-category="conversion"
-            data-track-source="site_recommender_whatsapp"
-            data-track-page-type="trouver_site_adapte"
-            class="inline-flex items-center justify-center gap-2 h-14 px-6 text-base font-semibold rounded-full bg-[#25D366] text-white hover:bg-[#1ebe57] shadow-card hover:shadow-card-hover transition-all"
-          >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.11 4.91A10 10 0 0 0 4.06 18.2L3 22l3.91-1.03A10 10 0 1 0 19.11 4.91Zm-7.1 15.4a8.3 8.3 0 0 1-4.24-1.16l-.3-.18-2.32.61.62-2.26-.2-.31a8.3 8.3 0 1 1 6.44 3.3Z" /></svg>
-            WhatsApp
-          </a>
         </div>
         <p class="text-xs text-bleu-nuit/65 text-center leading-relaxed">
-          Sans engagement. Vos informations servent uniquement à traiter votre demande et restent confidentielles.{' '}
+          Réponse sous 24&nbsp;h ouvrées. Vos informations servent uniquement à traiter votre demande, restent confidentielles.{' '}
           <a href="/mentions-legales#donnees" class="underline underline-offset-2 hover:text-bleu">En savoir plus</a>.
         </p>
       </form>
