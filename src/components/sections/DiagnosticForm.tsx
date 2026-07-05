@@ -440,7 +440,7 @@ export default function DiagnosticForm() {
           </button>
         </div>
         <p class="mt-3 text-xs text-bleu-nuit/70 text-center leading-relaxed">
-          Diagnostic gratuit et sans engagement. Vos données restent confidentielles et sont conservées 12 mois maximum.{' '}
+          Diagnostic gratuit et sans engagement. Vos informations servent uniquement à traiter votre demande, restent confidentielles et sont conservées 12 mois maximum.{' '}
           <a href="/mentions-legales#donnees" class="underline underline-offset-2 hover:text-bleu">En savoir plus</a>.
         </p>
       </div>

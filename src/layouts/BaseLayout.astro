@@ -7,6 +7,7 @@ import Footer from '../components/layout/Footer.astro';
 import MobileStickyCTA from '../components/layout/MobileStickyCTA.astro';
 import BackToSiteBubble from '../components/layout/BackToSiteBubble.astro';
 import Analytics from '../components/Analytics.astro';
+import CookieConsent from '../components/CookieConsent.astro';
 import { absoluteUrl, type PageSeo } from '../lib/seo';
 import soraFontUrl from '@fontsource/sora/files/sora-latin-700-normal.woff2?url';
 import interFontUrl from '@fontsource/inter/files/inter-latin-400-normal.woff2?url';
@@ -260,6 +261,7 @@ const schemaOrg = {
     {!bare && <Footer />}
     {!bare && <MobileStickyCTA />}
     {bare && <BackToSiteBubble />}
+    <CookieConsent />
 
     <script>
       // Bootstrap des animations interactives (rejoué à chaque navigation View Transitions)

@@ -33,9 +33,14 @@
     "linkedin": ""
   },
   "legal": {
-    "_todo": "À COMPLÉTER PAR L'HUMAIN avant lancement : raison sociale / éditeur, SIRET, adresse, directeur de publication, hébergeur exact (OVH vs Cloudflare). Ne pas inventer.",
-    "editor": "[À compléter]",
+    "_todo": "Adresse postale complète (rue + code postal) à confirmer — voir DERIVATIONS.md. Le n° TVA n'est pas requis (franchise en base, art. 293 B du CGI).",
+    "editor": "Victor Lagane",
+    "legalForm": "Entrepreneur individuel (EI)",
+    "siret": "987 641 917 00016",
+    "address": "Saint-Denis, La Réunion (974)",
     "host": "Cloudflare Pages",
-    "publisher": "[À compléter]"
+    "publisher": "Victor Lagane",
+    "vatNote": "TVA non applicable, article 293 B du Code général des impôts.",
+    "lastUpdated": "2026-07-02"
   }
 }

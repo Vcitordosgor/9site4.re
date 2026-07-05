@@ -474,7 +474,8 @@ export default function ContactForm({ categories }: Props) {
         <p class="mt-3 text-xs text-bleu-nuit/70 text-center leading-relaxed">
           Choisissez le canal qui vous convient. Le message sera pré-rempli avec
           les informations du formulaire — vous pourrez le relire avant l'envoi.
-          Vos données restent confidentielles et sont conservées 12 mois maximum.
+          Vos informations servent uniquement à traiter votre demande, restent
+          confidentielles et sont conservées 12 mois maximum.
           {' '}
           <a href="/mentions-legales#donnees" class="underline underline-offset-2 hover:text-bleu">
             En savoir plus

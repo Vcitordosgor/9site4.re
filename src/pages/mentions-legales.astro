@@ -59,10 +59,11 @@ import { getSeo } from '../lib/seo';
           <h2 class="font-sora font-semibold text-2xl text-bleu-nuit mb-4">1. Éditeur du site</h2>
           <p>Le site <strong>{siteConfig.siteUrl.replace(/^https?:\/\//, '')}</strong> est édité par :</p>
           <ul class="mt-3 space-y-1.5 pl-5 list-disc marker:text-bleu">
-            <li><strong>Raison sociale :</strong> {siteConfig.legal.editor}</li>
-            <li><strong>Forme juridique :</strong> [À compléter — ex : SASU, EURL, EI]</li>
-            <li><strong>SIRET :</strong> [À compléter]</li>
-            <li><strong>Adresse :</strong> [À compléter — adresse complète à La Réunion]</li>
+            <li><strong>Éditeur :</strong> {siteConfig.legal.editor}</li>
+            <li><strong>Forme juridique :</strong> {siteConfig.legal.legalForm}</li>
+            <li><strong>SIRET :</strong> {siteConfig.legal.siret}</li>
+            <li><strong>Adresse :</strong> {siteConfig.legal.address}</li>
+            <li><strong>TVA :</strong> {siteConfig.legal.vatNote}</li>
             <li><strong>E-mail :</strong> <a href={`mailto:${siteConfig.contact.email}`} class="underline underline-offset-4 decoration-bleu hover:text-bleu">{siteConfig.contact.email}</a></li>
           </ul>
         </section>
@@ -123,10 +124,16 @@ import { getSeo } from '../lib/seo';
           </ul>
 
           <h3 class="font-sora font-semibold text-lg text-bleu-nuit mt-6 mb-2">Destinataires</h3>
-          <p>Vos données sont accessibles uniquement à <strong>{siteConfig.siteName}</strong>. Aucune donnée n'est revendue, louée ou cédée à des tiers à des fins commerciales.</p>
-          <p class="mt-2 text-sm text-bleu-nuit/65">
-            Sous-traitants techniques : Cloudflare (hébergement) et notre fournisseur d'e-mail. Tous sont liés par des accords de confidentialité conformes au RGPD.
-          </p>
+          <p>Vos données sont accessibles uniquement à <strong>{siteConfig.siteName}</strong> (Victor Lagane). Aucune donnée n'est revendue, louée ou cédée à des tiers à des fins commerciales.</p>
+          <p class="mt-3">Pour traiter votre demande, nous faisons appel aux sous-traitants techniques suivants, chacun encadré par un accord conforme au RGPD :</p>
+          <ul class="mt-2 space-y-1.5 pl-5 list-disc marker:text-bleu">
+            <li><strong>Cloudflare, Inc.</strong> — hébergement du site et acheminement des e-mails (Email Routing). <span class="text-bleu-nuit/70">États-Unis / UE.</span></li>
+            <li><strong>Google (Gmail)</strong> — réception des notifications de demande côté 9site4. <span class="text-bleu-nuit/70">États-Unis.</span></li>
+            <li><strong>Notion Labs, Inc.</strong> — enregistrement de votre demande dans notre outil de suivi commercial. <span class="text-bleu-nuit/70">États-Unis.</span></li>
+          </ul>
+
+          <h3 class="font-sora font-semibold text-lg text-bleu-nuit mt-6 mb-2">Transferts hors Union européenne</h3>
+          <p>Certains de ces sous-traitants (Google, Notion, et une partie de l'infrastructure Cloudflare) sont établis aux <strong>États-Unis</strong>. Les transferts de données correspondants sont encadrés par les <strong>clauses contractuelles types</strong> adoptées par la Commission européenne, et le cas échéant par le <strong>Data Privacy Framework UE–États-Unis</strong>. Vous pouvez nous demander une copie des garanties applicables à l'adresse <a href={`mailto:${siteConfig.contact.email}`} class="underline underline-offset-4 decoration-bleu hover:text-bleu">{siteConfig.contact.email}</a>.</p>
 
           <h3 class="font-sora font-semibold text-lg text-bleu-nuit mt-6 mb-2">Sécurité</h3>
           <p>Le site est intégralement servi en <strong>HTTPS</strong> (chiffrement TLS). Les données collectées sont stockées sur des serveurs sécurisés et protégées par des mesures techniques et organisationnelles appropriées.</p>
@@ -135,20 +142,28 @@ import { getSeo } from '../lib/seo';
         <!-- 6. Cookies -->
         <section id="cookies">
           <h2 class="font-sora font-semibold text-2xl text-bleu-nuit mb-4">6. Cookies</h2>
+          <h3 class="font-sora font-semibold text-lg text-bleu-nuit mt-2 mb-2">Traceurs strictement nécessaires (sans consentement)</h3>
+          <p>Ces éléments sont indispensables au fonctionnement du site et ne nécessitent pas votre consentement (dispensés de bannière selon la doctrine CNIL) :</p>
+          <ul class="mt-2 space-y-1.5 pl-5 list-disc marker:text-bleu">
+            <li><strong>Stockage local fonctionnel</strong> : mémorisation de la fermeture d'un bandeau et de votre choix en matière de cookies. Aucune donnée personnelle, aucune transmission à un tiers.</li>
+            <li><strong>Préférence d'animations</strong> : respect du réglage système <code class="font-mono text-xs px-1.5 py-0.5 rounded bg-bleu-nuit/5">prefers-reduced-motion</code> (lecture seule, pas de stockage).</li>
+            <li><strong>Journaux serveur Cloudflare</strong> : adresses IP et données de connexion conservées de façon limitée à des fins de sécurité (lutte contre le spam et les attaques).</li>
+          </ul>
+
+          <h3 class="font-sora font-semibold text-lg text-bleu-nuit mt-6 mb-2">Traceurs de mesure et de publicité (soumis à votre consentement)</h3>
           <div class="rounded-2xl bg-bleu/15 ring-1 ring-bleu/30 p-5 md:p-6">
-            <p class="font-sora font-semibold text-bleu-nuit">Ce site est conçu pour fonctionner sans cookies de tracking publicitaire.</p>
-            <p class="mt-2 text-sm text-bleu-nuit/85">
-              Si une mesure d'audience est activée (Google Analytics 4 ou Meta Pixel), elle collecte uniquement des données techniques anonymisées (page consultée, type d'action, source) et <strong>aucune donnée personnelle</strong> : pas de nom, pas d'e-mail, pas de téléphone, pas de contenu de formulaire. Aucune donnée n'est revendue à des tiers à des fins publicitaires.
+            <p class="text-sm text-bleu-nuit/85">
+              Ce site peut utiliser le <strong>pixel Meta (Facebook)</strong> pour mesurer l'efficacité de nos publicités. Ce traceur dépose des cookies et traite des <strong>données à caractère personnel</strong> (identifiants, adresse IP, pages consultées), susceptibles d'être transmises à <strong>Meta Platforms, Inc. (États-Unis)</strong>. Contrairement aux traceurs nécessaires, il n'est <strong>pas anonyme</strong>.
+            </p>
+            <p class="mt-3 text-sm text-bleu-nuit/85">
+              Pour cette raison, il n'est <strong>déposé qu'après votre accord</strong>. À votre première visite, un bandeau vous permet d'<strong>accepter ou de refuser</strong> — le refus est aussi simple que l'acceptation et n'a aucune conséquence sur votre navigation. Tant que vous n'avez pas accepté, aucun cookie de mesure ni de publicité n'est déposé.
+            </p>
+            <p class="mt-3 text-sm text-bleu-nuit/85">
+              Vous pouvez modifier votre choix à tout moment via le lien <strong>« Gérer mes cookies »</strong> en bas de chaque page.
             </p>
           </div>
-          <p class="mt-5">Le site utilise uniquement des données techniques minimales nécessaires à son fonctionnement :</p>
-          <ul class="mt-3 space-y-1.5 pl-5 list-disc marker:text-bleu">
-            <li><strong>Cookies de session</strong> (le cas échéant, pour la sécurité anti-CSRF des formulaires) : durée de vie limitée à la session de navigation, supprimés à la fermeture du navigateur.</li>
-            <li><strong>Préférence d'animations</strong> : respect de la préférence système <code class="font-mono text-xs px-1.5 py-0.5 rounded bg-bleu-nuit/5">prefers-reduced-motion</code> (lecture seule, pas de stockage).</li>
-            <li><strong>Logs serveur Cloudflare</strong> : adresses IP anonymisées et durée de session, conservés 30 jours pour la sécurité (lutte contre le spam et les attaques).</li>
-          </ul>
           <p class="mt-4 text-sm text-bleu-nuit/65">
-            Pour plus d'informations sur la gestion des cookies, vous pouvez consulter le site officiel de la CNIL : <a href="https://www.cnil.fr/fr/cookies-et-traceurs-que-dit-la-loi" target="_blank" rel="noopener" class="underline underline-offset-4 decoration-bleu hover:text-bleu">cnil.fr/cookies-et-traceurs</a>.
+            Pour en savoir plus sur la gestion des cookies, consultez le site de la CNIL : <a href="https://www.cnil.fr/fr/cookies-et-traceurs-que-dit-la-loi" target="_blank" rel="noopener" class="underline underline-offset-4 decoration-bleu hover:text-bleu">cnil.fr/cookies-et-traceurs</a>.
           </p>
         </section>
 
@@ -201,7 +216,7 @@ import { getSeo } from '../lib/seo';
           Retour à l'accueil
         </a>
         <p class="text-xs text-bleu-nuit/55">
-          Dernière mise à jour : <time datetime={new Date().toISOString().slice(0, 10)}>{new Date().toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</time>
+          Dernière mise à jour : <time datetime={siteConfig.legal.lastUpdated}>{new Date(siteConfig.legal.lastUpdated).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</time>
         </p>
       </footer>
     </div>

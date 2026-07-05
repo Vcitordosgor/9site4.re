@@ -752,7 +752,7 @@ function ResultView(props: {
           </a>
         </div>
         <p class="text-xs text-bleu-nuit/65 text-center leading-relaxed">
-          Sans engagement. Vos données restent confidentielles.{' '}
+          Sans engagement. Vos informations servent uniquement à traiter votre demande et restent confidentielles.{' '}
           <a href="/mentions-legales#donnees" class="underline underline-offset-2 hover:text-bleu">En savoir plus</a>.
         </p>
       </form>
