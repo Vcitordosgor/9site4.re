@@ -7,8 +7,7 @@ Ce document trace les décisions non triviales et les points restant à la charg
 
 ### Mentions légales (LCEN art. 6-III)
 - **Éditeur** : Victor Lagane, entrepreneur individuel (EI), SIRET 987 641 917 00016. Données fournies par l'éditeur.
-- **Adresse** : « Saint-Denis, La Réunion (974) » sur instruction de l'éditeur.
-  ⚠️ Une **adresse postale complète** (numéro + rue + code postal) est légalement exigée pour l'éditeur d'un site édité par un EI. La ville seule ne suffit pas au sens strict de la LCEN — voir « À ta charge ».
+- **Adresse** : 3 chemin de la Citerne, La Montagne, 97417 Saint-Denis, La Réunion. Adresse officielle de l'EI fournie par l'éditeur.
 - **Directeur de la publication** : Victor Lagane (représentant légal de l'EI). Standard.
 - **Hébergeur** : Cloudflare Pages (Cloudflare, Inc.). Cohérent avec le déploiement réel.
 - **TVA** : mention « TVA non applicable, article 293 B du CGI » ajoutée — l'éditeur a confirmé ne pas être assujetti (franchise en base). Aucun numéro de TVA intracommunautaire à afficher.
@@ -38,8 +37,7 @@ L'éditeur prévoit d'installer un **pixel Meta (Facebook)**. Conséquences appl
 
 ## ⚠️ À ta charge (arbitrages / vérifications humaines)
 
-1. **Adresse postale complète** — remplacer « Saint-Denis, La Réunion (974) » par l'adresse exacte (n° + rue + CP) dans `siteConfig.legal.address`. Légalement requis pour un éditeur EI. Si tu ne veux pas publier ton domicile, une solution est une adresse de domiciliation commerciale.
-2. **Activation du pixel Meta** — quand prêt : côté Cloudflare Pages, `PUBLIC_ENABLE_ANALYTICS=true` + `PUBLIC_META_PIXEL_ID=<ton_id>`. La bannière + le blocage-avant-consentement s'activent alors automatiquement. **Tester** : la 1ʳᵉ visite doit montrer la bannière, « Refuser » ne doit charger AUCUN script `connect.facebook.net`.
-3. **DPA / accords de sous-traitance** — vérifier/signer les accords de traitement des données avec Notion, Google Workspace et Cloudflare (proposés en ligne par ces éditeurs). La mention CCT/DPF dans la politique suppose que ces accords existent.
-4. **Discord** — si tu utilises le webhook Discord pour les notifications, me le dire pour l'ajouter à la liste des sous-traitants (hors UE).
-5. **Numéro WhatsApp** + **liens Stripe** — placeholders inchangés (hors périmètre de cette mission conformité).
+1. **Activation du pixel Meta** — quand prêt : côté Cloudflare Pages, `PUBLIC_ENABLE_ANALYTICS=true` + `PUBLIC_META_PIXEL_ID=<ton_id>`. La bannière + le blocage-avant-consentement s'activent alors automatiquement. **Tester** : la 1ʳᵉ visite doit montrer la bannière, « Refuser » ne doit charger AUCUN script `connect.facebook.net`.
+2. **DPA / accords de sous-traitance** — vérifier/signer les accords de traitement des données avec Notion, Google Workspace et Cloudflare (proposés en ligne par ces éditeurs). La mention CCT/DPF dans la politique suppose que ces accords existent.
+3. **Discord** — si tu utilises le webhook Discord pour les notifications, me le dire pour l'ajouter à la liste des sous-traitants (hors UE).
+4. **Numéro WhatsApp** + **liens Stripe** — placeholders inchangés (hors périmètre de cette mission conformité).

@@ -33,11 +33,10 @@
     "linkedin": ""
   },
   "legal": {
-    "_todo": "Adresse postale complète (rue + code postal) à confirmer — voir DERIVATIONS.md. Le n° TVA n'est pas requis (franchise en base, art. 293 B du CGI).",
     "editor": "Victor Lagane",
     "legalForm": "Entrepreneur individuel (EI)",
     "siret": "987 641 917 00016",
-    "address": "Saint-Denis, La Réunion (974)",
+    "address": "3 chemin de la Citerne, La Montagne, 97417 Saint-Denis, La Réunion",
     "host": "Cloudflare Pages",
     "publisher": "Victor Lagane",
     "vatNote": "TVA non applicable, article 293 B du Code général des impôts.",
