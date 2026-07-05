@@ -33,9 +33,13 @@
     "linkedin": ""
   },
   "legal": {
-    "_todo": "À COMPLÉTER PAR L'HUMAIN avant lancement : raison sociale / éditeur, SIRET, adresse, directeur de publication, hébergeur exact (OVH vs Cloudflare). Ne pas inventer.",
-    "editor": "[À compléter]",
+    "editor": "Victor Lagane",
+    "legalForm": "Entrepreneur individuel (EI)",
+    "siret": "987 641 917 00016",
+    "address": "3 chemin de la Citerne, La Montagne, 97417 Saint-Denis, La Réunion",
     "host": "Cloudflare Pages",
-    "publisher": "[À compléter]"
+    "publisher": "Victor Lagane",
+    "vatNote": "TVA non applicable, article 293 B du Code général des impôts.",
+    "lastUpdated": "2026-07-02"
   }
 }

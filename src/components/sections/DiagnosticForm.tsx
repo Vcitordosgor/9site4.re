@@ -1,11 +1,7 @@
 /** @jsxImportSource preact */
 import { useRef, useState, useMemo } from 'preact/hooks';
 import type { JSX } from 'preact';
-import siteConfig from '../../data/siteConfig.json';
 import { trackEvent } from '../../lib/tracking';
-
-const WHATSAPP_NUMBER = siteConfig.contact.whatsapp;
-const CONTACT_EMAIL = siteConfig.contact.email;
 
 const SECTEURS = [
   { value: 'restaurant', label: 'Restaurant / Café' },
@@ -27,6 +23,8 @@ const OBJECTIFS = [
   { value: 'inconnu', label: 'Je ne sais pas encore' },
 ];
 
+// Préférence de RAPPEL du prospect (comment il souhaite être recontacté),
+// distincte du canal d'envoi du formulaire (POST email unique).
 const PREFERENCES = [
   { value: 'whatsapp', label: 'WhatsApp' },
   { value: 'telephone', label: 'Téléphone' },
@@ -50,36 +48,10 @@ interface FormData {
   message: string;
 }
 
-function buildMessage(d: FormData): string {
-  const secteurLabel = SECTEURS.find((s) => s.value === d.secteur)?.label ?? d.secteur;
-  const objectifLabel = OBJECTIFS.find((o) => o.value === d.objectif)?.label ?? d.objectif;
-  const prefLabel = PREFERENCES.find((p) => p.value === d.preference)?.label ?? d.preference;
-  const lines = [
-    'Bonjour 9site4, je souhaite un diagnostic gratuit de ma présence web.',
-    '',
-    `Nom : ${d.nom}`,
-    `Entreprise : ${d.entreprise}`,
-    `Secteur : ${secteurLabel}`,
-    `A déjà un site : ${d.aSite === 'oui' ? 'Oui' : 'Non'}`,
-  ];
-  if (d.aSite === 'oui' && d.urlSite) lines.push(`URL du site : ${d.urlSite}`);
-  if (d.lienRezo) lines.push(`Lien Instagram / Google : ${d.lienRezo}`);
-  lines.push(
-    `Objectif principal : ${objectifLabel}`,
-    `Téléphone : ${d.telephone}`,
-    `Email : ${d.email}`,
-    `Préférence de contact : ${prefLabel}`
-  );
-  if (d.message) lines.push('', 'Message :', d.message);
-  return lines.join('\n');
-}
-
 export default function DiagnosticForm() {
   const formRef = useRef<HTMLFormElement>(null);
   const [aSite, setASite] = useState<string>('');
   const [submitted, setSubmitted] = useState(false);
-  const [submittedChannel, setSubmittedChannel] = useState<'whatsapp' | 'email'>('whatsapp');
-  const [lastMessage, setLastMessage] = useState('');
   const [sending, setSending] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
@@ -94,14 +66,7 @@ export default function DiagnosticForm() {
       form.reset();
       return;
     }
-    const submitter = (e as unknown as { submitter?: HTMLElement | null }).submitter
-      ?? (e.nativeEvent as SubmitEvent | undefined)?.submitter
-      ?? null;
     const fd = new FormData(form);
-    const channelFromSubmitter =
-      submitter instanceof HTMLButtonElement && submitter.name === 'channel'
-        ? submitter.value
-        : null;
 
     if ((fd.get('website') as string)?.trim()) {
       setSubmitted(true);
@@ -143,29 +108,7 @@ export default function DiagnosticForm() {
       return;
     }
 
-    const message = buildMessage(data);
-    const channel = (channelFromSubmitter || 'whatsapp') as 'whatsapp' | 'email';
     setServerError(null);
-
-    if (channel === 'whatsapp') {
-      const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-      window.open(waUrl, '_blank', 'noopener,noreferrer');
-      trackEvent({
-        name: 'diagnostic_form_submit',
-        category: 'conversion',
-        label: 'diagnostic_page',
-        source: 'diagnostic_form',
-        sector: data.secteur,
-        page_type: 'diagnostic',
-      });
-      setLastMessage(message);
-      setSubmittedChannel('whatsapp');
-      setSubmitted(true);
-      form.reset();
-      setASite('');
-      return;
-    }
-
     setSending(true);
     try {
       const sourcePath = typeof window !== 'undefined' ? window.location.pathname : '';
@@ -181,35 +124,30 @@ export default function DiagnosticForm() {
         setServerError(
           code === 'validation'
             ? 'Certains champs sont invalides.'
-            : `L'envoi a échoué [${code}${detail ? ` — ${detail}` : ''}]. Réessayez ou utilisez WhatsApp.`
+            : `L'envoi a échoué [${code}${detail ? ` — ${detail}` : ''}]. Merci de réessayer dans un instant.`
         );
         return;
       }
+      // Tracking conversion (sans PII : seulement secteur).
       trackEvent({
         name: 'diagnostic_form_submit',
         category: 'conversion',
-        label: 'diagnostic_page',
+        label: 'email',
         source: 'diagnostic_form',
         sector: data.secteur,
         page_type: 'diagnostic',
       });
-      setLastMessage(message);
-      setSubmittedChannel('email');
       setSubmitted(true);
       form.reset();
       setASite('');
     } catch {
-      setServerError("Impossible d'envoyer la demande (réseau). Réessayez ou utilisez WhatsApp.");
+      setServerError("Impossible d'envoyer la demande (réseau). Merci de réessayer dans un instant.");
     } finally {
       setSending(false);
     }
   };
 
   if (submitted) {
-    const mailtoUrl = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
-      'Demande de diagnostic — 9site4'
-    )}&body=${encodeURIComponent(lastMessage)}`;
-    const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lastMessage)}`;
     return (
       <div
         role="status"
@@ -222,35 +160,16 @@ export default function DiagnosticForm() {
           </svg>
         </div>
         <h3 class="mt-5 font-sora font-semibold text-2xl text-bleu-nuit">
-          {submittedChannel === 'email'
-            ? 'Votre demande a bien été envoyée.'
-            : 'WhatsApp ouvert'}
+          Votre demande a bien été envoyée.
         </h3>
         <p class="mt-3 text-base text-bleu-nuit/75">
-          {submittedChannel === 'email'
-            ? 'Merci. Nous analysons votre présence web et revenons vers vous rapidement avec un retour clair et personnalisé.'
-            : "Validez l'envoi du message pré-rempli dans WhatsApp pour finaliser votre demande de diagnostic."}
+          Merci, nous avons bien reçu votre demande de diagnostic. Nous vous répondons sous
+          24&nbsp;h ouvrées avec un premier retour sur votre présence web.
         </p>
-        <div class="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
-          <a
-            href={waUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center justify-center h-11 px-5 text-sm font-semibold rounded-full bg-bleu text-bleu-nuit hover:bg-bleu-fonce transition-all duration-200"
-          >
-            Rouvrir WhatsApp
-          </a>
-          <a
-            href={mailtoUrl}
-            class="inline-flex items-center justify-center h-11 px-5 text-sm font-semibold rounded-full bg-bleu-nuit/5 text-bleu-nuit ring-1 ring-bleu-nuit/15 hover:ring-bleu-nuit/30 transition-all duration-200"
-          >
-            Envoyer par email
-          </a>
-        </div>
         <button
           type="button"
           onClick={() => setSubmitted(false)}
-          class="mt-4 inline-flex items-center justify-center h-11 px-5 text-sm font-semibold rounded-full text-bleu-nuit/70 hover:text-bleu-nuit transition-all duration-200 cursor-pointer"
+          class="mt-6 inline-flex items-center justify-center h-11 px-5 text-sm font-semibold rounded-full text-bleu-nuit/70 hover:text-bleu-nuit transition-all duration-200 cursor-pointer"
         >
           Envoyer une autre demande
         </button>
@@ -412,35 +331,22 @@ export default function DiagnosticForm() {
             {serverError}
           </p>
         )}
-        <div class="grid sm:grid-cols-2 gap-3">
-          <button
-            type="submit" name="channel" value="whatsapp" disabled={sending}
-            class="group relative inline-flex items-center justify-center gap-2 h-14 px-6 text-base font-semibold rounded-full bg-[#25D366] text-white shadow-card hover:bg-[#1ebe57] hover:shadow-card-hover active:translate-y-px transition-all duration-200 ease-out cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M19.11 4.91A10 10 0 0 0 4.06 18.2L3 22l3.91-1.03A10 10 0 1 0 19.11 4.91Zm-7.1 15.4a8.3 8.3 0 0 1-4.24-1.16l-.3-.18-2.32.61.62-2.26-.2-.31a8.3 8.3 0 1 1 6.44 3.3Zm4.55-6.22c-.25-.13-1.47-.73-1.7-.81-.23-.08-.4-.13-.56.13-.17.25-.65.81-.8.98-.14.16-.29.18-.54.06-.25-.13-1.05-.39-2-1.23a7.5 7.5 0 0 1-1.39-1.72c-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.16.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.83-.2-.49-.41-.42-.56-.43h-.48c-.16 0-.42.06-.64.31-.22.25-.84.82-.84 2 0 1.18.86 2.32.98 2.48.13.16 1.7 2.6 4.12 3.65.58.25 1.02.4 1.37.51.57.18 1.1.16 1.51.1.46-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.1-.23-.16-.48-.29Z" />
+        <button
+          type="submit"
+          disabled={sending}
+          aria-busy={sending}
+          class="group relative inline-flex w-full items-center justify-center gap-2 h-14 px-6 text-base font-semibold rounded-full bg-bleu text-bleu-nuit shadow-card hover:bg-bleu-fonce hover:shadow-card-hover active:translate-y-px transition-all duration-200 ease-out cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
+        >
+          {sending && (
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="animate-spin">
+              <path d="M21 12a9 9 0 1 1-6.219-8.56" />
             </svg>
-            Recevoir par WhatsApp
-          </button>
-          <button
-            type="submit" name="channel" value="email" disabled={sending} aria-busy={sending}
-            class="group relative inline-flex items-center justify-center gap-2 h-14 px-6 text-base font-semibold rounded-full bg-bleu text-bleu-nuit shadow-card hover:bg-bleu-fonce hover:shadow-card-hover active:translate-y-px transition-all duration-200 ease-out cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
-          >
-            {sending ? (
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="animate-spin">
-                <path d="M21 12a9 9 0 1 1-6.219-8.56" />
-              </svg>
-            ) : (
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="3" y="5" width="18" height="14" rx="2" />
-                <path d="m3 7 9 6 9-6" />
-              </svg>
-            )}
-            {sending ? 'Envoi…' : 'Recevoir mon diagnostic gratuit'}
-          </button>
-        </div>
+          )}
+          {sending ? 'Envoi…' : 'Envoyer ma demande →'}
+        </button>
         <p class="mt-3 text-xs text-bleu-nuit/70 text-center leading-relaxed">
-          Diagnostic gratuit et sans engagement. Vos données restent confidentielles et sont conservées 12 mois maximum.{' '}
+          Réponse sous 24&nbsp;h ouvrées. Vos informations servent uniquement à traiter votre
+          demande de diagnostic, restent confidentielles et sont conservées 12 mois maximum.{' '}
           <a href="/mentions-legales#donnees" class="underline underline-offset-2 hover:text-bleu">En savoir plus</a>.
         </p>
       </div>

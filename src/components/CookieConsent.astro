@@ -1,0 +1,103 @@
+---
+/**
+ * CookieConsent — bandeau de consentement RGPD/CNIL, auto-hébergé (pas de SaaS).
+ *
+ * Ne s'affiche QUE si un traceur soumis à consentement est réellement configuré
+ * (PUBLIC_ENABLE_ANALYTICS === 'true' + au moins un ID). Sinon : 0 markup, 0 JS.
+ *
+ * Règles CNIL respectées :
+ * - Refus aussi simple que l'acceptation (deux boutons de même poids).
+ * - Aucun traceur déposé tant que l'accord n'est pas donné.
+ * - Choix mémorisé (localStorage) ; modifiable via « Gérer mes cookies » (footer).
+ * - Le chargement effectif du pixel/GA se fait via window.__loadTrackers(),
+ *   appelée uniquement après consentement (voir Analytics.astro).
+ */
+const ENABLED = import.meta.env.PUBLIC_ENABLE_ANALYTICS === 'true';
+const HAS_TRACKER =
+  ENABLED &&
+  (!!import.meta.env.PUBLIC_GA_MEASUREMENT_ID || !!import.meta.env.PUBLIC_META_PIXEL_ID);
+---
+
+{HAS_TRACKER && (
+  <div
+    id="cookie-consent"
+    class="cookie-consent fixed inset-x-0 bottom-0 z-[70] hidden px-4 pb-4 sm:px-6 sm:pb-6"
+    role="dialog"
+    aria-modal="false"
+    aria-labelledby="cookie-consent-title"
+    aria-describedby="cookie-consent-desc"
+    hidden
+  >
+    <div class="mx-auto max-w-3xl rounded-2xl bg-bleu-nuit text-blanc-casse ring-1 ring-white/12 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.8)] p-5 sm:p-6">
+      <p id="cookie-consent-title" class="font-sora font-semibold text-base text-blanc-casse">
+        Cookies de mesure
+      </p>
+      <p id="cookie-consent-desc" class="mt-2 text-sm text-blanc-casse/75 leading-relaxed">
+        Avec votre accord, nous utilisons le pixel Meta pour mesurer l'efficacité de nos
+        publicités. Vous pouvez refuser : cela n'a aucune conséquence sur votre navigation.
+        <a href="/mentions-legales#cookies" class="text-bleu underline underline-offset-2 hover:text-blanc-casse">En savoir plus</a>.
+      </p>
+      <div class="mt-4 flex flex-col sm:flex-row gap-2.5">
+        <button
+          type="button"
+          data-cookie-action="accept"
+          class="inline-flex items-center justify-center h-11 px-5 text-sm font-semibold rounded-full bg-bleu text-bleu-nuit hover:bg-bleu-fonce transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bleu focus-visible:ring-offset-2 focus-visible:ring-offset-bleu-nuit"
+        >
+          Accepter
+        </button>
+        <button
+          type="button"
+          data-cookie-action="refuse"
+          class="inline-flex items-center justify-center h-11 px-5 text-sm font-semibold rounded-full ring-1 ring-blanc-casse/40 text-blanc-casse hover:bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blanc-casse focus-visible:ring-offset-2 focus-visible:ring-offset-bleu-nuit"
+        >
+          Refuser
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const KEY = 'cookie-consent'; // 'granted' | 'denied'
+      const el = document.getElementById('cookie-consent');
+      if (!el) return;
+
+      const show = () => { el.hidden = false; el.classList.remove('hidden'); };
+      const hide = () => { el.hidden = true; el.classList.add('hidden'); };
+
+      const apply = (value) => {
+        try { localStorage.setItem(KEY, value); } catch (e) {}
+        if (value === 'granted' && typeof window.__loadTrackers === 'function') {
+          window.__loadTrackers();
+        }
+      };
+
+      let stored = null;
+      try { stored = localStorage.getItem(KEY); } catch (e) {}
+
+      if (stored === 'granted') {
+        if (typeof window.__loadTrackers === 'function') window.__loadTrackers();
+      } else if (stored !== 'denied') {
+        show(); // premier passage : ni accepté ni refusé
+      }
+
+      el.addEventListener('click', (e) => {
+        const btn = e.target.closest('[data-cookie-action]');
+        if (!btn) return;
+        apply(btn.getAttribute('data-cookie-action') === 'accept' ? 'granted' : 'denied');
+        hide();
+      });
+
+      // Réouverture depuis « Gérer mes cookies » (footer) : href="#cookie-consent"
+      // ou tout élément portant data-cookie-manage.
+      document.addEventListener('click', (e) => {
+        const trigger = e.target.closest('[data-cookie-manage], a[href="#cookie-consent"]');
+        if (!trigger) return;
+        e.preventDefault();
+        show();
+        const firstBtn = el.querySelector('[data-cookie-action]');
+        if (firstBtn) firstBtn.focus();
+      });
+    })();
+  </script>
+)}

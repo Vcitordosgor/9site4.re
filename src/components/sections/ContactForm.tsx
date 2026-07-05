@@ -1,7 +1,6 @@
 /** @jsxImportSource preact */
 import { useRef, useState, useMemo } from 'preact/hooks';
 import type { JSX } from 'preact';
-import siteConfig from '../../data/siteConfig.json';
 import { trackEvent } from '../../lib/tracking';
 
 interface Category {
@@ -11,30 +10,6 @@ interface Category {
 
 interface Props {
   categories: Category[];
-}
-
-const WHATSAPP_NUMBER = siteConfig.contact.whatsapp;
-const CONTACT_EMAIL = siteConfig.contact.email;
-
-function buildMessage(data: FormData, categories: Category[]): string {
-  const secteurLabel =
-    categories.find((c) => c.id === data.secteur)?.nom ??
-    (data.secteur === 'autre' ? 'Autre' : data.secteur);
-  const lines = [
-    'Bonjour 9site4, je souhaite être recontacté(e).',
-    '',
-    `Nom : ${data.nom}`,
-  ];
-  if (data.entreprise) lines.push(`Entreprise : ${data.entreprise}`);
-  lines.push(
-    `Secteur : ${secteurLabel}`,
-    `Téléphone : ${data.telephone}`,
-    `Email : ${data.email}`
-  );
-  if (data.message) {
-    lines.push('', 'Message :', data.message);
-  }
-  return lines.join('\n');
 }
 
 interface FormData {
@@ -52,20 +27,14 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 /**
  * ContactForm — Astro Island (client:load).
- * - 8 champs, validation HTML5 + JS supplémentaire pour tel/email
- * - honeypot caché (name="website") : soumission silencieusement ignorée si rempli
- *   (revérifié côté serveur par /api/contact)
- * - deux canaux d'envoi réels, choisis par le bouton de soumission :
- *   1. WhatsApp : ouvre un deep-link wa.me pré-rempli avec le message construit
- *   2. Email : POST JSON vers /api/contact (validation + honeypot côté serveur),
- *      avec affichage des erreurs serveur et repli conseillé vers WhatsApp
- * - tracking de conversion sans PII (secteur + canal) via trackEvent
+ * - Champs : Nom*, Entreprise, Secteur* (alimente le leadScoring), Téléphone*, Email*, Message.
+ * - Un seul canal : POST JSON vers /api/contact (email interne + auto-réponse + CRM).
+ * - honeypot caché (name="website") + time-trap 1500ms, revérifiés côté serveur.
+ * - tracking de conversion sans PII (secteur uniquement) via trackEvent.
  */
 export default function ContactForm({ categories }: Props) {
   const formRef = useRef<HTMLFormElement>(null);
   const [submitted, setSubmitted] = useState(false);
-  const [submittedChannel, setSubmittedChannel] = useState<'whatsapp' | 'email'>('whatsapp');
-  const [lastMessage, setLastMessage] = useState('');
   const [sending, setSending] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>(
@@ -82,14 +51,7 @@ export default function ContactForm({ categories }: Props) {
       form.reset();
       return;
     }
-    const submitter = (e as unknown as { submitter?: HTMLElement | null }).submitter
-      ?? (e.nativeEvent as SubmitEvent | undefined)?.submitter
-      ?? null;
     const fd = new FormData(form);
-    const channelFromSubmitter =
-      submitter instanceof HTMLButtonElement && submitter.name === 'channel'
-        ? submitter.value
-        : null;
 
     if ((fd.get('website') as string)?.trim()) {
       setSubmitted(true);
@@ -129,29 +91,7 @@ export default function ContactForm({ categories }: Props) {
       return;
     }
 
-    const message = buildMessage(data, categories);
-    const channel = (channelFromSubmitter || (fd.get('channel') as string) || 'whatsapp') as 'whatsapp' | 'email';
     setServerError(null);
-
-    if (channel === 'whatsapp') {
-      const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-      window.open(waUrl, '_blank', 'noopener,noreferrer');
-      // Tracking conversion (sans PII : seulement secteur + canal).
-      trackEvent({
-        name: 'contact_form_submit',
-        category: 'conversion',
-        label: 'whatsapp',
-        source: 'contact_form',
-        sector: data.secteur,
-        page_type: 'contact',
-      });
-      setLastMessage(message);
-      setSubmittedChannel('whatsapp');
-      setSubmitted(true);
-      form.reset();
-      return;
-    }
-
     setSending(true);
     try {
       const sourcePath = typeof window !== 'undefined' ? window.location.pathname : '';
@@ -167,11 +107,11 @@ export default function ContactForm({ categories }: Props) {
         setServerError(
           code === 'validation'
             ? 'Certains champs sont invalides.'
-            : `L'envoi a échoué [${code}${detail ? ` — ${detail}` : ''}]. Réessayez ou utilisez WhatsApp.`
+            : `L'envoi a échoué [${code}${detail ? ` — ${detail}` : ''}]. Merci de réessayer dans un instant.`
         );
         return;
       }
-      // Tracking conversion email (sans PII).
+      // Tracking conversion (sans PII : seulement secteur).
       trackEvent({
         name: 'contact_form_submit',
         category: 'conversion',
@@ -180,12 +120,10 @@ export default function ContactForm({ categories }: Props) {
         sector: data.secteur,
         page_type: 'contact',
       });
-      setLastMessage(message);
-      setSubmittedChannel('email');
       setSubmitted(true);
       form.reset();
     } catch {
-      setServerError("Impossible d'envoyer le message (réseau). Réessayez ou utilisez WhatsApp.");
+      setServerError("Impossible d'envoyer votre demande (réseau). Merci de réessayer dans un instant.");
     } finally {
       setSending(false);
     }
@@ -193,10 +131,6 @@ export default function ContactForm({ categories }: Props) {
 
   // ===== ÉTAT DE SUCCÈS =====
   if (submitted) {
-    const mailtoUrl = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
-      'Demande de contact — 9site4'
-    )}&body=${encodeURIComponent(lastMessage)}`;
-    const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lastMessage)}`;
     return (
       <div
         role="status"
@@ -219,35 +153,16 @@ export default function ContactForm({ categories }: Props) {
           </svg>
         </div>
         <h3 class="mt-5 font-sora font-semibold text-2xl text-bleu-nuit">
-          {submittedChannel === 'email'
-            ? 'Votre demande a bien été envoyée.'
-            : 'WhatsApp ouvert'}
+          Votre demande a bien été envoyée.
         </h3>
         <p class="mt-3 text-base text-bleu-nuit/75">
-          {submittedChannel === 'email'
-            ? 'Merci, nous avons bien reçu votre message. Nous vous répondrons rapidement pour voir quel site 9site4 peut créer pour votre activité.'
-            : 'Validez l\'envoi du message pré-rempli dans WhatsApp pour finaliser votre demande.'}
+          Merci, nous avons bien reçu votre message. Nous vous répondons sous 24&nbsp;h
+          ouvrées pour voir quel site 9site4 peut créer pour votre activité.
         </p>
-        <div class="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
-          <a
-            href={waUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center justify-center h-11 px-5 text-sm font-semibold rounded-full bg-bleu text-bleu-nuit hover:bg-bleu-fonce transition-all duration-200"
-          >
-            Rouvrir WhatsApp
-          </a>
-          <a
-            href={mailtoUrl}
-            class="inline-flex items-center justify-center h-11 px-5 text-sm font-semibold rounded-full bg-bleu-nuit/5 text-bleu-nuit ring-1 ring-bleu-nuit/15 hover:ring-bleu-nuit/30 transition-all duration-200"
-          >
-            Envoyer par email
-          </a>
-        </div>
         <button
           type="button"
           onClick={() => setSubmitted(false)}
-          class="mt-4 inline-flex items-center justify-center h-11 px-5 text-sm font-semibold rounded-full text-bleu-nuit/70 hover:text-bleu-nuit transition-all duration-200 cursor-pointer"
+          class="mt-6 inline-flex items-center justify-center h-11 px-5 text-sm font-semibold rounded-full text-bleu-nuit/70 hover:text-bleu-nuit transition-all duration-200 cursor-pointer"
         >
           Envoyer une autre demande
         </button>
@@ -424,57 +339,29 @@ export default function ContactForm({ categories }: Props) {
         ></textarea>
       </div>
 
-      {/* Submit — deux canaux d'envoi */}
+      {/* Submit — canal unique email */}
       <div class="pt-2">
         {serverError && (
           <p role="alert" class="mb-3 text-sm text-red-700 bg-red-50 ring-1 ring-red-200 rounded-xl px-4 py-3">
             {serverError}
           </p>
         )}
-        <div class="grid sm:grid-cols-2 gap-3">
-          <button
-            type="submit"
-            name="channel"
-            value="whatsapp"
-            disabled={sending}
-            class="group relative inline-flex items-center justify-center gap-2 h-14 px-6 text-base font-semibold rounded-full bg-[#25D366] text-white shadow-card hover:bg-[#1ebe57] hover:shadow-card-hover active:translate-y-px transition-all duration-200 ease-out cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
-          >
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              aria-hidden="true"
-            >
-              <path d="M19.11 4.91A10 10 0 0 0 4.06 18.2L3 22l3.91-1.03A10 10 0 1 0 19.11 4.91Zm-7.1 15.4a8.3 8.3 0 0 1-4.24-1.16l-.3-.18-2.32.61.62-2.26-.2-.31a8.3 8.3 0 1 1 6.44 3.3Zm4.55-6.22c-.25-.13-1.47-.73-1.7-.81-.23-.08-.4-.13-.56.13-.17.25-.65.81-.8.98-.14.16-.29.18-.54.06-.25-.13-1.05-.39-2-1.23a7.5 7.5 0 0 1-1.39-1.72c-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.16.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.83-.2-.49-.41-.42-.56-.43h-.48c-.16 0-.42.06-.64.31-.22.25-.84.82-.84 2 0 1.18.86 2.32.98 2.48.13.16 1.7 2.6 4.12 3.65.58.25 1.02.4 1.37.51.57.18 1.1.16 1.51.1.46-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.1-.23-.16-.48-.29Z"/>
+        <button
+          type="submit"
+          disabled={sending}
+          aria-busy={sending}
+          class="group relative inline-flex w-full items-center justify-center gap-2 h-14 px-6 text-base font-semibold rounded-full bg-bleu text-bleu-nuit shadow-card hover:bg-bleu-fonce hover:shadow-card-hover active:translate-y-px transition-all duration-200 ease-out cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
+        >
+          {sending && (
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="animate-spin">
+              <path d="M21 12a9 9 0 1 1-6.219-8.56" />
             </svg>
-            Envoyer par WhatsApp
-          </button>
-          <button
-            type="submit"
-            name="channel"
-            value="email"
-            disabled={sending}
-            aria-busy={sending}
-            class="group relative inline-flex items-center justify-center gap-2 h-14 px-6 text-base font-semibold rounded-full bg-bleu text-bleu-nuit shadow-card hover:bg-bleu-fonce hover:shadow-card-hover active:translate-y-px transition-all duration-200 ease-out cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
-          >
-            {sending ? (
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="animate-spin">
-                <path d="M21 12a9 9 0 1 1-6.219-8.56" />
-              </svg>
-            ) : (
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="3" y="5" width="18" height="14" rx="2" />
-                <path d="m3 7 9 6 9-6" />
-              </svg>
-            )}
-            {sending ? 'Envoi…' : 'Envoyer par mail'}
-          </button>
-        </div>
+          )}
+          {sending ? 'Envoi…' : 'Envoyer ma demande →'}
+        </button>
         <p class="mt-3 text-xs text-bleu-nuit/70 text-center leading-relaxed">
-          Choisissez le canal qui vous convient. Le message sera pré-rempli avec
-          les informations du formulaire — vous pourrez le relire avant l'envoi.
-          Vos données restent confidentielles et sont conservées 12 mois maximum.
+          Réponse sous 24&nbsp;h ouvrées. Vos informations servent uniquement à traiter
+          votre demande, restent confidentielles et sont conservées 12 mois maximum.
           {' '}
           <a href="/mentions-legales#donnees" class="underline underline-offset-2 hover:text-bleu">
             En savoir plus
