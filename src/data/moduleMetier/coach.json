@@ -48,7 +48,7 @@
     {
       "type": "textarea",
       "id": "message",
-      "label": "Votre situation (facultatif)",
+      "label": "Votre situation",
       "requis": false,
       "placeholder": "Niveau actuel, contraintes, disponibilités…"
     }

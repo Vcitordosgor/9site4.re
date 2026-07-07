@@ -44,7 +44,7 @@
     {
       "type": "textarea",
       "id": "message",
-      "label": "Votre projet de séjour (facultatif)",
+      "label": "Votre projet de séjour",
       "requis": false,
       "placeholder": "Occasion, questions sur le gîte…"
     }

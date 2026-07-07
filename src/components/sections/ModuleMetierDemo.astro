@@ -1,0 +1,85 @@
+---
+/**
+ * Module Métier Intégré — démo interactive (home).
+ *
+ * Le visiteur choisit une activité, remplit le VRAI formulaire (moteur
+ * ModuleMetier en mode "demo", zéro réseau) et voit sa demande « arriver »
+ * dans une maquette WhatsApp, suivie de la réponse du pro.
+ *
+ * Les 6 configs métier sont chargées depuis src/data/moduleMetier/*.json.
+ * Scope : cette section uniquement (ne touche à rien d'autre du site).
+ */
+import ModuleMetierDemo from '../module-metier/ModuleMetierDemo';
+import type { ModuleMetierConfig } from '../../lib/moduleMetier/types';
+
+import yoga from '../../data/moduleMetier/yoga.json';
+import restaurant from '../../data/moduleMetier/restaurant.json';
+import artisan from '../../data/moduleMetier/artisan.json';
+import institut from '../../data/moduleMetier/institut.json';
+import gite from '../../data/moduleMetier/gite.json';
+import coach from '../../data/moduleMetier/coach.json';
+
+// Ordre d'affichage des métiers.
+const configs = [yoga, restaurant, artisan, institut, gite, coach] as ModuleMetierConfig[];
+
+// Infos "pro" affichées dans la maquette (ancrées 974, numéros masqués).
+const pros: Record<string, { name: string; status: string; initials: string }> = {
+  yoga: { name: 'Emma · Studio yoga', status: 'en ligne', initials: 'E' },
+  restaurant: { name: 'Le Ti Resto', status: 'en ligne', initials: 'TR' },
+  artisan: { name: 'Jean-Hugues · BTP', status: 'en ligne', initials: 'JH' },
+  institut: { name: 'Nadia · Institut', status: 'en ligne', initials: 'N' },
+  gite: { name: 'Gîte de la Montagne', status: 'en ligne', initials: 'GM' },
+  coach: { name: 'Jean-Hugues · Coach', status: 'en ligne', initials: 'JH' },
+};
+---
+
+<section
+  id="module-metier"
+  class="relative overflow-hidden px-6 py-[3.75rem] md:py-[5.25rem]"
+  aria-labelledby="module-metier-titre"
+>
+  <div class="relative mx-auto max-w-content">
+    <!-- Header : eyebrow + titre + double paragraphe (copie validée) -->
+    <div class="max-w-3xl mx-auto text-center">
+      <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
+        <span class="w-2 h-2 rounded-full bg-bleu"></span> Module métier intégré
+      </p>
+      <h2
+        id="module-metier-titre"
+        class="scroll-reveal mt-6 font-sora font-bold text-3xl md:text-5xl text-blanc-casse text-balance leading-[1.1]"
+      >
+        Un module métier intégré{' '}
+        <span class="block italic font-medium text-bleu">à votre site.</span>
+      </h2>
+      <p class="scroll-reveal mt-6 text-lg text-blanc-casse/70 leading-relaxed">
+        Réservation, demande de devis, rendez-vous, inscription, demande de séjour ou
+        premier échange : chaque site 9site4 intègre un parcours adapté à votre activité.
+      </p>
+      <p class="scroll-reveal mt-3 text-base text-blanc-casse/55 leading-relaxed">
+        Choisissez une activité, remplissez le formulaire : la demande arrive structurée,
+        prête à traiter, dans le WhatsApp du pro.
+      </p>
+    </div>
+
+    <!-- Démo interactive (le vrai moteur, en simulation) -->
+    <div class="scroll-reveal mt-10 md:mt-14">
+      <ModuleMetierDemo client:visible configs={configs} pros={pros} />
+    </div>
+
+    <!-- Mention RGPD discrète (mode démo) -->
+    <p class="mt-8 text-center text-xs text-blanc-casse/45">
+      Démo interactive — aucune donnée n'est envoyée ni conservée.
+    </p>
+
+    <!-- Ancre conversion : renvoie vers le vrai formulaire de contact -->
+    <div class="mt-10 text-center">
+      <a
+        href="/contact"
+        class="inline-flex items-center gap-2 h-12 px-6 rounded-full text-base font-semibold bg-surface text-blanc-casse ring-1 ring-white/15 hover:ring-white/30 transition-all duration-200"
+      >
+        Décrire mon besoin
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+</section>

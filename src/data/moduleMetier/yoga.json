@@ -46,7 +46,7 @@
     {
       "type": "textarea",
       "id": "message",
-      "label": "Message (facultatif)",
+      "label": "Message",
       "requis": false,
       "placeholder": "Une question, une contrainte physique…"
     }

@@ -44,7 +44,7 @@
     {
       "type": "textarea",
       "id": "message",
-      "label": "Précisions (facultatif)",
+      "label": "Précisions",
       "requis": false,
       "placeholder": "Allergie, terrasse, occasion…"
     }
