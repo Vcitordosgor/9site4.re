@@ -1,0 +1,61 @@
+{
+  "id": "yoga",
+  "label": "Inscription cours collectif",
+  "tag": "FORMULAIRE · INSCRIPTION COURS COLLECTIF",
+  "titre": "Studio de yoga",
+  "sousTitre": "Le visiteur s'inscrit à un cours en 20 secondes, la demande arrive prête à traiter.",
+  "cta": "Envoyer ma demande",
+  "champs": [
+    {
+      "type": "text",
+      "id": "nom",
+      "label": "Prénom",
+      "requis": true,
+      "placeholder": "Emma",
+      "defaut": "Emma"
+    },
+    {
+      "type": "chips",
+      "id": "cours",
+      "label": "Cours souhaité",
+      "requis": true,
+      "options": ["Vinyasa (6 places)", "Hatha doux (8 places)", "Yin du soir (10 places)"],
+      "defaut": "Vinyasa (6 places)"
+    },
+    {
+      "type": "select",
+      "id": "niveau",
+      "label": "Niveau",
+      "requis": true,
+      "options": ["Débutant", "Intermédiaire", "Confirmé"],
+      "defaut": "Débutant"
+    },
+    {
+      "type": "date",
+      "id": "date",
+      "label": "Date souhaitée",
+      "requis": true
+    },
+    {
+      "type": "tel",
+      "id": "tel",
+      "label": "Téléphone",
+      "requis": true,
+      "placeholder": "0692 •• •• ••"
+    },
+    {
+      "type": "textarea",
+      "id": "message",
+      "label": "Message (facultatif)",
+      "requis": false,
+      "placeholder": "Une question, une contrainte physique…"
+    }
+  ],
+  "destination": {
+    "whatsapp": "+262692000000",
+    "email": "studio@exemple.re"
+  },
+  "reponsePro": "Bonjour {nom} 🙏 Merci pour votre demande, je vous confirme les détails par retour. À très vite au studio !",
+  "icon": "yoga",
+  "bulleVisiteur": "Bonjour, je voudrais m'inscrire à un cours collectif 🧘"
+}

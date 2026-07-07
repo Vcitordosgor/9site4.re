@@ -1,0 +1,59 @@
+{
+  "id": "restaurant",
+  "label": "Demande de table",
+  "tag": "FORMULAIRE · DEMANDE DE TABLE",
+  "titre": "Restaurant",
+  "sousTitre": "Le client décrit sa venue, vous recevez une demande claire à valider vous-même.",
+  "cta": "Envoyer ma demande",
+  "champs": [
+    {
+      "type": "text",
+      "id": "nom",
+      "label": "Nom",
+      "requis": true,
+      "placeholder": "Emma",
+      "defaut": "Emma"
+    },
+    {
+      "type": "chips",
+      "id": "couverts",
+      "label": "Nombre de couverts",
+      "requis": true,
+      "options": ["2 personnes", "4 personnes", "6 personnes", "Plus de 6"],
+      "defaut": "4 personnes"
+    },
+    {
+      "type": "date",
+      "id": "date",
+      "label": "Jour souhaité",
+      "requis": true
+    },
+    {
+      "type": "time",
+      "id": "heure",
+      "label": "Heure souhaitée",
+      "requis": true
+    },
+    {
+      "type": "tel",
+      "id": "tel",
+      "label": "Téléphone",
+      "requis": true,
+      "placeholder": "0692 •• •• ••"
+    },
+    {
+      "type": "textarea",
+      "id": "message",
+      "label": "Précisions (facultatif)",
+      "requis": false,
+      "placeholder": "Allergie, terrasse, occasion…"
+    }
+  ],
+  "destination": {
+    "whatsapp": "+262692000000",
+    "email": "resto@exemple.re"
+  },
+  "reponsePro": "Bonjour {nom} 👋 Bien reçu, je regarde ce que je peux vous proposer et je reviens vers vous rapidement pour confirmer.",
+  "icon": "restaurant",
+  "bulleVisiteur": "Bonjour, je voudrais une table pour ce week-end 🍽️"
+}

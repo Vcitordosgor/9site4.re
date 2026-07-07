@@ -1,0 +1,63 @@
+{
+  "id": "coach",
+  "label": "Premier échange",
+  "tag": "FORMULAIRE · PREMIER ÉCHANGE",
+  "titre": "Coach sportif",
+  "sousTitre": "Le prospect décrit son objectif, vous recevez une demande de premier échange qualifiée.",
+  "cta": "Envoyer ma demande",
+  "champs": [
+    {
+      "type": "text",
+      "id": "nom",
+      "label": "Prénom",
+      "requis": true,
+      "placeholder": "Jean-Hugues",
+      "defaut": "Jean-Hugues"
+    },
+    {
+      "type": "chips",
+      "id": "objectif",
+      "label": "Votre objectif",
+      "requis": true,
+      "options": ["Remise en forme", "Perte de poids", "Prise de masse", "Préparation spécifique"],
+      "defaut": "Remise en forme"
+    },
+    {
+      "type": "select",
+      "id": "format",
+      "label": "Format souhaité",
+      "requis": true,
+      "options": ["À domicile", "En extérieur", "En visio", "Peu importe"],
+      "defaut": "En extérieur"
+    },
+    {
+      "type": "select",
+      "id": "frequence",
+      "label": "Fréquence envisagée",
+      "requis": true,
+      "options": ["1 séance / semaine", "2 séances / semaine", "3 séances et +", "Je ne sais pas encore"],
+      "defaut": "2 séances / semaine"
+    },
+    {
+      "type": "tel",
+      "id": "tel",
+      "label": "Téléphone",
+      "requis": true,
+      "placeholder": "0692 •• •• ••"
+    },
+    {
+      "type": "textarea",
+      "id": "message",
+      "label": "Votre situation (facultatif)",
+      "requis": false,
+      "placeholder": "Niveau actuel, contraintes, disponibilités…"
+    }
+  ],
+  "destination": {
+    "whatsapp": "+262692000000",
+    "email": "coach@exemple.re"
+  },
+  "reponsePro": "Bonjour {nom} 💪 Merci pour votre demande ! On cale un premier échange pour définir ensemble votre programme. Je reviens vers vous très vite.",
+  "icon": "coach",
+  "bulleVisiteur": "Bonjour, je voudrais me remettre au sport 🏃"
+}
