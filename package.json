@@ -18,7 +18,8 @@
     "preview": "npm run build && wrangler dev",
     "astro": "astro",
     "deploy": "npm run build && wrangler deploy",
-    "cf-typegen": "wrangler types"
+    "cf-typegen": "wrangler types",
+    "test": "node --test 'src/**/*.test.mjs'"
   },
   "dependencies": {
     "@astrojs/cloudflare": "12",

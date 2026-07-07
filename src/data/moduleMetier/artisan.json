@@ -1,0 +1,63 @@
+{
+  "id": "artisan",
+  "label": "Demande de devis",
+  "tag": "FORMULAIRE · DEMANDE DE DEVIS",
+  "titre": "Artisan / BTP",
+  "sousTitre": "Le prospect décrit son chantier, vous recevez une demande de devis qualifiée.",
+  "cta": "Demander mon devis",
+  "champs": [
+    {
+      "type": "text",
+      "id": "nom",
+      "label": "Nom",
+      "requis": true,
+      "placeholder": "Jean-Hugues",
+      "defaut": "Jean-Hugues"
+    },
+    {
+      "type": "chips",
+      "id": "prestation",
+      "label": "Type de travaux",
+      "requis": true,
+      "options": ["Rénovation", "Neuf / extension", "Dépannage", "Autre"],
+      "defaut": "Rénovation"
+    },
+    {
+      "type": "text",
+      "id": "commune",
+      "label": "Commune du chantier",
+      "requis": true,
+      "placeholder": "Saint-Denis",
+      "defaut": "Saint-Denis"
+    },
+    {
+      "type": "select",
+      "id": "delai",
+      "label": "Délai souhaité",
+      "requis": true,
+      "options": ["Dès que possible", "Sous 1 mois", "Dans les 3 mois", "Je me renseigne"],
+      "defaut": "Sous 1 mois"
+    },
+    {
+      "type": "tel",
+      "id": "tel",
+      "label": "Téléphone",
+      "requis": true,
+      "placeholder": "0692 •• •• ••"
+    },
+    {
+      "type": "textarea",
+      "id": "message",
+      "label": "Description du chantier",
+      "requis": true,
+      "placeholder": "Surface, état actuel, ce que vous souhaitez…"
+    }
+  ],
+  "destination": {
+    "whatsapp": "+262692000000",
+    "email": "artisan@exemple.re"
+  },
+  "reponsePro": "Bonjour {nom} 👍 Merci pour votre demande. Je regarde votre projet et je vous recontacte pour convenir d'une visite et établir le devis.",
+  "icon": "artisan",
+  "bulleVisiteur": "Bonjour, j'aimerais un devis pour des travaux 🔨"
+}

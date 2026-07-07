@@ -1,0 +1,61 @@
+{
+  "id": "institut",
+  "label": "Demande de rendez-vous",
+  "tag": "FORMULAIRE · DEMANDE DE RENDEZ-VOUS",
+  "titre": "Institut de beauté / Spa",
+  "sousTitre": "La cliente choisit sa prestation, vous recevez une demande de RDV prête à traiter.",
+  "cta": "Envoyer ma demande",
+  "champs": [
+    {
+      "type": "text",
+      "id": "nom",
+      "label": "Prénom",
+      "requis": true,
+      "placeholder": "Nadia",
+      "defaut": "Nadia"
+    },
+    {
+      "type": "chips",
+      "id": "prestation",
+      "label": "Prestation",
+      "requis": true,
+      "options": ["Soin visage", "Massage", "Manucure", "Épilation"],
+      "defaut": "Massage"
+    },
+    {
+      "type": "date",
+      "id": "date",
+      "label": "Date souhaitée",
+      "requis": true
+    },
+    {
+      "type": "select",
+      "id": "moment",
+      "label": "Moment de la journée",
+      "requis": true,
+      "options": ["Matin", "Midi", "Après-midi", "Fin de journée"],
+      "defaut": "Après-midi"
+    },
+    {
+      "type": "tel",
+      "id": "tel",
+      "label": "Téléphone",
+      "requis": true,
+      "placeholder": "0692 •• •• ••"
+    },
+    {
+      "type": "textarea",
+      "id": "message",
+      "label": "Précisions",
+      "requis": false,
+      "placeholder": "Une préférence, une sensibilité…"
+    }
+  ],
+  "destination": {
+    "whatsapp": "+262692000000",
+    "email": "institut@exemple.re"
+  },
+  "reponsePro": "Bonjour {nom} 💆 Merci pour votre demande ! Je vérifie mes disponibilités et je reviens vers vous pour caler le rendez-vous.",
+  "icon": "institut",
+  "bulleVisiteur": "Bonjour, je souhaiterais prendre rendez-vous ✨"
+}

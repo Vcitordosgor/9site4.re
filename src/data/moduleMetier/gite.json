@@ -1,0 +1,59 @@
+{
+  "id": "gite",
+  "label": "Demande de séjour",
+  "tag": "FORMULAIRE · DEMANDE DE SÉJOUR",
+  "titre": "Gîte / Location",
+  "sousTitre": "Le voyageur décrit son séjour, vous recevez une demande claire à confirmer vous-même.",
+  "cta": "Envoyer ma demande",
+  "champs": [
+    {
+      "type": "text",
+      "id": "nom",
+      "label": "Nom",
+      "requis": true,
+      "placeholder": "Emma",
+      "defaut": "Emma"
+    },
+    {
+      "type": "date",
+      "id": "arrivee",
+      "label": "Date d'arrivée",
+      "requis": true
+    },
+    {
+      "type": "date",
+      "id": "depart",
+      "label": "Date de départ",
+      "requis": true
+    },
+    {
+      "type": "chips",
+      "id": "voyageurs",
+      "label": "Nombre de voyageurs",
+      "requis": true,
+      "options": ["1-2 personnes", "3-4 personnes", "5-6 personnes", "Plus de 6"],
+      "defaut": "3-4 personnes"
+    },
+    {
+      "type": "tel",
+      "id": "tel",
+      "label": "Téléphone",
+      "requis": true,
+      "placeholder": "0692 •• •• ••"
+    },
+    {
+      "type": "textarea",
+      "id": "message",
+      "label": "Votre projet de séjour",
+      "requis": false,
+      "placeholder": "Occasion, questions sur le gîte…"
+    }
+  ],
+  "destination": {
+    "whatsapp": "+262692000000",
+    "email": "gite@exemple.re"
+  },
+  "reponsePro": "Bonjour {nom} 🌴 Merci pour votre demande de séjour. Je vérifie la disponibilité sur vos dates et je reviens vers vous pour confirmer.",
+  "icon": "gite",
+  "bulleVisiteur": "Bonjour, le gîte est-il disponible pour un séjour ? 🏝️"
+}
