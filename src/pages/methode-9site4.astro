@@ -312,8 +312,8 @@ const jsonLd = {
         </div>
 
         <ol class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {etapes.map((e) => (
-            <li class="group relative">
+          {etapes.map((e, i) => (
+            <li class={`group relative ${i === etapes.length - 1 ? 'md:col-span-2 lg:col-span-1' : ''}`}>
               <article class="relative h-full flex flex-col rounded-3xl p-8 overflow-hidden transition-all duration-500 ease-out-soft hover:-translate-y-1.5 card-dark-lg"
               >
                 <span class="absolute top-0 inset-x-8 h-px bg-gradient-to-r from-transparent via-bleu/60 to-transparent opacity-60" aria-hidden="true"></span>
