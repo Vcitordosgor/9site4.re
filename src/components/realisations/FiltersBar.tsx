@@ -66,14 +66,14 @@ export default function FiltersBar({ categories, totalCount }: Props) {
             aria-pressed={isActive}
             class={`group inline-flex items-center gap-2 h-11 px-4 text-sm font-semibold rounded-full whitespace-nowrap cursor-pointer transition-all duration-200 ease-out ${
               isActive
-                ? 'bg-bleu-nuit text-blanc-casse shadow-card'
+                ? 'bg-bleu text-bleu-nuit shadow-card'
                 : 'bg-blanc-casse text-bleu-nuit ring-1 ring-bleu-nuit/15 hover:ring-bleu-nuit/30 hover:-translate-y-0.5'
             }`}
           >
             <span>{cat.nom}</span>
             <span
               class={`text-xs font-medium tabular-nums ${
-                isActive ? 'text-blanc-casse/70' : 'text-bleu-nuit/65'
+                isActive ? 'text-bleu-nuit/70' : 'text-bleu-nuit/65'
               }`}
             >
               {cat.count}
