@@ -113,6 +113,20 @@ const schemaOrg = {
       // Lien vers l'organisation parente
       parentOrganization: { '@id': `${siteConfig.siteUrl}/#organization` },
     },
+    // BreadcrumbList : pages internes (hors home ; /realisations/<slug> a déjà
+    // son propre breadcrumb 3 niveaux dans la page)
+    ...(seo.canonical !== '/' && !seo.canonical.startsWith('/realisations/')
+      ? [
+          {
+            '@type': 'BreadcrumbList',
+            '@id': `${canonicalUrl}#breadcrumb`,
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Accueil', item: `${siteConfig.siteUrl}/` },
+              { '@type': 'ListItem', position: 2, name: seo.title.split(/ [—|] /)[0], item: canonicalUrl },
+            ],
+          },
+        ]
+      : []),
     // WebPage : page courante
     {
       '@type': 'WebPage',
