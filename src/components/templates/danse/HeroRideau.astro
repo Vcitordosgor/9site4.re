@@ -66,13 +66,16 @@ const mots = ['Danser', 'Bouger', 'Vivre'];
         Cette saison, vous allez…
       </p>
       <div class="relative h-[clamp(72px,16vw,240px)] sm:h-[clamp(96px,17vw,260px)] overflow-hidden" aria-label="Danser, Bouger, Vivre">
-        {mots.map((m, i) => (
-          <h1
-            class="absolute inset-0 font-italiana italic text-vermeille-ivoire leading-[0.92] tracking-tight word-rotate"
-            data-i={i}
-            style={`font-size: clamp(64px, 14vw, 240px); animation-delay: ${i * 2.4}s;`}
-          >{m}.</h1>
-        ))}
+        {mots.map((m, i) => {
+          const Tag = i === 0 ? 'h1' : 'p';
+          return (
+            <Tag
+              class="absolute inset-0 font-italiana italic text-vermeille-ivoire leading-[0.92] tracking-tight word-rotate"
+              data-i={i}
+              style={`font-size: clamp(64px, 14vw, 240px); animation-delay: ${i * 2.4}s;`}
+            >{m}.</Tag>
+          );
+        })}
       </div>
       <p class="mt-8 md:mt-10 max-w-xl font-inter-tight text-vermeille-ivoire/80 text-lg md:text-xl leading-relaxed">
         École de danse à {data.info.ville}. Cinq langages, une même scène — du classique au hip-hop, de 6 à 77 ans.
