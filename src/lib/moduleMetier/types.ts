@@ -52,6 +52,8 @@ export interface ModuleMetierConfig {
   icon?: string;
   /** Première bulle visiteur affichée dans le mockup (varie par métier). */
   bulleVisiteur?: string;
+  /** Valeurs d'une demande exemple affichée d'emblée dans le mockup (démo). */
+  exempleDemande?: FieldValues;
 }
 
 export type FieldValues = Record<string, string>;

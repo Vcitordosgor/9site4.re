@@ -2,9 +2,7 @@
 import Icon from '../ui/Icon.astro';
 
 /**
- * Méthode 9site4 — section 4 home : 3 blocs reliés par une ligne pointillée
- * dorée bleu mauve. Cards sombres premium avec accent gradient au hover,
- * gros chiffre romain géant en filigrane, séparateurs élégants.
+ * Méthode 9site4 — section 4 home : 3 étapes en cards sombres.
  */
 const etapes = [
   {
@@ -39,39 +37,27 @@ const etapes = [
       </h2>
     </div>
 
-    <!-- Ligne pointillée bleu mauve qui relie les 3 cards (desktop only) -->
     <div class="scroll-reveal relative mt-16 md:mt-20">
-      <div class="hidden md:block absolute top-24 left-[16%] right-[16%] h-px border-t-2 border-dashed border-bleu/40 pointer-events-none" aria-hidden="true"></div>
-      <!-- 3 petits dots bleu mauve sur la ligne, alignés sur le centre de chaque card -->
-      <div class="hidden md:flex absolute top-24 left-[16%] right-[16%] -translate-y-1/2 justify-between pointer-events-none" aria-hidden="true">
-        <span class="block w-3 h-3 rounded-full bg-bleu ring-4 ring-black"></span>
-        <span class="block w-3 h-3 rounded-full bg-bleu ring-4 ring-black"></span>
-        <span class="block w-3 h-3 rounded-full bg-bleu ring-4 ring-black"></span>
-      </div>
 
       <ol class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 relative">
         {etapes.map((e, i) => (
           <li class="group relative">
             <article class="relative h-full flex flex-col rounded-3xl p-8 md:p-9 overflow-hidden transition-all duration-500 ease-out-soft hover:-translate-y-1.5 card-dark-lg"
-              onmouseover="this.style.boxShadow='0 1px 0 rgba(255,255,255,0.10) inset, 0 28px 60px -18px rgba(0,0,0,0.95), 0 0 0 1.5px #91a6ff, 0 0 36px -8px rgba(145,166,255,0.50)';"
+              onmouseover="this.style.boxShadow='0 1px 0 rgba(255,255,255,0.10) inset, 0 28px 60px -18px rgba(0,0,0,0.95), 0 0 0 1.5px #91a6ff';"
               onmouseout="this.style.boxShadow='';"
             >
-              <!-- Gradient accent en haut, plus présent au hover -->
-              <span class="absolute top-0 inset-x-8 h-px bg-gradient-to-r from-transparent via-bleu/60 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-500" aria-hidden="true"></span>
 
               <!-- Header card : icône + numéro -->
               <div class="flex items-center justify-between">
                 <span class="relative flex w-14 h-14 items-center justify-center rounded-2xl overflow-hidden">
-                  <span class="absolute inset-0 bg-gradient-to-br from-bleu/25 to-bleu/5 group-hover:from-bleu/40 group-hover:to-bleu/15 transition-all duration-500" aria-hidden="true"></span>
-                  <Icon name={e.icon} size={24} strokeWidth={1.75} class="relative text-bleu" />
+                  <span class="absolute inset-0 bg-bleu" aria-hidden="true"></span>
+                  <Icon name={e.icon} size={24} strokeWidth={1.75} class="relative text-bleu-nuit" />
                 </span>
                 <span class="font-sora font-bold text-bleu/40 group-hover:text-bleu/70 transition-colors duration-500 text-2xl leading-none tabular-nums tracking-tight">{e.num}</span>
               </div>
 
-              <!-- Petit séparateur or-bleu au hover -->
-              <span class="mt-6 block h-px w-10 bg-bleu/40 group-hover:w-16 group-hover:bg-bleu transition-all duration-500 ease-out-soft" aria-hidden="true"></span>
 
-              <h3 class="mt-5 font-sora font-semibold text-xl md:text-2xl text-blanc-casse leading-snug">{e.titre}</h3>
+              <h3 class="mt-6 font-sora font-semibold text-xl md:text-2xl text-blanc-casse leading-snug">{e.titre}</h3>
               <p class="mt-3 text-[15px] md:text-base text-blanc-casse/65 leading-relaxed">{e.texte}</p>
 
               <!-- Flèche entre cards (desktop, sauf dernière) -->

@@ -5,3 +5,45 @@
 
 # Merge institut beauté + spa → page institut unique (couvre spa, coiffure, tatouage)
 /site-internet-institut-beaute-spa-la-reunion /site-internet-institut-beaute-la-reunion 301
+
+# Pages intermédiaires /realisations/<slug> supprimées → démo directe (301)
+/realisations/restaurant-gastronomique /templates/resto 301
+/realisations/snack-pizzeria /templates/pizzeria 301
+/realisations/bar-a-jus-tropical /templates/bar-jus 301
+/realisations/salon-de-coiffure /templates/salon 301
+/realisations/institut-de-beaute /templates/institut 301
+/realisations/spa-massage /templates/spa 301
+/realisations/plomberie /templates/plomberie 301
+/realisations/electricite-generale /templates/electricien 301
+/realisations/paysagiste /templates/paysagiste 301
+/realisations/cabinet-osteopathie /templates/osteo 301
+/realisations/dieteticienne /templates/dieteticienne 301
+/realisations/psychologue /templates/psychologue 301
+/realisations/coach-sportif /templates/coach 301
+/realisations/studio-yoga /templates/yoga 301
+/realisations/ecole-de-danse /templates/danse 301
+/realisations/gite-de-montagne /templates/gite 301
+/realisations/excursions-randonnee /templates/excursions 301
+/realisations/location-saisonniere-bord-de-mer /templates/location 301
+/realisations/consultant /templates/consultant 301
+/realisations/cabinet-comptable /templates/comptable 301
+/realisations/architecte /templates/architecte 301
+/realisations/auto-ecole /templates/auto-ecole 301
+/realisations/conciergerie /templates/conciergerie 301
+/realisations/aide-a-domicile /templates/aide-domicile 301
+/realisations/plongee /templates/plongee 301
+/realisations/wedding-planner /templates/wedding 301
+/realisations/patisserie-creole /templates/patisserie 301
+/realisations/garage-mecanique /templates/garage 301
+/realisations/photographe-auteur /templates/photographe 301
+/realisations/avocat-cabinet /templates/avocat 301
+/realisations/boulangerie-artisanale /templates/boulangerie 301
+/realisations/glacier-artisanal /templates/glacier 301
+/realisations/cafe-torrefaction /templates/cafe-torref 301
+/realisations/ecole-de-surf /templates/surf 301
+/realisations/fleuriste-atelier /templates/fleuriste 301
+/realisations/studio-de-tatouage /templates/tatoueur 301
+/realisations/naturopathe /templates/naturopathe 301
+/realisations/micro-creche /templates/creche 301
+/realisations/etude-notariale /templates/notaire 301
+/realisations/studio-audio /templates/studio-audio 301

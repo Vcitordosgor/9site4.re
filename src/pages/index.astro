@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/sections/Hero.astro';
-import BandeauReassurance from '../components/sections/BandeauReassurance.astro';
 import VitrineExemples from '../components/sections/VitrineExemples.astro';
 import Methode9site4 from '../components/sections/Methode9site4.astro';
 import ModuleMetierDemo from '../components/sections/ModuleMetierDemo.astro';
@@ -14,19 +13,16 @@ import { getSeo } from '../lib/seo';
 
 <BaseLayout seo={getSeo('home')}>
   <Hero />
-  <BandeauReassurance />
   <VitrineExemples />
-  <div class="flex justify-center bg-black"><span class="block h-px w-24 bg-bleu/60" aria-hidden="true"></span></div>
   <Methode9site4 />
   <ModuleMetierDemo />
-  <div class="flex justify-center bg-black"><span class="block h-px w-24 bg-bleu/60" aria-hidden="true"></span></div>
   <PourquoiChoisir />
   <TarifsBref />
   <Vision />
 
   <!-- Maillage interne sobre : sites professionnels par secteur (SEO) -->
-  <section class="section relative bg-black px-6" aria-labelledby="secteurs-titre">
-    <div class="mx-auto max-w-6xl">
+  <section class="relative bg-black px-6 py-[3.75rem] md:py-[5.25rem]" aria-labelledby="secteurs-titre">
+    <div class="mx-auto max-w-content">
       <div class="text-center">
         <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
           <span class="w-2 h-2 rounded-full bg-bleu"></span> Sites professionnels par secteur

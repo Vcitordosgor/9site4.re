@@ -19,7 +19,11 @@
       "id": "cours",
       "label": "Cours souhaité",
       "requis": true,
-      "options": ["Vinyasa (6 places)", "Hatha doux (8 places)", "Yin du soir (10 places)"],
+      "options": [
+        "Vinyasa (6 places)",
+        "Hatha doux (8 places)",
+        "Yin du soir (10 places)"
+      ],
       "defaut": "Vinyasa (6 places)"
     },
     {
@@ -27,7 +31,11 @@
       "id": "niveau",
       "label": "Niveau",
       "requis": true,
-      "options": ["Débutant", "Intermédiaire", "Confirmé"],
+      "options": [
+        "Débutant",
+        "Intermédiaire",
+        "Confirmé"
+      ],
       "defaut": "Débutant"
     },
     {
@@ -57,5 +65,12 @@
   },
   "reponsePro": "Bonjour {nom} 🙏 Merci pour votre demande, je vous confirme les détails par retour. À très vite au studio !",
   "icon": "yoga",
-  "bulleVisiteur": "Bonjour, je voudrais m'inscrire à un cours collectif 🧘"
+  "bulleVisiteur": "Bonjour, je voudrais m'inscrire à un cours collectif 🧘",
+  "exempleDemande": {
+    "nom": "Emma",
+    "cours": "Vinyasa (6 places)",
+    "niveau": "Débutant",
+    "date": "Samedi 9h",
+    "tel": "0692 •• •• ••"
+  }
 }

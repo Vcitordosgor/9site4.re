@@ -29,7 +29,7 @@ const hide = hideOnPaths.includes(currentPath);
         <p class="font-sora font-semibold text-sm leading-tight truncate">
           Site pro en 7 jours
         </p>
-        <p class="text-[11px] text-blanc-casse/70 leading-tight truncate">
+        <p class="text-[11px] text-blanc-casse/70 leading-tight">
           97,4&thinsp;€/mois · sans engagement
         </p>
       </div>
@@ -48,27 +48,37 @@ const hide = hideOnPaths.includes(currentPath);
 )}
 
 <script>
-  // Sticky CTA mobile : apparaît après 250px de scroll, masqué tout en haut
+  // Sticky CTA mobile : apparaît après 250px de scroll, masqué tout en haut.
+  // L'élément est remplacé à chaque navigation View Transitions : on le résout à chaque appel.
+  // Elle s'efface aussi pendant la saisie (clavier ouvert) et quand un bouton d'envoi
+  // de formulaire passe sous elle, pour ne jamais le masquer.
   const SCROLL_THRESHOLD = 250;
-  const cta = document.querySelector<HTMLElement>('[data-mobile-cta]');
-  if (cta) {
-    let visible = false;
-    const update = () => {
-      const shouldShow = window.scrollY > SCROLL_THRESHOLD;
-      if (shouldShow !== visible) {
-        visible = shouldShow;
-        cta.classList.toggle('translate-y-full', !visible);
-        cta.classList.toggle('translate-y-0', visible);
-        cta.setAttribute('aria-hidden', String(!visible));
-        // inert en miroir d'aria-hidden : bloque focus/interaction quand masqué
-        if (visible) {
-          cta.removeAttribute('inert');
-        } else {
-          cta.setAttribute('inert', '');
-        }
-      }
-    };
-    update();
-    window.addEventListener('scroll', update, { passive: true });
-  }
+  const isTyping = () => !!document.activeElement?.closest('input, textarea, select');
+  const coversSubmit = (cta: HTMLElement) => {
+    const top = window.innerHeight - cta.offsetHeight;
+    return [...document.querySelectorAll<HTMLElement>('form [type="submit"]')].some((btn) => {
+      const r = btn.getBoundingClientRect();
+      return r.height > 0 && r.bottom > top && r.top < window.innerHeight;
+    });
+  };
+  const update = () => {
+    const cta = document.querySelector<HTMLElement>('[data-mobile-cta]');
+    if (!cta) return;
+    const visible = window.scrollY > SCROLL_THRESHOLD && !isTyping() && !coversSubmit(cta);
+    cta.classList.toggle('translate-y-full', !visible);
+    cta.classList.toggle('translate-y-0', visible);
+    cta.setAttribute('aria-hidden', String(!visible));
+    // inert en miroir d'aria-hidden : bloque focus/interaction quand masqué
+    if (visible) {
+      cta.removeAttribute('inert');
+    } else {
+      cta.setAttribute('inert', '');
+    }
+  };
+  update();
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update, { passive: true });
+  document.addEventListener('focusin', update);
+  document.addEventListener('focusout', () => setTimeout(update, 0));
+  document.addEventListener('astro:page-load', update);
 </script>

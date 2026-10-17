@@ -60,10 +60,7 @@ const schemaOrg = {
       description: siteConfig.baseline,
       url: siteConfig.siteUrl,
       email: siteConfig.contact.email,
-      // Numéro omis tant que le placeholder n'est pas remplacé par le vrai numéro
-      ...(siteConfig.contact.whatsapp !== '262692000000'
-        ? { telephone: `+${siteConfig.contact.whatsapp}` }
-        : {}),
+      telephone: `+${siteConfig.contact.whatsapp}`,
       image: absoluteUrl(seo.ogImage),
       priceRange: '€€',
       knowsLanguage: 'fr',
@@ -135,7 +132,7 @@ const schemaOrg = {
 <html lang="fr-RE">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#FEFEFA" />
 
@@ -255,7 +252,7 @@ const schemaOrg = {
       </>
     )}
     {!bare && <Header />}
-    <main id="contenu" class="flex-1">
+    <main id="contenu" class:list={['flex-1', !bare && 'site-main']}>
       <slot />
     </main>
     {!bare && <Footer />}

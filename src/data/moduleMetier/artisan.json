@@ -19,7 +19,12 @@
       "id": "prestation",
       "label": "Type de travaux",
       "requis": true,
-      "options": ["Rénovation", "Neuf / extension", "Dépannage", "Autre"],
+      "options": [
+        "Rénovation",
+        "Neuf / extension",
+        "Dépannage",
+        "Autre"
+      ],
       "defaut": "Rénovation"
     },
     {
@@ -35,7 +40,12 @@
       "id": "delai",
       "label": "Délai souhaité",
       "requis": true,
-      "options": ["Dès que possible", "Sous 1 mois", "Dans les 3 mois", "Je me renseigne"],
+      "options": [
+        "Dès que possible",
+        "Sous 1 mois",
+        "Dans les 3 mois",
+        "Je me renseigne"
+      ],
       "defaut": "Sous 1 mois"
     },
     {
@@ -59,5 +69,13 @@
   },
   "reponsePro": "Bonjour {nom} 👍 Merci pour votre demande. Je regarde votre projet et je vous recontacte pour convenir d'une visite et établir le devis.",
   "icon": "artisan",
-  "bulleVisiteur": "Bonjour, j'aimerais un devis pour des travaux 🔨"
+  "bulleVisiteur": "Bonjour, j'aimerais un devis pour des travaux 🔨",
+  "exempleDemande": {
+    "nom": "Jean-Hugues",
+    "prestation": "Rénovation",
+    "commune": "Saint-Denis",
+    "delai": "Sous 1 mois",
+    "tel": "0692 •• •• ••",
+    "message": "Salle de bain à rénover, environ 6 m²."
+  }
 }

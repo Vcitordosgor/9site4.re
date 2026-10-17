@@ -5,7 +5,7 @@ import siteConfig from '../../data/siteConfig.json';
 
 /**
  * Tarifs en bref — moment visuel signature autour de 97,4€/mois.
- * Carte prix gradient bleu + 6 inclusions en bento sombres premium
+ * Carte prix mauve franc + 6 inclusions en bento sombres premium
  * + 2 formules (mensuel/annuel) cohérentes avec le langage visuel du site.
  */
 
@@ -19,8 +19,8 @@ const inclus = [
 ];
 ---
 
-<section class="relative px-6 pt-[3rem] md:pt-[4.5rem] pb-[3.75rem] md:pb-[5.25rem] overflow-hidden">
-  <div class="relative mx-auto max-w-5xl">
+<section class="relative px-6 py-[3.75rem] md:py-[5.25rem] overflow-hidden">
+  <div class="relative mx-auto max-w-content">
     <div class="text-center max-w-3xl mx-auto">
       <p class="scroll-reveal inline-flex items-center gap-2 font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-blanc-casse/55 font-semibold">
         <span class="w-2 h-2 rounded-full bg-bleu"></span> Formule
@@ -34,31 +34,29 @@ const inclus = [
       </p>
     </div>
 
-    <!-- Carte prix signature : gradient bleu mauve + 6 inclusions bento -->
+    <!-- Carte prix signature : mauve franc + 6 inclusions bento -->
     <div class="scroll-reveal mt-14 grid lg:grid-cols-5 gap-5 md:gap-6 items-stretch">
 
-      <!-- Bloc prix gradient bleu mauve -->
+      <!-- Bloc prix mauve franc -->
       <div class="lg:col-span-2 relative overflow-hidden rounded-3xl p-8 md:p-10 flex flex-col justify-center"
-        style="background: linear-gradient(155deg, #91a6ff 0%, #6a82e6 55%, #4a63c9 100%); box-shadow: 0 18px 50px -16px rgba(145,166,255,0.55), 0 0 0 1px rgba(255,255,255,0.10) inset;"
+        style="background: #91a6ff;"
       >
-        <!-- Pattern dotted en filigrane -->
-        <div class="absolute inset-0 opacity-[0.12] pointer-events-none" style="background-image: radial-gradient(circle, #ffffff 1px, transparent 1.5px); background-size: 18px 18px;" aria-hidden="true"></div>
 
-        <p class="relative font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-white/80 font-semibold">Prix unique</p>
+        <p class="relative font-roboto-mono text-[11px] uppercase tracking-[0.32em] text-bleu-nuit/75 font-semibold">Prix unique</p>
         <p class="relative mt-3 flex items-baseline gap-2">
-          <span class="font-sora font-bold text-6xl md:text-7xl leading-none text-white tracking-tight" data-count="97.4" data-count-decimals="1" data-count-suffix="€">{siteConfig.pricing.monthly}</span>
-          <span class="text-xl text-white/85 font-medium">/mois</span>
+          <span class="font-sora font-bold text-6xl md:text-7xl leading-none text-bleu-nuit tracking-tight" data-count="97.4" data-count-decimals="1" data-count-suffix="€">{siteConfig.pricing.monthly}</span>
+          <span class="text-xl text-bleu-nuit/80 font-medium">/mois</span>
         </p>
 
         <!-- Séparateur fin -->
-        <span class="relative mt-6 block h-px w-16 bg-white/40" aria-hidden="true"></span>
+        <span class="relative mt-6 block h-px w-16 bg-bleu-nuit/30" aria-hidden="true"></span>
 
-        <p class="relative mt-5 text-sm text-white/85 leading-relaxed">
+        <p class="relative mt-5 text-sm text-bleu-nuit/80 leading-relaxed">
           Tout est inclus dans une formule unique : pas de frais de création, pas d'engagement, modifications simples gérées par 9site4.
         </p>
 
-        <p class="relative mt-6 inline-flex items-center gap-2 text-[13px] text-white/75 font-medium">
-          <Icon name="info" size={14} strokeWidth={2} class="text-white/70" />
+        <p class="relative mt-6 inline-flex items-center gap-2 text-[13px] text-bleu-nuit/75 font-medium">
+          <Icon name="info" size={14} strokeWidth={2} class="text-bleu-nuit/70" />
           soit environ {siteConfig.pricing.daily}/jour
         </p>
       </div>
@@ -67,7 +65,7 @@ const inclus = [
       <ul class="lg:col-span-3 grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-4">
         {inclus.map((item) => (
           <li class="group relative flex flex-col rounded-2xl p-5 overflow-hidden transition-all duration-500 ease-out-soft hover:-translate-y-1 card-dark"
-            onmouseover="this.style.boxShadow='0 1px 0 rgba(255,255,255,0.10) inset, 0 18px 40px -16px rgba(0,0,0,0.95), 0 0 0 1.5px #91a6ff, 0 0 24px -8px rgba(145,166,255,0.45)';"
+            onmouseover="this.style.boxShadow='0 1px 0 rgba(255,255,255,0.10) inset, 0 18px 40px -16px rgba(0,0,0,0.95), 0 0 0 1.5px #91a6ff';"
             onmouseout="this.style.boxShadow='';"
           >
             <!-- Check coin haut-droit -->
@@ -75,10 +73,10 @@ const inclus = [
               <Icon name="check" size={11} strokeWidth={3} />
             </span>
 
-            <!-- Icône cercle gradient bleu mauve -->
+            <!-- Icône sur tuile mauve -->
             <span class="relative flex w-11 h-11 items-center justify-center rounded-xl overflow-hidden">
-              <span class="absolute inset-0 bg-gradient-to-br from-bleu/25 to-bleu/5 group-hover:from-bleu/40 group-hover:to-bleu/15 transition-all duration-500" aria-hidden="true"></span>
-              <Icon name={item.icon} size={20} strokeWidth={1.75} class="relative text-bleu" />
+              <span class="absolute inset-0 bg-bleu" aria-hidden="true"></span>
+              <Icon name={item.icon} size={20} strokeWidth={1.75} class="relative text-bleu-nuit" />
             </span>
 
             <p class="mt-4 text-sm font-sora font-semibold text-blanc-casse leading-snug">{item.label}</p>
@@ -91,7 +89,7 @@ const inclus = [
     <div class="scroll-reveal mt-6 grid sm:grid-cols-2 gap-5">
       <!-- Mensuel : card sombre -->
       <div class="group relative flex items-center justify-between gap-4 rounded-2xl p-6 overflow-hidden transition-all duration-500 ease-out-soft hover:-translate-y-0.5 card-dark card-accent"
-        onmouseover="this.style.boxShadow='0 1px 0 rgba(255,255,255,0.10) inset, 0 18px 40px -16px rgba(0,0,0,0.95), 0 0 0 1.5px #91a6ff, 0 0 24px -8px rgba(145,166,255,0.40)';"
+        onmouseover="this.style.boxShadow='0 1px 0 rgba(255,255,255,0.10) inset, 0 18px 40px -16px rgba(0,0,0,0.95), 0 0 0 1.5px #91a6ff';"
         onmouseout="this.style.boxShadow='';"
       >
         <div>
@@ -104,22 +102,21 @@ const inclus = [
         </p>
       </div>
 
-      <!-- Annuel : card gradient bleu mauve (le + recommandé) -->
+      <!-- Annuel : card mauve franc (le + recommandé) -->
       <div class="relative flex items-center justify-between gap-4 rounded-2xl p-6 overflow-hidden transition-all duration-500 ease-out-soft hover:-translate-y-0.5"
-        style="background: linear-gradient(155deg, #91a6ff 0%, #6a82e6 55%, #4a63c9 100%); box-shadow: 0 18px 40px -16px rgba(145,166,255,0.45), 0 0 0 1px rgba(255,255,255,0.10) inset;"
+        style="background: #91a6ff;"
       >
-        <div class="absolute inset-0 opacity-[0.12] pointer-events-none" style="background-image: radial-gradient(circle, #ffffff 1px, transparent 1.5px); background-size: 14px 14px;" aria-hidden="true"></div>
 
         <div class="relative">
           <div class="flex items-center gap-2">
-            <p class="font-roboto-mono text-[11px] uppercase tracking-[0.3em] text-white font-semibold">Annuel</p>
-            <span class="inline-flex items-center px-2 h-5 rounded-full bg-black/30 text-white text-[10px] font-semibold">≈ 2 mois offerts</span>
+            <p class="font-roboto-mono text-[11px] uppercase tracking-[0.3em] text-bleu-nuit font-semibold">Annuel</p>
+            <span class="inline-flex items-center px-2 h-5 rounded-full bg-bleu-nuit text-blanc-casse text-[10px] font-semibold">≈ 2 mois offerts</span>
           </div>
-          <p class="mt-1.5 text-sm text-white/85">Plus économique sur l'année.</p>
+          <p class="mt-1.5 text-sm text-bleu-nuit/80">Plus économique sur l'année.</p>
         </div>
         <p class="relative flex items-baseline gap-1 shrink-0">
-          <span class="font-sora font-bold text-3xl text-white tabular-nums">{siteConfig.pricing.yearly}</span>
-          <span class="text-sm text-white/75">/an</span>
+          <span class="font-sora font-bold text-3xl text-bleu-nuit tabular-nums">{siteConfig.pricing.yearly}</span>
+          <span class="text-sm text-bleu-nuit/75">/an</span>
         </p>
       </div>
     </div>

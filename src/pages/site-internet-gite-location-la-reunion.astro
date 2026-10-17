@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { nbspPunct } from '../lib/typo';
 import Button from '../components/ui/Button.astro';
 import Icon from '../components/ui/Icon.astro';
 import RealisationCard from '../components/realisations/RealisationCard.astro';
@@ -69,8 +70,7 @@ const serviceSchema = {
           <span class="block w-1.5 h-1.5 rounded-full bg-white/90 animate-pulse"></span>
           Gîtes · Locations · Conciergeries · Tourisme
         </p>
-        <span class="hero-rise hero-rise-2 block mx-auto mt-7 h-[3px] w-16 bg-bleu" aria-hidden="true"></span>
-        <h1 class="hero-rise hero-rise-2 mt-5 font-sora font-bold text-balance leading-[1.08] text-[clamp(2.25rem,4vw+1rem,4rem)] tracking-tight text-blanc-casse">
+        <h1 class="hero-rise hero-rise-2 mt-7 font-sora font-bold text-balance leading-[1.08] text-[clamp(2.25rem,4vw+1rem,4rem)] tracking-tight text-blanc-casse">
           Site internet pour gîte et location saisonnière{' '}
           <span class="block italic font-medium text-bleu">à La Réunion.</span>
         </h1>
@@ -228,12 +228,12 @@ const serviceSchema = {
           {faq.map((item) => (
             <details class="group rounded-2xl p-5 md:p-6 card-dark">
               <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
-                <span class="font-sora font-semibold text-blanc-casse">{item.q}</span>
+                <span class="font-sora font-semibold text-blanc-casse">{nbspPunct(item.q)}</span>
                 <span class="shrink-0 text-bleu transition-transform duration-300 group-open:rotate-45">
                   <Icon name="arrow-right" size={18} strokeWidth={2.25} />
                 </span>
               </summary>
-              <p class="mt-4 text-sm md:text-base text-blanc-casse/75 leading-relaxed">{item.a}</p>
+              <p class="mt-4 text-sm md:text-base text-blanc-casse/75 leading-relaxed">{nbspPunct(item.a)}</p>
             </details>
           ))}
         </div>

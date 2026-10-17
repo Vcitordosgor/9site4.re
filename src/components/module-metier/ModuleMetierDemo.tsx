@@ -1,8 +1,9 @@
 /** @jsxImportSource preact */
-import { useState, useRef, useEffect, useCallback } from 'preact/hooks';
+import { useState, useRef, useEffect } from 'preact/hooks';
 import type { ModuleMetierConfig } from '../../lib/moduleMetier/types';
 import ModuleMetier, { type DemoSubmitPayload } from './ModuleMetier';
 import PhoneMockup, { type Bubble, phoneMockupStyles } from './PhoneMockup';
+import { formatMessage } from '../../lib/moduleMetier/formatMessage';
 
 /**
  * ModuleMetierDemo — orchestrateur de la démo interactive (île unique).
@@ -43,9 +44,30 @@ function now(): string {
   return `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
 }
 
+// Fil initial : bulle d'accroche + demande exemple déjà reçue, structurée.
+function introBubbles(cfg: ModuleMetierConfig): Bubble[] {
+  const out: Bubble[] = [];
+  if (cfg.bulleVisiteur) {
+    out.push({ id: `intro-${cfg.id}`, side: 'visitor', kind: 'text', content: cfg.bulleVisiteur });
+  }
+  if (cfg.exempleDemande) {
+    out.push({
+      id: `exemple-${cfg.id}`,
+      side: 'visitor',
+      kind: 'structured',
+      content: formatMessage(cfg, cfg.exempleDemande).texte,
+    });
+  }
+  return out;
+}
+
+function introText(cfg: ModuleMetierConfig): Bubble[] {
+  return introBubbles(cfg).filter((b) => b.kind !== 'structured');
+}
+
 export default function ModuleMetierDemo({ configs, pros }: Props) {
   const [activeId, setActiveId] = useState(configs[0]?.id ?? '');
-  const [bubbles, setBubbles] = useState<Bubble[]>([]);
+  const [bubbles, setBubbles] = useState<Bubble[]>(() => introBubbles(configs[0]));
   const [pulsing, setPulsing] = useState(false);
   const [resetSignal, setResetSignal] = useState(0);
   const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
@@ -59,13 +81,6 @@ export default function ModuleMetierDemo({ configs, pros }: Props) {
     timers.current = [];
   };
 
-  const introBubbles = useCallback(
-    (cfg: ModuleMetierConfig): Bubble[] =>
-      cfg.bulleVisiteur
-        ? [{ id: `intro-${cfg.id}`, side: 'visitor', kind: 'text', content: cfg.bulleVisiteur }]
-        : [],
-    []
-  );
 
   // Reset du fil à chaque changement de métier.
   useEffect(() => {
@@ -101,12 +116,14 @@ export default function ModuleMetierDemo({ configs, pros }: Props) {
     };
     const typing: Bubble = { id: `typing-${s}`, side: 'pro', kind: 'typing' };
 
+    // La demande du visiteur remplace la demande exemple.
     if (reduced) {
-      setBubbles((prev) => [...prev, structured, reply]);
+      setBubbles([...introText(config), structured, reply]);
       return;
     }
 
     // Timeline signature.
+    setBubbles(introText(config));
     setPulsing(true);
     timers.current.push(
       setTimeout(() => {
@@ -154,7 +171,7 @@ export default function ModuleMetierDemo({ configs, pros }: Props) {
               tabIndex={active ? 0 : -1}
               onClick={() => setActiveId(c.id)}
               onKeyDown={(e) => onChipKey(e, i)}
-              class={`inline-flex items-center gap-2 h-10 px-4 rounded-full text-sm font-medium ring-1 transition-all duration-150 cursor-pointer ${
+              class={`inline-flex items-center gap-2 h-11 md:h-10 px-4 rounded-full text-sm font-medium ring-1 transition-all duration-150 cursor-pointer ${
                 active
                   ? 'bg-bleu text-bleu-nuit ring-bleu'
                   : 'bg-surface text-blanc-casse/85 ring-white/15 hover:ring-white/30'
@@ -212,7 +229,7 @@ export default function ModuleMetierDemo({ configs, pros }: Props) {
         .mm-connector-on .mm-dot{animation:mm-flow 1.1s ease-in-out;background:#91a6ff;}
         .mm-connector-on .mm-dot:nth-child(2){animation-delay:.12s;}
         .mm-connector-on .mm-dot:nth-child(3){animation-delay:.24s;}
-        @keyframes mm-flow{0%,100%{transform:scale(1);box-shadow:none;}40%{transform:scale(1.5);box-shadow:0 0 12px 2px rgba(145,166,255,.6);}}
+        @keyframes mm-flow{0%,100%{transform:scale(1);}40%{transform:scale(1.5);}}
         @media (prefers-reduced-motion: reduce){.mm-connector-on .mm-dot{animation:none;}}
       `}</style>
     </div>

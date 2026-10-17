@@ -26,7 +26,7 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 type Step = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7;
 const TOTAL_STEPS = 7;
 
-type RealisationItem = { slug: string; nom: string; thumbnail: string; sector: string; shortDescription: string };
+type RealisationItem = { slug: string; nom: string; thumbnail: string; sector: string; shortDescription: string; previewUrl: string };
 
 const SECTEUR_KEYS = Object.keys(SECTEUR_LABELS) as SectorKey[];
 const PRIORITE_KEYS = Object.keys(PRIORITE_LABELS) as PriorityKey[];
@@ -592,12 +592,12 @@ function ResultView(props: {
             {matchingRealisations.map((r) => (
               <a
                 key={r.slug}
-                href={`/realisations/${r.slug}`}
+                href={r.previewUrl}
                 class="group rounded-2xl ring-1 ring-bleu-nuit/10 overflow-hidden hover:ring-bleu transition-all"
                 data-track-event="site_recommender_cta_click"
                 data-track-category="navigation"
                 data-track-source="site_recommender_realisations"
-                data-track-target={`/realisations/${r.slug}`}
+                data-track-target={r.previewUrl}
                 data-track-page-type="trouver_site_adapte"
               >
                 <div class="aspect-[4/3] overflow-hidden bg-bleu-nuit/5">

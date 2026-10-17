@@ -101,25 +101,10 @@
     background: linear-gradient(180deg, theme('colors.surface') 0%, theme('colors.surface-deep') 100%);
     box-shadow: 0 1px 0 rgba(255,255,255,0.08) inset, 0 18px 40px -22px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.14);
   }
-  /* Accent ponctuel : liseré violet subtil pour les cartes mises en avant (ex. MENSUEL).
+  /* Accent ponctuel : liseré mauve pour les cartes mises en avant (ex. MENSUEL).
      À réserver aux cartes qu'on veut faire ressortir — ne PAS généraliser. */
   .card-accent {
-    box-shadow: 0 1px 0 rgba(255,255,255,0.08) inset, 0 18px 44px -20px rgba(0,0,0,0.85), 0 0 0 1px rgba(145,166,255,0.45), 0 0 30px -10px rgba(145,166,255,0.35);
-  }
-}
-
-/* Halo lumineux radial — utilitaire signature, opacité boostée pour visibilité */
-@layer utilities {
-  .halo-bleu {
-    background: radial-gradient(60% 60% at 50% 50%, rgb(145 166 255 / 0.32) 0%, transparent 70%);
-  }
-  .halo-bleu-soft {
-    background: radial-gradient(60% 60% at 50% 50%, rgb(145 166 255 / 0.22) 0%, transparent 70%);
-  }
-  .halo-mix {
-    background:
-      radial-gradient(40% 50% at 30% 40%, rgb(145 166 255 / 0.32) 0%, transparent 70%),
-      radial-gradient(40% 50% at 70% 60%, rgb(145 166 255 / 0.20) 0%, transparent 70%);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.08) inset, 0 18px 44px -20px rgba(0,0,0,0.85), 0 0 0 1px #91a6ff;
   }
 }
 
@@ -162,21 +147,6 @@
 .hero-rise-4 { animation-delay: 380ms; }
 .hero-rise-5 { animation-delay: 480ms; }
 
-/* Halo pulse — signature subtile sur les halos hero/CTA */
-@keyframes halo-pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.06); }
-}
-.halo-pulse {
-  animation: halo-pulse 5s ease-in-out infinite;
-  will-change: transform;
-}
-.halo-pulse-slow {
-  animation: halo-pulse 7s ease-in-out infinite;
-  animation-delay: 1s;
-  will-change: transform;
-}
-
 /* Tilt 3D des cards Réalisations (combiné avec hover translate via custom prop) */
 .tilt-card {
   transform-style: preserve-3d;
@@ -209,8 +179,6 @@
     transition: none;
   }
   .hero-rise,
-  .halo-pulse,
-  .halo-pulse-slow,
   .tilt-card {
     animation: none !important;
     transform: none !important;
@@ -269,4 +237,38 @@
   text-decoration-color: rgba(145, 166, 255, 0.6);
 }
 
+/* ---------------------------------------------------------------------------
+   Mobile (< 768 px) — lisibilité et cibles tactiles des pages 9site4.
+   Portée : .site-main / .site-footer, absents des démos /templates (mode bare).
+--------------------------------------------------------------------------- */
+@media (max-width: 767px) {
+  /* Corps de texte : 16 px minimum */
+  .site-main :is(p, li, dd):is(.text-sm, .text-\[15px\], .text-\[14\.5px\]),
+  .site-main .seo-links-row,
+  .site-main .villes-mesh-mention {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
 
+  /* Liens et contrôles hors texte courant : 44 px de haut minimum */
+  .site-main a.inline-flex,
+  .site-main li > a:only-child,
+  .site-main .seo-links-row a,
+  .site-main summary,
+  .site-footer :is(a, button) {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  .site-main li > a:only-child:not(.block):not(.flex):not(.grid),
+  .site-main .seo-links-row a,
+  .site-footer :is(a, button) {
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
+/* Zones de sécurité iPhone en paysage (viewport-fit=cover) */
+body {
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}

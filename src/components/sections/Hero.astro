@@ -2,7 +2,8 @@
 /**
  * Hero — style Squarespace : vidéo plein cadre, contenu centré, titre blanc
  * épuré, un seul bouton blanc plein, une ligne de réassurance. Minimaliste.
- * Vidéo optionnelle : dégradé de marque en fallback. Coupée sous reduced-motion.
+ * Vidéo de fond sur tous les écrans (version recadrée allégée sur téléphone en portrait),
+ * poster = première image. Sous reduced-motion : poster fixe, aucune vidéo chargée.
  */
 import Button from '../ui/Button.astro';
 ---
@@ -14,20 +15,24 @@ import Button from '../ui/Button.astro';
   <!-- Fallback dégradé de marque -->
   <div class="absolute inset-0 -z-20 bg-black" aria-hidden="true"></div>
 
-  <!-- Vidéo de fond — chargée UNIQUEMENT sur desktop, APRÈS le LCP (data-src injecté en JS).
-       Mobile + reduced-motion : aucune requête vidéo, fallback = fond noir. -->
+  <!-- Vidéo de fond — source injectée en JS APRÈS le premier rendu (LCP) :
+       hero-mobile.mp4 (480×720, recadrée au centre) sur téléphone en portrait, hero.mp4 sinon.
+       Le poster (première image) s'affiche pendant le chargement. -->
   <video
     class="hero-video absolute inset-0 -z-10 w-full h-full object-cover"
+    autoplay
     muted
     loop
     playsinline
     preload="none"
+    poster="/videos/hero-poster.webp"
     data-src="/videos/hero.mp4"
+    data-src-mobile="/videos/hero-mobile.mp4"
     aria-hidden="true"
   ></video>
 
-  <!-- Overlay léger pour lisibilité (l'image/vidéo reste visible) -->
-  <div class="absolute inset-0 -z-10 bg-bleu-nuit/45" aria-hidden="true"></div>
+  <!-- Voile sombre pour la lisibilité du titre et du sous-titre (la vidéo reste visible) -->
+  <div class="absolute inset-0 -z-10 bg-bleu-nuit/70" aria-hidden="true"></div>
 
   <!-- Contenu centré -->
   <div class="relative z-10 mx-auto max-w-4xl px-6 py-28 text-center text-blanc-casse">
@@ -39,15 +44,6 @@ import Button from '../ui/Button.astro';
     <p class="hero-rise hero-rise-3 mt-7 mx-auto max-w-2xl text-lg md:text-xl text-blanc-casse/85 leading-relaxed">
       9site4 crée, structure et gère des sites professionnels pour les TPE/PME réunionnaises : clairs, fiables, adaptés à chaque métier et prêts en 7 jours.
     </p>
-
-    <div class="hero-rise hero-rise-4 mt-9 flex flex-wrap justify-center gap-2.5">
-      {['97,4€/mois tout compris', 'Prêt en 7 jours', 'Sans frais de création', 'Accompagnement local'].map((b) => (
-        <span class="inline-flex items-center gap-2 h-9 px-4 rounded-full bg-white/[0.08] ring-1 ring-white/15 text-xs font-medium text-blanc-casse">
-          <span class="block w-1.5 h-1.5 rounded-full bg-bleu" aria-hidden="true"></span>
-          {b}
-        </span>
-      ))}
-    </div>
 
     <div class="hero-rise hero-rise-5 mt-10 flex flex-col sm:flex-row gap-4 justify-center">
       <Button
@@ -84,42 +80,33 @@ import Button from '../ui/Button.astro';
 </section>
 
 <style>
-  /* Mobile : aucune vidéo (gain réseau ≈ 4.7 MB et LCP plus rapide) */
-  @media (max-width: 767px) {
-    .hero-video { display: none; }
-  }
-  /* Reduced-motion : pas de vidéo + pas d'animation */
+  /* Reduced-motion : poster fixe (la vidéo n'est pas chargée) + pas d'animation */
   @media (prefers-reduced-motion: reduce) {
-    .hero-video { display: none; }
     .animate-bounce { animation: none; }
   }
 </style>
 
 <script>
-  // Vidéo hero : charge UNIQUEMENT sur desktop (≥768px), APRÈS le LCP.
-  // Sur mobile et reduced-motion : zéro requête réseau pour la vidéo.
+  // Vidéo hero : source choisie selon l'écran et chargée APRÈS le premier rendu (LCP).
+  // Téléphone en portrait (< 768 px) : version recadrée allégée. Reduced-motion : rien n'est chargé.
+  const MOBILE_PORTRAIT = '(max-width: 767px) and (orientation: portrait)';
+
   function initHeroVideo() {
     const v = document.querySelector<HTMLVideoElement>('.hero-video');
     if (!v) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    const isDesktop = window.matchMedia('(min-width: 768px)').matches;
-    const wantsMotion = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const src = window.matchMedia(MOBILE_PORTRAIT).matches ? v.dataset.srcMobile : v.dataset.src;
+    if (!src) return;
 
-    if (!isDesktop || !wantsMotion) {
-      // Mobile ou reduced-motion : on touche rien, la CSS cache déjà l'élément
-      return;
-    }
-
-    // Vidéo déjà chargée (navigation arrière, etc.)
-    if (v.src) {
+    // Déjà initialisée (appel direct puis astro:page-load au 1er chargement, retour arrière…)
+    if (v.dataset.heroInit) {
       v.play().catch(() => {});
       return;
     }
+    v.dataset.heroInit = 'true';
 
-    // Différer le chargement après le premier paint (LCP friendly)
     const load = () => {
-      const src = v.dataset.src;
-      if (!src) return;
       v.src = src;
       v.load();
       v.play().catch(() => {});
