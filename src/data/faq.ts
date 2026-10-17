@@ -247,7 +247,7 @@ export const faqItems: FaqItem[] = [
     category: 'prix',
     question: "Comment fonctionne la formule annuelle à 974€/an ?",
     answer:
-      "Vous réglez 974€ d'avance pour 12 mois, soit l'équivalent d'environ deux mois offerts par rapport au mensuel. Vous recevez une facture professionnelle conforme à la comptabilité (TVA, mentions légales).",
+      "Vous réglez 974€ d'avance pour 12 mois, soit l'équivalent d'environ deux mois offerts par rapport au mensuel. Vous recevez une facture professionnelle conforme (mentions légales incluses).",
     showOnPages: ['tarifs'],
   },
 

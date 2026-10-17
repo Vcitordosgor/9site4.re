@@ -1,10 +1,10 @@
-// docs/retouches-1/capture.mjs — node docs/retouches-1/capture.mjs [avant|apres]
+// docs/retouches-1/capture.mjs — [PAGES=/tarifs] node docs/retouches-1/capture.mjs [avant|apres|<dossier>]
 import { chromium } from 'playwright-core';
 import { mkdirSync } from 'node:fs';
 
 const dir = process.argv[2] || 'avant';
 const BASE = process.env.BASE || 'http://127.0.0.1:4321';
-const pages = ['/', '/realisations', '/tarifs', '/contact'];
+const pages = process.env.PAGES ? process.env.PAGES.split(',') : ['/', '/realisations', '/tarifs', '/contact'];
 const widths = [390, 1440];
 mkdirSync(`docs/retouches-1/${dir}`, { recursive: true });
 
