@@ -19,7 +19,8 @@
     "astro": "astro",
     "deploy": "npm run build && wrangler deploy",
     "cf-typegen": "wrangler types",
-    "test": "node --test 'src/**/*.test.mjs'"
+    "test": "node --test 'src/**/*.test.mjs'",
+    "test:responsive": "playwright test"
   },
   "dependencies": {
     "@astrojs/cloudflare": "12",

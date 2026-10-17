@@ -37,3 +37,7 @@ Thumbs.db
 
 # CSS templates généré par `npm run css:templates` (P1-17)
 src/styles/templates.css
+
+# playwright
+test-results/
+playwright-report/
