@@ -224,7 +224,7 @@ export default function ModuleMetier({
                   role="radio"
                   aria-checked={active ? 'true' : 'false'}
                   onClick={() => setField(c.id, o)}
-                  class={`px-3.5 h-10 rounded-full text-sm font-medium ring-1 transition-all duration-150 cursor-pointer ${
+                  class={`px-3.5 h-11 md:h-10 rounded-full text-sm font-medium ring-1 transition-all duration-150 cursor-pointer ${
                     active
                       ? 'bg-bleu text-bleu-nuit ring-bleu'
                       : 'bg-surface-deep text-blanc-casse/85 ring-white/15 hover:ring-white/30'

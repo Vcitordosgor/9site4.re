@@ -171,7 +171,7 @@ export default function ModuleMetierDemo({ configs, pros }: Props) {
               tabIndex={active ? 0 : -1}
               onClick={() => setActiveId(c.id)}
               onKeyDown={(e) => onChipKey(e, i)}
-              class={`inline-flex items-center gap-2 h-10 px-4 rounded-full text-sm font-medium ring-1 transition-all duration-150 cursor-pointer ${
+              class={`inline-flex items-center gap-2 h-11 md:h-10 px-4 rounded-full text-sm font-medium ring-1 transition-all duration-150 cursor-pointer ${
                 active
                   ? 'bg-bleu text-bleu-nuit ring-bleu'
                   : 'bg-surface text-blanc-casse/85 ring-white/15 hover:ring-white/30'

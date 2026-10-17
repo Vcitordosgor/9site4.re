@@ -19,8 +19,8 @@ const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeU
 )}`;
 ---
 
-<footer class="relative bg-bleu-nuit text-blanc-casse">
-  <div class="max-w-content mx-auto px-6 pt-8 md:pt-16 pb-28 md:pb-8">
+<footer class="site-footer relative bg-bleu-nuit text-blanc-casse">
+  <div class="max-w-content mx-auto px-6 pt-8 md:pt-16 pb-[calc(7.5rem+env(safe-area-inset-bottom))] md:pb-8">
     <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
       <!-- Bloc 1 — Identité -->
       <div>
@@ -36,7 +36,7 @@ const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeU
         <h2 class="text-xs uppercase tracking-wider font-semibold text-bleu">
           Navigation
         </h2>
-        <ul class="mt-4 space-y-2">
+        <ul class="mt-4 md:space-y-2">
           {navLinks.map((link) => (
             <li>
               <a
@@ -73,7 +73,7 @@ const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeU
         <h2 class="text-xs uppercase tracking-wider font-semibold text-bleu">
           Contact
         </h2>
-        <ul class="mt-4 space-y-2">
+        <ul class="mt-4 md:space-y-2">
           <li>
             <a
               href={`mailto:${siteConfig.contact.email}`}
@@ -102,7 +102,7 @@ const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeU
     <!-- Maillage SEO : pages métiers -->
     <div class="mt-10 pt-6 border-t border-blanc-casse/10">
       <h2 class="text-xs uppercase tracking-wider font-semibold text-bleu">Pages métiers</h2>
-      <ul class="mt-4 flex flex-wrap gap-x-5 gap-y-2 [overflow-wrap:anywhere]">
+      <ul class="mt-4 flex flex-wrap gap-x-5 md:gap-y-2 [overflow-wrap:anywhere]">
         <li>
           <a href="/creation-site-internet-la-reunion" class="text-sm text-blanc-casse/85 hover:text-bleu transition-colors duration-200">
             Création de site internet à La Réunion
@@ -189,7 +189,7 @@ const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeU
     <!-- Maillage SEO : villes desservies -->
     <div class="mt-10 pt-6 border-t border-blanc-casse/10">
       <h2 class="text-xs uppercase tracking-wider font-semibold text-bleu">Villes desservies à La Réunion</h2>
-      <ul class="mt-4 flex flex-wrap gap-x-5 gap-y-2">
+      <ul class="mt-4 flex flex-wrap gap-x-5 md:gap-y-2">
         {villes.map((v) => (
           <li>
             <a href={`/creation-site-internet-${v.slug}`} class="text-sm text-blanc-casse/85 hover:text-bleu transition-colors duration-200">
@@ -204,7 +204,7 @@ const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeU
       <p class="text-xs text-blanc-casse/50">
         © {currentYear} {siteConfig.siteName}. Tous droits réservés.
       </p>
-      <ul class="flex flex-wrap items-center gap-x-5 gap-y-1.5 text-xs">
+      <ul class="flex flex-wrap items-center gap-x-5 md:gap-y-1.5 text-xs">
         <li>
           <a
             href="/mentions-legales"
