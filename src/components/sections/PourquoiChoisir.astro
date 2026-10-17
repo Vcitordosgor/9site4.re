@@ -51,18 +51,15 @@ const blocs = [
             onmouseover="this.style.boxShadow='0 1px 0 rgba(255,255,255,0.10) inset, 0 28px 60px -18px rgba(0,0,0,0.95), 0 0 0 1.5px #91a6ff';"
             onmouseout="this.style.boxShadow='';"
           >
-            <!-- Filet bleu mauve en haut -->
 
-            <!-- Icône dans cercle gradient bleu mauve -->
+            <!-- Icône sur tuile mauve -->
             <span class="relative flex w-14 h-14 items-center justify-center rounded-2xl overflow-hidden">
               <span class="absolute inset-0 bg-bleu" aria-hidden="true"></span>
               <Icon name={b.icon} size={24} strokeWidth={1.75} class="relative text-bleu-nuit" />
             </span>
 
-            <!-- Séparateur or qui s'étire au hover -->
-            <span class="mt-6 block h-px w-10 bg-bleu/40 group-hover:w-16 group-hover:bg-bleu transition-all duration-500 ease-out-soft" aria-hidden="true"></span>
 
-            <h3 class="mt-5 font-sora font-semibold text-lg md:text-xl text-blanc-casse leading-snug">{b.titre}</h3>
+            <h3 class="mt-6 font-sora font-semibold text-lg md:text-xl text-blanc-casse leading-snug">{b.titre}</h3>
             <p class="mt-3 text-[14.5px] text-blanc-casse/65 leading-relaxed">{b.texte}</p>
           </article>
         </li>
