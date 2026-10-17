@@ -1,0 +1,43 @@
+name: Déploiement Cloudflare
+
+on:
+  push:
+    branches: [main]
+
+# Un seul déploiement à la fois ; un push arrivé pendant un déploiement attend son tour.
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run build
+        env:
+          # Analytics : désactivés si ces variables du dépôt (Settings → Variables) sont absentes.
+          PUBLIC_ENABLE_ANALYTICS: ${{ vars.PUBLIC_ENABLE_ANALYTICS }}
+          PUBLIC_GA_MEASUREMENT_ID: ${{ vars.PUBLIC_GA_MEASUREMENT_ID }}
+          PUBLIC_META_PIXEL_ID: ${{ vars.PUBLIC_META_PIXEL_ID }}
+
+      - uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: '4.85.0'
+          # --keep-vars : conserve les variables définies dans le tableau de bord Cloudflare
+          # (wrangler.jsonc n'en déclare aucune, elles seraient sinon supprimées au déploiement).
+          command: deploy --keep-vars
