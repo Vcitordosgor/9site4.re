@@ -62,49 +62,53 @@ const isActive = (href: string) => {
 </div>
 
 <script>
-  const toggle = document.getElementById('menu-toggle');
-  const menu = document.getElementById('mobile-menu');
+  // Le header (et donc #menu-toggle) est `transition:persist`, mais #mobile-menu est
+  // remplacé à chaque navigation View Transitions : on résout les deux à chaque appel
+  // et on écoute par délégation, sinon le burger pilote un menu détaché après la 1re navigation.
+  const getToggle = () => document.getElementById('menu-toggle');
+  const getMenu = () => document.getElementById('mobile-menu');
 
-  if (toggle && menu) {
-    const setOpen = (open: boolean) => {
-      toggle.setAttribute('aria-expanded', String(open));
-      toggle.dataset.open = String(open);
-      toggle.setAttribute(
-        'aria-label',
-        open ? 'Fermer le menu' : 'Ouvrir le menu'
-      );
-      menu.dataset.open = String(open);
-      menu.setAttribute('aria-hidden', String(!open));
-      // inert : empêche le focus tabbing et masque aux AT quand fermé
-      if (open) {
-        menu.removeAttribute('inert');
-      } else {
-        menu.setAttribute('inert', '');
-      }
-      document.body.style.overflow = open ? 'hidden' : '';
-    };
+  const setOpen = (open: boolean) => {
+    const toggle = getToggle();
+    const menu = getMenu();
+    if (!toggle || !menu) return;
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.dataset.open = String(open);
+    toggle.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+    menu.dataset.open = String(open);
+    menu.setAttribute('aria-hidden', String(!open));
+    // inert : empêche le focus tabbing et masque aux AT quand fermé
+    if (open) {
+      menu.removeAttribute('inert');
+    } else {
+      menu.setAttribute('inert', '');
+    }
+    document.body.style.overflow = open ? 'hidden' : '';
+  };
 
-    toggle.addEventListener('click', () => {
-      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
-      setOpen(!isOpen);
-    });
+  document.addEventListener('click', (e) => {
+    const target = e.target as Element | null;
+    const toggle = target?.closest('#menu-toggle');
+    if (toggle) {
+      setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+      return;
+    }
+    if (target?.closest('#mobile-menu [data-mobile-link]')) setOpen(false);
+  });
 
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
-        setOpen(false);
-        toggle.focus();
-      }
-    });
+  document.addEventListener('keydown', (e) => {
+    const toggle = getToggle();
+    if (e.key === 'Escape' && toggle?.getAttribute('aria-expanded') === 'true') {
+      setOpen(false);
+      toggle.focus();
+    }
+  });
 
-    menu.querySelectorAll<HTMLElement>('[data-mobile-link]').forEach((el) => {
-      el.addEventListener('click', () => setOpen(false));
-    });
+  // Nouvelle page : menu fermé et défilement rétabli, quel que soit l'état précédent.
+  document.addEventListener('astro:after-swap', () => setOpen(false));
 
-    // Ferme automatiquement si l'on passe en desktop (md+) pendant que le menu est ouvert
-    const mq = window.matchMedia('(min-width: 768px)');
-    const onMq = (e: MediaQueryListEvent | MediaQueryList) => {
-      if (e.matches) setOpen(false);
-    };
-    mq.addEventListener('change', onMq);
-  }
+  // Ferme automatiquement si l'on passe en desktop (md+) pendant que le menu est ouvert
+  window.matchMedia('(min-width: 768px)').addEventListener('change', (e) => {
+    if (e.matches) setOpen(false);
+  });
 </script>
