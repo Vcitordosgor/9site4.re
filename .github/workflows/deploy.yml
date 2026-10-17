@@ -3,6 +3,8 @@ name: Déploiement Cloudflare
 on:
   push:
     branches: [main]
+  # Relance manuelle : onglet Actions → « Déploiement Cloudflare » → Run workflow.
+  workflow_dispatch:
 
 # Un seul déploiement à la fois ; un push arrivé pendant un déploiement attend son tour.
 concurrency:
