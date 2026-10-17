@@ -405,12 +405,12 @@ const jsonLd = {
                   if (!r) return null;
                   return (
                     <a
-                      href={`/realisations/${r.slug}`}
+                      href={r.previewUrl}
                       class="inline-flex items-center gap-1 text-sm text-blanc-casse/70 hover:text-bleu transition-colors"
                       data-track-event="methode_sector_link_click"
                       data-track-category="navigation"
                       data-track-source="methode_secteurs_realisation"
-                      data-track-target={`/realisations/${r.slug}`}
+                      data-track-target={r.previewUrl}
                     >
                       Réalisation : {r.businessType} <span aria-hidden="true">→</span>
                     </a>
@@ -517,7 +517,7 @@ const jsonLd = {
           {showcase.map((r) => (
             <li>
               <a
-                href={`/realisations/${r.slug}`}
+                href={r.previewUrl}
                 class="group block h-full rounded-2xl p-5 ring-1 ring-white/15 bg-white/[0.06] hover:ring-bleu hover:bg-white/[0.06] transition-all"
               >
                 <p class="font-roboto-mono uppercase tracking-wide text-[10px] text-bleu/80 font-semibold">{r.sector}</p>
