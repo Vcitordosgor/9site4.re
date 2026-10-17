@@ -1,5 +1,6 @@
 ---
 import Icon from '../ui/Icon.astro';
+import { nbspPunct } from '../../lib/typo';
 import RealisationCard from '../realisations/RealisationCard.astro';
 import TarifsBref from './TarifsBref.astro';
 import realisations from '../../data/realisations.json';
@@ -195,12 +196,12 @@ const secteurs = ville.secteursPertinents.slice(0, 8);
       {faq.map((item) => (
         <details class="card-dark group rounded-2xl p-5 md:p-6">
           <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
-            <span class="font-sora font-semibold text-blanc-casse">{item.q}</span>
+            <span class="font-sora font-semibold text-blanc-casse">{nbspPunct(item.q)}</span>
             <span class="shrink-0 text-bleu transition-transform duration-300 group-open:rotate-45">
               <Icon name="arrow-right" size={18} strokeWidth={2.25} />
             </span>
           </summary>
-          <p class="mt-4 text-sm md:text-base text-blanc-casse/75 leading-relaxed">{item.a}</p>
+          <p class="mt-4 text-sm md:text-base text-blanc-casse/75 leading-relaxed">{nbspPunct(item.a)}</p>
         </details>
       ))}
     </div>

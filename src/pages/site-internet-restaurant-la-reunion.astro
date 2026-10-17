@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { nbspPunct } from '../lib/typo';
 import Button from '../components/ui/Button.astro';
 import Icon from '../components/ui/Icon.astro';
 import RealisationCard from '../components/realisations/RealisationCard.astro';
@@ -217,12 +218,12 @@ const serviceSchema = {
           {faq.map((item) => (
             <details class="group rounded-2xl p-5 md:p-6 card-dark">
               <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
-                <span class="font-sora font-semibold text-blanc-casse">{item.q}</span>
+                <span class="font-sora font-semibold text-blanc-casse">{nbspPunct(item.q)}</span>
                 <span class="shrink-0 text-bleu transition-transform duration-300 group-open:rotate-45">
                   <Icon name="arrow-right" size={18} strokeWidth={2.25} />
                 </span>
               </summary>
-              <p class="mt-4 text-sm md:text-base text-blanc-casse/75 leading-relaxed">{item.a}</p>
+              <p class="mt-4 text-sm md:text-base text-blanc-casse/75 leading-relaxed">{nbspPunct(item.a)}</p>
             </details>
           ))}
         </div>
