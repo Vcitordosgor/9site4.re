@@ -212,7 +212,7 @@ export default function ModuleMetierDemo({ configs, pros }: Props) {
         .mm-connector-on .mm-dot{animation:mm-flow 1.1s ease-in-out;background:#91a6ff;}
         .mm-connector-on .mm-dot:nth-child(2){animation-delay:.12s;}
         .mm-connector-on .mm-dot:nth-child(3){animation-delay:.24s;}
-        @keyframes mm-flow{0%,100%{transform:scale(1);box-shadow:none;}40%{transform:scale(1.5);box-shadow:0 0 12px 2px rgba(145,166,255,.6);}}
+        @keyframes mm-flow{0%,100%{transform:scale(1);}40%{transform:scale(1.5);}}
         @media (prefers-reduced-motion: reduce){.mm-connector-on .mm-dot{animation:none;}}
       `}</style>
     </div>

@@ -161,7 +161,7 @@ const creativeWork = {
         <div class="mt-9 flex flex-wrap items-center justify-center gap-3">
           <a
             href="/contact"
-            class="inline-flex items-center gap-2 h-12 px-6 rounded-full bg-bleu text-bleu-nuit font-semibold text-sm shadow-[0_4px_16px_rgba(145,166,255,0.35)] hover:bg-bleu-fonce hover:-translate-y-0.5 transition-all"
+            class="inline-flex items-center gap-2 h-12 px-6 rounded-full bg-bleu text-bleu-nuit font-semibold text-sm hover:bg-bleu-fonce hover:-translate-y-0.5 transition-all"
             data-track-event="cta_create_site_click"
             data-track-category="conversion"
             data-track-label={realisation.slug}
@@ -229,7 +229,7 @@ const creativeWork = {
           {realisation.structuredElements.map((el: string) => (
             <li class="rounded-2xl p-6 min-w-0 card-dark">
               <div class="inline-flex items-center justify-center w-10 h-10 rounded-xl mb-4"
-                style="background: linear-gradient(135deg, #91a6ff 0%, #b39dff 100%);">
+                style="background: #91a6ff;">
                 <Icon name="sparkle" size={18} strokeWidth={2.25} class="text-bleu-nuit" />
               </div>
               <p class="font-sora font-semibold text-blanc-casse text-base leading-snug">{el}</p>
@@ -272,7 +272,7 @@ const creativeWork = {
             <span class="block italic font-medium text-bleu">pour vous projeter concrètement.</span>
           </h2>
           <div class="mt-8 rounded-2xl overflow-hidden border border-white/15"
-            style="background: #000; box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 18px 40px -22px rgba(0,0,0,0.85), 0 0 0 1.5px #91a6ff, 0 0 28px -8px rgba(145,166,255,0.45);">
+            style="background: #000; box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 18px 40px -22px rgba(0,0,0,0.85), 0 0 0 1.5px #91a6ff;">
             <div class="flex items-center gap-1.5 px-3 py-2 bg-bleu-nuit/95" aria-hidden="true">
               <span class="block w-2.5 h-2.5 rounded-full bg-[#FF5F57]"></span>
               <span class="block w-2.5 h-2.5 rounded-full bg-[#FEBC2E]"></span>
@@ -289,7 +289,7 @@ const creativeWork = {
               href={realisation.previewUrl}
               target="_blank"
               rel="noopener"
-              class="inline-flex items-center gap-2 h-12 px-6 rounded-full bg-bleu text-bleu-nuit font-semibold text-sm shadow-[0_4px_16px_rgba(145,166,255,0.35)] hover:bg-bleu-fonce hover:-translate-y-0.5 transition-all"
+              class="inline-flex items-center gap-2 h-12 px-6 rounded-full bg-bleu text-bleu-nuit font-semibold text-sm hover:bg-bleu-fonce hover:-translate-y-0.5 transition-all"
               data-track-event="cta_view_template_preview_click"
               data-track-category="navigation"
               data-track-label={realisation.slug}

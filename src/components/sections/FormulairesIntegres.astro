@@ -77,7 +77,7 @@ import { metiers } from '../../lib/formDemo';
       </p>
       <a
         href="/contact"
-        class="group inline-flex shrink-0 items-center justify-center gap-2 h-12 px-6 text-base font-semibold rounded-full bg-bleu text-bleu-nuit hover:bg-bleu-fonce hover:-translate-y-0.5 shadow-[0_8px_24px_rgba(145,166,255,0.45)] transition-all duration-200 ease-out"
+        class="group inline-flex shrink-0 items-center justify-center gap-2 h-12 px-6 text-base font-semibold rounded-full bg-bleu text-bleu-nuit hover:bg-bleu-fonce hover:-translate-y-0.5 transition-all duration-200 ease-out"
       >
         Décrire mon besoin
         <Icon name="arrow-right" size={18} strokeWidth={2} class="transition-transform duration-300 group-hover:translate-x-1" />
@@ -251,13 +251,13 @@ import { metiers } from '../../lib/formDemo';
       const card = panel.querySelector<HTMLElement>('[data-message-card]');
       if (!card) return;
 
-      // Pulse + glow orange de toute la carte
+      // Pulse de toute la carte
       if (typeof card.animate === 'function') {
         card.animate(
           [
-            { transform: 'scale(1)',     boxShadow: '0 0 0 0 rgba(145, 166, 255, 0)' },
-            { transform: 'scale(1.015)', boxShadow: '0 0 0 8px rgba(145, 166, 255, 0.35)' },
-            { transform: 'scale(1)',     boxShadow: '0 0 0 0 rgba(145, 166, 255, 0)' },
+            { transform: 'scale(1)' },
+            { transform: 'scale(1.015)' },
+            { transform: 'scale(1)' },
           ],
           { duration: 800, easing: 'ease-out' }
         );

@@ -53,12 +53,6 @@ const onFaitPas = [
     <!-- HERO éditorial : eyebrow + accent line + titre italique       -->
     <!-- ============================================================ -->
     <section class="relative overflow-hidden px-6 pt-28 pb-16 md:pt-36 md:pb-24">
-      <!-- Halos décoratifs signature -->
-      <div class="pointer-events-none absolute -top-32 -right-32 w-[28rem] h-[28rem] rounded-full bg-bleu/20 blur-3xl opacity-60 halo-pulse" aria-hidden="true"></div>
-      <div class="pointer-events-none absolute -bottom-32 -left-32 w-[24rem] h-[24rem] rounded-full bg-bleu/15 blur-3xl opacity-40 halo-pulse-slow" aria-hidden="true"></div>
-      <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
-        <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-[40rem] h-[40rem] halo-mix opacity-60"></div>
-      </div>
 
       <div class="relative mx-auto max-w-3xl text-center">
         <p class="hero-rise hero-rise-1 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-bleu/15 ring-1 ring-bleu/30 text-bleu text-[11px] font-semibold uppercase tracking-[0.28em]">
@@ -91,16 +85,8 @@ const onFaitPas = [
     <!-- ============================================================ -->
     <section class="relative px-6 pb-[3.75rem] md:pb-[5.25rem]" aria-labelledby="prix-titre">
       <div class="relative mx-auto max-w-3xl">
-        <!-- Halo signature bleu mauve derrière la card -->
-        <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
-          <div class="absolute inset-x-8 top-12 bottom-12 rounded-[2.5rem] bg-bleu/30 blur-3xl opacity-60"></div>
-        </div>
-
-        <article class="scroll-reveal relative rounded-4xl p-[1.5px] bg-gradient-to-br from-bleu via-bleu/40 to-white/10 shadow-[0_30px_80px_-20px_rgba(145,166,255,0.55)]">
+        <article class="scroll-reveal relative rounded-4xl p-[1.5px] bg-bleu">
           <div class="relative rounded-[calc(2rem-1.5px)] bg-[#0a0a0a] p-8 md:p-12 overflow-hidden">
-            <!-- Glow interne discret -->
-            <div class="pointer-events-none absolute -top-32 -right-32 w-80 h-80 rounded-full bg-bleu/20 blur-3xl" aria-hidden="true"></div>
-
             <div class="relative grid md:grid-cols-2 gap-10 items-start">
               <!-- Colonne prix -->
               <div>
@@ -241,10 +227,6 @@ const onFaitPas = [
     <!-- WHAT'S INCLUDED : 2-col grid détaillée (8 features avec icon) -->
     <!-- ============================================================ -->
     <section class="relative overflow-hidden px-6 py-[3.75rem] md:py-[5.25rem]" aria-labelledby="inclus-titre">
-      <div class="pointer-events-none absolute inset-0" aria-hidden="true">
-        <div class="absolute top-0 -left-24 w-[28rem] h-[28rem] halo-bleu opacity-40"></div>
-        <div class="absolute bottom-0 -right-24 w-[24rem] h-[24rem] halo-bleu-soft opacity-30"></div>
-      </div>
 
       <div class="relative mx-auto max-w-content">
         <div class="text-center max-w-2xl mx-auto">
@@ -266,7 +248,7 @@ const onFaitPas = [
             const isBleu = i % 2 === 0;
             return (
               <li
-                class="scroll-reveal group bg-blanc-casse rounded-2xl ring-1 ring-bleu-nuit/10 p-6 transition-all duration-300 ease-out-soft hover:-translate-y-1 hover:shadow-[0_20px_40px_-15px_rgba(145,166,255,0.45)] hover:ring-bleu/40"
+                class="scroll-reveal group bg-blanc-casse rounded-2xl ring-1 ring-bleu-nuit/10 p-6 transition-all duration-300 ease-out-soft hover:-translate-y-1 hover:ring-bleu/40"
                 style={`transition-delay: ${(i % 4) * 60}ms`}
               >
                 <span class:list={[
@@ -292,10 +274,6 @@ const onFaitPas = [
     <!-- FAQ TARIFS : accordéon                                        -->
     <!-- ============================================================ -->
     <section class="relative overflow-hidden px-6 py-[3.75rem] md:py-[5.25rem]" aria-labelledby="faq-titre">
-      <div class="pointer-events-none absolute inset-0" aria-hidden="true">
-        <div class="absolute -top-24 right-0 w-[28rem] h-[28rem] halo-bleu opacity-30"></div>
-        <div class="absolute bottom-0 -left-24 w-[24rem] h-[24rem] halo-bleu-soft opacity-20"></div>
-      </div>
 
       <div class="relative mx-auto max-w-3xl">
         <div class="text-center mb-12">
