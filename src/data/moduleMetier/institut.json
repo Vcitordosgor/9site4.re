@@ -19,7 +19,12 @@
       "id": "prestation",
       "label": "Prestation",
       "requis": true,
-      "options": ["Soin visage", "Massage", "Manucure", "Épilation"],
+      "options": [
+        "Soin visage",
+        "Massage",
+        "Manucure",
+        "Épilation"
+      ],
       "defaut": "Massage"
     },
     {
@@ -33,7 +38,12 @@
       "id": "moment",
       "label": "Moment de la journée",
       "requis": true,
-      "options": ["Matin", "Midi", "Après-midi", "Fin de journée"],
+      "options": [
+        "Matin",
+        "Midi",
+        "Après-midi",
+        "Fin de journée"
+      ],
       "defaut": "Après-midi"
     },
     {
@@ -57,5 +67,12 @@
   },
   "reponsePro": "Bonjour {nom} 💆 Merci pour votre demande ! Je vérifie mes disponibilités et je reviens vers vous pour caler le rendez-vous.",
   "icon": "institut",
-  "bulleVisiteur": "Bonjour, je souhaiterais prendre rendez-vous ✨"
+  "bulleVisiteur": "Bonjour, je souhaiterais prendre rendez-vous ✨",
+  "exempleDemande": {
+    "nom": "Nadia",
+    "prestation": "Massage",
+    "date": "Mercredi",
+    "moment": "Après-midi",
+    "tel": "0692 •• •• ••"
+  }
 }

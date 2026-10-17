@@ -19,7 +19,12 @@
       "id": "couverts",
       "label": "Nombre de couverts",
       "requis": true,
-      "options": ["2 personnes", "4 personnes", "6 personnes", "Plus de 6"],
+      "options": [
+        "2 personnes",
+        "4 personnes",
+        "6 personnes",
+        "Plus de 6"
+      ],
       "defaut": "4 personnes"
     },
     {
@@ -55,5 +60,12 @@
   },
   "reponsePro": "Bonjour {nom} 👋 Bien reçu, je regarde ce que je peux vous proposer et je reviens vers vous rapidement pour confirmer.",
   "icon": "restaurant",
-  "bulleVisiteur": "Bonjour, je voudrais une table pour ce week-end 🍽️"
+  "bulleVisiteur": "Bonjour, je voudrais une table pour ce week-end 🍽️",
+  "exempleDemande": {
+    "nom": "Emma",
+    "couverts": "4 personnes",
+    "date": "Vendredi soir",
+    "heure": "19h30",
+    "tel": "0692 •• •• ••"
+  }
 }

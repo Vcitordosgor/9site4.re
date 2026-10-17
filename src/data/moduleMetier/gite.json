@@ -31,7 +31,12 @@
       "id": "voyageurs",
       "label": "Nombre de voyageurs",
       "requis": true,
-      "options": ["1-2 personnes", "3-4 personnes", "5-6 personnes", "Plus de 6"],
+      "options": [
+        "1-2 personnes",
+        "3-4 personnes",
+        "5-6 personnes",
+        "Plus de 6"
+      ],
       "defaut": "3-4 personnes"
     },
     {
@@ -55,5 +60,12 @@
   },
   "reponsePro": "Bonjour {nom} 🌴 Merci pour votre demande de séjour. Je vérifie la disponibilité sur vos dates et je reviens vers vous pour confirmer.",
   "icon": "gite",
-  "bulleVisiteur": "Bonjour, le gîte est-il disponible pour un séjour ? 🏝️"
+  "bulleVisiteur": "Bonjour, le gîte est-il disponible pour un séjour ? 🏝️",
+  "exempleDemande": {
+    "nom": "Emma",
+    "arrivee": "Vendredi 13",
+    "depart": "Dimanche 15",
+    "voyageurs": "3-4 personnes",
+    "tel": "0692 •• •• ••"
+  }
 }
